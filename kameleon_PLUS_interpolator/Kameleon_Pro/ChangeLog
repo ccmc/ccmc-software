@@ -1,0 +1,56 @@
+2009 Jun 02   David Berrios
+-------------
+   derived-1.0.0
+   - Modified the interfaces a little bit.  Added FileReader class.  Started process of
+     extracting information out of CDF files to interpolate on more than one file at a time.
+   - Added CDFlib(SELECT_,CDF_,current_cdf_id, NULL_); before all calls to kameleon. 
+     Kameleon uses the internal CDF interface, and some functions assume a CDF file is selected. This
+     ensures that the correct CDF file is selected.
+   - added -arch x86_64 and -arch ppc64 to CPPFLAGS when using the --enable-universal option
+
+2008 Sep 02   David Berrios
+-------------
+   derived-0.7.3
+   - Added a radius of 0 to the start of the calculated magnetopause
+   
+2008 Aug 19   David Berrios
+-------------
+   derived-0.7.2
+   - Added methods to calculate the magnetopause using the Shue model
+   
+2008 Aug 15   David Berrios
+-------------
+   derived-0.7.1
+   - Added the Shue model
+   
+2008 Aug 07   David Berrios
+-------------
+   derived-0.7.0
+   - Fixed compute_exbz to interpolate correct variables
+
+2008 Aug 06   David Berrios
+-------------
+   derived-0.6.9
+   - Added b1 and components to the listOfRequiredVariablesForVectors map.  This fixed the slow tracing performance of b1
+
+2008 Jul 29   David Berrios
+-------------
+   derived-0.6.8
+   - Added a check for "open_ggcm" in Derived::interpolateSimple .  The previous behavior was undefined.
+   - Added eta*j and eta*j2
+   
+2008 Jul 18   David Berrios
+-------------
+   derived-0.6.7
+   - Modified calculation methods to return missing if any of the required variables are missing.
+   - Converted input string to interpolator to lower case.  
+
+2008 May 12   David Berrios
+-------------
+   derived-0.6.6
+   - Reorganized derived.cpp into separate files, one for each computation method
+   - Added more documentation
+   
+   
+
+   

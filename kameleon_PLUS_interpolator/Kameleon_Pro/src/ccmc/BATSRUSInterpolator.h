@@ -1,0 +1,87 @@
+/*
+ * BATSRUSInterpolator.h
+ *
+ *  Created on: Jun 30, 2009
+ *      Author: dberrios
+ */
+
+#ifndef BATSRUSINTERPOLATOR_H_
+#define BATSRUSINTERPOLATOR_H_
+
+#include "Interpolator.h"
+
+class BATSRUSInterpolator: public Interpolator
+{
+	public:
+		BATSRUSInterpolator(Model * modelReader);
+		float interpolate(const std::string&, const float& c0, const float& c1, const float& c2);
+		float interpolate(const std::string&, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1, float& dc2);
+		float interpolate(long, const float& c0, const float& c1, const float& c2);
+		float interpolate(long, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1, float& dc2);
+		virtual ~BATSRUSInterpolator();
+
+	private:
+		//std::map<std::string, float> conversionFactors;
+		//float getConversionFactor(std::string);
+		int find_octree_block(float x, float y, float z, int old_block_number);
+		//void set_block_min_max(int block_index);
+		int climb_octree(int root, float x, float y, float z);
+		int nx;
+		int ny;
+		int nz;
+		int old_block;
+		int callCount;
+		float old_x;
+		float old_y;
+		float old_z;
+		long int ib, ib_c[8], ix_c[8], iy_c[8], iz_c[8];
+		float xx_c[8], yy_c[8], zz_c[8];
+		int valid_c[8];
+		std::string block_x_min;
+		std::string block_y_min;
+		std::string block_z_min;
+		std::string block_x_max;
+		std::string block_y_max;
+		std::string block_z_max;
+		const std::vector<float> * block_x_min_array;
+		const std::vector<float> * block_y_min_array;
+		const std::vector<float> * block_z_min_array;
+		const std::vector<float> * block_x_max_array;
+		const std::vector<float> * block_y_max_array;
+		const std::vector<float> * block_z_max_array;
+
+
+		const std::vector<float> * block_x_center_array;
+		const std::vector<float> * block_y_center_array;
+		const std::vector<float> * block_z_center_array;
+		const std::vector<int> * block_child_id_1_array;
+		const std::vector<int> * block_child_id_2_array;
+		const std::vector<int> * block_child_id_3_array;
+		const std::vector<int> * block_child_id_4_array;
+		const std::vector<int> * block_child_id_5_array;
+		const std::vector<int> * block_child_id_6_array;
+		const std::vector<int> * block_child_id_7_array;
+		const std::vector<int> * block_child_id_8_array;
+
+		const std::vector<int> * block_child_count_array;
+		const std::vector<int> * block_at_amr_level_array;
+
+
+		std::string block_child_count;
+		std::string block_x_center;
+		std::string block_y_center;
+		std::string block_z_center;
+		std::string block_child_id_1;
+		std::string block_child_id_2;
+		std::string block_child_id_3;
+		std::string block_child_id_4;
+		std::string block_child_id_5;
+		std::string block_child_id_6;
+		std::string block_child_id_7;
+		std::string block_child_id_8;
+		std::string block_at_amr_level;
+		bool previousWasValid;
+
+};
+
+#endif /* BATSRUSINTERPOLATOR_H_ */
