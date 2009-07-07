@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.60)
-AC_INIT([ccmc_derived], [1.0.0], [David.H.Berrios@nasa.gov], [kameleon-plus])
+AC_INIT([ccmc_kameleon], [1.0.0], [David.H.Berrios@nasa.gov], [kameleon-plus])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies dist-bzip2 dist-lzma dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
@@ -50,7 +50,11 @@ AC_CHECK_LIB([kameleon],[main],,
 
 # Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS([string.h])
+AC_CHECK_HEADER([string.h])
+AC_CHECK_HEADER([cdf.h],,
+				AC_MSG_ERROR(Cannot find cdf.h.  Specify the cdf include directory using --with-cdf-includes=<dir>))
+AC_CHECK_HEADER([boost/unordered_map.hpp],,
+					AC_MSG_ERROR(Cannot find boost/unordered_map.hpp. Specify the boost include directory using --with-boost-includes=<dir>))
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
@@ -65,7 +69,6 @@ AC_CONFIG_FILES(
         src/Makefile
         src/example/Makefile
         src/ccmc/Makefile
-        src/ccmc/kameleon-plus.pc
     ]
 )
 AC_OUTPUT
