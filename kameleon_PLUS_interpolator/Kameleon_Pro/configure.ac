@@ -65,7 +65,7 @@ AC_CONFIG_FILES(
         src/Makefile
         src/example/Makefile
         src/ccmc/Makefile
-        src/ccmc/derived.pc
+        src/ccmc/kameleon-plus.pc
     ]
 )
 AC_OUTPUT
