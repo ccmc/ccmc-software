@@ -1,5 +1,5 @@
-lib_LTLIBRARIES = libkameleon-plus.la
-libkameleon_plus_la_SOURCES = Attribute.h \
+lib_LTLIBRARIES = libkameleon-interpolator.la
+libkameleon_interpolator_la_SOURCES = Attribute.h \
 						Attribute.cpp \
 						BATSRUS.h \
 						BATSRUS.cpp \
@@ -7,6 +7,7 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						BATSRUSInterpolator.cpp \
 						Cell3D.h \
 						Kameleon_compatibility.h \
+						Kameleon_compatibility.cpp \
 						Kameleon_compute_etaj.cpp \
 						Kameleon_compute_beta.cpp \
 						Kameleon_compute_e.cpp \
@@ -41,7 +42,6 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						FileReader.h \
 						Interpolator.h \
 						Interpolator.cpp \
-						kameleon_adjusted.h \
 						Model.h \
 						Model.cpp \
 						OpenGGCM.h \
@@ -52,11 +52,11 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						#Shue.h \
 						#Shue.cpp \
 						Vector.h 
-libkameleon_plus_la_LDFLAGS = -lkameleon -lcdf -release 1.0.0
-libkameleon_plus_la_CFLAGS = -fPIC
+libkameleon_interpolator_la_LDFLAGS = -lcdf -release 1.0.0
+libkameleon_interpolator_la_CFLAGS = -fPIC
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = kameleon-plus.pc
+#pkgconfigdir = $(libdir)/pkgconfig
+#pkgconfig_DATA = kameleon-plus.pc
 
 pkgincludedir = $(includedir)/ccmc
 pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h Kameleon_compatibility.h Model.h Point.h #Shue.h

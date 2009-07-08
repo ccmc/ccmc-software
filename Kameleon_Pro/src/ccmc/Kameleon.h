@@ -104,6 +104,9 @@ class Kameleon : public FileReader
 		float missingValue;
 };
 
+//static boost::unordered_map
+static boost::unordered_map<int, Kameleon *> kameleonObjects;
+//static Interpolator * interpolatorObject = NULL;
 
 #endif /** KAMELEON_H **/
 
