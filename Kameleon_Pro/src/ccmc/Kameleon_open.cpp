@@ -3,6 +3,8 @@
 #include <cdf.h>
 #include "OpenGGCM.h"
 #include "BATSRUS.h"
+#include "ENLIL.h"
+#include "MAS.h"
 #include <string>
 
 long Kameleon::open(const std::string& filename)
@@ -22,6 +24,14 @@ long Kameleon::open(const std::string& filename)
 	{
 		std::cout << "created BATSRUS object" << std::endl;
 		model = new BATSRUS();
+	} else if (modelName == "enlil")
+	{
+		std::cout << "created ENLIL object" << std:: endl;
+		model = new ENLIL();
+	} else if (modelName == "mas")
+	{
+		std::cout << "created MAS object" << std::endl;
+		model = new MAS();
 	}
 
 	long status;
