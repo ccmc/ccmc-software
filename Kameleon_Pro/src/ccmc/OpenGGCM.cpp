@@ -103,4 +103,5 @@ void OpenGGCM::initializeSIUnits()
 OpenGGCM::~OpenGGCM()
 {
 	// TODO Auto-generated destructor stub
+	std::cout << "deleting OpenGGCM object" << std::endl;
 }
