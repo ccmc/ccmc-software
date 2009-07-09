@@ -604,10 +604,11 @@ std::vector<std::string> Kameleon::getListOfRequiredVariablesForComponents(std::
 	}
 }
 
+/*
 bool Kameleon::loadVariableInt(const std::string& variable)
 {
 	return model->loadVariableInt(variable);
-}
+}*/
 
 /*bool Kameleon::loadVectorVariable(std::string variable)
 {
@@ -724,5 +725,10 @@ void Kameleon::initializeConversionFactorsToSI()
 
 
 
+}
+
+std::string Kameleon::getModelName()
+{
+	return modelName;
 }
 

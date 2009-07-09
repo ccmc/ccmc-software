@@ -2,20 +2,20 @@
 #define KAMELEON_COMPATIBILITY_H
 
 #ifdef __cplusplus
-extern "C"
-{
-	int Kameleon_create(int id);
-    int Kameleon_open(int id, const char * filename);
-    int Kameleon_close(int id);
-    int Kameleon_delete(int id);
-}
+#define _C_ "C"
 #endif
 
 #ifndef __cplusplus
-extern int Kameleon_create(int id);
-extern int Kameleon_open(int id, const char * filename);
-extern int Kameleon_close(int id);
-extern int Kameleon_delete(int id);
+#define _C_
 #endif
+
+extern _C_ int Kameleon_create(int id);
+extern _C_ int Kameleon_open(int id, const char * filename);
+extern _C_ void Kameleon_get_model_name(int id, char * model_name);
+extern _C_ float Kameleon_interpolate(int id, const char * variable, const float * c0,
+		const float * c1, const float *c2, float * dc0, float * dc1, float * dc2);
+extern _C_ int Kameleon_load_variable(int id, const char * variable);
+extern _C_ int Kameleon_close(int id);
+extern _C_ int Kameleon_delete(int id);
 
 #endif//end KAMELEON_COMPATIBILITY_H
