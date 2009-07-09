@@ -38,12 +38,6 @@ class Kameleon : public FileReader
 		Kameleon();
 		long open(const std::string& filename); //the individual models need a different open method
 		std::string getModelName();
-		//bool loadVariable(std::string variable);
-		bool loadVariableInt(const std::string& variable);
-		//bool loadVariable(std::string variable);
-		//bool loadVariableInt(std::string variable);
-		//const std::vector<float>* getVariableData(std::string variable);
-		//const std::vector<int>* getVariableDataInt(std::string variable);
 		void setMissingValue(float missingValue);
 		float getMissingValue();
 
@@ -63,12 +57,9 @@ class Kameleon : public FileReader
 		virtual ~Kameleon();
 
 	private:
-		//typedef boost::unordered_map<std::string, std::vector<float>*> mapStringFloat;
 		boost::unordered_map<std::string, std::string> variableNativeUnits ;
 		boost::unordered_map<std::string, std::string> variableSIUnits;
 		boost::unordered_map<std::string, std::string> variableVisUnits;
-
-		//boost::unordered_map<std::string, std::vector <float> *> variableData; //stores the original variable data, if loaded into memory.
 
 		boost::unordered_map<std::string, float> conversionFactorsToSI;
 		boost::unordered_map<std::string, float> conversionFactorsToVis;
@@ -87,15 +78,12 @@ class Kameleon : public FileReader
 		void initializeExtraInformation();
 
 
-		//void initializeConversionFactorsToSI();
-		//void initializeConversionFactorsToVis();
 		void initializeVariableAliases();
 		void initializeVariableUnits();
 
 		vector<string>  createVectorFromList(int num, ...);
 		std::string padString(const std::string& s, int minLength);
 		std::string modelName;
-		//std::string filename;
 		std::string getCurrentTime();
 		std::vector<std::string> getListOfRequiredVariablesForComponents(std::string variable);
 
@@ -104,9 +92,9 @@ class Kameleon : public FileReader
 		float missingValue;
 };
 
-//static boost::unordered_map
+//declared static variables for the C/Fortran interface functions
 static boost::unordered_map<int, Kameleon *> kameleonObjects;
-//static Interpolator * interpolatorObject = NULL;
+static boost::unordered_map<int, Interpolator *> interpolatorObjects;
 
 #endif /** KAMELEON_H **/
 
