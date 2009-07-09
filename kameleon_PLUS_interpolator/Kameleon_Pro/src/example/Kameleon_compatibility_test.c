@@ -38,8 +38,14 @@ int main( int argc, char * argv[])
 	c1 = -2.f;
 	c2 = 0.f;
 	Kameleon_load_variable(k0,"bx");
+	Kameleon_load_variable(k1,"bx");
+
 	float value1 = Kameleon_interpolate(k0,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
+	float value2 = Kameleon_interpolate(k1,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
+	value1 = Kameleon_interpolate(k0,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
+	value2 = Kameleon_interpolate(k1,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
 	printf("value1: %f\n",value1);
+	printf("value2: %f\n",value2);
 	int status = Kameleon_delete(k0);
 	printf("kdelete: %d\n", status);
 	status = Kameleon_delete(k1);
