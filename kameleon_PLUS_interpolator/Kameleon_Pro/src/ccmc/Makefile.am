@@ -6,6 +6,10 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						BATSRUSInterpolator.h \
 						BATSRUSInterpolator.cpp \
 						Cell3D.h \
+						ENLIL.h \
+						ENLIL.cpp \
+						ENLILInterpolator.h \
+						ENLILInterpolator.cpp \
 						Kameleon_compatibility.h \
 						Kameleon_compatibility.cpp \
 						Kameleon_compute_etaj.cpp \
@@ -42,6 +46,10 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						FileReader.h \
 						Interpolator.h \
 						Interpolator.cpp \
+						MAS.h \
+						MAS.cpp \
+						MASInterpolator.h \
+						MASInterpolator.cpp \
 						Model.h \
 						Model.cpp \
 						OpenGGCM.h \
