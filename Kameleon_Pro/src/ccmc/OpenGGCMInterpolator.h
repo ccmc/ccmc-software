@@ -21,8 +21,7 @@ class OpenGGCMInterpolator: public Interpolator
 		float interpolate(long variable_id, const float & c0, const float& c1, const float& c2);
 		float interpolate(long variable_id, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 				float& dc2);
-		template<typename T>
-				friend int binary_search(const std::vector<T>& vec, unsigned int start, unsigned int end, const T& key);
+
 		virtual ~OpenGGCMInterpolator();
 
 	private:

@@ -56,6 +56,7 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						OpenGGCM.cpp \
 						OpenGGCMInterpolator.h \
 						OpenGGCMInterpolator.cpp \
+						Utils.h \
 						Point.h \
 						#Shue.h \
 						#Shue.cpp \

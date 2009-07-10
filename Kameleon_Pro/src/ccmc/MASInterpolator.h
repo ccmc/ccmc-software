@@ -20,6 +20,8 @@ class MASInterpolator: public Interpolator
 		float interpolate(long int, const float&, const float&, const float&);
 		float interpolate(long int, const float&, const float&, const float&, float&, float&, float&);
 		virtual ~MASInterpolator();
+
+
 };
 
 #endif /* MASINTERPOLATOR_H_ */
