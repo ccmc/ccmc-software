@@ -33,6 +33,7 @@ float MASInterpolator::interpolate(long int, const float&, const float&, const f
 	return 0.f;
 }
 
+
 MASInterpolator::~MASInterpolator()
 {
 	// TODO Auto-generated destructor stub

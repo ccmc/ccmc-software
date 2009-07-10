@@ -6,6 +6,7 @@
  */
 
 #include "OpenGGCMInterpolator.h"
+#include "Utils.h"
 
 OpenGGCMInterpolator::OpenGGCMInterpolator(Model * modelReader)
 {
@@ -184,9 +185,9 @@ float OpenGGCMInterpolator::interpolate(long variable_id, const float& c0, const
 	{
 		//first, find the cell
 
-		ix = binary_search(*x_array, 0, (*x_array).size()-1, flipped_c0);
-		iy = binary_search(*y_array, 0, (*y_array).size()-1, flipped_c1);
-		iz = binary_search(*z_array, 0, (*z_array).size()-1, c2);
+		ix = Utils<float>::binary_search(*x_array, 0, (*x_array).size()-1, flipped_c0);
+		iy = Utils<float>::binary_search(*y_array, 0, (*y_array).size()-1, flipped_c1);
+		iz = Utils<float>::binary_search(*z_array, 0, (*z_array).size()-1, c2);
 
 	}
 
@@ -377,43 +378,6 @@ float OpenGGCMInterpolator::interpolate(long variable_id, const float& c0, const
 
 	return cell;
 }*/
-
-/**
- * Modified from wikibooks implementation of c++ binary search.
- * @param vec
- * @param start
- * @param end
- * @param key
- * @return
- */
-template<class T>
-int binary_search(const std::vector<T>& vec, unsigned int start, unsigned int end, const T& key)
-{
-
-
-	// Termination condition: start index greater than end index
-
-    if(start > end)
-    {
-        return -1;
-    }
-
-    // Find the middle element of the vector and use that for splitting
-    // the array into two pieces.
-    unsigned int middle = (start + ((end - start) / 2));
-
-
-    if(key < vec[middle+1] && key >= vec[middle])
-    {
-        return middle;
-    }
-    else if(key < vec[middle])
-    {
-        return binary_search(vec, start, middle - 1, key);
-    }
-
-    return binary_search(vec, middle + 1, end, key);
-}
 
 
 
