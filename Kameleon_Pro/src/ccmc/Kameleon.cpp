@@ -42,6 +42,7 @@ Kameleon::Kameleon()
 
 
 	model = NULL;
+	modelName = "NA";
 
 	missingValue = defaultMissingValue;
 //	cout << "Derived object created" << endl;
@@ -98,6 +99,10 @@ bool Kameleon::doesAttributeExist(std::string attribute)
 }
 */
 
+float Kameleon::getMissingValue()
+{
+	return missingValue;
+}
 
 /**
  * Clears all maps used in this class.
