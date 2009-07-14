@@ -16,6 +16,7 @@ long Kameleon::open(const std::string& filename)
 	openFile(filename);
 	this->modelName =
 			(getGlobalAttribute("model_name")).getAttributeString();
+	std::cout << "modelName: " << modelName << std:: endl;
 	if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 	{
 		std::cout << "created OpenGGCM object" << std::endl;

@@ -6,6 +6,7 @@
   	and link to the interoplation library.  Include derived_compatibility.h if
   	you want to use the C interface instead.
 **/
+#ifdef __cplusplus
 #ifndef KAMELEON_H
 #define KAMELEON_H
 #include <stdarg.h>
@@ -22,7 +23,6 @@
 #include <set>
 #include <string>
 #include <vector>
-#include <cdf.h>
 #include <boost/unordered_map.hpp>
 #include "Interpolator.h"
 #include "Model.h"
@@ -97,4 +97,5 @@ static boost::unordered_map<int, Kameleon *> kameleonObjects;
 static boost::unordered_map<int, Interpolator *> interpolatorObjects;
 
 #endif /** KAMELEON_H **/
+#endif
 
