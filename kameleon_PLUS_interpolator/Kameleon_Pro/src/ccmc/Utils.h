@@ -41,6 +41,9 @@ int Utils<T>::binary_search(const std::vector<T>& vec, unsigned int start, unsig
     // the array into two pieces.
     unsigned int middle = (start + ((end - start) / 2));
 
+    //outside valid range
+    if (middle >= vec.size())
+    	return -1;
 
     if(key < vec[middle+1] && key >= vec[middle])
     {
