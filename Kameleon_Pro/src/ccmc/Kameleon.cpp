@@ -31,7 +31,7 @@ using namespace std;
 
 //const Derived * derived = new Derived();
 
-Kameleon derived;
+//Kameleon derived;
 const float Kameleon::defaultMissingValue = 1.0995116278e12;
 
 /**
