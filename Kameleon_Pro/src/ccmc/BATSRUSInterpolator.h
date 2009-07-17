@@ -10,6 +10,12 @@
 
 #include "Interpolator.h"
 
+/**
+ * @class BATSRUSInterpolator
+ * @brief TODO: brief description of BATSRUSInterpolator class
+ *
+ * TODO: full description of BATSRUSInterpolator class
+ */
 class BATSRUSInterpolator: public Interpolator
 {
 	public:
