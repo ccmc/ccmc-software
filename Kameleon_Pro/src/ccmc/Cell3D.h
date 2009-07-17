@@ -14,6 +14,12 @@
 #include <deque>
 #include "Vector.h"
 
+/**
+ * @class Cell3D
+ * @brief TODO: brief description of Cell3D class
+ *
+ * TODO: full description of Cell3D class
+ */
 //P=positions, D=data
 template<class P, class D>
 class Cell3D
