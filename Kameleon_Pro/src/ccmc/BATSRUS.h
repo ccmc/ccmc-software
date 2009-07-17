@@ -13,8 +13,11 @@
 #include "Constants.h"
 #include <vector>
 
-/*
+/**
+ * @class BATSRUS
+ * @brief TODO: brief description of BATSRUS class
  *
+ * TODO: full description of BATSRUS class
  */
 class BATSRUS: public Model
 {
