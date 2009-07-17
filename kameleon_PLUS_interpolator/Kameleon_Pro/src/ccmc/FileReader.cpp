@@ -286,7 +286,7 @@ Attribute FileReader::getVariableAttribute(const std::string& variable, const st
 		status = CDFgetAttrzEntryNumElements(current_file_id, attributeNumber, variableNumber, &numElements );
 
 		value[numElements] = '\0';
-		std::cout << "C: attributeValue (" << vattribute << "): " << value << std::endl;
+		//std::cout << "C: attributeValue (" << vattribute << "): " << value << std::endl;
 		std::string valueString = value;
 		Attribute attribute;
 		attribute.setAttributeName(vattribute);
@@ -299,7 +299,7 @@ Attribute FileReader::getVariableAttribute(const std::string& variable, const st
 
 		int value;
 		long status = CDFgetAttrzEntry  (current_file_id, attributeNumber, variableNumber,  &value);
-		std::cout << "I: attributeValue (" << vattribute << "): " << value << std::endl;
+		//std::cout << "I: attributeValue (" << vattribute << "): " << value << std::endl;
 		Attribute attribute;
 		attribute.setAttributeName(vattribute);
 		attribute.setAttributeValue(value);
@@ -309,7 +309,7 @@ Attribute FileReader::getVariableAttribute(const std::string& variable, const st
 	{
 		float value;
 		long status = CDFgetAttrzEntry  (current_file_id, attributeNumber, variableNumber,  &value);
-		std::cout << "F: attributeValue (" << vattribute << "): " << value << std::endl;
+		//std::cout << "F: attributeValue (" << vattribute << "): " << value << std::endl;
 		Attribute attribute;
 		attribute.setAttributeName(vattribute);
 		attribute.setAttributeValue(value);
