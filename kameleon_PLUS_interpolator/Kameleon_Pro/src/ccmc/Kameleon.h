@@ -37,7 +37,7 @@ class Kameleon : public FileReader
 
 		Kameleon();
 		long open(const std::string& filename); //the individual models need a different open method
-		std::string getModelName();
+		const std::string& getModelName();
 		void setMissingValue(float missingValue);
 		float getMissingValue();
 
