@@ -9,6 +9,12 @@
 #define ATTRIBUTE_H_
 #include <string>
 
+/**
+ * @class Attribute
+ * @brief TODO: brief description of Attribute class
+ *
+ * TODO: full description of Attribute class
+ */
 class Attribute
 {
 
