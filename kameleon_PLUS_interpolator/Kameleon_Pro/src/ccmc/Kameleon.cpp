@@ -732,7 +732,7 @@ void Kameleon::initializeConversionFactorsToSI()
 
 }
 
-std::string Kameleon::getModelName()
+const std::string& Kameleon::getModelName()
 {
 	return modelName;
 }
