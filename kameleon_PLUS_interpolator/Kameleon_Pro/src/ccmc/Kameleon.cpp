@@ -587,10 +587,46 @@ bool Kameleon::loadVariable(const std::string& variable)
 	return success;
 }
 
+bool Kameleon::loadVectorVariable(const std::string& variable)
+{
+
+	std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForVectors(variable);
+	bool success = true;
+	for (int i = 0; i < requiredVariables.size(); i++)
+	{
+		std::cout << "loading " << requiredVariables[i] << std::endl;
+		if (!model->loadVariable(requiredVariables[i]))
+			success = false;
+	}
+	return success;
+}
+
 std::vector<std::string> Kameleon::getListOfRequiredVariablesForComponents(std::string variable)
 {
 	boost::unordered_map<std::string, std::vector<std::string> >::iterator iter = this->listOfRequiredVariablesForComponents.find(variable);
 	if (iter != listOfRequiredVariablesForComponents.end())
+	{
+		return (*iter).second;
+	} else
+	{
+		if (model->doesVariableExist(variable))
+		{
+			std::vector<std::string> required;
+			required.push_back(variable);
+			return  required;
+		}
+		else
+		{
+			std::vector<std::string> required;
+			return required;
+		}
+	}
+}
+
+std::vector<std::string> Kameleon::getListOfRequiredVariablesForVectors(std::string variable)
+{
+	boost::unordered_map<std::string, std::vector<std::string> >::iterator iter = this->listOfRequiredVariablesForVectors.find(variable);
+	if (iter != listOfRequiredVariablesForVectors.end())
 	{
 		return (*iter).second;
 	} else
