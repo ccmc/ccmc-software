@@ -6,7 +6,7 @@
   	and link to the interoplation library.  Include derived_compatibility.h if
   	you want to use the C interface instead.
 **/
-#ifdef __cplusplus
+
 #ifndef KAMELEON_H
 #define KAMELEON_H
 #include <stdarg.h>
@@ -19,6 +19,12 @@
  * @section License
  */
 
+/**
+ * @class Kameleon
+ * @brief TODO: Brief description of Kameleon class
+ *
+ * TODO: Full description of Kameleon class
+ */
 #include <map>
 #include <set>
 #include <string>
@@ -86,6 +92,7 @@ class Kameleon : public FileReader
 		std::string modelName;
 		std::string getCurrentTime();
 		std::vector<std::string> getListOfRequiredVariablesForComponents(std::string variable);
+		std::vector<std::string> getListOfRequiredVariablesForVectors(std::string variable);
 
 		void initializeConversionFactorsToSI();
 		void initializeConversionFactorsToVis();
@@ -97,5 +104,5 @@ static boost::unordered_map<int, Kameleon *> kameleonObjects;
 static boost::unordered_map<int, Interpolator *> interpolatorObjects;
 
 #endif /** KAMELEON_H **/
-#endif
+
 
