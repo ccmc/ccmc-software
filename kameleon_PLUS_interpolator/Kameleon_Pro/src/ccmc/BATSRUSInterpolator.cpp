@@ -1265,7 +1265,8 @@ int BATSRUSInterpolator::find_octree_block(float x, float y, float z, int old_bl
 
 			 */
 
-			if (((*block_x_min_array)[block_index_1] <= x)
+			if (block_index_1 < (*block_x_min_array).size()
+					&& ((*block_x_min_array)[block_index_1] <= x)
 					&& ((*block_x_max_array)[block_index_1] >= x)
 					&& ((*block_y_min_array)[block_index_1] <= y)
 					&& ((*block_y_max_array)[block_index_1] >= y)
