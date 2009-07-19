@@ -1,3 +1,10 @@
+2009 Jul 17   David Berrios
+-------------
+  kameleon-interpolator-1.0.0
+  - Rewrote the Kameleon interpolator.  
+  - Integrated the derived library into the Kameleon interpolator
+  - Optimized the code - now 3-5 times faster
+  
 2009 Jun 02   David Berrios
 -------------
    derived-1.0.0
