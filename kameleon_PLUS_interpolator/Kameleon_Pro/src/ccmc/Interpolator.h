@@ -9,24 +9,35 @@
 #define INTERPOLATOR_H_
 #include "Model.h"
 
-class Model;
-class Interpolator
+namespace ccmc
 {
+	class Model;
 
-	public:
-		Interpolator();
-		virtual float interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2) = 0;
-		virtual float interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2, float& dc0,
-				float& dc1, float& dc2) = 0;
-		virtual float interpolate(long variable_id, const float & c0, const float& c1, const float& c2) = 0;
-		virtual float interpolate(long variable_id, const float& c0, const float& c1, const float& c2, float& dc0,
-				float& dc1, float& dc2) = 0;
-		void setMissingValue(float missingValue);
-		virtual ~Interpolator();
+	/**
+	 * @class Interpolator Interpolator.h ccmc/Interpolator.h
+	 * @brief TODO: Brief description of Interpolator class
+	 *
+	 * TODO: Full description of Inteprolator class
+	 */
+	class Interpolator
+	{
 
-	protected:
-		Model * modelReader;
-		float missingValue;
-};
+		public:
+			Interpolator();
+			virtual float
+					interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2) = 0;
+			virtual float interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2,
+					float& dc0, float& dc1, float& dc2) = 0;
+			virtual float interpolate(long variable_id, const float & c0, const float& c1, const float& c2) = 0;
+			virtual float interpolate(long variable_id, const float& c0, const float& c1, const float& c2, float& dc0,
+					float& dc1, float& dc2) = 0;
+			void setMissingValue(float missingValue);
+			virtual ~Interpolator();
+
+		protected:
+			Model * modelReader;
+			float missingValue;
+	};
+}
 
 #endif /* INTERPOLATOR_H_ */

@@ -9,40 +9,45 @@
 #define ATTRIBUTE_H_
 #include <string>
 
-/**
- * @class Attribute
- * @brief TODO: brief description of Attribute class
- *
- * TODO: full description of Attribute class
- */
-class Attribute
+namespace ccmc
 {
+	/**
+	 * @class Attribute
+	 * @brief TODO: brief description of Attribute class
+	 *
+	 * TODO: full description of Attribute class
+	 */
+	class Attribute
+	{
 
-	public:
+		public:
 
-		enum AttributeType{ FLOAT, INT, STRING};
+			enum AttributeType
+			{
+				FLOAT, INT, STRING
+			};
 
-		std::string getAttributeName();
-		void setAttributeName(std::string attributeName);
-		void setAttributeValue(std::string& value);
-		void setAttributeValue(int& value);
-		void setAttributeValue(float& value);
-		AttributeType getAttributeType();
-		float getAttributeFloat();
-		std::string getAttributeString();
-		int getAttributeInt();
-		Attribute();
+			std::string getAttributeName();
+			void setAttributeName(std::string attributeName);
+			void setAttributeValue(std::string& value);
+			void setAttributeValue(int& value);
+			void setAttributeValue(float& value);
+			AttributeType getAttributeType();
+			float getAttributeFloat();
+			std::string getAttributeString();
+			int getAttributeInt();
+			Attribute();
 
-		virtual ~Attribute();
+			virtual ~Attribute();
 
-	private:
-		std::string attributeName;
-		std::string sValue;
-		int iValue;
-		float fValue;
-		AttributeType type;
+		private:
+			std::string attributeName;
+			std::string sValue;
+			int iValue;
+			float fValue;
+			AttributeType type;
 
-
-};
+	};
+}
 
 #endif /* ATTRIBUTE_H_ */

@@ -10,21 +10,29 @@
 
 #include "Model.h"
 
-class MAS: public Model
+namespace ccmc
 {
-	public:
-		MAS();
-		long open(const std::string&);
-		Interpolator* createNewInterpolator();
-		void initializeConversionFactorsToSI();
-		void initializeSIUnits();
-		virtual ~MAS();
+	/**
+	 * @class MAS MAS.h ccmc/MAS.h
+	 * @brief TODO: Brief description of MAS class
+	 *
+	 * TODO: Full description of MAS class
+	 */
+	class MAS: public Model
+	{
+		public:
+			MAS();
+			long open(const std::string&);
+			Interpolator* createNewInterpolator();
+			void initializeConversionFactorsToSI();
+			void initializeSIUnits();
+			virtual ~MAS();
 
-	private:
-		std::string r_string;
-		std::string lat_string;
-		std::string lon_string;
-		std::string filename;
-};
-
+		private:
+			std::string r_string;
+			std::string lat_string;
+			std::string lon_string;
+			std::string filename;
+	};
+}
 #endif /* MAS_H_ */

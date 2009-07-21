@@ -4,7 +4,7 @@
  *  Created on: Aug 11, 2008
  *      Author: dberrios
  */
-
+#ifdef __cplusplus
 #ifndef SHUE_H_
 #define SHUE_H_
 #include <string>
@@ -74,6 +74,6 @@ class Shue
 		Shue();
 		void open(std::string filename);
 };
-
+#endif //__cplusplus
 
 #endif /* SHUE_H_ */

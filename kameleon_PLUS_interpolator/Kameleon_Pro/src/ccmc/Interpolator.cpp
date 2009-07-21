@@ -1,4 +1,3 @@
-
 /*
  * Interpolator.cpp
  *
@@ -8,27 +7,30 @@
 
 #include "Interpolator.h"
 
-/**
- * Default constructor
- */
-Interpolator::Interpolator()
+namespace ccmc
 {
-	// TODO Auto-generated constructor stub
+	/**
+	 * Default constructor
+	 */
+	Interpolator::Interpolator()
+	{
+		// TODO Auto-generated constructor stub
 
-}
+	}
 
-/**
- * Sets the missing value;
- */
-void Interpolator::setMissingValue(float missingValue)
-{
-	this->missingValue = missingValue;
-}
+	/**
+	 * Sets the missing value;
+	 */
+	void Interpolator::setMissingValue(float missingValue)
+	{
+		this->missingValue = missingValue;
+	}
 
-/**
- * Destructor
- */
-Interpolator::~Interpolator()
-{
-	// TODO Auto-generated destructor stub
+	/**
+	 * Destructor
+	 */
+	Interpolator::~Interpolator()
+	{
+		// TODO Auto-generated destructor stub
+	}
 }

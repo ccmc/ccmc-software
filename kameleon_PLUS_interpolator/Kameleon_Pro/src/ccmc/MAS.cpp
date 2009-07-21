@@ -9,43 +9,44 @@
 #include "Interpolator.h"
 #include "MASInterpolator.h"
 
-MAS::MAS()
+namespace ccmc
 {
-	// TODO Auto-generated constructor stub
+	MAS::MAS()
+	{
+		// TODO Auto-generated constructor stub
 
-}
+	}
 
-long MAS::open(const std::string&)
-{
-	long status;
-	status = openFile(filename);
+	long MAS::open(const std::string&)
+	{
+		long status;
+		status = openFile(filename);
 
-	loadVariable(r_string);
-	loadVariable(lat_string);
-	loadVariable(lon_string);
-	initializeSIUnits();
-	initializeConversionFactorsToSI();
-}
+		loadVariable(r_string);
+		loadVariable(lat_string);
+		loadVariable(lon_string);
+		initializeSIUnits();
+		initializeConversionFactorsToSI();
+	}
 
-Interpolator* MAS::createNewInterpolator()
-{
-	Interpolator * interpolator = new MASInterpolator(this);
-	return interpolator;
-}
+	Interpolator* MAS::createNewInterpolator()
+	{
+		Interpolator * interpolator = new MASInterpolator(this);
+		return interpolator;
+	}
 
+	void MAS::initializeConversionFactorsToSI()
+	{
 
-void MAS::initializeConversionFactorsToSI()
-{
+	}
 
-}
+	void MAS::initializeSIUnits()
+	{
 
+	}
 
-void MAS::initializeSIUnits()
-{
-
-}
-
-MAS::~MAS()
-{
-	// TODO Auto-generated destructor stub
+	MAS::~MAS()
+	{
+		// TODO Auto-generated destructor stub
+	}
 }
