@@ -9,6 +9,8 @@
 #include <string>
 #include <iostream>
 
+using namespace ccmc;
+
 //TODO: Add appropriate error checking.  These functions WILL segfault if the id does not exist and you attempt to access the member functions of a null pointer.
 typedef boost::unordered_map<int, Kameleon*> map_i_K;
 typedef boost::unordered_map<int, Interpolator*> map_i_I;

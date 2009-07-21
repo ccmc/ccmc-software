@@ -13,47 +13,50 @@
 #include <vector>
 #include <boost/unordered_map.hpp>
 
-/*
- *
- */
-class OpenGGCM: public Model
+namespace ccmc
 {
+	/**
+	 * @class OpenGGCM OpenGGCM.h ccmc/OpenGGCM.h
+	 * @brief TODO: Brief description of OpenGGCM class
+	 *
+	 * TODO: Full description of OpenGGCM class
+	 */
+	class OpenGGCM: public Model
+	{
 
-	public:
-		OpenGGCM();
-		long open(const std::string& filename);
+		public:
+			OpenGGCM();
+			long open(const std::string& filename);
 
+			//Cell3D<float, float> getCell(std::string& variable, float c0, float c1, float c2);
+			Interpolator * createNewInterpolator();
+			//void loadVariable(std::string variable);
+			virtual ~OpenGGCM();
 
-		//Cell3D<float, float> getCell(std::string& variable, float c0, float c1, float c2);
-		Interpolator * createNewInterpolator();
-		//void loadVariable(std::string variable);
-		virtual ~OpenGGCM();
+		private:
+			void initializeConversionFactorsToSI();
+			void initializeSIUnits();
 
+			std::string x_string;
+			std::string y_string;
+			std::string z_string;
+			int nx;
+			int ny;
+			int nz;
+			std::vector<float> * x_array;
+			std::vector<float> * y_array;
+			std::vector<float> * z_array;
+			std::string previousVariable;
+			long previousVariableID;
+			float previousConversionFactor;
+			float previous_x;
+			float previous_y;
+			float previous_z;
+			int previous_ix;
+			int previous_iy;
+			int previous_iz;
 
+	};
 
-	private:
-		void initializeConversionFactorsToSI();
-		void initializeSIUnits();
-
-		std::string x_string;
-		std::string y_string;
-		std::string z_string;
-		int nx;
-		int ny;
-		int nz;
-		std::vector<float> * x_array;
-		std::vector<float> * y_array;
-		std::vector<float> * z_array;
-		std::string previousVariable;
-		long previousVariableID;
-		float previousConversionFactor;
-		float previous_x;
-		float previous_y;
-		float previous_z;
-		int previous_ix;
-		int previous_iy;
-		int previous_iz;
-
-};
-
+}
 #endif /* OPENGGCM_H_ */
