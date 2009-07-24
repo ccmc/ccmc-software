@@ -98,6 +98,11 @@ namespace ccmc
 		return missingValue;
 	}
 
+	void Kameleon::setMissingValue(float missingValue)
+	{
+		this->missingValue = missingValue;
+	}
+
 	/**
 	 * Clears all maps used in this class.
 	 */
