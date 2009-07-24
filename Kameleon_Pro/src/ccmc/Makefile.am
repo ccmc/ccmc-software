@@ -6,6 +6,8 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						BATSRUSInterpolator.h \
 						BATSRUSInterpolator.cpp \
 						Cell3D.h \
+						CTIP.h \
+						CTIP.cpp \
 						ENLIL.h \
 						ENLIL.cpp \
 						ENLILInterpolator.h \
