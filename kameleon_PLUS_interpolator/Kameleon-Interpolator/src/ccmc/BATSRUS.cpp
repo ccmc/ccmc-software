@@ -45,6 +45,7 @@ namespace ccmc
 	}
 
 	/**
+	 *
 	 * @param filename
 	 * @return Status of the open operation.  CDF_OK is 0.
 	 */
@@ -152,7 +153,9 @@ namespace ccmc
 	}
 
 	/**
-	 *
+	 * Initializes the variable names that will be used in string comparisons.
+	 * This significantly improves the performance of the library by avoiding
+	 * unnecessary string creations and destructions.
 	 */
 	void BATSRUS::initializeVariableNames()
 	{
@@ -175,6 +178,8 @@ namespace ccmc
 
 	/**
 	 *
+	 * @copydoc Model::initializeSIUnits()
+	 *
 	 */
 	void BATSRUS::initializeSIUnits()
 	{
@@ -195,8 +200,9 @@ namespace ccmc
 		variableSIUnits[e_] = "J/m^3";
 	}
 
+
 	/**
-	 *
+	 * @copydoc Model::initializeConversionFactorsToSI()
 	 */
 	void BATSRUS::initializeConversionFactorsToSI()
 	{
@@ -230,10 +236,9 @@ namespace ccmc
 		 conversionFactorsToSI["beta"] = 1.e21;*/
 	}
 
+
 	/**
-	 * This returns an Interpolator object that contains all the necessary local variables required to
-	 * interpolate independent of any other Interpolator object.  The pointer must be deleted from the calling program.
-	 * @return A pointer to an Interpolator object.
+	 * @copydoc Model::createNewInterpolator()
 	 */
 	Interpolator * BATSRUS::createNewInterpolator()
 	{
