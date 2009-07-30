@@ -36,9 +36,12 @@ namespace ccmc
 			template<typename T>
 			friend int binary_search(const std::vector<T>& vec, unsigned int start, unsigned int end, const T& key);
 
-		private:
+		protected:
 			void initializeConversionFactorsToSI();
 			void initializeSIUnits();
+
+		private:
+
 			void initializeVariableNames();
 			//std::map<std::string, float> conversionFactors;
 			//float getConversionFactor(std::string);
