@@ -26,10 +26,13 @@ namespace ccmc
 			ENLIL();
 			long open(const std::string&);
 			Interpolator* createNewInterpolator();
-			void initializeConversionFactorsToSI();
-			void initializeSIUnits();
+
 
 			virtual ~ENLIL();
+
+		protected:
+			void initializeConversionFactorsToSI();
+			void initializeSIUnits();
 
 		private:
 			std::string r_string;
