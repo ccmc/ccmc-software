@@ -21,16 +21,25 @@ namespace ccmc
 		return 0;
 	}
 
+	/**
+	 * @copydoc Model::createNewInterpolator()
+	 */
 	Interpolator* CTIP::createNewInterpolator()
 	{
 		return NULL;
 	}
 
+	/**
+	 * @copydoc Model::initializeConversionFactorsToSI()
+	 */
 	void CTIP::initializeConversionFactorsToSI()
 	{
 
 	}
 
+	/**
+	 * @copydoc Model::initializeSIUnits()
+	 */
 	void CTIP::initializeSIUnits()
 	{
 
