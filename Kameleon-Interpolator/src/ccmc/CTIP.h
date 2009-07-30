@@ -26,7 +26,7 @@ namespace ccmc
 	{
 		public:
 			CTIP();
-			long open(const std::string&);
+			long open(const std::string& filename);
 			Interpolator* createNewInterpolator();
 
 			virtual ~CTIP();

@@ -31,8 +31,7 @@ namespace ccmc
 	}
 
 	/**
-	 * @param filename
-	 * @return
+	 * @copydoc Model::open()
 	 */
 	long OpenGGCM::open(const std::string& filename)
 	{
