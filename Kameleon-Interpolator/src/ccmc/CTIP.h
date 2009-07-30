@@ -16,6 +16,12 @@
 namespace ccmc
 {
 
+	/**
+	 * @class CTIP CTIP.h ccmc/CTIP.h
+	 * @brief TODO: Brief description of CTIP class
+	 *
+	 * TODO: Full description of CTIP class
+	 */
 	class CTIP: public Model
 	{
 		public:
