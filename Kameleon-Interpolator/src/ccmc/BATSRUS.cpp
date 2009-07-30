@@ -45,9 +45,7 @@ namespace ccmc
 	}
 
 	/**
-	 *
-	 * @param filename
-	 * @return Status of the open operation.  CDF_OK is 0.
+	 * @copydoc Model::open()
 	 */
 	long BATSRUS::open(const std::string& filename)
 	{
@@ -153,7 +151,8 @@ namespace ccmc
 	}
 
 	/**
-	 * Initializes the variable names that will be used in string comparisons.
+	 * @brief Initializes the variable names that will be used in string comparisons.
+	 *
 	 * This significantly improves the performance of the library by avoiding
 	 * unnecessary string creations and destructions.
 	 */
