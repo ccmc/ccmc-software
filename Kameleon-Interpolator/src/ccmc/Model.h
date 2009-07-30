@@ -53,6 +53,11 @@ namespace ccmc
 			 */
 			long close();
 
+			/**
+			 * This returns an Interpolator object that contains all the necessary local variables required to
+			 * interpolate independent of any other Interpolator object.  The pointer must be deleted from the calling program.
+			 * @return A pointer to an Interpolator object.
+			 */
 			virtual Interpolator* createNewInterpolator() = 0;
 
 			//const FileReader& getFileReader();
@@ -72,7 +77,16 @@ namespace ccmc
 
 			boost::unordered_map<long, std::vector<float>*> variableDataByID;
 			boost::unordered_map<long, std::vector<int>*> variableDataIntByID;
+
+			/**
+			 * Initializes the conversionFactorsToSI map.  These factors are
+			 * used to convert interpolated values to SI units.
+			 */
 			virtual void initializeConversionFactorsToSI() = 0;
+
+			/**
+			 * Initializes the variableSIUnits map.
+			 */
 			virtual void initializeSIUnits() = 0;
 			std::string units_;
 
