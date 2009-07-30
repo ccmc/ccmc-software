@@ -24,9 +24,11 @@ namespace ccmc
 			MAS();
 			long open(const std::string&);
 			Interpolator* createNewInterpolator();
+			virtual ~MAS();
+
+		protected:
 			void initializeConversionFactorsToSI();
 			void initializeSIUnits();
-			virtual ~MAS();
 
 		private:
 			std::string r_string;
