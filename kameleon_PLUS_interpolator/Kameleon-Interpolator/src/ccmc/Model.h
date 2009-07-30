@@ -29,8 +29,16 @@ namespace ccmc
 
 		public:
 			Model();
+
+			/**
+			 * @brief Opens a file
+			 *
+			 * Opens a file and performs any necessary initialization required to
+			 * work with the data.
+			 * @param filename
+			 */
 			virtual long open(const std::string& filename) = 0; //the individual models need a different open method
-			void setModelName(std::string);
+			void setModelName(std::string modelName);
 			std::string getModelName();
 
 			bool loadVariable(const std::string& variable);
@@ -48,12 +56,12 @@ namespace ccmc
 			std::string getNativeUnit(const std::string& variable);
 			std::string getSIUnit(const std::string& variable);
 
-			/**
-			 * Closes the currently selected file.
-			 */
+
 			long close();
 
 			/**
+			 * @brief Returns an Interpolator object for the currently opened file.
+			 *
 			 * This returns an Interpolator object that contains all the necessary local variables required to
 			 * interpolate independent of any other Interpolator object.  The pointer must be deleted from the calling program.
 			 * @return A pointer to an Interpolator object.
@@ -79,13 +87,14 @@ namespace ccmc
 			boost::unordered_map<long, std::vector<int>*> variableDataIntByID;
 
 			/**
-			 * Initializes the conversionFactorsToSI map.  These factors are
-			 * used to convert interpolated values to SI units.
+			 * @brief Initializes the conversionFactorsToSI map.
+			 *
+			 * These factors are used to convert interpolated values to SI units.
 			 */
 			virtual void initializeConversionFactorsToSI() = 0;
 
 			/**
-			 * Initializes the variableSIUnits map.
+			 * @brief Initializes the variableSIUnits map.
 			 */
 			virtual void initializeSIUnits() = 0;
 			std::string units_;

@@ -23,14 +23,18 @@ namespace ccmc
 	}
 
 	/**
-	 * @param name
+	 * @brief Sets the model name to modelName.
+	 *
+	 * @param modelName
 	 */
-	void Model::setModelName(std::string name)
+	void Model::setModelName(std::string modelName)
 	{
 		modelName = name;
 	}
 
 	/**
+	 * @brief Returns the modelName of the currently selected file.
+	 *
 	 * @return
 	 */
 	std::string Model::getModelName()
@@ -39,7 +43,8 @@ namespace ccmc
 	}
 
 	/**
-	 * Closes the file
+	 * @brief Closes the currently selected file
+	 *
 	 * @return
 	 */
 	long Model::close()
@@ -65,6 +70,8 @@ namespace ccmc
 	}
 
 	/**
+	 * @brief Sets the missing value to use when no valid data exists.
+	 *
 	 * @param missingValue
 	 */
 	void Model::setMissingValue(float missingValue)
@@ -72,14 +79,25 @@ namespace ccmc
 		this->missingValue = missingValue;
 	}
 
+	/**
+	 * @brief Returns the missing value that will be returned when no valid data exists.
+	 *
+	 * This value can be used to check whether an interpolated value is a missing value or not.
+	 *
+	 * @return Missing value
+	 */
 	float Model::getMissingValue()
 	{
 		return missingValue;
 	}
 
 	/**
-	 * @param variable
-	 * @return
+	 * @brief Load a variable into memory.
+	 *
+	 * Use this method when the variable to load is of type float
+	 *
+	 * @param variable Variable to load into memory.
+	 * @return true if successful, else false
 	 */
 	bool Model::loadVariable(const std::string& variable)
 	{
@@ -102,6 +120,10 @@ namespace ccmc
 	}
 
 	/**
+	 * @brief Loads a variable into memory.
+	 *
+	 * Use this method when the variable to load is of type int
+	 *
 	 * @param variable
 	 * @return
 	 */
@@ -127,9 +149,15 @@ namespace ccmc
 	}
 
 	/**
-	 * @param variable
+	 * @brief Returns a const pointer to the entry in the variableData map containing the variable data.
+	 *
+	 * This pointer cannot be modified.
+	 *
+	 * @param variable Variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.
+	 *
 	 * @return std::vector<float>* of the requested variable.  Note that the pointer points to an entry in
-	 * a map and should not be deleted. The memory pointed to by the pointer will automatically be freed when
+	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
 	 * the file is closed, or the Model object is deleted.
 	 */
 	const std::vector<float>* Model::getVariableData(const std::string& variable)
@@ -145,8 +173,16 @@ namespace ccmc
 	}
 
 	/**
-	 * @param variable
-	 * @return
+	 * @brief Returns a const pointer to the entry in the variableDataInt map containing the variable data.
+	 *
+	 * This pointer cannot be modified.
+	 *
+	 * @param variable Variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.
+	 *
+	 * @return std::vector<int>* of the requested variable.  Note that the pointer points to an entry in
+	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
+	 * the file is closed, or the Model object is deleted.
 	 */
 	const std::vector<int>* Model::getVariableDataInt(const std::string& variable)
 	{
@@ -159,8 +195,16 @@ namespace ccmc
 	}
 
 	/**
-	 * @param variable_id
-	 * @return
+	 * @brief Returns a const pointer to the entry in the variableDataByID map containing the variable data.
+	 *
+	 * This pointer cannot be modified.
+	 *
+	 * @param variable_id Variable id of the variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.  Request the variable id by using FileReader::getVariableID(const std::string& variable)
+	 *
+	 * @return std::vector<float>* of the requested variable.  Note that the pointer points to an entry in
+	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
+	 * the file is closed, or the Model object is deleted.
 	 */
 	const std::vector<float>* Model::getVariableDataByID(long variable_id)
 	{
@@ -173,8 +217,16 @@ namespace ccmc
 	}
 
 	/**
-	 * @param variable_id
-	 * @return
+	 * @brief Returns a const pointer to the entry in the variableDataIntByID map containing the variable data.
+	 *
+	 * This pointer cannot be modified.
+	 *
+	 * @param variable_id Variable id of the variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.  Request the variable id by using FileReader::getVariableID(const std::string& variable)
+	 *
+	 * @return std::vector<int>* of the requested variable.  Note that the pointer points to an entry in
+	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
+	 * the file is closed, or the Model object is deleted.
 	 */
 	const std::vector<int>* Model::getVariableDataIntByID(long variable_id)
 	{
@@ -187,7 +239,8 @@ namespace ccmc
 	}
 
 	/**
-	 * @param variable
+	 * @brief Returns the conversion factor needed to convert the interpolated value to SI units.
+	 * @param variable Variable to request the conversion factor for.
 	 * @return Conversion factor to convert the specified variable to SI units
 	 */
 	float Model::getConversionFactorToSI(const std::string& variable)
@@ -202,7 +255,9 @@ namespace ccmc
 	}
 
 	/**
-	 * @param variable
+	 * @brief Fetches the native units of the variable as stored in the file.
+	 *
+	 * @param variable Variable to request units for.
 	 * @return The native units of the specified variable, as stored in the file.
 	 */
 	std::string Model::getNativeUnit(const std::string& variable)
@@ -212,7 +267,10 @@ namespace ccmc
 	}
 
 	/**
+	 * @brief Returns the SI units of the specified variable.
 	 *
+	 * @param variable
+	 * @return
 	 */
 	std::string Model::getSIUnit(const std::string& variable)
 	{
@@ -225,7 +283,7 @@ namespace ccmc
 	}
 
 	/**
-	 *
+	 * Destructor
 	 */
 	Model::~Model()
 	{

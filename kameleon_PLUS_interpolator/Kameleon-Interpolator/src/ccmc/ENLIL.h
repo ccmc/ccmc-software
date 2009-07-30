@@ -24,7 +24,7 @@ namespace ccmc
 	{
 		public:
 			ENLIL();
-			long open(const std::string&);
+			long open(const std::string& filename);
 			Interpolator* createNewInterpolator();
 
 

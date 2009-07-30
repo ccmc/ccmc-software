@@ -17,6 +17,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 * @copydoc Model::open
+	 */
 	long MAS::open(const std::string&)
 	{
 		long status;

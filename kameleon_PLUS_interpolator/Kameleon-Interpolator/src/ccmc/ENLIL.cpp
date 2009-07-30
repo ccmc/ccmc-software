@@ -17,7 +17,12 @@ namespace ccmc
 
 	}
 
-	long ENLIL::open(const std::string&)
+	/**
+	 * @copybrief Model::open
+	 *
+	 * @copydetails Model::open
+	 */
+	long ENLIL::open(const std::string& filename)
 	{
 		long status;
 		status = openFile(filename);
