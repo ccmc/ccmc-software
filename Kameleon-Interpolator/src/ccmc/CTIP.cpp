@@ -16,7 +16,10 @@ namespace ccmc
 
 	}
 
-	long CTIP::open(const std::string&)
+	/**
+	 * @copydoc Model::open
+	 */
+	long CTIP::open(const std::string& filename)
 	{
 		return 0;
 	}
