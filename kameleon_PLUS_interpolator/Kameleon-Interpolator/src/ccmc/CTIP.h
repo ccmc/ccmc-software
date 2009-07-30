@@ -22,9 +22,12 @@ namespace ccmc
 			CTIP();
 			long open(const std::string&);
 			Interpolator* createNewInterpolator();
+
+			virtual ~CTIP();
+
+		protected:
 			void initializeConversionFactorsToSI();
 			void initializeSIUnits();
-			virtual ~CTIP();
 	};
 
 }
