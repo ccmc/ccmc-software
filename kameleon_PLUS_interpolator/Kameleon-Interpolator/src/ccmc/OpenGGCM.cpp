@@ -49,6 +49,9 @@ namespace ccmc
 		return status;
 	}
 
+	/**
+	 * @copydoc Model::createNewInterpolator()
+	 */
 	Interpolator * OpenGGCM::createNewInterpolator()
 	{
 		Interpolator * interpolator = new OpenGGCMInterpolator(this);
@@ -56,6 +59,9 @@ namespace ccmc
 		return interpolator;
 	}
 
+	/**
+	 * @copydoc Model::initializeConversionFactorsToSI()
+	 */
 	void OpenGGCM::initializeConversionFactorsToSI()
 	{
 		std::cout << "OpenGGCM::initializeConversionFactorsToSI()" << std::endl;
@@ -76,6 +82,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 * @copydoc Model::initializeSIUnits()
+	 */
 	void OpenGGCM::initializeSIUnits()
 	{
 

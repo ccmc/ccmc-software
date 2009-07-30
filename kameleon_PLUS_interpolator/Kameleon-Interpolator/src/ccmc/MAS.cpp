@@ -29,17 +29,26 @@ namespace ccmc
 		initializeConversionFactorsToSI();
 	}
 
+	/**
+	 * @copydoc Model::createNewInterpolator()
+	 */
 	Interpolator* MAS::createNewInterpolator()
 	{
 		Interpolator * interpolator = new MASInterpolator(this);
 		return interpolator;
 	}
 
+	/**
+	 * @copydoc Model::initializeConversionFactorsToSI()
+	 */
 	void MAS::initializeConversionFactorsToSI()
 	{
 
 	}
 
+	/**
+	 * @copydoc Model::initializeSIUnits()
+	 */
 	void MAS::initializeSIUnits()
 	{
 
