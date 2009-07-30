@@ -33,10 +33,11 @@ namespace ccmc
 			//void loadVariable(std::string variable);
 			virtual ~OpenGGCM();
 
-		private:
+		protected:
 			void initializeConversionFactorsToSI();
 			void initializeSIUnits();
 
+		private:
 			std::string x_string;
 			std::string y_string;
 			std::string z_string;
