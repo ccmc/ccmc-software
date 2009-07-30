@@ -16,8 +16,8 @@ namespace ccmc
 
 	}
 
-	/**
-	 * @return
+	/**Returns the attribute's name
+	 * @return The attribute's name
 	 */
 	std::string Attribute::getAttributeName()
 	{
@@ -25,6 +25,7 @@ namespace ccmc
 	}
 
 	/**
+	 * Sets the attribute name
 	 * @param name The attribute name requested.
 	 */
 	void Attribute::setAttributeName(std::string name)
@@ -72,7 +73,7 @@ namespace ccmc
 
 	/**
 	 * Returns the attribute value as a float, if applicable.
-	 * @return The float value of the attribute.  This value returned will be 0.f
+	 * @return The float value of the attribute.  The value returned will be 0.f
 	 * if the AttributeType of the Attribute object is not Attribute::FLOAT
 	 */
 	float Attribute::getAttributeFloat()
@@ -81,7 +82,9 @@ namespace ccmc
 	}
 
 	/**
-	 * @return
+	 * Returns the string representation of the attribute, if applicable.
+	 * @return The string value of the attribute.  This value will be an empty string
+	 * if the AttributeType of the Attribute object is not Attribute::STRING
 	 */
 	std::string Attribute::getAttributeString()
 	{
@@ -89,7 +92,9 @@ namespace ccmc
 	}
 
 	/**
-	 * @return
+	 * Returns the attribute value as an int, if applicable.
+	 * @return The int value of the attribute.  The value returned will be 0
+	 * if the AttributeType of the Attribute object is not Attribute::FLOAT
 	 */
 	int Attribute::getAttributeInt()
 	{
