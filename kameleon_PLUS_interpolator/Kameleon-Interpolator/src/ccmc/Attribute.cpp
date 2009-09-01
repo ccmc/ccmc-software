@@ -16,7 +16,7 @@ namespace ccmc
 
 	}
 
-	/**Returns the attribute's name
+	/**Returns the attribute's name as a std::string object.
 	 * @return The attribute's name
 	 */
 	std::string Attribute::getAttributeName()
