@@ -6,7 +6,6 @@
  */
 
 #include "Model.h"
-#include <cdf.h>
 #include <iostream>
 #include <boost/foreach.hpp>
 #include "Interpolator.h"
@@ -29,7 +28,7 @@ namespace ccmc
 	 */
 	void Model::setModelName(std::string modelName)
 	{
-		modelName = name;
+		this->modelName = modelName;
 	}
 
 	/**

@@ -44,6 +44,9 @@
 #include "FileReader.h"
 #include "Constants.h"
 
+//cdf constants
+#define EPOCH3_STRING_LEN        24
+
 using namespace std;
 using namespace ccmc;
 
@@ -53,6 +56,9 @@ using namespace ccmc;
  */
 namespace ccmc
 {
+
+	extern "C" double parseEPOCH3(char epString[EPOCH3_STRING_LEN+1]);
+	extern "C" void encodeEPOCH3(double epoch, char epString[EPOCH3_STRING_LEN+1]);
 	/**
 	 * @class Kameleon Kameleon.h ccmc/Kameleon.h
 	 * @brief TODO: Brief description of Kameleon class

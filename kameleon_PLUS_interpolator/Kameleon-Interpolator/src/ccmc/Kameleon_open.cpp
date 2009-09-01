@@ -1,6 +1,5 @@
 #include "Kameleon.h"
 #include "FileReader.h"
-#include <cdf.h>
 #include "OpenGGCM.h"
 #include "BATSRUS.h"
 #include "ENLIL.h"
