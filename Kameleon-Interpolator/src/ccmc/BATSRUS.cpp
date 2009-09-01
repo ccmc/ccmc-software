@@ -9,9 +9,8 @@
 #include "Point.h"
 #include "Cell3D.h"
 #include "Vector.h"
-#include <cdf.h>
-#include <cdfdist.h>
 #include "BATSRUSInterpolator.h"
+
 
 namespace ccmc
 {
