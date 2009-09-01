@@ -6,8 +6,6 @@
  */
 
 #include "FileReader.h"
-#include <cdf.h>
-#include <cdfdist.h>
 #include <string>
 #include <vector>
 #include <deque>
@@ -46,7 +44,7 @@ namespace ccmc
 		{
 			close();
 		}
-		status = CDFopenCDF(filename.c_str(), &current_file_id);
+		status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
 		//cout << "current_file_id: " << current_file_id << endl;
 		//cout << "testing open in FileReader class" << endl;
