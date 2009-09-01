@@ -8,9 +8,9 @@
 #include <string>
 #include <ctime>
 #include <ccmc/Kameleon.h>
-#include <ccmc/Kameleon_compatibility.h>
+//#include <ccmc/Kameleon_compatibility.h>
 #include <boost/program_options.hpp>
-#include <google/profiler.h>
+//#include <google/profiler.h>
 //#include <ccmc/kameleon_adjusted.h>
 #define LENGTH 500;
 namespace po = boost::program_options;
@@ -67,7 +67,7 @@ int main (int argc, char * argv[])
 	float value;
 	std::string bx_ = "bx";
 	float convertedValue;
-	ProfilerStart("/tmp/reader2.prof");
+//	ProfilerStart("/tmp/reader2.prof");
 	for (int i = 0; i < 1000000; i++)
 	{
 
@@ -80,7 +80,7 @@ int main (int argc, char * argv[])
 	std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
 		convertedValue << " " << kameleon.getVisUnit(variable) << std::endl;
 
-	ProfilerStop();
+//	ProfilerStop();
 	finish = clock();
 	float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
 	delete interpolator;
