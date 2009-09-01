@@ -7,8 +7,6 @@
 
 #ifndef FILEREADER_H_
 #define FILEREADER_H_
-#include <cdf.h>
-#include <cdfdist.h>
 #include <string>
 #include <vector>
 #include <iostream>
@@ -17,8 +15,35 @@
 
 using namespace std;
 
+//cdf constants and types
+typedef void* CDFid;
+typedef long CDFstatus;
+#define CDF_OK                          ((CDFstatus) 0)
+#define NO_SUCH_ENTRY                   ((CDFstatus) (-2018))
+#define CDF_CHAR                51L
+#define CDF_INT4                4L
+
+
 namespace ccmc
 {
+	//cdf externs
+	extern "C" long CDFgetVarNum( CDFid id, char * varName);
+	extern "C" CDFstatus CDFgetzVarNumElements( CDFid id, long varNum, long * numElems);
+	extern "C" CDFstatus CDFgetzVarName(CDFid id, long varNum, char * varName);
+	extern "C" CDFstatus CDFconfirmAttrExistence(CDFid id, char * attrName);
+	extern "C" CDFstatus CDFgetAttrzEntry(CDFid id, long attrNum, long entryNum, void * value);
+	extern "C" CDFstatus CDFgetAttrzEntryNumElements(CDFid id, long attrNum, long entryNum, long * numElems);
+	extern "C" CDFstatus CDFgetAttrzEntryDataType(CDFid id, long attrNum, long entryNum, long * dataType);
+	extern "C" CDFstatus CDFgetAttrNum(CDFid id, char * attrName);
+	extern "C" CDFstatus CDFgetAttrName(CDFid id, long attrNum, char * attrName);
+	extern "C" CDFstatus CDFgetAttrgEntry(CDFid id, long attrNum, long entryNum, void * value);
+	extern "C" CDFstatus CDFinquireAttrgEntry(CDFid id, long attrNum, long entryNum, long * dataType, long * numElements);
+	extern "C" CDFstatus CDFhyperGetzVarData(CDFid id, long varNum, long recStart, long recCount, long recInterval, long indices[],
+			long counts[], long intervals[], void * buffer);
+	extern "C" CDFstatus CDFgetzVarDimSizes(CDFid id, long varNum, long dimSizes[]);
+	extern "C" CDFstatus CDFcloseCDF(CDFid id);
+	extern "C" CDFstatus CDFopenCDF(char * CDFname, CDFid * id);
+
 	/**
 	 * @class FileReader FileReader.h ccmc/FileReader.h
 	 * @brief TODO: Brief description of FileReader class

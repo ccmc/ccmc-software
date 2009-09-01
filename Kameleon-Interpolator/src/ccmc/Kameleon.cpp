@@ -15,8 +15,6 @@
 #include "KameleonInterpolator.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
-
-#include <cdf.h>
 #include <string>
 #include <map>
 #include <set>

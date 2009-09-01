@@ -26,7 +26,9 @@ namespace ccmc
 			Interpolator();
 
 			/**
-			 * @brief Interpolates the variable specified
+			 * @brief Interpolates the variable specified at position (c0,c1,c2).
+			 *
+			 * TODO: add detailed description
 			 */
 			virtual float
 					interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2) = 0;
