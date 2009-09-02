@@ -6,6 +6,8 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						BATSRUSInterpolator.h \
 						BATSRUSInterpolator.cpp \
 						Cell3D.h \
+						cdf.h \
+						Constants.h \
 						CTIP.h \
 						CTIP.cpp \
 						ENLIL.h \
@@ -60,8 +62,6 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						OpenGGCMInterpolator.cpp \
 						Utils.h \
 						Point.h \
-						#Shue.h \
-						#Shue.cpp \
 						Vector.h 
 libkameleon_interpolator_la_LDFLAGS = -lcdf -release 1.0.0
 libkameleon_interpolator_la_CFLAGS = -fPIC
