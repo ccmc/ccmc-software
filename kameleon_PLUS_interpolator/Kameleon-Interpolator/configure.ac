@@ -3,7 +3,7 @@
 
 AC_PREREQ(2.60)
 AC_INIT([kameleon-interpolator], [1.0.0], [David.H.Berrios@nasa.gov], [kameleon-interpolator])
-AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies dist-bzip2 dist-lzma dist-zip])
+AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-lzma dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -24,7 +24,7 @@ AC_ARG_ENABLE([universal],
                 CPPFLAGS="-isysroot /Developer/SDKs/MacOSX10.4u.sdk"
                fi
 
-               CPPFLAGS="-arch i386 -arch ppc -arch x86_64 -arch ppc64 $CPPFLAGS"])
+               CPPFLAGS="-arch i386 -arch ppc -arch x86_64 $CPPFLAGS"])
 AC_ARG_WITH([boost],
             [AC_HELP_STRING([--with-boost=<dir>],
                             [specify the location of the boost program_options library])],
