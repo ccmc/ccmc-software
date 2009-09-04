@@ -259,6 +259,8 @@ namespace ccmc
 	Attribute FileReader::getGlobalAttribute(const std::string& attribute)
 	{
 		long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
+		if (attrNum < 0)
+			std::cout << "attrNum: " << attrNum << " returned for " << attribute << std::endl;
 		return FileReader::getGlobalAttribute(attrNum);
 	}
 
