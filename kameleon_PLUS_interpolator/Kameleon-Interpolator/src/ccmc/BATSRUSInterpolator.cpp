@@ -215,7 +215,7 @@ namespace ccmc
 
 			if (ib == -1)
 			{
-				std::cout << "returning missing value. ib = -1" << std::endl;
+				//std::cout << "returning missing value. ib = -1" << std::endl;
 				return missingValue;
 			}
 
