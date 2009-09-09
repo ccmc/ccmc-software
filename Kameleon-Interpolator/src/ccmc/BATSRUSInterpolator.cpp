@@ -70,7 +70,7 @@ namespace ccmc
 		ny = (int) (modelReader->getGlobalAttribute("special_parameter_NY")).getAttributeFloat();
 		nz = (int) (modelReader->getGlobalAttribute("special_parameter_NZ")).getAttributeFloat();
 
-		std::cout << "finished reading nx, ny, nz" << std::endl;
+		//std::cout << "finished reading nx, ny, nz" << std::endl;
 		/********* get value for number_of_blocks **********/
 		int number_of_blocks = (modelReader->getGlobalAttribute("number_of_blocks")).getAttributeInt();
 	}
@@ -748,7 +748,7 @@ namespace ccmc
 
 			if (ib == -1)
 			{
-				std::cout << "returning missing value. ib = -1" << std::endl;
+				//std::cout << "returning missing value. ib = -1" << std::endl;
 				return missingValue;
 			}
 
