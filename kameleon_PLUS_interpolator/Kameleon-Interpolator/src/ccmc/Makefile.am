@@ -63,7 +63,7 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						Utils.h \
 						Point.h \
 						Vector.h 
-libkameleon_interpolator_la_LDFLAGS = -lcdf -release 1.0.0
+libkameleon_interpolator_la_LDFLAGS = -lcdf -release 0.1.0
 libkameleon_interpolator_la_CFLAGS = -fPIC
 
 #pkgconfigdir = $(libdir)/pkgconfig
