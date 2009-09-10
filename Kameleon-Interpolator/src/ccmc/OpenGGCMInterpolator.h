@@ -56,6 +56,7 @@ namespace ccmc
 			int previous_ix;
 			int previous_iy;
 			int previous_iz;
+			float previousValue;
 	};
 }
 #endif /* OPENGGCMINTERPOLATOR_H_ */
