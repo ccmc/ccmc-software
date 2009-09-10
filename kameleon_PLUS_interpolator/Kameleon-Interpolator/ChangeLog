@@ -1,3 +1,9 @@
+2009 Sep 10   David Berrios
+-------------
+  kameleon-interpolator-0.1.0
+  - renamed the distribution to 0.1.0, since the interpolator isn't complete yet
+  - modified OpenGGCMInterpolator to handle cases that caused crashes (array index out of bounds)
+
 2009 Jul 17   David Berrios
 -------------
   kameleon-interpolator-1.0.0
