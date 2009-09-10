@@ -47,6 +47,7 @@ namespace ccmc
 
 		previousVariable = "NULL";
 		previousVariableID = -1L;
+		previousValue = missingValue;
 		previousConversionFactor = 1.0f;
 		previous_x = missingValue;
 		previous_y = missingValue;
@@ -180,6 +181,8 @@ namespace ccmc
 		int ix, iy, iz;
 		if (previous_x == c0 && previous_y == c1 && previous_z == c2)
 		{
+			if (previousValue == missingValue)
+				return missingValue;
 			ix = previous_ix;
 			iy = previous_iy;
 			iz = previous_iz;
@@ -190,6 +193,9 @@ namespace ccmc
 			ix = Utils<float>::binary_search(*x_array, 0, (*x_array).size() - 1, flipped_c0);
 			iy = Utils<float>::binary_search(*y_array, 0, (*y_array).size() - 1, flipped_c1);
 			iz = Utils<float>::binary_search(*z_array, 0, (*z_array).size() - 1, c2);
+
+			if (ix < 0 || iy < 0 || iz < 0)
+				return missingValue;
 
 		}
 
@@ -275,7 +281,10 @@ namespace ccmc
 		previous_x = c0;
 		previous_y = c1;
 		previous_z = c2;
-		return xc * previousConversionFactor;
+
+		float value = xc*previousConversionFactor;
+		previousValue = value;
+		return value;
 
 	}
 
