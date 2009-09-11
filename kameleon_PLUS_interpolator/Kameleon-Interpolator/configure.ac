@@ -63,6 +63,7 @@ AC_CONFIG_FILES(
         src/Makefile
         src/example/Makefile
         src/ccmc/Makefile
+        src/cxform/Makefile
     ]
 )
 AC_OUTPUT
