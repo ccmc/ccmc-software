@@ -49,10 +49,12 @@ namespace ccmc
 
 			virtual long close();
 			CDFid getCurrentFileID();
+			const std::string& getCurrentFilename();
 			virtual ~FileReader();
 
 		protected:
 			CDFid current_file_id;
+			std::string current_filename;
 			long closeFile();
 			long openFile(const std::string& filename);
 			boost::unordered_map<std::string, long> variableIDs;
