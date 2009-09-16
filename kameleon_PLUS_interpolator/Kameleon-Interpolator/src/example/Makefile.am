@@ -1,4 +1,4 @@
-bin_PROGRAMS = derived kameleon-compat#imf
+bin_PROGRAMS = derived kameleon-compat coord_test#imf
 derived_SOURCES = derived_prog.cpp
 #derived_LDFLAGS = -L@srcdir@/../ccmc -lkameleon-interpolator -lkameleon -lcdf
 derived_CXXFLAGS = -I@srcdir@/.. -I@srcdir@/../ccmc
@@ -14,3 +14,6 @@ kameleon_compat_SOURCES = Kameleon_compatibility_test.c
 kameleon_compat_LDFLAGS = -L@builddir@/../ccmc -lstdc++ -lkameleon-interpolator
 kameleon_compat_CFLAGS = -I@srcdir@/..
 
+coord_test_SOURCES = coordinate_transformation_test.cpp
+coord_test_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
+coord_test_CXXFLAGS = -I@srcdir@/.. -I@srcdir@/../ccmc
