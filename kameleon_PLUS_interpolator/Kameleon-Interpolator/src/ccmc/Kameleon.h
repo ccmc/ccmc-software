@@ -43,6 +43,8 @@
 #include "Model.h"
 #include "FileReader.h"
 #include "Constants.h"
+#include "cxform.h"
+
 
 //cdf constants
 #define EPOCH3_STRING_LEN        24
@@ -59,6 +61,9 @@ namespace ccmc
 
 	extern "C" double parseEPOCH3(char epString[EPOCH3_STRING_LEN+1]);
 	extern "C" void encodeEPOCH3(double epoch, char epString[EPOCH3_STRING_LEN+1]);
+
+
+
 	/**
 	 * @class Kameleon Kameleon.h ccmc/Kameleon.h
 	 * @brief TODO: Brief description of Kameleon class
@@ -69,6 +74,12 @@ namespace ccmc
 	{
 		public:
 
+			struct Position
+			{
+				float c0;
+				float c1;
+				float c2;
+			};
 			Kameleon();
 			long open(const std::string& filename); //the individual models need a different open method
 			const std::string& getModelName();
@@ -84,6 +95,10 @@ namespace ccmc
 			float getConversionFactorToSI(const std::string& variable);
 			float getConversionFactorToVis(const std::string& variable);
 			static const float defaultMissingValue;//  = -1.0995116278e12; //-256.*-256.*-256.*-256.
+			static int _cxform(const char *from,const char *to,const double et,Position* v_in,Position* v_out);
+			static double _gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
+			static long _cxRound(double doub);
+			static long _date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
 			long close();
 			virtual ~Kameleon();
 

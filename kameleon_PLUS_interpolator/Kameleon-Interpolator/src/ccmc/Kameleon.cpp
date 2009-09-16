@@ -27,11 +27,16 @@
 //#define DEPRECATED_WARNING
 using namespace std;
 
+
 //const Derived * derived = new Derived();
 
 //Kameleon derived;
 namespace ccmc
 {
+	extern "C" int cxform(const char *from,const char *to,const double et,double * v_in,double * v_out);
+	extern "C" double gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
+	extern "C" long date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
+	extern "C" long cxRound(double doub);
 	const float Kameleon::defaultMissingValue = 1.0995116278e12;
 
 	/**
@@ -754,5 +759,62 @@ namespace ccmc
 	const std::string& Kameleon::getModelName()
 	{
 		return modelName;
+	}
+
+	/**
+	 * @param from
+	 * @param to
+	 * @param et
+	 * @param v_in
+	 * @param v_out
+	 */
+	int Kameleon::_cxform(const char *from,const char *to,const double et,Position* v_in,Position* v_out)
+	{
+		double * v_in_ = new double[3];
+		v_in_[0] = v_in->c0;
+		v_in_[1] = v_in->c1;
+		v_in_[2] = v_in->c2;
+		double * v_out_ = new double[3];
+		int status = cxform(from, to, et, v_in_, v_out_);
+		v_out->c0 = v_out_[0];
+		v_out->c1 = v_out_[1];
+		v_out->c2 = v_out_[2];
+		delete v_in_;
+		delete v_out_;
+		return status;
+	}
+
+	/**
+	 * @param y
+	 * @param m
+	 * @param d
+	 * @param h
+	 * @param mi
+	 * @param s
+	 */
+	double Kameleon::_gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s)
+	{
+		return gregorian_calendar_to_jd(y,m,d,h,mi,s);
+	}
+
+	/**
+	 * @param doub
+	 */
+	long Kameleon::_cxRound(double doub)
+	{
+		return cxRound(doub);
+	}
+
+	/**
+	 * @param yyyy
+	 * @param mm
+	 * @param dd
+	 * @param hh
+	 * @param mm2
+	 * @param ss
+	 */
+	long Kameleon::_date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss)
+	{
+		return date2es(yyyy,mm,dd,hh,mm2,ss);
 	}
 }
