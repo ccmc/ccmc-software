@@ -62,8 +62,11 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						OpenGGCMInterpolator.cpp \
 						Utils.h \
 						Point.h \
-						Vector.h 
-libkameleon_interpolator_la_LDFLAGS = -lcdf -release 0.1.0
+						Vector.h \
+						cxform.h \
+						cxform-auto.c \
+						cxform-manual.c
+libkameleon_interpolator_la_LDFLAGS = -release 0.1.0
 libkameleon_interpolator_la_CFLAGS = -fPIC
 
 #pkgconfigdir = $(libdir)/pkgconfig
