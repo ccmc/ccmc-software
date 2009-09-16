@@ -34,17 +34,22 @@ namespace ccmc
 	}
 
 	/**
+	 * Opens a new file. If the previous file has been opened successfuly, and has the
+	 * same filename as the requested filename, nothing will be done.
 	 * @param filename
 	 * @return The status of the open call.  This method should be called from open().
 	 */
 	long FileReader::openFile(const std::string& filename)
 	{
 		long status;
-		if (current_file_id != NULL)
+		if (current_file_id != NULL && filename != current_filename)
 		{
 			close();
 		}
 		status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
+
+		if (status == CDF_OK)
+			current_filename = filename;
 
 		//cout << "current_file_id: " << current_file_id << endl;
 		//cout << "testing open in FileReader class" << endl;
@@ -80,6 +85,7 @@ namespace ccmc
 		{
 			status = CDFcloseCDF(current_file_id);
 			current_file_id = NULL;
+			current_filename = "";
 
 		}
 		variableIDs.clear();
