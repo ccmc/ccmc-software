@@ -1,3 +1,3 @@
-SUBDIRS = cxform ccmc . example
+SUBDIRS = ccmc . example
 
 
