@@ -231,12 +231,12 @@ namespace ccmc
 	 * different models.  If the current time cannot be calculated, "TIME_UNAVAILABLE"
 	 * is returned.
 	 */
-	std::string Kameleon::getCurrentTime()
+	Time Kameleon::getCurrentTime()
 	{
 		//selectCDF(current_cdf_id);
 		std::string time_string;
 		//string model_name = gattribute_char_get("model_name");
-
+		Time time;
 		std::string start_time_char = "";
 		if (modelName != "enlil")
 			start_time_char = (model->getGlobalAttribute("start_time")).getAttributeString();
@@ -279,6 +279,14 @@ namespace ccmc
 				//double seconds_int = (int)(seconds + .5);
 				float seconds_int = (int) (seconds);
 
+				time.year = Y;
+				time.month = M;
+				time.day = D;
+				time.hour = hours;
+				time.minute = minutes;
+				time.second = seconds;
+
+
 				string time_string_month = boost::lexical_cast<std::string>(M);
 				string time_string_day = boost::lexical_cast<std::string>(D);
 				string time_string_year = boost::lexical_cast<std::string>(Y);
@@ -303,9 +311,25 @@ namespace ccmc
 			//float temp = elapsed_time * 1000.0;
 			cdf_epoch_time = (elapsed_time * 1000.0) + cdf_epoch_time;
 			encodeEPOCH3(cdf_epoch_time, current_time);
+			//parse the new string
+			//"2007-05-20T20:30:00.000Z";
+			cout << "current_time: " << current_time << endl;
+			string current_time_str = current_time;
+			time.year = boost::lexical_cast<int>(current_time_str.substr(0,4));
+			cout << "time.year: " << time.year << endl;
+			time.month = boost::lexical_cast<int>(current_time_str.substr(5,2));
+			cout << "time.year: " << time.year << endl;
+			time.day = boost::lexical_cast<int>(current_time_str.substr(8,2));
+			cout << "time.year: " << time.year << endl;
+			time.hour = boost::lexical_cast<int>(current_time_str.substr(11,2));
+			cout << "time.year: " << time.year << endl;
+			time.minute = boost::lexical_cast<int>(current_time_str.substr(14,2));
+			cout << "time.year: " << time.year << endl;
+			time.second = boost::lexical_cast<float>(current_time_str.substr(17,6));
+			cout << "time.year: " << time.year << endl;
 			time_string = current_time;
 		}
-		return time_string;
+		return time;
 	}
 
 	string Kameleon::padString(const string& s, int minLength)
@@ -817,4 +841,6 @@ namespace ccmc
 	{
 		return date2es(yyyy,mm,dd,hh,mm2,ss);
 	}
+
+
 }
