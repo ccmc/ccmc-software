@@ -59,6 +59,8 @@ namespace ccmc
 			long openFile(const std::string& filename);
 			boost::unordered_map<std::string, long> variableIDs;
 			boost::unordered_map<long, std::string> variableNames;
+			boost::unordered_map<std::string, Attribute> gAttributes;
+			boost::unordered_map<std::string, Attribute> vAttributes;
 
 	};
 }

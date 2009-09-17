@@ -90,6 +90,7 @@ namespace ccmc
 		}
 		variableIDs.clear();
 		variableNames.clear();
+		gAttributes.clear();
 		return status;
 	}
 
@@ -264,10 +265,17 @@ namespace ccmc
 	 */
 	Attribute FileReader::getGlobalAttribute(const std::string& attribute)
 	{
+		//first, check if the attribute has already been requested. If so, return stored value
+		boost::unordered_map<std::string, Attribute>::iterator iter = gAttributes.find(attribute);
+		if (iter != gAttributes.end())
+			return (*iter).second;
+
 		long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
 		if (attrNum < 0)
 			std::cout << "attrNum: " << attrNum << " returned for " << attribute << std::endl;
-		return FileReader::getGlobalAttribute(attrNum);
+		Attribute current_attribute = FileReader::getGlobalAttribute(attrNum);
+		gAttributes[attribute] = current_attribute;
+		return current_attribute;
 	}
 
 	/**
@@ -277,6 +285,7 @@ namespace ccmc
 	 */
 	Attribute FileReader::getVariableAttribute(const std::string& variable, const std::string& vattribute)
 	{
+
 
 		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 		long attributeNumber = CDFgetAttrNum(current_file_id, (char *) vattribute.c_str());
@@ -415,6 +424,11 @@ namespace ccmc
 		}
 
 		return false;
+	}
+
+	const std::string& FileReader::getCurrentFilename()
+	{
+		return this->current_filename;
 	}
 
 	/**
