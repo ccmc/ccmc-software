@@ -62,6 +62,22 @@ namespace ccmc
 	extern "C" double parseEPOCH3(char epString[EPOCH3_STRING_LEN+1]);
 	extern "C" void encodeEPOCH3(double epoch, char epString[EPOCH3_STRING_LEN+1]);
 
+	struct Position
+	{
+		float c0;
+		float c1;
+		float c2;
+	};
+
+	struct Time
+	{
+		int year;
+		int month;
+		int day;
+		int hour;
+		int minute;
+		float second;
+	};
 
 
 	/**
@@ -74,12 +90,7 @@ namespace ccmc
 	{
 		public:
 
-			struct Position
-			{
-				float c0;
-				float c1;
-				float c2;
-			};
+
 			Kameleon();
 			long open(const std::string& filename); //the individual models need a different open method
 			const std::string& getModelName();
@@ -100,6 +111,7 @@ namespace ccmc
 			static long _cxRound(double doub);
 			static long _date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
 			long close();
+			Time getCurrentTime();
 			virtual ~Kameleon();
 
 		private:
@@ -129,7 +141,7 @@ namespace ccmc
 			vector<string> createVectorFromList(int num, ...);
 			std::string padString(const std::string& s, int minLength);
 			std::string modelName;
-			std::string getCurrentTime();
+
 			std::vector<std::string> getListOfRequiredVariablesForComponents(std::string variable);
 			std::vector<std::string> getListOfRequiredVariablesForVectors(std::string variable);
 
