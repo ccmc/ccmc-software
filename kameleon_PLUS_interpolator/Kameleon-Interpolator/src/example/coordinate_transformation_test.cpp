@@ -133,12 +133,12 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 			boost::lexical_cast<int>(time_tokens[2]));
 
 	cout << "GSE: " << GSE[0] << " " << GSE[1] << " " << GSE[2] << endl;
-	Kameleon::Position GSE_d;
+	Position GSE_d;
 	GSE_d.c0 = boost::lexical_cast<double>(GSE[0]);
 	GSE_d.c1 = boost::lexical_cast<double>(GSE[1]);
 	GSE_d.c2 = boost::lexical_cast<double>(GSE[2]);
 
-	Kameleon::Position SM_d;
+	Position SM_d;
 	Kameleon::_cxform("GSE","SM", time_et, &GSE_d, &SM_d);
 	cout << "Input: " << GSE_d.c0 << "," << GSE_d.c1 << "," << GSE_d.c2 << endl;
 	cout << "Output: " << SM_d.c0 << "," << SM_d.c1 << "," << SM_d.c2 << endl;
