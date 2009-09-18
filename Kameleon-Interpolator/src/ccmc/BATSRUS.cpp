@@ -41,6 +41,8 @@ namespace ccmc
 		block_at_amr_level = "block_at_amr_level";
 		//variableNames = {"bx", "by", "bz", "b1x", "b1y", "b1z", "ux", "uy", "uz",
 		//					 "jx","jy","jz","rho","p","e"};
+
+
 	}
 
 	/**
@@ -51,6 +53,7 @@ namespace ccmc
 		long status;
 		status = openFile(filename);
 
+		//TODO: load all globalAttributes!
 		//grab all variables and store them into the conversionFactors hashtable
 		//we do this so the variableIDs remain consistent, even if some variables are missing
 
@@ -146,8 +149,11 @@ namespace ccmc
 		initializeConversionFactorsToSI();
 		initializeSIUnits();
 
+//		initializeGlobalAttributes();
 		return status;
 	}
+
+
 
 	/**
 	 * @brief Initializes the variable names that will be used in string comparisons.

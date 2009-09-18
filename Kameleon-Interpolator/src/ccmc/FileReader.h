@@ -41,7 +41,8 @@ namespace ccmc
 			int getNumberOfGlobalAttributes();
 			long getVariableID(const std::string& variable);
 			std::string getVariableName(long variable_id);
-			Attribute getGlobalAttribute(int i);
+			Attribute getGlobalAttribute(long i);
+			std::string getGlobalAttributeName(long attribute_id);
 			Attribute getGlobalAttribute(const std::string& attribute);
 			Attribute getVariableAttribute(const std::string& variable, const std::string& attribute);
 			bool doesAttributeExist(const std::string& attribute);
@@ -60,6 +61,7 @@ namespace ccmc
 			boost::unordered_map<std::string, long> variableIDs;
 			boost::unordered_map<long, std::string> variableNames;
 			boost::unordered_map<std::string, Attribute> gAttributes;
+			boost::unordered_map<long, Attribute> gAttributeByID;
 			boost::unordered_map<std::string, Attribute> vAttributes;
 
 	};

@@ -41,6 +41,7 @@ namespace ccmc
 
 		//current_cdf_id = get_current_CDFid();
 		initializeExtraInformation();
+		initializeGlobalAttributes();
 		return status;
 
 	}

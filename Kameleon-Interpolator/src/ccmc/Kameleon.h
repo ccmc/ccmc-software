@@ -137,6 +137,7 @@ namespace ccmc
 
 			void initializeVariableAliases();
 			void initializeVariableUnits();
+			void initializeGlobalAttributes();
 
 			vector<string> createVectorFromList(int num, ...);
 			std::string padString(const std::string& s, int minLength);

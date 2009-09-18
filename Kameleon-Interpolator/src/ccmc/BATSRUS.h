@@ -43,6 +43,7 @@ namespace ccmc
 		private:
 
 			void initializeVariableNames();
+
 			//std::map<std::string, float> conversionFactors;
 			//float getConversionFactor(std::string);
 			/*int find_octree_block(float x, float y, float z, int old_block_number);

@@ -124,7 +124,7 @@ int Kameleon_load_variable(int id, const char * variable)
 void Kameleon_get_global_attribute_string(int id, const char * gAttribute, char * destbuffer)
 {
 	Kameleon * kameleon = kameleonObjects[id];
-	std::string attribute = (kameleon->getGlobalAttribute(destbuffer)).getAttributeString();
+	std::string attribute = (kameleon->getGlobalAttribute(gAttribute)).getAttributeString();
 	strncpy(destbuffer, attribute.c_str(), attribute.size());
 	destbuffer[attribute.size()] = '\0';
 }

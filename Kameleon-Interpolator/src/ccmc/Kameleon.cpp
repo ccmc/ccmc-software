@@ -842,5 +842,23 @@ namespace ccmc
 		return date2es(yyyy,mm,dd,hh,mm2,ss);
 	}
 
+	/**
+	 * Inefficient.  For now, we prepopulate both this classes attributes, and the model objects attributes.
+	 * I should merge the two eventually.
+	 */
+	void Kameleon::initializeGlobalAttributes()
+	{
+		int numGAttributes = this->getNumberOfGlobalAttributes();
+		cout << "numGAttributes: " << numGAttributes << endl;
+		for (int i = 0; i < numGAttributes; i++)
+		{
 
+			std::string gAttributeName = this->getGlobalAttributeName((long)i);
+			//std::cout << "fetched: " << gAttributeName << std::endl;
+			this->getGlobalAttribute(gAttributeName);
+			this->getGlobalAttribute(i);
+			model->getGlobalAttribute(gAttributeName);
+			model->getGlobalAttribute(i);
+		}
+	}
 }
