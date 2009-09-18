@@ -91,6 +91,8 @@ namespace ccmc
 		variableIDs.clear();
 		variableNames.clear();
 		gAttributes.clear();
+		vAttributes.clear();
+		gAttributeByID.clear();
 		return status;
 	}
 
@@ -172,27 +174,38 @@ namespace ccmc
 	 * @param i The attribute number
 	 * @return
 	 */
-	Attribute FileReader::getGlobalAttribute(int i)
+	Attribute FileReader::getGlobalAttribute(long i)
 	{
 
+		boost::unordered_map<long, Attribute>::iterator iter = gAttributeByID.find(i);
+		if (iter != gAttributeByID.end())
+			return (*iter).second;
+
+		//cout << "after search" << endl;
+
+
 		long attrNum = i;
+		//cout << "i: " << i << " attrNum: " << attrNum << endl;
 		long numElements;
 		long dataType;
 
 		//std::cout << "dataType: " << dataType << std::endl;
 
 
-		CDFstatus status = CDFinquireAttrgEntry(current_file_id, attrNum, 0, &dataType, &numElements);
+		CDFstatus status =  CDFgetAttrgEntryDataType (current_file_id, attrNum, 0, &dataType);
+		status = CDFgetAttrgEntryNumElements (current_file_id, attrNum, 0, &numElements);
+
+		Attribute attribute;
 		if (dataType == CDF_CHAR)
 		{
 			std::string attributeValue = "NULL";
-			char attributeBuffer[512];
+			char attributeBuffer[numElements+1];
 			CDFgetAttrgEntry(current_file_id, attrNum, 0, attributeBuffer);
-			//std::cout << "numElements: " << numElements << std::endl;
+			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
 			//modelName[numElements] = '\0';
 			attributeBuffer[numElements] = '\0';
 			//std::cout << "status: " << status << std::endl;
-			if (status == CDF_OK)
+			//if (status == CDF_OK)
 			{
 				attributeValue = attributeBuffer;
 				attributeValue = attributeValue.substr(0, numElements); //only use valid parts of char string
@@ -204,21 +217,23 @@ namespace ccmc
 			//strcpy(ctemp, attributeValue.c_str());
 			//void * vtemp = (void *)ctemp;
 			CDFgetAttrName(current_file_id, attrNum, attributeNameBuffer);
-			Attribute attribute;
+			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
+			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
 			//std::cout << "attributeBuffer: " << attributeBuffer << endl;
 			attribute.setAttributeValue(attributeValue);
-			return attribute;
+			//return attribute;
 		} else if (dataType == CDF_INT4)
 		{
 			//int attributeValue = 0.f;
 			int attributeBuffer;// = new int[1];
 
 			CDFgetAttrgEntry(current_file_id, attrNum, 0, (void*) &attributeBuffer);
+			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
 			//std::cout << "numElements: " << numElements << std::endl;
 			//modelName[numElements] = '\0';
 			//std::cout << "status: " << status << std::endl;
-			if (status == CDF_OK)
+			//if (status == CDF_OK)
 			{
 				//do nothing.  defaults to zero.
 				//attributeValue = (int) attributeBuffer[0];
@@ -227,10 +242,10 @@ namespace ccmc
 			char attributeNameBuffer[512];
 
 			CDFgetAttrName(current_file_id, attrNum, attributeNameBuffer);
-			Attribute attribute;
+			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
 			attribute.setAttributeValue(attributeBuffer);
-			return attribute;
+			//return attribute;
 		} else //CDF_FLOAT
 		{
 			//float attributeValue = 0.f;
@@ -240,22 +255,18 @@ namespace ccmc
 			//std::cout << "numElements: " << numElements << std::endl;
 			//modelName[numElements] = '\0';
 			//std::cout << "status: " << status << std::endl;
-			if (status == CDF_OK)
-			{
-				//do nothing.
-				//attributeValue = (float) attributeBuffer[0];
-			} else
-			{
-				std::cout << "attrNum: " << attrNum << " failed to read correctly." << std::endl;
-			}
+
 
 			char attributeNameBuffer[1024];
 			CDFgetAttrName(current_file_id, attrNum, attributeNameBuffer);
-			Attribute attribute;
+			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
 			attribute.setAttributeValue(attributeBuffer);
-			return attribute;
+			//return attribute;
 		}
+		gAttributeByID[i] = attribute;
+		cout << "added: " << i << " name: " << attribute.getAttributeName() << endl;
+		return attribute;
 
 	}
 
@@ -270,10 +281,14 @@ namespace ccmc
 		if (iter != gAttributes.end())
 			return (*iter).second;
 
+
+
+		//cout << "attribute: " << attribute;
 		long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
+		//cout << "attrNum after attribute: " << attrNum << endl;
 		if (attrNum < 0)
 			std::cout << "attrNum: " << attrNum << " returned for " << attribute << std::endl;
-		Attribute current_attribute = FileReader::getGlobalAttribute(attrNum);
+		Attribute current_attribute = getGlobalAttribute(attrNum);
 		gAttributes[attribute] = current_attribute;
 		return current_attribute;
 	}
@@ -340,7 +355,9 @@ namespace ccmc
 	 */
 	int FileReader::getNumberOfGlobalAttributes()
 	{
-		return 0;
+		long num_attributes;
+		CDFgetNumgAttributes(current_file_id, &num_attributes);
+		return (int)num_attributes;
 	}
 
 	/**
@@ -429,6 +446,17 @@ namespace ccmc
 	const std::string& FileReader::getCurrentFilename()
 	{
 		return this->current_filename;
+	}
+
+	std::string FileReader::getGlobalAttributeName(long attribute_id)
+	{
+		char buffer[256];
+		CDFgetAttrName(current_file_id, attribute_id, buffer);
+		std::string buffer_string = buffer;
+		cout << "Attribute Name: '" << buffer_string << "'" << endl;
+
+
+		return buffer_string;
 	}
 
 	/**
