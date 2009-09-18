@@ -67,10 +67,13 @@ int main (int argc, char * argv[])
 	float value;
 	std::string bx_ = "bx";
 	float convertedValue;
-//	ProfilerStart("/tmp/reader2.prof");
+	//ProfilerStart("derived.prof");
 	for (int i = 0; i < 1000000; i++)
 	{
-
+		if (i % 100000 == 0)
+		{
+			std::cout << "i: " << i << std::endl;
+		}
 		value = interpolator->interpolate(variable, -10.0f + 6.f * (float) (i % 2), -2.0f, 0.0f);
 		convertedValue = value * conversion;
 		//std::cout << "Destroying new interpolator" << std::endl;
@@ -80,7 +83,7 @@ int main (int argc, char * argv[])
 	std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
 		convertedValue << " " << kameleon.getVisUnit(variable) << std::endl;
 
-//	ProfilerStop();
+	//ProfilerStop();
 	finish = clock();
 	float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
 	delete interpolator;
