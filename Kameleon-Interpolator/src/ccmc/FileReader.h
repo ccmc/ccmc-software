@@ -39,6 +39,7 @@ namespace ccmc
 			std::vector<float>* getVariable(const std::string& variable);
 			std::vector<int>* getVariableInt(const std::string& variable);
 			int getNumberOfGlobalAttributes();
+			int getNumberOfVariables();
 			long getVariableID(const std::string& variable);
 			std::string getVariableName(long variable_id);
 			Attribute getGlobalAttribute(long i);
@@ -63,6 +64,8 @@ namespace ccmc
 			boost::unordered_map<std::string, Attribute> gAttributes;
 			boost::unordered_map<long, Attribute> gAttributeByID;
 			boost::unordered_map<std::string, Attribute> vAttributes;
+			void initializeGlobalAttributes();
+			void initializeVariableIDs();
 
 	};
 }

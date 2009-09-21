@@ -86,7 +86,7 @@ namespace ccmc
 	 *
 	 * TODO: Full description of Kameleon class
 	 */
-	class Kameleon: public FileReader
+	class Kameleon
 	{
 		public:
 
@@ -105,6 +105,25 @@ namespace ccmc
 			std::string getVisUnit(const std::string& variable);
 			float getConversionFactorToSI(const std::string& variable);
 			float getConversionFactorToVis(const std::string& variable);
+
+
+			std::vector<float>* getVariable(const std::string& variable);
+			std::vector<int>* getVariableInt(const std::string& variable);
+			int getNumberOfGlobalAttributes();
+			long getVariableID(const std::string& variable);
+			std::string getVariableName(long variable_id);
+			Attribute getGlobalAttribute(long i);
+			std::string getGlobalAttributeName(long attribute_id);
+			Attribute getGlobalAttribute(const std::string& attribute);
+			Attribute getVariableAttribute(const std::string& variable, const std::string& attribute);
+			bool doesAttributeExist(const std::string& attribute);
+			bool doesVariableExist(const std::string& variable);
+
+
+			CDFid getCurrentFileID();
+			const std::string& getCurrentFilename();
+
+
 			static const float defaultMissingValue;//  = -1.0995116278e12; //-256.*-256.*-256.*-256.
 			static int _cxform(const char *from,const char *to,const double et,Position* v_in,Position* v_out);
 			static double _gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
@@ -137,7 +156,7 @@ namespace ccmc
 
 			void initializeVariableAliases();
 			void initializeVariableUnits();
-			void initializeGlobalAttributes();
+
 
 			vector<string> createVectorFromList(int num, ...);
 			std::string padString(const std::string& s, int minLength);
