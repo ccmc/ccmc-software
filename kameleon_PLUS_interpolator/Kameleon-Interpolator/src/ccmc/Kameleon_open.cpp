@@ -14,8 +14,10 @@ namespace ccmc
 		//need to intialize relevant information
 
 
-		openFile(filename);
-		this->modelName = (getGlobalAttribute("model_name")).getAttributeString();
+		FileReader fileReader;
+		fileReader.open(filename);
+		this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
+		fileReader.close();
 		std::cout << "modelName: " << modelName << std::endl;
 		if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 		{
@@ -35,13 +37,16 @@ namespace ccmc
 			model = new MAS();
 		}
 
-		long status;
+		long status = -1;
 		if (model != NULL)
+		{
 			status = model->open(filename);
 
-		//current_cdf_id = get_current_CDFid();
-		initializeExtraInformation();
-		initializeGlobalAttributes();
+
+			//current_cdf_id = get_current_CDFid();
+			initializeExtraInformation();
+
+		}
 		return status;
 
 	}

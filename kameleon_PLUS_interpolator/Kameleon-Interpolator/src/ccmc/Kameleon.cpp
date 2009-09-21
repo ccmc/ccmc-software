@@ -59,10 +59,11 @@ namespace ccmc
 
 		if (model != NULL)
 		{
+			model->close();
 			delete model;
 		}
 
-		closeFile();
+		//closeFile();
 		//TODO: delete contents of the maps and clear them
 		/*	BOOST_FOREACH(mapStringFloat::value_type i, variableData)
 		 {
@@ -406,7 +407,7 @@ namespace ccmc
 		model->close();
 		delete model;
 		model = NULL;
-		closeFile();
+//		closeFile();
 		//TODO: delete contents of the maps and clear them
 
 
@@ -842,23 +843,62 @@ namespace ccmc
 		return date2es(yyyy,mm,dd,hh,mm2,ss);
 	}
 
-	/**
-	 * Inefficient.  For now, we prepopulate both this classes attributes, and the model objects attributes.
-	 * I should merge the two eventually.
-	 */
-	void Kameleon::initializeGlobalAttributes()
-	{
-		int numGAttributes = this->getNumberOfGlobalAttributes();
-		cout << "numGAttributes: " << numGAttributes << endl;
-		for (int i = 0; i < numGAttributes; i++)
-		{
 
-			std::string gAttributeName = this->getGlobalAttributeName((long)i);
-			//std::cout << "fetched: " << gAttributeName << std::endl;
-			this->getGlobalAttribute(gAttributeName);
-			this->getGlobalAttribute(i);
-			model->getGlobalAttribute(gAttributeName);
-			model->getGlobalAttribute(i);
-		}
+
+
+	std::vector<float>* Kameleon::getVariable(const std::string& variable)
+	{
+		return model->getVariable(variable);
+	}
+	std::vector<int>* Kameleon::getVariableInt(const std::string& variable)
+	{
+		return model->getVariableInt(variable);
+	}
+	int Kameleon::getNumberOfGlobalAttributes()
+	{
+		return model->getNumberOfGlobalAttributes();
+	}
+	long Kameleon::getVariableID(const std::string& variable)
+	{
+		return model->getVariableID(variable);
+	}
+	std::string Kameleon::getVariableName(long variable_id)
+	{
+		return model->getVariableName(variable_id);
+	}
+	Attribute Kameleon::getGlobalAttribute(long i)
+	{
+		return model->getGlobalAttribute(i);
+	}
+	std::string Kameleon::getGlobalAttributeName(long attribute_id)
+	{
+		return model->getGlobalAttributeName(attribute_id);
+	}
+	Attribute Kameleon::getGlobalAttribute(const std::string& attribute)
+	{
+		return model->getGlobalAttribute(attribute);
+	}
+	Attribute Kameleon::getVariableAttribute(const std::string& variable, const std::string& attribute)
+	{
+		return model->getVariableAttribute(variable, attribute);
+	}
+	bool Kameleon::doesAttributeExist(const std::string& attribute)
+	{
+		return model->doesAttributeExist(attribute);
+	}
+	bool Kameleon::doesVariableExist(const std::string& variable)
+	{
+		return model->doesVariableExist(variable);
+	}
+
+
+	CDFid Kameleon::getCurrentFileID()
+	{
+		return model->getCurrentFileID();
+	}
+
+	const std::string& Kameleon::getCurrentFilename()
+	{
+		return model->getCurrentFilename();
 	}
 }

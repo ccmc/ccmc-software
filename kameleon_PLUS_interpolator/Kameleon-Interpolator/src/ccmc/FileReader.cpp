@@ -49,7 +49,12 @@ namespace ccmc
 		status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
 		if (status == CDF_OK)
+		{
 			current_filename = filename;
+			this->initializeGlobalAttributes();
+			this->initializeVariableIDs();
+		}
+
 
 		//cout << "current_file_id: " << current_file_id << endl;
 		//cout << "testing open in FileReader class" << endl;
@@ -387,6 +392,7 @@ namespace ccmc
 		if (iter != variableIDs.end())
 			return (*iter).second;
 
+		std::cout << "getting variable id for: " << variable << std::endl;
 		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 		//std::cout << "variableNumber: " << variableNumber << std::endl;
 		if (variableNumber >= 0)
@@ -458,6 +464,48 @@ namespace ccmc
 
 		return buffer_string;
 	}
+
+	int FileReader::getNumberOfVariables()
+	{
+		long numVars;
+		CDFgetNumzVars(current_file_id, &numVars);
+		return (int)numVars;
+	}
+
+	/**
+	 * Inefficient.  For now, we prepopulate both this classes attributes, and the model objects attributes.
+	 * I should merge the two eventually.
+	 */
+	void FileReader::initializeGlobalAttributes()
+	{
+		int numGAttributes = this->getNumberOfGlobalAttributes();
+		cout << "numGAttributes: " << numGAttributes << endl;
+		for (int i = 0; i < numGAttributes; i++)
+		{
+
+			std::string gAttributeName = this->getGlobalAttributeName((long)i);
+			//std::cout << "fetched: " << gAttributeName << std::endl;
+			this->getGlobalAttribute(gAttributeName);
+			this->getGlobalAttribute(i);
+			//model->getGlobalAttribute(gAttributeName);
+			//model->getGlobalAttribute(i);
+		}
+	}
+
+	void FileReader::initializeVariableIDs()
+	{
+		int numVariables = this->getNumberOfVariables();
+		cout << "numVariables: " << numVariables << endl;
+		char variableName[512];
+		for (int i = 0; i < numVariables; i++)
+		{
+			CDFgetzVarName(current_file_id, i, variableName);
+			std::string variableNameString = variableName;
+			variableIDs[variableNameString] = i;
+
+		}
+	}
+
 
 	/**
 	 * Destructor
