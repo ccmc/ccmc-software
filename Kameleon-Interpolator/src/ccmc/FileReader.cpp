@@ -270,7 +270,7 @@ namespace ccmc
 			//return attribute;
 		}
 		gAttributeByID[i] = attribute;
-		cout << "added: " << i << " name: " << attribute.getAttributeName() << endl;
+		//cout << "added: " << i << " name: " << attribute.getAttributeName() << endl;
 		return attribute;
 
 	}
@@ -459,7 +459,7 @@ namespace ccmc
 		char buffer[256];
 		CDFgetAttrName(current_file_id, attribute_id, buffer);
 		std::string buffer_string = buffer;
-		cout << "Attribute Name: '" << buffer_string << "'" << endl;
+		//cout << "Attribute Name: '" << buffer_string << "'" << endl;
 
 
 		return buffer_string;

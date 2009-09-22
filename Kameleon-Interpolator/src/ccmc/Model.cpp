@@ -128,7 +128,7 @@ namespace ccmc
 	 */
 	bool Model::loadVariableInt(const std::string& variable)
 	{
-		std::cout << "**************** inside loadVariableInt" << std::endl;
+
 		bool success = false;
 
 		//first, check to determine whether variable is already loaded
