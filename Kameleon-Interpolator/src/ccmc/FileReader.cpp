@@ -53,6 +53,7 @@ namespace ccmc
 			current_filename = filename;
 			this->initializeGlobalAttributes();
 			this->initializeVariableIDs();
+			this->initializeVariableNames();
 		}
 
 
@@ -502,6 +503,20 @@ namespace ccmc
 			CDFgetzVarName(current_file_id, i, variableName);
 			std::string variableNameString = variableName;
 			variableIDs[variableNameString] = i;
+
+		}
+	}
+
+	void FileReader::initializeVariableNames()
+	{
+		int numVariables = this->getNumberOfVariables();
+		cout << "numVariables: " << numVariables << endl;
+		char variableName[512];
+		for (int i = 0; i < numVariables; i++)
+		{
+			CDFgetzVarName(current_file_id, i, variableName);
+			std::string variableNameString = variableName;
+			variableNames[(long)i] = variableNameString;
 
 		}
 	}
