@@ -25,10 +25,10 @@ AC_ARG_ENABLE([universal],
                fi
 
                CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"])
-AC_ARG_WITH([boost],
-            [AC_HELP_STRING([--with-boost=<dir>],
-                            [specify the location of the boost program_options library])],
-            [LDFLAGS="-L$withval $LDFLAGS"])
+#AC_ARG_WITH([boost],
+#            [AC_HELP_STRING([--with-boost=<dir>],
+#                            [specify the location of the boost program_options library])],
+#            [LDFLAGS="-L$withval $LDFLAGS"])
 AC_ARG_WITH([cdf],
             [AC_HELP_STRING([--with-cdf=<dir>],
                             [specify the location of the CDF library])],
