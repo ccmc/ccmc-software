@@ -83,7 +83,10 @@ namespace ccmc
 	 */
 	float KameleonInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2)
 	{
-		return 0.f;
+		// Variable: Wish me luck!
+		// Derived: Good luck variable!
+		float interp_value = interpolateSimple(variable_id, c0, c1, c2);
+		return interp_value;
 	}
 
 	/**
@@ -92,7 +95,10 @@ namespace ccmc
 	float KameleonInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
 	{
-		return 0.f;
+		// Variable: Wish me luck!
+		// Derived: Good luck variable!
+		float interp_value = interpolateSimple(variable_id, c0, c1, c2, dc0, dc1, dc2);
+		return interp_value;
 	}
 
 	/*std::vector<std::string> KameleonInterpolator::getListOfRequiredVariablesForComponents(std::string variable)
