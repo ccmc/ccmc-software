@@ -53,9 +53,7 @@ namespace ccmc
 		long status;
 		status = openFile(filename);
 
-		//TODO: load all globalAttributes!
-		//grab all variables and store them into the conversionFactors hashtable
-		//we do this so the variableIDs remain consistent, even if some variables are missing
+
 
 
 		/*printf("DEBUG\t main_memory_flag = %d\n", main_memory_flag);*/
