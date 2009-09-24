@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.60)
-AC_INIT([kameleon-interpolator], [0.1.0], [David.H.Berrios@nasa.gov], [kameleon-interpolator])
+AC_INIT([kameleon-interpolator], [0.1.1], [David.H.Berrios@nasa.gov], [kameleon-interpolator])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-lzma dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
