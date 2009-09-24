@@ -50,6 +50,10 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						FileReader.h \
 						Interpolator.h \
 						Interpolator.cpp \
+						Magnetogram.h \
+						Magnetogram.cpp \
+						MagnetogramInterpolator.h \
+						MagnetogramInterpolator.cpp \
 						MAS.h \
 						MAS.cpp \
 						MASInterpolator.h \
