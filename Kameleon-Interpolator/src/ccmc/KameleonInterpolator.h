@@ -153,6 +153,9 @@ namespace ccmc
 			float interpolateSimple(const std::string& variable, const float& c0, const float& c1, const float& c2);
 			float interpolateSimple(const std::string& variable, const float& c0, const float& c1, const float& c2,
 					float& d0, float& d1, float& d2);
+			float interpolateSimple(const long& variable, const float& c0, const float& c1, const float& c2);
+			float interpolateSimple(const long& variable, const float& c0, const float& c1, const float& c2,
+					float& d0, float& d1, float& d2);
 			float compute_scaleByRadius(const std::string& variable, const float& c0, const float& c1, const float& c2,
 					float& d0, float& d1, float& d2);
 			float compute_polb(const std::string& variable, const float& c0, const float& c1, const float& c2,
