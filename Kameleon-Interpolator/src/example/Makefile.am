@@ -1,4 +1,4 @@
-bin_PROGRAMS = derived kameleon-compat coord_test#imf
+bin_PROGRAMS = derived kameleon-compat coord_test open_ggcm magnetogram#imf
 derived_SOURCES = derived_prog.cpp
 #derived_LDFLAGS = -L@srcdir@/../ccmc -lkameleon-interpolator -lkameleon -lcdf
 derived_CXXFLAGS = -I@srcdir@/.. -I@srcdir@/../ccmc
@@ -17,3 +17,11 @@ kameleon_compat_CFLAGS = -I@srcdir@/..
 coord_test_SOURCES = coordinate_transformation_test.cpp
 coord_test_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
 coord_test_CXXFLAGS = -I@srcdir@/.. -I@srcdir@/../ccmc
+
+open_ggcm_SOURCES = open_ggcm_test.cpp
+open_ggcm_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
+open_ggcm_CXXFLAGS = -I@srcdir@/..
+
+magnetogram_SOURCES = magnetogram_test.cpp
+magnetogram_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
+magnetogram_CXXFLAGS = -I@srcdir@/..
