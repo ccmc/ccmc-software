@@ -54,6 +54,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 * Destructor
+	 */
 	Kameleon::~Kameleon()
 	{
 
@@ -63,45 +66,20 @@ namespace ccmc
 			delete model;
 		}
 
-		//closeFile();
-		//TODO: delete contents of the maps and clear them
-		/*	BOOST_FOREACH(mapStringFloat::value_type i, variableData)
-		 {
-		 delete i.second;
-		 }
-		 */
 
-		//the other maps have the same pointers, so they are already deleted.
-		//	variableData.clear();
-
-		//	cout << "Derived object destroyed" << endl;
 	}
-	/*
-	 void Kameleon::initializeExtraInformation()
-	 {
-	 modelName = getGlobalAtributeString("model_name");
-	 clearMaps();
-	 initializeUnits();
-	 initializeListOfRequiredVariablesForComponentsAndVectors();
-	 }*/
 
 	/**
-	 * Wrapper for Kameleon's gattribute_get(attribute) function.
+	 * @return
 	 */
-	/*
-	 bool Kameleon::doesAttributeExist(std::string attribute)
-	 {
-	 bool exists = model->doesAttributeExist(attribute);
-	 return exists;
-
-	 }
-	 */
-
 	float Kameleon::getMissingValue()
 	{
 		return missingValue;
 	}
 
+	/**
+	 * @return
+	 */
 	void Kameleon::setMissingValue(float missingValue)
 	{
 		this->missingValue = missingValue;
@@ -178,6 +156,10 @@ namespace ccmc
 		return units;
 	}
 
+	/**
+	 * @param variable
+	 * @return
+	 */
 	std::string Kameleon::getSIUnit(const std::string& variable)
 	{
 		std::string units;
@@ -202,6 +184,10 @@ namespace ccmc
 		return units;
 	}
 
+	/**
+	 * @param variable
+	 * @return
+	 */
 	std::string Kameleon::getVisUnit(const std::string& variable)
 	{
 		std::string units;
@@ -319,20 +305,25 @@ namespace ccmc
 			time.year = boost::lexical_cast<int>(current_time_str.substr(0,4));
 			cout << "time.year: " << time.year << endl;
 			time.month = boost::lexical_cast<int>(current_time_str.substr(5,2));
-			cout << "time.year: " << time.year << endl;
+			cout << "time.month: " << time.month << endl;
 			time.day = boost::lexical_cast<int>(current_time_str.substr(8,2));
-			cout << "time.year: " << time.year << endl;
+			cout << "time.day: " << time.day << endl;
 			time.hour = boost::lexical_cast<int>(current_time_str.substr(11,2));
-			cout << "time.year: " << time.year << endl;
+			cout << "time.hour: " << time.hour << endl;
 			time.minute = boost::lexical_cast<int>(current_time_str.substr(14,2));
-			cout << "time.year: " << time.year << endl;
+			cout << "time.minute: " << time.minute << endl;
 			time.second = boost::lexical_cast<float>(current_time_str.substr(17,6));
-			cout << "time.year: " << time.year << endl;
+			cout << "time.second: " << time.second << endl;
 			time_string = current_time;
 		}
 		return time;
 	}
 
+	/**
+	 * @param s
+	 * @param minLength
+	 * @return
+	 */
 	string Kameleon::padString(const string& s, int minLength)
 	{
 		string output = s;
@@ -343,27 +334,6 @@ namespace ccmc
 		return output;
 	}
 
-	/**string Kameleon::convertToString(int value)
-	 {
-	 stringstream ss;
-	 ss << value;
-	 string return_value;
-	 ss >> return_value;
-	 return return_value;
-
-	 }**/
-
-	/**
-	 string Kameleon::convertToString(double value)
-	 {
-	 stringstream ss;
-	 ss << value;
-	 string return_value;
-	 ss >> return_value;
-	 return return_value;
-
-	 }
-	 */
 	/**
 	 * Helper function to create an apporpriate vector containing the list of required variables.
 	 * This is used in conjunction with openWithMultipleVariables
@@ -381,23 +351,6 @@ namespace ccmc
 		return neededVariables;
 	}
 
-	/**
-	 * Opens a CDF with multiple variables, in a more programmer friendly way.
-	 */
-	/*void Kameleon::openWithMultipleVariables(char * filename, vector<string> variables)
-	 {
-	 int num = variables.size();
-	 while(variables.size() < 10)
-	 {
-	 variables.push_back("");
-	 }
-	 open_cdf(filename, num, (char *)variables[0].c_str(), (char *)variables[1].c_str(), (char *)variables[2].c_str(), (char *)variables[3].c_str(),
-	 (char *)variables[4].c_str(), (char *)variables[5].c_str(), (char *)variables[6].c_str(), (char *)variables[7].c_str(),
-	 (char *)variables[8].c_str(), (char *)variables[9].c_str());
-	 current_cdf_id = get_current_CDFid();
-	 //cout << "Opened multiple variables" << endl;
-
-	 }*/
 
 	/**
 	 * Closes the currently opened file.
@@ -407,191 +360,24 @@ namespace ccmc
 		model->close();
 		delete model;
 		model = NULL;
-//		closeFile();
-		//TODO: delete contents of the maps and clear them
 
 
 	}
 
-	/*void Kameleon::selectCDF(CDFid cdf_id)
-	 {
-	 CDFstatus status = CDFlib(SELECT_, CDF_, cdf_id,
-	 NULL_);
-	 }*/
-
-	/*
-	 void ccmc_derived_close_cdf()
-	 {
-	 derived.close();
-	 }
-	 */
-
-	/** Opens a cdf file and loads the variables requested into main memory. When appropriate,
-	 * the required variables to calculate the derived variable are loaded.
-	 * @param filename Filename of the cdf file to load
-	 * @param variable Variable to load into main memory
-	 **/
 	/**
-	 void ccmc_derived_open_cdf_main_mem(char * filename, char * variable)
-	 {
-	 derived.open(filename);
-	 derived.loadVariable(variable);
-
-
-
-
-	 }
-
-	 void ccmc_derived_open_cdf_main_mem_vector(char * filename, char * var)
-	 {
-
-	 derived.open(filename);
-	 derived.loadVectorVariable(var);
-
-
-
-	 }
+	 * Returns a new interpolater that maintains state information independent of other interpolators. This can be used to
+	 * parallelize the interpolations.
+	 * @return A new interpolator.
 	 */
-
-	/**
-	 float ccmc_derived_interpolate( char * var, float x, float y, float z, int flag1, int flag2, ...)
-	 {
-
-	 #ifdef DEBUG_DERIVED
-	 cout << "entered interpolate with: " << var << endl;
-	 #endif
-	 string variable = var;
-	 va_list optional_arguments;
-	 va_start(optional_arguments, flag2);
-	 float missing, dx_blk, dy_blk, dz_blk, *dx, *dy, *dz;
-	 float interp_value = -pow(256.f,5.f);
-	 if (flag2 == 1)
-	 {
-	 #ifdef DEBUG_DERIVED
-	 cerr << "flag2 = 1" << endl;
-	 #endif
-	 missing = va_arg(optional_arguments, double);
-	 dx = va_arg(optional_arguments, float *);
-	 dy = va_arg(optional_arguments, float *);
-	 dz = va_arg(optional_arguments, float *);
-	 interp_value = missing;
-	 }
-	 else
-	 {
-	 #ifdef DEBUG_DERIVED
-	 cerr << "flag2 = 0" << endl;
-	 #endif
-	 missing = interp_value;
-	 }
-
-	 interp_value = derived.interpolate( variable, x, y, z, dx_blk, dy_blk, dz_blk);
-	 //interp_value = interpolate_batsrus_cdf( var, x, y, z,1,0);// missing, dx_blk, dy_blk, dz_blk);
-	 if (flag2 == 1)
-	 {
-	 *dx = dx_blk;
-	 *dy = dy_blk;
-	 *dz = dz_blk;
-	 }
-	 else
-	 {
-	 dx = &dx_blk;
-	 dy = &dy_blk;
-	 dz = &dz_blk;
-	 }//*dx = dx_blk;
-	 //*dy = dy_blk;
-	 //*dz = dz_blk;
-	 return interp_value;
-	 }
-
-	 */
-	/**
-	 * Returns the units of a variable, including derived variables.
-	 * @param var The variable to get the units for
-	 * @return The units of the variable var
-	 **/
-	/*
-	 char * ccmc_derived_get_units(char * var)
-	 {
-	 return (char *)derived.getUnits(var).c_str();
-	 }
-	 */
-
-	/**
-	 * Returns the current time as a string
-	 * @return String representation of the current time
-	 */
-	/*
-	 char * ccmc_derived_getcurrenttime()
-	 {
-	 return (char *)(derived.getCurrentTime().c_str());
-	 }
-	 */
-	/**
-	 *
-	 */
-	/*
-	 void open_cdf_derived_main_mem( char * filename, char * variable)
-	 {
-	 #ifdef DEPRECATED_WARNING
-	 cerr << __FUNCTION__ << " is deprecated. Please use ccmc_derived_open_cdf_main_mem instead." << endl;
-	 #endif
-	 ccmc_derived_open_cdf_main_mem(filename, variable);
-	 }
-
-	 void open_cdf_derived_main_mem_vector( char * filename, char * variable)
-	 {
-	 #ifdef DEPRECATED_WARNING
-	 cerr << __FUNCTION__ << " is deprecated. Please use ccmc_derived_main_mem_vector instead." << endl;
-	 #endif
-	 ccmc_derived_open_cdf_main_mem_vector(filename, variable);
-	 }
-
-	 float interpolate_derived( char * variable, float x, float y, float z, int flag1, int flag2, ...)
-	 {
-	 #ifdef DEPRECATED_WARNING
-	 cerr << __FUNCTION__ << " is deprecated. Please use ccmc_derived_" << __FUNCTION__ << " instead." << endl;
-	 #endif
-	 va_list optional_arguments;
-
-	 va_start(optional_arguments, flag2);
-	 float missing,  *dx_blk,  *dy_blk,  *dz_blk;
-	 if (flag2 == 1)
-	 {
-	 missing = va_arg(optional_arguments, double);
-	 dx_blk = va_arg(optional_arguments, float *);
-	 dy_blk = va_arg(optional_arguments, float *);
-	 dz_blk = va_arg(optional_arguments, float *);
-	 }
-	 else
-	 {
-	 missing = 0.0;
-	 }
-
-	 return ccmc_derived_interpolate(variable, x, y, z, flag1, flag2, missing, dx_blk, dy_blk, dz_blk);
-	 }
-
-	 char * derived_get_units(char * variable)
-	 {
-	 #ifdef DEPRECATED_WARNING
-	 cerr << __FUNCTION__ << " is deprecated. Please use ccmc_derived_" << __FUNCTION__ << " instead." << endl;
-	 #endif
-	 return ccmc_derived_get_units(variable);
-	 }
-
-	 char * getcurrenttime()
-	 {
-	 #ifdef DEPRECATED_WARNING
-	 cerr << __FUNCTION__ << " is deprecated. Please use ccmc_derived_" << __FUNCTION__ << " instead." << endl;
-	 #endif
-	 return ccmc_derived_getcurrenttime();
-	 }
-	 */
-
 	Interpolator * Kameleon::createNewInterpolator()
 	{
 		return new KameleonInterpolator(model);
 	}
 
+	/**
+	 * @param variable
+	 * @return
+	 */
 	bool Kameleon::loadVariable(const std::string& variable)
 	{
 
@@ -606,6 +392,10 @@ namespace ccmc
 		return success;
 	}
 
+	/**
+	 * @param variable
+	 * @return
+	 */
 	bool Kameleon::loadVectorVariable(const std::string& variable)
 	{
 
@@ -620,6 +410,10 @@ namespace ccmc
 		return success;
 	}
 
+	/**
+	 * @param varaible
+	 * @return
+	 */
 	std::vector<std::string> Kameleon::getListOfRequiredVariablesForComponents(std::string variable)
 	{
 		boost::unordered_map<std::string, std::vector<std::string> >::iterator iter =
@@ -642,6 +436,12 @@ namespace ccmc
 		}
 	}
 
+	/**
+	 * Returns a vector of strings of all the variables required to calculate the requested variable. For base variables,
+	 * this will simply be an vector with one variable. Derived variables can have multiple variables.
+	 * @param variable
+	 * @return
+	 */
 	std::vector<std::string> Kameleon::getListOfRequiredVariablesForVectors(std::string variable)
 	{
 		boost::unordered_map<std::string, std::vector<std::string> >::iterator iter =
@@ -664,17 +464,11 @@ namespace ccmc
 		}
 	}
 
-	/*
-	 bool Kameleon::loadVariableInt(const std::string& variable)
-	 {
-	 return model->loadVariableInt(variable);
-	 }*/
-
-	/*bool Kameleon::loadVectorVariable(std::string variable)
-	 {
-	 return false;
-	 }*/
-
+	/**
+	 * Currently not implemented.
+	 * @param variable
+	 * @return
+	 */
 	float Kameleon::getConversionFactorToSI(const std::string& variable)
 	{
 		boost::unordered_map<std::string, float>::iterator iter = conversionFactorsToSI.find(variable);
@@ -688,6 +482,13 @@ namespace ccmc
 		}
 	}
 
+	/**
+	 * Returns the stored conversion factor to convert the variable to the units
+	 * used for visualization. These units may differ from SI units and the units
+	 * stored in the file.
+	 * @param variable
+	 * @return
+	 */
 	float Kameleon::getConversionFactorToVis(const std::string& variable)
 	{
 		boost::unordered_map<std::string, float>::iterator iter = conversionFactorsToVis.find(variable);
@@ -700,6 +501,10 @@ namespace ccmc
 		}
 	}
 
+	/**
+	 * Initializes the conversion factors required to convert the interpolated values to SI units. This is currently
+	 * not implemented.
+	 */
 	void Kameleon::initializeConversionFactorsToSI()
 	{
 
@@ -781,12 +586,18 @@ namespace ccmc
 
 	}
 
+	/**
+	 * Returns the model name of the opened file.
+	 * @return The model name.
+	 */
 	const std::string& Kameleon::getModelName()
 	{
 		return modelName;
 	}
 
 	/**
+	 * Wrapper for the CXFORM function cxform(). Performs coordinate transformation from the source
+	 * system to the target system at the specified time.
 	 * @param from
 	 * @param to
 	 * @param et
@@ -823,6 +634,7 @@ namespace ccmc
 	}
 
 	/**
+	 * Wrapper for the CXFORM function cxRound()
 	 * @param doub
 	 */
 	long Kameleon::_cxRound(double doub)
@@ -831,6 +643,7 @@ namespace ccmc
 	}
 
 	/**
+	 * Wrapper for the CXFORM function date2es()
 	 * @param yyyy
 	 * @param mm
 	 * @param dd
@@ -900,5 +713,10 @@ namespace ccmc
 	const std::string& Kameleon::getCurrentFilename()
 	{
 		return model->getCurrentFilename();
+	}
+
+	int Kameleon::getNumberOfVariableAttributes()
+	{
+		return model->getNumberOfVariableAttributes();
 	}
 }
