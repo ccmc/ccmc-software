@@ -119,6 +119,29 @@ namespace ccmc
 	}
 
 	/**
+	 * @brief Unload a variable from memory.
+	 *
+	 * @param variable Variable to unload from memory.
+	 * @return true if successful, else false
+	 */
+	bool Model::unloadVariable(const std::string& variable)
+	{
+		bool success = false;
+
+		//first, check to determine whether variable is already loaded
+		if (variableData.find(variable) != variableData.end())
+		{
+			vector<float> * data = variableData[variable];
+			long id = getVariableID(variable);
+			delete data;
+			variableData.erase(variable);
+			variableDataByID.erase(id);
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * @brief Loads a variable into memory.
 	 *
 	 * Use this method when the variable to load is of type int
