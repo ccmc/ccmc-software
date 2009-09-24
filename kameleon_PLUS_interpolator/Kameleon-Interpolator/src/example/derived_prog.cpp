@@ -9,11 +9,9 @@
 #include <ctime>
 #include <ccmc/Kameleon.h>
 //#include <ccmc/Kameleon_compatibility.h>
-#include <boost/program_options.hpp>
 //#include <google/profiler.h>
 //#include <ccmc/kameleon_adjusted.h>
 #define LENGTH 500;
-namespace po = boost::program_options;
 int main (int argc, char * argv[])
 {
 
@@ -21,37 +19,45 @@ int main (int argc, char * argv[])
 	std::string filename;
 	std::string variable;
 	int iterations = 10;
-	po::options_description desc("Test program");
-	desc.add_options()("help", "produce help message")
-		("input-file", po::value<std::string>(&filename), "input file")
-		("variable", po::value<std::string>(&variable), "The variable");
+	//po::options_description desc("Test program");
+	//desc.add_options()("help", "produce help message")
+	//	("input-file", po::value<std::string>(&filename), "input file")
+	//	("variable", po::value<std::string>(&variable), "The variable");
 
-	po::positional_options_description p;
-	p.add("input-file", -1);
+	//po::positional_options_description p;
+	//p.add("input-file", -1);
 
-	po::variables_map vm;
-	po::store(
-			po::command_line_parser(argc, argv).options(desc).positional(p).run(),
-			vm);
-	po::notify(vm);
+	//po::variables_map vm;
+	//po::store(
+	//		po::command_line_parser(argc, argv).options(desc).positional(p).run(),
+	//		vm);
+	//po::notify(vm);
 
-	if (vm.count("help"))
+	//if (vm.count("help"))
+	//{
+	//	cout << desc << endl;
+	//}
+
+	//if (vm.count("input-file"))
+	//{
+	//	std::cout << "Input file: " << filename << std::endl;
+	//} else
+	//{
+	//	std::cout << "Input file was not set." << std::endl;
+	//	std::cout << desc << std::endl;
+	//	exit(1);
+	//}
+	//std::cout << "after po options" << std::endl;
+
+	if (argc != 3)
 	{
-		cout << desc << endl;
-	}
-
-	if (vm.count("input-file"))
-	{
-		std::cout << "Input file: " << filename << std::endl;
-	} else
-	{
-		std::cout << "Input file was not set." << std::endl;
-		std::cout << desc << std::endl;
+		cout << "derived <filename> variable" << endl;
 		exit(1);
 	}
-	std::cout << "after po options" << std::endl;
-
+	filename = argv[1];
+	variable = argv[2];
 	kameleon.open(filename);
+
 	std::string rho_ = "rho";
 	std::string n_ = "n";
 	std::string pram_ = "pram";
@@ -68,6 +74,7 @@ int main (int argc, char * argv[])
 	std::string bx_ = "bx";
 	float convertedValue;
 	//ProfilerStart("derived.prof");
+	//Interpolations.  The i%2 ensures the worst case scenario (previous block differe88nt than current block
 	for (int i = 0; i < 1000000; i++)
 	{
 		if (i % 100000 == 0)
@@ -76,8 +83,7 @@ int main (int argc, char * argv[])
 		}
 		value = interpolator->interpolate(variable, -10.0f + 6.f * (float) (i % 2), -2.0f, 0.0f);
 		convertedValue = value * conversion;
-		//std::cout << "Destroying new interpolator" << std::endl;
-		//std::cout << "value: " << value << std::endl;
+
 	}
 	std::cout << "conversionFactor: " << conversion << std::endl;
 	std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
@@ -87,8 +93,7 @@ int main (int argc, char * argv[])
 	finish = clock();
 	float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
 	delete interpolator;
-	std::cout << "Closing file" << std::endl;
-	//kameleon.close();
+
 	std::cout << "Elapsed time for interpolation: " << elapsed_time << std::endl;
 
 

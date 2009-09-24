@@ -9,12 +9,11 @@
 #include <ctime>
 #include <ccmc/Kameleon.h>
 //#include <ccmc/Kameleon_compatibility.h>
-#include <boost/program_options.hpp>
 #include <boost/lexical_cast.hpp>
 //#include <google/profiler.h>
 //#include <ccmc/kameleon_adjusted.h>
 #define LENGTH 500;
-namespace po = boost::program_options;
+
 
 void Tokenize(const string& str,
                       vector<string>& tokens,
@@ -42,22 +41,8 @@ int main (int argc, char * argv[])
 	std::string filename;
 	std::string variable;
 	int iterations = 10;
-	po::options_description desc("Test program");
-	desc.add_options()("help", "produce help message");
 
 
-	po::variables_map vm;
-	po::store(
-			po::command_line_parser(argc, argv).options(desc).run(),
-			vm);
-	po::notify(vm);
-
-	if (vm.count("help"))
-	{
-		cout << desc << endl;
-	}
-
-	std::cout << "after po options" << std::endl;
 
 	string test_line = "03/04/21 09:12:00   29.36423    9.44891  -26.16772   29.36280    9.42723  -26.17715   26.49590   15.79579  -26.16772   -1.85945   30.11916  -26.93823   24.31326  -16.55745  -27.76699   24.31326  -11.03383  -30.38765   28.08693  -11.03383  -26.93823";
 
