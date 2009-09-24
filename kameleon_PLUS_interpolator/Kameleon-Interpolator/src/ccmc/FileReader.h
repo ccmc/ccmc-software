@@ -40,10 +40,12 @@ namespace ccmc
 			std::vector<int>* getVariableInt(const std::string& variable);
 			int getNumberOfGlobalAttributes();
 			int getNumberOfVariables();
+			int getNumberOfVariableAttributes();
 			long getVariableID(const std::string& variable);
 			std::string getVariableName(long variable_id);
 			Attribute getGlobalAttribute(long i);
 			std::string getGlobalAttributeName(long attribute_id);
+			std::string getVariableAttributeName(long attribute_id);
 			Attribute getGlobalAttribute(const std::string& attribute);
 			Attribute getVariableAttribute(const std::string& variable, const std::string& attribute);
 			bool doesAttributeExist(const std::string& attribute);
