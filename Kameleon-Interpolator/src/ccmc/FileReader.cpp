@@ -52,6 +52,7 @@ namespace ccmc
 		{
 			current_filename = filename;
 			this->initializeGlobalAttributes();
+			//this->initializeVariableAttributeNames();
 			this->initializeVariableIDs();
 			this->initializeVariableNames();
 		}
@@ -450,11 +451,18 @@ namespace ccmc
 		return false;
 	}
 
+	/**
+	 * Returns the current filename.
+	 * @return The current filename.
+	 */
 	const std::string& FileReader::getCurrentFilename()
 	{
 		return this->current_filename;
 	}
 
+	/**
+	 *
+	 */
 	std::string FileReader::getGlobalAttributeName(long attribute_id)
 	{
 		char buffer[256];
@@ -466,6 +474,9 @@ namespace ccmc
 		return buffer_string;
 	}
 
+	/**
+	 *
+	 */
 	int FileReader::getNumberOfVariables()
 	{
 		long numVars;
@@ -474,8 +485,8 @@ namespace ccmc
 	}
 
 	/**
-	 * Inefficient.  For now, we prepopulate both this classes attributes, and the model objects attributes.
-	 * I should merge the two eventually.
+	 * Helper method to store the global attributes in a map. This solves some issues with
+	 * threaded operations on CDF files.
 	 */
 	void FileReader::initializeGlobalAttributes()
 	{
@@ -493,6 +504,10 @@ namespace ccmc
 		}
 	}
 
+	/**
+	 * Helper method to initialize a map containing variable IDs.  This solves some issues
+	 * with threaded operations on CDF files.
+	 */
 	void FileReader::initializeVariableIDs()
 	{
 		int numVariables = this->getNumberOfVariables();
@@ -507,6 +522,10 @@ namespace ccmc
 		}
 	}
 
+	/**
+	 * Helper method to initialize a variable names map. This solves some issues with
+	 * threaded operations on CDF files.
+	 */
 	void FileReader::initializeVariableNames()
 	{
 		int numVariables = this->getNumberOfVariables();
@@ -521,6 +540,30 @@ namespace ccmc
 		}
 	}
 
+	/**
+	 * Gets the number of variable attributes.
+	 * @return The number of variable attributes in the opened file.
+	 */
+	int FileReader::getNumberOfVariableAttributes()
+	{
+		long numVAttributes;
+
+		CDFgetNumvAttributes(current_file_id, &numVAttributes);
+		return (int)numVAttributes;
+	}
+
+	/**
+	 * @param attribute_id
+	 * @return String representing the name of the attribute specified by attribute_id
+	 */
+	std::string FileReader::getVariableAttributeName(long attribute_id)
+	{
+		char buffer[256];
+		CDFgetAttrName(current_file_id, attribute_id, buffer);
+		std::string buffer_string = buffer;
+		//cout << "Attribute Name: '" << buffer_string << "'" << endl;
+		return buffer_string;
+	}
 
 	/**
 	 * Destructor
