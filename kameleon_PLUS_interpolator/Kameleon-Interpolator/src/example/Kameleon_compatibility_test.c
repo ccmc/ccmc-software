@@ -11,6 +11,7 @@
 
 int main( int argc, char * argv[])
 {
+	/*
 	if (argc != 3)
 	{
 		printf("Must enter 2 filenames\n");
@@ -50,6 +51,6 @@ int main( int argc, char * argv[])
 	printf("kdelete: %d\n", status);
 	status = Kameleon_delete(k1);
 	printf("kdelete: %d\n", status);
-
+*/
 	return 0;
 }
