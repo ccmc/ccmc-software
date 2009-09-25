@@ -7,6 +7,7 @@
 #include "Kameleon_compatibility.h"
 #include "Kameleon.h"
 #include <string>
+#include <string.h>
 #include <iostream>
 
 using namespace ccmc;

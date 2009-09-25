@@ -10,6 +10,7 @@
 #include <vector>
 #include <deque>
 #include <iostream>
+#include <fstream>
 #include <queue>
 
 using namespace std;
@@ -46,18 +47,25 @@ namespace ccmc
 		{
 			close();
 		}
-		status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
-		if (status == CDF_OK)
+		if(!(ifstream(filename.c_str())))
 		{
-			current_filename = filename;
-			this->initializeGlobalAttributes();
-			//this->initializeVariableAttributeNames();
-			this->initializeVariableIDs();
-			this->initializeVariableNames();
+			status = -1;
+			std::cout << "filename: " << filename << " does not exist." << std::endl;
 		}
+		else{
+			status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
+			if (status == CDF_OK)
+			{
+				current_filename = filename;
+				this->initializeGlobalAttributes();
+				//this->initializeVariableAttributeNames();
+				this->initializeVariableIDs();
+				this->initializeVariableNames();
+			}
 
+		}
 		//cout << "current_file_id: " << current_file_id << endl;
 		//cout << "testing open in FileReader class" << endl;
 		return status;
