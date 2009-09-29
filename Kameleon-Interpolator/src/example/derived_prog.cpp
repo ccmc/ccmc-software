@@ -75,7 +75,7 @@ int main (int argc, char * argv[])
 	float convertedValue;
 	//ProfilerStart("derived.prof");
 	//Interpolations.  The i%2 ensures the worst case scenario (previous block differe88nt than current block
-	for (int i = 0; i < 27000000; i++)
+	for (int i = 0; i < 1; i++)
 	{
 		if (i % 100000 == 0)
 		{
