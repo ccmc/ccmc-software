@@ -36,6 +36,7 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						Kameleon_initializeListOfRequiredVariablesForComponentsAndVectors.cpp \
 						Kameleon_initializeUnits.cpp \
 						Kameleon_initializeVariableAliases.cpp \
+						KameleonInterpolator_compute_gradient.cpp \
 						KameleonInterpolator_compute_magnitude.cpp \
 						KameleonInterpolator_interpolateSimple.cpp \
 						KameleonInterpolator_initializeCalculationMethods.cpp \

@@ -30,6 +30,9 @@ namespace ccmc
 			float interpolate(long, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 					float& dc2);
 
+			//Point interpolate_vector(const std::string&, const float& c0, const float& c1, const float& c2);
+			//Point interpolate_vector(const std::string&, const float& c0, const float& c1, const float& c2, float& dc0,
+			//		float& dc1, float& dc2);
 			//	float interpolateSimple(std::string, const float& c0, const float& c1, const float& c2);
 			//	float interpolateSimple(std::string, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1, float& dc2);
 			virtual ~KameleonInterpolator();
@@ -92,6 +95,9 @@ namespace ccmc
 							const float& c2);
 			float
 					compute_etajComponent3(const std::string& variable, const float& c0, const float& c1,
+							const float& c2);
+			float
+					compute_gradient(const std::string& variable, const float& c0, const float& c1,
 							const float& c2);
 
 			float compute_magnitude(const std::string& variable, const float& c0, const float& c1, const float& c2,
@@ -168,7 +174,8 @@ namespace ccmc
 					const float& c2, float& d0, float& d1, float& d2);
 			float compute_etajComponent3(const std::string& variable, const float& c0, const float& c1,
 					const float& c2, float& d0, float& d1, float& d2);
-
+			float compute_gradient(const std::string& variable, const float& c0, const float& c1,
+					const float& c2, float& d0, float& d1, float& d2);
 			//declare strings that will be used frequently during interpolation calls.  Definition occurs in the constructor
 			std::string j_, b_, jx_, jy_, jz_, bx_, by_, bz_, ux_, uy_, uz_, ex_, ey_, ez_, n_, rho_, p_;
 			std::string batsrus_;

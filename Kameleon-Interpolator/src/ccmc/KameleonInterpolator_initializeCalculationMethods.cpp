@@ -78,6 +78,7 @@ namespace ccmc
 		calculationMethod["polb"] = &KameleonInterpolator::compute_polb;
 		calculationMethod["b_r*r^2"] = &KameleonInterpolator::compute_polb;
 		calculationMethod["b1"] = &KameleonInterpolator::compute_magnitude;
+		calculationMethod["grad.n"] = &KameleonInterpolator::compute_gradient;
 
 		/*else if (variable_string == "b_r*r^2")
 		 {
