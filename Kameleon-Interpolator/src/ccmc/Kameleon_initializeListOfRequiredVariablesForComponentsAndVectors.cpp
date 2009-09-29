@@ -135,6 +135,7 @@ namespace ccmc
 		listOfRequiredVariablesForComponents["eta*jz"] = createVectorFromList(2, "eta", jz_);
 		listOfRequiredVariablesForComponents["eta*j^2"] = createVectorFromList(4, "eta", jx_, jy_, jz_);
 		listOfRequiredVariablesForComponents["grad.n"] = createVectorFromList(1, "rho");
+		listOfRequiredVariablesForComponents["grad.b"] = createVectorFromList(1, bx_, by_, bz_);
 
 
 		if (model->doesVariableExist(p_))
