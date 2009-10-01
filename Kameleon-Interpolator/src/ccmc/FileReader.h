@@ -67,6 +67,7 @@ namespace ccmc
 			boost::unordered_map<long, Attribute> gAttributeByID;
 			boost::unordered_map<std::string, boost::unordered_map<std::string, Attribute> > vAttributes;
 			void initializeGlobalAttributes();
+			void initializeVariableAttributes();
 			void initializeVariableIDs();
 			void initializeVariableNames();
 
