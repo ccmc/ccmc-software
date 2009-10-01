@@ -60,7 +60,7 @@ namespace ccmc
 			{
 				current_filename = filename;
 				this->initializeGlobalAttributes();
-				//this->initializeVariableAttributeNames();
+				this->initializeVariableAttributes();
 				this->initializeVariableIDs();
 				this->initializeVariableNames();
 			}
@@ -317,11 +317,22 @@ namespace ccmc
 	{
 
 
+		//first, check the vAttributes map
+		boost::unordered_map<std::string, boost::unordered_map< std::string, Attribute> >::iterator iter =
+				vAttributes.find(variable);
+		if (iter != vAttributes.end())
+		{
+			boost::unordered_map< std::string, Attribute>::iterator iter2 = vAttributes[variable].find(vattribute);
+			if (iter2 != vAttributes[variable].end())
+			{
+				return (*iter2).second;
+			}
+		}
 		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 		long attributeNumber = CDFgetAttrNum(current_file_id, (char *) vattribute.c_str());
 		long dataType;
 		CDFstatus status = CDFgetAttrzEntryDataType(current_file_id, attributeNumber, variableNumber, &dataType);
-
+		Attribute attribute;
 		//	std::cout << "FileReader::getVariableAttribute - datatype: " << dataType << " CDF_CHAR: " << CDF_CHAR << std::endl;
 		if (dataType == CDF_CHAR)
 		{
@@ -333,10 +344,10 @@ namespace ccmc
 			value[numElements] = '\0';
 			//std::cout << "C: attributeValue (" << vattribute << "): " << value << std::endl;
 			std::string valueString = value;
-			Attribute attribute;
+
 			attribute.setAttributeName(vattribute);
 			attribute.setAttributeValue(valueString);
-			return attribute;
+
 
 		} else if (dataType == CDF_INT4)
 		{
@@ -344,21 +355,24 @@ namespace ccmc
 			int value;
 			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
 			//std::cout << "I: attributeValue (" << vattribute << "): " << value << std::endl;
-			Attribute attribute;
+\
 			attribute.setAttributeName(vattribute);
 			attribute.setAttributeValue(value);
-			return attribute;
+
 
 		} else //CDF_FLOAT
 		{
 			float value;
 			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
 			//std::cout << "F: attributeValue (" << vattribute << "): " << value << std::endl;
-			Attribute attribute;
+
 			attribute.setAttributeName(vattribute);
 			attribute.setAttributeValue(value);
-			return attribute;
+
 		}
+
+		(vAttributes[variable])[vattribute] = attribute;
+		return attribute;
 
 	}
 
@@ -576,6 +590,24 @@ namespace ccmc
 		std::string buffer_string = buffer;
 		//cout << "Attribute Name: '" << buffer_string << "'" << endl;
 		return buffer_string;
+	}
+
+	//need to update this to do this programatically. for now, we just
+	//preload the most used attributes
+	void FileReader::initializeVariableAttributes()
+	{
+		Attribute model_name = this->getGlobalAttribute("model_name");
+		string model_name_string = model_name.getAttributeString();
+		if (model_name_string == "open_ggcm" ||
+				model_name_string == "ucla_ggcm")
+		{
+			this->getVariableAttribute("x","actual_min");
+			this->getVariableAttribute("y","actual_min");
+			this->getVariableAttribute("z","actual_min");
+			this->getVariableAttribute("x","actual_max");
+			this->getVariableAttribute("y","actual_max");
+			this->getVariableAttribute("z","actual_max");
+		}
 	}
 
 	/**
