@@ -112,8 +112,9 @@ namespace ccmc
 	}
 
 	/**
-	 * Returns a std::vector<float> containing the values of the selected variable
-	 * stored in the selected file.
+	 * Returns a pointer to a std::vector<float> containing the values of the selected variable
+	 * stored in the selected file.  This allocates a new std::vector<float> pointer.  Make sure you
+	 * delete the contents when you done using it, or you will have a memory leak.
 	 * @param variable
 	 * @return std::vector<float> containing the values of the selected variable.
 	 */
@@ -129,16 +130,16 @@ namespace ccmc
 		long dimIndices[] = { 0 };
 		long dimIntervals[] = { 1 };
 
-		long dimSizes[1];
+		long counts[1];
 		//get dim sizes
-		CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
-		float * buffer = new float[dimSizes[0]];
-		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, dimSizes,
+		CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+		float * buffer = new float[counts[0]];
+		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
 				dimIntervals, buffer);
 		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
-		variableData->reserve(dimSizes[0]);
-		for (int i = 0; i < dimSizes[0]; i++)
+		variableData->reserve(counts[0]);
+		for (int i = 0; i < counts[0]; i++)
 		{
 			variableData->push_back(buffer[i]);
 		}
@@ -151,6 +152,45 @@ namespace ccmc
 	}
 
 	/**
+	 * @brief Returns a value in the flat array of the variable and index requested.
+	 *
+	 * Use this method on variables that have a type of float
+	 *
+	 * @param variable The variable in the file
+	 * @param index The index in the variable's array in the file
+	 *
+	 * @return float of the value in the array.
+	 */
+	float FileReader::getVariableAtIndex(const std::string& variable, long index)
+	{
+		//std::cout << "index " << index << std::endl;
+		//get variable number
+		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+
+		long recStart = 0L;
+		long recCount = 1L;
+		long recInterval = 1L;
+		long dimIndices[] = { index };
+		long dimIntervals[] = { 1 };
+
+		long count[1] = {1};
+		//get dim sizes
+		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
+		float * buffer = new float[1];
+
+		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
+				dimIntervals, buffer);
+		float value = buffer[0];
+		delete[] buffer;
+		//std::cout << "finished reading " << variable << std::endl;
+		//std::cout << "size of variable: " << variableData.size() << std::endl;
+		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+		return value;
+	}
+
+	/**
+	 * This allocates a new std::vector<int> pointer.  Make sure you
+	 * delete the contents when you done using it, or you will have a memory leak.
 	 * @param variable
 	 * @return vector<int> containing the integer values of the variable
 	 */
@@ -166,16 +206,16 @@ namespace ccmc
 		long dimIndices[] = { 0 };
 		long dimIntervals[] = { 1 };
 
-		long dimSizes[1];
+		long count[1];
 		//get dim sizes
-		CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
-		int * buffer = new int[dimSizes[0]];
-		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, dimSizes,
+		CDFgetzVarDimSizes(current_file_id, variableNum, count);
+		int * buffer = new int[count[0]];
+		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
 				dimIntervals, buffer);
 		//add data to vector type, and delete original array
 		std::vector<int> * variableData = new std::vector<int>();
-		variableData->reserve(dimSizes[0]);
-		for (int i = 0; i < dimSizes[0]; i++)
+		variableData->reserve(count[0]);
+		for (int i = 0; i < count[0]; i++)
 		{
 			variableData->push_back(buffer[i]);
 		}
@@ -183,6 +223,66 @@ namespace ccmc
 		delete[] buffer;
 		//std::cout << "finished reading " << variable << std::endl;
 		return variableData;
+	}
+
+	float FileReader::getVariableAtIndexByID(long variableNum, long index)
+	{
+		//std::cout << "reading " << variable << std::endl;
+		//get variable number
+		//long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+
+		long recStart = 0L;
+		long recCount = 1L;
+		long recInterval = 1L;
+		long dimIndices[] = { index };
+		long dimIntervals[] = { 1 };
+
+		long count[1] = {1};
+		//get dim sizes
+		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
+		float * buffer = new float[1];
+		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
+				dimIntervals, buffer);
+		//add data to vector type, and delete original array
+		float value = buffer[0];
+		delete[] buffer;
+		//std::cout << "finished reading " << variable << std::endl;
+		return value;
+	}
+
+	/**
+	 * @brief Returns a value in the flat array of the variable and index requested.
+	 *
+	 * Use this method on variables that have a type of int
+	 *
+	 * @param variable The variable in the file
+	 * @param index The index in the variable's array in the file
+	 *
+	 * @return int of the value in the array.
+	 */
+	int FileReader::getVariableIntAtIndex(const std::string& variable, long index)
+	{
+		//std::cout << "reading " << variable << std::endl;
+		//get variable number
+		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+
+		long recStart = 0L;
+		long recCount = 1L;
+		long recInterval = 1L;
+		long dimIndices[] = { 0 };
+		long dimIntervals[] = { 1 };
+
+		long dimSizes[1] = {1};
+		//get dim sizes
+		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
+		int * buffer = new int[1];
+		CDFhyperGetzVarData(current_file_id, variableNum, index, recCount, recInterval, dimIndices, dimSizes,
+				dimIntervals, buffer);
+		//add data to vector type, and delete original array
+		int value = buffer[0];
+		delete[] buffer;
+		//std::cout << "finished reading " << variable << std::endl;
+		return value;
 	}
 
 	/**
@@ -355,7 +455,7 @@ namespace ccmc
 			int value;
 			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
 			//std::cout << "I: attributeValue (" << vattribute << "): " << value << std::endl;
-\
+
 			attribute.setAttributeName(vattribute);
 			attribute.setAttributeValue(value);
 
@@ -397,7 +497,7 @@ namespace ccmc
 	{
 		bool exists = false;
 		CDFstatus status = CDFconfirmAttrExistence(current_file_id, (char*) attribute.c_str());
-		if (status != NO_SUCH_ENTRY)
+		if (status == CDF_OK)
 			exists = true;
 
 		return exists;
