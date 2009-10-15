@@ -50,6 +50,7 @@ std::cout << "creating kameleon object" << std::endl;
 
 int Kameleon_open(int id, const char * filename)
 {
+	//TODO: error checking
 	int status;
 	map_i_K::iterator iter = kameleonObjects.find(id);
 
@@ -81,6 +82,7 @@ int Kameleon_open(int id, const char * filename)
 
 int Kameleon_close(int id)
 {
+	//TODO: error checking
 	Kameleon * kameleon = kameleonObjects[id];
 	int status = kameleon->close();
 	return status;
@@ -88,6 +90,7 @@ int Kameleon_close(int id)
 
 int Kameleon_delete(int id)
 {
+	//TODO: error checking
 	map_i_K::iterator iter = kameleonObjects.find(id);
 	if (iter != kameleonObjects.end())
 	{
@@ -100,6 +103,7 @@ int Kameleon_delete(int id)
 
 void Kameleon_get_model_name(int id, char * model_name)
 {
+	//TODO: error checking
 	Kameleon * kameleon = kameleonObjects[id];
 	std::string model_name_string = kameleon->getModelName();
 	std::cout << "model_name_string: '" << model_name_string << "'" << std::endl;
@@ -110,6 +114,7 @@ void Kameleon_get_model_name(int id, char * model_name)
 
 float Kameleon_interpolate(int id, const char * variable, const float * c0, const float * c1, const float * c2, float * dc0, float * dc1, float * dc2)
 {
+	//TODO: error checking
 	//first, fetch the interpolator
 	Interpolator * interpolator = interpolatorObjects[id];
 	return interpolator->interpolate(variable, *c0,*c1,*c2,*dc0,*dc1,*dc2);
@@ -117,6 +122,7 @@ float Kameleon_interpolate(int id, const char * variable, const float * c0, cons
 
 int Kameleon_load_variable(int id, const char * variable)
 {
+	//TODO: error checking
 	Kameleon * kameleon = kameleonObjects[id];
 	int status = kameleon->loadVariable(variable);
 	return status;
@@ -124,8 +130,24 @@ int Kameleon_load_variable(int id, const char * variable)
 
 void Kameleon_get_global_attribute_string(int id, const char * gAttribute, char * destbuffer)
 {
+	//TODO: error checking
 	Kameleon * kameleon = kameleonObjects[id];
 	std::string attribute = (kameleon->getGlobalAttribute(gAttribute)).getAttributeString();
 	strncpy(destbuffer, attribute.c_str(), attribute.size());
 	destbuffer[attribute.size()] = '\0';
+}
+
+float Kameleon_get_missing_value(int id)
+{
+	//TODO: error checking
+	Kameleon * kameleon = kameleonObjects[id];
+	return kameleon->getMissingValue();
+}
+
+void Kameleon_get_native_unit(int id, const char * variable, char * destbuffer)
+{
+	//TODO: error checking
+	Kameleon * kameleon = kameleonObjects[id];
+	std::string units = kameleon->getNativeUnit(variable);
+	strncpy(destbuffer, units.c_str(), units.size());
 }
