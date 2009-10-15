@@ -121,6 +121,10 @@ namespace ccmc
 	float BATSRUSInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
 	{
+
+		bool main_memory_flag = true;
+		if (this->modelReader->getVariableDataByID(variable_id) == NULL)
+			main_memory_flag = false;
 		//std::cout << "point: " << c0 << "," << c1 << "," << c2 << std::endl;
 		long status;
 
@@ -474,7 +478,10 @@ namespace ccmc
 
 		 ********************************************************************/
 
-		const std::vector<float>* vData = modelReader->getVariableDataByID(variable_id);
+
+		const std::vector<float>* vData = NULL;
+		if (main_memory_flag == true)
+			vData = modelReader->getVariableDataByID(variable_id);
 		for (ic = 0; ic < 8; ic++)
 		{
 
@@ -485,7 +492,13 @@ namespace ccmc
 			int index = ix_c[ic] + nx * (iy_c[ic] + ny * (iz_c[ic] + nz * ib_c[ic]));
 
 			//cout << "variable: " << variable << " value: " << (*variableData[variable])[index] << " index: " << index << " length of variable: " << (*variableData[variable]).size()<< std::endl;
-			data_c[ic] = (*vData)[index];
+			if (vData != NULL)
+				data_c[ic] = (*vData)[index];
+			else
+			{
+				data_c[ic] = modelReader->getVariableAtIndexByID(variable_id, index);
+				//std::cout << "data_c[" << ic << "]: " << data_c[ic] << std::endl;
+			}
 
 		} /* end of for( ic = 0; ic < 8; ic++) loop */
 
@@ -653,6 +666,10 @@ namespace ccmc
 		//	std::cout << "BATSRUSInterpolator::interpolate. variable: " << variable << std::endl;
 		//long variable_id = modelReader->getVariableID(variable);
 		//return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
+		bool main_memory_flag = true;
+		if (this->modelReader->getVariableData(variable) == NULL)
+			main_memory_flag = false;
+
 
 		//std::cout << "point: " << c0 << "," << c1 << "," << c2 << std::endl;
 		long status;
@@ -1007,7 +1024,9 @@ namespace ccmc
 
 		 ********************************************************************/
 
-		const std::vector<float>* vData = modelReader->getVariableData(variable);
+		const std::vector<float>* vData = NULL;
+		if (main_memory_flag == true)
+			vData = modelReader->getVariableData(variable);
 		for (ic = 0; ic < 8; ic++)
 		{
 
@@ -1018,7 +1037,13 @@ namespace ccmc
 			int index = ix_c[ic] + nx * (iy_c[ic] + ny * (iz_c[ic] + nz * ib_c[ic]));
 
 			//cout << "variable: " << variable << " value: " << (*variableData[variable])[index] << " index: " << index << " length of variable: " << (*variableData[variable]).size()<< std::endl;
-			data_c[ic] = (*vData)[index];
+			if (vData != NULL)
+				data_c[ic] = (*vData)[index];
+			else
+			{
+				data_c[ic] = modelReader->getVariableAtIndex(variable, index);
+				//std::cout << "data_c[" << ic << "]: " << data_c[ic] << std::endl;
+			}
 
 		} /* end of for( ic = 0; ic < 8; ic++) loop */
 
