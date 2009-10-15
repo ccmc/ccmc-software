@@ -37,7 +37,10 @@ namespace ccmc
 			virtual long open(const std::string& filename);
 
 			std::vector<float>* getVariable(const std::string& variable);
+			float getVariableAtIndex(const std::string& variable, long index);
+			float getVariableAtIndexByID(long variable_id, long index);
 			std::vector<int>* getVariableInt(const std::string& variable);
+			int getVariableIntAtIndex(const std::string& variable, long index);
 			int getNumberOfGlobalAttributes();
 			int getNumberOfVariables();
 			int getNumberOfVariableAttributes();
@@ -50,7 +53,6 @@ namespace ccmc
 			Attribute getVariableAttribute(const std::string& variable, const std::string& attribute);
 			bool doesAttributeExist(const std::string& attribute);
 			bool doesVariableExist(const std::string& variable);
-
 			virtual long close();
 			CDFid getCurrentFileID();
 			const std::string& getCurrentFilename();
