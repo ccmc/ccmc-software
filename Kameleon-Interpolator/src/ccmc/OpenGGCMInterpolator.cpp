@@ -248,10 +248,28 @@ namespace ccmc
 		int i7 = (kp1) + (jp1) * (nx) + ip1tNV_blk;
 
 		const std::vector<float> * vData = modelReader->getVariableDataByID(variable_id);
-		float data[8] = { (*vData)[i0], (*vData)[i1], (*vData)[i2], (*vData)[i3], (*vData)[i4], (*vData)[i5],
-				(*vData)[i6], (*vData)[i7]
-
-		};
+		float data[8];
+		if (vData == NULL)
+		{
+			data[0] = modelReader->getVariableAtIndexByID(variable_id,i0);
+			data[1] = modelReader->getVariableAtIndexByID(variable_id,i1);
+			data[2] = modelReader->getVariableAtIndexByID(variable_id,i2);
+			data[3] = modelReader->getVariableAtIndexByID(variable_id,i3);
+			data[4] = modelReader->getVariableAtIndexByID(variable_id,i4);
+			data[5] = modelReader->getVariableAtIndexByID(variable_id,i5);
+			data[6] = modelReader->getVariableAtIndexByID(variable_id,i6);
+			data[7] = modelReader->getVariableAtIndexByID(variable_id,i7);
+		} else
+		{
+			data[0] = (*vData)[i0];
+			data[1] = (*vData)[i1];
+			data[2] = (*vData)[i2];
+			data[3] = (*vData)[i3];
+			data[4] = (*vData)[i4];
+			data[5] = (*vData)[i5];
+			data[6] = (*vData)[i6];
+			data[7] = (*vData)[i7];
+		}
 
 		float m_x = (flipped_c0 - ix_value) / dc0;
 		float m_y = (flipped_c1 - iy_value) / dc1;
@@ -271,7 +289,7 @@ namespace ccmc
 		{
 			previousVariableID = variable_id;
 			previousVariable = modelReader->getVariableName(variable_id);
-			previousConversionFactor = getConversionFactor(variable_id);
+			//previousConversionFactor = getConversionFactor(variable_id);
 			//std::cout << "different " << std::endl;
 
 		}
@@ -282,9 +300,9 @@ namespace ccmc
 		previous_y = c1;
 		previous_z = c2;
 
-		float value = xc*previousConversionFactor;
-		previousValue = value;
-		return value;
+		//float value = xc*previousConversionFactor;
+		previousValue = xc;
+		return xc;
 
 	}
 
