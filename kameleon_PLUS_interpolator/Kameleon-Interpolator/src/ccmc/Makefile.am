@@ -16,22 +16,22 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						ENLILInterpolator.cpp \
 						Kameleon_compatibility.h \
 						Kameleon_compatibility.cpp \
-						Kameleon_compute_etaj.cpp \
-						Kameleon_compute_beta.cpp \
-						Kameleon_compute_e.cpp \
-						Kameleon_compute_edotj.cpp \
-						Kameleon_compute_en.cpp \
-						Kameleon_compute_exb.cpp \
-						Kameleon_compute_jpar.cpp \
-						Kameleon_compute_jxb.cpp \
-						Kameleon_compute_n.cpp \
-						Kameleon_compute_nv.cpp \
-						Kameleon_compute_p.cpp \
-						Kameleon_compute_polb.cpp \
-						Kameleon_compute_pram.cpp \
-						Kameleon_compute_s.cpp \
-						Kameleon_compute_scaleByRadius.cpp \
-						Kameleon_compute_temp.cpp \
+						KameleonInterpolator_compute_etaj.cpp \
+						KameleonInterpolator_compute_beta.cpp \
+						KameleonInterpolator_compute_e.cpp \
+						KameleonInterpolator_compute_edotj.cpp \
+						KameleonInterpolator_compute_en.cpp \
+						KameleonInterpolator_compute_exb.cpp \
+						KameleonInterpolator_compute_jpar.cpp \
+						KameleonInterpolator_compute_jxb.cpp \
+						KameleonInterpolator_compute_n.cpp \
+						KameleonInterpolator_compute_nv.cpp \
+						KameleonInterpolator_compute_p.cpp \
+						KameleonInterpolator_compute_polb.cpp \
+						KameleonInterpolator_compute_pram.cpp \
+						KameleonInterpolator_compute_s.cpp \
+						KameleonInterpolator_compute_scaleByRadius.cpp \
+						KameleonInterpolator_compute_temp.cpp \
 						Kameleon_initializeConversionFactorsToVis.cpp \
 						Kameleon_initializeListOfRequiredVariablesForComponentsAndVectors.cpp \
 						Kameleon_initializeUnits.cpp \
