@@ -18,5 +18,7 @@ extern _C_ int Kameleon_load_variable(int id, const char * variable);
 extern _C_ void Kameleon_get_global_attribute_string(int id, const char * gAttribute, char * destbuffer);
 extern _C_ int Kameleon_close(int id);
 extern _C_ int Kameleon_delete(int id);
+extern _C_ float Kameleon_get_missing_value(int id);
+extern _C_ void Kameleon_get_native_unit(int id, const char * variable, char * destbuffer);
 
 #endif//end KAMELEON_COMPATIBILITY_H
