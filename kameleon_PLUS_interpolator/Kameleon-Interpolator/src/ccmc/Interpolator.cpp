@@ -6,7 +6,8 @@
  */
 
 #include "Interpolator.h"
-
+#include <iostream>
+using namespace std;
 namespace ccmc
 {
 	/**
@@ -25,6 +26,19 @@ namespace ccmc
 	{
 		this->missingValue = missingValue;
 	}
+
+
+	float Interpolator::getConversionFactor(const std::string&)
+	{
+		//cout << "Inside Interpolator::getConversionFactor" << endl;
+		return 1.0f;
+	}
+
+	float Interpolator::getConversionFactor(const long& variable_id)
+	{
+		return 1.0f;
+	}
+
 
 	/**
 	 * Destructor
