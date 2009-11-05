@@ -29,15 +29,15 @@ namespace ccmc
 			float interpolate(long variable_id, const float & c0, const float& c1, const float& c2);
 			float interpolate(long variable_id, const float& c0, const float& c1, const float& c2, float& dc0,
 					float& dc1, float& dc2);
-
+			float getConversionFactor(const std::string&);
+			float getConversionFactor(const long& variable_id);
 			virtual ~OpenGGCMInterpolator();
 
 		private:
 			Model * modelReader;
 			boost::unordered_map<std::string, float> conversionFactors;
 			boost::unordered_map<long, float> conversionFactorsByID;
-			float getConversionFactor(const std::string&);
-			float getConversionFactor(const long& variable_id);
+
 			std::string x_string;
 			std::string y_string;
 			std::string z_string;
