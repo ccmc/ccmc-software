@@ -30,6 +30,7 @@ namespace ccmc
 			float interpolate(long, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 					float& dc2);
 
+
 			//Point interpolate_vector(const std::string&, const float& c0, const float& c1, const float& c2);
 			//Point interpolate_vector(const std::string&, const float& c0, const float& c1, const float& c2, float& dc0,
 			//		float& dc1, float& dc2);
@@ -183,6 +184,8 @@ namespace ccmc
 			std::string ucla_ggcm_;
 			std::string mas_;
 			std::string enlil_;
+			void initializeConversionFactorsToVis();
+			float getConversionFactorToVis(const std::string& variable);
 	};
 }
 
