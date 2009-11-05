@@ -97,7 +97,7 @@ namespace ccmc
 		listOfRequiredVariablesForComponents.clear();
 		listOfRequiredVariablesForVectors.clear();
 		conversionFactorsToSI.clear();
-		conversionFactorsToVis.clear();
+		//conversionFactorsToVis.clear();
 
 		variableAliases.clear();
 
@@ -123,7 +123,7 @@ namespace ccmc
 		//	initializeConversionFactorsToVis();
 		initializeVariableAliases();
 		initializeConversionFactorsToSI();
-		initializeConversionFactorsToVis();
+		//initializeConversionFactorsToVis();
 	}
 
 	/**
@@ -392,6 +392,18 @@ namespace ccmc
 		return success;
 	}
 
+	bool Kameleon::unloadVariable(const std::string& variable)
+	{
+		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
+		bool success = true;
+		for (int i = 0; i < requiredVariables.size(); i++)
+		{
+			std::cout << "unloading " << requiredVariables[i] << std::endl;
+			if (!model->unloadVariable(requiredVariables[i]))
+				success = false;
+		}
+		return success;
+	}
 	/**
 	 * @param variable
 	 * @return
@@ -405,6 +417,19 @@ namespace ccmc
 		{
 			std::cout << "loading " << requiredVariables[i] << std::endl;
 			if (!model->loadVariable(requiredVariables[i]))
+				success = false;
+		}
+		return success;
+	}
+
+	bool Kameleon::unloadVectorVariable(const std::string& variable)
+	{
+		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForVectors(variable);
+		bool success = true;
+		for (int i = 0; i < requiredVariables.size(); i++)
+		{
+			std::cout << "unloading " << requiredVariables[i] << std::endl;
+			if (!model->unloadVariable(requiredVariables[i]))
 				success = false;
 		}
 		return success;
@@ -482,24 +507,7 @@ namespace ccmc
 		}
 	}
 
-	/**
-	 * Returns the stored conversion factor to convert the variable to the units
-	 * used for visualization. These units may differ from SI units and the units
-	 * stored in the file.
-	 * @param variable
-	 * @return
-	 */
-	float Kameleon::getConversionFactorToVis(const std::string& variable)
-	{
-		boost::unordered_map<std::string, float>::iterator iter = conversionFactorsToVis.find(variable);
 
-		if (iter != conversionFactorsToVis.end())
-			return (*iter).second;
-		else
-		{
-			return 1.0f;
-		}
-	}
 
 	/**
 	 * Initializes the conversion factors required to convert the interpolated values to SI units. This is currently
