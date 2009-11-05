@@ -99,12 +99,14 @@ namespace ccmc
 
 			Interpolator* createNewInterpolator();
 			bool loadVariable(const std::string& variable);
+			bool unloadVariable(const std::string& variable);
 			bool loadVectorVariable(const std::string& variable);
+			bool unloadVectorVariable(const std::string& variable);
 			std::string getNativeUnit(const std::string& variable);
 			std::string getSIUnit(const std::string& variable);
 			std::string getVisUnit(const std::string& variable);
 			float getConversionFactorToSI(const std::string& variable);
-			float getConversionFactorToVis(const std::string& variable);
+			//float getConversionFactorToVis(const std::string& variable);
 
 
 			std::vector<float>* getVariable(const std::string& variable);
@@ -141,7 +143,7 @@ namespace ccmc
 			boost::unordered_map<std::string, std::string> variableVisUnits;
 
 			boost::unordered_map<std::string, float> conversionFactorsToSI;
-			boost::unordered_map<std::string, float> conversionFactorsToVis;
+
 
 			boost::unordered_map<std::string, std::string> variableAliases;
 			boost::unordered_map<std::string, std::vector<std::string> > listOfRequiredVariablesForComponents;
@@ -168,7 +170,7 @@ namespace ccmc
 			std::vector<std::string> getListOfRequiredVariablesForVectors(std::string variable);
 
 			void initializeConversionFactorsToSI();
-			void initializeConversionFactorsToVis();
+			//void initializeConversionFactorsToVis();
 			float missingValue;
 	};
 }
