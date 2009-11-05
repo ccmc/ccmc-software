@@ -53,8 +53,7 @@ namespace ccmc
 		interp_value = interpolator->interpolate(variable, positionComponent1, positionComponent2, positionComponent3,
 				dComponent1, dComponent2, dComponent3);
 		//delete interpolator;
-
-		return interp_value;
+		return (interp_value * interpolator->getConversionFactor(variable));
 
 	}
 
@@ -107,7 +106,7 @@ namespace ccmc
 				dComponent1, dComponent2, dComponent3);
 		//delete interpolator;
 
-		return interp_value;
+		return interp_value  * interpolator->getConversionFactor(variable_id);
 
 	}
 }
