@@ -120,13 +120,15 @@ namespace ccmc
 
 	/**
 	 * @brief Unload a variable from memory.
+	 * This will return true if the variable is removed from memory, and false
+	 * if the variable was not already in memory.
 	 *
 	 * @param variable Variable to unload from memory.
-	 * @return true if successful, else false
+	 * @return true if successful, else false.
 	 */
 	bool Model::unloadVariable(const std::string& variable)
 	{
-		bool success = false;
+		//bool success = false;
 
 		//first, check to determine whether variable is already loaded
 		if (variableData.find(variable) != variableData.end())
