@@ -69,7 +69,8 @@ int main (int argc, char * argv[])
 
 	start = clock();
 
-	float conversion = kameleon.getConversionFactorToVis(variable);
+	float conversion = 1.0f;
+	//float conversion = kameleon.getConversionFactorToVis(variable);
 	float value;
 	std::string bx_ = "bx";
 	float convertedValue;
@@ -92,6 +93,8 @@ int main (int argc, char * argv[])
 	//ProfilerStop();
 	finish = clock();
 	float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
+
+	std::cout << "test for disk access: " << interpolator->interpolate(variable, -10.f, -2.f, -0.f) << std::endl;
 	delete interpolator;
 
 	std::cout << "Elapsed time for interpolation: " << elapsed_time << std::endl;
@@ -108,6 +111,7 @@ int main (int argc, char * argv[])
 	{
 		std::cout << "variable: " << variables[i] << " units: " << kameleon.getSIUnit(variables[i]) << std::endl;
 	}
+
 	kameleon.close();
 	return 0;
 }
