@@ -1,5 +1,6 @@
 #include "Attribute.h"
 #include <iostream>
+#include <boost/lexical_cast.hpp>
 
 namespace ccmc
 {
@@ -99,6 +100,24 @@ namespace ccmc
 	int Attribute::getAttributeInt()
 	{
 		return iValue;
+	}
+
+	std::string Attribute::toString()
+	{
+		std::string string_value = "";
+		if (type == Attribute::FLOAT)
+		{
+			string_value += "FLOAT: " + this->attributeName + ": " + boost::lexical_cast<std::string>(this->fValue);
+		} else if (type == Attribute::INT)
+		{
+			string_value += "INT: " + this->attributeName + ": " + boost::lexical_cast<std::string>(this->iValue);
+
+		} else
+		{
+			string_value += "STRING: " + this->attributeName + ": " + this->sValue;
+
+		}
+		return string_value;
 	}
 
 	/**
