@@ -337,6 +337,8 @@ namespace ccmc
 			attribute.setAttributeName(attributeNameBuffer);
 			//std::cout << "attributeBuffer: " << attributeBuffer << endl;
 			attribute.setAttributeValue(attributeValue);
+			gAttributeByID[i] = attribute;
+			gAttributes[attribute.getAttributeName()] = attribute;
 			//return attribute;
 		} else if (dataType == CDF_INT4)
 		{
@@ -360,6 +362,8 @@ namespace ccmc
 			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
 			attribute.setAttributeValue(attributeBuffer);
+			gAttributeByID[i] = attribute;
+			gAttributes[attribute.getAttributeName()] = attribute;
 			//return attribute;
 		} else //CDF_FLOAT
 		{
@@ -377,10 +381,13 @@ namespace ccmc
 			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
 			attribute.setAttributeValue(attributeBuffer);
+			gAttributeByID[i] = attribute;
+			gAttributes[attribute.getAttributeName()] = attribute;
 			//return attribute;
 		}
-		gAttributeByID[i] = attribute;
+
 		//cout << "added: " << i << " name: " << attribute.getAttributeName() << endl;
+		//std::cout << "Attribute: " << attribute.toString() << std::endl;
 		return attribute;
 
 	}
@@ -396,15 +403,20 @@ namespace ccmc
 		if (iter != gAttributes.end())
 			return (*iter).second;
 
-
+		//std::cout << "after search in getGlobalAttribute(const std::string& attribute" << std::endl;
 
 		//cout << "attribute: " << attribute;
 		long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
 		//cout << "attrNum after attribute: " << attrNum << endl;
+		Attribute current_attribute;
 		if (attrNum < 0)
-			std::cout << "attrNum: " << attrNum << " returned for " << attribute << std::endl;
-		Attribute current_attribute = getGlobalAttribute(attrNum);
-		gAttributes[attribute] = current_attribute;
+		{
+			//std::cout << "attrNum: " << attrNum << " returned for " << attribute << std::endl;
+		}
+		else
+		{
+			current_attribute = getGlobalAttribute(attrNum);
+		}//gAttributes[attribute] = current_attribute;
 		return current_attribute;
 	}
 
@@ -618,7 +630,7 @@ namespace ccmc
 	void FileReader::initializeGlobalAttributes()
 	{
 		int numGAttributes = this->getNumberOfGlobalAttributes();
-		cout << "numGAttributes: " << numGAttributes << endl;
+		//cout << "numGAttributes: " << numGAttributes << endl;
 		for (int i = 0; i < numGAttributes; i++)
 		{
 
@@ -638,7 +650,7 @@ namespace ccmc
 	void FileReader::initializeVariableIDs()
 	{
 		int numVariables = this->getNumberOfVariables();
-		cout << "numVariables: " << numVariables << endl;
+		//cout << "numVariables: " << numVariables << endl;
 		char variableName[512];
 		for (int i = 0; i < numVariables; i++)
 		{
@@ -656,7 +668,7 @@ namespace ccmc
 	void FileReader::initializeVariableNames()
 	{
 		int numVariables = this->getNumberOfVariables();
-		cout << "numVariables: " << numVariables << endl;
+		//cout << "numVariables: " << numVariables << endl;
 		char variableName[512];
 		for (int i = 0; i < numVariables; i++)
 		{
