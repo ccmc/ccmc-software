@@ -37,6 +37,7 @@ namespace ccmc
 			std::string getAttributeString();
 			int getAttributeInt();
 			Attribute();
+			std::string toString();
 
 			virtual ~Attribute();
 
