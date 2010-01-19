@@ -73,6 +73,13 @@ namespace ccmc
 		//std::cout << "finished reading nx, ny, nz" << std::endl;
 		/********* get value for number_of_blocks **********/
 		int number_of_blocks = (modelReader->getGlobalAttribute("number_of_blocks")).getAttributeInt();
+
+		global_x_max = modelReader->getGlobalAttribute("global_x_max");
+		global_y_max = modelReader->getGlobalAttribute("global_y_max");
+		global_z_max = modelReader->getGlobalAttribute("global_z_max");
+		global_x_min = modelReader->getGlobalAttribute("global_x_min");
+		global_y_min = modelReader->getGlobalAttribute("global_y_min");
+		global_z_min = modelReader->getGlobalAttribute("global_z_min");
 	}
 
 	/**
@@ -1190,6 +1197,15 @@ namespace ccmc
 	 */
 	int BATSRUSInterpolator::find_octree_block(float x, float y, float z, int old_block_number)
 	{
+
+
+		//first, check to see if the position is valid!!
+		if (
+				x < global_x_min || x > global_x_max ||
+				y < global_y_min || y > global_y_max ||
+				z < global_z_min || z > global_z_max)
+			return -1;
+
 		int block_index_1, block_index_2, root_index;
 
 		block_index_1 = old_block_number;
