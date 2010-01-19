@@ -74,12 +74,12 @@ namespace ccmc
 		/********* get value for number_of_blocks **********/
 		int number_of_blocks = (modelReader->getGlobalAttribute("number_of_blocks")).getAttributeInt();
 
-		global_x_max = modelReader->getGlobalAttribute("global_x_max");
-		global_y_max = modelReader->getGlobalAttribute("global_y_max");
-		global_z_max = modelReader->getGlobalAttribute("global_z_max");
-		global_x_min = modelReader->getGlobalAttribute("global_x_min");
-		global_y_min = modelReader->getGlobalAttribute("global_y_min");
-		global_z_min = modelReader->getGlobalAttribute("global_z_min");
+		global_x_max = (modelReader->getGlobalAttribute("global_x_max")).getAttributeFloat();
+		global_y_max = (modelReader->getGlobalAttribute("global_y_max")).getAttributeFloat();
+		global_z_max = (modelReader->getGlobalAttribute("global_z_max")).getAttributeFloat();
+		global_x_min = (modelReader->getGlobalAttribute("global_x_min")).getAttributeFloat();
+		global_y_min = (modelReader->getGlobalAttribute("global_y_min")).getAttributeFloat();
+		global_z_min = (modelReader->getGlobalAttribute("global_z_min")).getAttributeFloat();
 	}
 
 	/**
