@@ -119,29 +119,65 @@ namespace ccmc
 		//int number_of_blocks_plus_virtual = (8 * number_of_blocks) / 7; /*  add ceil or floor later for consistency */
 
 		/********** get block_*_min/max values ************/
-		loadVariable(block_x_min);
-		loadVariable(block_x_max);
-		loadVariable(block_y_min);
-		loadVariable(block_y_max);
-		loadVariable(block_z_min);
-		loadVariable(block_z_max);
+		bool success = loadVariable(block_x_min);
+		cout << "block_x_min: " << success << endl;
+
+		success = loadVariable(block_x_max);
+		cout << "block_x_max: " << success << endl;
+
+		success = loadVariable(block_y_min);
+		cout << "block_y_min: " << success << endl;
+
+		success = loadVariable(block_y_max);
+		cout << "block_x_max: " << success << endl;
+
+		success = loadVariable(block_z_min);
+		cout << "block_z_min: " << success << endl;
+
+		success = loadVariable(block_z_max);
+		cout << "block_z_max: " << success << endl;
 
 		/********** get block_child_count_array, block_*_center_array, & block_child_id_*_array values ************/
-		loadVariableInt(block_child_count);
-		loadVariable(block_x_center);
-		loadVariable(block_y_center);
-		loadVariable(block_z_center);
-		loadVariableInt(block_child_id_1);
-		loadVariableInt(block_child_id_2);
-		loadVariableInt(block_child_id_3);
-		loadVariableInt(block_child_id_4);
-		loadVariableInt(block_child_id_5);
-		loadVariableInt(block_child_id_6);
-		loadVariableInt(block_child_id_7);
-		loadVariableInt(block_child_id_8);
+		success = loadVariableInt(block_child_count);
+
+
+		success = loadVariable(block_x_center);
+		cout << "block_x_center: " << success << endl;
+
+		success = loadVariable(block_y_center);
+		cout << "block_y_center: " << success << endl;
+
+		success = loadVariable(block_z_center);
+		cout << "block_z_center: " << success << endl;
+
+		success = loadVariableInt(block_child_id_1);
+		cout << "block_child_id_1: " << success << endl;
+
+		success = loadVariableInt(block_child_id_2);
+		cout << "block_child_id_2: " << success << endl;
+
+		success = loadVariableInt(block_child_id_3);
+		cout << "block_child_id_3: " << success << endl;
+
+		success = loadVariableInt(block_child_id_4);
+		cout << "block_child_id_4: " << success << endl;
+
+		success = loadVariableInt(block_child_id_5);
+		cout << "block_child_id_5: " << success << endl;
+
+		success = loadVariableInt(block_child_id_6);
+		cout << "block_child_id_6: " << success << endl;
+
+		success = loadVariableInt(block_child_id_7);
+		cout << "block_child_id_7: " << success << endl;
+
+		success = loadVariableInt(block_child_id_8);
+		cout << "block_child_id_8: " << success << endl;
+
 
 		/******** get values for block_at_amr_level *******/
-		loadVariableInt(block_at_amr_level);
+		success = loadVariableInt(block_at_amr_level);
+		cout << "block_at_amr_level: " << success << endl;
 		//std::cout << "block_at_amr_level: " << variableDataInt["block_at_amr_level"][0] << std::endl;
 		initializeVariableNames();
 		initializeConversionFactorsToSI();
