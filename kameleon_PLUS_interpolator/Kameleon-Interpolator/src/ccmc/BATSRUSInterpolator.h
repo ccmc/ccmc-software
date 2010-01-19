@@ -88,6 +88,13 @@ namespace ccmc
 			std::string block_child_id_7;
 			std::string block_child_id_8;
 			std::string block_at_amr_level;
+
+			float global_x_min;
+			float global_x_max;
+			float global_y_min;
+			float global_y_max;
+			float global_z_min;
+			float global_z_max;
 			bool previousWasValid;
 
 	};
