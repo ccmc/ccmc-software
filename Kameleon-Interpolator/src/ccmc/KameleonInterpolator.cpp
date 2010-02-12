@@ -204,29 +204,6 @@ namespace ccmc
 
 	}
 
-	/*std::vector<std::string> KameleonInterpolator::getListOfRequiredVariablesForComponents(std::string variable)
-	 {
-	 boost::unordered_map<std::string, std::vector<std::string> >::iterator iter = this->listOfRequiredVariablesForComponents.find(variable);
-	 if (iter != listOfRequiredVariablesForComponents.end())
-	 {
-	 return (*iter).second;
-	 } else
-	 {
-	 if (modelReader->doesVariableExist(variable))
-	 {
-	 std::vector<std::string> required;
-	 required.push_back(variable);
-	 return  required;
-	 }
-	 else
-	 {
-	 std::vector<std::string> required;
-	 return required;
-	 }
-	 }
-	 }
-	 */
-
 	/**
 	 * Returns the stored conversion factor to convert the variable to the units
 	 * used for visualization. These units may differ from SI units and the units
