@@ -71,7 +71,7 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						cxform.h \
 						cxform-auto.c \
 						cxform-manual.c
-libkameleon_interpolator_la_LDFLAGS = -release 0.1.1
+libkameleon_interpolator_la_LDFLAGS = -release 0.1.2
 libkameleon_interpolator_la_CFLAGS = -fPIC
 
 #pkgconfigdir = $(libdir)/pkgconfig
