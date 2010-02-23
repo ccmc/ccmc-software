@@ -50,6 +50,7 @@ namespace ccmc
 
 			const std::vector<float>* getVariableDataByID(long variable_id);
 			const std::vector<int>* getVariableDataIntByID(long variable_id);
+			const std::vector<std::string> getLoadedVariables();
 
 			void setMissingValue(float missingValue);
 			float getMissingValue();
