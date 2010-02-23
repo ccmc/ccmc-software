@@ -11,17 +11,17 @@ namespace ccmc
 	{
 		//base variables
 
-		char * bx_ = "bx";
-		char * by_ = "by";
-		char * bz_ = "bz";
-		char * ux_ = "ux";
-		char * uy_ = "uy";
-		char * uz_ = "uz";
-		char * jx_ = "jx";
-		char * jy_ = "jy";
-		char * jz_ = "jz";
-		char * rho_ = "rho";
-		char * p_ = "p";
+		const char * bx_ = "bx";
+		const char * by_ = "by";
+		const char * bz_ = "bz";
+		const char * ux_ = "ux";
+		const char * uy_ = "uy";
+		const char * uz_ = "uz";
+		const char * jx_ = "jx";
+		const char * jy_ = "jy";
+		const char * jz_ = "jz";
+		const char * rho_ = "rho";
+		const char * p_ = "p";
 		/*std::string pram[] = {rho_, ux_, uy_, uz_};
 		 std::string t[] = {p_, rho_};
 		 std::string ex[] = {by_,bz_,uy_,uz_};
