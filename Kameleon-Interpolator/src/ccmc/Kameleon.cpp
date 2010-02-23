@@ -374,6 +374,11 @@ namespace ccmc
 		return new KameleonInterpolator(model);
 	}
 
+	std::vector<std::string> Kameleon::getLoadedVariables()
+	{
+		return model->getLoadedVariables();
+	}
+
 	/**
 	 * @param variable
 	 * @return
