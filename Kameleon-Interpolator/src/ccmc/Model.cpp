@@ -7,6 +7,7 @@
 
 #include "Model.h"
 #include <iostream>
+#include <algorithm>
 #include <boost/foreach.hpp>
 #include "Interpolator.h"
 
@@ -194,6 +195,26 @@ namespace ccmc
 		else
 			std::cout << "variable: " << variable << " not found!!!" << std::endl;
 		return vData;
+	}
+
+	/**
+	 * @brief Returns the list of variables that have been loaded into memory, using the loadVariable or loadVectorVariable methods
+	 *
+	 *
+	 */
+	const std::vector<std::string> Model::getLoadedVariables()
+	{
+		boost::unordered_map<std::string, std::vector<float>*>::iterator iter;
+
+		std::vector<std::string> variablesLoaded;
+		for ( iter=variableData.begin() ; iter != variableData.end(); iter++ )
+		{
+			variablesLoaded.push_back((*iter).first);
+		}
+		sort (variablesLoaded.begin(), variablesLoaded.end());
+
+		return variablesLoaded;
+
 	}
 
 	/**
