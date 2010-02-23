@@ -119,6 +119,7 @@ namespace ccmc
 			std::string getGlobalAttributeName(long attribute_id);
 			Attribute getGlobalAttribute(const std::string& attribute);
 			Attribute getVariableAttribute(const std::string& variable, const std::string& attribute);
+			std::vector<std::string> getLoadedVariables();
 
 			bool doesAttributeExist(const std::string& attribute);
 			bool doesVariableExist(const std::string& variable);
