@@ -40,8 +40,6 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						KameleonInterpolator_compute_magnitude.cpp \
 						KameleonInterpolator_interpolateSimple.cpp \
 						KameleonInterpolator_initializeCalculationMethods.cpp \
-						Kameleon_loadVariable.cpp \
-						Kameleon_loadVectorVariable.cpp \
 						Kameleon_open.cpp \
 						Kameleon.cpp \
 						Kameleon.h \
