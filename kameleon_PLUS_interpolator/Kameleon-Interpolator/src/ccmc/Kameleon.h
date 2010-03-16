@@ -179,6 +179,7 @@ namespace ccmc
 //declared static variables for the C/Fortran interface functions
 static boost::unordered_map<int, Kameleon *> kameleonObjects;
 static boost::unordered_map<int, Interpolator *> interpolatorObjects;
+static boost::unordered_map<int, FileReader *> fileReaderObjects;
 
 #endif /** KAMELEON_H **/
 
