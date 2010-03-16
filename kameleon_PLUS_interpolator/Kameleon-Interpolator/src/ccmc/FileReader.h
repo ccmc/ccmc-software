@@ -37,6 +37,9 @@ namespace ccmc
 			virtual long open(const std::string& filename);
 
 			std::vector<float>* getVariable(const std::string& variable);
+			std::vector<float>* getVariableByID(long variableID);
+			std::vector<float>* getVariable(const std::string& variable, long startIndex, long count);
+			std::vector<float>* getVariableByID(long variableID, long startIndex, long count);
 			float getVariableAtIndex(const std::string& variable, long index);
 			float getVariableAtIndexByID(long variable_id, long index);
 			std::vector<int>* getVariableInt(const std::string& variable);
