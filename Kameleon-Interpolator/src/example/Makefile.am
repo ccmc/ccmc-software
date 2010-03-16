@@ -1,4 +1,4 @@
-bin_PROGRAMS = derived kameleon-compat coord_test open_ggcm magnetogram filereader_compat_f  filereader_compat #imf 
+bin_PROGRAMS = derived kameleon-compat coord_test open_ggcm magnetogram  filereader_compat filereader_compat_f #imf 
 derived_SOURCES = derived_prog.cpp
 #derived_LDFLAGS = -L@srcdir@/../ccmc -lkameleon-interpolator -lkameleon -lcdf
 derived_CXXFLAGS = -I@srcdir@/.. -I@srcdir@/../ccmc
