@@ -1,4 +1,4 @@
-      program FileReader_compat_f
+      program filereader_compat_f
  
 c     Three functions used to interpolate 
 c     data from a specified batsrus cdf file
@@ -11,13 +11,14 @@ c     Variables to be used for interpolation and data extraction
       character*300 cdf_file_path 
 c      real*8 x,y,z
 c      real*8 interpolated_value
-      integer status
+      integer status,fid
+      
 c      character*50 var_to_read
  
 c     --- set your actual path name here ---
 
       call getarg(1, cdf_file_path)
-c      cdf_file_path='batsrus.cdf '
+c      cdf_file_path='example.cdf '
       
       write(*,*) 'Processing file: ', cdf_file_path
       write(*,*) 'Note:  The above referenced file name is 
@@ -27,12 +28,12 @@ c      cdf_file_path='batsrus.cdf '
  
 c     Open the cdf file     
  
-      integer id
-      id=0
-      f_FileReader_create(id)
-      f_FileReader_open(id,cdf_file_path)
-      f_FileReader_close(id)
-      f_FileReader_delete(id)
+
+      fid=0
+      call f_FileReader_create(fid)
+      call f_FileReader_open(fid,cdf_file_path,status)
+      call f_FileReader_close(fid)
+      call f_FileReader_delete(fid)
  
       end 
       
