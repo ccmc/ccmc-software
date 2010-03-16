@@ -161,4 +161,49 @@ long FileReader_delete(int id)
 		-1L;
 }
 
+void f_filereader_create_(int * id)
+{
+	FileReader_create(*id);
+}
+
+void f_filereader_open_(int * id, const char * filename, long * status)
+{
+	*status = FileReader_open(*id, filename);
+}
+
+void f_filereader_getvariable_(int * id, const char * variable, float * variableData)
+{
+
+}
+
+void f_filereader_getvariablebyid_(int * id, long * variableID, float * variableData)
+{
+
+}
+
+void f_filereader_getvariablesubrange_(int * id, const char * variable, long * startIndex, long * count, float * variableData)
+{
+
+}
+
+void f_filereader_getvariablebyidsubrange_(int * id, long * variableID, long * startIndex, long * count, float * variableData)
+{
+
+}
+
+void f_filereader_getvariableid_(int * id, const char * variable, long * status)
+{
+
+}
+
+void f_filereader_close_(int * id, long * status)
+{
+
+}
+
+void f_filereader_delete_(int * id, long * status)
+{
+
+}
+
 
