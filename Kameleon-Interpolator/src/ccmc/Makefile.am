@@ -14,6 +14,8 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						ENLIL.cpp \
 						ENLILInterpolator.h \
 						ENLILInterpolator.cpp \
+						FileReader_compatibility.h \
+						FileReader_compatibility.cpp \
 						Kameleon_compatibility.h \
 						Kameleon_compatibility.cpp \
 						KameleonInterpolator_compute_etaj.cpp \
