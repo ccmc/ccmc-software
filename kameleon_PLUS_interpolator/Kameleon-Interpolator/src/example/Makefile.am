@@ -19,8 +19,8 @@ filereader_compat_LDFLAGS = -L@builddir@/../ccmc -lstdc++ -lkameleon-interpolato
 filereader_compat_CFLAGS = -I@srcdir@/..
 
 filereader_compat_f_SOURCES = FileReader_compatibility_test_f.f
-filereader_compat_f_LDADD = @builddir@/../ccmc/libkameleon-interpolator.la @FLIBS@
-#filereader_compat_f_LDFLAGS = -L@builddir@/../ccmc -lstdc++ -lkameleon-interpolator
+filereader_compat_f_LDADD = @builddir@/../ccmc/libkameleon-interpolator.la
+filereader_compat_f_LDFLAGS = -lstdc++
 #filereader_compat_f_CFLAGS = -I@srcdir@/..
 
 coord_test_SOURCES = coordinate_transformation_test.cpp
