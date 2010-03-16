@@ -78,4 +78,4 @@ libkameleon_interpolator_la_CFLAGS = -fPIC
 #pkgconfig_DATA = kameleon-plus.pc
 
 pkgincludedir = $(includedir)/ccmc
-pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h Kameleon_compatibility.h Model.h Point.h #Shue.h
+pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h FileReader_compatibility.h Kameleon_compatibility.h Model.h Point.h #Shue.h
