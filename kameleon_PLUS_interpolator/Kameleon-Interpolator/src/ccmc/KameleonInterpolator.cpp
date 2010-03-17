@@ -150,7 +150,7 @@ namespace ccmc
 			conversionFactorsToVis["ux"] = 1.e-3;
 			conversionFactorsToVis["uy"] = 1.e-3;
 			conversionFactorsToVis["uz"] = 1.e-3;
-			conversionFactorsToVis["n"] = 1.e-6 * Avogadro;
+			conversionFactorsToVis["n"] = 1.e-6 * ccmc::constants::Avogadro;
 			conversionFactorsToVis["rho"] = 1.e3;
 			conversionFactorsToVis["ex"] = 1.e-3;
 			conversionFactorsToVis["ey"] = 1.e-3;
@@ -178,7 +178,7 @@ namespace ccmc
 		} else if (modelName == "ucla_ggcm" || modelName == "open_ggcm")
 		{
 			conversionFactorsToVis["p"] = 1.e-3;
-			conversionFactorsToVis["t"] = 1.e-15 / Boltzmann;
+			conversionFactorsToVis["t"] = 1.e-15 / ccmc::constants::Boltzmann;
 			conversionFactorsToVis["s"] = 1.e-4;
 			conversionFactorsToVis["pram"] = 1.627e-6;
 			conversionFactorsToVis["nv"] = 1.e6;
@@ -191,7 +191,7 @@ namespace ccmc
 		} else //just BATSRUS for now
 		{
 			conversionFactorsToVis["p"] = 1.e-3;
-			conversionFactorsToVis["t"] = 1.e-12 / Boltzmann;
+			conversionFactorsToVis["t"] = 1.e-12 / ccmc::constants::Boltzmann;
 			conversionFactorsToVis["s"] = 1.e-4;
 			conversionFactorsToVis["pram"] = 1.627e-6;
 			conversionFactorsToVis["nv"] = 1.e6;
