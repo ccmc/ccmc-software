@@ -11,19 +11,19 @@
 
 int main( int argc, char * argv[])
 {
-	/*
-	if (argc != 3)
+	if (argc != 2)
 	{
-		printf("Must enter 2 filenames\n");
+		printf("Must enter 1 filename1\n");
 		return 1;
 	}
 	int k0 = 0;
 	int k1 = 1;
 	Kameleon_create(k0);
 	Kameleon_create(k1);
+
 	int i0 = 0;
 	Kameleon_open(k0,argv[1]);
-	Kameleon_open(k1,argv[2]);
+	Kameleon_open(k1,argv[1]);
 
 	//get model names
 	char modelName1[512];
@@ -51,6 +51,6 @@ int main( int argc, char * argv[])
 	printf("kdelete: %d\n", status);
 	status = Kameleon_delete(k1);
 	printf("kdelete: %d\n", status);
-*/
+
 	return 0;
 }
