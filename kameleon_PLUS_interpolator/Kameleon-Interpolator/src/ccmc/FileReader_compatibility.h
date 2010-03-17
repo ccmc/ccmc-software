@@ -34,9 +34,9 @@ extern _C_ void f_filereader_getvariable_(int * id, const char * variable, float
 extern _C_ void f_filereader_getvariablebyid_(int * id, long * variableID, float * variableData);
 extern _C_ void f_filereader_getvariablesubrange_(int * id, const char * variable, long * startIndex, long * count, float * variableData);
 extern _C_ void f_filereader_getvariablebyidsubrange_(int * id, long * variableID, long * startIndex, long * count, float * variableData);
-extern _C_ long f_filereader_getvariableid_(int * id, const char * variable);
-extern _C_ long f_filereader_close_(int * id, long * status);
-extern _C_ long f_filereader_delete_(int * id, long * status);
+extern _C_ void f_filereader_getvariableid_(int * id, const char * variable);
+extern _C_ void f_filereader_close_(int * id, long * status);
+extern _C_ void f_filereader_delete_(int * id, long * status);
 
 
 
