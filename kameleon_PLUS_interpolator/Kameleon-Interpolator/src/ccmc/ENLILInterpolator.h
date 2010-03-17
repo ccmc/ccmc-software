@@ -23,12 +23,23 @@ namespace ccmc
 	{
 		public:
 			ENLILInterpolator(Model * model);
-			float interpolate(const std::string&, const float&, const float&, const float&);
-			float interpolate(const std::string&, const float&, const float&, const float&, float&, float&, float&);
-			float interpolate(long int, const float&, const float&, const float&);
-			float interpolate(long int, const float&, const float&, const float&, float&, float&, float&);
+			float interpolate(const std::string& variable, const float& r, const float& lon, const float& lat);
+			float interpolate(const std::string& variable, const float& r, const float& lon, const float& lat, float& dr, float& dlon, float& dlat);
+			float interpolate(long variableID, const float& r, const float& lon, const float& lat);
+			float interpolate(long variableID, const float& r, const float& lon, const float& lat, float& dr, float& dlon, float& dlat);
+
 
 			virtual ~ENLILInterpolator();
+
+		private:
+			const std::vector<float> * r_data;
+			const std::vector<float> * lat_data; //phi
+			const std::vector<float> * lon_data; //theta
+			int nr;
+			int nlat;
+			int nlon;
+			float interpolate_in_block_enlil(float r, float lon, float lat, int ir, int ilon, int ilat,
+								long variableID, float& dr, float& dlon, float& dlat);
 	};
 }
 
