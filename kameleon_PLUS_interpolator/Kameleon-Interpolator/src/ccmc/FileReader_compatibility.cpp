@@ -173,37 +173,37 @@ void f_filereader_open_(int * id, const char * filename, long * status)
 
 void f_filereader_getvariable_(int * id, const char * variable, float * variableData)
 {
-
+	FileReader_getVariable(*id, variable, variableData);
 }
 
 void f_filereader_getvariablebyid_(int * id, long * variableID, float * variableData)
 {
-
+	FileReader_getVariableByID(*id, *variableID, variableData);
 }
 
 void f_filereader_getvariablesubrange_(int * id, const char * variable, long * startIndex, long * count, float * variableData)
 {
-
+	FileReader_getVariableSubRange(*id, variable, *startIndex, *count, variableData);
 }
 
 void f_filereader_getvariablebyidsubrange_(int * id, long * variableID, long * startIndex, long * count, float * variableData)
 {
-
+	FileReader_getVariableByIDSubRange(*id, *variableID, *startIndex, *count, variableData);
 }
 
 void f_filereader_getvariableid_(int * id, const char * variable, long * status)
 {
-
+	*status = FileReader_getVariableID(*id, variable);
 }
 
 void f_filereader_close_(int * id, long * status)
 {
-
+	*status = FileReader_close(*id);
 }
 
 void f_filereader_delete_(int * id, long * status)
 {
-
+	*status = FileReader_delete(*id);
 }
 
 
