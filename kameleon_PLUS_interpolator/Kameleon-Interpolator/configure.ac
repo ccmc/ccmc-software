@@ -30,7 +30,10 @@ FORTRAN_EXAMPLES=false
 AC_ARG_ENABLE([fortran-examples],
 	AC_HELP_STRING([--enable-fortran-examples],
 				   [Build the fortran (F77) examples]),
-				   [AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])],)
+				   [if test "$enableval" = "yes"; then
+				   		AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])
+				   	fi
+				   ],)
 #AM_CONDITIONAL([FORTRAN_EXAMPLES], [testx$fortran-examples = xtrue])
 #AC_ARG_WITH([boost],
 #            [AC_HELP_STRING([--with-boost=<dir>],
