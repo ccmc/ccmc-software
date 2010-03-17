@@ -26,6 +26,12 @@ AC_ARG_ENABLE([universal],
                fi
 
                CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"])
+FORTRAN_EXAMPLES=false
+AC_ARG_ENABLE([fortran-examples],
+	AC_HELP_STRING([--enable-fortran-examples],
+				   [Build the fortran (F77) examples]),
+				   [AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])],)
+#AM_CONDITIONAL([FORTRAN_EXAMPLES], [testx$fortran-examples = xtrue])
 #AC_ARG_WITH([boost],
 #            [AC_HELP_STRING([--with-boost=<dir>],
 #                            [specify the location of the boost program_options library])],
