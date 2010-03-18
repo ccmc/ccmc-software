@@ -8,15 +8,22 @@
 #include "ENLILInterpolator.h"
 #include "Constants.h"
 #include "Utils.h"
+#include <iostream>
 
 namespace ccmc
 {
 	ENLILInterpolator::ENLILInterpolator(Model * model)
 	{
 		// TODO Auto-generated constructor stub
-		r_data = modelReader->getVariableData("r");
-		lat_data = modelReader->getVariableData("phi");
-		lon_data = modelReader->getVariableData("theta");
+		this->modelReader = model;
+		this->setMissingValue(this->modelReader->getMissingValue());
+		r_string = "r";
+		lat_string = "phi";
+		lon_string = "theta";
+		r_data = modelReader->getVariableData(r_string);
+		std::cout << "r_data" << std::endl;
+		lat_data = modelReader->getVariableData(lat_string);
+		lon_data = modelReader->getVariableData(lon_string);
 		nr = r_data->size();
 		nlat = lat_data->size();
 		nlon = lon_data->size();
@@ -61,8 +68,28 @@ namespace ccmc
 		float lat_converted = -lat/ccmc::constants::Radian_in_degrees + ccmc::constants::Pi/2.f;
 
 		/** convert degrees ( 0 - 360 longitude ) to radiadns **/
-		float lon_converted = lon / ccmc::constants::Radian_in_degrees;
+		//first check to see if the degrees are between 0 and 360
 
+		/** correct for longitude angles less than 0 or having a magnitude greater
+		 * than 360.f
+		 */
+		float lon_converted = lon;
+
+		if (lon_converted < 0.f)
+		{
+			lon_converted = -lon_converted;
+			while(lon_converted > 360.f)
+				lon_converted = lon_converted - 360.f;
+			lon_converted = 360.f - lon_converted;
+
+		} else if (lon_converted > 360.f)
+		{
+			while(lon_converted > 360.f)
+				lon_converted = lon_converted - 360.f;
+
+		}
+
+		lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
 		/*
 		 #ifdef DEBUG_INTERFACE
 		 printf("DEBUG\tinput position = [r,lon,lat] = [%f,%f,%f]\n", X,Y,Z);
@@ -71,21 +98,18 @@ namespace ccmc
 		 #endif
 		 */
 
-		int ir = Utils<float>::binary_search(*r_data, 0, (*r_data).size() - 1, r);
-		int ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat);
-		int ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon);
-
+		int ir = Utils<float>::binary_search(*r_data, 0, (*r_data).size() - 1, r_converted);
+		int ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
+		int ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
+//		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
 		float value;
-		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1)
-		/*    "lon" is periodic
-		 || ( index_z < 0 ) || ( index_z >= nz-1 ) */
-		)
+		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
 			value = this->missingValue;
 		} else
 		{
-
-			value = interpolate_in_block_enlil(r, lat, lon, ir, ilon, ilat,
+//cout << "about to enter interpolate_in_block_enlil" << endl;
+			value = interpolate_in_block_enlil(r_converted, lon_converted, lat_converted, ir, ilon, ilat,
 					variableID, dr, dlon, dlat);
 
 			/****** we need to change the sign of any y vector component ... *********/
@@ -121,6 +145,7 @@ namespace ccmc
 	float ENLILInterpolator::interpolate_in_block_enlil(float r, float lon, float lat, int ir, int ilon, int ilat,
 			long variableID, float& dr, float& dlon, float& dlat)
 	{
+		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
 
 		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
@@ -130,8 +155,6 @@ namespace ccmc
 
 		float value;
 		float dr_blk, dlat_blk, dlon_blk, m_r, m_lat, m_lon, two_pi = 4 * asin(1.);
-		float data_1a, data_2a, data_3a, data_4a, data_5a, data_6a, data_7a, data_8a; /** values from actual data used for interploation equation these are floats for cdflib call because the actual variable are of type CDF_FLOAT or float... **/
-		double data_1, data_2, data_3, data_4, data_5, data_6, data_7, data_8; /** values from actual data used for interploation equation **/
 
 		/*int ix, iy, iz;*/
 		int NV_blk = nr * nlat, ilon1 = -1;
