@@ -24,10 +24,12 @@ namespace ccmc
 	{
 		public:
 			ENLILInterpolator(Model * model);
-			float interpolate(const std::string& variable, const float& r, const float& lon, const float& lat);
-			float interpolate(const std::string& variable, const float& r, const float& lon, const float& lat, float& dr, float& dlon, float& dlat);
-			float interpolate(long variableID, const float& r, const float& lon, const float& lat);
-			float interpolate(long variableID, const float& r, const float& lon, const float& lat, float& dr, float& dlon, float& dlat);
+			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon);
+			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon,
+					float& dr, float& dlat, float& dlon);
+			float interpolate(long variableID, const float& r, const float& lat, const float& lon);
+			float interpolate(long variableID, const float& r, const float& lat, const float& lon,
+					float& dr, float& dlat, float& dlon);
 
 
 			virtual ~ENLILInterpolator();
@@ -42,8 +44,14 @@ namespace ccmc
 			int nr;
 			int nlat;
 			int nlon;
-			float interpolate_in_block_enlil(float r, float lon, float lat, int ir, int ilon, int ilat,
-								long variableID, float& dr, float& dlon, float& dlat);
+			float interpolate_in_block_enlil(float r, float lon, float lat, int ir, int ilat, int ilon,
+								long variableID, float& dr, float& dlat, float& dlon);
+			float previous_r;
+			float previous_lon;
+			float previous_lat;
+			int previous_ir;
+			int previous_ilon;
+			int previous_ilat;
 	};
 }
 

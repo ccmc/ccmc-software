@@ -34,7 +34,6 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						KameleonInterpolator_compute_s.cpp \
 						KameleonInterpolator_compute_scaleByRadius.cpp \
 						KameleonInterpolator_compute_temp.cpp \
-						Kameleon_initializeConversionFactorsToVis.cpp \
 						Kameleon_initializeListOfRequiredVariablesForComponentsAndVectors.cpp \
 						Kameleon_initializeUnits.cpp \
 						Kameleon_initializeVariableAliases.cpp \

@@ -21,35 +21,40 @@ namespace ccmc
 		lat_string = "phi";
 		lon_string = "theta";
 		r_data = modelReader->getVariableData(r_string);
-		std::cout << "r_data" << std::endl;
+//		std::cout << "r_data" << std::endl;
 		lat_data = modelReader->getVariableData(lat_string);
 		lon_data = modelReader->getVariableData(lon_string);
 		nr = r_data->size();
 		nlat = lat_data->size();
 		nlon = lon_data->size();
 
+		previous_r = missingValue;
+		previous_lon = missingValue;
+		previous_lat = missingValue;
+
+
 	}
 
-	float ENLILInterpolator::interpolate(const std::string& variable, const float& r, const float& lon,
-			const float& lat)
+	float ENLILInterpolator::interpolate(const std::string& variable, const float& r, const float& lat,
+			const float& lon)
 	{
 		long variable_id = modelReader->getVariableID(variable);
 		float dc0, dc1, dc2;
-		return interpolate(variable_id, r, lon, lat, dc0, dc1, dc2);
+		return interpolate(variable_id, r, lat, lon, dc0, dc1, dc2);
 
 	}
 
-	float ENLILInterpolator::interpolate(const std::string& variable, const float& r, const float& lon,
-			const float& lat, float& dr, float& dlon, float& dlat)
+	float ENLILInterpolator::interpolate(const std::string& variable, const float& r, const float& lat,
+			const float& lon, float& dr, float& dlat, float& dlon)
 	{
 		long variable_id = modelReader->getVariableID(variable);
 
-		return interpolate(variable_id, r, lon, lat, dr, dlon, dlat);
+		return interpolate(variable_id, r, lat, lon, dr, dlat, dlon);
 
 	}
 
-	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lon,
-			const float& lat, float& dr, float& dlon, float& dlat)
+	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lat,
+			const float& lon, float& dr, float& dlat, float& dlon)
 	{
 
 		int change_sign_flag = 0;
@@ -97,11 +102,22 @@ namespace ccmc
 		 printf("DEBUG\t\t\t\t\t\t\t\t\tconverted position = [x,y,z]       = [%f,%f,%f]\n", local_x,local_y,local_z);
 		 #endif
 		 */
+		int ir, ilat, ilon;
+		if (previous_r == r && previous_lon == lon && previous_lat == lat)
+		{
+			ir = previous_ir;
+			ilat = previous_ilat;
+			ilon = previous_ilon;
+		} else
+		{
+					//first, find the cell
+			ir = Utils<float>::binary_search(*r_data, 0, (*r_data).size() - 1, r_converted);
+			ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
+			ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
 
-		int ir = Utils<float>::binary_search(*r_data, 0, (*r_data).size() - 1, r_converted);
-		int ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
-		int ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
-//		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
+		}
+
+		//		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
 		float value;
 		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
@@ -109,8 +125,8 @@ namespace ccmc
 		} else
 		{
 //cout << "about to enter interpolate_in_block_enlil" << endl;
-			value = interpolate_in_block_enlil(r_converted, lon_converted, lat_converted, ir, ilon, ilat,
-					variableID, dr, dlon, dlat);
+			value = interpolate_in_block_enlil(r_converted, lat_converted, lon_converted, ir, ilat, ilon,
+					variableID, dr, dlat, dlon);
 
 			/****** we need to change the sign of any y vector component ... *********/
 
@@ -127,13 +143,19 @@ namespace ccmc
 
 		}
 
+		previous_ir = ir;
+		previous_ilon = ilon;
+		previous_ilat = ilat;
+		previous_r = r;
+		previous_lon = lon;
+		previous_lat = lat;
 		return value;
 	}
 
-	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lon, const float& lat)
+	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lat, const float& lon)
 	{
 		float dc0, dc1, dc2;
-		return interpolate(variableID, r, lon, lat, dc0, dc1, dc2);
+		return interpolate(variableID, r, lat, lon, dc0, dc1, dc2);
 
 	}
 
@@ -142,17 +164,17 @@ namespace ccmc
 		// TODO Auto-generated destructor stub
 	}
 
-	float ENLILInterpolator::interpolate_in_block_enlil(float r, float lon, float lat, int ir, int ilon, int ilat,
-			long variableID, float& dr, float& dlon, float& dlat)
+	float ENLILInterpolator::interpolate_in_block_enlil(float r, float lat, float lon, int ir, int ilat, int ilon,
+			long variableID, float& dr, float& dlat, float& dlon)
 	{
-		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
+//		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
 
 		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
 		const std::vector<float> * vData = modelReader->getVariableDataByID(variableID);
 		if (vData == NULL)
 			main_memory_flag = false;
-
+//std::cout << "variable_id: " << variableID << " main_memory_flag: " << main_memory_flag << std::endl;
 		float value;
 		float dr_blk, dlat_blk, dlon_blk, m_r, m_lat, m_lon, two_pi = 4 * asin(1.);
 

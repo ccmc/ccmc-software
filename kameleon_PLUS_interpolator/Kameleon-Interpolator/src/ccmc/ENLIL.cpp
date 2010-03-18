@@ -26,10 +26,9 @@ namespace ccmc
 	{
 		long status;
 		status = openFile(filename);
-
-		loadVariable(r_string);
-		loadVariable(lat_string);
-		loadVariable(lon_string);
+		loadVariable("r");
+		loadVariable("phi");
+		loadVariable("theta");
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
 	}

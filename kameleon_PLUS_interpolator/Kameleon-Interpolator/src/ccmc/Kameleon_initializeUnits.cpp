@@ -79,15 +79,15 @@ namespace ccmc
 		variableVisUnits["beta"] = "";
 		if (modelName == "enlil")
 		{
-			variableVisUnits["ux"] = "km/s";
-			variableVisUnits["uy"] = "km/s";
-			variableVisUnits["uz"] = "km/s";
-			variableVisUnits["bx"] = "nT";
-			variableVisUnits["by"] = "nT";
-			variableVisUnits["bz"] = "nT";
-			variableVisUnits["b1x"] = "nT";
-			variableVisUnits["b1y"] = "nT";
-			variableVisUnits["b1z"] = "nT";
+			variableVisUnits["ur"] = "km/s";
+			variableVisUnits["uphi"] = "km/s";
+			variableVisUnits["utheta"] = "km/s";
+			variableVisUnits["br"] = "nT";
+			variableVisUnits["bphi"] = "nT";
+			variableVisUnits["btheta"] = "nT";
+			variableVisUnits["b1r"] = "nT";
+			variableVisUnits["b1phi"] = "nT";
+			variableVisUnits["b1theta"] = "nT";
 		}
 
 	}

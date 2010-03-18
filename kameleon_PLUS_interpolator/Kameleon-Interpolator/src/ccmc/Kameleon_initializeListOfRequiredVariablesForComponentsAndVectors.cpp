@@ -163,23 +163,22 @@ namespace ccmc
 
 		if (modelName == "enlil")
 		{
-			listOfRequiredVariablesForComponents["b"] = createVectorFromList(3, "b1x", "b1y", "b1z");
-			listOfRequiredVariablesForComponents[bx_] = createVectorFromList(1, "b1x");
-			listOfRequiredVariablesForComponents[by_] = createVectorFromList(1, "b1y");
-			listOfRequiredVariablesForComponents[bz_] = createVectorFromList(1, "b1z");
-			listOfRequiredVariablesForComponents["b1"] = createVectorFromList(3, "b1x", "b1y", "b1z");
-			listOfRequiredVariablesForComponents["b1x"] = createVectorFromList(1, "b1x");
-			listOfRequiredVariablesForComponents["b1y"] = createVectorFromList(1, "b1y");
-			listOfRequiredVariablesForComponents["b1z"] = createVectorFromList(1, "b1z");
-			listOfRequiredVariablesForComponents["br"] = createVectorFromList(1, "b1x");
-			listOfRequiredVariablesForComponents["btheta"] = createVectorFromList(1, "b1y");
-			listOfRequiredVariablesForComponents["bphi"] = createVectorFromList(1, "b1z");
-			listOfRequiredVariablesForComponents["e"] = createVectorFromList(6, "b1x", "b1y", "b1z", ux_, uy_, uz_);
-			listOfRequiredVariablesForComponents["ex"] = createVectorFromList(4, "b1y", "b1z", uy_, uz_);
-			listOfRequiredVariablesForComponents["e_r"] = createVectorFromList(4, "b1y", "b1z", uy_, uz_);
-			listOfRequiredVariablesForComponents["ey"] = createVectorFromList(4, "b1x", "b1z", ux_, uz_);
-			listOfRequiredVariablesForComponents["e_lat"] = createVectorFromList(4, "b1x", "b1z", ux_, uz_);
-			listOfRequiredVariablesForComponents["ez"] = createVectorFromList(4, "b1x", "b1y", ux_, uy_);
+			listOfRequiredVariablesForComponents["b"] = createVectorFromList(3, "br", "bphi", "btheta");
+			listOfRequiredVariablesForComponents["br"] = createVectorFromList(1, "br");
+			listOfRequiredVariablesForComponents["bphi"] = createVectorFromList(1, "bphi");
+			listOfRequiredVariablesForComponents["btheta"] = createVectorFromList(1, "btheta");
+			listOfRequiredVariablesForComponents["b1"] = createVectorFromList(3, "b1r", "b1phi", "b1theta");
+			listOfRequiredVariablesForComponents["b1r"] = createVectorFromList(1, "b1r");
+			listOfRequiredVariablesForComponents["b1phi"] = createVectorFromList(1, "b1phi");
+			listOfRequiredVariablesForComponents["b1theta"] = createVectorFromList(1, "b1theta");
+			listOfRequiredVariablesForComponents["e"] = createVectorFromList(6, "b1r", "b1phi", "b1theta", "ur", "uphi", "utheta");
+			listOfRequiredVariablesForComponents["er"] = createVectorFromList(4, "b1phi", "b1theta", "uphi", "utheta");
+			listOfRequiredVariablesForComponents["e_r"] = createVectorFromList(4, "b1phi", "b1theta", "uphi", "utheta");
+			listOfRequiredVariablesForComponents["ephi"] = createVectorFromList(4, "b1r", "b1theta", "ur", "utheta");
+			listOfRequiredVariablesForComponents["e_phi"] = createVectorFromList(4, "b1r", "b1theta", "ur", "utheta");
+			listOfRequiredVariablesForComponents["etheta"] = createVectorFromList(4, "b1r", "b1phi", "ur", "uphi");
+			listOfRequiredVariablesForComponents["e_theta"] = createVectorFromList(4, "b1r", "b1phi", "ur", "uphi");
+
 		}
 		if (modelName == "mas")
 		{
