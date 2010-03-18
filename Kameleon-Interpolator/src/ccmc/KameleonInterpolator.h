@@ -23,19 +23,44 @@ namespace ccmc
 	{
 		public:
 			KameleonInterpolator(Model * modelReader);
-			float interpolate(const std::string&, const float& c0, const float& c1, const float& c2);
-			float interpolate(const std::string&, const float& c0, const float& c1, const float& c2, float& dc0,
+
+			/**
+			 * OpenGGCM and BATSRUS: c0,c1,c2 corresponds to x,y,z, respectively.  ENLIL and MAS: c0,c1,c2 corresponds
+			 * to r,phi(latitude), theta(longitude), respectively
+			 * @param variable
+			 * @param c0
+			 * @param c1
+			 * @param c2
+			 */
+			float interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2);
+
+			/**
+			 * OpenGGCM and BATSRUS: c0,c1,c2 corresponds to x,y,z, respectively.  ENLIL and MAS: c0,c1,c2 corresponds
+			 * to r,phi(latitude), theta(longitude), respectively
+			 * @param variable
+			 * @param c0
+			 * @param c1
+			 * @param c2
+			 * @param dc0
+			 * @param dc1
+			 * @param dc2
+			 */
+			float interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2, float& dc0,
 					float& dc1, float& dc2);
-			float interpolate(long, const float& c0, const float& c1, const float& c2);
-			float interpolate(long, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
+
+			/**
+			 * OpenGGCM and BATSRUS: c0,c1,c2 corresponds to x,y,z, respectively.  ENLIL and MAS: c0,c1,c2 corresponds
+			 * to r,phi(latitude), theta(longitude), respectively
+			 * @param variable_id
+			 * @param c0
+			 * @param c1
+			 * @param c2
+			 */
+			float interpolate(long variable_id, const float& c0, const float& c1, const float& c2);
+			float interpolate(long variable_id, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 					float& dc2);
 
 
-			//Point interpolate_vector(const std::string&, const float& c0, const float& c1, const float& c2);
-			//Point interpolate_vector(const std::string&, const float& c0, const float& c1, const float& c2, float& dc0,
-			//		float& dc1, float& dc2);
-			//	float interpolateSimple(std::string, const float& c0, const float& c1, const float& c2);
-			//	float interpolateSimple(std::string, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1, float& dc2);
 			virtual ~KameleonInterpolator();
 		private:
 			std::string modelName;
@@ -178,12 +203,7 @@ namespace ccmc
 			float compute_gradient(const std::string& variable, const float& c0, const float& c1,
 					const float& c2, float& d0, float& d1, float& d2);
 			//declare strings that will be used frequently during interpolation calls.  Definition occurs in the constructor
-			std::string j_, b_, jx_, jy_, jz_, bx_, by_, bz_, ux_, uy_, uz_, ex_, ey_, ez_, n_, rho_, p_;
-			std::string batsrus_;
-			std::string open_ggcm_;
-			std::string ucla_ggcm_;
-			std::string mas_;
-			std::string enlil_;
+
 			void initializeConversionFactorsToVis();
 			float getConversionFactorToVis(const std::string& variable);
 	};

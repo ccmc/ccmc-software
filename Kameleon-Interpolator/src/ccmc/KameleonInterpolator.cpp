@@ -17,28 +17,7 @@ namespace ccmc
 		initializeCalculationMethods();
 		initializeConversionFactorsToVis();
 		interpolator = modelReader->createNewInterpolator();
-		j_ = "j";
-		b_ = "b";
-		jx_ = "jx";
-		jy_ = "jy";
-		jz_ = "jz";
-		bx_ = "bx";
-		by_ = "by";
-		bz_ = "bz";
-		n_ = "n";
-		rho_ = "rho";
-		ux_ = "ux";
-		uy_ = "uy";
-		uz_ = "uz";
-		ex_ = "ex";
-		ey_ = "ey";
-		ez_ = "ez";
-		p_ = "p";
-		batsrus_ = "batsrus";
-		open_ggcm_ = "open_ggcm";
-		ucla_ggcm_ = "ucla_ggcm";
-		mas_ = "mas";
-		enlil_ = "enlil";
+
 
 	}
 
@@ -95,7 +74,18 @@ namespace ccmc
 	}
 
 	/**
-	 * Does nothing.  A variable_id won't work well, since derived variables can be requested, which do not exist in the data.
+	 * A variable_id won't work well, since derived variables can be requested, which do not exist in the data.
+	 *
+	 *
+	 * OpenGGCM and BATSRUS: c0,c1,c2 corresponds to x,y,z, respectively.  ENLIL and MAS: c0,c1,c2 corresponds
+	 * to r,phi(latitude), theta(longitude), respectively
+	 * @param variable
+	 * @param c0
+	 * @param c1
+	 * @param c2
+	 * @param dc0
+	 * @param dc1
+	 * @param dc2
 	 */
 	float KameleonInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
@@ -144,17 +134,20 @@ namespace ccmc
 			//conversionFactorsToVis["bx"] = 1.e9;
 			//conversionFactorsToVis["by"] = 1.e9;
 			//conversionFactorsToVis["bz"] = 1.e9;
-			conversionFactorsToVis["b1x"] = 1.e9;
-			conversionFactorsToVis["b1y"] = 1.e9;
-			conversionFactorsToVis["b1z"] = 1.e9;
-			conversionFactorsToVis["ux"] = 1.e-3;
-			conversionFactorsToVis["uy"] = 1.e-3;
-			conversionFactorsToVis["uz"] = 1.e-3;
+			conversionFactorsToVis["br"] = 1.e9;
+			conversionFactorsToVis["bphi"] = 1.e9;
+			conversionFactorsToVis["btheta"] = 1.e9;
+			conversionFactorsToVis["b1r"] = 1.e9;
+			conversionFactorsToVis["b1phi"] = 1.e9;
+			conversionFactorsToVis["b1theta"] = 1.e9;
+			conversionFactorsToVis["ur"] = 1.e-3;
+			conversionFactorsToVis["uphi"] = 1.e-3;
+			conversionFactorsToVis["utheta"] = 1.e-3;
 			conversionFactorsToVis["n"] = 1.e-6 * ccmc::constants::Avogadro;
 			conversionFactorsToVis["rho"] = 1.e3;
-			conversionFactorsToVis["ex"] = 1.e-3;
-			conversionFactorsToVis["ey"] = 1.e-3;
-			conversionFactorsToVis["ez"] = 1.e-3;
+			conversionFactorsToVis["er"] = 1.e-3;
+			conversionFactorsToVis["ephi"] = 1.e-3;
+			conversionFactorsToVis["etheta"] = 1.e-3;
 
 			//blah
 		} else if (modelName == "mas")

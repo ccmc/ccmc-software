@@ -167,33 +167,17 @@ namespace ccmc
 			variableAliases["T"] = "t";
 			variableAliases["P"] = "p";
 
-			variableAliases["vx"] = "ux";
-			variableAliases["vz"] = "uz";
-			variableAliases["vy"] = "uy";
+			variableAliases["vr"] = "ur";
+			variableAliases["vtheta"] = "utheta";
+			variableAliases["vphi"] = "uphi";
 
-			variableAliases["V_r"] = "ux";
-			variableAliases["V_lon"] = "uz";
-			variableAliases["V_lat"] = "uy";
+			variableAliases["V_r"] = "ur";
+			variableAliases["V_lon"] = "utheta";
+			variableAliases["V_lat"] = "uphi";
 
-			variableAliases["ur"] = "ux";
-			variableAliases["uphi"] = "uz";
-			variableAliases["utheta"] = "uy";
-
-			variableAliases["vr"] = "ux";
-			variableAliases["vphi"] = "uz";
-			variableAliases["vtheta"] = "uy";
-
-			variableAliases["bx"] = "b1x";
-			variableAliases["by"] = "b1y";
-			variableAliases["bz"] = "b1z";
-
-			variableAliases["br"] = "b1x";
-			variableAliases["bphi"] = "b1z";
-			variableAliases["btheta"] = "b1y";
-
-			variableAliases["B_r"] = "b1x";
-			variableAliases["B_lon"] = "b1z";
-			variableAliases["B_lat"] = "b1y";
+			variableAliases["B_r"] = "br";
+			variableAliases["B_lon"] = "btheta";
+			variableAliases["B_lat"] = "bphi";
 
 			variableAliases["N*r^2"] = "n*r^2";
 

@@ -42,7 +42,7 @@ namespace ccmc
 		{
 			status = model->open(filename);
 
-
+std::cout << "initializing extra information" << std::endl;
 			//current_cdf_id = get_current_CDFid();
 			initializeExtraInformation();
 
