@@ -1,4 +1,5 @@
-bin_PROGRAMS = derived kameleon-compat coord_test open_ggcm magnetogram  filereader_compat $(FILEREADER_FORTRAN)
+bin_PROGRAMS = derived kameleon-compat coord_test open_ggcm \
+				magnetogram  filereader_compat enlil $(FILEREADER_FORTRAN)
 EXTRA_PROGRAMS = filereader_compat_f
 
 derived_SOURCES = derived_prog.cpp
@@ -32,6 +33,10 @@ coord_test_CXXFLAGS = -I@srcdir@/.. -I@srcdir@/../ccmc
 open_ggcm_SOURCES = open_ggcm_test.cpp
 open_ggcm_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
 open_ggcm_CXXFLAGS = -I@srcdir@/..
+
+enlil_SOURCES = enlil_test.cpp
+enlil_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
+enlil_CXXFLAGS = -I@srcdir@/..
 
 magnetogram_SOURCES = magnetogram_test.cpp
 magnetogram_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
