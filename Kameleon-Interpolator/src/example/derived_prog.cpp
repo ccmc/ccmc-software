@@ -8,8 +8,9 @@
 #include <string>
 #include <ctime>
 #include <ccmc/Kameleon.h>
+#include <boost/lexical_cast.hpp>
 //#include <ccmc/Kameleon_compatibility.h>
-//#include <google/profiler.h>
+#include <google/profiler.h>
 //#include <ccmc/kameleon_adjusted.h>
 #define LENGTH 500;
 int main (int argc, char * argv[])
@@ -49,18 +50,25 @@ int main (int argc, char * argv[])
 	//}
 	//std::cout << "after po options" << std::endl;
 
-	if (argc != 3)
+	float c0,c1,c2;
+	if (argc != 6)
 	{
-		cout << "derived <filename> variable" << endl;
+		cout << "derived <filename> variable c0 c1 c2\n";
+		cout << "\tOpenGGCM, BATSRUS: x y z\n";
+		cout << "\tENLIL, MAS: r phi(latitude) theta(longitude)" << endl;
 		exit(1);
 	}
 	filename = argv[1];
 	variable = argv[2];
+	c0 = boost::lexical_cast<float>(argv[3]);
+	c1 = boost::lexical_cast<float>(argv[4]);
+	c2 = boost::lexical_cast<float>(argv[5]);
 	kameleon.open(filename);
-
+	std::cout << "Opened file: " << filename << std::endl;
 	std::string rho_ = "rho";
 	std::string n_ = "n";
 	std::string pram_ = "pram";
+	std::cout << "Loading variables" << std::endl;
 	kameleon.loadVariable(variable);
 
 	std::cout << "Creating new interpolator" << std::endl;
@@ -72,25 +80,26 @@ int main (int argc, char * argv[])
 	float conversion = 1.0f;
 	//float conversion = kameleon.getConversionFactorToVis(variable);
 	float value;
-	std::string bx_ = "bx";
+	//std::string bx_ = "br";
 	float convertedValue;
-	//ProfilerStart("derived.prof");
+	ProfilerStart("derived.prof");
 	//Interpolations.  The i%2 ensures the worst case scenario (previous block differe88nt than current block
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 100000000; i++)
 	{
-		if (i % 100000 == 0)
+		if (i % 100 == 0)
 		{
-			std::cout << "i: " << i << std::endl;
+			//std::cout << "i: " << i << std::endl;
 		}
-		value = interpolator->interpolate(variable, -10.0f + 6.f * (float) (i % 2), -2.0f, 0.0f);
+		value = interpolator->interpolate(variable, c0,c1,c2 );
 		convertedValue = value * conversion;
 
 	}
+	ProfilerStop();
 	std::cout << "conversionFactor: " << conversion << std::endl;
 	std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
 		convertedValue << " " << kameleon.getVisUnit(variable) << std::endl;
 
-	//ProfilerStop();
+
 	finish = clock();
 	float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
 
