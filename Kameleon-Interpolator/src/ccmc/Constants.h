@@ -18,12 +18,12 @@ namespace ccmc
 {
 	namespace constants
 	{
-		float Boltzmann = 1.3806503e-23f;
-		float Avogadro = 6.0221415e23f;
-		float Pi = 3.14159265;
-		float AU_in_meters = 149598.e6;
-		float Radian_in_degrees = 57.2957795;
-		float Degree_in_radians = 0.0174532925;
+		static float Boltzmann = 1.3806503e-23f;
+		static float Avogadro = 6.0221415e23f;
+		static float Pi = 3.14159265;
+		static float AU_in_meters = 149598.e6;
+		static float Radian_in_degrees = 57.2957795;
+		static float Degree_in_radians = 0.0174532925;
 
 	}
 }
