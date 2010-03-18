@@ -47,6 +47,8 @@ namespace ccmc
 			int getNumberOfGlobalAttributes();
 			int getNumberOfVariables();
 			int getNumberOfVariableAttributes();
+			long getNumberOfRecords(const std::string& variable);
+			long getNumberOfRecords(long variable_id);
 			long getVariableID(const std::string& variable);
 			std::string getVariableName(long variable_id);
 			Attribute getGlobalAttribute(long i);
