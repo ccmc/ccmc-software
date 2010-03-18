@@ -10,6 +10,7 @@
 
 #include "Interpolator.h"
 #include "Model.h"
+#include <string>
 
 namespace ccmc
 {
@@ -35,6 +36,9 @@ namespace ccmc
 			const std::vector<float> * r_data;
 			const std::vector<float> * lat_data; //phi
 			const std::vector<float> * lon_data; //theta
+			std::string r_string;
+			std::string lat_string;
+			std::string lon_string;
 			int nr;
 			int nlat;
 			int nlon;
