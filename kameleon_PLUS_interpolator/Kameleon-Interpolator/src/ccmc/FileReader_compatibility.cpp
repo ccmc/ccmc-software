@@ -134,6 +134,68 @@ long FileReader_getVariableID(int id, const char * variable)
 		return -1L;
 }
 
+void FileReader_getVariableInt(int id, const char * variable, int * variableData)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		std::vector<int>* vData = (*iter).second->getVariableInt(variable);
+		for (int i = 0; i < vData->size(); i++)
+		{
+			variableData[i] = (*vData)[i];
+		}
+		delete vData;
+	}
+}
+
+int FileReader_getNumberOfGlobalAttributes(int id)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		return (*iter).second->getNumberOfGlobalAttributes();
+	} else
+		return -1;
+}
+
+int FileReader_getNumberOfVariables(int id)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		return (*iter).second->getNumberOfVariables();
+	} else
+		return -1;
+}
+
+int FileReader_getNumberOfVariableAttributes(int id)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		return (*iter).second->getNumberOfVariableAttributes();
+	} else
+		return -1;
+}
+
+long FileReader_getNumberOfRecords(int id, const std::string& variable)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		return (*iter).second->getNumberOfRecords(variable);
+	}
+}
+
+long FileReader_getNumberOfRecordsByID(int id, long variable_id)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		return (*iter).second->getNumberOfRecords(variable_id);
+	}
+}
+
 long FileReader_close(int id)
 {
 	map_i_F::iterator iter = fileReaderObjects.find(id);
@@ -194,6 +256,36 @@ void f_filereader_getvariablebyidsubrange_(int * id, long * variableID, long * s
 void f_filereader_getvariableid_(int * id, const char * variable, long * status)
 {
 	*status = FileReader_getVariableID(*id, variable);
+}
+
+void f_filereader_getvariableint(int id, const char * variable, int * variableData)
+{
+
+}
+
+void f_filereader_getnumberofglobalattributes(long * num)
+{
+
+}
+
+void f_filereader_getnumberofvariables(long * num)
+{
+
+}
+
+void f_filereader_getnumberofvariableattributes(long * num)
+{
+
+}
+
+void f_filereader_getnumberofrecords(int * id, const char * variable, long * num)
+{
+
+}
+
+void f_filereader_getnumberofrecordsbyid(int * id, long * variable_id, long * num)
+{
+
 }
 
 void f_filereader_close_(int * id, long * status)

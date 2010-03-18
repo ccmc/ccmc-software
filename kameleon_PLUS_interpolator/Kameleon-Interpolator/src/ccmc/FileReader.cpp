@@ -845,6 +845,23 @@ namespace ccmc
 		}
 	}
 
+	long FileReader::getNumberOfRecords(const std::string& variable)
+	{
+		//std::cout << "reading " << variable << std::endl;
+		//get variable number
+		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+
+		return getNumberOfRecords(variableNum);
+	}
+
+	long FileReader::getNumberOfRecords(long variable_id)
+	{
+		long counts[1];
+		//get dim sizes
+		CDFgetzVarDimSizes(current_file_id, variable_id, counts);
+		return counts[0];
+	}
+
 	/**
 	 * Destructor
 	 */

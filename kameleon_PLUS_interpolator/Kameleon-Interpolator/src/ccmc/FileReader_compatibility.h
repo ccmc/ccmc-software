@@ -24,8 +24,15 @@ extern _C_ void FileReader_getVariableByID(int id, long variableID, float * vari
 extern _C_ void FileReader_getVariableSubRange(int id, const char * variable, long startIndex, long count, float * variableData);
 extern _C_ void FileReader_getVariableByIDSubRange(int id, long variableID, long startIndex, long count, float * variableData);
 extern _C_ long FileReader_getVariableID(int id, const char * variable);
+extern _C_ void FileReader_getVariableInt(int id, const char * variable, int * variableData);
+extern _C_ int FileReader_getNumberOfGlobalAttributes(int id);
+extern _C_ int FileReader_getNumberOfVariables(int id);
+extern _C_ int FileReader_getNumberOfVariableAttributes(int id);
+extern _C_ long FileReader_getNumberOfRecords(int id, const char * variable);
+extern _C_ long FileReader_getNumberOfRecordsByID(int id, long variable_id);
 extern _C_ long FileReader_close(int id);
 extern _C_ long FileReader_delete(int id);
+
 
 /** FileReader fortran wrappers **/
 extern _C_ void f_filereader_create_(int * id);
@@ -35,6 +42,12 @@ extern _C_ void f_filereader_getvariablebyid_(int * id, long * variableID, float
 extern _C_ void f_filereader_getvariablesubrange_(int * id, const char * variable, long * startIndex, long * count, float * variableData);
 extern _C_ void f_filereader_getvariablebyidsubrange_(int * id, long * variableID, long * startIndex, long * count, float * variableData);
 extern _C_ void f_filereader_getvariableid_(int * id, const char * variable);
+extern _C_ void f_filereader_getvariableint(int * id, const char * variable, int * variableData);
+extern _C_ void f_filereader_getnumberofglobalattributes(int * id, long * num);
+extern _C_ void f_filereader_getnumberofvariables(int * id, long * num);
+extern _C_ void f_filereader_getnumberofvariableattributes(int * id, long * num);
+extern _C_ void f_filereader_getnumberofrecords(int id, const char * variable, long * num);
+extern _C_ void f_filereader_getnumberofrecordsbyid(int id, long variable_id, long * num);
 extern _C_ void f_filereader_close_(int * id, long * status);
 extern _C_ void f_filereader_delete_(int * id, long * status);
 
