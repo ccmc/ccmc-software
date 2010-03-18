@@ -8,6 +8,7 @@
 #ifndef ENLIL_H_
 #define ENLIL_H_
 
+#include <string>
 #include "Model.h"
 #include "Interpolator.h"
 
