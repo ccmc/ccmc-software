@@ -37,9 +37,11 @@ namespace ccmc
 			model = new MAS();
 		}
 
+
 		long status = -1;
 		if (model != NULL)
 		{
+			model->setModelName(modelName);
 			status = model->open(filename);
 
 std::cout << "initializing extra information" << std::endl;
