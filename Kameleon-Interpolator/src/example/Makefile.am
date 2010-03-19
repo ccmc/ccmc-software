@@ -1,6 +1,7 @@
 bin_PROGRAMS = derived kameleon-compat coord_test open_ggcm \
-				magnetogram  filereader_compat enlil $(FILEREADER_FORTRAN)
-EXTRA_PROGRAMS = filereader_compat_f
+				magnetogram  filereader_compat enlil $(FILEREADER_FORTRAN) \
+				$(TRACER) $(TRACER_C)
+EXTRA_PROGRAMS = filereader_compat_f tracer tracer_c
 
 derived_SOURCES = derived_prog.cpp
 #derived_LDFLAGS = -L@srcdir@/../ccmc -lkameleon-interpolator -lkameleon -lcdf
@@ -41,3 +42,11 @@ enlil_CXXFLAGS = -I@srcdir@/..
 magnetogram_SOURCES = magnetogram_test.cpp
 magnetogram_LDFLAGS = @builddir@/../ccmc/libkameleon-interpolator.la
 magnetogram_CXXFLAGS = -I@srcdir@/..
+
+tracer_SOURCES = tracer_prog.cpp
+tracer_CXXFLAGS = -I@srcdir@/..
+tracer_LDADD = @builddir@/../ccmc/libkameleon-tracer.la
+
+tracer_c_SOURCES = tracer_prog.c
+tracer_c_CFLAGS = -I@srcdir@/..
+tracer_c_LDADD = @builddir@/../ccmc/libkameleon-tracer.la -lstdc++
