@@ -1,9 +1,12 @@
 #include "KameleonInterpolator.h"
+#include "StringConstants.h"
 #include "math.h"
 #include <string>
 
 namespace ccmc
 {
+	using namespace ccmc::strings::variables;
+	using namespace ccmc::strings::models;
 
 	/**
 	 * Computes the magnitude of the vector specified.  The vector magnitude does not directly exists in the data,
