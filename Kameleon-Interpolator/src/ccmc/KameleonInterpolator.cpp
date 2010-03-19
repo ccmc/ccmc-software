@@ -10,14 +10,14 @@
 
 namespace ccmc
 {
-	KameleonInterpolator::KameleonInterpolator(Model * modelReader)
+	KameleonInterpolator::KameleonInterpolator(Model * model)
 	{
 
-		this->modelReader = modelReader;
+		this->modelReader = model;
+		this->modelName = modelReader->getModelName();
 		initializeCalculationMethods();
 		initializeConversionFactorsToVis();
 		interpolator = modelReader->createNewInterpolator();
-
 
 	}
 
@@ -44,7 +44,7 @@ namespace ccmc
 				return missingValue;
 				//cerr << "***Derived::interpolate: Interpolate returned the missing value for variable " << variable_string << endl;
 			}
-			//interp_value = interp_value*this->getConversionFactorToVis(variable);
+			interp_value = interp_value*this->getConversionFactorToVis(variable);
 		} else
 		{
 			// Variable: Wish me luck!
@@ -55,6 +55,7 @@ namespace ccmc
 				return missingValue;
 				//cerr << "***Derived::interpolate: Interpolate returned the missing value for variable " << variable_string << endl;
 			}
+			interp_value *= this->getConversionFactorToVis(variable);
 
 		}
 
@@ -93,6 +94,7 @@ namespace ccmc
 		// Variable: Wish me luck!
 		// Derived: Good luck variable!
 		float interp_value = interpolateSimple(variable_id, c0, c1, c2, dc0, dc1, dc2);
+		interp_value *= this->getConversionFactorToVis(this->modelReader->getVariableName(variable_id));
 		return interp_value;
 	}
 
@@ -214,6 +216,26 @@ namespace ccmc
 		{
 			return 1.0f;
 		}
+	}
+
+	std::vector<float>* KameleonInterpolator::interpolateSimple(std::vector<std::string>& variables, const float& c0, const float& c1, const float& c2)
+	{
+		std::vector<float>* interpolatedData = new std::vector<float>();
+		for (int i = 0; i < variables.size(); i++)
+		{
+			interpolatedData->push_back(this->interpolateSimple(variables[i], c0, c1, c2));
+		}
+		return interpolatedData;
+	}
+
+	std::vector<float>* KameleonInterpolator::interpolateSimple(std::vector<long>& variables, const float& c0, const float& c1, const float& c2)
+	{
+		std::vector<float>* interpolatedData = new std::vector<float>();
+		for (int i = 0; i < variables.size(); i++)
+		{
+			interpolatedData->push_back(this->interpolateSimple(variables[i], c0, c1, c2));
+		}
+		return interpolatedData;
 	}
 
 	KameleonInterpolator::~KameleonInterpolator()
