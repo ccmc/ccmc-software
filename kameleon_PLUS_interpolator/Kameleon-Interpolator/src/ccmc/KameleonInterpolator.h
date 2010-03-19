@@ -203,7 +203,8 @@ namespace ccmc
 			float compute_gradient(const std::string& variable, const float& c0, const float& c1,
 					const float& c2, float& d0, float& d1, float& d2);
 			//declare strings that will be used frequently during interpolation calls.  Definition occurs in the constructor
-
+			std::vector<float>* interpolateSimple(std::vector<std::string>& variables, const float& c0, const float& c1, const float& c2);
+			std::vector<float>* interpolateSimple(std::vector<long>& variables, const float& c0, const float& c1, const float& c2);
 			void initializeConversionFactorsToVis();
 			float getConversionFactorToVis(const std::string& variable);
 	};
