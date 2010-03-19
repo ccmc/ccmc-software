@@ -1,10 +1,12 @@
 #include "KameleonInterpolator.h"
+#include "Constants.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 namespace ccmc
 {
+	using namespace ccmc::constants;
 	/**
 	 * Interpolates the variable at the position specified.  Automatically selects the appropriate basic interpolator of the Kameleon
 	 * library for the model currently opened.
@@ -45,7 +47,6 @@ namespace ccmc
 		float interp_value = missingValue;//model->getMissingValue();
 		int flag1 = 0;
 		int flag2 = 1;
-		float mToAU = 6.68458134e-12;
 
 
 
@@ -53,7 +54,7 @@ namespace ccmc
 		interp_value = interpolator->interpolate(variable, positionComponent1, positionComponent2, positionComponent3,
 				dComponent1, dComponent2, dComponent3);
 		//delete interpolator;
-		return (interp_value * interpolator->getConversionFactor(variable));
+		return (interp_value);
 
 	}
 
@@ -97,7 +98,7 @@ namespace ccmc
 		float interp_value = missingValue;//model->getMissingValue();
 		int flag1 = 0;
 		int flag2 = 1;
-		float mToAU = 6.68458134e-12;
+
 
 
 
@@ -106,7 +107,7 @@ namespace ccmc
 				dComponent1, dComponent2, dComponent3);
 		//delete interpolator;
 
-		return interp_value  * interpolator->getConversionFactor(variable_id);
+		return interp_value;
 
 	}
 }
