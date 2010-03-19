@@ -10,7 +10,7 @@
 #include <ccmc/Kameleon.h>
 #include <boost/lexical_cast.hpp>
 //#include <ccmc/Kameleon_compatibility.h>
-#include <google/profiler.h>
+//#include <google/profiler.h>
 //#include <ccmc/kameleon_adjusted.h>
 #define LENGTH 500;
 int main (int argc, char * argv[])
@@ -82,7 +82,7 @@ int main (int argc, char * argv[])
 	float value;
 	//std::string bx_ = "br";
 	float convertedValue;
-	ProfilerStart("derived.prof");
+//	ProfilerStart("derived.prof");
 	//Interpolations.  The i%2 ensures the worst case scenario (previous block differe88nt than current block
 	for (int i = 0; i < 1000; i++)
 	{
@@ -94,7 +94,7 @@ int main (int argc, char * argv[])
 		convertedValue = value * conversion;
 
 	}
-	ProfilerStop();
+//	ProfilerStop();
 	std::cout << "conversionFactor: " << conversion << std::endl;
 	std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
 		convertedValue << " " << kameleon.getVisUnit(variable) << std::endl;
