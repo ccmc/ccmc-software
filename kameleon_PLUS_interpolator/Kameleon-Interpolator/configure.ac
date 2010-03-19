@@ -32,6 +32,20 @@ AC_ARG_ENABLE([fortran-examples],
 				   [Build the fortran (F77) examples]),
 				   [if test "$enableval" = "yes"; then
 				   		AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])
+				   		FORTRAN_EXAMPLES=true
+				   	fi
+				   ],)
+			
+TRACER_ENABLED=false	   
+AC_ARG_ENABLE([tracer],
+	AC_HELP_STRING([--enable-tracer],
+				   [Build the Kameleon fieldline tracer]),
+				   [if test "$enableval" = "yes"; then
+				   		AC_SUBST([TRACER_LIB], ['libkameleon-tracer.la'])
+				   		AC_SUBST([TRACER_HEADERS],['Kameleon-Tracer.h Point3f.h'])
+				   		AC_SUBST([TRACER],['tracer'])
+				   		AC_SUBST([TRACER_C],['tracer_c'])
+				   		TRACER_ENABLED=true
 				   	fi
 				   ],)
 #AM_CONDITIONAL([FORTRAN_EXAMPLES], [testx$fortran-examples = xtrue])
@@ -76,6 +90,29 @@ AC_CONFIG_FILES(
         
     ]
 )
+
+AC_MSG_NOTICE( )
+AC_MSG_NOTICE([------------------------------------------------------------])
+AC_MSG_NOTICE([|                        Summary                           |])
+AC_MSG_NOTICE([------------------------------------------------------------])
+AC_MSG_NOTICE([ LIBS: $LIBS])
+AC_MSG_NOTICE([ CFLAGS: $CFLAGS]) 
+AC_MSG_NOTICE([ CXXFLAGS: $CXXFLAGS])
+
+if test x$TRACER_ENABLED = xtrue; then
+	AC_MSG_NOTICE([ Tracer: included])
+else
+	AC_MSG_NOTICE([ Tracer: not included])
+fi
+
+if test x$FORTRAN_EXAMPLES = xtrue; then
+	AC_MSG_NOTICE([ Fortran examples: included])
+else
+	AC_MSG_NOTICE([ Fortran examples: not included])
+fi
+AC_MSG_NOTICE([------------------------------------------------------------])
+AC_MSG_NOTICE( )
 AC_OUTPUT
+
            
 
