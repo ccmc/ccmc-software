@@ -1,8 +1,11 @@
 #include "KameleonInterpolator.h"
+#include "StringConstants.h"
 #include <string>
 
 namespace ccmc
 {
+	using namespace ccmc::strings::variables;
+	using namespace ccmc::strings::models;
 	/**
 	 * @param variable
 	 * @param c0 The first component of the position
