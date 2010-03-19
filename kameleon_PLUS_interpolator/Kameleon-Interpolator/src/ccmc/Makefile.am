@@ -1,4 +1,5 @@
-lib_LTLIBRARIES = libkameleon-interpolator.la
+EXTRA_LTLIBRARIES = libkameleon-tracer.la
+lib_LTLIBRARIES = libkameleon-interpolator.la $(TRACER_LIB)
 libkameleon_interpolator_la_SOURCES = Attribute.h \
 						Attribute.cpp \
 						BATSRUS.h \
@@ -73,8 +74,12 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 libkameleon_interpolator_la_LDFLAGS = -release 0.1.2
 libkameleon_interpolator_la_CFLAGS = -fPIC
 
-#pkgconfigdir = $(libdir)/pkgconfig
-#pkgconfig_DATA = kameleon-plus.pc
+
+libkameleon_tracer_la_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
+libkameleon_tracer_la_LDFLAGS = -lkameleon-interpolator -lcdf -release 0.1.2 -rpath '$(libdir)'
+libkameleon_tracer_la_CPPFLAGS = -I$(srcdir)/..
 
 pkgincludedir = $(includedir)/ccmc
-pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h FileReader_compatibility.h Kameleon_compatibility.h Model.h Point.h #Shue.h
+EXTRA_HEADERS = Kameleon-Tracer.h Point3f.h
+pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h FileReader_compatibility.h \
+		 Kameleon_compatibility.h Model.h Point.h $(TRACER_HEADERS)#Shue.h
