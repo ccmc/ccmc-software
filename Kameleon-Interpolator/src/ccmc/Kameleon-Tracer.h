@@ -5,7 +5,7 @@
 //#include <map>
 //#include <vector>
 #include <string>
-#include <ccmc/Kameleon.h>
+#include "Kameleon.h"
 #include "Point3f.h"
 #include "Fieldline.h"
 #include <boost/unordered_map.hpp>
