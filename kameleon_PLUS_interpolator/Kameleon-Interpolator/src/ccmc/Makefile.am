@@ -67,6 +67,7 @@ libkameleon_interpolator_la_SOURCES = Attribute.h \
 						OpenGGCMInterpolator.cpp \
 						Utils.h \
 						Point.h \
+						StringConstants.h \
 						Vector.h \
 						cxform.h \
 						cxform-auto.c \
