@@ -78,13 +78,13 @@ int main (int argc, char * argv[])
 	start = clock();
 
 	float conversion = 1.0f;
-	//float conversion = kameleon.getConversionFactorToVis(variable);
+	//float conversion = interpolator->getConversionFactorToVis(variable);
 	float value;
 	//std::string bx_ = "br";
 	float convertedValue;
 	ProfilerStart("derived.prof");
 	//Interpolations.  The i%2 ensures the worst case scenario (previous block differe88nt than current block
-	for (int i = 0; i < 100000000; i++)
+	for (int i = 0; i < 1000; i++)
 	{
 		if (i % 100 == 0)
 		{
