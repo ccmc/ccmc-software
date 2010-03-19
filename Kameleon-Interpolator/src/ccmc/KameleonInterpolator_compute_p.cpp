@@ -1,8 +1,10 @@
 #include "KameleonInterpolator.h"
+#include "StringConstants.h"
 #include <string>
 
 namespace ccmc
 {
+	using namespace ccmc::strings::variables;
 
 	/**
 	 * @param variable
