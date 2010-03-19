@@ -148,7 +148,10 @@ namespace ccmc
 
 			boost::unordered_map<std::string, std::string> variableAliases;
 			boost::unordered_map<std::string, std::vector<std::string> > listOfRequiredVariablesForComponents;
+			boost::unordered_map<std::string, std::vector<long> > listOfRequiredVariablesForComponentsByID;
 			boost::unordered_map<std::string, std::vector<std::string> > listOfRequiredVariablesForVectors;
+			boost::unordered_map<std::string, std::vector<long> > listOfRequiredVariablesForVectorsByID;
+
 
 			Model * model;
 			void clearMaps();
@@ -163,7 +166,8 @@ namespace ccmc
 			void initializeVariableUnits();
 
 
-			vector<string> createVectorFromList(int num, ...);
+			vector<string> createVectorOfStringFromList(int num, ...);
+			vector<long> createVectorOfLongFromList(int num, ...);
 			std::string padString(const std::string& s, int minLength);
 			std::string modelName;
 
