@@ -104,6 +104,8 @@ namespace ccmc
 		//variableData.clear(); //stores the original variable data, if loaded into memory.
 		listOfRequiredVariablesForComponents.clear();
 		listOfRequiredVariablesForVectors.clear();
+		listOfRequiredVariablesForComponentsByID.clear();
+		listOfRequiredVariablesForVectorsByID.clear();
 
 	}
 
@@ -339,7 +341,7 @@ namespace ccmc
 	 * This is used in conjunction with openWithMultipleVariables
 	 * @return a vector<string> containing the variable names
 	 */
-	vector<string> Kameleon::createVectorFromList(int num, ...)
+	vector<string> Kameleon::createVectorOfStringFromList(int num, ...)
 	{
 		vector<string> neededVariables;
 		va_list list_of_variables;
@@ -347,6 +349,23 @@ namespace ccmc
 		for (int i = 0; i < num; i++)
 		{
 			neededVariables.push_back(va_arg(list_of_variables, char *));
+		}
+		return neededVariables;
+	}
+
+	/**
+	 * Helper function to create an apporpriate vector containing the list of required variables.
+	 * This is used in conjunction with openWithMultipleVariables
+	 * @return a vector<long> containing the variable names
+	 */
+	vector<long> Kameleon::createVectorOfLongFromList(int num, ...)
+	{
+		vector<long> neededVariables;
+		va_list list_of_variables;
+		va_start(list_of_variables, num);
+		for (int i = 0; i < num; i++)
+		{
+			neededVariables.push_back(this->getVariableID(va_arg(list_of_variables, char *)));
 		}
 		return neededVariables;
 	}
