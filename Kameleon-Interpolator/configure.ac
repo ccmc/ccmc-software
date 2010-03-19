@@ -2,13 +2,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([kameleon-interpolator], [0.1.2], [David.H.Berrios@nasa.gov], [kameleon-interpolator])
+AC_INIT([kameleon], [0.1.2], [David.H.Berrios@nasa.gov], [kameleon])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-
+AC_SUBST([RELEASE],[0.1.2])
 AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
@@ -16,7 +16,8 @@ AC_PROG_F77
 AC_PROG_CC
 AM_PROG_LIBTOOL
 AM_PROG_CC_C_O
-
+AX_PROG_JAVAC
+AX_JNI_INCLUDE_DIR
 # FIXME: Replace `main' with a function in `-lc':
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
@@ -41,13 +42,24 @@ AC_ARG_ENABLE([tracer],
 	AC_HELP_STRING([--enable-tracer],
 				   [Build the Kameleon fieldline tracer]),
 				   [if test "$enableval" = "yes"; then
-				   		AC_SUBST([TRACER_LIB], ['libkameleon-tracer.la'])
-				   		AC_SUBST([TRACER_HEADERS],['Kameleon-Tracer.h Point3f.h'])
+				   		AC_SUBST([TRACER_HEADERS],['Kameleon-Tracer.h Fieldline.h Point3f.h'])
 				   		AC_SUBST([TRACER],['tracer'])
 				   		AC_SUBST([TRACER_C],['tracer_c'])
 				   		TRACER_ENABLED=true
 				   	fi
 				   ],)
+AM_CONDITIONAL([TRACER_ENABLED],[test x$TRACER_ENABLED = xtrue])
+
+JAVA_WRAPPERS_ENABLED=false
+AC_ARG_ENABLE([java],
+	AC_HELP_STRING([--enable-java],
+				[Build the Java wrappers]),
+				[if test "$enableval" = "yes"; then
+					AC_SUBST([JAVA_SOURCES],['blah'])
+					JAVA_WRAPPERS_ENABLED=true
+				 fi
+				],)
+AM_CONDITIONAL([JAVA_WRAPPERS_ENABLED], [test x$JAVA_WRAPPERS_ENABLED = xtrue])
 #AM_CONDITIONAL([FORTRAN_EXAMPLES], [testx$fortran-examples = xtrue])
 #AC_ARG_WITH([boost],
 #            [AC_HELP_STRING([--with-boost=<dir>],
@@ -98,6 +110,7 @@ AC_MSG_NOTICE([------------------------------------------------------------])
 AC_MSG_NOTICE([ LIBS: $LIBS])
 AC_MSG_NOTICE([ CFLAGS: $CFLAGS]) 
 AC_MSG_NOTICE([ CXXFLAGS: $CXXFLAGS])
+AC_MSG_NOTICE([ JAVAC: $JAVAC])
 
 if test x$TRACER_ENABLED = xtrue; then
 	AC_MSG_NOTICE([ Tracer: included])
