@@ -1,3 +1,3 @@
-SUBDIRS = ccmc . example wrappers
+SUBDIRS = ccmc . example
 
 
