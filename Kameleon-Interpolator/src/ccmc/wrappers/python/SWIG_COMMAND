@@ -1,0 +1,1 @@
+/usr/local/bin/swig -outcurrentdir -python -c++ -I../../.. -I/Applications/cdf33_0-dist/include/ ../ccmc.i
