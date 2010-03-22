@@ -1,3 +1,5 @@
+SUBDIRS = . wrappers
+
 #EXTRA_LTLIBRARIES = libkameleon-tracer.la
 lib_LTLIBRARIES = libkameleon.la
 if TRACER_ENABLED
@@ -21,10 +23,6 @@ libkameleon_la_SOURCES = Attribute.h \
 						ENLIL.cpp \
 						ENLILInterpolator.h \
 						ENLILInterpolator.cpp \
-						FileReader_compatibility.h \
-						FileReader_compatibility.cpp \
-						Kameleon_compatibility.h \
-						Kameleon_compatibility.cpp \
 						KameleonInterpolator_compute_etaj.cpp \
 						KameleonInterpolator_compute_beta.cpp \
 						KameleonInterpolator_compute_e.cpp \
@@ -91,5 +89,5 @@ libkameleon_la_CFLAGS = -fPIC
 
 pkgincludedir = $(includedir)/ccmc
 EXTRA_HEADERS = Kameleon-Tracer.h Fieldline.h Point3f.h
-pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h FileReader_compatibility.h \
+pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h \
 		 Kameleon_compatibility.h Model.h Point.h $(TRACER_HEADERS)#Shue.h
