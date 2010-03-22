@@ -1,1 +1,1 @@
-SUBDIRS = java
+SUBDIRS = @JAVA_WRAPPER@
