@@ -19,26 +19,49 @@ AM_PROG_CC_C_O
 AX_PROG_JAVAC
 AX_JNI_INCLUDE_DIR
 AX_PROG_JAR
+#AC_PKG_SWIG
+#SWIG_ENABLE_CXX
+#SWIG_PYTHON
+AM_PATH_PYTHON([2.5],,[:])
 AC_SUBST(JNI_INCLUDE_DIRS)
 # FIXME: Replace `main' with a function in `-lc':
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
                              [build Universal binaries on OSX]),
               [if test x"$host_cpu" = x"powerpc"; then
-                CXXFLAGS="-isysroot /Developer/SDKs/MacOSX10.4u.sdk"
+                CPPFLAGS="-isysroot /Developer/SDKs/MacOSX10.4u.sdk"
                fi
 
                CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"
                CFLAGS="-arch i386 -arch ppc -arch x86_64 $CFLAGS"])
-FORTRAN_EXAMPLES=false
-AC_ARG_ENABLE([fortran-examples],
-	AC_HELP_STRING([--enable-fortran-examples],
-				   [Build the fortran (F77) examples]),
+C_EXAMPLES=false
+AC_ARG_ENABLE([c],
+	AC_HELP_STRING([--enable-c],
+				   [Build the C-language wrappers]),
 				   [if test "$enableval" = "yes"; then
-				   		AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])
-				   		FORTRAN_EXAMPLES=true
+				   		AC_SUBST([FILEREADER_C], ['filereader_compat${EXEEXT}'])
+				   		C_EXAMPLES=true
+				   		AC_SUBST([C_WRAPPERS],['c'])
+				   		C_WRAPPERS_ENABLED=true
 				   	fi
 				   ],)
+
+FORTRAN_EXAMPLES=false
+AC_ARG_ENABLE([fortran],
+	AC_HELP_STRING([--enable-fortran],
+				   [Build the fortran (F77) wrappers]),
+				   [if test "$enableval" = "yes"; then
+				   		if test x$C_WRAPPERS_ENABLED = xtrue; then
+				   			AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])
+				   			FORTRAN_EXAMPLES=true
+				   			AC_SUBST([FORTRAN_WRAPPERS],['fortran'])
+				   			FORTRAN_WRAPPERS_ENABLED=true
+				   		else
+				   			AC_MSG_ERROR([The C-language wrappers must also be enabled when enabling the Fortran-language wrappers. Use the --enable-c option],1)
+				   		fi
+				   	fi
+				   ],)
+
 			
 TRACER_ENABLED=false	   
 AC_ARG_ENABLE([tracer],
@@ -65,11 +88,18 @@ AC_ARG_ENABLE([java],
 				 fi
 				],)
 AM_CONDITIONAL([JAVA_WRAPPER_ENABLED], [$JAVA_WRAPPER_ENABLED])
-#AM_CONDITIONAL([FORTRAN_EXAMPLES], [testx$fortran-examples = xtrue])
-#AC_ARG_WITH([boost],
-#            [AC_HELP_STRING([--with-boost=<dir>],
-#                            [specify the location of the boost program_options library])],
-#            [LDFLAGS="-L$withval $LDFLAGS"])
+
+PYTHON_WRAPPER_ENABLED=false
+AC_ARG_ENABLE([python],
+	AC_HELP_STRING([--enable-python],
+				[Build the Python wrappers]),
+				[if test "$enableval" = "yes"; then
+					AC_SUBST([PYTHON_WRAPPER],['python'])
+					PYTHON_WRAPPER_ENABLED=true
+					AC_SUBST([PYTHON_WRAPPER_ENABLED],[$PYTHON_WRAPPER_ENABLED])
+				 fi
+				],)
+AM_CONDITIONAL([PYTHON_WRAPPER_ENABLED], [$PYTHON_WRAPPER_ENABLED])
 AC_ARG_WITH([cdf],
             [AC_HELP_STRING([--with-cdf=<dir>],
                             [specify the location of the CDF library])],
@@ -77,13 +107,12 @@ AC_ARG_WITH([cdf],
 AC_ARG_WITH([boost-includes],
 			[AC_HELP_STRING([--with-boost-includes=<dir>],
                             [specify the location of the boost header files])],
-            [CXXFLAGS="-I$withval $CXXFLAGS"])
-
+            [CPPFLAGS="-I$withval $CPPFLAGS"])
+HAVE_PYTHON= false;
+AC_PYTHON_INCLUDES
 AC_CHECK_LIB([cdf],
              [main],,
              [AC_MSG_ERROR([The CDF library was not found. Specify the directory using the --with-cdf option],1)])
-#AC_CHECK_LIB([boost_program_options],[main],[C,
-#			[AC_MSG_ERROR([The boost program_options library was not found.  Specify the directory using the --with-boost option],1)])
 
 # Checks for header files.
 AC_HEADER_STDC
@@ -100,10 +129,17 @@ AC_CONFIG_FILES(
     [
         Makefile
         src/Makefile
-        src/example/Makefile
         src/ccmc/Makefile
-        src/wrappers/Makefile
-        src/wrappers/java/Makefile
+        src/ccmc/wrappers/Makefile
+        src/ccmc/wrappers/c/Makefile
+        src/ccmc/wrappers/fortran/Makefile
+        src/ccmc/wrappers/java/Makefile
+        src/ccmc/wrappers/python/Makefile
+        src/example/Makefile
+        src/example/c/Makefile
+        src/example/c++/Makefile
+        src/example/fortran/Makefile
+        
         
     ]
 )
@@ -117,6 +153,9 @@ AC_MSG_NOTICE([ CFLAGS: $CFLAGS])
 AC_MSG_NOTICE([ CXXFLAGS: $CXXFLAGS])
 AC_MSG_NOTICE([ JAVAC: $JAVAC])
 AC_MSG_NOTICE([ JNI_INCLUDE_DIRS: $JNI_INCLUDE_DIRS])
+AC_MSG_NOTICE([ Python: $PYTHON_VERSION])
+AC_MSG_NOTICE([ pyexecdir: $pyexecdir])
+AC_MSG_NOTICE([ pkgpyexecdir: $pkgpyexecdir])
 
 
 
@@ -130,9 +169,9 @@ else
 fi
 
 if test x$FORTRAN_EXAMPLES = xtrue; then
-	AC_MSG_NOTICE([ Fortran examples: included])
+	AC_MSG_NOTICE([ Fortran wrappers: included])
 else
-	AC_MSG_NOTICE([ Fortran examples: not included])
+	AC_MSG_NOTICE([ Fortran wrappers: not included])
 fi
 
 case $host_os in
@@ -147,6 +186,14 @@ if $JAVA_WRAPPER_ENABLED; then
 
 else
 	AC_MSG_NOTICE([ Java wrappers: not included])
+fi
+
+if $PYTHON_WRAPPER_ENABLED; then
+	AC_MSG_NOTICE([ Python wrappers: included])
+	AC_MSG_NOTICE([ Python include dir: $PYTHON_INCLUDES])
+
+else
+	AC_MSG_NOTICE([ Python wrappers: not included])
 fi
 AC_MSG_NOTICE([------------------------------------------------------------])
 AC_MSG_NOTICE( )
