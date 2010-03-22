@@ -18,6 +18,8 @@ AM_PROG_LIBTOOL
 AM_PROG_CC_C_O
 AX_PROG_JAVAC
 AX_JNI_INCLUDE_DIR
+AX_PROG_JAR
+AC_SUBST(JNI_INCLUDE_DIRS)
 # FIXME: Replace `main' with a function in `-lc':
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
@@ -26,7 +28,8 @@ AC_ARG_ENABLE([universal],
                 CXXFLAGS="-isysroot /Developer/SDKs/MacOSX10.4u.sdk"
                fi
 
-               CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"])
+               CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"
+               CFLAGS="-arch i386 -arch ppc -arch x86_64 $CFLAGS"])
 FORTRAN_EXAMPLES=false
 AC_ARG_ENABLE([fortran-examples],
 	AC_HELP_STRING([--enable-fortran-examples],
@@ -50,16 +53,18 @@ AC_ARG_ENABLE([tracer],
 				   ],)
 AM_CONDITIONAL([TRACER_ENABLED],[test x$TRACER_ENABLED = xtrue])
 
-JAVA_WRAPPERS_ENABLED=false
+JAVA_WRAPPER_ENABLED=false
 AC_ARG_ENABLE([java],
 	AC_HELP_STRING([--enable-java],
 				[Build the Java wrappers]),
 				[if test "$enableval" = "yes"; then
 					AC_SUBST([JAVA_SOURCES],['blah'])
-					JAVA_WRAPPERS_ENABLED=true
+					AC_SUBST([JAVA_WRAPPER],['java'])
+					JAVA_WRAPPER_ENABLED=true
+					AC_SUBST([JAVA_WRAPPER_ENABLED],[$JAVA_WRAPPER_ENABLED])
 				 fi
 				],)
-AM_CONDITIONAL([JAVA_WRAPPERS_ENABLED], [test x$JAVA_WRAPPERS_ENABLED = xtrue])
+AM_CONDITIONAL([JAVA_WRAPPER_ENABLED], [$JAVA_WRAPPER_ENABLED])
 #AM_CONDITIONAL([FORTRAN_EXAMPLES], [testx$fortran-examples = xtrue])
 #AC_ARG_WITH([boost],
 #            [AC_HELP_STRING([--with-boost=<dir>],
@@ -73,7 +78,6 @@ AC_ARG_WITH([boost-includes],
 			[AC_HELP_STRING([--with-boost-includes=<dir>],
                             [specify the location of the boost header files])],
             [CXXFLAGS="-I$withval $CXXFLAGS"])
-
 
 AC_CHECK_LIB([cdf],
              [main],,
@@ -92,13 +96,14 @@ AC_C_CONST
 # Checks for library functions.
 AC_CHECK_FUNCS([pow sqrt])
 
-
 AC_CONFIG_FILES(
     [
         Makefile
         src/Makefile
         src/example/Makefile
         src/ccmc/Makefile
+        src/wrappers/Makefile
+        src/wrappers/java/Makefile
         
     ]
 )
@@ -111,6 +116,12 @@ AC_MSG_NOTICE([ LIBS: $LIBS])
 AC_MSG_NOTICE([ CFLAGS: $CFLAGS]) 
 AC_MSG_NOTICE([ CXXFLAGS: $CXXFLAGS])
 AC_MSG_NOTICE([ JAVAC: $JAVAC])
+AC_MSG_NOTICE([ JNI_INCLUDE_DIRS: $JNI_INCLUDE_DIRS])
+
+
+
+
+
 
 if test x$TRACER_ENABLED = xtrue; then
 	AC_MSG_NOTICE([ Tracer: included])
@@ -122,6 +133,20 @@ if test x$FORTRAN_EXAMPLES = xtrue; then
 	AC_MSG_NOTICE([ Fortran examples: included])
 else
 	AC_MSG_NOTICE([ Fortran examples: not included])
+fi
+
+case $host_os in
+	darwin*) 	JNI_EXTRA_LDFLAGS="-shrext .jnilib" ;;
+	*) 			JNI_EXTRA_LDFLAGS="" ;;
+esac
+
+AC_SUBST(JNI_EXTRA_LDFLAGS)
+	
+if $JAVA_WRAPPER_ENABLED; then
+	AC_MSG_NOTICE([ Java wrappers: included])
+
+else
+	AC_MSG_NOTICE([ Java wrappers: not included])
 fi
 AC_MSG_NOTICE([------------------------------------------------------------])
 AC_MSG_NOTICE( )
