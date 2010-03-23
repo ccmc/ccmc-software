@@ -1,11 +1,10 @@
 SUBDIRS = . wrappers
-
 #EXTRA_LTLIBRARIES = libkameleon-tracer.la
 lib_LTLIBRARIES = libkameleon.la
 if TRACER_ENABLED
 TRACER_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
 else
-TRACER_SOURCES = ''
+TRACER_SOURCES =
 endif
 
 libkameleon_la_SOURCES = Attribute.h \
