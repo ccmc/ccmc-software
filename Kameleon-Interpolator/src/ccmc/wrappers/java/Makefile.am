@@ -1,6 +1,6 @@
 lib_LTLIBRARIES = libkameleon-wrapper-java.la
 libkameleon_wrapper_java_la_SOURCES = ccmc_wrap.cxx
-libkameleon_wrapper_java_la_LDFLAGS = -module -avoid-version @JNI_EXTRA_LDFLAGS@ @builddir@/../../../ccmc/libkameleon.la
+libkameleon_wrapper_java_la_LDFLAGS = -module -avoid-version @JNI_EXTRA_LDFLAGS@ @builddir@/../../../ccmc/.libs/libkameleon.a
 #libkameleon_wrapper_java_la_LDFLAGS = -release @RELEASE@ @JNI_EXTRA_LDFLAGS@
 libkameleon_wrapper_java_la_CXXFLAGS = -fPIC
 libkameleon_wrapper_java_la_CPPFLAGS = -I@JNI_INCLUDE_DIRS@ -I@srcdir@/../../..
