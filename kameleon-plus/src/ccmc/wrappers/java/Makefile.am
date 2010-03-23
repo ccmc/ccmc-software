@@ -43,4 +43,4 @@ dist_noinst_JAVA = 	Attribute.java \
 
 
 kameleon-plus-wrapper-@RELEASE@.jar: $(dist_noinst_JAVA)
-	cd $(pkgpath); @JAR@ cf $(pkgpath)/$@ ccmc/wrappers/*.class; 
+	cd $(pkgpath); @JAR@ cf @builddir@/$@ ccmc/wrappers/*.class; 
