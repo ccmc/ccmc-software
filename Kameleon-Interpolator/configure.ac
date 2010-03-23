@@ -59,6 +59,10 @@ AC_ARG_ENABLE([fortran],
 				   		else
 				   			AC_MSG_ERROR([The C-language wrappers must also be enabled when enabling the Fortran-language wrappers. Use the --enable-c option],1)
 				   		fi
+				   		
+				   		if test x"$F77" == x""; then
+				   			AC_MSG_ERROR([F77 must point to a valid Fortran compiler. Set the environment variable prior to running configure])
+				   		fi
 				   	fi
 				   ],)
 
@@ -138,9 +142,7 @@ AC_CONFIG_FILES(
         src/example/Makefile
         src/example/c/Makefile
         src/example/c++/Makefile
-        src/example/fortran/Makefile
-        
-        
+        src/example/fortran/Makefile  
     ]
 )
 
@@ -152,6 +154,7 @@ AC_MSG_NOTICE([ LIBS: $LIBS])
 AC_MSG_NOTICE([ CFLAGS: $CFLAGS]) 
 AC_MSG_NOTICE([ CXXFLAGS: $CXXFLAGS])
 AC_MSG_NOTICE([ JAVAC: $JAVAC])
+AC_MSG_NOTICE([ F77: $F77])
 AC_MSG_NOTICE([ JNI_INCLUDE_DIRS: $JNI_INCLUDE_DIRS])
 AC_MSG_NOTICE([ Python: $PYTHON_VERSION])
 AC_MSG_NOTICE([ pyexecdir: $pyexecdir])
