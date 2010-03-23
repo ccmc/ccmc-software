@@ -1,5 +1,6 @@
 bin_PROGRAMS = derived coord_test open_ggcm \
-				magnetogram  enlil tracer
+				magnetogram  enlil @TRACER@
+EXTRA_PROGRAMS = tracer
 				
 derived_SOURCES = derived_prog.cpp
 derived_CPPFLAGS = -I@srcdir@/../..
