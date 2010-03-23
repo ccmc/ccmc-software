@@ -11,10 +11,10 @@ jarfile = kameleon-plus-wrapper-@RELEASE@.jar
 jardir = $(datadir)/java
 pkgpath = @srcdir@
 jar_DATA = $(jarfile)
-JAVAROOT= @srcdir@
+JAVAROOT= @builddir@
 
 CLEANFILES = $(jarfile) $(pkgpath)/ccmc/wrappers/*.class
-MAKEOVERRIDES = -j 1
+
 
 dist_noinst_JAVA = 	Attribute.java \
 					CCMC.java \
@@ -43,5 +43,5 @@ dist_noinst_JAVA = 	Attribute.java \
 
 
 
-kameleon-plus-wrapper-@RELEASE@.jar: $(dist_noinst_JAVA)
-	@JAR@ cf $@ ccmc/wrappers/*.class; 
+$(jarfile): $(dist_noinst_JAVA)
+	@JAR@ cf $@ $(pkgpath)/ccmc/wrappers/*.class; 
