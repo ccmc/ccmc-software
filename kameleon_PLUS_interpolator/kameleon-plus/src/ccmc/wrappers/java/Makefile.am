@@ -9,7 +9,7 @@ libkameleon_plus_wrapper_java_la_LIBTOOLFLAGS = --tag=disable-static
 jarfile = kameleon-plus-wrapper-@RELEASE@.jar
 
 jardir = $(datadir)/java
-pkgpath = @builddir@
+pkgpath = @srcdir@
 jar_DATA = $(jarfile)
 JAVAROOT= @srcdir@
 
@@ -43,4 +43,4 @@ dist_noinst_JAVA = 	Attribute.java \
 
 
 kameleon-plus-wrapper-@RELEASE@.jar: $(dist_noinst_JAVA)
-	@JAR@ cf $@ $(pkgpath)/ccmc/wrappers/*.class; 
+	@JAR@ cf -C $(pkgpath) $@ ccmc/wrappers/*.class; 
