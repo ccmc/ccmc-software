@@ -43,5 +43,7 @@ dist_noinst_JAVA = 	Attribute.java \
 
 
 kameleon-plus-wrapper-@RELEASE@.jar: $(dist_noinst_JAVA)
-	@JAR@ cf $@ ccmc/wrappers/*.class
-
+	if test -d ccmc/wrappers; then echo "found"; \
+	else mkdir -p ccmc/wrappers; \
+	fi
+	@JAR@ cf $@ ccmc/wrappers/*.class; 
