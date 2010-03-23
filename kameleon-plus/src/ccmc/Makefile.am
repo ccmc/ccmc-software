@@ -1,13 +1,13 @@
 SUBDIRS = . wrappers
 #EXTRA_LTLIBRARIES = libkameleon-tracer.la
-lib_LTLIBRARIES = libkameleon.la
+lib_LTLIBRARIES = libkameleon-plus.la
 if TRACER_ENABLED
 TRACER_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
 else
 TRACER_SOURCES =
 endif
 
-libkameleon_la_SOURCES = Attribute.h \
+libkameleon_plus_la_SOURCES = Attribute.h \
 						Attribute.cpp \
 						BATSRUS.h \
 						BATSRUS.cpp \
@@ -76,15 +76,10 @@ libkameleon_la_SOURCES = Attribute.h \
 						cxform-auto.c \
 						cxform-manual.c \
 						$(TRACER_SOURCES)
-EXTRA_libkameleon_la_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
+EXTRA_libkameleon_plus_la_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
 						
-libkameleon_la_LDFLAGS = -release @RELEASE@
-libkameleon_la_CFLAGS = -fPIC
-
-
-#libkameleon_tracer_la_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
-#libkameleon_tracer_la_LDFLAGS = -lkameleon-interpolator -lcdf -release 0.1.2 -rpath '$(libdir)'
-#libkameleon_tracer_la_CPPFLAGS = -I$(srcdir)/..
+libkameleon_plus_la_LDFLAGS = -release @RELEASE@
+libkameleon_plus_la_CFLAGS = -fPIC
 
 pkgincludedir = $(includedir)/ccmc
 EXTRA_HEADERS = Kameleon-Tracer.h Fieldline.h Point3f.h
