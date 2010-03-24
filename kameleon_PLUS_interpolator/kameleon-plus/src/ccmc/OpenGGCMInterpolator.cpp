@@ -289,7 +289,7 @@ namespace ccmc
 		{
 			previousVariableID = variable_id;
 			previousVariable = modelReader->getVariableName(variable_id);
-			//previousConversionFactor = getConversionFactor(variable_id);
+			previousConversionFactor = getConversionFactor(variable_id);
 			//std::cout << "different " << std::endl;
 
 		}
@@ -302,7 +302,7 @@ namespace ccmc
 
 		//float value = xc*previousConversionFactor;
 		previousValue = xc;
-		return xc;
+		return xc * previousConversionFactor ;
 
 	}
 
