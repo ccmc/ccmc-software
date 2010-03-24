@@ -5,7 +5,7 @@
  *      Author: David Berrios
  */
 
-#include "KameleonInterpolator.h""
+#include "KameleonInterpolator.h"
 #include <vector>
 #include <boost/algorithm/string.hpp>
 
