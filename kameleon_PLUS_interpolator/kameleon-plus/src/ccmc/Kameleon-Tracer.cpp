@@ -1552,7 +1552,7 @@ namespace ccmc
 
 		Point3f vectorValue;
 		std::string model_name = kameleon->getModelName();
-		std::cout << "variable: " << variable << " c0: " << ((*iter).second)[0] << " position: " << position << std::endl;
+		//std::cout << "variable: " << variable << " c0: " << ((*iter).second)[0] << " position: " << position << std::endl;
 
 		//if (mas_ == (*model_name))
 		{
