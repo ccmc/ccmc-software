@@ -56,6 +56,11 @@ namespace ccmc
 		bnames_cartesian.push_back("by");
 		bnames_cartesian.push_back("bz");
 
+		std::vector<std::string> bnames_spherical;
+		bnames_spherical.push_back("br");
+		bnames_spherical.push_back("bphi");
+		bnames_spherical.push_back("btheta");
+
 		std::vector<std::string> b1names_cartesian;
 		b1names_cartesian.push_back("b1x");
 		b1names_cartesian.push_back("b1y");
@@ -82,11 +87,20 @@ namespace ccmc
 		exbnames_cartesian.push_back("exbz");
 
 
-		componentNamesMap["b"] = bnames_cartesian;
-		componentNamesMap["bx"] = bnames_cartesian;
-		componentNamesMap["by"] = bnames_cartesian;
-		componentNamesMap["bz"] = bnames_cartesian;
+		if (this->kameleon->getModelName() == "enlil")
+		{
+			componentNamesMap["b"] = bnames_spherical;
+			componentNamesMap["br"] = bnames_spherical;
+			componentNamesMap["bphi"] = bnames_spherical;
+			componentNamesMap["btheta"] = bnames_spherical;
 
+		} else
+		{
+			componentNamesMap["b"] = bnames_cartesian;
+			componentNamesMap["bx"] = bnames_cartesian;
+			componentNamesMap["by"] = bnames_cartesian;
+			componentNamesMap["bz"] = bnames_cartesian;
+		}
 		componentNamesMap["b1"] = b1names_cartesian;
 		componentNamesMap["b1x"] = b1names_cartesian;
 		componentNamesMap["b1y"] = b1names_cartesian;
@@ -916,7 +930,7 @@ namespace ccmc
 		string bComponent2;
 		string bComponent3;
 
-		if ("mas" == model_name)
+		if ("mas" == model_name || "enlil" == model_name)
 		{
 			component1 = "r";
 			component2 = "phi";
@@ -924,19 +938,6 @@ namespace ccmc
 			bComponent1 = "br";
 			bComponent2 = "bphi";
 			bComponent3 = "btheta";
-		} else if ("enlil" == model_name)
-		{
-			component1 = "x";
-			component2 = "z";
-			component3 = "y";
-			bComponent1 = "b1x";
-			bComponent2 = "b1z";
-			bComponent3 = "b1y";
-		} else
-		{
-			component1 = "x";
-			component2 = "phi";
-			component3 = "theta";
 		}
 		// ENLIL: scaling factors for vector variables
 		float factor = 1., factor_r = 1.;
@@ -954,11 +955,11 @@ namespace ccmc
 			{
 				factor_r = 1. / AU;
 
-				if (variable == "b" || variable == "bx" || variable == "bz" || variable == "by")
+				if (variable == "b" || variable == "br" || variable == "bphi" || variable == "btheta")
 				{
 					factor = 1.0;
 				}
-				if (variable == "u" || variable == "ux" || variable == "uz" || variable == "uy")
+				if (variable == "u" || variable == "ur" || variable == "uphi" || variable == "utheta")
 				{
 					factor = 1e-3;
 				}
@@ -971,7 +972,7 @@ namespace ccmc
 #ifdef DEBUG_SPHTRACER
 			cerr << "calling var_get for y" << endl;
 #endif
-			lat_ptr = kameleon->getVariable(component3.c_str()); // need to use alias "lat" later
+			lat_ptr = kameleon->getVariable(component2); // need to use alias "lat" later
 			NLAT = lat_ptr->size();
 			if (NLAT > 0)
 			{
@@ -988,18 +989,18 @@ namespace ccmc
 				usePolarity = 0; // we failed to get required information
 			}
 		}
-		/* these are in (r,lon,lat) space */
+		/* these are in (r,lat,lon) space */
 		boxMin.component1 = (kameleon->getVariableAttribute(component1.c_str(), "actual_min")).getAttributeFloat()
 				* factor_r;
-		boxMin.component2 = -360.0; /* no crap out at 0 since the boundary is periodic */
-		boxMin.component3 = 90. - RADEG
-				* (kameleon->getVariableAttribute(component3.c_str(), "actual_max")).getAttributeFloat();
+		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
+		boxMin.component2 = 90. - RADEG
+				* (kameleon->getVariableAttribute(component2.c_str(), "actual_max")).getAttributeFloat();
 
 		boxMax.component1 = (kameleon->getVariableAttribute(component1.c_str(), "actual_max")).getAttributeFloat()
 				* factor_r;
-		boxMax.component2 = 720.; /* no crap out at 360 since the boundary is periodic */
-		boxMax.component3 = 90. - RADEG
-				* (kameleon->getVariableAttribute(component3.c_str(), "actual_min")).getAttributeFloat();
+		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
+		boxMax.component2 = 90. - RADEG
+				* (kameleon->getVariableAttribute(component2.c_str(), "actual_min")).getAttributeFloat();
 
 #ifdef DEBUG_SPHTRACER
 		cerr << "After setting box dimensions" << endl;
@@ -1048,12 +1049,12 @@ namespace ccmc
 			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
 			{
 				int iz;
-				for (iz = NLAT; (*latitudes)[iz] > previous.component3; iz--)
+				for (iz = NLAT; (*latitudes)[iz] > previous.component2; iz--)
 					;
 				br_up = ((Interpolator *) (interpolator)) -> interpolate(bComponent1, previous.component1,
-						previous.component2, (*latitudes)[iz + 1]);
+						previous.component3, (*latitudes)[iz + 1]);
 				br_down = ((Interpolator *) (interpolator)) -> interpolate(bComponent1, previous.component1,
-						previous.component2, (*latitudes)[iz]);
+						previous.component3, (*latitudes)[iz]);
 #ifdef DEBUG_SPHTRACER
 				cerr << "br_up: " << br_up << " br_down: " << br_down << endl;
 #endif
@@ -1063,16 +1064,16 @@ namespace ccmc
 				lat_csh = ((*latitudes)[iz] * br_up - (*latitudes)[iz + 1] * br_down) / (updown);
 #ifdef DEBUG_SPHTRACER
 				cerr << "Lat_CSH: " << lat_csh << endl;
-				cerr << "Lat: " << previous.component3 << endl;
-				cerr << "New Lat: " << 2*lat_csh-previous.component3 << endl;
+				cerr << "Lat: " << previous.component2 << endl;
+				cerr << "New Lat: " << 2*lat_csh-previous.component2 << endl;
 #endif
 
 #ifdef DEBUG_SPHTRACER
-				cerr << "lat_csh: " << lat_csh << " Previous.component3: " << previous.component3;
+				cerr << "lat_csh: " << lat_csh << " Previous.component2: " << previous.component2;
 #endif
-				previous.component3 = 2 * lat_csh - previous.component3;
+				previous.component2 = 2 * lat_csh - previous.component2;
 #ifdef DEBUG_SPHTRACER
-				cerr << " Prevoius.component3: " << previous.component3 << endl;
+				cerr << " Prevoius.component2: " << previous.component2 << endl;
 #endif
 				vectorValue = getVector(variable, previous, dComponent1, dComponent2, dComponent3, interpolator);
 
@@ -1108,7 +1109,7 @@ namespace ccmc
 			//vectorValue.component3 /= magValue;
 
 			rlocal = previous.component1;
-			rsinth = rlocal * cos(DtoR * previous.component3);
+			rsinth = rlocal * cos(DtoR * previous.component2);
 			if (rsinth < eps)
 				rsinth = eps;
 
@@ -1119,8 +1120,8 @@ namespace ccmc
 			dComponent1 *= 1.0; //dComponent1 should always be factored correctly
 			//dComponent2 *= DtoR * rsinth;
 			//dComponent3 *= DtoR * rlocal;
-			dComponent2 *= rsinth;
-			dComponent3 *= rlocal;
+			dComponent3 *= rsinth;
+			dComponent2 *= rlocal;
 
 			if (isnan(dComponent1) || dComponent1 < min_block_size)
 			{
@@ -1141,14 +1142,14 @@ namespace ccmc
 				dComponent3 = min_block_size;
 			}
 			dt = dComponent1;
-			if (dComponent2 < dt)
-				dt = dComponent2;
 			if (dComponent3 < dt)
 				dt = dComponent3;
+			if (dComponent2 < dt)
+				dt = dComponent2;
 			dt = dt * dn;
 			addition.component1 = dt * vectorValue.component1 / magValue;
-			addition.component2 = dt * vectorValue.component2 / (magValue * DtoR * rsinth);
-			addition.component3 = dt * vectorValue.component3 / (magValue * DtoR * rlocal);
+			addition.component2 = dt * vectorValue.component2 / (magValue * DtoR * rlocal);
+			addition.component3 = dt * vectorValue.component3 / (magValue * DtoR * rsinth);
 
 			if (isnan(addition.component1) || abs(addition.component1 - 0.0) < 1e-20)
 			{
@@ -1200,24 +1201,24 @@ namespace ccmc
 				if (isnan(newPoint.component3))
 					newPoint = previous;
 
-				if (newPoint.component3 > 90.)
+				if (newPoint.component2 > 90.)
 				{
-					newPoint.component2 = newPoint.component2 + 180;
-					newPoint.component3 = 90 - newPoint.component3;
+					newPoint.component3 = newPoint.component3 + 180;
+					newPoint.component2 = 90 - newPoint.component2;
 				}
-				if (newPoint.component3 < -90)
+				if (newPoint.component2 < -90)
 				{
-					newPoint.component2 = newPoint.component2 + 180;
-					newPoint.component3 = -90 - newPoint.component3;
+					newPoint.component3 = newPoint.component3 + 180;
+					newPoint.component2 = -90 - newPoint.component2;
 				}
 				// azimuth from 0 - 2*PI
-				if (newPoint.component2 > 360)
+				if (newPoint.component3 > 360)
 				{
-					newPoint.component2 = newPoint.component2 - 360;
+					newPoint.component3 = newPoint.component3 - 360;
 				}
-				if (newPoint.component2 < 0)
+				if (newPoint.component3 < 0)
 				{
-					newPoint.component2 = newPoint.component2 + 360.;
+					newPoint.component3 = newPoint.component3 + 360.;
 				}
 				oldPoint = previous;
 				fieldline1.push_back(newPoint);
