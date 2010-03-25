@@ -894,7 +894,7 @@ namespace ccmc
 		float min_distance = 1.e-5;
 		if (model_name == "enlil")
 			min_block_size = 1.e-4;
-
+//#define DEBUG_SPHTRACER
 #define AU 1.49598e11
 		//#define DEBUG_SPHTRACER
 		//#define DEBUG_SPHTRACER
@@ -970,7 +970,7 @@ namespace ccmc
 			// set up constrained iteration in like polarity
 			// get latitude grid
 #ifdef DEBUG_SPHTRACER
-			cerr << "calling var_get for y" << endl;
+			cerr << "calling var_get for phi (lat)" << endl;
 #endif
 			lat_ptr = kameleon->getVariable(component2); // need to use alias "lat" later
 			NLAT = lat_ptr->size();
@@ -1014,7 +1014,7 @@ namespace ccmc
 		Point3f startPoint(startComponent1, startComponent2, startComponent3, Point3f::SPHERICAL);
 
 #ifdef DEBUG_SPHTRACER
-		cerr << "before ccmc_tracer_getVector, variable: " << variable << endl;
+		cerr << "before getVector, variable: " << variable << endl;
 		cerr << "Start Point : " << startPoint << endl;
 #endif
 
@@ -1253,7 +1253,7 @@ namespace ccmc
 			f.insertPointData(fieldline1[i], mag1[i]);
 		}
 		delete latitudes;
-		delete interpolator;
+		//delete interpolator;
 
 		return f;
 
@@ -1552,7 +1552,7 @@ namespace ccmc
 
 		Point3f vectorValue;
 		std::string model_name = kameleon->getModelName();
-		//std::cout << "variable: " << variable << " c0: " << ((*iter).second)[0] << std::endl;
+		std::cout << "variable: " << variable << " c0: " << ((*iter).second)[0] << " position: " << position << std::endl;
 
 		//if (mas_ == (*model_name))
 		{
