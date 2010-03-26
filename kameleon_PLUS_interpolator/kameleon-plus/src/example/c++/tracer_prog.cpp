@@ -76,14 +76,14 @@ int main (int argc, char * argv[])
 	kameleon.loadVectorVariable(variable);
 	Tracer tracer(&kameleon);
 	tracer.setMaxIterations(20000);
-	tracer.setInnerBoundary(2.5f);
+	//tracer.setInnerBoundary(2.5f);
 	tracer.setDn(.2f);
 
 	clock_t start, finish;
 //	ProfilerStart("/tmp/tracer.prof");
 	start = clock();
 	Fieldline f1;
-	for (int i = 0; i < 25; i++)
+	//for (int i = 0; i < 25; i++)
 	{
 
 		f1 = tracer.bidirectionalTrace(variable,c0,c1,c2);
