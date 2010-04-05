@@ -40,33 +40,10 @@ namespace ccmc
 			void initializeConversionFactorsToSI();
 			void initializeSIUnits();
 
-		private:
-
-			void initializeVariableNames();
 
 
 			//variable strings
-			std::string bx_, by_, bz_, ux_, uy_, uz_, jx_, jy_, jz_, b1x_, b1y_, b1z_, rho_, p_, e_;
-			std::string block_x_min;
-			std::string block_y_min;
-			std::string block_z_min;
-			std::string block_x_max;
-			std::string block_y_max;
-			std::string block_z_max;
 
-			std::string block_child_count;
-			std::string block_x_center;
-			std::string block_y_center;
-			std::string block_z_center;
-			std::string block_child_id_1;
-			std::string block_child_id_2;
-			std::string block_child_id_3;
-			std::string block_child_id_4;
-			std::string block_child_id_5;
-			std::string block_child_id_6;
-			std::string block_child_id_7;
-			std::string block_child_id_8;
-			std::string block_at_amr_level;
 			//	bool previousWasValid;
 
 
