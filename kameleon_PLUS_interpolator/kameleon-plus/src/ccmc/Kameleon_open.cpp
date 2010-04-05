@@ -19,40 +19,43 @@ namespace ccmc
 
 		if (status > -1)
 		{
-			this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
-			fileReader.close();
-			std::cerr << "modelName: '" << modelName << "'" << std::endl;
-			if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
+			if (fileReader.doesAttributeExist("model_name"))
 			{
-	//			std::cout << "created OpenGGCM object" << std::endl;
-				model = new OpenGGCM();
-			} else if (modelName == "batsrus")
-			{
-	//			std::cout << "created BATSRUS object" << std::endl;
-				model = new BATSRUS();
-			} else if (modelName == "enlil")
-			{
-	//			std::cout << "created ENLIL object" << std::endl;
-				model = new ENLIL();
-			} else if (modelName == "mas")
-			{
-	//			std::cout << "created MAS object" << std::endl;
-				model = new MAS();
-			} else if (modelName == "")
-			{
-				if (model != NULL)
-					delete model;
-				model = NULL;
-				status = -1;
+
+				this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
+				fileReader.close();
+				std::cerr << "modelName: '" << modelName << "'" << std::endl;
+				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
+				{
+		//			std::cout << "created OpenGGCM object" << std::endl;
+					model = new OpenGGCM();
+				} else if (modelName == "batsrus")
+				{
+		//			std::cout << "created BATSRUS object" << std::endl;
+					model = new BATSRUS();
+				} else if (modelName == "enlil")
+				{
+		//			std::cout << "created ENLIL object" << std::endl;
+					model = new ENLIL();
+				} else if (modelName == "mas")
+				{
+		//			std::cout << "created MAS object" << std::endl;
+					model = new MAS();
+				} else //unknown model
+				{
+					if (model != NULL)
+						delete model;
+					model = NULL;
+					status = -1;
+
+				}
 			} else
 			{
 				if (model != NULL)
 					delete model;
 				model = NULL;
 				status = -1;
-
 			}
-
 
 			if (model != NULL)
 			{
