@@ -44,7 +44,7 @@ namespace ccmc
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
 
-		cout << "testing open in OpenGGCM class" << endl;
+//		cout << "testing open in OpenGGCM class" << endl;
 		return status;
 	}
 
@@ -63,7 +63,7 @@ namespace ccmc
 	 */
 	void OpenGGCM::initializeConversionFactorsToSI()
 	{
-		std::cout << "OpenGGCM::initializeConversionFactorsToSI()" << std::endl;
+//		std::cout << "OpenGGCM::initializeConversionFactorsToSI()" << std::endl;
 		conversionFactorsToSI["bx1"] = 1e-9f;
 		conversionFactorsToSI["by1"] = 1e-9f;
 		conversionFactorsToSI["bz1"] = 1e-9f;
@@ -106,7 +106,7 @@ namespace ccmc
 	OpenGGCM::~OpenGGCM()
 	{
 		// TODO Auto-generated destructor stub
-		std::cout << "deleting OpenGGCM object" << std::endl;
+//		std::cout << "deleting OpenGGCM object" << std::endl;
 	}
 
 }
