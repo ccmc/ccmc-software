@@ -49,6 +49,7 @@ namespace ccmc
 
 			if (model != NULL)
 			{
+std::cerr << "model is not NULL" << std::endl;
 				model->setModelName(modelName);
 				status = model->open(filename);
 
