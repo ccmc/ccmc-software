@@ -376,9 +376,12 @@ namespace ccmc
 	 */
 	long Kameleon::close()
 	{
-		model->close();
-		delete model;
-		model = NULL;
+		if (model != NULL)
+		{
+			model->close();
+			delete model;
+			model = NULL;
+		}
 
 
 	}
