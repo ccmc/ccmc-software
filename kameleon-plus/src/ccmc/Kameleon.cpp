@@ -302,20 +302,20 @@ namespace ccmc
 			encodeEPOCH3(cdf_epoch_time, current_time);
 			//parse the new string
 			//"2007-05-20T20:30:00.000Z";
-			cout << "current_time: " << current_time << endl;
+			// << "current_time: " << current_time << endl;
 			string current_time_str = current_time;
 			time.year = boost::lexical_cast<int>(current_time_str.substr(0,4));
-			cout << "time.year: " << time.year << endl;
+//			cout << "time.year: " << time.year << endl;
 			time.month = boost::lexical_cast<int>(current_time_str.substr(5,2));
-			cout << "time.month: " << time.month << endl;
+//			cout << "time.month: " << time.month << endl;
 			time.day = boost::lexical_cast<int>(current_time_str.substr(8,2));
-			cout << "time.day: " << time.day << endl;
+//			cout << "time.day: " << time.day << endl;
 			time.hour = boost::lexical_cast<int>(current_time_str.substr(11,2));
-			cout << "time.hour: " << time.hour << endl;
+//			cout << "time.hour: " << time.hour << endl;
 			time.minute = boost::lexical_cast<int>(current_time_str.substr(14,2));
-			cout << "time.minute: " << time.minute << endl;
+//			cout << "time.minute: " << time.minute << endl;
 			time.second = boost::lexical_cast<float>(current_time_str.substr(17,6));
-			cout << "time.second: " << time.second << endl;
+//			cout << "time.second: " << time.second << endl;
 			time_string = current_time;
 		}
 		return time;

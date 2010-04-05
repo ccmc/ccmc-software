@@ -193,7 +193,9 @@ namespace ccmc
 		if (iter != variableData.end())
 			vData = (*iter).second;
 		else
-			std::cout << "variable: " << variable << " not found!!!" << std::endl;
+		{
+			std::cerr << "variable: " << variable << " not found!!!" << std::endl;
+		}
 		return vData;
 	}
 
@@ -348,7 +350,7 @@ namespace ccmc
 		variableDataInt.clear();
 		variableDataByID.clear();
 		variableDataIntByID.clear();
-		std::cout << "model: destructor!" << std::endl;
+//		std::cout << "model: destructor!" << std::endl;
 
 		/*boost::unordered_map<std::string, std::vector<int>* > variableDataInt;
 
