@@ -38,12 +38,19 @@ namespace ccmc
 			{
 	//			std::cout << "created MAS object" << std::endl;
 				model = new MAS();
+			} else if (modelName == "")
+			{
+				if (model != NULL)
+					delete model;
+				model = NULL;
+				status = -1;
 			} else
 			{
 				if (model != NULL)
 					delete model;
 				model = NULL;
 				status = -1;
+
 			}
 
 
