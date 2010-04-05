@@ -491,7 +491,7 @@ namespace ccmc
 			gAttributeByID[i] = attribute;
 			gAttributes[attribute.getAttributeName()] = attribute;
 			//return attribute;
-		} else //CDF_FLOAT
+		} else if (dataType == CDF_FLOAT)//CDF_FLOAT
 		{
 			//float attributeValue = 0.f;
 			float attributeBuffer;// = new float[1];
@@ -598,7 +598,7 @@ namespace ccmc
 			attribute.setAttributeValue(value);
 
 
-		} else //CDF_FLOAT
+		} else if (dataType == CDF_FLOAT) //CDF_FLOAT
 		{
 			float value;
 			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
