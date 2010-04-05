@@ -15,44 +15,47 @@ namespace ccmc
 
 
 		FileReader fileReader;
-		fileReader.open(filename);
-		this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
-		fileReader.close();
-//		std::cout << "modelName: " << modelName << std::endl;
-		if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
+		long status = fileReader.open(filename);
+
+		if (status > -1)
 		{
-//			std::cout << "created OpenGGCM object" << std::endl;
-			model = new OpenGGCM();
-		} else if (modelName == "batsrus")
-		{
-//			std::cout << "created BATSRUS object" << std::endl;
-			model = new BATSRUS();
-		} else if (modelName == "enlil")
-		{
-//			std::cout << "created ENLIL object" << std::endl;
-			model = new ENLIL();
-		} else if (modelName == "mas")
-		{
-//			std::cout << "created MAS object" << std::endl;
-			model = new MAS();
-		} else
-		{
+			this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
+			fileReader.close();
+	//		std::cout << "modelName: " << modelName << std::endl;
+			if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
+			{
+	//			std::cout << "created OpenGGCM object" << std::endl;
+				model = new OpenGGCM();
+			} else if (modelName == "batsrus")
+			{
+	//			std::cout << "created BATSRUS object" << std::endl;
+				model = new BATSRUS();
+			} else if (modelName == "enlil")
+			{
+	//			std::cout << "created ENLIL object" << std::endl;
+				model = new ENLIL();
+			} else if (modelName == "mas")
+			{
+	//			std::cout << "created MAS object" << std::endl;
+				model = new MAS();
+			} else
+			{
+				if (model != NULL)
+					delete model;
+				model == NULL;
+			}
+
+
 			if (model != NULL)
-				delete model;
-			model == NULL;
-		}
+			{
+				model->setModelName(modelName);
+				status = model->open(filename);
 
+	//std::cout << "initializing extra information" << std::endl;
+				//current_cdf_id = get_current_CDFid();
+				initializeExtraInformation();
 
-		long status = -1;
-		if (model != NULL)
-		{
-			model->setModelName(modelName);
-			status = model->open(filename);
-
-//std::cout << "initializing extra information" << std::endl;
-			//current_cdf_id = get_current_CDFid();
-			initializeExtraInformation();
-
+			}
 		}
 		return status;
 
