@@ -120,64 +120,64 @@ namespace ccmc
 
 		/********** get block_*_min/max values ************/
 		bool success = loadVariable(block_x_min);
-		cout << "block_x_min: " << success << endl;
+//		cout << "block_x_min: " << success << endl;
 
 		success = loadVariable(block_x_max);
-		cout << "block_x_max: " << success << endl;
+//		cout << "block_x_max: " << success << endl;
 
 		success = loadVariable(block_y_min);
-		cout << "block_y_min: " << success << endl;
+//		cout << "block_y_min: " << success << endl;
 
 		success = loadVariable(block_y_max);
-		cout << "block_x_max: " << success << endl;
+//		cout << "block_x_max: " << success << endl;
 
 		success = loadVariable(block_z_min);
-		cout << "block_z_min: " << success << endl;
+//		cout << "block_z_min: " << success << endl;
 
 		success = loadVariable(block_z_max);
-		cout << "block_z_max: " << success << endl;
+//		cout << "block_z_max: " << success << endl;
 
 		/********** get block_child_count_array, block_*_center_array, & block_child_id_*_array values ************/
 		success = loadVariableInt(block_child_count);
 
 
 		success = loadVariable(block_x_center);
-		cout << "block_x_center: " << success << endl;
+//		cout << "block_x_center: " << success << endl;
 
 		success = loadVariable(block_y_center);
-		cout << "block_y_center: " << success << endl;
+//		cout << "block_y_center: " << success << endl;
 
 		success = loadVariable(block_z_center);
-		cout << "block_z_center: " << success << endl;
+//		cout << "block_z_center: " << success << endl;
 
 		success = loadVariableInt(block_child_id_1);
-		cout << "block_child_id_1: " << success << endl;
+//		cout << "block_child_id_1: " << success << endl;
 
 		success = loadVariableInt(block_child_id_2);
-		cout << "block_child_id_2: " << success << endl;
+//		cout << "block_child_id_2: " << success << endl;
 
 		success = loadVariableInt(block_child_id_3);
-		cout << "block_child_id_3: " << success << endl;
+//		cout << "block_child_id_3: " << success << endl;
 
 		success = loadVariableInt(block_child_id_4);
-		cout << "block_child_id_4: " << success << endl;
+//		cout << "block_child_id_4: " << success << endl;
 
 		success = loadVariableInt(block_child_id_5);
-		cout << "block_child_id_5: " << success << endl;
+//		cout << "block_child_id_5: " << success << endl;
 
 		success = loadVariableInt(block_child_id_6);
-		cout << "block_child_id_6: " << success << endl;
+//		cout << "block_child_id_6: " << success << endl;
 
 		success = loadVariableInt(block_child_id_7);
-		cout << "block_child_id_7: " << success << endl;
+//		cout << "block_child_id_7: " << success << endl;
 
 		success = loadVariableInt(block_child_id_8);
-		cout << "block_child_id_8: " << success << endl;
+//		cout << "block_child_id_8: " << success << endl;
 
 
 		/******** get values for block_at_amr_level *******/
 		success = loadVariableInt(block_at_amr_level);
-		cout << "block_at_amr_level: " << success << endl;
+//		cout << "block_at_amr_level: " << success << endl;
 		//std::cout << "block_at_amr_level: " << variableDataInt["block_at_amr_level"][0] << std::endl;
 		initializeVariableNames();
 		initializeConversionFactorsToSI();
@@ -290,6 +290,6 @@ namespace ccmc
 	BATSRUS::~BATSRUS()
 	{
 		// TODO Auto-generated destructor stub
-		std::cout << "deleting BATSRUS object" << std::endl;
+//		std::cout << "deleting BATSRUS object" << std::endl;
 	}
 }
