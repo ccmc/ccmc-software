@@ -21,7 +21,7 @@ namespace ccmc
 		{
 			this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
 			fileReader.close();
-	//		std::cout << "modelName: " << modelName << std::endl;
+			std::cerr << "modelName: '" << modelName << "'" << std::endl;
 			if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 			{
 	//			std::cout << "created OpenGGCM object" << std::endl;
