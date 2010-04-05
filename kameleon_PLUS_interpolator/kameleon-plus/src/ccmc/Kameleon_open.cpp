@@ -18,22 +18,22 @@ namespace ccmc
 		fileReader.open(filename);
 		this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
 		fileReader.close();
-		std::cout << "modelName: " << modelName << std::endl;
+//		std::cout << "modelName: " << modelName << std::endl;
 		if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 		{
-			std::cout << "created OpenGGCM object" << std::endl;
+//			std::cout << "created OpenGGCM object" << std::endl;
 			model = new OpenGGCM();
 		} else if (modelName == "batsrus")
 		{
-			std::cout << "created BATSRUS object" << std::endl;
+//			std::cout << "created BATSRUS object" << std::endl;
 			model = new BATSRUS();
 		} else if (modelName == "enlil")
 		{
-			std::cout << "created ENLIL object" << std::endl;
+//			std::cout << "created ENLIL object" << std::endl;
 			model = new ENLIL();
 		} else if (modelName == "mas")
 		{
-			std::cout << "created MAS object" << std::endl;
+//			std::cout << "created MAS object" << std::endl;
 			model = new MAS();
 		} else
 		{
@@ -47,7 +47,7 @@ namespace ccmc
 			model->setModelName(modelName);
 			status = model->open(filename);
 
-std::cout << "initializing extra information" << std::endl;
+//std::cout << "initializing extra information" << std::endl;
 			//current_cdf_id = get_current_CDFid();
 			initializeExtraInformation();
 
