@@ -35,6 +35,9 @@ namespace ccmc
 		{
 			std::cout << "created MAS object" << std::endl;
 			model = new MAS();
+		} else
+		{
+			model == NULL;
 		}
 
 
