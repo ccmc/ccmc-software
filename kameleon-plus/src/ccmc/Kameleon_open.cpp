@@ -43,6 +43,7 @@ namespace ccmc
 				if (model != NULL)
 					delete model;
 				model == NULL;
+				status = -1;
 			}
 
 
