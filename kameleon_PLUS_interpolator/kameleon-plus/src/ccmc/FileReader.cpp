@@ -58,14 +58,18 @@ namespace ccmc
 
 			if (status == CDF_OK)
 			{
-
+std::cerr << "CDF_OK: attempting to initialize file" << std::endl;
 				//check if this is a valid Kameleon converted file
 
 				current_filename = filename;
 				this->initializeGlobalAttributes();
+				std::cerr << "After initializeGlobalAttributes" << std::endl;
 				this->initializeVariableAttributes();
+				std::cerr << "After initializeVariableAttributes" << std::endl;
 				this->initializeVariableIDs();
+				std::cerr << "After initializeVariableIDs" << std::endl;
 				this->initializeVariableNames();
+				std::cerr << "AfterinitializeVariableNames" << std::endl;
 			}
 
 		}
