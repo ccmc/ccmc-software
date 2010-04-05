@@ -37,6 +37,8 @@ namespace ccmc
 			model = new MAS();
 		} else
 		{
+			if (model != NULL)
+				delete model;
 			model == NULL;
 		}
 
