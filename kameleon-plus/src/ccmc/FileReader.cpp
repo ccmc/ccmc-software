@@ -58,6 +58,9 @@ namespace ccmc
 
 			if (status == CDF_OK)
 			{
+
+				//check if this is a valid Kameleon converted file
+
 				current_filename = filename;
 				this->initializeGlobalAttributes();
 				this->initializeVariableAttributes();
