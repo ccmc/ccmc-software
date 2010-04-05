@@ -10,6 +10,7 @@
 #include "Cell3D.h"
 #include "Vector.h"
 #include "BATSRUSInterpolator.h"
+#include "StringConstants.h"
 
 
 namespace ccmc
@@ -20,25 +21,7 @@ namespace ccmc
 	BATSRUS::BATSRUS()
 	{
 		// TODO Auto-generated constructor stub
-		block_x_min = "block_x_min";
-		block_y_min = "block_y_min";
-		block_z_min = "block_z_min";
-		block_x_max = "block_x_max";
-		block_y_max = "block_y_max";
-		block_z_max = "block_z_max";
-		block_child_count = "block_child_count";
-		block_x_center = "block_x_center";
-		block_y_center = "block_y_center";
-		block_z_center = "block_z_center";
-		block_child_id_1 = "block_child_id_1";
-		block_child_id_2 = "block_child_id_2";
-		block_child_id_3 = "block_child_id_3";
-		block_child_id_4 = "block_child_id_4";
-		block_child_id_5 = "block_child_id_5";
-		block_child_id_6 = "block_child_id_6";
-		block_child_id_7 = "block_child_id_7";
-		block_child_id_8 = "block_child_id_8";
-		block_at_amr_level = "block_at_amr_level";
+
 		//variableNames = {"bx", "by", "bz", "b1x", "b1y", "b1z", "ux", "uy", "uz",
 		//					 "jx","jy","jz","rho","p","e"};
 
@@ -119,64 +102,64 @@ namespace ccmc
 		//int number_of_blocks_plus_virtual = (8 * number_of_blocks) / 7; /*  add ceil or floor later for consistency */
 
 		/********** get block_*_min/max values ************/
-		bool success = loadVariable(block_x_min);
+		bool success = loadVariable(ccmc::strings::variables::block_x_min_);
 //		cout << "block_x_min: " << success << endl;
 
-		success = loadVariable(block_x_max);
+		success = loadVariable(ccmc::strings::variables::block_x_max_);
 //		cout << "block_x_max: " << success << endl;
 
-		success = loadVariable(block_y_min);
+		success = loadVariable(ccmc::strings::variables::block_y_min_);
 //		cout << "block_y_min: " << success << endl;
 
-		success = loadVariable(block_y_max);
+		success = loadVariable(ccmc::strings::variables::block_y_max_);
 //		cout << "block_x_max: " << success << endl;
 
-		success = loadVariable(block_z_min);
+		success = loadVariable(ccmc::strings::variables::block_z_min_);
 //		cout << "block_z_min: " << success << endl;
 
-		success = loadVariable(block_z_max);
+		success = loadVariable(ccmc::strings::variables::block_z_max_);
 //		cout << "block_z_max: " << success << endl;
 
 		/********** get block_child_count_array, block_*_center_array, & block_child_id_*_array values ************/
-		success = loadVariableInt(block_child_count);
+		success = loadVariableInt(ccmc::strings::variables::block_child_count_);
 
 
-		success = loadVariable(block_x_center);
+		success = loadVariable(ccmc::strings::variables::block_x_center_);
 //		cout << "block_x_center: " << success << endl;
 
-		success = loadVariable(block_y_center);
+		success = loadVariable(ccmc::strings::variables::block_y_center_);
 //		cout << "block_y_center: " << success << endl;
 
-		success = loadVariable(block_z_center);
+		success = loadVariable(ccmc::strings::variables::block_z_center_);
 //		cout << "block_z_center: " << success << endl;
 
-		success = loadVariableInt(block_child_id_1);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_1_);
 //		cout << "block_child_id_1: " << success << endl;
 
-		success = loadVariableInt(block_child_id_2);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_2_);
 //		cout << "block_child_id_2: " << success << endl;
 
-		success = loadVariableInt(block_child_id_3);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_3_);
 //		cout << "block_child_id_3: " << success << endl;
 
-		success = loadVariableInt(block_child_id_4);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_4_);
 //		cout << "block_child_id_4: " << success << endl;
 
-		success = loadVariableInt(block_child_id_5);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_5_);
 //		cout << "block_child_id_5: " << success << endl;
 
-		success = loadVariableInt(block_child_id_6);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_6_);
 //		cout << "block_child_id_6: " << success << endl;
 
-		success = loadVariableInt(block_child_id_7);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_7_);
 //		cout << "block_child_id_7: " << success << endl;
 
-		success = loadVariableInt(block_child_id_8);
+		success = loadVariableInt(ccmc::strings::variables::block_child_id_8_);
 //		cout << "block_child_id_8: " << success << endl;
 
 
 		/******** get values for block_at_amr_level *******/
-		success = loadVariableInt(block_at_amr_level);
+		success = loadVariableInt(ccmc::strings::variables::block_at_amr_level_);
 //		cout << "block_at_amr_level: " << success << endl;
 		//std::cout << "block_at_amr_level: " << variableDataInt["block_at_amr_level"][0] << std::endl;
 		initializeVariableNames();
@@ -189,30 +172,7 @@ namespace ccmc
 
 
 
-	/**
-	 * @brief Initializes the variable names that will be used in string comparisons.
-	 *
-	 * This significantly improves the performance of the library by avoiding
-	 * unnecessary string creations and destructions.
-	 */
-	void BATSRUS::initializeVariableNames()
-	{
-		bx_ = "bx";
-		by_ = "by";
-		bz_ = "bz";
-		ux_ = "ux";
-		uy_ = "uy";
-		uz_ = "uz";
-		jx_ = "jx";
-		jy_ = "jy";
-		jz_ = "jz";
-		b1x_ = "b1x";
-		b1y_ = "b1y";
-		b1z_ = "b1z";
-		rho_ = "rho";
-		p_ = "p";
-		e_ = "e";
-	}
+
 
 	/**
 	 *
@@ -221,21 +181,21 @@ namespace ccmc
 	 */
 	void BATSRUS::initializeSIUnits()
 	{
-		variableSIUnits[bx_] = "T";
-		variableSIUnits[by_] = "T";
-		variableSIUnits[bz_] = "T";
-		variableSIUnits[ux_] = "m/s";
-		variableSIUnits[uy_] = "m/s";
-		variableSIUnits[uz_] = "m/s";
-		variableSIUnits[jx_] = "A/m^2";
-		variableSIUnits[jy_] = "A/m^2";
-		variableSIUnits[jz_] = "A/m^2";
-		variableSIUnits[b1x_] = "T";
-		variableSIUnits[b1y_] = "T";
-		variableSIUnits[b1z_] = "T";
-		variableSIUnits[rho_] = "m^-3";
-		variableSIUnits[p_] = "Pa";
-		variableSIUnits[e_] = "J/m^3";
+		variableSIUnits[ccmc::strings::variables::bx_] = "T";
+		variableSIUnits[ccmc::strings::variables::by_] = "T";
+		variableSIUnits[ccmc::strings::variables::bz_] = "T";
+		variableSIUnits[ccmc::strings::variables::ux_] = "m/s";
+		variableSIUnits[ccmc::strings::variables::uy_] = "m/s";
+		variableSIUnits[ccmc::strings::variables::uz_] = "m/s";
+		variableSIUnits[ccmc::strings::variables::jx_] = "A/m^2";
+		variableSIUnits[ccmc::strings::variables::jy_] = "A/m^2";
+		variableSIUnits[ccmc::strings::variables::jz_] = "A/m^2";
+		variableSIUnits[ccmc::strings::variables::b1x_] = "T";
+		variableSIUnits[ccmc::strings::variables::b1y_] = "T";
+		variableSIUnits[ccmc::strings::variables::b1z_] = "T";
+		variableSIUnits[ccmc::strings::variables::rho_] = "m^-3";
+		variableSIUnits[ccmc::strings::variables::p_] = "Pa";
+		variableSIUnits[ccmc::strings::variables::e_] = "J/m^3";
 	}
 
 
@@ -248,21 +208,21 @@ namespace ccmc
 		/**
 		 * TODO: fix these conversion factors
 		 */
-		conversionFactorsToSI[bx_] = 1e-9f;
-		conversionFactorsToSI[by_] = 1e-9f;
-		conversionFactorsToSI[bz_] = 1e-9f;
-		conversionFactorsToSI[ux_] = 1e3f;
-		conversionFactorsToSI[uy_] = 1e3f;
-		conversionFactorsToSI[uz_] = 1e3f;
-		conversionFactorsToSI[jx_] = 1e-6f;
-		conversionFactorsToSI[jy_] = 1e-6f;
-		conversionFactorsToSI[jz_] = 1e-6f;
-		conversionFactorsToSI[b1x_] = 1e-9f;
-		conversionFactorsToSI[b1y_] = 1e-9f;
-		conversionFactorsToSI[b1z_] = 1e-9f;
-		conversionFactorsToSI[rho_] = 1e6;
-		conversionFactorsToSI[p_] = 1e-9f;
-		conversionFactorsToSI[e_] = 1e-15f;
+		conversionFactorsToSI[ccmc::strings::variables::bx_] = 1e-9f;
+		conversionFactorsToSI[ccmc::strings::variables::by_] = 1e-9f;
+		conversionFactorsToSI[ccmc::strings::variables::bz_] = 1e-9f;
+		conversionFactorsToSI[ccmc::strings::variables::ux_] = 1e3f;
+		conversionFactorsToSI[ccmc::strings::variables::uy_] = 1e3f;
+		conversionFactorsToSI[ccmc::strings::variables::uz_] = 1e3f;
+		conversionFactorsToSI[ccmc::strings::variables::jx_] = 1e-6f;
+		conversionFactorsToSI[ccmc::strings::variables::jy_] = 1e-6f;
+		conversionFactorsToSI[ccmc::strings::variables::jz_] = 1e-6f;
+		conversionFactorsToSI[ccmc::strings::variables::b1x_] = 1e-9f;
+		conversionFactorsToSI[ccmc::strings::variables::b1y_] = 1e-9f;
+		conversionFactorsToSI[ccmc::strings::variables::b1z_] = 1e-9f;
+		conversionFactorsToSI[ccmc::strings::variables::rho_] = 1e6;
+		conversionFactorsToSI[ccmc::strings::variables::p_] = 1e-9f;
+		conversionFactorsToSI[ccmc::strings::variables::e_] = 1e-15f;
 
 		/*conversionFactorsToSI["t"] = 1.e-12/Boltzmann;
 		 conversionFactorsToSI["s"] = 1.e-4;
