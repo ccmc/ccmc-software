@@ -754,4 +754,14 @@ namespace ccmc
 	{
 		return model->getNumberOfVariableAttributes();
 	}
+
+	int Kameleon::getNumberOfVariables()
+	{
+		return model->getNumberOfVariables();
+	}
+
+	std::string Kameleon::getVariableAttributeName(long attribute_id)
+	{
+		return model->getVariableAttributeName(attribute_id);
+	}
 }
