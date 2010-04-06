@@ -56,8 +56,11 @@ namespace ccmc
 		else{
 			status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
+
 			if (status == CDF_OK)
 			{
+				long readOnlyMode = READONLYon;
+				CDFsetReadOnlyMode(current_file_id, readOnlyMode);
 
 				//check if this is a valid Kameleon converted file
 
@@ -864,6 +867,31 @@ namespace ccmc
 		//get dim sizes
 		CDFgetzVarDimSizes(current_file_id, variable_id, counts);
 		return counts[0];
+	}
+
+	std::vector<std::string> FileReader::getVariableAttributeNames()
+	{
+		std::vector<std::string> attributeNames;
+		long numAttributes;
+		CDFgetNumAttributes(current_file_id, &numAttributes);
+		char name[512];
+		long attrScope;
+		long maxgEntry;
+		long maxrEntry;
+		long maxzEntry;
+
+		for (int i = 0; i < numAttributes; i++)
+		{
+			std::string value = "";
+			CDFinquireAttr(current_file_id, i,name, &attrScope, &maxgEntry, &maxrEntry, &maxzEntry);
+			//CDFgetAttrName(current_file_id, i, buffer);
+			if (attrScope == VARIABLE_SCOPE)
+			{
+				value = name;
+				attributeNames.push_back(value);
+			}
+		}
+		return attributeNames;
 	}
 
 	/**
