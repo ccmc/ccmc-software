@@ -9,7 +9,7 @@ libkameleon_plus_wrapper_java_la_LIBTOOLFLAGS = --tag=disable-static
 jarfile = kameleon-plus-wrapper-@RELEASE@.jar
 
 jardir = $(datadir)/java
-pkgpath = @srcdir@
+pkgpath = @builddir@
 jar_DATA = $(jarfile)
 JAVAROOT= @builddir@
 

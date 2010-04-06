@@ -85,7 +85,9 @@ class CCMCJNI {
   public final static native String Kameleon_getGlobalAttributeName(long jarg1, Kameleon jarg1_, int jarg2);
   public final static native long Kameleon_getGlobalAttribute__SWIG_1(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native long Kameleon_getVariableAttribute(long jarg1, Kameleon jarg1_, String jarg2, String jarg3);
+  public final static native String Kameleon_getVariableAttributeName(long jarg1, Kameleon jarg1_, int jarg2);
   public final static native long Kameleon_getLoadedVariables(long jarg1, Kameleon jarg1_);
+  public final static native int Kameleon_getNumberOfVariables(long jarg1, Kameleon jarg1_);
   public final static native boolean Kameleon_doesAttributeExist(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native boolean Kameleon_doesVariableExist(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native long Kameleon_getCurrentFileID(long jarg1, Kameleon jarg1_);
