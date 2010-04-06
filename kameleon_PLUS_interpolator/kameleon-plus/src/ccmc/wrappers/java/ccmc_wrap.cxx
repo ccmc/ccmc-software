@@ -1723,6 +1723,23 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableAttribu
 }
 
 
+SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getVariableAttributeName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getLoadedVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
@@ -1734,6 +1751,21 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getLoadedVariables
   arg1 = *(ccmc::Kameleon **)&jarg1; 
   result = (arg1)->getLoadedVariables();
   *(std::vector< std::string > **)&jresult = new std::vector< std::string >((const std::vector< std::string > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  result = (int)(arg1)->getNumberOfVariables();
+  jresult = (jint)result; 
   return jresult;
 }
 

@@ -134,8 +134,16 @@ public class Kameleon {
     return new Attribute(CCMCJNI.Kameleon_getVariableAttribute(swigCPtr, this, variable, attribute), true);
   }
 
+  public String getVariableAttributeName(int attribute_id) {
+    return CCMCJNI.Kameleon_getVariableAttributeName(swigCPtr, this, attribute_id);
+  }
+
   public vector_string getLoadedVariables() {
     return new vector_string(CCMCJNI.Kameleon_getLoadedVariables(swigCPtr, this), true);
+  }
+
+  public int getNumberOfVariables() {
+    return CCMCJNI.Kameleon_getNumberOfVariables(swigCPtr, this);
   }
 
   public boolean doesAttributeExist(String attribute) {

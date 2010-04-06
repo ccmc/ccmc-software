@@ -1,0 +1,1 @@
+/usr/local/bin/swig -outcurrentdir -java -c++ -I../../.. -package ccmc.wrappers -I/Applications/cdf33_0-dist/include/ ../ccmc.i
