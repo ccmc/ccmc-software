@@ -78,7 +78,7 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						$(TRACER_SOURCES)
 EXTRA_libkameleon_plus_la_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
 						
-libkameleon_plus_la_LDFLAGS = -release @RELEASE@ -enable-runtime-pseudo-relocs --enable-auto-imports
+libkameleon_plus_la_LDFLAGS = -release @RELEASE@ -enable-runtime-pseudo-reloc --enable-auto-import
 libkameleon_plus_la_CFLAGS = -fPIC
 
 pkgincludedir = $(includedir)/ccmc
