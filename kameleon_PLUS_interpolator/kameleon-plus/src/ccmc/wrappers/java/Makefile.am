@@ -14,7 +14,7 @@ jar_DATA = $(jarfile)
 JAVAROOT= @builddir@
 
 CLEANFILES = $(jarfile) $(pkgpath)/ccmc/wrappers/*.class
-
+AM_JAVACFLAGS=-nowarn
 
 dist_noinst_JAVA = 	Attribute.java \
 					CCMC.java \
