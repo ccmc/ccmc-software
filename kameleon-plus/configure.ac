@@ -16,14 +16,11 @@ AC_PROG_F77
 AC_PROG_CC
 AM_PROG_LIBTOOL
 AM_PROG_CC_C_O
-AX_PROG_JAVAC
-AX_JNI_INCLUDE_DIR
-AX_PROG_JAR
 #AC_PKG_SWIG
 #SWIG_ENABLE_CXX
 #SWIG_PYTHON
 AM_PATH_PYTHON([2.5],,[:])
-AC_SUBST(JNI_INCLUDE_DIRS)
+
 # FIXME: Replace `main' with a function in `-lc':
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
@@ -85,10 +82,19 @@ AC_ARG_ENABLE([java],
 	AC_HELP_STRING([--enable-java],
 				[Build the Java wrappers]),
 				[if test "$enableval" = "yes"; then
+					AX_PROG_JAVAC
+					AX_JNI_INCLUDE_DIR
+					#AX_PROG_JAR
+					AC_SUBST(JNI_INCLUDE_DIRS)
 					AC_SUBST([JAVA_SOURCES],['blah'])
 					AC_SUBST([JAVA_WRAPPER],['java'])
 					JAVA_WRAPPER_ENABLED=true
 					AC_SUBST([JAVA_WRAPPER_ENABLED],[$JAVA_WRAPPER_ENABLED])
+					for JNI_INCLUDE_DIR in $JNI_INCLUDE_DIRS
+				    do
+				           CPPFLAGS="$CPPFLAGS -I$JNI_INCLUDE_DIR"
+				    done
+					
 				 fi
 				],)
 AM_CONDITIONAL([JAVA_WRAPPER_ENABLED], [$JAVA_WRAPPER_ENABLED])
