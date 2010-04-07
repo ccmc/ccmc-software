@@ -370,14 +370,14 @@ namespace ccmc
 		long count[1] = {1};
 		//get dim sizes
 		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
-		float * buffer = new float[1];
+		float buffer[1];
 		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
 				dimIntervals, buffer);
 		//add data to vector type, and delete original array
-		float value = buffer[0];
-		delete[] buffer;
+		return buffer[0];
+		//delete[] buffer;
 		//std::cout << "finished reading " << variable << std::endl;
-		return value;
+
 	}
 
 	/**
