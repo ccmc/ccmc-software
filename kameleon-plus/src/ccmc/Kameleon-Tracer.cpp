@@ -887,6 +887,11 @@ namespace ccmc
 			const float& startComponent2, const float& startComponent3, const Interpolator * interpolator,
 			const Direction& dir)
 	{
+		float adjusted_dn = dn;
+		if (dir == REVERSE)
+		{
+			adjusted_dn = -dn;
+		}
 		//Interpolator * interpolator = kameleon->createNewInterpolator();
 		std::string model_name = kameleon->getModelName();
 		Fieldline f;
@@ -1147,7 +1152,7 @@ namespace ccmc
 				dt = dComponent3;
 			if (dComponent2 < dt)
 				dt = dComponent2;
-			dt = dt * dn;
+			dt = dt * adjusted_dn;
 			addition.component1 = dt * vectorValue.component1 / magValue;
 			addition.component2 = dt * vectorValue.component2 / (magValue * DtoR * rlocal);
 			addition.component3 = dt * vectorValue.component3 / (magValue * DtoR * rsinth);
@@ -1187,7 +1192,7 @@ namespace ccmc
 			//		float dist = previous.distance(newPoint);
 
 			/** check if tracing went anywhere, else stop **/
-			if (dist < min_distance || newPoint.distance(oldPoint) < min_distance || dist > dt / dn)
+			if (dist < min_distance || newPoint.distance(oldPoint) < min_distance || dist > dt / adjusted_dn)
 			{
 
 				finished = true;
