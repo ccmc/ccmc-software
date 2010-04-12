@@ -992,15 +992,16 @@ namespace ccmc
 		/* these are in (r,lat,lon) space */
 		boxMin.component1 = (kameleon->getVariableAttribute(component1.c_str(), "actual_min")).getAttributeFloat()
 				* factor_r;
-		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
 		boxMin.component2 = 90. - RADEG
-				* (kameleon->getVariableAttribute(component2.c_str(), "actual_max")).getAttributeFloat();
+						* (kameleon->getVariableAttribute(component2.c_str(), "actual_max")).getAttributeFloat();
+		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
+
 
 		boxMax.component1 = (kameleon->getVariableAttribute(component1.c_str(), "actual_max")).getAttributeFloat()
 				* factor_r;
-		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
 		boxMax.component2 = 90. - RADEG
 				* (kameleon->getVariableAttribute(component2.c_str(), "actual_min")).getAttributeFloat();
+		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
 
 #ifdef DEBUG_SPHTRACER
 		cerr << "After setting box dimensions" << endl;
@@ -1052,9 +1053,9 @@ namespace ccmc
 				for (iz = NLAT; (*latitudes)[iz] > previous.component2; iz--)
 					;
 				br_up = ((Interpolator *) (interpolator)) -> interpolate(bComponent1, previous.component1,
-						previous.component3, (*latitudes)[iz + 1]);
+						(*latitudes)[iz + 1], previous.component3);
 				br_down = ((Interpolator *) (interpolator)) -> interpolate(bComponent1, previous.component1,
-						previous.component3, (*latitudes)[iz]);
+						(*latitudes)[iz], previous.component3);
 #ifdef DEBUG_SPHTRACER
 				cerr << "br_up: " << br_up << " br_down: " << br_down << endl;
 #endif
