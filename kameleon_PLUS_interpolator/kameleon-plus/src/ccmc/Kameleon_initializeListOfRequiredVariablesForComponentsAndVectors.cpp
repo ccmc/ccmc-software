@@ -289,6 +289,9 @@ namespace ccmc
 			listOfRequiredVariablesForComponents["b"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
 			listOfRequiredVariablesForComponentsByID["b"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
 
+			listOfRequiredVariablesForComponents["j"] = createVectorOfStringFromList(3, "jr", "jphi", "jtheta");
+			listOfRequiredVariablesForComponentsByID["j"] = createVectorOfLongFromList(3, "jr", "jphi", "jtheta");
+
 			listOfRequiredVariablesForComponents["br"] = createVectorOfStringFromList(1, "br");
 			listOfRequiredVariablesForComponentsByID["br"] = createVectorOfLongFromList(1, "br");
 
