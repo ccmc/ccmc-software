@@ -44,4 +44,4 @@ dist_noinst_JAVA = 	Attribute.java \
 
 
 $(jarfile): $(dist_noinst_JAVA)
-	@JAR@ cf $@ $(pkgpath)/ccmc/wrappers/*.class; 
+	jar cf $@ $(pkgpath)/ccmc/wrappers/*.class; 
