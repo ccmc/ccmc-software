@@ -13,7 +13,7 @@
 //#include <google/profiler.h>
 //#include <ccmc/kameleon_adjusted.h>
 #define LENGTH 500;
-
+using namespace ccmc;
 
 void Tokenize(const string& str,
                       vector<string>& tokens,

@@ -12,6 +12,7 @@
 //#include <ccmc/Kameleon_compatibility.h>
 //#include <google/profiler.h>
 //#include <ccmc/kameleon_adjusted.h>
+using namespace ccmc;
 #define LENGTH 500;
 int main (int argc, char * argv[])
 {
@@ -69,8 +70,8 @@ int main (int argc, char * argv[])
 	std::string n_ = "n";
 	std::string pram_ = "pram";
 	std::cout << "Loading variables" << std::endl;
-	kameleon.loadVariable(variable);
-
+	bool successLoading = kameleon.loadVariable(variable);
+	bool success = kameleon.doesVariableExist(variable);
 	std::cout << "Creating new interpolator" << std::endl;
 	Interpolator * interpolator = kameleon.createNewInterpolator();
 	clock_t start, finish;
@@ -90,7 +91,11 @@ int main (int argc, char * argv[])
 		{
 			//std::cout << "i: " << i << std::endl;
 		}
-		value = interpolator->interpolate(variable, c0,c1,c2 );
+		if (success)
+		{
+			value = interpolator->interpolate(variable, c0,c1,c2 );
+		} else
+			value = kameleon.getMissingValue();
 		convertedValue = value * conversion;
 
 	}
