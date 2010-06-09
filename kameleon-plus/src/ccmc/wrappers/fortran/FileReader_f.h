@@ -28,8 +28,8 @@ extern _C_ void f_filereader_getvariableint(int * id, const char * variable, int
 extern _C_ void f_filereader_getnumberofglobalattributes(int * id, long * num);
 extern _C_ void f_filereader_getnumberofvariables(int * id, long * num);
 extern _C_ void f_filereader_getnumberofvariableattributes(int * id, long * num);
-extern _C_ void f_filereader_getnumberofrecords(int id, const char * variable, long * num);
-extern _C_ void f_filereader_getnumberofrecordsbyid(int id, long variable_id, long * num);
+extern _C_ void f_filereader_getnumberofrecords(int * id, const char * variable, long * num);
+extern _C_ void f_filereader_getnumberofrecordsbyid(int * id, long * variable_id, long * num);
 extern _C_ void f_filereader_close_(int * id, long * status);
 extern _C_ void f_filereader_delete_(int * id, long * status);
 
