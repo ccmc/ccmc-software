@@ -83,5 +83,5 @@ libkameleon_plus_la_CFLAGS = -fPIC
 
 pkgincludedir = $(includedir)/ccmc
 EXTRA_HEADERS = Kameleon-Tracer.h Fieldline.h Point3f.h
-pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h \
+pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h Interpolator.h KameleonInterpolator.h Constants.h cxform.h\
 		 Kameleon_compatibility.h Model.h Point.h $(TRACER_HEADERS)#Shue.h

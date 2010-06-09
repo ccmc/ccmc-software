@@ -151,3 +151,11 @@ void Kameleon_get_native_unit(int id, const char * variable, char * destbuffer)
 	std::string units = kameleon->getNativeUnit(variable);
 	strncpy(destbuffer, units.c_str(), units.size());
 }
+
+void Kameleon_get_vis_unit(int id, const char * variable, char * destbuffer)
+{
+	Kameleon * kameleon = kameleonObjects[id];
+	std::string units = kameleon->getVisUnit(variable);
+	strncpy(destbuffer, units.c_str(), units.size());
+}
+

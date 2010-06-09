@@ -736,7 +736,15 @@ namespace ccmc
 	}
 	bool Kameleon::doesVariableExist(const std::string& variable)
 	{
-		return model->doesVariableExist(variable);
+		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
+		bool success = true;
+		for (int i = 0; i < requiredVariables.size(); i++)
+		{
+			//std::cout << "loading " << requiredVariables[i] << std::endl;
+			if (!model->doesVariableExist(requiredVariables[i]))
+				success = false;
+		}
+		return success;
 	}
 
 

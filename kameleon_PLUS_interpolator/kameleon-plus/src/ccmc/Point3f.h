@@ -21,7 +21,7 @@ namespace ccmc
 			Point3f();
 			Point3f(Coordinates c);
 			void normalize();
-			string toString() const;
+			std::string toString() const;
 			float magnitude();
 			float distance(const Point3f& p) const;
 			float component1;
