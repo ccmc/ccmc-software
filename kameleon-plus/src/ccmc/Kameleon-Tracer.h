@@ -18,6 +18,7 @@
  */
 namespace ccmc
 {
+	class Kameleon;
 
 	/**
 	 * @class Tracer
@@ -59,7 +60,7 @@ namespace ccmc
 			//void close();
 
 		private:
-			string filename;
+			std::string filename;
 
 			float r_end;
 			int step_max;
@@ -99,5 +100,6 @@ namespace ccmc
 
 	};
 }
+
 //#endif//__cplusplus
 #endif//CCMC_TRACER_H

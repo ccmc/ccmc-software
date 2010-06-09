@@ -44,13 +44,14 @@
 #include "FileReader.h"
 #include "Constants.h"
 #include "cxform.h"
+#include "Kameleon-Tracer.h"
 
 
 //cdf constants
 #define EPOCH3_STRING_LEN        24
 
-using namespace std;
-using namespace ccmc;
+
+
 
 /**
  * @namespace ccmc
@@ -62,6 +63,7 @@ namespace ccmc
 	extern "C" double parseEPOCH3(char epString[EPOCH3_STRING_LEN+1]);
 	extern "C" void encodeEPOCH3(double epoch, char epString[EPOCH3_STRING_LEN+1]);
 
+	class Tracer;
 	struct Position
 	{
 		float c0;
@@ -167,7 +169,7 @@ namespace ccmc
 			void initializeVariableUnits();
 
 
-			vector<string> createVectorOfStringFromList(int num, ...);
+			vector<std::string> createVectorOfStringFromList(int num, ...);
 			vector<long> createVectorOfLongFromList(int num, ...);
 			std::string padString(const std::string& s, int minLength);
 			std::string modelName;
@@ -182,9 +184,10 @@ namespace ccmc
 }
 
 //declared static variables for the C/Fortran interface functions
-static boost::unordered_map<int, Kameleon *> kameleonObjects;
-static boost::unordered_map<int, Interpolator *> interpolatorObjects;
-static boost::unordered_map<int, FileReader *> fileReaderObjects;
+static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
+static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
+static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
+static boost::unordered_map<int, ccmc::FileReader *> fileReaderObjects;
 
 #endif /** KAMELEON_H **/
 

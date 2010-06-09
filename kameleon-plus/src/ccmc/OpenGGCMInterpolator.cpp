@@ -276,13 +276,13 @@ namespace ccmc
 		float m_z = (c2 - iz_value) / dc2;
 		//std::cout << "m_x: " <<  m_x << " m_y: " << m_y << " m_z: " << m_z << std::endl;
 
-		float vc1 = (1 - m_x) * data[0] + m_x * data[1];
-		float vc2 = (1 - m_x) * data[4] + m_x * data[5];
-		float vc3 = (1 - m_x) * data[2] + m_x * data[3];
-		float vc4 = (1 - m_x) * data[6] + m_x * data[7];
-		float vc5 = (1 - m_z) * vc1 + m_z * vc3;
-		float vc6 = (1 - m_z) * vc2 + m_z * vc4;
-		float xc = (1 - m_y) * vc5 + m_y * vc6;
+		float vc1 = (1.f - m_x) * data[0] + m_x * data[1];
+		float vc2 = (1.f - m_x) * data[4] + m_x * data[5];
+		float vc3 = (1.f - m_x) * data[2] + m_x * data[3];
+		float vc4 = (1.f - m_x) * data[6] + m_x * data[7];
+		float vc5 = (1.f - m_z) * vc1 + m_z * vc3;
+		float vc6 = (1.f - m_z) * vc2 + m_z * vc4;
+		float xc = (1.f - m_y) * vc5 + m_y * vc6;
 		//return cell.interpolateData(-c0,-c1,c2) * getConversionFactor(variable);
 
 		if (previousVariableID != variable_id)
