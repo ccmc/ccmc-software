@@ -17,6 +17,13 @@ typedef boost::unordered_map<int, Kameleon*> map_i_K;
 typedef boost::unordered_map<int, Interpolator*> map_i_I;
 int Kameleon_create(int id)
 {
+
+
+
+
+
+
+
 	//first check if the id exists.  if so, delete it and create a new one.
 	map_i_K::iterator iter = kameleonObjects.find(id);
 	if (iter != kameleonObjects.end())
@@ -128,6 +135,14 @@ int Kameleon_load_variable(int id, const char * variable)
 	return status;
 }
 
+int Kameleon_load_vector_variable(int id, const char * variable)
+{
+	//TODO: error checking
+	Kameleon * kameleon = kameleonObjects[id];
+	int status = kameleon->loadVectorVariable(variable);
+	return status;
+}
+
 void Kameleon_get_global_attribute_string(int id, const char * gAttribute, char * destbuffer)
 {
 	//TODO: error checking
@@ -151,3 +166,12 @@ void Kameleon_get_native_unit(int id, const char * variable, char * destbuffer)
 	std::string units = kameleon->getNativeUnit(variable);
 	strncpy(destbuffer, units.c_str(), units.size());
 }
+
+void Kameleon_get_vis_unit(int id, const char * variable, char * destbuffer)
+{
+	Kameleon * kameleon = kameleonObjects[id];
+	std::string units = kameleon->getVisUnit(variable);
+	strncpy(destbuffer, units.c_str(), units.size());
+}
+
+
