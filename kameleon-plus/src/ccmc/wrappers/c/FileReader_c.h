@@ -33,4 +33,5 @@ extern _C_ long FileReader_getNumberOfRecordsByID(int id, long variable_id);
 extern _C_ long FileReader_close(int id);
 extern _C_ long FileReader_delete(int id);
 
+
 #endif /* FILEREADER_C_H_ */
