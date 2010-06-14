@@ -14,8 +14,7 @@ c     Variables to be used for interpolation and data extraction
       character*50 variable
 c      real*8 x,y,z
 c      real*8 interpolated_value
-      integer status,kid,tid
-      real*8 actual_steps
+      integer status,kid,tid,s_length,actual_steps
       real x_array(1000)
       real y_array(1000)
       real z_array(1000)
@@ -26,13 +25,20 @@ c     --- set your actual path name here ---
 
       call getarg(1, cdf_file_path)
       call getarg(2, variable)
-c      cdf_file_path='example.cdf '
+c      cdf_file_path='/Users/dberrios/Desktop/test.cdf'//CHAR(0)
+      s_length=len(cdf_file_path)
+      write(*,*) 's_length for cdf_file_path: ',s_length
+      cdf_file_path(s_length:s_length)=CHAR(0)
+      
+      s_length=len(variable)
+      write(*,*) 's_length for variable: ',s_length
+      variable(s_length:s_length)=CHAR(0)
       
       write(*,*) 'Processing file: ', cdf_file_path
-      write(*,*) 'Note:  The above referenced file name is 
-     1hard coded in the examples/f2c_interp_batsrus.f file.
-     2either create this file/link or modify the cdf_file_path
-     3variable '
+c      write(*,*) 'Note:  The above referenced file name is 
+c     1hard coded in the examples/f2c_interp_batsrus.f file.
+c     2either create this file/link or modify the cdf_file_path
+c     3variable '
  
 c     Open the cdf file     
  
@@ -40,14 +46,17 @@ c     Open the cdf file
       kid=0
       tid=0
       status=0
-      call f_Kameleon_create(kid)
-c      call f_Kameleon_open(kid,cdf_file_path,status)
-c      call f_Kameleon_load_vector_variable(kid,variable)
-c      call f_Tracer_create(tid,kid)
-c      call f_Tracer_bidirectionaltrace(tid,variable,-10.,0.,0.,1000,.2, 
-c     1actual_steps,x_array,y_array,z_array)
-c      call f_Tracer_delete(tid);
-c      call f_Kameleon_close(kid)
-c      call f_Kameleon_delete(kid)
-
+      actual_steps=0
+      call f_kameleon_create(kid)
+      call f_Kameleon_open(kid,cdf_file_path,status)
+      call f_Kameleon_load_vector_variable(kid,variable)
+      call f_Tracer_create(tid,kid)
+c     make sure the step size used is appropriate and the target arrays have 2 times
+c     the step_max so the arrays have enough for two directions.
+      call f_Tracer_bidirectionaltrace(tid,variable,-10.,0.,0.,500,.2, 
+     1actual_steps,x_array,y_array,z_array)
+      write(*,*) 'actual_steps: ',actual_steps
+      call f_Tracer_delete(tid);
+      call f_Kameleon_close(kid)
+      call f_Kameleon_delete(kid)
       end 
