@@ -32,7 +32,7 @@ int FileReader_create(int id)
 		(*iter).second = new FileReader();
 	} else
 	{
-std::cout << "creating FileReader object" << std::endl;
+//std::cout << "creating FileReader object" << std::endl;
 		fileReaderObjects[id] = new FileReader();
 	}
 	return id;
