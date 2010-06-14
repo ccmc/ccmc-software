@@ -181,13 +181,14 @@ namespace ccmc
 			//void initializeConversionFactorsToVis();
 			float missingValue;
 	};
+	//declared static variables for the C/Fortran interface functions
+	static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
+	static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
+	static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
+	static boost::unordered_map<int, ccmc::FileReader *> fileReaderObjects;
 }
 
-//declared static variables for the C/Fortran interface functions
-static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
-static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
-static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
-static boost::unordered_map<int, ccmc::FileReader *> fileReaderObjects;
+
 
 #endif /** KAMELEON_H **/
 

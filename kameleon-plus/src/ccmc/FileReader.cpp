@@ -148,7 +148,7 @@ namespace ccmc
 			//get dim sizes
 
 			CDFgetzVarDimSizes(current_file_id, variableNum, counts);
-			cout << "variable: " << variable << ": " << counts[0] << endl;
+			//cout << "variable: " << variable << ": " << counts[0] << endl;
 			float * buffer = new float[counts[0]];
 			CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
 					dimIntervals, buffer);
