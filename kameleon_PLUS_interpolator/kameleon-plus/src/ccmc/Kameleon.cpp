@@ -11,7 +11,7 @@
  **/
 #include "Kameleon.h"
 #include "FileReader.h"
-#include "Kameleon_compatibility.h"
+
 #include "KameleonInterpolator.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
@@ -29,7 +29,10 @@ using namespace std;
 
 
 //const Derived * derived = new Derived();
-
+static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
+static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
+static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
+static boost::unordered_map<int, ccmc::FileReader *> fileReaderObjects;
 //Kameleon derived;
 namespace ccmc
 {
@@ -412,7 +415,7 @@ namespace ccmc
 		bool success = true;
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
-			std::cout << "loading " << requiredVariables[i] << std::endl;
+//			std::cout << "loading " << requiredVariables[i] << std::endl;
 			if (!model->loadVariable(requiredVariables[i]))
 				success = false;
 		}
@@ -425,7 +428,7 @@ namespace ccmc
 		bool success = true;
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
-			std::cout << "unloading " << requiredVariables[i] << std::endl;
+//			std::cout << "unloading " << requiredVariables[i] << std::endl;
 			if (!model->unloadVariable(requiredVariables[i]))
 				success = false;
 		}
