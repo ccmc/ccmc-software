@@ -773,6 +773,21 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAttri
 }
 
 
+SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAttributeNames(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  std::vector< std::string > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::FileReader **)&jarg1; 
+  result = (arg1)->getVariableAttributeNames();
+  *(std::vector< std::string > **)&jresult = new std::vector< std::string >((const std::vector< std::string > &)result); 
+  return jresult;
+}
+
+
 SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
@@ -2010,7 +2025,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_kameleonObjects_1set(JNIEnv *
     return ;
   }
   arg1 = *argp1; 
-  kameleonObjects = arg1;
+  ccmc::kameleonObjects = arg1;
 }
 
 
@@ -2020,36 +2035,64 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_kameleonObjects_1get(JNIEnv 
   
   (void)jenv;
   (void)jcls;
-  result = kameleonObjects;
+  result = ccmc::kameleonObjects;
   *(boost::unordered_map< int,ccmc::Kameleon * > **)&jresult = new boost::unordered_map< int,ccmc::Kameleon * >((const boost::unordered_map< int,ccmc::Kameleon * > &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_interpolatorObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  boost::unordered_map< int,Interpolator * > arg1 ;
-  boost::unordered_map< int,Interpolator * > *argp1 ;
+SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_tracerObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  boost::unordered_map< int,ccmc::Tracer * > arg1 ;
+  boost::unordered_map< int,ccmc::Tracer * > *argp1 ;
   
   (void)jenv;
   (void)jcls;
-  argp1 = *(boost::unordered_map< int,Interpolator * > **)&jarg1; 
+  argp1 = *(boost::unordered_map< int,ccmc::Tracer * > **)&jarg1; 
   if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,Interpolator * >");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::Tracer * >");
     return ;
   }
   arg1 = *argp1; 
-  interpolatorObjects = arg1;
+  ccmc::tracerObjects = arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_tracerObjects_1get(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  boost::unordered_map< int,ccmc::Tracer * > result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = ccmc::tracerObjects;
+  *(boost::unordered_map< int,ccmc::Tracer * > **)&jresult = new boost::unordered_map< int,ccmc::Tracer * >((const boost::unordered_map< int,ccmc::Tracer * > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_interpolatorObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  boost::unordered_map< int,ccmc::Interpolator * > arg1 ;
+  boost::unordered_map< int,ccmc::Interpolator * > *argp1 ;
+  
+  (void)jenv;
+  (void)jcls;
+  argp1 = *(boost::unordered_map< int,ccmc::Interpolator * > **)&jarg1; 
+  if (!argp1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::Interpolator * >");
+    return ;
+  }
+  arg1 = *argp1; 
+  ccmc::interpolatorObjects = arg1;
 }
 
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_interpolatorObjects_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  boost::unordered_map< int,Interpolator * > result;
+  boost::unordered_map< int,ccmc::Interpolator * > result;
   
   (void)jenv;
   (void)jcls;
-  result = interpolatorObjects;
-  *(boost::unordered_map< int,Interpolator * > **)&jresult = new boost::unordered_map< int,Interpolator * >((const boost::unordered_map< int,Interpolator * > &)result); 
+  result = ccmc::interpolatorObjects;
+  *(boost::unordered_map< int,ccmc::Interpolator * > **)&jresult = new boost::unordered_map< int,ccmc::Interpolator * >((const boost::unordered_map< int,ccmc::Interpolator * > &)result); 
   return jresult;
 }
 
@@ -2066,7 +2109,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_fileReaderObjects_1set(JNIEnv
     return ;
   }
   arg1 = *argp1; 
-  fileReaderObjects = arg1;
+  ccmc::fileReaderObjects = arg1;
 }
 
 
@@ -2076,7 +2119,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_fileReaderObjects_1get(JNIEn
   
   (void)jenv;
   (void)jcls;
-  result = fileReaderObjects;
+  result = ccmc::fileReaderObjects;
   *(boost::unordered_map< int,ccmc::FileReader * > **)&jresult = new boost::unordered_map< int,ccmc::FileReader * >((const boost::unordered_map< int,ccmc::FileReader * > &)result); 
   return jresult;
 }
