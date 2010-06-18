@@ -31,6 +31,7 @@ class CCMCJNI {
   public final static native String FileReader_getVariableAttributeName(long jarg1, FileReader jarg1_, int jarg2);
   public final static native long FileReader_getGlobalAttribute__SWIG_1(long jarg1, FileReader jarg1_, String jarg2);
   public final static native long FileReader_getVariableAttribute(long jarg1, FileReader jarg1_, String jarg2, String jarg3);
+  public final static native long FileReader_getVariableAttributeNames(long jarg1, FileReader jarg1_);
   public final static native boolean FileReader_doesAttributeExist(long jarg1, FileReader jarg1_, String jarg2);
   public final static native boolean FileReader_doesVariableExist(long jarg1, FileReader jarg1_, String jarg2);
   public final static native int FileReader_close(long jarg1, FileReader jarg1_);
@@ -102,6 +103,8 @@ class CCMCJNI {
   public final static native void delete_Kameleon(long jarg1);
   public final static native void kameleonObjects_set(long jarg1);
   public final static native long kameleonObjects_get();
+  public final static native void tracerObjects_set(long jarg1);
+  public final static native long tracerObjects_get();
   public final static native void interpolatorObjects_set(long jarg1);
   public final static native long interpolatorObjects_get();
   public final static native void fileReaderObjects_set(long jarg1);

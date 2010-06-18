@@ -25,6 +25,14 @@ public class CCMC {
     return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t(CCMCJNI.kameleonObjects_get(), true);
   }
 
+  public static void setTracerObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t value) {
+    CCMCJNI.tracerObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t.getCPtr(value));
+  }
+
+  public static SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t getTracerObjects() {
+    return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t(CCMCJNI.tracerObjects_get(), true);
+  }
+
   public static void setInterpolatorObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t value) {
     CCMCJNI.interpolatorObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t.getCPtr(value));
   }
