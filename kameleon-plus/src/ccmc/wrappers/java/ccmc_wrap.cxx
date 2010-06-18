@@ -231,14 +231,14 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 
 
 
-SWIGINTERN vector< ccmc::Point3f >::const_reference vector_Sl_Point3f_Sg__get(vector< Point3f > *self,int i){
+SWIGINTERN vector< ccmc::Point3f >::const_reference vector_Sl_ccmc_Point3f_Sg__get(vector< ccmc::Point3f > *self,int i){
                 int size = int(self->size());
                 if (i>=0 && i<size)
                     return (*self)[i];
                 else
                     throw std::out_of_range("vector index out of range");
             }
-SWIGINTERN void vector_Sl_Point3f_Sg__set(vector< Point3f > *self,int i,vector< ccmc::Point3f >::value_type const &val){
+SWIGINTERN void vector_Sl_ccmc_Point3f_Sg__set(vector< ccmc::Point3f > *self,int i,vector< ccmc::Point3f >::value_type const &val){
                 int size = int(self->size());
                 if (i>=0 && i<size)
                     (*self)[i] = val;
@@ -273,14 +273,14 @@ SWIGINTERN void vector_Sl_float_Sg__set(vector< float > *self,int i,vector< floa
                 else
                     throw std::out_of_range("vector index out of range");
             }
-SWIGINTERN vector< ccmc::Fieldline >::const_reference vector_Sl_Fieldline_Sg__get(vector< Fieldline > *self,int i){
+SWIGINTERN vector< ccmc::Fieldline >::const_reference vector_Sl_ccmc_Fieldline_Sg__get(vector< ccmc::Fieldline > *self,int i){
                 int size = int(self->size());
                 if (i>=0 && i<size)
                     return (*self)[i];
                 else
                     throw std::out_of_range("vector index out of range");
             }
-SWIGINTERN void vector_Sl_Fieldline_Sg__set(vector< Fieldline > *self,int i,vector< ccmc::Fieldline >::value_type const &val){
+SWIGINTERN void vector_Sl_ccmc_Fieldline_Sg__set(vector< ccmc::Fieldline > *self,int i,vector< ccmc::Fieldline >::value_type const &val){
                 int size = int(self->size());
                 if (i>=0 && i<size)
                     (*self)[i] = val;
@@ -2725,7 +2725,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1getLastClosedFieldli
   int arg2 ;
   int arg3 ;
   int arg4 ;
-  std::vector< Fieldline > result;
+  SwigValueWrapper< std::vector< Fieldline > > result;
   
   (void)jenv;
   (void)jcls;
@@ -3528,12 +3528,12 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Attribute(JNIEnv *jen
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1point3f_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  vector< Point3f > *result = 0 ;
+  vector< ccmc::Point3f > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (vector< Point3f > *)new vector< Point3f >();
-  *(vector< Point3f > **)&jresult = result; 
+  result = (vector< ccmc::Point3f > *)new vector< ccmc::Point3f >();
+  *(vector< ccmc::Point3f > **)&jresult = result; 
   return jresult;
 }
 
@@ -3541,27 +3541,27 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1point3f_1_1SWIG
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1point3f_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   vector< ccmc::Point3f >::size_type arg1 ;
-  vector< Point3f > *result = 0 ;
+  vector< ccmc::Point3f > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   arg1 = (vector< ccmc::Point3f >::size_type)jarg1; 
-  result = (vector< Point3f > *)new vector< Point3f >(arg1);
-  *(vector< Point3f > **)&jresult = result; 
+  result = (vector< ccmc::Point3f > *)new vector< ccmc::Point3f >(arg1);
+  *(vector< ccmc::Point3f > **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   vector< ccmc::Point3f >::size_type result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
-  result = ((vector< Point3f > const *)arg1)->size();
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
+  result = ((vector< ccmc::Point3f > const *)arg1)->size();
   jresult = (jlong)result; 
   return jresult;
 }
@@ -3569,27 +3569,27 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1size(JNIEnv
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   vector< ccmc::Point3f >::size_type result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
-  result = ((vector< Point3f > const *)arg1)->capacity();
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
+  result = ((vector< ccmc::Point3f > const *)arg1)->capacity();
   jresult = (jlong)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   vector< ccmc::Point3f >::size_type arg2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
   arg2 = (vector< ccmc::Point3f >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
@@ -3597,39 +3597,39 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1reserve(JNIE
 
 SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
-  result = (bool)((vector< Point3f > const *)arg1)->empty();
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
+  result = (bool)((vector< ccmc::Point3f > const *)arg1)->empty();
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
   (arg1)->clear();
 }
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   vector< ccmc::Point3f >::value_type *arg2 = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
   arg2 = *(vector< ccmc::Point3f >::value_type **)&jarg2;
   if (!arg2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "vector< ccmc::Point3f >::value_type const & reference is null");
@@ -3641,17 +3641,17 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1add(JNIEnv *
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   int arg2 ;
   std::vector< ccmc::Point3f >::value_type *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = (std::vector< ccmc::Point3f >::value_type *) &vector_Sl_Point3f_Sg__get(arg1,arg2);
+    result = (std::vector< ccmc::Point3f >::value_type *) &vector_Sl_ccmc_Point3f_Sg__get(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
@@ -3664,7 +3664,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1get(JNIEnv 
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   int arg2 ;
   vector< ccmc::Point3f >::value_type *arg3 = 0 ;
   
@@ -3672,7 +3672,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1set(JNIEnv *
   (void)jcls;
   (void)jarg1_;
   (void)jarg3_;
-  arg1 = *(vector< Point3f > **)&jarg1; 
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = *(vector< ccmc::Point3f >::value_type **)&jarg3;
   if (!arg3) {
@@ -3680,7 +3680,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1set(JNIEnv *
     return ;
   } 
   try {
-    vector_Sl_Point3f_Sg__set(arg1,arg2,(ccmc::Point3f const &)*arg3);
+    vector_Sl_ccmc_Point3f_Sg__set(arg1,arg2,(ccmc::Point3f const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
@@ -3691,11 +3691,11 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1set(JNIEnv *
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1point3f(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
+  vector< ccmc::Point3f > *arg1 = (vector< ccmc::Point3f > *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(vector< Point3f > **)&jarg1; 
+  arg1 = *(vector< ccmc::Point3f > **)&jarg1; 
   delete arg1;
 }
 
@@ -4050,12 +4050,12 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1float(JNIEnv 
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1fieldline_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  vector< Fieldline > *result = 0 ;
+  vector< ccmc::Fieldline > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
-  result = (vector< Fieldline > *)new vector< Fieldline >();
-  *(vector< Fieldline > **)&jresult = result; 
+  result = (vector< ccmc::Fieldline > *)new vector< ccmc::Fieldline >();
+  *(vector< ccmc::Fieldline > **)&jresult = result; 
   return jresult;
 }
 
@@ -4063,27 +4063,27 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1fieldline_1_1SW
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1fieldline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   vector< ccmc::Fieldline >::size_type arg1 ;
-  vector< Fieldline > *result = 0 ;
+  vector< ccmc::Fieldline > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   arg1 = (vector< ccmc::Fieldline >::size_type)jarg1; 
-  result = (vector< Fieldline > *)new vector< Fieldline >(arg1);
-  *(vector< Fieldline > **)&jresult = result; 
+  result = (vector< ccmc::Fieldline > *)new vector< ccmc::Fieldline >(arg1);
+  *(vector< ccmc::Fieldline > **)&jresult = result; 
   return jresult;
 }
 
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::size_type result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
-  result = ((vector< Fieldline > const *)arg1)->size();
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
+  result = ((vector< ccmc::Fieldline > const *)arg1)->size();
   jresult = (jlong)result; 
   return jresult;
 }
@@ -4091,27 +4091,27 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1size(JNIE
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::size_type result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
-  result = ((vector< Fieldline > const *)arg1)->capacity();
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
+  result = ((vector< ccmc::Fieldline > const *)arg1)->capacity();
   jresult = (jlong)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::size_type arg2 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
   arg2 = (vector< ccmc::Fieldline >::size_type)jarg2; 
   (arg1)->reserve(arg2);
 }
@@ -4119,39 +4119,39 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1reserve(JN
 
 SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   bool result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
-  result = (bool)((vector< Fieldline > const *)arg1)->empty();
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
+  result = (bool)((vector< ccmc::Fieldline > const *)arg1)->empty();
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
   (arg1)->clear();
 }
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::value_type *arg2 = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   (void)jarg2_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
   arg2 = *(vector< ccmc::Fieldline >::value_type **)&jarg2;
   if (!arg2) {
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "vector< ccmc::Fieldline >::value_type const & reference is null");
@@ -4163,17 +4163,17 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1add(JNIEnv
 
 SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   int arg2 ;
   std::vector< ccmc::Fieldline >::value_type *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
   arg2 = (int)jarg2; 
   try {
-    result = (std::vector< ccmc::Fieldline >::value_type *) &vector_Sl_Fieldline_Sg__get(arg1,arg2);
+    result = (std::vector< ccmc::Fieldline >::value_type *) &vector_Sl_ccmc_Fieldline_Sg__get(arg1,arg2);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
@@ -4186,7 +4186,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1get(JNIEn
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   int arg2 ;
   vector< ccmc::Fieldline >::value_type *arg3 = 0 ;
   
@@ -4194,7 +4194,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1set(JNIEnv
   (void)jcls;
   (void)jarg1_;
   (void)jarg3_;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
   arg2 = (int)jarg2; 
   arg3 = *(vector< ccmc::Fieldline >::value_type **)&jarg3;
   if (!arg3) {
@@ -4202,7 +4202,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1set(JNIEnv
     return ;
   } 
   try {
-    vector_Sl_Fieldline_Sg__set(arg1,arg2,(ccmc::Fieldline const &)*arg3);
+    vector_Sl_ccmc_Fieldline_Sg__set(arg1,arg2,(ccmc::Fieldline const &)*arg3);
   }
   catch(std::out_of_range &_e) {
     SWIG_JavaThrowException(jenv, SWIG_JavaIndexOutOfBoundsException, (&_e)->what());
@@ -4213,11 +4213,11 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1set(JNIEnv
 
 
 SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1fieldline(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
+  vector< ccmc::Fieldline > *arg1 = (vector< ccmc::Fieldline > *) 0 ;
   
   (void)jenv;
   (void)jcls;
-  arg1 = *(vector< Fieldline > **)&jarg1; 
+  arg1 = *(vector< ccmc::Fieldline > **)&jarg1; 
   delete arg1;
 }
 
