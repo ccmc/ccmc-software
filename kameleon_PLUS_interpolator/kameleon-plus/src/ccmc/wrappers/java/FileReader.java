@@ -128,6 +128,10 @@ public class FileReader {
     return new Attribute(CCMCJNI.FileReader_getVariableAttribute(swigCPtr, this, variable, attribute), true);
   }
 
+  public vector_string getVariableAttributeNames() {
+    return new vector_string(CCMCJNI.FileReader_getVariableAttributeNames(swigCPtr, this), true);
+  }
+
   public boolean doesAttributeExist(String attribute) {
     return CCMCJNI.FileReader_doesAttributeExist(swigCPtr, this, attribute);
   }
