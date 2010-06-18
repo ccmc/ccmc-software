@@ -59,8 +59,8 @@ public class Fieldline {
     CCMCJNI.Fieldline_reverseOrderInPlace(swigCPtr, this);
   }
 
-  public vector_point3f getPositions() {
-    return new vector_point3f(CCMCJNI.Fieldline_getPositions(swigCPtr, this), false);
+  public SWIGTYPE_p_vectorT_ccmc__Point3f_t getPositions() {
+    return new SWIGTYPE_p_vectorT_ccmc__Point3f_t(CCMCJNI.Fieldline_getPositions(swigCPtr, this), false);
   }
 
   public vector_float getData() {
