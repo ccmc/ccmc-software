@@ -91,8 +91,8 @@ public class Tracer {
     return new Fieldline(CCMCJNI.Tracer_findLastClosed(swigCPtr, this, Point3f.getCPtr(position), position, stepMax), true);
   }
 
-  public SWIGTYPE_p_vectorT_ccmc__Fieldline_t getLastClosedFieldlines(int numberOfFieldlines, int stepMax, int numberOfPointsPerReducedFieldline) {
-    return new SWIGTYPE_p_vectorT_ccmc__Fieldline_t(CCMCJNI.Tracer_getLastClosedFieldlines(swigCPtr, this, numberOfFieldlines, stepMax, numberOfPointsPerReducedFieldline), true);
+  public vector_fieldline getLastClosedFieldlines(int numberOfFieldlines, int stepMax, int numberOfPointsPerReducedFieldline) {
+    return new vector_fieldline(CCMCJNI.Tracer_getLastClosedFieldlines(swigCPtr, this, numberOfFieldlines, stepMax, numberOfPointsPerReducedFieldline), true);
   }
 
   public boolean isClosed(Fieldline fieldline) {
