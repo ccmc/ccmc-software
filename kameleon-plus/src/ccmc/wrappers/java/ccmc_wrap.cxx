@@ -228,6 +228,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include <ccmc/Kameleon-Tracer.h>
 #include <ccmc/Attribute.h>
 #include <ccmc/FileReader.h>
+using namespace std;
 
 
 
