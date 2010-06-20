@@ -45,6 +45,7 @@
 #include "Constants.h"
 #include "cxform.h"
 #include "Kameleon-Tracer.h"
+using namespace ccmc;
 
 
 //cdf constants
