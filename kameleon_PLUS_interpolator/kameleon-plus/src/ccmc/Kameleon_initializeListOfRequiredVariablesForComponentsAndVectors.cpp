@@ -1,5 +1,5 @@
 #include "Kameleon.h"
-#include "StringConstants.h";
+#include "StringConstants.h"
 
 namespace ccmc
 {
