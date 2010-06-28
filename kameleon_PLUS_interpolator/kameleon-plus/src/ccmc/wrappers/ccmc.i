@@ -13,6 +13,7 @@
 #include <ccmc/Kameleon-Tracer.h>
 #include <ccmc/Attribute.h>
 #include <ccmc/FileReader.h>
+using namespace std;
 
 
 %}
