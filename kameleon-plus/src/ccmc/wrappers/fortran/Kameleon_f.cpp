@@ -77,3 +77,8 @@ void f_kameleon_delete_(int * id, long * status)
 {
 	*status = Kameleon_delete(*id);
 }
+
+void f_kameleon_create_c_string_(const char * t_string, char * destbuffer)
+{
+	Kameleon_create_c_string(t_string, destbuffer);
+}

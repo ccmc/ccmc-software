@@ -21,5 +21,5 @@ extern _C_ void f_kameleon_close_(int * id);
 extern _C_ void f_kameleon_delete_(int * id, long * status);
 //extern _C_ float Kameleon_get_missing_value(int id);
 //extern _C_ void Kameleon_get_native_unit(int id, const char * variable, char * destbuffer);
-
+extern _C_ void f_kameleon_create_c_string_(const char * t_string, char * destbuffer);
 #endif/*end KAMELEON_F_H*/
