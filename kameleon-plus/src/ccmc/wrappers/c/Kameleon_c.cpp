@@ -181,6 +181,26 @@ void Kameleon_get_vis_unit(int id, const char * variable, char * destbuffer)
 	strncpy(destbuffer, units.c_str(), units.size());
 }
 
+void Kameleon_create_c_string(const char * t_string, char * destbuffer)
+{
+	std::string t_string_str = t_string;
+	//get string length
+	int length = t_string_str.size();
+	//char t_string_corrected[length+1];
+	strcpy(destbuffer, t_string_str.c_str());
+	//std::cout << "string length: " << length << std::endl;
+	for (int i = length; i> 1; i--)
+	{
+		if (destbuffer[i-1] != ' ')
+		{
+	//		std::cout << "add the character at index: " << i << std::endl;
+			destbuffer[i] = '\0';
+			break;
+		}
+
+	}
+}
+
 int Tracer_create(int id, int kid)
 {
 	//first check if the id exists.  if so, delete it and create a new one.
