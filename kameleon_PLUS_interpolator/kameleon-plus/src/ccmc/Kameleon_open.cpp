@@ -8,6 +8,10 @@
 
 namespace ccmc
 {
+	/**
+	 * @param filename
+	 * @return
+	 */
 	long Kameleon::open(const std::string& filename)
 	{
 		//need to store filename
