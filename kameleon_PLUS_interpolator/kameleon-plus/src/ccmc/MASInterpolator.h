@@ -23,10 +23,10 @@ namespace ccmc
 	{
 		public:
 			MASInterpolator(Model * model);
-			float interpolate(const std::string&, const float&, const float&, const float&);
-			float interpolate(const std::string&, const float&, const float&, const float&, float&, float&, float&);
-			float interpolate(long int, const float&, const float&, const float&);
-			float interpolate(long int, const float&, const float&, const float&, float&, float&, float&);
+			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon);
+			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon);
+			float interpolate(long int variableID, const float& r, const float& lat, const float& lon);
+			float interpolate(long int variableID, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon);
 			virtual ~MASInterpolator();
 
 	};
