@@ -11,6 +11,9 @@
 namespace ccmc
 {
 
+/**
+ *
+ */
 	Magnetogram::Magnetogram()
 	{
 		// TODO Auto-generated constructor stub
@@ -59,6 +62,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 *
+	 */
 	Magnetogram::~Magnetogram()
 	{
 		// TODO Auto-generated destructor stub
