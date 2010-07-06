@@ -9,33 +9,73 @@
 
 namespace ccmc
 {
+	/**
+	 * @param model
+	 */
 	MASInterpolator::MASInterpolator(Model * model)
 	{
 		// TODO Auto-generated constructor stub
 
 	}
 
-	float MASInterpolator::interpolate(const std::string&, const float&, const float&, const float&)
+	/**
+	 * @param variable
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @return
+	 */
+	float MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon)
 	{
 		return 0.f;
 	}
 
-	float MASInterpolator::interpolate(const std::string&, const float&, const float&, const float&, float&, float&,
-			float&)
+	/**
+	 * @param variable
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @param dr
+	 * @param dlat
+	 * @param dlon
+	 * @return
+	 */
+	float MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,
+			float& dlon)
 	{
 		return 0.f;
 	}
 
-	float MASInterpolator::interpolate(long int, const float&, const float&, const float&)
+	/**
+	 * @param variableID
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @return
+	 */
+	float MASInterpolator::interpolate(long int variableID, const float& r, const float& lat, const float& lon)
 	{
 		return 0.f;
 	}
 
-	float MASInterpolator::interpolate(long int, const float&, const float&, const float&, float&, float&, float&)
+	/**
+	 * @param variableID
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @param dr
+	 * @param dlat
+	 * @param dlon
+	 * @return
+	 */
+	float MASInterpolator::interpolate(long int variableID, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon)
 	{
 		return 0.f;
 	}
 
+	/**
+	 *
+	 */
 	MASInterpolator::~MASInterpolator()
 	{
 		// TODO Auto-generated destructor stub
