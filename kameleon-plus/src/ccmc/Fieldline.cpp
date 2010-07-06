@@ -19,6 +19,9 @@ namespace ccmc
 		//values.reserve(10000);
 	}
 
+	/**
+	 * @param initialSize
+	 */
 	Fieldline::Fieldline(int initialSize)
 	{
 		positions.reserve(initialSize);
@@ -83,6 +86,9 @@ namespace ccmc
 		return reversedLine;
 	}
 
+	/**
+	 * @param size
+	 */
 	void Fieldline::reserve(int size)
 	{
 		this->positions.resize(size);
