@@ -103,6 +103,9 @@ namespace ccmc
 		variableSIUnits["p"] = "Pa";
 	}
 
+	/**
+	 *
+	 */
 	OpenGGCM::~OpenGGCM()
 	{
 		// TODO Auto-generated destructor stub
