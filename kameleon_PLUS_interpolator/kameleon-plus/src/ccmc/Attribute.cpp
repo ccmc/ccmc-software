@@ -102,6 +102,9 @@ namespace ccmc
 		return iValue;
 	}
 
+	/**
+	 * @return
+	 */
 	std::string Attribute::toString()
 	{
 		std::string string_value = "";
