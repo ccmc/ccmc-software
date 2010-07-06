@@ -11,6 +11,9 @@
 
 namespace ccmc
 {
+	/**
+	 *
+	 */
 	MAS::MAS()
 	{
 		// TODO Auto-generated constructor stub
@@ -57,6 +60,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 *
+	 */
 	MAS::~MAS()
 	{
 		// TODO Auto-generated destructor stub
