@@ -10,6 +10,9 @@
 namespace ccmc
 {
 
+	/**
+	 *
+	 */
 	CTIP::CTIP()
 	{
 		// TODO Auto-generated constructor stub
@@ -48,6 +51,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 *
+	 */
 	CTIP::~CTIP()
 	{
 		// TODO Auto-generated destructor stub
