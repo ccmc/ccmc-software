@@ -11,6 +11,9 @@
 namespace ccmc
 {
 
+	/**
+	 *
+	 */
 	ENLIL::ENLIL()
 	{
 		// TODO Auto-generated constructor stub
@@ -58,6 +61,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 *
+	 */
 	ENLIL::~ENLIL()
 	{
 		// TODO Auto-generated destructor stub
