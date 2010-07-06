@@ -399,6 +399,9 @@ namespace ccmc
 		return new KameleonInterpolator(model);
 	}
 
+	/**
+	 * @return
+	 */
 	std::vector<std::string> Kameleon::getLoadedVariables()
 	{
 		return model->getLoadedVariables();
@@ -422,6 +425,10 @@ namespace ccmc
 		return success;
 	}
 
+	/**
+	 * @param variable
+	 * @return
+	 */
 	bool Kameleon::unloadVariable(const std::string& variable)
 	{
 		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
@@ -452,6 +459,10 @@ namespace ccmc
 		return success;
 	}
 
+	/**
+	 * @param variable
+	 * @return
+	 */
 	bool Kameleon::unloadVectorVariable(const std::string& variable)
 	{
 		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForVectors(variable);
@@ -696,47 +707,100 @@ namespace ccmc
 
 
 
-
+	/**
+	 * @param variable
+	 * @return
+	 */
 	std::vector<float>* Kameleon::getVariable(const std::string& variable)
 	{
 		return model->getVariable(variable);
 	}
+
+	/**
+	 * @param variable
+	 * @return
+	 */
 	std::vector<int>* Kameleon::getVariableInt(const std::string& variable)
 	{
 		return model->getVariableInt(variable);
 	}
+
+	/**
+	 * @return
+	 */
 	int Kameleon::getNumberOfGlobalAttributes()
 	{
 		return model->getNumberOfGlobalAttributes();
 	}
+
+	/**
+	 * @param variable
+	 * @return
+	 */
 	long Kameleon::getVariableID(const std::string& variable)
 	{
 		return model->getVariableID(variable);
 	}
+
+	/**
+	 * @param variable_id
+	 * @return
+	 */
 	std::string Kameleon::getVariableName(long variable_id)
 	{
 		return model->getVariableName(variable_id);
 	}
+
+	/**
+	 * @param i
+	 * @return
+	 */
 	Attribute Kameleon::getGlobalAttribute(long i)
 	{
 		return model->getGlobalAttribute(i);
 	}
+
+	/**
+	 * @param attribute_id
+	 * @return
+	 */
 	std::string Kameleon::getGlobalAttributeName(long attribute_id)
 	{
 		return model->getGlobalAttributeName(attribute_id);
 	}
+
+	/**
+	 * @param attribute
+	 * @return
+	 */
 	Attribute Kameleon::getGlobalAttribute(const std::string& attribute)
 	{
 		return model->getGlobalAttribute(attribute);
 	}
+
+	/**
+	 * @param variable
+	 * @param attribute
+	 * @return
+	 */
 	Attribute Kameleon::getVariableAttribute(const std::string& variable, const std::string& attribute)
 	{
 		return model->getVariableAttribute(variable, attribute);
 	}
+
+	/**
+	 * @param attribute
+	 * @return
+	 */
 	bool Kameleon::doesAttributeExist(const std::string& attribute)
 	{
 		return model->doesAttributeExist(attribute);
 	}
+
+	/**
+	 * @param variable
+	 * @return
+	 */
 	bool Kameleon::doesVariableExist(const std::string& variable)
 	{
 		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
@@ -750,27 +814,41 @@ namespace ccmc
 		return success;
 	}
 
-
+	/**
+	 * @return
+	 */
 	CDFid Kameleon::getCurrentFileID()
 	{
 		return model->getCurrentFileID();
 	}
 
+	/**
+	 * @return
+	 */
 	const std::string& Kameleon::getCurrentFilename()
 	{
 		return model->getCurrentFilename();
 	}
 
+	/**
+	 * @return
+	 */
 	int Kameleon::getNumberOfVariableAttributes()
 	{
 		return model->getNumberOfVariableAttributes();
 	}
 
+	/**
+	 * @return
+	 */
 	int Kameleon::getNumberOfVariables()
 	{
 		return model->getNumberOfVariables();
 	}
 
+	/**
+	 * @return
+	 */
 	std::string Kameleon::getVariableAttributeName(long attribute_id)
 	{
 		return model->getVariableAttributeName(attribute_id);
