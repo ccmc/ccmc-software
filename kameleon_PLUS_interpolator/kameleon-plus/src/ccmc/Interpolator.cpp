@@ -21,19 +21,27 @@ namespace ccmc
 
 	/**
 	 * Sets the missing value;
+	 * @param missingValue
 	 */
 	void Interpolator::setMissingValue(float missingValue)
 	{
 		this->missingValue = missingValue;
 	}
 
-
-	float Interpolator::getConversionFactor(const std::string&)
+	/**
+	 * @param variable
+	 * @return
+	 */
+	float Interpolator::getConversionFactor(const std::string& variable)
 	{
 		//cout << "Inside Interpolator::getConversionFactor" << endl;
 		return 1.0f;
 	}
 
+	/**
+	 * @param variable_id
+	 * @return
+	 */
 	float Interpolator::getConversionFactor(const long& variable_id)
 	{
 		return 1.0f;
