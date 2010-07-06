@@ -366,6 +366,11 @@ namespace ccmc
 		return variableData;
 	}
 
+	/**
+	 * @param variableNum
+	 * @param index
+	 * @return
+	 */
 	float FileReader::getVariableAtIndexByID(long variableNum, long index)
 	{
 		//std::cout << "reading " << variable << std::endl;
@@ -739,7 +744,8 @@ namespace ccmc
 	}
 
 	/**
-	 *
+	 *@param attribute_id
+	 *@return
 	 */
 	std::string FileReader::getGlobalAttributeName(long attribute_id)
 	{
@@ -753,7 +759,7 @@ namespace ccmc
 	}
 
 	/**
-	 *
+	 *@return
 	 */
 	int FileReader::getNumberOfVariables()
 	{
@@ -861,6 +867,10 @@ namespace ccmc
 		}
 	}
 
+	/**
+	 * @param variable
+	 * @return
+	 */
 	long FileReader::getNumberOfRecords(const std::string& variable)
 	{
 		//std::cout << "reading " << variable << std::endl;
@@ -870,6 +880,10 @@ namespace ccmc
 		return getNumberOfRecords(variableNum);
 	}
 
+	/**
+	 * @param variable_id
+	 * @return
+	 */
 	long FileReader::getNumberOfRecords(long variable_id)
 	{
 		long counts[1];
@@ -878,6 +892,9 @@ namespace ccmc
 		return counts[0];
 	}
 
+	/**
+	 * @return
+	 */
 	std::vector<std::string> FileReader::getVariableAttributeNames()
 	{
 		std::vector<std::string> attributeNames;
