@@ -12,6 +12,9 @@
 
 namespace ccmc
 {
+	/**
+	 * @param model
+	 */
 	ENLILInterpolator::ENLILInterpolator(Model * model)
 	{
 		// TODO Auto-generated constructor stub
@@ -38,6 +41,13 @@ namespace ccmc
 
 	}
 
+	/**
+	 * @param variable
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @return
+	 */
 	float ENLILInterpolator::interpolate(const std::string& variable, const float& r, const float& lat,
 			const float& lon)
 	{
@@ -47,6 +57,16 @@ namespace ccmc
 
 	}
 
+	/**
+	 * @param variable
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @param dr
+	 * @param dlat
+	 * @param dlon
+	 * @return
+	 */
 	float ENLILInterpolator::interpolate(const std::string& variable, const float& r, const float& lat,
 			const float& lon, float& dr, float& dlat, float& dlon)
 	{
@@ -56,6 +76,16 @@ namespace ccmc
 
 	}
 
+	/**
+	 * @param variableID
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @param dr
+	 * @param dlat
+	 * @param dlon
+	 * @return
+	 */
 	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lat,
 			const float& lon, float& dr, float& dlat, float& dlon)
 	{
@@ -155,6 +185,13 @@ namespace ccmc
 		return value;
 	}
 
+	/**
+	 * @param variableID
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @return
+	 */
 	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lat, const float& lon)
 	{
 		float dc0, dc1, dc2;
@@ -162,11 +199,27 @@ namespace ccmc
 
 	}
 
+	/**
+	 *
+	 */
 	ENLILInterpolator::~ENLILInterpolator()
 	{
 		// TODO Auto-generated destructor stub
 	}
 
+	/**
+	 * @param r
+	 * @param lat
+	 * @param lon
+	 * @param ir
+	 * @param ilat
+	 * @param ilon
+	 * @param variableID
+	 * @param dr
+	 * @param dlat
+	 * @param dlon
+	 * @return
+	 */
 	float ENLILInterpolator::interpolate_in_block_enlil(float r, float lat, float lon, int ir, int ilat, int ilon,
 			long variableID, float& dr, float& dlat, float& dlon)
 	{
