@@ -18,6 +18,9 @@ namespace ccmc
 		this->modelReader = model;
 		this->setMissingValue(this->modelReader->getMissingValue());
 		r_string = "r";
+
+		//TODO: fix the phi/theta issue to correspond to the actual
+		//lat lon
 		lat_string = "phi";
 		lon_string = "theta";
 		r_data = modelReader->getVariableData(r_string);
