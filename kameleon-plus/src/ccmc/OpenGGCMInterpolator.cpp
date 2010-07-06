@@ -400,6 +400,7 @@ namespace ccmc
 
 	/**
 	 * @param variable
+	 * @return
 	 */
 	float OpenGGCMInterpolator::getConversionFactor(const std::string& variable)
 	{
@@ -413,6 +414,7 @@ namespace ccmc
 
 	/**
 	 * @param variable_id
+	 * @return
 	 */
 	float OpenGGCMInterpolator::getConversionFactor(const long& variable_id)
 	{
