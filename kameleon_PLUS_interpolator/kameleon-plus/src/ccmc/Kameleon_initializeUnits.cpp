@@ -14,6 +14,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 *
+	 */
 	void Kameleon::initializeVisUnits()
 	{
 		//initialize visualization units
@@ -92,6 +95,9 @@ namespace ccmc
 
 	}
 
+	/**
+	 *
+	 */
 	void Kameleon::initializeSIUnits()
 	{
 		//initialize SI units
