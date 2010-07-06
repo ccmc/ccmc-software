@@ -49,6 +49,9 @@ namespace ccmc
 #endif
 	}
 
+	/**
+	 *
+	 */
 	void Tracer::initializeComponentNamesMap()
 	{
 		std::vector<std::string> bnames_cartesian;
@@ -1782,11 +1785,17 @@ namespace ccmc
 		this->dn = dn;
 	}
 
+	/**
+	 * @param missing
+	 */
 	void Tracer::setMissing(float missing)
 	{
 		this->missing = missing;
 	}
 
+	/**
+	 * @param tilt
+	 */
 	void Tracer::setTilt(float tilt)
 	{
 		this->tilt = tilt;
@@ -1794,22 +1803,35 @@ namespace ccmc
 
 
 
+	/**
+	 * @param maxArcLength
+	 */
 	void Tracer::setMaxArcLength(float maxArcLength)
 	{
 		this->maxArcLength = maxArcLength;
 	}
 
+	/**
+	 * @param useMaxArcLength
+	 */
 	void Tracer::setUseMaxArcLength(bool useMaxArcLength)
 	{
 		this->useMaxArcLength = useMaxArcLength;
 	}
 
+	/**
+	 * @param min
+	 * @param max
+	 */
 	void Tracer::setRegionOfInterest(Point3f min, Point3f max)
 	{
 		this->minROI = min;
 		this->maxROI = max;
 	}
 
+	/**
+	 * @param useROI
+	 */
 	void Tracer::setUseRegionOfInterest(bool useROI)
 	{
 		this->useROI = useROI;
