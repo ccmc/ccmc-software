@@ -90,6 +90,16 @@ namespace ccmc
 				dComponent2, dComponent3);
 	}
 
+	/**
+	 * @param variable
+	 * @param positionComponent1
+	 * @param positionComponent2
+	 * @param positionComponent3
+	 * @param dComponent1
+	 * @param dComponent2
+	 * @param dComponent3
+	 * @return
+	 */
 	float KameleonInterpolator::compute_ey(const std::string& variable, const float& positionComponent1,
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
