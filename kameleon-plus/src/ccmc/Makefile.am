@@ -1,11 +1,6 @@
 SUBDIRS = . wrappers
 #EXTRA_LTLIBRARIES = libkameleon-tracer.la
 lib_LTLIBRARIES = libkameleon-plus.la
-if TRACER_ENABLED
-TRACER_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
-else
-TRACER_SOURCES =
-endif
 
 libkameleon_plus_la_SOURCES = Attribute.h \
 						Attribute.cpp \
@@ -75,13 +70,17 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						cxform.h \
 						cxform-auto.c \
 						cxform-manual.c \
-						$(TRACER_SOURCES)
-EXTRA_libkameleon_plus_la_SOURCES = Point3f.h Point3f.cpp Fieldline.h Fieldline.cpp Kameleon-Tracer.h Kameleon-Tracer.cpp
+						Point3f.h \
+						Point3f.cpp \
+						Fieldline.h \
+						Fieldline.cpp \
+						Kameleon-Tracer.h \
+						Kameleon-Tracer.cpp
 						
 libkameleon_plus_la_LDFLAGS = -release @RELEASE@ -enable-runtime-pseudo-reloc --enable-auto-import
 libkameleon_plus_la_CFLAGS = -fPIC
 
 pkgincludedir = $(includedir)/ccmc
-EXTRA_HEADERS = Kameleon-Tracer.h Fieldline.h Point3f.h
-pkginclude_HEADERS = Attribute.h FileReader.h Kameleon.h Interpolator.h KameleonInterpolator.h Constants.h cxform.h\
-		 Model.h Point.h $(TRACER_HEADERS)#Shue.h
+pkginclude_HEADERS = Kameleon-Tracer.h Fieldline.h Point3f.h Attribute.h FileReader.h \
+					 Kameleon.h Interpolator.h KameleonInterpolator.h Constants.h cxform.h\
+		 			 Model.h Point.h #Shue.h
