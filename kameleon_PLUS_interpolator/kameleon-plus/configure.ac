@@ -63,19 +63,6 @@ AC_ARG_ENABLE([fortran],
 				   	fi
 				   ],)
 
-			
-TRACER_ENABLED=false	   
-AC_ARG_ENABLE([tracer],
-	AC_HELP_STRING([--enable-tracer],
-				   [Build the Kameleon fieldline tracer]),
-				   [if test "$enableval" = "yes"; then
-				   		AC_SUBST([TRACER_HEADERS],['Kameleon-Tracer.h Fieldline.h Point3f.h'])
-				   		AC_SUBST([TRACER],['tracer'])
-				   		AC_SUBST([TRACER_C],['tracer_c'])
-				   		TRACER_ENABLED=true
-				   	fi
-				   ],)
-AM_CONDITIONAL([TRACER_ENABLED],[test x$TRACER_ENABLED = xtrue])
 
 JAVA_WRAPPER_ENABLED=false
 AC_ARG_ENABLE([java],
@@ -167,15 +154,6 @@ AC_MSG_NOTICE([ pyexecdir: $pyexecdir])
 AC_MSG_NOTICE([ pkgpyexecdir: $pkgpyexecdir])
 
 
-
-
-
-
-if test x$TRACER_ENABLED = xtrue; then
-	AC_MSG_NOTICE([ Tracer: included])
-else
-	AC_MSG_NOTICE([ Tracer: not included])
-fi
 
 if test x$FORTRAN_EXAMPLES = xtrue; then
 	AC_MSG_NOTICE([ Fortran wrappers: included])
