@@ -178,7 +178,7 @@ int FileReader_getNumberOfVariableAttributes(int id)
 		return -1;
 }
 
-long FileReader_getNumberOfRecords(int id, const std::string& variable)
+long FileReader_getNumberOfRecords(int id, const char * variable)
 {
 	map_i_F::iterator iter = fileReaderObjects.find(id);
 	if (iter != fileReaderObjects.end())
