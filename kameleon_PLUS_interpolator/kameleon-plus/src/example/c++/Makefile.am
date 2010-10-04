@@ -1,5 +1,5 @@
 bin_PROGRAMS = derived coord_test open_ggcm \
-				magnetogram  enlil tracer
+				magnetogram  enlil tracer integrator
 				
 derived_SOURCES = derived_prog.cpp
 derived_CPPFLAGS = -I@srcdir@/../..
@@ -24,3 +24,7 @@ magnetogram_CPPFLAGS = -I@srcdir@/../..
 tracer_SOURCES = tracer_prog.cpp
 tracer_CPPFLAGS = -I@srcdir@/../..
 tracer_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
+
+integrator_SOURCES = integrator_prog.cpp
+integrator_CPPFLAGS = -I@srcdir@/../..
+integrator_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
