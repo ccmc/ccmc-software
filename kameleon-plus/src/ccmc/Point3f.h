@@ -29,6 +29,7 @@ namespace ccmc
 			float component3;
 
 			Point3f operator+(const Point3f& p) const;
+			Point3f operator-(const Point3f& p) const;
 			Point3f operator*(float value) const;
 			Point3f operator*(double value) const;
 

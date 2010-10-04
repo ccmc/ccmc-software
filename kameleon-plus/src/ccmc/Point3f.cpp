@@ -92,6 +92,21 @@ namespace ccmc
 
 		return point;
 	}
+	/**
+	 * Minus operator where sender is on the right
+	 * TODO: test this
+	 */
+	Point3f Point3f::operator-(const Point3f& p) const
+	{
+		Point3f point;
+		point.component1 = component1 - p.component1;
+		point.component2 = component2 - p.component2;
+		point.component3 = component3 - p.component3;
+		point.coordinates = p.coordinates;
+
+		return point;
+	}
+
 
 	/**
 	 * TODO: finish documentation
@@ -170,7 +185,7 @@ namespace ccmc
 	}
 
 	/**
-	 * TODO: finish documentation
+	 * Computes the magnitude of the cartesian vector
 	 */
 	float Point3f::magnitude()
 	{
