@@ -152,8 +152,162 @@ namespace ccmc
 	 */
 	void Fieldline::removePoint(int index)
 	{
-
 		positions.erase(positions.begin() + index);
 		values.erase(values.begin() + index);
 	}
+	const vector<Point3f>& Fieldline::getElements()
+	{
+		return elements;
+	}
+	const Point3f& Fieldline::getElement(int i)
+	{
+		return elements[i];
+	}
+
+	/**
+	 * Calculate the forward difference elements for a field line with ordered
+	 * positions. Output has length fieldline.size()-1
+	 * TODO: Add backward and higher-order differencing
+	 */
+	const vector<float>& Fieldline::getDs()
+	{
+		vector<Point3f> VectorPositions = getPositions();
+		int size = getPositions().size();
+		//vector<Point3f> elements;
+		for (int i = 0; i < size-1; i++)
+		{
+			elements.push_back(this->positions[i+1]-positions[i]);
+			elementsMagnitudes.push_back(elements[i].magnitude());
+		}
+		return elementsMagnitudes;
+
+
+	}
+
+
+	/**
+	 * Calculate the integral of ds*values over the length of the field line
+	 */
+	const vector<float>& Fieldline::integrate()
+	{
+		int size = this->positions.size();
+		// length.push_back(0);
+		integral.push_back(0);
+		// First get the curve elements ds
+		for (int i = 0; i < size-1; i++)
+		{
+			/**
+			 * TODO: Change integration so that it multiplies the element
+			 * lengths by the average of the data on either side of the element
+			 */
+		integral.push_back(elementsMagnitudes[i]*(values[i]+values[i+1])/2+integral[i]);
+		}
+		return integral;
+
+	}
+
+	/**
+	 * Get the integral up to position i
+	 *
+	 */
+	float Fieldline::getIntegral(int i)
+	{
+		return integral[i];
+	}
+
+
+	/**
+	 * Measure the length of the field line up to point i
+	 */
+	const vector<float>& Fieldline::measure()
+		{
+			int size = this->positions.size();
+			// length.push_back(0);
+			length.push_back(0);
+			// First get the curve elements ds
+			for (int i = 0; i < size-1; i++)
+			{
+			length.push_back(elementsMagnitudes[i]+length[i]);
+			}
+			return length;
+
+		}
+	/**
+	 * Get the length up to position i
+	 *
+	 */
+	float Fieldline::getLength(int i)
+	{
+		return length[i];
+	}
+
+	Fieldline Fieldline::interpolate(int option, int Npoints)
+	{
+		// Use i = 1 for fixed distance interpolation
+		// Use i = 2 for integral-weighted interpolation
+
+		Fieldline interpolated;
+		int size = this->positions.size();
+		float n = 1; //initialize index for interpolated fieldline
+		interpolated.insertPointData(positions[0], values[0]);
+		interpolated.nearest.push_back(0);
+
+		if (option == 1)
+		{
+			//First get the length of the field line. Total length should be the default.
+			/*
+			 * TODO: Create an optional (public?) length variable
+			 *
+			 *                   ts=totalLength/(Npoints-1)
+			 * |0 -------------------------|ts---------------------------Length|
+			 * |P0----P1----P2--...---a----|tlocal---b------...------------Pend|
+			 * |0-----t1----t2--...---ta------------tb------...------------tend|
+			 *
+			 */
+
+			float totalLength = this->length[size-1];
+
+			for  (int j = 0; j < size; j++)
+			{
+				float tb = length[j]/totalLength;
+				float ts = n/(Npoints-1);
+				if (tb > ts)
+				{
+					float ta = length[j-1]/totalLength;
+					float dt = tb-ta;
+					float tlocal = (ts-ta)/dt;
+
+					float value = values[j-1]*(1-tlocal)+values[j]*(tlocal);
+					Point3f point = getPositions()[j-1]*(1-tlocal)+getPositions()[j]*tlocal;
+					interpolated.insertPointData(point, value);
+					interpolated.nearest.push_back(j-1);
+					n = n+1.0;
+				}
+			}
+
+		}
+		else
+		{
+			/*
+			 * TODO: Handle case for integral weighting
+			 */
+		}
+
+		interpolated.insertPointData(positions[size-1], values[size-1]);
+		interpolated.nearest.push_back(size-1);
+		return interpolated;
+	}
+
+	/*
+	 * Gets the indices of the original field line nearest the interpolated ones
+	 */
+
+	const vector<int>& Fieldline::getNearest()
+	{
+		return nearest;
+
+	}
+
+
+
 }
