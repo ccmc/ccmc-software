@@ -256,7 +256,8 @@ namespace ccmc
 		{
 			//First get the length of the field line. Total length should be the default.
 			/*
-			 * TODO: Create an optional (public?) length variable
+			 * TODO: Create an optional (public?) length variable. This would allow for
+			 * custom maxlength, useful for open fields.
 			 *
 			 *                   ts=totalLength/(Npoints-1)
 			 * |0 -------------------------|ts---------------------------Length|
