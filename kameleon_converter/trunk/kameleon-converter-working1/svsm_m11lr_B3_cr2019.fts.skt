@@ -1,0 +1,291 @@
+! Skeleton table for the "svsm_m11lr_B3_cr2019.fts.cdf" CDF.
+! Generated: Monday, 9-Jun-2008 15:00:35
+! CDF created/modified by CDF V3.1.1
+! Skeleton table created by CDF V3.1.1 
+
+#header
+
+                       CDF NAME: svsm_m11lr_B3_cr2019.fts.cdf
+                  DATA ENCODING: NETWORK
+                       MAJORITY: ROW
+                         FORMAT: SINGLE
+
+! Variables  G.Attributes  V.Attributes  Records  Dims  Sizes
+! ---------  ------------  ------------  -------  ----  -----
+     0/5          28            11         0/z      1     1
+
+
+#GLOBALattributes
+
+! Attribute         Entry       Data
+! Name              Number      Type       Value
+! ---------         ------      ----       -----
+
+  "README"              1:    CDF_CHAR     { "********** PROTOTYPE " -
+                                             "************" } .
+
+  "model_name"          1:    CDF_CHAR     { "kpvt" } .
+
+  "model_type"          1:    CDF_CHAR     { "********** PROTOTYPE " -
+                                             "************ Observation " -
+                                             "Data" } .
+
+  "original_output_file_name"
+                        1:    CDF_CHAR     { "svsm_m11lr_B3_cr2019.fts" } .
+
+  "terms_of_usage"      1:    CDF_CHAR     { "For tracking purposes for " -
+                                             "our government sponsors, " -
+                                             "we ask that you notify the" -
+                                             " CCMC whenever you use " -
+                                             "CCMC results in a " -
+                                             "scientific publications or" -
+                                             " presentations: " -
+                                             "ccmc@ccmc.gsfc.nasa.gov " } .
+
+  "grid_system_count"
+                        1:    CDF_INT4     { 1 } .
+
+  "grid_system_1_number_of_dimensions"
+                        1:    CDF_INT4     { 2 } .
+
+  "grid_system_1_dimension_1_size"
+                        1:    CDF_INT4     { 180 } .
+
+  "grid_system_1_dimension_2_size"
+                        1:    CDF_INT4     { 360 } .
+
+  "grid_system_1_dimension_3_size"
+                        1:    CDF_INT4     { 0 } .
+
+  "grid_system_1"       1:    CDF_CHAR     { "[ c_sine_lat, c_lon ]" } .
+
+  "output_type"         1:    CDF_CHAR     { "********** PROTOTYPE " -
+                                             "************ Magnetogram" } .
+
+  "standard_grid_target"
+                        1:    CDF_CHAR     { "********** PROTOTYPE " -
+                                             "************ [ c_sine_lat," -
+                                             " c_lon ]" } .
+
+  "grid_1_type"         1:    CDF_CHAR     { "********** PROTOTYPE " -
+                                             "************ [ c_sine_lat," -
+                                             " c_lon ]" } .
+
+  "kameleon_version"
+                        1:    CDF_CHAR     { "4.6.0" } .
+
+  "BITPIX"              1:    CDF_INT4     { 0 } .
+
+  "NAXIS"               1:    CDF_INT4     { 0 } .
+
+  "NAXIS1"              1:    CDF_INT4     { 0 } .
+
+  "NAXIS2"              1:    CDF_INT4     { 0 } .
+
+  "NAXIS3"              1:    CDF_INT4     { 0 } .
+
+  "carrington_rotation"
+                        1:    CDF_INT4     { 0 } .
+
+  "equator_of_map"      1:    CDF_FLOAT    { 0.0 } .
+
+  "c_lon_of_map_center"
+                        1:    CDF_FLOAT    { 0.0 } .
+
+  "sine_lat_of_equator"
+                        1:    CDF_FLOAT    { 0.0 } .
+
+  "lamda_for_lat_coord"
+                        1:    CDF_FLOAT    { 0.0 } .
+
+  "carrington_lon_step"
+                        1:    CDF_FLOAT    { 0.0 } .
+
+  "sine_lat_step"       1:    CDF_FLOAT    { 0.0 } .
+
+  "carrington_step"     1:    CDF_FLOAT    { 0.0 } .
+
+
+#VARIABLEattributes
+
+  "valid_min"
+  "valid_max"
+  "units"
+  "grid_system"
+  "mask"
+  "description"
+  "is_vector_component"
+  "position_grid_system"
+  "data_grid_system"
+  "actual_min"
+  "actual_max"
+
+
+#variables
+
+! No rVariables.
+
+
+#zVariables
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "c_lon"         CDF_FLOAT      1       1    360       T         T
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "valid_min"   CDF_FLOAT    { 0.0 }
+    "valid_max"   CDF_FLOAT    { 360.0 }
+    "units"       CDF_CHAR     { "deg" }
+    "grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "mask"        CDF_FLOAT    { -1.09951e+12 }
+    "description"
+                  CDF_CHAR     { "Carrington Longitude" }
+    "is_vector_component"
+                  CDF_INT4     { 0 }
+    "position_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "data_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "actual_min"
+                  CDF_FLOAT    { 1.0 }
+    "actual_max"
+                  CDF_FLOAT    { 360.0 } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "c_sine_lat"    CDF_FLOAT      1       1    180       T         T
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "valid_min"   CDF_FLOAT    { -1.0 }
+    "valid_max"   CDF_FLOAT    { 1.0 }
+    "units"       CDF_CHAR     { " " }
+    "grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "mask"        CDF_FLOAT    { -1.09951e+12 }
+    "description"
+                  CDF_CHAR     { "Carrington Sine Latitude" }
+    "is_vector_component"
+                  CDF_INT4     { 0 }
+    "position_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "data_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "actual_min"
+                  CDF_FLOAT    { -0.994444 }
+    "actual_max"
+                  CDF_FLOAT    { 0.994444 } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "net_flux"      CDF_FLOAT      1       1   64800      T         T
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "valid_min"   CDF_FLOAT    { -1.0e+09 }
+    "valid_max"   CDF_FLOAT    { 1.0e+09 }
+    "units"       CDF_CHAR     { "Gs" }
+    "grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "mask"        CDF_FLOAT    { -1.09951e+12 }
+    "description"
+                  CDF_CHAR     { "Net Magnetic Flux" }
+    "is_vector_component"
+                  CDF_INT4     { 0 }
+    "position_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "data_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "actual_min"
+                  CDF_FLOAT    { -1413.1 }
+    "actual_max"
+                  CDF_FLOAT    { 1467.46 } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "total_flux"    CDF_FLOAT      1       1   64800      T         T
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "valid_min"   CDF_FLOAT    { -1.0e+09 }
+    "valid_max"   CDF_FLOAT    { 1.0e+09 }
+    "units"       CDF_CHAR     { "Gs" }
+    "grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "mask"        CDF_FLOAT    { -1.09951e+12 }
+    "description"
+                  CDF_CHAR     { "Total Magnetic Flux" }
+    "is_vector_component"
+                  CDF_INT4     { 0 }
+    "position_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "data_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "actual_min"
+                  CDF_FLOAT    { 0.0 }
+    "actual_max"
+                  CDF_FLOAT    { 1467.47 } .
+
+  ! RV values were not requested.
+
+
+! Variable          Data      Number                 Record   Dimension
+! Name              Type     Elements  Dims  Sizes  Variance  Variances
+! --------          ----     --------  ----  -----  --------  ---------
+
+  "weights"       CDF_FLOAT      1       1   64800      T         T
+
+  ! Attribute       Data
+  ! Name            Type       Value
+  ! --------        ----       -----
+
+    "valid_min"   CDF_FLOAT    { -1.0e+09 }
+    "valid_max"   CDF_FLOAT    { 1.0e+09 }
+    "units"       CDF_CHAR     { " " }
+    "grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "mask"        CDF_FLOAT    { -1.09951e+12 }
+    "description"
+                  CDF_CHAR     { "Weight Values" }
+    "is_vector_component"
+                  CDF_INT4     { 0 }
+    "position_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "data_grid_system"
+                  CDF_CHAR     { "grid_system_1" }
+    "actual_min"
+                  CDF_FLOAT    { -1.0 }
+    "actual_max"
+                  CDF_FLOAT    { 436.911 } .
+
+  ! RV values were not requested.
+
+
+#end

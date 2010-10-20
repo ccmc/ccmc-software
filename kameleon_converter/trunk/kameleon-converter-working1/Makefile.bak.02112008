@@ -1,0 +1,646 @@
+#################### Kameleon Converter Makefile 01.28.2008 ####################
+
+#################### Set Your Compilers Here
+
+CC    = gcc
+F77   = gfortran
+
+## The following two macros will hold the compiler paths as automatically 
+## determined by the Makefile
+
+CC_FULL_PATH =
+F77_FULL_PATH =
+
+#################### Default Compiler Flags
+
+#CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces -DFITS
+CFLAGS = -D$(F77) -Wall -ansi -Wno-unused-variable -Wno-missing-braces
+
+DEBUG_FLAG =
+
+#################### OS SPECIFIC COMPILER FLAGS
+
+### NOTE That lg2c has become lgfortran with gnu compiler version 4.1.1 
+
+#DARWIN_SPECIFIC_FLAGS = -L/sw/lib -lc -lm -lg2c -lSystemStubs
+DARWIN_SPECIFIC_FLAGS = -L/usr/local/lib -lc -lm -lSystemStubs -lgfortran
+SUNOS_SPECIFIC_FLAGS = -L/opt/SUNWspro/lib -lF77 -lsunmath -lfsu -lfai -lm -lc -lc2 -lg2c
+LINUX_SPECIFIC_FLAGS = -L/usr/lib/gcc-lib/x86_64-redhat-linux/3.2.3/ -lc -lm -lg2c
+
+#################### OS specific system commands
+
+### suns regular grep /usr/bin/grep doesn't support the -e option so lets use 
+### sed instead
+
+SUN_GREP = sed 's/ .*//' 
+
+### main directory structure of the Kameleon converter software
+
+F77_SRC_DIR     = ./f77_src
+C_SRC_DIR       = ./c_src
+LOCAL_INC_DIR   = ./inc
+LOCAL_LIB_DIR   = ./lib
+
+#################### Dependacy PATHS ( Locations of stuff Kameleon Uses )
+
+### CDF ----------------------- REQUIRED
+
+LIB_CDF      = ${LOCAL_LIB_DIR}/libcdf.a
+CDF_INC      = ${LOCAL_INC_DIR}
+CDF_INC_FILE = ${CDF_INC}/cdf.h
+
+### ARGTABLE  ---------------- REQUIRED
+
+LIB_ARG_TABLE_2 	 = ${LOCAL_LIB_DIR}/libargtable2.a
+ARG_TABLE_2_INC 	 = ${LOCAL_INC_DIR}
+ARG_TABLE_2_INC_FILE = ${ARG_TABLE_2_INC}/argtable2.h
+
+### netCDF ------------------- OPTIONAL
+
+LIB_NETCDF 			= ${LOCAL_LIB_DIR}/libnetcdf.a
+NETCDF_INC 			= ${LOCAL_INC_DIR}
+NETCDF_INC_FILE 	= ${NETCDF_INC}/netcdf.h
+
+### FITS --------------------- OPTIONAL
+
+LIB_FITS  			= ${LOCAL_LIB_DIR}/libcfitsio.a
+FITS_INC  			= ${LOCAL_INC_DIR}
+FITS_INC_FILE_1  	= ${FITS_INC}/fitsio.h
+FITS_INC_FILE_2  	= ${FITS_INC}/longnam.h
+
+### HDF ( as in HDF 1,2,3, & 4 NOT HDF5 ) 
+### The HDF library is a mixture of several libraries specifically:
+
+LIB_HDF1 = ${LOCAL_LIB_DIR}/libmfhdf.a
+LIB_HDF2 = ${LOCAL_LIB_DIR}/libdf.a
+LIB_JPEG = ${LOCAL_LIB_DIR}/libjpeg.a
+LIB_SZ   = ${LOCAL_LIB_DIR}/libsz.a
+LIB_Z    = ${LOCAL_LIB_DIR}/libz.a
+
+### LIB_HDF_WITH_ALL_DEP incorporates all hdf library paths and dependencies
+### into a single macro
+
+LIB_HDF_WITH_ALL_DEP = ${LIB_HDF1} ${LIB_HDF2} ${LIB_JPEG} ${LIB_SZ} ${LIB_Z}
+
+### HDF has a bunch of header files, keep them together
+LOCAL_HDF_INC = ${LOCAL_INC_DIR}/hdf_inc
+#LOCAL_HDF_INC = /Users/mmmaddox/HDF_all/4.2r1-macosx/include
+#LOCAL_HDF_INC = /Users/mmmaddox/HDF_all/local_hdf4/include
+
+HDF_INC = ${LOCAL_HDF_INC}
+
+
+################################################################################
+
+
+################# Kameleon Read Libraries based on externaly linked dependancies
+
+LIB_READ_UCLA = ${LOCAL_LIB_DIR}/libread_ucla_ggcm.a
+LIB_READ_NETCDF = ${LOCAL_LIB_DIR}/libread_netcdf.a
+LIB_READ_FITS = ${LOCAL_LIB_DIR}/libread_fits.a
+LIB_READ_HDF = ${LOCAL_LIB_DIR}/libread_hdf.a
+
+################# ALL POSSIBLE LIBRARIES TO INLCUDE INTO BUILD
+
+LIB_ALL = ${LIB_READ_UCLA} ${LIB_CDF} ${LIB_ARG_TABLE_2} ${LIB_READ_NETCDF} ${LIB_NETCDF_LINK} ${LIB_READ_FITS} ${LIB_FITS_LINK} ${LIB_READ_HDF} ${LIB_HDF_LINK}
+
+################################################################################
+################################################################################
+################################################################################
+##################### ADVANCED USERS ONLY BEYOND THIS POINT ####################
+################################################################################
+################################################################################
+################################################################################
+
+UCLA_READ_F77_SRC =  ${F77_SRC_DIR}/datf11.f ${F77_SRC_DIR}/datf21.f ${F77_SRC_DIR}/datf31.f ${F77_SRC_DIR}/end0.f ${F77_SRC_DIR}/f77_file_close.f \
+					${F77_SRC_DIR}/f77_file_open.f ${F77_SRC_DIR}/f77_file_rewind.f ${F77_SRC_DIR}/getf11.f ${F77_SRC_DIR}/getf31.f ${F77_SRC_DIR}/rdn2.f \
+					${F77_SRC_DIR}/wrn2.f ${F77_SRC_DIR}/wrndec.f ${F77_SRC_DIR}/wrnenc.f
+
+UCLA_READ_F77_OBJ = datf11.o datf21.o datf31.o end0.o f77_file_close.o f77_file_open.o f77_file_rewind.o getf11.o getf31.o rdn2.o wrn2.o wrndec.o wrnenc.o
+
+READ_C_SRC    =     ${C_SRC_DIR}/main_conversion_driver_V5.c ${C_SRC_DIR}/cdf_status_handler.c ${C_SRC_DIR}/main_read_driver.c ${C_SRC_DIR}/main_write_driver.c \
+				${C_SRC_DIR}/read_batsrus.c ${C_SRC_DIR}/read_database.c ${C_SRC_DIR}/linear_minmax_search.c ${C_SRC_DIR}/date_formatter.c ${C_SRC_DIR}/strsplit.c \
+				${C_SRC_DIR}/ccmc_structure_manager.c ${C_SRC_DIR}/write_batsrus_structure.c ${C_SRC_DIR}/write_structures_2_cdf.c ${C_SRC_DIR}/write_ucla_ggcm_structure.c \
+				${C_SRC_DIR}/endian_flip.c ${C_SRC_DIR}/read_ctip.c ${C_SRC_DIR}/write_enlil_structure.c ${C_SRC_DIR}/write_kpvt_structure.c ${C_SRC_DIR}/write_msfc_tvm_structure.c \
+				${C_SRC_DIR}/write_mas_structure.c
+
+READ_C_OBJ    = main_conversion_driver_V5.o cdf_status_handler.o main_read_driver.o main_write_driver.o read_batsrus.o read_database.o linear_minmax_search.o date_formatter.o \
+			strsplit.o ccmc_structure_manager.o write_batsrus_structure.o write_structures_2_cdf.o write_ucla_ggcm_structure.o endian_flip.o read_ctip.o write_enlil_structure.o \
+			write_kpvt_structure.o write_msfc_tvm_structure.o write_mas_structure.o
+
+### DON'T CHANGE BLOCK
+### DON"T CHANGE THE FOLLOWING "DON'T CHANGE" LINE(S), ITS A WORKAROUND
+### TO DISPLAY INFO ABOUT THE TARGET BUT IS NOT USED IN
+### LINKING AS THE REGULAR MACRO ie LIB_NETCDF MAYBE SET TO
+### BLANK IF IT'S NOT FOUND.  THIS ALLOWS THE BUILD TO
+### CONTINUE WITHOUT THE LIB BUT STILL COMPLAINS: ..libnetcdf.a: No such file or directory
+###
+LIB_NETCDF_LINK = ${LIB_NETCDF}
+LIB_FITS_LINK = ${LIB_FITS}
+LIB_HDF_LINK = ${LIB_HDF_WITH_ALL_DEP}
+###
+#################### END OF DON'T CHANGE BLOCK #################
+
+# check for libnetcdf.a to determine how we build... 
+# call with_netcdf to build with NETCDF with_out_netcdf to NOT build with NETCDF
+
+first:
+	@echo ""
+	@echo "Checking for libnetcdf.a as currently set --->${LIB_NETCDF}"
+	@echo "Checking for netcdf.h as currently set --->${NETCDF_INC_FILE}"
+	@if \
+	[ ! -r ${LIB_NETCDF}  ] ; \
+	then \
+	make with_out_netcdf \
+	"CFLAGS = -D$(F77) -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK = " ;\
+	elif \
+	[ ! -r ${NETCDF_INC_FILE}  ] ; \
+	then \
+	make with_out_netcdf \
+	"CFLAGS = -D$(F77) -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK = " ;\
+	else \
+	make with_netcdf \
+	"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" ;\
+	fi
+
+# check for libcfitsio.a to determine how we build...
+# with_netcdf-with_fits to build with NETCDF & FITS
+# with_netcdf-with_out_fits to build with NETCDF & NOT FITS
+# with_out_netcdf-with_fits to build with NO NETCDF & FITS
+# with_out_netcdf-with_out_fits to build with NO NETCDF & NO FITS
+
+with_netcdf:
+	@echo ""
+	@echo "Checking for libcfitsio.a as currently set --->${LIB_FITS}"
+	@echo "Checking for fitsio.h as currently set --->${FITS_INC_FILE_1}"
+	@echo "Checking for longnam.h as currently set --->${FITS_INC_FILE_2}"
+	@if \
+	[ ! -r ${LIB_FITS}  ] ; \
+	then \
+	make with_netcdf-with_out_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " ;\
+	elif \
+	[ ! -r ${FITS_INC_FILE_1}  ] ; \
+	then \
+	make with_netcdf-with_out_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " ;\
+	elif \
+	[ ! -r ${FITS_INC_FILE_2}  ] ; \
+	then \
+	make with_netcdf-with_out_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " ;\
+	else \
+	make with_netcdf-with_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -DFITS -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = ${LIB_FITS}" ;\
+	fi
+
+#	@echo "Checking for libcfitsio.a: "`find ./lib -name libcfitsio.a`
+#	@case `find ./lib -name libcfitsio.a` in \
+#		"./lib/libcfitsio.a") make with_netcdf-with_fits \
+#		"CFLAGS = -D$(F77) -DNETCDF -DFITS -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+#		"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = ${LIB_FITS}" ;;\
+#		*) make with_netcdf-with_out_fits \
+#		"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+#		"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " ;;\
+#	esac
+
+with_out_netcdf:
+	@echo ""
+	@echo "Checking for libcfitsio.a as currently set --->${LIB_FITS}"
+	@echo "Checking for fitsio.h as currently set --->${FITS_INC_FILE_1}"
+	@echo "Checking for longnam.h as currently set --->${FITS_INC_FILE_2}"
+	@if \
+	[ ! -r ${LIB_FITS}  ] ; \
+	then \
+	make with_out_netcdf-with_out_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " ;\
+	elif \
+	[ ! -r ${FITS_INC_FILE_1}  ] ; \
+	then \
+	make with_out_netcdf-with_out_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " ;\
+	elif \
+	[ ! -r ${FITS_INC_FILE_2}  ] ; \
+	then \
+	make with_out_netcdf-with_out_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " ;\
+	else \
+	make with_out_netcdf-with_fits \
+	"CFLAGS = -D$(F77) -DNETCDF -DFITS -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+	"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = ${LIB_FITS}" ;\
+	fi
+
+
+#	@echo "Checking for libcfitsio.a: "`find ./lib -name libcfitsio.a`
+#	@case `find ./lib -name libcfitsio.a` in \
+#		"./lib/libcfitsio.a") make with_out_netcdf-with_fits \
+#		"CFLAGS = -D$(F77) -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+#		"LIB_NETCDF_LINK = " "LIB_FITS_LINK = ${LIB_FITS}" -DFITS;;\
+#		*) make with_out_netcdf-with_out_fits \
+#		"CFLAGS = -D$(F77) -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+#		"LIB_NETCDF_LINK = " "LIB_FITS_LINK = " ;;\
+#	esac
+
+# check for libmfhdf.a to determine how we build - HDF has 5 dependencies, just look for one and verify all later in build
+
+with_netcdf-with_fits:
+	@echo "Checking for libmfhdf.a: "`find ./lib -name libmfhdf.a`
+	@case `find ./lib -name libmfhdf.a` in \
+		"./lib/libmfhdf.a") make kameleon \
+		"CFLAGS = -D$(F77) -DNETCDF -DFITS -DHDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+		"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = ${LIB_FITS}" "LIB_HDF_LINK = ${LIB_HDF_WITH_ALL_DEP}";;\
+		*) make kameleon \
+		"CFLAGS = -D$(F77) -DNETCDF -DFITS -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+		"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = ${LIB_FITS}" "LIB_HDF_LINK = ";;\
+	esac
+
+with_netcdf-with_out_fits:
+	@echo "Checking for libmfhdf.a: "`find ./lib -name libmfhdf.a`
+	@case `find ./lib -name libmfhdf.a` in \
+		"./lib/libmfhdf.a") make kameleon \
+		"CFLAGS = -D$(F77) -DNETCDF -DHDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+		"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " "LIB_HDF_LINK = ${LIB_HDF_WITH_ALL_DEP}";;\
+		*) make kameleon \
+		"CFLAGS = -D$(F77) -DNETCDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+		"LIB_NETCDF_LINK    = ${LIB_NETCDF}" "LIB_FITS_LINK = " "LIB_HDF_LINK = ";;\
+	esac
+
+with_out_netcdf-with_fits:
+	@echo "Checking for libmfhdf.a: "`find ./lib -name libmfhdf.a`
+	@case `find ./lib -name libmfhdf.a` in \
+		"./lib/libmfhdf.a") make kameleon \
+		"CFLAGS = -D$(F77) -DFITS -DHDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+		"LIB_NETCDF_LINK    = " "LIB_FITS_LINK = ${LIB_FITS}" "LIB_HDF_LINK = ${LIB_HDF_WITH_ALL_DEP}";;\
+		*) make kameleon \
+		"CFLAGS = -D$(F77) -DFITS -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+		"LIB_NETCDF_LINK    = " "LIB_FITS_LINK = ${LIB_FITS}" "LIB_HDF_LINK = ";;\
+	esac
+
+with_out_netcdf-with_out_fits:
+	@echo "Checking for libmfhdf.a: "`find ./lib -name libmfhdf.a`
+	@case `find ./lib -name libmfhdf.a` in \
+		"./lib/libmfhdf.a") make kameleon \
+		"CFLAGS = -D$(F77) -DHDF -Wall -ansi -Wno-unused-variable -Wno-missing-braces"  \
+		"LIB_NETCDF_LINK    = " "LIB_FITS_LINK = " "LIB_HDF_LINK = ${LIB_HDF_WITH_ALL_DEP}";;\
+		*) make kameleon \
+		"CFLAGS = -D$(F77) -Wall -ansi -Wno-unused-variable -Wno-missing-braces" \
+		"LIB_NETCDF_LINK    = " "LIB_FITS_LINK = " "LIB_HDF_LINK = ";;\
+	esac
+
+
+
+# by now we should know how to build kameleon and what external libraries are
+# available to us
+
+# automatically determine OS
+
+#kameleon: ${READ_C_OBJ} ${LIB_READ_UCLA} ${LIB_CDF} ${LIB_READ_NETCDF}
+kameleon:
+	@echo "Determining Operating System: "`uname`
+	@case `uname` in \
+		"Darwin") make kameleon-4-mac \
+				"FLAGS=${LIB_ALL} -I${LOCAL_INC_DIR} ${DARWIN_SPECIFIC_FLAGS}" ;;\
+		"Linux") make kameleon-4-linux \
+				"FLAGS=${LIB_ALL} -I${LOCAL_INC_DIR} ${LINUX_SPECIFIC_FLAGS}" ;;\
+		"SunOS") make kameleon-4-sun \
+				"FLAGS=${LIB_ALL} -I${LOCAL_INC_DIR} ${SUNOS_SPECIFIC_FLAGS}" ;;\
+		CYGWIN*) make kameleon-4-linux \
+				"FLAGS=${LIB_ALL} -I${LOCAL_INC_DIR} ${LINUX_SPECIFIC_FLAGS}" ;;\
+		*) echo "Current Operating System is NOT supported" ;;\
+	esac
+
+# MAC-SPECIFIC
+
+kameleon-4-mac : ${CDF_INC_FILE} ${LIB_CDF} ${LIB_ARG_TABLE_2} ${ARG_TABLE_2_INC_FILE} ${LIB_READ_NETCDF} ${LIB_READ_FITS} ${LIB_READ_HDF} ${READ_C_OBJ} ${LIB_READ_UCLA} 
+	${CC} -o kameleon ${READ_C_OBJ} ${FLAGS} -I${ARG_TABLE_2_INC}
+	@echo ""
+	@echo "KAMELEON"
+
+# LINUX-SPECIFIC
+
+kameleon-4-linux : ${LIB_CDF} ${LIB_READ_NETCDF} ${LIB_READ_FITS} ${LIB_READ_HDF} ${READ_C_OBJ} ${LIB_READ_UCLA} 
+	${CC} -o kameleon ${READ_C_OBJ} ${FLAGS} -I${ARG_TABLE_2_INC}
+	@echo ""
+	@echo "KAMELEON"
+
+# SUN-SPECIFIC
+
+kameleon-4-sun : ${LIB_CDF} ${LIB_READ_NETCDF} ${LIB_READ_FITS} ${LIB_READ_HDF} ${READ_C_OBJ} ${LIB_READ_UCLA} 
+	${CC} -o kameleon ${READ_C_OBJ} ${FLAGS} -I${ARG_TABLE_2_INC}
+	@echo ""
+	@echo "KAMELEON"
+
+${LOCAL_LIB_DIR}/libread_ucla_ggcm.a    : ${UCLA_READ_F77_OBJ}  read_ucla_ggcm_v3.o
+	ar rc $@ ${UCLA_READ_F77_OBJ}  read_ucla_ggcm_v3.o
+	ranlib $@
+
+${LOCAL_LIB_DIR}/libread_netcdf.a    : ${LIB_NETCDF} ${NETCDF_INC_FILE} read_enlil.o
+	ar rc $@ read_enlil.o ${LIB_NETCDF_LINK}
+	ranlib $@
+
+${LOCAL_LIB_DIR}/libread_fits.a    : ${LIB_FITS} ${FITS_INC_FILE_1} ${FITS_INC_FILE_2} read_kpvt.o read_msfc_tvm.o
+	ar rc $@ read_kpvt.o read_msfc_tvm.o ${LIB_FITS_LINK}
+	ranlib $@
+
+${LOCAL_LIB_DIR}/libread_hdf.a : ${LIB_HDF_WITH_ALL_DEP} read_mas.o
+	ar rc $@ read_mas.o ${LIB_HDF_LINK}
+	ranlib $@
+
+main_conversion_driver_V5.o : ${C_SRC_DIR}/main_conversion_driver_V5.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/main_conversion_driver_V5.c -I${LOCAL_INC_DIR} -I${CDF_INC} -I${ARG_TABLE_2_INC}
+
+cdf_status_handler.o : ${C_SRC_DIR}/cdf_status_handler.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/cdf_status_handler.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+main_read_driver.o : ${C_SRC_DIR}/main_read_driver.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/main_read_driver.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+main_write_driver.o : ${C_SRC_DIR}/main_write_driver.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/main_write_driver.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_batsrus.o : ${C_SRC_DIR}/read_batsrus.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_batsrus.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+write_batsrus_cdf.o : ${C_SRC_DIR}/write_batsrus_cdf.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_batsrus_cdf.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+write_ucla_ggcm_cdf.o : ${C_SRC_DIR}/write_ucla_ggcm_cdf.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_ucla_ggcm_cdf.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_ucla_ggcm_v3.o : ${C_SRC_DIR}/read_ucla_ggcm_v3.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_ucla_ggcm_v3.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_database.o : ${C_SRC_DIR}/read_database.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_database.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+linear_minmax_search.o : ${C_SRC_DIR}/linear_minmax_search.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/linear_minmax_search.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+date_formatter.o : ${C_SRC_DIR}/date_formatter.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/date_formatter.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+strsplit.o : ${C_SRC_DIR}/strsplit.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/strsplit.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+ccmc_structure_manager.o : ${C_SRC_DIR}/ccmc_structure_manager.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/ccmc_structure_manager.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+write_batsrus_structure.o : ${C_SRC_DIR}/write_batsrus_structure.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_batsrus_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+write_structures_2_cdf.o : ${C_SRC_DIR}/write_structures_2_cdf.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_structures_2_cdf.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+write_ucla_ggcm_structure.o : ${C_SRC_DIR}/write_ucla_ggcm_structure.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_ucla_ggcm_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+endian_flip.o : ${C_SRC_DIR}/endian_flip.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/endian_flip.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_ctip.o : ${C_SRC_DIR}/read_ctip.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_ctip.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_enlil.o : ${C_SRC_DIR}/read_enlil.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_enlil.c -I${LOCAL_INC_DIR} -I${CDF_INC} -I${NETCDF_INC}
+
+write_enlil_structure.o : ${C_SRC_DIR}/write_enlil_structure.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_enlil_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_kpvt.o : ${C_SRC_DIR}/read_kpvt.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_kpvt.c -I${LOCAL_INC_DIR} -I${CDF_INC} -I${FITS_INC}
+
+write_kpvt_structure.o : ${C_SRC_DIR}/write_kpvt_structure.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_kpvt_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_msfc_tvm.o : ${C_SRC_DIR}/read_msfc_tvm.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_msfc_tvm.c -I${LOCAL_INC_DIR} -I${CDF_INC} -I${FITS_INC}
+
+write_msfc_tvm_structure.o : ${C_SRC_DIR}/write_msfc_tvm_structure.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_msfc_tvm_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+read_mas.o : ${C_SRC_DIR}/read_mas.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_mas.c -I${LOCAL_INC_DIR} -I${LOCAL_HDF_INC} -I${CDF_INC}
+
+write_mas_structure.o : ${C_SRC_DIR}/write_mas_structure.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_mas_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+
+#### UCLA_GGCM/OPenGGCM Fortran Stuff
+
+datf11.o : ${F77_SRC_DIR}/datf11.f
+	${F77} -c ${F77_SRC_DIR}/datf11.f
+
+datf21.o : ${F77_SRC_DIR}/datf21.f
+	${F77} -c ${F77_SRC_DIR}/datf21.f
+
+datf31.o : ${F77_SRC_DIR}/datf31.f
+	${F77} -c ${F77_SRC_DIR}/datf31.f
+
+end0.o : ${F77_SRC_DIR}/end0.f
+	${F77} -c ${F77_SRC_DIR}/end0.f
+
+f77_file_close.o : ${F77_SRC_DIR}/f77_file_close.f
+	${F77} -c ${F77_SRC_DIR}/f77_file_close.f
+
+f77_file_open.o : ${F77_SRC_DIR}/f77_file_open.f
+	${F77} -c ${F77_SRC_DIR}/f77_file_open.f
+
+f77_file_rewind.o : ${F77_SRC_DIR}/f77_file_rewind.f
+	${F77} -c ${F77_SRC_DIR}/f77_file_rewind.f
+
+getf11.o : ${F77_SRC_DIR}/getf11.f
+	${F77} -c ${F77_SRC_DIR}/getf11.f
+
+getf31.o : ${F77_SRC_DIR}/getf31.f
+	${F77} -c ${F77_SRC_DIR}/getf31.f
+
+rdn2.o : ${F77_SRC_DIR}/rdn2.f
+	${F77} -c ${F77_SRC_DIR}/rdn2.f
+
+wrn2.o : ${F77_SRC_DIR}/wrn2.f
+	${F77} -c ${F77_SRC_DIR}/wrn2.f
+
+wrndec.o : ${F77_SRC_DIR}/wrndec.f
+	${F77} -c ${F77_SRC_DIR}/wrndec.f
+
+wrnenc.o : ${F77_SRC_DIR}/wrnenc.f
+	${F77} -c ${F77_SRC_DIR}/wrnenc.f
+
+
+######################### DEPENDENCY CHECKS ####################################
+
+##### Check for presence of CDF library
+
+${LIB_CDF} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "ERROR!!!!!!!!!! $@ not found in LIB_CDF ENV variable as currently set ---> ${LIB_CDF}"
+	@echo "YOU MAY NEED TO INSTALL CDF library or set LIB_CDF macro ie. make LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a"
+	@echo "Build has died...see below---vv"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+	$(error ERROR!!!!!!!!!! $@ not found in LIB_CDF macro as currently set --->${LIB_CDF}<--- ... YOU MAY NEED TO INSTALL CDF library or set LIB_CDF macro ie. make LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a)
+
+##### Check for presence of CDF include file
+
+${CDF_INC_FILE} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "ERROR!!!!!!!!!! cdf.h not found in CDF_INC directory as currently set ---> ${CDF_INC}"
+	@echo "YOU MAY NEED TO INSTALL CDF library or set CDF_INC macro ie. make CDF_INC=/Applications/cdf31-dist/include"
+	@echo "Build has died...see below---vv"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+	$(error ERROR!!!!!!!!!! cdf.h not found in CDF_INC directory as currently set --->${CDF_INC}<--- YOU MAY NEED TO INSTALL CDF library or set CDF_INC macro ie. make CDF_INC=/Applications/cdf31-dist/include)
+
+
+##### Check for presence of Argtable 2 library
+
+${LIB_ARG_TABLE_2} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "ERROR!!!!!!!!!! $@ not found in LIB_ARG_TABLE_2 ENV variable as currently set ---> ${LIB_ARG_TABLE_2}"
+	@echo "YOU MAY NEED TO INSTALL Argtable 2 library or set LIB_ARG_TABLE_2 macro ie. make LIB_ARG_TABLE_2=/Users/mmaddox/DOWNLOAD_AND_BUILD_DIR/argtable2-6/src/libargtable2.a"
+	@echo "Build has died...see below---vv"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+	$(error ERROR!!!!!!!!!! $@ not found in LIB_ARG_TABLE_2 macro as currently set --->${LIB_ARG_TABLE_2}<--- ... YOU MAY NEED TO INSTALL Argtable 2 library or set LIB_ARG_TABLE_2 macro ie. make LIB_ARG_TABLE_2=/Users/mmaddox/DOWNLOAD_AND_BUILD_DIR/argtable2-6/src/libargtable2.a)
+
+##### Check for presence of Argtable 2 Include File
+
+${ARG_TABLE_2_INC_FILE} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "ERROR!!!!!!!!!! argtable2.h not found in ARG_TABLE_2_INC Directory as currently set ---> ${ARG_TABLE_2_INC}"
+	@echo "YOU MAY NEED TO INSTALL Argtable 2 library or set ARG_TABLE_2_INC macro ie. make ARG_TABLE_2_INC=/Users/mmaddox/DOWNLOAD_AND_BUILD_DIR/argtable2-6/src/"
+	@echo "Build has died...see below---vv"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+	$(error ERROR!!!!!!!!!! argtable2.h not found in ARG_TABLE_2_INC macro as currently set --->${ARG_TABLE_2_INC}<--- ... YOU MAY NEED TO INSTALL Argtable 2 library or set ARG_TABLE_2_INC macro ie. make ARG_TABLE_2_INC=/Users/mmaddox/DOWNLOAD_AND_BUILD_DIR/argtable2-6/src/)
+
+##### Check for presence of NETCDF library
+
+${LIB_NETCDF} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! $@ not found in LIB_NETCDF ENV variable as currently set ---> ${LIB_NETCDF}"
+	@echo "converter will not be able to process any model output ( such as ENLIL ) written in netCDF format"
+	@echo "YOU MAY NEED TO INSTALL the NETCDF library or set LIB_NETCDF macro ie. make LIB_NETCDF=/usr/local/lib/libnetcdf.a"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+##### Check for presence of NETCDF include file
+
+${NETCDF_INC_FILE} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! netcdf.h not found in NETCDF_INC ENV variable as currently set ---> ${NETCDF_INC}"
+	@echo "converter will not be able to process any model output ( such as ENLIL ) written in netCDF format"
+	@echo "YOU MAY NEED TO INSTALL the NETCDF library or set NETCDF_INC macro ie. make NETCDF_INC=/usr/local/include/"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+##### Check for presence of FITS library
+
+${LIB_FITS} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! $@ not found in LIB_FITS ENV variable as currently set ---> ${LIB_FITS}"
+	@echo "converter will not be able to process any files ( such as KPVT ) written in FITS format"
+	@echo "YOU MAY NEED TO INSTALL the FITS library or modify the Makefile to point to correct copy of libcfitsio.a"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+##### Check for presence of FITS  include file 1
+
+${FITS_INC_FILE_1} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! fitsio.h not found in FITS_INC ENV variable as currently set ---> ${FITS_INC}"
+	@echo "converter will not be able to process any model output ( such as KPVT, MSFC_TVM ) written in FITS format"
+	@echo "YOU MAY NEED TO INSTALL the FITS library or set FITS_INC macro ie. make FITS_INC=/usr/local/include/"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+	
+##### Check for presence of FITS  include file 2
+
+${FITS_INC_FILE_2} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! longnam.h not found in FITS_INC ENV variable as currently set ---> ${FITS_INC}"
+	@echo "converter will not be able to process any model output ( such as KPVT, MSFC_TVM ) written in FITS format"
+	@echo "YOU MAY NEED TO INSTALL the FITS library or set FITS_INC macro ie. make FITS_INC=/usr/local/include/"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+##### Check for presence of HDF library and all its dependencies
+
+${LIB_HDF1} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! $@ not found in LIB_HDF1 ENV variable as currently set ---> ${LIB_HDF1}"
+	@echo "converter will not be able to process any files ( such as Mas ) written in hdf format"
+	@echo "YOU MAY NEED TO INSTALL the HDF library ( and dependencies: libdf.a, libmfhdf.a, libjpeg.a, libsz.a,"
+	@echo "and libz.a ) or modify the Makefile to point to correct copy of libdf.a"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+${LIB_HDF2} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! $@ not found in LIB_HDF2 ENV variable as currently set ---> ${LIB_HDF2}"
+	@echo "converter will not be able to process any files ( such as Mas ) written in hdf format"
+	@echo "YOU MAY NEED TO INSTALL the HDF library ( and dependencies: libdf.a, libmfhdf.a, libjpeg.a, libsz.a,"
+	@echo "and libz.a ) or modify the Makefile to point to correct copy of libdmfhdf.a"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+${LIB_JPEG} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! $@ not found in LIB_JPEG ENV variable as currently set ---> ${LIB_JPEG}"
+	@echo "converter will not be able to process any files ( such as Mas ) written in hdf format"
+	@echo "YOU MAY NEED TO INSTALL the HDF library ( and dependencies: libdf.a, libmfhdf.a, libjpeg.a, libsz.a,"
+	@echo "and libz.a ) or modify the Makefile to point to correct copy of libjpeg.a"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+${LIB_SZ} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! $@ not found in LIB_SZ ENV variable as currently set ---> ${LIB_SZ}"
+	@echo "converter will not be able to process any files ( such as Mas ) written in hdf format"
+	@echo "YOU MAY NEED TO INSTALL the HDF library ( and dependencies: libdf.a, libmfhdf.a, libjpeg.a, libsz.a,"
+	@echo "and libz.a ) or modify the Makefile to point to correct copy of libsz.a"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+${LIB_Z} :
+	@echo ""
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo "WARNING!!!!!!!!!! $@ not found in LIB_Z ENV variable as currently set ---> ${LIB_Z}"
+	@echo "converter will not be able to process any files ( such as Mas ) written in hdf format"
+	@echo "YOU MAY NEED TO INSTALL the HDF library ( and dependencies: libdf.a, libmfhdf.a, libjpeg.a, libsz.a,"
+	@echo "and libz.a ) or modify the Makefile to point to correct copy of libz.a"
+	@echo "---------------------------------------------------------------------------------------------------"
+	@echo ""
+
+# CLEAN
+
+clean :
+	rm -f ${READ_C_OBJ} ${UCLA_READ_F77_OBJ} read_ucla_ggcm_v3.o read_enlil.o read_kpvt.o read_msfc_tvm.o read_mas.o
+
+real_clean :
+	rm -f ${READ_C_OBJ} ${UCLA_READ_F77_OBJ} read_ucla_ggcm_v3.o read_enlil.o read_kpvt.o read_msfc_tvm.o read_mas.o ${LIB_READ_UCLA} ${LIB_READ_NETCDF} ${LIB_READ_FITS} ${LIB_READ_HDF} kameleon
+
+
