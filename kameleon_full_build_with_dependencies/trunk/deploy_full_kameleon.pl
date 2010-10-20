@@ -187,7 +187,7 @@ change_directory_into("$current_working_directory/$unpacked_argtable2_tgz_dir");
 
 ### Build the Argatble 2 distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;$current_working_directory/configure;make $make_options;$make_install;";
+$current_system_command = "CC=gcc;CXX=g++;F77=gfortran;$current_working_directory/configure;make $make_options;$make_install;";
 
 run_command($current_system_command);
 
@@ -209,7 +209,7 @@ change_directory_into("$current_working_directory/$unpacked_cdf_tgz_dir");
 
 ### Build the CDF distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;make $make_options $cdf_make_options;$cdf_make_install;";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;make $make_options $cdf_make_options;$cdf_make_install;";
 
 run_command($current_system_command);
 
@@ -232,7 +232,7 @@ change_directory_into("$current_working_directory/$unpacked_fits_tgz_dir");
 
 ### Build the FITS distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;$current_working_directory/configure $fits_configure_options;make $make_options;$make_install;";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;$current_working_directory/configure $fits_configure_options;make $make_options;$make_install;";
 
 run_command($current_system_command);
 
@@ -258,7 +258,7 @@ change_directory_into("$current_working_directory/$unpacked_jpeg_tgz_dir");
 
 ### Build the JPEG distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;$current_working_directory/configure;make $make_options;mkdir -p /usr/local/man/man1;$make_install;";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;$current_working_directory/configure;make $make_options;mkdir -p /usr/local/man/man1;$make_install;";
 
 run_command($current_system_command);
 
@@ -282,7 +282,7 @@ change_directory_into("$current_working_directory/$unpacked_szip_tgz_dir");
 
 ### Build the SZIP distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;$current_working_directory/configure $szip_configure_options;make $make_options;$make_install;";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;$current_working_directory/configure $szip_configure_options;make $make_options;$make_install;";
 
 run_command($current_system_command);
 
@@ -305,7 +305,7 @@ change_directory_into("$current_working_directory/$unpacked_zlib_tgz_dir");
 
 ### Build the ZLIB distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;$current_working_directory/configure;make $make_options test;$make_install;";
+$current_system_command = "CC=gcc;FC=gfortran;F77=gfortran;$current_working_directory/configure;make $make_options test;$make_install;";
 
 run_command($current_system_command);
 
@@ -329,7 +329,7 @@ change_directory_into("$current_working_directory/$unpacked_hdf4_tgz_dir");
 
 ### Build the HDF4 distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;$hdf4_env_options;$current_working_directory/configure $hdf4_configure_options;make $make_options;make $make_options check;$make_install;";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;$hdf4_env_options;$current_working_directory/configure $hdf4_configure_options;make $make_options;make $make_options check;$make_install;";
 
 run_command($current_system_command);
 
@@ -352,7 +352,7 @@ change_directory_into("$current_working_directory/$unpacked_netcdf_tgz_dir");
 
 ### Build the netCDF distribution
 
-$current_system_command = "CC=gcc;F77=gfortran;$current_working_directory/configure $netcdf_configure_options;make $make_options;make check;$make_install;";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;$current_working_directory/configure $netcdf_configure_options;make $make_options;make check;$make_install;";
 
 run_command($current_system_command);
 
@@ -379,7 +379,7 @@ change_directory_into("$current_working_directory/$unpacked_kameleon_converter_t
 
 ### Build the Kameleon Converter distribution
 
-$current_system_command = "make $kameleon_converter_make_options;make clean";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;make $kameleon_converter_make_options;make clean";
 
 run_command($current_system_command);
 
@@ -412,7 +412,7 @@ change_directory_into("$current_working_directory/$unpacked_kameleon_interpolato
 
 ### Build the Kameleon Interpolator distribution
 
-$current_system_command = "make $kameleon_interpolator_make_options;make clean";
+$current_system_command = "CC=gcc;CXX=g++;FC=gfortran;F77=gfortran;make $kameleon_interpolator_make_options;make clean";
 
 run_command($current_system_command);
 
