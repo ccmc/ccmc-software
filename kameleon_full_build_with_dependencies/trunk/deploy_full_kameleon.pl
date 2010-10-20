@@ -20,6 +20,8 @@ my $unpack_in_place_command = "tar -xzf";
 my $untar_in_place_command = "tar -xf";
 my $installation_dir = "/usr/local/";
 
+my $ccmc_installation_dir = "/usr/local/ccmc/";
+
 ## my $make_options = "-s";
 
 my $make_options = "";
@@ -129,8 +131,8 @@ chomp($current_working_directory);
 my $current_user = `whoami`;
 chomp($current_user);
 
-my $make_install = "";
-my $cdf_make_install = "";
+my $make_install = "echo \"!!!!!!! YOU NEED TO RUN THIS PROGRAM AS ROOT TO EXECUTE make install.... \"";
+my $cdf_make_install = "echo \"!!!!!!! YOU NEED TO RUN THIS PROGRAM AS ROOT TO EXECUTE make install.... \"";
 
 
 
@@ -146,7 +148,7 @@ my $cdf_make_install = "";
 	if($current_user !~ /^root/)
 	{
 
-	print "\n\n--------------- EXECUTING AS USER: $current_user --------------- \n\n...please note that installation into /usr/local/ requires this program to be executed as root!!!!\n\nCommening with build in $number_of_seconds_to_sleep seconds...\n\n";
+	print "\n\n--------------- EXECUTING AS USER: $current_user --------------- \n\n...please note that installation into /usr/local/ requires this program to be executed as root!!!!\n\nCommencing with build in $number_of_seconds_to_sleep seconds...\n\n";
 
 
 	sleep($number_of_seconds_to_sleep);
@@ -383,8 +385,11 @@ run_command($current_system_command);
 
 ### Deploy Kameleon executable....
 
+$current_system_command = "mkdir -p $ccmc_installation_dir/bin/";
 
-$current_system_command = "ln -fs $current_working_directory/kameleon $installation_dir/bin/kameleon";
+run_command($current_system_command);
+
+$current_system_command = "ln -fs $current_working_directory/kameleon $ccmc_installation_dir/bin/kameleon";
 
 run_command($current_system_command);
 
@@ -414,7 +419,22 @@ run_command($current_system_command);
 ### Deploy Kameleon executable....
 
 
+$current_system_command = "mkdir -p $ccmc_installation_dir/lib/";
 
+run_command($current_system_command);
+
+$current_system_command = "ln -fs $current_working_directory/lib/libkameleon.a $ccmc_installation_dir/lib/libkameleon.a";
+
+run_command($current_system_command);
+
+
+$current_system_command = "ln -fs $current_working_directory/lib/libkameleon.so $ccmc_installation_dir/lib/libkameleon.so";
+
+run_command($current_system_command);
+
+### CD back one level into kameleon/
+
+change_directory_into("../");
 
 
 sub run_command
