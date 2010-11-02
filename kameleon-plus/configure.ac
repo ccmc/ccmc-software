@@ -8,7 +8,7 @@ AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_SUBST([RELEASE],[0.1.2])
+AC_SUBST([RELEASE],[0.1.3])
 AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
