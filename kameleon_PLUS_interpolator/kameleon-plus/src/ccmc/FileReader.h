@@ -64,6 +64,12 @@ namespace ccmc
 			const std::string& getCurrentFilename();
 			virtual ~FileReader();
 
+			static const long OK = 0L;
+			static const long OPEN_ERROR = -1L;
+			static const long VARIABLE_DOES_NOT_EXIST = -2L;
+			static const long ATTRIBUTE_DOES_NOT_EXIST = -3L;
+			static const long LOAD_FAILED = -4L;
+
 		protected:
 			CDFid current_file_id;
 			std::string current_filename;

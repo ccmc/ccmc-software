@@ -449,23 +449,6 @@ namespace ccmc
 		D vc6 = (1 - m_z) * vc2 + m_z * vc4;
 		D xc = (1 - m_y) * vc5 + m_y * vc6;
 
-		/*vc1 = (1 - m_x) * vectors[0].c1() + m_x * vectors[1].c1();
-		 vc2 = (1 - m_x) * vectors[4].c1() + m_x * vectors[5].c1();
-		 vc3 = (1 - m_x) * vectors[2].c1() + m_x * vectors[3].c1();
-		 vc4 = (1 - m_x) * vectors[6].c1() + m_x * vectors[7].c1();
-		 vc5 = (1 - m_z) * vc1 + m_z * vc3;
-		 vc6 = (1 - m_z) * vc2 + m_z * vc4;
-		 float yc = (1 - m_y) * vc5 + m_y * vc6;
-
-		 vc1 = (1 - m_x) * vectors[0].c2() + m_x * vectors[1].c2();
-		 vc2 = (1 - m_x) * vectors[4].c2() + m_x * vectors[5].c2();
-		 vc3 = (1 - m_x) * vectors[2].c2() + m_x * vectors[3].c2();
-		 vc4 = (1 - m_x) * vectors[6].c2() + m_x * vectors[7].c2();
-		 vc5 = (1 - m_z) * vc1 + m_z * vc3;
-		 vc6 = (1 - m_z) * vc2 + m_z * vc4;
-		 float zc = (1 - m_y) * vc5 + m_y * vc6;
-		 */
-
 		return xc;
 	}
 

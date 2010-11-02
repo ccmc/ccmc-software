@@ -12,7 +12,7 @@
 namespace ccmc
 {
 	/**
-	 * @class Attribute
+	 * @class Attribute Attribute.h ccmc/Attribute.h
 	 * @brief TODO: brief description of Attribute class
 	 *
 	 * TODO: full description of Attribute class

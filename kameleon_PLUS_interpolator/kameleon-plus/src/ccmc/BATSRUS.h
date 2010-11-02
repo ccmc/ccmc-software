@@ -16,7 +16,7 @@
 namespace ccmc
 {
 	/**
-	 * @class BATSRUS
+	 * @class BATSRUS BATSRUS.h ccmc/BATSRUS.h
 	 * @brief TODO: brief description of BATSRUS class
 	 *
 	 * TODO: full description of BATSRUS class
@@ -28,7 +28,6 @@ namespace ccmc
 			BATSRUS();
 			long open(const std::string& filename);
 
-			//Cell3D<float, float> getCell(std::string variable, float c0, float c1, float c2);
 			Interpolator * createNewInterpolator();
 
 			virtual ~BATSRUS();
@@ -39,13 +38,6 @@ namespace ccmc
 		protected:
 			void initializeConversionFactorsToSI();
 			void initializeSIUnits();
-
-
-
-			//variable strings
-
-			//	bool previousWasValid;
-
 
 	};
 }

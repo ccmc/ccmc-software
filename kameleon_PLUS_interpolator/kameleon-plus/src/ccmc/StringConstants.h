@@ -71,6 +71,21 @@ namespace ccmc
 			static const char * ez_c_ = "ez";
 			static const char * p_c_ = "p";
 
+			//Adapt3D specific strings
+			static const char * coord_ = "coord";
+			static const char * unkno_ = "unkno";
+
+			static const char *temp_name_ = "temp";
+			static const char *intmat_name_ = "intmat";
+			static const char *bconi_name_ = "bconi";
+
+			static const char *grid_reg_no_ = "grid_reg_no";
+			static const char *npoin_ = "npoin";
+			static const char *nelem_ = "nelem";
+			static const char *ndimn_ = "ndimn";
+			static const char *nboun_ = "nboun";
+			static const char *nconi_ = "nconi";
+
 			static const std::string block_x_min_ = "block_x_min";
 			static const std::string block_y_min_ = "block_y_min";
 			static const std::string block_z_min_ = "block_z_min";

@@ -13,6 +13,9 @@
 
 namespace ccmc
 {
+	/**
+	 * @class Fieldline Fieldline.h ccmc/Fieldline.h
+	 */
 	class Fieldline
 	{
 		public:

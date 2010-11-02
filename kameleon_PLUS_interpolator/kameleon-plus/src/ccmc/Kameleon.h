@@ -31,6 +31,7 @@
  * @section Examples Example code
  *
  * @section License License blurb
+ * @class Kameleon Kameleon.h ccmc/Kameleon.h
  */
 
 

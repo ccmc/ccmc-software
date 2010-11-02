@@ -132,80 +132,19 @@ namespace ccmc
 		bool main_memory_flag = true;
 		if (this->modelReader->getVariableDataByID(variable_id) == NULL)
 			main_memory_flag = false;
-		//std::cout << "point: " << c0 << "," << c1 << "," << c2 << std::endl;
 		long status;
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
-
 		int ic, new_blk[8], valid;
 		float ixx, iyy, izz, dx1, dy1, dz1, dx2, dy2, dz2, data_c[8], d_m1, d_m2, yy_c2[4], zz_c2[4];
 
 		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
 
-		/*extern int is_var_in_memory( char * );*//*Previously Defined */
-
-		/** lets see if requested variable is in memory **/
-
-		/*************************************************************************************************
-
-		 * LOGIC BLOCK to determine if interpolator should search for new block or use previosuly stored
-
-		 * position and block
-
-		 *************************************************************************************************/
-		/*
-		 if (call_count == 0) /*** first time this routine has been called ***/
-		/*	{
-		 previous_x = X;
-		 previous_y = Y;
-		 previous_z = Z;
-		 } else if (previous_x == X && previous_y == Y && previous_z == Z
-		 && !new_cdf_file) /*** not first time routine has been called, see if X, y, z has changed ***/
-		/*	{ /** also check to see if this is a new file or not. **/
-		//new_position = 0;
-		/*	} else /** positions have changed or file has changed, store for next iteration **/
-		/*	{
-		 previous_x = X;
-		 previous_y = Y;
-		 previous_z = Z;
-		 }*/
-
-		/** set new_cdf_file flag to false until open_cdf is called again **/
-
-		//new_cdf_file = 0;
-
-		/*printf("%s \tDEBUG\tnew_position = %d\n", __FILE__, new_position );*/
 
 		/**********************************************************************************************/
 
 		//	counts[0] = 0; /*reset values after once through */
 		int intervals[] = { 1 };
-
-		//opt_arg_flag = optional_argument_flag;
-
-		//va_start(argptr, optional_argument_flag);
-		/* make argptr point to first UNAMED arguments which should be the missing variable */
-
-		/*if( opt_arg_flag )*/
-		//if (optional_argument_flag) {
-
-		/*printf("DEBUG:\toptional arguments are present\n");*/
-
-		/* there are optional arguments 1 - 4, therofore set missing, dx, dy, dz */
-
-		/*hack = va_arg( argptr, double );*/
-		/*missing	= va_arg( argptr, double );
-		 dx = va_arg( argptr, float * );
-		 dy = va_arg( argptr, float * );
-		 dz = va_arg( argptr, float * );
-		 */
-		/*
-
-		 printf("DEBUG:\toptional arguments are present setting missing value to -->%f<-- and also copying pointers...hack = %f\n", missing, hack );
-
-		 printf("DEBUG:\t******** value of copied pointers ****** dx = %p, dy = %p,dz = %p\n", dx, dy, dz );
-
-		 */
 
 		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
 
@@ -216,55 +155,22 @@ namespace ccmc
 			new_position = 0;
 		} else
 		{
-			//callCount = 0;
-			//new_position = 1;
 		}
 		if (new_position)
 		{
-			//std::cout << "new position!!" << std::endl;
 			ib = find_octree_block(c0, c1, c2, -1);
 
 			if (ib == -1)
 			{
-				//std::cout << "returning missing value. ib = -1" << std::endl;
 				return missingValue;
 			}
 
-			/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-
-			//if (main_memory_flag) {
 			XMIN = ((*block_x_min_array)[ib]);
 			XMAX = ((*block_x_max_array)[ib]);
 			YMIN = ((*block_y_min_array)[ib]);
 			YMAX = ((*block_y_max_array)[ib]);
 			ZMIN = ((*block_z_min_array)[ib]);
 			ZMAX = ((*block_z_max_array)[ib]);
-
-			/*} else {
-			 set_block_min_max(ib);
-			 XMIN = block_x_min;
-			 XMAX = block_x_max;
-			 YMIN = block_y_min;
-			 YMAX = block_y_max;
-			 ZMIN = block_z_min;
-			 ZMAX = block_z_max;
-			 }*/
-
-			/********** DEBUG
-
-			 rintf("DEBUG:\tBLOCK X MIN = %f\n", XMIN );
-
-			 rintf("DEBUG:\tBLOCK X MAX = %f\n", XMAX );
-
-			 rintf("DEBUG:\tBLOCK Y MIN = %f\n", YMIN );
-
-			 rintf("DEBUG:\tBLOCK Y MAX = %f\n", YMAX );
-
-			 rintf("DEBUG:\tBLOCK Z MIN = %f\n", ZMIN );
-
-			 rintf("DEBUG:\tBLOCK Z MAX = %f\n", ZMAX );
-
-			 ****************/
 
 			/*** set delta's and sample xyz positions ***/
 
@@ -280,18 +186,6 @@ namespace ccmc
 			dc0 = dx1;
 			dc1 = dy1;
 			dc2 = dz1;
-
-			/********** DEBUG
-
-			 rintf("nx = %d,ny = %d, nz = %d\n", nx,ny,nz );
-
-			 rintf("NX = %f,NY = %f, NZ = %f\n", NX,NY,NZ );
-
-			 rintf("dx1 = %f,dy1 = %f, dz1 = %f\n", dx1,dy1,dz1 );
-
-			 rintf("ixx = %f,iyy = %f, izz = %f\n", ixx,iyy,izz );
-
-			 ************/
 
 			/*** indices of grid positions around sample locations ***/
 
@@ -382,23 +276,12 @@ namespace ccmc
 
 						/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
 
-						//					if (main_memory_flag) {
 						XMIN = (*block_x_min_array)[ibc];
 						XMAX = (*block_x_max_array)[ibc];
 						YMIN = (*block_y_min_array)[ibc];
 						YMAX = (*block_y_max_array)[ibc];
 						ZMIN = (*block_z_min_array)[ibc];
 						ZMAX = (*block_z_max_array)[ibc];
-						/*				} else {
-						 set_block_min_max(ibc);
-						 XMIN = block_x_min;
-						 XMAX = block_x_max;
-						 YMIN = block_y_min;
-						 YMAX = block_y_max;
-						 ZMIN = block_z_min;
-						 ZMAX = block_z_max;
-						 }
-						 */
 						dx2 = (XMAX - XMIN) / nx;
 						dy2 = (YMAX - YMIN) / ny;
 						dz2 = (ZMAX - ZMIN) / nz;
@@ -447,24 +330,12 @@ namespace ccmc
 			/*** if it is not a new position, still calculate the delta as necessary ***/
 
 			/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-			//std::cout << "ib: " << ib << std::endl;
-			//if (main_memory_flag) {
 			XMIN = (*block_x_min_array)[ib];
 			XMAX = (*block_x_max_array)[ib];
 			YMIN = (*block_y_min_array)[ib];
 			YMAX = (*block_y_max_array)[ib];
 			ZMIN = (*block_z_min_array)[ib];
 			ZMAX = (*block_z_max_array)[ib];
-
-			//} else {
-			/*set_block_min_max(ib);
-			 XMIN = block_x_min;
-			 XMAX = block_x_max;
-			 YMIN = block_y_min;
-			 YMAX = block_y_max;
-			 ZMIN = block_z_min;
-			 ZMAX = block_z_max;*/
-			//}
 
 			/*** set delta's and sample xyz positions ***/
 
@@ -498,13 +369,11 @@ namespace ccmc
 
 			int index = ix_c[ic] + nx * (iy_c[ic] + ny * (iz_c[ic] + nz * ib_c[ic]));
 
-			//cout << "variable: " << variable << " value: " << (*variableData[variable])[index] << " index: " << index << " length of variable: " << (*variableData[variable]).size()<< std::endl;
 			if (vData != NULL)
 				data_c[ic] = (*vData)[index];
 			else
 			{
 				data_c[ic] = modelReader->getVariableAtIndexByID(variable_id, index);
-				//std::cout << "data_c[" << ic << "]: " << data_c[ic] << std::endl;
 			}
 
 		} /* end of for( ic = 0; ic < 8; ic++) loop */
@@ -520,7 +389,6 @@ namespace ccmc
 			d_m2 = (xx_c[ic2_1] - c0);
 
 			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) > (dx1 / 4.)))
-			/*      if( d_m1 * d_m2 > 0 ) */
 			{
 
 				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
@@ -532,7 +400,6 @@ namespace ccmc
 			} else
 			{
 				valid = 0;
-				/*            if( fabs( d_m1 ) > fabs( d_m2 ) ) */
 				if (valid_c[ic2_1])
 				{
 					data_c[ic] = data_c[ic2_1];
@@ -542,11 +409,6 @@ namespace ccmc
 					zz_c2[ic] = zz_c[ic2_1];
 					valid = 1;
 				}
-				/*            }
-
-				 else
-
-				 { */
 				if (valid_c[ic2])
 				{
 					data_c[ic] = data_c[ic2];
@@ -568,7 +430,6 @@ namespace ccmc
 			d_m1 = (c1 - yy_c2[ic2]);
 			d_m2 = (yy_c2[ic2_1] - c1);
 
-			/*        if( d_m1 * d_m2 > 0 ) */
 			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) >= (dy1 / 4.)))
 			{
 				zz_c2[ic] = (d_m2 * zz_c2[ic2] + d_m1 * zz_c2[ic2_1]) / (d_m1 + d_m2);
@@ -577,18 +438,12 @@ namespace ccmc
 			} else
 			{
 				valid = 0;
-				/*            if( fabs( d_m1 ) > fabs( d_m2 ) ) */
 				if (valid_c[ic2_1])
 				{
 					data_c[ic] = data_c[ic2_1];
 					zz_c2[ic] = zz_c2[ic2_1];
 					valid = 1;
 				}
-				/*            }
-
-				 else
-
-				 { */
 				if (valid_c[ic2])
 				{
 					data_c[ic] = data_c[ic2];
@@ -608,14 +463,12 @@ namespace ccmc
 
 		 ***********************************************************************************/
 
-		/*    if( d_m1 * d_m2 > 0 ) */
 		if (valid_c[0] && valid_c[1] && (fabs(d_m1 + d_m2) >= (dz1 / 4.)))
 		{
 			data_c[0] = ((d_m2 * data_c[0] + d_m1 * data_c[1]) / (d_m1 + d_m2));
 			valid = 1;
 		} else
 		{
-			/*        if( fabs( d_m1 ) > fabs( d_m2 ) ) */
 			valid = 0;
 			if (valid_c[1])
 			{
@@ -641,19 +494,6 @@ namespace ccmc
 			previousWasValid = false;
 			return missingValue;
 		}
-		/* return( data_c[ 0 ] ); */
-
-		/*Point<float> point;
-
-		 Cell3D<float, float> cell = getCell(variable, -c0, -c1, c2);
-
-		 dc0 = cell.getPositions()[1].c0() - cell.getPositions()[0].c0();
-		 dc1 = cell.getPositions()[4].c1() - cell.getPositions()[0].c1();
-		 dc2 = cell.getPositions()[2].c2() - cell.getPositions()[0].c2();
-		 Point<float> p(-c0, -c1, c2);
-
-		 float value = cell.interpolateData(p);// * getConversionFactor(variable);
-		 return value;*/
 	}
 
 	/**
@@ -671,14 +511,11 @@ namespace ccmc
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
 		//	std::cout << "BATSRUSInterpolator::interpolate. variable: " << variable << std::endl;
-		//long variable_id = modelReader->getVariableID(variable);
-		//return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
 		bool main_memory_flag = true;
 		if (this->modelReader->getVariableData(variable) == NULL)
 			main_memory_flag = false;
 
 
-		//std::cout << "point: " << c0 << "," << c1 << "," << c2 << std::endl;
 		long status;
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
@@ -688,70 +525,7 @@ namespace ccmc
 
 		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
 
-		/*extern int is_var_in_memory( char * );*//*Previously Defined */
-
-		/** lets see if requested variable is in memory **/
-
-		/*************************************************************************************************
-
-		 * LOGIC BLOCK to determine if interpolator should search for new block or use previosuly stored
-
-		 * position and block
-
-		 *************************************************************************************************/
-		/*
-		 if (call_count == 0) /*** first time this routine has been called ***/
-		/*	{
-		 previous_x = X;
-		 previous_y = Y;
-		 previous_z = Z;
-		 } else if (previous_x == X && previous_y == Y && previous_z == Z
-		 && !new_cdf_file) /*** not first time routine has been called, see if X, y, z has changed ***/
-		/*	{ /** also check to see if this is a new file or not. **/
-		//new_position = 0;
-		/*	} else /** positions have changed or file has changed, store for next iteration **/
-		/*	{
-		 previous_x = X;
-		 previous_y = Y;
-		 previous_z = Z;
-		 }*/
-
-		/** set new_cdf_file flag to false until open_cdf is called again **/
-
-		//new_cdf_file = 0;
-
-		/*printf("%s \tDEBUG\tnew_position = %d\n", __FILE__, new_position );*/
-
-		/**********************************************************************************************/
-
-		//	counts[0] = 0; /*reset values after once through */
 		int intervals[] = { 1 };
-
-		//opt_arg_flag = optional_argument_flag;
-
-		//va_start(argptr, optional_argument_flag);
-		/* make argptr point to first UNAMED arguments which should be the missing variable */
-
-		/*if( opt_arg_flag )*/
-		//if (optional_argument_flag) {
-
-		/*printf("DEBUG:\toptional arguments are present\n");*/
-
-		/* there are optional arguments 1 - 4, therofore set missing, dx, dy, dz */
-
-		/*hack = va_arg( argptr, double );*/
-		/*missing	= va_arg( argptr, double );
-		 dx = va_arg( argptr, float * );
-		 dy = va_arg( argptr, float * );
-		 dz = va_arg( argptr, float * );
-		 */
-		/*
-
-		 printf("DEBUG:\toptional arguments are present setting missing value to -->%f<-- and also copying pointers...hack = %f\n", missing, hack );
-
-		 printf("DEBUG:\t******** value of copied pointers ****** dx = %p, dy = %p,dz = %p\n", dx, dy, dz );
-
-		 */
 
 		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
 
@@ -762,55 +536,24 @@ namespace ccmc
 			new_position = 0;
 		} else
 		{
-			//callCount = 0;
-			//new_position = 1;
 		}
 		if (new_position)
 		{
-			//std::cout << "new position!!" << std::endl;
 			ib = find_octree_block(c0, c1, c2, -1);
 
 			if (ib == -1)
 			{
-				//std::cout << "returning missing value. ib = -1" << std::endl;
 				return missingValue;
 			}
 
 			/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
 
-			//if (main_memory_flag) {
 			XMIN = ((*block_x_min_array)[ib]);
 			XMAX = ((*block_x_max_array)[ib]);
 			YMIN = ((*block_y_min_array)[ib]);
 			YMAX = ((*block_y_max_array)[ib]);
 			ZMIN = ((*block_z_min_array)[ib]);
 			ZMAX = ((*block_z_max_array)[ib]);
-
-			/*} else {
-			 set_block_min_max(ib);
-			 XMIN = block_x_min;
-			 XMAX = block_x_max;
-			 YMIN = block_y_min;
-			 YMAX = block_y_max;
-			 ZMIN = block_z_min;
-			 ZMAX = block_z_max;
-			 }*/
-
-			/********** DEBUG
-
-			 rintf("DEBUG:\tBLOCK X MIN = %f\n", XMIN );
-
-			 rintf("DEBUG:\tBLOCK X MAX = %f\n", XMAX );
-
-			 rintf("DEBUG:\tBLOCK Y MIN = %f\n", YMIN );
-
-			 rintf("DEBUG:\tBLOCK Y MAX = %f\n", YMAX );
-
-			 rintf("DEBUG:\tBLOCK Z MIN = %f\n", ZMIN );
-
-			 rintf("DEBUG:\tBLOCK Z MAX = %f\n", ZMAX );
-
-			 ****************/
 
 			/*** set delta's and sample xyz positions ***/
 
@@ -826,18 +569,6 @@ namespace ccmc
 			dc0 = dx1;
 			dc1 = dy1;
 			dc2 = dz1;
-
-			/********** DEBUG
-
-			 rintf("nx = %d,ny = %d, nz = %d\n", nx,ny,nz );
-
-			 rintf("NX = %f,NY = %f, NZ = %f\n", NX,NY,NZ );
-
-			 rintf("dx1 = %f,dy1 = %f, dz1 = %f\n", dx1,dy1,dz1 );
-
-			 rintf("ixx = %f,iyy = %f, izz = %f\n", ixx,iyy,izz );
-
-			 ************/
 
 			/*** indices of grid positions around sample locations ***/
 
@@ -928,23 +659,12 @@ namespace ccmc
 
 						/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
 
-						//					if (main_memory_flag) {
 						XMIN = (*block_x_min_array)[ibc];
 						XMAX = (*block_x_max_array)[ibc];
 						YMIN = (*block_y_min_array)[ibc];
 						YMAX = (*block_y_max_array)[ibc];
 						ZMIN = (*block_z_min_array)[ibc];
 						ZMAX = (*block_z_max_array)[ibc];
-						/*				} else {
-						 set_block_min_max(ibc);
-						 XMIN = block_x_min;
-						 XMAX = block_x_max;
-						 YMIN = block_y_min;
-						 YMAX = block_y_max;
-						 ZMIN = block_z_min;
-						 ZMAX = block_z_max;
-						 }
-						 */
 						dx2 = (XMAX - XMIN) / nx;
 						dy2 = (YMAX - YMIN) / ny;
 						dz2 = (ZMAX - ZMIN) / nz;
@@ -993,24 +713,12 @@ namespace ccmc
 			/*** if it is not a new position, still calculate the delta as necessary ***/
 
 			/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-			//std::cout << "ib: " << ib << std::endl;
-			//if (main_memory_flag) {
 			XMIN = (*block_x_min_array)[ib];
 			XMAX = (*block_x_max_array)[ib];
 			YMIN = (*block_y_min_array)[ib];
 			YMAX = (*block_y_max_array)[ib];
 			ZMIN = (*block_z_min_array)[ib];
 			ZMAX = (*block_z_max_array)[ib];
-
-			//} else {
-			/*set_block_min_max(ib);
-			 XMIN = block_x_min;
-			 XMAX = block_x_max;
-			 YMIN = block_y_min;
-			 YMAX = block_y_max;
-			 ZMIN = block_z_min;
-			 ZMAX = block_z_max;*/
-			//}
 
 			/*** set delta's and sample xyz positions ***/
 
@@ -1043,13 +751,11 @@ namespace ccmc
 
 			int index = ix_c[ic] + nx * (iy_c[ic] + ny * (iz_c[ic] + nz * ib_c[ic]));
 
-			//cout << "variable: " << variable << " value: " << (*variableData[variable])[index] << " index: " << index << " length of variable: " << (*variableData[variable]).size()<< std::endl;
 			if (vData != NULL)
 				data_c[ic] = (*vData)[index];
 			else
 			{
 				data_c[ic] = modelReader->getVariableAtIndex(variable, index);
-				//std::cout << "data_c[" << ic << "]: " << data_c[ic] << std::endl;
 			}
 
 		} /* end of for( ic = 0; ic < 8; ic++) loop */
@@ -1065,7 +771,6 @@ namespace ccmc
 			d_m2 = (xx_c[ic2_1] - c0);
 
 			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) > (dx1 / 4.)))
-			/*      if( d_m1 * d_m2 > 0 ) */
 			{
 
 				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
@@ -1077,7 +782,6 @@ namespace ccmc
 			} else
 			{
 				valid = 0;
-				/*            if( fabs( d_m1 ) > fabs( d_m2 ) ) */
 				if (valid_c[ic2_1])
 				{
 					data_c[ic] = data_c[ic2_1];
@@ -1087,11 +791,6 @@ namespace ccmc
 					zz_c2[ic] = zz_c[ic2_1];
 					valid = 1;
 				}
-				/*            }
-
-				 else
-
-				 { */
 				if (valid_c[ic2])
 				{
 					data_c[ic] = data_c[ic2];
@@ -1113,7 +812,6 @@ namespace ccmc
 			d_m1 = (c1 - yy_c2[ic2]);
 			d_m2 = (yy_c2[ic2_1] - c1);
 
-			/*        if( d_m1 * d_m2 > 0 ) */
 			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) >= (dy1 / 4.)))
 			{
 				zz_c2[ic] = (d_m2 * zz_c2[ic2] + d_m1 * zz_c2[ic2_1]) / (d_m1 + d_m2);
@@ -1122,18 +820,12 @@ namespace ccmc
 			} else
 			{
 				valid = 0;
-				/*            if( fabs( d_m1 ) > fabs( d_m2 ) ) */
 				if (valid_c[ic2_1])
 				{
 					data_c[ic] = data_c[ic2_1];
 					zz_c2[ic] = zz_c2[ic2_1];
 					valid = 1;
 				}
-				/*            }
-
-				 else
-
-				 { */
 				if (valid_c[ic2])
 				{
 					data_c[ic] = data_c[ic2];
@@ -1153,14 +845,12 @@ namespace ccmc
 
 		 ***********************************************************************************/
 
-		/*    if( d_m1 * d_m2 > 0 ) */
 		if (valid_c[0] && valid_c[1] && (fabs(d_m1 + d_m2) >= (dz1 / 4.)))
 		{
 			data_c[0] = ((d_m2 * data_c[0] + d_m1 * data_c[1]) / (d_m1 + d_m2));
 			valid = 1;
 		} else
 		{
-			/*        if( fabs( d_m1 ) > fabs( d_m2 ) ) */
 			valid = 0;
 			if (valid_c[1])
 			{
@@ -1233,54 +923,9 @@ namespace ccmc
 				}
 			}
 
-			/*** if there are no amr levels defined, our block tree structure is useless - do an old fashioned linear search ***/
-			/*
-			 if (number_of_parents_at_amr_level == NULL) {
-
-			 for (block_index_1 = 0; block_index_1 < number_of_blocks; block_index_1++) {
-			 if ((block_x_min[block_index_1] <= x)
-			 && (block_x_max[block_index_1] >= x)
-			 && (block_y_min[block_index_1] <= y)
-			 && (block_y_max[block_index_1] >= y)
-			 && (block_z_min[block_index_1] <= z)
-			 && (block_z_max[block_index_1] >= z)) {
-			 return (block_index_1);
-			 }
-			 }
-
-			 //**** no block was found ***
-
-			 printf("ERROR:\tlinear block search returned no index!\n");
-
-			 return (-1);
-
-			 }
-			 */
-			/*printf("DEBUG\twhile %d < %d && %d == -1\n", root_index ,number_of_parents_at_amr_level[0] , block_index_2 );*/
-
 			while ((root_index < (*block_at_amr_level_array)[0]) && (block_index_2 == -1))
 			{
-				//std::cout << "inside while loop. block_index_1 = "
-				//<< variableData["block_at_amr_level"].size() << std::endl;
 				block_index_1 = (*block_at_amr_level_array)[root_index];
-				//std::cout << "root_index: " << root_index << std::endl;
-				/*
-
-				 printf("\n\ntesting block_index_1\t%d\n", block_index_1 );
-
-				 printf("\ntesting xmin %f <= %f\n", block_x_min[block_index_1], x );
-
-				 printf("testing xmax %f >= %f\n", block_x_max[block_index_1], x );
-
-				 printf("testing ymin %f <= %f\n", block_y_min[block_index_1], y );
-
-				 printf("testing ymax %f >= %f\n", block_y_max[block_index_1], y );
-
-				 printf("testing zmin %f <= %f\n", block_z_min[block_index_1], z );
-
-				 printf("testing zmax %f >= %f\n", block_z_max[block_index_1], z );
-
-				 */
 
 				if (block_index_1 < (*block_x_min_array).size() && ((*block_x_min_array)[block_index_1] <= x)
 						&& ((*block_x_max_array)[block_index_1] >= x) && ((*block_y_min_array)[block_index_1] <= y)
@@ -1294,7 +939,6 @@ namespace ccmc
 					root_index++;
 				}
 			}
-			//std::cout << "root_index: " << root_index << " variableData[\"block_at_amr_level\"][" << root_index << "]: " << variableDataInt["block_at_amr_level"][0] <<  " block_index_2: " << block_index_2 << std::endl;
 		}
 
 		return (block_index_2);
@@ -1310,7 +954,6 @@ namespace ccmc
 	 */
 	int BATSRUSInterpolator::climb_octree(int root, float x, float y, float z)
 	{
-		//std::cout << "root: " << root << std::endl;
 		long recordStart = 0;
 		long indices[1];
 
@@ -1320,13 +963,11 @@ namespace ccmc
 
 		indices[0] = root;
 
-		/*printf("\nclimbing block tree structure...now in block %d\n", root);*/
 
 		/******** if main memory flag is NOT set, read all required data directly from cdf file **********/
 
 		if ((*block_child_count_array)[root] == 0)
 		{
-			//std::cout << " returning the root value, since there are no children!" << std::endl;
 			return (root);
 		}
 
@@ -1337,8 +978,6 @@ namespace ccmc
 		/********** calculate & retrieve child ID **************/
 
 		child_key = iz * 4 + 2 * iy + ix;
-		//std::cout << "child_key: " << child_key << std::endl;
-		/*printf("DEBUG\tsetting child id key = %d\n", child_key );*/
 
 		indices[0] = root;
 
@@ -1375,8 +1014,6 @@ namespace ccmc
 				return 0;
 
 		}
-
-		/*printf("DEBUG\trecursive call to climb_octree with child_id = %d\n", child_id );    */
 
 		return climb_octree(child_id, x, y, z);
 	}
