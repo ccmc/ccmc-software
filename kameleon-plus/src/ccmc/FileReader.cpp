@@ -50,7 +50,7 @@ namespace ccmc
 
 		if(!(ifstream(filename.c_str())))
 		{
-			status = -1;
+			status = DOES_NOT_EXIST;
 			std::cout << "filename: " << filename << " does not exist." << std::endl;
 		}
 		else{
@@ -69,6 +69,10 @@ namespace ccmc
 				this->initializeVariableAttributes();
 				this->initializeVariableIDs();
 				this->initializeVariableNames();
+				status = OK;
+			} else
+			{
+				status = OPEN_ERROR;
 			}
 
 		}

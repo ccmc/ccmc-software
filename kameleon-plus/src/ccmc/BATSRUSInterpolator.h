@@ -31,10 +31,7 @@ namespace ccmc
 			virtual ~BATSRUSInterpolator();
 
 		private:
-			//std::map<std::string, float> conversionFactors;
-			//float getConversionFactor(std::string);
 			int find_octree_block(float x, float y, float z, int old_block_number);
-			//void set_block_min_max(int block_index);
 			int climb_octree(int root, float x, float y, float z);
 			int nx;
 			int ny;
