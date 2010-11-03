@@ -66,9 +66,10 @@ namespace ccmc
 
 			static const long OK = 0L;
 			static const long OPEN_ERROR = -1L;
-			static const long VARIABLE_DOES_NOT_EXIST = -2L;
-			static const long ATTRIBUTE_DOES_NOT_EXIST = -3L;
-			static const long LOAD_FAILED = -4L;
+			static const long FILE_DOES_NOT_EXIST = -2L;
+			static const long VARIABLE_DOES_NOT_EXIST = -3L;
+			static const long ATTRIBUTE_DOES_NOT_EXIST = -4L;
+			static const long LOAD_FAILED = -5L;
 
 		protected:
 			CDFid current_file_id;
