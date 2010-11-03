@@ -47,13 +47,10 @@ namespace ccmc
 			int ndimn;
 			int nnode;
 			int nvars;
-
-			int ndimn;
 			int grid_reg_no, npoin, nelem, nboun, nconi;
 			long GRID_REG_NO_cdf_num, NPOIN_cdf_num, NELEM_cdf_num, NDIMN_cdf_num;
 			long NBOUN_cdf_num, NCONI_cdf_num;
 
-			bool unstructuredGridSetup;
 
 
 
