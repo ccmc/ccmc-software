@@ -75,9 +75,9 @@ namespace ccmc
 			static const char * coord_ = "coord";
 			static const char * unkno_ = "unkno";
 
-			static const char *temp_name_ = "temp";
-			static const char *intmat_name_ = "intmat";
-			static const char *bconi_name_ = "bconi";
+			static const char *temp_ = "temp";
+			static const char *intmat_ = "intmat";
+			static const char *bconi_ = "bconi";
 
 			static const char *grid_reg_no_ = "grid_reg_no";
 			static const char *npoin_ = "npoin";
