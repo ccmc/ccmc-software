@@ -6,6 +6,9 @@
  */
 
 #include "Adapt3DInterpolator.h"
+#include "StringConstants.h"
+#include "MathHelper.h"
+#include <stdio.h>
 
 namespace ccmc
 {
@@ -17,69 +20,16 @@ namespace ccmc
 	{
 		// TODO Auto-generated constructor stub
 		this->modelReader = modelReader;
-		block_x_min = "block_x_min";
-		block_y_min = "block_y_min";
-		block_z_min = "block_z_min";
-		block_x_max = "block_x_max";
-		block_y_max = "block_y_max";
-		block_z_max = "block_z_max";
-		block_child_count = "block_child_count";
-		block_x_center = "block_x_center";
-		block_y_center = "block_y_center";
-		block_z_center = "block_z_center";
-		block_child_id_1 = "block_child_id_1";
-		block_child_id_2 = "block_child_id_2";
-		block_child_id_3 = "block_child_id_3";
-		block_child_id_4 = "block_child_id_4";
-		block_child_id_5 = "block_child_id_5";
-		block_child_id_6 = "block_child_id_6";
-		block_child_id_7 = "block_child_id_7";
-		block_child_id_8 = "block_child_id_8";
-		block_at_amr_level = "block_at_amr_level";
+		/***  Open should have failed previosly, so they should exist! ***/
 
-		block_x_min_array = modelReader->getVariableData(block_x_min);
-		block_y_min_array = modelReader->getVariableData(block_y_min);
-		block_z_min_array = modelReader->getVariableData(block_z_min);
-		block_x_max_array = modelReader->getVariableData(block_x_max);
-		block_y_max_array = modelReader->getVariableData(block_y_max);
-		block_z_max_array = modelReader->getVariableData(block_z_max);
-		block_x_center_array = modelReader->getVariableData(block_x_center);
-		block_y_center_array = modelReader->getVariableData(block_y_center);
-		block_z_center_array = modelReader->getVariableData(block_z_center);
-		block_child_id_1_array = modelReader->getVariableDataInt(block_child_id_1);
-		block_child_id_2_array = modelReader->getVariableDataInt(block_child_id_2);
-		block_child_id_3_array = modelReader->getVariableDataInt(block_child_id_3);
-		block_child_id_4_array = modelReader->getVariableDataInt(block_child_id_4);
-		block_child_id_5_array = modelReader->getVariableDataInt(block_child_id_5);
-		block_child_id_6_array = modelReader->getVariableDataInt(block_child_id_6);
-		block_child_id_7_array = modelReader->getVariableDataInt(block_child_id_7);
-		block_child_id_8_array = modelReader->getVariableDataInt(block_child_id_8);
-		block_child_count_array = modelReader->getVariableDataInt(block_child_count);
-		block_at_amr_level_array = modelReader->getVariableDataInt(block_at_amr_level);
-
-		callCount = 0;
-		old_x = -1000000000.f;
-		old_y = -1000000000.f;
-		old_z = -1000000000.f;
-
-		previousWasValid = false;
-
-		/********* get values for NX, NY, NZ **********/
-		/** They are stored as floats.  Need to fetch them, and convert to int **/
-		nx = (int) (modelReader->getGlobalAttribute("special_parameter_NX")).getAttributeFloat();
-		ny = (int) (modelReader->getGlobalAttribute("special_parameter_NY")).getAttributeFloat();
-		nz = (int) (modelReader->getGlobalAttribute("special_parameter_NZ")).getAttributeFloat();
-
-		//std::cout << "finished reading nx, ny, nz" << std::endl;
-		/********* get value for number_of_blocks **********/
-		int number_of_blocks = (modelReader->getGlobalAttribute("number_of_blocks")).getAttributeInt();
-
-		global_x_max = (modelReader->getGlobalAttribute("global_x_max")).getAttributeFloat();
-		global_y_max = (modelReader->getGlobalAttribute("global_y_max")).getAttributeFloat();
-		global_z_max = (modelReader->getGlobalAttribute("global_z_max")).getAttributeFloat();
-		global_x_min = (modelReader->getGlobalAttribute("global_x_min")).getAttributeFloat();
-		global_y_min = (modelReader->getGlobalAttribute("global_y_min")).getAttributeFloat();
-		global_z_min = (modelReader->getGlobalAttribute("global_z_min")).getAttributeFloat();
+		this->grid_reg_no = (modelReader->getGlobalAttribute(ccmc::strings::variables::grid_reg_no_)).getAttributeInt();
+		this->ndimn = (modelReader->getGlobalAttribute(ccmc::strings::variables::ndimn_)).getAttributeInt();
+		this->npoin = (modelReader->getGlobalAttribute(ccmc::strings::variables::npoin_)).getAttributeInt();
+		this->nelem = (modelReader->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
+		this->nboun = (modelReader->getGlobalAttribute(ccmc::strings::variables::nboun_)).getAttributeInt();
+		this->nconi = (modelReader->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
+		this->coord = (modelReader->getVariableData(ccmc::strings::variables::coord_));
+		this->setupUnstructuredGridSearch();
 	}
 
 	/**
@@ -129,371 +79,7 @@ namespace ccmc
 			float& dc0, float& dc1, float& dc2)
 	{
 
-		bool main_memory_flag = true;
-		if (this->modelReader->getVariableDataByID(variable_id) == NULL)
-			main_memory_flag = false;
-		long status;
-
-		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
-		int ic, new_blk[8], valid;
-		float ixx, iyy, izz, dx1, dy1, dz1, dx2, dy2, dz2, data_c[8], d_m1, d_m2, yy_c2[4], zz_c2[4];
-
-		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
-
-
-		/**********************************************************************************************/
-
-		//	counts[0] = 0; /*reset values after once through */
-		int intervals[] = { 1 };
-
-		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
-
-		/************** NEW INTERPOLATION ROUTINE & MODIFICATION ***************/
-		int new_position = 1;
-		if (old_x == c0 && old_y == c1 && old_z == c2 && previousWasValid)
-		{
-			new_position = 0;
-		} else
-		{
-		}
-		if (new_position)
-		{
-			ib = find_octree_block(c0, c1, c2, -1);
-
-			if (ib == -1)
-			{
-				return missingValue;
-			}
-
-			XMIN = ((*block_x_min_array)[ib]);
-			XMAX = ((*block_x_max_array)[ib]);
-			YMIN = ((*block_y_min_array)[ib]);
-			YMAX = ((*block_y_max_array)[ib]);
-			ZMIN = ((*block_z_min_array)[ib]);
-			ZMAX = ((*block_z_max_array)[ib]);
-
-			/*** set delta's and sample xyz positions ***/
-
-			dx1 = (XMAX - XMIN) / (float) nx;
-			dy1 = (YMAX - YMIN) / (float) ny;
-			dz1 = (ZMAX - ZMIN) / (float) nz;
-
-			ixx = (c0 - XMIN) / dx1 - 0.5;
-			iyy = (c1 - YMIN) / dy1 - 0.5;
-			izz = (c2 - ZMIN) / dz1 - 0.5;
-
-			/* return delta values to calling program */
-			dc0 = dx1;
-			dc1 = dy1;
-			dc2 = dz1;
-
-			/*** indices of grid positions around sample locations ***/
-
-			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = floor(ixx);
-			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = floor(ixx + 1);
-			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = floor(iyy);
-			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = floor(iyy + 1);
-			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = floor(izz);
-			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = floor(izz + 1);
-
-			for (ic = 0; ic < 8; ic++)
-			{
-
-				ib_c[ic] = ib;
-
-				xx_c[ic] = XMIN + (0.5 + ix_c[ic]) * dx1;
-				yy_c[ic] = YMIN + (0.5 + iy_c[ic]) * dy1;
-				zz_c[ic] = ZMIN + (0.5 + iz_c[ic]) * dz1;
-
-				new_blk[ic] = 0;
-
-				/* validate positions in block and find new block as necessary */
-
-				if (ix_c[ic] < 0.0)
-				{
-					new_blk[ic] = 1;
-					xx_c[ic] = XMIN - 0.5 * dx1;
-				} else
-				{
-					if (ix_c[ic] > (nx - 0.5))
-					{
-						new_blk[ic] = 1;
-						xx_c[ic] = XMAX + 0.5 * dx1;
-					} else
-					{
-						xx_c[ic] = XMIN + (0.5 + ix_c[ic]) * dx1;
-					}
-
-				}
-
-				if (iy_c[ic] < 0)
-				{
-					new_blk[ic] = 1;
-					yy_c[ic] = YMIN - 0.5 * dy1;
-				} else
-				{
-					if (iy_c[ic] > (ny - 1))
-					{
-						new_blk[ic] = 1;
-						yy_c[ic] = YMAX + 0.5 * dy1;
-					} else
-					{
-						yy_c[ic] = YMIN + (0.5 + iy_c[ic]) * dy1;
-					}
-				}
-
-				if (iz_c[ic] < 0)
-				{
-					new_blk[ic] = 1;
-					zz_c[ic] = ZMIN - 0.5 * dz1;
-				} else
-				{
-					if (iz_c[ic] > (nz - 1))
-					{
-						new_blk[ic] = 1;
-						zz_c[ic] = ZMAX + 0.5 * dz1;
-					} else
-					{
-						zz_c[ic] = ZMIN + (0.5 + iz_c[ic]) * dz1;
-					}
-				}
-
-			} /*** end for ( ic = 0; ic < 8; ic++ ) loop ***/
-
-			for (ic = 0; ic < 8; ic++)
-			{
-				valid_c[ic] = 1;
-				if (new_blk[ic])
-				{
-					long ibc;
-					ibc = find_octree_block(xx_c[ic], yy_c[ic], zz_c[ic], -1L);
-
-					/* ; now snap into position at new block cell */
-
-					if (ibc != -1)
-					{
-						ib_c[ic] = ibc; /* change block number */
-
-						/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-
-						XMIN = (*block_x_min_array)[ibc];
-						XMAX = (*block_x_max_array)[ibc];
-						YMIN = (*block_y_min_array)[ibc];
-						YMAX = (*block_y_max_array)[ibc];
-						ZMIN = (*block_z_min_array)[ibc];
-						ZMAX = (*block_z_max_array)[ibc];
-						dx2 = (XMAX - XMIN) / nx;
-						dy2 = (YMAX - YMIN) / ny;
-						dz2 = (ZMAX - ZMIN) / nz;
-
-						xx_c[ic] = c0 + (ic % 2) * dx2; /* adjust stencil with */
-						yy_c[ic] = c1 + ((ic % 4) / 2) * dy2; /* resolution change between */
-						zz_c[ic] = c2 + (ic / 4) * dz2; /* neighboring blocks */
-
-						ix_c[ic] = min(nx - 1., max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
-						iy_c[ic] = min(ny - 1., max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
-						iz_c[ic] = min(nz - 1., max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
-						xx_c[ic] = XMIN + dx2 * (0.5 + ix_c[ic]);
-						yy_c[ic] = YMIN + dx2 * (0.5 + iy_c[ic]);
-						zz_c[ic] = ZMIN + dx2 * (0.5 + iz_c[ic]);
-
-					} else
-					{
-						valid_c[ic] = 0;
-						ib_c[ic] = ib;
-
-						/* point to some grid point near the position (xx,yy,zz) */
-						ix_c[ic] = nx / 2;
-						iy_c[ic] = ny / 2;
-						iz_c[ic] = nz / 2;
-
-						/* throw out those points by moving them off */
-						xx_c[ic] = fabs(missingValue); /*x_blk[ib*NX+ix_c[ic]]; */
-						yy_c[ic] = fabs(missingValue); /*y_blk[ib*NY+iy_c[ic]]; */
-						zz_c[ic] = fabs(missingValue); /*z_blk[ib*NZ+iz_c[ic]]; */
-					}
-				}
-			}
-
-		} /** end of if new position loop **/
-		else
-		{
-			if (ib == -1L) /*** outside of range ***/
-			{
-				dc0 = 0.;
-				dc1 = 0.;
-				dc2 = 0.;
-				previousWasValid = false;
-				return missingValue;
-			}
-
-			/*** if it is not a new position, still calculate the delta as necessary ***/
-
-			/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-			XMIN = (*block_x_min_array)[ib];
-			XMAX = (*block_x_max_array)[ib];
-			YMIN = (*block_y_min_array)[ib];
-			YMAX = (*block_y_max_array)[ib];
-			ZMIN = (*block_z_min_array)[ib];
-			ZMAX = (*block_z_max_array)[ib];
-
-			/*** set delta's and sample xyz positions ***/
-
-			dx1 = (XMAX - XMIN) / (float) nx;
-			dy1 = (YMAX - YMIN) / (float) ny;
-			dz1 = (ZMAX - ZMIN) / (float) nz;
-
-			/* set delta values from calling program */
-			dc0 = dx1;
-			dc1 = dy1;
-			dc2 = dz1;
-
-		}
-
-		/*********************************************************************
-
-		 *                            retreive the data                        **
-
-		 ********************************************************************/
-
-
-		const std::vector<float>* vData = NULL;
-		if (main_memory_flag == true)
-			vData = modelReader->getVariableDataByID(variable_id);
-		for (ic = 0; ic < 8; ic++)
-		{
-
-			float temp_space;
-
-			/********* NOTE to SELF:  Put variable name in an array or something next time, but since this works.... ***********/
-
-			int index = ix_c[ic] + nx * (iy_c[ic] + ny * (iz_c[ic] + nz * ib_c[ic]));
-
-			if (vData != NULL)
-				data_c[ic] = (*vData)[index];
-			else
-			{
-				data_c[ic] = modelReader->getVariableAtIndexByID(variable_id, index);
-			}
-
-		} /* end of for( ic = 0; ic < 8; ic++) loop */
-
-		/************** per Lutz do pair-wise interpolations in x,y, & z directions *********/
-
-		for (ic = 0; ic < 4; ic++)
-		{
-			int ic2, ic2_1;
-			ic2 = 2 * ic;
-			ic2_1 = ic2 + 1;
-			d_m1 = (c0 - xx_c[ic2]);
-			d_m2 = (xx_c[ic2_1] - c0);
-
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) > (dx1 / 4.)))
-			{
-
-				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
-
-				yy_c2[ic] = (d_m2 * yy_c[ic2] + d_m1 * yy_c[ic2_1]) / (d_m1 + d_m2);
-
-				zz_c2[ic] = (d_m2 * zz_c[ic2] + d_m1 * zz_c[ic2_1]) / (d_m1 + d_m2);
-				valid = 1;
-			} else
-			{
-				valid = 0;
-				if (valid_c[ic2_1])
-				{
-					data_c[ic] = data_c[ic2_1];
-
-					yy_c2[ic] = yy_c[ic2_1];
-
-					zz_c2[ic] = zz_c[ic2_1];
-					valid = 1;
-				}
-				if (valid_c[ic2])
-				{
-					data_c[ic] = data_c[ic2];
-
-					yy_c2[ic] = yy_c[ic2];
-
-					zz_c2[ic] = zz_c[ic2];
-					valid = 1;
-				}
-			}
-			valid_c[ic] = valid;
-		} /* end of for( ic = 0; ic < 4; ic++ ); loop*/
-
-		for (ic = 0; ic < 2; ic++)
-		{
-			int ic2, ic2_1;
-			ic2 = 2 * ic;
-			ic2_1 = ic2 + 1;
-			d_m1 = (c1 - yy_c2[ic2]);
-			d_m2 = (yy_c2[ic2_1] - c1);
-
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) >= (dy1 / 4.)))
-			{
-				zz_c2[ic] = (d_m2 * zz_c2[ic2] + d_m1 * zz_c2[ic2_1]) / (d_m1 + d_m2);
-				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
-				valid = 1;
-			} else
-			{
-				valid = 0;
-				if (valid_c[ic2_1])
-				{
-					data_c[ic] = data_c[ic2_1];
-					zz_c2[ic] = zz_c2[ic2_1];
-					valid = 1;
-				}
-				if (valid_c[ic2])
-				{
-					data_c[ic] = data_c[ic2];
-					zz_c2[ic] = zz_c2[ic2];
-					valid = 1;
-				}
-			}
-			valid_c[ic] = valid;
-		}
-
-		d_m1 = (c2 - zz_c2[0]);
-		d_m2 = (zz_c2[1] - c2);
-
-		/************************************************************************************
-
-		 ***************** return result of interpolation into data_c[0] ********************
-
-		 ***********************************************************************************/
-
-		if (valid_c[0] && valid_c[1] && (fabs(d_m1 + d_m2) >= (dz1 / 4.)))
-		{
-			data_c[0] = ((d_m2 * data_c[0] + d_m1 * data_c[1]) / (d_m1 + d_m2));
-			valid = 1;
-		} else
-		{
-			valid = 0;
-			if (valid_c[1])
-			{
-				data_c[0] = data_c[1];
-				valid = 1;
-			}
-			if (valid_c[0])
-			{
-				valid = 1;
-			}
-		}
-		if (callCount == 0)
-			callCount++;
-		old_x = c0;
-		old_y = c1;
-		old_z = c2;
-		if (valid)
-		{
-			previousWasValid = true;
-			return (data_c[0]);
-		} else
-		{
-			previousWasValid = false;
-			return missingValue;
-		}
+		return 0.0f;
 	}
 
 	/**
@@ -510,512 +96,763 @@ namespace ccmc
 	float Adapt3DInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
-		//	std::cout << "Adapt3DInterpolator::interpolate. variable: " << variable << std::endl;
-		bool main_memory_flag = true;
-		if (this->modelReader->getVariableData(variable) == NULL)
-			main_memory_flag = false;
-
-
-		long status;
-
-		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
-
-		int ic, new_blk[8], valid;
-		float ixx, iyy, izz, dx1, dy1, dz1, dx2, dy2, dz2, data_c[8], d_m1, d_m2, yy_c2[4], zz_c2[4];
-
-		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
-
-		int intervals[] = { 1 };
-
-		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
-
-		/************** NEW INTERPOLATION ROUTINE & MODIFICATION ***************/
-		int new_position = 1;
-		if (old_x == c0 && old_y == c1 && old_z == c2 && previousWasValid)
-		{
-			new_position = 0;
-		} else
-		{
-		}
-		if (new_position)
-		{
-			ib = find_octree_block(c0, c1, c2, -1);
-
-			if (ib == -1)
-			{
-				return missingValue;
-			}
-
-			/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-
-			XMIN = ((*block_x_min_array)[ib]);
-			XMAX = ((*block_x_max_array)[ib]);
-			YMIN = ((*block_y_min_array)[ib]);
-			YMAX = ((*block_y_max_array)[ib]);
-			ZMIN = ((*block_z_min_array)[ib]);
-			ZMAX = ((*block_z_max_array)[ib]);
-
-			/*** set delta's and sample xyz positions ***/
-
-			dx1 = (XMAX - XMIN) / (float) nx;
-			dy1 = (YMAX - YMIN) / (float) ny;
-			dz1 = (ZMAX - ZMIN) / (float) nz;
-
-			ixx = (c0 - XMIN) / dx1 - 0.5;
-			iyy = (c1 - YMIN) / dy1 - 0.5;
-			izz = (c2 - ZMIN) / dz1 - 0.5;
-
-			/* return delta values to calling program */
-			dc0 = dx1;
-			dc1 = dy1;
-			dc2 = dz1;
-
-			/*** indices of grid positions around sample locations ***/
-
-			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = floor(ixx);
-			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = floor(ixx + 1);
-			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = floor(iyy);
-			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = floor(iyy + 1);
-			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = floor(izz);
-			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = floor(izz + 1);
-
-			for (ic = 0; ic < 8; ic++)
-			{
-
-				ib_c[ic] = ib;
-
-				xx_c[ic] = XMIN + (0.5 + ix_c[ic]) * dx1;
-				yy_c[ic] = YMIN + (0.5 + iy_c[ic]) * dy1;
-				zz_c[ic] = ZMIN + (0.5 + iz_c[ic]) * dz1;
-
-				new_blk[ic] = 0;
-
-				/* validate positions in block and find new block as necessary */
-
-				if (ix_c[ic] < 0.0)
-				{
-					new_blk[ic] = 1;
-					xx_c[ic] = XMIN - 0.5 * dx1;
-				} else
-				{
-					if (ix_c[ic] > (nx - 0.5))
-					{
-						new_blk[ic] = 1;
-						xx_c[ic] = XMAX + 0.5 * dx1;
-					} else
-					{
-						xx_c[ic] = XMIN + (0.5 + ix_c[ic]) * dx1;
-					}
-
-				}
-
-				if (iy_c[ic] < 0)
-				{
-					new_blk[ic] = 1;
-					yy_c[ic] = YMIN - 0.5 * dy1;
-				} else
-				{
-					if (iy_c[ic] > (ny - 1))
-					{
-						new_blk[ic] = 1;
-						yy_c[ic] = YMAX + 0.5 * dy1;
-					} else
-					{
-						yy_c[ic] = YMIN + (0.5 + iy_c[ic]) * dy1;
-					}
-				}
-
-				if (iz_c[ic] < 0)
-				{
-					new_blk[ic] = 1;
-					zz_c[ic] = ZMIN - 0.5 * dz1;
-				} else
-				{
-					if (iz_c[ic] > (nz - 1))
-					{
-						new_blk[ic] = 1;
-						zz_c[ic] = ZMAX + 0.5 * dz1;
-					} else
-					{
-						zz_c[ic] = ZMIN + (0.5 + iz_c[ic]) * dz1;
-					}
-				}
-
-			} /*** end for ( ic = 0; ic < 8; ic++ ) loop ***/
-
-			for (ic = 0; ic < 8; ic++)
-			{
-				valid_c[ic] = 1;
-				if (new_blk[ic])
-				{
-					long ibc;
-					ibc = find_octree_block(xx_c[ic], yy_c[ic], zz_c[ic], -1L);
-
-					/* ; now snap into position at new block cell */
-
-					if (ibc != -1)
-					{
-						ib_c[ic] = ibc; /* change block number */
-
-						/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-
-						XMIN = (*block_x_min_array)[ibc];
-						XMAX = (*block_x_max_array)[ibc];
-						YMIN = (*block_y_min_array)[ibc];
-						YMAX = (*block_y_max_array)[ibc];
-						ZMIN = (*block_z_min_array)[ibc];
-						ZMAX = (*block_z_max_array)[ibc];
-						dx2 = (XMAX - XMIN) / nx;
-						dy2 = (YMAX - YMIN) / ny;
-						dz2 = (ZMAX - ZMIN) / nz;
-
-						xx_c[ic] = c0 + (ic % 2) * dx2; /* adjust stencil with */
-						yy_c[ic] = c1 + ((ic % 4) / 2) * dy2; /* resolution change between */
-						zz_c[ic] = c2 + (ic / 4) * dz2; /* neighboring blocks */
-
-						ix_c[ic] = min(nx - 1., max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
-						iy_c[ic] = min(ny - 1., max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
-						iz_c[ic] = min(nz - 1., max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
-						xx_c[ic] = XMIN + dx2 * (0.5 + ix_c[ic]);
-						yy_c[ic] = YMIN + dx2 * (0.5 + iy_c[ic]);
-						zz_c[ic] = ZMIN + dx2 * (0.5 + iz_c[ic]);
-
-					} else
-					{
-						valid_c[ic] = 0;
-						ib_c[ic] = ib;
-
-						/* point to some grid point near the position (xx,yy,zz) */
-						ix_c[ic] = nx / 2;
-						iy_c[ic] = ny / 2;
-						iz_c[ic] = nz / 2;
-
-						/* throw out those points by moving them off */
-						xx_c[ic] = fabs(missingValue); /*x_blk[ib*NX+ix_c[ic]]; */
-						yy_c[ic] = fabs(missingValue); /*y_blk[ib*NY+iy_c[ic]]; */
-						zz_c[ic] = fabs(missingValue); /*z_blk[ib*NZ+iz_c[ic]]; */
-					}
-				}
-			}
-
-		} /** end of if new position loop **/
-		else
-		{
-			if (ib == -1L) /*** outside of range ***/
-			{
-				dc0 = 0.;
-				dc1 = 0.;
-				dc2 = 0.;
-				previousWasValid = false;
-				return missingValue;
-			}
-
-			/*** if it is not a new position, still calculate the delta as necessary ***/
-
-			/*** set the BLOCK MIN/MAX values depending on main_memory flag ***/
-			XMIN = (*block_x_min_array)[ib];
-			XMAX = (*block_x_max_array)[ib];
-			YMIN = (*block_y_min_array)[ib];
-			YMAX = (*block_y_max_array)[ib];
-			ZMIN = (*block_z_min_array)[ib];
-			ZMAX = (*block_z_max_array)[ib];
-
-			/*** set delta's and sample xyz positions ***/
-
-			dx1 = (XMAX - XMIN) / (float) nx;
-			dy1 = (YMAX - YMIN) / (float) ny;
-			dz1 = (ZMAX - ZMIN) / (float) nz;
-
-			/* set delta values from calling program */
-			dc0 = dx1;
-			dc1 = dy1;
-			dc2 = dz1;
-
-		}
-
-		/*********************************************************************
-
-		 *                            retreive the data                        **
-
-		 ********************************************************************/
-
-		const std::vector<float>* vData = NULL;
-		if (main_memory_flag == true)
-			vData = modelReader->getVariableData(variable);
-		for (ic = 0; ic < 8; ic++)
-		{
-
-			float temp_space;
-
-			/********* NOTE to SELF:  Put variable name in an array or something next time, but since this works.... ***********/
-
-			int index = ix_c[ic] + nx * (iy_c[ic] + ny * (iz_c[ic] + nz * ib_c[ic]));
-
-			if (vData != NULL)
-				data_c[ic] = (*vData)[index];
-			else
-			{
-				data_c[ic] = modelReader->getVariableAtIndex(variable, index);
-			}
-
-		} /* end of for( ic = 0; ic < 8; ic++) loop */
-
-		/************** per Lutz do pair-wise interpolations in x,y, & z directions *********/
-
-		for (ic = 0; ic < 4; ic++)
-		{
-			int ic2, ic2_1;
-			ic2 = 2 * ic;
-			ic2_1 = ic2 + 1;
-			d_m1 = (c0 - xx_c[ic2]);
-			d_m2 = (xx_c[ic2_1] - c0);
-
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) > (dx1 / 4.)))
-			{
-
-				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
-
-				yy_c2[ic] = (d_m2 * yy_c[ic2] + d_m1 * yy_c[ic2_1]) / (d_m1 + d_m2);
-
-				zz_c2[ic] = (d_m2 * zz_c[ic2] + d_m1 * zz_c[ic2_1]) / (d_m1 + d_m2);
-				valid = 1;
-			} else
-			{
-				valid = 0;
-				if (valid_c[ic2_1])
-				{
-					data_c[ic] = data_c[ic2_1];
-
-					yy_c2[ic] = yy_c[ic2_1];
-
-					zz_c2[ic] = zz_c[ic2_1];
-					valid = 1;
-				}
-				if (valid_c[ic2])
-				{
-					data_c[ic] = data_c[ic2];
-
-					yy_c2[ic] = yy_c[ic2];
-
-					zz_c2[ic] = zz_c[ic2];
-					valid = 1;
-				}
-			}
-			valid_c[ic] = valid;
-		} /* end of for( ic = 0; ic < 4; ic++ ); loop*/
-
-		for (ic = 0; ic < 2; ic++)
-		{
-			int ic2, ic2_1;
-			ic2 = 2 * ic;
-			ic2_1 = ic2 + 1;
-			d_m1 = (c1 - yy_c2[ic2]);
-			d_m2 = (yy_c2[ic2_1] - c1);
-
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) >= (dy1 / 4.)))
-			{
-				zz_c2[ic] = (d_m2 * zz_c2[ic2] + d_m1 * zz_c2[ic2_1]) / (d_m1 + d_m2);
-				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
-				valid = 1;
-			} else
-			{
-				valid = 0;
-				if (valid_c[ic2_1])
-				{
-					data_c[ic] = data_c[ic2_1];
-					zz_c2[ic] = zz_c2[ic2_1];
-					valid = 1;
-				}
-				if (valid_c[ic2])
-				{
-					data_c[ic] = data_c[ic2];
-					zz_c2[ic] = zz_c2[ic2];
-					valid = 1;
-				}
-			}
-			valid_c[ic] = valid;
-		}
-
-		d_m1 = (c2 - zz_c2[0]);
-		d_m2 = (zz_c2[1] - c2);
-
-		/************************************************************************************
-
-		 ***************** return result of interpolation into data_c[0] ********************
-
-		 ***********************************************************************************/
-
-		if (valid_c[0] && valid_c[1] && (fabs(d_m1 + d_m2) >= (dz1 / 4.)))
-		{
-			data_c[0] = ((d_m2 * data_c[0] + d_m1 * data_c[1]) / (d_m1 + d_m2));
-			valid = 1;
-		} else
-		{
-			valid = 0;
-			if (valid_c[1])
-			{
-				data_c[0] = data_c[1];
-				valid = 1;
-			}
-			if (valid_c[0])
-			{
-				valid = 1;
-			}
-		}
-		if (callCount == 0)
-			callCount++;
-		old_x = c0;
-		old_y = c1;
-		old_z = c2;
-		if (valid)
-		{
-			previousWasValid = true;
-			return (data_c[0]);
-		} else
-		{
-			previousWasValid = false;
-			return missingValue;
-		}
+		return 0.0f;
 	}
 
-	/**
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param old_block_number
-	 * @return Block index
-	 */
-	int Adapt3DInterpolator::find_octree_block(float x, float y, float z, int old_block_number)
+
+
+	bool Adapt3DInterpolator::setupUnstructuredGridSearch()
 	{
 
+		/*-----------------------------------------------------------------
+		!
+		!
+		! This routine sets up a look-up style index for use in searching
+		! for the element containing any arbitrary location in an unstructured
+		! grid.
+		!
+		!
+		!-----------------------------------------------------------------*/
 
-		//first, check to see if the position is valid!!
-		if (
-				x < global_x_min || x > global_x_max ||
-				y < global_y_min || y > global_y_max ||
-				z < global_z_min || z > global_z_max)
-			return -1;
 
-		int block_index_1, block_index_2, root_index;
 
-		block_index_1 = old_block_number;
+		int ipa,ipb,ipc,ipd;
+		int i_s,j_s,k_s,ielem;
+		int i,j,k;
+		int ii;
+		int nelems_in_cell[nz_sg][ny_sg][nx_sg];
+		int countup, countdown;
 
-		block_index_2 = -1;
-		root_index = 0;
 
-		/****** when main memory flag is set, retreive all required data values from main memory
+		double xlo,xhi;
+		double ylo,yhi;
+		double zlo,zhi;
+		double xmean,ymean,zmean;
+		double side_l_1,side_l_2,side_l_3;
+		double side_l_4,side_l_5,side_l_6;
+		double max_element_length,max_length_sqrd;
+		double max_length_sqrd_old;
+		double dxyz[3];
+		double dxyz_min;
+		double arr2[2];
+		double arr4[4];
+		double arr7[7];
+		long   len;
 
-		 data loaded with open_cdf routine ********/
 
-		bool main_memory_flag = true;
-		if (main_memory_flag)
+		/*-----------------------------------------------------------------*/
+		printf("Entered Structured Search Grid\n");
+
+
+		/* allocate for ELEM_INDEX_STRUCT */
+		printf("Begin allocation of elem_index_struct \n");
+		int (* elem_index_struct)[3] = new int[nelem][3];
+		//int (*elem_index_struct)[3] = (int (*)[3])malloc(sizeof(int)*(int)nelem*3);
+		if(elem_index_struct == NULL)
 		{
-			/*** we may be in the same block used previously, if so check first to increase performance ***/
+			/*printf("Error: allocation of elem_index_struct failed\n");
+			return 1;*/
 
-			if (old_block_number != -1)
+			//figure out the correct way of checking the success of the allocation;
+		}
+		printf("Allocation of elem_index_struct complete \n");
+
+		last_element_found = -1;
+
+
+		xl_sg=1.e30;
+		xr_sg=-1.e30;
+		yl_sg=1.e30;
+		yr_sg=-1.e30;
+		zl_sg=1.e30;
+		zr_sg=-1.e30;
+
+		printf("npoin,ndimn %d %d \n",npoin, ndimn);
+
+		/* coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
+		* for node 1, etc
+		*/
+		for ( i=0; i<(int)npoin; i++) {
+			xl_sg=min(xl_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			xr_sg=max(xr_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			yl_sg=min(yl_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			yr_sg=max(yr_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			zl_sg=min(zl_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+			zr_sg=max(zr_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+		}
+
+		printf("-------------------------------\n");
+		printf("Range of Structured Search Grid\n");
+		printf("xl_sg= %e \n",xl_sg);
+		printf("xr_sg= %e \n",xr_sg);
+		printf("yl_sg= %e \n",yl_sg);
+		printf("yr_sg= %e \n",yr_sg);
+		printf("zl_sg= %e \n",zl_sg);
+		printf("zr_sg= %e \n",zr_sg);
+		printf("-------------------------------\n");
+
+
+		/* Step 1 - Define structured grid */
+
+		dx_sg = (xr_sg - xl_sg)/( (double)nx_sg );
+		dy_sg = (yr_sg - yl_sg)/( (double)ny_sg );
+		dz_sg = (zr_sg - zl_sg)/( (double)nz_sg );
+		dxyz[0] = dx_sg;
+		dxyz[1] = dy_sg;
+		dxyz[2] = dz_sg;
+		len=3;
+		dxyz_min = ccmc::Math::dfindmin(dxyz,len);
+
+
+		/* Initialize the counters for the number of elements in each grid cell */
+		for ( k=0; k<nz_sg; k++)
+		{
+			for ( j=0; j<ny_sg; j++)
 			{
-				if (((*block_x_min_array)[block_index_1] <= x) && ((*block_x_max_array)[block_index_1] >= x)
-						&& ((*block_y_min_array)[block_index_1] <= y) && ((*block_y_max_array)[block_index_1] >= y)
-						&& ((*block_z_min_array)[block_index_1] <= z) && ((*block_z_max_array)[block_index_1] >= z))
+				for ( i=0; i<nx_sg; i++)
 				{
-
-					return (block_index_1);
-				}
-			}
-
-			while ((root_index < (*block_at_amr_level_array)[0]) && (block_index_2 == -1))
-			{
-				block_index_1 = (*block_at_amr_level_array)[root_index];
-
-				if (block_index_1 < (*block_x_min_array).size() && ((*block_x_min_array)[block_index_1] <= x)
-						&& ((*block_x_max_array)[block_index_1] >= x) && ((*block_y_min_array)[block_index_1] <= y)
-						&& ((*block_y_max_array)[block_index_1] >= y) && ((*block_z_min_array)[block_index_1] <= z)
-						&& ((*block_z_max_array)[block_index_1] >= z))
-				{
-
-					block_index_2 = climb_octree(block_index_1, x, y, z);
-				} else
-				{
-					root_index++;
+					nelems_in_cell[k][j][i] = 0;
 				}
 			}
 		}
 
-		return (block_index_2);
+
+		/* Step 2 - Compute index relative to structured grid for each element of
+			the unstructured grid, using the element mid-point coord.
+		*/
+
+		max_length_sqrd_old=0.;
+		max_length_sqrd=0.;
+
+
+		/* intmat is a 1D vector where the first 4 words are the node numbers of element 0, the next 4 words
+		* for element 1, etc
+		*/
+		for ( ielem=0; ielem<(int)nelem; ielem++)
+		{
+
+			ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ] -1 ;
+			ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ] -1 ;
+			ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ] -1 ;
+			ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ] -1 ;
+			/*
+			 *  coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
+			 * for node 1, etc
+			 */
+			side_l_1= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ],2) ;
+			side_l_2= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],2) ;
+			side_l_3= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
+			side_l_4= pow((*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],2) ;
+			side_l_5= pow((*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
+			side_l_6= pow((*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
+				   pow((*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
+
+			arr7[0] = max_length_sqrd;
+			arr7[1] = side_l_1;
+			arr7[2] = side_l_2;
+			arr7[3] = side_l_3;
+			arr7[4] = side_l_4;
+			arr7[5] = side_l_5;
+			arr7[6] = side_l_6;
+
+			max_length_sqrd=ccmc::Math::dfindmax(arr7,7);
+
+			arr4[0] = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
+			arr4[1] = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ];
+			arr4[2] = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ];
+			arr4[3] = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ];
+			xlo = ccmc::Math::dfindmin(arr4,4);
+			xhi = ccmc::Math::dfindmax(arr4,4);
+			arr4[0] = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
+			arr4[1] = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ];
+			arr4[2] = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ];
+			arr4[3] = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ];
+			ylo = ccmc::Math::dfindmin(arr4,4);
+			yhi = ccmc::Math::dfindmax(arr4,4);
+			arr4[0] = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
+			arr4[1] = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ];
+			arr4[2] = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ];
+			arr4[3] = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ];
+			zlo = ccmc::Math::dfindmin(arr4,4);
+			zhi = ccmc::Math::dfindmax(arr4,4);
+
+			xmean = 0.5*(xlo+xhi);
+			ymean = 0.5*(ylo+yhi);
+			zmean = 0.5*(zlo+zhi);
+
+
+			i_s = (int)( (xmean-xl_sg)/dx_sg ) ;
+			j_s = (int)( (ymean-yl_sg)/dy_sg ) ;
+			k_s = (int)( (zmean-zl_sg)/dz_sg ) ;
+			elem_index_struct[ielem][0] = i_s;
+			elem_index_struct[ielem][1] = j_s;
+			elem_index_struct[ielem][2] = k_s;
+			nelems_in_cell[k_s][j_s][i_s] = nelems_in_cell[k_s][j_s][i_s] + 1;
+
+
+
+			#ifdef DEBUGX
+			if(ielem < 10)
+			{
+				printf("indexes %d %d %d %d \n",
+				index_2d_to_1d(ielem,0,nelem,4),
+				index_2d_to_1d(ielem,1,nelem,4),
+				index_2d_to_1d(ielem,2,nelem,4),
+				index_2d_to_1d(ielem,3,nelem,4));
+				printf("npoin ndimn %d %d\n",npoin,ndimn);
+				printf("ielem %d xmean ymean zmean %e %e %e \n",ielem,xmean,ymean,zmean);
+				printf("ielem %d xlo ylo zlo %e %e %e \n",ielem,xlo,ylo,zlo);
+				printf("ielem %d xhi yhi zhi %e %e %e \n",ielem,xhi,yhi,zhi);
+				printf("ielem %d ipa ipb ipc ipd %d %d %d %d \n",ielem,ipa,ipb,ipc,ipd);
+				printf("ielem %d dx_sg dy_sg dz_sg %e %e %e \n",ielem,dx_sg, dy_sg, dz_sg);
+				printf("ielem %d i_s j_s k_s %d %d %d \n",ielem,i_s,j_s,k_s);
+				printf("ielem %d i_s j_s k_s %d %d %d \n",ielem,i_s,j_s,k_s);
+				printf("ielem %d nelems_in_cell[k_s][j_s][i_s]=%d \n",ielem,nelems_in_cell[k_s][j_s][i_s]);
+			}
+			if(elem_index_struct[ielem][0] > nx_sg)
+			{
+				printf("ielem %d elem_index_struct[ielem][0] too big %d %d \n",ielem,elem_index_struct[ielem][0]);
+			}
+			if(elem_index_struct[ielem][1] > ny_sg)
+			{
+				printf("ielem %d elem_index_struct[ielem][1] too big %d %d \n",ielem,elem_index_struct[ielem][1]);
+			}
+			if(elem_index_struct[ielem][2] > nz_sg)
+			{
+				printf("ielem %d elem_index_struct[ielem][2] too big %d %d \n",ielem,elem_index_struct[ielem][2]);
+			}
+			#endif
+
+		}
+		max_element_length = sqrt(max_length_sqrd);
+
+		printf("Maximum element length = %e \n",max_element_length);
+		printf("Grid cell spacing = %e \n",dxyz_min);
+
+		printf("Ratio of search grid spacing to max element length (Must be greater than 1) = %e \n",
+								   dxyz_min/max_element_length);
+		if(max_element_length > dxyz_min) {
+			printf("ERROR: UNSTRUCTURED SEARCH GRID SPACING IS TOO FINE \n");
+			printf("ERROR: SOLUTION - INCREASE NO OF GRID POINTS BY FACTOR %e \n", max_element_length/dxyz_min);
+			exit;
+		}
+
+
+		/* Step 3 - place starting and ending indeces of element list into each structured cell */
+
+		/* Create start and end pointers for each grid cell's section of the
+		index to the element list */
+		countup   = 0;
+		countdown = nelem-1;
+		for ( k=0; k<nz_sg; k++ )
+		{
+			for ( j=0; j<ny_sg; j++ )
+			{
+				for ( i=0; i<nx_sg; i++ )
+				{
+					start_index[k][j][i] = countup;
+					countup = countup + nelems_in_cell[k][j][i];
+					end_index[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i] = countdown;
+					countdown = countdown - nelems_in_cell[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i];
+				}
+			}
+		}
+		for ( k=0; k<nz_sg; k++ )
+		{
+			for ( j=0; j<ny_sg; j++ )
+				{
+					for ( i=0; i<nx_sg; i++ )
+					{
+						end_index[k][j][i] = max(start_index[k][j][i],end_index[k][j][i]);
+					}
+			}
+		}
+
+
+		/* Step 4 - Create the index */
+		for ( k=0; k<nz_sg; k++)
+		{
+			for ( j=0; j<ny_sg; j++)
+			{
+				for ( i=0; i<nx_sg; i++)
+				{
+					nelems_in_cell[k][j][i] = 0;
+				}
+			}
+		}
+		for ( ielem=0; ielem<nelem; ielem++)
+		{
+			i = elem_index_struct[ielem][0];
+			j = elem_index_struct[ielem][1];
+			k = elem_index_struct[ielem][2];
+			ii = start_index[k][j][i] + nelems_in_cell[k][j][i];
+			indx[ii] = ielem;
+			nelems_in_cell[k][j][i] = nelems_in_cell[k][j][i] + 1;
+		}
+
+		delete(elem_index_struct);
+
+		/*     end subroutine setup_search_unstructured_grid */
+		return true;
 
 	}
 
-	/**
-	 * @param root
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @return
-	 */
-	int Adapt3DInterpolator::climb_octree(int root, float x, float y, float z)
+	void Adapt3DInterpolator::smartSearchSetup()
 	{
-		long recordStart = 0;
-		long indices[1];
 
-		int ix, iy, iz;
+		/*
+		!
+		!
+		! Written:    Original by Hong Luo
+		!             Modified by Peter MacNeice - Aug 2010
+		!
+		*/
 
-		int child_id, child_key;
 
-		indices[0] = root;
+	   int ip,ie,inode,nstor,ielem,istor;
+	   int nnodes, ipoin;
+
+		/*----------------------------------------------------------------
+		! Start of smart search setup
+		!----------------------------------------------------------------*/
+
+		nnodes = nelem*nnode;     /* number of element/node couples */
 
 
-		/******** if main memory flag is NOT set, read all required data directly from cdf file **********/
 
-		if ((*block_child_count_array)[root] == 0)
+
+		/*
+		!
+		!...  this sub finds the elements that surround each point
+		!
+		!...  loop over the points, seeing how many elements surround each point
+		!
+		!...  set esup2=0
+		!
+		*/
+
+		for( ip=0; ip<npoin+1; ip++)
 		{
-			return (root);
+			esup2[ip] = 0;
 		}
 
-		ix = x > (*block_x_center_array)[root];
-		iy = y > (*block_y_center_array)[root];
-		iz = z > (*block_z_center_array)[root];
-
-		/********** calculate & retrieve child ID **************/
-
-		child_key = iz * 4 + 2 * iy + ix;
-
-		indices[0] = root;
-
-		switch (child_key)
+		/*
+		!
+		!...  loop over the elements, storing 'ahead'
+		!
+		*/
+		for( ie=0; ie<nelem; ie++)
 		{
-			case 0:
-				child_id = (*block_child_id_1_array)[root];
-				break;
-			case 1:
-				child_id = (*block_child_id_2_array)[root];
-				break;
-			case 2:
-				child_id = (*block_child_id_3_array)[root];
-				break;
-			case 3:
-				child_id = (*block_child_id_4_array)[root];
-				break;
-			case 4:
-				child_id = (*block_child_id_5_array)[root];
-				break;
-			case 5:
-				child_id = (*block_child_id_6_array)[root];
-				break;
-			case 6:
-				child_id = (*block_child_id_7_array)[root];
-				break;
-			case 7:
-				child_id = (*block_child_id_8_array)[root];
-				break;
-
-			default:
-				/* do something constructive */
-				std::cout << "default case!!" << std::endl;
-				return 0;
-
+			for( inode=0; inode<nnode; inode++)
+			{
+				ip         = (*intmat)[ index_2d_to_1d(ie,inode,nelem,4) ];
+				esup2[ip]  = esup2[ip] + 1;
+			}
+		}
+		/*
+		!
+		!...  reshuffle esup2
+		!
+		*/
+		for( ip=1; ip<npoin+1; ip++)
+		{
+			esup2[ip] = esup2[ip] + esup2[ip-1];
 		}
 
-		return climb_octree(child_id, x, y, z);
+		nstor = esup2[npoin];
+
+		/*
+		!
+		!...  check
+		!
+		!      if(nstor .gt. mesup) print 1,nstor
+		!      if(nstor .gt. mesup) stop
+		!    1 format(' please increase mesup in sub fielsup1',
+		!     &     /,' needed:',i8)
+
+		!
+		!...  now store the surrounding elements in esup1
+		!
+		*/
+		for( ielem=0; ielem<nelem; ielem++)
+		{
+			for( inode=0; inode<nnode; inode++)
+			{
+				ipoin        = (*intmat)[ index_2d_to_1d(ielem,inode,nelem,4) ] -1;
+				istor        = esup2[ipoin] + 1;
+				esup2[ipoin] = istor;
+				esup1[istor-1] = ielem;
+			}
+		}
+		/*
+		!
+		!...  finally, reorder esup2
+		!
+		*/
+		for( ip=npoin; ip>0; ip--) {
+			esup2[ip] = esup2[ip-1];
+		}
+
+		esup2[0] = 0;
+
+
+		/*    int nesup    = esup2[npoin];
+		printf(" nesup = %i in fielsup1 \n",nesup); */
+
+
+		/* The routine locate_facing_elements takes too long to execute when
+		used to optimize support fieldline tracing */
+		/*      locate_facing_elements; */
+
+		/*----------------------------------------------------------------
+		! End of smart search setup
+		!----------------------------------------------------------------*/
+
+
+	}
+
+	int Adapt3DInterpolator::smartSearch(double * search_point_coords)
+	{
+	       int lfound, mask[nnode], try_grid_search;
+
+	       int  i,j,k,ielem,inode,jnode ;
+	       int  ifound, jelem, kelem;
+	       int  node_order[nnode];
+	       int  i_node, j_node, k_node, k_node_hi;
+	       int  next_node, i_order;
+
+	       int  nelems_checked;
+	       int  clear_cache;
+
+	       double  shapex[nnode];
+	       double  radius;
+
+	       double  distance[nnode];
+
+
+	/*----------------------------------------------------------------
+	!
+	! Step A
+	!
+	! First check the last_element_found to see if the new point is still
+	! inside it. If yes, then set ifound=.true'
+	*/
+	       ifound = -1;
+	       if( last_element_found >= 0 ) {
+	#ifdef DEBUGS
+	       printf("Checkin if still in last element \n");
+	#endif
+
+	         ifound = chkineln( search_point_coords, last_element_found ,shapex);
+	         nelems_checked = 1;
+
+
+	       }
+
+	/*--------*/
+	       if( ifound == 0 ) {
+	/*--------*/
+
+	#ifdef DEBUGS
+	          printf("Point is still in starting element! \n");
+	#endif
+	          kelem = last_element_found;
+
+	/*--------*/
+	       } else {
+	/*--------*/
+
+
+	/* If we have a starting_element number set to begin the search  */
+	       if( last_element_found >= 0 ) {
+
+
+	#ifdef DEBUGS
+	         printf("Point is not still in starting element! \n");
+	#endif
+
+	/*
+	!
+	! Step B
+	!
+	! Compute the distances of the new point from each of the nodes of the
+	! starting_element.
+	*/
+	       for (jnode=0; jnode<nnode; jnode++) {
+	         mask[jnode]=1;
+	         inode = (*intmat)[ index_2d_to_1d(last_element_found,jnode,nelem,4) ] -1 ;
+	         distance[jnode] =
+	     ((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ]-search_point_coords[0])*((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ]-search_point_coords[0])
+	   + ((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])*((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
+	   + ((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2])*((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]) ;
+	       }
+
+	/*
+	!
+	! Step C
+	!
+	! Sort the starting element nodes based on distance from the new search point
+	*/
+	       node_order[0]       = ccmc::Math::dminloc1d(distance,nnode,mask);
+	       node_order[nnode-1] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
+	       mask[node_order[0]] = 0;                        /* false */
+	       mask[node_order[nnode-1]] = 0;
+	       if(nnode == 3) {
+	         for (j=0; j<nnode; j++) {
+	           if(mask[j]) node_order[1] = j;
+	         }
+	       }
+	       if(nnode == 4) {
+	         node_order[1] = ccmc::Math::dminloc1d(distance,nnode,mask);
+	         node_order[2] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
+	       }
+	       if(nnode > 4) {
+	         printf("Error : Code only works for nnode=3 or 4 ! \n");
+	         exit(EXIT_FAILURE);
+	       }
+
+	/*
+	! Step D
+	!
+	! Begin search through the element lists for these nodes
+	*/
+
+	       i_order = -1;
+	/*++++*/
+	       while( (ifound != 0) && (i_order < nnode ) ) {
+	/*++++*/
+
+	        i_order += 1;
+	        next_node = node_order[i_order];
+
+
+	/* Now we search the list of elements that contain this node */
+	        inode = (*intmat)[ index_2d_to_1d(last_element_found,next_node,nelem,4) ] -1 ;
+
+	#ifdef DEBUGS
+	        printf("node list for this element is %i %i %i %i \n",
+	                   intmat[ index_2d_to_1d(last_element_found,0,nelem,4) ]-1,
+	                   intmat[ index_2d_to_1d(last_element_found,1,nelem,4) ]-1,
+	                   intmat[ index_2d_to_1d(last_element_found,2,nelem,4) ]-1,
+	                   intmat[ index_2d_to_1d(last_element_found,3,nelem,4) ]-1);
+	        printf("First node in list is %i ",inode);
+	#endif
+
+
+
+	        k_node    = esup2[inode]   +1 ;
+	        k_node_hi = esup2[inode+1] +1 ;
+
+	        jelem =  esup1[k_node];
+	        while( (ifound != 0) && (k_node < k_node_hi) ) {
+
+	          ifound = chkineln( search_point_coords, jelem ,shapex);
+
+	          nelems_checked = nelems_checked + 1;
+	          if(ifound != 0) {
+	#ifdef DEBUGS
+	             printf("Not found in elem %i \n",jelem);
+	#endif
+	             k_node += 1;
+	             jelem =  esup1[k_node];
+	#ifdef DEBUGS
+	             printf("Next element to check is %i %i %i \n",jelem,i_node,i_order);
+	#endif
+	          }
+	          if(ifound == 0) {
+	            kelem = jelem;
+	          }
+	#ifdef DEBUGS
+	          if(ifound == 0) {
+	              printf("Found in elem %i \n",jelem);
+	              printf("Found after checking %i elements \n",nelems_checked);
+	          }
+	#endif
+
+	        }    /* while */
+
+
+	/*++++*/
+	       }     /* while */
+	/*++++*/
+
+	       }      /*   if( last_element_found .ge. 0 )  */
+
+	/*--------*/
+	       }      /*   if( ifound .eq. 0)  */
+	/*--------*/
+
+	       if( ifound != 0) {
+	#ifdef DEBUGS
+	          printf("Smart search failed! \n");
+	          printf("search_point_coords %e %e %e \n",search_point_coords[0]
+	                          ,search_point_coords[1] ,search_point_coords[2]);
+	#endif
+
+	/* Check to see if the point is still within the grid bounds */
+	          try_grid_search = point_within_grid(search_point_coords);
+
+	          kelem=-1;
+	          if(try_grid_search) {
+	#ifdef DEBUGS
+	            radius=sqrt( search_point_coords[0]*search_point_coords[0]+
+	                         search_point_coords[1]*search_point_coords[1]+
+	                         search_point_coords[2]*search_point_coords[2] );
+	            printf("Using grid based search \n");
+	            printf("search_point_coords %e %e %e \n",search_point_coords[0]
+	                          ,search_point_coords[1] ,search_point_coords[2]);
+	            printf("radius %e \n",radius);
+	#endif
+	            clear_cache=1;
+	            kelem=findElement(search_point_coords,clear_cache);
+	          }
+	#ifdef DEBUGS
+	          if(kelem > 0) {
+	              printf("Found in element %i \n",kelem);
+	          } else {
+	              printf("Failed to locate element in grid \n");
+	          }
+	#endif
+	       }
+
+	       return kelem;
+
+	}
+
+	int Adapt3DInterpolator::findElement(double * cintp, int clear_cache)
+	{
+
+	       int                 ielem,kelem;
+	       int                 i_s,j_s,k_s,i,j,k,indx_start,indx_end;
+	       int                 indx1,ifound,just_found,jelem;
+	       double              x,y,z,shapex[nnode];
+
+
+
+	         kelem=-1;
+	         ielem=-1;
+
+	         if(clear_cache == 1) last_element_found=-1;
+	#ifdef DEBUG
+	       printf("0find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin,ndimn) ],coord[ index_2d_to_1d(0,1,npoin,ndimn) ],coord[ index_2d_to_1d(0,2,npoin,ndimn) ]);
+	#endif
+
+	/* If available, use the last element found to begin the search */
+	         if(last_element_found != -1) {
+	#ifdef DEBUG
+	       printf("find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin,ndimn) ],coord[ index_2d_to_1d(0,1,npoin,ndimn) ],coord[ index_2d_to_1d(0,2,npoin,ndimn) ]);
+	#endif
+	           kelem = smartSearch(cintp);
+	         }
+
+	/* If there is no starting guess for the element number in last_element_found
+	   or the smart search failed, use the grid based search
+	*/
+	        if(kelem == -1) {
+
+
+	         x = cintp[0];
+	         y = cintp[1];
+	         z = cintp[2];
+	#ifdef DEBUG
+	         printf("Searching for point x y z = %e %e %e\n",x,y,z);
+	#endif
+	         i_s = (int)( (x-xl_sg)/dx_sg );
+	         j_s = (int)( (y-yl_sg)/dy_sg );
+	         k_s = (int)( (z-zl_sg)/dz_sg );
+
+	#ifdef DEBUG
+	         printf("Located in structured cell %d %d %d\n",i_s,j_s,k_s);
+	#endif
+	         indx_start = start_index[k_s][j_s][i_s];
+	         indx_end   = end_index[k_s][j_s][i_s];
+
+	/* test each element between indx_start and indx_end to find the cell
+	   containing coord1 = (x,y,z)         */
+	#ifdef DEBUG
+	         printf("Searching index list %d to %d \n",indx_start,indx_end);
+	#endif
+
+	         indx1 = indx_start;
+	         ifound = 1;
+	         while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) )
+	         {
+	           jelem=indx[indx1];
+	           ifound = chkineln(cintp ,jelem ,shapex);
+	           if (ifound == 0) ielem=indx1;
+	           indx1=indx1+1;
+	         }
+	#ifdef DEBUG
+	         if (ifound == 0) {
+	           printf("Found point in first cell\n");
+	         } else {
+	           printf("Did not find point in first cell\n");
+	         }
+	#endif
+
+
+	/* If element has still not been found then search in list for
+	    neighboring structured grid cells */
+	         if (ifound == 1) {
+	         for ( k=max(0,k_s-1); k<min(k_s+2,nz_sg-1); k++) {
+	         for ( j=max(0,j_s-1); j<min(j_s+2,ny_sg-1); j++) {
+	         for ( i=max(0,i_s-1); i<min(i_s+2,nx_sg-1); i++) {
+	           if(ifound == 1) {
+	             just_found=1;
+	             if( ( (i != i_s) || (j != j_s) || (k != k_s) ) ) {
+	               indx_start = start_index[k][j][i];
+	               indx_end   = end_index[k][j][i];
+	               indx1 = indx_start;
+	               ifound = 1;
+	               while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) ) {
+	                 jelem=indx[indx1];
+	                 ifound = chkineln(cintp ,jelem ,shapex);
+	                 if (ifound == 0 ) {
+	                   ielem=indx1;
+	                   just_found=0;
+	                 }
+	                 indx1=indx1+1;
+	               }
+	             }
+	#ifdef DEBUG
+	             if ( (ifound == 0) && (just_found == 0) ) {
+	               printf("Found point in neighbor cell %d %d %d \n",i,j,k);
+	             } else {
+	               printf("Did not find point in neighbor cell %d %d %d \n",i,j,k);
+	             }
+	#endif
+	           }
+	         }}}
+	         }
+
+	#ifdef DEBUG
+	           printf("ielem is now ielem=%d\n",ielem);
+	#endif
+
+	         if( ielem == -1) {
+	           printf("Failed to find element using smart search\n");
+	           printf("Using Brute force now!\n");
+	         }
+	         kelem=-1;
+	         if( ielem != -1) kelem=indx[ielem];
+
+	         }
+	         last_element_found=kelem;
+
+	         return kelem;
+
+	/*       end subroutine find_element  */
 	}
 
 	/**
