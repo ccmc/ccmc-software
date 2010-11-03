@@ -50,7 +50,7 @@ namespace ccmc
 
 		if(!(ifstream(filename.c_str())))
 		{
-			status = DOES_NOT_EXIST;
+			status = FILE_DOES_NOT_EXIST;
 			std::cout << "filename: " << filename << " does not exist." << std::endl;
 		}
 		else{
