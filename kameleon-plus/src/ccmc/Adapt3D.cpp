@@ -42,69 +42,71 @@ namespace ccmc
 		//intervals[0] = 1;
 
 		   /* get all of the cdf attribute/variable numbers that will be needed *******/
+		long loadStatus = this->loadVariable(ccmc::strings::variables::coord_);
+		if (loadStatus != FileReader::OK)
+				return loadStatus;
 
-		if (this->doesVariableExist(ccmc::strings::variables::coord_) == FileReader::OK)
-		{
-			status = this->loadVariable(ccmc::strings::variables::coord_);
-			if (status != FileReader::OK)
-				return FileReader::LOAD_FAILED;
-		} else
-			return FileReader::VARIABLE_DOES_NOT_EXIST;
+		loadStatus = this->loadVariable(ccmc::strings::variables::unkno_);
+		if (status != FileReader::OK)
+			return loadStatus;
 
-		if (this->doesVariableExist(ccmc::strings::variables::unkno_) != FileReader::OK)
-		{
-			status = this->loadVariable(ccmc::strings::variables::unkno_);
-			if (status != FileReader::OK)
-				return FileReader::LOAD_FAILED;
-		} else
-			return FileReader::VARIABLE_DOES_NOT_EXIST;
-
-		if (this->doesVariableExist(ccmc::strings::variables::intmat_) == FileReader::OK)
-		{
-			status = this->loadVariableInt(ccmc::strings::variables::intmat_);
-			if (status != FileReader::OK)
-				return FileReader::LOAD_FAILED;
-		} else
-			return FileReader::VARIABLE_DOES_NOT_EXIST;
+		loadStatus = this->loadVariableInt(ccmc::strings::variables::intmat_);
+		if (status != FileReader::OK)
+			return loadStatus;
 
 		/***  Check the existence of necessary attributes.  Fail if any don't exist ***/
-		if (doesAttributeExist(ccmc::strings::variables::grid_reg_no_) == FileReader::OK)
+		if (doesAttributeExist(ccmc::strings::variables::grid_reg_no_))
 		{
 			this->grid_reg_no = (this->getGlobalAttribute(ccmc::strings::variables::grid_reg_no_)).getAttributeInt();
 		} else
+		{
+			std::cerr << "grid_reg_no not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
-		if (doesAttributeExist(ccmc::strings::variables::ndimn_) == FileReader::OK)
+		}
+		if (doesAttributeExist(ccmc::strings::variables::ndimn_))
 		{
 			this->ndimn = (this->getGlobalAttribute(ccmc::strings::variables::ndimn_)).getAttributeInt();
 		} else
+		{
+			std::cerr << "ndimn not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
+		}
 
-		if (doesAttributeExist(ccmc::strings::variables::npoin_) == FileReader::OK)
+		if (doesAttributeExist(ccmc::strings::variables::npoin_))
 		{
 			this->npoin = (this->getGlobalAttribute(ccmc::strings::variables::npoin_)).getAttributeInt();
 		} else
+		{
+			std::cerr << "npoin not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
+		}
 
-		if (doesAttributeExist(ccmc::strings::variables::nelem_) == FileReader::OK)
+		if (doesAttributeExist(ccmc::strings::variables::nelem_))
 		{
 			this->nelem = (this->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
 		} else
+		{
+			std::cerr << "nelem not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
-
-		if (doesAttributeExist(ccmc::strings::variables::nboun_) == FileReader::OK)
+		}
+		/*if (doesAttributeExist(ccmc::strings::variables::nboun_))
 		{
 			this->nboun = (this->getGlobalAttribute(ccmc::strings::variables::nboun_)).getAttributeInt();
 		} else
+		{
+			std::cerr << "nboun not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
-
-		if (doesAttributeExist(ccmc::strings::variables::nconi_) == FileReader::OK)
+		}
+		if (doesAttributeExist(ccmc::strings::variables::nconi_))
 		{
 			this->nconi = (this->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
 		} else
+		{
+			std::cerr << "nconi not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
-
-
-
+		}*/
+		std::cerr << "Adapt3D openFile status: " << status << std::endl;
+		return status;
 
 	}
 
