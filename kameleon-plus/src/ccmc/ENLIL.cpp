@@ -29,11 +29,18 @@ namespace ccmc
 	{
 		long status;
 		status = openFile(filename);
-		loadVariable("r");
-		loadVariable("phi");
+		long success = loadVariable("r");
+		if (success != FileReader::OK)
+			return success;
+		success = loadVariable("phi");
+		if (success != FileReader::OK)
+			return success;
 		loadVariable("theta");
+		if (success != FileReader::OK)
+			return success;
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
+		return status;
 	}
 
 	/**
