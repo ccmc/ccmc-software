@@ -14,6 +14,10 @@ namespace ccmc
 	{
 		namespace variables
 		{
+			static const std::string x_ = "x";
+			static const std::string y_ = "y";
+			static const std::string z_ = "z";
+			static const char * x_c_ = "x";
 			static const std::string j_ = "j";
 			static const char * j_c_ = "j";
 
@@ -72,19 +76,19 @@ namespace ccmc
 			static const char * p_c_ = "p";
 
 			//Adapt3D specific strings
-			static const char * coord_ = "coord";
-			static const char * unkno_ = "unkno";
+			static const std::string coord_ = "coord";
+			static const std::string unkno_ = "unkno";
 
-			static const char *temp_ = "temp";
-			static const char *intmat_ = "intmat";
-			static const char *bconi_ = "bconi";
+			static const std::string temp_ = "temp";
+			static const std::string intmat_ = "intmat";
+			static const std::string bconi_ = "bconi";
 
-			static const char *grid_reg_no_ = "grid_reg_no";
-			static const char *npoin_ = "npoin";
-			static const char *nelem_ = "nelem";
-			static const char *ndimn_ = "ndimn";
-			static const char *nboun_ = "nboun";
-			static const char *nconi_ = "nconi";
+			static const std::string grid_reg_no_ = "grid_reg_no";
+			static const std::string npoin_ = "npoin";
+			static const std::string nelem_ = "nelem";
+			static const std::string ndimn_ = "ndimn";
+			static const std::string nboun_ = "nboun";
+			static const std::string nconi_ = "nconi";
 
 			static const std::string block_x_min_ = "block_x_min";
 			static const std::string block_y_min_ = "block_y_min";
@@ -136,6 +140,19 @@ namespace ccmc
 			static const std::string ucla_ggcm_ = "ucla_ggcm";
 			static const std::string mas_ = "mas";
 			static const std::string enlil_ = "enlil";
+			static const std::string adapt3d_ = "ADAPT3D";
+		}
+
+		namespace attributes
+		{
+			static const std::string actual_min_ = "actual_min";
+			static const std::string actual_max_ = "actual_max";
+			static const std::string global_x_min_ = "global_x_min";
+			static const std::string global_y_min_ = "global_y_min";
+			static const std::string global_z_min_ = "global_z_min";
+			static const std::string global_x_max_ = "global_x_max";
+			static const std::string global_y_max_ = "global_y_max";
+			static const std::string global_z_max_ = "global_z_max";
 		}
 	}
 }
