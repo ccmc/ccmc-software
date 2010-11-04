@@ -41,9 +41,9 @@ namespace ccmc
 			void setModelName(std::string modelName);
 			std::string getModelName();
 
-			bool loadVariable(const std::string& variable);
-			bool unloadVariable(const std::string& variable);
-			bool loadVariableInt(const std::string& variable);
+			long loadVariable(const std::string& variable);
+			long unloadVariable(const std::string& variable);
+			long loadVariableInt(const std::string& variable);
 
 			const std::vector<float>* getVariableData(const std::string& variable);
 			const std::vector<int>* getVariableDataInt(const std::string& variable);
