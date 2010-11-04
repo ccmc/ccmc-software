@@ -44,12 +44,6 @@ namespace ccmc
 			long int ib, ib_c[8], ix_c[8], iy_c[8], iz_c[8];
 			float xx_c[8], yy_c[8], zz_c[8];
 			int valid_c[8];
-			std::string block_x_min;
-			std::string block_y_min;
-			std::string block_z_min;
-			std::string block_x_max;
-			std::string block_y_max;
-			std::string block_z_max;
 			const std::vector<float> * block_x_min_array;
 			const std::vector<float> * block_y_min_array;
 			const std::vector<float> * block_z_min_array;
@@ -72,19 +66,7 @@ namespace ccmc
 			const std::vector<int> * block_child_count_array;
 			const std::vector<int> * block_at_amr_level_array;
 
-			std::string block_child_count;
-			std::string block_x_center;
-			std::string block_y_center;
-			std::string block_z_center;
-			std::string block_child_id_1;
-			std::string block_child_id_2;
-			std::string block_child_id_3;
-			std::string block_child_id_4;
-			std::string block_child_id_5;
-			std::string block_child_id_6;
-			std::string block_child_id_7;
-			std::string block_child_id_8;
-			std::string block_at_amr_level;
+
 
 			float global_x_min;
 			float global_x_max;
