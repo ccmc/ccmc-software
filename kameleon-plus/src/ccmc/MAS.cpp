@@ -28,11 +28,18 @@ namespace ccmc
 		long status;
 		status = openFile(filename);
 
-		loadVariable(r_string);
-		loadVariable(lat_string);
-		loadVariable(lon_string);
+		long success = loadVariable(r_string);
+		if (success != FileReader::OK)
+			return success;
+		success = loadVariable(lat_string);
+		if (success != FileReader::OK)
+			return success;
+		success = loadVariable(lon_string);
+		if (success != FileReader::OK)
+			return success;
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
+		return status;
 	}
 
 	/**
