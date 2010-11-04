@@ -10,6 +10,7 @@
 #include "Cell3D.h"
 #include "Vector.h"
 #include "OpenGGCMInterpolator.h"
+#include "StringConstants.h"
 
 namespace ccmc
 {
@@ -20,10 +21,6 @@ namespace ccmc
 	{
 		// TODO Auto-generated constructor stub
 
-
-		x_string = "x";
-		y_string = "y";
-		z_string = "z";
 		previous_x = missingValue;
 		previous_y = missingValue;
 		previous_z = missingValue;
@@ -38,9 +35,9 @@ namespace ccmc
 		long status;
 		status = openFile(filename);
 
-		loadVariable(x_string);
-		loadVariable(y_string);
-		loadVariable(z_string);
+		loadVariable(ccmc::strings::variables::x_);
+		loadVariable(ccmc::strings::variables::y_);
+		loadVariable(ccmc::strings::variables::z_);
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
 
