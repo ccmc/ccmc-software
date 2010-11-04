@@ -97,37 +97,43 @@ namespace ccmc
 	 * Use this method when the variable to load is of type float
 	 *
 	 * @param variable Variable to load into memory.
-	 * @return true if successful, else false
+	 * @return status of the operation
 	 */
-	bool Model::loadVariable(const std::string& variable)
+	long Model::loadVariable(const std::string& variable)
 	{
-		bool success = false;
+
 
 		//first, check to determine whether variable is already loaded
 		if (variableData.find(variable) != variableData.end())
-			return true;
+			return FileReader::OK;
 
+		//first check if the variable exists in the file!!
+		if (!this->doesVariableExist(variable))
+		{
+			std::cerr << variable << " does not exist" << std::endl;
+			return FileReader::VARIABLE_DOES_NOT_EXIST;
+		}
 		vector<float> * data = getVariable(variable);
 		long id = getVariableID(variable);
 		if (data->size() > 0)
 		{
-			success = true;
+
 			variableData[variable] = data;
 			variableDataByID[id] = data;
 		} //else return false;
 
-		return success;
+		return FileReader::OK;
 	}
 
 	/**
 	 * @brief Unload a variable from memory.
-	 * This will return true if the variable is removed from memory, and false
+	 * This will return FileReader::OK if the variable is removed from memory, and FileReader::VARIABLE_NOT_IN_MEMORY
 	 * if the variable was not already in memory.
 	 *
 	 * @param variable Variable to unload from memory.
-	 * @return true if successful, else false.
+	 * @return status of the operation
 	 */
-	bool Model::unloadVariable(const std::string& variable)
+	long Model::unloadVariable(const std::string& variable)
 	{
 		//bool success = false;
 
@@ -139,9 +145,9 @@ namespace ccmc
 			delete data;
 			variableData.erase(variable);
 			variableDataByID.erase(id);
-			return true;
+			return FileReader::OK;
 		}
-		return false;
+		return FileReader::VARIABLE_NOT_IN_MEMORY;
 	}
 
 	/**
@@ -150,27 +156,28 @@ namespace ccmc
 	 * Use this method when the variable to load is of type int
 	 *
 	 * @param variable
-	 * @return
+	 * @return status of the operation
 	 */
-	bool Model::loadVariableInt(const std::string& variable)
+	long Model::loadVariableInt(const std::string& variable)
 	{
-
-		bool success = false;
 
 		//first, check to determine whether variable is already loaded
 		if (variableDataInt.find(variable) != variableDataInt.end())
 			return true;
 
+		//first check if the variable exists in the file!!
+		if (!this->doesVariableExist(variable))
+			return FileReader::VARIABLE_DOES_NOT_EXIST;
+
 		vector<int> * data = getVariableInt(variable);
 		long id = getVariableID(variable);
 		if (data->size() > 0)
 		{
-			success = true;
 			variableDataInt[variable] = data;
 			variableDataIntByID[id] = data;
 		} //else return false;
 
-		return success;
+		return FileReader::OK;
 	}
 
 	/**
