@@ -70,6 +70,10 @@ namespace ccmc
 			static const long VARIABLE_DOES_NOT_EXIST = -3L;
 			static const long ATTRIBUTE_DOES_NOT_EXIST = -4L;
 			static const long LOAD_FAILED = -5L;
+			static const long UNABLE_TO_ALLOCATE_MEMORY = -6L;
+			static const long VARIABLE_NOT_IN_MEMORY = -7L;
+			static const long MODEL_NOT_SUPPORTED = -8L;
+			static const long NOT_A_VALID_KAMELEON_FILE = -9L;
 
 		protected:
 			CDFid current_file_id;
