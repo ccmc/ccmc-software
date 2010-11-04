@@ -52,7 +52,7 @@ namespace ccmc
 		modelName = "NA";
 
 		missingValue = defaultMissingValue;
-		//	cout << "Derived object created" << endl;
+		//std::cout << "Kameleon object created" << endl;
 
 
 	}
@@ -419,7 +419,7 @@ namespace ccmc
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
 //			std::cout << "loading " << requiredVariables[i] << std::endl;
-			if (!model->loadVariable(requiredVariables[i]))
+			if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
 				success = false;
 		}
 		return success;
@@ -453,7 +453,7 @@ namespace ccmc
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
 			std::cout << "loading " << requiredVariables[i] << std::endl;
-			if (!model->loadVariable(requiredVariables[i]))
+			if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
 				success = false;
 		}
 		return success;
