@@ -75,7 +75,12 @@ int main (int argc, char * argv[])
 	kameleon.open(filename);
 	kameleon.loadVectorVariable(variable);
 	Tracer tracer(&kameleon);
+	std::cerr << "Tracer object created" << std::endl;
 	tracer.setMaxIterations(20000);
+	if (kameleon.getModelName() == "ADAPT3D")
+	{
+		tracer.setInnerBoundary(1.f);
+	}
 	//tracer.setInnerBoundary(2.5f);
 	tracer.setDn(.2f);
 
