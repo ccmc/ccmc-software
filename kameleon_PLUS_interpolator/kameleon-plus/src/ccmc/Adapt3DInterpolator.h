@@ -42,8 +42,8 @@ namespace ccmc
 			int nnode;
 			int nvars;
 			/* variables needed for searching unstructured grids */
-			float            xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
-			float            dx_sg,dy_sg,dz_sg;
+			double            xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
+			double            dx_sg,dy_sg,dz_sg;
 			int               start_index[nz_sg][ny_sg][nx_sg];
 			int               end_index[nz_sg][ny_sg][nx_sg];
 			int               *indx;
@@ -56,19 +56,21 @@ namespace ccmc
 
 
 
-			int ndimn, grid_reg_no, npoin, nelem, nboun, nconi;
+			int ndimn, grid_reg_no, npoin, nelem;
 
 			const vector<float> * coord;
-			const vector<float> * intmat;
+			const vector<int> * intmat;
+			const vector<float> * unkno;
 
 			/* support routines */
 
 			int findElement(double *cintp, int clear_cache);
-			int chkineln(double cintp[NDIMN_ADAPT3D] ,int ielem , double shapex[NNODE_ADAPT3D]);
+			int chkineln(double * cintp ,int ielem , double * shapex);
 			void smartSearchSetup();
 			int smartSearch(double *search_point_coords);
-			int point_within_grid( double scoord[NDIMN_ADAPT3D] );
+			int point_within_grid( double * scoord );
 			int index_2d_to_1d( int i1, int i2, int n1, int n2);
+			void interpolate_adapt3d_solution(double *coord1,int ielem, double *unkno_local);
 
 	};
 }

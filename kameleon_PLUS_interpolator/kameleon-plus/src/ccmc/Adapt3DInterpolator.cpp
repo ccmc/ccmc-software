@@ -9,6 +9,11 @@
 #include "StringConstants.h"
 #include "MathHelper.h"
 #include <stdio.h>
+#include <iostream>
+#define MIN_RANGE    -1e9
+#define MAX_RANGE    +1e9
+#define NNODE_ADAPT3D 4
+#define LINEAR_INTERPOL
 
 namespace ccmc
 {
@@ -26,10 +31,19 @@ namespace ccmc
 		this->ndimn = (modelReader->getGlobalAttribute(ccmc::strings::variables::ndimn_)).getAttributeInt();
 		this->npoin = (modelReader->getGlobalAttribute(ccmc::strings::variables::npoin_)).getAttributeInt();
 		this->nelem = (modelReader->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
-		this->nboun = (modelReader->getGlobalAttribute(ccmc::strings::variables::nboun_)).getAttributeInt();
-		this->nconi = (modelReader->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
+		//->nboun = (modelReader->getGlobalAttribute(ccmc::strings::variables::nboun_)).getAttributeInt();
+		//this->nconi = (modelReader->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
 		this->coord = (modelReader->getVariableData(ccmc::strings::variables::coord_));
-		this->setupUnstructuredGridSearch();
+		this->intmat = (modelReader->getVariableDataInt(ccmc::strings::variables::intmat_));
+		this->unkno = (modelReader->getVariableData(ccmc::strings::variables::unkno_));
+
+		indx = new int[nelem];
+		esup1 = new int[nelem*4];
+		esup2 = new int[npoin+1];
+		this->nnode = NNODE_ADAPT3D;
+		this->unstructured_grid_setup_done = this->setupUnstructuredGridSearch();
+		this->smartSearchSetup();
+		this->last_element_found = -1;
 	}
 
 	/**
@@ -79,7 +93,7 @@ namespace ccmc
 			float& dc0, float& dc1, float& dc2)
 	{
 
-		return 0.0f;
+		return -1.0f;
 	}
 
 	/**
@@ -96,7 +110,154 @@ namespace ccmc
 	float Adapt3DInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
-		return 0.0f;
+		   double rsun_in_meters = 7.0e8;
+
+		   double coord1[3];
+		   double unkno_local[9];
+
+		   long counts[1] = { 0 };
+		   long intervals[1] = { 1 };
+
+		   double interpolated_value;
+		   double X = (double)c0, Y= (double)c1, Z= (double)c2;
+
+		   int   intmat_in_main_memory_flag;
+		   int   coord_in_main_memory_flag;
+		   int   unkno_in_main_memory_flag;
+
+
+
+		   double  *var_arrayPtr;
+		   int     array_size;
+		   int     istatus;
+		   int     ielem, unkno_index;
+
+		   char variable_name0[] = "intmat";
+		   char variable_name1[] = "coord";
+
+		   /**
+		    * TODO: figure out what to do about the dc0,dc1,dc2 values
+		    */
+		   dc0=dc1=dc2=.02f;
+
+
+
+
+
+		   /** lets see if required variables are in memory **/
+		   unkno_in_main_memory_flag  = 1;
+		   intmat_in_main_memory_flag = 1;
+		   coord_in_main_memory_flag  = 1;
+
+		   /****     since the cdf data is stored in r[meters], radians, radians or r, phi theta
+		    *         but we are accepting input as r[AU], lon, lat - we must do some coordiante transformations
+		    */
+
+		   /* convert rsun to meters */
+		/*
+		   coord1[0] = X * rsun_in_meters;
+		   coord1[1] = Y * rsun_in_meters;
+		   coord1[2] = Z * rsun_in_meters;
+		*/
+		   coord1[0] = X;
+		   coord1[1] = Y;
+		   coord1[2] = Z;
+
+
+
+		   counts[0] = 0; /*reset values after once through */
+		   intervals[0] = 1;
+
+
+		   /* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
+		   /* also select appropriate position arrays x, y , z for bx1, by1,bz1 */
+
+		   /* set default grid arrays and change if neccessary */
+
+
+		   //char *filename="adapt3d_kameleon_soln.cdf";
+
+
+
+
+		   if ( variable == ccmc::strings::variables::bx_ || variable == "b1")
+		   {
+		      unkno_index=5;
+		   }
+		   else if ( variable == "by" || variable == "b2")
+		   {
+		      unkno_index=6;
+		   }
+		   else if ( variable == "bz" || variable == "b3")
+		   {
+		      unkno_index=7;
+		   }
+		   else if ( variable == "ux" || variable == "u1")
+		   {
+		      unkno_index=1;
+		   }
+		   else if ( variable == "uy" || variable == "u2")
+		   {
+		      unkno_index=2;
+		   }
+		   else if ( variable == "uz" || variable == "u3")
+		   {
+		      unkno_index=3;
+		   }
+		   else if (variable == ccmc::strings::variables::rho_)
+		   {
+		      unkno_index=0;
+		   }
+		   else if (variable == ccmc::strings::variables::p_ || variable == ccmc::strings::variables::e_)
+		   {
+		      unkno_index=4;
+		   }
+		   else if ( variable == ccmc::strings::variables::temp_ )
+		   {
+		      unkno_index=8;
+		   }
+		   else
+		   {
+		      printf(
+		            "ERROR:\tcould not find cdf variable number for %s\n",
+		            variable.c_str());
+		      printf(
+		            "Valid Variable Names for ADAPT3D :\n bx OR b1 \n by OR b2 \n bz OR b3\n ux OR u1 \n uy OR u2 \n uz OR u3 \n p OR e \n OR temp\n----------------------------------------------\n"
+		            );
+		      return 0;
+		   }
+
+
+			/* locate the grid element that contains the point coord1 */
+
+		       ielem = smartSearch(coord1);
+
+		       interpolated_value=999.5;     /* test value */
+
+		       if(ielem > -1) {
+		         interpolate_adapt3d_solution(coord1, ielem, unkno_local);
+		#ifdef DEBUG
+		       printf("interpolate_adapt3d_cdf: unkno_local %e %e %e  %e %e %e  %e %e %e \n", unkno_local[0],unkno_local[1],unkno_local[2],unkno_local[3],unkno_local[4],
+		                          unkno_local[5],unkno_local[6],unkno_local[7],unkno_local[8]);
+		#endif
+		         interpolated_value = unkno_local[unkno_index];
+		         last_element_found = ielem;
+		       } else {
+		         printf("Failed to find point in grid\n");
+		         last_element_found = -1;
+		       }
+
+
+		      /*  return interpolated_value  */
+
+		      if (interpolated_value < MIN_RANGE || interpolated_value > MAX_RANGE)
+		      {
+		         return this->missingValue;
+		      }
+		      else
+		      {
+		         return (float)interpolated_value;
+		      }
 	}
 
 
@@ -146,14 +307,15 @@ namespace ccmc
 
 		/* allocate for ELEM_INDEX_STRUCT */
 		printf("Begin allocation of elem_index_struct \n");
-		int (* elem_index_struct)[3] = new int[nelem][3];
-		//int (*elem_index_struct)[3] = (int (*)[3])malloc(sizeof(int)*(int)nelem*3);
-		if(elem_index_struct == NULL)
+		int (* elem_index_struct)[3] = NULL;
+		try
 		{
-			/*printf("Error: allocation of elem_index_struct failed\n");
-			return 1;*/
+			elem_index_struct = new int[nelem][3];
 
-			//figure out the correct way of checking the success of the allocation;
+		} catch (std::bad_alloc& ba)
+		{
+			std::cerr << "Unable to allocate memory: " << ba.what() << std::endl;
+			return false;
 		}
 		printf("Allocation of elem_index_struct complete \n");
 
@@ -173,12 +335,12 @@ namespace ccmc
 		* for node 1, etc
 		*/
 		for ( i=0; i<(int)npoin; i++) {
-			xl_sg=min(xl_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			xr_sg=max(xr_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			yl_sg=min(yl_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			yr_sg=max(yr_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			zl_sg=min(zl_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
-			zr_sg=max(zr_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+			xl_sg=min(xl_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			xr_sg=max(xr_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			yl_sg=min(yl_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			yr_sg=max(yr_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			zl_sg=min(zl_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+			zr_sg=max(zr_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
 		}
 
 		printf("-------------------------------\n");
@@ -194,9 +356,9 @@ namespace ccmc
 
 		/* Step 1 - Define structured grid */
 
-		dx_sg = (xr_sg - xl_sg)/( (double)nx_sg );
-		dy_sg = (yr_sg - yl_sg)/( (double)ny_sg );
-		dz_sg = (zr_sg - zl_sg)/( (double)nz_sg );
+		dx_sg = (xr_sg - xl_sg)/( (float)nx_sg );
+		dy_sg = (yr_sg - yl_sg)/( (float)ny_sg );
+		dz_sg = (zr_sg - zl_sg)/( (float)nz_sg );
 		dxyz[0] = dx_sg;
 		dxyz[1] = dy_sg;
 		dxyz[2] = dz_sg;
@@ -230,7 +392,8 @@ namespace ccmc
 		*/
 		for ( ielem=0; ielem<(int)nelem; ielem++)
 		{
-
+			//std::cerr << "index_2d_to_1d(" << ielem << ",0," << nelem << ",4): " << index_2d_to_1d(ielem,0,nelem,4)  << std::endl;
+			//std::cerr << "sizeof intmat: " << (*intmat).size() << std::endl;
 			ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ] -1 ;
 			ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ] -1 ;
 			ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ] -1 ;
@@ -301,7 +464,7 @@ namespace ccmc
 			nelems_in_cell[k_s][j_s][i_s] = nelems_in_cell[k_s][j_s][i_s] + 1;
 
 
-
+//#define DEBUGX
 			#ifdef DEBUGX
 			if(ielem < 10)
 			{
@@ -345,7 +508,7 @@ namespace ccmc
 		if(max_element_length > dxyz_min) {
 			printf("ERROR: UNSTRUCTURED SEARCH GRID SPACING IS TOO FINE \n");
 			printf("ERROR: SOLUTION - INCREASE NO OF GRID POINTS BY FACTOR %e \n", max_element_length/dxyz_min);
-			exit;
+			//return false;
 		}
 
 
@@ -452,11 +615,13 @@ namespace ccmc
 		!...  loop over the elements, storing 'ahead'
 		!
 		*/
+		printf(" nnode: %d\n",nnode);
 		for( ie=0; ie<nelem; ie++)
 		{
 			for( inode=0; inode<nnode; inode++)
 			{
 				ip         = (*intmat)[ index_2d_to_1d(ie,inode,nelem,4) ];
+				//std::cerr << "ip: " << ip << std::endl;
 				esup2[ip]  = esup2[ip] + 1;
 			}
 		}
@@ -524,209 +689,233 @@ namespace ccmc
 
 	int Adapt3DInterpolator::smartSearch(double * search_point_coords)
 	{
-	       int lfound, mask[nnode], try_grid_search;
+		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
 
-	       int  i,j,k,ielem,inode,jnode ;
-	       int  ifound, jelem, kelem;
-	       int  node_order[nnode];
-	       int  i_node, j_node, k_node, k_node_hi;
-	       int  next_node, i_order;
+		int  i,j,k,ielem,inode,jnode ;
+		int  ifound, jelem, kelem;
+		int  node_order[NNODE_ADAPT3D];
+		int  i_node, j_node, k_node, k_node_hi;
+		int  next_node, i_order;
 
-	       int  nelems_checked;
-	       int  clear_cache;
+		int  nelems_checked;
+		int  clear_cache;
 
-	       double  shapex[nnode];
-	       double  radius;
+		double  shapex[NNODE_ADAPT3D];
+		double  radius;
 
-	       double  distance[nnode];
-
-
-	/*----------------------------------------------------------------
-	!
-	! Step A
-	!
-	! First check the last_element_found to see if the new point is still
-	! inside it. If yes, then set ifound=.true'
-	*/
-	       ifound = -1;
-	       if( last_element_found >= 0 ) {
-	#ifdef DEBUGS
-	       printf("Checkin if still in last element \n");
-	#endif
-
-	         ifound = chkineln( search_point_coords, last_element_found ,shapex);
-	         nelems_checked = 1;
+		double  distance[NNODE_ADAPT3D];
 
 
-	       }
+		/*----------------------------------------------------------------
+		!
+		! Step A
+		!
+		! First check the last_element_found to see if the new point is still
+		! inside it. If yes, then set ifound=.true'
+		*/
+		ifound = -1;
+		if( last_element_found >= 0 )
+		{
+			#ifdef DEBUGS
+			printf("Checkin if still in last element \n");
+			#endif
 
-	/*--------*/
-	       if( ifound == 0 ) {
-	/*--------*/
+			ifound = chkineln( search_point_coords, last_element_found ,shapex);
+			nelems_checked = 1;
+		}
 
-	#ifdef DEBUGS
-	          printf("Point is still in starting element! \n");
-	#endif
-	          kelem = last_element_found;
+		/*--------*/
+		if( ifound == 0 )
+		{
+			/*--------*/
 
-	/*--------*/
-	       } else {
-	/*--------*/
+			#ifdef DEBUGS
+			printf("Point is still in starting element! \n");
+			#endif
+			kelem = last_element_found;
 
-
-	/* If we have a starting_element number set to begin the search  */
-	       if( last_element_found >= 0 ) {
-
-
-	#ifdef DEBUGS
-	         printf("Point is not still in starting element! \n");
-	#endif
-
-	/*
-	!
-	! Step B
-	!
-	! Compute the distances of the new point from each of the nodes of the
-	! starting_element.
-	*/
-	       for (jnode=0; jnode<nnode; jnode++) {
-	         mask[jnode]=1;
-	         inode = (*intmat)[ index_2d_to_1d(last_element_found,jnode,nelem,4) ] -1 ;
-	         distance[jnode] =
-	     ((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ]-search_point_coords[0])*((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ]-search_point_coords[0])
-	   + ((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])*((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
-	   + ((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2])*((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]) ;
-	       }
-
-	/*
-	!
-	! Step C
-	!
-	! Sort the starting element nodes based on distance from the new search point
-	*/
-	       node_order[0]       = ccmc::Math::dminloc1d(distance,nnode,mask);
-	       node_order[nnode-1] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
-	       mask[node_order[0]] = 0;                        /* false */
-	       mask[node_order[nnode-1]] = 0;
-	       if(nnode == 3) {
-	         for (j=0; j<nnode; j++) {
-	           if(mask[j]) node_order[1] = j;
-	         }
-	       }
-	       if(nnode == 4) {
-	         node_order[1] = ccmc::Math::dminloc1d(distance,nnode,mask);
-	         node_order[2] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
-	       }
-	       if(nnode > 4) {
-	         printf("Error : Code only works for nnode=3 or 4 ! \n");
-	         exit(EXIT_FAILURE);
-	       }
-
-	/*
-	! Step D
-	!
-	! Begin search through the element lists for these nodes
-	*/
-
-	       i_order = -1;
-	/*++++*/
-	       while( (ifound != 0) && (i_order < nnode ) ) {
-	/*++++*/
-
-	        i_order += 1;
-	        next_node = node_order[i_order];
+			/*--------*/
+		} else
+		{
+			/*--------*/
 
 
-	/* Now we search the list of elements that contain this node */
-	        inode = (*intmat)[ index_2d_to_1d(last_element_found,next_node,nelem,4) ] -1 ;
-
-	#ifdef DEBUGS
-	        printf("node list for this element is %i %i %i %i \n",
-	                   intmat[ index_2d_to_1d(last_element_found,0,nelem,4) ]-1,
-	                   intmat[ index_2d_to_1d(last_element_found,1,nelem,4) ]-1,
-	                   intmat[ index_2d_to_1d(last_element_found,2,nelem,4) ]-1,
-	                   intmat[ index_2d_to_1d(last_element_found,3,nelem,4) ]-1);
-	        printf("First node in list is %i ",inode);
-	#endif
+			/* If we have a starting_element number set to begin the search  */
+			if( last_element_found >= 0 )
+			{
 
 
+				#ifdef DEBUGS
+				printf("Point is not still in starting element! \n");
+				#endif
 
-	        k_node    = esup2[inode]   +1 ;
-	        k_node_hi = esup2[inode+1] +1 ;
+				/*
+				!
+				! Step B
+				!
+				! Compute the distances of the new point from each of the nodes of the
+				! starting_element.
+				*/
+				for (jnode=0; jnode<nnode; jnode++)
+				{
+					mask[jnode]=1;
+					inode = (*intmat)[ index_2d_to_1d(last_element_found,jnode,nelem,4) ] -1 ;
+					distance[jnode] = ((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0])
+							* ((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0])
+							+ ((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
+							* ((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
+							+ ((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2])
+							* ((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]);
+				}
 
-	        jelem =  esup1[k_node];
-	        while( (ifound != 0) && (k_node < k_node_hi) ) {
+				/*
+				!
+				! Step C
+				!
+				! Sort the starting element nodes based on distance from the new search point
+				*/
+				node_order[0]       = ccmc::Math::dminloc1d(distance,nnode,mask);
+				node_order[nnode-1] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
+				mask[node_order[0]] = 0;                        /* false */
+				mask[node_order[nnode-1]] = 0;
+				std::cerr << "-----nnode: " << nnode << std::endl;
+				if(nnode == 3)
+				{
+					for (j=0; j<nnode; j++)
+					{
+						if(mask[j]) node_order[1] = j;
+					}
+				}
+				if(nnode == 4)
+				{
+					node_order[1] = ccmc::Math::dminloc1d(distance,nnode,mask);
+					node_order[2] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
+				}
+				if(nnode > 4)
+				{
+					printf("Error : Code only works for nnode=3 or 4 ! \n");
+					exit(EXIT_FAILURE);
+				}
 
-	          ifound = chkineln( search_point_coords, jelem ,shapex);
 
-	          nelems_checked = nelems_checked + 1;
-	          if(ifound != 0) {
-	#ifdef DEBUGS
-	             printf("Not found in elem %i \n",jelem);
-	#endif
-	             k_node += 1;
-	             jelem =  esup1[k_node];
-	#ifdef DEBUGS
-	             printf("Next element to check is %i %i %i \n",jelem,i_node,i_order);
-	#endif
-	          }
-	          if(ifound == 0) {
-	            kelem = jelem;
-	          }
-	#ifdef DEBUGS
-	          if(ifound == 0) {
-	              printf("Found in elem %i \n",jelem);
-	              printf("Found after checking %i elements \n",nelems_checked);
-	          }
-	#endif
+				/*
+				! Step D
+				!
+				! Begin search through the element lists for these nodes
+				*/
 
-	        }    /* while */
+				i_order = -1;
+				/*++++*/
+				while( (ifound != 0) && (i_order < nnode ) )
+				{
+					/*++++*/
+
+					i_order += 1;
+					next_node = node_order[i_order];
 
 
-	/*++++*/
-	       }     /* while */
-	/*++++*/
+					/* Now we search the list of elements that contain this node */
+					std::cerr << "index_2d_to_1d(last_element_found,next_node,nelem,4): " << index_2d_to_1d(last_element_found,next_node,nelem,4) << std::endl;
+					std::cerr << "last_element_found: " << last_element_found << " next_node: " << next_node << std::endl;
+					std::cerr << "intmat.size(): " << intmat->size() << std::endl;
+					inode = (*intmat)[ index_2d_to_1d(last_element_found,next_node,nelem,4) ] -1 ;
 
-	       }      /*   if( last_element_found .ge. 0 )  */
+					//#ifdef DEBUGS
+					printf("node list for this element is %i %i %i %i \n",
+					(*intmat)[ index_2d_to_1d(last_element_found,0,nelem,4) ]-1,
+					(*intmat)[ index_2d_to_1d(last_element_found,1,nelem,4) ]-1,
+					(*intmat)[ index_2d_to_1d(last_element_found,2,nelem,4) ]-1,
+					(*intmat)[ index_2d_to_1d(last_element_found,3,nelem,4) ]-1);
+					printf("First node in list is %i \n",inode);
+					//#endif
 
-	/*--------*/
-	       }      /*   if( ifound .eq. 0)  */
-	/*--------*/
 
-	       if( ifound != 0) {
-	#ifdef DEBUGS
-	          printf("Smart search failed! \n");
-	          printf("search_point_coords %e %e %e \n",search_point_coords[0]
-	                          ,search_point_coords[1] ,search_point_coords[2]);
-	#endif
 
-	/* Check to see if the point is still within the grid bounds */
-	          try_grid_search = point_within_grid(search_point_coords);
+					k_node    = esup2[inode]   +1 ;
+					k_node_hi = esup2[inode+1] +1 ;
 
-	          kelem=-1;
-	          if(try_grid_search) {
-	#ifdef DEBUGS
-	            radius=sqrt( search_point_coords[0]*search_point_coords[0]+
-	                         search_point_coords[1]*search_point_coords[1]+
-	                         search_point_coords[2]*search_point_coords[2] );
-	            printf("Using grid based search \n");
-	            printf("search_point_coords %e %e %e \n",search_point_coords[0]
-	                          ,search_point_coords[1] ,search_point_coords[2]);
-	            printf("radius %e \n",radius);
-	#endif
-	            clear_cache=1;
-	            kelem=findElement(search_point_coords,clear_cache);
-	          }
-	#ifdef DEBUGS
-	          if(kelem > 0) {
-	              printf("Found in element %i \n",kelem);
-	          } else {
-	              printf("Failed to locate element in grid \n");
-	          }
-	#endif
-	       }
+					//std::cerr << "inode: " << inode << " k_node: " << k_node << " sizeof(esup1) " << (nelem*4) << std::endl;
+					jelem =  esup1[k_node];
+					while( (ifound != 0) && (k_node < k_node_hi) )
+					{
 
-	       return kelem;
+						ifound = chkineln( search_point_coords, jelem ,shapex);
+
+						nelems_checked = nelems_checked + 1;
+						if(ifound != 0)
+						{
+							#ifdef DEBUGS
+							printf("Not found in elem %i \n",jelem);
+							#endif
+							k_node += 1;
+							jelem =  esup1[k_node];
+							#ifdef DEBUGS
+							printf("Next element to check is %i %i %i \n",jelem,i_node,i_order);
+							#endif
+						}
+						if(ifound == 0)
+						{
+							kelem = jelem;
+						}
+						#ifdef DEBUGS
+						if(ifound == 0)
+						{
+							printf("Found in elem %i \n",jelem);
+							printf("Found after checking %i elements \n",nelems_checked);
+						}
+						#endif
+
+					}    /* while */
+
+
+					/*++++*/
+				}     /* while */
+				/*++++*/
+
+			}      /*   if( last_element_found .ge. 0 )  */
+
+			/*--------*/
+		}      /*   if( ifound .eq. 0)  */
+		/*--------*/
+
+		if( ifound != 0)
+		{
+			#ifdef DEBUGS
+			printf("Smart search failed! \n");
+			printf("search_point_coords %e %e %e \n",search_point_coords[0]
+				  ,search_point_coords[1] ,search_point_coords[2]);
+			#endif
+
+			/* Check to see if the point is still within the grid bounds */
+			try_grid_search = point_within_grid(search_point_coords);
+
+			kelem=-1;
+			if(try_grid_search)
+			{
+				#ifdef DEBUGS
+				radius=sqrt( search_point_coords[0]*search_point_coords[0]+
+					 search_point_coords[1]*search_point_coords[1]+
+					 search_point_coords[2]*search_point_coords[2] );
+				printf("Using grid based search \n");
+				printf("search_point_coords %e %e %e \n",search_point_coords[0]
+					  ,search_point_coords[1] ,search_point_coords[2]);
+				printf("radius %e \n",radius);
+				#endif
+				clear_cache=1;
+				kelem=findElement(search_point_coords,clear_cache);
+			}
+			#ifdef DEBUGS
+			if(kelem > 0)
+			{
+				printf("Found in element %i \n",kelem);
+			} else
+			{
+				printf("Failed to locate element in grid \n");
+			}
+			#endif
+		}
+
+		return kelem;
 
 	}
 
@@ -855,11 +1044,286 @@ namespace ccmc
 	/*       end subroutine find_element  */
 	}
 
+	int Adapt3DInterpolator::index_2d_to_1d( int i1, int i2, int n1, int n2)
+	{
+	/* converts a 2D array index into a flat 1D index */
+	      int idx = n2*i1 + i2;
+
+	      return idx;
+	}
+
+	int Adapt3DInterpolator::point_within_grid( double * scoord )
+	{
+		/*
+		!
+		! This function test to see if the given point (coord) is inside
+		! the grid bounds. This function requires specific knowledge of the
+		! grid type and range. It will need a customized function for each model
+		! used with this search.
+		*/
+
+
+	      double  radius;
+	      int within_bounds = 1;
+
+	      radius=sqrt(scoord[0]*scoord[0]+scoord[1]*scoord[1]+scoord[2]*scoord[2]);
+	      if(scoord[0] < xl_sg) within_bounds = 0;
+	      if(scoord[0] > xr_sg) within_bounds = 0;
+	      if(scoord[1] < yl_sg) within_bounds = 0;
+	      if(scoord[1] > yr_sg) within_bounds = 0;
+	      if(scoord[2] < zl_sg) within_bounds = 0;
+	      if(scoord[2] > zr_sg) within_bounds = 0;
+	      if(radius < 1.) within_bounds = 0;
+	      if(radius > 5.) within_bounds = 0;
+
+
+	      return within_bounds;
+
+	}
+
+    int Adapt3DInterpolator::chkineln( double * cintp ,int ielem , double *shapex)
+	{
+
+	/*
+	!...  mesh arrays
+	*/
+	/*
+		integer,intent(in) ::  ndimn,npoin,nnode,nelem
+		integer,intent(in) ::  intmat(nnode,nelem)
+		integer,intent(in) ::  ielem
+		real*8,intent(in)  ::  coord(ndimn,npoin),cintp(ndimn)
+
+		real*8,intent(out) ::  shapex(nnode)
+	*/
+
+		int   ipa,ipb,ipc,ipd;
+		int   ierro;
+		double xa,ya,za,xba,yba,zba,xca,yca,zca,xda,yda,zda;
+		double xpa,ypa,zpa;
+		double deter,detin,shmin,shmax;
+		double rin11,rin12,rin13;
+		double rin21,rin22,rin23;
+		double rin31,rin32,rin33;
+
+
+	/*
+	!       data tolow/ -0.005 /
+	!       data tolhi/  1.005 /
+	!       data   c00/  0.0   /
+	!       data   c10/  1.0   /
+	!
+	!...  this sub sees if element ielem contains point cintp,
+	!     writing the shape-function values into ==> shape
+	!
+	!...  find the local coordinates
+	!
+	*/
+
+		ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ]-1;
+		ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ]-1;
+		ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ]-1;
+		ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
+		xa  = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
+		ya  = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
+		za  = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
+		xba = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ] - xa;
+		yba = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ] - ya;
+		zba = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ] - za;
+		xca = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ] - xa;
+		yca = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ] - ya;
+		zca = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ] - za;
+		xda = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ] - xa;
+		yda = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ] - ya;
+		zda = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ] - za;
+
+		deter = xba*(yca*zda-zca*yda) - yba*(xca*zda-zca*xda) + zba*(xca*yda-yca*xda);
+	#ifdef DEBUG
+		  printf("coord[ipa]= %d %e %e %e \n",ipa,coord[ index_2d_to_1d(ipa,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,2,npoin,ndimn) ]);
+		  printf("deter= %e \n",deter);
+	#endif
+	/*       detin = c10/deter */
+		detin = 1.0/deter;
+
+		rin11 = detin*(yca*zda-zca*yda);
+		rin12 =-detin*(xca*zda-zca*xda);
+		rin13 = detin*(xca*yda-yca*xda);
+		rin21 =-detin*(yba*zda-zba*yda);
+		rin22 = detin*(xba*zda-zba*xda);
+		rin23 =-detin*(xba*yda-yba*xda);
+		rin31 = detin*(yba*zca-zba*yca);
+		rin32 =-detin*(xba*zca-zba*xca);
+		rin33 = detin*(xba*yca-yba*xca);
+
+		xpa = cintp[0]-xa;
+		ypa = cintp[1]-ya;
+		zpa = cintp[2]-za;
+	/*
+	!...  local coordinates & shape-function values
+	*/
+		shapex[1] = rin11*xpa + rin12*ypa + rin13*zpa;
+		shapex[2] = rin21*xpa + rin22*ypa + rin23*zpa;
+		shapex[3] = rin31*xpa + rin32*ypa + rin33*zpa;
+		shapex[0] = 1.0 - shapex[1] - shapex[2] - shapex[3];
+	#ifdef DEBUG
+		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
+		  printf("xa-za= %e %e %e \n",xa,ya,za);
+		  printf("shapex = %e %e %e %e \n",shapex[0],shapex[1],shapex[2],shapex[3]);
+	#endif
+	/*       shape(1) = c10 - shape(2) - shape(3) - shape(4)
+	!
+	!...  max/min of these shape-functions
+	!
+	*/
+		shmin = ccmc::Math::dfindmin(shapex,4);
+		shmax = ccmc::Math::dfindmax(shapex,4);
+	/*
+	!...  see if in the element
+	!
+	!       if(shmin .ge. tolow .and. shmax .le. tolhi) then
+	*/
+		if ( (shmin > 0.) && (shmax <= 1.0)) {
+			   ierro = 0;
+		} else {
+			   ierro = 1;
+		}
+
+	/*
+	!...  control output
+	!     write(*,*)' ielem,shmin,shmax,ierro=',ielem,shmin,shmax,ierro
+	*/
+
+	#ifdef DEBUG
+		if( ierro == 0) {
+		  printf("shmin= %e \n",shmin);
+		  printf("shmax= %e \n",shmax);
+		  printf("ierro= %d \n",ierro);
+		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
+		  printf("node 1 = %e %e %e %d \n",coord[ index_2d_to_1d(ipa,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,2,npoin,ndimn) ],ipa);
+		  printf("node 2 = %e %e %e %d \n",coord[ index_2d_to_1d(ipb,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipb,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipb,2,npoin,ndimn) ],ipb);
+		  printf("node 3 = %e %e %e %d \n",coord[ index_2d_to_1d(ipc,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipc,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipc,2,npoin,ndimn) ],ipc);
+		  printf("node 4 = %e %e %e %d \n",coord[ index_2d_to_1d(ipd,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipd,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipd,2,npoin,ndimn) ],ipd);
+		 }
+	#endif
+
+		 return ierro;
+
+	/*       end subroutine chkineln */
+	}
+
+    void Adapt3DInterpolator::interpolate_adapt3d_solution(double *coord1,int ielem, double *unkno_local)
+    {
+    /*
+     * Interpolate values of unkno to position coord in element ielem
+    */
+
+
+           int ipa,ipb,ipc,ipd;
+           int iv;
+           double x1,y1,z1;
+           double x2,y2,z2;
+           double x3,y3,z3;
+           double x4,y4,z4;
+           double vol,vol6;
+           double a1,b1,c1,d1;
+           double a2,b2,c2,d2;
+           double a3,b3,c3,d3;
+           double a4,b4,c4,d4;
+           double f1,f2,f3,f4;
+           double x,y,z;
+
+
+           ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ]-1;
+           ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ]-1;
+           ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ]-1;
+           ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
+           x1 = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
+           y1 = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
+           z1 = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
+           x2 = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ];
+           y2 = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ];
+           z2 = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ];
+           x3 = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ];
+           y3 = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ];
+           z3 = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ];
+           x4 = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ];
+           y4 = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ];
+           z4 = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ];
+
+           x = coord1[0];
+           y = coord1[1];
+           z = coord1[2];
+
+    #ifdef TEST_CASE1
+           x1=0.;
+           y1=0.;
+           z1=0.;
+           x2=1.;
+           y2=0.;
+           z2=0.;
+           x3=0.;
+           y3=2.;
+           z3=0.;
+           x4=0.;
+           y4=0.;
+           z4=3.;
+    #endif
+
+    #ifdef LINEAR_INTERPOL
+           a1 = x2*(y3*z4-z3*y4)+y2*(z3*x4-z4*x3)+z2*(x3*y4-x4*y3);
+           b1 = - ( y3*z4-z3*y4 + y2*(z3-z4) + z2*(y4-y3) );
+           c1 = - ( x2*(z4-z3) + (z3*x4-z4*x3) + z2*(x3-x4) );
+           d1 = - ( x2*(y3-y4) + y2*(x4-x3) + (x3*y4-y3*x4) );
+
+           a2 = x3*(y4*z1-z4*y1)+y3*(z4*x1-z1*x4)+z3*(x4*y1-x1*y4);
+           b2 = - ( y4*z1-z4*y1 + y3*(z4-z1) + z3*(y1-y4) );
+           c2 = - ( x3*(z1-z4) + (z4*x1-z1*x4) + z3*(x4-x1) );
+           d2 = - ( x3*(y4-y1) + y3*(x1-x4) + (x4*y1-y4*x1) );
+
+           a3 = x4*(y1*z2-z1*y2)+y4*(z1*x2-z2*x1)+z4*(x1*y2-x2*y1);
+           b3 = - ( y1*z2-z1*y2 + y4*(z1-z2) + z4*(y2-y1) );
+           c3 = - ( x4*(z2-z1) + (z1*x2-z2*x1) + z4*(x1-x2) );
+           d3 = - ( x4*(y1-y2) + y4*(x2-x1) + (x1*y2-y1*x2) );
+
+           a4 = x1*(y2*z3-z2*y3)+y1*(z2*x3-z3*x2)+z1*(x2*y3-x3*y2);
+           b4 = - ( y2*z3-z2*y3 + y1*(z2-z3) + z1*(y3-y2) );
+           c4 = - ( x1*(z3-z2) + (z2*x3-z3*x2) + z1*(x2-x3) );
+           d4 = - ( x1*(y2-y3) + y1*(x3-x2) + (x2*y3-y2*x3) );
+
+           vol6 = a1 + x1*b1 + y1*c1 + z1*d1;
+           vol  = vol6/6.;
+
+    #ifdef TEST_CASE1
+           printf("Volume = %e\n",vol);
+           printf("Correct Volume should be 1.0\n");
+    #endif
+
+           for ( iv=0; iv<9; iv++) {
+
+             unkno_local[iv] = 0.;
+             f1 =  (a1 + b1*x + c1*y + d1*z)/vol6;
+             f2 = -(a2 + b2*x + c2*y + d2*z)/vol6;
+             f3 =  (a3 + b3*x + c3*y + d3*z)/vol6;
+             f4 = -(a4 + b4*x + c4*y + d4*z)/vol6;
+
+             unkno_local[iv] = f1*(*unkno)[ index_2d_to_1d(ipa,iv,npoin,9) ]+f2*(*unkno)[ index_2d_to_1d(ipb,iv,npoin,9) ]
+                              +f3*(*unkno)[ index_2d_to_1d(ipc,iv,npoin,9) ]+f4*(*unkno)[ index_2d_to_1d(ipd,iv,npoin,9) ] ;
+
+           }
+    #endif
+
+
+    /*       end subroutine interpolate_solution  */
+    }
+
 	/**
 	 * Destructor
 	 */
 	Adapt3DInterpolator::~Adapt3DInterpolator()
 	{
 		// TODO Auto-generated destructor stub
+		delete indx;
+		delete esup1;
+		delete esup2;
+
 	}
 }
