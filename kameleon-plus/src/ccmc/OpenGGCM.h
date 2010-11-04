@@ -38,9 +38,6 @@ namespace ccmc
 			void initializeSIUnits();
 
 		private:
-			std::string x_string;
-			std::string y_string;
-			std::string z_string;
 			int nx;
 			int ny;
 			int nz;
