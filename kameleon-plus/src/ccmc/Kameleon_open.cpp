@@ -4,6 +4,7 @@
 #include "BATSRUS.h"
 #include "ENLIL.h"
 #include "MAS.h"
+#include "Adapt3D.h"
 #include <string>
 
 namespace ccmc
@@ -17,18 +18,18 @@ namespace ccmc
 		//need to store filename
 		//need to intialize relevant information
 
-
+std::cout << "inside Kameleon::open" << std::endl;
 		FileReader fileReader;
 		long status = fileReader.open(filename);
 
-		if (status > -1)
+		if (status == FileReader::OK)
 		{
 			if (fileReader.doesAttributeExist("model_name"))
 			{
 
 				this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
 				fileReader.close();
-				//std::cerr << "modelName: '" << modelName << "'" << std::endl;
+				//std::cout << "modelName: '" << modelName << "'" << std::endl;
 				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 				{
 		//			std::cout << "created OpenGGCM object" << std::endl;
@@ -45,12 +46,17 @@ namespace ccmc
 				{
 		//			std::cout << "created MAS object" << std::endl;
 					model = new MAS();
+				} else if (modelName == "ADAPT3D")
+				{
+					std::cout << "created Adapt3D object" << std::endl;
+					model = new Adapt3D();
 				} else //unknown model
 				{
+
 					if (model != NULL)
 						delete model;
 					model = NULL;
-					status = -1;
+					status = FileReader::MODEL_NOT_SUPPORTED;
 
 				}
 			} else
@@ -58,7 +64,7 @@ namespace ccmc
 				if (model != NULL)
 					delete model;
 				model = NULL;
-				status = -1;
+				status = FileReader::NOT_A_VALID_KAMELEON_FILE;
 			}
 
 			if (model != NULL)
@@ -69,7 +75,13 @@ namespace ccmc
 
 	//std::cout << "initializing extra information" << std::endl;
 				//current_cdf_id = get_current_CDFid();
-				initializeExtraInformation();
+				if (status == FileReader::OK)
+				{
+					initializeExtraInformation();
+				} else
+				{
+					std::cerr << "Failed to read model file!" << std::endl;
+				}
 
 			}
 		}
