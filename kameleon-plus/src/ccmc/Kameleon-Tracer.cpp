@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "Point3f.h"
 #include <boost/lexical_cast.hpp>
+#include <StringConstants.h>
 //#define DEBUG_TRACER
 #define DEPRECATED_WARNING
 
@@ -35,10 +36,7 @@ namespace ccmc
 
 		initializeComponentNamesMap();
 
-		mas_ = "mas";
-		batsrus_ = "batsrus";
-		open_ggcm_ = "open_ggcm";
-		enlil_ = "enlil";
+
 		step_max = 2000;
 		useMaxArcLength = false;
 		useROI = false;
@@ -226,12 +224,13 @@ namespace ccmc
 			const float& startComponent2, const float& startComponent3)
 	{
 		std::string model_name = kameleon->getModelName();
-		std::string open_ggcm_ = "open_ggcm";
-		std::string ucla_ggcm_ = "ucla_ggcm";
-		std::string batsrus = "batsrus";
+
 		Interpolator * interpolator = kameleon->createNewInterpolator();
 		Fieldline f1;
-		if (model_name == open_ggcm_ || model_name == ucla_ggcm_ || model_name == batsrus_)
+		if (model_name == ccmc::strings::models::open_ggcm_ ||
+				model_name == ccmc::strings::models::ucla_ggcm_ ||
+				model_name == ccmc::strings::models::batsrus_ ||
+				model_name == ccmc::strings::models::adapt3d_)
 		{
 			f1 = cartesianTraceWithDipole(variable, startComponent1, startComponent2, startComponent3, interpolator,
 					FOWARD);
@@ -244,7 +243,10 @@ namespace ccmc
 		f1.removePoint(0);
 
 		Fieldline f2;
-		if (model_name == open_ggcm_ || model_name == ucla_ggcm_ || model_name == batsrus_)
+		if (model_name == ccmc::strings::models::open_ggcm_ ||
+				model_name == ccmc::strings::models::ucla_ggcm_ ||
+				model_name == ccmc::strings::models::batsrus_ ||
+				model_name == ccmc::strings::models::adapt3d_)
 		{
 
 			f2 = cartesianTraceWithDipole(variable, startComponent1, startComponent2, startComponent3, interpolator,
@@ -282,7 +284,10 @@ namespace ccmc
 		std::string model_name = kameleon->getModelName();
 		Interpolator * interpolator = kameleon->createNewInterpolator();
 //		cout << "model_name: '" << model_name << "'" << endl;
-		if (model_name == open_ggcm_ || model_name == "ucla_ggcm" || model_name == batsrus_)
+		if (model_name == ccmc::strings::models::open_ggcm_ ||
+				model_name == ccmc::strings::models::ucla_ggcm_ ||
+				model_name == ccmc::strings::models::batsrus_ ||
+				model_name == ccmc::strings::models::adapt3d_)
 		{
 			f1 = cartesianTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, FOWARD);
 		} else
@@ -295,7 +300,10 @@ namespace ccmc
 
 		Fieldline f2(this->step_max *2);
 
-		if (model_name == open_ggcm_ || model_name == "ucla_ggcm" || model_name == "batsrus")
+		if (model_name == ccmc::strings::models::open_ggcm_ ||
+				model_name == ccmc::strings::models::ucla_ggcm_ ||
+				model_name == ccmc::strings::models::batsrus_ ||
+				model_name == ccmc::strings::models::adapt3d_)
 		{
 			f2 = cartesianTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, REVERSE);
 		} else
@@ -332,7 +340,10 @@ namespace ccmc
 		std::string model_name = kameleon->getModelName();
 		//model_name = derived.getGlobalAttributeString("model_name");
 		Interpolator * interpolator = kameleon->createNewInterpolator();
-		if (model_name == "open_ggcm" || model_name == "ucla_ggcm" || model_name == "batsrus")
+		if (model_name == ccmc::strings::models::open_ggcm_ ||
+				model_name == ccmc::strings::models::ucla_ggcm_ ||
+				model_name == ccmc::strings::models::batsrus_ ||
+				model_name == ccmc::strings::models::adapt3d_)
 		{
 			f = cartesianTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, dir);
 		} else
@@ -359,7 +370,10 @@ namespace ccmc
 		std::string model_name = kameleon->getModelName();
 		//model_name = derived.getGlobalAttributeString("model_name");
 		Interpolator * interpolator = kameleon->createNewInterpolator();
-		if (model_name == "open_ggcm" || model_name == "ucla_ggcm" || model_name == "batsrus")
+		if (model_name == ccmc::strings::models::open_ggcm_ ||
+				model_name == ccmc::strings::models::ucla_ggcm_ ||
+				model_name == ccmc::strings::models::batsrus_ ||
+				model_name == ccmc::strings::models::adapt3d_)
 		{
 			f
 					= cartesianTraceWithDipole(variable, startComponent1, startComponent2, startComponent3,
@@ -390,51 +404,52 @@ namespace ccmc
 		Point3f max;//point representing the max values of the three dimensions;
 		std::string model_name = kameleon->getModelName();
 
-		if (model_name == "batsrus")
+		if (model_name == ccmc::strings::models::batsrus_)
 		{
 #ifdef DEBUG_TRACER
 			cerr << "inside. model_name: \"" << model_name << "\"" << endl;
 #endif
 
-			min.component1 = (kameleon->getGlobalAttribute("global_x_min")).getAttributeFloat();
-			min.component2 = (kameleon->getGlobalAttribute("global_y_min")).getAttributeFloat();
-			min.component3 = (kameleon->getGlobalAttribute("global_z_min")).getAttributeFloat();
+			min.component1 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_x_min_)).getAttributeFloat();
+			min.component2 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_y_min_)).getAttributeFloat();
+			min.component3 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_z_min_)).getAttributeFloat();
 
-			max.component1 = (kameleon->getGlobalAttribute("global_x_max")).getAttributeFloat();
-			max.component2 = (kameleon->getGlobalAttribute("global_y_max")).getAttributeFloat();
-			max.component3 = (kameleon->getGlobalAttribute("global_z_max")).getAttributeFloat();
+			max.component1 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_x_max_)).getAttributeFloat();
+			max.component2 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_y_max_)).getAttributeFloat();
+			max.component3 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_z_max_)).getAttributeFloat();
 
 		} else
 		{
 
-			if (model_name == "ucla_ggcm" || model_name == "open_ggcm")
+			if (model_name == ccmc::strings::models::ucla_ggcm_ ||
+					model_name == ccmc::strings::models::open_ggcm_)
 			{
 				/** the signs of x and y are flipped **/
 
 				/*min.component1 = -1.0 * *(float *) vattribute_get("x", "actual_max");
-				 min.component2 = -1.0 * *(float *) vattribute_get("y", "actual_max");
-				 min.component3 = *(float *) vattribute_get("z", "actual_min");
+				 min.component2 = -1.0 * *(float *) vattribute_get(ccmc::strings::variables::y_, "actual_max");
+				 min.component3 = *(float *) vattribute_get(ccmc::strings::variables::z_, "actual_min");
 
-				 max.component1 = -1.0 * *(float *) vattribute_get("x", "actual_min");
-				 max.component2 = -1.0 * *(float *) vattribute_get("y", "actual_min");
-				 max.component3 = *(float *) vattribute_get("z", "actual_max");*/
-				min.component1 = -1.0 * (kameleon->getVariableAttribute("x", "actual_max")).getAttributeFloat();
-				min.component2 = -1.0 * (kameleon->getVariableAttribute("y", "actual_max")).getAttributeFloat();
-				min.component3 = (kameleon->getVariableAttribute("z", "actual_min")).getAttributeFloat();
+				 max.component1 = -1.0 * *(float *) vattribute_get(ccmc::strings::variables::x_, "actual_min");
+				 max.component2 = -1.0 * *(float *) vattribute_get(ccmc::strings::variables::y_, "actual_min");
+				 max.component3 = *(float *) vattribute_get(ccmc::strings::variables::z_, "actual_max");*/
+				min.component1 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+				min.component2 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+				min.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 
-				max.component1 = -1.0 * (kameleon->getVariableAttribute("x", "actual_min")).getAttributeFloat();
-				max.component2 = -1.0 * (kameleon->getVariableAttribute("y", "actual_min")).getAttributeFloat();
-				max.component3 = (kameleon->getVariableAttribute("z", "actual_max")).getAttributeFloat();
+				max.component1 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+				max.component2 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+				max.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 
 			} else
 			{
-				min.component1 = (kameleon->getVariableAttribute("x", "actual_max")).getAttributeFloat();
-				min.component2 = (kameleon->getVariableAttribute("y", "actual_max")).getAttributeFloat();
-				min.component3 = (kameleon->getVariableAttribute("z", "actual_max")).getAttributeFloat();
+				min.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+				min.component2 = (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+				min.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 
-				max.component1 = (kameleon->getVariableAttribute("x", "actual_min")).getAttributeFloat();
-				max.component2 = (kameleon->getVariableAttribute("y", "actual_min")).getAttributeFloat();
-				max.component3 = (kameleon->getVariableAttribute("z", "actual_min")).getAttributeFloat();
+				max.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+				max.component2 = (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+				max.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 			}
 
 		}
@@ -578,52 +593,52 @@ namespace ccmc
 		if(!useROI)
 		{
 
-			if (model_name == batsrus_)
+			if (model_name == ccmc::strings::models::batsrus_)
 			{
-				std::string global_x_min_ = "global_x_min";
+
 #ifdef DEBUG_TRACER
 			cerr << "inside. model_name: \"" << model_name << "\"" << endl;
 #endif
 
-				min.component1 = (kameleon->getGlobalAttribute(global_x_min_)).getAttributeFloat();
-				min.component2 = (kameleon->getGlobalAttribute("global_y_min")).getAttributeFloat();
-				min.component3 = (kameleon->getGlobalAttribute("global_z_min")).getAttributeFloat();
+				min.component1 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_x_min_)).getAttributeFloat();
+				min.component2 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_y_min_)).getAttributeFloat();
+				min.component3 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_z_min_)).getAttributeFloat();
 
-				max.component1 = (kameleon->getGlobalAttribute("global_x_max")).getAttributeFloat();
-				max.component2 = (kameleon->getGlobalAttribute("global_y_max")).getAttributeFloat();
-				max.component3 = (kameleon->getGlobalAttribute("global_z_max")).getAttributeFloat();
+				max.component1 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_x_max_)).getAttributeFloat();
+				max.component2 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_y_max_)).getAttributeFloat();
+				max.component3 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_z_max_)).getAttributeFloat();
 
 			} else
 			{
 
-				if (model_name == "ucla_ggcm" || model_name == "open_ggcm")
+				if (model_name == ccmc::strings::models::ucla_ggcm_ || model_name == ccmc::strings::models::open_ggcm_)
 				{
 					/** the signs of x and y are flipped **/
 
-					/*min.component1 = -1.0 * *(float *) vattribute_get("x", "actual_max");
-					 min.component2 = -1.0 * *(float *) vattribute_get("y", "actual_max");
-					 min.component3 = *(float *) vattribute_get("z", "actual_min");
+					/*min.component1 = -1.0 * *(float *) vattribute_get(ccmc::strings::variables::x_, "actual_max");
+					 min.component2 = -1.0 * *(float *) vattribute_get(ccmc::strings::variables::y_, "actual_max");
+					 min.component3 = *(float *) vattribute_get(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_min_);
 
-					 max.component1 = -1.0 * *(float *) vattribute_get("x", "actual_min");
-					 max.component2 = -1.0 * *(float *) vattribute_get("y", "actual_min");
-					 max.component3 = *(float *) vattribute_get("z", "actual_max");*/
-					min.component1 = -1.0 * (kameleon->getVariableAttribute("x", "actual_max")).getAttributeFloat();
-					min.component2 = -1.0 * (kameleon->getVariableAttribute("y", "actual_max")).getAttributeFloat();
-					min.component3 = (kameleon->getVariableAttribute("z", "actual_min")).getAttributeFloat();
+					 max.component1 = -1.0 * *(float *) vattribute_get(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_min_);
+					 max.component2 = -1.0 * *(float *) vattribute_get(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_min_);
+					 max.component3 = *(float *) vattribute_get(ccmc::strings::variables::z_, "actual_max");*/
+					min.component1 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+					min.component2 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+					min.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 
-					max.component1 = -1.0 * (kameleon->getVariableAttribute("x", "actual_min")).getAttributeFloat();
-					max.component2 = -1.0 * (kameleon->getVariableAttribute("y", "actual_min")).getAttributeFloat();
-					max.component3 = (kameleon->getVariableAttribute("z", "actual_max")).getAttributeFloat();
+					max.component1 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+					max.component2 = -1.0 * (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+					max.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 
 				} else
 				{
-					min.component1 = (kameleon->getVariableAttribute("x", "actual_max")).getAttributeFloat();
-					min.component2 = (kameleon->getVariableAttribute("y", "actual_max")).getAttributeFloat();
-					min.component3 = (kameleon->getVariableAttribute("z", "actual_max")).getAttributeFloat();
+					min.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+					min.component2 = (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+					min.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 
-					max.component1 = (kameleon->getVariableAttribute("x", "actual_min")).getAttributeFloat();
-					max.component2 = (kameleon->getVariableAttribute("y", "actual_min")).getAttributeFloat();
-					max.component3 = (kameleon->getVariableAttribute("z", "actual_min")).getAttributeFloat();
+					max.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+					max.component2 = (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+					max.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 				}
 
 			}
@@ -998,17 +1013,17 @@ namespace ccmc
 			}
 		}
 		/* these are in (r,lat,lon) space */
-		boxMin.component1 = (kameleon->getVariableAttribute(component1.c_str(), "actual_min")).getAttributeFloat()
+		boxMin.component1 = (kameleon->getVariableAttribute(component1.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat()
 				* factor_r;
 		boxMin.component2 = 90. - RADEG
-						* (kameleon->getVariableAttribute(component2.c_str(), "actual_max")).getAttributeFloat();
+						* (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
 
 
-		boxMax.component1 = (kameleon->getVariableAttribute(component1.c_str(), "actual_max")).getAttributeFloat()
+		boxMax.component1 = (kameleon->getVariableAttribute(component1.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat()
 				* factor_r;
 		boxMax.component2 = 90. - RADEG
-				* (kameleon->getVariableAttribute(component2.c_str(), "actual_min")).getAttributeFloat();
+				* (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
 
 #ifdef DEBUG_SPHTRACER
@@ -1277,16 +1292,15 @@ namespace ccmc
 	 */
 	bool Tracer::isValidPoint(const Point3f& p, const Point3f& min, const Point3f& max)
 	{
-		//check if the point is within the bounds of the simulation region
-		bool validRegion = false;
+		std::string model_name = kameleon->getModelName();
+		//break this down to the individual models
 
-		if (p.component1 >= min.component1 && p.component2 >= min.component2 && p.component3 >= min.component3
-				&& p.component1 <= max.component1 && p.component2 <= max.component2 && p.component3 <= max.component3)
-			validRegion = true;
 
 		bool insideInnerBoundary = true;
-		std::string model_name = kameleon->getModelName();
-		if (model_name == "batsrus" || model_name == "ucla_ggcm" || model_name == "open_ggcm")
+		if (model_name == ccmc::strings::models::batsrus_ ||
+				model_name == ccmc::strings::models::ucla_ggcm_ ||
+				model_name == ccmc::strings::models::open_ggcm_ ||
+				model_name == ccmc::strings::models::adapt3d_)
 		{
 			if (sqrt(p.component1 * p.component1 + p.component2 * p.component2 + p.component3 * p.component3) >= r_end)
 			{
@@ -1300,6 +1314,26 @@ namespace ccmc
 			}
 		}
 
+		//check if the point is within the bounds of the simulation region
+		bool validRegion = false;
+
+		//TODO: fix this logic for ENLIL and MAS
+		if (model_name == ccmc::strings::models::adapt3d_)
+		{
+			if (sqrt(p.component1 * p.component1 + p.component2 * p.component2 + p.component3 * p.component3) <= 5.f)
+				validRegion = true;
+		} else if (p.component1 >= min.component1 && p.component2 >= min.component2 && p.component3 >= min.component3
+				&& p.component1 <= max.component1 && p.component2 <= max.component2 && p.component3 <= max.component3)
+			validRegion = true;
+
+
+
+
+
+
+
+//		std::cerr << "r_end: " << r_end << " validRegion: " << validRegion << " insideInnerBoundary: " << insideInnerBoundary << std::endl;
+//		std::cerr << "p: " << p << " min: " << min << " max: " << max << std::endl;
 		if (validRegion == true && insideInnerBoundary == false)
 		{
 			return true;

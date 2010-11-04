@@ -76,7 +76,7 @@ namespace ccmc
 			std::string j_, jx_, jy_, jz_;
 			std::string jr_, jphi_, jtheta_;
 			std::string b1_, b1x_, b1y_, b1z_;
-			std::string mas_, batsrus_, open_ggcm_, enlil_;
+
 			bool useMaxArcLength;
 			bool useROI;
 			Point3f minROI;
