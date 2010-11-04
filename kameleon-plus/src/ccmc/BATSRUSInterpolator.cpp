@@ -6,6 +6,7 @@
  */
 
 #include "BATSRUSInterpolator.h"
+#include "StringConstants.h"
 
 namespace ccmc
 {
@@ -17,45 +18,25 @@ namespace ccmc
 	{
 		// TODO Auto-generated constructor stub
 		this->modelReader = modelReader;
-		block_x_min = "block_x_min";
-		block_y_min = "block_y_min";
-		block_z_min = "block_z_min";
-		block_x_max = "block_x_max";
-		block_y_max = "block_y_max";
-		block_z_max = "block_z_max";
-		block_child_count = "block_child_count";
-		block_x_center = "block_x_center";
-		block_y_center = "block_y_center";
-		block_z_center = "block_z_center";
-		block_child_id_1 = "block_child_id_1";
-		block_child_id_2 = "block_child_id_2";
-		block_child_id_3 = "block_child_id_3";
-		block_child_id_4 = "block_child_id_4";
-		block_child_id_5 = "block_child_id_5";
-		block_child_id_6 = "block_child_id_6";
-		block_child_id_7 = "block_child_id_7";
-		block_child_id_8 = "block_child_id_8";
-		block_at_amr_level = "block_at_amr_level";
-
-		block_x_min_array = modelReader->getVariableData(block_x_min);
-		block_y_min_array = modelReader->getVariableData(block_y_min);
-		block_z_min_array = modelReader->getVariableData(block_z_min);
-		block_x_max_array = modelReader->getVariableData(block_x_max);
-		block_y_max_array = modelReader->getVariableData(block_y_max);
-		block_z_max_array = modelReader->getVariableData(block_z_max);
-		block_x_center_array = modelReader->getVariableData(block_x_center);
-		block_y_center_array = modelReader->getVariableData(block_y_center);
-		block_z_center_array = modelReader->getVariableData(block_z_center);
-		block_child_id_1_array = modelReader->getVariableDataInt(block_child_id_1);
-		block_child_id_2_array = modelReader->getVariableDataInt(block_child_id_2);
-		block_child_id_3_array = modelReader->getVariableDataInt(block_child_id_3);
-		block_child_id_4_array = modelReader->getVariableDataInt(block_child_id_4);
-		block_child_id_5_array = modelReader->getVariableDataInt(block_child_id_5);
-		block_child_id_6_array = modelReader->getVariableDataInt(block_child_id_6);
-		block_child_id_7_array = modelReader->getVariableDataInt(block_child_id_7);
-		block_child_id_8_array = modelReader->getVariableDataInt(block_child_id_8);
-		block_child_count_array = modelReader->getVariableDataInt(block_child_count);
-		block_at_amr_level_array = modelReader->getVariableDataInt(block_at_amr_level);
+		block_x_min_array = modelReader->getVariableData(ccmc::strings::variables::block_x_min_);
+		block_y_min_array = modelReader->getVariableData(ccmc::strings::variables::block_y_min_);
+		block_z_min_array = modelReader->getVariableData(ccmc::strings::variables::block_z_min_);
+		block_x_max_array = modelReader->getVariableData(ccmc::strings::variables::block_x_max_);
+		block_y_max_array = modelReader->getVariableData(ccmc::strings::variables::block_y_max_);
+		block_z_max_array = modelReader->getVariableData(ccmc::strings::variables::block_z_max_);
+		block_x_center_array = modelReader->getVariableData(ccmc::strings::variables::block_x_center_);
+		block_y_center_array = modelReader->getVariableData(ccmc::strings::variables::block_y_center_);
+		block_z_center_array = modelReader->getVariableData(ccmc::strings::variables::block_z_center_);
+		block_child_id_1_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_1_);
+		block_child_id_2_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_2_);
+		block_child_id_3_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_3_);
+		block_child_id_4_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_4_);
+		block_child_id_5_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_5_);
+		block_child_id_6_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_6_);
+		block_child_id_7_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_7_);
+		block_child_id_8_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_8_);
+		block_child_count_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_count_);
+		block_at_amr_level_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_at_amr_level_);
 
 		callCount = 0;
 		old_x = -1000000000.f;
