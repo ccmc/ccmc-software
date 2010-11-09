@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ccmc.wrappers;
+package gov.nasa.gsfc.ccmc;
 
 public class Point3f {
   private long swigCPtr;

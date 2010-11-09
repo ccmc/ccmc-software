@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ccmc.wrappers;
+package gov.nasa.gsfc.ccmc;
 
 public class SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t {
   private long swigCPtr;
