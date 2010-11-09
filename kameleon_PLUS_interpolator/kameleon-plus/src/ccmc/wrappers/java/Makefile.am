@@ -1,6 +1,6 @@
 lib_LTLIBRARIES = libkameleon-plus-wrapper-java.la
 libkameleon_plus_wrapper_java_la_SOURCES = ccmc_wrap.cxx
-libkameleon_plus_wrapper_java_la_LDFLAGS = -module -avoid-version @JNI_EXTRA_LDFLAGS@ @builddir@/../../../ccmc/.libs/libkameleon-plus.a
+libkameleon_plus_wrapper_java_la_LDFLAGS = -module -avoid-version @JNI_EXTRA_LDFLAGS@ @builddir@/../../../ccmc/libkameleon-plus.la
 #libkameleon_plus_wrapper_java_la_LDFLAGS = -release @RELEASE@ @JNI_EXTRA_LDFLAGS@
 libkameleon_plus_wrapper_java_la_CXXFLAGS = -fPIC
 libkameleon_plus_wrapper_java_la_CPPFLAGS = -I@JNI_INCLUDE_DIRS@ -I@srcdir@/../../..
@@ -13,7 +13,7 @@ pkgpath = @builddir@
 jar_DATA = $(jarfile)
 JAVAROOT= @builddir@
 
-CLEANFILES = $(jarfile) $(pkgpath)/ccmc/wrappers/*.class
+CLEANFILES = $(jarfile) $(pkgpath)/gov/nasa/gsfc/ccmc/*.class
 AM_JAVACFLAGS=-nowarn
 
 dist_noinst_JAVA = 	Attribute.java \
@@ -45,4 +45,4 @@ dist_noinst_JAVA = 	Attribute.java \
 
 
 $(jarfile): $(dist_noinst_JAVA)
-	jar cf $@ $(pkgpath)/ccmc/wrappers/*.class; 
+	jar cf $@ $(pkgpath)/gov/nasa/gsfc/ccmc/*.class; 
