@@ -307,7 +307,7 @@ SWIGINTERN void vector_Sl_int_Sg__set(vector< int > *self,int i,vector< int >::v
 extern "C" {
 #endif
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1FileReader(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1FileReader(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::FileReader *result = 0 ;
   
@@ -319,7 +319,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1FileReader(JNIEnv *jenv
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -344,7 +344,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1open(JNIEnv *jenv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariable_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -369,7 +369,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariable_1_1S
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableByID_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableByID_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -386,7 +386,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableByID_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariable_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3, jint jarg4) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3, jint jarg4) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -415,7 +415,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariable_1_1S
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableByID_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableByID_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -436,7 +436,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableByID_
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAtIndex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAtIndex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
   jfloat jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -463,7 +463,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAtIn
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAtIndexByID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAtIndexByID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   jfloat jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -482,7 +482,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAtIn
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -507,7 +507,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableInt(J
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableIntAtIndex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableIntAtIndex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -534,7 +534,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableIntAtI
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfGlobalAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getNumberOfGlobalAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   int result;
@@ -549,7 +549,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfGlobal
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   int result;
@@ -564,7 +564,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfVariab
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfVariableAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getNumberOfVariableAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   int result;
@@ -579,7 +579,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfVariab
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfRecords_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getNumberOfRecords_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -604,7 +604,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfRecord
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfRecords_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getNumberOfRecords_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -621,7 +621,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getNumberOfRecord
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -646,7 +646,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableID(JNI
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -663,7 +663,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableNam
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -680,7 +680,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getGlobalAttribu
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -697,7 +697,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getGlobalAttri
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -714,7 +714,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAtt
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -739,7 +739,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getGlobalAttribu
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -774,7 +774,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAttri
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAttributeNames(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAttributeNames(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::vector< std::string > result;
@@ -789,7 +789,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getVariableAttri
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -814,7 +814,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1doesAttribute
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -839,7 +839,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1doesVariableE
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long result;
@@ -854,7 +854,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1close(JNIEnv *jen
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getCurrentFileID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getCurrentFileID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   CDFid result;
@@ -869,7 +869,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getCurrentFileID
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *result = 0 ;
@@ -884,7 +884,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_FileReader_1getCurrentFile
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1FileReader(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1FileReader(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   
   (void)jenv;
@@ -894,7 +894,127 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1FileReader(JNIEnv *je
 }
 
 
-SWIGEXPORT jdouble JNICALL Java_ccmc_wrappers_CCMCJNI_parseEPOCH3(JNIEnv *jenv, jclass jcls, jstring jarg1) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1OK_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::OK;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1OPEN_1ERROR_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::OPEN_ERROR;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1FILE_1DOES_1NOT_1EXIST_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::FILE_DOES_NOT_EXIST;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1VARIABLE_1DOES_1NOT_1EXIST_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::VARIABLE_DOES_NOT_EXIST;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1ATTRIBUTE_1DOES_1NOT_1EXIST_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::ATTRIBUTE_DOES_NOT_EXIST;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1LOAD_1FAILED_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::LOAD_FAILED;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1UNABLE_1TO_1ALLOCATE_1MEMORY_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::UNABLE_TO_ALLOCATE_MEMORY;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1VARIABLE_1NOT_1IN_1MEMORY_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::VARIABLE_NOT_IN_MEMORY;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1MODEL_1NOT_1SUPPORTED_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::MODEL_NOT_SUPPORTED;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1NOT_1A_1VALID_1KAMELEON_1FILE_1get(JNIEnv *jenv, jclass jcls) {
+  jint jresult = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (long)ccmc::FileReader::NOT_A_VALID_KAMELEON_FILE;
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jdouble JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_parseEPOCH3(JNIEnv *jenv, jclass jcls, jstring jarg1) {
   jdouble jresult = 0 ;
   char *arg1 ;
   double result;
@@ -914,7 +1034,7 @@ SWIGEXPORT jdouble JNICALL Java_ccmc_wrappers_CCMCJNI_parseEPOCH3(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_encodeEPOCH3(JNIEnv *jenv, jclass jcls, jdouble jarg1, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_encodeEPOCH3(JNIEnv *jenv, jclass jcls, jdouble jarg1, jstring jarg2) {
   double arg1 ;
   char *arg2 ;
   
@@ -932,7 +1052,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_encodeEPOCH3(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c0_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Position_1c0_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Position *arg1 = (ccmc::Position *) 0 ;
   float arg2 ;
   
@@ -945,7 +1065,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c0_1set(JNIEnv *jen
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c0_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Position_1c0_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Position *arg1 = (ccmc::Position *) 0 ;
   float result;
@@ -960,7 +1080,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c0_1get(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Position_1c1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Position *arg1 = (ccmc::Position *) 0 ;
   float arg2 ;
   
@@ -973,7 +1093,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c1_1set(JNIEnv *jen
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c1_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Position_1c1_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Position *arg1 = (ccmc::Position *) 0 ;
   float result;
@@ -988,7 +1108,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c1_1get(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c2_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Position_1c2_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Position *arg1 = (ccmc::Position *) 0 ;
   float arg2 ;
   
@@ -1001,7 +1121,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c2_1set(JNIEnv *jen
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c2_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Position_1c2_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Position *arg1 = (ccmc::Position *) 0 ;
   float result;
@@ -1016,7 +1136,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Position_1c2_1get(JNIEnv *j
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Position(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Position(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::Position *result = 0 ;
   
@@ -1028,7 +1148,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Position(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Position(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Position(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Position *arg1 = (ccmc::Position *) 0 ;
   
   (void)jenv;
@@ -1038,7 +1158,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Position(JNIEnv *jenv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1year_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1year_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int arg2 ;
   
@@ -1051,7 +1171,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1year_1set(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1year_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1year_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int result;
@@ -1066,7 +1186,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1year_1get(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1month_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1month_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int arg2 ;
   
@@ -1079,7 +1199,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1month_1set(JNIEnv *jenv
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1month_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1month_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int result;
@@ -1094,7 +1214,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1month_1get(JNIEnv *jenv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1day_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1day_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int arg2 ;
   
@@ -1107,7 +1227,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1day_1set(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1day_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1day_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int result;
@@ -1122,7 +1242,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1day_1get(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1hour_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1hour_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int arg2 ;
   
@@ -1135,7 +1255,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1hour_1set(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1hour_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1hour_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int result;
@@ -1150,7 +1270,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1hour_1get(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1minute_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1minute_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int arg2 ;
   
@@ -1163,7 +1283,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1minute_1set(JNIEnv *jen
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1minute_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1minute_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   int result;
@@ -1178,7 +1298,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1minute_1get(JNIEnv *jen
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1second_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1second_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   float arg2 ;
   
@@ -1191,7 +1311,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1second_1set(JNIEnv *jen
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1second_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1second_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   float result;
@@ -1206,7 +1326,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Time_1second_1get(JNIEnv *j
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Time(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Time(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::Time *result = 0 ;
   
@@ -1218,7 +1338,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Time(JNIEnv *jenv, jcla
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Time(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Time(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Time *arg1 = (ccmc::Time *) 0 ;
   
   (void)jenv;
@@ -1228,7 +1348,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Time(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Kameleon(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Kameleon(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::Kameleon *result = 0 ;
   
@@ -1240,7 +1360,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Kameleon(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1265,7 +1385,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1open(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getModelName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getModelName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *result = 0 ;
@@ -1280,7 +1400,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getModelName(JNI
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   float arg2 ;
   
@@ -1293,7 +1413,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1setMissingValue(JNI
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   float result;
@@ -1308,7 +1428,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getMissingValue(J
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1createNewInterpolator(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1createNewInterpolator(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   Interpolator *result = 0 ;
@@ -1323,7 +1443,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1createNewInterpola
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1loadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1loadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1348,7 +1468,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1loadVariable(JN
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1unloadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1unloadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1373,7 +1493,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1unloadVariable(
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1loadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1loadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1398,7 +1518,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1loadVectorVaria
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1unloadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1unloadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1423,7 +1543,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1unloadVectorVar
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNativeUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNativeUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1448,7 +1568,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNativeUnit(JN
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getSIUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getSIUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1473,7 +1593,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getSIUnit(JNIEnv
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVisUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVisUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1498,7 +1618,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVisUnit(JNIEn
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getConversionFactorToSI(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getConversionFactorToSI(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jfloat jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1523,7 +1643,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getConversionFact
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1548,7 +1668,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariable(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1573,7 +1693,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableInt(JNI
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNumberOfGlobalAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNumberOfGlobalAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   int result;
@@ -1588,7 +1708,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNumberOfGlobalAt
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNumberOfVariableAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNumberOfVariableAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   int result;
@@ -1603,7 +1723,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNumberOfVariable
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1628,7 +1748,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableID(JNIEn
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   long arg2 ;
@@ -1645,7 +1765,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableName(
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   long arg2 ;
@@ -1662,7 +1782,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getGlobalAttribute
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   long arg2 ;
@@ -1679,7 +1799,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getGlobalAttribu
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1704,7 +1824,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getGlobalAttribute
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1739,7 +1859,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableAttribu
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   long arg2 ;
@@ -1756,7 +1876,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getVariableAttri
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getLoadedVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getLoadedVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::vector< std::string > result;
@@ -1771,7 +1891,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getLoadedVariables
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   int result;
@@ -1786,7 +1906,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getNumberOfVariable
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1811,7 +1931,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1doesAttributeEx
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -1836,7 +1956,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1doesVariableExi
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getCurrentFileID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentFileID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   CDFid result;
@@ -1851,7 +1971,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getCurrentFileID(J
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *result = 0 ;
@@ -1866,7 +1986,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getCurrentFilena
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1defaultMissingValue_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1defaultMissingValue_1get(JNIEnv *jenv, jclass jcls) {
   jfloat jresult = 0 ;
   float result;
   
@@ -1878,7 +1998,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1defaultMissingVal
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1cxform(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2, jdouble jarg3, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1cxform(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2, jdouble jarg3, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_) {
   jint jresult = 0 ;
   char *arg1 = (char *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -1912,7 +2032,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1cxform(JNIEnv *je
 }
 
 
-SWIGEXPORT jdouble JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1gregorian_1calendar_1to_1jd(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jint jarg3, jint jarg4, jint jarg5, jint jarg6) {
+SWIGEXPORT jdouble JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1gregorian_1calendar_1to_1jd(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jint jarg3, jint jarg4, jint jarg5, jint jarg6) {
   jdouble jresult = 0 ;
   int arg1 ;
   int arg2 ;
@@ -1936,7 +2056,7 @@ SWIGEXPORT jdouble JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1gregorian_1cal
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1cxRound(JNIEnv *jenv, jclass jcls, jdouble jarg1) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1cxRound(JNIEnv *jenv, jclass jcls, jdouble jarg1) {
   jint jresult = 0 ;
   double arg1 ;
   long result;
@@ -1950,7 +2070,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1cxRound(JNIEnv *j
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1date2es(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jint jarg3, jint jarg4, jint jarg5, jint jarg6) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1date2es(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jint jarg3, jint jarg4, jint jarg5, jint jarg6) {
   jint jresult = 0 ;
   int arg1 ;
   int arg2 ;
@@ -1974,7 +2094,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1_1date2es(JNIEnv *j
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   long result;
@@ -1989,7 +2109,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1close(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getCurrentTime(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentTime(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   ccmc::Time result;
@@ -2004,7 +2124,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Kameleon_1getCurrentTime(JNI
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Kameleon(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Kameleon(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   
   (void)jenv;
@@ -2014,7 +2134,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Kameleon(JNIEnv *jenv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_kameleonObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_kameleonObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   boost::unordered_map< int,ccmc::Kameleon * > arg1 ;
   boost::unordered_map< int,ccmc::Kameleon * > *argp1 ;
   
@@ -2030,7 +2150,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_kameleonObjects_1set(JNIEnv *
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_kameleonObjects_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_kameleonObjects_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   boost::unordered_map< int,ccmc::Kameleon * > result;
   
@@ -2042,7 +2162,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_kameleonObjects_1get(JNIEnv 
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_tracerObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_tracerObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   boost::unordered_map< int,ccmc::Tracer * > arg1 ;
   boost::unordered_map< int,ccmc::Tracer * > *argp1 ;
   
@@ -2058,7 +2178,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_tracerObjects_1set(JNIEnv *je
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_tracerObjects_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_tracerObjects_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   boost::unordered_map< int,ccmc::Tracer * > result;
   
@@ -2070,7 +2190,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_tracerObjects_1get(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_interpolatorObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_interpolatorObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   boost::unordered_map< int,ccmc::Interpolator * > arg1 ;
   boost::unordered_map< int,ccmc::Interpolator * > *argp1 ;
   
@@ -2086,7 +2206,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_interpolatorObjects_1set(JNIE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_interpolatorObjects_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_interpolatorObjects_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   boost::unordered_map< int,ccmc::Interpolator * > result;
   
@@ -2098,7 +2218,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_interpolatorObjects_1get(JNI
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_fileReaderObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_fileReaderObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   boost::unordered_map< int,ccmc::FileReader * > arg1 ;
   boost::unordered_map< int,ccmc::FileReader * > *argp1 ;
   
@@ -2114,7 +2234,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_fileReaderObjects_1set(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_fileReaderObjects_1get(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_fileReaderObjects_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   boost::unordered_map< int,ccmc::FileReader * > result;
   
@@ -2126,7 +2246,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_fileReaderObjects_1get(JNIEn
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpolate_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   std::string *arg2 = 0 ;
@@ -2163,7 +2283,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpolate_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   std::string *arg2 = 0 ;
@@ -2218,7 +2338,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpolate_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   long arg2 ;
@@ -2247,7 +2367,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpolate_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   long arg2 ;
@@ -2294,7 +2414,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1interpolate_1
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1getConversionFactor_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1getConversionFactor_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   std::string *arg2 = 0 ;
@@ -2319,7 +2439,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1getConversion
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1getConversionFactor_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1getConversionFactor_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   long *arg2 = 0 ;
@@ -2338,7 +2458,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1getConversion
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   float arg2 ;
   
@@ -2351,7 +2471,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Interpolator_1setMissingValue
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Interpolator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Interpolator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   
   (void)jenv;
@@ -2361,7 +2481,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Interpolator(JNIEnv *
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Tracer(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Tracer(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   ccmc::Tracer *result = 0 ;
@@ -2376,7 +2496,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Tracer(JNIEnv *jenv, jc
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Tracer(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Tracer(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   
   (void)jenv;
@@ -2386,7 +2506,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Tracer(JNIEnv *jenv, 
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setInnerBoundary(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setInnerBoundary(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   float arg2 ;
   
@@ -2399,7 +2519,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setInnerBoundary(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setMaxIterations(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setMaxIterations(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   int arg2 ;
   
@@ -2412,7 +2532,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setMaxIterations(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setDn(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setDn(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   float arg2 ;
   
@@ -2425,7 +2545,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setDn(JNIEnv *jenv, j
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setTilt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setTilt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   float arg2 ;
   
@@ -2438,7 +2558,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setTilt(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setMissing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setMissing(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   float arg2 ;
   
@@ -2451,7 +2571,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setMissing(JNIEnv *je
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setMaxArcLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setMaxArcLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   float arg2 ;
   
@@ -2464,7 +2584,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setMaxArcLength(JNIEn
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1bidirectionalTrace(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1bidirectionalTrace(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   std::string *arg2 = 0 ;
@@ -2501,7 +2621,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1bidirectionalTrace(J
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1bidirectionalTraceWithDipole(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1bidirectionalTraceWithDipole(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   std::string *arg2 = 0 ;
@@ -2538,7 +2658,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1bidirectionalTraceWi
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTrace_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jint jarg6) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1unidirectionalTrace_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jint jarg6) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   std::string *arg2 = 0 ;
@@ -2579,7 +2699,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTrace_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTrace_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1unidirectionalTrace_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   std::string *arg2 = 0 ;
@@ -2616,7 +2736,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTrace_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTraceWithDipole_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jint jarg6) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1unidirectionalTraceWithDipole_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jint jarg6) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   std::string *arg2 = 0 ;
@@ -2657,7 +2777,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTraceW
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTraceWithDipole_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1unidirectionalTraceWithDipole_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   std::string *arg2 = 0 ;
@@ -2694,7 +2814,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1unidirectionalTraceW
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1findLastClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1findLastClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jint jarg3) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   Point3f arg2 ;
@@ -2720,7 +2840,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1findLastClosed(JNIEn
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1getLastClosedFieldlines(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1getLastClosedFieldlines(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   int arg2 ;
@@ -2741,7 +2861,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1getLastClosedFieldli
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1isClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1isClosed(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jboolean jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   Fieldline *arg2 = 0 ;
@@ -2763,7 +2883,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1isClosed(JNIEnv *
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setUseMaxArcLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setUseMaxArcLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   bool arg2 ;
   
@@ -2776,7 +2896,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setUseMaxArcLength(JN
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1getVector(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jlong jarg5, jlong jarg6, jlong jarg7, jobject jarg7_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1getVector(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jlong jarg3, jobject jarg3_, jlong jarg4, jlong jarg5, jlong jarg6, jlong jarg7, jobject jarg7_) {
   jlong jresult = 0 ;
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   std::string *arg2 = 0 ;
@@ -2829,7 +2949,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1getVector(JNIEnv *je
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setRegionOfInterest(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setRegionOfInterest(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jlong jarg3, jobject jarg3_) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   Point3f arg2 ;
   Point3f arg3 ;
@@ -2858,7 +2978,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setRegionOfInterest(J
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setUseRegionOfInterest(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1setUseRegionOfInterest(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jboolean jarg2) {
   ccmc::Tracer *arg1 = (ccmc::Tracer *) 0 ;
   bool arg2 ;
   
@@ -2871,7 +2991,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Tracer_1setUseRegionOfInteres
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Fieldline_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Fieldline_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::Fieldline *result = 0 ;
   
@@ -2883,7 +3003,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Fieldline_1_1SWIG_10(JN
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Fieldline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Fieldline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   int arg1 ;
   ccmc::Fieldline *result = 0 ;
@@ -2897,7 +3017,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Fieldline_1_1SWIG_11(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Fieldline(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Fieldline(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   
   (void)jenv;
@@ -2907,7 +3027,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Fieldline(JNIEnv *jen
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1insertPointData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jfloat jarg3) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1insertPointData(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_, jfloat jarg3) {
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   Point3f *arg2 = 0 ;
   float *arg3 = 0 ;
@@ -2929,7 +3049,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1insertPointData(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1removePoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1removePoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   int arg2 ;
   
@@ -2942,7 +3062,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1removePoint(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1reverseOrder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1reverseOrder(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   ccmc::Fieldline result;
@@ -2957,7 +3077,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1reverseOrder(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1reverseOrderInPlace(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1reverseOrderInPlace(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   
   (void)jenv;
@@ -2968,7 +3088,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1reverseOrderInPlac
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getPositions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getPositions(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   std::vector< Point3f > *result = 0 ;
@@ -2983,7 +3103,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getPositions(JNIE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getData_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getData_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   std::vector< float > *result = 0 ;
@@ -2998,7 +3118,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getData_1_1SWIG_1
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   int result;
@@ -3013,7 +3133,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1size(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getPosition(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getPosition(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   int arg2 ;
@@ -3030,7 +3150,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getPosition(JNIEn
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getData_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getData_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jfloat jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   int arg2 ;
@@ -3047,7 +3167,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getData_1_1SWIG_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getStartPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getStartPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   Point3f result;
@@ -3062,7 +3182,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1getStartPoint(JNI
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   int arg2 ;
   
@@ -3075,7 +3195,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1reserve(JNIEnv *je
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1setStartPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1setStartPoint(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
   Point3f arg2 ;
   Point3f *argp2 ;
@@ -3095,7 +3215,187 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Fieldline_1setStartPoint(JNIE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jfloat jarg1, jfloat jarg2, jfloat jarg3) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1setVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::string arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return ;
+  } 
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return ;
+  (&arg2)->assign(arg2_pstr);
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  (arg1)->setVariable(arg2);
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::string *) &(arg1)->getVariable();
+  jresult = jenv->NewStringUTF(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getDs(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< float > *) &(arg1)->getDs();
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getElements(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< Point3f > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< Point3f > *) &(arg1)->getElements();
+  *(std::vector< Point3f > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getElement(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  Point3f *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (Point3f *) &(arg1)->getElement(arg2);
+  *(Point3f **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1integrate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< float > *) &(arg1)->integrate();
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1measure(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< float > *) &(arg1)->measure();
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getLength(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jfloat jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (float)(arg1)->getLength(arg2);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getIntegral(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jfloat jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  result = (float)(arg1)->getIntegral(arg2);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1interpolate(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  ccmc::Fieldline result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  result = (arg1)->interpolate(arg2,arg3);
+  *(ccmc::Fieldline **)&jresult = new ccmc::Fieldline((const ccmc::Fieldline &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getNearest(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< int > *) &(arg1)->getNearest();
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jfloat jarg1, jfloat jarg2, jfloat jarg3) {
   jlong jresult = 0 ;
   float arg1 ;
   float arg2 ;
@@ -3113,7 +3413,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_10(JNIE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jfloat jarg1, jfloat jarg2, jfloat jarg3, jint jarg4) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jfloat jarg1, jfloat jarg2, jfloat jarg3, jint jarg4) {
   jlong jresult = 0 ;
   float arg1 ;
   float arg2 ;
@@ -3133,7 +3433,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_11(JNIE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_12(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_12(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::Point3f *result = 0 ;
   
@@ -3145,7 +3445,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_12(JNIE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   ccmc::Point3f::Coordinates arg1 ;
   ccmc::Point3f *result = 0 ;
@@ -3159,7 +3459,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Point3f_1_1SWIG_13(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1normalize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1normalize(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   
   (void)jenv;
@@ -3170,7 +3470,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1normalize(JNIEnv *je
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1toString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1toString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   std::string result;
@@ -3185,7 +3485,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1toString(JNIEnv *
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1magnitude(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1magnitude(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   float result;
@@ -3200,7 +3500,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1magnitude(JNIEnv *
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1distance(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1distance(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   jfloat jresult = 0 ;
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   ccmc::Point3f *arg2 = 0 ;
@@ -3222,7 +3522,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1distance(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1component1_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   float arg2 ;
   
@@ -3235,7 +3535,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component1_1set(JNIE
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component1_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1component1_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   float result;
@@ -3250,7 +3550,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component1_1get(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component2_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1component2_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   float arg2 ;
   
@@ -3263,7 +3563,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component2_1set(JNIE
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component2_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1component2_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   float result;
@@ -3278,7 +3578,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component2_1get(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component3_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1component3_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   float arg2 ;
   
@@ -3291,7 +3591,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component3_1set(JNIE
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component3_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1component3_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   float result;
@@ -3306,7 +3606,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1component3_1get(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1setCoordinates(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1setCoordinates(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   ccmc::Point3f::Coordinates arg2 ;
   
@@ -3319,7 +3619,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1setCoordinates(JNIEn
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1getCoordinates(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1getCoordinates(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   ccmc::Point3f::Coordinates result;
@@ -3334,7 +3634,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Point3f_1getCoordinates(JNIEn
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Point3f(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Point3f(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
   
   (void)jenv;
@@ -3344,7 +3644,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Point3f(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1getAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   std::string result;
@@ -3359,7 +3659,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeNam
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1setAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   std::string arg2 ;
   
@@ -3379,7 +3679,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeName(J
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeValue_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1setAttributeValue_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   std::string *arg2 = 0 ;
   
@@ -3396,7 +3696,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeValue_
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeValue_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1setAttributeValue_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   int *arg2 = 0 ;
   
@@ -3413,7 +3713,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeValue_
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeValue_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1setAttributeValue_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   float *arg2 = 0 ;
   
@@ -3430,7 +3730,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1setAttributeValue_
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1getAttributeType(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   ccmc::Attribute::AttributeType result;
@@ -3445,7 +3745,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeType(J
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeFloat(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1getAttributeFloat(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jfloat jresult = 0 ;
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   float result;
@@ -3460,7 +3760,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeFloa
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1getAttributeString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   std::string result;
@@ -3475,7 +3775,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeStr
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1getAttributeInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   int result;
@@ -3490,7 +3790,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1getAttributeInt(JN
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Attribute(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Attribute(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::Attribute *result = 0 ;
   
@@ -3502,7 +3802,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1Attribute(JNIEnv *jenv,
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1toString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1toString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   std::string result;
@@ -3517,7 +3817,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_Attribute_1toString(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Attribute(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Attribute(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Attribute *arg1 = (ccmc::Attribute *) 0 ;
   
   (void)jenv;
@@ -3527,7 +3827,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1Attribute(JNIEnv *jen
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1point3f_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1point3f_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   vector< Point3f > *result = 0 ;
   
@@ -3539,7 +3839,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1point3f_1_1SWIG
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1point3f_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1point3f_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   vector< ccmc::Point3f >::size_type arg1 ;
   vector< Point3f > *result = 0 ;
@@ -3553,7 +3853,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1point3f_1_1SWIG
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   vector< ccmc::Point3f >::size_type result;
@@ -3568,7 +3868,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1size(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   vector< ccmc::Point3f >::size_type result;
@@ -3583,7 +3883,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1capacity(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   vector< ccmc::Point3f >::size_type arg2 ;
   
@@ -3596,7 +3896,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1reserve(JNIE
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   bool result;
@@ -3611,7 +3911,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1isEmpty(
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   
   (void)jenv;
@@ -3622,7 +3922,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1clear(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   vector< ccmc::Point3f >::value_type *arg2 = 0 ;
   
@@ -3640,7 +3940,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1add(JNIEnv *
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   int arg2 ;
@@ -3664,7 +3964,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1get(JNIEnv 
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1point3f_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   int arg2 ;
   vector< ccmc::Point3f >::value_type *arg3 = 0 ;
@@ -3691,7 +3991,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1point3f_1set(JNIEnv *
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1point3f(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1vector_1point3f(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   vector< Point3f > *arg1 = (vector< Point3f > *) 0 ;
   
   (void)jenv;
@@ -3701,7 +4001,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1point3f(JNIEn
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1string_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1string_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   vector< std::string > *result = 0 ;
   
@@ -3713,7 +4013,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1string_1_1SWIG_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1string_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1string_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   vector< std::string >::size_type arg1 ;
   vector< std::string > *result = 0 ;
@@ -3727,7 +4027,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1string_1_1SWIG_
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   vector< std::string >::size_type result;
@@ -3742,7 +4042,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1size(JNIEnv 
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   vector< std::string >::size_type result;
@@ -3757,7 +4057,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1capacity(JNI
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   vector< std::string >::size_type arg2 ;
   
@@ -3770,7 +4070,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1reserve(JNIEn
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   bool result;
@@ -3785,7 +4085,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1isEmpty(J
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   
   (void)jenv;
@@ -3796,7 +4096,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1clear(JNIEnv 
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   vector< std::string >::value_type *arg2 = 0 ;
   
@@ -3817,7 +4117,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1add(JNIEnv *j
 }
 
 
-SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   int arg2 ;
@@ -3841,7 +4141,7 @@ SWIGEXPORT jstring JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1get(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1string_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jstring jarg3) {
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   int arg2 ;
   vector< std::string >::value_type *arg3 = 0 ;
@@ -3871,7 +4171,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1string_1set(JNIEnv *j
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1string(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1vector_1string(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   vector< std::string > *arg1 = (vector< std::string > *) 0 ;
   
   (void)jenv;
@@ -3881,7 +4181,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1string(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1float_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1float_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   vector< float > *result = 0 ;
   
@@ -3893,7 +4193,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1float_1_1SWIG_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1float_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1float_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   vector< float >::size_type arg1 ;
   vector< float > *result = 0 ;
@@ -3907,7 +4207,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1float_1_1SWIG_1
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< float > *arg1 = (vector< float > *) 0 ;
   vector< float >::size_type result;
@@ -3922,7 +4222,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1size(JNIEnv *
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< float > *arg1 = (vector< float > *) 0 ;
   vector< float >::size_type result;
@@ -3937,7 +4237,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1capacity(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   vector< float > *arg1 = (vector< float > *) 0 ;
   vector< float >::size_type arg2 ;
   
@@ -3950,7 +4250,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1reserve(JNIEnv
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   vector< float > *arg1 = (vector< float > *) 0 ;
   bool result;
@@ -3965,7 +4265,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1isEmpty(JN
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   vector< float > *arg1 = (vector< float > *) 0 ;
   
   (void)jenv;
@@ -3976,7 +4276,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1clear(JNIEnv *
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
   vector< float > *arg1 = (vector< float > *) 0 ;
   vector< float >::value_type *arg2 = 0 ;
   vector< float >::value_type temp2 ;
@@ -3991,7 +4291,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1add(JNIEnv *je
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jfloat jresult = 0 ;
   vector< float > *arg1 = (vector< float > *) 0 ;
   int arg2 ;
@@ -4015,7 +4315,7 @@ SWIGEXPORT jfloat JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1get(JNIEnv *
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1float_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3) {
   vector< float > *arg1 = (vector< float > *) 0 ;
   int arg2 ;
   vector< float >::value_type *arg3 = 0 ;
@@ -4039,7 +4339,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1float_1set(JNIEnv *je
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1float(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1vector_1float(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   vector< float > *arg1 = (vector< float > *) 0 ;
   
   (void)jenv;
@@ -4049,7 +4349,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1float(JNIEnv 
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1fieldline_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1fieldline_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   vector< Fieldline > *result = 0 ;
   
@@ -4061,7 +4361,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1fieldline_1_1SW
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1fieldline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1fieldline_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   vector< ccmc::Fieldline >::size_type arg1 ;
   vector< Fieldline > *result = 0 ;
@@ -4075,7 +4375,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1fieldline_1_1SW
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::size_type result;
@@ -4090,7 +4390,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1size(JNIE
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::size_type result;
@@ -4105,7 +4405,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1capacity(
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::size_type arg2 ;
   
@@ -4118,7 +4418,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1reserve(JN
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   bool result;
@@ -4133,7 +4433,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1isEmpt
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   
   (void)jenv;
@@ -4144,7 +4444,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1clear(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   vector< ccmc::Fieldline >::value_type *arg2 = 0 ;
   
@@ -4162,7 +4462,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1add(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   int arg2 ;
@@ -4186,7 +4486,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1get(JNIEn
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1fieldline_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jlong jarg3, jobject jarg3_) {
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   int arg2 ;
   vector< ccmc::Fieldline >::value_type *arg3 = 0 ;
@@ -4213,7 +4513,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1fieldline_1set(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1fieldline(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1vector_1fieldline(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   vector< Fieldline > *arg1 = (vector< Fieldline > *) 0 ;
   
   (void)jenv;
@@ -4223,7 +4523,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1fieldline(JNI
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1int_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1int_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   vector< int > *result = 0 ;
   
@@ -4235,7 +4535,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1int_1_1SWIG_10(
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1int_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1int_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   jlong jresult = 0 ;
   vector< int >::size_type arg1 ;
   vector< int > *result = 0 ;
@@ -4249,7 +4549,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_new_1vector_1int_1_1SWIG_11(
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1size(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< int > *arg1 = (vector< int > *) 0 ;
   vector< int >::size_type result;
@@ -4264,7 +4564,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1size(JNIEnv *je
 }
 
 
-SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1capacity(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   vector< int > *arg1 = (vector< int > *) 0 ;
   vector< int >::size_type result;
@@ -4279,7 +4579,7 @@ SWIGEXPORT jlong JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1capacity(JNIEnv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1reserve(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2) {
   vector< int > *arg1 = (vector< int > *) 0 ;
   vector< int >::size_type arg2 ;
   
@@ -4292,7 +4592,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1reserve(JNIEnv *
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1isEmpty(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jboolean jresult = 0 ;
   vector< int > *arg1 = (vector< int > *) 0 ;
   bool result;
@@ -4307,7 +4607,7 @@ SWIGEXPORT jboolean JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1isEmpty(JNIE
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1clear(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   vector< int > *arg1 = (vector< int > *) 0 ;
   
   (void)jenv;
@@ -4318,7 +4618,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1clear(JNIEnv *je
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1add(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   vector< int > *arg1 = (vector< int > *) 0 ;
   vector< int >::value_type *arg2 = 0 ;
   vector< int >::value_type temp2 ;
@@ -4333,7 +4633,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1add(JNIEnv *jenv
 }
 
 
-SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jint jresult = 0 ;
   vector< int > *arg1 = (vector< int > *) 0 ;
   int arg2 ;
@@ -4357,7 +4657,7 @@ SWIGEXPORT jint JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1get(JNIEnv *jenv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_vector_1int_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   vector< int > *arg1 = (vector< int > *) 0 ;
   int arg2 ;
   vector< int >::value_type *arg3 = 0 ;
@@ -4381,7 +4681,7 @@ SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_vector_1int_1set(JNIEnv *jenv
 }
 
 
-SWIGEXPORT void JNICALL Java_ccmc_wrappers_CCMCJNI_delete_1vector_1int(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1vector_1int(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   vector< int > *arg1 = (vector< int > *) 0 ;
   
   (void)jenv;

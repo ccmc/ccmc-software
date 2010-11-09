@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ccmc.wrappers;
+package gov.nasa.gsfc.ccmc;
 
 public class CCMCJNI {
   public final static native long new_FileReader();
@@ -38,6 +38,16 @@ public class CCMCJNI {
   public final static native long FileReader_getCurrentFileID(long jarg1, FileReader jarg1_);
   public final static native String FileReader_getCurrentFilename(long jarg1, FileReader jarg1_);
   public final static native void delete_FileReader(long jarg1);
+  public final static native int FileReader_OK_get();
+  public final static native int FileReader_OPEN_ERROR_get();
+  public final static native int FileReader_FILE_DOES_NOT_EXIST_get();
+  public final static native int FileReader_VARIABLE_DOES_NOT_EXIST_get();
+  public final static native int FileReader_ATTRIBUTE_DOES_NOT_EXIST_get();
+  public final static native int FileReader_LOAD_FAILED_get();
+  public final static native int FileReader_UNABLE_TO_ALLOCATE_MEMORY_get();
+  public final static native int FileReader_VARIABLE_NOT_IN_MEMORY_get();
+  public final static native int FileReader_MODEL_NOT_SUPPORTED_get();
+  public final static native int FileReader_NOT_A_VALID_KAMELEON_FILE_get();
   public final static native double parseEPOCH3(String jarg1);
   public final static native void encodeEPOCH3(double jarg1, String jarg2);
   public final static native void Position_c0_set(long jarg1, Position jarg1_, float jarg2);
@@ -153,6 +163,17 @@ public class CCMCJNI {
   public final static native long Fieldline_getStartPoint(long jarg1, Fieldline jarg1_);
   public final static native void Fieldline_reserve(long jarg1, Fieldline jarg1_, int jarg2);
   public final static native void Fieldline_setStartPoint(long jarg1, Fieldline jarg1_, long jarg2, Point3f jarg2_);
+  public final static native void Fieldline_setVariable(long jarg1, Fieldline jarg1_, String jarg2);
+  public final static native String Fieldline_getVariable(long jarg1, Fieldline jarg1_);
+  public final static native long Fieldline_getDs(long jarg1, Fieldline jarg1_);
+  public final static native long Fieldline_getElements(long jarg1, Fieldline jarg1_);
+  public final static native long Fieldline_getElement(long jarg1, Fieldline jarg1_, int jarg2);
+  public final static native long Fieldline_integrate(long jarg1, Fieldline jarg1_);
+  public final static native long Fieldline_measure(long jarg1, Fieldline jarg1_);
+  public final static native float Fieldline_getLength(long jarg1, Fieldline jarg1_, int jarg2);
+  public final static native float Fieldline_getIntegral(long jarg1, Fieldline jarg1_, int jarg2);
+  public final static native long Fieldline_interpolate(long jarg1, Fieldline jarg1_, int jarg2, int jarg3);
+  public final static native long Fieldline_getNearest(long jarg1, Fieldline jarg1_);
   public final static native long new_Point3f__SWIG_0(float jarg1, float jarg2, float jarg3);
   public final static native long new_Point3f__SWIG_1(float jarg1, float jarg2, float jarg3, int jarg4);
   public final static native long new_Point3f__SWIG_2();

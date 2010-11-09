@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ccmc.wrappers;
+package gov.nasa.gsfc.ccmc;
 
 public class FileReader {
   private long swigCPtr;
@@ -153,4 +153,14 @@ public class FileReader {
     return CCMCJNI.FileReader_getCurrentFilename(swigCPtr, this);
   }
 
+  public final static int OK = CCMCJNI.FileReader_OK_get();
+  public final static int OPEN_ERROR = CCMCJNI.FileReader_OPEN_ERROR_get();
+  public final static int FILE_DOES_NOT_EXIST = CCMCJNI.FileReader_FILE_DOES_NOT_EXIST_get();
+  public final static int VARIABLE_DOES_NOT_EXIST = CCMCJNI.FileReader_VARIABLE_DOES_NOT_EXIST_get();
+  public final static int ATTRIBUTE_DOES_NOT_EXIST = CCMCJNI.FileReader_ATTRIBUTE_DOES_NOT_EXIST_get();
+  public final static int LOAD_FAILED = CCMCJNI.FileReader_LOAD_FAILED_get();
+  public final static int UNABLE_TO_ALLOCATE_MEMORY = CCMCJNI.FileReader_UNABLE_TO_ALLOCATE_MEMORY_get();
+  public final static int VARIABLE_NOT_IN_MEMORY = CCMCJNI.FileReader_VARIABLE_NOT_IN_MEMORY_get();
+  public final static int MODEL_NOT_SUPPORTED = CCMCJNI.FileReader_MODEL_NOT_SUPPORTED_get();
+  public final static int NOT_A_VALID_KAMELEON_FILE = CCMCJNI.FileReader_NOT_A_VALID_KAMELEON_FILE_get();
 }
