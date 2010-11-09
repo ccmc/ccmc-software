@@ -6,7 +6,7 @@
  * the SWIG interface file instead.
  * ----------------------------------------------------------------------------- */
 
-package ccmc.wrappers;
+package gov.nasa.gsfc.ccmc;
 
 public class Fieldline {
   private long swigCPtr;
@@ -89,6 +89,50 @@ public class Fieldline {
 
   public void setStartPoint(Point3f p) {
     CCMCJNI.Fieldline_setStartPoint(swigCPtr, this, Point3f.getCPtr(p), p);
+  }
+
+  public void setVariable(String variable) {
+    CCMCJNI.Fieldline_setVariable(swigCPtr, this, variable);
+  }
+
+  public String getVariable() {
+    return CCMCJNI.Fieldline_getVariable(swigCPtr, this);
+  }
+
+  public vector_float getDs() {
+    return new vector_float(CCMCJNI.Fieldline_getDs(swigCPtr, this), false);
+  }
+
+  public vector_point3f getElements() {
+    return new vector_point3f(CCMCJNI.Fieldline_getElements(swigCPtr, this), false);
+  }
+
+  public Point3f getElement(int i) {
+    return new Point3f(CCMCJNI.Fieldline_getElement(swigCPtr, this, i), false);
+  }
+
+  public vector_float integrate() {
+    return new vector_float(CCMCJNI.Fieldline_integrate(swigCPtr, this), false);
+  }
+
+  public vector_float measure() {
+    return new vector_float(CCMCJNI.Fieldline_measure(swigCPtr, this), false);
+  }
+
+  public float getLength(int i) {
+    return CCMCJNI.Fieldline_getLength(swigCPtr, this, i);
+  }
+
+  public float getIntegral(int i) {
+    return CCMCJNI.Fieldline_getIntegral(swigCPtr, this, i);
+  }
+
+  public Fieldline interpolate(int option, int Npoints) {
+    return new Fieldline(CCMCJNI.Fieldline_interpolate(swigCPtr, this, option, Npoints), true);
+  }
+
+  public vector_int getNearest() {
+    return new vector_int(CCMCJNI.Fieldline_getNearest(swigCPtr, this), false);
   }
 
 }
