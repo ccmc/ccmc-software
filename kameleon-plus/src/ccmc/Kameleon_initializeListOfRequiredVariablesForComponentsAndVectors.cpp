@@ -291,64 +291,70 @@ namespace ccmc
 
 		}
 
+		//TODO: do error checking to set the required variables!
 		if (modelName == "mas" ||  modelName == "enlil")
 		{
-			listOfRequiredVariablesForComponents["pram"] = createVectorOfStringFromList(4, rho_c_, "ur", "uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["pram"] = createVectorOfLongFromList(4, rho_c_, "ur", "uphi", "utheta");
+			//they probably use the newer naming convention for variables
+			if (this->doesVariableExist(ccmc::strings::variables::ur_))
+			{
+				listOfRequiredVariablesForComponents["pram"] = createVectorOfStringFromList(4, rho_c_, "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["pram"] = createVectorOfLongFromList(4, rho_c_, "ur", "uphi", "utheta");
 
-			listOfRequiredVariablesForComponents["exb"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi",
-					"utheta");
-			listOfRequiredVariablesForComponentsByID["exb"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi",
-					"utheta");
 
-			listOfRequiredVariablesForComponents["exbr"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur",
-					"uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["exbr"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur",
-					"uphi", "utheta");
+				listOfRequiredVariablesForComponents["exb"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi",
+						"utheta");
+				listOfRequiredVariablesForComponentsByID["exb"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi",
+						"utheta");
 
-			listOfRequiredVariablesForComponents["exbtheta"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur",
-					"uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["exbtheta"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur",
-					"uphi", "utheta");
+				listOfRequiredVariablesForComponents["exbr"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur",
+						"uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["exbr"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur",
+						"uphi", "utheta");
 
-			listOfRequiredVariablesForComponents["exbphi"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur",
-					"uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["exbphi"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur",
-					"uphi", "utheta");
+				listOfRequiredVariablesForComponents["exbtheta"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur",
+						"uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["exbtheta"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur",
+						"uphi", "utheta");
 
-			listOfRequiredVariablesForComponents["edotj"] = createVectorOfStringFromList(9, "jr", "jphi", "jtheta", "br",
-					"bphi", "btheta", "ur", "uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["edotj"] = createVectorOfLongFromList(9, "jr", "jphi", "jtheta", "br",
-					"bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponents["exbphi"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur",
+						"uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["exbphi"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur",
+						"uphi", "utheta");
 
-			listOfRequiredVariablesForComponents["v"] = createVectorOfStringFromList(3, "ur", "uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["v"] = createVectorOfLongFromList(3, "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponents["edotj"] = createVectorOfStringFromList(9, "jr", "jphi", "jtheta", "br",
+						"bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["edotj"] = createVectorOfLongFromList(9, "jr", "jphi", "jtheta", "br",
+						"bphi", "btheta", "ur", "uphi", "utheta");
 
-			listOfRequiredVariablesForComponents["u"] = createVectorOfStringFromList(3, "ur", "uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["u"] = createVectorOfLongFromList(3, "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponents["v"] = createVectorOfStringFromList(3, "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["v"] = createVectorOfLongFromList(3, "ur", "uphi", "utheta");
 
-			listOfRequiredVariablesForComponents["j"] = createVectorOfStringFromList(3, "jr", "jphi", "jtheta");
-			listOfRequiredVariablesForComponentsByID["j"] = createVectorOfLongFromList(3, "jr", "jphi", "jtheta");
+				listOfRequiredVariablesForComponents["u"] = createVectorOfStringFromList(3, "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["u"] = createVectorOfLongFromList(3, "ur", "uphi", "utheta");
 
-			listOfRequiredVariablesForComponents["b"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
-			listOfRequiredVariablesForComponentsByID["b"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForComponents["j"] = createVectorOfStringFromList(3, "jr", "jphi", "jtheta");
+				listOfRequiredVariablesForComponentsByID["j"] = createVectorOfLongFromList(3, "jr", "jphi", "jtheta");
 
-			listOfRequiredVariablesForComponents["er"] = createVectorOfStringFromList(4, "bphi", "btheta", "utheta", "uphi");
-			listOfRequiredVariablesForComponentsByID["er"] = createVectorOfLongFromList(4, "bphi", "btheta", "utheta", "uphi");
+				listOfRequiredVariablesForComponents["b"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForComponentsByID["b"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
 
-			listOfRequiredVariablesForComponents["ephi"] = createVectorOfStringFromList(4, "br", "bphi", "ur", "uphi");
-			listOfRequiredVariablesForComponentsByID["ephi"] = createVectorOfLongFromList(4, "br", "bphi", "ur", "uphi");
+				listOfRequiredVariablesForComponents["er"] = createVectorOfStringFromList(4, "bphi", "btheta", "utheta", "uphi");
+				listOfRequiredVariablesForComponentsByID["er"] = createVectorOfLongFromList(4, "bphi", "btheta", "utheta", "uphi");
 
-			listOfRequiredVariablesForComponents["etheta"] = createVectorOfStringFromList(4, "br", "btheta", "ur", "utheta");
-			listOfRequiredVariablesForComponentsByID["etheta"] = createVectorOfLongFromList(4, "br", "btheta", "ur", "utheta");
+				listOfRequiredVariablesForComponents["ephi"] = createVectorOfStringFromList(4, "br", "bphi", "ur", "uphi");
+				listOfRequiredVariablesForComponentsByID["ephi"] = createVectorOfLongFromList(4, "br", "bphi", "ur", "uphi");
 
-			listOfRequiredVariablesForComponents["e"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
-			listOfRequiredVariablesForComponentsByID["e"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponents["etheta"] = createVectorOfStringFromList(4, "br", "btheta", "ur", "utheta");
+				listOfRequiredVariablesForComponentsByID["etheta"] = createVectorOfLongFromList(4, "br", "btheta", "ur", "utheta");
 
-			listOfRequiredVariablesForComponents["jpar"] = createVectorOfStringFromList(6, "jr", "jphi", "jtheta", "br", "bphi",
-					"btheta");
-			listOfRequiredVariablesForComponentsByID["jpar"] = createVectorOfLongFromList(6, "jr", "jphi", "jtheta", "br", "bphi",
-					"btheta");
+				listOfRequiredVariablesForComponents["e"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForComponentsByID["e"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+
+				listOfRequiredVariablesForComponents["jpar"] = createVectorOfStringFromList(6, "jr", "jphi", "jtheta", "br", "bphi",
+						"btheta");
+				listOfRequiredVariablesForComponentsByID["jpar"] = createVectorOfLongFromList(6, "jr", "jphi", "jtheta", "br", "bphi",
+						"btheta");
+			}
 
 		} else
 		{
@@ -669,43 +675,45 @@ namespace ccmc
 		if ("enlil" == modelName)
 		{
 
-			listOfRequiredVariablesForVectors["b"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
-			listOfRequiredVariablesForVectorsByID["b"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
+			if (model->doesVariableExist(ccmc::strings::variables::br_))
+			{
+				listOfRequiredVariablesForVectors["b"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForVectorsByID["b"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
 
-			listOfRequiredVariablesForVectors["b1"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
-			listOfRequiredVariablesForVectorsByID["b1"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectors["b1"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectorsByID["b1"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
 
-			listOfRequiredVariablesForVectors["b1r"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
-			listOfRequiredVariablesForVectorsByID["b1r"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectors["b1r"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectorsByID["b1r"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
 
-			listOfRequiredVariablesForVectors["b1phi"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
-			listOfRequiredVariablesForVectorsByID["b1phi"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectors["b1phi"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectorsByID["b1phi"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
 
-			listOfRequiredVariablesForVectors["b1theta"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
-			listOfRequiredVariablesForVectorsByID["b1theta"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectors["b1theta"] = createVectorOfStringFromList(3, "b1r", "b1phi", "b1theta");
+				listOfRequiredVariablesForVectorsByID["b1theta"] = createVectorOfLongFromList(3, "b1r", "b1phi", "b1theta");
 
 
-			listOfRequiredVariablesForVectors["br"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
-			listOfRequiredVariablesForVectorsByID["br"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForVectors["br"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForVectorsByID["br"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
 
-			listOfRequiredVariablesForVectors["bphi"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
-			listOfRequiredVariablesForVectorsByID["bphi"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForVectors["bphi"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForVectorsByID["bphi"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
 
-			listOfRequiredVariablesForVectors["btheta"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
-			listOfRequiredVariablesForVectorsByID["btheta"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForVectors["btheta"] = createVectorOfStringFromList(3, "br", "bphi", "btheta");
+				listOfRequiredVariablesForVectorsByID["btheta"] = createVectorOfLongFromList(3, "br", "bphi", "btheta");
 
-			listOfRequiredVariablesForVectors["e"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
-			listOfRequiredVariablesForVectorsByID["e"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForVectors["e"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForVectorsByID["e"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
 
-			listOfRequiredVariablesForVectors["er"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
-			listOfRequiredVariablesForVectorsByID["er"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForVectors["er"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForVectorsByID["er"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
 
-			listOfRequiredVariablesForVectors["ephi"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
-			listOfRequiredVariablesForVectorsByID["ephi"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForVectors["ephi"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForVectorsByID["ephi"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
 
-			listOfRequiredVariablesForVectors["etheta"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
-			listOfRequiredVariablesForVectorsByID["etheta"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
-
+				listOfRequiredVariablesForVectors["etheta"] = createVectorOfStringFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+				listOfRequiredVariablesForVectorsByID["etheta"] = createVectorOfLongFromList(6, "br", "bphi", "btheta", "ur", "uphi", "utheta");
+			}
 		}
 
 	}
