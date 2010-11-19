@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <boost/foreach.hpp>
 #include "Interpolator.h"
+#include "Constants.h"
 
 namespace ccmc
 {
@@ -18,7 +19,7 @@ namespace ccmc
 	 */
 	Model::Model()
 	{
-		missingValue = -256. * -256. * -256. * -256. * -256.;
+		missingValue = ccmc::defaults::missingValue;
 		units_ = "units";
 	}
 
