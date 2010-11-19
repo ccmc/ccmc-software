@@ -45,6 +45,7 @@ namespace ccmc
 			lat_string = ccmc::strings::variables::y_;
 			lon_string = ccmc::strings::variables::z_;
 		}
+
 		long success = loadVariable(r_string);
 		if (success != FileReader::OK)
 			return success;
