@@ -299,6 +299,16 @@ namespace ccmc
 		return interpolated;
 	}
 
+	void Fieldline::setVariable(std::string variable)
+	{
+		this->variable = variable;
+	}
+
+	const std::string& Fieldline::getVariable()
+	{
+		return this->variable;
+	}
+
 	/*
 	 * Gets the indices of the original field line nearest the interpolated ones
 	 */
