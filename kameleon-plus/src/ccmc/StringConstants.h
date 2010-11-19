@@ -14,14 +14,32 @@ namespace ccmc
 	{
 		namespace variables
 		{
+			//TODO: reorganize these
+			//c++ strings
 			static const std::string x_ = "x";
 			static const std::string y_ = "y";
 			static const std::string z_ = "z";
-			static const char * x_c_ = "x";
+
+			static const std::string r_ = "r";
+			static const std::string phi_ = "phi";
+			static const std::string theta_ = "theta";
+
 			static const std::string j_ = "j";
+			static const std::string b_ = "b";
+
+			static const std::string br_ = "br";
+			static const std::string bphi_ = "bphi";
+			static const std::string btheta_ = "btheta";
+
+			static const std::string u_ = "u";
+			static const std::string ur_ = "ur";
+			static const std::string uphi_ = "uphi";
+			static const std::string utheta_ = "utheta";
+
+			//c strings
+			static const char * x_c_ = "x";
 			static const char * j_c_ = "j";
 
-			static const std::string b_ = "b";
 			static const char * b_c_ = "b";
 
 			static const std::string jx_ = "jx";
