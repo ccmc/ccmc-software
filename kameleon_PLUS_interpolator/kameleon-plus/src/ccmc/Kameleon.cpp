@@ -13,6 +13,7 @@
 #include "FileReader.h"
 
 #include "KameleonInterpolator.h"
+#include "Constants.h"
 #include <boost/lexical_cast.hpp>
 #include <boost/foreach.hpp>
 #include <string>
@@ -40,7 +41,7 @@ namespace ccmc
 	extern "C" double gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
 	extern "C" long date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
 	extern "C" long cxRound(double doub);
-	const float Kameleon::defaultMissingValue = 1.0995116278e12;
+
 
 	/**
 	 * Default constructor
@@ -51,7 +52,7 @@ namespace ccmc
 		model = NULL;
 		modelName = "NA";
 
-		missingValue = defaultMissingValue;
+		missingValue = ccmc::defaults::missingValue;
 		//std::cout << "Kameleon object created" << endl;
 
 
@@ -122,12 +123,13 @@ namespace ccmc
 		//modelName = getGlobalAttributeString("model_name");
 		clearMaps();
 		initializeUnits();
+		initializeVariableAliases();
+		initializeConversionFactorsToSI();
 		initializeListOfRequiredVariablesForComponentsAndVectors();
 		//	initializeCalculationMethods();
 		//	initializeConversionFactorsToSI();
 		//	initializeConversionFactorsToVis();
-		initializeVariableAliases();
-		initializeConversionFactorsToSI();
+
 		//initializeConversionFactorsToVis();
 	}
 
@@ -396,7 +398,9 @@ namespace ccmc
 	 */
 	Interpolator * Kameleon::createNewInterpolator()
 	{
-		return new KameleonInterpolator(model);
+		Interpolator * interpolator = new KameleonInterpolator(model);
+		interpolator->setMissingValue(model->getMissingValue());
+		return interpolator;
 	}
 
 	/**
@@ -803,13 +807,31 @@ namespace ccmc
 	 */
 	bool Kameleon::doesVariableExist(const std::string& variable)
 	{
-		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
-		bool success = true;
-		for (int i = 0; i < requiredVariables.size(); i++)
+		bool success = false;
+
+		//check first if it's a base variable
+		if (model->doesVariableExist(variable))
 		{
-			//std::cout << "loading " << requiredVariables[i] << std::endl;
-			if (!model->doesVariableExist(requiredVariables[i]))
+			success = true;
+		} else
+		{
+			//set success to true and set it to false if any of the required variables are missing
+			success = true;
+
+			std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
+			if (requiredVariables.size() == 0)
+			{
 				success = false;
+			} else
+			{
+				for (int i = 0; i < requiredVariables.size(); i++)
+				{
+						//std::cout << "loading " << requiredVariables[i] << std::endl;
+						if (!model->doesVariableExist(requiredVariables[i]))
+							success = false;
+				}
+			}
+
 		}
 		return success;
 	}
