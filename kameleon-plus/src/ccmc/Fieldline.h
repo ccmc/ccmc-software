@@ -34,6 +34,8 @@ namespace ccmc
 			Point3f getStartPoint();
 			void reserve(int size);
 			void setStartPoint(Point3f p);
+			void setVariable(std::string variable);
+			const std::string& getVariable();
 		// A. Pembroke added below (Fall 2010)
 			const vector< float>& getDs(); // requires positions
 			const vector< Point3f >& getElements(); // requires elements
@@ -50,6 +52,7 @@ namespace ccmc
 			vector < Point3f > positions;
 			vector < float > values;
 			Point3f startPoint;
+			std::string variable;
 			// A. Pembroke added below (Fall 2010)
 			vector < Point3f > elements; // created by getDs()
 			vector < float> elementsMagnitudes; // created by getDs()
