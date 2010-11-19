@@ -6,6 +6,7 @@
  */
 
 #include "MathHelper.h"
+#include <limits>
 
 namespace ccmc
 {
@@ -13,7 +14,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   int min;
-	   min = 999999999; //if highest value possible in array is 99999999999
+	   min = std::numeric_limits<int>::max( ); //if highest value possible in array is 99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] < min) && (mask[i] > 0)) {
@@ -29,7 +30,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   int max;
-	   max = -999999999; //if lowest value possible in array is -99999999999
+	   max = std::numeric_limits<int>::min( ); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] > max) && (mask[i] > 0)) {
@@ -44,7 +45,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   float min;
-	   min = 999999999.; //if highest value possible in array is 99999999999
+	   min = std::numeric_limits<float>::max( ); //if highest value possible in array is 99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] < min) && (mask[i] > 0)) {
@@ -60,7 +61,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   float max;
-	   max = -999999999.; //if lowest value possible in array is -99999999999
+	   max = std::numeric_limits<float>::min( ); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] > max) && (mask[i] > 0)) {
@@ -75,7 +76,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   double min;
-	   min = 999999999.; //if highest value possible in array is 99999999999
+	   min = std::numeric_limits<double>::max( ); //if highest value possible in array is 99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] < min) && (mask[i] > 0)) {
@@ -91,7 +92,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   double max;
-	   max = -999999999.; //if lowest value possible in array is -99999999999
+	   max = std::numeric_limits<double>::min( ); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] > max) && (mask[i] > 0)) {
@@ -107,7 +108,7 @@ namespace ccmc
 	{
 	   long i;
 	   int min;
-	   min = 999999999; //if highest value possible in array is 99999999999
+	   min = std::numeric_limits<int>::max( ); //if highest value possible in array is 99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if(array[i] < min)
@@ -120,7 +121,7 @@ namespace ccmc
 	{
 	   long i;
 	   int max;
-	   max = -999999999; //if lowest value possible in array is -99999999999
+	   max = std::numeric_limits<int>::min( ); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if(array[i] > max)
@@ -133,7 +134,7 @@ namespace ccmc
 	{
 	   long i;
 	   long min;
-	   min = 99999999999999; //if highest value possible in array is 99999999999
+	   min = std::numeric_limits<long>::max( ); //if highest value possible in array is 99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if(array[i] < min)
@@ -146,7 +147,7 @@ namespace ccmc
 	{
 	   long i;
 	   long max;
-	   max = -99999999999999; //if lowest value possible in array is -99999999999
+	   max = std::numeric_limits<long>::min( ); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if(array[i] > max)
