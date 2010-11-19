@@ -49,39 +49,20 @@ int main (int argc, char * argv[])
 		float value;
 		//std::string bx_ = "br";
 		float convertedValue;
-	//	ProfilerStart("derived.prof");
-		//Interpolations.  The i%2 ensures the worst case scenario (previous block differe88nt than current block
-		for (int i = 0; i < 1000; i++)
+		if (success)
 		{
-			if (i % 100 == 0)
-			{
-				//std::cout << "i: " << i << std::endl;
-			}
-			if (success)
-			{
-				value = interpolator->interpolate(variable, c0,c1,c2 );
-			} else
-				value = kameleon.getMissingValue();
-			convertedValue = value * conversion;
-
-		}
-	//	ProfilerStop();
+			value = interpolator->interpolate(variable, c0,c1,c2 );
+		} else
+			value = kameleon.getMissingValue();
+		convertedValue = value * conversion;
 		std::cout << "conversionFactor: " << conversion << std::endl;
 		std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
 			convertedValue << " " << kameleon.getVisUnit(variable) << std::endl;
 
 
-		finish = clock();
-		float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
+//		float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
 
-		std::cout << "test for disk access: " << interpolator->interpolate(variable, -10.f, -2.f, -0.f) << std::endl;
 		delete interpolator;
-
-		std::cout << "Elapsed time for interpolation: " << elapsed_time << std::endl;
-
-
-
-
 		kameleon.close();
 	}
 	return 0;
