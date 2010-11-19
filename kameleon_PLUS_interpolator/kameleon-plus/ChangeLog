@@ -1,3 +1,10 @@
+2010 Nov 19   David Berrios
+-------------
+  kameleon-plus-0.1.5
+  - Added extra error checking when opening files
+  - Modified the ENLIL code to work with component names using the traditional spherical coordinate
+    names (r,phi,theta) or the older cartesian names (x,y,z)
+
 2010 Nov 04   David Berrios
 -------------
   kameleon-plus-0.1.4
