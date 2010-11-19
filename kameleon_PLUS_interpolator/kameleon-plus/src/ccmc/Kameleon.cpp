@@ -346,14 +346,12 @@ namespace ccmc
 	 * This is used in conjunction with openWithMultipleVariables
 	 * @return a vector<string> containing the variable names
 	 */
-	vector<string> Kameleon::createVectorOfStringFromList(int num, ...)
+	vector<string> Kameleon::createVectorOfStringFromList(int num, std::string * strings)
 	{
 		vector<string> neededVariables;
-		va_list list_of_variables;
-		va_start(list_of_variables, num);
 		for (int i = 0; i < num; i++)
 		{
-			neededVariables.push_back(va_arg(list_of_variables, char *));
+			neededVariables.push_back(strings[i]);
 		}
 		return neededVariables;
 	}
@@ -363,14 +361,12 @@ namespace ccmc
 	 * This is used in conjunction with openWithMultipleVariables
 	 * @return a vector<long> containing the variable names
 	 */
-	vector<long> Kameleon::createVectorOfLongFromList(int num, ...)
+	vector<long> Kameleon::createVectorOfLongFromList(int num, std::string * strings)
 	{
 		vector<long> neededVariables;
-		va_list list_of_variables;
-		va_start(list_of_variables, num);
 		for (int i = 0; i < num; i++)
 		{
-			neededVariables.push_back(this->getVariableID(va_arg(list_of_variables, char *)));
+			neededVariables.push_back(this->getVariableID(strings[i]));
 		}
 		return neededVariables;
 	}
