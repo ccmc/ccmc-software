@@ -7,6 +7,7 @@
 
 #include "ENLILInterpolator.h"
 #include "Constants.h"
+#include "StringConstants.h"
 #include "Utils.h"
 #include <iostream>
 
@@ -20,14 +21,26 @@ namespace ccmc
 		// TODO Auto-generated constructor stub
 		this->modelReader = model;
 		this->setMissingValue(this->modelReader->getMissingValue());
-		r_string = "r";
+		//the model open should have done the proper error checks, so we
+		//just check the first component name to see which set to use
+		if (this->modelReader->doesVariableExist("r"))
+		{
+			r_string = ccmc::strings::variables::r_;
+			lat_string = ccmc::strings::variables::phi_;
+			lon_string = ccmc::strings::variables::theta_;
+
+		} else
+		{
+			r_string = ccmc::strings::variables::x_;
+			lat_string = ccmc::strings::variables::y_;
+			lon_string = ccmc::strings::variables::z_;
+
+		}
+
 
 		//TODO: fix the phi/theta issue to correspond to the actual
 		//lat lon
-		lat_string = "phi";
-		lon_string = "theta";
 		r_data = modelReader->getVariableData(r_string);
-//		std::cout << "r_data" << std::endl;
 		lat_data = modelReader->getVariableData(lat_string);
 		lon_data = modelReader->getVariableData(lon_string);
 		nr = r_data->size();
@@ -128,13 +141,6 @@ namespace ccmc
 		}
 
 		lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
-		/*
-		 #ifdef DEBUG_INTERFACE
-		 printf("DEBUG\tinput position = [r,lon,lat] = [%f,%f,%f]\n", X,Y,Z);
-		 printf("DEBUG\t\t\t\t\t\t\t\t\tconverted position = [r,phi,theta] = [%f,%f,%f]\n", local_x,local_y,local_z);
-		 printf("DEBUG\t\t\t\t\t\t\t\t\tconverted position = [x,y,z]       = [%f,%f,%f]\n", local_x,local_y,local_z);
-		 #endif
-		 */
 		int ir, ilat, ilon;
 		if (previous_r == r && previous_lon == lon && previous_lat == lat)
 		{
@@ -143,18 +149,17 @@ namespace ccmc
 			ilon = previous_ilon;
 		} else
 		{
-					//first, find the cell
+			//first, find the cell
 			ir = Utils<float>::binary_search(*r_data, 0, (*r_data).size() - 1, r_converted);
 			ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
 			ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
-
 		}
 
-		//		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
 		float value;
 		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
 			value = this->missingValue;
+//			std::cerr << "returning missing value" << std::endl;
 		} else
 		{
 //cout << "about to enter interpolate_in_block_enlil" << endl;
