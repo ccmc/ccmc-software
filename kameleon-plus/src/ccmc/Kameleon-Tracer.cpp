@@ -41,6 +41,10 @@ namespace ccmc
 		useMaxArcLength = false;
 		useROI = false;
 		//std::cout << "created Tracer object" << std::endl;
+		if (kameleon->getModelName() == ccmc::strings::models::enlil_)
+		{
+			r_end = 1.f;
+		}
 
 #ifdef DEBUG_TRACER
 		cerr << "After setting box dimensions" << endl;
@@ -88,19 +92,19 @@ namespace ccmc
 		exbnames_cartesian.push_back("exbz");
 
 
-		if (this->kameleon->getModelName() == "enlil")
+		if (this->kameleon->doesVariableExist(ccmc::strings::variables::br_))
 		{
 			componentNamesMap["b"] = bnames_spherical;
 			componentNamesMap["br"] = bnames_spherical;
 			componentNamesMap["bphi"] = bnames_spherical;
 			componentNamesMap["btheta"] = bnames_spherical;
-
 		} else
 		{
 			componentNamesMap["b"] = bnames_cartesian;
 			componentNamesMap["bx"] = bnames_cartesian;
 			componentNamesMap["by"] = bnames_cartesian;
 			componentNamesMap["bz"] = bnames_cartesian;
+
 		}
 		componentNamesMap["b1"] = b1names_cartesian;
 		componentNamesMap["b1x"] = b1names_cartesian;
@@ -293,9 +297,10 @@ namespace ccmc
 		} else
 		{
 			//derived.loadVariable(variable);
-
+//			std::cerr << "calling spherical trace" << std::endl;
 			f1 = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, FOWARD);
 		}
+//		std::cerr << "after the first trace" << std::endl;
 		f1.removePoint(0);
 
 		Fieldline f2(this->step_max *2);
@@ -915,14 +920,15 @@ namespace ccmc
 		Fieldline f;
 		float min_block_size = 1.e-10;
 		float min_distance = 1.e-5;
-		if (model_name == "enlil")
+		if (model_name == ccmc::strings::models::enlil_)
 			min_block_size = 1.e-4;
 //#define DEBUG_SPHTRACER
-#define AU 1.49598e11
+
 		//#define DEBUG_SPHTRACER
 		//#define DEBUG_SPHTRACER
+
+//		cerr << "entered spherical trace" << endl;
 #ifdef DEBUG_SPHTRACER
-		cerr << "entered spherical trace" << endl;
 		cerr << "trace_in_two_direction: File: " << filename << " Var: " << variable << endl;
 		cerr << "dn:" << dn << endl;
 		cerr << "I'm inside the sphtrace function. ha HA! " << startComponent1 << " " << startComponent2 << " " << startComponent3 << endl;
@@ -952,15 +958,46 @@ namespace ccmc
 		string bComponent1;
 		string bComponent2;
 		string bComponent3;
+		string uComponent1;
+		string uComponent2;
+		string uComponent3;
 
 		if ("mas" == model_name || "enlil" == model_name)
 		{
-			component1 = "r";
-			component2 = "phi";
-			component3 = "theta";
-			bComponent1 = "br";
-			bComponent2 = "bphi";
-			bComponent3 = "btheta";
+//			std::cerr << "inside model check" << std::endl;
+			if (this->kameleon->doesVariableExist(ccmc::strings::variables::r_))
+			{
+				component1 = ccmc::strings::variables::r_;
+				component2 = ccmc::strings::variables::phi_;
+				component3 = ccmc::strings::variables::theta_;
+//				std::cerr << "setting the components to r,phi,theta" << std::endl;
+			} else
+			{
+				component1 = ccmc::strings::variables::x_;
+				component2 = ccmc::strings::variables::y_;
+				component3 = ccmc::strings::variables::z_;
+			}
+
+			if (this->kameleon->doesVariableExist(ccmc::strings::variables::br_))
+			{
+
+				bComponent1 = ccmc::strings::variables::br_;
+				bComponent2 = ccmc::strings::variables::bphi_;
+				bComponent3 = ccmc::strings::variables::btheta_;
+
+				uComponent1 = ccmc::strings::variables::ur_;
+				uComponent2 = ccmc::strings::variables::uphi_;
+				uComponent3 = ccmc::strings::variables::utheta_;
+			} else
+			{
+				bComponent1 = ccmc::strings::variables::bx_;
+				bComponent2 = ccmc::strings::variables::by_;
+				bComponent3 = ccmc::strings::variables::bz_;
+
+				uComponent1 = ccmc::strings::variables::ux_;
+				uComponent2 = ccmc::strings::variables::uy_;
+				uComponent3 = ccmc::strings::variables::uz_;
+			}
 		}
 		// ENLIL: scaling factors for vector variables
 		float factor = 1., factor_r = 1.;
@@ -976,13 +1013,19 @@ namespace ccmc
 		{
 			//if (model_name == "enlil")
 			{
-				factor_r = 1. / AU;
+				factor_r = 1. / ccmc::constants::AU_in_meters;
 
-				if (variable == "b" || variable == "br" || variable == "bphi" || variable == "btheta")
+				if (variable == ccmc::strings::variables::b_ ||
+						variable == bComponent1 ||
+						variable == bComponent2 ||
+						variable == bComponent3)
 				{
 					factor = 1.0;
 				}
-				if (variable == "u" || variable == "ur" || variable == "uphi" || variable == "utheta")
+				if (variable == ccmc::strings::variables::u_ ||
+						variable == uComponent1 ||
+						variable == uComponent2 ||
+						variable == uComponent3)
 				{
 					factor = 1e-3;
 				}
@@ -995,6 +1038,7 @@ namespace ccmc
 #ifdef DEBUG_SPHTRACER
 			cerr << "calling var_get for phi (lat)" << endl;
 #endif
+//			std::cerr << "calling getVariable" << std::endl;
 			lat_ptr = kameleon->getVariable(component2); // need to use alias "lat" later
 			NLAT = lat_ptr->size();
 			if (NLAT > 0)
@@ -1013,19 +1057,21 @@ namespace ccmc
 			}
 		}
 		/* these are in (r,lat,lon) space */
+//		std::cerr << "grabbing box dimensions" << std::endl;
 		boxMin.component1 = (kameleon->getVariableAttribute(component1.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat()
 				* factor_r;
 		boxMin.component2 = 90. - RADEG
 						* (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
 
-
+//		std::cerr << component2.c_str() << " min: " << (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat() * RADEG;
+//		std::cerr << "lat max: " << (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat() * RADEG;
 		boxMax.component1 = (kameleon->getVariableAttribute(component1.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat()
 				* factor_r;
 		boxMax.component2 = 90. - RADEG
 				* (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
-
+//		std::cerr << "after getting box dimensions" << std::endl;
 #ifdef DEBUG_SPHTRACER
 		cerr << "After setting box dimensions" << endl;
 		cerr << " Min: " << boxMin << " Max: " <<boxMax << endl;
@@ -1066,8 +1112,10 @@ namespace ccmc
 		oldPoint.component1 = 1e20;
 		oldPoint.component2 = 1e20;
 		oldPoint.component3 = 1e20;
+//		std::cerr << "Before while loop" << std::endl;
 		while (!finished && isValidPoint(previous, boxMin, boxMax))
 		{
+//			std::cerr << "Inside while loop" << std::endl;
 			Point3f addition(Point3f::SPHERICAL);
 			float magValue, dt, rsinth, rlocal;
 			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
@@ -1292,6 +1340,7 @@ namespace ccmc
 	 */
 	bool Tracer::isValidPoint(const Point3f& p, const Point3f& min, const Point3f& max)
 	{
+//		std::cerr << "inside isValidPoint" << std::endl;
 		std::string model_name = kameleon->getModelName();
 		//break this down to the individual models
 
@@ -1322,7 +1371,12 @@ namespace ccmc
 		{
 			if (sqrt(p.component1 * p.component1 + p.component2 * p.component2 + p.component3 * p.component3) <= 5.f)
 				validRegion = true;
+		} else if (model_name == ccmc::strings::models::mas_ || model_name == ccmc::strings::models::enlil_)
+		{
+			if (p.component1 >= r_end && p.component2 >= min.component2 && p.component2 <= max.component2)
+				validRegion = true;
 		} else if (p.component1 >= min.component1 && p.component2 >= min.component2 && p.component3 >= min.component3
+
 				&& p.component1 <= max.component1 && p.component2 <= max.component2 && p.component3 <= max.component3)
 			validRegion = true;
 
