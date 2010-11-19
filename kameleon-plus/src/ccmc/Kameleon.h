@@ -9,7 +9,7 @@
 
 #ifndef KAMELEON_H
 #define KAMELEON_H
-#include <stdarg.h>
+
 
 /**
  * @mainpage Kameleon Interpolator
@@ -40,6 +40,7 @@
 #include <string>
 #include <vector>
 #include <boost/unordered_map.hpp>
+#include <boost/array.hpp>
 #include "Interpolator.h"
 #include "Model.h"
 #include "FileReader.h"
@@ -171,8 +172,8 @@ namespace ccmc
 			void initializeVariableUnits();
 
 
-			vector<std::string> createVectorOfStringFromList(int num, ...);
-			vector<long> createVectorOfLongFromList(int num, ...);
+			vector<std::string> createVectorOfStringFromList(int num, std::string * strings);
+			vector<long> createVectorOfLongFromList(int num, std::string * strings);
 			std::string padString(const std::string& s, int minLength);
 			std::string modelName;
 
@@ -182,6 +183,8 @@ namespace ccmc
 			void initializeConversionFactorsToSI();
 			//void initializeConversionFactorsToVis();
 			float missingValue;
+
+			void addRequirementsForComponents(std::string variable, int num, std::string * variables);
 	};
 	//declared static variables for the C/Fortran interface functions
 	static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
