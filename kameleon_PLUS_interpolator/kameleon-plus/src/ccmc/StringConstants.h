@@ -36,37 +36,87 @@ namespace ccmc
 			static const std::string uphi_ = "uphi";
 			static const std::string utheta_ = "utheta";
 
-			//c strings
-			static const char * x_c_ = "x";
-			static const char * j_c_ = "j";
+			static const std::string jr_ = "jr";
+			static const std::string jphi_ = "jphi";
+			static const std::string jtheta_ = "jtheta";
 
-			static const char * b_c_ = "b";
+			static const std::string pram_ = "pram";
+			static const std::string t_ = "t";
+			static const std::string er_ = "er";
+			static const std::string edotj_ = "edotj";
+			static const std::string jparx_ = "jparx";
+			static const std::string jpary_ = "jpary";
+			static const std::string jparz_ = "jparz";
+			static const std::string jpar_ = "jpar";
+			static const std::string jxbx_ = "jxbx";
+			static const std::string jxby_ = "jxby";
+			static const std::string jxbz_ = "jxbz";
+			static const std::string jxb_ = "jxb";
+			static const std::string exbx_ = "exbx";
+			static const std::string exby_ = "exby";
+			static const std::string exbz_ = "exbz";
+			static const std::string exb_ = "exb";
+			static const std::string b1_ = "b1";
+			static const std::string s_ = "s";
+			static const std::string en_ = "en";
+			static const std::string v_ = "v";
+			static const std::string nv_ = "nv";
+			static const std::string nvx_ = "nvx";
+			static const std::string nvy_ = "nvy";
+			static const std::string nvz_ = "nvz";
+			static const std::string n_times_r_tothe_2_power_ = "n*r^2";
+			static const std::string polb_ = "polb";
+			static const std::string eta_ = "eta";
+			static const std::string p_times_r_tothe_2_power_ = "p*r^2";
+			static const std::string eta_times_jx_ = "eta*jx";
+			static const std::string eta_times_jy_ = "eta*jy";
+			static const std::string eta_times_jz_ = "eta*jz";
+			static const std::string eta_times_j_tothe_2_power_ = "eta*j^2";
+			static const std::string grad_n_ = "grad.n";
+			static const std::string grad_b_ = "grad.b";
+			static const std::string beta_ = "beta";
+
+
+
+
+
+
+
+
+
+
+
+			//c strings
+			//static const char * x_c_ = "x";
+			//static const char * j_c_ = "j";
+
+			//static const char * b_c_ = "b";
 
 			static const std::string jx_ = "jx";
-			static const char * jx_c_ = "jx";
+			//static const char * jx_c_ = "jx";
 
 			static const std::string jy_ = "jy";
-			static const char * jy_c_ = "jy";
+			//static const char * jy_c_ = "jy";
 
 			static const std::string jz_ = "jz";
-			static const char * jz_c_ = "jz";
+			//static const char * jz_c_ = "jz";
 
 			static const std::string bx_ = "bx";
-			static const char * bx_c_ = "bx";
+			//static const char * bx_c_ = "bx";
 
 			static const std::string by_ = "by";
-			static const char * by_c_ = "by";
+			//static const char * by_c_ = "by";
 
 			static const std::string bz_ = "bz";
-			static const char * bz_c_ = "bz";
+			//static const char * bz_c_ = "bz";
 
 
 			static const std::string b1x_ = "b1x";
 			static const std::string b1y_ = "b1y";
 			static const std::string b1z_ = "b1z";
-			static const char * b1x_c_ = "b1x";
-			static const char * b1y_c_ = "b1y";
-			static const char * b1z_c_ = "b1z";
+			//static const char * b1x_c_ = "b1x";
+			//static const char * b1y_c_ = "b1y";
+			//static const char * b1z_c_ = "b1z";
 
 
 
@@ -82,16 +132,16 @@ namespace ccmc
 			static const std::string ez_ = "ez";
 			static const std::string p_ = "p";
 
-			static const char * n_c_ = "n";
-			static const char * rho_c_ = "rho";
-			static const char * ux_c_ = "ux";
-			static const char * uy_c_ = "uy";
-			static const char * uz_c_ = "uz";
-			static const char * e_c_ = "e";
-			static const char * ex_c_ = "ex";
-			static const char * ey_c_ = "ey";
-			static const char * ez_c_ = "ez";
-			static const char * p_c_ = "p";
+			//static const char * n_c_ = "n";
+			//static const char * rho_c_ = "rho";
+			//static const char * ux_c_ = "ux";
+			//static const char * uy_c_ = "uy";
+			//static const char * uz_c_ = "uz";
+			//static const char * e_c_ = "e";
+			//static const char * ex_c_ = "ex";
+			//static const char * ey_c_ = "ey";
+			//static const char * ez_c_ = "ez";
+			//static const char * p_c_ = "p";
 
 			//Adapt3D specific strings
 			static const std::string coord_ = "coord";
