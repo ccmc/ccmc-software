@@ -84,7 +84,7 @@ namespace ccmc
 	}
 
 	/**
-	 * Does nothing.  A variable_id won't work well, since derived variables can be requested, which do not exist in the data.
+	 * Interpolates using the base model interpolators. Does not perform derived variable calculations.
 	 *
 	 * @param variable_id
 	 * @param c0
