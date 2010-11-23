@@ -450,11 +450,29 @@ namespace ccmc
 
 		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForVectors(variable);
 		bool success = true;
-		for (int i = 0; i < requiredVariables.size(); i++)
+		if (requiredVariables.size() == 0)
 		{
-			std::cout << "loading " << requiredVariables[i] << std::endl;
-			if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
+			requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
+			if (requiredVariables.size() == 0)
+			{
 				success = false;
+			} else
+			{
+				for (int i = 0; i < requiredVariables.size(); i++)
+				{
+					std::cout << "loading " << requiredVariables[i] << std::endl;
+					if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
+						success = false;
+				}
+			}
+		} else
+		{
+			for (int i = 0; i < requiredVariables.size(); i++)
+			{
+				std::cout << "loading " << requiredVariables[i] << std::endl;
+				if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
+					success = false;
+			}
 		}
 		return success;
 	}
@@ -467,11 +485,29 @@ namespace ccmc
 	{
 		std::vector<std::string> requiredVariables = this->getListOfRequiredVariablesForVectors(variable);
 		bool success = true;
-		for (int i = 0; i < requiredVariables.size(); i++)
+		if (requiredVariables.size() == 0)
 		{
-			std::cout << "unloading " << requiredVariables[i] << std::endl;
-			if (!model->unloadVariable(requiredVariables[i]))
+			requiredVariables = this->getListOfRequiredVariablesForComponents(variable);
+			if (requiredVariables.size() == 0)
+			{
 				success = false;
+			} else
+			{
+				for (int i = 0; i < requiredVariables.size(); i++)
+				{
+					std::cout << "loading " << requiredVariables[i] << std::endl;
+					if (model->unloadVariable(requiredVariables[i]) != FileReader::OK)
+						success = false;
+				}
+			}
+		} else
+		{
+			for (int i = 0; i < requiredVariables.size(); i++)
+			{
+				std::cout << "loading " << requiredVariables[i] << std::endl;
+				if (model->unloadVariable(requiredVariables[i]) != FileReader::OK)
+					success = false;
+			}
 		}
 		return success;
 	}
