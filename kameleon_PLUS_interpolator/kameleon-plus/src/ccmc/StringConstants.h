@@ -68,14 +68,36 @@ namespace ccmc
 			static const std::string polb_ = "polb";
 			static const std::string eta_ = "eta";
 			static const std::string p_times_r_tothe_2_power_ = "p*r^2";
+			static const std::string eta_times_j_ = "eta*j";
 			static const std::string eta_times_jx_ = "eta*jx";
 			static const std::string eta_times_jy_ = "eta*jy";
 			static const std::string eta_times_jz_ = "eta*jz";
+			static const std::string eta_times_jr_ = "eta*jr";
+			static const std::string eta_times_jphi_ = "eta*jphi";
+			static const std::string eta_times_jtheta_ = "eta*jtheta";
 			static const std::string eta_times_j_tothe_2_power_ = "eta*j^2";
 			static const std::string grad_n_ = "grad.n";
 			static const std::string grad_b_ = "grad.b";
 			static const std::string beta_ = "beta";
+			static const std::string bp_ = "bp";
+			static const std::string b1r_ = "b1r";
+			static const std::string b1phi_ = "b1phi";
+			static const std::string b1theta_ = "b1theta";
+			static const std::string exbr_ = "exbr";
+			static const std::string exbphi_ = "exbphi";
+			static const std::string exbtheta_ = "exbtheta";
+			static const std::string ephi_ = "ephi";
+			static const std::string etheta_ = "etheta";
 
+			static const std::string jparr_ = "jparr";
+			static const std::string jparphi_ = "jparphi";
+			static const std::string jpartheta_ = "jpartheta";
+			static const std::string jxbr_ = "jxbr";
+			static const std::string jxbphi_ = "jxbphi";
+			static const std::string jxbtheta_ = "jxbtheta";
+			static const std::string nvr_ = "nvr";
+			static const std::string nvphi_ = "nvphi";
+			static const std::string nvtheta_ = "nvtheta";
 
 
 
