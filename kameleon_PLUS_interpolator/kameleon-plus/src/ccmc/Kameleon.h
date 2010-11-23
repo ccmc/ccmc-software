@@ -185,6 +185,7 @@ namespace ccmc
 			float missingValue;
 
 			void addRequirementsForComponents(std::string variable, int num, std::string * variables);
+			void addRequirementsForVectors(std::string variable, int num, std::string * variables);
 	};
 	//declared static variables for the C/Fortran interface functions
 	static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
