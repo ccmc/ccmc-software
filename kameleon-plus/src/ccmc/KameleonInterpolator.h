@@ -68,9 +68,7 @@ namespace ccmc
 			Interpolator * interpolator;
 			boost::unordered_map<std::string, std::vector<std::string> > listOfRequiredVariablesForComponents;
 			boost::unordered_map<std::string, std::vector<std::string> > listOfRequiredVariablesForVectors;
-			typedef float (KameleonInterpolator::*CalculationMethod)(const std::string&,
-					const float& positionComponent1, const float& positionComponent2, const float& positionComponent3,
-					float& dComponent1, float& dComponent2, float& dComponent3);
+
 
 			boost::unordered_map<std::string, CalculationMethod> calculationMethod;
 			boost::unordered_map<std::string, float> conversionFactorsToSI;
