@@ -56,5 +56,40 @@ namespace ccmc
 
 		return binary_search(vec, middle + 1, end, key);
 	}
+
+	/**
+	 * TODO:  This really needs to use a grammar and all that good stuff.  This is a dumb parser
+	 */
+	float Utils::calculate(const std::vector<float>& interpValues, const std::string& expression)
+	{
+		//assume postfix notation
+		std::vector<std::string> tokens;
+		int prevIndex = 0;
+		for (int i = 0; i < expression.size(); i++)
+		{
+			if (expression[i] == '+' ||
+					expression[i] == '-' ||
+					expression[i] == '*' ||
+					expression[i] == '/' ||
+					expression[i] == '^')
+			{
+				//do some operation
+			} else
+			{
+				//push onto stack
+			}
+		}
+
+
+
+
+
+
+		return 0.;
+	}
+
+
+
+
 }
 #endif /* UTILS_H_ */
