@@ -145,7 +145,9 @@ namespace ccmc
 			virtual ~Kameleon();
 
 		private:
-
+			typedef float (KameleonInterpolator::*CalculationMethod)(const std::string&,
+								const float& positionComponent1, const float& positionComponent2, const float& positionComponent3,
+								float& dComponent1, float& dComponent2, float& dComponent3);
 			boost::unordered_map<std::string, std::string> variableNativeUnits;
 			boost::unordered_map<std::string, std::string> variableSIUnits;
 			boost::unordered_map<std::string, std::string> variableVisUnits;
@@ -162,8 +164,8 @@ namespace ccmc
 
 			Model * model;
 			void clearMaps();
-			//void initializeScalarVariable(std::string variable, int numComponents, std::string * variables, std::string visUnits,
-			//		std::string siUnits, CalculationMethod * calculationMethod);
+			void initializeScalarVariable(std::string variable, int numComponents, std::string * variables, std::string visUnits,
+					std::string siUnits, CalculationMethod * calculationMethod);
 			void initializeUnits();
 			void initializeSIUnits();
 			void initializeVisUnits();
