@@ -63,6 +63,9 @@ namespace ccmc
 
 			virtual ~KameleonInterpolator();
 		private:
+			typedef float (KameleonInterpolator::*CalculationMethod)(const std::string&,
+											const float& positionComponent1, const float& positionComponent2, const float& positionComponent3,
+											float& dComponent1, float& dComponent2, float& dComponent3);
 			std::string modelName;
 			Model * modelReader;
 			Interpolator * interpolator;
