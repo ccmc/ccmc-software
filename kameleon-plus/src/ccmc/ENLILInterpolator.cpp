@@ -37,7 +37,6 @@ namespace ccmc
 
 		}
 
-
 		//TODO: fix the phi/theta issue to correspond to the actual
 		//lat lon
 		r_data = modelReader->getVariableData(r_string);
