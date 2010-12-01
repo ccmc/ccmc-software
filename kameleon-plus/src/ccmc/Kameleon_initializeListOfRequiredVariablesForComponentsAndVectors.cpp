@@ -37,10 +37,6 @@ namespace ccmc
 		std::string jxbz[] = {bx_,by_,jx_,jy_};
 		std::string jxb[] = {bx_,by_,bz_,jx_,jy_,jz_};
 		std::string jxb_spherical[] = {br_, bphi_, btheta_, jr_, jphi_, jtheta_};
-		//std::string jxbr[] = {by_,bz_,jy_,jz_};
-		//std::string jxbphi[] = {br_,btheta_,jr_,jtheta_};
-		//std::string jxbtheta[] = {br_,bphi_,jr_,jphi_};
-
 		std::string exbx[] = {bx_,by_,bz_,ux_,uy_,uz_};
 		std::string exby[] = {bx_,by_,bz_,ux_,uy_,uz_};
 		std::string exbz[] = {bx_,by_,bz_,ux_,uy_,uz_};
@@ -237,12 +233,6 @@ namespace ccmc
 			addRequirementsForVectors(ephi_, 4, e_spherical);
 			addRequirementsForVectors(etheta_, 4, e_spherical);
 		}
-
-
-
-
-
-
 
 	}
 
