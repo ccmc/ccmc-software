@@ -130,6 +130,16 @@ class FileReader(_object):
     def getCurrentFilename(self): return _CCMC.FileReader_getCurrentFilename(self)
     __swig_destroy__ = _CCMC.delete_FileReader
     __del__ = lambda self : None;
+    OK = _CCMC.FileReader_OK
+    OPEN_ERROR = _CCMC.FileReader_OPEN_ERROR
+    FILE_DOES_NOT_EXIST = _CCMC.FileReader_FILE_DOES_NOT_EXIST
+    VARIABLE_DOES_NOT_EXIST = _CCMC.FileReader_VARIABLE_DOES_NOT_EXIST
+    ATTRIBUTE_DOES_NOT_EXIST = _CCMC.FileReader_ATTRIBUTE_DOES_NOT_EXIST
+    LOAD_FAILED = _CCMC.FileReader_LOAD_FAILED
+    UNABLE_TO_ALLOCATE_MEMORY = _CCMC.FileReader_UNABLE_TO_ALLOCATE_MEMORY
+    VARIABLE_NOT_IN_MEMORY = _CCMC.FileReader_VARIABLE_NOT_IN_MEMORY
+    MODEL_NOT_SUPPORTED = _CCMC.FileReader_MODEL_NOT_SUPPORTED
+    NOT_A_VALID_KAMELEON_FILE = _CCMC.FileReader_NOT_A_VALID_KAMELEON_FILE
 FileReader_swigregister = _CCMC.FileReader_swigregister
 FileReader_swigregister(FileReader)
 
@@ -280,6 +290,7 @@ class Interpolator(_object):
     def interpolate(self, *args): return _CCMC.Interpolator_interpolate(self, *args)
     def getConversionFactor(self, *args): return _CCMC.Interpolator_getConversionFactor(self, *args)
     def setMissingValue(self, *args): return _CCMC.Interpolator_setMissingValue(self, *args)
+    def getModelName(self): return _CCMC.Interpolator_getModelName(self)
     __swig_destroy__ = _CCMC.delete_Interpolator
     __del__ = lambda self : None;
 Interpolator_swigregister = _CCMC.Interpolator_swigregister
@@ -342,6 +353,17 @@ class Fieldline(_object):
     def getStartPoint(self): return _CCMC.Fieldline_getStartPoint(self)
     def reserve(self, *args): return _CCMC.Fieldline_reserve(self, *args)
     def setStartPoint(self, *args): return _CCMC.Fieldline_setStartPoint(self, *args)
+    def setVariable(self, *args): return _CCMC.Fieldline_setVariable(self, *args)
+    def getVariable(self): return _CCMC.Fieldline_getVariable(self)
+    def getDs(self): return _CCMC.Fieldline_getDs(self)
+    def getElements(self): return _CCMC.Fieldline_getElements(self)
+    def getElement(self, *args): return _CCMC.Fieldline_getElement(self, *args)
+    def integrate(self): return _CCMC.Fieldline_integrate(self)
+    def measure(self): return _CCMC.Fieldline_measure(self)
+    def getLength(self, *args): return _CCMC.Fieldline_getLength(self, *args)
+    def getIntegral(self, *args): return _CCMC.Fieldline_getIntegral(self, *args)
+    def interpolate(self, *args): return _CCMC.Fieldline_interpolate(self, *args)
+    def getNearest(self): return _CCMC.Fieldline_getNearest(self)
 Fieldline_swigregister = _CCMC.Fieldline_swigregister
 Fieldline_swigregister(Fieldline)
 
@@ -371,6 +393,7 @@ class Point3f(_object):
     __swig_getmethods__["component3"] = _CCMC.Point3f_component3_get
     if _newclass:component3 = _swig_property(_CCMC.Point3f_component3_get, _CCMC.Point3f_component3_set)
     def __add__(self, *args): return _CCMC.Point3f___add__(self, *args)
+    def __sub__(self, *args): return _CCMC.Point3f___sub__(self, *args)
     def __mul__(self, *args): return _CCMC.Point3f___mul__(self, *args)
     def setCoordinates(self, *args): return _CCMC.Point3f_setCoordinates(self, *args)
     def getCoordinates(self): return _CCMC.Point3f_getCoordinates(self)
