@@ -9686,6 +9686,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Interpolator_getModelName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Interpolator_getModelName",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Interpolator_getModelName" "', argument " "1"" of type '" "ccmc::Interpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Interpolator * >(argp1);
+  result = (arg1)->getModelName();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_Interpolator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
@@ -11379,6 +11401,303 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Fieldline_setVariable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Fieldline_setVariable",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_setVariable" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Fieldline_setVariable" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->setVariable(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getVariable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::string *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_getVariable",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getVariable" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::string *) &(arg1)->getVariable();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getDs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::vector< float > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_getDs",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getDs" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< float > *) &(arg1)->getDs();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::vector< Point3f > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_getElements",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getElements" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< Point3f > *) &(arg1)->getElements();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  Point3f *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Fieldline_getElement",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getElement" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_getElement" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (Point3f *) &(arg1)->getElement(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Point3f, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_integrate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::vector< float > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_integrate",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_integrate" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< float > *) &(arg1)->integrate();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_measure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::vector< float > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_measure",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_measure" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< float > *) &(arg1)->measure();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getLength(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Fieldline_getLength",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getLength" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_getLength" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (float)(arg1)->getLength(arg2);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getIntegral(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Fieldline_getIntegral",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getIntegral" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_getIntegral" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (float)(arg1)->getIntegral(arg2);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_interpolate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  ccmc::Fieldline result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Fieldline_interpolate",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_interpolate" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_interpolate" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Fieldline_interpolate" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (arg1)->interpolate(arg2,arg3);
+  resultobj = SWIG_NewPointerObj((new ccmc::Fieldline(static_cast< const ccmc::Fieldline& >(result))), SWIGTYPE_p_ccmc__Fieldline, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getNearest(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::vector< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_getNearest",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getNearest" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< int > *) &(arg1)->getNearest();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *Fieldline_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -11877,6 +12196,40 @@ SWIGINTERN PyObject *_wrap_Point3f___add__(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   arg2 = reinterpret_cast< ccmc::Point3f * >(argp2);
   result = ((ccmc::Point3f const *)arg1)->operator +((ccmc::Point3f const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new ccmc::Point3f(static_cast< const ccmc::Point3f& >(result))), SWIGTYPE_p_ccmc__Point3f, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point3f___sub__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
+  ccmc::Point3f *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  ccmc::Point3f result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Point3f___sub__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Point3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3f___sub__" "', argument " "1"" of type '" "ccmc::Point3f const *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Point3f * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ccmc__Point3f,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Point3f___sub__" "', argument " "2"" of type '" "ccmc::Point3f const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Point3f___sub__" "', argument " "2"" of type '" "ccmc::Point3f const &""'"); 
+  }
+  arg2 = reinterpret_cast< ccmc::Point3f * >(argp2);
+  result = ((ccmc::Point3f const *)arg1)->operator -((ccmc::Point3f const &)*arg2);
   resultobj = SWIG_NewPointerObj((new ccmc::Point3f(static_cast< const ccmc::Point3f& >(result))), SWIGTYPE_p_ccmc__Point3f, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
@@ -21209,6 +21562,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Interpolator_interpolate", _wrap_Interpolator_interpolate, METH_VARARGS, NULL},
 	 { (char *)"Interpolator_getConversionFactor", _wrap_Interpolator_getConversionFactor, METH_VARARGS, NULL},
 	 { (char *)"Interpolator_setMissingValue", _wrap_Interpolator_setMissingValue, METH_VARARGS, NULL},
+	 { (char *)"Interpolator_getModelName", _wrap_Interpolator_getModelName, METH_VARARGS, NULL},
 	 { (char *)"delete_Interpolator", _wrap_delete_Interpolator, METH_VARARGS, NULL},
 	 { (char *)"Interpolator_swigregister", Interpolator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Tracer", _wrap_new_Tracer, METH_VARARGS, NULL},
@@ -21244,6 +21598,17 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Fieldline_getStartPoint", _wrap_Fieldline_getStartPoint, METH_VARARGS, NULL},
 	 { (char *)"Fieldline_reserve", _wrap_Fieldline_reserve, METH_VARARGS, NULL},
 	 { (char *)"Fieldline_setStartPoint", _wrap_Fieldline_setStartPoint, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_setVariable", _wrap_Fieldline_setVariable, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_getVariable", _wrap_Fieldline_getVariable, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_getDs", _wrap_Fieldline_getDs, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_getElements", _wrap_Fieldline_getElements, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_getElement", _wrap_Fieldline_getElement, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_integrate", _wrap_Fieldline_integrate, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_measure", _wrap_Fieldline_measure, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_getLength", _wrap_Fieldline_getLength, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_getIntegral", _wrap_Fieldline_getIntegral, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_interpolate", _wrap_Fieldline_interpolate, METH_VARARGS, NULL},
+	 { (char *)"Fieldline_getNearest", _wrap_Fieldline_getNearest, METH_VARARGS, NULL},
 	 { (char *)"Fieldline_swigregister", Fieldline_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_Point3f", _wrap_new_Point3f, METH_VARARGS, NULL},
 	 { (char *)"Point3f_normalize", _wrap_Point3f_normalize, METH_VARARGS, NULL},
@@ -21257,6 +21622,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Point3f_component3_set", _wrap_Point3f_component3_set, METH_VARARGS, NULL},
 	 { (char *)"Point3f_component3_get", _wrap_Point3f_component3_get, METH_VARARGS, NULL},
 	 { (char *)"Point3f___add__", _wrap_Point3f___add__, METH_VARARGS, NULL},
+	 { (char *)"Point3f___sub__", _wrap_Point3f___sub__, METH_VARARGS, NULL},
 	 { (char *)"Point3f___mul__", _wrap_Point3f___mul__, METH_VARARGS, NULL},
 	 { (char *)"Point3f_setCoordinates", _wrap_Point3f_setCoordinates, METH_VARARGS, NULL},
 	 { (char *)"Point3f_getCoordinates", _wrap_Point3f_getCoordinates, METH_VARARGS, NULL},
@@ -22200,6 +22566,16 @@ SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   
+  SWIG_Python_SetConstant(d, "FileReader_OK",SWIG_From_long(static_cast< long >(ccmc::FileReader::OK)));
+  SWIG_Python_SetConstant(d, "FileReader_OPEN_ERROR",SWIG_From_long(static_cast< long >(ccmc::FileReader::OPEN_ERROR)));
+  SWIG_Python_SetConstant(d, "FileReader_FILE_DOES_NOT_EXIST",SWIG_From_long(static_cast< long >(ccmc::FileReader::FILE_DOES_NOT_EXIST)));
+  SWIG_Python_SetConstant(d, "FileReader_VARIABLE_DOES_NOT_EXIST",SWIG_From_long(static_cast< long >(ccmc::FileReader::VARIABLE_DOES_NOT_EXIST)));
+  SWIG_Python_SetConstant(d, "FileReader_ATTRIBUTE_DOES_NOT_EXIST",SWIG_From_long(static_cast< long >(ccmc::FileReader::ATTRIBUTE_DOES_NOT_EXIST)));
+  SWIG_Python_SetConstant(d, "FileReader_LOAD_FAILED",SWIG_From_long(static_cast< long >(ccmc::FileReader::LOAD_FAILED)));
+  SWIG_Python_SetConstant(d, "FileReader_UNABLE_TO_ALLOCATE_MEMORY",SWIG_From_long(static_cast< long >(ccmc::FileReader::UNABLE_TO_ALLOCATE_MEMORY)));
+  SWIG_Python_SetConstant(d, "FileReader_VARIABLE_NOT_IN_MEMORY",SWIG_From_long(static_cast< long >(ccmc::FileReader::VARIABLE_NOT_IN_MEMORY)));
+  SWIG_Python_SetConstant(d, "FileReader_MODEL_NOT_SUPPORTED",SWIG_From_long(static_cast< long >(ccmc::FileReader::MODEL_NOT_SUPPORTED)));
+  SWIG_Python_SetConstant(d, "FileReader_NOT_A_VALID_KAMELEON_FILE",SWIG_From_long(static_cast< long >(ccmc::FileReader::NOT_A_VALID_KAMELEON_FILE)));
   PyDict_SetItemString(d,(char*)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"Kameleon_defaultMissingValue",Swig_var_Kameleon_defaultMissingValue_get, Swig_var_Kameleon_defaultMissingValue_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"kameleonObjects",Swig_var_kameleonObjects_get, Swig_var_kameleonObjects_set);
