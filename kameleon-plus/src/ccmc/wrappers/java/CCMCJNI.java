@@ -126,6 +126,7 @@ public class CCMCJNI {
   public final static native float Interpolator_getConversionFactor__SWIG_0(long jarg1, Interpolator jarg1_, String jarg2);
   public final static native float Interpolator_getConversionFactor__SWIG_1(long jarg1, Interpolator jarg1_, int jarg2);
   public final static native void Interpolator_setMissingValue(long jarg1, Interpolator jarg1_, float jarg2);
+  public final static native String Interpolator_getModelName(long jarg1, Interpolator jarg1_);
   public final static native void delete_Interpolator(long jarg1);
   public final static native long new_Tracer(long jarg1, Kameleon jarg1_);
   public final static native void delete_Tracer(long jarg1);

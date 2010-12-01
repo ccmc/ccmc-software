@@ -2471,6 +2471,21 @@ SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1setMissing
 }
 
 
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1getModelName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Interpolator **)&jarg1; 
+  result = (arg1)->getModelName();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
 SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Interpolator(JNIEnv *jenv, jclass jcls, jlong jarg1) {
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
   
