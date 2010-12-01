@@ -1,4 +1,4 @@
-SUBDIRS = variables . wrappers
+SUBDIRS = . wrappers
 #EXTRA_LTLIBRARIES = libkameleon-tracer.la
 lib_LTLIBRARIES = libkameleon-plus.la
 
@@ -83,7 +83,7 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						MathHelper.h \
 						MathHelper.cpp
 						
-libkameleon_plus_la_LDFLAGS = -release @RELEASE@ @builddir@/../../../ccmc/variables/libkameleon-plus-variables.la
+libkameleon_plus_la_LDFLAGS = -release @RELEASE@ 
 #-enable-runtime-pseudo-reloc --enable-auto-import
 libkameleon_plus_la_CFLAGS = -fPIC
 
