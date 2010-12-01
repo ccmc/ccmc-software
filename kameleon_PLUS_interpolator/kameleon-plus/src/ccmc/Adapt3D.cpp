@@ -20,9 +20,12 @@ namespace ccmc
 	 */
 	Adapt3D::Adapt3D()
 	{
-		ndimn=NDIMN_ADAPT3D;
-		nnode=NNODE_ADAPT3D;
-		nvars=NVARS_ADAPT3D;
+		this->ndimn=NDIMN_ADAPT3D;
+		this->nnode=NNODE_ADAPT3D;
+		this->nvars=NVARS_ADAPT3D;
+		this->indx = NULL;
+		this->esup1 = NULL;
+		this->esup2 = NULL;
 
 	}
 
@@ -185,5 +188,11 @@ namespace ccmc
 	{
 		// TODO Auto-generated destructor stub
 //		std::cout << "deleting Adapt3D object" << std::endl;
+		if (this->indx != NULL)
+			delete indx;
+		if (this->esup1 != NULL)
+			delete esup1;
+		if (this->esup2 != NULL)
+			delete esup2;
 	}
 }
