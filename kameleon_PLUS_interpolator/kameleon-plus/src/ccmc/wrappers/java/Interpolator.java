@@ -63,4 +63,8 @@ public class Interpolator {
     CCMCJNI.Interpolator_setMissingValue(swigCPtr, this, missingValue);
   }
 
+  public String getModelName() {
+    return CCMCJNI.Interpolator_getModelName(swigCPtr, this);
+  }
+
 }
