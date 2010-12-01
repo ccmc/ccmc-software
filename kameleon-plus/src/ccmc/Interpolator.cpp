@@ -47,6 +47,10 @@ namespace ccmc
 		return 1.0f;
 	}
 
+	std::string Interpolator::getModelName()
+	{
+		return this->modelReader->getModelName();
+	}
 
 	/**
 	 * Destructor
