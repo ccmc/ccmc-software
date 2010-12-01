@@ -198,18 +198,18 @@ namespace ccmc
 			addRequirementsForVectors(bx_, 3, b);
 			addRequirementsForVectors(by_, 3, b);
 			addRequirementsForVectors(bz_, 3, b);
-			addRequirementsForComponents(b1x_, 3, b1);
-			addRequirementsForComponents(b1y_, 3, b1);
-			addRequirementsForComponents(b1z_, 3, b1);
-			addRequirementsForComponents(ux_, 3, u);
-			addRequirementsForComponents(uy_, 3, u);
-			addRequirementsForComponents(uz_, 3, u);
-			addRequirementsForComponents(nvx_, 3, nv);
-			addRequirementsForComponents(nvy_, 3, nv);
-			addRequirementsForComponents(nvz_, 3, nv);
-			addRequirementsForComponents(eta_times_jx_, 3, eta_times_j);
-			addRequirementsForComponents(eta_times_jy_, 3, eta_times_j);
-			addRequirementsForComponents(eta_times_jz_, 3, eta_times_j);
+			addRequirementsForVectors(b1x_, 3, b1);
+			addRequirementsForVectors(b1y_, 3, b1);
+			addRequirementsForVectors(b1z_, 3, b1);
+			addRequirementsForVectors(ux_, 3, u);
+			addRequirementsForVectors(uy_, 3, u);
+			addRequirementsForVectors(uz_, 3, u);
+			addRequirementsForVectors(nvx_, 3, nv);
+			addRequirementsForVectors(nvy_, 3, nv);
+			addRequirementsForVectors(nvz_, 3, nv);
+			addRequirementsForVectors(eta_times_jx_, 3, eta_times_j);
+			addRequirementsForVectors(eta_times_jy_, 3, eta_times_j);
+			addRequirementsForVectors(eta_times_jz_, 3, eta_times_j);
 		} else
 		{
 			addRequirementsForVectors(er_, 6, mag_velocity_spherical);
@@ -221,21 +221,21 @@ namespace ccmc
 			addRequirementsForVectors(br_, 3, b_spherical);
 			addRequirementsForVectors(bphi_, 3, b_spherical);
 			addRequirementsForVectors(btheta_, 3, b_spherical);
-			addRequirementsForComponents(b1r_, 3, b1_spherical);
-			addRequirementsForComponents(b1phi_, 3, b1_spherical);
-			addRequirementsForComponents(b1theta_, 3, b1_spherical);
-			addRequirementsForComponents(ur_, 3, u);
-			addRequirementsForComponents(uphi_, 3, u);
-			addRequirementsForComponents(utheta_, 3, u);
-			addRequirementsForComponents(nvr_, 3, nv);
-			addRequirementsForComponents(nvphi_, 3, nv);
-			addRequirementsForComponents(nvtheta_, 3, nv);
-			addRequirementsForComponents(eta_times_jr_, 3, eta_times_j_spherical);
-			addRequirementsForComponents(eta_times_jphi_, 3, eta_times_j_spherical);
-			addRequirementsForComponents(eta_times_jtheta_, 3, eta_times_j_spherical);
-			addRequirementsForComponents(er_, 4, e_spherical);
-			addRequirementsForComponents(ephi_, 4, e_spherical);
-			addRequirementsForComponents(etheta_, 4, e_spherical);
+			addRequirementsForVectors(b1r_, 3, b1_spherical);
+			addRequirementsForVectors(b1phi_, 3, b1_spherical);
+			addRequirementsForVectors(b1theta_, 3, b1_spherical);
+			addRequirementsForVectors(ur_, 3, u);
+			addRequirementsForVectors(uphi_, 3, u);
+			addRequirementsForVectors(utheta_, 3, u);
+			addRequirementsForVectors(nvr_, 3, nv);
+			addRequirementsForVectors(nvphi_, 3, nv);
+			addRequirementsForVectors(nvtheta_, 3, nv);
+			addRequirementsForVectors(eta_times_jr_, 3, eta_times_j_spherical);
+			addRequirementsForVectors(eta_times_jphi_, 3, eta_times_j_spherical);
+			addRequirementsForVectors(eta_times_jtheta_, 3, eta_times_j_spherical);
+			addRequirementsForVectors(er_, 4, e_spherical);
+			addRequirementsForVectors(ephi_, 4, e_spherical);
+			addRequirementsForVectors(etheta_, 4, e_spherical);
 		}
 
 
