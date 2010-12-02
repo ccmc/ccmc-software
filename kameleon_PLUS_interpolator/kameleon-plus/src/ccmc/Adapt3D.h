@@ -17,8 +17,22 @@
 #define NVARS_ADAPT3D 9
 #define NDIMN_ADAPT3D 3
 
+#define nx_sg 10
+#define ny_sg 10
+#define nz_sg 10
+
 namespace ccmc
 {
+	struct SmartGridSearchValues
+	{
+		double xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
+		double dx_sg,dy_sg,dz_sg;
+		int *indx;
+		int *esup1;
+		int *esup2;
+		int start_index[nz_sg][ny_sg][nx_sg];
+		int end_index[nz_sg][ny_sg][nx_sg];
+	};
 	/**
 	 * @class Adapt3D
 	 * @brief TODO: brief description of Adapt3D class
@@ -33,6 +47,7 @@ namespace ccmc
 			long open(const std::string& filename);
 
 			Interpolator * createNewInterpolator();
+			const SmartGridSearchValues& getSmartGridSearchValues();
 
 			virtual ~Adapt3D();
 
@@ -50,9 +65,12 @@ namespace ccmc
 			int grid_reg_no, npoin, nelem, nboun, nconi;
 			long GRID_REG_NO_cdf_num, NPOIN_cdf_num, NELEM_cdf_num, NDIMN_cdf_num;
 			long NBOUN_cdf_num, NCONI_cdf_num;
-			int *indx;
-			int *esup1;
-			int *esup2;
+			void smartSearchSetup();
+			bool setupUnstructuredGridSearch();
+			SmartGridSearchValues smartSearchValues;
+			const vector<float> * coord;
+			const vector<int> * intmat;
+			int index_2d_to_1d( int i1, int i2, int n1, int n2);
 
 
 

@@ -6,6 +6,7 @@
  */
 
 #include "Adapt3DInterpolator.h"
+#include "Adapt3D.h" //include the smart values structure
 #include "StringConstants.h"
 #include "MathHelper.h"
 #include <stdio.h>
@@ -37,12 +38,13 @@ namespace ccmc
 		this->intmat = (modelReader->getVariableDataInt(ccmc::strings::variables::intmat_));
 		this->unkno = (modelReader->getVariableData(ccmc::strings::variables::unkno_));
 
-		indx = new int[nelem];
-		esup1 = new int[nelem*4];
-		esup2 = new int[npoin+1];
+		this->smartSearchValues = ((Adapt3D*)(modelReader))->getSmartGridSearchValues();
+		//indx = new int[nelem];
+		//esup1 = new int[nelem*4];
+		//esup2 = new int[npoin+1];
 		this->nnode = NNODE_ADAPT3D;
-		this->unstructured_grid_setup_done = this->setupUnstructuredGridSearch();
-		this->smartSearchSetup();
+		//this->unstructured_grid_setup_done = this->setupUnstructuredGridSearch();
+		//this->smartSearchSetup();
 		this->last_element_found = -1;
 	}
 
@@ -262,430 +264,9 @@ namespace ccmc
 
 
 
-	bool Adapt3DInterpolator::setupUnstructuredGridSearch()
-	{
 
-		/*-----------------------------------------------------------------
-		!
-		!
-		! This routine sets up a look-up style index for use in searching
-		! for the element containing any arbitrary location in an unstructured
-		! grid.
-		!
-		!
-		!-----------------------------------------------------------------*/
 
 
-
-		int ipa,ipb,ipc,ipd;
-		int i_s,j_s,k_s,ielem;
-		int i,j,k;
-		int ii;
-		int nelems_in_cell[nz_sg][ny_sg][nx_sg];
-		int countup, countdown;
-
-
-		double xlo,xhi;
-		double ylo,yhi;
-		double zlo,zhi;
-		double xmean,ymean,zmean;
-		double side_l_1,side_l_2,side_l_3;
-		double side_l_4,side_l_5,side_l_6;
-		double max_element_length,max_length_sqrd;
-		double max_length_sqrd_old;
-		double dxyz[3];
-		double dxyz_min;
-		double arr2[2];
-		double arr4[4];
-		double arr7[7];
-		long   len;
-
-
-		/*-----------------------------------------------------------------*/
-		printf("Entered Structured Search Grid\n");
-
-
-		/* allocate for ELEM_INDEX_STRUCT */
-		printf("Begin allocation of elem_index_struct \n");
-		int (* elem_index_struct)[3] = NULL;
-		try
-		{
-			elem_index_struct = new int[nelem][3];
-
-		} catch (std::bad_alloc& ba)
-		{
-			std::cerr << "Unable to allocate memory: " << ba.what() << std::endl;
-			return false;
-		}
-		printf("Allocation of elem_index_struct complete \n");
-
-		last_element_found = -1;
-
-
-		xl_sg=1.e30;
-		xr_sg=-1.e30;
-		yl_sg=1.e30;
-		yr_sg=-1.e30;
-		zl_sg=1.e30;
-		zr_sg=-1.e30;
-
-		printf("npoin,ndimn %d %d \n",npoin, ndimn);
-
-		/* coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
-		* for node 1, etc
-		*/
-		for ( i=0; i<(int)npoin; i++) {
-			xl_sg=min(xl_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			xr_sg=max(xr_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			yl_sg=min(yl_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			yr_sg=max(yr_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			zl_sg=min(zl_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
-			zr_sg=max(zr_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
-		}
-
-		printf("-------------------------------\n");
-		printf("Range of Structured Search Grid\n");
-		printf("xl_sg= %e \n",xl_sg);
-		printf("xr_sg= %e \n",xr_sg);
-		printf("yl_sg= %e \n",yl_sg);
-		printf("yr_sg= %e \n",yr_sg);
-		printf("zl_sg= %e \n",zl_sg);
-		printf("zr_sg= %e \n",zr_sg);
-		printf("-------------------------------\n");
-
-
-		/* Step 1 - Define structured grid */
-
-		dx_sg = (xr_sg - xl_sg)/( (float)nx_sg );
-		dy_sg = (yr_sg - yl_sg)/( (float)ny_sg );
-		dz_sg = (zr_sg - zl_sg)/( (float)nz_sg );
-		dxyz[0] = dx_sg;
-		dxyz[1] = dy_sg;
-		dxyz[2] = dz_sg;
-		len=3;
-		dxyz_min = ccmc::Math::dfindmin(dxyz,len);
-
-
-		/* Initialize the counters for the number of elements in each grid cell */
-		for ( k=0; k<nz_sg; k++)
-		{
-			for ( j=0; j<ny_sg; j++)
-			{
-				for ( i=0; i<nx_sg; i++)
-				{
-					nelems_in_cell[k][j][i] = 0;
-				}
-			}
-		}
-
-
-		/* Step 2 - Compute index relative to structured grid for each element of
-			the unstructured grid, using the element mid-point coord.
-		*/
-
-		max_length_sqrd_old=0.;
-		max_length_sqrd=0.;
-
-
-		/* intmat is a 1D vector where the first 4 words are the node numbers of element 0, the next 4 words
-		* for element 1, etc
-		*/
-		for ( ielem=0; ielem<(int)nelem; ielem++)
-		{
-			//std::cerr << "index_2d_to_1d(" << ielem << ",0," << nelem << ",4): " << index_2d_to_1d(ielem,0,nelem,4)  << std::endl;
-			//std::cerr << "sizeof intmat: " << (*intmat).size() << std::endl;
-			ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ] -1 ;
-			ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ] -1 ;
-			ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ] -1 ;
-			ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ] -1 ;
-			/*
-			 *  coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
-			 * for node 1, etc
-			 */
-			side_l_1= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ],2) ;
-			side_l_2= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],2) ;
-			side_l_3= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
-			side_l_4= pow((*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],2) ;
-			side_l_5= pow((*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
-			side_l_6= pow((*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
-
-			arr7[0] = max_length_sqrd;
-			arr7[1] = side_l_1;
-			arr7[2] = side_l_2;
-			arr7[3] = side_l_3;
-			arr7[4] = side_l_4;
-			arr7[5] = side_l_5;
-			arr7[6] = side_l_6;
-
-			max_length_sqrd=ccmc::Math::dfindmax(arr7,7);
-
-			arr4[0] = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
-			arr4[1] = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ];
-			arr4[2] = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ];
-			arr4[3] = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ];
-			xlo = ccmc::Math::dfindmin(arr4,4);
-			xhi = ccmc::Math::dfindmax(arr4,4);
-			arr4[0] = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
-			arr4[1] = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ];
-			arr4[2] = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ];
-			arr4[3] = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ];
-			ylo = ccmc::Math::dfindmin(arr4,4);
-			yhi = ccmc::Math::dfindmax(arr4,4);
-			arr4[0] = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
-			arr4[1] = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ];
-			arr4[2] = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ];
-			arr4[3] = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ];
-			zlo = ccmc::Math::dfindmin(arr4,4);
-			zhi = ccmc::Math::dfindmax(arr4,4);
-
-			xmean = 0.5*(xlo+xhi);
-			ymean = 0.5*(ylo+yhi);
-			zmean = 0.5*(zlo+zhi);
-
-
-			i_s = (int)( (xmean-xl_sg)/dx_sg ) ;
-			j_s = (int)( (ymean-yl_sg)/dy_sg ) ;
-			k_s = (int)( (zmean-zl_sg)/dz_sg ) ;
-			elem_index_struct[ielem][0] = i_s;
-			elem_index_struct[ielem][1] = j_s;
-			elem_index_struct[ielem][2] = k_s;
-			nelems_in_cell[k_s][j_s][i_s] = nelems_in_cell[k_s][j_s][i_s] + 1;
-
-
-//#define DEBUGX
-			#ifdef DEBUGX
-			if(ielem < 10)
-			{
-				printf("indexes %d %d %d %d \n",
-				index_2d_to_1d(ielem,0,nelem,4),
-				index_2d_to_1d(ielem,1,nelem,4),
-				index_2d_to_1d(ielem,2,nelem,4),
-				index_2d_to_1d(ielem,3,nelem,4));
-				printf("npoin ndimn %d %d\n",npoin,ndimn);
-				printf("ielem %d xmean ymean zmean %e %e %e \n",ielem,xmean,ymean,zmean);
-				printf("ielem %d xlo ylo zlo %e %e %e \n",ielem,xlo,ylo,zlo);
-				printf("ielem %d xhi yhi zhi %e %e %e \n",ielem,xhi,yhi,zhi);
-				printf("ielem %d ipa ipb ipc ipd %d %d %d %d \n",ielem,ipa,ipb,ipc,ipd);
-				printf("ielem %d dx_sg dy_sg dz_sg %e %e %e \n",ielem,dx_sg, dy_sg, dz_sg);
-				printf("ielem %d i_s j_s k_s %d %d %d \n",ielem,i_s,j_s,k_s);
-				printf("ielem %d i_s j_s k_s %d %d %d \n",ielem,i_s,j_s,k_s);
-				printf("ielem %d nelems_in_cell[k_s][j_s][i_s]=%d \n",ielem,nelems_in_cell[k_s][j_s][i_s]);
-			}
-			if(elem_index_struct[ielem][0] > nx_sg)
-			{
-				printf("ielem %d elem_index_struct[ielem][0] too big %d %d \n",ielem,elem_index_struct[ielem][0]);
-			}
-			if(elem_index_struct[ielem][1] > ny_sg)
-			{
-				printf("ielem %d elem_index_struct[ielem][1] too big %d %d \n",ielem,elem_index_struct[ielem][1]);
-			}
-			if(elem_index_struct[ielem][2] > nz_sg)
-			{
-				printf("ielem %d elem_index_struct[ielem][2] too big %d %d \n",ielem,elem_index_struct[ielem][2]);
-			}
-			#endif
-
-		}
-		max_element_length = sqrt(max_length_sqrd);
-
-		printf("Maximum element length = %e \n",max_element_length);
-		printf("Grid cell spacing = %e \n",dxyz_min);
-
-		printf("Ratio of search grid spacing to max element length (Must be greater than 1) = %e \n",
-								   dxyz_min/max_element_length);
-		if(max_element_length > dxyz_min) {
-			printf("ERROR: UNSTRUCTURED SEARCH GRID SPACING IS TOO FINE \n");
-			printf("ERROR: SOLUTION - INCREASE NO OF GRID POINTS BY FACTOR %e \n", max_element_length/dxyz_min);
-			//return false;
-		}
-
-
-		/* Step 3 - place starting and ending indeces of element list into each structured cell */
-
-		/* Create start and end pointers for each grid cell's section of the
-		index to the element list */
-		countup   = 0;
-		countdown = nelem-1;
-		for ( k=0; k<nz_sg; k++ )
-		{
-			for ( j=0; j<ny_sg; j++ )
-			{
-				for ( i=0; i<nx_sg; i++ )
-				{
-					start_index[k][j][i] = countup;
-					countup = countup + nelems_in_cell[k][j][i];
-					end_index[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i] = countdown;
-					countdown = countdown - nelems_in_cell[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i];
-				}
-			}
-		}
-		for ( k=0; k<nz_sg; k++ )
-		{
-			for ( j=0; j<ny_sg; j++ )
-				{
-					for ( i=0; i<nx_sg; i++ )
-					{
-						end_index[k][j][i] = max(start_index[k][j][i],end_index[k][j][i]);
-					}
-			}
-		}
-
-
-		/* Step 4 - Create the index */
-		for ( k=0; k<nz_sg; k++)
-		{
-			for ( j=0; j<ny_sg; j++)
-			{
-				for ( i=0; i<nx_sg; i++)
-				{
-					nelems_in_cell[k][j][i] = 0;
-				}
-			}
-		}
-		for ( ielem=0; ielem<nelem; ielem++)
-		{
-			i = elem_index_struct[ielem][0];
-			j = elem_index_struct[ielem][1];
-			k = elem_index_struct[ielem][2];
-			ii = start_index[k][j][i] + nelems_in_cell[k][j][i];
-			indx[ii] = ielem;
-			nelems_in_cell[k][j][i] = nelems_in_cell[k][j][i] + 1;
-		}
-
-		delete(elem_index_struct);
-
-		/*     end subroutine setup_search_unstructured_grid */
-		return true;
-
-	}
-
-	void Adapt3DInterpolator::smartSearchSetup()
-	{
-
-		/*
-		!
-		!
-		! Written:    Original by Hong Luo
-		!             Modified by Peter MacNeice - Aug 2010
-		!
-		*/
-
-
-	   int ip,ie,inode,nstor,ielem,istor;
-	   int nnodes, ipoin;
-
-		/*----------------------------------------------------------------
-		! Start of smart search setup
-		!----------------------------------------------------------------*/
-
-		nnodes = nelem*nnode;     /* number of element/node couples */
-
-
-
-
-		/*
-		!
-		!...  this sub finds the elements that surround each point
-		!
-		!...  loop over the points, seeing how many elements surround each point
-		!
-		!...  set esup2=0
-		!
-		*/
-
-		for( ip=0; ip<npoin+1; ip++)
-		{
-			esup2[ip] = 0;
-		}
-
-		/*
-		!
-		!...  loop over the elements, storing 'ahead'
-		!
-		*/
-		printf(" nnode: %d\n",nnode);
-		for( ie=0; ie<nelem; ie++)
-		{
-			for( inode=0; inode<nnode; inode++)
-			{
-				ip         = (*intmat)[ index_2d_to_1d(ie,inode,nelem,4) ];
-				//std::cerr << "ip: " << ip << std::endl;
-				esup2[ip]  = esup2[ip] + 1;
-			}
-		}
-		/*
-		!
-		!...  reshuffle esup2
-		!
-		*/
-		for( ip=1; ip<npoin+1; ip++)
-		{
-			esup2[ip] = esup2[ip] + esup2[ip-1];
-		}
-
-		nstor = esup2[npoin];
-
-		/*
-		!
-		!...  check
-		!
-		!      if(nstor .gt. mesup) print 1,nstor
-		!      if(nstor .gt. mesup) stop
-		!    1 format(' please increase mesup in sub fielsup1',
-		!     &     /,' needed:',i8)
-
-		!
-		!...  now store the surrounding elements in esup1
-		!
-		*/
-		for( ielem=0; ielem<nelem; ielem++)
-		{
-			for( inode=0; inode<nnode; inode++)
-			{
-				ipoin        = (*intmat)[ index_2d_to_1d(ielem,inode,nelem,4) ] -1;
-				istor        = esup2[ipoin] + 1;
-				esup2[ipoin] = istor;
-				esup1[istor-1] = ielem;
-			}
-		}
-		/*
-		!
-		!...  finally, reorder esup2
-		!
-		*/
-		for( ip=npoin; ip>0; ip--) {
-			esup2[ip] = esup2[ip-1];
-		}
-
-		esup2[0] = 0;
-
-
-		/*    int nesup    = esup2[npoin];
-		printf(" nesup = %i in fielsup1 \n",nesup); */
-
-
-		/* The routine locate_facing_elements takes too long to execute when
-		used to optimize support fieldline tracing */
-		/*      locate_facing_elements; */
-
-		/*----------------------------------------------------------------
-		! End of smart search setup
-		!----------------------------------------------------------------*/
-
-
-	}
 
 	int Adapt3DInterpolator::smartSearch(double * search_point_coords)
 	{
@@ -831,11 +412,11 @@ namespace ccmc
 
 
 
-					k_node    = esup2[inode]   +1 ;
-					k_node_hi = esup2[inode+1] +1 ;
+					k_node    = this->smartSearchValues.esup2[inode]   +1 ;
+					k_node_hi = this->smartSearchValues.esup2[inode+1] +1 ;
 
 					//std::cerr << "inode: " << inode << " k_node: " << k_node << " sizeof(esup1) " << (nelem*4) << std::endl;
-					jelem =  esup1[k_node];
+					jelem =  this->smartSearchValues.esup1[k_node];
 					while( (ifound != 0) && (k_node < k_node_hi) )
 					{
 
@@ -848,7 +429,7 @@ namespace ccmc
 							printf("Not found in elem %i \n",jelem);
 							#endif
 							k_node += 1;
-							jelem =  esup1[k_node];
+							jelem =  this->smartSearchValues.esup1[k_node];
 							#ifdef DEBUGS
 							printf("Next element to check is %i %i %i \n",jelem,i_node,i_order);
 							#endif
@@ -957,15 +538,15 @@ namespace ccmc
 	#ifdef DEBUG
 	         printf("Searching for point x y z = %e %e %e\n",x,y,z);
 	#endif
-	         i_s = (int)( (x-xl_sg)/dx_sg );
-	         j_s = (int)( (y-yl_sg)/dy_sg );
-	         k_s = (int)( (z-zl_sg)/dz_sg );
+	         i_s = (int)( (x-this->smartSearchValues.xl_sg)/this->smartSearchValues.dx_sg );
+	         j_s = (int)( (y-this->smartSearchValues.yl_sg)/this->smartSearchValues.dy_sg );
+	         k_s = (int)( (z-this->smartSearchValues.zl_sg)/this->smartSearchValues.dz_sg );
 
 	#ifdef DEBUG
 	         printf("Located in structured cell %d %d %d\n",i_s,j_s,k_s);
 	#endif
-	         indx_start = start_index[k_s][j_s][i_s];
-	         indx_end   = end_index[k_s][j_s][i_s];
+	         indx_start = this->smartSearchValues.start_index[k_s][j_s][i_s];
+	         indx_end   = this->smartSearchValues.end_index[k_s][j_s][i_s];
 
 	/* test each element between indx_start and indx_end to find the cell
 	   containing coord1 = (x,y,z)         */
@@ -977,7 +558,7 @@ namespace ccmc
 	         ifound = 1;
 	         while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) )
 	         {
-	           jelem=indx[indx1];
+	           jelem=this->smartSearchValues.indx[indx1];
 	           ifound = chkineln(cintp ,jelem ,shapex);
 	           if (ifound == 0) ielem=indx1;
 	           indx1=indx1+1;
@@ -1000,12 +581,12 @@ namespace ccmc
 	           if(ifound == 1) {
 	             just_found=1;
 	             if( ( (i != i_s) || (j != j_s) || (k != k_s) ) ) {
-	               indx_start = start_index[k][j][i];
-	               indx_end   = end_index[k][j][i];
+	               indx_start = this->smartSearchValues.start_index[k][j][i];
+	               indx_end   = this->smartSearchValues.end_index[k][j][i];
 	               indx1 = indx_start;
 	               ifound = 1;
 	               while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) ) {
-	                 jelem=indx[indx1];
+	                 jelem=this->smartSearchValues.indx[indx1];
 	                 ifound = chkineln(cintp ,jelem ,shapex);
 	                 if (ifound == 0 ) {
 	                   ielem=indx1;
@@ -1034,7 +615,7 @@ namespace ccmc
 	           printf("Using Brute force now!\n");
 	         }
 	         kelem=-1;
-	         if( ielem != -1) kelem=indx[ielem];
+	         if( ielem != -1) kelem=this->smartSearchValues.indx[ielem];
 
 	         }
 	         last_element_found=kelem;
@@ -1067,12 +648,12 @@ namespace ccmc
 	      int within_bounds = 1;
 
 	      radius=sqrt(scoord[0]*scoord[0]+scoord[1]*scoord[1]+scoord[2]*scoord[2]);
-	      if(scoord[0] < xl_sg) within_bounds = 0;
-	      if(scoord[0] > xr_sg) within_bounds = 0;
-	      if(scoord[1] < yl_sg) within_bounds = 0;
-	      if(scoord[1] > yr_sg) within_bounds = 0;
-	      if(scoord[2] < zl_sg) within_bounds = 0;
-	      if(scoord[2] > zr_sg) within_bounds = 0;
+	      if(scoord[0] < this->smartSearchValues.xl_sg) within_bounds = 0;
+	      if(scoord[0] > this->smartSearchValues.xr_sg) within_bounds = 0;
+	      if(scoord[1] < this->smartSearchValues.yl_sg) within_bounds = 0;
+	      if(scoord[1] > this->smartSearchValues.yr_sg) within_bounds = 0;
+	      if(scoord[2] < this->smartSearchValues.zl_sg) within_bounds = 0;
+	      if(scoord[2] > this->smartSearchValues.zr_sg) within_bounds = 0;
 	      if(radius < 1.) within_bounds = 0;
 	      if(radius > 5.) within_bounds = 0;
 
@@ -1321,9 +902,6 @@ namespace ccmc
 	Adapt3DInterpolator::~Adapt3DInterpolator()
 	{
 		// TODO Auto-generated destructor stub
-		delete indx;
-		delete esup1;
-		delete esup2;
 
 	}
 }

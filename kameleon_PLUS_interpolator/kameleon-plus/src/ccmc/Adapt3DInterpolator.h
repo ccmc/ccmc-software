@@ -9,6 +9,7 @@
 #define ADAPT3DINTERPOLATOR_H_
 
 #include "Interpolator.h"
+#include "Adapt3D.h"
 
 #define NNODE_ADAPT3D 4
 #define NVARS_ADAPT3D 9
@@ -42,18 +43,14 @@ namespace ccmc
 			int nnode;
 			int nvars;
 			/* variables needed for searching unstructured grids */
-			double            xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
-			double            dx_sg,dy_sg,dz_sg;
-			int               start_index[nz_sg][ny_sg][nx_sg];
-			int               end_index[nz_sg][ny_sg][nx_sg];
-			int               *indx;
-			int               *esup1;
-			int               *esup2;
+
+
+			SmartGridSearchValues smartSearchValues;
 			int               unstructured_grid_setup_done;
-			int               last_element_found;
+
 			bool setupUnstructuredGridSearchFinished;
 			bool setupUnstructuredGridSearch();
-
+			int last_element_found;
 
 
 			int ndimn, grid_reg_no, npoin, nelem;
@@ -66,7 +63,7 @@ namespace ccmc
 
 			int findElement(double *cintp, int clear_cache);
 			int chkineln(double * cintp ,int ielem , double * shapex);
-			void smartSearchSetup();
+
 			int smartSearch(double *search_point_coords);
 			int point_within_grid( double * scoord );
 			int index_2d_to_1d( int i1, int i2, int n1, int n2);
