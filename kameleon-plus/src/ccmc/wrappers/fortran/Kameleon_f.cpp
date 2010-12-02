@@ -16,8 +16,13 @@ using namespace ccmc;
 void f_kameleon_create_(int * id)
 {
 //	std::cout << "calling C create function" << std::endl;
-	Kameleon_create(*id);
+	*id = Kameleon_create();
 //	std::cout << "after C create function" << std::endl;
+}
+
+void f_interpolator_create(int * kid, int * id)
+{
+	*id = Interpolator_create(*kid);
 }
 
 void f_kameleon_open_(int * id, const char * filename, long * status)
@@ -39,6 +44,30 @@ void f_kameleon_open_(int * id, const char * filename, long * status)
 
 	}
 	*status = Kameleon_open(*id, filename_corrected);
+}
+
+void f_kameleon_interpolate(int * id, const char * variable, const float * c0,
+		float * c1, float *c2, float * dc0, float * dc1, float * dc2, float * returnValue)
+{
+	std::string variable_str = variable;
+	//get string length
+	int length = variable_str.size();
+	char variable_corrected[length+1];
+	strcpy(variable_corrected, variable_str.c_str());
+	//std::cout << "string length: " << length << std::endl;
+	for (int i = length; i> 1; i--)
+	{
+		if (variable_corrected[i-1] != ' ')
+		{
+	//		std::cout << "add the character at index: " << i << std::endl;
+			variable_corrected[i] = '\0';
+			break;
+		}
+
+	}
+
+	*returnValue = Kameleon_interpolate(*id, variable, c0, c1, c2, dc0, dc1, dc2);
+
 }
 //extern _C_ void f_kameleon_get_model_name(int id, char * model_name);
 //extern _C_ float Kameleon_interpolate(int id, const char * variable, const float * c0,
