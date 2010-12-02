@@ -19,7 +19,7 @@ using namespace ccmc;
 
 void f_filereader_create_(int * id)
 {
-	FileReader_create(*id);
+	*id = FileReader_create();
 }
 
 void f_filereader_open_(int * id, const char * filename, long * status)

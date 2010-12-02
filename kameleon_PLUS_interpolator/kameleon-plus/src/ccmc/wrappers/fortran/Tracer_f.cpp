@@ -13,7 +13,7 @@
 
 void f_tracer_create_(int * id, int * kid)
 {
-	Tracer_create(*id, *kid);
+	Tracer_create(*kid);
 }
 void f_tracer_bidirectionaltrace_(int * id, const char * variable, const float * startComponent1, const float * startComponent2,
 		const float * startComponent3, const int * step_max, const float * dn, int * actual_steps, float * x_array, float * y_array, float * z_array)
