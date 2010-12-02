@@ -16,12 +16,10 @@ int main( int argc, char * argv[])
 		printf("Must enter 1 filename1\n");
 		return 1;
 	}
-	int k0 = 0;
-	int k1 = 1;
-	Kameleon_create(k0);
-	Kameleon_create(k1);
+	int k0 = Kameleon_create();
+	int k1 = Kameleon_create();
 
-	int i0 = 0;
+
 	Kameleon_open(k0,argv[1]);
 	Kameleon_open(k1,argv[1]);
 
@@ -41,13 +39,20 @@ int main( int argc, char * argv[])
 	Kameleon_load_variable(k0,"bx");
 	Kameleon_load_variable(k1,"bx");
 
-	float value1 = Kameleon_interpolate(k0,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
-	float value2 = Kameleon_interpolate(k1,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
-	value1 = Kameleon_interpolate(k0,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
-	value2 = Kameleon_interpolate(k1,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
+	int i0 = Interpolator_create(k0);
+	int i1 = Interpolator_create(k1);
+	float value1 = Kameleon_interpolate(i0,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
+	float value2 = Kameleon_interpolate(i1,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
+	value1 = Kameleon_interpolate(i0,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
+	value2 = Kameleon_interpolate(i1,"bx",&c0,&c1,&c2,&dc0,&dc1,&dc2);
 	printf("value1: %f\n",value1);
 	printf("value2: %f\n",value2);
-	int status = Kameleon_delete(k0);
+
+	int status = Interpolator_delete(i0);
+	printf("idelete: %d\n", status);
+	status = Interpolator_delete(i1);
+	printf("idelete: %d\n", status);
+	status = Kameleon_delete(k0);
 	printf("kdelete: %d\n", status);
 	status = Kameleon_delete(k1);
 	printf("kdelete: %d\n", status);
