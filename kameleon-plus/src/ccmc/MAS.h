@@ -32,7 +32,9 @@ namespace ccmc
 
 		private:
 			std::string r_string;
+			std::string r1_string;
 			std::string lat_string;
+			std::string lat1_string;
 			std::string lon_string;
 			std::string filename;
 	};

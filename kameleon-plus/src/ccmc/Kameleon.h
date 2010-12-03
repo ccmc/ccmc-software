@@ -135,7 +135,7 @@ namespace ccmc
 			const std::string& getCurrentFilename();
 
 
-			static const float defaultMissingValue;//  = -1.0995116278e12; //-256.*-256.*-256.*-256.
+
 			static int _cxform(const char *from,const char *to,const double et,Position* v_in,Position* v_out);
 			static double _gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
 			static long _cxRound(double doub);
