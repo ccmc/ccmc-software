@@ -28,13 +28,25 @@ namespace ccmc
 		long status;
 		status = openFile(filename);
 
+		r_string = "r";
+		r1_string = "r1";
+		lat_string = "theta";
+		lat1_string = "theta1";
+		lon_string = "phi";
+
 		long success = loadVariable(r_string);
 		if (success != FileReader::OK)
 			return success;
+		success = loadVariable(r1_string);
+		if (success != FileReader::OK)
+					return success;
 		success = loadVariable(lat_string);
 		if (success != FileReader::OK)
 			return success;
 		success = loadVariable(lon_string);
+		if (success != FileReader::OK)
+			return success;
+		success = loadVariable(lat1_string);
 		if (success != FileReader::OK)
 			return success;
 		initializeSIUnits();

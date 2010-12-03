@@ -1837,10 +1837,10 @@ namespace ccmc
 					position.component1, position.component2, position.component3, dComponent1, dComponent2,
 					dComponent3);
 		}
-#ifdef DEBUG_TRACER
+//#ifdef DEBUG_TRACER
 		cerr <<"VectorValue: " << vectorValue << "positions: " << position << endl;
 		cerr << "dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << endl;
-#endif
+//#endif
 
 		return vectorValue;
 
