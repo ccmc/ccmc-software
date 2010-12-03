@@ -35,6 +35,7 @@ int main (int argc, char * argv[])
 		std::string n_ = "n";
 		std::string pram_ = "pram";
 		std::cout << "Model name: " << kameleon.getGlobalAttribute("model_name").getAttributeString() << std::endl;
+		std::cout << "Min: " << kameleon.getVariableAttribute("x", "actual_min").getAttributeFloat() << std::endl;
 		std::cout << "Loading variables" << std::endl;
 		bool successLoading = kameleon.loadVariable(variable);
 		bool success = kameleon.doesVariableExist(variable);
