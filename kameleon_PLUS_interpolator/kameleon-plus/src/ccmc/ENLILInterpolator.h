@@ -35,6 +35,7 @@ namespace ccmc
 			virtual ~ENLILInterpolator();
 
 		private:
+			//TODO: fix these coordinate names. phi should be longitude, theta should be latitude
 			const std::vector<float> * r_data;
 			const std::vector<float> * lat_data; //phi
 			const std::vector<float> * lon_data; //theta
