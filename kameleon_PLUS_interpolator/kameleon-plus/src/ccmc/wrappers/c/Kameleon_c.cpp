@@ -18,47 +18,58 @@ using namespace ccmc;
 typedef boost::unordered_map<int, ccmc::Kameleon*> map_i_K;
 typedef boost::unordered_map<int, ccmc::Interpolator*> map_i_I;
 typedef boost::unordered_map<int, ccmc::Tracer*> map_i_T;
-int Kameleon_create(int id)
+int Kameleon_create()
 {
 
 
 
 
-//	std::cout << "inside C create function" << std::endl;
-
-
-	//first check if the id exists.  if so, delete it and create a new one.
-	map_i_K::iterator iter = ccmc::kameleonObjects.find(id);
-	if (iter != ccmc::kameleonObjects.end())
+	int maxObjects = 4096;
+	int id = 0;
+	while (kameleonObjects.find(id) != kameleonObjects.end())
 	{
-		//Doh! a Kameleon object already exists.
-		//Not sure what to do here, so we delete the current object first
-		delete (*iter).second;
-
-		map_i_I::iterator iter2 = ccmc::interpolatorObjects.find(id);
-		if (iter2 != ccmc::interpolatorObjects.end())
-		{
-			delete (*iter2).second;
-		} else
-		{
-			//should never happen, but insert a new entry anyway
-//			std::cout << "Inserting a new Interpolator.  Should never be here." << std::endl;
-			ccmc::interpolatorObjects[id];
-		}
-
-		//kameleonObjects.erase(iter);
-		(*iter).second = new ccmc::Kameleon();
-	} else
-	{
-//std::cout << "creating kameleon object" << std::endl;
-		ccmc::kameleonObjects[id] = new Kameleon();
-		ccmc::interpolatorObjects[id];
-//		std::cout << "new size of kameleonObjects: " << ccmc::kameleonObjects.size() << std::endl;
-
-
+		id++;
+		if (id > maxObjects)
+			return -1;
 	}
-//	std::cout << "end of C create function" << std::endl;
+	//first check if the id exists.  if so, delete it and create a new one.
+	kameleonObjects[id] = new Kameleon();
 	return id;
+}
+
+int Interpolator_create(int kid)
+{
+
+	Interpolator * interpolator = NULL;
+	int id = 0;
+	if (kameleonObjects.find(kid) != kameleonObjects.end())
+	{
+		int maxObjects = 4096;
+		while (interpolatorObjects.find(id) != interpolatorObjects.end())
+		{
+			id++;
+			if (id > maxObjects)
+				return -1;
+		}
+		//first check if the id exists.  if so, delete it and create a new one.
+		interpolatorObjects[id] = kameleonObjects[kid]->createNewInterpolator();
+		return id;
+	} else
+		return -1;
+
+}
+
+int Interpolator_delete(int id)
+{
+	//TODO: error checking
+	map_i_I::iterator iter = interpolatorObjects.find(id);
+	if (iter != interpolatorObjects.end())
+	{
+		delete (*iter).second;
+		interpolatorObjects.erase(iter);
+		return 0;
+	} else
+		1;
 }
 
 int Kameleon_open(int id, const char * filename)
@@ -75,13 +86,6 @@ int Kameleon_open(int id, const char * filename)
 
 		status = kameleon->open(filename);
 //		std::cout << "filename: " << filename << " status: " << status << " after" << std::endl;
-		map_i_I::iterator iter2 = ccmc::interpolatorObjects.find(id);
-		if (iter2 != ccmc::interpolatorObjects.end())
-		{
-			delete (*iter2).second;
-		}
-		(*iter2).second = kameleon->createNewInterpolator();
-
 		//kameleonObjects.erase(iter);
 	} else
 	{
@@ -201,30 +205,25 @@ void Kameleon_create_c_string(const char * t_string, char * destbuffer)
 	}
 }
 
-int Tracer_create(int id, int kid)
+int Tracer_create(int kid)
 {
-	//first check if the id exists.  if so, delete it and create a new one.
-	map_i_T::iterator iter = ccmc::tracerObjects.find(id);
-
-	if (iter != ccmc::tracerObjects.end())
+	if (kameleonObjects.find(kid) != kameleonObjects.end())
 	{
-		//Doh! a Tracer object already exists.
-		//Not sure what to do here, so we delete the current object first
-		delete (*iter).second;
+		int maxObjects = 4096;
+		int id = 0;
+		while (tracerObjects.find(id) != tracerObjects.end())
+		{
+			id++;
+			if (id > maxObjects)
+				return -1;
+		}
+		//first check if the id exists.  if so, delete it and create a new one.
+		Kameleon * kameleon = kameleonObjects[kid];
+		tracerObjects[id] = new Tracer(kameleon);
+		return id;
+	} else
+		return -1;
 
-	}
-//	std::cout << "size of kameleonObjects: " << ccmc::kameleonObjects.size() << std::endl;
-	ccmc::kameleonObjects.size();
-	map_i_K::iterator iter2 = ccmc::kameleonObjects.find(kid);
-	if (iter2 != ccmc::kameleonObjects.end())
-	{
-//		std::cout << "kameleonObjects[kid] was found" << std::endl;
-	}
-	ccmc::Kameleon * kameleon = (*iter2).second;
-
-	tracerObjects[id] = new ccmc::Tracer(kameleon);
-//	std::cout << "end of C create function" << std::endl;
-	return id;
 }
 
 void Tracer_bidirectionalTrace(int id, const char * variable, const float& startComponent1, const float& startComponent2,

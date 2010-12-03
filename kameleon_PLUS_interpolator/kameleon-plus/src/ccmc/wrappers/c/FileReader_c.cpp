@@ -19,22 +19,18 @@ typedef boost::unordered_map<int, FileReader*> map_i_F;
 /**
  * Not sure why I return the id again.  Eventually this should return a status
  */
-int FileReader_create(int id)
+int FileReader_create()
 {
-	//first check if the id exists.  if so, delete it and create a new one.
-	map_i_F::iterator iter = fileReaderObjects.find(id);
-	if (iter != fileReaderObjects.end())
+	//create a new FileReader object and put it into the map
+	int maxObjects = 4096;
+	int id = 0;
+	while (fileReaderObjects.find(id) != fileReaderObjects.end())
 	{
-		//Doh! a FileReader object already exists.
-		//Not sure what to do here, so we delete the current object first
-		delete (*iter).second;
-
-		(*iter).second = new FileReader();
-	} else
-	{
-//std::cout << "creating FileReader object" << std::endl;
-		fileReaderObjects[id] = new FileReader();
+		id++;
+		if (id > maxObjects)
+			return -1;
 	}
+	fileReaderObjects[id] = new FileReader();
 	return id;
 }
 
