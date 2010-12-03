@@ -17,7 +17,7 @@
 #endif
 
 /** FileReader class **/
-extern _C_ int FileReader_create(int id);
+extern _C_ int FileReader_create();
 extern _C_ long FileReader_open(int id, const char * filename);
 extern _C_ void FileReader_getVariable(int id, const char * variable, float * variableData);
 extern _C_ void FileReader_getVariableByID(int id, long variableID, float * variableData);

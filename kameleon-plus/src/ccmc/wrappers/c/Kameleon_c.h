@@ -9,7 +9,9 @@
 #define _C_
 #endif
 
-extern _C_ int Kameleon_create(int id);
+extern _C_ int Kameleon_create();
+extern _C_ int Interpolator_create(int kid);
+extern _C_ int Interpolator_delete(int id);
 extern _C_ int Kameleon_open(int id, const char * filename);
 extern _C_ void Kameleon_get_model_name(int id, char * model_name);
 extern _C_ float Kameleon_interpolate(int id, const char * variable, const float * c0,
