@@ -103,7 +103,6 @@ public class CCMCJNI {
   public final static native boolean Kameleon_doesVariableExist(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native long Kameleon_getCurrentFileID(long jarg1, Kameleon jarg1_);
   public final static native String Kameleon_getCurrentFilename(long jarg1, Kameleon jarg1_);
-  public final static native float Kameleon_defaultMissingValue_get();
   public final static native int Kameleon__cxform(String jarg1, String jarg2, double jarg3, long jarg4, Position jarg4_, long jarg5, Position jarg5_);
   public final static native double Kameleon__gregorian_calendar_to_jd(int jarg1, int jarg2, int jarg3, int jarg4, int jarg5, int jarg6);
   public final static native int Kameleon__cxRound(double jarg1);

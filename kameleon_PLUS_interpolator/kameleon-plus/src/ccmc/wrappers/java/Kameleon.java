@@ -163,10 +163,6 @@ public class Kameleon {
     return CCMCJNI.Kameleon_getCurrentFilename(swigCPtr, this);
   }
 
-  public static float getDefaultMissingValue() {
-    return CCMCJNI.Kameleon_defaultMissingValue_get();
-  }
-
   public static int _cxform(String from, String to, double et, Position v_in, Position v_out) {
     return CCMCJNI.Kameleon__cxform(from, to, et, Position.getCPtr(v_in), v_in, Position.getCPtr(v_out), v_out);
   }
