@@ -1986,18 +1986,6 @@ SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentF
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1defaultMissingValue_1get(JNIEnv *jenv, jclass jcls) {
-  jfloat jresult = 0 ;
-  float result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (float)(float)ccmc::Kameleon::defaultMissingValue;
-  jresult = (jfloat)result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1cxform(JNIEnv *jenv, jclass jcls, jstring jarg1, jstring jarg2, jdouble jarg3, jlong jarg4, jobject jarg4_, jlong jarg5, jobject jarg5_) {
   jint jresult = 0 ;
   char *arg1 = (char *) 0 ;
