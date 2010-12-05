@@ -8593,20 +8593,6 @@ fail:
 }
 
 
-SWIGINTERN int Swig_var_Kameleon_defaultMissingValue_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable Kameleon_defaultMissingValue is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_Kameleon_defaultMissingValue_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_From_float(static_cast< float >(ccmc::Kameleon::defaultMissingValue));
-  return pyobj;
-}
-
-
 SWIGINTERN PyObject *_wrap_Kameleon__cxform(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -22581,7 +22567,6 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "FileReader_MODEL_NOT_SUPPORTED",SWIG_From_long(static_cast< long >(ccmc::FileReader::MODEL_NOT_SUPPORTED)));
   SWIG_Python_SetConstant(d, "FileReader_NOT_A_VALID_KAMELEON_FILE",SWIG_From_long(static_cast< long >(ccmc::FileReader::NOT_A_VALID_KAMELEON_FILE)));
   PyDict_SetItemString(d,(char*)"cvar", SWIG_globals());
-  SWIG_addvarlink(SWIG_globals(),(char*)"Kameleon_defaultMissingValue",Swig_var_Kameleon_defaultMissingValue_get, Swig_var_Kameleon_defaultMissingValue_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"kameleonObjects",Swig_var_kameleonObjects_get, Swig_var_kameleonObjects_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"tracerObjects",Swig_var_tracerObjects_get, Swig_var_tracerObjects_set);
   SWIG_addvarlink(SWIG_globals(),(char*)"interpolatorObjects",Swig_var_interpolatorObjects_get, Swig_var_interpolatorObjects_set);

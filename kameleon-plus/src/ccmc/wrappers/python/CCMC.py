@@ -261,8 +261,6 @@ class Kameleon(_object):
     __del__ = lambda self : None;
 Kameleon_swigregister = _CCMC.Kameleon_swigregister
 Kameleon_swigregister(Kameleon)
-cvar = _CCMC.cvar
-Kameleon.defaultMissingValue = _CCMC.cvar.Kameleon_defaultMissingValue
 
 def Kameleon__cxform(*args):
   return _CCMC.Kameleon__cxform(*args)
@@ -295,6 +293,7 @@ class Interpolator(_object):
     __del__ = lambda self : None;
 Interpolator_swigregister = _CCMC.Interpolator_swigregister
 Interpolator_swigregister(Interpolator)
+cvar = _CCMC.cvar
 
 class Tracer(_object):
     __swig_setmethods__ = {}
