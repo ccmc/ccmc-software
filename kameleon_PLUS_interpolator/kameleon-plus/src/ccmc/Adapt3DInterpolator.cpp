@@ -60,8 +60,8 @@ namespace ccmc
 	{
 
 		float dc0, dc1, dc2;
-		long variable_id = modelReader->getVariableID(variable);
-		return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
+		//long variable_id = modelReader->getVariableID(variable);
+		return interpolate(variable, c0, c1, c2, dc0, dc1, dc2);
 
 	}
 
@@ -95,7 +95,8 @@ namespace ccmc
 			float& dc0, float& dc1, float& dc2)
 	{
 
-		return -1.0f;
+		std::string variable = this->modelReader->getVariableName(variable_id);
+		return interpolate(variable, c0,c1,c2,dc0,dc1,dc2);
 	}
 
 	/**
@@ -234,7 +235,7 @@ namespace ccmc
 
 		       ielem = smartSearch(coord1);
 
-		       interpolated_value=999.5;     /* test value */
+		       interpolated_value=this->missingValue;     /* test value */
 
 		       if(ielem > -1) {
 		         interpolate_adapt3d_solution(coord1, ielem, unkno_local);
