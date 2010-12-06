@@ -235,7 +235,7 @@ namespace ccmc
 
 		       ielem = smartSearch(coord1);
 
-		       interpolated_value=this->missingValue;     /* test value */
+		       interpolated_value=(double)this->missingValue;     /* test value */
 
 		       if(ielem > -1) {
 		         interpolate_adapt3d_solution(coord1, ielem, unkno_local);
@@ -253,13 +253,17 @@ namespace ccmc
 
 		      /*  return interpolated_value  */
 
-		      if (interpolated_value < MIN_RANGE || interpolated_value > MAX_RANGE)
+		      if (interpolated_value >= MIN_RANGE && interpolated_value <= MAX_RANGE && interpolated_value != this->missingValue)
 		      {
-		         return this->missingValue;
+
+		    	  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << (float)interpolated_value << std::endl;
+		    	  return (float)interpolated_value;
+
 		      }
 		      else
 		      {
-		         return (float)interpolated_value;
+		    	  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << this->missingValue << std::endl;
+		    	  return this->missingValue;
 		      }
 	}
 
@@ -271,6 +275,7 @@ namespace ccmc
 
 	int Adapt3DInterpolator::smartSearch(double * search_point_coords)
 	{
+
 		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
 
 		int  i,j,k,ielem,inode,jnode ;
@@ -315,6 +320,7 @@ namespace ccmc
 			printf("Point is still in starting element! \n");
 			#endif
 			kelem = last_element_found;
+			std::cerr << "last_element_found: " << last_element_found << std::endl;
 
 			/*--------*/
 		} else
@@ -413,11 +419,11 @@ namespace ccmc
 
 
 
-					k_node    = this->smartSearchValues.esup2[inode]   +1 ;
-					k_node_hi = this->smartSearchValues.esup2[inode+1] +1 ;
+					k_node    = this->smartSearchValues->esup2[inode]   +1 ;
+					k_node_hi = this->smartSearchValues->esup2[inode+1] +1 ;
 
 					//std::cerr << "inode: " << inode << " k_node: " << k_node << " sizeof(esup1) " << (nelem*4) << std::endl;
-					jelem =  this->smartSearchValues.esup1[k_node];
+					jelem =  this->smartSearchValues->esup1[k_node];
 					while( (ifound != 0) && (k_node < k_node_hi) )
 					{
 
@@ -430,7 +436,7 @@ namespace ccmc
 							printf("Not found in elem %i \n",jelem);
 							#endif
 							k_node += 1;
-							jelem =  this->smartSearchValues.esup1[k_node];
+							jelem =  this->smartSearchValues->esup1[k_node];
 							#ifdef DEBUGS
 							printf("Next element to check is %i %i %i \n",jelem,i_node,i_order);
 							#endif
@@ -459,7 +465,7 @@ namespace ccmc
 			/*--------*/
 		}      /*   if( ifound .eq. 0)  */
 		/*--------*/
-
+std::cerr << "ifound != 0" << std::endl;
 		if( ifound != 0)
 		{
 			#ifdef DEBUGS
@@ -470,7 +476,9 @@ namespace ccmc
 
 			/* Check to see if the point is still within the grid bounds */
 			try_grid_search = point_within_grid(search_point_coords);
-
+			#ifdef DEBUGS
+			std::cerr << "is point inside grid: " << try_grid_search << std::endl;
+			#endif
 			kelem=-1;
 			if(try_grid_search)
 			{
@@ -507,7 +515,7 @@ namespace ccmc
 	       int                 ielem,kelem;
 	       int                 i_s,j_s,k_s,i,j,k,indx_start,indx_end;
 	       int                 indx1,ifound,just_found,jelem;
-	       double              x,y,z,shapex[nnode];
+	       double              x,y,z,shapex[NNODE_ADAPT3D];
 
 
 
@@ -539,15 +547,15 @@ namespace ccmc
 	#ifdef DEBUG
 	         printf("Searching for point x y z = %e %e %e\n",x,y,z);
 	#endif
-	         i_s = (int)( (x-this->smartSearchValues.xl_sg)/this->smartSearchValues.dx_sg );
-	         j_s = (int)( (y-this->smartSearchValues.yl_sg)/this->smartSearchValues.dy_sg );
-	         k_s = (int)( (z-this->smartSearchValues.zl_sg)/this->smartSearchValues.dz_sg );
+	         i_s = (int)( (x-this->smartSearchValues->xl_sg)/this->smartSearchValues->dx_sg );
+	         j_s = (int)( (y-this->smartSearchValues->yl_sg)/this->smartSearchValues->dy_sg );
+	         k_s = (int)( (z-this->smartSearchValues->zl_sg)/this->smartSearchValues->dz_sg );
 
 	#ifdef DEBUG
 	         printf("Located in structured cell %d %d %d\n",i_s,j_s,k_s);
 	#endif
-	         indx_start = this->smartSearchValues.start_index[k_s][j_s][i_s];
-	         indx_end   = this->smartSearchValues.end_index[k_s][j_s][i_s];
+	         indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
+	         indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
 
 	/* test each element between indx_start and indx_end to find the cell
 	   containing coord1 = (x,y,z)         */
@@ -559,7 +567,7 @@ namespace ccmc
 	         ifound = 1;
 	         while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) )
 	         {
-	           jelem=this->smartSearchValues.indx[indx1];
+	           jelem=this->smartSearchValues->indx[indx1];
 	           ifound = chkineln(cintp ,jelem ,shapex);
 	           if (ifound == 0) ielem=indx1;
 	           indx1=indx1+1;
@@ -582,12 +590,12 @@ namespace ccmc
 	           if(ifound == 1) {
 	             just_found=1;
 	             if( ( (i != i_s) || (j != j_s) || (k != k_s) ) ) {
-	               indx_start = this->smartSearchValues.start_index[k][j][i];
-	               indx_end   = this->smartSearchValues.end_index[k][j][i];
+	               indx_start = this->smartSearchValues->start_index[k][j][i];
+	               indx_end   = this->smartSearchValues->end_index[k][j][i];
 	               indx1 = indx_start;
 	               ifound = 1;
 	               while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) ) {
-	                 jelem=this->smartSearchValues.indx[indx1];
+	                 jelem=this->smartSearchValues->indx[indx1];
 	                 ifound = chkineln(cintp ,jelem ,shapex);
 	                 if (ifound == 0 ) {
 	                   ielem=indx1;
@@ -616,7 +624,7 @@ namespace ccmc
 	           printf("Using Brute force now!\n");
 	         }
 	         kelem=-1;
-	         if( ielem != -1) kelem=this->smartSearchValues.indx[ielem];
+	         if( ielem != -1) kelem=this->smartSearchValues->indx[ielem];
 
 	         }
 	         last_element_found=kelem;
@@ -648,13 +656,44 @@ namespace ccmc
 	      double  radius;
 	      int within_bounds = 1;
 
-	      radius=sqrt(scoord[0]*scoord[0]+scoord[1]*scoord[1]+scoord[2]*scoord[2]);
-	      if(scoord[0] < this->smartSearchValues.xl_sg) within_bounds = 0;
-	      if(scoord[0] > this->smartSearchValues.xr_sg) within_bounds = 0;
-	      if(scoord[1] < this->smartSearchValues.yl_sg) within_bounds = 0;
-	      if(scoord[1] > this->smartSearchValues.yr_sg) within_bounds = 0;
-	      if(scoord[2] < this->smartSearchValues.zl_sg) within_bounds = 0;
-	      if(scoord[2] > this->smartSearchValues.zr_sg) within_bounds = 0;
+	      radius=std::sqrt(scoord[0]*scoord[0]+scoord[1]*scoord[1]+scoord[2]*scoord[2]);
+	      std::cerr << "Smart Search Values: " << std::endl;
+	      std::cerr << "radius: " << radius << std::endl;
+	      std::cerr << "scoord: " << scoord[0] << "," << scoord[1] << "," << scoord[2] << std::endl;
+	      if(scoord[0] < this->smartSearchValues->xl_sg)
+	      {
+	    	  within_bounds = 0;
+
+	    	  //std::cerr << "scoord[0]: " << scoord[0] << " < " << this->smartSearchValues->xl_sg << std::endl;
+	      }
+	      if(scoord[0] > this->smartSearchValues->xr_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[0]: " << scoord[0] << " > " << this->smartSearchValues->xr_sg << std::endl;
+	      }
+	      if(scoord[1] < this->smartSearchValues->yl_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[1]: " << scoord[1] << " < " << this->smartSearchValues->yl_sg << std::endl;
+	      }
+	      if(scoord[1] > this->smartSearchValues->yr_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[1]: " << scoord[1] << " > " << this->smartSearchValues->yr_sg << std::endl;
+
+	      }
+	      if(scoord[2] < this->smartSearchValues->zl_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[2]: " << scoord[2] << " < " << this->smartSearchValues->zl_sg << std::endl;
+
+	      }
+	      if(scoord[2] > this->smartSearchValues->zr_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
+
+	      }
 	      if(radius < 1.) within_bounds = 0;
 	      if(radius > 5.) within_bounds = 0;
 
@@ -663,9 +702,9 @@ namespace ccmc
 
 	}
 
-    int Adapt3DInterpolator::chkineln( double * cintp ,int ielem , double *shapex)
+    int Adapt3DInterpolator::chkineln( double * cintp ,int ielem , double * shapex)
 	{
-
+#define DEBUG
 	/*
 	!...  mesh arrays
 	*/
@@ -705,6 +744,8 @@ namespace ccmc
 		ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ]-1;
 		ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ]-1;
 		ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
+
+		std::cerr << "npoin: " << npoin << " ndimn: " << ndimn << " ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
 		xa  = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
 		ya  = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
 		za  = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
@@ -719,9 +760,13 @@ namespace ccmc
 		zda = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ] - za;
 
 		deter = xba*(yca*zda-zca*yda) - yba*(xca*zda-zca*xda) + zba*(xca*yda-yca*xda);
+
 	#ifdef DEBUG
-		  printf("coord[ipa]= %d %e %e %e \n",ipa,coord[ index_2d_to_1d(ipa,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,2,npoin,ndimn) ]);
-		  printf("deter= %e \n",deter);
+		std::cerr << "xa: " << xa << " ya: " << ya << " za: " << za << " xba: " << xba;
+		std::cerr << " yba: " << yba << " zba: " << zba << " xca: " << xca << " yca: " << yca;
+		std::cerr << " zca: " << zca << " xda: " << xda << " yda: " << yda << " zda: " << zda << std::endl;
+		  printf("coord[ipa]= %d %e %e %e \n",ipa,(*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]);
+		  std::cerr << "deter= " << deter << std::endl;
 	#endif
 	/*       detin = c10/deter */
 		detin = 1.0/deter;
@@ -749,7 +794,8 @@ namespace ccmc
 	#ifdef DEBUG
 		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
 		  printf("xa-za= %e %e %e \n",xa,ya,za);
-		  printf("shapex = %e %e %e %e \n",shapex[0],shapex[1],shapex[2],shapex[3]);
+		  std::cerr << "rin11: " << rin11 << " xpa: " << xpa << " rin12: " << rin12 << " ypa: " << ypa << " rin13: " << rin13 << " zpa: " << zpa << std::endl;
+		  std::cerr << "shapex = " << shapex[0] << " " << shapex[1] << " " << shapex[2] << " " << shapex[3] << std::endl;
 	#endif
 	/*       shape(1) = c10 - shape(2) - shape(3) - shape(4)
 	!
@@ -780,10 +826,10 @@ namespace ccmc
 		  printf("shmax= %e \n",shmax);
 		  printf("ierro= %d \n",ierro);
 		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
-		  printf("node 1 = %e %e %e %d \n",coord[ index_2d_to_1d(ipa,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipa,2,npoin,ndimn) ],ipa);
-		  printf("node 2 = %e %e %e %d \n",coord[ index_2d_to_1d(ipb,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipb,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipb,2,npoin,ndimn) ],ipb);
-		  printf("node 3 = %e %e %e %d \n",coord[ index_2d_to_1d(ipc,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipc,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipc,2,npoin,ndimn) ],ipc);
-		  printf("node 4 = %e %e %e %d \n",coord[ index_2d_to_1d(ipd,0,npoin,ndimn) ],coord[ index_2d_to_1d(ipd,1,npoin,ndimn) ],coord[ index_2d_to_1d(ipd,2,npoin,ndimn) ],ipd);
+		  printf("node 1 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ],ipa);
+		  printf("node 2 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ],ipb);
+		  printf("node 3 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],ipc);
+		  printf("node 4 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],ipd);
 		 }
 	#endif
 

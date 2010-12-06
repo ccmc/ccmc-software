@@ -12,6 +12,7 @@
 #include "Adapt3DInterpolator.h"
 #include "StringConstants.h"
 #include "MathHelper.h"
+#include <algorithm>
 
 
 namespace ccmc
@@ -118,7 +119,9 @@ namespace ccmc
 		this->smartSearchValues.indx = new int[nelem];
 		this->smartSearchValues.esup1 = new int[nelem*4];
 		this->smartSearchValues.esup2 = new int[npoin+1];
+
 		this->setupUnstructuredGridSearch();
+
 		this->smartSearchSetup();
 
 		return status;
@@ -269,12 +272,12 @@ namespace ccmc
 		* for node 1, etc
 		*/
 		for ( i=0; i<(int)npoin; i++) {
-			this->smartSearchValues.xl_sg=min(this->smartSearchValues.xl_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			this->smartSearchValues.xr_sg=max(this->smartSearchValues.xr_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			this->smartSearchValues.yl_sg=min(this->smartSearchValues.yl_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			this->smartSearchValues.yr_sg=max(this->smartSearchValues.yr_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			this->smartSearchValues.zl_sg=min(this->smartSearchValues.zl_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
-			this->smartSearchValues.zr_sg=max(this->smartSearchValues.zr_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+			this->smartSearchValues.xl_sg=std::min(this->smartSearchValues.xl_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			this->smartSearchValues.xr_sg=std::max(this->smartSearchValues.xr_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			this->smartSearchValues.yl_sg=std::min(this->smartSearchValues.yl_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			this->smartSearchValues.yr_sg=std::max(this->smartSearchValues.yr_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			this->smartSearchValues.zl_sg=std::min(this->smartSearchValues.zl_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+			this->smartSearchValues.zr_sg=std::max(this->smartSearchValues.zr_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
 		}
 
 		printf("-------------------------------\n");
@@ -621,9 +624,9 @@ namespace ccmc
 
 	}
 
-	const SmartGridSearchValues& Adapt3D::getSmartGridSearchValues()
+	const SmartGridSearchValues * Adapt3D::getSmartGridSearchValues()
 	{
-		return this->smartSearchValues;
+		return &(this->smartSearchValues);
 	}
 
 	int Adapt3D::index_2d_to_1d( int i1, int i2, int n1, int n2)
