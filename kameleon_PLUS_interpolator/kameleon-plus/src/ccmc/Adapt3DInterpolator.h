@@ -45,11 +45,11 @@ namespace ccmc
 			/* variables needed for searching unstructured grids */
 
 
-			SmartGridSearchValues smartSearchValues;
-			int               unstructured_grid_setup_done;
+			const SmartGridSearchValues *smartSearchValues;
+			//int               unstructured_grid_setup_done;
 
-			bool setupUnstructuredGridSearchFinished;
-			bool setupUnstructuredGridSearch();
+			//bool setupUnstructuredGridSearchFinished;
+			//bool setupUnstructuredGridSearch();
 			int last_element_found;
 
 

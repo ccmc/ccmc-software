@@ -47,7 +47,7 @@ namespace ccmc
 			long open(const std::string& filename);
 
 			Interpolator * createNewInterpolator();
-			const SmartGridSearchValues& getSmartGridSearchValues();
+			const SmartGridSearchValues * getSmartGridSearchValues();
 
 			virtual ~Adapt3D();
 
