@@ -41,7 +41,7 @@ namespace ccmc
 
 		private:
 			int nnode;
-			int nvars;
+
 			/* variables needed for searching unstructured grids */
 
 

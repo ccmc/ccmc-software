@@ -113,6 +113,7 @@ namespace ccmc
 	float Adapt3DInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
+		//this->last_element_found = -1;
 		   double rsun_in_meters = 7.0e8;
 
 		   double coord1[3];
@@ -239,10 +240,10 @@ namespace ccmc
 
 		       if(ielem > -1) {
 		         interpolate_adapt3d_solution(coord1, ielem, unkno_local);
-		#ifdef DEBUG
+//		#ifdef DEBUG
 		       printf("interpolate_adapt3d_cdf: unkno_local %e %e %e  %e %e %e  %e %e %e \n", unkno_local[0],unkno_local[1],unkno_local[2],unkno_local[3],unkno_local[4],
 		                          unkno_local[5],unkno_local[6],unkno_local[7],unkno_local[8]);
-		#endif
+//		#endif
 		         interpolated_value = unkno_local[unkno_index];
 		         last_element_found = ielem;
 		       } else {
@@ -318,9 +319,10 @@ namespace ccmc
 
 			#ifdef DEBUGS
 			printf("Point is still in starting element! \n");
+			std::cerr << "last_element_found: " << last_element_found << std::endl;
 			#endif
 			kelem = last_element_found;
-			std::cerr << "last_element_found: " << last_element_found << std::endl;
+
 
 			/*--------*/
 		} else
@@ -366,7 +368,7 @@ namespace ccmc
 				node_order[nnode-1] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
 				mask[node_order[0]] = 0;                        /* false */
 				mask[node_order[nnode-1]] = 0;
-				std::cerr << "-----nnode: " << nnode << std::endl;
+				//std::cerr << "-----nnode: " << nnode << std::endl;
 				if(nnode == 3)
 				{
 					for (j=0; j<nnode; j++)
@@ -403,9 +405,11 @@ namespace ccmc
 
 
 					/* Now we search the list of elements that contain this node */
+#ifdef DEBUGS
 					std::cerr << "index_2d_to_1d(last_element_found,next_node,nelem,4): " << index_2d_to_1d(last_element_found,next_node,nelem,4) << std::endl;
 					std::cerr << "last_element_found: " << last_element_found << " next_node: " << next_node << std::endl;
 					std::cerr << "intmat.size(): " << intmat->size() << std::endl;
+#endif
 					inode = (*intmat)[ index_2d_to_1d(last_element_found,next_node,nelem,4) ] -1 ;
 
 					//#ifdef DEBUGS
@@ -421,8 +425,9 @@ namespace ccmc
 
 					k_node    = this->smartSearchValues->esup2[inode]   +1 ;
 					k_node_hi = this->smartSearchValues->esup2[inode+1] +1 ;
-
-					//std::cerr << "inode: " << inode << " k_node: " << k_node << " sizeof(esup1) " << (nelem*4) << std::endl;
+#ifdef DEBUGS
+					std::cerr << "inode: " << inode << " k_node: " << k_node << " sizeof(esup1) " << (nelem*4) << std::endl;
+#endif
 					jelem =  this->smartSearchValues->esup1[k_node];
 					while( (ifound != 0) && (k_node < k_node_hi) )
 					{
@@ -538,6 +543,7 @@ std::cerr << "ifound != 0" << std::endl;
 	/* If there is no starting guess for the element number in last_element_found
 	   or the smart search failed, use the grid based search
 	*/
+	 //kelem = -1;
 	        if(kelem == -1) {
 
 
@@ -704,7 +710,7 @@ std::cerr << "ifound != 0" << std::endl;
 
     int Adapt3DInterpolator::chkineln( double * cintp ,int ielem , double * shapex)
 	{
-#define DEBUG
+//#define DEBUG
 	/*
 	!...  mesh arrays
 	*/
@@ -745,7 +751,7 @@ std::cerr << "ifound != 0" << std::endl;
 		ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ]-1;
 		ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
 
-		std::cerr << "npoin: " << npoin << " ndimn: " << ndimn << " ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
+		//std::cerr << "npoin: " << npoin << " ndimn: " << ndimn << " ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
 		xa  = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
 		ya  = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
 		za  = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
@@ -762,9 +768,9 @@ std::cerr << "ifound != 0" << std::endl;
 		deter = xba*(yca*zda-zca*yda) - yba*(xca*zda-zca*xda) + zba*(xca*yda-yca*xda);
 
 	#ifdef DEBUG
-		std::cerr << "xa: " << xa << " ya: " << ya << " za: " << za << " xba: " << xba;
-		std::cerr << " yba: " << yba << " zba: " << zba << " xca: " << xca << " yca: " << yca;
-		std::cerr << " zca: " << zca << " xda: " << xda << " yda: " << yda << " zda: " << zda << std::endl;
+//		std::cerr << "xa: " << xa << " ya: " << ya << " za: " << za << " xba: " << xba;
+//		std::cerr << " yba: " << yba << " zba: " << zba << " xca: " << xca << " yca: " << yca;
+//		std::cerr << " zca: " << zca << " xda: " << xda << " yda: " << yda << " zda: " << zda << std::endl;
 		  printf("coord[ipa]= %d %e %e %e \n",ipa,(*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]);
 		  std::cerr << "deter= " << deter << std::endl;
 	#endif
@@ -792,10 +798,11 @@ std::cerr << "ifound != 0" << std::endl;
 		shapex[3] = rin31*xpa + rin32*ypa + rin33*zpa;
 		shapex[0] = 1.0 - shapex[1] - shapex[2] - shapex[3];
 	#ifdef DEBUG
-		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
-		  printf("xa-za= %e %e %e \n",xa,ya,za);
-		  std::cerr << "rin11: " << rin11 << " xpa: " << xpa << " rin12: " << rin12 << " ypa: " << ypa << " rin13: " << rin13 << " zpa: " << zpa << std::endl;
-		  std::cerr << "shapex = " << shapex[0] << " " << shapex[1] << " " << shapex[2] << " " << shapex[3] << std::endl;
+//		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
+//		  printf("xa-za= %e %e %e \n",xa,ya,za);
+		  //std::cerr << "rin11: " << rin11 << " xpa: " << xpa << " rin12: " << rin12 << " ypa: " << ypa << " rin13: " << rin13 << " zpa: " << zpa << std::endl;
+		std::cerr << "cintp: " << cintp[0] << "," << cintp[1] << "," << cintp[2] << std::endl;
+		std::cerr << "ielem: " << ielem << " shapex = " << shapex[0] << " " << shapex[1] << " " << shapex[2] << " " << shapex[3] << std::endl;
 	#endif
 	/*       shape(1) = c10 - shape(2) - shape(3) - shape(4)
 	!
@@ -809,7 +816,7 @@ std::cerr << "ifound != 0" << std::endl;
 	!
 	!       if(shmin .ge. tolow .and. shmax .le. tolhi) then
 	*/
-		if ( (shmin > 0.) && (shmax <= 1.0)) {
+		if ( (shmin > 0.) && (shmax <= 1.0) && !std::isnan(shapex[0])) {
 			   ierro = 0;
 		} else {
 			   ierro = 1;
