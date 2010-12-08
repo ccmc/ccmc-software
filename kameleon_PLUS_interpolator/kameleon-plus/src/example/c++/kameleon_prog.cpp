@@ -3,6 +3,8 @@
 #include <sstream>
 #include <string>
 #include <ctime>
+#include <cmath>
+#include <cstdlib>
 #include <ccmc/Kameleon.h>
 #include <ccmc/FileReader.h>
 #include <boost/lexical_cast.hpp>
@@ -50,15 +52,61 @@ int main (int argc, char * argv[])
 		float value;
 		//std::string bx_ = "br";
 		float convertedValue;
+		//generate a random number between -5 and 5;
+		float x,y,z;
+		srand((unsigned)time(0));
+		int range = 10;
+		if (success)
+		{
+			value = interpolator->interpolate(variable, c0,c1,c2 );
+		} else
+			value = kameleon.getMissingValue();
+
+		std::cout << "value before random interpolations: " << value << std::endl;
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 1; j++)
+			{
+				for (int k = 0; k < 1; k++)
+				{
+
+					x = ((float)(rand())/(float)(RAND_MAX)) * range - 5.f;
+					y = ((float)(rand())/(float)(RAND_MAX)) * range - 5.f;
+					z = ((float)(rand())/(float)(RAND_MAX)) * range - 5.f;
+					float radius = sqrt(x*x+y*y+z*z);
+
+					while(radius > 5.0f || radius < 1.0f)
+					{
+
+						x = ((float)(rand())/(float)(RAND_MAX)) * range - 5.f;
+						y = ((float)(rand())/(float)(RAND_MAX)) * range - 5.f;
+						z = ((float)(rand())/(float)(RAND_MAX)) * range - 5.f;
+						radius = sqrt(x*x+y*y+z*z);
+					}
+					value = interpolator->interpolate(variable, x, y, z);
+					//std::cerr << x << "," << y << "," << z << ": " << value << std::endl;
+				}
+			}
+		}
 		if (success)
 		{
 			value = interpolator->interpolate(variable, c0,c1,c2 );
 		} else
 			value = kameleon.getMissingValue();
 		convertedValue = value * conversion;
-		std::cout << "conversionFactor: " << conversion << std::endl;
-		std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
-			convertedValue << " " << kameleon.getVisUnit(variable) << std::endl;
+
+		std::cout << "value after random interpolations: " << value << std::endl;
+		if (success)
+		{
+			value = interpolator->interpolate(variable, c0,c1,c2 );
+		} else
+			value = kameleon.getMissingValue();
+		convertedValue = value * conversion;
+
+		std::cout << "value after random interpolations: " << value << std::endl;
+		//std::cout << "conversionFactor: " << conversion << std::endl;
+		//std::cout << "value: " << value << " " << kameleon.getNativeUnit(variable) << " convertedValue: " <<
+		//	convertedValue << " " << kameleon.getVisUnit(variable) << std::endl;
 
 
 //		float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
