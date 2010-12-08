@@ -114,24 +114,22 @@ namespace ccmc
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
 		//this->last_element_found = -1;
-		   double rsun_in_meters = 7.0e8;
+		   float rsun_in_meters = 7.0e8;
 
-		   double coord1[3];
-		   double unkno_local[9];
+		   float coord1[3];
+		   float unkno_local[9];
 
 		   long counts[1] = { 0 };
 		   long intervals[1] = { 1 };
 
-		   double interpolated_value;
-		   double X = (double)c0, Y= (double)c1, Z= (double)c2;
-
-		   int   intmat_in_main_memory_flag;
-		   int   coord_in_main_memory_flag;
-		   int   unkno_in_main_memory_flag;
+		   float interpolated_value;
+		   float X = c0, Y= c1, Z= c2;
 
 
 
-		   double  *var_arrayPtr;
+
+
+
 		   int     array_size;
 		   int     istatus;
 		   int     ielem, unkno_index;
@@ -149,9 +147,7 @@ namespace ccmc
 
 
 		   /** lets see if required variables are in memory **/
-		   unkno_in_main_memory_flag  = 1;
-		   intmat_in_main_memory_flag = 1;
-		   coord_in_main_memory_flag  = 1;
+
 
 		   /****     since the cdf data is stored in r[meters], radians, radians or r, phi theta
 		    *         but we are accepting input as r[AU], lon, lat - we must do some coordiante transformations
@@ -235,8 +231,10 @@ namespace ccmc
 			/* locate the grid element that contains the point coord1 */
 
 		       ielem = smartSearch(coord1);
-
-		       interpolated_value=(double)this->missingValue;     /* test value */
+#ifdef DEBUG
+		       std::cerr << "ielem: " << ielem << " for position " << X << "," << Y << "," << Z << std::endl;
+#endif
+		       interpolated_value=this->missingValue;     /* test value */
 
 		       if(ielem > -1) {
 		         interpolate_adapt3d_solution(coord1, ielem, unkno_local);
@@ -274,9 +272,9 @@ namespace ccmc
 
 
 
-	int Adapt3DInterpolator::smartSearch(double * search_point_coords)
+	int Adapt3DInterpolator::smartSearch(float * search_point_coords)
 	{
-
+#define DEBUGS
 		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
 
 		int  i,j,k,ielem,inode,jnode ;
@@ -288,10 +286,10 @@ namespace ccmc
 		int  nelems_checked;
 		int  clear_cache;
 
-		double  shapex[NNODE_ADAPT3D];
-		double  radius;
+		float  shapex[NNODE_ADAPT3D];
+		float  radius;
 
-		double  distance[NNODE_ADAPT3D];
+		float  distance[NNODE_ADAPT3D];
 
 
 		/*----------------------------------------------------------------
@@ -350,12 +348,17 @@ namespace ccmc
 				{
 					mask[jnode]=1;
 					inode = (*intmat)[ index_2d_to_1d(last_element_found,jnode,nelem,4) ] -1 ;
-					distance[jnode] = ((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0])
-							* ((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0])
-							+ ((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
-							* ((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
-							+ ((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2])
-							* ((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]);
+					distance[jnode] =
+							((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0]) *
+							((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0])
+
+							+
+							((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1]) *
+							((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
+
+							+
+							((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]) *
+							((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]);
 				}
 
 				/*
@@ -364,8 +367,8 @@ namespace ccmc
 				!
 				! Sort the starting element nodes based on distance from the new search point
 				*/
-				node_order[0]       = ccmc::Math::dminloc1d(distance,nnode,mask);
-				node_order[nnode-1] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
+				node_order[0]       = ccmc::Math::fminloc1d(distance,nnode,mask);
+				node_order[nnode-1] = ccmc::Math::fmaxloc1d(distance,nnode,mask);
 				mask[node_order[0]] = 0;                        /* false */
 				mask[node_order[nnode-1]] = 0;
 				//std::cerr << "-----nnode: " << nnode << std::endl;
@@ -378,8 +381,8 @@ namespace ccmc
 				}
 				if(nnode == 4)
 				{
-					node_order[1] = ccmc::Math::dminloc1d(distance,nnode,mask);
-					node_order[2] = ccmc::Math::dmaxloc1d(distance,nnode,mask);
+					node_order[1] = ccmc::Math::fminloc1d(distance,nnode,mask);
+					node_order[2] = ccmc::Math::fmaxloc1d(distance,nnode,mask);
 				}
 				if(nnode > 4)
 				{
@@ -514,13 +517,13 @@ std::cerr << "ifound != 0" << std::endl;
 
 	}
 
-	int Adapt3DInterpolator::findElement(double * cintp, int clear_cache)
+	int Adapt3DInterpolator::findElement(float * cintp, int clear_cache)
 	{
 
 	       int                 ielem,kelem;
 	       int                 i_s,j_s,k_s,i,j,k,indx_start,indx_end;
 	       int                 indx1,ifound,just_found,jelem;
-	       double              x,y,z,shapex[NNODE_ADAPT3D];
+	       float              x,y,z,shapex[NNODE_ADAPT3D];
 
 
 
@@ -648,7 +651,7 @@ std::cerr << "ifound != 0" << std::endl;
 	      return idx;
 	}
 
-	int Adapt3DInterpolator::point_within_grid( double * scoord )
+	int Adapt3DInterpolator::point_within_grid( float * scoord )
 	{
 		/*
 		!
@@ -659,7 +662,7 @@ std::cerr << "ifound != 0" << std::endl;
 		*/
 
 
-	      double  radius;
+	      float  radius;
 	      int within_bounds = 1;
 
 	      radius=std::sqrt(scoord[0]*scoord[0]+scoord[1]*scoord[1]+scoord[2]*scoord[2]);
@@ -708,7 +711,7 @@ std::cerr << "ifound != 0" << std::endl;
 
 	}
 
-    int Adapt3DInterpolator::chkineln( double * cintp ,int ielem , double * shapex)
+    int Adapt3DInterpolator::chkineln( float * cintp ,int ielem , float * shapex)
 	{
 //#define DEBUG
 	/*
@@ -725,12 +728,12 @@ std::cerr << "ifound != 0" << std::endl;
 
 		int   ipa,ipb,ipc,ipd;
 		int   ierro;
-		double xa,ya,za,xba,yba,zba,xca,yca,zca,xda,yda,zda;
-		double xpa,ypa,zpa;
-		double deter,detin,shmin,shmax;
-		double rin11,rin12,rin13;
-		double rin21,rin22,rin23;
-		double rin31,rin32,rin33;
+		float xa,ya,za,xba,yba,zba,xca,yca,zca,xda,yda,zda;
+		float xpa,ypa,zpa;
+		float deter,detin,shmin,shmax;
+		float rin11,rin12,rin13;
+		float rin21,rin22,rin23;
+		float rin31,rin32,rin33;
 
 
 	/*
@@ -809,8 +812,8 @@ std::cerr << "ifound != 0" << std::endl;
 	!...  max/min of these shape-functions
 	!
 	*/
-		shmin = ccmc::Math::dfindmin(shapex,4);
-		shmax = ccmc::Math::dfindmax(shapex,4);
+		shmin = ccmc::Math::ffindmin(shapex,4);
+		shmax = ccmc::Math::ffindmax(shapex,4);
 	/*
 	!...  see if in the element
 	!
@@ -845,7 +848,7 @@ std::cerr << "ifound != 0" << std::endl;
 	/*       end subroutine chkineln */
 	}
 
-    void Adapt3DInterpolator::interpolate_adapt3d_solution(double *coord1,int ielem, double *unkno_local)
+    void Adapt3DInterpolator::interpolate_adapt3d_solution(float *coord1,int ielem, float *unkno_local)
     {
     /*
      * Interpolate values of unkno to position coord in element ielem
@@ -854,17 +857,17 @@ std::cerr << "ifound != 0" << std::endl;
 
            int ipa,ipb,ipc,ipd;
            int iv;
-           double x1,y1,z1;
-           double x2,y2,z2;
-           double x3,y3,z3;
-           double x4,y4,z4;
-           double vol,vol6;
-           double a1,b1,c1,d1;
-           double a2,b2,c2,d2;
-           double a3,b3,c3,d3;
-           double a4,b4,c4,d4;
-           double f1,f2,f3,f4;
-           double x,y,z;
+           float x1,y1,z1;
+           float x2,y2,z2;
+           float x3,y3,z3;
+           float x4,y4,z4;
+           float vol,vol6;
+           float a1,b1,c1,d1;
+           float a2,b2,c2,d2;
+           float a3,b3,c3,d3;
+           float a4,b4,c4,d4;
+           float f1,f2,f3,f4;
+           float x,y,z;
 
 
            ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ]-1;

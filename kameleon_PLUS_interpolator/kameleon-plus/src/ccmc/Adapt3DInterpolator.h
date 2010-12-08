@@ -61,13 +61,13 @@ namespace ccmc
 
 			/* support routines */
 
-			int findElement(double *cintp, int clear_cache);
-			int chkineln(double * cintp ,int ielem , double * shapex);
+			int findElement(float *cintp, int clear_cache);
+			int chkineln(float * cintp ,int ielem , float * shapex);
 
-			int smartSearch(double *search_point_coords);
-			int point_within_grid( double * scoord );
+			int smartSearch(float *search_point_coords);
+			int point_within_grid( float * scoord );
 			int index_2d_to_1d( int i1, int i2, int n1, int n2);
-			void interpolate_adapt3d_solution(double *coord1,int ielem, double *unkno_local);
+			void interpolate_adapt3d_solution(float *coord1,int ielem, float *unkno_local);
 
 	};
 }

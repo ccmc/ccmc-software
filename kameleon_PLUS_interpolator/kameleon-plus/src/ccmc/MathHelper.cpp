@@ -10,7 +10,7 @@
 
 namespace ccmc
 {
-	int Math::iminloc1d(int array[], long n, int mask[])
+	int Math::iminloc1d(int * array, long n, int * mask)
 	{
 	   long i,loc;
 	   int min;
@@ -26,7 +26,7 @@ namespace ccmc
 	}
 
 
-	int Math::imaxloc1d(int array[], long n, int mask[])
+	int Math::imaxloc1d(int * array, long n, int * mask)
 	{
 	   long i,loc;
 	   int max;
@@ -41,23 +41,24 @@ namespace ccmc
 	   return loc;
 	}
 
-	int Math::fminloc1d(float array[], long n, int mask[])
+	int Math::fminloc1d(float * array, long n, int * mask)
 	{
-	   long i,loc;
-	   float min;
-	   min = std::numeric_limits<float>::max( ); //if highest value possible in array is 99999999999
-	   for (i=0; i<n; i++)
-		   {
-				  if( (array[i] < min) && (mask[i] > 0)) {
-					 min=array[i];
-					 loc=i;
-				  }
-		   }
-	   return loc;
+		long i,loc;
+		float min;
+		min = std::numeric_limits<float>::max( ); //if highest value possible in array is 99999999999
+		for (i=0; i<n; i++)
+		{
+			if( (array[i] < min) && (mask[i] > 0))
+			{
+				min=array[i];
+				loc=i;
+			}
+		}
+		return loc;
 	}
 
 
-	int Math::fmaxloc1d(float array[], long n, int mask[])
+	int Math::fmaxloc1d(float * array, long n, int * mask)
 	{
 	   long i,loc;
 	   float max;
@@ -72,7 +73,7 @@ namespace ccmc
 	   return loc;
 	}
 
-	int Math::dminloc1d(double array[], long n, int mask[])
+	int Math::dminloc1d(double * array, long n, int * mask)
 	{
 	   long i,loc;
 	   double min;
@@ -88,7 +89,7 @@ namespace ccmc
 	}
 
 
-	int Math::dmaxloc1d(double array[], long n, int mask[])
+	int Math::dmaxloc1d(double * array, long n, int * mask)
 	{
 	   long i,loc;
 	   double max;
@@ -104,7 +105,7 @@ namespace ccmc
 	}
 
 
-	int Math::ifindmin(int array[], long n)
+	int Math::ifindmin(int * array, long n)
 	{
 	   long i;
 	   int min;
@@ -117,7 +118,7 @@ namespace ccmc
 	   return min;
 	}
 
-	int Math::ifindmax(int array[], long n)
+	int Math::ifindmax(int * array, long n)
 	{
 	   long i;
 	   int max;
@@ -130,7 +131,7 @@ namespace ccmc
 	   return max;
 	}
 
-	long Math::lfindmin(long array[], long n)
+	long Math::lfindmin(long * array, long n)
 	{
 	   long i;
 	   long min;
@@ -143,7 +144,7 @@ namespace ccmc
 	   return min;
 	}
 
-	long Math::lfindmax(long array[], long n)
+	long Math::lfindmax(long * array, long n)
 	{
 	   long i;
 	   long max;
@@ -156,7 +157,7 @@ namespace ccmc
 	   return max;
 	}
 
-	float Math::ffindmin(float array[], long n)
+	float Math::ffindmin(float * array, long n)
 	{
 	   long i;
 	   float min;
@@ -169,7 +170,7 @@ namespace ccmc
 	   return min;
 	}
 
-	float Math::ffindmax(float array[], long n)
+	float Math::ffindmax(float * array, long n)
 	{
 	   long i;
 	   float max;
@@ -182,7 +183,7 @@ namespace ccmc
 	   return max;
 	}
 
-	double Math::dfindmin(double array[], long n)
+	double Math::dfindmin(double * array, long n)
 	{
 	   long i;
 	   double min;
@@ -195,7 +196,7 @@ namespace ccmc
 	   return min;
 	}
 
-	double Math::dfindmax(double array[], long n)
+	double Math::dfindmax(double * array, long n)
 	{
 	   long i;
 	   double max;
