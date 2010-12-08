@@ -133,8 +133,11 @@ namespace ccmc
 
 		std::cerr << "setting up unstructured grid search" << std::endl;
 		this->setupUnstructuredGridSearch();
+		std::cerr << "finished setting up unstructured grid search" << std::endl;
 
+		std::cerr << "setting up smart search" << std::endl;
 		this->smartSearchSetup();
+		std::cerr << "finished setting up smart search" << std::endl;
 
 		return status;
 
