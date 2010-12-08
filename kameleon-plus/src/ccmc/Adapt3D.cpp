@@ -120,6 +120,18 @@ namespace ccmc
 		this->smartSearchValues.esup1 = new int[nelem*4];
 		this->smartSearchValues.esup2 = new int[npoin+1];
 
+		this->coord = (this->getVariableData(ccmc::strings::variables::coord_));
+		this->intmat = (this->getVariableDataInt(ccmc::strings::variables::intmat_));
+
+		std::cerr << "coord: " << (*coord).size() << std::endl;
+		for (int i = 0; i < 10; i++)
+			std::cerr << "coord[" << i << "]: " << (*coord)[i] << std::endl;
+
+		std::cerr << "intmat: " << std::endl;
+		for (int i = 0; i < 10; i++)
+			std::cerr << "intmat[" << i << "]: " << (*intmat)[i] << std::endl;
+
+		std::cerr << "setting up unstructured grid search" << std::endl;
 		this->setupUnstructuredGridSearch();
 
 		this->smartSearchSetup();
@@ -219,22 +231,21 @@ namespace ccmc
 		int countup, countdown;
 
 
-		double xlo,xhi;
-		double ylo,yhi;
-		double zlo,zhi;
-		double xmean,ymean,zmean;
-		double side_l_1,side_l_2,side_l_3;
-		double side_l_4,side_l_5,side_l_6;
-		double max_element_length,max_length_sqrd;
-		double max_length_sqrd_old;
-		double dxyz[3];
-		double dxyz_min;
-		double arr2[2];
-		double arr4[4];
-		double arr7[7];
+		float xlo,xhi;
+		float ylo,yhi;
+		float zlo,zhi;
+		float xmean,ymean,zmean;
+		float side_l_1,side_l_2,side_l_3;
+		float side_l_4,side_l_5,side_l_6;
+		float max_element_length,max_length_sqrd;
+		float max_length_sqrd_old;
+		float dxyz[3];
+		float dxyz_min;
+		float arr2[2];
+		float arr4[4];
+		float arr7[7];
 		long   len;
-		this->coord = (this->getVariableData(ccmc::strings::variables::coord_));
-		this->intmat = (this->getVariableDataInt(ccmc::strings::variables::intmat_));
+
 
 
 
@@ -271,13 +282,13 @@ namespace ccmc
 		/* coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
 		* for node 1, etc
 		*/
-		for ( i=0; i<(int)npoin; i++) {
-			this->smartSearchValues.xl_sg=std::min(this->smartSearchValues.xl_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			this->smartSearchValues.xr_sg=std::max(this->smartSearchValues.xr_sg,(double)(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			this->smartSearchValues.yl_sg=std::min(this->smartSearchValues.yl_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			this->smartSearchValues.yr_sg=std::max(this->smartSearchValues.yr_sg,(double)(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			this->smartSearchValues.zl_sg=std::min(this->smartSearchValues.zl_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
-			this->smartSearchValues.zr_sg=std::max(this->smartSearchValues.zr_sg,(double)(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+		for ( i=0; i<npoin; i++) {
+			this->smartSearchValues.xl_sg=std::min(this->smartSearchValues.xl_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			this->smartSearchValues.xr_sg=std::max(this->smartSearchValues.xr_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
+			this->smartSearchValues.yl_sg=std::min(this->smartSearchValues.yl_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			this->smartSearchValues.yr_sg=std::max(this->smartSearchValues.yr_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
+			this->smartSearchValues.zl_sg=std::min(this->smartSearchValues.zl_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+			this->smartSearchValues.zr_sg=std::max(this->smartSearchValues.zr_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
 		}
 
 		printf("-------------------------------\n");
@@ -293,14 +304,14 @@ namespace ccmc
 
 		/* Step 1 - Define structured grid */
 
-		this->smartSearchValues.dx_sg = (this->smartSearchValues.xr_sg - this->smartSearchValues.xl_sg)/( (float)nx_sg );
-		this->smartSearchValues.dy_sg = (this->smartSearchValues.yr_sg - this->smartSearchValues.yl_sg)/( (float)ny_sg );
-		this->smartSearchValues.dz_sg = (this->smartSearchValues.zr_sg - this->smartSearchValues.zl_sg)/( (float)nz_sg );
+		this->smartSearchValues.dx_sg = (this->smartSearchValues.xr_sg - this->smartSearchValues.xl_sg)/(float)(nx_sg );
+		this->smartSearchValues.dy_sg = (this->smartSearchValues.yr_sg - this->smartSearchValues.yl_sg)/(float)(ny_sg );
+		this->smartSearchValues.dz_sg = (this->smartSearchValues.zr_sg - this->smartSearchValues.zl_sg)/(float)(nz_sg );
 		dxyz[0] = this->smartSearchValues.dx_sg;
 		dxyz[1] = this->smartSearchValues.dy_sg;
 		dxyz[2] = this->smartSearchValues.dz_sg;
 		len=3;
-		dxyz_min = ccmc::Math::dfindmin(dxyz,len);
+		dxyz_min = ccmc::Math::ffindmin(dxyz,len);
 
 
 		/* Initialize the counters for the number of elements in each grid cell */
@@ -366,26 +377,26 @@ namespace ccmc
 			arr7[5] = side_l_5;
 			arr7[6] = side_l_6;
 
-			max_length_sqrd=ccmc::Math::dfindmax(arr7,7);
+			max_length_sqrd=ccmc::Math::ffindmax(arr7,7);
 
 			arr4[0] = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
 			arr4[1] = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ];
 			arr4[2] = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ];
 			arr4[3] = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ];
-			xlo = ccmc::Math::dfindmin(arr4,4);
-			xhi = ccmc::Math::dfindmax(arr4,4);
+			xlo = ccmc::Math::ffindmin(arr4,4);
+			xhi = ccmc::Math::ffindmax(arr4,4);
 			arr4[0] = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
 			arr4[1] = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ];
 			arr4[2] = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ];
 			arr4[3] = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ];
-			ylo = ccmc::Math::dfindmin(arr4,4);
-			yhi = ccmc::Math::dfindmax(arr4,4);
+			ylo = ccmc::Math::ffindmin(arr4,4);
+			yhi = ccmc::Math::ffindmax(arr4,4);
 			arr4[0] = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
 			arr4[1] = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ];
 			arr4[2] = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ];
 			arr4[3] = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ];
-			zlo = ccmc::Math::dfindmin(arr4,4);
-			zhi = ccmc::Math::dfindmax(arr4,4);
+			zlo = ccmc::Math::ffindmin(arr4,4);
+			zhi = ccmc::Math::ffindmax(arr4,4);
 
 			xmean = 0.5*(xlo+xhi);
 			ymean = 0.5*(ylo+yhi);

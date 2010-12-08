@@ -25,8 +25,8 @@ namespace ccmc
 {
 	struct SmartGridSearchValues
 	{
-		double xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
-		double dx_sg,dy_sg,dz_sg;
+		float xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
+		float dx_sg,dy_sg,dz_sg;
 		int *indx;
 		int *esup1;
 		int *esup2;
