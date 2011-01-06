@@ -13,6 +13,7 @@
 #include "StringConstants.h"
 #include "MathHelper.h"
 #include <algorithm>
+#include <limits>
 
 
 namespace ccmc
@@ -273,12 +274,12 @@ namespace ccmc
 		int last_element_found = -1;
 
 
-		this->smartSearchValues.xl_sg=1.e30;
-		this->smartSearchValues.xr_sg=-1.e30;
-		this->smartSearchValues.yl_sg=1.e30;
-		this->smartSearchValues.yr_sg=-1.e30;
-		this->smartSearchValues.zl_sg=1.e30;
-		this->smartSearchValues.zr_sg=-1.e30;
+		this->smartSearchValues.xl_sg=std::numeric_limits<float>::max();
+		this->smartSearchValues.xr_sg=std::numeric_limits<float>::min();
+		this->smartSearchValues.yl_sg=std::numeric_limits<float>::max();
+		this->smartSearchValues.yr_sg=std::numeric_limits<float>::min();
+		this->smartSearchValues.zl_sg=std::numeric_limits<float>::max();
+		this->smartSearchValues.zr_sg=std::numeric_limits<float>::min();
 
 		printf("npoin,ndimn %d %d \n",npoin, ndimn);
 
@@ -286,12 +287,12 @@ namespace ccmc
 		* for node 1, etc
 		*/
 		for ( i=0; i<npoin; i++) {
-			this->smartSearchValues.xl_sg=std::min(this->smartSearchValues.xl_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			this->smartSearchValues.xr_sg=std::max(this->smartSearchValues.xr_sg,(*coord)[ index_2d_to_1d(i,0,npoin,ndimn) ]);
-			this->smartSearchValues.yl_sg=std::min(this->smartSearchValues.yl_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			this->smartSearchValues.yr_sg=std::max(this->smartSearchValues.yr_sg,(*coord)[ index_2d_to_1d(i,1,npoin,ndimn) ]);
-			this->smartSearchValues.zl_sg=std::min(this->smartSearchValues.zl_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
-			this->smartSearchValues.zr_sg=std::max(this->smartSearchValues.zr_sg,(*coord)[ index_2d_to_1d(i,2,npoin,ndimn) ]);
+			this->smartSearchValues.xl_sg=std::min(this->smartSearchValues.xl_sg,(*coord)[ index_2d_to_1d(0,i,0,npoin) ]);
+			this->smartSearchValues.xr_sg=std::max(this->smartSearchValues.xr_sg,(*coord)[ index_2d_to_1d(0,i,0,npoin) ]);
+			this->smartSearchValues.yl_sg=std::min(this->smartSearchValues.yl_sg,(*coord)[ index_2d_to_1d(1,i,0,npoin) ]);
+			this->smartSearchValues.yr_sg=std::max(this->smartSearchValues.yr_sg,(*coord)[ index_2d_to_1d(1,i,0,npoin) ]);
+			this->smartSearchValues.zl_sg=std::min(this->smartSearchValues.zl_sg,(*coord)[ index_2d_to_1d(2,i,0,npoin) ]);
+			this->smartSearchValues.zr_sg=std::max(this->smartSearchValues.zr_sg,(*coord)[ index_2d_to_1d(2,i,0,npoin) ]);
 		}
 
 		printf("-------------------------------\n");
@@ -353,24 +354,24 @@ namespace ccmc
 			 *  coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
 			 * for node 1, etc
 			 */
-			side_l_1= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ],2) ;
-			side_l_2= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],2) ;
-			side_l_3= pow((*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
-			side_l_4= pow((*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],2) ;
-			side_l_5= pow((*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
-			side_l_6= pow((*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],2) +
-				   pow((*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ]-(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],2) ;
+			side_l_1= pow((*coord)[ index_2d_to_1d(0,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(0,ipb,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(1,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(1,ipb,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(2,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(2,ipb,0,npoin) ],2) ;
+			side_l_2= pow((*coord)[ index_2d_to_1d(0,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(0,ipc,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(1,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(1,ipc,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(2,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(2,ipc,0,npoin) ],2) ;
+			side_l_3= pow((*coord)[ index_2d_to_1d(0,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(0,ipd,0,npoin) ],2) +
+					  pow((*coord)[ index_2d_to_1d(1,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(1,ipd,0,npoin) ],2) +
+					  pow((*coord)[ index_2d_to_1d(2,ipa,0,npoin) ]-(*coord)[ index_2d_to_1d(2,ipd,0,npoin) ],2) ;
+			side_l_4= pow((*coord)[ index_2d_to_1d(0,ipb,0,npoin) ]-(*coord)[ index_2d_to_1d(0,ipc,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(1,ipb,0,npoin) ]-(*coord)[ index_2d_to_1d(1,ipc,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(2,ipb,0,npoin) ]-(*coord)[ index_2d_to_1d(2,ipc,0,npoin) ],2) ;
+			side_l_5= pow((*coord)[ index_2d_to_1d(0,ipb,0,npoin) ]-(*coord)[ index_2d_to_1d(0,ipd,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(1,ipb,0,npoin) ]-(*coord)[ index_2d_to_1d(1,ipd,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(2,ipb,0,npoin) ]-(*coord)[ index_2d_to_1d(2,ipd,0,npoin) ],2) ;
+			side_l_6= pow((*coord)[ index_2d_to_1d(0,ipc,0,npoin) ]-(*coord)[ index_2d_to_1d(0,ipd,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(1,ipc,0,npoin) ]-(*coord)[ index_2d_to_1d(1,ipd,0,npoin) ],2) +
+				      pow((*coord)[ index_2d_to_1d(2,ipc,0,npoin) ]-(*coord)[ index_2d_to_1d(2,ipd,0,npoin) ],2) ;
 
 			arr7[0] = max_length_sqrd;
 			arr7[1] = side_l_1;
@@ -382,28 +383,28 @@ namespace ccmc
 
 			max_length_sqrd=ccmc::Math::ffindmax(arr7,7);
 
-			arr4[0] = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
-			arr4[1] = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ];
-			arr4[2] = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ];
-			arr4[3] = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ];
+			arr4[0] = (*coord)[ index_2d_to_1d(0,ipa,0,npoin) ];
+			arr4[1] = (*coord)[ index_2d_to_1d(0,ipb,0,npoin) ];
+			arr4[2] = (*coord)[ index_2d_to_1d(0,ipc,0,npoin) ];
+			arr4[3] = (*coord)[ index_2d_to_1d(0,ipd,0,npoin) ];
 			xlo = ccmc::Math::ffindmin(arr4,4);
 			xhi = ccmc::Math::ffindmax(arr4,4);
-			arr4[0] = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
-			arr4[1] = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ];
-			arr4[2] = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ];
-			arr4[3] = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ];
+			arr4[0] = (*coord)[ index_2d_to_1d(1,ipa,0,npoin) ];
+			arr4[1] = (*coord)[ index_2d_to_1d(1,ipb,0,npoin) ];
+			arr4[2] = (*coord)[ index_2d_to_1d(1,ipc,0,npoin) ];
+			arr4[3] = (*coord)[ index_2d_to_1d(1,ipd,0,npoin) ];
 			ylo = ccmc::Math::ffindmin(arr4,4);
 			yhi = ccmc::Math::ffindmax(arr4,4);
-			arr4[0] = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
-			arr4[1] = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ];
-			arr4[2] = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ];
-			arr4[3] = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ];
+			arr4[0] = (*coord)[ index_2d_to_1d(2,ipa,0,npoin) ];
+			arr4[1] = (*coord)[ index_2d_to_1d(2,ipb,0,npoin) ];
+			arr4[2] = (*coord)[ index_2d_to_1d(2,ipc,0,npoin) ];
+			arr4[3] = (*coord)[ index_2d_to_1d(2,ipd,0,npoin) ];
 			zlo = ccmc::Math::ffindmin(arr4,4);
 			zhi = ccmc::Math::ffindmax(arr4,4);
 
-			xmean = 0.5*(xlo+xhi);
-			ymean = 0.5*(ylo+yhi);
-			zmean = 0.5*(zlo+zhi);
+			xmean = 0.5f*(xlo+xhi);
+			ymean = 0.5f*(ylo+yhi);
+			zmean = 0.5f*(zlo+zhi);
 
 
 			i_s = (int)( (xmean-this->smartSearchValues.xl_sg)/this->smartSearchValues.dx_sg ) ;

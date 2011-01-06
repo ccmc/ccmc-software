@@ -15,6 +15,7 @@
 #define MAX_RANGE    +1e9
 #define NNODE_ADAPT3D 4
 #define LINEAR_INTERPOL
+#define NVARS_ADAPT3D 12
 
 namespace ccmc
 {
@@ -113,7 +114,7 @@ namespace ccmc
 	float Adapt3DInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
-		//this->last_element_found = -1;
+		this->last_element_found = -1;
 		   float rsun_in_meters = 7.0e8;
 
 		   float coord1[3];
@@ -349,16 +350,14 @@ namespace ccmc
 					mask[jnode]=1;
 					inode = (*intmat)[ index_2d_to_1d(last_element_found,jnode,nelem,4) ] -1 ;
 					distance[jnode] =
-							((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0]) *
-							((*coord)[ index_2d_to_1d(inode,0,npoin,ndimn) ] -search_point_coords[0])
-
+							((*coord)[ index_2d_to_1d(0,inode,0,npoin) ] -search_point_coords[0]) *
+							((*coord)[ index_2d_to_1d(0,inode,0,npoin) ] -search_point_coords[0])
 							+
-							((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1]) *
-							((*coord)[ index_2d_to_1d(inode,1,npoin,ndimn) ]-search_point_coords[1])
-
+							((*coord)[ index_2d_to_1d(1,inode,0,npoin) ] -search_point_coords[1]) *
+							((*coord)[ index_2d_to_1d(1,inode,0,npoin) ] -search_point_coords[1])
 							+
-							((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]) *
-							((*coord)[ index_2d_to_1d(inode,2,npoin,ndimn) ]-search_point_coords[2]);
+							((*coord)[ index_2d_to_1d(2,inode,0,npoin) ] -search_point_coords[2]) *
+							((*coord)[ index_2d_to_1d(2,inode,0,npoin) ] -search_point_coords[2]);
 				}
 
 				/*
@@ -490,7 +489,7 @@ std::cerr << "ifound != 0" << std::endl;
 			kelem=-1;
 			if(try_grid_search)
 			{
-				#ifdef DEBUGS
+				//#ifdef DEBUGS
 				radius=sqrt( search_point_coords[0]*search_point_coords[0]+
 					 search_point_coords[1]*search_point_coords[1]+
 					 search_point_coords[2]*search_point_coords[2] );
@@ -498,7 +497,7 @@ std::cerr << "ifound != 0" << std::endl;
 				printf("search_point_coords %e %e %e \n",search_point_coords[0]
 					  ,search_point_coords[1] ,search_point_coords[2]);
 				printf("radius %e \n",radius);
-				#endif
+				//#endif
 				clear_cache=1;
 				kelem=findElement(search_point_coords,clear_cache);
 			}
@@ -532,13 +531,13 @@ std::cerr << "ifound != 0" << std::endl;
 
 	         if(clear_cache == 1) last_element_found=-1;
 	#ifdef DEBUG
-	       printf("0find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin,ndimn) ],coord[ index_2d_to_1d(0,1,npoin,ndimn) ],coord[ index_2d_to_1d(0,2,npoin,ndimn) ]);
+	       printf("0find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin) ],coord[ index_2d_to_1d(0,1,npoin) ],coord[ index_2d_to_1d(0,2,npoin) ]);
 	#endif
 
 	/* If available, use the last element found to begin the search */
 	         if(last_element_found != -1) {
 	#ifdef DEBUG
-	       printf("find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin,ndimn) ],coord[ index_2d_to_1d(0,1,npoin,ndimn) ],coord[ index_2d_to_1d(0,2,npoin,ndimn) ]);
+	       printf("find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin) ],coord[ index_2d_to_1d(0,1,npoin) ],coord[ index_2d_to_1d(0,2,npoin) ]);
 	#endif
 	           kelem = smartSearch(cintp);
 	         }
@@ -674,30 +673,25 @@ std::cerr << "ifound != 0" << std::endl;
 	    	  within_bounds = 0;
 
 	    	  //std::cerr << "scoord[0]: " << scoord[0] << " < " << this->smartSearchValues->xl_sg << std::endl;
-	      }
-	      if(scoord[0] > this->smartSearchValues->xr_sg)
+	      } else if(scoord[0] > this->smartSearchValues->xr_sg)
 	      {
 	    	  within_bounds = 0;
 	    	  //std::cerr << "scoord[0]: " << scoord[0] << " > " << this->smartSearchValues->xr_sg << std::endl;
-	      }
-	      if(scoord[1] < this->smartSearchValues->yl_sg)
+	      } else if (scoord[1] < this->smartSearchValues->yl_sg)
 	      {
 	    	  within_bounds = 0;
 	    	  //std::cerr << "scoord[1]: " << scoord[1] << " < " << this->smartSearchValues->yl_sg << std::endl;
-	      }
-	      if(scoord[1] > this->smartSearchValues->yr_sg)
+	      } else if (scoord[1] > this->smartSearchValues->yr_sg)
 	      {
 	    	  within_bounds = 0;
 	    	  //std::cerr << "scoord[1]: " << scoord[1] << " > " << this->smartSearchValues->yr_sg << std::endl;
 
-	      }
-	      if(scoord[2] < this->smartSearchValues->zl_sg)
+	      } else if(scoord[2] < this->smartSearchValues->zl_sg)
 	      {
 	    	  within_bounds = 0;
 	    	  //std::cerr << "scoord[2]: " << scoord[2] << " < " << this->smartSearchValues->zl_sg << std::endl;
 
-	      }
-	      if(scoord[2] > this->smartSearchValues->zr_sg)
+	      } else if(scoord[2] > this->smartSearchValues->zr_sg)
 	      {
 	    	  within_bounds = 0;
 	    	  //std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
@@ -755,18 +749,18 @@ std::cerr << "ifound != 0" << std::endl;
 		ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
 
 		//std::cerr << "npoin: " << npoin << " ndimn: " << ndimn << " ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
-		xa  = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
-		ya  = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
-		za  = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
-		xba = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ] - xa;
-		yba = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ] - ya;
-		zba = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ] - za;
-		xca = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ] - xa;
-		yca = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ] - ya;
-		zca = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ] - za;
-		xda = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ] - xa;
-		yda = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ] - ya;
-		zda = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ] - za;
+		xa  = (*coord)[ index_2d_to_1d(0,ipa,0,npoin) ];
+		ya  = (*coord)[ index_2d_to_1d(1,ipa,0,npoin) ];
+		za  = (*coord)[ index_2d_to_1d(2,ipa,0,npoin) ];
+		xba = (*coord)[ index_2d_to_1d(0,ipb,0,npoin) ] - xa;
+		yba = (*coord)[ index_2d_to_1d(1,ipb,0,npoin) ] - ya;
+		zba = (*coord)[ index_2d_to_1d(2,ipb,0,npoin) ] - za;
+		xca = (*coord)[ index_2d_to_1d(0,ipc,0,npoin) ] - xa;
+		yca = (*coord)[ index_2d_to_1d(1,ipc,0,npoin) ] - ya;
+		zca = (*coord)[ index_2d_to_1d(2,ipc,0,npoin) ] - za;
+		xda = (*coord)[ index_2d_to_1d(0,ipd,0,npoin) ] - xa;
+		yda = (*coord)[ index_2d_to_1d(1,ipd,0,npoin) ] - ya;
+		zda = (*coord)[ index_2d_to_1d(2,ipd,0,npoin) ] - za;
 
 		deter = xba*(yca*zda-zca*yda) - yba*(xca*zda-zca*xda) + zba*(xca*yda-yca*xda);
 
@@ -774,7 +768,7 @@ std::cerr << "ifound != 0" << std::endl;
 //		std::cerr << "xa: " << xa << " ya: " << ya << " za: " << za << " xba: " << xba;
 //		std::cerr << " yba: " << yba << " zba: " << zba << " xca: " << xca << " yca: " << yca;
 //		std::cerr << " zca: " << zca << " xda: " << xda << " yda: " << yda << " zda: " << zda << std::endl;
-		  printf("coord[ipa]= %d %e %e %e \n",ipa,(*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ]);
+		  printf("coord[ipa]= %d %e %e %e \n",ipa,(*coord)[ index_2d_to_1d(0,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipa,0,npoin) ]);
 		  std::cerr << "deter= " << deter << std::endl;
 	#endif
 	/*       detin = c10/deter */
@@ -836,10 +830,10 @@ std::cerr << "ifound != 0" << std::endl;
 		  printf("shmax= %e \n",shmax);
 		  printf("ierro= %d \n",ierro);
 		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
-		  printf("node 1 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ],ipa);
-		  printf("node 2 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ],ipb);
-		  printf("node 3 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ],ipc);
-		  printf("node 4 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ],(*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ],ipd);
+		  printf("node 1 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipa,0,npoin) ],ipa);
+		  printf("node 2 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipb,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipb,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipb,0,npoin) ],ipb);
+		  printf("node 3 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipc,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipc,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipc,0,npoin) ],ipc);
+		  printf("node 4 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipd,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipd,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipd,0,npoin) ],ipd);
 		 }
 	#endif
 
@@ -874,18 +868,18 @@ std::cerr << "ifound != 0" << std::endl;
            ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ]-1;
            ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ]-1;
            ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
-           x1 = (*coord)[ index_2d_to_1d(ipa,0,npoin,ndimn) ];
-           y1 = (*coord)[ index_2d_to_1d(ipa,1,npoin,ndimn) ];
-           z1 = (*coord)[ index_2d_to_1d(ipa,2,npoin,ndimn) ];
-           x2 = (*coord)[ index_2d_to_1d(ipb,0,npoin,ndimn) ];
-           y2 = (*coord)[ index_2d_to_1d(ipb,1,npoin,ndimn) ];
-           z2 = (*coord)[ index_2d_to_1d(ipb,2,npoin,ndimn) ];
-           x3 = (*coord)[ index_2d_to_1d(ipc,0,npoin,ndimn) ];
-           y3 = (*coord)[ index_2d_to_1d(ipc,1,npoin,ndimn) ];
-           z3 = (*coord)[ index_2d_to_1d(ipc,2,npoin,ndimn) ];
-           x4 = (*coord)[ index_2d_to_1d(ipd,0,npoin,ndimn) ];
-           y4 = (*coord)[ index_2d_to_1d(ipd,1,npoin,ndimn) ];
-           z4 = (*coord)[ index_2d_to_1d(ipd,2,npoin,ndimn) ];
+           x1 = (*coord)[ index_2d_to_1d(0,ipa,0,npoin) ];
+           y1 = (*coord)[ index_2d_to_1d(1,ipa,0,npoin) ];
+           z1 = (*coord)[ index_2d_to_1d(2,ipa,0,npoin) ];
+           x2 = (*coord)[ index_2d_to_1d(0,ipb,0,npoin) ];
+           y2 = (*coord)[ index_2d_to_1d(1,ipb,0,npoin) ];
+           z2 = (*coord)[ index_2d_to_1d(2,ipb,0,npoin) ];
+           x3 = (*coord)[ index_2d_to_1d(0,ipc,0,npoin) ];
+           y3 = (*coord)[ index_2d_to_1d(1,ipc,0,npoin) ];
+           z3 = (*coord)[ index_2d_to_1d(2,ipc,0,npoin) ];
+           x4 = (*coord)[ index_2d_to_1d(0,ipd,0,npoin) ];
+           y4 = (*coord)[ index_2d_to_1d(1,ipd,0,npoin) ];
+           z4 = (*coord)[ index_2d_to_1d(2,ipd,0,npoin) ];
 
            x = coord1[0];
            y = coord1[1];
@@ -943,8 +937,8 @@ std::cerr << "ifound != 0" << std::endl;
              f3 =  (a3 + b3*x + c3*y + d3*z)/vol6;
              f4 = -(a4 + b4*x + c4*y + d4*z)/vol6;
 
-             unkno_local[iv] = f1*(*unkno)[ index_2d_to_1d(ipa,iv,npoin,9) ]+f2*(*unkno)[ index_2d_to_1d(ipb,iv,npoin,9) ]
-                              +f3*(*unkno)[ index_2d_to_1d(ipc,iv,npoin,9) ]+f4*(*unkno)[ index_2d_to_1d(ipd,iv,npoin,9) ] ;
+             unkno_local[iv] = f1*(*unkno)[ index_2d_to_1d(ipa,iv,npoin,NVARS_ADAPT3D) ]+f2*(*unkno)[ index_2d_to_1d(ipb,iv,npoin,NVARS_ADAPT3D) ]
+                              +f3*(*unkno)[ index_2d_to_1d(ipc,iv,npoin,NVARS_ADAPT3D) ]+f4*(*unkno)[ index_2d_to_1d(ipd,iv,npoin,NVARS_ADAPT3D) ] ;
 
            }
     #endif
