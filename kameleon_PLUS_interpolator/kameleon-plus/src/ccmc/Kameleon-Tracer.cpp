@@ -1369,7 +1369,7 @@ namespace ccmc
 		//TODO: fix this logic for ENLIL and MAS
 		if (model_name == ccmc::strings::models::adapt3d_)
 		{
-			if (sqrt(p.component1 * p.component1 + p.component2 * p.component2 + p.component3 * p.component3) <= 5.f)
+			if (sqrt(p.component1 * p.component1 + p.component2 * p.component2 + p.component3 * p.component3) <= 30.f)
 				validRegion = true;
 		} else if (model_name == ccmc::strings::models::mas_ || model_name == ccmc::strings::models::enlil_)
 		{
@@ -1837,10 +1837,10 @@ namespace ccmc
 					position.component1, position.component2, position.component3, dComponent1, dComponent2,
 					dComponent3);
 		}
-//#ifdef DEBUG_TRACER
+#ifdef DEBUG_TRACER
 		cerr <<"VectorValue: " << vectorValue << "positions: " << position << endl;
 		cerr << "dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << endl;
-//#endif
+#endif
 
 		return vectorValue;
 

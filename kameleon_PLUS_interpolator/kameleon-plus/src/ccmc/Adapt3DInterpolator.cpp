@@ -15,7 +15,7 @@
 #define MAX_RANGE    +1e9
 #define NNODE_ADAPT3D 4
 #define LINEAR_INTERPOL
-#define NVARS_ADAPT3D 12
+
 
 namespace ccmc
 {
@@ -114,7 +114,10 @@ namespace ccmc
 	float Adapt3DInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
-		this->last_element_found = -1;
+
+		//this->last_element_found = -1;
+		if (!point_within_grid(c0,c1,c2))
+			return this->missingValue;
 		   float rsun_in_meters = 7.0e8;
 
 		   float coord1[3];
@@ -135,8 +138,8 @@ namespace ccmc
 		   int     istatus;
 		   int     ielem, unkno_index;
 
-		   char variable_name0[] = "intmat";
-		   char variable_name1[] = "coord";
+		   //char variable_name0[] = "intmat";
+		   //char variable_name1[] = "coord";
 
 		   /**
 		    * TODO: figure out what to do about the dc0,dc1,dc2 values
@@ -239,14 +242,14 @@ namespace ccmc
 
 		       if(ielem > -1) {
 		         interpolate_adapt3d_solution(coord1, ielem, unkno_local);
-//		#ifdef DEBUG
+		#ifdef DEBUG
 		       printf("interpolate_adapt3d_cdf: unkno_local %e %e %e  %e %e %e  %e %e %e \n", unkno_local[0],unkno_local[1],unkno_local[2],unkno_local[3],unkno_local[4],
 		                          unkno_local[5],unkno_local[6],unkno_local[7],unkno_local[8]);
-//		#endif
+		#endif
 		         interpolated_value = unkno_local[unkno_index];
 		         last_element_found = ielem;
 		       } else {
-		         printf("Failed to find point in grid\n");
+		         //printf("Failed to find point in grid\n");
 		         last_element_found = -1;
 		       }
 
@@ -275,7 +278,7 @@ namespace ccmc
 
 	int Adapt3DInterpolator::smartSearch(float * search_point_coords)
 	{
-#define DEBUGS
+//#define DEBUGS
 		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
 
 		int  i,j,k,ielem,inode,jnode ;
@@ -414,14 +417,14 @@ namespace ccmc
 #endif
 					inode = (*intmat)[ index_2d_to_1d(last_element_found,next_node,nelem,4) ] -1 ;
 
-					//#ifdef DEBUGS
+					#ifdef DEBUGS
 					printf("node list for this element is %i %i %i %i \n",
 					(*intmat)[ index_2d_to_1d(last_element_found,0,nelem,4) ]-1,
 					(*intmat)[ index_2d_to_1d(last_element_found,1,nelem,4) ]-1,
 					(*intmat)[ index_2d_to_1d(last_element_found,2,nelem,4) ]-1,
 					(*intmat)[ index_2d_to_1d(last_element_found,3,nelem,4) ]-1);
 					printf("First node in list is %i \n",inode);
-					//#endif
+					#endif
 
 
 
@@ -472,7 +475,6 @@ namespace ccmc
 			/*--------*/
 		}      /*   if( ifound .eq. 0)  */
 		/*--------*/
-std::cerr << "ifound != 0" << std::endl;
 		if( ifound != 0)
 		{
 			#ifdef DEBUGS
@@ -489,7 +491,7 @@ std::cerr << "ifound != 0" << std::endl;
 			kelem=-1;
 			if(try_grid_search)
 			{
-				//#ifdef DEBUGS
+				#ifdef DEBUGS
 				radius=sqrt( search_point_coords[0]*search_point_coords[0]+
 					 search_point_coords[1]*search_point_coords[1]+
 					 search_point_coords[2]*search_point_coords[2] );
@@ -497,7 +499,7 @@ std::cerr << "ifound != 0" << std::endl;
 				printf("search_point_coords %e %e %e \n",search_point_coords[0]
 					  ,search_point_coords[1] ,search_point_coords[2]);
 				printf("radius %e \n",radius);
-				//#endif
+				#endif
 				clear_cache=1;
 				kelem=findElement(search_point_coords,clear_cache);
 			}
@@ -592,9 +594,9 @@ std::cerr << "ifound != 0" << std::endl;
 	/* If element has still not been found then search in list for
 	    neighboring structured grid cells */
 	         if (ifound == 1) {
-	         for ( k=max(0,k_s-1); k<min(k_s+2,nz_sg-1); k++) {
-	         for ( j=max(0,j_s-1); j<min(j_s+2,ny_sg-1); j++) {
-	         for ( i=max(0,i_s-1); i<min(i_s+2,nx_sg-1); i++) {
+	         for ( k=max(0,k_s-1); k<=min(k_s+1,nz_sg-1); k++) {
+	         for ( j=max(0,j_s-1); j<=min(j_s+1,ny_sg-1); j++) {
+	         for ( i=max(0,i_s-1); i<=min(i_s+1,nx_sg-1); i++) {
 	           if(ifound == 1) {
 	             just_found=1;
 	             if( ( (i != i_s) || (j != j_s) || (k != k_s) ) ) {
@@ -628,8 +630,8 @@ std::cerr << "ifound != 0" << std::endl;
 	#endif
 
 	         if( ielem == -1) {
-	           printf("Failed to find element using smart search\n");
-	           printf("Using Brute force now!\n");
+	           //printf("Failed to find element using smart search\n");
+	           //printf("Using Brute force now!\n");
 	         }
 	         kelem=-1;
 	         if( ielem != -1) kelem=this->smartSearchValues->indx[ielem];
@@ -650,6 +652,59 @@ std::cerr << "ifound != 0" << std::endl;
 	      return idx;
 	}
 
+	int Adapt3DInterpolator::point_within_grid( const float& c0, const float& c1, const float& c2)
+	{
+		/*
+		!
+		! This function test to see if the given point (coord) is inside
+		! the grid bounds. This function requires specific knowledge of the
+		! grid type and range. It will need a customized function for each model
+		! used with this search.
+		*/
+
+
+	      float  radius;
+	      int within_bounds = 1;
+
+	      radius=std::sqrt(c0*c0+c1*c1+c2*c2);
+	      if(c0 < this->smartSearchValues->xl_sg)
+	      {
+	    	  within_bounds = 0;
+
+	    	  //std::cerr << "scoord[0]: " << scoord[0] << " < " << this->smartSearchValues->xl_sg << std::endl;
+	      } else if(c0 > this->smartSearchValues->xr_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[0]: " << scoord[0] << " > " << this->smartSearchValues->xr_sg << std::endl;
+	      } else if (c1 < this->smartSearchValues->yl_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[1]: " << scoord[1] << " < " << this->smartSearchValues->yl_sg << std::endl;
+	      } else if (c1 > this->smartSearchValues->yr_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[1]: " << scoord[1] << " > " << this->smartSearchValues->yr_sg << std::endl;
+
+	      } else if(c2 < this->smartSearchValues->zl_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[2]: " << scoord[2] << " < " << this->smartSearchValues->zl_sg << std::endl;
+
+	      } else if(c2 > this->smartSearchValues->zr_sg)
+	      {
+	    	  within_bounds = 0;
+	    	  //std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
+
+	      }
+	      if(radius < INNER_RADIUS) within_bounds = 0;
+	      if(radius > OUTER_RADIUS) within_bounds = 0;
+
+
+	      return within_bounds;
+
+
+	}
+
 	int Adapt3DInterpolator::point_within_grid( float * scoord )
 	{
 		/*
@@ -665,9 +720,6 @@ std::cerr << "ifound != 0" << std::endl;
 	      int within_bounds = 1;
 
 	      radius=std::sqrt(scoord[0]*scoord[0]+scoord[1]*scoord[1]+scoord[2]*scoord[2]);
-	      std::cerr << "Smart Search Values: " << std::endl;
-	      std::cerr << "radius: " << radius << std::endl;
-	      std::cerr << "scoord: " << scoord[0] << "," << scoord[1] << "," << scoord[2] << std::endl;
 	      if(scoord[0] < this->smartSearchValues->xl_sg)
 	      {
 	    	  within_bounds = 0;
@@ -697,8 +749,8 @@ std::cerr << "ifound != 0" << std::endl;
 	    	  //std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
 
 	      }
-	      if(radius < 1.) within_bounds = 0;
-	      if(radius > 5.) within_bounds = 0;
+	      if(radius < INNER_RADIUS) within_bounds = 0;
+	      if(radius > OUTER_RADIUS) within_bounds = 0;
 
 
 	      return within_bounds;

@@ -12,7 +12,6 @@
 #include "Adapt3D.h"
 
 #define NNODE_ADAPT3D 4
-#define NVARS_ADAPT3D 9
 #define NDIMN_ADAPT3D 3
 
 #define nx_sg 10
@@ -66,6 +65,7 @@ namespace ccmc
 
 			int smartSearch(float *search_point_coords);
 			int point_within_grid( float * scoord );
+			int point_within_grid( const float& c0, const float& c1, const float& c2);
 			int index_2d_to_1d( int i1, int i2, int n1, int n2);
 			void interpolate_adapt3d_solution(float *coord1,int ielem, float *unkno_local);
 

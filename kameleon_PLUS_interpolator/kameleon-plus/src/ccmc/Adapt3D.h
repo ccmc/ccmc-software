@@ -14,8 +14,10 @@
 #include <vector>
 
 #define NNODE_ADAPT3D 4
-#define NVARS_ADAPT3D 9
+#define NVARS_ADAPT3D 12
 #define NDIMN_ADAPT3D 3
+#define INNER_RADIUS 1.0
+#define OUTER_RADIUS 30.0
 
 #define nx_sg 10
 #define ny_sg 10
