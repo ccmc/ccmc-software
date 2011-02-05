@@ -63,7 +63,7 @@ int main (int argc, char * argv[])
 			value = kameleon.getMissingValue();
 
 		std::cout << "value before random interpolations: " << value << std::endl;
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			for (int j = 0; j < 1; j++)
 			{
