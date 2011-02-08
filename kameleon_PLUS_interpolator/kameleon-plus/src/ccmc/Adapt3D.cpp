@@ -12,6 +12,7 @@
 #include "Adapt3DInterpolator.h"
 #include "StringConstants.h"
 #include "MathHelper.h"
+#include <stdio.h>
 #include <algorithm>
 #include <limits>
 
