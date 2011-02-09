@@ -8,3 +8,5 @@ _CCMC_la_LIBADD = @builddir@/../../../ccmc/libkameleon-plus.la
 _CCMC_la_CXXFLAGS = -fPIC
 _CCMC_la_CPPFLAGS = @PYTHON_INCLUDES@ -I@srcdir@/../../..
 _CCMC_la_LIBTOOLFLAGS = --tag=disable-static
+
+EXTRA_DIST = SWIG_COMMAND
