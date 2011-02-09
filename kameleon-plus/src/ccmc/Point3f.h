@@ -16,8 +16,8 @@ namespace ccmc
 				SPHERICAL, CARTESIAN
 			};
 
-			Point3f(float component1, float component2, float component3);
-			Point3f(float component1, float component2, float component3, Coordinates c);
+			Point3f(const float& component1, const float& component2, const float& component3);
+			Point3f(const float& component1, const float& component2, const float& component3, Coordinates c);
 			Point3f();
 			Point3f(Coordinates c);
 			void normalize();
