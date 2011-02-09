@@ -39,10 +39,14 @@ dist_noinst_JAVA = 	Attribute.java \
 					vector_float.java \
 					vector_int.java \
 					vector_point3f.java \
-					vector_string.java
+					vector_string.java 
+
+EXTRA_DIST = SWIG_COMMAND
 					
 
 
 
 $(jarfile): $(dist_noinst_JAVA)
+	echo $(dist_noinst_SWIG_COMMAND)
 	jar cf $@ $(pkgpath)/gov/nasa/gsfc/ccmc/*.class; 
+	
