@@ -21,7 +21,7 @@ namespace ccmc
 	 * @param component2
 	 * @param component3
 	 */
-	Point3f::Point3f(const float component1, const float component2, const float component3)
+	Point3f::Point3f(const float& component1, const float& component2, const float& component3)
 	{
 		this->component1 = component1;
 		this->component2 = component2;
@@ -35,7 +35,7 @@ namespace ccmc
 	 * @param component2
 	 * @param component3
 	 */
-	Point3f::Point3f(const float component1, const float component2, const float component3, Coordinates c)
+	Point3f::Point3f(const float& component1, const float& component2, const float& component3, Coordinates c)
 	{
 		this->component1 = component1;
 		this->component2 = component2;
