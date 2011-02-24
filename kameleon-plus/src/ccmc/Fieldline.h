@@ -26,8 +26,8 @@ namespace ccmc
 			void removePoint(int index);
 			Fieldline reverseOrder();
 			void reverseOrderInPlace();
-			const vector< Point3f >& getPositions();
-			const vector< float >& getData();
+			const std::vector< Point3f >& getPositions();
+			const std::vector< float >& getData();
 			int size();
 			const Point3f& getPosition(int i);
 			float getData(int i);
@@ -37,28 +37,28 @@ namespace ccmc
 			void setVariable(std::string variable);
 			const std::string& getVariable();
 		// A. Pembroke added below (Fall 2010)
-			const vector< float>& getDs(); // requires positions
-			const vector< Point3f >& getElements(); // requires elements
+			const std::vector< float>& getDs(); // requires positions
+			const std::vector< Point3f >& getElements(); // requires elements
 			const Point3f& getElement(int i); // requires elements
-			const vector< float>& integrate();// requires elementsMagnitudes, values
-			const vector< float>& measure(); // requires elementsMagnitudes
+			const std::vector< float>& integrate();// requires elementsMagnitudes, values
+			const std::vector< float>& measure(); // requires elementsMagnitudes
 			float getLength(int i); // requires length
 			float getIntegral(int i); // requires integral
 			Fieldline interpolate(int option, int Npoints); // requires positions, length, integral
-			const vector< int >& getNearest();
+			const std::vector< int >& getNearest();
 
 
 		private:
-			vector < Point3f > positions;
-			vector < float > values;
+			std::vector < Point3f > positions;
+			std::vector < float > values;
 			Point3f startPoint;
 			std::string variable;
 			// A. Pembroke added below (Fall 2010)
-			vector < Point3f > elements; // created by getDs()
-			vector < float> elementsMagnitudes; // created by getDs()
-			vector < float> integral; // created by integrate()
-			vector < float> length; // created by measure()
-			vector < int> nearest; // created by interpolate
+			std::vector < Point3f > elements; // created by getDs()
+			std::vector < float> elementsMagnitudes; // created by getDs()
+			std::vector < float> integral; // created by integrate()
+			std::vector < float> length; // created by measure()
+			std::vector < int> nearest; // created by interpolate
 	};
 }
 
