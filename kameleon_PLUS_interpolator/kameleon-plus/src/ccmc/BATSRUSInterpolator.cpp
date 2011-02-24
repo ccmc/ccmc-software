@@ -271,9 +271,9 @@ namespace ccmc
 						yy_c[ic] = c1 + ((ic % 4) / 2) * dy2; /* resolution change between */
 						zz_c[ic] = c2 + (ic / 4) * dz2; /* neighboring blocks */
 
-						ix_c[ic] = min(nx - 1., max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
-						iy_c[ic] = min(ny - 1., max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
-						iz_c[ic] = min(nz - 1., max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
+						ix_c[ic] = std::min(nx - 1., std::max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
+						iy_c[ic] = std::min(ny - 1., std::max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
+						iz_c[ic] = std::min(nz - 1., std::max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
 						xx_c[ic] = XMIN + dx2 * (0.5 + ix_c[ic]);
 						yy_c[ic] = YMIN + dx2 * (0.5 + iy_c[ic]);
 						zz_c[ic] = ZMIN + dx2 * (0.5 + iz_c[ic]);
@@ -654,9 +654,9 @@ namespace ccmc
 						yy_c[ic] = c1 + ((ic % 4) / 2) * dy2; /* resolution change between */
 						zz_c[ic] = c2 + (ic / 4) * dz2; /* neighboring blocks */
 
-						ix_c[ic] = min(nx - 1., max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
-						iy_c[ic] = min(ny - 1., max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
-						iz_c[ic] = min(nz - 1., max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
+						ix_c[ic] = std::min(nx - 1., std::max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
+						iy_c[ic] = std::min(ny - 1., std::max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
+						iz_c[ic] = std::min(nz - 1., std::max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
 						xx_c[ic] = XMIN + dx2 * (0.5 + ix_c[ic]);
 						yy_c[ic] = YMIN + dx2 * (0.5 + iy_c[ic]);
 						zz_c[ic] = ZMIN + dx2 * (0.5 + iz_c[ic]);
