@@ -14,7 +14,7 @@
 #include <boost/unordered_map.hpp>
 #include "cdf.h"
 
-using namespace std;
+
 
 
 
