@@ -52,14 +52,24 @@ namespace ccmc
 	{
 		//TODO: clean up memory
 
-		BOOST_FOREACH(mapStringFloat::value_type i, variableData)
+		if (variableData.size() > 0)
 		{
-			delete i.second;
+			boost::unordered_map<std::string, std::vector<float>*>::iterator iter;
+
+			for ( iter=variableData.begin() ; iter != variableData.end(); iter++ )
+			{
+				delete iter->second;
+			}
 		}
 
-		BOOST_FOREACH(mapStringInt::value_type i, variableDataInt)
+		if (variableDataInt.size() > 0)
 		{
-			delete i.second;
+			boost::unordered_map<std::string, std::vector<int>*>::iterator iter;
+
+			for (iter=variableDataInt.begin(); iter != variableDataInt.end(); iter++)
+			{
+				delete iter->second;
+			}
 		}
 
 		//the other maps have the same pointers, so they are already deleted.
@@ -344,14 +354,24 @@ namespace ccmc
 	Model::~Model()
 	{
 		//TODO: delete contents of the maps and clear them
-		BOOST_FOREACH(mapStringFloat::value_type i, variableData)
+		if (variableData.size() > 0)
 		{
-			delete i.second;
+			boost::unordered_map<std::string, std::vector<float>*>::iterator iter;
+
+			for ( iter=variableData.begin() ; iter != variableData.end(); iter++ )
+			{
+				delete iter->second;
+			}
 		}
 
-		BOOST_FOREACH(mapStringInt::value_type i, variableDataInt)
+		if (variableDataInt.size() > 0)
 		{
-			delete i.second;
+			boost::unordered_map<std::string, std::vector<int>*>::iterator iter;
+
+			for (iter=variableDataInt.begin(); iter != variableDataInt.end(); iter++)
+			{
+				delete iter->second;
+			}
 		}
 
 		//the other maps have the same pointers, so they are already deleted.
