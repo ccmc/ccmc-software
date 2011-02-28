@@ -44,16 +44,16 @@ namespace ccmc
 		//interpolate base variable
 		//multiply the value returned by the parsed power of the radius
 		//variable must be in the form variable*r^power
-		string variable_string = variable;
+		std::string variable_string = variable;
 		int position = variable_string.find("*");
-		string baseVariable = variable_string.substr(0, position);
+		std::string baseVariable = variable_string.substr(0, position);
 		float interp_value = interpolate((std::string) baseVariable.c_str(), positionComponent1, positionComponent2,
 				positionComponent3, dComponent1, dComponent2, dComponent3);
 		if (interp_value == missingValue)
 			return missingValue;
 
 		position = variable_string.find("^");
-		string powerString = variable_string.substr(position + 1, variable_string.length());
+		std::string powerString = variable_string.substr(position + 1, variable_string.length());
 		int power;
 		std::istringstream iss(powerString);
 		iss >> power;

@@ -490,7 +490,7 @@ namespace ccmc
 				{
 					for ( i=0; i<nx_sg; i++ )
 					{
-						this->smartSearchValues.end_index[k][j][i] = max(this->smartSearchValues.start_index[k][j][i],this->smartSearchValues.end_index[k][j][i]);
+						this->smartSearchValues.end_index[k][j][i] = std::max(this->smartSearchValues.start_index[k][j][i],this->smartSearchValues.end_index[k][j][i]);
 					}
 			}
 		}

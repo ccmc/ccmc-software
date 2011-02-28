@@ -173,8 +173,8 @@ namespace ccmc
 			void initializeVariableUnits();
 
 
-			vector<std::string> createVectorOfStringFromList(int num, std::string * strings);
-			vector<long> createVectorOfLongFromList(int num, std::string * strings);
+			std::vector<std::string> createVectorOfStringFromList(int num, std::string * strings);
+			std::vector<long> createVectorOfLongFromList(int num, std::string * strings);
 			std::string padString(const std::string& s, int minLength);
 			std::string modelName;
 

@@ -54,9 +54,9 @@ namespace ccmc
 
 			int ndimn, grid_reg_no, npoin, nelem;
 
-			const vector<float> * coord;
-			const vector<int> * intmat;
-			const vector<float> * unkno;
+			const std::vector<float> * coord;
+			const std::vector<int> * intmat;
+			const std::vector<float> * unkno;
 
 			/* support routines */
 

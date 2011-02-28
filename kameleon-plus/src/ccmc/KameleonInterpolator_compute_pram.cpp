@@ -24,7 +24,7 @@ namespace ccmc
 		float n, v0, v1, v2, p_factor, interp_value;
 		n = interpolate(n_, c0, c1, c2, dc0, dc1, dc2);
 		//std::cout << "after interpolating n" << std::endl;
-		string component0, component1, component2;
+		std::string component0, component1, component2;
 		if (modelName == mas_)
 		{
 			v0 = interpolate("ur", c0, c1, c2, dc0, dc1, dc2);
