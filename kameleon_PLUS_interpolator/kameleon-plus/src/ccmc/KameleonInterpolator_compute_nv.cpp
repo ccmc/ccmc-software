@@ -23,7 +23,7 @@ namespace ccmc
 			float& dComponent3)
 	{
 		float n, vx, nvx;
-		string n_name, vx_name;
+		std::string n_name, vx_name;
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = n_;
@@ -99,7 +99,7 @@ namespace ccmc
 			float& dComponent3)
 	{
 		float n, v, vx, vy, vz, nv;
-		string n_name, vx_name, vy_name, vz_name;
+		std::string n_name, vx_name, vy_name, vz_name;
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = n_;
@@ -162,7 +162,7 @@ namespace ccmc
 			float& dComponent3)
 	{
 		float n, vy, nvy;
-		string n_name, vy_name;
+		std::string n_name, vy_name;
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = "n";
@@ -209,7 +209,7 @@ namespace ccmc
 			float& dComponent3)
 	{
 		float n, vz, nvz;
-		string n_name, vz_name;
+		std::string n_name, vz_name;
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = "n";

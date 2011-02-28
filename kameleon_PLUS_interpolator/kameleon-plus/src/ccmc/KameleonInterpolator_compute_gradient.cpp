@@ -45,7 +45,7 @@ namespace ccmc
 	{
 		//parse the string, and attempt to calculate the gradient of the parsed variable
 
-		vector<string> tokens;
+		std::vector<std::string> tokens;
 		boost::split(tokens, variable, boost::is_any_of("."), boost::token_compress_on);
 
 		/*t = interpolate("t", positionComponent1, positionComponent2, positionComponent3, dComponent1, dComponent2,

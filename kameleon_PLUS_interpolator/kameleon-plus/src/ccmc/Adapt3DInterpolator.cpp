@@ -594,9 +594,9 @@ namespace ccmc
 	/* If element has still not been found then search in list for
 	    neighboring structured grid cells */
 	         if (ifound == 1) {
-	         for ( k=max(0,k_s-1); k<=min(k_s+1,nz_sg-1); k++) {
-	         for ( j=max(0,j_s-1); j<=min(j_s+1,ny_sg-1); j++) {
-	         for ( i=max(0,i_s-1); i<=min(i_s+1,nx_sg-1); i++) {
+	         for ( k=std::max(0,k_s-1); k<=std::min(k_s+1,nz_sg-1); k++) {
+	         for ( j=std::max(0,j_s-1); j<=std::min(j_s+1,ny_sg-1); j++) {
+	         for ( i=std::max(0,i_s-1); i<=std::min(i_s+1,nx_sg-1); i++) {
 	           if(ifound == 1) {
 	             just_found=1;
 	             if( ( (i != i_s) || (j != j_s) || (k != k_s) ) ) {

@@ -28,7 +28,7 @@ namespace ccmc
 	{
 		float component1, component2, component3, magnitude;
 		//string variable_name = variable;
-		string component1Name, component2Name, component3Name;
+		std::string component1Name, component2Name, component3Name;
 		if (modelName == mas_)
 		{
 			if (variable == j_)

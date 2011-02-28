@@ -51,6 +51,7 @@ namespace ccmc
 	long Model::close()
 	{
 		//TODO: clean up memory
+
 		BOOST_FOREACH(mapStringFloat::value_type i, variableData)
 		{
 			delete i.second;
@@ -114,7 +115,7 @@ namespace ccmc
 			std::cerr << variable << " does not exist" << std::endl;
 			return FileReader::VARIABLE_DOES_NOT_EXIST;
 		}
-		vector<float> * data = getVariable(variable);
+		std::vector<float> * data = getVariable(variable);
 		long id = getVariableID(variable);
 		if (data->size() > 0)
 		{
@@ -141,7 +142,7 @@ namespace ccmc
 		//first, check to determine whether variable is already loaded
 		if (variableData.find(variable) != variableData.end())
 		{
-			vector<float> * data = variableData[variable];
+			std::vector<float> * data = variableData[variable];
 			long id = getVariableID(variable);
 			delete data;
 			variableData.erase(variable);
@@ -170,7 +171,7 @@ namespace ccmc
 		if (!this->doesVariableExist(variable))
 			return FileReader::VARIABLE_DOES_NOT_EXIST;
 
-		vector<int> * data = getVariableInt(variable);
+		std::vector<int> * data = getVariableInt(variable);
 		long id = getVariableID(variable);
 		if (data->size() > 0)
 		{

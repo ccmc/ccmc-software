@@ -22,8 +22,8 @@ namespace ccmc
 	{
 		//B_x*(J_x*B-x+J-y*B_y+J_z*B_z)/(B*B)
 		float b0, b1, b2, j0, j1, j2, b;
-		string bComponent0, bComponent1, bComponent2;
-		string jComponent0, jComponent1, jComponent2;
+		std::string bComponent0, bComponent1, bComponent2;
+		std::string jComponent0, jComponent1, jComponent2;
 
 		if (modelName == mas_)
 		{
@@ -98,8 +98,8 @@ namespace ccmc
 	{
 		//B_x*(J_x*B-x+J-y*B_y+J_z*B_z)/(B*B)
 		float b0, b1, b2, j0, j1, j2, b, value, value0, value1, value2;
-		string bComponent0, bComponent1, bComponent2;
-		string jComponent0, jComponent1, jComponent2;
+		std::string bComponent0, bComponent1, bComponent2;
+		std::string jComponent0, jComponent1, jComponent2;
 
 		if (modelName == mas_)
 		{
@@ -178,8 +178,8 @@ namespace ccmc
 	{
 		//B_x*(J_x*B-x+J-y*B_y+J_z*B_z)/(B*B)
 		float b0, b1, b2, j0, j1, j2, b;
-		string bComponent0, bComponent1, bComponent2;
-		string jComponent0, jComponent1, jComponent2;
+		std::string bComponent0, bComponent1, bComponent2;
+		std::string jComponent0, jComponent1, jComponent2;
 
 		if (modelName == mas_)
 		{
@@ -240,8 +240,8 @@ namespace ccmc
 	{
 		//B_x*(J_x*B-x+J-y*B_y+J_z*B_z)/(B*B)
 		float b0, b1, b2, j0, j1, j2, b;
-		string bComponent0, bComponent1, bComponent2;
-		string jComponent0, jComponent1, jComponent2;
+		std::string bComponent0, bComponent1, bComponent2;
+		std::string jComponent0, jComponent1, jComponent2;
 
 		if (modelName == mas_)
 		{

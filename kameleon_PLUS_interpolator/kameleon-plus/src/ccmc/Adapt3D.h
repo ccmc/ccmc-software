@@ -70,8 +70,8 @@ namespace ccmc
 			void smartSearchSetup();
 			bool setupUnstructuredGridSearch();
 			SmartGridSearchValues smartSearchValues;
-			const vector<float> * coord;
-			const vector<int> * intmat;
+			const std::vector<float> * coord;
+			const std::vector<int> * intmat;
 			int index_2d_to_1d( int i1, int i2, int n1, int n2);
 
 
