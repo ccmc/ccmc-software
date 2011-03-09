@@ -44,7 +44,8 @@ namespace ccmc
 		if (kameleon->getModelName() == ccmc::strings::models::enlil_)
 		{
 			r_end = 1.f;
-		}
+		} else
+			r_end = 3.0f;
 
 #ifdef DEBUG_TRACER
 		cerr << "After setting box dimensions" << endl;
@@ -612,6 +613,7 @@ namespace ccmc
 				max.component1 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_x_max_)).getAttributeFloat();
 				max.component2 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_y_max_)).getAttributeFloat();
 				max.component3 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_z_max_)).getAttributeFloat();
+				std::cout << "Tracer min: " << min << " max: " << max << std::endl;
 
 			} else
 			{
