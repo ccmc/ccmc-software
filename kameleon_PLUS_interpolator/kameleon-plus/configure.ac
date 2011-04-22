@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([kameleon-plus], [0.1.6], [David.H.Berrios@nasa.gov], [kameleon-plus])
+AC_INIT([kameleon-plus], [0.1.7], [David.H.Berrios@nasa.gov], [kameleon-plus])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
