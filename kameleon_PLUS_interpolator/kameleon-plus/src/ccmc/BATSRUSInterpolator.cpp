@@ -7,6 +7,8 @@
 
 #include "BATSRUSInterpolator.h"
 #include "StringConstants.h"
+#include <limits>
+#include <cmath>
 
 namespace ccmc
 {
@@ -39,9 +41,9 @@ namespace ccmc
 		block_at_amr_level_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_at_amr_level_);
 
 		callCount = 0;
-		old_x = -1000000000.f;
-		old_y = -1000000000.f;
-		old_z = -1000000000.f;
+		old_x = std::numeric_limits<float>::min( );
+		old_y = std::numeric_limits<float>::min( );
+		old_z = std::numeric_limits<float>::min( );
 
 		previousWasValid = false;
 
@@ -130,10 +132,10 @@ namespace ccmc
 		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
 
 		/************** NEW INTERPOLATION ROUTINE & MODIFICATION ***************/
-		int new_position = 1;
+		bool new_position = true;
 		if (old_x == c0 && old_y == c1 && old_z == c2 && previousWasValid)
 		{
-			new_position = 0;
+			new_position = false;
 		} else
 		{
 		}
@@ -170,12 +172,12 @@ namespace ccmc
 
 			/*** indices of grid positions around sample locations ***/
 
-			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = floor(ixx);
-			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = floor(ixx + 1);
-			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = floor(iyy);
-			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = floor(iyy + 1);
-			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = floor(izz);
-			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = floor(izz + 1);
+			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = std::floor(ixx);
+			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = std::floor(ixx + 1);
+			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = std::floor(iyy);
+			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = std::floor(iyy + 1);
+			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = std::floor(izz);
+			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = std::floor(izz + 1);
 
 			for (ic = 0; ic < 8; ic++)
 			{
@@ -263,17 +265,17 @@ namespace ccmc
 						YMAX = (*block_y_max_array)[ibc];
 						ZMIN = (*block_z_min_array)[ibc];
 						ZMAX = (*block_z_max_array)[ibc];
-						dx2 = (XMAX - XMIN) / nx;
-						dy2 = (YMAX - YMIN) / ny;
-						dz2 = (ZMAX - ZMIN) / nz;
+						dx2 = (XMAX - XMIN) / (float)nx;
+						dy2 = (YMAX - YMIN) / (float)ny;
+						dz2 = (ZMAX - ZMIN) / (float)nz;
 
 						xx_c[ic] = c0 + (ic % 2) * dx2; /* adjust stencil with */
 						yy_c[ic] = c1 + ((ic % 4) / 2) * dy2; /* resolution change between */
 						zz_c[ic] = c2 + (ic / 4) * dz2; /* neighboring blocks */
 
-						ix_c[ic] = std::min(nx - 1., std::max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
-						iy_c[ic] = std::min(ny - 1., std::max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
-						iz_c[ic] = std::min(nz - 1., std::max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
+						ix_c[ic] = std::min(nx - 1., std::max(0., std::floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
+						iy_c[ic] = std::min(ny - 1., std::max(0., std::floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
+						iz_c[ic] = std::min(nz - 1., std::max(0., std::floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
 						xx_c[ic] = XMIN + dx2 * (0.5 + ix_c[ic]);
 						yy_c[ic] = YMIN + dx2 * (0.5 + iy_c[ic]);
 						zz_c[ic] = ZMIN + dx2 * (0.5 + iz_c[ic]);
@@ -289,9 +291,9 @@ namespace ccmc
 						iz_c[ic] = nz / 2;
 
 						/* throw out those points by moving them off */
-						xx_c[ic] = fabs(missingValue); /*x_blk[ib*NX+ix_c[ic]]; */
-						yy_c[ic] = fabs(missingValue); /*y_blk[ib*NY+iy_c[ic]]; */
-						zz_c[ic] = fabs(missingValue); /*z_blk[ib*NZ+iz_c[ic]]; */
+						xx_c[ic] = std::fabs(missingValue); /*x_blk[ib*NX+ix_c[ic]]; */
+						yy_c[ic] = std::fabs(missingValue); /*y_blk[ib*NY+iy_c[ic]]; */
+						zz_c[ic] = std::fabs(missingValue); /*z_blk[ib*NZ+iz_c[ic]]; */
 					}
 				}
 			}
@@ -369,7 +371,7 @@ namespace ccmc
 			d_m1 = (c0 - xx_c[ic2]);
 			d_m2 = (xx_c[ic2_1] - c0);
 
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) > (dx1 / 4.)))
+			if (valid_c[ic2] && valid_c[ic2_1] && (std::fabs(d_m1 + d_m2) > (dx1 / 4.)))
 			{
 
 				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
@@ -411,7 +413,7 @@ namespace ccmc
 			d_m1 = (c1 - yy_c2[ic2]);
 			d_m2 = (yy_c2[ic2_1] - c1);
 
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) >= (dy1 / 4.)))
+			if (valid_c[ic2] && valid_c[ic2_1] && (std::fabs(d_m1 + d_m2) >= (dy1 / 4.)))
 			{
 				zz_c2[ic] = (d_m2 * zz_c2[ic2] + d_m1 * zz_c2[ic2_1]) / (d_m1 + d_m2);
 				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
@@ -444,7 +446,7 @@ namespace ccmc
 
 		 ***********************************************************************************/
 
-		if (valid_c[0] && valid_c[1] && (fabs(d_m1 + d_m2) >= (dz1 / 4.)))
+		if (valid_c[0] && valid_c[1] && (std::fabs(d_m1 + d_m2) >= (dz1 / 4.)))
 		{
 			data_c[0] = ((d_m2 * data_c[0] + d_m1 * data_c[1]) / (d_m1 + d_m2));
 			valid = 1;
@@ -511,10 +513,10 @@ namespace ccmc
 		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
 
 		/************** NEW INTERPOLATION ROUTINE & MODIFICATION ***************/
-		int new_position = 1;
+		bool new_position = true;
 		if (old_x == c0 && old_y == c1 && old_z == c2 && previousWasValid)
 		{
-			new_position = 0;
+			new_position = false;
 		} else
 		{
 		}
@@ -553,12 +555,12 @@ namespace ccmc
 
 			/*** indices of grid positions around sample locations ***/
 
-			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = floor(ixx);
-			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = floor(ixx + 1);
-			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = floor(iyy);
-			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = floor(iyy + 1);
-			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = floor(izz);
-			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = floor(izz + 1);
+			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = std::floor(ixx);
+			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = std::floor(ixx + 1);
+			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = std::floor(iyy);
+			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = std::floor(iyy + 1);
+			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = std::floor(izz);
+			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = std::floor(izz + 1);
 
 			for (ic = 0; ic < 8; ic++)
 			{
@@ -646,17 +648,17 @@ namespace ccmc
 						YMAX = (*block_y_max_array)[ibc];
 						ZMIN = (*block_z_min_array)[ibc];
 						ZMAX = (*block_z_max_array)[ibc];
-						dx2 = (XMAX - XMIN) / nx;
-						dy2 = (YMAX - YMIN) / ny;
-						dz2 = (ZMAX - ZMIN) / nz;
+						dx2 = (XMAX - XMIN) / (float)nx;
+						dy2 = (YMAX - YMIN) / (float)ny;
+						dz2 = (ZMAX - ZMIN) / (float)nz;
 
 						xx_c[ic] = c0 + (ic % 2) * dx2; /* adjust stencil with */
 						yy_c[ic] = c1 + ((ic % 4) / 2) * dy2; /* resolution change between */
 						zz_c[ic] = c2 + (ic / 4) * dz2; /* neighboring blocks */
 
-						ix_c[ic] = std::min(nx - 1., std::max(0., floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
-						iy_c[ic] = std::min(ny - 1., std::max(0., floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
-						iz_c[ic] = std::min(nz - 1., std::max(0., floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
+						ix_c[ic] = std::min(nx - 1., std::max(0., std::floor((xx_c[ic] - XMIN) / dx2 - 0.5)));
+						iy_c[ic] = std::min(ny - 1., std::max(0., std::floor((yy_c[ic] - YMIN) / dy2 - 0.5)));
+						iz_c[ic] = std::min(nz - 1., std::max(0., std::floor((zz_c[ic] - ZMIN) / dz2 - 0.5)));
 						xx_c[ic] = XMIN + dx2 * (0.5 + ix_c[ic]);
 						yy_c[ic] = YMIN + dx2 * (0.5 + iy_c[ic]);
 						zz_c[ic] = ZMIN + dx2 * (0.5 + iz_c[ic]);
@@ -672,9 +674,9 @@ namespace ccmc
 						iz_c[ic] = nz / 2;
 
 						/* throw out those points by moving them off */
-						xx_c[ic] = fabs(missingValue); /*x_blk[ib*NX+ix_c[ic]]; */
-						yy_c[ic] = fabs(missingValue); /*y_blk[ib*NY+iy_c[ic]]; */
-						zz_c[ic] = fabs(missingValue); /*z_blk[ib*NZ+iz_c[ic]]; */
+						xx_c[ic] = std::fabs(missingValue); /*x_blk[ib*NX+ix_c[ic]]; */
+						yy_c[ic] = std::fabs(missingValue); /*y_blk[ib*NY+iy_c[ic]]; */
+						zz_c[ic] = std::fabs(missingValue); /*z_blk[ib*NZ+iz_c[ic]]; */
 					}
 				}
 			}
@@ -751,7 +753,7 @@ namespace ccmc
 			d_m1 = (c0 - xx_c[ic2]);
 			d_m2 = (xx_c[ic2_1] - c0);
 
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) > (dx1 / 4.)))
+			if (valid_c[ic2] && valid_c[ic2_1] && (std::fabs(d_m1 + d_m2) > (dx1 / 4.)))
 			{
 
 				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
@@ -793,7 +795,7 @@ namespace ccmc
 			d_m1 = (c1 - yy_c2[ic2]);
 			d_m2 = (yy_c2[ic2_1] - c1);
 
-			if (valid_c[ic2] && valid_c[ic2_1] && (fabs(d_m1 + d_m2) >= (dy1 / 4.)))
+			if (valid_c[ic2] && valid_c[ic2_1] && (std::fabs(d_m1 + d_m2) >= (dy1 / 4.)))
 			{
 				zz_c2[ic] = (d_m2 * zz_c2[ic2] + d_m1 * zz_c2[ic2_1]) / (d_m1 + d_m2);
 				data_c[ic] = (d_m2 * data_c[ic2] + d_m1 * data_c[ic2_1]) / (d_m1 + d_m2);
@@ -826,7 +828,7 @@ namespace ccmc
 
 		 ***********************************************************************************/
 
-		if (valid_c[0] && valid_c[1] && (fabs(d_m1 + d_m2) >= (dz1 / 4.)))
+		if (valid_c[0] && valid_c[1] && (std::fabs(d_m1 + d_m2) >= (dz1 / 4.)))
 		{
 			data_c[0] = ((d_m2 * data_c[0] + d_m1 * data_c[1]) / (d_m1 + d_m2));
 			valid = 1;
