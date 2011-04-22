@@ -1,6 +1,6 @@
 #include "KameleonInterpolator.h"
 #include "StringConstants.h"
-#include "math.h"
+#include <cmath>
 #include <string>
 
 namespace ccmc
@@ -99,7 +99,7 @@ namespace ccmc
 		if (component3 == missingValue)
 			return missingValue;
 
-		magnitude = sqrt(component1 * component1 + component2 * component2 + component3 * component3);
+		magnitude = std::sqrt(component1 * component1 + component2 * component2 + component3 * component3);
 		return magnitude;
 
 	}
