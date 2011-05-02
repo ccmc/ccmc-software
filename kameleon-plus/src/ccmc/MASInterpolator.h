@@ -55,6 +55,21 @@ namespace ccmc
 			int previous_ilon;
 			int previous_ilat;
 
+			float interpolate_in_block_mas(
+				      float r,
+				      float lat,
+				      float lon,
+				      int ir,
+				      int ilat,
+				      int ilon,
+				      const std::string& variable_name,
+				      float& dr,
+				      float& dlat,
+				      float& dlon);
+
+
+
+
 	};
 }
 #endif /* MASINTERPOLATOR_H_ */
