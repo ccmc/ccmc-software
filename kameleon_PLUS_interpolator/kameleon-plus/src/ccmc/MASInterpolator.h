@@ -25,8 +25,8 @@ namespace ccmc
 			MASInterpolator(Model * model);
 			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon);
 			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon);
-			float interpolate(long int variableID, const float& r, const float& lat, const float& lon);
-			float interpolate(long int variableID, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon);
+			float interpolate(const long& variable_id, const float& r, const float& lat, const float& lon);
+			float interpolate(const long& variable_id, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon);
 			virtual ~MASInterpolator();
 
 		private:
@@ -62,7 +62,7 @@ namespace ccmc
 				      int ir,
 				      int ilat,
 				      int ilon,
-				      const std::string& variable_name,
+				      const long& variable_id,
 				      float& dr,
 				      float& dlat,
 				      float& dlon);

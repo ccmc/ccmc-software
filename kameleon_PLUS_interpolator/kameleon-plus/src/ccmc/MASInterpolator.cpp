@@ -17,6 +17,7 @@ namespace ccmc
 	 */
 	MASInterpolator::MASInterpolator(Model * model)
 	{
+		std::cout << "Creating MAS Interpolator" << std::endl;
 		// TODO Auto-generated constructor stub
 		// TODO Auto-generated constructor stub
 		this->modelReader = model;
@@ -63,7 +64,11 @@ namespace ccmc
 	float MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon)
 	{
 
+		std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon)" << std::endl;
+		float dr, dlat, dlon;
+		long variable_id = modelReader->getVariableID(variable);
 
+		return interpolate(variable_id, r, lat, lon, dr, dlat, dlon);
 
 	}
 
@@ -80,91 +85,9 @@ namespace ccmc
 	float MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,
 			float& dlon)
 	{
-		int change_sign_flag = 0;
+		long variable_id = modelReader->getVariableID(variable);
 
-
-				//Convert radius to meters
-				float r_converted = r * ccmc::constants::AU_in_meters;
-
-				/* 1 *//*local_y = Z - ( pow( pi, 2 ) / 2 );*//** convert from latitude -60 to 60 to radians ...*/
-				/* 2 *//*local_y = Z - ( pi / 2 );  *//** convert from latitude -60 to 60 to radians ...*/
-
-				/*local_y = ( Z/radian_in_degrees ) + ( pi/2 );*//** convert from latitude -60...60 to 30...150 range in degress and then to radians...*/
-
-				/*********** 3 ***********/
-
-				float lat_converted = -lat/ccmc::constants::Radian_in_degrees + ccmc::constants::Pi/2.f;
-
-				/** convert degrees ( 0 - 360 longitude ) to radiadns **/
-				//first check to see if the degrees are between 0 and 360
-
-				/** correct for longitude angles less than 0 or having a magnitude greater
-				 * than 360.f
-				 */
-				float lon_converted = lon;
-
-				if (lon_converted < 0.f)
-				{
-					lon_converted = -lon_converted;
-					while(lon_converted > 360.f)
-						lon_converted = lon_converted - 360.f;
-					lon_converted = 360.f - lon_converted;
-
-				} else if (lon_converted > 360.f)
-				{
-					while(lon_converted > 360.f)
-						lon_converted = lon_converted - 360.f;
-
-				}
-
-				lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
-				int ir, ilat, ilon;
-				if (previous_r == r && previous_lon == lon && previous_lat == lat)
-				{
-					ir = previous_ir;
-					ilat = previous_ilat;
-					ilon = previous_ilon;
-				} else
-				{
-					//first, find the cell
-					ir = Utils<float>::binary_search(*r_data, 0, (*r_data).size() - 1, r_converted);
-					ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
-					ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
-				}
-
-				float value;
-				if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
-				{
-					value = this->missingValue;
-		//			std::cerr << "returning missing value" << std::endl;
-				} else
-				{
-		//cout << "about to enter interpolate_in_block_enlil" << endl;
-					value = interpolate_in_block_mas(r_converted, lat_converted, lon_converted, ir, ilat, ilon,
-							variable, dr, dlat, dlon);
-
-					/****** we need to change the sign of any y vector component ... *********/
-
-					if (change_sign_flag) /*** this flag is set when cdf_varNum is set above ***/
-					{
-						value = value * (-1.0);
-					}
-
-					/*printf("DEBUG:\tcall to interpolate_in_block complete\n");*/
-
-					/*return interpolated_value;*/
-
-
-
-				}
-
-				previous_ir = ir;
-				previous_ilon = ilon;
-				previous_ilat = ilat;
-				previous_r = r;
-				previous_lon = lon;
-				previous_lat = lat;
-				return value;
+		return interpolate(variable_id, r, lat, lon, dr, dlat, dlon);
 	}
 
 	/**
@@ -174,9 +97,10 @@ namespace ccmc
 	 * @param lon
 	 * @return
 	 */
-	float MASInterpolator::interpolate(long int variableID, const float& r, const float& lat, const float& lon)
+	float MASInterpolator::interpolate(const long& variableID, const float& r, const float& lat, const float& lon)
 	{
-		return 0.f;
+		float dr, dlat, dlon;
+		return this->interpolate(variableID, r, lat, lon, dr, dlat, dlon);
 	}
 
 	/**
@@ -189,10 +113,98 @@ namespace ccmc
 	 * @param dlon
 	 * @return
 	 */
-	float MASInterpolator::interpolate(long int variableID, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon)
+	float MASInterpolator::interpolate(const long& variable_id, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon)
 	{
 
+		//std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,	float& dlon)" << std::endl;
+		int change_sign_flag = 0;
 
+
+		//Convert radius to meters
+		float r_converted = r;// * ccmc::constants::AU_in_meters;
+
+		/* 1 *//*local_y = Z - ( pow( pi, 2 ) / 2 );*//** convert from latitude -60 to 60 to radians ...*/
+		/* 2 *//*local_y = Z - ( pi / 2 );  *//** convert from latitude -60 to 60 to radians ...*/
+
+		/*local_y = ( Z/radian_in_degrees ) + ( pi/2 );*//** convert from latitude -60...60 to 30...150 range in degress and then to radians...*/
+
+		/*********** 3 ***********/
+
+		//float lat_converted = -lat/ccmc::constants::Radian_in_degrees + ccmc::constants::Pi/2.f;
+		float lat_converted = -lat;
+
+		lat_converted = (lat_converted/ccmc::constants::Radian_in_degrees ) + (ccmc::constants::Pi/2. );
+
+		/** convert degrees ( 0 - 360 longitude ) to radiadns **/
+		//first check to see if the degrees are between 0 and 360
+
+		/** correct for longitude angles less than 0 or having a magnitude greater
+		 * than 360.f
+		 */
+		float lon_converted = lon;
+
+		if (lon_converted < 0.f)
+		{
+			lon_converted = -lon_converted;
+			while(lon_converted > 360.f)
+				lon_converted = lon_converted - 360.f;
+			lon_converted = 360.f - lon_converted;
+
+		} else if (lon_converted > 360.f)
+		{
+			while(lon_converted > 360.f)
+				lon_converted = lon_converted - 360.f;
+
+		}
+
+		lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
+		int ir, ilat, ilon;
+		if (previous_r == r && previous_lon == lon && previous_lat == lat)
+		{
+			ir = previous_ir;
+			ilat = previous_ilat;
+			ilon = previous_ilon;
+		} else
+		{
+			//first, find the cell
+			ir = Utils<float>::binary_search(*r_data, 0, (*r_data).size() - 1, r_converted);
+			ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
+			ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
+		}
+//std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl;
+		float value;
+		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
+		{
+			value = this->missingValue;
+//			std::cerr << "returning missing value" << std::endl;
+		} else
+		{
+//cout << "about to enter interpolate_in_block_enlil" << endl;
+			value = interpolate_in_block_mas(r_converted, lat_converted, lon_converted, ir, ilat, ilon,
+					variable_id, dr, dlat, dlon);
+
+			/****** we need to change the sign of any y vector component ... *********/
+
+			if (change_sign_flag) /*** this flag is set when cdf_varNum is set above ***/
+			{
+				value = value * (-1.0);
+			}
+
+			/*printf("DEBUG:\tcall to interpolate_in_block complete\n");*/
+
+			/*return interpolated_value;*/
+
+
+
+		}
+
+		previous_ir = ir;
+		previous_ilon = ilon;
+		previous_ilat = ilat;
+		previous_r = r;
+		previous_lon = lon;
+		previous_lat = lat;
+		return value;
 	}
 
 	/**
@@ -209,13 +221,13 @@ namespace ccmc
 	 * @return
 	 */
 	float MASInterpolator::interpolate_in_block_mas(float r, float lat, float lon, int ir, int ilat, int ilon,
-			const std::string& variable_name, float& dr, float& dlat, float& dlon)
+			const long& variable_id, float& dr, float& dlat, float& dlon)
 	{
 //		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
 
 		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
-		const std::vector<float> * vData = modelReader->getVariableData(variable_name);
+		const std::vector<float> * vData = modelReader->getVariableDataByID(variable_id);
 		if (vData == NULL)
 			main_memory_flag = false;
 //std::cout << "variable_id: " << variableID << " main_memory_flag: " << main_memory_flag << std::endl;
@@ -270,7 +282,7 @@ namespace ccmc
 
 			for (int i = 0; i < 8; i++)
 			{
-				data[i] = modelReader->getVariableAtIndex(variable_name, indices[i]);
+				data[i] = modelReader->getVariableAtIndexByID(variable_id, indices[i]);
 			}
 
 		} else

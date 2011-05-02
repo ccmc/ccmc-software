@@ -51,7 +51,7 @@ namespace ccmc
 		if(!(ifstream(filename.c_str())))
 		{
 			status = FILE_DOES_NOT_EXIST;
-			std::cout << "filename: " << filename << " does not exist." << std::endl;
+			std::cout << "filename: \"" << filename << "\" does not exist." << std::endl;
 		}
 		else{
 			status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
