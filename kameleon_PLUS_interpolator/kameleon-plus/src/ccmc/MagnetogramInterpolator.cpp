@@ -53,7 +53,7 @@ namespace ccmc
 	 * @param
 	 * @return
 	 */
-	float MagnetogramInterpolator::interpolate(long int, const float&, const float&, const float&)
+	float MagnetogramInterpolator::interpolate(const long&, const float&, const float&, const float&)
 	{
 		return 0.f;
 	}
@@ -68,7 +68,7 @@ namespace ccmc
 	 * @param
 	 * @return
 	 */
-	float MagnetogramInterpolator::interpolate(long int, const float&, const float&, const float&, float&, float&, float&)
+	float MagnetogramInterpolator::interpolate(const long&, const float&, const float&, const float&, float&, float&, float&)
 	{
 		return 0.f;
 	}

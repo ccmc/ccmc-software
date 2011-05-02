@@ -56,8 +56,8 @@ namespace ccmc
 			 * @param c1
 			 * @param c2
 			 */
-			float interpolate(long variable_id, const float& c0, const float& c1, const float& c2);
-			float interpolate(long variable_id, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
+			float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2);
+			float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 					float& dc2);
 
 

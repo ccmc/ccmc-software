@@ -34,8 +34,8 @@ namespace ccmc
 					interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2) = 0;
 			virtual float interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2,
 					float& dc0, float& dc1, float& dc2) = 0;
-			virtual float interpolate(long variable_id, const float & c0, const float& c1, const float& c2) = 0;
-			virtual float interpolate(long variable_id, const float& c0, const float& c1, const float& c2, float& dc0,
+			virtual float interpolate(const long& variable_id, const float & c0, const float& c1, const float& c2) = 0;
+			virtual float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2, float& dc0,
 					float& dc1, float& dc2) = 0;
 			virtual float getConversionFactor(const std::string&);
 			virtual float getConversionFactor(const long& variable_id);

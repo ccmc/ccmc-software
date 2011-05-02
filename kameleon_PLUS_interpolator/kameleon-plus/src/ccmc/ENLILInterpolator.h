@@ -27,8 +27,8 @@ namespace ccmc
 			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon);
 			float interpolate(const std::string& variable, const float& r, const float& lat, const float& lon,
 					float& dr, float& dlat, float& dlon);
-			float interpolate(long variableID, const float& r, const float& lat, const float& lon);
-			float interpolate(long variableID, const float& r, const float& lat, const float& lon,
+			float interpolate(const long& variableID, const float& r, const float& lat, const float& lon);
+			float interpolate(const long& variableID, const float& r, const float& lat, const float& lon,
 					float& dr, float& dlat, float& dlon);
 
 

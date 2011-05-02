@@ -25,8 +25,8 @@ namespace ccmc
 			MagnetogramInterpolator(Model * model);
 			float interpolate(const std::string& variable, const float&, const float&, const float&);
 			float interpolate(const std::string& variable, const float&, const float&, const float&, float&, float&, float&);
-			float interpolate(long int, const float&, const float&, const float&);
-			float interpolate(long int, const float&, const float&, const float&, float&, float&, float&);
+			float interpolate(const long& variable_id, const float&, const float&, const float&);
+			float interpolate(const long& variable_id, const float&, const float&, const float&, float&, float&, float&);
 
 			virtual ~MagnetogramInterpolator();
 	};

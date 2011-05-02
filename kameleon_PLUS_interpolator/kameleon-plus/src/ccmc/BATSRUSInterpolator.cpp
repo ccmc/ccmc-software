@@ -89,7 +89,7 @@ namespace ccmc
 	 * @param c2 Z component of the position
 	 * @return
 	 */
-	float BATSRUSInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2)
+	float BATSRUSInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2)
 	{
 
 		float dc0, dc1, dc2;
@@ -108,7 +108,7 @@ namespace ccmc
 	 * @param dc2 Reference to a variable to store the delta for component 2
 	 * @return The interpolated value at position (c0,c1,c2) with deltas (dc0,dc1,dc2)
 	 */
-	float BATSRUSInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2,
+	float BATSRUSInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
 	{
 
