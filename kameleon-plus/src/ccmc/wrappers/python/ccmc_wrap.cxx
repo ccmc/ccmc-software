@@ -9181,12 +9181,13 @@ fail:
 SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
-  long arg2 ;
+  long *arg2 = 0 ;
   float *arg3 = 0 ;
   float *arg4 = 0 ;
   float *arg5 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  long temp2 ;
   long val2 ;
   int ecode2 = 0 ;
   float temp3 ;
@@ -9215,7 +9216,8 @@ SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_2(PyObject *SWIGUNUSED
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Interpolator_interpolate" "', argument " "2"" of type '" "long""'");
   } 
-  arg2 = static_cast< long >(val2);
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Interpolator_interpolate" "', argument " "3"" of type '" "float""'");
@@ -9234,7 +9236,7 @@ SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_2(PyObject *SWIGUNUSED
   } 
   temp5 = static_cast< float >(val5);
   arg5 = &temp5;
-  result = (float)(arg1)->interpolate(arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
   resultobj = SWIG_From_float(static_cast< float >(result));
   return resultobj;
 fail:
@@ -9245,7 +9247,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
-  long arg2 ;
+  long *arg2 = 0 ;
   float *arg3 = 0 ;
   float *arg4 = 0 ;
   float *arg5 = 0 ;
@@ -9254,6 +9256,7 @@ SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_3(PyObject *SWIGUNUSED
   float *arg8 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  long temp2 ;
   long val2 ;
   int ecode2 = 0 ;
   float temp3 ;
@@ -9291,7 +9294,8 @@ SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_3(PyObject *SWIGUNUSED
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Interpolator_interpolate" "', argument " "2"" of type '" "long""'");
   } 
-  arg2 = static_cast< long >(val2);
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
   ecode3 = SWIG_AsVal_float(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Interpolator_interpolate" "', argument " "3"" of type '" "float""'");
@@ -9334,7 +9338,7 @@ SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_3(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Interpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
   }
   arg8 = reinterpret_cast< float * >(argp8);
-  result = (float)(arg1)->interpolate(arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
   resultobj = SWIG_From_float(static_cast< float >(result));
   return resultobj;
 fail:
@@ -9516,8 +9520,8 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    interpolate(ccmc::Interpolator *,std::string const &,float const &,float const &,float const &)\n"
     "    interpolate(ccmc::Interpolator *,std::string const &,float const &,float const &,float const &,float &,float &,float &)\n"
-    "    interpolate(ccmc::Interpolator *,long,float const &,float const &,float const &)\n"
-    "    interpolate(ccmc::Interpolator *,long,float const &,float const &,float const &,float &,float &,float &)\n");
+    "    interpolate(ccmc::Interpolator *,long const &,float const &,float const &,float const &)\n"
+    "    interpolate(ccmc::Interpolator *,long const &,float const &,float const &,float const &,float &,float &,float &)\n");
   return NULL;
 }
 
