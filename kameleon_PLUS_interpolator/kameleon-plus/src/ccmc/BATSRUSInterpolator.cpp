@@ -192,7 +192,7 @@ namespace ccmc
 
 				/* validate positions in block and find new block as necessary */
 
-				if (ix_c[ic] < 0.0)
+				if (ix_c[ic] < 0)
 				{
 					new_blk[ic] = 1;
 					xx_c[ic] = XMIN - 0.5 * dx1;
