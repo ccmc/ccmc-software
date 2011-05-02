@@ -23,7 +23,7 @@ namespace ccmc
 	/**
 	 * @copydoc Model::open
 	 */
-	long MAS::open(const std::string&)
+	long MAS::open(const std::string& filename)
 	{
 		long status;
 		status = openFile(filename);
