@@ -92,7 +92,7 @@ namespace ccmc
 	 * @param c2
 	 * @return
 	 */
-	float KameleonInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2)
+	float KameleonInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2)
 	{
 		// Variable: Wish me luck!
 		// Derived: Good luck variable!
@@ -114,7 +114,7 @@ namespace ccmc
 	 * @param dc1
 	 * @param dc2
 	 */
-	float KameleonInterpolator::interpolate(long variable_id, const float& c0, const float& c1, const float& c2,
+	float KameleonInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
 	{
 		// Variable: Wish me luck!

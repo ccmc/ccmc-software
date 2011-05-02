@@ -98,7 +98,7 @@ namespace ccmc
 	 * @param dlon
 	 * @return
 	 */
-	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lat,
+	float ENLILInterpolator::interpolate(const long& variableID, const float& r, const float& lat,
 			const float& lon, float& dr, float& dlat, float& dlon)
 	{
 
@@ -196,7 +196,7 @@ namespace ccmc
 	 * @param lon
 	 * @return
 	 */
-	float ENLILInterpolator::interpolate(long variableID, const float& r, const float& lat, const float& lon)
+	float ENLILInterpolator::interpolate(const long& variableID, const float& r, const float& lat, const float& lon)
 	{
 		float dc0, dc1, dc2;
 		return interpolate(variableID, r, lat, lon, dc0, dc1, dc2);

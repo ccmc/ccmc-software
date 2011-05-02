@@ -33,8 +33,8 @@ namespace ccmc
 			float interpolate(const std::string&, const float& c0, const float& c1, const float& c2);
 			float interpolate(const std::string&, const float& c0, const float& c1, const float& c2, float& dc0,
 					float& dc1, float& dc2);
-			float interpolate(long, const float& c0, const float& c1, const float& c2);
-			float interpolate(long, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
+			float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2);
+			float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 					float& dc2);
 			virtual ~Adapt3DInterpolator();
 
