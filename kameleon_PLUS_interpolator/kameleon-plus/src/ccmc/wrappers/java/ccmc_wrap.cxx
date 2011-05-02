@@ -2329,10 +2329,11 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpol
 SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpolate_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
-  long arg2 ;
+  long *arg2 = 0 ;
   float *arg3 = 0 ;
   float *arg4 = 0 ;
   float *arg5 = 0 ;
+  long temp2 ;
   float temp3 ;
   float temp4 ;
   float temp5 ;
@@ -2342,14 +2343,15 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpol
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Interpolator **)&jarg1; 
-  arg2 = (long)jarg2; 
+  temp2 = (long)jarg2; 
+  arg2 = &temp2; 
   temp3 = (float)jarg3; 
   arg3 = &temp3; 
   temp4 = (float)jarg4; 
   arg4 = &temp4; 
   temp5 = (float)jarg5; 
   arg5 = &temp5; 
-  result = (float)(arg1)->interpolate(arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
   jresult = (jfloat)result; 
   return jresult;
 }
@@ -2358,13 +2360,14 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpol
 SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpolate_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5, jlong jarg6, jlong jarg7, jlong jarg8) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
-  long arg2 ;
+  long *arg2 = 0 ;
   float *arg3 = 0 ;
   float *arg4 = 0 ;
   float *arg5 = 0 ;
   float *arg6 = 0 ;
   float *arg7 = 0 ;
   float *arg8 = 0 ;
+  long temp2 ;
   float temp3 ;
   float temp4 ;
   float temp5 ;
@@ -2374,7 +2377,8 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpol
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Interpolator **)&jarg1; 
-  arg2 = (long)jarg2; 
+  temp2 = (long)jarg2; 
+  arg2 = &temp2; 
   temp3 = (float)jarg3; 
   arg3 = &temp3; 
   temp4 = (float)jarg4; 
@@ -2396,7 +2400,7 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpol
     SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "float & reference is null");
     return 0;
   } 
-  result = (float)(arg1)->interpolate(arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
   jresult = (jfloat)result; 
   return jresult;
 }
