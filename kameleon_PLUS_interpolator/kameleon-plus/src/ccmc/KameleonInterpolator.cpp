@@ -136,7 +136,7 @@ namespace ccmc
 	 * component calculations (to increase performance).
 	 */
 	/**
-	 *
+	 * TODO: These need to be moved to the model classes!
 	 */
 	void KameleonInterpolator::initializeConversionFactorsToVis()
 	{
@@ -183,7 +183,7 @@ namespace ccmc
 			//blah
 		} else if (modelName == "mas")
 		{
-			conversionFactorsToVis["n"] = 1.e8;
+			/*conversionFactorsToVis["n"] = 1.e8;
 			conversionFactorsToVis["t"] = 2.84e7;
 			conversionFactorsToVis["p"] = 0.387 * 1.e9 * .1; //Dyn/cm^2 * to_nano * .1
 			conversionFactorsToVis["ur"] = 481.37;
@@ -197,7 +197,7 @@ namespace ccmc
 			conversionFactorsToVis["etheta"] = 1.e-3;
 			conversionFactorsToVis["br"] = 2.205 * gauss2Tesla * 1.e9;
 			conversionFactorsToVis["bphi"] = 2.205 * gauss2Tesla * 1.e9;
-			conversionFactorsToVis["btheta"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["btheta"] = 2.205 * gauss2Tesla * 1.e9;*/
 
 		} else if (modelName == "ucla_ggcm" || modelName == "open_ggcm")
 		{
