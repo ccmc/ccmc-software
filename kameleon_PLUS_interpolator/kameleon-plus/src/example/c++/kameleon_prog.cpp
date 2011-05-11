@@ -41,7 +41,7 @@ int main (int argc, char * argv[])
 		std::cout << "Loading variables" << std::endl;
 		bool successLoading = kameleon.loadVariable(variable);
 		bool success = kameleon.doesVariableExist(variable);
-		std::cout << "Creating new interpolator" << std::endl;
+		//std::cout << "Creating new interpolator" << std::endl;
 		Interpolator * interpolator = kameleon.createNewInterpolator();
 		clock_t start, finish;
 
