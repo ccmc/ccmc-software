@@ -20,7 +20,7 @@ int main (int argc, char * argv[])
 {
 	if (argc != 6)
 	{
-		cout << "enlil <inputfile> variable r phi(latitude) theta(longitude)" << endl;
+		cout << "enlil <inputfile> variable r theta(latitude) phi(longitude)" << endl;
 		exit(1);
 	}
 
