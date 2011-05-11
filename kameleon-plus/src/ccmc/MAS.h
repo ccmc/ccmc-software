@@ -9,6 +9,7 @@
 #define MAS_H_
 
 #include "Model.h"
+#include <boost/unordered_map.hpp>
 
 namespace ccmc
 {
@@ -22,8 +23,14 @@ namespace ccmc
 	{
 		public:
 			MAS();
-			long open(const std::string&);
+			long open(const std::string& filename);
 			Interpolator* createNewInterpolator();
+			const std::vector<float>* getRPosGrid(std::string variable);
+			const std::vector<float>* getLatPosGrid(std::string variable);
+			const std::vector<float>* getRPosGridByID(long variable);
+			const std::vector<float>* getLatPosGridByID(long variable);
+			bool getChangeSignFlag(std::string variable);
+			bool getChangeSignFlagByID(long variable_id);
 			virtual ~MAS();
 
 		protected:
@@ -31,12 +38,17 @@ namespace ccmc
 			void initializeSIUnits();
 
 		private:
-			std::string r_string;
-			std::string r1_string;
-			std::string lat_string;
-			std::string lat1_string;
-			std::string lon_string;
-			std::string filename;
+
+			void initializeMaps();
+
+			boost::unordered_map<std::string, std::string> rPosGrid;
+			boost::unordered_map<long, std::string> rPosGridByID;
+
+			boost::unordered_map<std::string, std::string> latPosGrid;
+			boost::unordered_map<long, std::string> latPosGridByID;
+			boost::unordered_map<std::string, bool> changeSignFlag;
+			boost::unordered_map<long, bool> changeSignFlagByID;
+
 	};
 }
 #endif /* MAS_H_ */

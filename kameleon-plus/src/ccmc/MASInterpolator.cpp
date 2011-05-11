@@ -6,9 +6,11 @@
  */
 
 #include "MASInterpolator.h"
+#include "MAS.h"
 #include "StringConstants.h"
 #include "Constants.h"
 #include "Utils.h"
+//#define DEBUG_MAS_INTERPOLATOR
 
 namespace ccmc
 {
@@ -25,30 +27,12 @@ namespace ccmc
 		//the model open should have done the proper error checks, so we
 		//just check the first component name to see which set to use
 		//if (this->modelReader->doesVariableExist("r"))
-		{
-			r_string = strings::variables::r_;
-			r1_string = strings::variables::r1_;
-			lat_string = strings::variables::theta_;
-			lon_string = strings::variables::phi_;
-			lat1_string = strings::variables::theta1_;
-
-
-		}
-
 		//TODO: fix the phi/theta issue to correspond to the actual
 		//lat lon
-		r_data = modelReader->getVariableData(r_string);
-		r1_data = modelReader->getVariableData(r1_string);
-		lat_data = modelReader->getVariableData(lat_string);
-		lon_data = modelReader->getVariableData(lon_string);
-		lat1_data = modelReader->getVariableData(lat1_string);
-		nr = (*r_data).size();
-		nlat = (*lat_data).size();
-		nlon = (*lon_data).size();
 
-		this->nr_plus1 = (*r1_data).size();
-		this->nlat_plus1 = (*lat1_data).size();
-		this->nlon_plus1 = nlon;
+		lon_data = modelReader->getVariableData(ccmc::strings::variables::phi_);
+
+		//this->nlon_plus1 = nlon;
 		previous_r = missingValue;
 		previous_lon = missingValue;
 		previous_lat = missingValue;
@@ -63,8 +47,9 @@ namespace ccmc
 	 */
 	float MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon)
 	{
-
+#ifdef DEBUG_MAS_INTERPOLATOR
 		std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon)" << std::endl;
+#endif
 		float dr, dlat, dlon;
 		long variable_id = modelReader->getVariableID(variable);
 
@@ -115,13 +100,24 @@ namespace ccmc
 	 */
 	float MASInterpolator::interpolate(const long& variable_id, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon)
 	{
+
+
+
+
+
+
+
+
+
+
 		if (variable_id < 0)
 			return this->missingValue;
 
 		//std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,	float& dlon)" << std::endl;
-		int change_sign_flag = 0;
 
-std::cout << "r: " << r << " theta (lat): " << lat << " phi (lon): " << lon << std::endl;
+#ifdef DEBUG_MAS_INTERPOLATOR
+		std::cout << "r: " << r << " theta (lat): " << lat << " phi (lon): " << lon << std::endl;
+#endif
 		//Convert radius to meters
 		float r_converted = r;// * ccmc::constants::AU_in_meters;
 
@@ -162,8 +158,25 @@ std::cout << "r: " << r << " theta (lat): " << lat << " phi (lon): " << lon << s
 		}
 
 		lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
+		const std::vector<float> * r_data = ((MAS*)modelReader)->getRPosGridByID(variable_id);
 
-std::cout << "r_converted: " << r_converted << " theta_converted (lat): " << lat_converted << " phi_converted (lon): " << lon_converted << std::endl;
+#ifdef DEBUG_MAS_INTERPOLATOR
+		std::cout << "fetched r_data" << std::endl;
+#endif
+		const std::vector<float> * lat_data = ((MAS*)modelReader)->getLatPosGridByID(variable_id);
+
+#ifdef DEBUG_MAS_INTERPOLATOR
+		std::cout << "fetched lat_data" << std::endl;
+#endif
+
+		int nr = (*r_data).size();
+		int nlat = (*lat_data).size();
+		int nlon = (*lon_data).size();
+
+#ifdef DEBUG_MAS_INTERPOLATOR
+		std::cout << "r_converted: " << r_converted << " theta_converted (lat): " << lat_converted << " phi_converted (lon): " << lon_converted << std::endl;
+#endif
+
 		int ir, ilat, ilon;
 		if (previous_r == r && previous_lon == lon && previous_lat == lat)
 		{
@@ -177,7 +190,11 @@ std::cout << "r_converted: " << r_converted << " theta_converted (lat): " << lat
 			ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
 			ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
 		}
-std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl;
+
+#ifdef DEBUG_MAS_INTERPOLATOR
+		std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl;
+#endif
+
 		float value;
 		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
@@ -186,12 +203,12 @@ std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl
 		} else
 		{
 //cout << "about to enter interpolate_in_block_enlil" << endl;
-			value = interpolate_in_block_mas(r_converted, lat_converted, lon_converted, ir, ilat, ilon,
+			value = interpolate_in_block_mas(r_converted, lat_converted, lon_converted, r_data, lat_data, lon_data,nr, nlat, nlon, ir, ilat, ilon,
 					variable_id, dr, dlat, dlon);
 
 			/****** we need to change the sign of any y vector component ... *********/
 
-			if (change_sign_flag) /*** this flag is set when cdf_varNum is set above ***/
+			if (((MAS*)modelReader)->getChangeSignFlagByID(variable_id)) /*** this flag is set when cdf_varNum is set above ***/
 			{
 				value = value * (-1.0);
 			}
@@ -226,7 +243,9 @@ std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl
 	 * @param dlon
 	 * @return
 	 */
-	float MASInterpolator::interpolate_in_block_mas(float r, float lat, float lon, int ir, int ilat, int ilon,
+	float MASInterpolator::interpolate_in_block_mas(float r, float lat, float lon,
+			const std::vector<float>* r_data, const std::vector<float>* lat_data, const std::vector<float>* lon_data,
+			int nr, int nlat, int nlon, int ir, int ilat, int ilon,
 			const long& variable_id, float& dr, float& dlat, float& dlon)
 	{
 //		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
@@ -288,15 +307,14 @@ std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl
 		         */
 
 		//( index_phi + index_theta*local_nx + index_r*NV_blk )
-		indices[0] = ilon + ilat*nlon + ir*NV_blk;
-		indices[1] = ilon+1 + ilat*nlon + ir*NV_blk;
-		indices[2] = ilon + ( ilat + 1 )*nlon + ir*NV_blk;
-		indices[3] = ilon+1 + ( ilat + 1)*nlon + ir*NV_blk;
-		indices[4] = ilon + ilat*nlon + ( ir + 1 )*NV_blk;
-		indices[5] = ilon+1 + ilat*nlon + ( ir + 1 )*NV_blk;
-		indices[6] = ilon + ( ilat + 1 )*nlon + ( ir + 1 )*NV_blk;
-		indices[7] = ilon+1 + ( ilat + 1)*nlon + ( ir + 1 )*NV_blk;
-std::cout << "starting the fetches" << std::endl;
+		indices[0] = index(ir, ilat, ilon, nlat, nlon);
+		indices[1] = index(ir+1, ilat, ilon, nlat, nlon);
+		indices[2] = index(ir, ilat+1, ilon, nlat, nlon);
+		indices[3] = index(ir+1, ilat+1, ilon, nlat, nlon);
+		indices[4] = index(ir, ilat, ilon+1, nlat, nlon);
+		indices[5] = index(ir+1, ilat, ilon+1, nlat, nlon);
+		indices[6] = index(ir, ilat+1, ilon+1, nlat, nlon);
+		indices[7] = index(ir+1, ilat+1, ilon+1, nlat, nlon);
 		if (!main_memory_flag)
 		{
 
@@ -311,7 +329,6 @@ std::cout << "starting the fetches" << std::endl;
 
 			for (int i = 0; i < 8; i++)
 			{
-				std::cout << "index: " << indices[i] << std::endl;
 				data[i] = (*vData)[indices[i]];
 			}
 
@@ -333,6 +350,13 @@ std::cout << "starting the fetches" << std::endl;
 	}
 
 
+	/**
+	 *
+	 */
+	int MASInterpolator::index(const int& ir, const int& ilat, const int& ilon, const int& nlat, const int& nlon)
+	{
+		return ilon + ( ilat * nlon ) + ( ir * nlon * nlat );
+	}
 
 	/**
 	 *
