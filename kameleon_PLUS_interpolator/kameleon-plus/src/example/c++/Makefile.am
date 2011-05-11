@@ -1,5 +1,5 @@
 bin_PROGRAMS = kameleon coord_test open_ggcm \
-				magnetogram  enlil tracer integrator
+				magnetogram  enlil tracer integrator mas
 				
 kameleon_SOURCES = kameleon_prog.cpp
 kameleon_CPPFLAGS = -I@srcdir@/../..
@@ -28,3 +28,7 @@ tracer_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
 integrator_SOURCES = integrator_prog.cpp
 integrator_CPPFLAGS = -I@srcdir@/../..
 integrator_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
+
+mas_SOURCES = mas_test.cpp
+mas_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
+mas_CPPFLAGS = -I@srcdir@/../..
