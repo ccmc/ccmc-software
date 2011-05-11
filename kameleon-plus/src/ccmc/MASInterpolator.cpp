@@ -115,11 +115,13 @@ namespace ccmc
 	 */
 	float MASInterpolator::interpolate(const long& variable_id, const float& r, const float& lat, const float& lon, float& dr, float& dlat, float& dlon)
 	{
+		if (variable_id < 0)
+			return this->missingValue;
 
 		//std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,	float& dlon)" << std::endl;
 		int change_sign_flag = 0;
 
-
+std::cout << "r: " << r << " theta (lat): " << lat << " phi (lon): " << lon << std::endl;
 		//Convert radius to meters
 		float r_converted = r;// * ccmc::constants::AU_in_meters;
 
@@ -145,19 +147,23 @@ namespace ccmc
 
 		if (lon_converted < 0.f)
 		{
-			lon_converted = -lon_converted;
-			while(lon_converted > 360.f)
-				lon_converted = lon_converted - 360.f;
-			lon_converted = 360.f - lon_converted;
+			while(lon_converted < 0.f)
+			{
+				lon_converted += 360.f;
+			}
 
 		} else if (lon_converted > 360.f)
 		{
 			while(lon_converted > 360.f)
-				lon_converted = lon_converted - 360.f;
+			{
+				lon_converted -= 360.f;
+			}
 
 		}
 
 		lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
+
+std::cout << "r_converted: " << r_converted << " theta_converted (lat): " << lat_converted << " phi_converted (lon): " << lon_converted << std::endl;
 		int ir, ilat, ilon;
 		if (previous_r == r && previous_lon == lon && previous_lat == lat)
 		{
@@ -171,7 +177,7 @@ namespace ccmc
 			ilat = Utils<float>::binary_search(*lat_data, 0, (*lat_data).size() - 1, lat_converted);
 			ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
 		}
-//std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl;
+std::cerr << "ir: " << ir << " ilat: " << ilat << " ilon: " << ilon << std::endl;
 		float value;
 		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
@@ -235,7 +241,8 @@ namespace ccmc
 		float dr_blk, dlat_blk, dlon_blk, m_r, m_lat, m_lon, two_pi = 4 * asin(1.);
 
 		/*int ix, iy, iz;*/
-		int NV_blk = nr * nlat, ilon1 = -1;
+		//int NV_blk = local_nx * local_ny, iz1=-1;
+		int NV_blk = nlon * nlat, ilon1 = -1;
 
 		/* int first_cell_in_block = found_block_index * nx * ny * nz; */
 
@@ -269,19 +276,33 @@ namespace ccmc
 
 		double data[8];
 		int indices[8];
-		indices[0] = (ir + ilat * nr + ilon * NV_blk);
-		indices[1] = (ir + 1 + ilat * nr + ilon * NV_blk);
-		indices[2] = (ir + (ilat + 1) * nr + ilon * NV_blk);
-		indices[3] = (ir + 1 + (ilat + 1) * nr + ilon * NV_blk);
-		indices[4] = (ir + ilat * nr + (ilon1) * NV_blk);
-		indices[5] = (ir + 1 + ilat * nr + (ilon1) * NV_blk);
-		indices[6] = (ir + (ilat + 1) * nr + (ilon1) * NV_blk);
-		indices[7] = (ir + 1 + (ilat + 1) * nr + (ilon1) * NV_blk);
+
+		/**      data_1 = uphi[ ( ix + iy*local_nx + iz*NV_blk ) ];
+		         data_2 = uphi[ ( ix + 1 + iy*local_nx + iz*NV_blk ) ];
+		         data_3 = uphi[ ( ix + ( iy + 1 )*local_nx + iz*NV_blk ) ];
+		         data_4 = uphi[ ( ix + 1 + ( iy + 1)*local_nx + iz*NV_blk ) ];
+		         data_5 = uphi[ ( ix + iy*local_nx + ( iz1 )*NV_blk ) ];
+		         data_6 = uphi[ ( ix + 1 + iy*local_nx + ( iz1 )*NV_blk ) ];
+		         data_7 = uphi[ ( ix + ( iy + 1 )*local_nx + ( iz1 )*NV_blk ) ];
+		         data_8 = uphi[ ( ix + 1 + ( iy + 1)*local_nx + ( iz1)*NV_blk ) ];
+		         */
+
+		//( index_phi + index_theta*local_nx + index_r*NV_blk )
+		indices[0] = ilon + ilat*nlon + ir*NV_blk;
+		indices[1] = ilon+1 + ilat*nlon + ir*NV_blk;
+		indices[2] = ilon + ( ilat + 1 )*nlon + ir*NV_blk;
+		indices[3] = ilon+1 + ( ilat + 1)*nlon + ir*NV_blk;
+		indices[4] = ilon + ilat*nlon + ( ir + 1 )*NV_blk;
+		indices[5] = ilon+1 + ilat*nlon + ( ir + 1 )*NV_blk;
+		indices[6] = ilon + ( ilat + 1 )*nlon + ( ir + 1 )*NV_blk;
+		indices[7] = ilon+1 + ( ilat + 1)*nlon + ( ir + 1 )*NV_blk;
+std::cout << "starting the fetches" << std::endl;
 		if (!main_memory_flag)
 		{
 
 			for (int i = 0; i < 8; i++)
 			{
+
 				data[i] = modelReader->getVariableAtIndexByID(variable_id, indices[i]);
 			}
 
@@ -290,6 +311,7 @@ namespace ccmc
 
 			for (int i = 0; i < 8; i++)
 			{
+				std::cout << "index: " << indices[i] << std::endl;
 				data[i] = (*vData)[indices[i]];
 			}
 
@@ -297,6 +319,11 @@ namespace ccmc
 
 		/* printf("DEBUG\tdata 1..8 = %g %g %g %g %g %g %g this should be data_8-->%g<--\n", data_1, data_2, data_3, data_4, data_5, data_6, data_7, data_8 ); */
 
+		/**
+		 *  value = (1-m_lon)*( (1-m_lat)*( (1-m_r)*data[0] + m_r *data[1] ) + m_lat
+         *( + (1-m_r)*data[2] + m_r *data[3] ) ) + m_lon*( (1-m_lat)*( +(1-m_r)
+         *data[4] + m_r *data[5] ) + m_lat*( +(1-m_r)*data[6] + m_r *data[7] ) );
+		 */
 		value = (1 - m_lon) * ((1 - m_lat) * ((1 - m_r) * data[0] + m_r * data[1]) + m_lat * (+(1 - m_r) * data[2] + m_r
 				* data[3])) + m_lon * ((1 - m_lat) * (+(1 - m_r) * data[4] + m_r * data[5]) + m_lat * (+(1 - m_r) * data[6] + m_r
 				* data[7]));
