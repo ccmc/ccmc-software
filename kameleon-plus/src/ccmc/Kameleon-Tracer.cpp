@@ -41,7 +41,8 @@ namespace ccmc
 		useMaxArcLength = false;
 		useROI = false;
 		//std::cout << "created Tracer object" << std::endl;
-		if (kameleon->getModelName() == ccmc::strings::models::enlil_)
+		if (kameleon->getModelName() == ccmc::strings::models::enlil_ ||
+				kameleon->getModelName() == ccmc::strings::models::mas_)
 		{
 			r_end = 1.f;
 		} else
@@ -966,39 +967,20 @@ namespace ccmc
 
 		if ("mas" == model_name || "enlil" == model_name)
 		{
-//			std::cerr << "inside model check" << std::endl;
-			if (this->kameleon->doesVariableExist(ccmc::strings::variables::r_))
-			{
-				component1 = ccmc::strings::variables::r_;
-				component2 = ccmc::strings::variables::phi_;
-				component3 = ccmc::strings::variables::theta_;
-//				std::cerr << "setting the components to r,phi,theta" << std::endl;
-			} else
-			{
-				component1 = ccmc::strings::variables::x_;
-				component2 = ccmc::strings::variables::y_;
-				component3 = ccmc::strings::variables::z_;
-			}
+			component1 = ccmc::strings::variables::r_;
+			component2 = ccmc::strings::variables::theta_;
+			component3 = ccmc::strings::variables::phi_;
 
 			if (this->kameleon->doesVariableExist(ccmc::strings::variables::br_))
 			{
 
 				bComponent1 = ccmc::strings::variables::br_;
-				bComponent2 = ccmc::strings::variables::bphi_;
-				bComponent3 = ccmc::strings::variables::btheta_;
+				bComponent2 = ccmc::strings::variables::btheta_;
+				bComponent3 = ccmc::strings::variables::bphi_;
 
 				uComponent1 = ccmc::strings::variables::ur_;
-				uComponent2 = ccmc::strings::variables::uphi_;
-				uComponent3 = ccmc::strings::variables::utheta_;
-			} else
-			{
-				bComponent1 = ccmc::strings::variables::bx_;
-				bComponent2 = ccmc::strings::variables::by_;
-				bComponent3 = ccmc::strings::variables::bz_;
-
-				uComponent1 = ccmc::strings::variables::ux_;
-				uComponent2 = ccmc::strings::variables::uy_;
-				uComponent3 = ccmc::strings::variables::uz_;
+				uComponent2 = ccmc::strings::variables::utheta_;
+				uComponent3 = ccmc::strings::variables::uphi_;
 			}
 		}
 		// ENLIL: scaling factors for vector variables
@@ -1007,7 +989,8 @@ namespace ccmc
 		// ENLIL: stay in region of initial polarity (b_r > 0 or b_r <= 0)
 		int usePolarity = 0, polarity = 1, NLAT = 0;
 		//float *latitudes, *lat_ptr; // latitude grid
-		std::vector<float>* latitudes, *lat_ptr;
+		std::vector<float>* latitudes = NULL;
+		std::vector<float>* lat_ptr = NULL;
 		// b_r at nearest grid latitudes and estimated latitude of current sheet
 		float br_up, br_down, lat_csh;
 
@@ -1326,7 +1309,8 @@ namespace ccmc
 
 			f.insertPointData(fieldline1[i], mag1[i]);
 		}
-		delete latitudes;
+		if (latitudes != NULL)
+			delete latitudes;
 		//delete interpolator;
 
 		return f;
