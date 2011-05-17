@@ -1,7 +1,14 @@
+2011 May 17   David Berrios
+-------------
+  kameleon-plus-0.1.11
+  - Fixed ENLIL interpolation. Theta and Phi were switched.
+  
 2011 May 12   David Berrios
 -------------
-  kameleon-plus-0.1.9
+  kameleon-plus-0.1.10
   - Added MAS
+  - Fixed logic when deleting latitudes in spherical tracer
+  - Removed ENLIL's support for x,y,z coordinate names. This was too confusing!
   
 2011 Jan 06   David Berrios
 -------------
@@ -25,7 +32,7 @@
 -------------
   kameleon-plus-0.1.3
   - Updated version.  Not sure when these were added, but it now has a fieldline tracer, and initial support for enlil
-  - Added the wrapper code for multiple langauges
+  - Added the wrapper code for multiple languages
 
 2009 Sep 10   David Berrios
 -------------
