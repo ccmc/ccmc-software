@@ -21,7 +21,7 @@ int main (int argc, char * argv[])
 	{
 		cout << "kameleon <filename> variable c0 c1 c2\n";
 		cout << "\tOpenGGCM, BATSRUS: x y z\n";
-		cout << "\tENLIL, MAS: r phi(latitude) theta(longitude)" << endl;
+		cout << "\tENLIL, MAS: r theta(latitude) phi(longitude)" << endl;
 		exit(1);
 	}
 	filename = argv[1];
