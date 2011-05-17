@@ -65,8 +65,8 @@ namespace ccmc
 
 		std::vector<std::string> bnames_spherical;
 		bnames_spherical.push_back("br");
-		bnames_spherical.push_back("bphi");
 		bnames_spherical.push_back("btheta");
+		bnames_spherical.push_back("bphi");
 
 		std::vector<std::string> b1names_cartesian;
 		b1names_cartesian.push_back("b1x");
@@ -98,8 +98,8 @@ namespace ccmc
 		{
 			componentNamesMap["b"] = bnames_spherical;
 			componentNamesMap["br"] = bnames_spherical;
-			componentNamesMap["bphi"] = bnames_spherical;
 			componentNamesMap["btheta"] = bnames_spherical;
+			componentNamesMap["bphi"] = bnames_spherical;
 		} else
 		{
 			componentNamesMap["b"] = bnames_cartesian;
@@ -1227,6 +1227,7 @@ namespace ccmc
 				addition.component3 = 1e-20;
 			}
 			Point3f newPoint = previous + addition;
+			newPoint.setCoordinates(Point3f::SPHERICAL);
 #ifdef DEBUG_SPHTRACER
 			cerr << "*****previous: " << previous << " newPoint: " << newPoint << " addition: " << addition << " dt: " << dt << " dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << " rsinth: " << rsinth << endl;
 			//cerr << " DtoR: " << DtoR << " rlocal: " << rlocal << " cos(DtoR*previous.component3): " << cos(DtoR*previous.component3) << endl;
