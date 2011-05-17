@@ -26,8 +26,8 @@ namespace ccmc
 		if (this->modelReader->doesVariableExist("r"))
 		{
 			r_string = ccmc::strings::variables::r_;
-			lat_string = ccmc::strings::variables::phi_;
-			lon_string = ccmc::strings::variables::theta_;
+			lat_string = ccmc::strings::variables::theta_;
+			lon_string = ccmc::strings::variables::phi_;
 
 		} else
 		{
