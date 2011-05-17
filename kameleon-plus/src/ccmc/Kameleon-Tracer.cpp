@@ -1074,12 +1074,13 @@ namespace ccmc
 #endif
 
 		Point3f vectorValue = getVector(variable, startPoint, dComponent1, dComponent2, dComponent3, interpolator);
-		if (vectorValue.component1 != missing)
+		if (vectorValue.component1 != missing && vectorValue.component2 != missing && vectorValue.component3 != missing)
 		{
 			vectorValue.component1 = vectorValue.component1 * factor;
 			vectorValue.component2 = vectorValue.component2 * factor;
 			vectorValue.component3 = vectorValue.component3 * factor;
 		}
+
 #ifdef DEBUG_SPHTRACER
 		cerr << "After getVector " << variable << " Factor: " << factor << endl;
 		cerr << "vector: " << vectorValue << endl;
@@ -1294,13 +1295,13 @@ namespace ccmc
 				}
 				mag1.push_back(vectorValue.magnitude());
 				//vectorValue.normalize();
-#ifdef DEBUG_SPHTRACER
+//#ifdef DEBUG_SPHTRACER
 				cerr << "ITER: After ccmc_tracer_getVector" << endl;
 				cerr << "ITER: position: " << previous << endl;
 				cerr << "ITER: vector: " << vectorValue << endl;
 				cerr << "ITER: dist: " << dist << endl;
 				cerr << "ITER: addition: " << addition << endl;
-#endif
+//#endif
 			}
 
 		}
