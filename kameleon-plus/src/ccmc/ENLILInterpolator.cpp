@@ -176,7 +176,7 @@ namespace ccmc
 
 			/*return interpolated_value;*/
 
-
+			dr /= ccmc::constants::AU_in_meters;
 
 		}
 
