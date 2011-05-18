@@ -925,7 +925,7 @@ namespace ccmc
 		float min_distance = 1.e-5;
 		if (model_name == ccmc::strings::models::enlil_)
 			min_block_size = 1.e-4;
-//#define DEBUG_SPHTRACER
+#define DEBUG_SPHTRACER
 
 		//#define DEBUG_SPHTRACER
 		//#define DEBUG_SPHTRACER
@@ -1167,9 +1167,15 @@ namespace ccmc
 			//vectorValue.component3 /= magValue;
 
 			rlocal = previous.component1;
-			rsinth = rlocal * cos(DtoR * previous.component2);
-			if (rsinth < eps)
-				rsinth = eps;
+			rsinth = std::abs(rlocal * cos(DtoR * previous.component2));
+			if (rsinth > 0)
+			{
+				float temp = rsinth*DtoR*previous.component3;
+				if (temp < dt)
+				{
+					dt = temp;
+				}
+			}
 
 			// dComponent1 *= 1./(fabs(vectorValue.component1)+eps*(fabs(vectorValue.component1) < eps));
 			// dComponent2 *= DtoR*rsinth/(fabs(vectorValue.component2)+eps*(fabs(vectorValue.component2) < eps));
@@ -1268,7 +1274,7 @@ namespace ccmc
 				if (newPoint.component2 < -90)
 				{
 					newPoint.component3 = newPoint.component3 + 180;
-					newPoint.component2 = -90 - newPoint.component2;
+					newPoint.component2 = newPoint.component2 + 90;
 				}
 				// azimuth from 0 - 2*PI
 				if (newPoint.component3 > 360)
