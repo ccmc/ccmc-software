@@ -856,6 +856,7 @@ namespace ccmc
 				//newPointData.addVariableData(variable, vectorValue.magnitude());
 				if (this->isValidPoint(newPoint, min, max))
 				{
+					newPoint.setCoordinates(Point3f::CARTESIAN);
 					fieldline.insertPointData(newPoint, vectorValue.magnitude());
 				}
 			}
@@ -913,19 +914,74 @@ namespace ccmc
 			const float& startComponent2, const float& startComponent3, const Interpolator * interpolator,
 			const Direction& dir)
 	{
+		Fieldline f;
+		std::string model_name = kameleon->getModelName();
+		const std::vector<float> * r_data = kameleon->getVariable("r");
+		const std::vector<float> * lat_data = kameleon->getVariable("theta");
+		const std::vector<float> * lon_data = kameleon->getVariable("phi");
+
+		float c0,c1,c2;
+		c0 = startComponent1;
+		c1 = startComponent2;
+		c2 = startComponent3;
+		//grab the min and max for each component
+		Point3f boxMin, boxMax;
+		boxMin.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::r_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+		boxMin.component2 = 90. - ccmc::constants::Radian_in_degrees * (kameleon->getVariableAttribute(ccmc::strings::variables::theta_,
+				ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
+		boxMax.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::r_,
+				ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+		boxMax.component2 = 90. - ccmc::constants::Radian_in_degrees * (kameleon->getVariableAttribute(ccmc::strings::variables::theta_,
+				ccmc::strings::attributes::actual_min_)).getAttributeFloat();
+		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
+
+		//since ENLIL stores the radius in meters, we need to convert to AU
+		if (model_name == "enlil")
+		{
+			boxMin.component1 /= ccmc::constants::AU_in_meters;
+			boxMax.component1 /= ccmc::constants::AU_in_meters;
+		}
+
+		//ensure the start position components are within the proper ranges
+		if (c0 > boxMax.component1 || c0 < boxMin.component1)
+		{
+			return f;
+		}
+		if (c1 < -90.f)
+		{
+			c1 = -c1;
+			c2 += 180.f;
+		}
+		if (c1 > 90.f)
+		{
+			c1 = (*lat_data)[lat_data->size()-1] - c1;
+			c2 += 180.f;
+		}
+		if (c2 < 0.f)
+		{
+			c2 += 360.f;
+		}
+		if (c2 > 360.f)
+		{
+			c2 -= 360.f;
+		}
+
+
 		float adjusted_dn = dn;
 		if (dir == REVERSE)
 		{
 			adjusted_dn = -dn;
 		}
-		//Interpolator * interpolator = kameleon->createNewInterpolator();
-		std::string model_name = kameleon->getModelName();
-		Fieldline f;
+
+
+
+
 		float min_block_size = 1.e-10;
 		float min_distance = 1.e-5;
 		if (model_name == ccmc::strings::models::enlil_)
 			min_block_size = 1.e-4;
-#define DEBUG_SPHTRACER
+//#define DEBUG_SPHTRACER
 
 		//#define DEBUG_SPHTRACER
 		//#define DEBUG_SPHTRACER
@@ -934,60 +990,29 @@ namespace ccmc
 #ifdef DEBUG_SPHTRACER
 		cerr << "trace_in_two_direction: File: " << filename << " Var: " << variable << endl;
 		cerr << "dn:" << dn << endl;
-		cerr << "I'm inside the sphtrace function. ha HA! " << startComponent1 << " " << startComponent2 << " " << startComponent3 << endl;
+		cerr << "I'm inside the sphtrace function. ha HA! " << c0 << " " << c1 << " " << c2 << endl;
 #endif
 
 		Point3f oldPoint;
 		float eps = 1e-5, DtoR = asin(1.) / 90, RADEG = 90. / asin(1.);
 		Point3f point(Point3f::SPHERICAL);
-		Point3f boxMin(Point3f::SPHERICAL);
-		Point3f boxMax(Point3f::SPHERICAL);
+
 		float dComponent1 = -0.1;
 		float dComponent2 = -0.1;
 		float dComponent3 = -0.1;
-		;
 		Point3f currentVectorData;
 		int return_status;
 
 		vector<Point3f> streamline;
 		vector<float> mag1;
-		//vector<float> mag2;
 		vector<float> magnitudes;
-		//string model_name = (char *)gattribute_get("model_name");
-		string component1;
-		string component2;
-		string component3;
 
-		string bComponent1;
-		string bComponent2;
-		string bComponent3;
-		string uComponent1;
-		string uComponent2;
-		string uComponent3;
-
-		if ("mas" == model_name || "enlil" == model_name)
-		{
-			component1 = ccmc::strings::variables::r_;
-			component2 = ccmc::strings::variables::theta_;
-			component3 = ccmc::strings::variables::phi_;
-
-			if (this->kameleon->doesVariableExist(ccmc::strings::variables::br_))
-			{
-
-				bComponent1 = ccmc::strings::variables::br_;
-				bComponent2 = ccmc::strings::variables::btheta_;
-				bComponent3 = ccmc::strings::variables::bphi_;
-
-				uComponent1 = ccmc::strings::variables::ur_;
-				uComponent2 = ccmc::strings::variables::utheta_;
-				uComponent3 = ccmc::strings::variables::uphi_;
-			}
-		}
-		// ENLIL: scaling factors for vector variables
-		float factor = 1., factor_r = 1.;
 
 		// ENLIL: stay in region of initial polarity (b_r > 0 or b_r <= 0)
-		int usePolarity = 0, polarity = 1, NLAT = 0;
+		bool usePolarity = false;
+		int polarity = 0;
+
+		int NLAT = 0;
 		//float *latitudes, *lat_ptr; // latitude grid
 		std::vector<float>* latitudes = NULL;
 		std::vector<float>* lat_ptr = NULL;
@@ -996,25 +1021,7 @@ namespace ccmc
 
 		if (model_name == "enlil")
 		{
-			//if (model_name == "enlil")
-			{
-				factor_r = 1. / ccmc::constants::AU_in_meters;
 
-				if (variable == ccmc::strings::variables::b_ ||
-						variable == bComponent1 ||
-						variable == bComponent2 ||
-						variable == bComponent3)
-				{
-					factor = 1.0;
-				}
-				if (variable == ccmc::strings::variables::u_ ||
-						variable == uComponent1 ||
-						variable == uComponent2 ||
-						variable == uComponent3)
-				{
-					factor = 1e-3;
-				}
-			}
 #ifdef DEBUG_SPHTRACER
 			cerr << "SPHTRACE: using conversion factor for " << variable << ": " << factor << endl;
 #endif
@@ -1024,11 +1031,11 @@ namespace ccmc
 			cerr << "calling var_get for phi (lat)" << endl;
 #endif
 //			std::cerr << "calling getVariable" << std::endl;
-			lat_ptr = kameleon->getVariable(component2); // need to use alias "lat" later
+			lat_ptr = kameleon->getVariable(ccmc::strings::variables::theta_); // need to use alias "lat" later
 			NLAT = lat_ptr->size();
 			if (NLAT > 0)
 			{
-				usePolarity = 1;
+				usePolarity = true;
 				//latitudes = (float*) malloc(sizeof(float) * NLAT);
 				latitudes = new std::vector<float>(NLAT);
 				for (int i = 0; i < NLAT; i++)
@@ -1038,24 +1045,17 @@ namespace ccmc
 				delete lat_ptr;
 			} else
 			{
-				usePolarity = 0; // we failed to get required information
+				usePolarity = false; // we failed to get required information
 			}
 		}
+//#define DEBUG_SPHTRACER
+#ifdef DEBUG_SPHTRACER
+		std::cerr << "usePolarity: " << usePolarity << std::endl;
+#endif
+//#undef DEBUG_SPHTRACER
 		/* these are in (r,lat,lon) space */
 //		std::cerr << "grabbing box dimensions" << std::endl;
-		boxMin.component1 = (kameleon->getVariableAttribute(component1.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat()
-				* factor_r;
-		boxMin.component2 = 90. - RADEG
-						* (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat();
-		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
 
-//		std::cerr << component2.c_str() << " min: " << (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat() * RADEG;
-//		std::cerr << "lat max: " << (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat() * RADEG;
-		boxMax.component1 = (kameleon->getVariableAttribute(component1.c_str(), ccmc::strings::attributes::actual_max_)).getAttributeFloat()
-				* factor_r;
-		boxMax.component2 = 90. - RADEG
-				* (kameleon->getVariableAttribute(component2.c_str(), ccmc::strings::attributes::actual_min_)).getAttributeFloat();
-		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
 //		std::cerr << "after getting box dimensions" << std::endl;
 #ifdef DEBUG_SPHTRACER
 		cerr << "After setting box dimensions" << endl;
@@ -1066,7 +1066,7 @@ namespace ccmc
 		//vector<Point3f> fieldline2;
 
 		// get first half of streamline
-		Point3f startPoint(startComponent1, startComponent2, startComponent3, Point3f::SPHERICAL);
+		Point3f startPoint(c0, c1, c2, Point3f::SPHERICAL);
 
 #ifdef DEBUG_SPHTRACER
 		cerr << "before getVector, variable: " << variable << endl;
@@ -1074,11 +1074,9 @@ namespace ccmc
 #endif
 
 		Point3f vectorValue = getVector(variable, startPoint, dComponent1, dComponent2, dComponent3, interpolator);
-		if (vectorValue.component1 != missing && vectorValue.component2 != missing && vectorValue.component3 != missing)
+		if (vectorValue.component1 == missing || vectorValue.component2 == missing || vectorValue.component3 == missing)
 		{
-			vectorValue.component1 = vectorValue.component1 * factor;
-			vectorValue.component2 = vectorValue.component2 * factor;
-			vectorValue.component3 = vectorValue.component3 * factor;
+			return f;
 		}
 
 #ifdef DEBUG_SPHTRACER
@@ -1086,7 +1084,10 @@ namespace ccmc
 		cerr << "vector: " << vectorValue << endl;
 		cerr << "Grid Deltas: " << dComponent1/1.48598e11 << " " << dComponent2 << " " << dComponent3 << endl;
 #endif
-		polarity = (vectorValue.component1 > 0);
+		if (vectorValue.component1 > 0)
+			polarity = 1;
+		else
+			polarity = 0;
 
 		mag1.push_back(vectorValue.magnitude());
 		//	vectorValue.normalize();
@@ -1107,11 +1108,10 @@ namespace ccmc
 			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
 			{
 				int iz;
-				for (iz = NLAT; (*latitudes)[iz] > previous.component2; iz--)
-					;
-				br_up = ((Interpolator *) (interpolator)) -> interpolate(bComponent1, previous.component1,
+				for (iz = NLAT; (*latitudes)[iz] > previous.component2; iz--);
+				br_up = ((Interpolator *) (interpolator)) -> interpolate(ccmc::strings::variables::br_, previous.component1,
 						(*latitudes)[iz + 1], previous.component3);
-				br_down = ((Interpolator *) (interpolator)) -> interpolate(bComponent1, previous.component1,
+				br_down = ((Interpolator *) (interpolator)) -> interpolate(ccmc::strings::variables::br_, previous.component1,
 						(*latitudes)[iz], previous.component3);
 #ifdef DEBUG_SPHTRACER
 				cerr << "br_up: " << br_up << " br_down: " << br_down << endl;
@@ -1293,21 +1293,15 @@ namespace ccmc
 				//cout << result.component1 << " ";
 				previous = newPoint;
 				vectorValue = getVector(variable, previous, dComponent1, dComponent2, dComponent3, interpolator);
-				if (vectorValue.component1 != missing)
-				{
-					vectorValue.component1 *= factor;
-					vectorValue.component2 *= factor;
-					vectorValue.component3 *= factor;
-				}
 				mag1.push_back(vectorValue.magnitude());
 				//vectorValue.normalize();
-//#ifdef DEBUG_SPHTRACER
+#ifdef DEBUG_SPHTRACER
 				cerr << "ITER: After ccmc_tracer_getVector" << endl;
 				cerr << "ITER: position: " << previous << endl;
 				cerr << "ITER: vector: " << vectorValue << endl;
 				cerr << "ITER: dist: " << dist << endl;
 				cerr << "ITER: addition: " << addition << endl;
-//#endif
+#endif
 			}
 
 		}
