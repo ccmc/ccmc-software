@@ -80,6 +80,9 @@ int main (int argc, char * argv[])
 	if (kameleon.getModelName() == "ADAPT3D")
 	{
 		tracer.setInnerBoundary(1.f);
+	} else if (kameleon.getModelName() == "enlil")
+	{
+		tracer.setInnerBoundary(kameleon.getVariableAttribute("r","actual_min").getAttributeFloat()/ccmc::constants::AU_in_meters);
 	}
 	//tracer.setInnerBoundary(2.5f);
 	tracer.setDn(.2f);
@@ -119,7 +122,7 @@ int main (int argc, char * argv[])
 
 	for (int i = 0; i < f1.size(); i++)
 	{
-		std::cout << "New[" << i << "]: " << f1.getPosition(i) << std::endl;
+	//	std::cout << "New[" << i << "]: " << f1.getPosition(i) << std::endl;
 	}
 
 	/*for (int i = 0; i < f2.size(); i++)
