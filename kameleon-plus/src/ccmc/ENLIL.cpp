@@ -109,10 +109,12 @@ namespace ccmc
 	{
 		//change sign flag
 		changeSignFlag["btheta"] = true;
+		changeSignFlag["b1theta"] = true;
 		changeSignFlag["jtheta"] = true;
 		changeSignFlag["utheta"] = true;
 
 		changeSignFlagByID[this->getVariableID("btheta")] = true;
+		changeSignFlagByID[this->getVariableID("b1theta")] = true;
 		changeSignFlagByID[this->getVariableID("jtetha")] = true;
 		changeSignFlagByID[this->getVariableID("utheta")] = true;
 	}
