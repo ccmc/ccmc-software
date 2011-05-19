@@ -27,7 +27,8 @@ namespace ccmc
 			ENLIL();
 			long open(const std::string& filename);
 			Interpolator* createNewInterpolator();
-
+			bool getChangeSignFlag(std::string variable);
+			bool getChangeSignFlagByID(long variable_id);
 
 			virtual ~ENLIL();
 
@@ -40,6 +41,10 @@ namespace ccmc
 			std::string lat_string;
 			std::string lon_string;
 			std::string filename;
+
+			void initializeMaps();
+			boost::unordered_map<std::string, bool> changeSignFlag;
+			boost::unordered_map<long, bool> changeSignFlagByID;
 	};
 }
 

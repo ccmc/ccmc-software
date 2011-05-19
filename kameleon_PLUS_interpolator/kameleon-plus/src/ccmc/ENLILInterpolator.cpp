@@ -6,6 +6,7 @@
  */
 
 #include "ENLILInterpolator.h"
+#include "ENLIL.h"
 #include "Constants.h"
 #include "StringConstants.h"
 #include "Utils.h"
@@ -154,7 +155,7 @@ namespace ccmc
 			ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
 		}
 
-		float value;
+		float value = this->missingValue;
 		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
 			value = this->missingValue;
@@ -167,14 +168,10 @@ namespace ccmc
 
 			/****** we need to change the sign of any y vector component ... *********/
 
-			if (change_sign_flag) /*** this flag is set when cdf_varNum is set above ***/
+			if (((ENLIL*)modelReader)->getChangeSignFlagByID(variableID)) /*** this flag is set when cdf_varNum is set above ***/
 			{
 				value = value * (-1.0);
 			}
-
-			/*printf("DEBUG:\tcall to interpolate_in_block complete\n");*/
-
-			/*return interpolated_value;*/
 
 			dr /= ccmc::constants::AU_in_meters;
 
@@ -304,6 +301,8 @@ namespace ccmc
 		value = (1 - m_lon) * ((1 - m_lat) * ((1 - m_r) * data[0] + m_r * data[1]) + m_lat * (+(1 - m_r) * data[2] + m_r
 				* data[3])) + m_lon * ((1 - m_lat) * (+(1 - m_r) * data[4] + m_r * data[5]) + m_lat * (+(1 - m_r) * data[6] + m_r
 				* data[7]));
+
+		dr /= ccmc::constants::AU_in_meters;
 
 		return (value);
 
