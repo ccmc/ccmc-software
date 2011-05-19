@@ -2,13 +2,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([kameleon-plus], [0.1.11], [David.H.Berrios@nasa.gov], [kameleon-plus])
+AC_INIT([kameleon-plus], [0.1.12], [David.H.Berrios@nasa.gov], [kameleon-plus])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_SUBST([RELEASE],[0.1.11])
+AC_SUBST([RELEASE],[0.1.12])
 AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
@@ -16,12 +16,8 @@ AC_PROG_F77
 AC_PROG_CC
 AM_PROG_LIBTOOL
 AM_PROG_CC_C_O
-#AC_PKG_SWIG
-#SWIG_ENABLE_CXX
-#SWIG_PYTHON
 AM_PATH_PYTHON([2.5],,[:])
 
-# FIXME: Replace `main' with a function in `-lc':
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
                              [build Universal binaries on OSX]),
@@ -122,22 +118,18 @@ AC_C_CONST
 # Checks for library functions.
 AC_CHECK_FUNCS([pow sqrt])
 
-AC_CONFIG_FILES(
-    [
-        Makefile
-        src/Makefile
-        src/ccmc/Makefile
-        src/ccmc/wrappers/Makefile
-        src/ccmc/wrappers/c/Makefile
-        src/ccmc/wrappers/fortran/Makefile
-        src/ccmc/wrappers/java/Makefile
-        src/ccmc/wrappers/python/Makefile
-        src/example/Makefile
-        src/example/c/Makefile
-        src/example/c++/Makefile
-        src/example/fortran/Makefile  
-    ]
-)
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([src/Makefile])
+AC_CONFIG_FILES([src/ccmc/Makefile])
+AC_CONFIG_FILES([src/ccmc/wrappers/Makefile])
+AC_CONFIG_FILES([src/ccmc/wrappers/c/Makefile])
+AC_CONFIG_FILES([src/ccmc/wrappers/fortran/Makefile])
+AC_CONFIG_FILES([src/ccmc/wrappers/java/Makefile])
+AC_CONFIG_FILES([src/ccmc/wrappers/python/Makefile])
+AC_CONFIG_FILES([src/example/Makefile])
+AC_CONFIG_FILES([src/example/c/Makefile])
+AC_CONFIG_FILES([src/example/c++/Makefile])
+AC_CONFIG_FILES([src/example/fortran/Makefile])
 
 AC_MSG_NOTICE( )
 AC_MSG_NOTICE([------------------------------------------------------------])
