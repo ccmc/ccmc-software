@@ -152,13 +152,13 @@ namespace ccmc
 		latPosGridByID[this->getVariableID("T")] = ccmc::strings::variables::theta1_;
 
 		//change sign flag
-		changeSignFlag["btheta"] = true;
-		changeSignFlag["jtheta"] = true;
-		changeSignFlag["utheta"] = true;
+		changeSignFlag[ccmc::strings::variables::btheta_] = true;
+		changeSignFlag[ccmc::strings::variables::jtheta_] = true;
+		changeSignFlag[ccmc::strings::variables::utheta_] = true;
 
-		changeSignFlagByID[this->getVariableID("btheta")] = true;
-		changeSignFlagByID[this->getVariableID("jtetha")] = true;
-		changeSignFlagByID[this->getVariableID("utheta")] = true;
+		changeSignFlagByID[this->getVariableID(ccmc::strings::variables::btheta_)] = true;
+		changeSignFlagByID[this->getVariableID(ccmc::strings::variables::jtheta_)] = true;
+		changeSignFlagByID[this->getVariableID(ccmc::strings::variables::utheta_)] = true;
 
 	}
 
