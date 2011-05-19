@@ -32,7 +32,7 @@ namespace ccmc
 		//open the file
 		long status;
 		status = openFile(filename);
-
+		initializeMaps();
 		//check the names of the components
 		if (this->doesVariableExist(ccmc::strings::variables::r_))
 		{
@@ -84,6 +84,37 @@ namespace ccmc
 	void ENLIL::initializeSIUnits()
 	{
 
+	}
+
+	bool ENLIL::getChangeSignFlag(std::string variable)
+	{
+		boost::unordered_map<std::string, bool>::iterator iter = this->changeSignFlag.find(variable);
+		if (iter != changeSignFlag.end())
+			return (*iter).second;
+		else
+			return false;
+
+	}
+
+	bool ENLIL::getChangeSignFlagByID(long variable_id)
+	{
+		boost::unordered_map<long, bool>::iterator iter = this->changeSignFlagByID.find(variable_id);
+		if (iter != changeSignFlagByID.end())
+			return (*iter).second;
+		else
+			return false;
+	}
+
+	void ENLIL::initializeMaps()
+	{
+		//change sign flag
+		changeSignFlag["btheta"] = true;
+		changeSignFlag["jtheta"] = true;
+		changeSignFlag["utheta"] = true;
+
+		changeSignFlagByID[this->getVariableID("btheta")] = true;
+		changeSignFlagByID[this->getVariableID("jtetha")] = true;
+		changeSignFlagByID[this->getVariableID("utheta")] = true;
 	}
 
 	/**

@@ -58,80 +58,127 @@ namespace ccmc
 	 */
 	void Tracer::initializeComponentNamesMap()
 	{
-		std::vector<std::string> bnames_cartesian;
-		bnames_cartesian.push_back("bx");
-		bnames_cartesian.push_back("by");
-		bnames_cartesian.push_back("bz");
+		std::vector<std::string> bnames;
+		std::vector<std::string> b1names;
+		std::vector<std::string> unames;
+		std::vector<std::string> jnames;
+		std::vector<std::string> jxbnames;
+		std::vector<std::string> exbnames;
 
-		std::vector<std::string> bnames_spherical;
-		bnames_spherical.push_back("br");
-		bnames_spherical.push_back("btheta");
-		bnames_spherical.push_back("bphi");
-
-		std::vector<std::string> b1names_cartesian;
-		b1names_cartesian.push_back("b1x");
-		b1names_cartesian.push_back("b1y");
-		b1names_cartesian.push_back("b1z");
-
-		std::vector<std::string> unames_cartesian;
-		unames_cartesian.push_back("ux");
-		unames_cartesian.push_back("uy");
-		unames_cartesian.push_back("uz");
-
-		std::vector<std::string> jnames_cartesian;
-		jnames_cartesian.push_back("jx");
-		jnames_cartesian.push_back("jy");
-		jnames_cartesian.push_back("jz");
-
-		std::vector<std::string> jxbnames_cartesian;
-		jxbnames_cartesian.push_back("jxbx");
-		jxbnames_cartesian.push_back("jxby");
-		jxbnames_cartesian.push_back("jxbz");
-
-		std::vector<std::string> exbnames_cartesian;
-		exbnames_cartesian.push_back("exbx");
-		exbnames_cartesian.push_back("exby");
-		exbnames_cartesian.push_back("exbz");
-
-
-		if (this->kameleon->doesVariableExist(ccmc::strings::variables::br_))
+		if (kameleon->doesVariableExist("r"))
 		{
-			componentNamesMap["b"] = bnames_spherical;
-			componentNamesMap["br"] = bnames_spherical;
-			componentNamesMap["btheta"] = bnames_spherical;
-			componentNamesMap["bphi"] = bnames_spherical;
+			bnames.push_back("br");
+			bnames.push_back("btheta");
+			bnames.push_back("bphi");
+
+			b1names.push_back("b1r");
+			b1names.push_back("b1theta");
+			b1names.push_back("b1phi");
+
+			unames.push_back("ur");
+			unames.push_back("utheta");
+			unames.push_back("uphi");
+
+			jnames.push_back("jr");
+			jnames.push_back("jtheta");
+			jnames.push_back("jphi");
+
+			jxbnames.push_back("jxbr");
+			jxbnames.push_back("jxbtheta");
+			jxbnames.push_back("jxbphi");
+
+			exbnames.push_back("exbr");
+			exbnames.push_back("exbtheta");
+			exbnames.push_back("exbphi");
+
+			componentNamesMap["b"] = bnames;
+			componentNamesMap["br"] = bnames;
+			componentNamesMap["btheta"] = bnames;
+			componentNamesMap["bphi"] = bnames;
+			componentNamesMap["b1"] = b1names;
+			componentNamesMap["b1r"] = b1names;
+			componentNamesMap["b1theta"] = b1names;
+			componentNamesMap["b1phi"] = b1names;
+
+			componentNamesMap["u"] = unames;
+			componentNamesMap["ur"] = unames;
+			componentNamesMap["utheta"] = unames;
+			componentNamesMap["uphi"] = unames;
+
+			componentNamesMap["j"] = jnames;
+			componentNamesMap["jr"] = jnames;
+			componentNamesMap["jtheta"] = jnames;
+			componentNamesMap["jphi"] = jnames;
+
+			componentNamesMap["jxb"] = jxbnames;
+			componentNamesMap["jxbr"] = jxbnames;
+			componentNamesMap["jxbtheta"] = jxbnames;
+			componentNamesMap["jxbphi"] = jxbnames;
+
+			componentNamesMap["exb"] = exbnames;
+			componentNamesMap["exbr"] = exbnames;
+			componentNamesMap["exbtheta"] = exbnames;
+			componentNamesMap["exbphi"] = exbnames;
 		} else
 		{
-			componentNamesMap["b"] = bnames_cartesian;
-			componentNamesMap["bx"] = bnames_cartesian;
-			componentNamesMap["by"] = bnames_cartesian;
-			componentNamesMap["bz"] = bnames_cartesian;
+			bnames.push_back("bx");
+			bnames.push_back("by");
+			bnames.push_back("bz");
+
+			b1names.push_back("b1x");
+			b1names.push_back("b1y");
+			b1names.push_back("b1z");
+
+			unames.push_back("ux");
+			unames.push_back("uy");
+			unames.push_back("uz");
+
+			jnames.push_back("jx");
+			jnames.push_back("jy");
+			jnames.push_back("jz");
+
+			jxbnames.push_back("jxbx");
+			jxbnames.push_back("jxby");
+			jxbnames.push_back("jxbz");
+
+			exbnames.push_back("exbx");
+			exbnames.push_back("exby");
+			exbnames.push_back("exbz");
+
+			componentNamesMap["b"] = bnames;
+			componentNamesMap["bx"] = bnames;
+			componentNamesMap["by"] = bnames;
+			componentNamesMap["bz"] = bnames;
+			componentNamesMap["b1"] = b1names;
+			componentNamesMap["b1x"] = b1names;
+			componentNamesMap["b1y"] = b1names;
+			componentNamesMap["b1z"] = b1names;
+
+			componentNamesMap["u"] = unames;
+			componentNamesMap["ux"] = unames;
+			componentNamesMap["uy"] = unames;
+			componentNamesMap["uz"] = unames;
+
+			componentNamesMap["j"] = jnames;
+			componentNamesMap["jx"] = jnames;
+			componentNamesMap["jy"] = jnames;
+			componentNamesMap["jz"] = jnames;
+
+			componentNamesMap["jxb"] = jxbnames;
+			componentNamesMap["jxbx"] = jxbnames;
+			componentNamesMap["jxby"] = jxbnames;
+			componentNamesMap["jxbz"] = jxbnames;
+
+			componentNamesMap["exb"] = exbnames;
+			componentNamesMap["exbx"] = exbnames;
+			componentNamesMap["exby"] = exbnames;
+			componentNamesMap["exbz"] = exbnames;
 
 		}
-		componentNamesMap["b1"] = b1names_cartesian;
-		componentNamesMap["b1x"] = b1names_cartesian;
-		componentNamesMap["b1y"] = b1names_cartesian;
-		componentNamesMap["b1z"] = b1names_cartesian;
 
-		componentNamesMap["u"] = unames_cartesian;
-		componentNamesMap["ux"] = unames_cartesian;
-		componentNamesMap["uy"] = unames_cartesian;
-		componentNamesMap["uz"] = unames_cartesian;
 
-		componentNamesMap["j"] = jnames_cartesian;
-		componentNamesMap["jx"] = jnames_cartesian;
-		componentNamesMap["jy"] = jnames_cartesian;
-		componentNamesMap["jz"] = jnames_cartesian;
 
-		componentNamesMap["jxb"] = jxbnames_cartesian;
-		componentNamesMap["jxbx"] = jxbnames_cartesian;
-		componentNamesMap["jxby"] = jxbnames_cartesian;
-		componentNamesMap["jxbz"] = jxbnames_cartesian;
 
-		componentNamesMap["exb"] = exbnames_cartesian;
-		componentNamesMap["exbx"] = exbnames_cartesian;
-		componentNamesMap["exby"] = exbnames_cartesian;
-		componentNamesMap["exbz"] = exbnames_cartesian;
 
 
 		/*componentNamesMap["br"];
@@ -1023,7 +1070,7 @@ namespace ccmc
 		{
 
 #ifdef DEBUG_SPHTRACER
-			cerr << "SPHTRACE: using conversion factor for " << variable << ": " << factor << endl;
+			cerr << "SPHTRACE: using conversion factor for " << variable << ": " << endl;
 #endif
 			// set up constrained iteration in like polarity
 			// get latitude grid
@@ -1080,9 +1127,9 @@ namespace ccmc
 		}
 
 #ifdef DEBUG_SPHTRACER
-		cerr << "After getVector " << variable << " Factor: " << factor << endl;
+		cerr << "After getVector " << variable << endl;
 		cerr << "vector: " << vectorValue << endl;
-		cerr << "Grid Deltas: " << dComponent1/1.48598e11 << " " << dComponent2 << " " << dComponent3 << endl;
+		cerr << "Grid Deltas: " << dComponent1 << " " << dComponent2 << " " << dComponent3 << endl;
 #endif
 		if (vectorValue.component1 > 0)
 			polarity = 1;
@@ -1099,10 +1146,10 @@ namespace ccmc
 		oldPoint.component1 = 1e20;
 		oldPoint.component2 = 1e20;
 		oldPoint.component3 = 1e20;
-//		std::cerr << "Before while loop" << std::endl;
+		//std::cerr << "Before while loop" << std::endl;
 		while (!finished && isValidPoint(previous, boxMin, boxMax))
 		{
-//			std::cerr << "Inside while loop" << std::endl;
+			//std::cerr << "Inside while loop" << std::endl;
 			Point3f addition(Point3f::SPHERICAL);
 			float magValue, dt, rsinth, rlocal;
 			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
@@ -1212,25 +1259,25 @@ namespace ccmc
 				dt = dComponent2;
 			dt = dt * adjusted_dn;
 			addition.component1 = dt * vectorValue.component1 / magValue;
-			addition.component2 = dt * vectorValue.component2 / (magValue * DtoR * rlocal);
-			addition.component3 = dt * vectorValue.component3 / (magValue * DtoR * rsinth);
+			addition.component2 = dt * vectorValue.component2 / magValue;//(magValue * DtoR * rlocal);
+			addition.component3 = dt * vectorValue.component3 / magValue;//(magValue * DtoR * rsinth);
 
 			if (isnan(addition.component1) || abs(addition.component1 - 0.0) < 1e-20)
 			{
 				addition.component1 = 1e-20;
-				addition.component2 = 1e-20;
-				addition.component3 = 1e-20;
+				//addition.component2 = 1e-20;
+				//addition.component3 = 1e-20;
 			}
 			if (isnan(addition.component2) || abs(addition.component2 - 0.0) < 1e-20)
 			{
-				addition.component1 = 1e-20;
+				//addition.component1 = 1e-20;
 				addition.component2 = 1e-20;
-				addition.component3 = 1e-20;
+				//addition.component3 = 1e-20;
 			}
 			if (isnan(addition.component3) || abs(addition.component3 - 0.0) < 1e-20)
 			{
-				addition.component1 = 1e-20;
-				addition.component2 = 1e-20;
+				//addition.component1 = 1e-20;
+				//addition.component2 = 1e-20;
 				addition.component3 = 1e-20;
 			}
 			Point3f newPoint = previous + addition;
@@ -1286,7 +1333,7 @@ namespace ccmc
 					newPoint.component3 = newPoint.component3 + 360.;
 				}
 				oldPoint = previous;
-				fieldline1.push_back(newPoint);
+				fieldline1.push_back(previous);
 				iterations++;
 				if (iterations > step_max)
 					finished = true;
