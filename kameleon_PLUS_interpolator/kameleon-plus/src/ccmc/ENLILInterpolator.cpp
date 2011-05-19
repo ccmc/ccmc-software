@@ -24,19 +24,9 @@ namespace ccmc
 		this->setMissingValue(this->modelReader->getMissingValue());
 		//the model open should have done the proper error checks, so we
 		//just check the first component name to see which set to use
-		if (this->modelReader->doesVariableExist("r"))
-		{
-			r_string = ccmc::strings::variables::r_;
-			lat_string = ccmc::strings::variables::theta_;
-			lon_string = ccmc::strings::variables::phi_;
-
-		} else
-		{
-			r_string = ccmc::strings::variables::x_;
-			lat_string = ccmc::strings::variables::y_;
-			lon_string = ccmc::strings::variables::z_;
-
-		}
+		r_string = ccmc::strings::variables::r_;
+		lat_string = ccmc::strings::variables::theta_;
+		lon_string = ccmc::strings::variables::phi_;
 
 		//TODO: fix the phi/theta issue to correspond to the actual
 		//lat lon
@@ -302,7 +292,7 @@ namespace ccmc
 				* data[3])) + m_lon * ((1 - m_lat) * (+(1 - m_r) * data[4] + m_r * data[5]) + m_lat * (+(1 - m_r) * data[6] + m_r
 				* data[7]));
 
-		dr /= ccmc::constants::AU_in_meters;
+		//dr *= ccmc::constants::AU_in_meters;
 
 		return (value);
 

@@ -81,7 +81,7 @@ namespace ccmc
 		std::string beta[] = {bx_, by_, bz_, p_};
 		std::string beta_without_p_T[] = {bx_, by_, bz_, rho_, "T"};
 		std::string beta_without_p_t[] = {bx_, by_, bz_, rho_, "t"};
-		std::string b1_spherical[] = {b1r_, b1phi_, b1theta_};
+		std::string b1_spherical[] = {b1r_, bphi_, b1theta_, "bp"};
 
 		std::string b_spherical[] = {br_, bphi_, btheta_};
 		std::string mag_velocity_spherical[] = {br_,bphi_,btheta_,ur_,uphi_,utheta_};
@@ -139,14 +139,7 @@ namespace ccmc
 
 		if (modelName == ccmc::strings::models::enlil_)
 		{
-			if (model->doesVariableExist(b1r_))
-			{
-				addRequirementsForComponents(b1_, 3, b1_spherical);
-			} else if (model->doesVariableExist(b1x_))
-			{
-				addRequirementsForComponents(b1_, 3, b1);
-			}
-
+			addRequirementsForComponents(b1_, 3, b1_spherical);
 		}
 
 		if (modelName == ccmc::strings::models::enlil_ ||

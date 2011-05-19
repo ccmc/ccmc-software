@@ -73,7 +73,7 @@ namespace ccmc
 
 			b1names.push_back("b1r");
 			b1names.push_back("b1theta");
-			b1names.push_back("b1phi");
+			b1names.push_back("bphi");
 
 			unames.push_back("ur");
 			unames.push_back("utheta");
@@ -966,6 +966,9 @@ namespace ccmc
 		const std::vector<float> * r_data = kameleon->getVariable("r");
 		const std::vector<float> * lat_data = kameleon->getVariable("theta");
 		const std::vector<float> * lon_data = kameleon->getVariable("phi");
+		const std::vector<float> * bp_data;
+
+
 
 		float c0,c1,c2;
 		c0 = startComponent1;
@@ -988,6 +991,8 @@ namespace ccmc
 		{
 			boxMin.component1 /= ccmc::constants::AU_in_meters;
 			boxMax.component1 /= ccmc::constants::AU_in_meters;
+			kameleon->loadVariable("bp");
+			bp_data = kameleon->getVariable("bp");
 		}
 
 		//ensure the start position components are within the proper ranges
@@ -1126,11 +1131,12 @@ namespace ccmc
 			return f;
 		}
 
-#ifdef DEBUG_SPHTRACER
+//#ifdef DEBUG_SPHTRACER
 		cerr << "After getVector " << variable << endl;
 		cerr << "vector: " << vectorValue << endl;
 		cerr << "Grid Deltas: " << dComponent1 << " " << dComponent2 << " " << dComponent3 << endl;
-#endif
+//#endif
+
 		if (vectorValue.component1 > 0)
 			polarity = 1;
 		else
@@ -1151,8 +1157,9 @@ namespace ccmc
 		{
 			//std::cerr << "Inside while loop" << std::endl;
 			Point3f addition(Point3f::SPHERICAL);
+			float bp = ((Interpolator *) (interpolator))->interpolate(ccmc::strings::variables::bp_, previous.component1, previous.component2, previous.component3);
 			float magValue, dt, rsinth, rlocal;
-			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
+			if (usePolarity && ((bp > 0) != polarity))
 			{
 				int iz;
 				for (iz = NLAT; (*latitudes)[iz] > previous.component2; iz--);
@@ -1259,8 +1266,8 @@ namespace ccmc
 				dt = dComponent2;
 			dt = dt * adjusted_dn;
 			addition.component1 = dt * vectorValue.component1 / magValue;
-			addition.component2 = dt * vectorValue.component2 / magValue;//(magValue * DtoR * rlocal);
-			addition.component3 = dt * vectorValue.component3 / magValue;//(magValue * DtoR * rsinth);
+			addition.component2 = dt * vectorValue.component2 / (magValue * DtoR * rlocal);
+			addition.component3 = dt * vectorValue.component3 / (magValue * DtoR * rsinth);
 
 			if (isnan(addition.component1) || abs(addition.component1 - 0.0) < 1e-20)
 			{
@@ -1408,7 +1415,7 @@ namespace ccmc
 				validRegion = true;
 		} else if (model_name == ccmc::strings::models::mas_ || model_name == ccmc::strings::models::enlil_)
 		{
-			if (p.component1 >= r_end && p.component2 >= min.component2 && p.component2 <= max.component2)
+			if (p.component1 >= r_end && p.component1 <= max.component1 && p.component2 >= min.component2 && p.component2 <= max.component2)
 				validRegion = true;
 		} else if (p.component1 >= min.component1 && p.component2 >= min.component2 && p.component3 >= min.component3
 
@@ -1854,23 +1861,42 @@ namespace ccmc
 			 }*/
 		}
 
-		vectorValue.component1 = ((Interpolator*) (interpolator))->interpolate(((*iter).second)[0],
-				position.component1, position.component2, position.component3, dComponent1, dComponent2, dComponent3);
-
-		if (vectorValue.component1 == missing)
+		if (variable == "b1" || variable == "b1r" || variable == "b1theta" || variable == "b1phi")
 		{
-			vectorValue.component2 = missing;
-			vectorValue.component3 = missing;
+			vectorValue.component1 = ((Interpolator *) (interpolator))->interpolate("b1r",
+											position.component1, position.component2, position.component3, dComponent1, dComponent2,
+											dComponent3);
+			vectorValue.component2 = ((Interpolator *) (interpolator))->interpolate("b1theta",
+								position.component1, position.component2, position.component3, dComponent1, dComponent2,
+								dComponent3);
+			float bp = ((Interpolator *) (interpolator))->interpolate("bp",
+								position.component1, position.component2, position.component3, dComponent1, dComponent2,
+								dComponent3);
+			vectorValue.component3 = ((Interpolator *) (interpolator))->interpolate("b1phi",
+								position.component1, position.component2, position.component3, dComponent1, dComponent2,
+								dComponent3) * bp;
+
 		} else
 		{
+			vectorValue.component1 = ((Interpolator*) (interpolator))->interpolate(((*iter).second)[0],
+					position.component1, position.component2, position.component3, dComponent1, dComponent2, dComponent3);
 
-			vectorValue.component2 = ((Interpolator *) (interpolator))->interpolate(((*iter).second)[1],
-					position.component1, position.component2, position.component3, dComponent1, dComponent2,
-					dComponent3);
 
-			vectorValue.component3 = ((Interpolator *) (interpolator))->interpolate(((*iter).second)[2],
-					position.component1, position.component2, position.component3, dComponent1, dComponent2,
-					dComponent3);
+			if (vectorValue.component1 == missing)
+			{
+				vectorValue.component2 = missing;
+				vectorValue.component3 = missing;
+			} else
+			{
+
+				vectorValue.component2 = ((Interpolator *) (interpolator))->interpolate(((*iter).second)[1],
+						position.component1, position.component2, position.component3, dComponent1, dComponent2,
+						dComponent3);
+
+				vectorValue.component3 = ((Interpolator *) (interpolator))->interpolate(((*iter).second)[2],
+						position.component1, position.component2, position.component3, dComponent1, dComponent2,
+						dComponent3);
+			}
 		}
 #ifdef DEBUG_TRACER
 		cerr <<"VectorValue: " << vectorValue << "positions: " << position << endl;

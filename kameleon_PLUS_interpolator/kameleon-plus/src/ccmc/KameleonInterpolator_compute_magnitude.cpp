@@ -29,7 +29,7 @@ namespace ccmc
 		float component1, component2, component3, magnitude;
 		//string variable_name = variable;
 		std::string component1Name, component2Name, component3Name;
-		if (modelName == mas_)
+		if (modelName == mas_ || modelName == enlil_)
 		{
 			if (variable == j_)
 			{
@@ -51,6 +51,11 @@ namespace ccmc
 				component1Name = "ur";
 				component2Name = "uphi";
 				component3Name = "utheta";
+			} else if (variable == "b1")
+			{
+				component1Name = "b1r";
+				component2Name = "b1theta";
+				component3Name = "bphi";
 			} else
 				return missingValue;
 		} else
