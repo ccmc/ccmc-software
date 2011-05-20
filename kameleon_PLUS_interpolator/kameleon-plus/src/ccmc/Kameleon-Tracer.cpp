@@ -1157,9 +1157,9 @@ namespace ccmc
 		{
 			//std::cerr << "Inside while loop" << std::endl;
 			Point3f addition(Point3f::SPHERICAL);
-			float bp = ((Interpolator *) (interpolator))->interpolate(ccmc::strings::variables::bp_, previous.component1, previous.component2, previous.component3);
+			//float bp = ((Interpolator *) (interpolator))->interpolate(ccmc::strings::variables::bp_, previous.component1, previous.component2, previous.component3);
 			float magValue, dt, rsinth, rlocal;
-			if (usePolarity && ((bp > 0) != polarity))
+			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
 			{
 				int iz;
 				for (iz = NLAT; (*latitudes)[iz] > previous.component2; iz--);
