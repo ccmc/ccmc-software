@@ -35,6 +35,7 @@ namespace ccmc
 
 			void setCoordinates(Coordinates c);
 			Coordinates getCoordinates();
+			Point3f getCartesian();
 
 			virtual ~Point3f();
 
