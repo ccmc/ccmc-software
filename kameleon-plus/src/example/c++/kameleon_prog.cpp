@@ -37,10 +37,11 @@ int main (int argc, char * argv[])
 		std::string n_ = "n";
 		std::string pram_ = "pram";
 		std::cout << "Model name: " << kameleon.getGlobalAttribute("model_name").getAttributeString() << std::endl;
-		std::cout << "Min: " << kameleon.getVariableAttribute("x", "actual_min").getAttributeFloat() << std::endl;
 		std::cout << "Loading variables" << std::endl;
 		bool successLoading = kameleon.loadVariable(variable);
+		std::cout << "Variable: " << variable << " load status: " << successLoading << std::endl;
 		bool success = kameleon.doesVariableExist(variable);
+		std::cout << "Does " << variable << " exist? " << success << std::endl;
 		//std::cout << "Creating new interpolator" << std::endl;
 		Interpolator * interpolator = kameleon.createNewInterpolator();
 		clock_t start, finish;
