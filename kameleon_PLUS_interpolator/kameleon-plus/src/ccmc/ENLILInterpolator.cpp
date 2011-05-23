@@ -106,7 +106,7 @@ namespace ccmc
 
 		/*********** 3 ***********/
 
-		float lat_converted = -lat/ccmc::constants::Radian_in_degrees + ccmc::constants::Pi/2.f;
+		float lat_converted = -lat/ccmc::constants::RadiansToDegrees + ccmc::constants::Pi/2.f;
 
 		/** convert degrees ( 0 - 360 longitude ) to radiadns **/
 		//first check to see if the degrees are between 0 and 360
@@ -130,7 +130,7 @@ namespace ccmc
 
 		}
 
-		lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
+		lon_converted = lon_converted / ccmc::constants::RadiansToDegrees;
 		int ir, ilat, ilon;
 		if (previous_r == r && previous_lon == lon && previous_lat == lat)
 		{
