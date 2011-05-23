@@ -897,7 +897,7 @@ namespace ccmc
 				iterations++;
 				if (iterations > step_max)
 					finished = true;
-				//cout << result.component1 << " ";
+
 				previous = newPoint;
 				vectorValue = getVector(variable, newPoint, dComponent1, dComponent2, dComponent3, interpolator);
 				//newPointData.addVariableData(variable, vectorValue.magnitude());
@@ -977,12 +977,12 @@ namespace ccmc
 		//grab the min and max for each component
 		Point3f boxMin, boxMax;
 		boxMin.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::r_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
-		boxMin.component2 = 90. - ccmc::constants::Radian_in_degrees * (kameleon->getVariableAttribute(ccmc::strings::variables::theta_,
+		boxMin.component2 = 90. - ccmc::constants::RadiansToDegrees * (kameleon->getVariableAttribute(ccmc::strings::variables::theta_,
 				ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
 		boxMax.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::r_,
 				ccmc::strings::attributes::actual_max_)).getAttributeFloat();
-		boxMax.component2 = 90. - ccmc::constants::Radian_in_degrees * (kameleon->getVariableAttribute(ccmc::strings::variables::theta_,
+		boxMax.component2 = 90. - ccmc::constants::RadiansToDegrees * (kameleon->getVariableAttribute(ccmc::strings::variables::theta_,
 				ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
 
@@ -1131,11 +1131,11 @@ namespace ccmc
 			return f;
 		}
 
-//#ifdef DEBUG_SPHTRACER
+#ifdef DEBUG_SPHTRACER
 		cerr << "After getVector " << variable << endl;
 		cerr << "vector: " << vectorValue << endl;
 		cerr << "Grid Deltas: " << dComponent1 << " " << dComponent2 << " " << dComponent3 << endl;
-//#endif
+#endif
 
 		if (vectorValue.component1 > 0)
 			polarity = 1;
@@ -1289,36 +1289,38 @@ namespace ccmc
 			}
 			Point3f newPoint = previous + addition;
 			newPoint.setCoordinates(Point3f::SPHERICAL);
+			float dist = previous.distance(newPoint);
 #ifdef DEBUG_SPHTRACER
-			cerr << "*****previous: " << previous << " newPoint: " << newPoint << " addition: " << addition << " dt: " << dt << " dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << " rsinth: " << rsinth << endl;
+			cerr << "*****dist: " << dist << " previous: " << previous << " newPoint: ";
+			cerr << newPoint << " addition: " << addition << " dt: " << dt << " dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << " rsinth: " << rsinth << endl;
 			//cerr << " DtoR: " << DtoR << " rlocal: " << rlocal << " cos(DtoR*previous.component3): " << cos(DtoR*previous.component3) << endl;
+			std::cerr << "dt / adjusted_dn: " << dt/adjusted_dn << std::endl;
 #endif
 			//		float dist = previous.distance(newPoint);
 			/*float dist = sqrt( (double)addition.component1 *(double)addition.component1
 			 +(double)addition.component2 *(double)addition.component2*(double)rsinth
 			 *(double)rsinth +(double)addition.component3*(double)addition.component3
 			 *(double)rlocal*(double)rlocal );*/
-			float dist = previous.distance(newPoint);
+
 #ifdef DEBUG_SPHTRACER
 			cerr << "******after sqrt" << endl;
 #endif
 			//		float dist = previous.distance(newPoint);
 
 			/** check if tracing went anywhere, else stop **/
-			if (dist < min_distance || newPoint.distance(oldPoint) < min_distance || dist > dt / adjusted_dn)
+			if (dist < min_distance || newPoint.distance(oldPoint) < min_distance || dist > dt / adjusted_dn || newPoint.distance(fieldline1[fieldline1.size()-1]) > 1.f)
 			{
-
 				finished = true;
 				return_status = 3;
+
+			} else if (isnan(newPoint.component1) || (isnan(newPoint.component2)) || (isnan(newPoint.component3)))
+			{
+				finished = true;
+				return_status = 3;
+
 			} else
 			{
-				// boundaries: axis at +PI/2 or -PI/2
-				if (isnan(newPoint.component1))
-					newPoint = previous;
-				if (isnan(newPoint.component2))
-					newPoint = previous;
-				if (isnan(newPoint.component3))
-					newPoint = previous;
+
 
 				if (newPoint.component2 > 90.)
 				{
@@ -1339,15 +1341,29 @@ namespace ccmc
 				{
 					newPoint.component3 = newPoint.component3 + 360.;
 				}
-				oldPoint = previous;
-				fieldline1.push_back(previous);
-				iterations++;
-				if (iterations > step_max)
+
+				//check if it exceeds the limits of the latitude range
+				if (newPoint.component2 > boxMax.component2 || newPoint.component2  < boxMin.component2)
+				{
 					finished = true;
-				//cout << result.component1 << " ";
-				previous = newPoint;
-				vectorValue = getVector(variable, previous, dComponent1, dComponent2, dComponent3, interpolator);
-				mag1.push_back(vectorValue.magnitude());
+					return_status = 3;
+//					std::cerr << "outside range!!" << std::endl;
+//					cerr << "*****dist: " << dist << " previous: " << previous << " newPoint: ";
+//					cerr << newPoint << " addition: " << addition << " dt: " << dt << " dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << " rsinth: " << rsinth << endl;
+
+				} else
+				{
+					oldPoint = previous;
+					fieldline1.push_back(previous);
+					iterations++;
+					if (iterations > step_max)
+						finished = true;
+					//cout << result.component1 << " ";
+//					cerr << "Assigning newPoint to previous: " << newPoint << std::endl;
+					previous = newPoint;
+					vectorValue = getVector(variable, previous, dComponent1, dComponent2, dComponent3, interpolator);
+					mag1.push_back(vectorValue.magnitude());
+				}
 				//vectorValue.normalize();
 #ifdef DEBUG_SPHTRACER
 				cerr << "ITER: After ccmc_tracer_getVector" << endl;
