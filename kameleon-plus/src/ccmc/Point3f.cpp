@@ -1,6 +1,7 @@
 #include "Point3f.h"
 #include <cmath>
 #include <sstream>
+#include "constants.h"
 
 namespace ccmc
 {
@@ -144,26 +145,25 @@ namespace ccmc
 		if (coordinates == Point3f::SPHERICAL)
 		{
 			//r p t
-			float cartesianComponent1 = component1 * cos(component3 * 0.01714532925) * sin(1.5707 + component2
-					* 0.0174532925);
-			float cartesianComponent2 = component1 * sin(component3 * 0.01714532925) * sin(1.5707 + component2
-					* 0.0174532925);
-			float cartesianComponent3 = -1.0 * component1 * cos(1.5707 + component2 * 0.0174532925);
+			float sinTheta1 = std::sin(ccmc::constants::DegreesToRadians*(90.f-component2));
+			float cartesianComponent1 = component1 * sinTheta1 * std::cos(ccmc::constants::DegreesToRadians * component3);
+			float cartesianComponent2 = component1 * sinTheta1 * std::sin(ccmc::constants::DegreesToRadians * component3);
+			float cartesianComponent3 = component1 * std::cos(ccmc::constants::DegreesToRadians * (90.f - component2));
 
-			float pCartesianComponent1 = p.component1 * cos(p.component3 * 0.01714532925) * sin(1.5707 + p.component2
-					* 0.0174532925);
-			float pCartesianComponent2 = p.component1 * sin(p.component3 * 0.01714532925) * sin(1.5707 + p.component2
-					* 0.0174532925);
-			float pCartesianComponent3 = -1.0 * p.component1 * cos(1.5707 + p.component2 * 0.0174532925);
+			float sinTheta2 = std::sin(ccmc::constants::DegreesToRadians*(90.f-p.component2));
+			float pCartesianComponent1 = p.component1 * sinTheta1 * std::cos(ccmc::constants::DegreesToRadians * p.component3);
+			float pCartesianComponent2 = p.component1 * sinTheta1 * std::sin(ccmc::constants::DegreesToRadians * p.component3);
+			float pCartesianComponent3 = p.component1 * std::cos(ccmc::constants::DegreesToRadians * (90.f - p.component2));
+
 
 			float diff1 = cartesianComponent1 - pCartesianComponent1;
 			float diff2 = cartesianComponent2 - pCartesianComponent2;
 			float diff3 = cartesianComponent3 - pCartesianComponent3;
 
-			dist = sqrt(diff1 * diff1 + diff2 * diff2 + diff3 * diff3);
+			dist = std::sqrt(diff1 * diff1 + diff2 * diff2 + diff3 * diff3);
 		} else
 		{
-			dist = sqrt((component1 - p.component1) * (component1 - p.component1) + (component2 - p.component2)
+			dist = std::sqrt((component1 - p.component1) * (component1 - p.component1) + (component2 - p.component2)
 					* (component2 - p.component2) + (component3 - p.component3) * (component3 - p.component3));
 		}
 		return dist;
@@ -227,6 +227,17 @@ namespace ccmc
 	Point3f::Coordinates Point3f::getCoordinates()
 	{
 		return coordinates;
+	}
+
+	Point3f Point3f::getCartesian()
+	{
+		Point3f cartesian;
+		float sinTheta1 = std::sin(ccmc::constants::DegreesToRadians*(90.f-component2));
+		cartesian.component1 = component1 * sinTheta1 * std::cos(ccmc::constants::DegreesToRadians * component3);
+		cartesian.component2 = component1 * sinTheta1 * std::sin(ccmc::constants::DegreesToRadians * component3);
+		cartesian.component3 = component1 * std::cos(ccmc::constants::DegreesToRadians * (90.f - component2));
+		return cartesian;
+
 	}
 
 }
