@@ -1,3 +1,8 @@
+2011 May 23   David Berrios
+-------------
+  kameleon-plus-0.1.13
+  - Check the distance from the last inserted position and stop if value is greater than 1 unit.
+  
 2011 May 19   David Berrios
 -------------
   kameleon-plus-0.1.12
