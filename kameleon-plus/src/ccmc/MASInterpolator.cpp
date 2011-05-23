@@ -128,10 +128,10 @@ namespace ccmc
 
 		/*********** 3 ***********/
 
-		//float lat_converted = -lat/ccmc::constants::Radian_in_degrees + ccmc::constants::Pi/2.f;
+		//float lat_converted = -lat/ccmc::constants::RadiansToDegrees + ccmc::constants::Pi/2.f;
 		float lat_converted = -lat;
 
-		lat_converted = (lat_converted/ccmc::constants::Radian_in_degrees ) + (ccmc::constants::Pi/2. );
+		lat_converted = (lat_converted/ccmc::constants::RadiansToDegrees ) + (ccmc::constants::Pi/2. );
 
 		/** convert degrees ( 0 - 360 longitude ) to radiadns **/
 		//first check to see if the degrees are between 0 and 360
@@ -157,7 +157,7 @@ namespace ccmc
 
 		}
 
-		lon_converted = lon_converted / ccmc::constants::Radian_in_degrees;
+		lon_converted = lon_converted / ccmc::constants::RadiansToDegrees;
 		const std::vector<float> * r_data = ((MAS*)modelReader)->getRPosGridByID(variable_id);
 
 #ifdef DEBUG_MAS_INTERPOLATOR
