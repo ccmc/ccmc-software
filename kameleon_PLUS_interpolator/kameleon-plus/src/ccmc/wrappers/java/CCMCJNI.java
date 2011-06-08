@@ -176,8 +176,9 @@ public class CCMCJNI {
   public final static native long Fieldline_getNearest(long jarg1, Fieldline jarg1_);
   public final static native long new_Point3f__SWIG_0(float jarg1, float jarg2, float jarg3);
   public final static native long new_Point3f__SWIG_1(float jarg1, float jarg2, float jarg3, int jarg4);
-  public final static native long new_Point3f__SWIG_2();
-  public final static native long new_Point3f__SWIG_3(int jarg1);
+  public final static native long new_Point3f__SWIG_2(long jarg1, Point3f jarg1_);
+  public final static native long new_Point3f__SWIG_3();
+  public final static native long new_Point3f__SWIG_4(int jarg1);
   public final static native void Point3f_normalize(long jarg1, Point3f jarg1_);
   public final static native String Point3f_toString(long jarg1, Point3f jarg1_);
   public final static native float Point3f_magnitude(long jarg1, Point3f jarg1_);
@@ -190,6 +191,7 @@ public class CCMCJNI {
   public final static native float Point3f_component3_get(long jarg1, Point3f jarg1_);
   public final static native void Point3f_setCoordinates(long jarg1, Point3f jarg1_, int jarg2);
   public final static native int Point3f_getCoordinates(long jarg1, Point3f jarg1_);
+  public final static native long Point3f_getCartesian(long jarg1, Point3f jarg1_);
   public final static native void delete_Point3f(long jarg1);
   public final static native String Attribute_getAttributeName(long jarg1, Attribute jarg1_);
   public final static native void Attribute_setAttributeName(long jarg1, Attribute jarg1_, String jarg2);
