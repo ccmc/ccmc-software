@@ -11797,6 +11797,31 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_Point3f__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
+  ccmc::Point3f *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  ccmc::Point3f *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_Point3f",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_ccmc__Point3f,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Point3f" "', argument " "1"" of type '" "ccmc::Point3f const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Point3f" "', argument " "1"" of type '" "ccmc::Point3f const &""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Point3f * >(argp1);
+  result = (ccmc::Point3f *)new ccmc::Point3f((ccmc::Point3f const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Point3f, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Point3f__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
   ccmc::Point3f *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)":new_Point3f")) SWIG_fail;
@@ -11808,7 +11833,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Point3f__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Point3f__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Point3f::Coordinates arg1 ;
   int val1 ;
@@ -11841,7 +11866,15 @@ SWIGINTERN PyObject *_wrap_new_Point3f(PyObject *self, PyObject *args) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 0) {
-    return _wrap_new_Point3f__SWIG_2(self, args);
+    return _wrap_new_Point3f__SWIG_3(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_ccmc__Point3f, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_Point3f__SWIG_2(self, args);
+    }
   }
   if (argc == 1) {
     int _v;
@@ -11850,7 +11883,7 @@ SWIGINTERN PyObject *_wrap_new_Point3f(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
     }
     if (_v) {
-      return _wrap_new_Point3f__SWIG_3(self, args);
+      return _wrap_new_Point3f__SWIG_4(self, args);
     }
   }
   if (argc == 3) {
@@ -11909,6 +11942,7 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    ccmc::Point3f(float const &,float const &,float const &)\n"
     "    ccmc::Point3f(float const &,float const &,float const &,ccmc::Point3f::Coordinates)\n"
+    "    ccmc::Point3f(ccmc::Point3f const &)\n"
     "    ccmc::Point3f()\n"
     "    ccmc::Point3f(ccmc::Point3f::Coordinates)\n");
   return NULL;
@@ -12393,6 +12427,28 @@ SWIGINTERN PyObject *_wrap_Point3f_getCoordinates(PyObject *SWIGUNUSEDPARM(self)
   arg1 = reinterpret_cast< ccmc::Point3f * >(argp1);
   result = (ccmc::Point3f::Coordinates)(arg1)->getCoordinates();
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point3f_getCartesian(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  ccmc::Point3f result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Point3f_getCartesian",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Point3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point3f_getCartesian" "', argument " "1"" of type '" "ccmc::Point3f *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Point3f * >(argp1);
+  result = (arg1)->getCartesian();
+  resultobj = SWIG_NewPointerObj((new ccmc::Point3f(static_cast< const ccmc::Point3f& >(result))), SWIGTYPE_p_ccmc__Point3f, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -21627,6 +21683,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Point3f___mul__", _wrap_Point3f___mul__, METH_VARARGS, NULL},
 	 { (char *)"Point3f_setCoordinates", _wrap_Point3f_setCoordinates, METH_VARARGS, NULL},
 	 { (char *)"Point3f_getCoordinates", _wrap_Point3f_getCoordinates, METH_VARARGS, NULL},
+	 { (char *)"Point3f_getCartesian", _wrap_Point3f_getCartesian, METH_VARARGS, NULL},
 	 { (char *)"delete_Point3f", _wrap_delete_Point3f, METH_VARARGS, NULL},
 	 { (char *)"Point3f_swigregister", Point3f_swigregister, METH_VARARGS, NULL},
 	 { (char *)"Attribute_getAttributeName", _wrap_Attribute_getAttributeName, METH_VARARGS, NULL},
