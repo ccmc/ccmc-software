@@ -1,3 +1,13 @@
+2011 Jun 08   David Berrios
+-------------
+  kameleon-plus-0.1.15
+  - Testing the removal of the polarity fix for enlil. May not be needed anymore.
+  
+2011 Jun 02   David Berrios
+-------------
+  kameleon-plus-0.1.14
+  - Correctly apply a conversion factor to the interpolated value prior to returning
+
 2011 May 23   David Berrios
 -------------
   kameleon-plus-0.1.13
