@@ -18,6 +18,7 @@ namespace ccmc
 
 			Point3f(const float& component1, const float& component2, const float& component3);
 			Point3f(const float& component1, const float& component2, const float& component3, Coordinates c);
+			Point3f(const Point3f& p);
 			Point3f();
 			Point3f(Coordinates c);
 			void normalize();
