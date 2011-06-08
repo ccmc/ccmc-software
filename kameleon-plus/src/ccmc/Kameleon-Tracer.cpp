@@ -3,13 +3,13 @@
  */
 #include <vector>
 #include <string>
-#include <string.h>
+//#include <string.h>
 #include <sstream>
 #include <iostream>
 #include <cmath>
 
 #include "Kameleon-Tracer.h"
-#include <stdio.h>
+//#include <stdio.h>
 #include "Point3f.h"
 #include <boost/lexical_cast.hpp>
 #include <StringConstants.h>
@@ -451,7 +451,7 @@ namespace ccmc
 	 * @param dir
 	 */
 	Fieldline Tracer::cartesianTraceWithDipole(const std::string& variable, const float& startComponent1,
-			const float& startComponent2, const float& startComponent3, const Interpolator * interpolator,
+			const float& startComponent2, const float& startComponent3, Interpolator * interpolator,
 			const Direction& dir)
 	{
 		Point3f min;//point representing the min values of the three dimensions;
@@ -626,7 +626,7 @@ namespace ccmc
 	 * @param dir
 	 */
 	Fieldline Tracer::cartesianTrace(const std::string& variable, const float& startComponent1,
-			const float& startComponent2, const float& startComponent3, const Interpolator * interpolator,
+			const float& startComponent2, const float& startComponent3, Interpolator * interpolator,
 			const Direction& dir)
 	{
 
@@ -958,7 +958,7 @@ namespace ccmc
 	 * @param dir
 	 */
 	Fieldline Tracer::sphericalTrace(const std::string& variable, const float& startComponent1,
-			const float& startComponent2, const float& startComponent3, const Interpolator * interpolator,
+			const float& startComponent2, const float& startComponent3, Interpolator * interpolator,
 			const Direction& dir)
 	{
 		Fieldline f;
@@ -1033,6 +1033,7 @@ namespace ccmc
 		float min_distance = 1.e-5;
 		if (model_name == ccmc::strings::models::enlil_)
 			min_block_size = 1.e-4;
+		float max_latitude_change = 3.f;
 //#define DEBUG_SPHTRACER
 
 		//#define DEBUG_SPHTRACER
@@ -1046,7 +1047,7 @@ namespace ccmc
 #endif
 
 		Point3f oldPoint;
-		float eps = 1e-5, DtoR = asin(1.) / 90, RADEG = 90. / asin(1.);
+		float eps = 1e-5, DtoR = asin(1.) / 90.f, RADEG = 90. / asin(1.);
 		Point3f point(Point3f::SPHERICAL);
 
 		float dComponent1 = -0.1;
@@ -1064,9 +1065,10 @@ namespace ccmc
 		bool usePolarity = false;
 		int polarity = 0;
 
-		int NLAT = 0;
+
 		//float *latitudes, *lat_ptr; // latitude grid
-		std::vector<float>* latitudes = NULL;
+		//std::vector<float>* latitudes = NULL;
+		std::vector<float> latitudes;
 		std::vector<float>* lat_ptr = NULL;
 		// b_r at nearest grid latitudes and estimated latitude of current sheet
 		float br_up, br_down, lat_csh;
@@ -1084,21 +1086,23 @@ namespace ccmc
 #endif
 //			std::cerr << "calling getVariable" << std::endl;
 			lat_ptr = kameleon->getVariable(ccmc::strings::variables::theta_); // need to use alias "lat" later
-			NLAT = lat_ptr->size();
-			if (NLAT > 0)
+
+
+			if (lat_ptr->size() > 0)
 			{
 				usePolarity = true;
 				//latitudes = (float*) malloc(sizeof(float) * NLAT);
-				latitudes = new std::vector<float>(NLAT);
-				for (int i = 0; i < NLAT; i++)
+				//latitudes = new std::vector<float>(NLAT);
+				for (int i = 0; i < lat_ptr->size(); i++)
 				{
-					latitudes->push_back(90.f - RADEG * (*lat_ptr)[i]);
+					latitudes.push_back(90.f - RADEG * (*lat_ptr)[i]);
 				}
-				delete lat_ptr;
+				//delete lat_ptr;
 			} else
 			{
 				usePolarity = false; // we failed to get required information
 			}
+
 		}
 //#define DEBUG_SPHTRACER
 #ifdef DEBUG_SPHTRACER
@@ -1159,31 +1163,45 @@ namespace ccmc
 			Point3f addition(Point3f::SPHERICAL);
 			//float bp = ((Interpolator *) (interpolator))->interpolate(ccmc::strings::variables::bp_, previous.component1, previous.component2, previous.component3);
 			float magValue, dt, rsinth, rlocal;
+			usePolarity = false;
 			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
 			{
 				int iz;
-				for (iz = NLAT; (*latitudes)[iz] > previous.component2; iz--);
-				br_up = ((Interpolator *) (interpolator)) -> interpolate(ccmc::strings::variables::br_, previous.component1,
-						(*latitudes)[iz + 1], previous.component3);
-				br_down = ((Interpolator *) (interpolator)) -> interpolate(ccmc::strings::variables::br_, previous.component1,
-						(*latitudes)[iz], previous.component3);
+				for (iz = lat_ptr->size()-1; latitudes[iz] <= previous.component2; iz--);
+				std::cerr << "iz: " << iz << " previous.component2: " << previous.component2 << std::endl;
+				br_up = interpolator -> interpolate(ccmc::strings::variables::br_, previous.component1,
+						latitudes[iz], previous.component3);
+				br_down = interpolator -> interpolate(ccmc::strings::variables::br_, previous.component1,
+						latitudes[iz+1], previous.component3);
 #ifdef DEBUG_SPHTRACER
-				cerr << "br_up: " << br_up << " br_down: " << br_down << endl;
+
+				if (br_up == missing || br_down == missing)
+				{
+					std::cerr << "previous.component2: " << previous.component2 << std::endl;
+					for (int nl = 0; nl < latitudes.size(); nl++)
+					{
+						std::cerr << "latitudes[" << nl << "]: " << latitudes[nl] << std::endl;
+					}
+					std::cerr << "br_up: " << br_up << " br_down: " << br_down << " latitudes[" << iz+1 << "]: " << latitudes[iz+1];
+					std::cerr << " latitudes[" << iz << "]: " << latitudes[iz] << std::endl;
+					exit(1);
+				}
 #endif
 				float updown = br_up - br_down;
 				if (updown == 0.0)
 					updown = 1e-10;
-				lat_csh = ((*latitudes)[iz] * br_up - (*latitudes)[iz + 1] * br_down) / (updown);
-#ifdef DEBUG_SPHTRACER
+				lat_csh = (latitudes[iz] * br_up - latitudes[iz + 1] * br_down) / (updown);
+//#ifdef DEBUG_SPHTRACER
 				cerr << "Lat_CSH: " << lat_csh << endl;
 				cerr << "Lat: " << previous.component2 << endl;
 				cerr << "New Lat: " << 2*lat_csh-previous.component2 << endl;
-#endif
+//#endif
 
 #ifdef DEBUG_SPHTRACER
-				cerr << "lat_csh: " << lat_csh << " Previous.component2: " << previous.component2;
+				cerr << "lat_csh: " << lat_csh << " Previous.component2: " << previous.component2 << std::endl;
 #endif
 				previous.component2 = 2 * lat_csh - previous.component2;
+				//previous.component2 = lat_csh;
 #ifdef DEBUG_SPHTRACER
 				cerr << " Prevoius.component2: " << previous.component2 << endl;
 #endif
@@ -1287,15 +1305,24 @@ namespace ccmc
 				//addition.component2 = 1e-20;
 				addition.component3 = 1e-20;
 			}
-			Point3f newPoint = previous + addition;
+			Point3f newPoint = Point3f(previous + addition);
 			newPoint.setCoordinates(Point3f::SPHERICAL);
-			float dist = previous.distance(newPoint);
-#ifdef DEBUG_SPHTRACER
-			cerr << "*****dist: " << dist << " previous: " << previous << " newPoint: ";
-			cerr << newPoint << " addition: " << addition << " dt: " << dt << " dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << " rsinth: " << rsinth << endl;
+			//float dist = previous.distance(newPoint);
+			Point3f cPrevious = previous.getCartesian();
+			Point3f cNewPoint = newPoint.getCartesian();
+			float dist = cPrevious.distance(cNewPoint);
+			//std::string temp = "blah1asdfasdfasdfasdfasdfasdfasdasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
+			//std::string temp2 = "blah2asdfasdfasdfasdf";
+			//temp = temp2;
+			//boost::lexical_cast<std::string>(1.f);
+			//newPoint.toString();
+//#ifdef DEBUG_SPHTRACER
+			//std::cerr << newPoint << std::endl;
+//			std::cerr << "*****dist: " << dist << " previous: " << previous << " newPoint: " << newPoint << std::endl;
+			//std::cerr << newPoint << " addition: " << addition << " dt: " << dt << " dComponent1: " << dComponent1 << " dComponent2: " << dComponent2 << " dComponent3: " << dComponent3 << " rsinth: " << rsinth << endl;
 			//cerr << " DtoR: " << DtoR << " rlocal: " << rlocal << " cos(DtoR*previous.component3): " << cos(DtoR*previous.component3) << endl;
-			std::cerr << "dt / adjusted_dn: " << dt/adjusted_dn << std::endl;
-#endif
+			//std::cerr << "dt / adjusted_dn: " << dt/adjusted_dn << std::endl;
+//#endif
 			//		float dist = previous.distance(newPoint);
 			/*float dist = sqrt( (double)addition.component1 *(double)addition.component1
 			 +(double)addition.component2 *(double)addition.component2*(double)rsinth
@@ -1308,6 +1335,7 @@ namespace ccmc
 			//		float dist = previous.distance(newPoint);
 
 			/** check if tracing went anywhere, else stop **/
+			float latitude_change = newPoint.component2 - previous.component2;
 			if (dist < min_distance || newPoint.distance(oldPoint) < min_distance || dist > dt / adjusted_dn || newPoint.distance(fieldline1[fieldline1.size()-1]) > 1.f)
 			{
 				finished = true;
@@ -1318,17 +1346,30 @@ namespace ccmc
 				finished = true;
 				return_status = 3;
 
-			} else
+			} else if (std::abs(latitude_change) > 3.f)
+			{
+				std::cerr << "newPoint latitude: " << newPoint.component2 << " previous latitude: " << previous.component2 << " latitude change: " << std::abs(latitude_change) << std::endl;
+				finished = true;
+				return_status = 3;
+			} else if (std::abs(newPoint.component2) > 90.f)
+			{
+				std::cerr << "newPoint latitude: " << newPoint.component2 << " previous latitude: " << previous.component2 << std::endl;
+				finished = true;
+				return_status = 3;
+			}
+			else
 			{
 
 
 				if (newPoint.component2 > 90.)
 				{
+					std::cerr << "latitude is greater than 90!" << std::endl;
 					newPoint.component3 = newPoint.component3 + 180;
 					newPoint.component2 = 90 - newPoint.component2;
 				}
 				if (newPoint.component2 < -90)
 				{
+					std::cerr << "latitude is less than 90!" << std::endl;
 					newPoint.component3 = newPoint.component3 + 180;
 					newPoint.component2 = newPoint.component2 + 90;
 				}
@@ -1381,9 +1422,7 @@ namespace ccmc
 
 			f.insertPointData(fieldline1[i], mag1[i]);
 		}
-		if (latitudes != NULL)
-			delete latitudes;
-		//delete interpolator;
+
 
 		return f;
 
