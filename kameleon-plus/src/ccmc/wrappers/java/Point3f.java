@@ -43,12 +43,16 @@ public class Point3f {
     this(CCMCJNI.new_Point3f__SWIG_1(component1, component2, component3, c.swigValue()), true);
   }
 
+  public Point3f(Point3f p) {
+    this(CCMCJNI.new_Point3f__SWIG_2(Point3f.getCPtr(p), p), true);
+  }
+
   public Point3f() {
-    this(CCMCJNI.new_Point3f__SWIG_2(), true);
+    this(CCMCJNI.new_Point3f__SWIG_3(), true);
   }
 
   public Point3f(Point3f.Coordinates c) {
-    this(CCMCJNI.new_Point3f__SWIG_3(c.swigValue()), true);
+    this(CCMCJNI.new_Point3f__SWIG_4(c.swigValue()), true);
   }
 
   public void normalize() {
@@ -97,6 +101,10 @@ public class Point3f {
 
   public Point3f.Coordinates getCoordinates() {
     return Point3f.Coordinates.swigToEnum(CCMCJNI.Point3f_getCoordinates(swigCPtr, this));
+  }
+
+  public Point3f getCartesian() {
+    return new Point3f(CCMCJNI.Point3f_getCartesian(swigCPtr, this), true);
   }
 
   public final static class Coordinates {
