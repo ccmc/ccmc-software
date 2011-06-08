@@ -3452,7 +3452,26 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_11
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_12(JNIEnv *jenv, jclass jcls) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Point3f *arg1 = 0 ;
+  ccmc::Point3f *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Point3f **)&jarg1;
+  if (!arg1) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "ccmc::Point3f const & reference is null");
+    return 0;
+  } 
+  result = (ccmc::Point3f *)new ccmc::Point3f((ccmc::Point3f const &)*arg1);
+  *(ccmc::Point3f **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_13(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   ccmc::Point3f *result = 0 ;
   
@@ -3464,7 +3483,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_12
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jint jarg1) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Point3f_1_1SWIG_14(JNIEnv *jenv, jclass jcls, jint jarg1) {
   jlong jresult = 0 ;
   ccmc::Point3f::Coordinates arg1 ;
   ccmc::Point3f *result = 0 ;
@@ -3649,6 +3668,21 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1getCoordinates(
   arg1 = *(ccmc::Point3f **)&jarg1; 
   result = (ccmc::Point3f::Coordinates)(arg1)->getCoordinates();
   jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Point3f_1getCartesian(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Point3f *arg1 = (ccmc::Point3f *) 0 ;
+  ccmc::Point3f result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Point3f **)&jarg1; 
+  result = (arg1)->getCartesian();
+  *(ccmc::Point3f **)&jresult = new ccmc::Point3f((const ccmc::Point3f &)result); 
   return jresult;
 }
 
