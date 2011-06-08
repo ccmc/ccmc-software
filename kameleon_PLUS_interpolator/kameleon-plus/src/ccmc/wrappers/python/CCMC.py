@@ -396,6 +396,7 @@ class Point3f(_object):
     def __mul__(self, *args): return _CCMC.Point3f___mul__(self, *args)
     def setCoordinates(self, *args): return _CCMC.Point3f_setCoordinates(self, *args)
     def getCoordinates(self): return _CCMC.Point3f_getCoordinates(self)
+    def getCartesian(self): return _CCMC.Point3f_getCartesian(self)
     __swig_destroy__ = _CCMC.delete_Point3f
     __del__ = lambda self : None;
 Point3f_swigregister = _CCMC.Point3f_swigregister
