@@ -2,6 +2,7 @@
 #include <cmath>
 #include <sstream>
 #include "constants.h"
+#include <boost/lexical_cast.hpp>
 
 namespace ccmc
 {
@@ -44,21 +45,22 @@ namespace ccmc
 		coordinates = c;
 	}
 
-	/*Point3f::Point3f(const Point3f& p)
-	 {
-	 this->component1 = p.component1;
-	 this->component2 = p.component2;
-	 this->component3 = p.component3;
-	 }*/
+	Point3f::Point3f(const Point3f& p)
+	{
+		this->component1 = p.component1;
+		this->component2 = p.component2;
+		this->component3 = p.component3;
+		coordinates = p.coordinates;
+	}
 
 	/**
 	 * TODO: finish documentation
 	 */
 	Point3f::Point3f()
 	{
-		component1 = 0.0;
-		component2 = 0.0;
-		component3 = 0.0;
+		this->component1 = 0.0;
+		this->component2 = 0.0;
+		this->component3 = 0.0;
 	}
 
 	/**
@@ -66,9 +68,9 @@ namespace ccmc
 	 */
 	Point3f::Point3f(Coordinates c)
 	{
-		component1 = 0.0;
-		component2 = 0.0;
-		component3 = 0.0;
+		this->component1 = 0.0;
+		this->component2 = 0.0;
+		this->component3 = 0.0;
 		coordinates = c;
 	}
 
@@ -118,7 +120,7 @@ namespace ccmc
 		point.component1 = component1 * value;
 		point.component2 = component2 * value;
 		point.component3 = component3 * value;
-
+		point.coordinates = coordinates;
 		return point;
 	}
 
@@ -131,6 +133,7 @@ namespace ccmc
 		point.component1 = component1 * value;
 		point.component2 = component2 * value;
 		point.component3 = component3 * value;
+		point.coordinates = coordinates;
 		return point;
 	}
 
@@ -178,9 +181,9 @@ namespace ccmc
 		float mag = magnitude();
 		if (abs(mag - 0.0) > .0000001)
 		{
-			component1 /= mag;
-			component2 /= mag;
-			component3 /= mag;
+			this->component1 /= mag;
+			this->component2 /= mag;
+			this->component3 /= mag;
 		}
 	}
 
@@ -195,22 +198,28 @@ namespace ccmc
 	/**
 	 * TODO: finish documentation
 	 */
-	string Point3f::toString() const
+	std::string Point3f::toString() const
 	{
-		string beg = "(";
-		string mid = ",";
-		string end = ")";
-		ostringstream oss1;
+/*		std::string beg = "(";
+		std::string mid = ",";
+		std::string end = ")";
+		std::ostringstream oss1;
 		oss1 << component1;
-		string scomponent1 = oss1.str();
-		ostringstream oss2;
+		std::string scomponent1 = oss1.str();
+		std::ostringstream oss2;
 		oss2 << component2;
-		string scomponent2 = oss2.str();
-		ostringstream oss3;
+		std::string scomponent2 = oss2.str();
+		std::ostringstream oss3;
 		oss3 << component3;
-		string scomponent3 = oss3.str();
-		string str = beg + scomponent1 + mid + scomponent2 + mid + scomponent3 + end;
+		std::string scomponent3 = oss3.str();
+		std::string str = beg + scomponent1 + mid + scomponent2 + mid + scomponent3 + end;
 		return str;
+		*/
+		std::string temp_string = "";
+		temp_string = "(" + boost::lexical_cast<std::string>(component1) + ",";
+		temp_string += boost::lexical_cast<std::string>(component2) + ",";
+		temp_string += boost::lexical_cast<std::string>(component3) + ")";
+		return temp_string;
 	}
 
 	/**
