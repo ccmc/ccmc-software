@@ -97,6 +97,12 @@ namespace ccmc
 		// Variable: Wish me luck!
 		// Derived: Good luck variable!
 		float interp_value = interpolateSimple(variable_id, c0, c1, c2);
+		if (interp_value == missingValue)
+		{
+			return missingValue;
+			//cerr << "***Derived::interpolate: Interpolate returned the missing value for variable " << variable_string << endl;
+		}
+		interp_value *= this->getConversionFactorToVis(this->modelReader->getVariableName(variable_id));
 		return interp_value;
 	}
 
@@ -120,6 +126,11 @@ namespace ccmc
 		// Variable: Wish me luck!
 		// Derived: Good luck variable!
 		float interp_value = interpolateSimple(variable_id, c0, c1, c2, dc0, dc1, dc2);
+		if (interp_value == missingValue)
+		{
+			return missingValue;
+			//cerr << "***Derived::interpolate: Interpolate returned the missing value for variable " << variable_string << endl;
+		}
 		interp_value *= this->getConversionFactorToVis(this->modelReader->getVariableName(variable_id));
 		return interp_value;
 	}
