@@ -83,11 +83,11 @@ namespace ccmc
 			Point3f maxROI;
 
 			Fieldline cartesianTrace(const std::string& variable, const float& startComponent1, const float& startComponent2,
-							const float& startComponent3, const Interpolator * interpolator, const Direction& dir = FOWARD);
+							const float& startComponent3, Interpolator * interpolator, const Direction& dir = FOWARD);
 			Fieldline cartesianTraceWithDipole(const std::string& variable, const float& startComponent1, const float& startComponent2,
-					const float& startComponent3, const Interpolator * interpolator, const Direction& dir = FOWARD);
+					const float& startComponent3, Interpolator * interpolator, const Direction& dir = FOWARD);
 			Fieldline sphericalTrace(const std::string& variable, const float& startComponent1, const float& startComponent2,
-					const float& startComponent3, const Interpolator * interpolator, const Direction& dir = FOWARD);
+					const float& startComponent3, Interpolator * interpolator, const Direction& dir = FOWARD);
 
 			bool isValidPoint(const Point3f& position, const Point3f& min, const Point3f& max);
 			bool isValidIteration(int iterations, int max);
