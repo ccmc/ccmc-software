@@ -30,7 +30,7 @@ namespace ccmc
 		//TODO: fix the phi/theta issue to correspond to the actual
 		//lat lon
 
-		lon_data = modelReader->getVariableData(ccmc::strings::variables::phi_);
+		//lon_data = modelReader->getVariableData(ccmc::strings::variables::phi_);
 
 		//this->nlon_plus1 = nlon;
 		previous_r = missingValue;
@@ -164,6 +164,8 @@ namespace ccmc
 		std::cout << "fetched r_data" << std::endl;
 #endif
 		const std::vector<float> * lat_data = ((MAS*)modelReader)->getLatPosGridByID(variable_id);
+
+		const std::vector<float> * lon_data = ((MAS*)modelReader)->getLonPosGridByID(variable_id);
 
 #ifdef DEBUG_MAS_INTERPOLATOR
 		std::cout << "fetched lat_data" << std::endl;
