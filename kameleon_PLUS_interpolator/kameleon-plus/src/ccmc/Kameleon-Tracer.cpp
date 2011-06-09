@@ -982,6 +982,11 @@ namespace ccmc
 		boxMin.component3 = -360.0; /* no crap out at 0 since the boundary is periodic */
 		boxMax.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::r_,
 				ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+		if (kameleon->getModelName() == "mas")
+		{
+			boxMax.component1 = boxMax.component1 - ((kameleon->getVariableAttribute(ccmc::strings::variables::r1_,
+					ccmc::strings::attributes::actual_max_)).getAttributeFloat() - boxMax.component1);
+		}
 		boxMax.component2 = 90. - ccmc::constants::RadiansToDegrees * (kameleon->getVariableAttribute(ccmc::strings::variables::theta_,
 				ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 		boxMax.component3 = 720.; /* no crap out at 360 since the boundary is periodic */
