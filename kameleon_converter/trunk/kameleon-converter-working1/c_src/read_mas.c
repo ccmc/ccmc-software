@@ -48,6 +48,10 @@
  *                              defined - these are specified in the           *
  *                              read_3d_mas_file() routine                     *
  *                                                                             *
+ *     2011 June 6		Maddox, Marlo				       *
+ *     				Updateing for new phi+1 grid		       *
+ *     									       *
+ *                                                                             *
  ******************************************************************************/
 
 #include <stdio.h>
@@ -115,7 +119,8 @@ int read_mas(
 #else
 
          int i, status, number_of_elements1, number_of_elements2,
-         number_of_elements3         , number_of_elements4;
+         number_of_elements3         , number_of_elements4, number_of_elements5, number_of_elements6,
+         number_of_elements7         ;
 
          static int call_count=0;
 
@@ -183,7 +188,7 @@ int read_mas(
             printf("%s ERROR: CALLOC FAILED for step_done_array\n",
                   __FILE__ ); return EXIT_FAILURE;}
 
-         /*** add checks for the rest before deployement ***/
+         /*** add checks for the rest before deployment ***/
 
          /****************************************************************************
           *
@@ -518,23 +523,33 @@ int read_mas(
 
          /* add more error handling for each linear_minmax_search function call */
 
-         number_of_elements1 = fakedim0 * fakedim1_plus1 * fakedim2_plus1; /** for variables rho, t, p, u_phi, and j_phi **/
-         number_of_elements2 = fakedim0 * fakedim1_plus1 * fakedim2; /** vr, jr, b_theta **/
-         number_of_elements3 = fakedim0 * fakedim1 * fakedim2_plus1; /** br, j_theta, v_theat **/
-         number_of_elements4 = fakedim0 * fakedim1 * fakedim2; /** b_phi **/
+         number_of_elements1 = fakedim0_plus1 * fakedim1_plus1 * fakedim2_plus1; /** for variables rho, t, p **/
+         number_of_elements2 = fakedim0_plus1 * fakedim1_plus1 * fakedim2; /** vr, jr **/
+         number_of_elements3 = fakedim0_plus1 * fakedim1 * fakedim2_plus1; /** j_theta, v_theata **/
+         number_of_elements4 = fakedim0_plus1 * fakedim1 * fakedim2; /** b_phi **/
 
-         printf("total number_of_elements1 = %d * %d * %d = %d\t\tfor variables rho, t, p, u_phi, and j_phi \n", fakedim0, fakedim1_plus1, fakedim2_plus1, number_of_elements1 );
-         printf("total number_of_elements2 = %d * %d * %d = %d\t\tfor variables vr, jr, b_theta\n", fakedim0, fakedim1_plus1, fakedim2, number_of_elements2 );
-         printf("total number_of_elements3 = %d * %d * %d = %d\t\tfor variables br, j_theta, v_theatn\n", fakedim0, fakedim1, fakedim2_plus1, number_of_elements3 );
-         printf("total number_of_elements4 = %d * %d * %d = %d\t\tfor variables b_phi\n", fakedim0, fakedim1, fakedim2, number_of_elements4 );
+         number_of_elements5 = fakedim0 * fakedim1_plus1 * fakedim2_plus1; /** v_phi, and j_phi **/
+         number_of_elements6 = fakedim0 * fakedim1_plus1 * fakedim2; /** b_theta **/
+         number_of_elements7 = fakedim0 * fakedim1 * fakedim2_plus1; /** br **/
+
+
+         printf("total number_of_elements1 = %d * %d * %d = %d\t\tfor variables rho, t, p \n", 		fakedim0_plus1, fakedim1_plus1,	fakedim2_plus1, number_of_elements1 );
+         printf("total number_of_elements2 = %d * %d * %d = %d\t\tfor variables vr, jr,\n", 		fakedim0_plus1, fakedim1_plus1, fakedim2, 	number_of_elements2 );
+         printf("total number_of_elements3 = %d * %d * %d = %d\t\tfor variables j_theta, v_theata\n", 	fakedim0_plus1, fakedim1, 	fakedim2_plus1, number_of_elements3 );
+         printf("total number_of_elements4 = %d * %d * %d = %d\t\tfor variables b_phi\n", 		fakedim0_plus1, fakedim1, 	fakedim1, 	number_of_elements4 );
+
+         printf("total number_of_elements5 = %d * %d * %d = %d\t\tfor variables v_phi, and j_phi \n", 	fakedim0, 	fakedim1_plus1, fakedim2_plus1, number_of_elements5 );
+         printf("total number_of_elements6 = %d * %d * %d = %d\t\tfor variables b_theta\n", 		fakedim0, 	fakedim1_plus1, fakedim2, 	number_of_elements6 );
+         printf("total number_of_elements7 = %d * %d * %d = %d\t\tfor variables br\n", 			fakedim0, 	fakedim1, 	fakedim2_plus1, number_of_elements7 );
 
          if( DEBUG_FLAG )
          {
             for( i=0; i< fakedim0; i++ ) printf("phi[%d] = %f\n", i, dim0[i] );
             for( i=0; i< fakedim1; i++ ) printf("theta[%d] = %f\n", i, dim1[i] );
             for( i=0; i< fakedim2; i++ ) printf("r[%d] = %f\n", i, dim2[i] );
-            for( i=0; i< fakedim1_plus1; i++ ) printf("theta2[%d] = %f\n", i, dim1_plus1[i] );
-            for( i=0; i< fakedim2_plus1; i++ ) printf("r2[%d] = %f\n", i, dim2_plus1[i] );
+            for( i=0; i< fakedim0_plus1; i++ ) printf("phi12[%d] = %f\n", i, dim0_plus1[i] );
+            for( i=0; i< fakedim1_plus1; i++ ) printf("theta1[%d] = %f\n", i, dim1_plus1[i] );
+            for( i=0; i< fakedim2_plus1; i++ ) printf("r1[%d] = %f\n", i, dim2_plus1[i] );
          }
 
          if( ! minmax_flag ) /*** if -nominmax option was NOT specified ***/
@@ -557,6 +572,12 @@ int read_mas(
             linear_minmax_search( dim2, fakedim2, &r_actual_min, &r_actual_max );
             if( verbose_flag )
             {  printf("%-25s%-25g%-25g\n", "r", r_actual_min, r_actual_max );}
+
+
+            linear_minmax_search( dim0_plus1, fakedim0_plus1, &phi_plus1_actual_min, &phi_plus1_actual_max );
+                        if( verbose_flag )
+                        {  printf("%-25s%-25g%-25g\n", "phi2", phi_plus1_actual_min, phi_plus1_actual_max );}
+
 
             linear_minmax_search( dim1_plus1, fakedim1_plus1, &theta_plus1_actual_min, &theta_plus1_actual_max );
             if( verbose_flag )
@@ -1186,7 +1207,7 @@ int read_3d_mas_file(
 
    /*** FOR some reason MAX_NC_NAME and MAX_VAR_DIMS cannot be found in the hdf
     *** include directory.  When using HDF4 and netCDF at the same time, there are
-    *** a buch of config issues that may arise.  Lets deal with it here by settin
+    *** a buch of config issues that may arise.  Lets deal with it here by setting
     *** these values ourselves if there not defined  */
 
 #ifndef MAX_VAR_DIMS
@@ -1263,127 +1284,54 @@ int read_3d_mas_file(
        printf("nunmber of attributes is %d\n", n_attrs);
        */
 
-      /** if the file contains the variable bp, use the grid arrays contained
-       * in this file for the default positions **/
+      /** if the file contains the variable rho OR t OR p use the grid arrays contained
+       * in this file for the plus1/offset positions **/
 
-      if( rank == 1 && strcmp( current_variable_name, "bp") == 0 )
+      if( rank == 1 && ( strcmp( current_variable_name, "rho") == 0 || strcmp( current_variable_name, "t") == 0 || strcmp( current_variable_name, "p") == 0) )
       {
 
-         /*********** POSITION 1 *******************************************/
+         /*********** POSITION 1 phi_plus1 *******************************************/
 
          /** first index name matches and this is the first call **/
 
-         if( strcmp( name, dim0_name ) == 0 && flag_pos1[current_step] == 0 )
+         if( strcmp( name, dim0_name ) == 0 && flag_pos1_plus1[current_step] == 0 )
          {
-            if( verbose_flag ) printf("processing 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
+            if( verbose_flag ) printf("processing [PHI_PLUS_1] 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
 
             start_1_dim[0] = 0;
             edges_1_dim[0] = dim_sizes[0];
 
-            dim0 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
+            dim0_plus1 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
 
             /** set fakedim0 defined in read_mas.h **/
 
-            fakedim0 = dim_sizes[0];
+            fakedim0_plus1 = dim_sizes[0];
 
-            if( dim0 == NULL )
+            if( dim0_plus1 == NULL )
             {
                printf("%s ERROR:\tmalloc failed for %s buffer\n", name, __FILE__ );
                return( EXIT_FAILURE );
             }
 
-            status = SDreaddata( sds_id, start_1_dim, NULL, edges_1_dim, (VOIDP)dim0 );
+            status = SDreaddata( sds_id, start_1_dim, NULL, edges_1_dim, (VOIDP)dim0_plus1 );
 
-            flag_pos1[current_step] = 1;
+            flag_pos1_plus1[current_step] = 1;
          }
 
-         /*********** POSITION 2 *******************************************/
+         /*********** POSITION 2 theta_plus1 *******************************************/
 
          /* first index name matches and this is the first call */
 
-         if( strcmp( name, dim1_name ) == 0 && flag_pos2[current_step] == 0 )
-         {
-            if( verbose_flag ) printf("processing 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
-
-            start_1_dim[0] = 0;
-            edges_1_dim[0] = dim_sizes[0];
-
-            dim1 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
-
-            /** set fakedim1 defined in read_mas.h **/
-
-            fakedim1 = dim_sizes[0];
-
-            if( dim1 == NULL )
-            {
-               printf("%s ERROR:\tmalloc failed for %s buffer\n", name, __FILE__ );
-               return( EXIT_FAILURE );
-            }
-
-            status = SDreaddata( sds_id, start_1_dim, NULL, edges_1_dim, (VOIDP)dim1 );
-
-            flag_pos2[current_step] = 1;
-         }
-
-         /*********** POSITION 3 *******************************************/
-
-         /** first index name matches and this is the first call **/
-
-         if( strcmp( name, dim2_name ) == 0 && flag_pos3[current_step] == 0 )
-         {
-            if( verbose_flag ) printf("processing 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
-
-            start_1_dim[0] = 0;
-            edges_1_dim[0] = dim_sizes[0];
-
-            dim2 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
-
-            /** set fakedim0 defined in read_mas.h **/
-
-            fakedim2 = dim_sizes[0];
-
-            if( dim2 == NULL )
-            {
-               printf("%s ERROR:\tmalloc failed for %s buffer\n", name, __FILE__ );
-               return( EXIT_FAILURE );
-            }
-
-            status = SDreaddata( sds_id, start_1_dim, NULL, edges_1_dim, (VOIDP)dim2 );
-
-            flag_pos3[current_step] = 1;
-         }
-
-      } /*** end of if( rank == 1 && variable name == bp ) block ***/
-      else if ( rank == 1 &&
-            ( strcmp( current_variable_name, "rho") == 0 ||
-                  strcmp( current_variable_name, "t") == 0 ||
-                  strcmp( current_variable_name, "p") == 0 ||
-                  strcmp( current_variable_name, "vp") == 0 ||
-                  strcmp( current_variable_name, "jp") == 0
-            )
-      ) /** if the file contains the variable rho,t,p,vp,or jp use the r and
-       theta grid arrays contained in this file for the offset positions **/
-      {
-
-         /*********** POSITION 1 *******************************************/
-         /**
-          * phi is NOT offset...
-          **/
-
-         /*********** POSITION 2 *******************************************/
-
-         /** first index name matches and this is the first call **/
-
          if( strcmp( name, dim1_name ) == 0 && flag_pos2_plus1[current_step] == 0 )
          {
-            if( verbose_flag ) printf("processing 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
+            if( verbose_flag ) printf("processing [THETA_PLUS_1]1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
 
             start_1_dim[0] = 0;
             edges_1_dim[0] = dim_sizes[0];
 
             dim1_plus1 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
 
-            /** set fakedim0 defined in read_mas.h **/
+            /** set fakedim1 defined in read_mas.h **/
 
             fakedim1_plus1 = dim_sizes[0];
 
@@ -1398,13 +1346,13 @@ int read_3d_mas_file(
             flag_pos2_plus1[current_step] = 1;
          }
 
-         /*********** POSITION 3 *******************************************/
+         /*********** POSITION 3 r_plus1 *******************************************/
 
          /** first index name matches and this is the first call **/
 
          if( strcmp( name, dim2_name ) == 0 && flag_pos3_plus1[current_step] == 0 )
          {
-            if( verbose_flag ) printf("processing 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
+            if( verbose_flag ) printf("processing [R_PLUS_1]1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
 
             start_1_dim[0] = 0;
             edges_1_dim[0] = dim_sizes[0];
@@ -1426,9 +1374,118 @@ int read_3d_mas_file(
             flag_pos3_plus1[current_step] = 1;
          }
 
+      } /*** end of       if( rank == 1 && ( strcmp( current_variable_name, "rho") == 0 || strcmp( current_variable_name, "t") == 0 || strcmp( current_variable_name, "p") == 0) )
+ block ***/
+      else if ( rank == 1 && strcmp( current_variable_name, "br") == 0
+      ) /** if the file contains the variable br use the dim0 and dim1 arrays contained
+       * in this file for the normal phi and theta positions **/
+      {
+
+         /*********** POSITION 1 phi *******************************************/
+
+
+	  /** first index name matches and this is the first call **/
+
+	  if( strcmp( name, dim0_name ) == 0 && flag_pos1[current_step] == 0 )
+	  {
+	    if( verbose_flag ) printf("processing [PHI] 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
+
+	    start_1_dim[0] = 0;
+	    edges_1_dim[0] = dim_sizes[0];
+
+	    dim0 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
+
+	    /** set fakedim0 defined in read_mas.h **/
+
+	    fakedim0 = dim_sizes[0];
+
+		if( dim0 == NULL )
+		{
+		    printf("%s ERROR:\tmalloc failed for %s buffer\n", name, __FILE__ );
+		    return( EXIT_FAILURE );
+		}
+
+	    status = SDreaddata( sds_id, start_1_dim, NULL, edges_1_dim, (VOIDP)dim0 );
+
+	    flag_pos1[current_step] = 1;
+	 }
+
+         /*********** POSITION 2 *******************************************/
+
+         /** first index name matches and this is the first call **/
+
+         if( strcmp( name, dim1_name ) == 0 && flag_pos2[current_step] == 0 )
+         {
+            if( verbose_flag ) printf("processing [THETA] 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
+
+            start_1_dim[0] = 0;
+            edges_1_dim[0] = dim_sizes[0];
+
+            dim1 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
+
+            /** set fakedim0 defined in read_mas.h **/
+
+            fakedim1 = dim_sizes[0];
+
+            if( dim1 == NULL )
+            {
+               printf("%s ERROR:\tmalloc failed for %s buffer\n", name, __FILE__ );
+               return( EXIT_FAILURE );
+            }
+
+            status = SDreaddata( sds_id, start_1_dim, NULL, edges_1_dim, (VOIDP)dim1 );
+
+            flag_pos2[current_step] = 1;
+         }
+
+         /*********** POSITION 3 *******************************************/
+
+         /* Position 3 ( dim2 ) in this br file cooresponds to r_plus1 which
+          * was loaded in the block that processes rho,t, and p files
+          */
+
+
+
       }
-      /*** end of if( rank == 1 && variable name == rho,t,p,vp,or jp )
-       * block ***/
+      else if( rank == 1 && ( strcmp( current_variable_name, "vr") == 0 || strcmp( current_variable_name, "bp") == 0 || strcmp( current_variable_name, "bt") == 0 || strcmp( current_variable_name, "jr") == 0) )
+      /** if the file contains the variable bp OR vr OR bt OR jr use the dim2 array contained
+             * in this file for the normal r positions **/
+            {
+
+          /*********** POSITION 3 r *******************************************/
+
+
+      	  /** first index name matches and this is the first call **/
+
+      	  if( strcmp( name, dim2_name ) == 0 && flag_pos3[current_step] == 0 )
+      	  {
+      	    if( verbose_flag ) printf("processing [R] 1 dimensional dataset %s of size %d\n", name, dim_sizes[0] );
+
+      	    start_1_dim[0] = 0;
+      	    edges_1_dim[0] = dim_sizes[0];
+
+      	    dim2 = (float *) malloc( dim_sizes[0] * sizeof( float ) );
+
+      	    /** set fakedim0 defined in read_mas.h **/
+
+      	    fakedim2 = dim_sizes[0];
+
+      		if( dim2 == NULL )
+      		{
+      		    printf("%s ERROR:\tmalloc failed for %s buffer\n", name, __FILE__ );
+      		    return( EXIT_FAILURE );
+      		}
+
+      	    status = SDreaddata( sds_id, start_1_dim, NULL, edges_1_dim, (VOIDP)dim2 );
+
+      	    flag_pos3[current_step] = 1;
+      	 }
+
+
+
+
+
+      }
       else if( rank == 3 )
       {
 

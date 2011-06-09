@@ -30,11 +30,13 @@
 *   10.05.2010    Maddox, Marlo New Version 5.2.0                              *
 *                                                                              *
 *   05.05.2011    Maddox, Marlo - fixing enlil coordinate system naming order  *
+*    									       *
+*   06.07.2011	  Maddox, Marlo - new version for MAS grid update 5.3.0        *
 *                                                                              *
 *******************************************************************************/
 
 
-#define KAMELEON_VERSION        "5.2.1"
+#define KAMELEON_VERSION        "5.3.0"
 
 
 #endif /*KAMELEON_VERSION_INFO_H_*/
