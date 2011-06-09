@@ -23,6 +23,7 @@ namespace ccmc
 			static const std::string r_ = "r";
 			static const std::string r1_ = "r1";
 			static const std::string phi_ = "phi";
+			static const std::string phi1_ = "phi1";
 			static const std::string theta_ = "theta";
 			static const std::string theta1_ = "theta1";
 
