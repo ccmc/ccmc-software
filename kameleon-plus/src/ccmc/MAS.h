@@ -29,6 +29,8 @@ namespace ccmc
 			const std::vector<float>* getLatPosGrid(std::string variable);
 			const std::vector<float>* getRPosGridByID(long variable);
 			const std::vector<float>* getLatPosGridByID(long variable);
+			const std::vector<float>* getLonPosGridByID(long variable_id);
+			const std::vector<float>* getlonPosGrid(std::string variable);
 			bool getChangeSignFlag(std::string variable);
 			bool getChangeSignFlagByID(long variable_id);
 			virtual ~MAS();
@@ -46,6 +48,10 @@ namespace ccmc
 
 			boost::unordered_map<std::string, std::string> latPosGrid;
 			boost::unordered_map<long, std::string> latPosGridByID;
+
+			boost::unordered_map<std::string, std::string> lonPosGrid;
+			boost::unordered_map<long, std::string> lonPosGridByID;
+
 			boost::unordered_map<std::string, bool> changeSignFlag;
 			boost::unordered_map<long, bool> changeSignFlagByID;
 

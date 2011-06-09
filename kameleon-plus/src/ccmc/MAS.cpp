@@ -34,11 +34,14 @@ namespace ccmc
 			return success;
 		success = loadVariable(ccmc::strings::variables::r1_);
 		if (success != FileReader::OK)
-					return success;
+			return success;
 		success = loadVariable(ccmc::strings::variables::theta_);
 		if (success != FileReader::OK)
 			return success;
 		success = loadVariable(ccmc::strings::variables::phi_);
+		if (success != FileReader::OK)
+			return success;
+		success = loadVariable(ccmc::strings::variables::phi1_);
 		if (success != FileReader::OK)
 			return success;
 		success = loadVariable(ccmc::strings::variables::theta1_);
@@ -78,36 +81,89 @@ namespace ccmc
 	{
 		boost::unordered_map<std::string, std::string>::iterator iter = this->rPosGrid.find(variable);
 		if (iter != rPosGrid.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
 			return this->getVariableData((*iter).second);
-		else
+		} else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::r_ << std::endl;
 			return this->getVariableData(ccmc::strings::variables::r_);
+		}
 	}
 
 	const std::vector<float>* MAS::getLatPosGrid(std::string variable)
 	{
 		boost::unordered_map<std::string, std::string>::iterator iter = this->latPosGrid.find(variable);
 		if (iter != latPosGrid.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
 			return this->getVariableData((*iter).second);
+		}
 		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
 			return this->getVariableData(ccmc::strings::variables::theta_);
+		}
+	}
+
+	const std::vector<float>* MAS::getlonPosGrid(std::string variable)
+	{
+		boost::unordered_map<std::string, std::string>::iterator iter = this->lonPosGrid.find(variable);
+		if (iter != lonPosGrid.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return this->getVariableData((*iter).second);
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return this->getVariableData(ccmc::strings::variables::theta_);
+		}
 	}
 
 	const std::vector<float>* MAS::getRPosGridByID(long variable_id)
 	{
 		boost::unordered_map<long, std::string>::iterator iter = this->rPosGridByID.find(variable_id);
 		if (iter != rPosGridByID.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
 			return this->getVariableData((*iter).second);
+		}
 		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::r_ << std::endl;
 			return this->getVariableData(ccmc::strings::variables::r_);
+		}
 	}
 
 	const std::vector<float>* MAS::getLatPosGridByID(long variable_id)
 	{
 		boost::unordered_map<long, std::string>::iterator iter = this->latPosGridByID.find(variable_id);
 		if (iter != latPosGridByID.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
 			return this->getVariableData((*iter).second);
+		}
 		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
 			return this->getVariableData(ccmc::strings::variables::theta_);
+		}
+	}
+
+	const std::vector<float>* MAS::getLonPosGridByID(long variable_id)
+	{
+		boost::unordered_map<long, std::string>::iterator iter = this->lonPosGridByID.find(variable_id);
+		if (iter != lonPosGridByID.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return this->getVariableData((*iter).second);
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return this->getVariableData(ccmc::strings::variables::phi_);
+		}
 	}
 
 	void MAS::initializeMaps()
@@ -150,6 +206,25 @@ namespace ccmc
 		latPosGridByID[this->getVariableID("rho")] = ccmc::strings::variables::theta1_;
 		latPosGridByID[this->getVariableID("p")] = ccmc::strings::variables::theta1_;
 		latPosGridByID[this->getVariableID("T")] = ccmc::strings::variables::theta1_;
+
+		lonPosGrid["T"] = ccmc::strings::variables::phi1_;
+		lonPosGrid["p"] = ccmc::strings::variables::phi1_;
+		lonPosGrid["rho"] = ccmc::strings::variables::phi1_;
+		lonPosGrid["bphi"] = ccmc::strings::variables::phi1_;
+		lonPosGrid["ur"] = ccmc::strings::variables::phi1_;
+		lonPosGrid["utheta"] = ccmc::strings::variables::phi1_;
+		lonPosGrid["jr"] = ccmc::strings::variables::phi1_;
+		lonPosGrid["jtheta"] = ccmc::strings::variables::phi1_;
+
+		lonPosGridByID[this->getVariableID("T")] = ccmc::strings::variables::phi1_;
+		lonPosGridByID[this->getVariableID("p")] = ccmc::strings::variables::phi1_;
+		lonPosGridByID[this->getVariableID("rho")] = ccmc::strings::variables::phi1_;
+		lonPosGridByID[this->getVariableID("bphi")] = ccmc::strings::variables::phi1_;
+		lonPosGridByID[this->getVariableID("ur")] = ccmc::strings::variables::phi1_;
+		lonPosGridByID[this->getVariableID("utheta")] = ccmc::strings::variables::phi1_;
+		lonPosGridByID[this->getVariableID("jr")] = ccmc::strings::variables::phi1_;
+		lonPosGridByID[this->getVariableID("jtheta")] = ccmc::strings::variables::phi1_;
+
 
 		//change sign flag
 		changeSignFlag[ccmc::strings::variables::btheta_] = true;
