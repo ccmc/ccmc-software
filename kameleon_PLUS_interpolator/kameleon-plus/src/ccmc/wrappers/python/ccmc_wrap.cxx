@@ -8773,6 +8773,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Kameleon_getVariableFromMap(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableFromMap",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableFromMap" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariableFromMap((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Kameleon_getVariableInt(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
@@ -8801,6 +8838,43 @@ SWIGINTERN PyObject *_wrap_Kameleon_getVariableInt(PyObject *self, PyObject *arg
     arg2 = ptr;
   }
   result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getVariableIntFromMap(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableIntFromMap",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableIntFromMap" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableIntFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableIntFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableIntFromMap((std::string const &)*arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -23751,7 +23825,9 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Kameleon_methods[] = {
   { "getVisUnit", (PyCFunction) _wrap_Kameleon_getVisUnit, METH_VARARGS, (char*) "" },
   { "getConversionFactorToSI", (PyCFunction) _wrap_Kameleon_getConversionFactorToSI, METH_VARARGS, (char*) "" },
   { "getVariable", (PyCFunction) _wrap_Kameleon_getVariable, METH_VARARGS, (char*) "" },
+  { "getVariableFromMap", (PyCFunction) _wrap_Kameleon_getVariableFromMap, METH_VARARGS, (char*) "" },
   { "getVariableInt", (PyCFunction) _wrap_Kameleon_getVariableInt, METH_VARARGS, (char*) "" },
+  { "getVariableIntFromMap", (PyCFunction) _wrap_Kameleon_getVariableIntFromMap, METH_VARARGS, (char*) "" },
   { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
   { "getNumberOfVariableAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
   { "getVariableID", (PyCFunction) _wrap_Kameleon_getVariableID, METH_VARARGS, (char*) "" },
