@@ -97,8 +97,18 @@ public class Kameleon {
     return (cPtr == 0) ? null : new vector_float(cPtr, false);
   }
 
+  public vector_float getVariableFromMap(String variable) {
+    long cPtr = CCMCJNI.Kameleon_getVariableFromMap(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
   public vector_int getVariableInt(String variable) {
     long cPtr = CCMCJNI.Kameleon_getVariableInt(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_int(cPtr, false);
+  }
+
+  public vector_int getVariableIntFromMap(String variable) {
+    long cPtr = CCMCJNI.Kameleon_getVariableIntFromMap(swigCPtr, this, variable);
     return (cPtr == 0) ? null : new vector_int(cPtr, false);
   }
 

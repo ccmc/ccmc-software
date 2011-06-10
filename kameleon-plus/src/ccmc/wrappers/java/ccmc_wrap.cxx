@@ -1668,6 +1668,31 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariable(J
 }
 
 
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableFromMap(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< float > *)(arg1)->getVariableFromMap((std::string const &)*arg2);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
@@ -1688,6 +1713,31 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableIn
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (std::vector< int > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableIntFromMap(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< int > *)(arg1)->getVariableIntFromMap((std::string const &)*arg2);
   *(std::vector< int > **)&jresult = result; 
   return jresult;
 }

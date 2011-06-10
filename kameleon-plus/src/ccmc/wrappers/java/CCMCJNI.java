@@ -87,7 +87,9 @@ public class CCMCJNI {
   public final static native String Kameleon_getVisUnit(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native float Kameleon_getConversionFactorToSI(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native long Kameleon_getVariable(long jarg1, Kameleon jarg1_, String jarg2);
+  public final static native long Kameleon_getVariableFromMap(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native long Kameleon_getVariableInt(long jarg1, Kameleon jarg1_, String jarg2);
+  public final static native long Kameleon_getVariableIntFromMap(long jarg1, Kameleon jarg1_, String jarg2);
   public final static native int Kameleon_getNumberOfGlobalAttributes(long jarg1, Kameleon jarg1_);
   public final static native int Kameleon_getNumberOfVariableAttributes(long jarg1, Kameleon jarg1_);
   public final static native int Kameleon_getVariableID(long jarg1, Kameleon jarg1_, String jarg2);
