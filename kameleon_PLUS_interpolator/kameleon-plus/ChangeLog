@@ -2,6 +2,8 @@
 -------------
   kameleon-plus-0.1.16
   - Added phi1 grid to MAS reader and interpolator
+  - Fixed memory leaks in spherical tracer
+  - Added getVariableFromMap and getVariableIntFromMap methods
 
 2011 Jun 08   David Berrios
 -------------
