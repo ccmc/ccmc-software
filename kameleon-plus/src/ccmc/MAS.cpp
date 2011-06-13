@@ -83,11 +83,11 @@ namespace ccmc
 		if (iter != rPosGrid.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableData((*iter).second);
+			return this->getVariableFromMap((*iter).second);
 		} else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::r_ << std::endl;
-			return this->getVariableData(ccmc::strings::variables::r_);
+			return this->getVariableFromMap(ccmc::strings::variables::r_);
 		}
 	}
 
@@ -97,12 +97,12 @@ namespace ccmc
 		if (iter != latPosGrid.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableData((*iter).second);
+			return this->getVariableFromMap((*iter).second);
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableData(ccmc::strings::variables::theta_);
+			return this->getVariableFromMap(ccmc::strings::variables::theta_);
 		}
 	}
 
@@ -112,12 +112,12 @@ namespace ccmc
 		if (iter != lonPosGrid.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableData((*iter).second);
+			return this->getVariableFromMap((*iter).second);
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableData(ccmc::strings::variables::theta_);
+			return this->getVariableFromMap(ccmc::strings::variables::theta_);
 		}
 	}
 
@@ -127,12 +127,12 @@ namespace ccmc
 		if (iter != rPosGridByID.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableData((*iter).second);
+			return this->getVariableFromMap((*iter).second);
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::r_ << std::endl;
-			return this->getVariableData(ccmc::strings::variables::r_);
+			return this->getVariableFromMap(ccmc::strings::variables::r_);
 		}
 	}
 
@@ -142,12 +142,12 @@ namespace ccmc
 		if (iter != latPosGridByID.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableData((*iter).second);
+			return this->getVariableFromMap((*iter).second);
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableData(ccmc::strings::variables::theta_);
+			return this->getVariableFromMap(ccmc::strings::variables::theta_);
 		}
 	}
 
@@ -157,12 +157,12 @@ namespace ccmc
 		if (iter != lonPosGridByID.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableData((*iter).second);
+			return this->getVariableFromMap((*iter).second);
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableData(ccmc::strings::variables::phi_);
+			return this->getVariableFromMap(ccmc::strings::variables::phi_);
 		}
 	}
 

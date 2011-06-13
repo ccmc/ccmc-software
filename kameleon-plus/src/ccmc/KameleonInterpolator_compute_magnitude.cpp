@@ -34,23 +34,23 @@ namespace ccmc
 			if (variable == j_)
 			{
 				component1Name = "jr";
-				component2Name = "jphi";
-				component3Name = "jtheta";
+				component2Name = "jtheta";
+				component3Name = "jphi";
 			} else if (variable == b_)
 			{
 				component1Name = "br";
-				component2Name = "bphi";
-				component3Name = "btheta";
+				component2Name = "btheta";
+				component3Name = "bphi";
 			} else if (variable == "e")
 			{
 				component1Name = "er";
-				component2Name = "ephi";
-				component3Name = "etheta";
+				component2Name = "etheta";
+				component3Name = "ephi";
 			} else if (variable == "u")
 			{
 				component1Name = "ur";
-				component2Name = "uphi";
-				component3Name = "utheta";
+				component2Name = "utheta";
+				component3Name = "uphi";
 			} else if (variable == "b1")
 			{
 				component1Name = "b1r";
@@ -103,7 +103,9 @@ namespace ccmc
 				dComponent1, dComponent2, dComponent3);
 		if (component3 == missingValue)
 			return missingValue;
-
+std::cout << "component1(" << component1Name << "): " << component1;
+std::cout << " component2(" << component2Name << "): " << component2;
+std::cout << " component3(" << component3Name << "): " << component3 << std::endl;
 		magnitude = std::sqrt(component1 * component1 + component2 * component2 + component3 * component3);
 		return magnitude;
 

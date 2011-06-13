@@ -963,10 +963,12 @@ namespace ccmc
 	{
 		Fieldline f;
 		std::string model_name = kameleon->getModelName();
-		const std::vector<float> * r_data = kameleon->getVariable("r");
-		const std::vector<float> * lat_data = kameleon->getVariable("theta");
-		const std::vector<float> * lon_data = kameleon->getVariable("phi");
-		const std::vector<float> * bp_data;
+		kameleon->loadVariable("r");
+		kameleon->loadVariable("theta");
+		kameleon->loadVariable("phi");
+		const std::vector<float> * r_data = kameleon->getVariableFromMap("r");
+		const std::vector<float> * lat_data = kameleon->getVariableFromMap("theta");
+		const std::vector<float> * lon_data = kameleon->getVariableFromMap("phi");
 
 
 
@@ -996,8 +998,6 @@ namespace ccmc
 		{
 			boxMin.component1 /= ccmc::constants::AU_in_meters;
 			boxMax.component1 /= ccmc::constants::AU_in_meters;
-			kameleon->loadVariable("bp");
-			bp_data = kameleon->getVariable("bp");
 		}
 
 		//ensure the start position components are within the proper ranges
@@ -1074,7 +1074,7 @@ namespace ccmc
 		//float *latitudes, *lat_ptr; // latitude grid
 		//std::vector<float>* latitudes = NULL;
 		std::vector<float> latitudes;
-		std::vector<float>* lat_ptr = NULL;
+		const std::vector<float>* lat_ptr = NULL;
 		// b_r at nearest grid latitudes and estimated latitude of current sheet
 		float br_up, br_down, lat_csh;
 
@@ -1090,7 +1090,7 @@ namespace ccmc
 			cerr << "calling var_get for phi (lat)" << endl;
 #endif
 //			std::cerr << "calling getVariable" << std::endl;
-			lat_ptr = kameleon->getVariable(ccmc::strings::variables::theta_); // need to use alias "lat" later
+			lat_ptr = kameleon->getVariableFromMap(ccmc::strings::variables::theta_); // need to use alias "lat" later
 
 
 			if (lat_ptr->size() > 0)

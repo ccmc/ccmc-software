@@ -122,8 +122,8 @@ namespace ccmc
 		this->smartSearchValues.esup1 = new int[nelem*4];
 		this->smartSearchValues.esup2 = new int[npoin+1];
 
-		this->coord = (this->getVariableData(ccmc::strings::variables::coord_));
-		this->intmat = (this->getVariableDataInt(ccmc::strings::variables::intmat_));
+		this->coord = (this->getVariableFromMap(ccmc::strings::variables::coord_));
+		this->intmat = (this->getIntVariableFromMap(ccmc::strings::variables::intmat_));
 
 		std::cerr << "coord: " << (*coord).size() << std::endl;
 		for (int i = 0; i < 10; i++)

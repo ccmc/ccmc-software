@@ -115,9 +115,9 @@ namespace ccmc
 
 		//std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,	float& dlon)" << std::endl;
 
-#ifdef DEBUG_MAS_INTERPOLATOR
+//#ifdef DEBUG_MAS_INTERPOLATOR
 		std::cout << "r: " << r << " theta (lat): " << lat << " phi (lon): " << lon << std::endl;
-#endif
+//#endif
 		//Convert radius to meters
 		float r_converted = r;// * ccmc::constants::AU_in_meters;
 
@@ -250,11 +250,11 @@ namespace ccmc
 			int nr, int nlat, int nlon, int ir, int ilat, int ilon,
 			const long& variable_id, float& dr, float& dlat, float& dlon)
 	{
-//		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
+		std::cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << std::endl;
 
 		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
-		const std::vector<float> * vData = modelReader->getVariableDataByID(variable_id);
+		const std::vector<float> * vData = modelReader->getVariableFromMapByID(variable_id);
 		if (vData == NULL)
 			main_memory_flag = false;
 //std::cout << "variable_id: " << variableID << " main_memory_flag: " << main_memory_flag << std::endl;

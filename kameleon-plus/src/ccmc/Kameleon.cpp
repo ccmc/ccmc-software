@@ -744,12 +744,22 @@ namespace ccmc
 
 
 	/**
-	 * @param variable
-	 * @return
+	 * @copydoc FileReader::getVariable(const std::string&)
 	 */
 	std::vector<float>* Kameleon::getVariable(const std::string& variable)
 	{
 		return model->getVariable(variable);
+	}
+
+	/**
+	 * Returns a pointer to the variable data stored in a map. This method works for variables of type float. This cannot and should not be modified or deleted. Use
+	 * loadVariable and unloadVariable to manange the map.
+	 * @param variable
+	 * @return
+	 */
+	const std::vector<float>* Kameleon::getVariableFromMap(const std::string& variable)
+	{
+		return model->getVariableFromMap(variable);
 	}
 
 	/**
@@ -759,6 +769,17 @@ namespace ccmc
 	std::vector<int>* Kameleon::getVariableInt(const std::string& variable)
 	{
 		return model->getVariableInt(variable);
+	}
+
+	/**
+	 * Returns a pointer to the variable data stored in a map. This method works for variables of type int. This cannot and should not be modified or deleted. Use
+	 * loadVariable and unloadVariable to manange the map.
+	 * @param variable
+	 * @return
+	 */
+	const std::vector<int>* Kameleon::getVariableIntFromMap(const std::string& variable)
+	{
+		return model->getIntVariableFromMap(variable);
 	}
 
 	/**
