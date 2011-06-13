@@ -35,9 +35,9 @@ namespace ccmc
 		this->nelem = (modelReader->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
 		//->nboun = (modelReader->getGlobalAttribute(ccmc::strings::variables::nboun_)).getAttributeInt();
 		//this->nconi = (modelReader->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
-		this->coord = (modelReader->getVariableData(ccmc::strings::variables::coord_));
-		this->intmat = (modelReader->getVariableDataInt(ccmc::strings::variables::intmat_));
-		this->unkno = (modelReader->getVariableData(ccmc::strings::variables::unkno_));
+		this->coord = (modelReader->getVariableFromMap(ccmc::strings::variables::coord_));
+		this->intmat = (modelReader->getIntVariableFromMap(ccmc::strings::variables::intmat_));
+		this->unkno = (modelReader->getVariableFromMap(ccmc::strings::variables::unkno_));
 
 		this->smartSearchValues = ((Adapt3D*)(modelReader))->getSmartGridSearchValues();
 		//indx = new int[nelem];

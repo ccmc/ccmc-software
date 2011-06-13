@@ -60,9 +60,9 @@ namespace ccmc
 		previous_y = missingValue;
 		previous_z = missingValue;
 
-		x_array = this->modelReader->getVariableData(x_string);
-		y_array = this->modelReader->getVariableData(y_string);
-		z_array = this->modelReader->getVariableData(z_string);
+		x_array = this->modelReader->getVariableFromMap(x_string);
+		y_array = this->modelReader->getVariableFromMap(y_string);
+		z_array = this->modelReader->getVariableFromMap(z_string);
 
 	}
 
@@ -247,7 +247,7 @@ namespace ccmc
 		int i6 = k + (jp1) * (nx) + ip1tNV_blk;
 		int i7 = (kp1) + (jp1) * (nx) + ip1tNV_blk;
 
-		const std::vector<float> * vData = modelReader->getVariableDataByID(variable_id);
+		const std::vector<float> * vData = modelReader->getVariableFromMapByID(variable_id);
 		float data[8];
 		if (vData == NULL)
 		{

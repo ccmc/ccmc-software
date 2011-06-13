@@ -20,25 +20,25 @@ namespace ccmc
 	{
 		// TODO Auto-generated constructor stub
 		this->modelReader = modelReader;
-		block_x_min_array = modelReader->getVariableData(ccmc::strings::variables::block_x_min_);
-		block_y_min_array = modelReader->getVariableData(ccmc::strings::variables::block_y_min_);
-		block_z_min_array = modelReader->getVariableData(ccmc::strings::variables::block_z_min_);
-		block_x_max_array = modelReader->getVariableData(ccmc::strings::variables::block_x_max_);
-		block_y_max_array = modelReader->getVariableData(ccmc::strings::variables::block_y_max_);
-		block_z_max_array = modelReader->getVariableData(ccmc::strings::variables::block_z_max_);
-		block_x_center_array = modelReader->getVariableData(ccmc::strings::variables::block_x_center_);
-		block_y_center_array = modelReader->getVariableData(ccmc::strings::variables::block_y_center_);
-		block_z_center_array = modelReader->getVariableData(ccmc::strings::variables::block_z_center_);
-		block_child_id_1_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_1_);
-		block_child_id_2_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_2_);
-		block_child_id_3_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_3_);
-		block_child_id_4_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_4_);
-		block_child_id_5_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_5_);
-		block_child_id_6_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_6_);
-		block_child_id_7_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_7_);
-		block_child_id_8_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_id_8_);
-		block_child_count_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_child_count_);
-		block_at_amr_level_array = modelReader->getVariableDataInt(ccmc::strings::variables::block_at_amr_level_);
+		block_x_min_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_x_min_);
+		block_y_min_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_y_min_);
+		block_z_min_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_z_min_);
+		block_x_max_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_x_max_);
+		block_y_max_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_y_max_);
+		block_z_max_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_z_max_);
+		block_x_center_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_x_center_);
+		block_y_center_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_y_center_);
+		block_z_center_array = modelReader->getVariableFromMap(ccmc::strings::variables::block_z_center_);
+		block_child_id_1_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_1_);
+		block_child_id_2_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_2_);
+		block_child_id_3_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_3_);
+		block_child_id_4_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_4_);
+		block_child_id_5_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_5_);
+		block_child_id_6_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_6_);
+		block_child_id_7_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_7_);
+		block_child_id_8_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_id_8_);
+		block_child_count_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_child_count_);
+		block_at_amr_level_array = modelReader->getIntVariableFromMap(ccmc::strings::variables::block_at_amr_level_);
 
 		callCount = 0;
 		old_x = std::numeric_limits<float>::min( );
@@ -113,7 +113,7 @@ namespace ccmc
 	{
 
 		bool main_memory_flag = true;
-		if (this->modelReader->getVariableDataByID(variable_id) == NULL)
+		if (this->modelReader->getVariableFromMapByID(variable_id) == NULL)
 			main_memory_flag = false;
 		long status;
 
@@ -342,7 +342,7 @@ namespace ccmc
 
 		const std::vector<float>* vData = NULL;
 		if (main_memory_flag == true)
-			vData = modelReader->getVariableDataByID(variable_id);
+			vData = modelReader->getVariableFromMapByID(variable_id);
 		for (ic = 0; ic < 8; ic++)
 		{
 
@@ -495,7 +495,7 @@ namespace ccmc
 	{
 		//	std::cout << "BATSRUSInterpolator::interpolate. variable: " << variable << std::endl;
 		bool main_memory_flag = true;
-		if (this->modelReader->getVariableData(variable) == NULL)
+		if (this->modelReader->getVariableFromMap(variable) == NULL)
 			main_memory_flag = false;
 
 
@@ -724,7 +724,7 @@ namespace ccmc
 
 		const std::vector<float>* vData = NULL;
 		if (main_memory_flag == true)
-			vData = modelReader->getVariableData(variable);
+			vData = modelReader->getVariableFromMap(variable);
 		for (ic = 0; ic < 8; ic++)
 		{
 

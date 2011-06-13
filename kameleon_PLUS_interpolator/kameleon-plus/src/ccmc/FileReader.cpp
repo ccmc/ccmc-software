@@ -124,9 +124,11 @@ namespace ccmc
 	}
 
 	/**
-	 * Returns a pointer to a std::vector<float> containing the values of the selected variable
-	 * stored in the selected file.  This allocates a new std::vector<float> pointer.  Make sure you
+	 * @brief Returns a pointer to a std::vector<float> containing the values of the selected variable
+	 *
+	 * This allocates a new std::vector<float> pointer.  Make sure you
 	 * delete the contents when you done using it, or you will have a memory leak.
+	 *
 	 * @param variable
 	 * @return std::vector<float> containing the values of the selected variable.
 	 */

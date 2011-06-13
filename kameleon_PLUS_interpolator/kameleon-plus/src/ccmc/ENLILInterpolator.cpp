@@ -30,9 +30,9 @@ namespace ccmc
 
 		//TODO: fix the phi/theta issue to correspond to the actual
 		//lat lon
-		r_data = modelReader->getVariableData(r_string);
-		lat_data = modelReader->getVariableData(lat_string);
-		lon_data = modelReader->getVariableData(lon_string);
+		r_data = modelReader->getVariableFromMap(r_string);
+		lat_data = modelReader->getVariableFromMap(lat_string);
+		lon_data = modelReader->getVariableFromMap(lon_string);
 		nr = r_data->size();
 		nlat = lat_data->size();
 		nlon = lon_data->size();
@@ -218,7 +218,7 @@ namespace ccmc
 
 		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
-		const std::vector<float> * vData = modelReader->getVariableDataByID(variableID);
+		const std::vector<float> * vData = modelReader->getVariableFromMapByID(variableID);
 		if (vData == NULL)
 			main_memory_flag = false;
 //std::cout << "variable_id: " << variableID << " main_memory_flag: " << main_memory_flag << std::endl;

@@ -194,21 +194,21 @@ namespace ccmc
 			//blah
 		} else if (modelName == "mas")
 		{
-			conversionFactorsToVis["n"] = 1.e8;
+			//conversionFactorsToVis["n"] = 1.e8;
 			conversionFactorsToVis["t"] = 2.84e7;
 			conversionFactorsToVis["p"] = 0.387 * 1.e9 * .1; //Dyn/cm^2 * to_nano * .1
-			conversionFactorsToVis["ur"] = 481.37;
-			conversionFactorsToVis["uphi"] = 481.37;
-			conversionFactorsToVis["utheta"] = 481.37;
+			//conversionFactorsToVis["ur"] = 481.37;
+			//conversionFactorsToVis["uphi"] = 481.37;
+			//conversionFactorsToVis["utheta"] = 481.37;
 			conversionFactorsToVis["jr"] = 1.e2 * 2.205 / (mu_0 * l_0);
 			conversionFactorsToVis["jphi"] = 1.e2 * 2.205 / (mu_0 * l_0);
 			conversionFactorsToVis["jtheta"] = 1.e2 * 2.205 / (mu_0 * l_0);
 			conversionFactorsToVis["er"] = 1.e-3;
 			conversionFactorsToVis["ephi"] = 1.e-3;
 			conversionFactorsToVis["etheta"] = 1.e-3;
-			conversionFactorsToVis["br"] = 2.205 * gauss2Tesla * 1.e9;
-			conversionFactorsToVis["bphi"] = 2.205 * gauss2Tesla * 1.e9;
-			conversionFactorsToVis["btheta"] = 2.205 * gauss2Tesla * 1.e9;
+			//conversionFactorsToVis["br"] = 2.205 * gauss2Tesla * 1.e9;
+			//conversionFactorsToVis["bphi"] = 2.205 * gauss2Tesla * 1.e9;
+			//conversionFactorsToVis["btheta"] = 2.205 * gauss2Tesla * 1.e9;
 
 		} else if (modelName == "ucla_ggcm" || modelName == "open_ggcm")
 		{
