@@ -27,14 +27,15 @@ int main (int argc, char * argv[])
 	string filename = argv[1];
 	string variable = argv[2];
 	float r = boost::lexical_cast<float>(argv[3]);
-	float lon = boost::lexical_cast<float>(argv[4]);
-	float lat = boost::lexical_cast<float>(argv[5]);
+	float lat = boost::lexical_cast<float>(argv[4]);
+	float lon = boost::lexical_cast<float>(argv[5]);
 	ccmc::MAS mas;
 	mas.open(filename);
+	std::cerr << "opened file" << std::endl;
 	mas.loadVariable(variable);
 
 	ccmc::Interpolator * interpolator = mas.createNewInterpolator();
-	float value = interpolator->interpolate(variable, r, lon, lat);
+	float value = interpolator->interpolate(variable, r, lat, lon);
 	delete interpolator;
 
 	string units = mas.getNativeUnit(variable);
