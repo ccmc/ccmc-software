@@ -122,7 +122,8 @@ int main (int argc, char * argv[])
 
 	for (int i = 0; i < f1.size(); i++)
 	{
-	//	std::cout << "New[" << i << "]: " << f1.getPosition(i) << std::endl;
+		Point3f position = f1.getPosition(i);
+		//std::cout << "New[" << i << "]: " << position <<  " " << position.getCartesian() << std::endl;
 	}
 
 	/*for (int i = 0; i < f2.size(); i++)
