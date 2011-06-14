@@ -103,9 +103,6 @@ namespace ccmc
 				dComponent1, dComponent2, dComponent3);
 		if (component3 == missingValue)
 			return missingValue;
-std::cout << "component1(" << component1Name << "): " << component1;
-std::cout << " component2(" << component2Name << "): " << component2;
-std::cout << " component3(" << component3Name << "): " << component3 << std::endl;
 		magnitude = std::sqrt(component1 * component1 + component2 * component2 + component3 * component3);
 		return magnitude;
 
