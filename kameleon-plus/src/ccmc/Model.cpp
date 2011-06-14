@@ -204,7 +204,7 @@ namespace ccmc
 	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
 	 * the file is closed, or the Model object is deleted.
 	 */
-	const std::vector<float>* Model::getVariableFromMap(const std::string& variable)
+	const std::vector<float>* const Model::getVariableFromMap(const std::string& variable)
 	{
 		boost::unordered_map<std::string, std::vector<float>*>::iterator iter = variableData.find(variable);
 
@@ -250,7 +250,7 @@ namespace ccmc
 	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
 	 * the file is closed, or the Model object is deleted.
 	 */
-	const std::vector<int>* Model::getIntVariableFromMap(const std::string& variable)
+	const std::vector<int>* const Model::getIntVariableFromMap(const std::string& variable)
 	{
 		boost::unordered_map<std::string, std::vector<int>*>::iterator iter = variableDataInt.find(variable);
 
@@ -272,7 +272,7 @@ namespace ccmc
 	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
 	 * the file is closed, or the Model object is deleted.
 	 */
-	const std::vector<float>* Model::getVariableFromMapByID(long variable_id)
+	const std::vector<float>* const Model::getVariableFromMap(long variable_id)
 	{
 		boost::unordered_map<long, std::vector<float>*>::iterator iter = variableDataByID.find(variable_id);
 
@@ -294,7 +294,7 @@ namespace ccmc
 	 * a map and should not and cannot be deleted. The memory pointed to by the pointer will automatically be freed when
 	 * the file is closed, or the Model object is deleted.
 	 */
-	const std::vector<int>* Model::getIntVariableFromMapByID(long variable_id)
+	const std::vector<int>* const Model::getIntVariableFromMap(long variable_id)
 	{
 		boost::unordered_map<long, std::vector<int>*>::iterator iter = variableDataIntByID.find(variable_id);
 
