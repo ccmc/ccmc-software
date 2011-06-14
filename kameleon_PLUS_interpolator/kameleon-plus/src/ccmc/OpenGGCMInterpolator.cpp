@@ -247,7 +247,7 @@ namespace ccmc
 		int i6 = k + (jp1) * (nx) + ip1tNV_blk;
 		int i7 = (kp1) + (jp1) * (nx) + ip1tNV_blk;
 
-		const std::vector<float> * vData = modelReader->getVariableFromMapByID(variable_id);
+		const std::vector<float> * vData = modelReader->getVariableFromMap(variable_id);
 		float data[8];
 		if (vData == NULL)
 		{
