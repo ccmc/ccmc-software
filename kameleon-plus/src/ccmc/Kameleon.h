@@ -115,9 +115,9 @@ namespace ccmc
 
 
 			std::vector<float>* getVariable(const std::string& variable);
-			const std::vector<float>* getVariableFromMap(const std::string& variable);
+			const std::vector<float>* const getVariableFromMap(const std::string& variable);
 			std::vector<int>* getVariableInt(const std::string& variable);
-			const std::vector<int>* getVariableIntFromMap(const std::string& variable);
+			const std::vector<int>* const getVariableIntFromMap(const std::string& variable);
 			int getNumberOfGlobalAttributes();
 			int getNumberOfVariableAttributes();
 			long getVariableID(const std::string& variable);
