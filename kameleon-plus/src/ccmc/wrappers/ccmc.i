@@ -6,13 +6,23 @@
 
 
 %{
+#include <ccmc/FileReader.h>
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
-#include <ccmc/Point3f.h>
-#include <ccmc/Fieldline.h>
+#include <ccmc/KameleonInterpolator.h>
 #include <ccmc/Kameleon-Tracer.h>
+#include <ccmc/Fieldline.h>
+#include <ccmc/Point3f.h>
 #include <ccmc/Attribute.h>
-#include <ccmc/FileReader.h>
+#include <ccmc/Model.h>
+#include <ccmc/BATSRUS.h>
+#include <ccmc/ENLIL.h>
+#include <ccmc/MAS.h>
+#include <ccmc/OpenGGCM.h>
+#include <ccmc/BATSRUSInterpolator.h>
+#include <ccmc/ENLILInterpolator.h>
+#include <ccmc/MASInterpolator.h>
+#include <ccmc/OpenGGCMInterpolator.h>
 using namespace std;
 
 
@@ -21,10 +31,21 @@ using namespace std;
 %include <ccmc/FileReader.h>
 %include <ccmc/Kameleon.h>
 %include <ccmc/Interpolator.h>
+%include <ccmc/KameleonInterpolator.h>
 %include <ccmc/Kameleon-Tracer.h>
 %include <ccmc/Fieldline.h>
 %include <ccmc/Point3f.h>
 %include <ccmc/Attribute.h>
+%include <ccmc/Model.h>
+%include <ccmc/OpenGGCM.h>
+%include <ccmc/BATSRUS.h>
+%include <ccmc/ENLIL.h>
+%include <ccmc/MAS.h>
+%include <ccmc/OpenGGCM.h>
+%include <ccmc/BATSRUSInterpolator.h>
+%include <ccmc/ENLILInterpolator.h>
+%include <ccmc/MASInterpolator.h>
+%include <ccmc/OpenGGCMInterpolator.h>
 
 using namespace ccmc;
 typedef ccmc::Fieldline Fieldline;
