@@ -218,7 +218,7 @@ namespace ccmc
 
 		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
-		const std::vector<float> * vData = modelReader->getVariableFromMapByID(variableID);
+		const std::vector<float> * vData = modelReader->getVariableFromMap(variableID);
 		if (vData == NULL)
 			main_memory_flag = false;
 //std::cout << "variable_id: " << variableID << " main_memory_flag: " << main_memory_flag << std::endl;
