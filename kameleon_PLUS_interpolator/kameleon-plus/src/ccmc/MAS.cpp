@@ -37,6 +37,9 @@ namespace ccmc
 			return success;
 		success = loadVariable(ccmc::strings::variables::theta_);
 		if (success != FileReader::OK)
+					return success;
+		success = loadVariable(ccmc::strings::variables::theta1_);
+		if (success != FileReader::OK)
 			return success;
 		success = loadVariable(ccmc::strings::variables::phi_);
 		if (success != FileReader::OK)
@@ -44,9 +47,7 @@ namespace ccmc
 		success = loadVariable(ccmc::strings::variables::phi1_);
 		if (success != FileReader::OK)
 			return success;
-		success = loadVariable(ccmc::strings::variables::theta1_);
-		if (success != FileReader::OK)
-			return success;
+
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
 		return status;
@@ -77,94 +78,128 @@ namespace ccmc
 
 	}
 
-	const std::vector<float>* MAS::getRPosGrid(std::string variable)
+	const std::vector<float>* const MAS::getRPosGrid(const std::string& variable)
+	{
+		return this->getVariableFromMap(getRPosGridName(variable));
+	}
+
+	const std::vector<float>* const MAS::getRPosGrid(long variable_id)
+	{
+		return this->getVariableFromMap(getRPosGridName(variable_id));
+	}
+
+	std::string MAS::getRPosGridName(const std::string& variable)
 	{
 		boost::unordered_map<std::string, std::string>::iterator iter = this->rPosGrid.find(variable);
 		if (iter != rPosGrid.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableFromMap((*iter).second);
+			return (*iter).second;
 		} else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::r_ << std::endl;
-			return this->getVariableFromMap(ccmc::strings::variables::r_);
+			return ccmc::strings::variables::r_;
 		}
 	}
 
-	const std::vector<float>* MAS::getLatPosGrid(std::string variable)
+	std::string MAS::getRPosGridName(long variable)
+	{
+		boost::unordered_map<long, std::string>::iterator iter = this->rPosGridByID.find(variable);
+		if (iter != rPosGridByID.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::r_ << std::endl;
+			return ccmc::strings::variables::r_;
+		}
+	}
+
+	const std::vector<float>* const MAS::getLatPosGrid(const std::string& variable)
+	{
+		return this->getVariableFromMap(this->getLatPosGridName(variable));
+	}
+
+	const std::vector<float>* const MAS::getLatPosGrid(long variable_id)
+	{
+		return this->getVariableFromMap(this->getLatPosGridName(variable_id));
+	}
+
+	std::string MAS::getLatPosGridName(const std::string& variable)
 	{
 		boost::unordered_map<std::string, std::string>::iterator iter = this->latPosGrid.find(variable);
 		if (iter != latPosGrid.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableFromMap((*iter).second);
+			return (*iter).second;
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableFromMap(ccmc::strings::variables::theta_);
+			return ccmc::strings::variables::theta_;
 		}
 	}
-
-	const std::vector<float>* MAS::getlonPosGrid(std::string variable)
-	{
-		boost::unordered_map<std::string, std::string>::iterator iter = this->lonPosGrid.find(variable);
-		if (iter != lonPosGrid.end())
-		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableFromMap((*iter).second);
-		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableFromMap(ccmc::strings::variables::theta_);
-		}
-	}
-
-	const std::vector<float>* MAS::getRPosGridByID(long variable_id)
-	{
-		boost::unordered_map<long, std::string>::iterator iter = this->rPosGridByID.find(variable_id);
-		if (iter != rPosGridByID.end())
-		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableFromMap((*iter).second);
-		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::r_ << std::endl;
-			return this->getVariableFromMap(ccmc::strings::variables::r_);
-		}
-	}
-
-	const std::vector<float>* MAS::getLatPosGridByID(long variable_id)
+	std::string MAS::getLatPosGridName(long variable_id)
 	{
 		boost::unordered_map<long, std::string>::iterator iter = this->latPosGridByID.find(variable_id);
 		if (iter != latPosGridByID.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableFromMap((*iter).second);
+			return (*iter).second;
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableFromMap(ccmc::strings::variables::theta_);
+			return ccmc::strings::variables::theta_;
 		}
 	}
 
-	const std::vector<float>* MAS::getLonPosGridByID(long variable_id)
+	const std::vector<float>* const MAS::getlonPosGrid(const std::string& variable)
+	{
+		return this->getVariableFromMap(this->getLonPosGridName(variable));
+	}
+
+
+
+
+
+	const std::vector<float>* const MAS::getLonPosGrid(long variable_id)
+	{
+		return this->getVariableFromMap(this->getLonPosGridName(variable_id));
+	}
+
+	std::string MAS::getLonPosGridName(const std::string& variable)
+	{
+		boost::unordered_map<std::string, std::string>::iterator iter = this->lonPosGrid.find(variable);
+		if (iter != lonPosGrid.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return ccmc::strings::variables::theta_;
+		}
+	}
+
+	std::string MAS::getLonPosGridName(long variable_id)
 	{
 		boost::unordered_map<long, std::string>::iterator iter = this->lonPosGridByID.find(variable_id);
 		if (iter != lonPosGridByID.end())
 		{
 			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return this->getVariableFromMap((*iter).second);
+			return (*iter).second;
 		}
 		else
 		{
 			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return this->getVariableFromMap(ccmc::strings::variables::phi_);
+			return ccmc::strings::variables::phi_;
 		}
 	}
+
 
 	void MAS::initializeMaps()
 	{
@@ -247,7 +282,7 @@ namespace ccmc
 
 	}
 
-	bool MAS::getChangeSignFlagByID(long variable_id)
+	bool MAS::getChangeSignFlag(long variable_id)
 	{
 		boost::unordered_map<long, bool>::iterator iter = this->changeSignFlagByID.find(variable_id);
 		if (iter != changeSignFlagByID.end())

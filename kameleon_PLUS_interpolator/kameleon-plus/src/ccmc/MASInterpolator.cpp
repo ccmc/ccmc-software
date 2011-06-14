@@ -19,7 +19,7 @@ namespace ccmc
 	 */
 	MASInterpolator::MASInterpolator(Model * model)
 	{
-		std::cout << "Creating MAS Interpolator" << std::endl;
+		//std::cout << "Creating MAS Interpolator" << std::endl;
 		// TODO Auto-generated constructor stub
 		// TODO Auto-generated constructor stub
 		this->modelReader = model;
@@ -36,6 +36,7 @@ namespace ccmc
 		previous_r = missingValue;
 		previous_lon = missingValue;
 		previous_lat = missingValue;
+
 	}
 
 	/**
@@ -71,7 +72,7 @@ namespace ccmc
 			float& dlon)
 	{
 		long variable_id = modelReader->getVariableID(variable);
-
+		//std::cerr << "inside interpolate. varaible_id=" << variable_id << " for variable=" << variable << std::endl;
 		return interpolate(variable_id, r, lat, lon, dr, dlat, dlon);
 	}
 
@@ -115,9 +116,9 @@ namespace ccmc
 
 		//std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,	float& dlon)" << std::endl;
 
-//#ifdef DEBUG_MAS_INTERPOLATOR
+#ifdef DEBUG_MAS_INTERPOLATOR
 		std::cout << "r: " << r << " theta (lat): " << lat << " phi (lon): " << lon << std::endl;
-//#endif
+#endif
 		//Convert radius to meters
 		float r_converted = r;// * ccmc::constants::AU_in_meters;
 
@@ -158,14 +159,15 @@ namespace ccmc
 		}
 
 		lon_converted = lon_converted / ccmc::constants::RadiansToDegrees;
-		const std::vector<float> * r_data = ((MAS*)modelReader)->getRPosGridByID(variable_id);
+		const std::vector<float> * const r_data = ((MAS*)modelReader)->getRPosGrid(variable_id);
 
 #ifdef DEBUG_MAS_INTERPOLATOR
 		std::cout << "fetched r_data" << std::endl;
 #endif
-		const std::vector<float> * lat_data = ((MAS*)modelReader)->getLatPosGridByID(variable_id);
+		const std::vector<float> * const lat_data = ((MAS*)modelReader)->getLatPosGrid(variable_id);
 
-		const std::vector<float> * lon_data = ((MAS*)modelReader)->getLonPosGridByID(variable_id);
+		const std::vector<float> * const lon_data = ((MAS*)modelReader)->getLonPosGrid(variable_id);
+		std::cerr << "variable: " << this->modelReader->getVariableName(variable_id) << " r_data.size(): " << r_data->size() << " lat_data.size(): " << lat_data->size() << " lon_data.size(): " << lon_data->size() << std::endl;
 
 #ifdef DEBUG_MAS_INTERPOLATOR
 		std::cout << "fetched lat_data" << std::endl;
@@ -179,8 +181,12 @@ namespace ccmc
 		std::cout << "r_converted: " << r_converted << " theta_converted (lat): " << lat_converted << " phi_converted (lon): " << lon_converted << std::endl;
 #endif
 
+		std::string r_name = ((MAS*)modelReader)->getRPosGridName(variable_id);
+		std::string lat_name = ((MAS*)modelReader)->getLatPosGridName(variable_id);
+		std::string lon_name = ((MAS*)modelReader)->getLonPosGridName(variable_id);
 		int ir, ilat, ilon;
-		if (previous_r == r && previous_lon == lon && previous_lat == lat)
+		if (previous_r == r && previous_lon == lon && previous_lat == lat &&
+			previous_r_grid_name == r_name && previous_lat_grid_name == lat_name && previous_lon_grid_name == lon_name)
 		{
 			ir = previous_ir;
 			ilat = previous_ilat;
@@ -210,7 +216,7 @@ namespace ccmc
 
 			/****** we need to change the sign of any y vector component ... *********/
 
-			if (((MAS*)modelReader)->getChangeSignFlagByID(variable_id)) /*** this flag is set when cdf_varNum is set above ***/
+			if (((MAS*)modelReader)->getChangeSignFlag(variable_id)) /*** this flag is set when cdf_varNum is set above ***/
 			{
 				value = value * (-1.0);
 			}
@@ -250,11 +256,11 @@ namespace ccmc
 			int nr, int nlat, int nlon, int ir, int ilat, int ilon,
 			const long& variable_id, float& dr, float& dlat, float& dlon)
 	{
-		std::cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << std::endl;
+//		std::cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << std::endl;
 
 		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
-		const std::vector<float> * vData = modelReader->getVariableFromMapByID(variable_id);
+		const std::vector<float> * vData = modelReader->getVariableFromMap(variable_id);
 		if (vData == NULL)
 			main_memory_flag = false;
 //std::cout << "variable_id: " << variableID << " main_memory_flag: " << main_memory_flag << std::endl;
