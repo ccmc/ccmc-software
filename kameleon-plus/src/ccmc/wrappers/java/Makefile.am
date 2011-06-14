@@ -17,12 +17,22 @@ CLEANFILES = $(jarfile) $(pkgpath)/gov/nasa/gsfc/ccmc/*.class
 AM_JAVACFLAGS=-nowarn
 
 dist_noinst_JAVA = 	Attribute.java \
+					BATSRUS.java \
+					BATSRUSInterpolator.java \
 					CCMC.java \
 					CCMCJNI.java \
+					ENLIL.java \
+					ENLILInterpolator.java \
 					Fieldline.java \
 					FileReader.java \
 					Interpolator.java \
 					Kameleon.java \
+					KameleonInterpolator.java \
+					MAS.java \
+					MASInterpolator.java \
+					Model.java \
+					OpenGGCM.java \
+					OpenGGCMInterpolator.java \
 					Point3f.java \
 					Position.java \
 					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t.java \
