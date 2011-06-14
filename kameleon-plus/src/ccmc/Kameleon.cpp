@@ -757,7 +757,7 @@ namespace ccmc
 	 * @param variable
 	 * @return
 	 */
-	const std::vector<float>* Kameleon::getVariableFromMap(const std::string& variable)
+	const std::vector<float>* const Kameleon::getVariableFromMap(const std::string& variable)
 	{
 		return model->getVariableFromMap(variable);
 	}
@@ -777,7 +777,7 @@ namespace ccmc
 	 * @param variable
 	 * @return
 	 */
-	const std::vector<int>* Kameleon::getVariableIntFromMap(const std::string& variable)
+	const std::vector<int>* const Kameleon::getVariableIntFromMap(const std::string& variable)
 	{
 		return model->getIntVariableFromMap(variable);
 	}
