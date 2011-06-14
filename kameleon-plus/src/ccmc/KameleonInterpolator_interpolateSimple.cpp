@@ -49,11 +49,8 @@ namespace ccmc
 		int flag2 = 1;
 
 
-
-		//std::cout << "variable: " << variable << " c0: " << positionComponent1 << " c1: " << positionComponent2 << " c2: " << positionComponent3 << std::endl;
 		interp_value = interpolator->interpolate(variable, positionComponent1, positionComponent2, positionComponent3,
 				dComponent1, dComponent2, dComponent3);
-		//delete interpolator;
 		return (interp_value);
 
 	}
@@ -101,12 +98,8 @@ namespace ccmc
 
 
 
-
-		//std::cout << "variable: " << variable << " c0: " << positionComponent1 << " c1: " << positionComponent2 << " c2: " << positionComponent3 << std::endl;
 		interp_value = interpolator->interpolate(variable_id, positionComponent1, positionComponent2, positionComponent3,
 				dComponent1, dComponent2, dComponent3);
-		//delete interpolator;
-
 		return interp_value;
 
 	}
