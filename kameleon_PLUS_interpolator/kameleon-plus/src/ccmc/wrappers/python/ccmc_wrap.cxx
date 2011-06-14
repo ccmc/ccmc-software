@@ -3451,38 +3451,48 @@ SwigPyBuiltin_SetMetaType (PyTypeObject *type, PyTypeObject *metatype)
 #define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t swig_types[4]
 #define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t swig_types[5]
 #define SWIGTYPE_p_ccmc__Attribute swig_types[6]
-#define SWIGTYPE_p_ccmc__Fieldline swig_types[7]
-#define SWIGTYPE_p_ccmc__FileReader swig_types[8]
-#define SWIGTYPE_p_ccmc__Interpolator swig_types[9]
-#define SWIGTYPE_p_ccmc__Kameleon swig_types[10]
-#define SWIGTYPE_p_ccmc__Point3f swig_types[11]
-#define SWIGTYPE_p_ccmc__Position swig_types[12]
-#define SWIGTYPE_p_ccmc__Time swig_types[13]
-#define SWIGTYPE_p_ccmc__Tracer swig_types[14]
-#define SWIGTYPE_p_char swig_types[15]
-#define SWIGTYPE_p_difference_type swig_types[16]
-#define SWIGTYPE_p_float swig_types[17]
-#define SWIGTYPE_p_int swig_types[18]
-#define SWIGTYPE_p_long swig_types[19]
-#define SWIGTYPE_p_p_PyObject swig_types[20]
-#define SWIGTYPE_p_size_type swig_types[21]
-#define SWIGTYPE_p_std__allocatorT_ccmc__Fieldline_t swig_types[22]
-#define SWIGTYPE_p_std__allocatorT_ccmc__Point3f_t swig_types[23]
-#define SWIGTYPE_p_std__allocatorT_float_t swig_types[24]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[25]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[26]
-#define SWIGTYPE_p_std__invalid_argument swig_types[27]
-#define SWIGTYPE_p_std__string swig_types[28]
-#define SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t swig_types[29]
-#define SWIGTYPE_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t swig_types[30]
-#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[31]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[32]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[33]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[34]
-#define SWIGTYPE_p_value_type swig_types[35]
-#define SWIGTYPE_p_void swig_types[36]
-static swig_type_info *swig_types[38];
-static swig_module_info swig_module = {swig_types, 37, 0, 0, 0, 0};
+#define SWIGTYPE_p_ccmc__BATSRUS swig_types[7]
+#define SWIGTYPE_p_ccmc__BATSRUSInterpolator swig_types[8]
+#define SWIGTYPE_p_ccmc__ENLIL swig_types[9]
+#define SWIGTYPE_p_ccmc__ENLILInterpolator swig_types[10]
+#define SWIGTYPE_p_ccmc__Fieldline swig_types[11]
+#define SWIGTYPE_p_ccmc__FileReader swig_types[12]
+#define SWIGTYPE_p_ccmc__Interpolator swig_types[13]
+#define SWIGTYPE_p_ccmc__Kameleon swig_types[14]
+#define SWIGTYPE_p_ccmc__KameleonInterpolator swig_types[15]
+#define SWIGTYPE_p_ccmc__MAS swig_types[16]
+#define SWIGTYPE_p_ccmc__MASInterpolator swig_types[17]
+#define SWIGTYPE_p_ccmc__Model swig_types[18]
+#define SWIGTYPE_p_ccmc__OpenGGCM swig_types[19]
+#define SWIGTYPE_p_ccmc__OpenGGCMInterpolator swig_types[20]
+#define SWIGTYPE_p_ccmc__Point3f swig_types[21]
+#define SWIGTYPE_p_ccmc__Position swig_types[22]
+#define SWIGTYPE_p_ccmc__Time swig_types[23]
+#define SWIGTYPE_p_ccmc__Tracer swig_types[24]
+#define SWIGTYPE_p_char swig_types[25]
+#define SWIGTYPE_p_difference_type swig_types[26]
+#define SWIGTYPE_p_float swig_types[27]
+#define SWIGTYPE_p_int swig_types[28]
+#define SWIGTYPE_p_long swig_types[29]
+#define SWIGTYPE_p_p_PyObject swig_types[30]
+#define SWIGTYPE_p_size_type swig_types[31]
+#define SWIGTYPE_p_std__allocatorT_ccmc__Fieldline_t swig_types[32]
+#define SWIGTYPE_p_std__allocatorT_ccmc__Point3f_t swig_types[33]
+#define SWIGTYPE_p_std__allocatorT_float_t swig_types[34]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[35]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[36]
+#define SWIGTYPE_p_std__invalid_argument swig_types[37]
+#define SWIGTYPE_p_std__string swig_types[38]
+#define SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t swig_types[39]
+#define SWIGTYPE_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t swig_types[40]
+#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[41]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[42]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[43]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[44]
+#define SWIGTYPE_p_value_type swig_types[45]
+#define SWIGTYPE_p_void swig_types[46]
+static swig_type_info *swig_types[48];
+static swig_module_info swig_module = {swig_types, 47, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3942,13 +3952,23 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 #include <vector>
 
 
+#include <ccmc/FileReader.h>
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
-#include <ccmc/Point3f.h>
-#include <ccmc/Fieldline.h>
+#include <ccmc/KameleonInterpolator.h>
 #include <ccmc/Kameleon-Tracer.h>
+#include <ccmc/Fieldline.h>
+#include <ccmc/Point3f.h>
 #include <ccmc/Attribute.h>
-#include <ccmc/FileReader.h>
+#include <ccmc/Model.h>
+#include <ccmc/BATSRUS.h>
+#include <ccmc/ENLIL.h>
+#include <ccmc/MAS.h>
+#include <ccmc/OpenGGCM.h>
+#include <ccmc/BATSRUSInterpolator.h>
+#include <ccmc/ENLILInterpolator.h>
+#include <ccmc/MASInterpolator.h>
+#include <ccmc/OpenGGCMInterpolator.h>
 using namespace std;
 
 
@@ -10504,6 +10524,572 @@ fail:
 }
 
 
+SWIGINTERN int _wrap_new_KameleonInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  ccmc::KameleonInterpolator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_KameleonInterpolator",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_KameleonInterpolator" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (ccmc::KameleonInterpolator *)new ccmc::KameleonInterpolator(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__KameleonInterpolator, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_KameleonInterpolator_interpolate__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::KameleonInterpolator *arg1 = (ccmc::KameleonInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:KameleonInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__KameleonInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KameleonInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::KameleonInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::KameleonInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KameleonInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KameleonInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "KameleonInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "KameleonInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KameleonInterpolator_interpolate__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::KameleonInterpolator *arg1 = (ccmc::KameleonInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:KameleonInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__KameleonInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KameleonInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::KameleonInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::KameleonInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "KameleonInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KameleonInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "KameleonInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "KameleonInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "KameleonInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "KameleonInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "KameleonInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KameleonInterpolator_interpolate__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::KameleonInterpolator *arg1 = (ccmc::KameleonInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:KameleonInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__KameleonInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KameleonInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::KameleonInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::KameleonInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KameleonInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KameleonInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "KameleonInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "KameleonInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KameleonInterpolator_interpolate__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::KameleonInterpolator *arg1 = (ccmc::KameleonInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:KameleonInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__KameleonInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "KameleonInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::KameleonInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::KameleonInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "KameleonInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "KameleonInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "KameleonInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "KameleonInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "KameleonInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "KameleonInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "KameleonInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "KameleonInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_KameleonInterpolator_interpolate(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[9];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 7) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__KameleonInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_KameleonInterpolator_interpolate__SWIG_2(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__KameleonInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_KameleonInterpolator_interpolate__SWIG_0(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__KameleonInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_KameleonInterpolator_interpolate__SWIG_3(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__KameleonInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_KameleonInterpolator_interpolate__SWIG_1(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'KameleonInterpolator_interpolate'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::KameleonInterpolator::interpolate(std::string const &,float const &,float const &,float const &)\n"
+    "    ccmc::KameleonInterpolator::interpolate(std::string const &,float const &,float const &,float const &,float &,float &,float &)\n"
+    "    ccmc::KameleonInterpolator::interpolate(long const &,float const &,float const &,float const &)\n"
+    "    ccmc::KameleonInterpolator::interpolate(long const &,float const &,float const &,float const &,float &,float &,float &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_KameleonInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::KameleonInterpolator *arg1 = (ccmc::KameleonInterpolator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__KameleonInterpolator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_KameleonInterpolator" "', argument " "1"" of type '" "ccmc::KameleonInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::KameleonInterpolator * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN int _wrap_new_Tracer(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
@@ -13536,6 +14122,4257 @@ SWIGINTERN PyObject *_wrap_delete_Attribute(PyObject *self, PyObject *args) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Attribute" "', argument " "1"" of type '" "ccmc::Attribute *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Attribute * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_open",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_open" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_setModelName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_setModelName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_setModelName" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Model_setModelName" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->setModelName(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getModelName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getModelName" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (arg1)->getModelName();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_loadVariable(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_loadVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_loadVariable" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_loadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_loadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->loadVariable((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_unloadVariable(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_unloadVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_unloadVariable" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_unloadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_unloadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->unloadVariable((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_loadVariableInt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_loadVariableInt",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_loadVariableInt" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_loadVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_loadVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->loadVariableInt((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getVariableFromMap__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getVariableFromMap",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getVariableFromMap" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariableFromMap((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getIntVariableFromMap__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getIntVariableFromMap",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getIntVariableFromMap" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_getIntVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_getIntVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getIntVariableFromMap((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getVariableFromMap__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getVariableFromMap",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getVariableFromMap" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Model_getVariableFromMap" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariableFromMap(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getVariableFromMap(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__Model, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_Model_getVariableFromMap__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__Model, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Model_getVariableFromMap__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Model_getVariableFromMap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::Model::getVariableFromMap(std::string const &)\n"
+    "    ccmc::Model::getVariableFromMap(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getIntVariableFromMap__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getIntVariableFromMap",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getIntVariableFromMap" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Model_getIntVariableFromMap" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getIntVariableFromMap(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getIntVariableFromMap(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__Model, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_Model_getIntVariableFromMap__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__Model, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Model_getIntVariableFromMap__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Model_getIntVariableFromMap'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::Model::getIntVariableFromMap(std::string const &)\n"
+    "    ccmc::Model::getIntVariableFromMap(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getLoadedVariables(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< std::vector< std::string,std::allocator< std::string > > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getLoadedVariables" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (arg1)->getLoadedVariables();
+  resultobj = SWIG_NewPointerObj((new std::vector< std::string,std::allocator< std::string > >(static_cast< const std::vector< std::string,std::allocator< std::string > >& >(result))), SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_setMissingValue(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_setMissingValue",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_setMissingValue" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Model_setMissingValue" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  (arg1)->setMissingValue(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getMissingValue(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getMissingValue" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (float)(arg1)->getMissingValue();
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getConversionFactorToSI(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getConversionFactorToSI",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getConversionFactorToSI" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_getConversionFactorToSI" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_getConversionFactorToSI" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (float)(arg1)->getConversionFactorToSI((std::string const &)*arg2);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getNativeUnit(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getNativeUnit",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getNativeUnit" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_getNativeUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_getNativeUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getNativeUnit((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_getSIUnit(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Model_getSIUnit",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_getSIUnit" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Model_getSIUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Model_getSIUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getSIUnit((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_close(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_close" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (long)(arg1)->close();
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Model_createNewInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ccmc::Interpolator *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Model_createNewInterpolator" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (ccmc::Interpolator *)(arg1)->createNewInterpolator();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Model(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Model, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Model" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_OpenGGCM(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::OpenGGCM *)new ccmc::OpenGGCM();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__OpenGGCM, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_open",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_open" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCM_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCM_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_createNewInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ccmc::Interpolator *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_createNewInterpolator" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  result = (ccmc::Interpolator *)(arg1)->createNewInterpolator();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_OpenGGCM(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OpenGGCM" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_BATSRUS(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUS *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::BATSRUS *)new ccmc::BATSRUS();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__BATSRUS, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_BATSRUS_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUS *arg1 = (ccmc::BATSRUS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:BATSRUS_open",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BATSRUS_open" "', argument " "1"" of type '" "ccmc::BATSRUS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BATSRUS_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUS_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BATSRUS_createNewInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUS *arg1 = (ccmc::BATSRUS *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ccmc::Interpolator *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BATSRUS_createNewInterpolator" "', argument " "1"" of type '" "ccmc::BATSRUS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUS * >(argp1);
+  result = (ccmc::Interpolator *)(arg1)->createNewInterpolator();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_BATSRUS(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUS *arg1 = (ccmc::BATSRUS *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUS, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BATSRUS" "', argument " "1"" of type '" "ccmc::BATSRUS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUS * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_ENLIL(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLIL *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::ENLIL *)new ccmc::ENLIL();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__ENLIL, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLIL_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLIL *arg1 = (ccmc::ENLIL *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ENLIL_open",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLIL, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLIL_open" "', argument " "1"" of type '" "ccmc::ENLIL *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLIL * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ENLIL_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLIL_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLIL_createNewInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLIL *arg1 = (ccmc::ENLIL *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ccmc::Interpolator *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLIL, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLIL_createNewInterpolator" "', argument " "1"" of type '" "ccmc::ENLIL *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLIL * >(argp1);
+  result = (ccmc::Interpolator *)(arg1)->createNewInterpolator();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLIL_getChangeSignFlag(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLIL *arg1 = (ccmc::ENLIL *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ENLIL_getChangeSignFlag",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLIL, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLIL_getChangeSignFlag" "', argument " "1"" of type '" "ccmc::ENLIL *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLIL * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ENLIL_getChangeSignFlag" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (bool)(arg1)->getChangeSignFlag(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLIL_getChangeSignFlagByID(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLIL *arg1 = (ccmc::ENLIL *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ENLIL_getChangeSignFlagByID",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLIL, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLIL_getChangeSignFlagByID" "', argument " "1"" of type '" "ccmc::ENLIL *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLIL * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ENLIL_getChangeSignFlagByID" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (bool)(arg1)->getChangeSignFlagByID(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ENLIL(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLIL *arg1 = (ccmc::ENLIL *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLIL, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ENLIL" "', argument " "1"" of type '" "ccmc::ENLIL *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLIL * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_MAS(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::MAS *)new ccmc::MAS();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__MAS, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_open",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_open" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MAS_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MAS_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_createNewInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  ccmc::Interpolator *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_createNewInterpolator" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  result = (ccmc::Interpolator *)(arg1)->createNewInterpolator();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getRPosGrid__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getRPosGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getRPosGrid" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MAS_getRPosGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MAS_getRPosGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getRPosGrid((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getRPosGrid__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getRPosGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getRPosGrid" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MAS_getRPosGrid" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getRPosGrid(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getRPosGrid(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MAS_getRPosGrid__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MAS_getRPosGrid__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MAS_getRPosGrid'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::MAS::getRPosGrid(std::string const &)\n"
+    "    ccmc::MAS::getRPosGrid(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getRPosGridName__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getRPosGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getRPosGridName" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MAS_getRPosGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MAS_getRPosGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getRPosGridName((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getRPosGridName__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getRPosGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getRPosGridName" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MAS_getRPosGridName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getRPosGridName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getRPosGridName(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MAS_getRPosGridName__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MAS_getRPosGridName__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MAS_getRPosGridName'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::MAS::getRPosGridName(std::string const &)\n"
+    "    ccmc::MAS::getRPosGridName(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLatPosGrid__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getLatPosGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getLatPosGrid" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MAS_getLatPosGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MAS_getLatPosGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getLatPosGrid((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLatPosGrid__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getLatPosGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getLatPosGrid" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MAS_getLatPosGrid" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getLatPosGrid(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLatPosGrid(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MAS_getLatPosGrid__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MAS_getLatPosGrid__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MAS_getLatPosGrid'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::MAS::getLatPosGrid(std::string const &)\n"
+    "    ccmc::MAS::getLatPosGrid(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLatPosGridName__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getLatPosGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getLatPosGridName" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MAS_getLatPosGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MAS_getLatPosGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getLatPosGridName((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLatPosGridName__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getLatPosGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getLatPosGridName" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MAS_getLatPosGridName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getLatPosGridName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLatPosGridName(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MAS_getLatPosGridName__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MAS_getLatPosGridName__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MAS_getLatPosGridName'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::MAS::getLatPosGridName(std::string const &)\n"
+    "    ccmc::MAS::getLatPosGridName(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLonPosGrid(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getLonPosGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getLonPosGrid" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MAS_getLonPosGrid" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getLonPosGrid(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getlonPosGrid(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getlonPosGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getlonPosGrid" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MAS_getlonPosGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MAS_getlonPosGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getlonPosGrid((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLonPosGridName__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getLonPosGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getLonPosGridName" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MAS_getLonPosGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MAS_getLonPosGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getLonPosGridName((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLonPosGridName__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getLonPosGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getLonPosGridName" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MAS_getLonPosGridName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getLonPosGridName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getLonPosGridName(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MAS_getLonPosGridName__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MAS_getLonPosGridName__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MAS_getLonPosGridName'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::MAS::getLonPosGridName(std::string const &)\n"
+    "    ccmc::MAS::getLonPosGridName(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getChangeSignFlag__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getChangeSignFlag",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getChangeSignFlag" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "MAS_getChangeSignFlag" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (bool)(arg1)->getChangeSignFlag(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getChangeSignFlag__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:MAS_getChangeSignFlag",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MAS_getChangeSignFlag" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MAS_getChangeSignFlag" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (bool)(arg1)->getChangeSignFlag(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MAS_getChangeSignFlag(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_MAS_getChangeSignFlag__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MAS, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_MAS_getChangeSignFlag__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MAS_getChangeSignFlag'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::MAS::getChangeSignFlag(std::string)\n"
+    "    ccmc::MAS::getChangeSignFlag(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MAS(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MAS *arg1 = (ccmc::MAS *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MAS, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MAS" "', argument " "1"" of type '" "ccmc::MAS *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MAS * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_BATSRUSInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  ccmc::BATSRUSInterpolator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_BATSRUSInterpolator",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BATSRUSInterpolator" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (ccmc::BATSRUSInterpolator *)new ccmc::BATSRUSInterpolator(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__BATSRUSInterpolator, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_BATSRUSInterpolator_interpolate__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUSInterpolator *arg1 = (ccmc::BATSRUSInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:BATSRUSInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::BATSRUSInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUSInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BATSRUSInterpolator_interpolate__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUSInterpolator *arg1 = (ccmc::BATSRUSInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:BATSRUSInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::BATSRUSInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUSInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BATSRUSInterpolator_interpolate__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUSInterpolator *arg1 = (ccmc::BATSRUSInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:BATSRUSInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::BATSRUSInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUSInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BATSRUSInterpolator_interpolate__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUSInterpolator *arg1 = (ccmc::BATSRUSInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:BATSRUSInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::BATSRUSInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUSInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "BATSRUSInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BATSRUSInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BATSRUSInterpolator_interpolate(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[9];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 7) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_BATSRUSInterpolator_interpolate__SWIG_2(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_BATSRUSInterpolator_interpolate__SWIG_0(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_BATSRUSInterpolator_interpolate__SWIG_3(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__BATSRUSInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_BATSRUSInterpolator_interpolate__SWIG_1(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BATSRUSInterpolator_interpolate'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::BATSRUSInterpolator::interpolate(std::string const &,float const &,float const &,float const &)\n"
+    "    ccmc::BATSRUSInterpolator::interpolate(std::string const &,float const &,float const &,float const &,float &,float &,float &)\n"
+    "    ccmc::BATSRUSInterpolator::interpolate(long const &,float const &,float const &,float const &)\n"
+    "    ccmc::BATSRUSInterpolator::interpolate(long const &,float const &,float const &,float const &,float &,float &,float &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_BATSRUSInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::BATSRUSInterpolator *arg1 = (ccmc::BATSRUSInterpolator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__BATSRUSInterpolator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BATSRUSInterpolator" "', argument " "1"" of type '" "ccmc::BATSRUSInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::BATSRUSInterpolator * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_ENLILInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  ccmc::ENLILInterpolator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_ENLILInterpolator",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ENLILInterpolator" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (ccmc::ENLILInterpolator *)new ccmc::ENLILInterpolator(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__ENLILInterpolator, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLILInterpolator_interpolate__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLILInterpolator *arg1 = (ccmc::ENLILInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ENLILInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLILInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLILInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::ENLILInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLILInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ENLILInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ENLILInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ENLILInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ENLILInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLILInterpolator_interpolate__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLILInterpolator *arg1 = (ccmc::ENLILInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:ENLILInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLILInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLILInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::ENLILInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLILInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ENLILInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ENLILInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ENLILInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ENLILInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "ENLILInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ENLILInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ENLILInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLILInterpolator_interpolate__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLILInterpolator *arg1 = (ccmc::ENLILInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ENLILInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLILInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLILInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::ENLILInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLILInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ENLILInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ENLILInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ENLILInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ENLILInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLILInterpolator_interpolate__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLILInterpolator *arg1 = (ccmc::ENLILInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:ENLILInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLILInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ENLILInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::ENLILInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLILInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ENLILInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ENLILInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ENLILInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ENLILInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "ENLILInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "ENLILInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "ENLILInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ENLILInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ENLILInterpolator_interpolate(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[9];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 7) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__ENLILInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_ENLILInterpolator_interpolate__SWIG_2(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__ENLILInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_ENLILInterpolator_interpolate__SWIG_0(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__ENLILInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_ENLILInterpolator_interpolate__SWIG_3(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__ENLILInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_ENLILInterpolator_interpolate__SWIG_1(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ENLILInterpolator_interpolate'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::ENLILInterpolator::interpolate(std::string const &,float const &,float const &,float const &)\n"
+    "    ccmc::ENLILInterpolator::interpolate(std::string const &,float const &,float const &,float const &,float &,float &,float &)\n"
+    "    ccmc::ENLILInterpolator::interpolate(long const &,float const &,float const &,float const &)\n"
+    "    ccmc::ENLILInterpolator::interpolate(long const &,float const &,float const &,float const &,float &,float &,float &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ENLILInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::ENLILInterpolator *arg1 = (ccmc::ENLILInterpolator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__ENLILInterpolator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ENLILInterpolator" "', argument " "1"" of type '" "ccmc::ENLILInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::ENLILInterpolator * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_MASInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  ccmc::MASInterpolator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_MASInterpolator",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MASInterpolator" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (ccmc::MASInterpolator *)new ccmc::MASInterpolator(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__MASInterpolator, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_MASInterpolator_interpolate__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MASInterpolator *arg1 = (ccmc::MASInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:MASInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MASInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MASInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::MASInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MASInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MASInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MASInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MASInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MASInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MASInterpolator_interpolate__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MASInterpolator *arg1 = (ccmc::MASInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:MASInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MASInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MASInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::MASInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MASInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MASInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MASInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MASInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MASInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "MASInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "MASInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "MASInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MASInterpolator_interpolate__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MASInterpolator *arg1 = (ccmc::MASInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:MASInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MASInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MASInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::MASInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MASInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MASInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MASInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MASInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MASInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MASInterpolator_interpolate__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MASInterpolator *arg1 = (ccmc::MASInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:MASInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MASInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MASInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::MASInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MASInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MASInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MASInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MASInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MASInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "MASInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "MASInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "MASInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MASInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MASInterpolator_interpolate(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[9];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 7) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MASInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_MASInterpolator_interpolate__SWIG_2(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MASInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_MASInterpolator_interpolate__SWIG_0(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MASInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_MASInterpolator_interpolate__SWIG_3(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__MASInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_MASInterpolator_interpolate__SWIG_1(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MASInterpolator_interpolate'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::MASInterpolator::interpolate(std::string const &,float const &,float const &,float const &)\n"
+    "    ccmc::MASInterpolator::interpolate(std::string const &,float const &,float const &,float const &,float &,float &,float &)\n"
+    "    ccmc::MASInterpolator::interpolate(long const &,float const &,float const &,float const &)\n"
+    "    ccmc::MASInterpolator::interpolate(long const &,float const &,float const &,float const &,float &,float &,float &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MASInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::MASInterpolator *arg1 = (ccmc::MASInterpolator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__MASInterpolator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MASInterpolator" "', argument " "1"" of type '" "ccmc::MASInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::MASInterpolator * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_OpenGGCMInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Model *arg1 = (ccmc::Model *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj1 = 0 ;
+  ccmc::OpenGGCMInterpolator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_OpenGGCMInterpolator",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj1, &argp1,SWIGTYPE_p_ccmc__Model, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OpenGGCMInterpolator" "', argument " "1"" of type '" "ccmc::Model *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Model * >(argp1);
+  result = (ccmc::OpenGGCMInterpolator *)new ccmc::OpenGGCMInterpolator(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__OpenGGCMInterpolator, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_interpolate__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCMInterpolator *arg1 = (ccmc::OpenGGCMInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:OpenGGCMInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_interpolate__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCMInterpolator *arg1 = (ccmc::OpenGGCMInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:OpenGGCMInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((std::string const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_interpolate__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCMInterpolator *arg1 = (ccmc::OpenGGCMInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:OpenGGCMInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_interpolate__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCMInterpolator *arg1 = (ccmc::OpenGGCMInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  float *arg3 = 0 ;
+  float *arg4 = 0 ;
+  float *arg5 = 0 ;
+  float *arg6 = 0 ;
+  float *arg7 = 0 ;
+  float *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  float temp3 ;
+  float val3 ;
+  int ecode3 = 0 ;
+  float temp4 ;
+  float val4 ;
+  int ecode4 = 0 ;
+  float temp5 ;
+  float val5 ;
+  int ecode5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:OpenGGCMInterpolator_interpolate",&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  ecode3 = SWIG_AsVal_float(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "3"" of type '" "float""'");
+  } 
+  temp3 = static_cast< float >(val3);
+  arg3 = &temp3;
+  ecode4 = SWIG_AsVal_float(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "4"" of type '" "float""'");
+  } 
+  temp4 = static_cast< float >(val4);
+  arg4 = &temp4;
+  ecode5 = SWIG_AsVal_float(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "5"" of type '" "float""'");
+  } 
+  temp5 = static_cast< float >(val5);
+  arg5 = &temp5;
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "6"" of type '" "float &""'"); 
+  }
+  arg6 = reinterpret_cast< float * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "7"" of type '" "float &""'"); 
+  }
+  arg7 = reinterpret_cast< float * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_float,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_interpolate" "', argument " "8"" of type '" "float &""'"); 
+  }
+  arg8 = reinterpret_cast< float * >(argp8);
+  result = (float)(arg1)->interpolate((long const &)*arg2,(float const &)*arg3,(float const &)*arg4,(float const &)*arg5,*arg6,*arg7,*arg8);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_interpolate(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[9];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 7) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_OpenGGCMInterpolator_interpolate__SWIG_2(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_OpenGGCMInterpolator_interpolate__SWIG_0(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_OpenGGCMInterpolator_interpolate__SWIG_3(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_float(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_float(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_float(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_float, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_float, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  void *vptr = 0;
+                  int res = SWIG_ConvertPtr(argv[7], &vptr, SWIGTYPE_p_float, 0);
+                  _v = SWIG_CheckState(res);
+                  if (_v) {
+                    return _wrap_OpenGGCMInterpolator_interpolate__SWIG_1(self, args);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCMInterpolator_interpolate'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCMInterpolator::interpolate(std::string const &,float const &,float const &,float const &)\n"
+    "    ccmc::OpenGGCMInterpolator::interpolate(std::string const &,float const &,float const &,float const &,float &,float &,float &)\n"
+    "    ccmc::OpenGGCMInterpolator::interpolate(long const &,float const &,float const &,float const &)\n"
+    "    ccmc::OpenGGCMInterpolator::interpolate(long const &,float const &,float const &,float const &,float &,float &,float &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_getConversionFactor__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCMInterpolator *arg1 = (ccmc::OpenGGCMInterpolator *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCMInterpolator_getConversionFactor",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCMInterpolator_getConversionFactor" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCMInterpolator_getConversionFactor" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCMInterpolator_getConversionFactor" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (float)(arg1)->getConversionFactor((std::string const &)*arg2);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_getConversionFactor__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCMInterpolator *arg1 = (ccmc::OpenGGCMInterpolator *) 0 ;
+  long *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long temp2 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCMInterpolator_getConversionFactor",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCMInterpolator_getConversionFactor" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCMInterpolator_getConversionFactor" "', argument " "2"" of type '" "long""'");
+  } 
+  temp2 = static_cast< long >(val2);
+  arg2 = &temp2;
+  result = (float)(arg1)->getConversionFactor((long const &)*arg2);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCMInterpolator_getConversionFactor(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_OpenGGCMInterpolator_getConversionFactor__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCMInterpolator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OpenGGCMInterpolator_getConversionFactor__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCMInterpolator_getConversionFactor'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCMInterpolator::getConversionFactor(std::string const &)\n"
+    "    ccmc::OpenGGCMInterpolator::getConversionFactor(long const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_OpenGGCMInterpolator(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCMInterpolator *arg1 = (ccmc::OpenGGCMInterpolator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCMInterpolator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OpenGGCMInterpolator" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24209,6 +29046,198 @@ static PyHeapTypeObject SwigPyBuiltin__ccmc__Interpolator_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__Interpolator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__Interpolator_type};
 
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_KameleonInterpolator)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__KameleonInterpolator_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__KameleonInterpolator_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__KameleonInterpolator_methods[] = {
+  { "interpolate", (PyCFunction) _wrap_KameleonInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__KameleonInterpolator_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "KameleonInterpolator",                   /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_KameleonInterpolator_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__KameleonInterpolator_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__KameleonInterpolator_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__KameleonInterpolator_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__KameleonInterpolator_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::KameleonInterpolator",             /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__KameleonInterpolator_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__KameleonInterpolator_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__KameleonInterpolator_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_KameleonInterpolator, /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__KameleonInterpolator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__KameleonInterpolator_type};
+
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Tracer)
 SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__Tracer_getset[] = {
     {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
@@ -25038,6 +30067,1764 @@ static PyHeapTypeObject SwigPyBuiltin__ccmc__Attribute_type = {
 };
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__Attribute_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__Attribute_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Model)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__Model_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__Model_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Model_methods[] = {
+  { "open", (PyCFunction) _wrap_Model_open, METH_VARARGS, (char*) "" },
+  { "setModelName", (PyCFunction) _wrap_Model_setModelName, METH_VARARGS, (char*) "" },
+  { "getModelName", (PyCFunction) _wrap_Model_getModelName, METH_VARARGS, (char*) "" },
+  { "loadVariable", (PyCFunction) _wrap_Model_loadVariable, METH_VARARGS, (char*) "" },
+  { "unloadVariable", (PyCFunction) _wrap_Model_unloadVariable, METH_VARARGS, (char*) "" },
+  { "loadVariableInt", (PyCFunction) _wrap_Model_loadVariableInt, METH_VARARGS, (char*) "" },
+  { "getVariableFromMap", (PyCFunction) _wrap_Model_getVariableFromMap, METH_VARARGS, (char*) "" },
+  { "getIntVariableFromMap", (PyCFunction) _wrap_Model_getIntVariableFromMap, METH_VARARGS, (char*) "" },
+  { "getLoadedVariables", (PyCFunction) _wrap_Model_getLoadedVariables, METH_VARARGS, (char*) "" },
+  { "setMissingValue", (PyCFunction) _wrap_Model_setMissingValue, METH_VARARGS, (char*) "" },
+  { "getMissingValue", (PyCFunction) _wrap_Model_getMissingValue, METH_VARARGS, (char*) "" },
+  { "getConversionFactorToSI", (PyCFunction) _wrap_Model_getConversionFactorToSI, METH_VARARGS, (char*) "" },
+  { "getNativeUnit", (PyCFunction) _wrap_Model_getNativeUnit, METH_VARARGS, (char*) "" },
+  { "getSIUnit", (PyCFunction) _wrap_Model_getSIUnit, METH_VARARGS, (char*) "" },
+  { "close", (PyCFunction) _wrap_Model_close, METH_VARARGS, (char*) "" },
+  { "createNewInterpolator", (PyCFunction) _wrap_Model_createNewInterpolator, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__Model_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "Model",                                  /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_Model_closure,  /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__Model_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__Model_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__Model_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__Model_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::Model",                            /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__Model_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__Model_methods,       /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__Model_getset,        /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) SwigPyBuiltin_BadInit,         /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__Model_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__Model_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_OpenGGCM)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__OpenGGCM_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__OpenGGCM_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__OpenGGCM_methods[] = {
+  { "open", (PyCFunction) _wrap_OpenGGCM_open, METH_VARARGS, (char*) "" },
+  { "createNewInterpolator", (PyCFunction) _wrap_OpenGGCM_createNewInterpolator, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__OpenGGCM_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "OpenGGCM",                               /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_OpenGGCM_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__OpenGGCM_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__OpenGGCM_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__OpenGGCM_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__OpenGGCM_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::OpenGGCM",                         /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__OpenGGCM_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__OpenGGCM_methods,    /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__OpenGGCM_getset,     /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_OpenGGCM,            /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__OpenGGCM_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__OpenGGCM_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_BATSRUS)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__BATSRUS_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__BATSRUS_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__BATSRUS_methods[] = {
+  { "open", (PyCFunction) _wrap_BATSRUS_open, METH_VARARGS, (char*) "" },
+  { "createNewInterpolator", (PyCFunction) _wrap_BATSRUS_createNewInterpolator, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__BATSRUS_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "BATSRUS",                                /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_BATSRUS_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__BATSRUS_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__BATSRUS_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__BATSRUS_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__BATSRUS_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::BATSRUS",                          /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__BATSRUS_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__BATSRUS_methods,     /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__BATSRUS_getset,      /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_BATSRUS,             /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__BATSRUS_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__BATSRUS_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_ENLIL)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__ENLIL_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__ENLIL_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__ENLIL_methods[] = {
+  { "open", (PyCFunction) _wrap_ENLIL_open, METH_VARARGS, (char*) "" },
+  { "createNewInterpolator", (PyCFunction) _wrap_ENLIL_createNewInterpolator, METH_VARARGS, (char*) "" },
+  { "getChangeSignFlag", (PyCFunction) _wrap_ENLIL_getChangeSignFlag, METH_VARARGS, (char*) "" },
+  { "getChangeSignFlagByID", (PyCFunction) _wrap_ENLIL_getChangeSignFlagByID, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__ENLIL_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "ENLIL",                                  /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_ENLIL_closure,  /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__ENLIL_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__ENLIL_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__ENLIL_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__ENLIL_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::ENLIL",                            /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__ENLIL_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__ENLIL_methods,       /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__ENLIL_getset,        /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_ENLIL,               /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__ENLIL_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__ENLIL_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_MAS)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__MAS_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__MAS_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__MAS_methods[] = {
+  { "open", (PyCFunction) _wrap_MAS_open, METH_VARARGS, (char*) "" },
+  { "createNewInterpolator", (PyCFunction) _wrap_MAS_createNewInterpolator, METH_VARARGS, (char*) "" },
+  { "getRPosGrid", (PyCFunction) _wrap_MAS_getRPosGrid, METH_VARARGS, (char*) "" },
+  { "getRPosGridName", (PyCFunction) _wrap_MAS_getRPosGridName, METH_VARARGS, (char*) "" },
+  { "getLatPosGrid", (PyCFunction) _wrap_MAS_getLatPosGrid, METH_VARARGS, (char*) "" },
+  { "getLatPosGridName", (PyCFunction) _wrap_MAS_getLatPosGridName, METH_VARARGS, (char*) "" },
+  { "getLonPosGrid", (PyCFunction) _wrap_MAS_getLonPosGrid, METH_VARARGS, (char*) "" },
+  { "getlonPosGrid", (PyCFunction) _wrap_MAS_getlonPosGrid, METH_VARARGS, (char*) "" },
+  { "getLonPosGridName", (PyCFunction) _wrap_MAS_getLonPosGridName, METH_VARARGS, (char*) "" },
+  { "getChangeSignFlag", (PyCFunction) _wrap_MAS_getChangeSignFlag, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__MAS_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "MAS",                                    /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_MAS_closure,    /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__MAS_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__MAS_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__MAS_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__MAS_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::MAS",                              /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__MAS_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__MAS_methods,         /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__MAS_getset,          /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_MAS,                 /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__MAS_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__MAS_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_BATSRUSInterpolator)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__BATSRUSInterpolator_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__BATSRUSInterpolator_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__BATSRUSInterpolator_methods[] = {
+  { "interpolate", (PyCFunction) _wrap_BATSRUSInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__BATSRUSInterpolator_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "BATSRUSInterpolator",                    /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_BATSRUSInterpolator_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__BATSRUSInterpolator_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__BATSRUSInterpolator_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__BATSRUSInterpolator_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__BATSRUSInterpolator_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::BATSRUSInterpolator",              /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__BATSRUSInterpolator_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__BATSRUSInterpolator_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__BATSRUSInterpolator_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_BATSRUSInterpolator, /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__BATSRUSInterpolator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__BATSRUSInterpolator_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_ENLILInterpolator)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__ENLILInterpolator_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__ENLILInterpolator_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__ENLILInterpolator_methods[] = {
+  { "interpolate", (PyCFunction) _wrap_ENLILInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__ENLILInterpolator_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "ENLILInterpolator",                      /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_ENLILInterpolator_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__ENLILInterpolator_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__ENLILInterpolator_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__ENLILInterpolator_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__ENLILInterpolator_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::ENLILInterpolator",                /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__ENLILInterpolator_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__ENLILInterpolator_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__ENLILInterpolator_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_ENLILInterpolator,   /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__ENLILInterpolator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__ENLILInterpolator_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_MASInterpolator)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__MASInterpolator_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__MASInterpolator_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__MASInterpolator_methods[] = {
+  { "interpolate", (PyCFunction) _wrap_MASInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__MASInterpolator_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "MASInterpolator",                        /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_MASInterpolator_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__MASInterpolator_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__MASInterpolator_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__MASInterpolator_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__MASInterpolator_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::MASInterpolator",                  /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__MASInterpolator_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__MASInterpolator_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__MASInterpolator_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_MASInterpolator,     /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__MASInterpolator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__MASInterpolator_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_OpenGGCMInterpolator)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__OpenGGCMInterpolator_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__OpenGGCMInterpolator_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__OpenGGCMInterpolator_methods[] = {
+  { "interpolate", (PyCFunction) _wrap_OpenGGCMInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { "getConversionFactor", (PyCFunction) _wrap_OpenGGCMInterpolator_getConversionFactor, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "OpenGGCMInterpolator",                   /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_OpenGGCMInterpolator_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::OpenGGCMInterpolator",             /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__OpenGGCMInterpolator_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__OpenGGCMInterpolator_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__OpenGGCMInterpolator_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_OpenGGCMInterpolator, /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__OpenGGCMInterpolator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type};
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_vector_point3f)
 SWIGINTERN PyGetSetDef SwigPyBuiltin__vectorT_Point3f_t_getset[] = {
@@ -26152,6 +32939,48 @@ SWIGINTERN SwigPyClientData SwigPyBuiltin__vectorT_int_t_clientdata = {0, 0, 0, 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static void *_p_ccmc__BATSRUSTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::BATSRUS *) x));
+}
+static void *_p_ccmc__ModelTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::FileReader *)  ((ccmc::Model *) x));
+}
+static void *_p_ccmc__OpenGGCMTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::OpenGGCM *) x));
+}
+static void *_p_ccmc__MASTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::MAS *) x));
+}
+static void *_p_ccmc__ENLILTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::ENLIL *) x));
+}
+static void *_p_ccmc__KameleonInterpolatorTo_p_ccmc__Interpolator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Interpolator *)  ((ccmc::KameleonInterpolator *) x));
+}
+static void *_p_ccmc__BATSRUSInterpolatorTo_p_ccmc__Interpolator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Interpolator *)  ((ccmc::BATSRUSInterpolator *) x));
+}
+static void *_p_ccmc__ENLILInterpolatorTo_p_ccmc__Interpolator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Interpolator *)  ((ccmc::ENLILInterpolator *) x));
+}
+static void *_p_ccmc__MASInterpolatorTo_p_ccmc__Interpolator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Interpolator *)  ((ccmc::MASInterpolator *) x));
+}
+static void *_p_ccmc__OpenGGCMInterpolatorTo_p_ccmc__Interpolator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Interpolator *)  ((ccmc::OpenGGCMInterpolator *) x));
+}
+static void *_p_ccmc__BATSRUSTo_p_ccmc__Model(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Model *)  ((ccmc::BATSRUS *) x));
+}
+static void *_p_ccmc__OpenGGCMTo_p_ccmc__Model(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Model *)  ((ccmc::OpenGGCM *) x));
+}
+static void *_p_ccmc__MASTo_p_ccmc__Model(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Model *)  ((ccmc::MAS *) x));
+}
+static void *_p_ccmc__ENLILTo_p_ccmc__Model(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::Model *)  ((ccmc::ENLIL *) x));
+}
 static swig_type_info _swigt__p_SwigPyObject = {"_p_SwigPyObject", "SwigPyObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__FileReader_p_t = {"_p_boost__unordered_mapT_int_ccmc__FileReader_p_t", "boost::unordered_map< int,ccmc::FileReader * > *", 0, 0, (void*)0, 0};
@@ -26159,10 +32988,20 @@ static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t
 static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t = {"_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t", "boost::unordered_map< int,ccmc::Kameleon * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t = {"_p_boost__unordered_mapT_int_ccmc__Tracer_p_t", "boost::unordered_map< int,ccmc::Tracer * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ccmc__Attribute = {"_p_ccmc__Attribute", "Attribute *|ccmc::Attribute *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Attribute_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__BATSRUS = {"_p_ccmc__BATSRUS", "ccmc::BATSRUS *", 0, 0, (void*)&SwigPyBuiltin__ccmc__BATSRUS_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__BATSRUSInterpolator = {"_p_ccmc__BATSRUSInterpolator", "ccmc::BATSRUSInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__BATSRUSInterpolator_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__ENLIL = {"_p_ccmc__ENLIL", "ccmc::ENLIL *", 0, 0, (void*)&SwigPyBuiltin__ccmc__ENLIL_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__ENLILInterpolator = {"_p_ccmc__ENLILInterpolator", "ccmc::ENLILInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__ENLILInterpolator_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Fieldline = {"_p_ccmc__Fieldline", "vector< ccmc::Fieldline >::value_type *|ccmc::Fieldline *|Fieldline *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Fieldline_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__FileReader = {"_p_ccmc__FileReader", "ccmc::FileReader *", 0, 0, (void*)&SwigPyBuiltin__ccmc__FileReader_clientdata, 0};
-static swig_type_info _swigt__p_ccmc__Interpolator = {"_p_ccmc__Interpolator", "Interpolator *|ccmc::Interpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Interpolator_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__Interpolator = {"_p_ccmc__Interpolator", "ccmc::Interpolator *|Interpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Interpolator_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Kameleon = {"_p_ccmc__Kameleon", "ccmc::Kameleon *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Kameleon_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__KameleonInterpolator = {"_p_ccmc__KameleonInterpolator", "ccmc::KameleonInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__KameleonInterpolator_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__MAS = {"_p_ccmc__MAS", "ccmc::MAS *", 0, 0, (void*)&SwigPyBuiltin__ccmc__MAS_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__MASInterpolator = {"_p_ccmc__MASInterpolator", "ccmc::MASInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__MASInterpolator_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__Model = {"_p_ccmc__Model", "ccmc::Model *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Model_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__OpenGGCM = {"_p_ccmc__OpenGGCM", "ccmc::OpenGGCM *", 0, 0, (void*)&SwigPyBuiltin__ccmc__OpenGGCM_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__OpenGGCMInterpolator = {"_p_ccmc__OpenGGCMInterpolator", "ccmc::OpenGGCMInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__OpenGGCMInterpolator_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Point3f = {"_p_ccmc__Point3f", "ccmc::Point3f *|Point3f *|vector< ccmc::Point3f >::value_type *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Point3f_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Position = {"_p_ccmc__Position", "ccmc::Position *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Position_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Time = {"_p_ccmc__Time", "ccmc::Time *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Time_clientdata, 0};
@@ -26198,10 +33037,20 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,
   &_swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t,
   &_swigt__p_ccmc__Attribute,
+  &_swigt__p_ccmc__BATSRUS,
+  &_swigt__p_ccmc__BATSRUSInterpolator,
+  &_swigt__p_ccmc__ENLIL,
+  &_swigt__p_ccmc__ENLILInterpolator,
   &_swigt__p_ccmc__Fieldline,
   &_swigt__p_ccmc__FileReader,
   &_swigt__p_ccmc__Interpolator,
   &_swigt__p_ccmc__Kameleon,
+  &_swigt__p_ccmc__KameleonInterpolator,
+  &_swigt__p_ccmc__MAS,
+  &_swigt__p_ccmc__MASInterpolator,
+  &_swigt__p_ccmc__Model,
+  &_swigt__p_ccmc__OpenGGCM,
+  &_swigt__p_ccmc__OpenGGCMInterpolator,
   &_swigt__p_ccmc__Point3f,
   &_swigt__p_ccmc__Position,
   &_swigt__p_ccmc__Time,
@@ -26237,10 +33086,20 @@ static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t
 static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Tracer_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Attribute[] = {  {&_swigt__p_ccmc__Attribute, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__BATSRUS[] = {  {&_swigt__p_ccmc__BATSRUS, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__BATSRUSInterpolator[] = {  {&_swigt__p_ccmc__BATSRUSInterpolator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__ENLIL[] = {  {&_swigt__p_ccmc__ENLIL, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__ENLILInterpolator[] = {  {&_swigt__p_ccmc__ENLILInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Fieldline[] = {  {&_swigt__p_ccmc__Fieldline, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ccmc__FileReader[] = {  {&_swigt__p_ccmc__FileReader, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ccmc__Interpolator[] = {  {&_swigt__p_ccmc__Interpolator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__FileReader[] = {  {&_swigt__p_ccmc__BATSRUS, _p_ccmc__BATSRUSTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__OpenGGCM, _p_ccmc__OpenGGCMTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__Model, _p_ccmc__ModelTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__FileReader, 0, 0, 0},  {&_swigt__p_ccmc__ENLIL, _p_ccmc__ENLILTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__MAS, _p_ccmc__MASTo_p_ccmc__FileReader, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__Interpolator[] = {  {&_swigt__p_ccmc__Interpolator, 0, 0, 0},  {&_swigt__p_ccmc__KameleonInterpolator, _p_ccmc__KameleonInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__BATSRUSInterpolator, _p_ccmc__BATSRUSInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__ENLILInterpolator, _p_ccmc__ENLILInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__MASInterpolator, _p_ccmc__MASInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__OpenGGCMInterpolator, _p_ccmc__OpenGGCMInterpolatorTo_p_ccmc__Interpolator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Kameleon[] = {  {&_swigt__p_ccmc__Kameleon, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__KameleonInterpolator[] = {  {&_swigt__p_ccmc__KameleonInterpolator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__MAS[] = {  {&_swigt__p_ccmc__MAS, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__MASInterpolator[] = {  {&_swigt__p_ccmc__MASInterpolator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__Model[] = {  {&_swigt__p_ccmc__BATSRUS, _p_ccmc__BATSRUSTo_p_ccmc__Model, 0, 0},  {&_swigt__p_ccmc__OpenGGCM, _p_ccmc__OpenGGCMTo_p_ccmc__Model, 0, 0},  {&_swigt__p_ccmc__Model, 0, 0, 0},  {&_swigt__p_ccmc__ENLIL, _p_ccmc__ENLILTo_p_ccmc__Model, 0, 0},  {&_swigt__p_ccmc__MAS, _p_ccmc__MASTo_p_ccmc__Model, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__OpenGGCM[] = {  {&_swigt__p_ccmc__OpenGGCM, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__OpenGGCMInterpolator[] = {  {&_swigt__p_ccmc__OpenGGCMInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Point3f[] = {  {&_swigt__p_ccmc__Point3f, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Position[] = {  {&_swigt__p_ccmc__Position, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Time[] = {  {&_swigt__p_ccmc__Time, 0, 0, 0},{0, 0, 0, 0}};
@@ -26276,10 +33135,20 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,
   _swigc__p_boost__unordered_mapT_int_ccmc__Tracer_p_t,
   _swigc__p_ccmc__Attribute,
+  _swigc__p_ccmc__BATSRUS,
+  _swigc__p_ccmc__BATSRUSInterpolator,
+  _swigc__p_ccmc__ENLIL,
+  _swigc__p_ccmc__ENLILInterpolator,
   _swigc__p_ccmc__Fieldline,
   _swigc__p_ccmc__FileReader,
   _swigc__p_ccmc__Interpolator,
   _swigc__p_ccmc__Kameleon,
+  _swigc__p_ccmc__KameleonInterpolator,
+  _swigc__p_ccmc__MAS,
+  _swigc__p_ccmc__MASInterpolator,
+  _swigc__p_ccmc__Model,
+  _swigc__p_ccmc__OpenGGCM,
+  _swigc__p_ccmc__OpenGGCMInterpolator,
   _swigc__p_ccmc__Point3f,
   _swigc__p_ccmc__Position,
   _swigc__p_ccmc__Time,
@@ -26317,7 +33186,7 @@ static swig_const_info swig_const_table[] = {
 #ifdef __cplusplus
 }
 #endif
-static PyTypeObject *builtin_bases[2];
+static PyTypeObject *builtin_bases[3];
 
 /* -----------------------------------------------------------------------------
  * Type initialization:
@@ -27148,6 +34017,40 @@ SWIG_init(void) {
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Interpolator");
   d = md;
   
+  /* type 'ccmc::KameleonInterpolator' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__KameleonInterpolator_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Interpolator");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'KameleonInterpolator' as base 'ccmc::Interpolator' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'KameleonInterpolator'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "KameleonInterpolator", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "KameleonInterpolator");
+  d = md;
+  
   /* type 'ccmc::Tracer' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__Tracer_type;
   builtin_pytype->tp_dict = d = PyDict_New();
@@ -27245,6 +34148,312 @@ SWIG_init(void) {
   Py_INCREF(builtin_pytype);
   PyModule_AddObject(m, "Attribute", (PyObject*) builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Attribute");
+  d = md;
+  
+  /* type 'ccmc::Model' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__Model_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__FileReader");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'Model' as base 'ccmc::FileReader' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'Model'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "Model", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "Model");
+  d = md;
+  
+  /* type 'ccmc::OpenGGCM' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__OpenGGCM_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Model");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'OpenGGCM' as base 'ccmc::Model' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'OpenGGCM'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "OpenGGCM", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "OpenGGCM");
+  d = md;
+  
+  /* type 'ccmc::BATSRUS' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__BATSRUS_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Model");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'BATSRUS' as base 'ccmc::Model' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'BATSRUS'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "BATSRUS", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "BATSRUS");
+  d = md;
+  
+  /* type 'ccmc::ENLIL' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__ENLIL_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Model");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'ENLIL' as base 'ccmc::Model' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'ENLIL'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "ENLIL", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "ENLIL");
+  d = md;
+  
+  /* type 'ccmc::MAS' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__MAS_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Model");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'MAS' as base 'ccmc::Model' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'MAS'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "MAS", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MAS");
+  d = md;
+  
+  /* type 'ccmc::BATSRUSInterpolator' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__BATSRUSInterpolator_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Interpolator");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'BATSRUSInterpolator' as base 'ccmc::Interpolator' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'BATSRUSInterpolator'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "BATSRUSInterpolator", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "BATSRUSInterpolator");
+  d = md;
+  
+  /* type 'ccmc::ENLILInterpolator' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__ENLILInterpolator_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Interpolator");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'ENLILInterpolator' as base 'ccmc::Interpolator' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'ENLILInterpolator'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "ENLILInterpolator", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "ENLILInterpolator");
+  d = md;
+  
+  /* type 'ccmc::MASInterpolator' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__MASInterpolator_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Interpolator");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'MASInterpolator' as base 'ccmc::Interpolator' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'MASInterpolator'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "MASInterpolator", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "MASInterpolator");
+  d = md;
+  
+  /* type 'ccmc::OpenGGCMInterpolator' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__Interpolator");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'OpenGGCMInterpolator' as base 'ccmc::Interpolator' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'OpenGGCMInterpolator'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "OpenGGCMInterpolator", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "OpenGGCMInterpolator");
   d = md;
   
   /* type '::vector< Point3f >' */
