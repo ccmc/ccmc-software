@@ -1,3 +1,9 @@
+2011 Jun 14   David Berrios
+-------------
+  kameleon-plus-0.1.19
+  - Fixed an issue with the MAS interpolator. The logic for checking the previous position and resuing the previous
+    indices was incorrect.
+  
 2011 Jun 09   David Berrios
 -------------
   kameleon-plus-0.1.16
