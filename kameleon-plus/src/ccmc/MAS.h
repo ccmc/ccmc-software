@@ -25,14 +25,24 @@ namespace ccmc
 			MAS();
 			long open(const std::string& filename);
 			Interpolator* createNewInterpolator();
-			const std::vector<float>* getRPosGrid(std::string variable);
-			const std::vector<float>* getLatPosGrid(std::string variable);
-			const std::vector<float>* getRPosGridByID(long variable);
-			const std::vector<float>* getLatPosGridByID(long variable);
-			const std::vector<float>* getLonPosGridByID(long variable_id);
-			const std::vector<float>* getlonPosGrid(std::string variable);
+
+			const std::vector<float>* const getRPosGrid(const std::string& variable);
+			const std::vector<float>* const getRPosGrid(long variable_id);
+			std::string getRPosGridName(const std::string& variable);
+			std::string getRPosGridName(long variable);
+
+			const std::vector<float>* const getLatPosGrid(const std::string& variable);
+			const std::vector<float>* const getLatPosGrid(long variable_id);
+			std::string getLatPosGridName(const std::string& variable);
+			std::string getLatPosGridName(long variable_id);
+
+			const std::vector<float>* const getLonPosGrid(long variable_id);
+			const std::vector<float>* const getlonPosGrid(const std::string& variable);
+			std::string getLonPosGridName(const std::string& variable);
+			std::string getLonPosGridName(long variable_id);
+
 			bool getChangeSignFlag(std::string variable);
-			bool getChangeSignFlagByID(long variable_id);
+			bool getChangeSignFlag(long variable_id);
 			virtual ~MAS();
 
 		protected:

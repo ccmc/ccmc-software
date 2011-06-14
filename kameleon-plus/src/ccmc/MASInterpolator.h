@@ -43,6 +43,9 @@ namespace ccmc
 			int previous_ir;
 			int previous_ilon;
 			int previous_ilat;
+			std::string previous_r_grid_name;
+			std::string previous_lat_grid_name;
+			std::string previous_lon_grid_name;
 
 			float interpolate_in_block_mas(
 				      float r,
