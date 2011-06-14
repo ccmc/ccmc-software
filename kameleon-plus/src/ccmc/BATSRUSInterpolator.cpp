@@ -113,7 +113,7 @@ namespace ccmc
 	{
 
 		bool main_memory_flag = true;
-		if (this->modelReader->getVariableFromMapByID(variable_id) == NULL)
+		if (this->modelReader->getVariableFromMap(variable_id) == NULL)
 			main_memory_flag = false;
 		long status;
 
@@ -342,7 +342,7 @@ namespace ccmc
 
 		const std::vector<float>* vData = NULL;
 		if (main_memory_flag == true)
-			vData = modelReader->getVariableFromMapByID(variable_id);
+			vData = modelReader->getVariableFromMap(variable_id);
 		for (ic = 0; ic < 8; ic++)
 		{
 
