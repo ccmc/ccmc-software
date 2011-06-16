@@ -6670,7 +6670,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FileReader_getVariableByID__SWIG_0(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_FileReader_getVariable__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -6681,18 +6681,18 @@ SWIGINTERN PyObject *_wrap_FileReader_getVariableByID__SWIG_0(PyObject *self, Py
   PyObject * obj1 = 0 ;
   std::vector< float,std::allocator< float > > *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:FileReader_getVariableByID",&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:FileReader_getVariable",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getVariableByID" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getVariable" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
   ecode2 = SWIG_AsVal_long(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FileReader_getVariableByID" "', argument " "2"" of type '" "long""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FileReader_getVariable" "', argument " "2"" of type '" "long""'");
   } 
   arg2 = static_cast< long >(val2);
-  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariableByID(arg2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
   return resultobj;
 fail:
@@ -6700,7 +6700,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FileReader_getVariable__SWIG_1(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_FileReader_getVariable__SWIG_2(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -6755,6 +6755,54 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_FileReader_getVariable__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  long arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  long val3 ;
+  int ecode3 = 0 ;
+  long val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:FileReader_getVariable",&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getVariable" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FileReader_getVariable" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "FileReader_getVariable" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "FileReader_getVariable" "', argument " "4"" of type '" "long""'");
+  } 
+  arg4 = static_cast< long >(val4);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_FileReader_getVariable(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[5];
@@ -6767,6 +6815,21 @@ SWIGINTERN PyObject *_wrap_FileReader_getVariable(PyObject *self, PyObject *args
     argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
   }
   argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_FileReader_getVariable__SWIG_1(self, args);
+      }
+    }
+  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -6786,6 +6849,33 @@ SWIGINTERN PyObject *_wrap_FileReader_getVariable(PyObject *self, PyObject *args
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_long(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_FileReader_getVariable__SWIG_3(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
       int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
       _v = SWIG_CheckState(res);
       if (_v) {
@@ -6799,7 +6889,7 @@ SWIGINTERN PyObject *_wrap_FileReader_getVariable(PyObject *self, PyObject *args
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_FileReader_getVariable__SWIG_1(self, args);
+            return _wrap_FileReader_getVariable__SWIG_2(self, args);
           }
         }
       }
@@ -6810,124 +6900,14 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'FileReader_getVariable'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    ccmc::FileReader::getVariable(std::string const &)\n"
-    "    ccmc::FileReader::getVariable(std::string const &,long,long)\n");
+    "    ccmc::FileReader::getVariable(long)\n"
+    "    ccmc::FileReader::getVariable(std::string const &,long,long)\n"
+    "    ccmc::FileReader::getVariable(long,long,long)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_FileReader_getVariableByID__SWIG_1(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
-  long arg2 ;
-  long arg3 ;
-  long arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long val2 ;
-  int ecode2 = 0 ;
-  long val3 ;
-  int ecode3 = 0 ;
-  long val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  std::vector< float,std::allocator< float > > *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOO:FileReader_getVariableByID",&obj1,&obj2,&obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getVariableByID" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
-  ecode2 = SWIG_AsVal_long(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FileReader_getVariableByID" "', argument " "2"" of type '" "long""'");
-  } 
-  arg2 = static_cast< long >(val2);
-  ecode3 = SWIG_AsVal_long(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "FileReader_getVariableByID" "', argument " "3"" of type '" "long""'");
-  } 
-  arg3 = static_cast< long >(val3);
-  ecode4 = SWIG_AsVal_long(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "FileReader_getVariableByID" "', argument " "4"" of type '" "long""'");
-  } 
-  arg4 = static_cast< long >(val4);
-  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariableByID(arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_FileReader_getVariableByID(PyObject *self, PyObject *args) {
-  int argc;
-  PyObject *argv[5];
-  int ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? (int)PyObject_Length(args) : 0;
-  argv[0] = self;
-  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
-    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
-  }
-  argc++;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_long(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_FileReader_getVariableByID__SWIG_0(self, args);
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_long(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_long(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_long(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_FileReader_getVariableByID__SWIG_1(self, args);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'FileReader_getVariableByID'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    ccmc::FileReader::getVariableByID(long)\n"
-    "    ccmc::FileReader::getVariableByID(long,long,long)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_FileReader_getVariableAtIndex(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_FileReader_getVariableAtIndex__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -6973,7 +6953,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FileReader_getVariableAtIndexByID(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_FileReader_getVariableAtIndex__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -6988,27 +6968,89 @@ SWIGINTERN PyObject *_wrap_FileReader_getVariableAtIndexByID(PyObject *self, PyO
   PyObject * obj2 = 0 ;
   float result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:FileReader_getVariableAtIndexByID",&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:FileReader_getVariableAtIndex",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getVariableAtIndexByID" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getVariableAtIndex" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
   ecode2 = SWIG_AsVal_long(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FileReader_getVariableAtIndexByID" "', argument " "2"" of type '" "long""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FileReader_getVariableAtIndex" "', argument " "2"" of type '" "long""'");
   } 
   arg2 = static_cast< long >(val2);
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "FileReader_getVariableAtIndexByID" "', argument " "3"" of type '" "long""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "FileReader_getVariableAtIndex" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  result = (float)(arg1)->getVariableAtIndexByID(arg2,arg3);
+  result = (float)(arg1)->getVariableAtIndex(arg2,arg3);
   resultobj = SWIG_From_float(static_cast< float >(result));
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FileReader_getVariableAtIndex(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_FileReader_getVariableAtIndex__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_FileReader_getVariableAtIndex__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'FileReader_getVariableAtIndex'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::FileReader::getVariableAtIndex(std::string const &,long)\n"
+    "    ccmc::FileReader::getVariableAtIndex(long,long)\n");
+  return 0;
 }
 
 
@@ -28027,9 +28069,7 @@ SwigPyBuiltin__ccmc__FileReader_richcompare(PyObject *self, PyObject *other, int
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__FileReader_methods[] = {
   { "open", (PyCFunction) _wrap_FileReader_open, METH_VARARGS, (char*) "" },
   { "getVariable", (PyCFunction) _wrap_FileReader_getVariable, METH_VARARGS, (char*) "" },
-  { "getVariableByID", (PyCFunction) _wrap_FileReader_getVariableByID, METH_VARARGS, (char*) "" },
   { "getVariableAtIndex", (PyCFunction) _wrap_FileReader_getVariableAtIndex, METH_VARARGS, (char*) "" },
-  { "getVariableAtIndexByID", (PyCFunction) _wrap_FileReader_getVariableAtIndexByID, METH_VARARGS, (char*) "" },
   { "getVariableInt", (PyCFunction) _wrap_FileReader_getVariableInt, METH_VARARGS, (char*) "" },
   { "getVariableIntAtIndex", (PyCFunction) _wrap_FileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "" },
   { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_FileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
