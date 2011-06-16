@@ -379,7 +379,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableByID_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -390,13 +390,13 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable
   (void)jarg1_;
   arg1 = *(ccmc::FileReader **)&jarg1; 
   arg2 = (long)jarg2; 
-  result = (std::vector< float > *)(arg1)->getVariableByID(arg2);
+  result = (std::vector< float > *)(arg1)->getVariable(arg2);
   *(std::vector< float > **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3, jint jarg4) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3, jint jarg4) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -425,7 +425,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableByID_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
   jlong jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -440,13 +440,13 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariable
   arg2 = (long)jarg2; 
   arg3 = (long)jarg3; 
   arg4 = (long)jarg4; 
-  result = (std::vector< float > *)(arg1)->getVariableByID(arg2,arg3,arg4);
+  result = (std::vector< float > *)(arg1)->getVariable(arg2,arg3,arg4);
   *(std::vector< float > **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAtIndex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAtIndex_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
   jfloat jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -473,7 +473,7 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariabl
 }
 
 
-SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAtIndexByID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariableAtIndex_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
   jfloat jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   long arg2 ;
@@ -486,7 +486,7 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getVariabl
   arg1 = *(ccmc::FileReader **)&jarg1; 
   arg2 = (long)jarg2; 
   arg3 = (long)jarg3; 
-  result = (float)(arg1)->getVariableAtIndexByID(arg2,arg3);
+  result = (float)(arg1)->getVariableAtIndex(arg2,arg3);
   jresult = (jfloat)result; 
   return jresult;
 }

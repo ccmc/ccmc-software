@@ -12,11 +12,11 @@ public class CCMCJNI {
   public final static native long new_FileReader();
   public final static native int FileReader_open(long jarg1, FileReader jarg1_, String jarg2);
   public final static native long FileReader_getVariable__SWIG_0(long jarg1, FileReader jarg1_, String jarg2);
-  public final static native long FileReader_getVariableByID__SWIG_0(long jarg1, FileReader jarg1_, int jarg2);
-  public final static native long FileReader_getVariable__SWIG_1(long jarg1, FileReader jarg1_, String jarg2, int jarg3, int jarg4);
-  public final static native long FileReader_getVariableByID__SWIG_1(long jarg1, FileReader jarg1_, int jarg2, int jarg3, int jarg4);
-  public final static native float FileReader_getVariableAtIndex(long jarg1, FileReader jarg1_, String jarg2, int jarg3);
-  public final static native float FileReader_getVariableAtIndexByID(long jarg1, FileReader jarg1_, int jarg2, int jarg3);
+  public final static native long FileReader_getVariable__SWIG_1(long jarg1, FileReader jarg1_, int jarg2);
+  public final static native long FileReader_getVariable__SWIG_2(long jarg1, FileReader jarg1_, String jarg2, int jarg3, int jarg4);
+  public final static native long FileReader_getVariable__SWIG_3(long jarg1, FileReader jarg1_, int jarg2, int jarg3, int jarg4);
+  public final static native float FileReader_getVariableAtIndex__SWIG_0(long jarg1, FileReader jarg1_, String jarg2, int jarg3);
+  public final static native float FileReader_getVariableAtIndex__SWIG_1(long jarg1, FileReader jarg1_, int jarg2, int jarg3);
   public final static native long FileReader_getVariableInt(long jarg1, FileReader jarg1_, String jarg2);
   public final static native int FileReader_getVariableIntAtIndex(long jarg1, FileReader jarg1_, String jarg2, int jarg3);
   public final static native int FileReader_getNumberOfGlobalAttributes(long jarg1, FileReader jarg1_);
