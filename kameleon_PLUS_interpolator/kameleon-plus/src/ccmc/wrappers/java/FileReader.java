@@ -48,27 +48,27 @@ public class FileReader {
     return (cPtr == 0) ? null : new vector_float(cPtr, false);
   }
 
-  public vector_float getVariableByID(int variableID) {
-    long cPtr = CCMCJNI.FileReader_getVariableByID__SWIG_0(swigCPtr, this, variableID);
+  public vector_float getVariable(int variableID) {
+    long cPtr = CCMCJNI.FileReader_getVariable__SWIG_1(swigCPtr, this, variableID);
     return (cPtr == 0) ? null : new vector_float(cPtr, false);
   }
 
   public vector_float getVariable(String variable, int startIndex, int count) {
-    long cPtr = CCMCJNI.FileReader_getVariable__SWIG_1(swigCPtr, this, variable, startIndex, count);
+    long cPtr = CCMCJNI.FileReader_getVariable__SWIG_2(swigCPtr, this, variable, startIndex, count);
     return (cPtr == 0) ? null : new vector_float(cPtr, false);
   }
 
-  public vector_float getVariableByID(int variableID, int startIndex, int count) {
-    long cPtr = CCMCJNI.FileReader_getVariableByID__SWIG_1(swigCPtr, this, variableID, startIndex, count);
+  public vector_float getVariable(int variableID, int startIndex, int count) {
+    long cPtr = CCMCJNI.FileReader_getVariable__SWIG_3(swigCPtr, this, variableID, startIndex, count);
     return (cPtr == 0) ? null : new vector_float(cPtr, false);
   }
 
   public float getVariableAtIndex(String variable, int index) {
-    return CCMCJNI.FileReader_getVariableAtIndex(swigCPtr, this, variable, index);
+    return CCMCJNI.FileReader_getVariableAtIndex__SWIG_0(swigCPtr, this, variable, index);
   }
 
-  public float getVariableAtIndexByID(int variable_id, int index) {
-    return CCMCJNI.FileReader_getVariableAtIndexByID(swigCPtr, this, variable_id, index);
+  public float getVariableAtIndex(int variable_id, int index) {
+    return CCMCJNI.FileReader_getVariableAtIndex__SWIG_1(swigCPtr, this, variable_id, index);
   }
 
   public vector_int getVariableInt(String variable) {
