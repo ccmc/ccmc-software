@@ -24,15 +24,6 @@ namespace ccmc
 		// TODO Auto-generated constructor stub
 		this->modelReader = model;
 		this->setMissingValue(this->modelReader->getMissingValue());
-		//the model open should have done the proper error checks, so we
-		//just check the first component name to see which set to use
-		//if (this->modelReader->doesVariableExist("r"))
-		//TODO: fix the phi/theta issue to correspond to the actual
-		//lat lon
-
-		//lon_data = modelReader->getVariableData(ccmc::strings::variables::phi_);
-
-		//this->nlon_plus1 = nlon;
 		previous_r = missingValue;
 		previous_lon = missingValue;
 		previous_lat = missingValue;
@@ -167,7 +158,7 @@ namespace ccmc
 		const std::vector<float> * const lat_data = ((MAS*)modelReader)->getLatPosGrid(variable_id);
 
 		const std::vector<float> * const lon_data = ((MAS*)modelReader)->getLonPosGrid(variable_id);
-		std::cerr << "variable: " << this->modelReader->getVariableName(variable_id) << " r_data.size(): " << r_data->size() << " lat_data.size(): " << lat_data->size() << " lon_data.size(): " << lon_data->size() << std::endl;
+		//std::cerr << "variable: " << this->modelReader->getVariableName(variable_id) << " r_data.size(): " << r_data->size() << " lat_data.size(): " << lat_data->size() << " lon_data.size(): " << lon_data->size() << std::endl;
 
 #ifdef DEBUG_MAS_INTERPOLATOR
 		std::cout << "fetched lat_data" << std::endl;
@@ -329,7 +320,7 @@ namespace ccmc
 			for (int i = 0; i < 8; i++)
 			{
 
-				data[i] = modelReader->getVariableAtIndexByID(variable_id, indices[i]);
+				data[i] = modelReader->getVariableAtIndex(variable_id, indices[i]);
 			}
 
 		} else

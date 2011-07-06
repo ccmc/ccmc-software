@@ -43,7 +43,7 @@ namespace ccmc
 	long FileReader::openFile(const std::string& filename)
 	{
 		long status;
-		if (current_file_id != NULL && filename != current_filename)
+		if ((void *) current_file_id != NULL && filename != current_filename)
 		{
 			close();
 		}
@@ -60,7 +60,7 @@ namespace ccmc
 			if (status == CDF_OK)
 			{
 				long readOnlyMode = READONLYon;
-				CDFsetReadOnlyMode(current_file_id, readOnlyMode);
+				CDFsetReadOnlyMode((void *) current_file_id, readOnlyMode);
 
 				//check if this is a valid Kameleon converted file
 
@@ -87,7 +87,7 @@ namespace ccmc
 	 * Returns the CDFid value of the currently opened CDF file
 	 * @return CDFid returned from the CDF library for currently selected file.
 	 */
-	CDFid FileReader::getCurrentFileID()
+	long * FileReader::getCurrentFileID()
 	{
 		return current_file_id;
 	}
@@ -108,9 +108,9 @@ namespace ccmc
 	long FileReader::closeFile()
 	{
 		long status;
-		if (current_file_id != NULL)
+		if ((void *) current_file_id != NULL)
 		{
-			status = CDFcloseCDF(current_file_id);
+			status = CDFcloseCDF((void *) current_file_id);
 			current_file_id = NULL;
 			current_filename = "";
 
@@ -154,10 +154,10 @@ namespace ccmc
 
 			//get dim sizes
 
-			CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+			CDFgetzVarDimSizes((void *) current_file_id, variableNum, counts);
 			//cout << "variable: " << variable << ": " << counts[0] << endl;
 			float * buffer = new float[counts[0]];
-			CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
+			CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
 					dimIntervals, buffer);
 			//add data to vector type, and delete original array
 			variableData->reserve(counts[0]);
@@ -190,7 +190,7 @@ namespace ccmc
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
 		long recStart = 0L;
 		long recCount = 1L;
@@ -200,9 +200,9 @@ namespace ccmc
 
 		long counts[1] = {count};
 		//get dim sizes
-		//CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, counts);
 		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
+		CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
 				dimIntervals, buffer);
 		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
@@ -229,7 +229,7 @@ namespace ccmc
 	 * @param count
 	 * @return std::vector<float> containing the values of the selected variable.
 	 */
-	std::vector<float>* FileReader::getVariableByID(long variableID, long startIndex, long count)
+	std::vector<float>* FileReader::getVariable(long variableID, long startIndex, long count)
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
@@ -241,9 +241,9 @@ namespace ccmc
 
 		long counts[1] = {count};
 		//get dim sizes
-		//CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, counts);
 		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData(current_file_id, variableID, recStart, recCount, recInterval, dimIndices, counts,
+		CDFhyperGetzVarData((void *) current_file_id, variableID, recStart, recCount, recInterval, dimIndices, counts,
 				dimIntervals, buffer);
 		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
@@ -267,7 +267,7 @@ namespace ccmc
 	 * @param variable
 	 * @return std::vector<float> containing the values of the selected variable.
 	 */
-	std::vector<float>* FileReader::getVariableByID(long variable)
+	std::vector<float>* FileReader::getVariable(long variable)
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
@@ -279,9 +279,9 @@ namespace ccmc
 
 		long counts[1];
 		//get dim sizes
-		CDFgetzVarDimSizes(current_file_id, variable, counts);
+		CDFgetzVarDimSizes((void *) current_file_id, variable, counts);
 		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData(current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
+		CDFhyperGetzVarData((void *) current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
 				dimIntervals, buffer);
 		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
@@ -313,7 +313,7 @@ namespace ccmc
 	{
 		//std::cout << "index " << index << std::endl;
 		//get variable number
-		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
 		long recStart = 0L;
 		long recCount = 1L;
@@ -323,10 +323,10 @@ namespace ccmc
 
 		long count[1] = {1};
 		//get dim sizes
-		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
+		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, dimSizes);
 		float * buffer = new float[1];
 
-		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
+		CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
 				dimIntervals, buffer);
 		float value = buffer[0];
 		delete[] buffer;
@@ -346,7 +346,7 @@ namespace ccmc
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		long variableNum = CDFgetVarNum((void *)current_file_id, (char *) variable.c_str());
 
 		long recStart = 0L;
 		long recCount = 1L;
@@ -356,9 +356,9 @@ namespace ccmc
 
 		long count[1];
 		//get dim sizes
-		CDFgetzVarDimSizes(current_file_id, variableNum, count);
+		CDFgetzVarDimSizes((void *) current_file_id, variableNum, count);
 		int * buffer = new int[count[0]];
-		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
+		CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
 				dimIntervals, buffer);
 		//add data to vector type, and delete original array
 		std::vector<int> * variableData = new std::vector<int>();
@@ -378,11 +378,11 @@ namespace ccmc
 	 * @param index
 	 * @return
 	 */
-	float FileReader::getVariableAtIndexByID(long variableNum, long index)
+	float FileReader::getVariableAtIndex(long variableNum, long index)
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		//long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		//long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
 		long recStart = 0L;
 		long recCount = 1L;
@@ -392,9 +392,9 @@ namespace ccmc
 
 		long count[1] = {1};
 		//get dim sizes
-		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
+		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, dimSizes);
 		float buffer[1];
-		CDFgetzVarData(current_file_id, variableNum, recStart, dimIndices, buffer);
+		CDFgetzVarData((void *) current_file_id, variableNum, recStart, dimIndices, buffer);
 		//add data to vector type, and delete original array
 		return buffer[0];
 		//delete[] buffer;
@@ -416,7 +416,7 @@ namespace ccmc
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
 		long recStart = 0L;
 		long recCount = 1L;
@@ -426,9 +426,9 @@ namespace ccmc
 
 		long dimSizes[1] = {1};
 		//get dim sizes
-		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
+		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, dimSizes);
 		int * buffer = new int[1];
-		CDFgetzVarData(current_file_id, variableNum, recStart, dimIndices, buffer);
+		CDFgetzVarData((void *) current_file_id, variableNum, recStart, dimIndices, buffer);
 		//add data to vector type, and delete original array
 		int value = buffer[0];
 		delete[] buffer;
@@ -458,15 +458,15 @@ namespace ccmc
 		//std::cout << "dataType: " << dataType << std::endl;
 
 
-		CDFstatus status =  CDFgetAttrgEntryDataType (current_file_id, attrNum, 0, &dataType);
-		status = CDFgetAttrgEntryNumElements (current_file_id, attrNum, 0, &numElements);
+		CDFstatus status =  CDFgetAttrgEntryDataType ((void *) current_file_id, attrNum, 0, &dataType);
+		status = CDFgetAttrgEntryNumElements ((void *) current_file_id, attrNum, 0, &numElements);
 
 		Attribute attribute;
 		if (dataType == CDF_CHAR)
 		{
 			std::string attributeValue = "NULL";
 			char attributeBuffer[numElements+1];
-			CDFgetAttrgEntry(current_file_id, attrNum, 0, attributeBuffer);
+			CDFgetAttrgEntry((void *) current_file_id, attrNum, 0, attributeBuffer);
 			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
 			//modelName[numElements] = '\0';
 			attributeBuffer[numElements] = '\0';
@@ -482,7 +482,7 @@ namespace ccmc
 			//char * ctemp = new char[512];
 			//strcpy(ctemp, attributeValue.c_str());
 			//void * vtemp = (void *)ctemp;
-			CDFgetAttrName(current_file_id, attrNum, attributeNameBuffer);
+			CDFgetAttrName((void *) current_file_id, attrNum, attributeNameBuffer);
 			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
 			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
@@ -496,7 +496,7 @@ namespace ccmc
 			//int attributeValue = 0.f;
 			int attributeBuffer;// = new int[1];
 
-			CDFgetAttrgEntry(current_file_id, attrNum, 0, (void*) &attributeBuffer);
+			CDFgetAttrgEntry((void *) current_file_id, attrNum, 0, (void*) &attributeBuffer);
 			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
 			//std::cout << "numElements: " << numElements << std::endl;
 			//modelName[numElements] = '\0';
@@ -509,7 +509,7 @@ namespace ccmc
 
 			char attributeNameBuffer[512];
 
-			CDFgetAttrName(current_file_id, attrNum, attributeNameBuffer);
+			CDFgetAttrName((void *) current_file_id, attrNum, attributeNameBuffer);
 			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
 			attribute.setAttributeValue(attributeBuffer);
@@ -521,14 +521,14 @@ namespace ccmc
 			//float attributeValue = 0.f;
 			float attributeBuffer;// = new float[1];
 
-			CDFgetAttrgEntry(current_file_id, attrNum, 0, (void *) &attributeBuffer);
+			CDFgetAttrgEntry((void *) current_file_id, attrNum, 0, (void *) &attributeBuffer);
 			//std::cout << "numElements: " << numElements << std::endl;
 			//modelName[numElements] = '\0';
 			//std::cout << "status: " << status << std::endl;
 
 
 			char attributeNameBuffer[1024];
-			CDFgetAttrName(current_file_id, attrNum, attributeNameBuffer);
+			CDFgetAttrName((void *) current_file_id, attrNum, attributeNameBuffer);
 			//Attribute attribute;
 			attribute.setAttributeName(attributeNameBuffer);
 			attribute.setAttributeValue(attributeBuffer);
@@ -557,7 +557,7 @@ namespace ccmc
 		//std::cout << "after search in getGlobalAttribute(const std::string& attribute" << std::endl;
 
 		//cout << "attribute: " << attribute;
-		long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
+		long attrNum = CDFgetAttrNum((void *) current_file_id, (char *) attribute.c_str());
 		//cout << "attrNum after attribute: " << attrNum << endl;
 		Attribute current_attribute;
 		if (attrNum < 0)
@@ -591,18 +591,18 @@ namespace ccmc
 				return (*iter2).second;
 			}
 		}
-		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
-		long attributeNumber = CDFgetAttrNum(current_file_id, (char *) vattribute.c_str());
+		long variableNumber = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
+		long attributeNumber = CDFgetAttrNum((void *) current_file_id, (char *) vattribute.c_str());
 		long dataType;
-		CDFstatus status = CDFgetAttrzEntryDataType(current_file_id, attributeNumber, variableNumber, &dataType);
+		CDFstatus status = CDFgetAttrzEntryDataType((void *) current_file_id, attributeNumber, variableNumber, &dataType);
 		Attribute attribute;
 		//	std::cout << "FileReader::getVariableAttribute - datatype: " << dataType << " CDF_CHAR: " << CDF_CHAR << std::endl;
 		if (dataType == CDF_CHAR)
 		{
 			char value[1024];
-			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, value);
+			long status = CDFgetAttrzEntry((void *) current_file_id, attributeNumber, variableNumber, value);
 			long numElements;
-			status = CDFgetAttrzEntryNumElements(current_file_id, attributeNumber, variableNumber, &numElements);
+			status = CDFgetAttrzEntryNumElements((void *) current_file_id, attributeNumber, variableNumber, &numElements);
 
 			value[numElements] = '\0';
 			//std::cout << "C: attributeValue (" << vattribute << "): " << value << std::endl;
@@ -616,7 +616,7 @@ namespace ccmc
 		{
 
 			int value;
-			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
+			long status = CDFgetAttrzEntry((void *) current_file_id, attributeNumber, variableNumber, &value);
 			//std::cout << "I: attributeValue (" << vattribute << "): " << value << std::endl;
 
 			attribute.setAttributeName(vattribute);
@@ -626,7 +626,7 @@ namespace ccmc
 		} else if (dataType == CDF_FLOAT) //CDF_FLOAT
 		{
 			float value;
-			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
+			long status = CDFgetAttrzEntry((void *) current_file_id, attributeNumber, variableNumber, &value);
 			//std::cout << "F: attributeValue (" << vattribute << "): " << value << std::endl;
 
 			attribute.setAttributeName(vattribute);
@@ -648,7 +648,7 @@ namespace ccmc
 	int FileReader::getNumberOfGlobalAttributes()
 	{
 		long num_attributes;
-		CDFgetNumgAttributes(current_file_id, &num_attributes);
+		CDFgetNumgAttributes((void *) current_file_id, &num_attributes);
 		return (int)num_attributes;
 	}
 
@@ -659,7 +659,7 @@ namespace ccmc
 	bool FileReader::doesAttributeExist(const std::string& attribute)
 	{
 		bool exists = false;
-		CDFstatus status = CDFconfirmAttrExistence(current_file_id, (char*) attribute.c_str());
+		CDFstatus status = CDFconfirmAttrExistence((void *) current_file_id, (char*) attribute.c_str());
 		if (status == CDF_OK)
 			exists = true;
 
@@ -685,7 +685,7 @@ namespace ccmc
 		}
 
 		/*std::cout << "getting variable id for: " << variable << std::endl;
-		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		long variableNumber = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 		//std::cout << "variableNumber: " << variableNumber << std::endl;
 		if (variableNumber >= 0) //we want to keep the crappy negative ids
 			variableIDs[variable] = variableNumber;
@@ -705,9 +705,9 @@ namespace ccmc
 			return (*iter).second;
 
 		char variableNameBuffer[512];
-		CDFstatus status = CDFgetzVarName(current_file_id, variable_id, variableNameBuffer);
+		CDFstatus status = CDFgetzVarName((void *) current_file_id, variable_id, variableNameBuffer);
 		long numElements;
-		status = CDFgetzVarNumElements(current_file_id, variable_id, &numElements);
+		status = CDFgetzVarNumElements((void *) current_file_id, variable_id, &numElements);
 		variableNameBuffer[numElements] = '\0';
 		std::string variableName = variableNameBuffer;
 		if (variableName != "")
@@ -729,7 +729,7 @@ namespace ccmc
 		if (iter != variableIDs.end())
 			return true;
 
-		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		long variableNumber = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 		//std::cout << "variableNumber: " << variableNumber << std::endl;
 		if (variableNumber >= 0)
 		{
@@ -757,7 +757,7 @@ namespace ccmc
 	std::string FileReader::getGlobalAttributeName(long attribute_id)
 	{
 		char buffer[256];
-		CDFgetAttrName(current_file_id, attribute_id, buffer);
+		CDFgetAttrName((void *) current_file_id, attribute_id, buffer);
 		std::string buffer_string = buffer;
 		//cout << "Attribute Name: '" << buffer_string << "'" << endl;
 
@@ -771,7 +771,7 @@ namespace ccmc
 	int FileReader::getNumberOfVariables()
 	{
 		long numVars;
-		CDFgetNumzVars(current_file_id, &numVars);
+		CDFgetNumzVars((void *) current_file_id, &numVars);
 		return (int)numVars;
 	}
 
@@ -806,7 +806,7 @@ namespace ccmc
 		char variableName[512];
 		for (int i = 0; i < numVariables; i++)
 		{
-			CDFgetzVarName(current_file_id, i, variableName);
+			CDFgetzVarName((void *) current_file_id, i, variableName);
 			std::string variableNameString = variableName;
 			variableIDs[variableNameString] = i;
 
@@ -824,7 +824,7 @@ namespace ccmc
 		char variableName[512];
 		for (int i = 0; i < numVariables; i++)
 		{
-			CDFgetzVarName(current_file_id, i, variableName);
+			CDFgetzVarName((void *) current_file_id, i, variableName);
 			std::string variableNameString = variableName;
 			variableNames[(long)i] = variableNameString;
 
@@ -839,7 +839,7 @@ namespace ccmc
 	{
 		long numVAttributes;
 
-		CDFgetNumvAttributes(current_file_id, &numVAttributes);
+		CDFgetNumvAttributes((void *) current_file_id, &numVAttributes);
 		return (int)numVAttributes;
 	}
 
@@ -850,7 +850,7 @@ namespace ccmc
 	std::string FileReader::getVariableAttributeName(long attribute_id)
 	{
 		char buffer[256];
-		CDFgetAttrName(current_file_id, attribute_id, buffer);
+		CDFgetAttrName((void *) current_file_id, attribute_id, buffer);
 		std::string buffer_string = buffer;
 		//cout << "Attribute Name: '" << buffer_string << "'" << endl;
 		return buffer_string;
@@ -882,7 +882,7 @@ namespace ccmc
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
 		return getNumberOfRecords(variableNum);
 	}
@@ -895,7 +895,7 @@ namespace ccmc
 	{
 		long counts[1];
 		//get dim sizes
-		CDFgetzVarDimSizes(current_file_id, variable_id, counts);
+		CDFgetzVarDimSizes((void *) current_file_id, variable_id, counts);
 		return counts[0];
 	}
 
@@ -906,7 +906,7 @@ namespace ccmc
 	{
 		std::vector<std::string> attributeNames;
 		long numAttributes;
-		CDFgetNumAttributes(current_file_id, &numAttributes);
+		CDFgetNumAttributes((void *) current_file_id, &numAttributes);
 		char name[512];
 		long attrScope;
 		long maxgEntry;
@@ -916,8 +916,8 @@ namespace ccmc
 		for (int i = 0; i < numAttributes; i++)
 		{
 			std::string value = "";
-			CDFinquireAttr(current_file_id, i,name, &attrScope, &maxgEntry, &maxrEntry, &maxzEntry);
-			//CDFgetAttrName(current_file_id, i, buffer);
+			CDFinquireAttr((void *) current_file_id, i,name, &attrScope, &maxgEntry, &maxrEntry, &maxzEntry);
+			//CDFgetAttrName((void *) current_file_id, i, buffer);
 			if (attrScope == VARIABLE_SCOPE)
 			{
 				value = name;
@@ -932,7 +932,7 @@ namespace ccmc
 	 */
 	FileReader::~FileReader()
 	{
-		if (current_file_id != NULL)
+		if ((void *) current_file_id != NULL)
 			close();
 	}
 }

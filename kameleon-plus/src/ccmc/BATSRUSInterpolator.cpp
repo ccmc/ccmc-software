@@ -356,7 +356,7 @@ namespace ccmc
 				data_c[ic] = (*vData)[index];
 			else
 			{
-				data_c[ic] = modelReader->getVariableAtIndexByID(variable_id, index);
+				data_c[ic] = modelReader->getVariableAtIndex(variable_id, index);
 			}
 
 		} /* end of for( ic = 0; ic < 8; ic++) loop */

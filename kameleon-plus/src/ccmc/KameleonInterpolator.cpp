@@ -110,8 +110,8 @@ namespace ccmc
 	 * A variable_id won't work well, since derived variables can be requested, which do not exist in the data.
 	 *
 	 *
-	 * OpenGGCM and BATSRUS: c0,c1,c2 corresponds to x,y,z, respectively.  ENLIL and MAS: c0,c1,c2 corresponds
-	 * to r,phi(latitude), theta(longitude), respectively
+	 * OpenGGCM and BATSRUS: c0,c1,c2 maps to x,y,z, respectively.  ENLIL and MAS: c0,c1,c2 maps
+	 * to r,theta(latitude), phi(longitude), respectively
 	 * @param variable
 	 * @param c0
 	 * @param c1
@@ -129,7 +129,7 @@ namespace ccmc
 		if (interp_value == missingValue)
 		{
 			return missingValue;
-			//cerr << "***Derived::interpolate: Interpolate returned the missing value for variable " << variable_string << endl;
+
 		}
 		interp_value *= this->getConversionFactorToVis(this->modelReader->getVariableName(variable_id));
 		return interp_value;
@@ -145,9 +145,6 @@ namespace ccmc
 	 * For some vector variables, the conversion factors need to be specified for the magnitude
 	 * calculations as well, since some of the magnitude calculations are independent of the vector
 	 * component calculations (to increase performance).
-	 */
-	/**
-	 * TODO: These need to be moved to the model classes!
 	 */
 	void KameleonInterpolator::initializeConversionFactorsToVis()
 	{
@@ -194,21 +191,21 @@ namespace ccmc
 			//blah
 		} else if (modelName == "mas")
 		{
-			//conversionFactorsToVis["n"] = 1.e8;
+			conversionFactorsToVis["n"] = 1.e8;
 			conversionFactorsToVis["t"] = 2.84e7;
 			conversionFactorsToVis["p"] = 0.387 * 1.e9 * .1; //Dyn/cm^2 * to_nano * .1
-			//conversionFactorsToVis["ur"] = 481.37;
-			//conversionFactorsToVis["uphi"] = 481.37;
-			//conversionFactorsToVis["utheta"] = 481.37;
+			conversionFactorsToVis["ur"] = 481.37;
+			conversionFactorsToVis["uphi"] = 481.37;
+			conversionFactorsToVis["utheta"] = 481.37;
 			conversionFactorsToVis["jr"] = 1.e2 * 2.205 / (mu_0 * l_0);
 			conversionFactorsToVis["jphi"] = 1.e2 * 2.205 / (mu_0 * l_0);
 			conversionFactorsToVis["jtheta"] = 1.e2 * 2.205 / (mu_0 * l_0);
 			conversionFactorsToVis["er"] = 1.e-3;
 			conversionFactorsToVis["ephi"] = 1.e-3;
 			conversionFactorsToVis["etheta"] = 1.e-3;
-			//conversionFactorsToVis["br"] = 2.205 * gauss2Tesla * 1.e9;
-			//conversionFactorsToVis["bphi"] = 2.205 * gauss2Tesla * 1.e9;
-			//conversionFactorsToVis["btheta"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["br"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["bphi"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["btheta"] = 2.205 * gauss2Tesla * 1.e9;
 
 		} else if (modelName == "ucla_ggcm" || modelName == "open_ggcm")
 		{

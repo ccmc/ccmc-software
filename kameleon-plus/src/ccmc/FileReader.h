@@ -37,11 +37,11 @@ namespace ccmc
 			virtual long open(const std::string& filename);
 
 			std::vector<float>* getVariable(const std::string& variable);
-			std::vector<float>* getVariableByID(long variableID);
+			std::vector<float>* getVariable(long variableID);
 			std::vector<float>* getVariable(const std::string& variable, long startIndex, long count);
-			std::vector<float>* getVariableByID(long variableID, long startIndex, long count);
+			std::vector<float>* getVariable(long variableID, long startIndex, long count);
 			float getVariableAtIndex(const std::string& variable, long index);
-			float getVariableAtIndexByID(long variable_id, long index);
+			float getVariableAtIndex(long variable_id, long index);
 			std::vector<int>* getVariableInt(const std::string& variable);
 			int getVariableIntAtIndex(const std::string& variable, long index);
 			int getNumberOfGlobalAttributes();
@@ -60,7 +60,7 @@ namespace ccmc
 			bool doesAttributeExist(const std::string& attribute);
 			bool doesVariableExist(const std::string& variable);
 			virtual long close();
-			CDFid getCurrentFileID();
+			long * getCurrentFileID();
 			const std::string& getCurrentFilename();
 			virtual ~FileReader();
 
@@ -76,7 +76,7 @@ namespace ccmc
 			static const long NOT_A_VALID_KAMELEON_FILE = -9L;
 
 		protected:
-			CDFid current_file_id;
+			long * current_file_id;
 			std::string current_filename;
 			long closeFile();
 			long openFile(const std::string& filename);

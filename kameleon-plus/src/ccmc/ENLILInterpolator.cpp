@@ -19,11 +19,8 @@ namespace ccmc
 	 */
 	ENLILInterpolator::ENLILInterpolator(Model * model)
 	{
-		// TODO Auto-generated constructor stub
 		this->modelReader = model;
 		this->setMissingValue(this->modelReader->getMissingValue());
-		//the model open should have done the proper error checks, so we
-		//just check the first component name to see which set to use
 		r_string = ccmc::strings::variables::r_;
 		lat_string = ccmc::strings::variables::theta_;
 		lon_string = ccmc::strings::variables::phi_;
@@ -214,25 +211,15 @@ namespace ccmc
 	float ENLILInterpolator::interpolate_in_block_enlil(float r, float lat, float lon, int ir, int ilat, int ilon,
 			long variableID, float& dr, float& dlat, float& dlon)
 	{
-//		cout << "ir: " << ir << " ilon: " << ilon << " ilat: " << ilat << endl;
 
-		//x y z = r lat lon = r phi theta
 		bool main_memory_flag = true;
 		const std::vector<float> * vData = modelReader->getVariableFromMap(variableID);
 		if (vData == NULL)
 			main_memory_flag = false;
-//std::cout << "variable_id: " << variableID << " main_memory_flag: " << main_memory_flag << std::endl;
 		float value;
 		float dr_blk, dlat_blk, dlon_blk, m_r, m_lat, m_lon, two_pi = 4 * asin(1.);
 
-		/*int ix, iy, iz;*/
 		int NV_blk = nr * nlat, ilon1 = -1;
-
-		/* int first_cell_in_block = found_block_index * nx * ny * nz; */
-
-		/*printf("interpolating block %d\n", found_block_index );*/
-
-		/*find_in_block( x, y, z, found_block_index, &ix, &iy, &iz, &data_ix, &data_iy, &data_iz );*/
 
 		dr_blk = (*r_data)[ir + 1] - (*r_data)[ir];
 		dlat_blk = (*lat_data)[ilat + 1] - (*lat_data)[ilat];
@@ -273,7 +260,7 @@ namespace ccmc
 
 			for (int i = 0; i < 8; i++)
 			{
-				data[i] = modelReader->getVariableAtIndexByID(variableID, indices[i]);
+				data[i] = modelReader->getVariableAtIndex(variableID, indices[i]);
 			}
 
 		} else
@@ -281,6 +268,8 @@ namespace ccmc
 
 			for (int i = 0; i < 8; i++)
 			{
+				if (indices[i] > vData->size()-1)
+					return missingValue;
 				data[i] = (*vData)[indices[i]];
 			}
 
