@@ -22,13 +22,10 @@ typedef boost::unordered_map<int, FileReader*> map_i_F;
 int FileReader_create()
 {
 	//create a new FileReader object and put it into the map
-	int maxObjects = 4096;
 	int id = 0;
 	while (fileReaderObjects.find(id) != fileReaderObjects.end())
 	{
 		id++;
-		if (id > maxObjects)
-			return -1;
 	}
 	fileReaderObjects[id] = new FileReader();
 	return id;
@@ -45,6 +42,25 @@ long FileReader_open(int id, const char * filename)
 		return (*iter).second->open(filename);
 	} else
 		return -1L;
+}
+
+
+/**
+ * Make sure the variableData pointer has already been allocated to the correct size.  Query the file
+ * to see how many records are in the variable array.
+ */
+void FileReader_getVariableByID(int id, long variableID, float * variableData)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		std::vector<float>* vData = (*iter).second->getVariable(variableID);
+		for (int i = 0; i < vData->size(); i++)
+		{
+			variableData[i] = (*vData)[i];
+		}
+		delete vData;
+	}
 }
 
 /**
@@ -66,23 +82,6 @@ void FileReader_getVariable(int id, const char * variable, float * variableData)
 	//else do nothing.  Should return some type of error
 }
 
-/**
- * Make sure the variableData pointer has already been allocated to the correct size.  Query the file
- * to see how many records are in the variable array.
- */
-void FileReader_getVariableByID(int id, long variableID, float * variableData)
-{
-	map_i_F::iterator iter = fileReaderObjects.find(id);
-	if (iter != fileReaderObjects.end())
-	{
-		std::vector<float>* vData = (*iter).second->getVariableByID(variableID);
-		for (int i = 0; i < vData->size(); i++)
-		{
-			variableData[i] = (*vData)[i];
-		}
-		delete vData;
-	}
-}
 
 /**
  * Make sure the variableData pointer has already been allocated to the correct size.  This should have space
@@ -111,7 +110,7 @@ void FileReader_getVariableByIDSubRange(int id, long variableID, long startIndex
 	map_i_F::iterator iter = fileReaderObjects.find(id);
 	if (iter != fileReaderObjects.end())
 	{
-		std::vector<float>* vData = (*iter).second->getVariableByID(variableID, startIndex, count);
+		std::vector<float>* vData = (*iter).second->getVariable(variableID, startIndex, count);
 		for (int i = 0; i < vData->size(); i++)
 		{
 			variableData[i] = (*vData)[i];
@@ -119,15 +118,19 @@ void FileReader_getVariableByIDSubRange(int id, long variableID, long startIndex
 		delete vData;
 	}
 }
-
-long FileReader_getVariableID(int id, const char * variable)
+float FileReader_getVariableAtIndex(int id, const char * variable, long index)
 {
 	map_i_F::iterator iter = fileReaderObjects.find(id);
 	if (iter != fileReaderObjects.end())
 	{
-		return (*iter).second->getVariableID(variable);
+		return (*iter).second->getVariableAtIndex(variable, index);
 	} else
-		return -1L;
+		return 0.f;
+}
+
+float FileReader_getVariableAtIndexByID(long variable_id, long index)
+{
+
 }
 
 void FileReader_getVariableInt(int id, const char * variable, int * variableData)
@@ -142,6 +145,11 @@ void FileReader_getVariableInt(int id, const char * variable, int * variableData
 		}
 		delete vData;
 	}
+}
+
+int FileReader_getVariableIntAtIndex(int id, const char * variable, long index)
+{
+
 }
 
 int FileReader_getNumberOfGlobalAttributes(int id)
@@ -164,6 +172,7 @@ int FileReader_getNumberOfVariables(int id)
 		return -1;
 }
 
+
 int FileReader_getNumberOfVariableAttributes(int id)
 {
 	map_i_F::iterator iter = fileReaderObjects.find(id);
@@ -173,6 +182,18 @@ int FileReader_getNumberOfVariableAttributes(int id)
 	} else
 		return -1;
 }
+
+/*
+ *
+
+extern _C_ struct Attribute FileReader_getGlobalAttributeByID(int id, long i);
+extern _C_ long FileReader_close(int id);
+extern _C_ long FileReader_delete(int id);
+*/
+
+
+
+
 
 long FileReader_getNumberOfRecords(int id, const char * variable)
 {
@@ -192,6 +213,26 @@ long FileReader_getNumberOfRecordsByID(int id, long variable_id)
 	}
 }
 
+long FileReader_getVariableID(int id, const char * variable)
+{
+	map_i_F::iterator iter = fileReaderObjects.find(id);
+	if (iter != fileReaderObjects.end())
+	{
+		return (*iter).second->getVariableID(variable);
+	} else
+		return -1L;
+}
+
+void FileReader_getVariableName (int id, long variable_id, char * variableName);
+
+void FileReader_getGlobalAttributeName(int id, long attribute_id, char * attributeName);
+void FileReader_getVariableAttributeName(int id, long attribute_id, char * vAttributeName);
+Attribute FileReader_getGlobalAttribute (int id, const char * attribute);
+Attribute FileReader_getVariableAttribute (int id, const char * variable, const char * attribute);
+bool FileReader_doesAttributeExist (int id,  const char * attribute);
+bool FileReader_doesVariableExist (int id, const char * variable);
+long FileReader_close (int id);
+void FileReader_getCurrentFilename (int id, char * filename);
 long FileReader_close(int id)
 {
 	map_i_F::iterator iter = fileReaderObjects.find(id);
@@ -199,7 +240,7 @@ long FileReader_close(int id)
 	{
 		return (*iter).second->close();
 	} else
-		-1L;
+		return -1L;
 }
 
 /**
@@ -216,6 +257,6 @@ long FileReader_delete(int id)
 		fileReaderObjects.erase(iter);
 		return 1L;
 	} else
-		-1L;
+		return -1L;
 }
 
