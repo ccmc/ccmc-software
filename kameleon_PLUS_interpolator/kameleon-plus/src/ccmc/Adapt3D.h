@@ -53,8 +53,8 @@ namespace ccmc
 
 			virtual ~Adapt3D();
 
-			template<typename T>
-			friend int binary_search(const std::vector<T>& vec, unsigned int start, unsigned int end, const T& key);
+			/*template<typename T>
+			friend int binary_search(const std::vector<T>& vec, unsigned int start, unsigned int end, const T& key);*/
 
 		protected:
 			void initializeConversionFactorsToSI();

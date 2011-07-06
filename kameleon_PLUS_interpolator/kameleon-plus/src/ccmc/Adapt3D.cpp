@@ -113,7 +113,6 @@ namespace ccmc
 			std::cerr << "nconi not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
 		}*/
-		std::cerr << "Adapt3D openFile status: " << status << std::endl;
 
 		//create and setup the necessary smart search stuff
 		this->nelem = (this->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
@@ -125,22 +124,8 @@ namespace ccmc
 		this->coord = (this->getVariableFromMap(ccmc::strings::variables::coord_));
 		this->intmat = (this->getIntVariableFromMap(ccmc::strings::variables::intmat_));
 
-		std::cerr << "coord: " << (*coord).size() << std::endl;
-		for (int i = 0; i < 10; i++)
-			std::cerr << "coord[" << i << "]: " << (*coord)[i] << std::endl;
-
-		std::cerr << "intmat: " << std::endl;
-		for (int i = 0; i < 10; i++)
-			std::cerr << "intmat[" << i << "]: " << (*intmat)[i] << std::endl;
-
-		std::cerr << "setting up unstructured grid search" << std::endl;
 		this->setupUnstructuredGridSearch();
-		std::cerr << "finished setting up unstructured grid search" << std::endl;
-
-		std::cerr << "setting up smart search" << std::endl;
 		this->smartSearchSetup();
-		std::cerr << "finished setting up smart search" << std::endl;
-
 		return status;
 
 	}

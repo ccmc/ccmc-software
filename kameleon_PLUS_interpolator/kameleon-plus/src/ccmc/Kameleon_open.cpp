@@ -6,6 +6,7 @@
 #include "MAS.h"
 #include "Adapt3D.h"
 #include <string>
+#include <boost/algorithm/string.hpp>
 
 namespace ccmc
 {

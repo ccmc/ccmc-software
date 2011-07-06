@@ -251,14 +251,14 @@ namespace ccmc
 		float data[8];
 		if (vData == NULL)
 		{
-			data[0] = modelReader->getVariableAtIndexByID(variable_id,i0);
-			data[1] = modelReader->getVariableAtIndexByID(variable_id,i1);
-			data[2] = modelReader->getVariableAtIndexByID(variable_id,i2);
-			data[3] = modelReader->getVariableAtIndexByID(variable_id,i3);
-			data[4] = modelReader->getVariableAtIndexByID(variable_id,i4);
-			data[5] = modelReader->getVariableAtIndexByID(variable_id,i5);
-			data[6] = modelReader->getVariableAtIndexByID(variable_id,i6);
-			data[7] = modelReader->getVariableAtIndexByID(variable_id,i7);
+			data[0] = modelReader->getVariableAtIndex(variable_id,i0);
+			data[1] = modelReader->getVariableAtIndex(variable_id,i1);
+			data[2] = modelReader->getVariableAtIndex(variable_id,i2);
+			data[3] = modelReader->getVariableAtIndex(variable_id,i3);
+			data[4] = modelReader->getVariableAtIndex(variable_id,i4);
+			data[5] = modelReader->getVariableAtIndex(variable_id,i5);
+			data[6] = modelReader->getVariableAtIndex(variable_id,i6);
+			data[7] = modelReader->getVariableAtIndex(variable_id,i7);
 		} else
 		{
 			data[0] = (*vData)[i0];
