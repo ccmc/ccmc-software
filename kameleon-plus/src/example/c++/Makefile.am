@@ -1,4 +1,4 @@
-bin_PROGRAMS = kameleon coord_test open_ggcm \
+bin_PROGRAMS = kameleon coord_test open_ggcm adapt3d \
 				magnetogram  enlil tracer integrator mas
 				
 kameleon_SOURCES = kameleon_prog.cpp
@@ -23,7 +23,7 @@ magnetogram_CPPFLAGS = -I@srcdir@/../..
 
 tracer_SOURCES = tracer_prog.cpp
 tracer_CPPFLAGS = -I@srcdir@/../..
-tracer_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
+tracer_LDADD = @builddir@/../../ccmc/libkameleon-plus.la $(BOOST_PROGRAM_OPTIONS_LIB)
 
 integrator_SOURCES = integrator_prog.cpp
 integrator_CPPFLAGS = -I@srcdir@/../..
@@ -32,3 +32,7 @@ integrator_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
 mas_SOURCES = mas_test.cpp
 mas_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
 mas_CPPFLAGS = -I@srcdir@/../..
+
+adapt3d_SOURCES = adapt3d_test.cpp
+adapt3d_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
+adapt3d_CPPFLAGS = -I@srcdir@/../..

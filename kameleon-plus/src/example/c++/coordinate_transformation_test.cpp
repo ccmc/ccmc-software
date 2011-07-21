@@ -15,16 +15,16 @@
 #define LENGTH 500;
 using namespace ccmc;
 
-void Tokenize(const string& str,
-                      vector<string>& tokens,
-                      const string& delimiters = " ")
+void Tokenize(const std::string& str,
+                      std::vector<std::string>& tokens,
+                      const std::string& delimiters = " ")
 {
     // Skip delimiters at beginning.
-    string::size_type lastPos = str.find_first_not_of(delimiters, 0);
+    std::string::size_type lastPos = str.find_first_not_of(delimiters, 0);
     // Find first "non-delimiter".
-    string::size_type pos     = str.find_first_of(delimiters, lastPos);
+    std::string::size_type pos     = str.find_first_of(delimiters, lastPos);
 
-    while (string::npos != pos || string::npos != lastPos)
+    while (std::string::npos != pos || std::string::npos != lastPos)
     {
         // Found a token, add it to the vector.
         tokens.push_back(str.substr(lastPos, pos - lastPos));
@@ -44,7 +44,7 @@ int main (int argc, char * argv[])
 
 
 
-	string test_line = "03/04/21 09:12:00   29.36423    9.44891  -26.16772   29.36280    9.42723  -26.17715   26.49590   15.79579  -26.16772   -1.85945   30.11916  -26.93823   24.31326  -16.55745  -27.76699   24.31326  -11.03383  -30.38765   28.08693  -11.03383  -26.93823";
+	std::string test_line = "03/04/21 09:12:00   29.36423    9.44891  -26.16772   29.36280    9.42723  -26.17715   26.49590   15.79579  -26.16772   -1.85945   30.11916  -26.93823   24.31326  -16.55745  -27.76699   24.31326  -11.03383  -30.38765   28.08693  -11.03383  -26.93823";
 
    /** Time                   GEI (RE)                      GEI/J2000 (RE)                      GEO (RE)                          GM (RE)                         GSE (RE)                         GSM (RE)                          SM (RE)
 yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z          X          Y          Z          X          Y          Z          X          Y          Z          X          Y          Z          X          Y          Z
@@ -57,20 +57,20 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 	//UNKNOWN, J2000, GEI, GEO, MAG, GSE, GSM, SM, RTN, GSEQ, HEE, HAE, HEEQ
 	//int cxform(const char *from,const char *to,const double et,Vec v_in,Vec v_out);
 
-	string date;
-	string time;
-	string GEI[3];
-	string GEIJ2000[3];
-	string GEO[3];
-	string GM[3];
-	string GSE[3];
-	string GSM[3];
-	string SM[3];
+	std::string date;
+	std::string time;
+	std::string GEI[3];
+	std::string GEIJ2000[3];
+	std::string GEO[3];
+	std::string GM[3];
+	std::string GSE[3];
+	std::string GSM[3];
+	std::string SM[3];
 
-	string buf; // Have a buffer string
-	stringstream ss(test_line); // Insert the string into a stream
+	std::string buf; // Have a buffer string
+	std::stringstream ss(test_line); // Insert the string into a stream
 
-	vector<string> tokens; // Create vector to hold our words
+	std::vector<std::string> tokens; // Create vector to hold our words
 
 	while (ss >> buf)
 		tokens.push_back(buf);
@@ -98,13 +98,13 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 	SM[1] = tokens[21];
 	SM[2] = tokens[22];
 
-	vector<string> time_tokens;
-	vector<string> date_tokens;
+	std::vector<std::string> time_tokens;
+	std::vector<std::string> date_tokens;
 	Tokenize(time, time_tokens, " :");
 	Tokenize(date, date_tokens, " /");
-	cout << "date: " + date << endl;
+	std::cout << "date: " + date << std::endl;
 	//long Kameleon::date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss)
-	cout << "date_tokens[0]: " << date_tokens[0] << endl;
+	std::cout << "date_tokens[0]: " << date_tokens[0] << std::endl;
 	int years = boost::lexical_cast<int>(date_tokens[0]);
 	if (years < 50)
 		years = years + 2000;
@@ -117,7 +117,7 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 			boost::lexical_cast<int>(time_tokens[1]),
 			boost::lexical_cast<int>(time_tokens[2]));
 
-	cout << "GSE: " << GSE[0] << " " << GSE[1] << " " << GSE[2] << endl;
+	std::cout << "GSE: " << GSE[0] << " " << GSE[1] << " " << GSE[2] << std::endl;
 	Position GSE_d;
 	GSE_d.c0 = boost::lexical_cast<double>(GSE[0]);
 	GSE_d.c1 = boost::lexical_cast<double>(GSE[1]);
@@ -125,8 +125,8 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 
 	Position SM_d;
 	Kameleon::_cxform("GSE","SM", time_et, &GSE_d, &SM_d);
-	cout << "Input: " << GSE_d.c0 << "," << GSE_d.c1 << "," << GSE_d.c2 << endl;
-	cout << "Output: " << SM_d.c0 << "," << SM_d.c1 << "," << SM_d.c2 << endl;
+	std::cout << "Input: " << GSE_d.c0 << "," << GSE_d.c1 << "," << GSE_d.c2 << std::endl;
+	std::cout << "Output: " << SM_d.c0 << "," << SM_d.c1 << "," << SM_d.c2 << std::endl;
 
 	return 0;
 }

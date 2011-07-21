@@ -19,12 +19,14 @@ AM_JAVACFLAGS=-nowarn
 dist_noinst_JAVA = 	Attribute.java \
 					BATSRUS.java \
 					BATSRUSInterpolator.java \
+					CDFFileReader.java \
 					CCMC.java \
 					CCMCJNI.java \
 					ENLIL.java \
 					ENLILInterpolator.java \
 					Fieldline.java \
 					FileReader.java \
+					GeneralFileReader.java \
 					Interpolator.java \
 					Kameleon.java \
 					KameleonInterpolator.java \
@@ -41,6 +43,7 @@ dist_noinst_JAVA = 	Attribute.java \
 					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t.java \
 					SWIGTYPE_p_float.java \
 					SWIGTYPE_p_int.java \
+					SWIGTYPE_p_long.java \
 					SWIGTYPE_p_std__string.java \
 					SWIGTYPE_p_void.java \
 					Time.java \
@@ -54,7 +57,7 @@ dist_noinst_JAVA = 	Attribute.java \
 EXTRA_DIST = SWIG_COMMAND
 					
 
-
+.NOTPARALLEL:
 
 $(jarfile): $(dist_noinst_JAVA)
 	echo $(dist_noinst_SWIG_COMMAND)
