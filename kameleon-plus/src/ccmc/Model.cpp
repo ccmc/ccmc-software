@@ -78,7 +78,7 @@ namespace ccmc
 		variableDataByID.clear();
 		variableDataIntByID.clear();
 
-		return closeFile();
+		return GeneralFileReader::close();
 	}
 
 	/**
@@ -127,12 +127,16 @@ namespace ccmc
 		}
 		std::vector<float> * data = getVariable(variable);
 		long id = getVariableID(variable);
+
 		if (data->size() > 0)
 		{
 
+			std::cout << "adding " << variable << " to maps" << std::endl;
 			variableData[variable] = data;
 			variableDataByID[id] = data;
 		} //else return false;
+		else
+			std::cout << "not adding " << variable << " to maps" << std::endl;
 
 		return FileReader::OK;
 	}

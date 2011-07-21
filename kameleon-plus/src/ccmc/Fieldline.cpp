@@ -51,7 +51,7 @@ namespace ccmc
 	 * TODO: finish documentation
 	 * @return
 	 */
-	const vector<float>& Fieldline::getData()
+	const std::vector<float>& Fieldline::getData()
 	{
 		return values;
 	}
@@ -60,7 +60,7 @@ namespace ccmc
 	 * TODO: finish documentation
 	 * @return
 	 */
-	const vector<Point3f>& Fieldline::getPositions()
+	const std::vector<Point3f>& Fieldline::getPositions()
 	{
 		return positions;
 	}
@@ -71,8 +71,8 @@ namespace ccmc
 	 */
 	Fieldline Fieldline::reverseOrder()
 	{
-		vector<float> originalVectorValues = getData();
-		vector<Point3f> originalVectorPositions = getPositions();
+		std::vector<float> originalVectorValues = getData();
+		std::vector<Point3f> originalVectorPositions = getPositions();
 		Fieldline reversedLine;
 		//reversedLine.reserve()
 		int size = originalVectorValues.size();
@@ -101,8 +101,8 @@ namespace ccmc
 	 */
 	void Fieldline::reverseOrderInPlace()
 	{
-		vector<float> originalVectorValues = getData();
-		vector<Point3f> originalVectorPositions = getPositions();
+		std::vector<float> originalVectorValues = getData();
+		std::vector<Point3f> originalVectorPositions = getPositions();
 		Fieldline reversedLine;
 		int size = originalVectorValues.size();
 		for (int i = 0; i < size; i++)
@@ -155,7 +155,7 @@ namespace ccmc
 		positions.erase(positions.begin() + index);
 		values.erase(values.begin() + index);
 	}
-	const vector<Point3f>& Fieldline::getElements()
+	const std::vector<Point3f>& Fieldline::getElements()
 	{
 		return elements;
 	}
@@ -169,9 +169,9 @@ namespace ccmc
 	 * positions. Output has length fieldline.size()-1
 	 * TODO: Add backward and higher-order differencing
 	 */
-	const vector<float>& Fieldline::getDs()
+	const std::vector<float>& Fieldline::getDs()
 	{
-		vector<Point3f> VectorPositions = getPositions();
+		std::vector<Point3f> VectorPositions = getPositions();
 		int size = getPositions().size();
 		//vector<Point3f> elements;
 		for (int i = 0; i < size-1; i++)
@@ -188,7 +188,7 @@ namespace ccmc
 	/**
 	 * Calculate the integral of ds*values over the length of the field line
 	 */
-	const vector<float>& Fieldline::integrate()
+	const std::vector<float>& Fieldline::integrate()
 	{
 		int size = this->positions.size();
 		// length.push_back(0);
@@ -219,7 +219,7 @@ namespace ccmc
 	/**
 	 * Measure the length of the field line up to point i
 	 */
-	const vector<float>& Fieldline::measure()
+	const std::vector<float>& Fieldline::measure()
 		{
 			int size = this->positions.size();
 			// length.push_back(0);
@@ -313,7 +313,7 @@ namespace ccmc
 	 * Gets the indices of the original field line nearest the interpolated ones
 	 */
 
-	const vector<int>& Fieldline::getNearest()
+	const std::vector<int>& Fieldline::getNearest()
 	{
 		return nearest;
 

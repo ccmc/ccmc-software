@@ -12,7 +12,7 @@
 #include <vector>
 #include <boost/unordered_map.hpp>
 
-#include "FileReader.h"
+#include "GeneralFileReader.h"
 #include "Interpolator.h"
 
 namespace ccmc
@@ -24,7 +24,7 @@ namespace ccmc
 	 *
 	 * TODO: Full description of Model class
 	 */
-	class Model: public FileReader
+	class Model: public GeneralFileReader
 	{
 
 		public:

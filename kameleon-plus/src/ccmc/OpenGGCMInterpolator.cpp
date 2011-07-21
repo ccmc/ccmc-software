@@ -7,6 +7,7 @@
 
 #include "OpenGGCMInterpolator.h"
 #include "Utils.h"
+#include "StringConstants.h"
 
 namespace ccmc
 {
@@ -53,16 +54,9 @@ namespace ccmc
 		previous_y = missingValue;
 		previous_z = missingValue;
 
-		x_string = "x";
-		y_string = "y";
-		z_string = "z";
-		previous_x = missingValue;
-		previous_y = missingValue;
-		previous_z = missingValue;
-
-		x_array = this->modelReader->getVariableFromMap(x_string);
-		y_array = this->modelReader->getVariableFromMap(y_string);
-		z_array = this->modelReader->getVariableFromMap(z_string);
+		x_array = this->modelReader->getVariableFromMap(ccmc::strings::variables::x_);
+		y_array = this->modelReader->getVariableFromMap(ccmc::strings::variables::y_);
+		z_array = this->modelReader->getVariableFromMap(ccmc::strings::variables::z_);
 
 	}
 

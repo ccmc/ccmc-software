@@ -8,6 +8,7 @@
 #ifndef ATTRIBUTE_H_
 #define ATTRIBUTE_H_
 #include <string>
+#include <ostream>
 
 namespace ccmc
 {
@@ -37,9 +38,10 @@ namespace ccmc
 			std::string getAttributeString();
 			int getAttributeInt();
 			Attribute();
-			std::string toString();
+			std::string toString() const;
 
 			virtual ~Attribute();
+			friend std::ostream& operator<<(std::ostream& out, const Attribute attribute);
 
 		private:
 			std::string attributeName;

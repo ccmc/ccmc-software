@@ -11,6 +11,7 @@
 #include "Vector.h"
 #include "BATSRUSInterpolator.h"
 #include "StringConstants.h"
+#include "GeneralFileReader.h"
 
 
 namespace ccmc
@@ -29,7 +30,7 @@ namespace ccmc
 	long BATSRUS::open(const std::string& filename)
 	{
 		long status;
-		status = openFile(filename);
+		status = GeneralFileReader::open(filename);
 
 		/********** get block_*_min/max values ************/
 		bool success = false;
@@ -94,7 +95,7 @@ namespace ccmc
 		success = loadVariableInt(ccmc::strings::variables::block_at_amr_level_);
 		if (success != FileReader::OK)
 			return success;
-		initializeVariableNames();
+		GeneralFileReader::initializeVariableNames();
 		initializeConversionFactorsToSI();
 		initializeSIUnits();
 

@@ -7,6 +7,7 @@
 
 #include "MAS.h"
 #include "Interpolator.h"
+#include "GeneralFileReader.h"
 #include "MASInterpolator.h"
 #include "StringConstants.h"
 
@@ -27,7 +28,7 @@ namespace ccmc
 	long MAS::open(const std::string& filename)
 	{
 		long status;
-		status = openFile(filename);
+		status = GeneralFileReader::open(filename);
 		initializeMaps();
 		long success = loadVariable(ccmc::strings::variables::r_);
 		if (success != FileReader::OK)

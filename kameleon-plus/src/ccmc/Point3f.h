@@ -2,13 +2,12 @@
 #define CCMC_POINT3F_H_
 #include <iostream>
 #include <string>
-using namespace std;
 
 namespace ccmc
 {
 	class Point3f
 	{
-			friend ostream& operator<<(ostream& out, const Point3f point);
+			friend std::ostream& operator<<(std::ostream& out, const Point3f& point);
 		public:
 			//Point3f(const Point3f&);
 			enum Coordinates

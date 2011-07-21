@@ -41,11 +41,15 @@
 #include <vector>
 #include <boost/unordered_map.hpp>
 #include <boost/array.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/format.hpp>
 #include "Interpolator.h"
 #include "Model.h"
 #include "FileReader.h"
 #include "Constants.h"
 #include "cxform.h"
+#include <iostream>
+#include "CCMCTime.h"
 #include "Kameleon-Tracer.h"
 using namespace ccmc;
 
@@ -74,15 +78,8 @@ namespace ccmc
 		float c2;
 	};
 
-	struct Time
-	{
-		int year;
-		int month;
-		int day;
-		int hour;
-		int minute;
-		float second;
-	};
+
+
 
 
 	/**
@@ -133,7 +130,7 @@ namespace ccmc
 			bool doesVariableExist(const std::string& variable);
 
 
-			CDFid getCurrentFileID();
+			long getCurrentFileID();
 			const std::string& getCurrentFilename();
 
 
