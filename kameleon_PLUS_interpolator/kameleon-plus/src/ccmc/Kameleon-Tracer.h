@@ -3,7 +3,7 @@
 
 //#ifdef __cplusplus
 //#include <map>
-//#include <vector>
+#include <vector>
 #include <string>
 #include "Kameleon.h"
 #include "Point3f.h"
@@ -50,7 +50,7 @@ namespace ccmc
 			Fieldline unidirectionalTraceWithDipole(const std::string& variable, const float& startComponent1, const float& startComponent2,
 					const float& startComponent3, const Direction& dir = FOWARD);
 			Fieldline findLastClosed(Point3f position, int stepMax);
-			vector<Fieldline> getLastClosedFieldlines(int numberOfFieldlines, int stepMax, int numberOfPointsPerReducedFieldline);
+			std::vector<Fieldline> getLastClosedFieldlines(int numberOfFieldlines, int stepMax, int numberOfPointsPerReducedFieldline);
 			bool isClosed(Fieldline& fieldline);
 			void setUseMaxArcLength(bool useMaxArcLength);
 			Point3f getVector(const std::string& variable, const Point3f& position, float& dComponent1,

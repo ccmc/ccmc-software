@@ -34,34 +34,36 @@ namespace ccmc
 		public:
 
 			FileReader();
-			virtual long open(const std::string& filename);
+			long open(const std::string& filename);
 
-			std::vector<float>* getVariable(const std::string& variable);
-			std::vector<float>* getVariable(long variableID);
-			std::vector<float>* getVariable(const std::string& variable, long startIndex, long count);
-			std::vector<float>* getVariable(long variableID, long startIndex, long count);
-			float getVariableAtIndex(const std::string& variable, long index);
-			float getVariableAtIndex(long variable_id, long index);
-			std::vector<int>* getVariableInt(const std::string& variable);
-			int getVariableIntAtIndex(const std::string& variable, long index);
-			int getNumberOfGlobalAttributes();
-			int getNumberOfVariables();
-			int getNumberOfVariableAttributes();
-			long getNumberOfRecords(const std::string& variable);
-			long getNumberOfRecords(long variable_id);
-			long getVariableID(const std::string& variable);
-			std::string getVariableName(long variable_id);
-			Attribute getGlobalAttribute(long i);
-			std::string getGlobalAttributeName(long attribute_id);
-			std::string getVariableAttributeName(long attribute_id);
-			Attribute getGlobalAttribute(const std::string& attribute);
-			Attribute getVariableAttribute(const std::string& variable, const std::string& attribute);
-			std::vector<std::string> getVariableAttributeNames();
-			bool doesAttributeExist(const std::string& attribute);
-			bool doesVariableExist(const std::string& variable);
-			virtual long close();
-			long * getCurrentFileID();
-			const std::string& getCurrentFilename();
+			virtual std::vector<float>* getVariable(const std::string& variable) = 0;
+			virtual std::vector<float>* getVariable(long variableID) = 0;
+			virtual std::vector<float>* getVariable(const std::string& variable, long startIndex, long count) = 0;
+			virtual std::vector<float>* getVariable(long variableID, long startIndex, long count) = 0;
+			virtual float getVariableAtIndex(const std::string& variable, long index) = 0;
+			virtual float getVariableAtIndex(long variable_id, long index) = 0;
+			virtual std::vector<int>* getVariableInt(const std::string& variable) = 0;
+			virtual int getVariableIntAtIndex(const std::string& variable, long index) = 0;
+			virtual int getNumberOfGlobalAttributes() = 0;
+			virtual int getNumberOfVariables() = 0;
+			virtual int getNumberOfVariableAttributes() = 0;
+			virtual long getNumberOfRecords(const std::string& variable) = 0;
+			virtual long getNumberOfRecords(long variable_id) = 0;
+			virtual long getVariableID(const std::string& variable) = 0;
+			virtual std::string getVariableName(long variable_id) = 0;
+			virtual Attribute getGlobalAttribute(long i) = 0;
+			virtual std::string getGlobalAttributeName(long attribute_id) = 0;
+			virtual std::string getVariableAttributeName(long attribute_id) = 0;
+			virtual Attribute getGlobalAttribute(const std::string& attribute) = 0;
+			virtual Attribute getVariableAttribute(const std::string& variable, const std::string& attribute) = 0;
+			virtual std::vector<std::string> getVariableAttributeNames() = 0;
+			virtual bool doesAttributeExist(const std::string& attribute) = 0;
+			virtual bool doesVariableExist(const std::string& variable) = 0;
+			long close();
+			virtual long getCurrentFileID() = 0;
+			virtual const std::string& getCurrentFilename() = 0;
+			virtual void initializeVariableIDs() = 0;
+			virtual void initializeVariableNames() = 0;
 			virtual ~FileReader();
 
 			static const long OK = 0L;
@@ -76,10 +78,9 @@ namespace ccmc
 			static const long NOT_A_VALID_KAMELEON_FILE = -9L;
 
 		protected:
-			long * current_file_id;
 			std::string current_filename;
-			long closeFile();
-			long openFile(const std::string& filename);
+			virtual long closeFile() = 0;
+			virtual long openFile(const std::string& filename) = 0;
 			boost::unordered_map<std::string, long> variableIDs;
 			boost::unordered_map<long, std::string> variableNames;
 			boost::unordered_map<std::string, Attribute> gAttributes;
@@ -87,8 +88,7 @@ namespace ccmc
 			boost::unordered_map<std::string, boost::unordered_map<std::string, Attribute> > vAttributes;
 			void initializeGlobalAttributes();
 			void initializeVariableAttributes();
-			void initializeVariableIDs();
-			void initializeVariableNames();
+
 
 	};
 }

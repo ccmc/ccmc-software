@@ -5,6 +5,7 @@
 #include "ENLIL.h"
 #include "MAS.h"
 #include "Adapt3D.h"
+#include "CDFFileReader.h"
 #include <string>
 #include <boost/algorithm/string.hpp>
 
@@ -20,16 +21,16 @@ namespace ccmc
 		//need to intialize relevant information
 
 std::cout << "Kameleon::open(" << filename << ")" << std::endl;
-		FileReader fileReader;
-		long status = fileReader.open(filename);
+		GeneralFileReader generalFileReader;
+		long status = generalFileReader.open(filename);
 
 		if (status == FileReader::OK)
 		{
-			if (fileReader.doesAttributeExist("model_name"))
+			if (generalFileReader.doesAttributeExist("model_name"))
 			{
 
-				this->modelName = (fileReader.getGlobalAttribute("model_name")).getAttributeString();
-				fileReader.close();
+				this->modelName = (generalFileReader.getGlobalAttribute("model_name")).getAttributeString();
+				generalFileReader.close();
 				//std::cout << "modelName: '" << modelName << "'" << std::endl;
 				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 				{
@@ -65,6 +66,7 @@ std::cout << "Kameleon::open(" << filename << ")" << std::endl;
 				if (model != NULL)
 					delete model;
 				model = NULL;
+				std::cerr << "not a valid kameleon file" << std::endl;
 				status = FileReader::NOT_A_VALID_KAMELEON_FILE;
 			}
 

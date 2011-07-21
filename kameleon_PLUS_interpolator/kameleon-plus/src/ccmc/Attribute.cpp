@@ -105,7 +105,7 @@ namespace ccmc
 	/**
 	 * @return
 	 */
-	std::string Attribute::toString()
+	std::string Attribute::toString() const
 	{
 		std::string string_value = "";
 		if (type == Attribute::FLOAT)
@@ -121,6 +121,12 @@ namespace ccmc
 
 		}
 		return string_value;
+	}
+
+	std::ostream& operator<<(std::ostream& out, const Attribute attribute)
+	{
+		out << attribute.toString();
+		return out;
 	}
 
 	/**

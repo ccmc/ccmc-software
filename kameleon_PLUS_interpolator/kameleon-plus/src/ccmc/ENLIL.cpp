@@ -9,6 +9,7 @@
 #include "ENLILInterpolator.h"
 #include "Constants.h"
 #include "StringConstants.h"
+#include "GeneralFileReader.h"
 
 namespace ccmc
 {
@@ -31,7 +32,7 @@ namespace ccmc
 	{
 		//open the file
 		long status;
-		status = openFile(filename);
+		status = GeneralFileReader::open(filename);
 		initializeMaps();
 		//check the names of the components
 		if (this->doesVariableExist(ccmc::strings::variables::r_))

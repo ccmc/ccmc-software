@@ -661,7 +661,7 @@ namespace ccmc
 				max.component1 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_x_max_)).getAttributeFloat();
 				max.component2 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_y_max_)).getAttributeFloat();
 				max.component3 = (kameleon->getGlobalAttribute(ccmc::strings::attributes::global_z_max_)).getAttributeFloat();
-				std::cout << "Tracer min: " << min << " max: " << max << std::endl;
+				//std::cout << "Tracer min: " << min << " max: " << max << std::endl;
 
 			} else
 			{

@@ -11,6 +11,7 @@
 #include "Vector.h"
 #include "OpenGGCMInterpolator.h"
 #include "StringConstants.h"
+#include "GeneralFileReader.h"
 
 namespace ccmc
 {
@@ -33,7 +34,7 @@ namespace ccmc
 	long OpenGGCM::open(const std::string& filename)
 	{
 		long status;
-		status = openFile(filename);
+		status = GeneralFileReader::open(filename);
 
 		loadVariable(ccmc::strings::variables::x_);
 		loadVariable(ccmc::strings::variables::y_);

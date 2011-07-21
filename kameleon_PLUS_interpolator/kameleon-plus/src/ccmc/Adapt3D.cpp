@@ -12,6 +12,7 @@
 #include "Adapt3DInterpolator.h"
 #include "StringConstants.h"
 #include "MathHelper.h"
+#include "GeneralFileReader.h"
 #include <stdio.h>
 #include <algorithm>
 #include <limits>
@@ -41,7 +42,7 @@ namespace ccmc
 	{
 
 		long status;
-		status = openFile(filename);
+		status = GeneralFileReader::open(filename);
 
 		if (status != FileReader::OK)
 		   return status;
@@ -241,7 +242,7 @@ namespace ccmc
 
 
 		/*-----------------------------------------------------------------*/
-		printf("Entered Structured Search Grid\n");
+		std::cout << "Entered Structured Search Grid" << std::endl;
 
 
 		/* allocate for ELEM_INDEX_STRUCT */

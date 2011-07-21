@@ -9,6 +9,8 @@
 #include "StringConstants.h"
 #include <limits>
 #include <cmath>
+#include <iostream>
+
 
 namespace ccmc
 {
@@ -145,6 +147,7 @@ namespace ccmc
 
 			if (ib == -1)
 			{
+				previousWasValid = false;
 				return missingValue;
 			}
 
@@ -526,6 +529,7 @@ namespace ccmc
 
 			if (ib == -1)
 			{
+				previousWasValid = false;
 				return missingValue;
 			}
 

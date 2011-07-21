@@ -7,6 +7,7 @@
 
 #include "Magnetogram.h"
 #include "MagnetogramInterpolator.h"
+#include "GeneralFileReader.h"
 
 namespace ccmc
 {
@@ -28,7 +29,7 @@ namespace ccmc
 	long Magnetogram::open(const std::string& filename)
 	{
 		long status;
-		status = openFile(filename);
+		status = GeneralFileReader::open(filename);
 
 		//loadVariable(r_string);
 		loadVariable(lat_string);//position components? not sure how they are stored

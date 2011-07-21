@@ -1,6 +1,7 @@
 #include "Point3f.h"
 #include <cmath>
 #include <sstream>
+#include <ostream>
 #include "constants.h"
 #include <boost/lexical_cast.hpp>
 
@@ -11,7 +12,7 @@ namespace ccmc
 	 * @param point
 	 * @return
 	 */
-	ostream& operator<<(ostream& out, const Point3f point)
+	std::ostream& operator<<(std::ostream& out, const Point3f& point)
 	{
 		out << point.toString();
 		return out;

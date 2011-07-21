@@ -892,7 +892,7 @@ namespace ccmc
 	/**
 	 * @return
 	 */
-	CDFid Kameleon::getCurrentFileID()
+	long Kameleon::getCurrentFileID()
 	{
 		return model->getCurrentFileID();
 	}
