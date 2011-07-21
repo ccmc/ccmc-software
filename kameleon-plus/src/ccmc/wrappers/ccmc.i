@@ -7,6 +7,8 @@
 
 %{
 #include <ccmc/FileReader.h>
+#include <ccmc/GeneralFileReader.h>
+#include <ccmc/CDFFileReader.h>
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
 #include <ccmc/KameleonInterpolator.h>
@@ -29,6 +31,8 @@ using namespace std;
 %}
 
 %include <ccmc/FileReader.h>
+%include <ccmc/GeneralFileReader.h>
+%include <ccmc/CDFFileReader.h>
 %include <ccmc/Kameleon.h>
 %include <ccmc/Interpolator.h>
 %include <ccmc/KameleonInterpolator.h>

@@ -38,9 +38,7 @@ namespace ccmc
 			boost::unordered_map<std::string, float> conversionFactors;
 			boost::unordered_map<long, float> conversionFactorsByID;
 
-			std::string x_string;
-			std::string y_string;
-			std::string z_string;
+
 			int nx;
 			int ny;
 			int nz;
