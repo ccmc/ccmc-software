@@ -85,6 +85,9 @@
  *                                                                             *
  *    07.20.2008   Rastaetter, Lutz                                            *
  *                 Added include file for Missing values                       *
+ *                 							       *
+ *    08.30.2011   Maddox, Marlo					       *
+ *    		   Adding new "status" variable to batsrus                     *
  ******************************************************************************/
 #include "ccmc_missing.h"
 
@@ -2622,6 +2625,23 @@
 #define CCMC_VARIABLE_NAME_WEIGHTS_POSITION_GRID_SYSTEM        "grid_system_1"
 #define CCMC_VARIABLE_NAME_WEIGHTS_DATA_GRID_SYSTEM        "grid_system_1"
 
+
+#define CCMC_VARIABLE_NAME_STATUS                        "status"
+#define CCMC_VARIABLE_NAME_STATUS_DATA_TYPE                "float"
+#define CCMC_VARIABLE_NAME_STATUS_CLASSIFICATION            "data"
+#define CCMC_VARIABLE_NAME_STATUS_VALID_MIN                -1000000000.0
+#define CCMC_VARIABLE_NAME_STATUS_VALID_MAX                1000000000.0
+#define CCMC_VARIABLE_NAME_STATUS_UNITS                    " "
+#define CCMC_VARIABLE_NAME_STATUS_GRID_SYSTEM                "N/A"
+#define CCMC_VARIABLE_NAME_STATUS_MASK                    FLOAT_MASK
+#define CCMC_VARIABLE_NAME_STATUS_DESCRIPTION                "status"
+#define CCMC_VARIABLE_NAME_STATUS_IS_VECTOR                0
+#define CCMC_VARIABLE_NAME_STATUS_POSITION_GRID_SYSTEM        "N/A"
+#define CCMC_VARIABLE_NAME_STATUS_DATA_GRID_SYSTEM        "N/A"
+
+
+
+
 /************************************* TIME RELATED VARIABLE NAMES ***********************************************/
 
 #define CCMC_VARIABLE_NAME_TIME_1                            "time_1"
@@ -2782,11 +2802,11 @@
 
 /******************************* BUILD Model Specific Arrays to export using defined ccmc registered variables *******************/
 
-#define NUMBER_REGISTERED_BATSRUS_VARIABLES                    39
+#define NUMBER_REGISTERED_BATSRUS_VARIABLES                    40
 #define NUMBER_REGISTERED_ORIGINAL_FLOAT_BATSRUS_VARIABLES         18
 #define NUMBER_REGISTERED_GRID_INT_BATSRUS_VARIABLES             10
 #define NUMBER_REGISTERED_GRID_INT_BATSRUS_VARIABLES_2             1
-#define NUMBER_REGISTERED_GRID_FLOAT_BATSRUS_VARIABLES             10
+#define NUMBER_REGISTERED_GRID_FLOAT_BATSRUS_VARIABLES             11
 
 #define NUMBER_REGISTERED_UCLA_GGCM_VARIABLES                    27
 #define NUMBER_REGISTERED_ORIGINAL_FLOAT_UCLA_GGCM_VARIABLES     15
@@ -3306,7 +3326,20 @@ struct registered_batsrus_variables
       CCMC_VARIABLE_NAME_BLOCK_CHILD_ID_8_DESCRIPTION,
       CCMC_VARIABLE_NAME_BLOCK_CHILD_ID_8_IS_VECTOR,
       CCMC_VARIABLE_NAME_BLOCK_CHILD_ID_8_POSITION_GRID_SYSTEM,
-      CCMC_VARIABLE_NAME_BLOCK_CHILD_ID_8_DATA_GRID_SYSTEM };
+      CCMC_VARIABLE_NAME_BLOCK_CHILD_ID_8_DATA_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_STATUS,
+      CCMC_VARIABLE_NAME_STATUS_DATA_TYPE,
+      CCMC_VARIABLE_NAME_STATUS_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_STATUS_VALID_MIN,
+      CCMC_VARIABLE_NAME_STATUS_VALID_MAX,
+      CCMC_VARIABLE_NAME_STATUS_UNITS,
+      CCMC_VARIABLE_NAME_STATUS_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_STATUS_MASK,
+      CCMC_VARIABLE_NAME_STATUS_DESCRIPTION,
+      CCMC_VARIABLE_NAME_STATUS_IS_VECTOR,
+      CCMC_VARIABLE_NAME_STATUS_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_STATUS_DATA_GRID_SYSTEM
+};
 
 /***************************************************************** UCLA_GGCM ***********************************************/
 

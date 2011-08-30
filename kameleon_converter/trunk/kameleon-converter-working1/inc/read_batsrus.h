@@ -53,6 +53,9 @@
  *                   lets dynamically allocate memory for them in              *
  *                   read_batsrus.c based on the values returned from          *
  *                   fread...                                                  *
+ *                 							       *
+ *    08.30.2011   Maddox, Marlo					       *
+ *    		   Adding new "status" variable to batsrus                     *
  ******************************************************************************/
 
 /***** we don't need these anymore - leave as a reminder
@@ -124,6 +127,9 @@ float *jx_arrayPtr;
 float *jy_arrayPtr;
 float *jz_arrayPtr;
 
+float *status_arrayPtr;
+int optional_status_variable_present;
+
 /****************** actual min/max variables ******************/
 
 float x_position_actual_min, x_position_actual_max;
@@ -144,6 +150,8 @@ float e_actual_min, e_actual_max;
 float jx_actual_min, jx_actual_max;
 float jy_actual_min, jy_actual_max;
 float jz_actual_min, jz_actual_max;
+
+float status_actual_min, status_actual_max;
 
 /****************** Grid Dexription Variables *****************/
 int number_of_blocks;

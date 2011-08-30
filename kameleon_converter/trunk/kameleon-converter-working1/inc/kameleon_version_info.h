@@ -36,7 +36,7 @@
 *******************************************************************************/
 
 
-#define KAMELEON_VERSION        "5.3.0"
+#define KAMELEON_VERSION        "5.4.0"
 
 
 #endif /*KAMELEON_VERSION_INFO_H_*/
