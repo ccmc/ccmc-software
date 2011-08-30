@@ -92,6 +92,9 @@
  *    05.17.2007     Maddox, Marlo                                             *
  *                   adding update for kameleon_version gattribute             *
  *                                                                             *
+ *                 							                                   *
+ *    08.30.2011   	      Maddox, Marlo				                           *
+ *    		   	      Adding new "status" variable to batsrus                  *
  ******************************************************************************/
 
 #include <stdio.h>
@@ -1156,6 +1159,41 @@ int write_batsrus_structure(
          "actual_max",
          &e_actual_max,
          baselined_ccmc_variable_structure_list);
+         
+         
+         if( optional_status_variable_present )
+         {
+         
+         
+   /*** Adding status variable ***/
+   
+   stat = update_ccmc_variable_attribute_value(
+         "status",
+         "variable_size",
+         &number_of_cells,
+         baselined_ccmc_variable_structure_list);
+
+   stat = update_ccmc_variable_value(
+         "status",
+         number_of_cells,
+         status_arrayPtr,
+         baselined_ccmc_variable_structure_list);
+
+   stat = update_ccmc_variable_attribute_value(
+         "status",
+         "actual_min",
+         &status_actual_min,
+         baselined_ccmc_variable_structure_list);
+
+   stat = update_ccmc_variable_attribute_value(
+         "status",
+         "actual_max",
+         &status_actual_max,
+         baselined_ccmc_variable_structure_list);
+         
+         }
+         
+         
 
    /**************** now write grid description variables *********************/
 
