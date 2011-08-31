@@ -127,11 +127,17 @@ int ifindmax(int array[], long n)
        return max;
   }
 
+
+/* [MMADDODX - 2011-08-31 - Changed the min and max values below to 999999999 */
+/* ...didn't take the time to see who wrote this but limits.h has LONG_MAX and
+ * LONG_MIN constatnts...
+ */
+
 long lfindmin(long array[], long n)
   {
        long i;
        long min;
-       min = 99999999999999; //if highest value possible in array is 99999999999
+       min = -999999999; //if highest value possible in array is 99999999999
        for (i=0; i<n; i++)
            {
                   if(array[i] < min)
@@ -144,7 +150,7 @@ long lfindmax(long array[], long n)
   {
        long i;
        long max;
-       max = -99999999999999; //if lowest value possible in array is -99999999999
+       max = 999999999; //if lowest value possible in array is -99999999999
        for (i=0; i<n; i++)
            {
                   if(array[i] > max)

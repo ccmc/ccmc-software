@@ -297,6 +297,12 @@ float interpolate_batsrus_cdf(
    {
       cdf_varNum = e_cdfNum;
    }
+   else if ( !strcmp(
+         variable,
+         bats_status_name) )
+   {
+      cdf_varNum = bats_status_cdfNum;
+   }
    else
    {
       printf(
@@ -304,7 +310,7 @@ float interpolate_batsrus_cdf(
             variable);
       printf(
             "Valid Variable Names for BATSRUS:\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s"
-            "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n-------------------------------------"
+            "\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n-------------------------------------"
             "---------\n",
             bx_name,
             by_name,
@@ -320,7 +326,8 @@ float interpolate_batsrus_cdf(
             jz_name,
             rho_name,
             p_name,
-            e_name);
+            e_name,
+            bats_status_name);
       return 0;
    }
 

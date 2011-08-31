@@ -24,6 +24,10 @@
  *       MODIFICATION                                                          *
  *       HISTORY:                                                              *
  *                                                                             *
+ *                                                                             *
+ *                     2011-08-31   Marlo Maddox                               *
+ *                                  Adding Status Variable                     *
+ *                                                                             *
  ******************************************************************************/
 
 /** prevent the contents of the header from being scanned multiple times and
@@ -116,6 +120,13 @@ long block_child_id_5_cdfNum, block_child_id_6_cdfNum, block_child_id_7_cdfNum,
 static char *block_child_id_5_name = "block_child_id_5",
       *block_child_id_6_name = "block_child_id_6", *block_child_id_7_name =
             "block_child_id_7", *block_child_id_8_name = "block_child_id_8";
+
+
+
+float *bats_status;
+long bats_status_cdfNum;
+static char *bats_status_name = "status";
+
 
 #endif /*BATSRUS_CDF_INTERFACE_VARIABLES_*/
 

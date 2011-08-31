@@ -282,6 +282,15 @@ void get_batsrus_cdf_info(
    if (status != CDF_OK)
       StatusHandler(status);
 
+
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, bats_status_name, NULL_) == CDF_OK)
+      {
+         status = CDFlib( GET_, zVAR_NUMBER_, bats_status_name, &bats_status_cdfNum, NULL_);
+         if (status != CDF_OK)
+            StatusHandler(status);
+      }
+
+
    /*printf("DEBUG\t finished getting cdf nums\n");*/
 
    /***************** use cdf_varNums to get actual scalar values *************/
@@ -1275,6 +1284,23 @@ int load_batsrus_cdf_variable_into_main_memory(
       if (status != CDF_OK)
          StatusHandler(status);
    }
+   else if ( !strcmp(
+            variable_to_read,
+            bats_status_name) )
+      {
+         status = CDFlib(
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, bats_status,
+         NULL_);
+         if (status != CDF_OK)
+            StatusHandler(status);
+      }
    else
    {
       /* INSERT ERROR HANDLER HERE */
@@ -1523,6 +1549,21 @@ int batsrus_reserve_mem_and_set_cdf_num(
       }
       return e_cdfNum;
    }
+   else if ( !strcmp(
+         variable_number_to_get,
+         bats_status_name) )
+   {
+      if ( (bats_status = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               bats_status_name);
+         exit( EXIT_FAILURE);
+      }
+      return bats_status_cdfNum;
+   }
    else
    {
       return -1;
@@ -1676,6 +1717,15 @@ void allocate_defaults(
       printf(
             "\ncalloc failed for %s buffer!\n",
             e_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (bats_status = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\ncalloc failed for %s buffer!\n",
+            bats_status_name);
       exit( EXIT_FAILURE);
    }
 

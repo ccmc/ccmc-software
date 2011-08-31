@@ -66,6 +66,8 @@ static char *ur_2_name = "ur_2", *uphi_2_name = "uphi_2";
 static char *ur_3_name = "ur_3", *uphi_3_name = "uphi_3";
 static char *ur_4_name = "ur_4", *uphi_4_name = "uphi_4";
 
+static char *bats_status_name = "status";
+
 static char *Vn_x_name = "Vn_x", *Vn_y_name = "Vn_y", *Vn_z_name = "Vn_z";
 static char *Vi_x_name = "Vi_x", *Vi_y_name = "Vi_y";
 
