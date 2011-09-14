@@ -42,5 +42,6 @@ int main (int argc, char * argv[])
 
 	cout << "interpolated value: " << value/density << " " << units << endl;
 	adapt3d.close();
+	return 0;
 
 }

@@ -102,7 +102,11 @@ int main (int argc, char * argv[])
 	Kameleon kameleon;
 	kameleon.open(filename);
 	std::cout << "about to load vector variable" << std::endl;
-	kameleon.loadVectorVariable(variable);
+
+	for (int i = 0; i < 1000; i++)
+		kameleon.loadVectorVariable(variable);
+
+	std::cout << "finished loading variable 1000 times" << std::endl;
 	Tracer tracer(&kameleon);
 
 	tracer.setMaxIterations(20000);
