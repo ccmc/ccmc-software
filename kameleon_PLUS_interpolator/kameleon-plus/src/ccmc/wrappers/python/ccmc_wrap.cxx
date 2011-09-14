@@ -3446,53 +3446,55 @@ SwigPyBuiltin_SetMetaType (PyTypeObject *type, PyTypeObject *metatype)
 
 #define SWIGTYPE_p_SwigPyObject swig_types[0]
 #define SWIGTYPE_p_allocator_type swig_types[1]
-#define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t swig_types[2]
+#define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t swig_types[2]
 #define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t swig_types[3]
 #define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t swig_types[4]
 #define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t swig_types[5]
 #define SWIGTYPE_p_ccmc__Attribute swig_types[6]
 #define SWIGTYPE_p_ccmc__BATSRUS swig_types[7]
 #define SWIGTYPE_p_ccmc__BATSRUSInterpolator swig_types[8]
-#define SWIGTYPE_p_ccmc__ENLIL swig_types[9]
-#define SWIGTYPE_p_ccmc__ENLILInterpolator swig_types[10]
-#define SWIGTYPE_p_ccmc__Fieldline swig_types[11]
-#define SWIGTYPE_p_ccmc__FileReader swig_types[12]
-#define SWIGTYPE_p_ccmc__Interpolator swig_types[13]
-#define SWIGTYPE_p_ccmc__Kameleon swig_types[14]
-#define SWIGTYPE_p_ccmc__KameleonInterpolator swig_types[15]
-#define SWIGTYPE_p_ccmc__MAS swig_types[16]
-#define SWIGTYPE_p_ccmc__MASInterpolator swig_types[17]
-#define SWIGTYPE_p_ccmc__Model swig_types[18]
-#define SWIGTYPE_p_ccmc__OpenGGCM swig_types[19]
-#define SWIGTYPE_p_ccmc__OpenGGCMInterpolator swig_types[20]
-#define SWIGTYPE_p_ccmc__Point3f swig_types[21]
-#define SWIGTYPE_p_ccmc__Position swig_types[22]
-#define SWIGTYPE_p_ccmc__Time swig_types[23]
-#define SWIGTYPE_p_ccmc__Tracer swig_types[24]
-#define SWIGTYPE_p_char swig_types[25]
-#define SWIGTYPE_p_difference_type swig_types[26]
-#define SWIGTYPE_p_float swig_types[27]
-#define SWIGTYPE_p_int swig_types[28]
-#define SWIGTYPE_p_long swig_types[29]
-#define SWIGTYPE_p_p_PyObject swig_types[30]
-#define SWIGTYPE_p_size_type swig_types[31]
-#define SWIGTYPE_p_std__allocatorT_ccmc__Fieldline_t swig_types[32]
-#define SWIGTYPE_p_std__allocatorT_ccmc__Point3f_t swig_types[33]
-#define SWIGTYPE_p_std__allocatorT_float_t swig_types[34]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[35]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[36]
-#define SWIGTYPE_p_std__invalid_argument swig_types[37]
-#define SWIGTYPE_p_std__string swig_types[38]
-#define SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t swig_types[39]
-#define SWIGTYPE_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t swig_types[40]
-#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[41]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[42]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[43]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[44]
-#define SWIGTYPE_p_value_type swig_types[45]
-#define SWIGTYPE_p_void swig_types[46]
-static swig_type_info *swig_types[48];
-static swig_module_info swig_module = {swig_types, 47, 0, 0, 0, 0};
+#define SWIGTYPE_p_ccmc__CDFFileReader swig_types[9]
+#define SWIGTYPE_p_ccmc__ENLIL swig_types[10]
+#define SWIGTYPE_p_ccmc__ENLILInterpolator swig_types[11]
+#define SWIGTYPE_p_ccmc__Fieldline swig_types[12]
+#define SWIGTYPE_p_ccmc__FileReader swig_types[13]
+#define SWIGTYPE_p_ccmc__GeneralFileReader swig_types[14]
+#define SWIGTYPE_p_ccmc__HDF5FileReader swig_types[15]
+#define SWIGTYPE_p_ccmc__Interpolator swig_types[16]
+#define SWIGTYPE_p_ccmc__Kameleon swig_types[17]
+#define SWIGTYPE_p_ccmc__KameleonInterpolator swig_types[18]
+#define SWIGTYPE_p_ccmc__MAS swig_types[19]
+#define SWIGTYPE_p_ccmc__MASInterpolator swig_types[20]
+#define SWIGTYPE_p_ccmc__Model swig_types[21]
+#define SWIGTYPE_p_ccmc__OpenGGCM swig_types[22]
+#define SWIGTYPE_p_ccmc__OpenGGCMInterpolator swig_types[23]
+#define SWIGTYPE_p_ccmc__Point3f swig_types[24]
+#define SWIGTYPE_p_ccmc__Position swig_types[25]
+#define SWIGTYPE_p_ccmc__Time swig_types[26]
+#define SWIGTYPE_p_ccmc__Tracer swig_types[27]
+#define SWIGTYPE_p_char swig_types[28]
+#define SWIGTYPE_p_difference_type swig_types[29]
+#define SWIGTYPE_p_float swig_types[30]
+#define SWIGTYPE_p_int swig_types[31]
+#define SWIGTYPE_p_long swig_types[32]
+#define SWIGTYPE_p_p_PyObject swig_types[33]
+#define SWIGTYPE_p_size_type swig_types[34]
+#define SWIGTYPE_p_std__allocatorT_ccmc__Fieldline_t swig_types[35]
+#define SWIGTYPE_p_std__allocatorT_ccmc__Point3f_t swig_types[36]
+#define SWIGTYPE_p_std__allocatorT_float_t swig_types[37]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[38]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[39]
+#define SWIGTYPE_p_std__invalid_argument swig_types[40]
+#define SWIGTYPE_p_std__string swig_types[41]
+#define SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t swig_types[42]
+#define SWIGTYPE_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t swig_types[43]
+#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[44]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[45]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[46]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[47]
+#define SWIGTYPE_p_value_type swig_types[48]
+static swig_type_info *swig_types[50];
+static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3953,6 +3955,9 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 
 
 #include <ccmc/FileReader.h>
+#include <ccmc/GeneralFileReader.h>
+#include <ccmc/CDFFileReader.h>
+#include <ccmc/HDF5FileReader.h>
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
 #include <ccmc/KameleonInterpolator.h>
@@ -3969,6 +3974,7 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 #include <ccmc/ENLILInterpolator.h>
 #include <ccmc/MASInterpolator.h>
 #include <ccmc/OpenGGCMInterpolator.h>
+#include <ccmc/CCMCTime.h>
 using namespace std;
 
 
@@ -4179,6 +4185,9 @@ SWIG_AsVal_float (PyObject * obj, float *val)
 }
 
 
+
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -4203,9 +4212,6 @@ SWIG_AsVal_int (PyObject * obj, int *val)
   }  
   return res;
 }
-
-
-
 
 
 SWIGINTERN int
@@ -6583,19 +6589,6 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_SwigPyIterator___sub__)
 
-SWIGINTERN int _wrap_new_FileReader(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::FileReader *result = 0 ;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  result = (ccmc::FileReader *)new ccmc::FileReader();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__FileReader, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? 1 : 0;
-fail:
-  return -1;
-}
-
-
 SWIGINTERN PyObject *_wrap_FileReader_open(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
@@ -7730,27 +7723,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FileReader_getCurrentFileID(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  CDFid result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getCurrentFileID" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
-  result = (CDFid)(arg1)->getCurrentFileID();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_FileReader_getCurrentFilename(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
@@ -7772,6 +7744,104 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_FileReader_initializeVariableIDs(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_initializeVariableIDs" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  (arg1)->initializeVariableIDs();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FileReader_initializeVariableNames(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_initializeVariableNames" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  (arg1)->initializeVariableNames();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FileReader_closeFile(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_closeFile" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  result = (long)(arg1)->closeFile();
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FileReader_openFile(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FileReader_openFile",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_openFile" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FileReader_openFile" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FileReader_openFile" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->openFile((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_FileReader(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
@@ -7784,6 +7854,3454 @@ SWIGINTERN PyObject *_wrap_delete_FileReader(PyObject *self, PyObject *args) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_FileReader" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_GeneralFileReader(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::GeneralFileReader *)new ccmc::GeneralFileReader();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__GeneralFileReader, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_open",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_open" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariable__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariable" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariable__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariable" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getVariable" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariable__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  long arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  long val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:GeneralFileReader_getVariable",&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariable" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GeneralFileReader_getVariable" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GeneralFileReader_getVariable" "', argument " "4"" of type '" "long""'");
+  } 
+  arg4 = static_cast< long >(val4);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariable__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  long arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  long val3 ;
+  int ecode3 = 0 ;
+  long val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:GeneralFileReader_getVariable",&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariable" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getVariable" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GeneralFileReader_getVariable" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GeneralFileReader_getVariable" "', argument " "4"" of type '" "long""'");
+  } 
+  arg4 = static_cast< long >(val4);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariable(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_GeneralFileReader_getVariable__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_GeneralFileReader_getVariable__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_long(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_GeneralFileReader_getVariable__SWIG_3(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_long(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_GeneralFileReader_getVariable__SWIG_2(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GeneralFileReader_getVariable'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::GeneralFileReader::getVariable(std::string const &)\n"
+    "    ccmc::GeneralFileReader::getVariable(long)\n"
+    "    ccmc::GeneralFileReader::getVariable(std::string const &,long,long)\n"
+    "    ccmc::GeneralFileReader::getVariable(long,long,long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableAtIndex__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeneralFileReader_getVariableAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableAtIndex" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getVariableAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariableAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GeneralFileReader_getVariableAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (float)(arg1)->getVariableAtIndex((std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableAtIndex__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeneralFileReader_getVariableAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableAtIndex" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getVariableAtIndex" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GeneralFileReader_getVariableAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (float)(arg1)->getVariableAtIndex(arg2,arg3);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableAtIndex(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_GeneralFileReader_getVariableAtIndex__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_GeneralFileReader_getVariableAtIndex__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GeneralFileReader_getVariableAtIndex'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::GeneralFileReader::getVariableAtIndex(std::string const &,long)\n"
+    "    ccmc::GeneralFileReader::getVariableAtIndex(long,long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableInt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getVariableInt",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableInt" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableIntAtIndex(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeneralFileReader_getVariableIntAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableIntAtIndex" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getVariableIntAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariableIntAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GeneralFileReader_getVariableIntAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (int)(arg1)->getVariableIntAtIndex((std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getNumberOfGlobalAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getNumberOfGlobalAttributes" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfGlobalAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getNumberOfVariables(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getNumberOfVariables" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfVariables();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getNumberOfVariableAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getNumberOfVariableAttributes" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfVariableAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getNumberOfRecords__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getNumberOfRecords",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getNumberOfRecords" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getNumberOfRecords" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getNumberOfRecords" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getNumberOfRecords((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getNumberOfRecords__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getNumberOfRecords",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getNumberOfRecords" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getNumberOfRecords" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (long)(arg1)->getNumberOfRecords(arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getNumberOfRecords(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_GeneralFileReader_getNumberOfRecords__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_GeneralFileReader_getNumberOfRecords__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GeneralFileReader_getNumberOfRecords'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::GeneralFileReader::getNumberOfRecords(std::string const &)\n"
+    "    ccmc::GeneralFileReader::getNumberOfRecords(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableID(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getVariableID",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableID" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getVariableName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableName" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getVariableName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getVariableName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getGlobalAttribute__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getGlobalAttribute",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getGlobalAttribute" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getGlobalAttribute" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getGlobalAttribute(arg2);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getGlobalAttributeName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getGlobalAttributeName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getGlobalAttributeName" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getGlobalAttributeName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getGlobalAttributeName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableAttributeName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getVariableAttributeName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableAttributeName" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeneralFileReader_getVariableAttributeName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getVariableAttributeName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getGlobalAttribute__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_getGlobalAttribute",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getGlobalAttribute" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getGlobalAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getGlobalAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getGlobalAttribute((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getGlobalAttribute(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_GeneralFileReader_getGlobalAttribute__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__GeneralFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_GeneralFileReader_getGlobalAttribute__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GeneralFileReader_getGlobalAttribute'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::GeneralFileReader::getGlobalAttribute(long)\n"
+    "    ccmc::GeneralFileReader::getGlobalAttribute(std::string const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableAttribute(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeneralFileReader_getVariableAttribute",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableAttribute" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_getVariableAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariableAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeneralFileReader_getVariableAttribute" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_getVariableAttribute" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  result = (arg1)->getVariableAttribute((std::string const &)*arg2,(std::string const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getVariableAttributeNames(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< std::vector< std::string,std::allocator< std::string > > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getVariableAttributeNames" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  result = (arg1)->getVariableAttributeNames();
+  resultobj = SWIG_NewPointerObj((new std::vector< std::string,std::allocator< std::string > >(static_cast< const std::vector< std::string,std::allocator< std::string > >& >(result))), SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_doesAttributeExist(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_doesAttributeExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_doesAttributeExist" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_doesVariableExist(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeneralFileReader_doesVariableExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_doesVariableExist" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralFileReader_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralFileReader_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_close(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_close" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  result = (long)(arg1)->close();
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralFileReader_getCurrentFilename(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralFileReader_getCurrentFilename" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  result = (std::string *) &(arg1)->getCurrentFilename();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_GeneralFileReader(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__GeneralFileReader, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_GeneralFileReader" "', argument " "1"" of type '" "ccmc::GeneralFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::GeneralFileReader * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_CDFFileReader(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::CDFFileReader *)new ccmc::CDFFileReader();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__CDFFileReader, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariable__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariable" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariable__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariable" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getVariable" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariable__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  long arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  long val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:CDFFileReader_getVariable",&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariable" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CDFFileReader_getVariable" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "CDFFileReader_getVariable" "', argument " "4"" of type '" "long""'");
+  } 
+  arg4 = static_cast< long >(val4);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariable__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  long arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  long val3 ;
+  int ecode3 = 0 ;
+  long val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:CDFFileReader_getVariable",&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariable" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getVariable" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CDFFileReader_getVariable" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "CDFFileReader_getVariable" "', argument " "4"" of type '" "long""'");
+  } 
+  arg4 = static_cast< long >(val4);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariable(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_CDFFileReader_getVariable__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_CDFFileReader_getVariable__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_long(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_CDFFileReader_getVariable__SWIG_3(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_long(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_CDFFileReader_getVariable__SWIG_2(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'CDFFileReader_getVariable'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::CDFFileReader::getVariable(std::string const &)\n"
+    "    ccmc::CDFFileReader::getVariable(long)\n"
+    "    ccmc::CDFFileReader::getVariable(std::string const &,long,long)\n"
+    "    ccmc::CDFFileReader::getVariable(long,long,long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableAtIndex__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:CDFFileReader_getVariableAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableAtIndex" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getVariableAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariableAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CDFFileReader_getVariableAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (float)(arg1)->getVariableAtIndex((std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableAtIndex__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:CDFFileReader_getVariableAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableAtIndex" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getVariableAtIndex" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CDFFileReader_getVariableAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (float)(arg1)->getVariableAtIndex(arg2,arg3);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableAtIndex(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_CDFFileReader_getVariableAtIndex__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_CDFFileReader_getVariableAtIndex__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'CDFFileReader_getVariableAtIndex'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::CDFFileReader::getVariableAtIndex(std::string const &,long)\n"
+    "    ccmc::CDFFileReader::getVariableAtIndex(long,long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableInt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getVariableInt",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableInt" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableIntAtIndex(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:CDFFileReader_getVariableIntAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableIntAtIndex" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getVariableIntAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariableIntAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CDFFileReader_getVariableIntAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (int)(arg1)->getVariableIntAtIndex((std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getNumberOfGlobalAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getNumberOfGlobalAttributes" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfGlobalAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getNumberOfVariables(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getNumberOfVariables" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfVariables();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getNumberOfVariableAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getNumberOfVariableAttributes" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfVariableAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getNumberOfRecords__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getNumberOfRecords",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getNumberOfRecords" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getNumberOfRecords" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getNumberOfRecords" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getNumberOfRecords((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getNumberOfRecords__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getNumberOfRecords",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getNumberOfRecords" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getNumberOfRecords" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (long)(arg1)->getNumberOfRecords(arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getNumberOfRecords(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_CDFFileReader_getNumberOfRecords__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_CDFFileReader_getNumberOfRecords__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'CDFFileReader_getNumberOfRecords'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::CDFFileReader::getNumberOfRecords(std::string const &)\n"
+    "    ccmc::CDFFileReader::getNumberOfRecords(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableID(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getVariableID",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableID" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getVariableName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableName" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getVariableName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getVariableName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getGlobalAttribute__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getGlobalAttribute",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getGlobalAttribute" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getGlobalAttribute" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getGlobalAttribute(arg2);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getGlobalAttributeName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getGlobalAttributeName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getGlobalAttributeName" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getGlobalAttributeName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getGlobalAttributeName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableAttributeName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getVariableAttributeName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableAttributeName" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_getVariableAttributeName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getVariableAttributeName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getGlobalAttribute__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getGlobalAttribute",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getGlobalAttribute" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getGlobalAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getGlobalAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getGlobalAttribute((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getGlobalAttribute(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_CDFFileReader_getGlobalAttribute__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_CDFFileReader_getGlobalAttribute__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'CDFFileReader_getGlobalAttribute'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::CDFFileReader::getGlobalAttribute(long)\n"
+    "    ccmc::CDFFileReader::getGlobalAttribute(std::string const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableAttribute(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:CDFFileReader_getVariableAttribute",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableAttribute" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getVariableAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariableAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CDFFileReader_getVariableAttribute" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getVariableAttribute" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  result = (arg1)->getVariableAttribute((std::string const &)*arg2,(std::string const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getVariableAttributeNames(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< std::vector< std::string,std::allocator< std::string > > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getVariableAttributeNames" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  result = (arg1)->getVariableAttributeNames();
+  resultobj = SWIG_NewPointerObj((new std::vector< std::string,std::allocator< std::string > >(static_cast< const std::vector< std::string,std::allocator< std::string > >& >(result))), SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesAttributeExist(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_doesAttributeExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_doesAttributeExist" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesVariableExist(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_doesVariableExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_doesVariableExist" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getCurrentFilename(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getCurrentFilename" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  result = (std::string *) &(arg1)->getCurrentFilename();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_CDFFileReader(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_CDFFileReader" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_HDF5FileReader(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::HDF5FileReader *)new ccmc::HDF5FileReader();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__HDF5FileReader, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariable__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariable" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariable__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariable" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getVariable" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariable__SWIG_2(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  long arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  long val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:HDF5FileReader_getVariable",&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariable" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "HDF5FileReader_getVariable" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "HDF5FileReader_getVariable" "', argument " "4"" of type '" "long""'");
+  } 
+  arg4 = static_cast< long >(val4);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariable__SWIG_3(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  long arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  long val3 ;
+  int ecode3 = 0 ;
+  long val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:HDF5FileReader_getVariable",&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariable" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getVariable" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "HDF5FileReader_getVariable" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "HDF5FileReader_getVariable" "', argument " "4"" of type '" "long""'");
+  } 
+  arg4 = static_cast< long >(val4);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable(arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariable(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_HDF5FileReader_getVariable__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_HDF5FileReader_getVariable__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_long(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_HDF5FileReader_getVariable__SWIG_3(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_long(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_HDF5FileReader_getVariable__SWIG_2(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'HDF5FileReader_getVariable'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::HDF5FileReader::getVariable(std::string const &)\n"
+    "    ccmc::HDF5FileReader::getVariable(long)\n"
+    "    ccmc::HDF5FileReader::getVariable(std::string const &,long,long)\n"
+    "    ccmc::HDF5FileReader::getVariable(long,long,long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableAtIndex__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:HDF5FileReader_getVariableAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableAtIndex" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getVariableAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariableAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "HDF5FileReader_getVariableAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (float)(arg1)->getVariableAtIndex((std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableAtIndex__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:HDF5FileReader_getVariableAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableAtIndex" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getVariableAtIndex" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "HDF5FileReader_getVariableAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (float)(arg1)->getVariableAtIndex(arg2,arg3);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableAtIndex(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_HDF5FileReader_getVariableAtIndex__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_long(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_HDF5FileReader_getVariableAtIndex__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'HDF5FileReader_getVariableAtIndex'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::HDF5FileReader::getVariableAtIndex(std::string const &,long)\n"
+    "    ccmc::HDF5FileReader::getVariableAtIndex(long,long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableInt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getVariableInt",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableInt" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableIntAtIndex(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  long val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:HDF5FileReader_getVariableIntAtIndex",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableIntAtIndex" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getVariableIntAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariableIntAtIndex" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_long(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "HDF5FileReader_getVariableIntAtIndex" "', argument " "3"" of type '" "long""'");
+  } 
+  arg3 = static_cast< long >(val3);
+  result = (int)(arg1)->getVariableIntAtIndex((std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getNumberOfGlobalAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getNumberOfGlobalAttributes" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfGlobalAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getNumberOfVariables(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getNumberOfVariables" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfVariables();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getNumberOfVariableAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getNumberOfVariableAttributes" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  result = (int)(arg1)->getNumberOfVariableAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getNumberOfRecords__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getNumberOfRecords",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getNumberOfRecords" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getNumberOfRecords" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getNumberOfRecords" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getNumberOfRecords((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getNumberOfRecords__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getNumberOfRecords",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getNumberOfRecords" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getNumberOfRecords" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (long)(arg1)->getNumberOfRecords(arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getNumberOfRecords(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_HDF5FileReader_getNumberOfRecords__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_HDF5FileReader_getNumberOfRecords__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'HDF5FileReader_getNumberOfRecords'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::HDF5FileReader::getNumberOfRecords(std::string const &)\n"
+    "    ccmc::HDF5FileReader::getNumberOfRecords(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableID(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getVariableID",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableID" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getVariableName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableName" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getVariableName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getVariableName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getGlobalAttribute__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getGlobalAttribute",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getGlobalAttribute" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getGlobalAttribute" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getGlobalAttribute(arg2);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getGlobalAttributeName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getGlobalAttributeName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getGlobalAttributeName" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getGlobalAttributeName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getGlobalAttributeName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableAttributeName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getVariableAttributeName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableAttributeName" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "HDF5FileReader_getVariableAttributeName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getVariableAttributeName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getGlobalAttribute__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_getGlobalAttribute",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getGlobalAttribute" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getGlobalAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getGlobalAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getGlobalAttribute((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getGlobalAttribute(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_HDF5FileReader_getGlobalAttribute__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__HDF5FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_HDF5FileReader_getGlobalAttribute__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'HDF5FileReader_getGlobalAttribute'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::HDF5FileReader::getGlobalAttribute(long)\n"
+    "    ccmc::HDF5FileReader::getGlobalAttribute(std::string const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableAttribute(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  int res3 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  Attribute result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:HDF5FileReader_getVariableAttribute",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableAttribute" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_getVariableAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariableAttribute" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "HDF5FileReader_getVariableAttribute" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_getVariableAttribute" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
+  }
+  result = (arg1)->getVariableAttribute((std::string const &)*arg2,(std::string const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  if (SWIG_IsNewObj(res3)) delete arg3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getVariableAttributeNames(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< std::vector< std::string,std::allocator< std::string > > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getVariableAttributeNames" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  result = (arg1)->getVariableAttributeNames();
+  resultobj = SWIG_NewPointerObj((new std::vector< std::string,std::allocator< std::string > >(static_cast< const std::vector< std::string,std::allocator< std::string > >& >(result))), SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_doesAttributeExist(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_doesAttributeExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_doesAttributeExist" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_doesVariableExist(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HDF5FileReader_doesVariableExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_doesVariableExist" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HDF5FileReader_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "HDF5FileReader_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HDF5FileReader_getCurrentFilename(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HDF5FileReader_getCurrentFilename" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
+  result = (std::string *) &(arg1)->getCurrentFilename();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_HDF5FileReader(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::HDF5FileReader *arg1 = (ccmc::HDF5FileReader *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__HDF5FileReader, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_HDF5FileReader" "', argument " "1"" of type '" "ccmc::HDF5FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::HDF5FileReader * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8019,339 +11537,6 @@ SWIGINTERN PyObject *_wrap_delete_Position(PyObject *self, PyObject *args) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Position" "', argument " "1"" of type '" "ccmc::Position *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Position * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_year_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Time_year_set",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_year_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_year_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->year = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_year_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_year_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  result = (int) ((arg1)->year);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_month_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Time_month_set",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_month_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_month_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->month = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_month_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_month_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  result = (int) ((arg1)->month);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_day_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Time_day_set",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_day_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_day_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->day = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_day_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_day_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  result = (int) ((arg1)->day);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_hour_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Time_hour_set",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_hour_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_hour_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->hour = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_hour_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_hour_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  result = (int) ((arg1)->hour);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_minute_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Time_minute_set",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_minute_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_minute_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->minute = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_minute_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_minute_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  result = (int) ((arg1)->minute);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_second_set(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  float arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  float val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Time_second_set",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_second_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  ecode2 = SWIG_AsVal_float(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_second_set" "', argument " "2"" of type '" "float""'");
-  } 
-  arg2 = static_cast< float >(val2);
-  if (arg1) (arg1)->second = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Time_second_get(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  float result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_second_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
-  result = (float) ((arg1)->second);
-  resultobj = SWIG_From_float(static_cast< float >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN int _wrap_new_Time(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *result = 0 ;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  result = (ccmc::Time *)new ccmc::Time();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Time, SWIG_BUILTIN_INIT |  0 );
-  return resultobj == Py_None ? 1 : 0;
-fail:
-  return -1;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_Time(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Time" "', argument " "1"" of type '" "ccmc::Time *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9401,27 +12586,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getCurrentFileID(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  CDFid result;
-  
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getCurrentFileID" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (CDFid)(arg1)->getCurrentFileID();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Kameleon_getCurrentFilename(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
@@ -9689,7 +12853,7 @@ SWIGINTERN PyObject *_wrap_Kameleon_getCurrentTime(PyObject *self, PyObject *arg
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  ccmc::Time result;
+  Time result;
   
   if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
@@ -9698,7 +12862,7 @@ SWIGINTERN PyObject *_wrap_Kameleon_getCurrentTime(PyObject *self, PyObject *arg
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
   result = (arg1)->getCurrentTime();
-  resultobj = SWIG_NewPointerObj((new ccmc::Time(static_cast< const ccmc::Time& >(result))), SWIGTYPE_p_ccmc__Time, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new Time(static_cast< const Time& >(result))), SWIGTYPE_p_ccmc__Time, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -9824,15 +12988,15 @@ SWIGINTERN PyObject *Swig_var_interpolatorObjects_get(void) {
 SWIGINTERN int Swig_var_fileReaderObjects_set(PyObject *_val) {
   {
     void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t,  0  | 0);
+    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,  0  | 0);
     if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ccmc::fileReaderObjects""' of type '""boost::unordered_map< int,ccmc::FileReader * >""'");
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ccmc::fileReaderObjects""' of type '""boost::unordered_map< int,ccmc::GeneralFileReader * >""'");
     }
     if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ccmc::fileReaderObjects""' of type '""boost::unordered_map< int,ccmc::FileReader * >""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ccmc::fileReaderObjects""' of type '""boost::unordered_map< int,ccmc::GeneralFileReader * >""'");
     } else {
-      boost::unordered_map< int,ccmc::FileReader * > * temp;
-      temp  = reinterpret_cast< boost::unordered_map< int,ccmc::FileReader * > * >(argp);
+      boost::unordered_map< int,ccmc::GeneralFileReader * > * temp;
+      temp  = reinterpret_cast< boost::unordered_map< int,ccmc::GeneralFileReader * > * >(argp);
       ccmc::fileReaderObjects = *temp;
       if (SWIG_IsNewObj(res)) delete temp;
     }
@@ -9848,7 +13012,7 @@ SWIGINTERN PyObject *Swig_var_fileReaderObjects_get(void) {
   PyObject *self = 0;
   
   (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&ccmc::fileReaderObjects), SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t,  0 );
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&ccmc::fileReaderObjects), SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,  0 );
   return pyobj;
 }
 
@@ -12036,7 +15200,7 @@ SWIGINTERN PyObject *_wrap_Tracer_getLastClosedFieldlines(PyObject *self, PyObje
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  vector< Fieldline > result;
+  SwigValueWrapper< std::vector< ccmc::Fieldline,std::allocator< ccmc::Fieldline > > > result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:Tracer_getLastClosedFieldlines",&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Tracer, 0 |  0 );
@@ -12060,7 +15224,7 @@ SWIGINTERN PyObject *_wrap_Tracer_getLastClosedFieldlines(PyObject *self, PyObje
   } 
   arg4 = static_cast< int >(val4);
   result = (arg1)->getLastClosedFieldlines(arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj((new vector< Fieldline >(static_cast< const vector< Fieldline >& >(result))), SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new std::vector< Fieldline,std::allocator< ccmc::Fieldline > >(static_cast< const std::vector< Fieldline,std::allocator< ccmc::Fieldline > >& >(result))), SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -14141,10 +17305,10 @@ SWIGINTERN PyObject *_wrap_Attribute_toString(PyObject *self, PyObject *args) {
   if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Attribute, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Attribute_toString" "', argument " "1"" of type '" "ccmc::Attribute *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Attribute_toString" "', argument " "1"" of type '" "ccmc::Attribute const *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Attribute * >(argp1);
-  result = (arg1)->toString();
+  result = ((ccmc::Attribute const *)arg1)->toString();
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
@@ -18415,6 +21579,360 @@ SWIGINTERN PyObject *_wrap_delete_OpenGGCMInterpolator(PyObject *self, PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OpenGGCMInterpolator" "', argument " "1"" of type '" "ccmc::OpenGGCMInterpolator *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::OpenGGCMInterpolator * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_year_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Time_year_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_year_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_year_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->year = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_year_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_year_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  result = (int) ((arg1)->year);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_month_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Time_month_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_month_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_month_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->month = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_month_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_month_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  result = (int) ((arg1)->month);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_day_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Time_day_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_day_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_day_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->day = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_day_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_day_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  result = (int) ((arg1)->day);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_hour_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Time_hour_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_hour_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_hour_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->hour = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_hour_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_hour_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  result = (int) ((arg1)->hour);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_minute_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Time_minute_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_minute_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_minute_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->minute = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_minute_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_minute_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  result = (int) ((arg1)->minute);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_second_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Time_second_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_second_set" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Time_second_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  if (arg1) (arg1)->second = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_second_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_second_get" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  result = (float) ((arg1)->second);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Time_toString(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Time_toString" "', argument " "1"" of type '" "ccmc::Time const *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
+  result = ((ccmc::Time const *)arg1)->toString();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN int _wrap_new_Time(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  result = (ccmc::Time *)new ccmc::Time();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Time, SWIG_BUILTIN_INIT |  0 );
+  return resultobj == Py_None ? 1 : 0;
+fail:
+  return -1;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Time(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Time, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Time" "', argument " "1"" of type '" "ccmc::Time *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Time * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -28086,8 +31604,11 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__FileReader_methods[] = {
   { "doesAttributeExist", (PyCFunction) _wrap_FileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
   { "doesVariableExist", (PyCFunction) _wrap_FileReader_doesVariableExist, METH_VARARGS, (char*) "" },
   { "close", (PyCFunction) _wrap_FileReader_close, METH_VARARGS, (char*) "" },
-  { "getCurrentFileID", (PyCFunction) _wrap_FileReader_getCurrentFileID, METH_VARARGS, (char*) "" },
   { "getCurrentFilename", (PyCFunction) _wrap_FileReader_getCurrentFilename, METH_VARARGS, (char*) "" },
+  { "initializeVariableIDs", (PyCFunction) _wrap_FileReader_initializeVariableIDs, METH_VARARGS, (char*) "" },
+  { "initializeVariableNames", (PyCFunction) _wrap_FileReader_initializeVariableNames, METH_VARARGS, (char*) "" },
+  { "closeFile", (PyCFunction) _wrap_FileReader_closeFile, METH_VARARGS, (char*) "" },
+  { "openFile", (PyCFunction) _wrap_FileReader_openFile, METH_VARARGS, (char*) "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -28141,7 +31662,7 @@ static PyHeapTypeObject SwigPyBuiltin__ccmc__FileReader_type = {
     (descrgetfunc) 0,                         /* tp_descr_get */
     (descrsetfunc) 0,                         /* tp_descr_set */
     (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
-    (initproc) _wrap_new_FileReader,          /* tp_init */
+    (initproc) SwigPyBuiltin_BadInit,         /* tp_init */
     (allocfunc) 0,                            /* tp_alloc */
     (newfunc) 0,                              /* tp_new */
     (freefunc) 0,                             /* tp_free */
@@ -28253,6 +31774,635 @@ static PyHeapTypeObject SwigPyBuiltin__ccmc__FileReader_type = {
 };
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__FileReader_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__FileReader_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_GeneralFileReader)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__GeneralFileReader_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__GeneralFileReader_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__GeneralFileReader_methods[] = {
+  { "open", (PyCFunction) _wrap_GeneralFileReader_open, METH_VARARGS, (char*) "" },
+  { "getVariable", (PyCFunction) _wrap_GeneralFileReader_getVariable, METH_VARARGS, (char*) "" },
+  { "getVariableAtIndex", (PyCFunction) _wrap_GeneralFileReader_getVariableAtIndex, METH_VARARGS, (char*) "" },
+  { "getVariableInt", (PyCFunction) _wrap_GeneralFileReader_getVariableInt, METH_VARARGS, (char*) "" },
+  { "getVariableIntAtIndex", (PyCFunction) _wrap_GeneralFileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_GeneralFileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariables", (PyCFunction) _wrap_GeneralFileReader_getNumberOfVariables, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_GeneralFileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfRecords", (PyCFunction) _wrap_GeneralFileReader_getNumberOfRecords, METH_VARARGS, (char*) "" },
+  { "getVariableID", (PyCFunction) _wrap_GeneralFileReader_getVariableID, METH_VARARGS, (char*) "" },
+  { "getVariableName", (PyCFunction) _wrap_GeneralFileReader_getVariableName, METH_VARARGS, (char*) "" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_GeneralFileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_GeneralFileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_GeneralFileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
+  { "getVariableAttribute", (PyCFunction) _wrap_GeneralFileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
+  { "getVariableAttributeNames", (PyCFunction) _wrap_GeneralFileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
+  { "doesAttributeExist", (PyCFunction) _wrap_GeneralFileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
+  { "doesVariableExist", (PyCFunction) _wrap_GeneralFileReader_doesVariableExist, METH_VARARGS, (char*) "" },
+  { "close", (PyCFunction) _wrap_GeneralFileReader_close, METH_VARARGS, (char*) "" },
+  { "getCurrentFilename", (PyCFunction) _wrap_GeneralFileReader_getCurrentFilename, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__GeneralFileReader_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "GeneralFileReader",                      /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_GeneralFileReader_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__GeneralFileReader_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__GeneralFileReader_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__GeneralFileReader_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__GeneralFileReader_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::GeneralFileReader",                /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__GeneralFileReader_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__GeneralFileReader_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__GeneralFileReader_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_GeneralFileReader,   /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__GeneralFileReader_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__GeneralFileReader_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_CDFFileReader)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__CDFFileReader_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__CDFFileReader_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__CDFFileReader_methods[] = {
+  { "getVariable", (PyCFunction) _wrap_CDFFileReader_getVariable, METH_VARARGS, (char*) "" },
+  { "getVariableAtIndex", (PyCFunction) _wrap_CDFFileReader_getVariableAtIndex, METH_VARARGS, (char*) "" },
+  { "getVariableInt", (PyCFunction) _wrap_CDFFileReader_getVariableInt, METH_VARARGS, (char*) "" },
+  { "getVariableIntAtIndex", (PyCFunction) _wrap_CDFFileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_CDFFileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariables", (PyCFunction) _wrap_CDFFileReader_getNumberOfVariables, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_CDFFileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfRecords", (PyCFunction) _wrap_CDFFileReader_getNumberOfRecords, METH_VARARGS, (char*) "" },
+  { "getVariableID", (PyCFunction) _wrap_CDFFileReader_getVariableID, METH_VARARGS, (char*) "" },
+  { "getVariableName", (PyCFunction) _wrap_CDFFileReader_getVariableName, METH_VARARGS, (char*) "" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_CDFFileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_CDFFileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
+  { "getVariableAttribute", (PyCFunction) _wrap_CDFFileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
+  { "getVariableAttributeNames", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
+  { "doesAttributeExist", (PyCFunction) _wrap_CDFFileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
+  { "doesVariableExist", (PyCFunction) _wrap_CDFFileReader_doesVariableExist, METH_VARARGS, (char*) "" },
+  { "getCurrentFilename", (PyCFunction) _wrap_CDFFileReader_getCurrentFilename, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__CDFFileReader_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "CDFFileReader",                          /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_CDFFileReader_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__CDFFileReader_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__CDFFileReader_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__CDFFileReader_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__CDFFileReader_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::CDFFileReader",                    /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__CDFFileReader_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__CDFFileReader_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__CDFFileReader_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_CDFFileReader,       /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__CDFFileReader_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__CDFFileReader_type};
+
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_HDF5FileReader)
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__HDF5FileReader_getset[] = {
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__HDF5FileReader_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__HDF5FileReader_methods[] = {
+  { "getVariable", (PyCFunction) _wrap_HDF5FileReader_getVariable, METH_VARARGS, (char*) "" },
+  { "getVariableAtIndex", (PyCFunction) _wrap_HDF5FileReader_getVariableAtIndex, METH_VARARGS, (char*) "" },
+  { "getVariableInt", (PyCFunction) _wrap_HDF5FileReader_getVariableInt, METH_VARARGS, (char*) "" },
+  { "getVariableIntAtIndex", (PyCFunction) _wrap_HDF5FileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_HDF5FileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariables", (PyCFunction) _wrap_HDF5FileReader_getNumberOfVariables, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_HDF5FileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfRecords", (PyCFunction) _wrap_HDF5FileReader_getNumberOfRecords, METH_VARARGS, (char*) "" },
+  { "getVariableID", (PyCFunction) _wrap_HDF5FileReader_getVariableID, METH_VARARGS, (char*) "" },
+  { "getVariableName", (PyCFunction) _wrap_HDF5FileReader_getVariableName, METH_VARARGS, (char*) "" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_HDF5FileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_HDF5FileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_HDF5FileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
+  { "getVariableAttribute", (PyCFunction) _wrap_HDF5FileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
+  { "getVariableAttributeNames", (PyCFunction) _wrap_HDF5FileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
+  { "doesAttributeExist", (PyCFunction) _wrap_HDF5FileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
+  { "doesVariableExist", (PyCFunction) _wrap_HDF5FileReader_doesVariableExist, METH_VARARGS, (char*) "" },
+  { "getCurrentFilename", (PyCFunction) _wrap_HDF5FileReader_getCurrentFilename, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__HDF5FileReader_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "HDF5FileReader",                         /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_HDF5FileReader_closure, /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__HDF5FileReader_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__HDF5FileReader_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__HDF5FileReader_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__HDF5FileReader_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::HDF5FileReader",                   /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__HDF5FileReader_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__HDF5FileReader_methods, /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__HDF5FileReader_getset, /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_HDF5FileReader,      /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__HDF5FileReader_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__HDF5FileReader_type};
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Position)
 static SwigPyGetSet Position_c0_getset = { _wrap_Position_c0_get, _wrap_Position_c0_set };
@@ -28454,215 +32604,6 @@ static PyHeapTypeObject SwigPyBuiltin__ccmc__Position_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__Position_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__Position_type};
 
-SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Time)
-static SwigPyGetSet Time_day_getset = { _wrap_Time_day_get, _wrap_Time_day_set };
-static SwigPyGetSet Time_second_getset = { _wrap_Time_second_get, _wrap_Time_second_set };
-static SwigPyGetSet Time_month_getset = { _wrap_Time_month_get, _wrap_Time_month_set };
-static SwigPyGetSet Time_hour_getset = { _wrap_Time_hour_get, _wrap_Time_hour_set };
-static SwigPyGetSet Time_minute_getset = { _wrap_Time_minute_get, _wrap_Time_minute_set };
-static SwigPyGetSet Time_year_getset = { _wrap_Time_year_get, _wrap_Time_year_set };
-SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__Time_getset[] = {
-    { (char*) "day", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.day", (void*) &Time_day_getset }
-,
-    { (char*) "second", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.second", (void*) &Time_second_getset }
-,
-    { (char*) "month", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.month", (void*) &Time_month_getset }
-,
-    { (char*) "hour", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.hour", (void*) &Time_hour_getset }
-,
-    { (char*) "minute", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.minute", (void*) &Time_minute_getset }
-,
-    { (char*) "year", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.year", (void*) &Time_year_getset }
-,
-    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
-};
-
-SWIGINTERN PyObject *
-SwigPyBuiltin__ccmc__Time_richcompare(PyObject *self, PyObject *other, int op) {
-  PyObject *result = NULL;
-  PyObject *tuple = PyTuple_New(1);
-  assert(tuple);
-  PyTuple_SET_ITEM(tuple, 0, other);
-  Py_XINCREF(other);
-  if (!result) {
-    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
-      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
-    } else {
-      result = Py_NotImplemented;
-      Py_INCREF(result);
-    }
-  }
-  Py_DECREF(tuple);
-  return result;
-}
-
-SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Time_methods[] = {
-  { NULL, NULL, 0, NULL } /* Sentinel */
-};
-
-static PyHeapTypeObject SwigPyBuiltin__ccmc__Time_type = {
-  {
-#if PY_VERSION_HEX >= 0x03000000
-    PyVarObject_HEAD_INIT(NULL, 0)
-#else
-    PyObject_HEAD_INIT(NULL)
-    0,                                        /* ob_size */
-#endif
-    "Time",                                   /* tp_name */
-    sizeof(SwigPyObject),                     /* tp_basicsize */
-    0,                                        /* tp_itemsize */
-    (destructor) _wrap_delete_Time_closure,   /* tp_dealloc */
-    (printfunc) 0,                            /* tp_print */
-    (getattrfunc) 0,                          /* tp_getattr */
-    (setattrfunc) 0,                          /* tp_setattr */
-#if PY_VERSION_HEX >= 0x03000000
-    0,                                        /* tp_compare */
-#else
-    (cmpfunc) 0,                              /* tp_compare */
-#endif
-    (reprfunc) 0,                             /* tp_repr */
-    &SwigPyBuiltin__ccmc__Time_type.as_number,      /* tp_as_number */
-    &SwigPyBuiltin__ccmc__Time_type.as_sequence,    /* tp_as_sequence */
-    &SwigPyBuiltin__ccmc__Time_type.as_mapping,     /* tp_as_mapping */
-    (hashfunc) 0,                             /* tp_hash */
-    (ternaryfunc) 0,                          /* tp_call */
-    (reprfunc) 0,                             /* tp_str */
-    (getattrofunc) 0,                         /* tp_getattro */
-    (setattrofunc) 0,                         /* tp_setattro */
-    &SwigPyBuiltin__ccmc__Time_type.as_buffer,      /* tp_as_buffer */
-#if PY_VERSION_HEX >= 0x03000000
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
-#else
-    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
-#endif
-    "ccmc::Time",                             /* tp_doc */
-    (traverseproc) 0,                         /* tp_traverse */
-    (inquiry) 0,                              /* tp_clear */
-    (richcmpfunc) SwigPyBuiltin__ccmc__Time_richcompare, /* feature:python:tp_richcompare */
-    0,                                        /* tp_weaklistoffset */
-    (getiterfunc) 0,                          /* tp_iter */
-    (iternextfunc) 0,                         /* tp_iternext */
-    SwigPyBuiltin__ccmc__Time_methods,        /* tp_methods */
-    0,                                        /* tp_members */
-    SwigPyBuiltin__ccmc__Time_getset,         /* tp_getset */
-    0,                                        /* tp_base */
-    0,                                        /* tp_dict */
-    (descrgetfunc) 0,                         /* tp_descr_get */
-    (descrsetfunc) 0,                         /* tp_descr_set */
-    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
-    (initproc) _wrap_new_Time,                /* tp_init */
-    (allocfunc) 0,                            /* tp_alloc */
-    (newfunc) 0,                              /* tp_new */
-    (freefunc) 0,                             /* tp_free */
-    (inquiry) 0,                              /* tp_is_gc */
-    (PyObject*) 0,                            /* tp_bases */
-    (PyObject*) 0,                            /* tp_mro */
-    (PyObject*) 0,                            /* tp_cache */
-    (PyObject*) 0,                            /* tp_subclasses */
-    (PyObject*) 0,                            /* tp_weaklist */
-    (destructor) 0,                           /* tp_del */
-#if PY_VERSION_HEX >= 0x02060000
-    (int) 0,                                  /* tp_version_tag */
-#endif
-  },
-  {
-    (binaryfunc) 0,                           /* nb_add */
-    (binaryfunc) 0,                           /* nb_subtract */
-    (binaryfunc) 0,                           /* nb_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_remainder */
-    (binaryfunc) 0,                           /* nb_divmod */
-    (ternaryfunc) 0,                          /* nb_power */
-    (unaryfunc) 0,                            /* nb_negative */
-    (unaryfunc) 0,                            /* nb_positive */
-    (unaryfunc) 0,                            /* nb_absolute */
-    (inquiry) 0,                              /* nb_nonzero */
-    (unaryfunc) 0,                            /* nb_invert */
-    (binaryfunc) 0,                           /* nb_lshift */
-    (binaryfunc) 0,                           /* nb_rshift */
-    (binaryfunc) 0,                           /* nb_and */
-    (binaryfunc) 0,                           /* nb_xor */
-    (binaryfunc) 0,                           /* nb_or */
-#if PY_VERSION_HEX < 0x03000000
-    (coercion) 0,                             /* nb_coerce */
-#endif
-    (unaryfunc) 0,                            /* nb_int */
-#if PY_VERSION_HEX >= 0x03000000
-    (void*) 0,                                /* nb_reserved */
-#else
-    (unaryfunc) 0,                            /* nb_long */
-#endif
-    (unaryfunc) 0,                            /* nb_float */
-#if PY_VERSION_HEX < 0x03000000
-    (unaryfunc) 0,                            /* nb_oct */
-    (unaryfunc) 0,                            /* nb_hex */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_add */
-    (binaryfunc) 0,                           /* nb_inplace_subtract */
-    (binaryfunc) 0,                           /* nb_inplace_multiply */
-#if PY_VERSION_HEX < 0x03000000
-    (binaryfunc) 0,                           /* nb_inplace_divide */
-#endif
-    (binaryfunc) 0,                           /* nb_inplace_remainder */
-    (ternaryfunc) 0,                          /* nb_inplace_power */
-    (binaryfunc) 0,                           /* nb_inplace_lshift */
-    (binaryfunc) 0,                           /* nb_inplace_rshift */
-    (binaryfunc) 0,                           /* nb_inplace_and */
-    (binaryfunc) 0,                           /* nb_inplace_xor */
-    (binaryfunc) 0,                           /* nb_inplace_or */
-    (binaryfunc) 0,                           /* nb_floor_divide */
-    (binaryfunc) 0,                           /* nb_true_divide */
-    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
-    (binaryfunc) 0,                           /* nb_inplace_true_divide */
-#if PY_VERSION_HEX >= 0x02050000
-    (unaryfunc) 0,                            /* nb_index */
-#endif
-  },
-  {
-    (lenfunc) 0,                              /* mp_length */
-    (binaryfunc) 0,                           /* mp_subscript */
-    (objobjargproc) 0,                        /* mp_ass_subscript */
-  },
-  {
-    (lenfunc) 0,                              /* sq_length */
-    (binaryfunc) 0,                           /* sq_concat */
-    (ssizeargfunc) 0,                         /* sq_repeat */
-    (ssizeargfunc) 0,                         /* sq_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void*) 0,                                /* was_sq_slice */
-#else
-    (ssizessizeargfunc) 0,                    /* sq_slice */
-#endif
-    (ssizeobjargproc) 0,                      /* sq_ass_item */
-#if PY_VERSION_HEX >= 0x03000000
-    (void*) 0,                                /* was_sq_ass_slice */
-#else
-    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
-#endif
-    (objobjproc) 0,                           /* sq_contains */
-    (binaryfunc) 0,                           /* sq_inplace_concat */
-    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
-  },
-  {
-#if PY_VERSION_HEX < 0x03000000
-    (readbufferproc) 0,                       /* bf_getreadbuffer */
-    (writebufferproc) 0,                      /* bf_getwritebuffer */
-    (segcountproc) 0,                         /* bf_getsegcount */
-    (charbufferproc) 0,                       /* bf_getcharbuffer */
-#endif
-#if PY_VERSION_HEX >= 0x02060000
-    (getbufferproc) 0,                        /* bf_getbuffer */
-    (releasebufferproc) 0,                    /* bf_releasebuffer */
-#endif
-  },
-    (PyObject*) 0,                            /* ht_name */
-    (PyObject*) 0,                            /* ht_slots */
-};
-
-SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__Time_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__Time_type};
-
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Kameleon)
 SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__Kameleon_getset[] = {
     {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
@@ -28717,7 +32658,6 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Kameleon_methods[] = {
   { "getNumberOfVariables", (PyCFunction) _wrap_Kameleon_getNumberOfVariables, METH_VARARGS, (char*) "" },
   { "doesAttributeExist", (PyCFunction) _wrap_Kameleon_doesAttributeExist, METH_VARARGS, (char*) "" },
   { "doesVariableExist", (PyCFunction) _wrap_Kameleon_doesVariableExist, METH_VARARGS, (char*) "" },
-  { "getCurrentFileID", (PyCFunction) _wrap_Kameleon_getCurrentFileID, METH_VARARGS, (char*) "" },
   { "getCurrentFilename", (PyCFunction) _wrap_Kameleon_getCurrentFilename, METH_VARARGS, (char*) "" },
   { "_cxform", (PyCFunction) _wrap_Kameleon__cxform, METH_STATIC|METH_VARARGS, "" },
   { "_gregorian_calendar_to_jd", (PyCFunction) _wrap_Kameleon__gregorian_calendar_to_jd, METH_STATIC|METH_VARARGS, "" },
@@ -31866,6 +35806,216 @@ static PyHeapTypeObject SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type = {
 
 SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__OpenGGCMInterpolator_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__OpenGGCMInterpolator_type};
 
+SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Time)
+static SwigPyGetSet Time_day_getset = { _wrap_Time_day_get, _wrap_Time_day_set };
+static SwigPyGetSet Time_second_getset = { _wrap_Time_second_get, _wrap_Time_second_set };
+static SwigPyGetSet Time_month_getset = { _wrap_Time_month_get, _wrap_Time_month_set };
+static SwigPyGetSet Time_hour_getset = { _wrap_Time_hour_get, _wrap_Time_hour_set };
+static SwigPyGetSet Time_minute_getset = { _wrap_Time_minute_get, _wrap_Time_minute_set };
+static SwigPyGetSet Time_year_getset = { _wrap_Time_year_get, _wrap_Time_year_set };
+SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__Time_getset[] = {
+    { (char*) "day", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.day", (void*) &Time_day_getset }
+,
+    { (char*) "second", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.second", (void*) &Time_second_getset }
+,
+    { (char*) "month", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.month", (void*) &Time_month_getset }
+,
+    { (char*) "hour", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.hour", (void*) &Time_hour_getset }
+,
+    { (char*) "minute", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.minute", (void*) &Time_minute_getset }
+,
+    { (char*) "year", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Time.year", (void*) &Time_year_getset }
+,
+    {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
+};
+
+SWIGINTERN PyObject *
+SwigPyBuiltin__ccmc__Time_richcompare(PyObject *self, PyObject *other, int op) {
+  PyObject *result = NULL;
+  PyObject *tuple = PyTuple_New(1);
+  assert(tuple);
+  PyTuple_SET_ITEM(tuple, 0, other);
+  Py_XINCREF(other);
+  if (!result) {
+    if (SwigPyObject_Check(self) && SwigPyObject_Check(other)) {
+      result = SwigPyObject_richcompare((SwigPyObject *)self, (SwigPyObject *)other, op);
+    } else {
+      result = Py_NotImplemented;
+      Py_INCREF(result);
+    }
+  }
+  Py_DECREF(tuple);
+  return result;
+}
+
+SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Time_methods[] = {
+  { "toString", (PyCFunction) _wrap_Time_toString, METH_VARARGS, (char*) "" },
+  { NULL, NULL, 0, NULL } /* Sentinel */
+};
+
+static PyHeapTypeObject SwigPyBuiltin__ccmc__Time_type = {
+  {
+#if PY_VERSION_HEX >= 0x03000000
+    PyVarObject_HEAD_INIT(NULL, 0)
+#else
+    PyObject_HEAD_INIT(NULL)
+    0,                                        /* ob_size */
+#endif
+    "Time",                                   /* tp_name */
+    sizeof(SwigPyObject),                     /* tp_basicsize */
+    0,                                        /* tp_itemsize */
+    (destructor) _wrap_delete_Time_closure,   /* tp_dealloc */
+    (printfunc) 0,                            /* tp_print */
+    (getattrfunc) 0,                          /* tp_getattr */
+    (setattrfunc) 0,                          /* tp_setattr */
+#if PY_VERSION_HEX >= 0x03000000
+    0,                                        /* tp_compare */
+#else
+    (cmpfunc) 0,                              /* tp_compare */
+#endif
+    (reprfunc) 0,                             /* tp_repr */
+    &SwigPyBuiltin__ccmc__Time_type.as_number,      /* tp_as_number */
+    &SwigPyBuiltin__ccmc__Time_type.as_sequence,    /* tp_as_sequence */
+    &SwigPyBuiltin__ccmc__Time_type.as_mapping,     /* tp_as_mapping */
+    (hashfunc) 0,                             /* tp_hash */
+    (ternaryfunc) 0,                          /* tp_call */
+    (reprfunc) 0,                             /* tp_str */
+    (getattrofunc) 0,                         /* tp_getattro */
+    (setattrofunc) 0,                         /* tp_setattro */
+    &SwigPyBuiltin__ccmc__Time_type.as_buffer,      /* tp_as_buffer */
+#if PY_VERSION_HEX >= 0x03000000
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE,   /* tp_flags */
+#else
+    Py_TPFLAGS_DEFAULT|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_CHECKTYPES, /* tp_flags */
+#endif
+    "ccmc::Time",                             /* tp_doc */
+    (traverseproc) 0,                         /* tp_traverse */
+    (inquiry) 0,                              /* tp_clear */
+    (richcmpfunc) SwigPyBuiltin__ccmc__Time_richcompare, /* feature:python:tp_richcompare */
+    0,                                        /* tp_weaklistoffset */
+    (getiterfunc) 0,                          /* tp_iter */
+    (iternextfunc) 0,                         /* tp_iternext */
+    SwigPyBuiltin__ccmc__Time_methods,        /* tp_methods */
+    0,                                        /* tp_members */
+    SwigPyBuiltin__ccmc__Time_getset,         /* tp_getset */
+    0,                                        /* tp_base */
+    0,                                        /* tp_dict */
+    (descrgetfunc) 0,                         /* tp_descr_get */
+    (descrsetfunc) 0,                         /* tp_descr_set */
+    (size_t)(((char*)&((SwigPyObject *) 64L)->dict) - (char*) 64L), /* tp_dictoffset */
+    (initproc) _wrap_new_Time,                /* tp_init */
+    (allocfunc) 0,                            /* tp_alloc */
+    (newfunc) 0,                              /* tp_new */
+    (freefunc) 0,                             /* tp_free */
+    (inquiry) 0,                              /* tp_is_gc */
+    (PyObject*) 0,                            /* tp_bases */
+    (PyObject*) 0,                            /* tp_mro */
+    (PyObject*) 0,                            /* tp_cache */
+    (PyObject*) 0,                            /* tp_subclasses */
+    (PyObject*) 0,                            /* tp_weaklist */
+    (destructor) 0,                           /* tp_del */
+#if PY_VERSION_HEX >= 0x02060000
+    (int) 0,                                  /* tp_version_tag */
+#endif
+  },
+  {
+    (binaryfunc) 0,                           /* nb_add */
+    (binaryfunc) 0,                           /* nb_subtract */
+    (binaryfunc) 0,                           /* nb_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_remainder */
+    (binaryfunc) 0,                           /* nb_divmod */
+    (ternaryfunc) 0,                          /* nb_power */
+    (unaryfunc) 0,                            /* nb_negative */
+    (unaryfunc) 0,                            /* nb_positive */
+    (unaryfunc) 0,                            /* nb_absolute */
+    (inquiry) 0,                              /* nb_nonzero */
+    (unaryfunc) 0,                            /* nb_invert */
+    (binaryfunc) 0,                           /* nb_lshift */
+    (binaryfunc) 0,                           /* nb_rshift */
+    (binaryfunc) 0,                           /* nb_and */
+    (binaryfunc) 0,                           /* nb_xor */
+    (binaryfunc) 0,                           /* nb_or */
+#if PY_VERSION_HEX < 0x03000000
+    (coercion) 0,                             /* nb_coerce */
+#endif
+    (unaryfunc) 0,                            /* nb_int */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* nb_reserved */
+#else
+    (unaryfunc) 0,                            /* nb_long */
+#endif
+    (unaryfunc) 0,                            /* nb_float */
+#if PY_VERSION_HEX < 0x03000000
+    (unaryfunc) 0,                            /* nb_oct */
+    (unaryfunc) 0,                            /* nb_hex */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_add */
+    (binaryfunc) 0,                           /* nb_inplace_subtract */
+    (binaryfunc) 0,                           /* nb_inplace_multiply */
+#if PY_VERSION_HEX < 0x03000000
+    (binaryfunc) 0,                           /* nb_inplace_divide */
+#endif
+    (binaryfunc) 0,                           /* nb_inplace_remainder */
+    (ternaryfunc) 0,                          /* nb_inplace_power */
+    (binaryfunc) 0,                           /* nb_inplace_lshift */
+    (binaryfunc) 0,                           /* nb_inplace_rshift */
+    (binaryfunc) 0,                           /* nb_inplace_and */
+    (binaryfunc) 0,                           /* nb_inplace_xor */
+    (binaryfunc) 0,                           /* nb_inplace_or */
+    (binaryfunc) 0,                           /* nb_floor_divide */
+    (binaryfunc) 0,                           /* nb_true_divide */
+    (binaryfunc) 0,                           /* nb_inplace_floor_divide */
+    (binaryfunc) 0,                           /* nb_inplace_true_divide */
+#if PY_VERSION_HEX >= 0x02050000
+    (unaryfunc) 0,                            /* nb_index */
+#endif
+  },
+  {
+    (lenfunc) 0,                              /* mp_length */
+    (binaryfunc) 0,                           /* mp_subscript */
+    (objobjargproc) 0,                        /* mp_ass_subscript */
+  },
+  {
+    (lenfunc) 0,                              /* sq_length */
+    (binaryfunc) 0,                           /* sq_concat */
+    (ssizeargfunc) 0,                         /* sq_repeat */
+    (ssizeargfunc) 0,                         /* sq_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_slice */
+#else
+    (ssizessizeargfunc) 0,                    /* sq_slice */
+#endif
+    (ssizeobjargproc) 0,                      /* sq_ass_item */
+#if PY_VERSION_HEX >= 0x03000000
+    (void*) 0,                                /* was_sq_ass_slice */
+#else
+    (ssizessizeobjargproc) 0,                 /* sq_ass_slice */
+#endif
+    (objobjproc) 0,                           /* sq_contains */
+    (binaryfunc) 0,                           /* sq_inplace_concat */
+    (ssizeargfunc) 0,                         /* sq_inplace_repeat */
+  },
+  {
+#if PY_VERSION_HEX < 0x03000000
+    (readbufferproc) 0,                       /* bf_getreadbuffer */
+    (writebufferproc) 0,                      /* bf_getwritebuffer */
+    (segcountproc) 0,                         /* bf_getsegcount */
+    (charbufferproc) 0,                       /* bf_getcharbuffer */
+#endif
+#if PY_VERSION_HEX >= 0x02060000
+    (getbufferproc) 0,                        /* bf_getbuffer */
+    (releasebufferproc) 0,                    /* bf_releasebuffer */
+#endif
+  },
+    (PyObject*) 0,                            /* ht_name */
+    (PyObject*) 0,                            /* ht_slots */
+};
+
+SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__Time_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__Time_type};
+
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_vector_point3f)
 SWIGINTERN PyGetSetDef SwigPyBuiltin__vectorT_Point3f_t_getset[] = {
     {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
@@ -32979,20 +37129,26 @@ SWIGINTERN SwigPyClientData SwigPyBuiltin__vectorT_int_t_clientdata = {0, 0, 0, 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_ccmc__BATSRUSTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::BATSRUS *) x));
+static void *_p_ccmc__CDFFileReaderTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::FileReader *)  ((ccmc::CDFFileReader *) x));
 }
-static void *_p_ccmc__ModelTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((ccmc::FileReader *)  ((ccmc::Model *) x));
+static void *_p_ccmc__HDF5FileReaderTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::FileReader *)  ((ccmc::HDF5FileReader *) x));
 }
-static void *_p_ccmc__OpenGGCMTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::OpenGGCM *) x));
+static void *_p_ccmc__BATSRUSTo_p_ccmc__GeneralFileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::GeneralFileReader *) (ccmc::Model *) ((ccmc::BATSRUS *) x));
 }
-static void *_p_ccmc__MASTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::MAS *) x));
+static void *_p_ccmc__ModelTo_p_ccmc__GeneralFileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::GeneralFileReader *)  ((ccmc::Model *) x));
 }
-static void *_p_ccmc__ENLILTo_p_ccmc__FileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((ccmc::FileReader *) (ccmc::Model *) ((ccmc::ENLIL *) x));
+static void *_p_ccmc__OpenGGCMTo_p_ccmc__GeneralFileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::GeneralFileReader *) (ccmc::Model *) ((ccmc::OpenGGCM *) x));
+}
+static void *_p_ccmc__MASTo_p_ccmc__GeneralFileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::GeneralFileReader *) (ccmc::Model *) ((ccmc::MAS *) x));
+}
+static void *_p_ccmc__ENLILTo_p_ccmc__GeneralFileReader(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ccmc::GeneralFileReader *) (ccmc::Model *) ((ccmc::ENLIL *) x));
 }
 static void *_p_ccmc__KameleonInterpolatorTo_p_ccmc__Interpolator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((ccmc::Interpolator *)  ((ccmc::KameleonInterpolator *) x));
@@ -33023,17 +37179,20 @@ static void *_p_ccmc__ENLILTo_p_ccmc__Model(void *x, int *SWIGUNUSEDPARM(newmemo
 }
 static swig_type_info _swigt__p_SwigPyObject = {"_p_SwigPyObject", "SwigPyObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__FileReader_p_t = {"_p_boost__unordered_mapT_int_ccmc__FileReader_p_t", "boost::unordered_map< int,ccmc::FileReader * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t = {"_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t", "boost::unordered_map< int,ccmc::GeneralFileReader * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t = {"_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t", "boost::unordered_map< int,ccmc::Interpolator * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t = {"_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t", "boost::unordered_map< int,ccmc::Kameleon * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t = {"_p_boost__unordered_mapT_int_ccmc__Tracer_p_t", "boost::unordered_map< int,ccmc::Tracer * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ccmc__Attribute = {"_p_ccmc__Attribute", "Attribute *|ccmc::Attribute *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Attribute_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__BATSRUS = {"_p_ccmc__BATSRUS", "ccmc::BATSRUS *", 0, 0, (void*)&SwigPyBuiltin__ccmc__BATSRUS_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__BATSRUSInterpolator = {"_p_ccmc__BATSRUSInterpolator", "ccmc::BATSRUSInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__BATSRUSInterpolator_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__CDFFileReader = {"_p_ccmc__CDFFileReader", "ccmc::CDFFileReader *", 0, 0, (void*)&SwigPyBuiltin__ccmc__CDFFileReader_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__ENLIL = {"_p_ccmc__ENLIL", "ccmc::ENLIL *", 0, 0, (void*)&SwigPyBuiltin__ccmc__ENLIL_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__ENLILInterpolator = {"_p_ccmc__ENLILInterpolator", "ccmc::ENLILInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__ENLILInterpolator_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Fieldline = {"_p_ccmc__Fieldline", "vector< ccmc::Fieldline >::value_type *|ccmc::Fieldline *|Fieldline *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Fieldline_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__FileReader = {"_p_ccmc__FileReader", "ccmc::FileReader *", 0, 0, (void*)&SwigPyBuiltin__ccmc__FileReader_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__GeneralFileReader = {"_p_ccmc__GeneralFileReader", "ccmc::GeneralFileReader *", 0, 0, (void*)&SwigPyBuiltin__ccmc__GeneralFileReader_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__HDF5FileReader = {"_p_ccmc__HDF5FileReader", "ccmc::HDF5FileReader *", 0, 0, (void*)&SwigPyBuiltin__ccmc__HDF5FileReader_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Interpolator = {"_p_ccmc__Interpolator", "ccmc::Interpolator *|Interpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Interpolator_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Kameleon = {"_p_ccmc__Kameleon", "ccmc::Kameleon *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Kameleon_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__KameleonInterpolator = {"_p_ccmc__KameleonInterpolator", "ccmc::KameleonInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__KameleonInterpolator_clientdata, 0};
@@ -33044,7 +37203,7 @@ static swig_type_info _swigt__p_ccmc__OpenGGCM = {"_p_ccmc__OpenGGCM", "ccmc::Op
 static swig_type_info _swigt__p_ccmc__OpenGGCMInterpolator = {"_p_ccmc__OpenGGCMInterpolator", "ccmc::OpenGGCMInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__OpenGGCMInterpolator_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Point3f = {"_p_ccmc__Point3f", "ccmc::Point3f *|Point3f *|vector< ccmc::Point3f >::value_type *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Point3f_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Position = {"_p_ccmc__Position", "ccmc::Position *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Position_clientdata, 0};
-static swig_type_info _swigt__p_ccmc__Time = {"_p_ccmc__Time", "ccmc::Time *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Time_clientdata, 0};
+static swig_type_info _swigt__p_ccmc__Time = {"_p_ccmc__Time", "ccmc::Time *|Time *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Time_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__Tracer = {"_p_ccmc__Tracer", "ccmc::Tracer *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Tracer_clientdata, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_difference_type = {"_p_difference_type", "difference_type *", 0, 0, (void*)0, 0};
@@ -33060,29 +37219,31 @@ static swig_type_info _swigt__p_std__allocatorT_int_t = {"_p_std__allocatorT_int
 static swig_type_info _swigt__p_std__allocatorT_std__string_t = {"_p_std__allocatorT_std__string_t", "vector< std::string >::allocator_type *|std::allocator< std::string > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__invalid_argument = {"_p_std__invalid_argument", "std::invalid_argument *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t = {"_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t", "vector< ccmc::Fieldline > *|vector< Fieldline > *|std::vector< Fieldline > *|vector< ccmc::Fieldline,std::allocator< ccmc::Fieldline > > *|std::vector< ccmc::Fieldline,std::allocator< ccmc::Fieldline > > *", 0, 0, (void*)&SwigPyBuiltin__vectorT_Fieldline_t_clientdata, 0};
+static swig_type_info _swigt__p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t = {"_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t", "vector< ccmc::Fieldline > *|vector< Fieldline > *|std::vector< Fieldline > *|std::vector< Fieldline,std::allocator< ccmc::Fieldline > > *|vector< ccmc::Fieldline,std::allocator< ccmc::Fieldline > > *|std::vector< ccmc::Fieldline,std::allocator< ccmc::Fieldline > > *", 0, 0, (void*)&SwigPyBuiltin__vectorT_Fieldline_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t = {"_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t", "vector< ccmc::Point3f,std::allocator< ccmc::Point3f > > *|std::vector< Point3f,std::allocator< ccmc::Point3f > > *|vector< ccmc::Point3f > *|vector< Point3f > *|std::vector< Point3f > *|std::vector< ccmc::Point3f,std::allocator< ccmc::Point3f > > *", 0, 0, (void*)&SwigPyBuiltin__vectorT_Point3f_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_float_std__allocatorT_float_t_t = {"_p_std__vectorT_float_std__allocatorT_float_t_t", "vector< float > *|vector< float,std::allocator< float > > *|std::vector< float > *|std::vector< float,std::allocator< float > > *", 0, 0, (void*)&SwigPyBuiltin__vectorT_float_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_int_std__allocatorT_int_t_t = {"_p_std__vectorT_int_std__allocatorT_int_t_t", "std::vector< int,std::allocator< int > > *|vector< int,std::allocator< int > > *|vector< int > *|std::vector< int > *", 0, 0, (void*)&SwigPyBuiltin__vectorT_int_t_clientdata, 0};
 static swig_type_info _swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t = {"_p_std__vectorT_std__string_std__allocatorT_std__string_t_t", "std::vector< std::string,std::allocator< std::string > > *|vector< std::string > *|vector< std::string,std::allocator< std::string > > *|std::vector< std::string > *", 0, 0, (void*)&SwigPyBuiltin__vectorT_std__string_t_clientdata, 0};
 static swig_type_info _swigt__p_swig__SwigPyIterator = {"_p_swig__SwigPyIterator", "swig::SwigPyIterator *", 0, 0, (void*)&SwigPyBuiltin__swig__SwigPyIterator_clientdata, 0};
 static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_void = {"_p_void", "CDFid|void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_SwigPyObject,
   &_swigt__p_allocator_type,
-  &_swigt__p_boost__unordered_mapT_int_ccmc__FileReader_p_t,
+  &_swigt__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,
   &_swigt__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t,
   &_swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,
   &_swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t,
   &_swigt__p_ccmc__Attribute,
   &_swigt__p_ccmc__BATSRUS,
   &_swigt__p_ccmc__BATSRUSInterpolator,
+  &_swigt__p_ccmc__CDFFileReader,
   &_swigt__p_ccmc__ENLIL,
   &_swigt__p_ccmc__ENLILInterpolator,
   &_swigt__p_ccmc__Fieldline,
   &_swigt__p_ccmc__FileReader,
+  &_swigt__p_ccmc__GeneralFileReader,
+  &_swigt__p_ccmc__HDF5FileReader,
   &_swigt__p_ccmc__Interpolator,
   &_swigt__p_ccmc__Kameleon,
   &_swigt__p_ccmc__KameleonInterpolator,
@@ -33116,22 +37277,24 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
   &_swigt__p_swig__SwigPyIterator,
   &_swigt__p_value_type,
-  &_swigt__p_void,
 };
 
 static swig_cast_info _swigc__p_SwigPyObject[] = {  {&_swigt__p_SwigPyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__FileReader_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__FileReader_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Tracer_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Attribute[] = {  {&_swigt__p_ccmc__Attribute, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__BATSRUS[] = {  {&_swigt__p_ccmc__BATSRUS, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__BATSRUSInterpolator[] = {  {&_swigt__p_ccmc__BATSRUSInterpolator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__CDFFileReader[] = {  {&_swigt__p_ccmc__CDFFileReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__ENLIL[] = {  {&_swigt__p_ccmc__ENLIL, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__ENLILInterpolator[] = {  {&_swigt__p_ccmc__ENLILInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Fieldline[] = {  {&_swigt__p_ccmc__Fieldline, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ccmc__FileReader[] = {  {&_swigt__p_ccmc__BATSRUS, _p_ccmc__BATSRUSTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__OpenGGCM, _p_ccmc__OpenGGCMTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__Model, _p_ccmc__ModelTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__FileReader, 0, 0, 0},  {&_swigt__p_ccmc__ENLIL, _p_ccmc__ENLILTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__MAS, _p_ccmc__MASTo_p_ccmc__FileReader, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__FileReader[] = {  {&_swigt__p_ccmc__FileReader, 0, 0, 0},  {&_swigt__p_ccmc__CDFFileReader, _p_ccmc__CDFFileReaderTo_p_ccmc__FileReader, 0, 0},  {&_swigt__p_ccmc__HDF5FileReader, _p_ccmc__HDF5FileReaderTo_p_ccmc__FileReader, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__GeneralFileReader[] = {  {&_swigt__p_ccmc__BATSRUS, _p_ccmc__BATSRUSTo_p_ccmc__GeneralFileReader, 0, 0},  {&_swigt__p_ccmc__OpenGGCM, _p_ccmc__OpenGGCMTo_p_ccmc__GeneralFileReader, 0, 0},  {&_swigt__p_ccmc__Model, _p_ccmc__ModelTo_p_ccmc__GeneralFileReader, 0, 0},  {&_swigt__p_ccmc__GeneralFileReader, 0, 0, 0},  {&_swigt__p_ccmc__ENLIL, _p_ccmc__ENLILTo_p_ccmc__GeneralFileReader, 0, 0},  {&_swigt__p_ccmc__MAS, _p_ccmc__MASTo_p_ccmc__GeneralFileReader, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ccmc__HDF5FileReader[] = {  {&_swigt__p_ccmc__HDF5FileReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Interpolator[] = {  {&_swigt__p_ccmc__Interpolator, 0, 0, 0},  {&_swigt__p_ccmc__KameleonInterpolator, _p_ccmc__KameleonInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__BATSRUSInterpolator, _p_ccmc__BATSRUSInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__ENLILInterpolator, _p_ccmc__ENLILInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__MASInterpolator, _p_ccmc__MASInterpolatorTo_p_ccmc__Interpolator, 0, 0},  {&_swigt__p_ccmc__OpenGGCMInterpolator, _p_ccmc__OpenGGCMInterpolatorTo_p_ccmc__Interpolator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Kameleon[] = {  {&_swigt__p_ccmc__Kameleon, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__KameleonInterpolator[] = {  {&_swigt__p_ccmc__KameleonInterpolator, 0, 0, 0},{0, 0, 0, 0}};
@@ -33165,22 +37328,24 @@ static swig_cast_info _swigc__p_std__vectorT_int_std__allocatorT_int_t_t[] = {  
 static swig_cast_info _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t[] = {  {&_swigt__p_std__vectorT_std__string_std__allocatorT_std__string_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_swig__SwigPyIterator[] = {  {&_swigt__p_swig__SwigPyIterator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_SwigPyObject,
   _swigc__p_allocator_type,
-  _swigc__p_boost__unordered_mapT_int_ccmc__FileReader_p_t,
+  _swigc__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,
   _swigc__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t,
   _swigc__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,
   _swigc__p_boost__unordered_mapT_int_ccmc__Tracer_p_t,
   _swigc__p_ccmc__Attribute,
   _swigc__p_ccmc__BATSRUS,
   _swigc__p_ccmc__BATSRUSInterpolator,
+  _swigc__p_ccmc__CDFFileReader,
   _swigc__p_ccmc__ENLIL,
   _swigc__p_ccmc__ENLILInterpolator,
   _swigc__p_ccmc__Fieldline,
   _swigc__p_ccmc__FileReader,
+  _swigc__p_ccmc__GeneralFileReader,
+  _swigc__p_ccmc__HDF5FileReader,
   _swigc__p_ccmc__Interpolator,
   _swigc__p_ccmc__Kameleon,
   _swigc__p_ccmc__KameleonInterpolator,
@@ -33214,7 +37379,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__vectorT_std__string_std__allocatorT_std__string_t_t,
   _swigc__p_swig__SwigPyIterator,
   _swigc__p_value_type,
-  _swigc__p_void,
 };
 
 
@@ -33959,6 +38123,97 @@ SWIG_init(void) {
   SwigPyBuiltin_AddPublicSymbol(public_interface, "FileReader");
   d = md;
   
+  /* type 'ccmc::GeneralFileReader' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__GeneralFileReader_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'GeneralFileReader'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "GeneralFileReader", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "GeneralFileReader");
+  d = md;
+  
+  /* type 'ccmc::CDFFileReader' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__CDFFileReader_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__FileReader");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'CDFFileReader' as base 'ccmc::FileReader' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'CDFFileReader'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "CDFFileReader", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "CDFFileReader");
+  d = md;
+  
+  /* type 'ccmc::HDF5FileReader' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__HDF5FileReader_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__FileReader");
+  if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
+    builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
+  } else {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'HDF5FileReader' as base 'ccmc::FileReader' has not been initialized.\n");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'HDF5FileReader'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "HDF5FileReader", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "HDF5FileReader");
+  d = md;
+  
   /* type 'ccmc::Position' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__Position_type;
   builtin_pytype->tp_dict = d = PyDict_New();
@@ -33980,29 +38235,6 @@ SWIG_init(void) {
   Py_INCREF(builtin_pytype);
   PyModule_AddObject(m, "Position", (PyObject*) builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Position");
-  d = md;
-  
-  /* type 'ccmc::Time' */
-  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__Time_type;
-  builtin_pytype->tp_dict = d = PyDict_New();
-  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
-  builtin_pytype->tp_new = PyType_GenericNew;
-  builtin_base_count = 0;
-  builtin_bases[builtin_base_count] = NULL;
-  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
-  PyDict_SetItemString(d, "this", this_descr);
-  PyDict_SetItemString(d, "thisown", thisown_descr);
-  if (PyType_Ready(builtin_pytype) < 0) {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'Time'.");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
-  Py_INCREF(builtin_pytype);
-  PyModule_AddObject(m, "Time", (PyObject*) builtin_pytype);
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "Time");
   d = md;
   
   /* type 'ccmc::Kameleon' */
@@ -34196,11 +38428,11 @@ SWIG_init(void) {
   SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
   builtin_pytype->tp_new = PyType_GenericNew;
   builtin_base_count = 0;
-  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__FileReader");
+  builtin_basetype = SWIG_MangledTypeQuery("_p_ccmc__GeneralFileReader");
   if (builtin_basetype && builtin_basetype->clientdata && ((SwigPyClientData*) builtin_basetype->clientdata)->pytype) {
     builtin_bases[builtin_base_count++] = ((SwigPyClientData*) builtin_basetype->clientdata)->pytype;
   } else {
-    PyErr_SetString(PyExc_TypeError, "Could not create type 'Model' as base 'ccmc::FileReader' has not been initialized.\n");
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'Model' as base 'ccmc::GeneralFileReader' has not been initialized.\n");
 #if PY_VERSION_HEX >= 0x03000000
     return NULL;
 #else
@@ -34494,6 +38726,29 @@ SWIG_init(void) {
   Py_INCREF(builtin_pytype);
   PyModule_AddObject(m, "OpenGGCMInterpolator", (PyObject*) builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "OpenGGCMInterpolator");
+  d = md;
+  
+  /* type 'ccmc::Time' */
+  builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__Time_type;
+  builtin_pytype->tp_dict = d = PyDict_New();
+  SwigPyBuiltin_SetMetaType(builtin_pytype, metatype);
+  builtin_pytype->tp_new = PyType_GenericNew;
+  builtin_base_count = 0;
+  builtin_bases[builtin_base_count] = NULL;
+  SwigPyBuiltin_InitBases(builtin_pytype, builtin_bases);
+  PyDict_SetItemString(d, "this", this_descr);
+  PyDict_SetItemString(d, "thisown", thisown_descr);
+  if (PyType_Ready(builtin_pytype) < 0) {
+    PyErr_SetString(PyExc_TypeError, "Could not create type 'Time'.");
+#if PY_VERSION_HEX >= 0x03000000
+    return NULL;
+#else
+    return;
+#endif
+  }
+  Py_INCREF(builtin_pytype);
+  PyModule_AddObject(m, "Time", (PyObject*) builtin_pytype);
+  SwigPyBuiltin_AddPublicSymbol(public_interface, "Time");
   d = md;
   
   /* type '::vector< Point3f >' */
