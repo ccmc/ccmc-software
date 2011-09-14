@@ -32,14 +32,16 @@ namespace ccmc
 
 	class HDF5FileReader : public FileReader
 	{
+		private:
+			//boost::unordered_map<long, std::string> variable_names;
 
 		public:
 
 			HDF5FileReader();
 			std::vector<float>* getVariable(const std::string& variable);
-			std::vector<float>* getVariable(long variableID);
+			std::vector<float>* getVariable(long variable);
 			std::vector<float>* getVariable(const std::string& variable, long startIndex, long count);
-			std::vector<float>* getVariable(long variableID, long startIndex, long count);
+			std::vector<float>* getVariable(long variable, long startIndex, long count);
 			float getVariableAtIndex(const std::string& variable, long index);
 			float getVariableAtIndex(long variable_id, long index);
 			std::vector<int>* getVariableInt(const std::string& variable);
@@ -66,6 +68,8 @@ namespace ccmc
 		protected:
 			std::string current_filename;
 			H5::H5File * current_file;
+			H5::Group * rootGroup;
+			H5::Group * variableGroup;
 			long closeFile();
 			long openFile(const std::string& filename);
 			void initializeGlobalAttributes();

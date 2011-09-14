@@ -7,6 +7,7 @@
 
 #include "FileReader.h"
 #include "CDFFileReader.h"
+#include "HDF5FileReader.h"
 #include "GeneralFileReader.h"
 #include <string>
 #include <vector>
@@ -26,8 +27,10 @@ namespace ccmc
 
 	long GeneralFileReader::open(const std::string& filename)
 	{
+
 		//check the file
-		CDFFileReader * fileReader = new CDFFileReader();
+		std::cerr << "First, checking if the file is a CDF file" << std::endl;
+		this->fileReader = new CDFFileReader();
 		long status = fileReader->open(filename);
 		if (status == FileReader::OK)
 		{
@@ -36,10 +39,24 @@ namespace ccmc
 			return status;
 		} else
 		{
+			std::cerr << "Checking if the file is an HDF5 file" << std::endl;
 			delete fileReader;
-			return FileReader::OPEN_ERROR;
+
+			this->fileReader = new HDF5FileReader();
+
+			long status = fileReader->open(filename);
+			std::cerr << "opened HDF5 file. status: " << status << std::endl;
+			if (status == FileReader::OK)
+			{
+				std::cerr << "Initialized an HDF5 file reader" << std::endl;
+				return status;
+			} else
+				return FileReader::OPEN_ERROR;
+
 		}
 	}
+
+
 
 	std::vector<float>* GeneralFileReader::getVariable(const std::string& variable)
 	{
@@ -161,11 +178,6 @@ namespace ccmc
 		return fileReader->close();
 	}
 
-	long GeneralFileReader::getCurrentFileID()
-	{
-		return fileReader->getCurrentFileID();
-	}
-
 	const std::string& GeneralFileReader::getCurrentFilename()
 	{
 		return fileReader->getCurrentFilename();
@@ -173,8 +185,7 @@ namespace ccmc
 
 	GeneralFileReader::~GeneralFileReader()
 	{
-		if ((void *) current_file_id != NULL)
-			close();
+		//close();
 	}
 
 	void GeneralFileReader::initializeVariableIDs()
@@ -186,6 +197,8 @@ namespace ccmc
 	{
 		fileReader->initializeVariableNames();
 	}
+
+
 
 
 }

@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <boost/current_function.hpp>
 
 using namespace std;
 
@@ -24,6 +25,8 @@ namespace ccmc
 	HDF5FileReader::HDF5FileReader()
 	{
 		this->current_file = NULL;
+		this->rootGroup = NULL;
+		this->variableGroup = NULL;
 	}
 
 
@@ -49,16 +52,40 @@ namespace ccmc
 			std::cerr << "Filename: \"" << filename << "\" does not exist." << std::endl;
 		}
 		else{
-			std::cerr << "about to open CDF file" << std::endl;
+			std::cerr << "about to open HDF5 file" << std::endl;
 
 			try
 			{
 				current_file = new H5::H5File(filename, H5F_ACC_RDONLY);
+				this->rootGroup = new H5::Group(current_file->openGroup("/"));
+				this->variableGroup = new H5::Group(current_file->openGroup("Variables"));
+				int numVariables = variableGroup->getNumObjs();
+				std::cerr << "num variables: " << numVariables << std::endl;
+				for (int i = 0; i < numVariables; i++)
+				{
+					//std::cerr << "variable: " << variableGroup->getObjnameByIdx(i) << std::endl;
+
+				}
 				status = OK;
 			}
 			catch(H5::Exception const& ex)
 			{
-				//do nothing
+				status = OPEN_ERROR;
+				if (current_file != NULL)
+				{
+					delete current_file;
+					current_file = NULL;
+				}
+				if (rootGroup != NULL)
+				{
+					delete rootGroup;
+					rootGroup = NULL;
+				}
+				if (variableGroup != NULL)
+				{
+					delete variableGroup;
+					variableGroup = NULL;
+				}
 			}
 
 
@@ -67,14 +94,14 @@ namespace ccmc
 			//status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
 
-			if (status == CDF_OK)
+			if (status == OK)
 			{
 				current_filename = filename;
 				FileReader::initializeGlobalAttributes();
 				FileReader::initializeVariableAttributes();
 				initializeVariableIDs();
 				initializeVariableNames();
-				status = OK;
+				//status = OK;
 			} else
 			{
 				status = OPEN_ERROR;
@@ -114,39 +141,49 @@ namespace ccmc
 	 */
 	std::vector<float>* HDF5FileReader::getVariable(const std::string& variable)
 	{
-		long counts[1];
 		std::vector<float>* variableData = new std::vector<float>();
 
 		if (this->doesVariableExist(variable))
 		{
-			//std::cout << "reading " << variable << std::endl;
+			std::cout << "reading " << variable << std::endl;
 			//get variable number
 			long variableNum = this->getVariableID(variable);
 
-			//check if variable exists
-
-
-			long recStart = 0L;
-			long recCount = 1L;
-			long recInterval = 1L;
-			long dimIndices[] = { 0 };
-			long dimIntervals[] = { 1 };
-
+			std::cout << "variableNum for " << variable << ": " << variableNum << std::endl;
 			//get dim sizes
 
-			this->current_file->CDFgetzVarDimSizes((void *) current_file_id, variableNum, counts);
+			H5::Group group = this->current_file->openGroup("Variables");
 			//cout << "variable: " << variable << ": " << counts[0] << endl;
-			float * buffer = new float[counts[0]];
-			CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
-					dimIntervals, buffer);
+			H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
+			H5::DataSpace dataspace = dataset->getSpace();
+			int rank = dataspace.getSimpleExtentNdims(); //should be 1
+			hsize_t count[1];
+			hsize_t offset[1] = {0};
+			int ndims = dataspace.getSimpleExtentDims(count, NULL);
+
+			std::cout << "count[0]: " << count[0] << std::endl;
+			float * buffer = new float[count[0]];
+
+
+
+			dataspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+			H5::DataSpace memspace( rank, count);
+			memspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+			dataset->read(buffer, H5::PredType::NATIVE_FLOAT, memspace, dataspace);
+			std::cout << "after read" << std::endl;
+
 			//add data to vector type, and delete original array
-			variableData->reserve(counts[0]);
-			for (int i = 0; i < counts[0]; i++)
+			variableData->reserve(count[0]);
+			for (int i = 0; i < count[0]; i++)
 			{
 				variableData->push_back(buffer[i]);
 			}
+			std::cout << "after adding to variableData vector" << std::endl;
 
 			delete[] buffer;
+			delete dataset;
 			//std::cout << "finished reading " << variable << std::endl;
 			//std::cout << "size of variable: " << variableData.size() << std::endl;
 			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
@@ -166,36 +203,55 @@ namespace ccmc
 	 * @param count
 	 * @return std::vector<float> containing the values of the selected variable.
 	 */
-	std::vector<float>* HDF5FileReader::getVariable(const std::string& variable, long startIndex, long count)
+	std::vector<float>* HDF5FileReader::getVariable(const std::string& variable, long indexOffset, long length)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
-
-		long counts[1] = {count};
-		//get dim sizes
-		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, counts);
-		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
-		variableData->reserve(counts[0]);
-		for (int i = 0; i < counts[0]; i++)
+
+		if (this->doesVariableExist(variable))
 		{
-			variableData->push_back(buffer[i]);
+			//std::cout << "reading " << variable << std::endl;
+			//get variable number
+			long variableNum = this->getVariableID(variable);
+
+			//get dim sizes
+
+			H5::Group group = this->current_file->openGroup("Variables");
+			//cout << "variable: " << variable << ": " << counts[0] << endl;
+			H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
+			H5::DataSpace dataspace = dataset->getSpace();
+			int rank = dataspace.getSimpleExtentNdims(); //should be 1
+			hsize_t count[1] = {length};
+			hsize_t offset[1] = {indexOffset};
+			//int ndims = dataspace.getSimpleExtentDims(count, NULL);
+			float * buffer = new float[count[0]];
+
+
+
+			dataspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+			hsize_t dim[] = {count[0]};
+			H5::DataSpace memspace( rank, dim);
+			memspace.selectHyperslab(H5S_SELECT_SET, dim, offset);
+
+			dataset->read(buffer, H5::PredType::NATIVE_FLOAT, memspace, dataspace);
+
+
+			//add data to vector type, and delete original array
+			variableData->reserve(count[0]);
+			for (int i = 0; i < count[0]; i++)
+			{
+				variableData->push_back(buffer[i]);
+			}
+
+			delete[] buffer;
+			delete dataset;
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+
 		}
 
-		delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
-		//std::cout << "size of variable: " << variableData.size() << std::endl;
-		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
 		return variableData;
 	}
 
@@ -209,31 +265,44 @@ namespace ccmc
 	 * @param count
 	 * @return std::vector<float> containing the values of the selected variable.
 	 */
-	std::vector<float>* HDF5FileReader::getVariable(long variableID, long startIndex, long count)
+	std::vector<float>* HDF5FileReader::getVariable(long variable, long indexOffset, long count)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
 
-		long counts[1] = {count};
-		//get dim sizes
-		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, counts);
-		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData((void *) current_file_id, variableID, recStart, recCount, recInterval, dimIndices, counts,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
-		variableData->reserve(counts[0]);
-		for (long i = 0; i < counts[0]; i++)
+
+
+
+		//get dim sizes
+		H5::Group group = this->current_file->openGroup("Variables");
+		//cout << "variable: " << variable << ": " << counts[0] << endl;
+		H5::DataSet * dataset = new H5::DataSet(group.openDataSet(group.getObjnameByIdx(variable)));
+		H5::DataSpace dataspace = dataset->getSpace();
+		int rank = dataspace.getSimpleExtentNdims(); //should be 1
+		hsize_t length[1] = {count};
+		hsize_t offset[1] = {indexOffset};
+		//int ndims = dataspace.getSimpleExtentDims(count, NULL);
+		float * buffer = new float[length[0]];
+
+
+
+		dataspace.selectHyperslab(H5S_SELECT_SET, length, offset);
+
+		hsize_t dim[] = {length[0]};
+		H5::DataSpace memspace( rank, dim);
+		memspace.selectHyperslab(H5S_SELECT_SET, dim, offset);
+
+		dataset->read(buffer, H5::PredType::NATIVE_FLOAT, memspace, dataspace);
+
+
+		//add data to vector type, and delete original array
+		variableData->reserve(length[0]);
+		for (int i = 0; i < length[0]; i++)
 		{
 			variableData->push_back(buffer[i]);
 		}
 
 		delete[] buffer;
+		delete dataset;
 		//std::cout << "finished reading " << variable << std::endl;
 		//std::cout << "size of variable: " << variableData.size() << std::endl;
 		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
@@ -249,29 +318,40 @@ namespace ccmc
 	 */
 	std::vector<float>* HDF5FileReader::getVariable(long variable)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
 
-		long counts[1];
-		//get dim sizes
-		CDFgetzVarDimSizes((void *) current_file_id, variable, counts);
-		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData((void *) current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
-		variableData->reserve(counts[0]);
-		for (long i = 0; i < counts[0]; i++)
+
+		//get dim sizes
+		H5::Group group = this->current_file->openGroup("Variables");
+		//cout << "variable: " << variable << ": " << counts[0] << endl;
+		H5::DataSet * dataset = new H5::DataSet(group.openDataSet(group.getObjnameByIdx(variable)));
+		H5::DataSpace dataspace = dataset->getSpace();
+		int rank = dataspace.getSimpleExtentNdims(); //should be 1
+		hsize_t count[1];
+		hsize_t offset[1] = {0};
+		int ndims = dataspace.getSimpleExtentDims(count, NULL);
+		float * buffer = new float[count[0]];
+
+
+
+		dataspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+		hsize_t dim[] = {count[0]};
+		H5::DataSpace memspace( rank, dim);
+		memspace.selectHyperslab(H5S_SELECT_SET, dim, offset);
+
+		dataset->read(buffer, H5::PredType::NATIVE_FLOAT, memspace, dataspace);
+
+
+		//add data to vector type, and delete original array
+		variableData->reserve(count[0]);
+		for (int i = 0; i < count[0]; i++)
 		{
 			variableData->push_back(buffer[i]);
 		}
 
 		delete[] buffer;
+		delete dataset;
 		//std::cout << "finished reading " << variable << std::endl;
 		//std::cout << "size of variable: " << variableData.size() << std::endl;
 		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
@@ -284,6 +364,8 @@ namespace ccmc
 	 *
 	 * Use this method on variables that have a type of float
 	 *
+	 * returns std::numeric_limits<float>::min() if missing
+	 *
 	 * @param variable The variable in the file
 	 * @param index The index in the variable's array in the file
 	 *
@@ -291,29 +373,47 @@ namespace ccmc
 	 */
 	float HDF5FileReader::getVariableAtIndex(const std::string& variable, long index)
 	{
-		//std::cout << "index " << index << std::endl;
-		//get variable number
-		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { index };
-		long dimIntervals[] = { 1 };
+		float value = std::numeric_limits<float>::min();
+		if (this->doesVariableExist(variable))
+		{
+			//std::cout << "reading " << variable << std::endl;
+			//get variable number
+			long variableNum = this->getVariableID(variable);
 
-		long count[1] = {1};
-		//get dim sizes
-		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, dimSizes);
-		float * buffer = new float[1];
+			//get dim sizes
 
-		CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
-				dimIntervals, buffer);
-		float value = buffer[0];
-		delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
-		//std::cout << "size of variable: " << variableData.size() << std::endl;
-		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+			H5::Group group = this->current_file->openGroup("Variables");
+			//cout << "variable: " << variable << ": " << counts[0] << endl;
+			H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
+			H5::DataSpace dataspace = dataset->getSpace();
+			int rank = dataspace.getSimpleExtentNdims(); //should be 1
+			hsize_t count[1];
+			hsize_t offset[1] = {0};
+			int ndims = dataspace.getSimpleExtentDims(count, NULL);
+			float * buffer = new float[count[0]];
+
+
+
+			dataspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+			hsize_t dim[] = {count[0]};
+			H5::DataSpace memspace( rank, dim);
+			memspace.selectHyperslab(H5S_SELECT_SET, dim, offset);
+
+			dataset->read(buffer, H5::PredType::NATIVE_FLOAT, memspace, dataspace);
+
+
+			//add data to vector type, and delete original array
+			value = buffer[0];
+			delete[] buffer;
+			delete dataset;
+		}
 		return value;
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+
 	}
 
 	/**
@@ -324,33 +424,50 @@ namespace ccmc
 	 */
 	std::vector<int>* HDF5FileReader::getVariableInt(const std::string& variable)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		long variableNum = CDFgetVarNum((void *)current_file_id, (char *) variable.c_str());
 
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
+		std::vector<int>* variableData = new std::vector<int>();
 
-		long count[1];
-		//get dim sizes
-		CDFgetzVarDimSizes((void *) current_file_id, variableNum, count);
-		int * buffer = new int[count[0]];
-		CDFhyperGetzVarData((void *) current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
-		std::vector<int> * variableData = new std::vector<int>();
-		variableData->reserve(count[0]);
-		for (int i = 0; i < count[0]; i++)
-		{
-			variableData->push_back(buffer[i]);
-		}
 
-		delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
-		return variableData;
+			//std::cout << "reading " << variable << std::endl;
+			//get variable number
+			long variableNum = this->getVariableID(variable);
+
+			//get dim sizes
+
+			H5::Group group = this->current_file->openGroup("Variables");
+			//cout << "variable: " << variable << ": " << counts[0] << endl;
+			H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
+			H5::DataSpace dataspace = dataset->getSpace();
+			int rank = dataspace.getSimpleExtentNdims(); //should be 1
+			hsize_t count[1];
+			hsize_t offset[1] = {0};
+			int ndims = dataspace.getSimpleExtentDims(count, NULL);
+			float * buffer = new float[count[0]];
+
+
+
+			dataspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+			hsize_t dim[] = {count[0]};
+			H5::DataSpace memspace( rank, dim);
+			memspace.selectHyperslab(H5S_SELECT_SET, dim, offset);
+
+			dataset->read(buffer, H5::PredType::NATIVE_INT, memspace, dataspace);
+
+
+			//add data to vector type, and delete original array
+			variableData->reserve(count[0]);
+			for (int i = 0; i < count[0]; i++)
+			{
+				variableData->push_back(buffer[i]);
+			}
+
+			delete[] buffer;
+			delete dataset;
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+
 	}
 
 	/**
@@ -358,27 +475,42 @@ namespace ccmc
 	 * @param index
 	 * @return
 	 */
-	float HDF5FileReader::getVariableAtIndex(long variableNum, long index)
+	float HDF5FileReader::getVariableAtIndex(long variable, long index)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		//long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
 
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { index };
-		long dimIntervals[] = { 1 };
+		float value = std::numeric_limits<float>::min();
 
-		long count[1] = {1};
 		//get dim sizes
-		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, dimSizes);
-		float buffer[1];
-		CDFgetzVarData((void *) current_file_id, variableNum, recStart, dimIndices, buffer);
+
+		H5::Group group = this->current_file->openGroup("Variables");
+		//cout << "variable: " << variable << ": " << counts[0] << endl;
+		H5::DataSet * dataset = new H5::DataSet(group.openDataSet(group.getObjnameByIdx(variable)));
+		H5::DataSpace dataspace = dataset->getSpace();
+		int rank = dataspace.getSimpleExtentNdims(); //should be 1
+		hsize_t count[1] = {1};
+		hsize_t offset[1] = {index};
+		//int ndims = dataspace.getSimpleExtentDims(count, NULL);
+		float * buffer = new float[count[0]];
+
+
+
+		dataspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+		hsize_t dim[] = {count[0]};
+		H5::DataSpace memspace( rank, dim);
+		memspace.selectHyperslab(H5S_SELECT_SET, dim, offset);
+
+		dataset->read(buffer, H5::PredType::NATIVE_FLOAT, memspace, dataspace);
+
+
 		//add data to vector type, and delete original array
-		return buffer[0];
-		//delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
+		value = buffer[0];
+		delete[] buffer;
+		delete dataset;
+		return value;
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
 
 	}
 
@@ -394,26 +526,48 @@ namespace ccmc
 	 */
 	int HDF5FileReader::getVariableIntAtIndex(const std::string& variable, long index)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
+		long counts[1];
+		int value = std::numeric_limits<int>::min();
+		if (this->doesVariableExist(variable))
+		{
+			//std::cout << "reading " << variable << std::endl;
+			//get variable number
+			long variableNum = this->getVariableID(variable);
 
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { index };
-		long dimIntervals[] = { 1 };
+			//get dim sizes
 
-		long dimSizes[1] = {1};
-		//get dim sizes
-		//CDFgetzVarDimSizes((void *) current_file_id, variableNum, dimSizes);
-		int * buffer = new int[1];
-		CDFgetzVarData((void *) current_file_id, variableNum, recStart, dimIndices, buffer);
-		//add data to vector type, and delete original array
-		int value = buffer[0];
-		delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
+			H5::Group group = this->current_file->openGroup("Variables");
+			//cout << "variable: " << variable << ": " << counts[0] << endl;
+			H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
+			H5::DataSpace dataspace = dataset->getSpace();
+			int rank = dataspace.getSimpleExtentNdims(); //should be 1
+			hsize_t count[1] = {1};
+			hsize_t offset[1] = {0};
+			//int ndims = dataspace.getSimpleExtentDims(count, NULL);
+			float * buffer = new float[count[0]];
+
+
+
+			dataspace.selectHyperslab(H5S_SELECT_SET, count, offset);
+
+			hsize_t dim[] = {count[0]};
+			H5::DataSpace memspace( rank, dim);
+			memspace.selectHyperslab(H5S_SELECT_SET, dim, offset);
+
+			dataset->read(buffer, H5::PredType::NATIVE_INT, memspace, dataspace);
+
+
+			//add data to vector type, and delete original array
+			value = buffer[0];
+			delete[] buffer;
+			delete dataset;
+		}
 		return value;
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+
+
 	}
 
 	/**
@@ -423,101 +577,58 @@ namespace ccmc
 	Attribute HDF5FileReader::getGlobalAttribute(long i)
 	{
 
-		boost::unordered_map<long, Attribute>::iterator iter = gAttributeByID.find(i);
-		if (iter != gAttributeByID.end())
-			return (*iter).second;
-
-		//cout << "after search" << endl;
-
-
-		long attrNum = i;
-		//cout << "i: " << i << " attrNum: " << attrNum << endl;
-		long numElements;
-		long dataType;
-
-		//std::cout << "dataType: " << dataType << std::endl;
-
-
-		CDFstatus status =  CDFgetAttrgEntryDataType ((void *) current_file_id, attrNum, 0, &dataType);
-		status = CDFgetAttrgEntryNumElements ((void *) current_file_id, attrNum, 0, &numElements);
-
+		//std::cerr << "entered " << BOOST_CURRENT_FUNCTION << " i = " << (int)i << std::endl;
+		H5::Group group = this->current_file->openGroup("/");
+		H5::Attribute h5attribute = group.openAttribute((int)i);
+		H5::DataType dataType = h5attribute.getDataType();
 		Attribute attribute;
-		if (dataType == CDF_CHAR)
+		if (dataType.getClass() == H5T_STRING)
 		{
 			std::string attributeValue = "NULL";
-			char attributeBuffer[numElements+1];
-			CDFgetAttrgEntry((void *) current_file_id, attrNum, 0, attributeBuffer);
-			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
-			//modelName[numElements] = '\0';
-			attributeBuffer[numElements] = '\0';
-			//std::cout << "status: " << status << std::endl;
-			//if (status == CDF_OK)
-			{
-				attributeValue = attributeBuffer;
-				attributeValue = attributeValue.substr(0, numElements); //only use valid parts of char string
-			}
+			h5attribute.read(dataType, attributeValue);
 
-			char attributeNameBuffer[512];
+			std::string attributeName = "";
+			attributeName = h5attribute.getName();
 
-			//char * ctemp = new char[512];
-			//strcpy(ctemp, attributeValue.c_str());
-			//void * vtemp = (void *)ctemp;
-			CDFgetAttrName((void *) current_file_id, attrNum, attributeNameBuffer);
-			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
-			//Attribute attribute;
-			attribute.setAttributeName(attributeNameBuffer);
-			//std::cout << "attributeBuffer: " << attributeBuffer << endl;
+
+			attribute.setAttributeName(attributeName);
+			//std::cout << "name: '" << attributeName << "' string attributeBuffer: '" << attributeValue << "'"<< std::endl;
 			attribute.setAttributeValue(attributeValue);
 			gAttributeByID[i] = attribute;
 			gAttributes[attribute.getAttributeName()] = attribute;
 			//return attribute;
-		} else if (dataType == CDF_INT4)
+		} else if (dataType.getClass() == H5T_INTEGER)
 		{
 			//int attributeValue = 0.f;
 			int attributeBuffer;// = new int[1];
 
-			CDFgetAttrgEntry((void *) current_file_id, attrNum, 0, (void*) &attributeBuffer);
-			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
-			//std::cout << "numElements: " << numElements << std::endl;
-			//modelName[numElements] = '\0';
-			//std::cout << "status: " << status << std::endl;
-			//if (status == CDF_OK)
-			{
-				//do nothing.  defaults to zero.
-				//attributeValue = (int) attributeBuffer[0];
-			}
-
-			char attributeNameBuffer[512];
-
-			CDFgetAttrName((void *) current_file_id, attrNum, attributeNameBuffer);
-			//Attribute attribute;
-			attribute.setAttributeName(attributeNameBuffer);
+			h5attribute.read(dataType, &attributeBuffer);
+			std::string attributeName = "";
+			attributeName = h5attribute.getName();
+			attribute.setAttributeName(attributeName);
+			//std::cout << "int attributeBuffer: '" << attributeBuffer << "'"<< std::endl;
 			attribute.setAttributeValue(attributeBuffer);
 			gAttributeByID[i] = attribute;
 			gAttributes[attribute.getAttributeName()] = attribute;
 			//return attribute;
-		} else if (dataType == CDF_FLOAT)//CDF_FLOAT
+		} else if (dataType.getClass() == H5T_FLOAT)//CDF_FLOAT
 		{
-			//float attributeValue = 0.f;
-			float attributeBuffer;// = new float[1];
+			//int attributeValue = 0.f;
+			float attributeValue;// = new int[1];
 
-			CDFgetAttrgEntry((void *) current_file_id, attrNum, 0, (void *) &attributeBuffer);
-			//std::cout << "numElements: " << numElements << std::endl;
-			//modelName[numElements] = '\0';
-			//std::cout << "status: " << status << std::endl;
+			h5attribute.read(dataType, &attributeValue);
+			std::string attributeName = "";
+			attributeName = h5attribute.getName();
+			attribute.setAttributeName(attributeName);
+			//std::cout << "float attributeBuffer: '" << attributeValue << "'"<< std::endl;
 
-
-			char attributeNameBuffer[1024];
-			CDFgetAttrName((void *) current_file_id, attrNum, attributeNameBuffer);
-			//Attribute attribute;
-			attribute.setAttributeName(attributeNameBuffer);
-			attribute.setAttributeValue(attributeBuffer);
+			attribute.setAttributeValue(attributeValue);
 			gAttributeByID[i] = attribute;
 			gAttributes[attribute.getAttributeName()] = attribute;
 			//return attribute;
 		}
 
-		//cout << "added: " << i << " name: " << attribute.getAttributeName() << endl;
+		//std::cout << "added: " << i << " name: '" << attribute.getAttributeName() << "'" << endl;
 		//std::cout << "Attribute: " << attribute.toString() << std::endl;
 		return attribute;
 
@@ -534,10 +645,13 @@ namespace ccmc
 		if (iter != gAttributes.end())
 			return (*iter).second;
 
-		//std::cout << "after search in getGlobalAttribute(const std::string& attribute" << std::endl;
 
-		//cout << "attribute: " << attribute;
-		long attrNum = CDFgetAttrNum((void *) current_file_id, (char *) attribute.c_str());
+		//std::cout << "after search in getGlobalAttribute(const std::string& attribute" << std::endl;
+/*
+		//std::cout << "attribute: " << attribute;
+		H5::Group group = this->current_file->openGroup("/");
+		H5::Attribute h5attribute = group.openAttribute(attribute);
+		//long attrNum = h5attribute.getId();
 		//cout << "attrNum after attribute: " << attrNum << endl;
 		Attribute current_attribute;
 		if (attrNum < 0)
@@ -546,9 +660,11 @@ namespace ccmc
 		}
 		else
 		{
-			current_attribute = getGlobalAttribute(attrNum);
+			std::cout << "attribute: " << attribute << " attribute number: " << attrNum << std::endl;
+			//current_attribute = getGlobalAttribute(attrNum);
 		}//gAttributes[attribute] = current_attribute;
-		return current_attribute;
+		return current_attribute;*/
+		return Attribute();
 	}
 
 	/**
@@ -571,48 +687,52 @@ namespace ccmc
 				return (*iter2).second;
 			}
 		}
-		long variableNumber = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
-		long attributeNumber = CDFgetAttrNum((void *) current_file_id, (char *) vattribute.c_str());
-		long dataType;
-		CDFstatus status = CDFgetAttrzEntryDataType((void *) current_file_id, attributeNumber, variableNumber, &dataType);
+
+		H5::Group group = this->current_file->openGroup("Variables");
+		H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
+		H5::Attribute h5attribute = group.openAttribute(vattribute);
+		H5::DataType dataType = h5attribute.getDataType();
 		Attribute attribute;
-		//	std::cout << "HDF5FileReader::getVariableAttribute - datatype: " << dataType << " CDF_CHAR: " << CDF_CHAR << std::endl;
-		if (dataType == CDF_CHAR)
+		if (dataType.getClass() == H5T_STRING)
 		{
-			char value[1024];
-			long status = CDFgetAttrzEntry((void *) current_file_id, attributeNumber, variableNumber, value);
-			long numElements;
-			status = CDFgetAttrzEntryNumElements((void *) current_file_id, attributeNumber, variableNumber, &numElements);
+			std::string attributeValue = "NULL";
+			h5attribute.read(dataType, &attributeValue);
 
-			value[numElements] = '\0';
-			//std::cout << "C: attributeValue (" << vattribute << "): " << value << std::endl;
-			std::string valueString = value;
-
-			attribute.setAttributeName(vattribute);
-			attribute.setAttributeValue(valueString);
+			std::string attributeName = "";
+			attributeName = h5attribute.getName();
 
 
-		} else if (dataType == CDF_INT4)
+			attribute.setAttributeName(attributeName);
+			//std::cout << "attributeBuffer: " << attributeBuffer << endl;
+			attribute.setAttributeValue(attributeValue);
+			//return attribute;
+		} else if (dataType.getClass() == H5T_FLOAT)
 		{
+			//int attributeValue = 0.f;
+			int attributeBuffer;// = new int[1];
 
-			int value;
-			long status = CDFgetAttrzEntry((void *) current_file_id, attributeNumber, variableNumber, &value);
-			//std::cout << "I: attributeValue (" << vattribute << "): " << value << std::endl;
-
-			attribute.setAttributeName(vattribute);
-			attribute.setAttributeValue(value);
-
-
-		} else if (dataType == CDF_FLOAT) //CDF_FLOAT
+			h5attribute.read(dataType, &attributeBuffer);
+			std::string attributeName = "";
+			attributeName = h5attribute.getName();
+			attribute.setAttributeName(attributeName);
+			attribute.setAttributeValue(attributeBuffer);
+			//return attribute;
+		} else if (dataType.getClass() == H5T_FLOAT)//CDF_FLOAT
 		{
-			float value;
-			long status = CDFgetAttrzEntry((void *) current_file_id, attributeNumber, variableNumber, &value);
-			//std::cout << "F: attributeValue (" << vattribute << "): " << value << std::endl;
+			//int attributeValue = 0.f;
+			float attributeValue;// = new int[1];
 
-			attribute.setAttributeName(vattribute);
-			attribute.setAttributeValue(value);
-
+			h5attribute.read(dataType, &attributeValue);
+			std::string attributeName = "";
+			attributeName = h5attribute.getName();
+			attribute.setAttributeName(attributeName);
+			attribute.setAttributeValue(attributeValue);
+			//return attribute;
 		}
+
+		//cout << "added: " << i << " name: " << attribute.getAttributeName() << endl;
+		//std::cout << "Attribute: " << attribute.toString() << std::endl;
+
 
 		(vAttributes[variable])[vattribute] = attribute;
 		return attribute;
@@ -628,7 +748,8 @@ namespace ccmc
 	int HDF5FileReader::getNumberOfGlobalAttributes()
 	{
 		long num_attributes;
-		CDFgetNumgAttributes((void *) current_file_id, &num_attributes);
+		H5::Group group = this->current_file->openGroup("/");
+		num_attributes = group.getNumAttrs();
 		return (int)num_attributes;
 	}
 
@@ -639,10 +760,15 @@ namespace ccmc
 	bool HDF5FileReader::doesAttributeExist(const std::string& attribute)
 	{
 		bool exists = false;
-		CDFstatus status = CDFconfirmAttrExistence((void *) current_file_id, (char*) attribute.c_str());
-		if (status == CDF_OK)
+		H5::Group group = this->current_file->openGroup("/");
+		try
+		{
+			group.openAttribute(attribute);
 			exists = true;
-
+		} catch (H5::AttributeIException& e)
+		{
+			exists = false;
+		}
 		return exists;
 
 	}
@@ -677,22 +803,17 @@ namespace ccmc
 	 * Returns the string representation of the variable referred to by variable_id
 	 * @return String representation of the variable.
 	 */
-	std::string HDF5FileReader::getVariableName(long variable_id)
+	std::string HDF5FileReader::getVariableName(long variable)
 	{
 		//first, check the current variableNames map.  fetching the variableNames from the file is expensive
-		boost::unordered_map<long, std::string>::iterator iter = variableNames.find(variable_id);
+		boost::unordered_map<long, std::string>::iterator iter = variableNames.find(variable);
 		if (iter != variableNames.end())
 			return (*iter).second;
+		std::string variableName = this->variableGroup->getObjnameByIdx(variable);
 
-		char variableNameBuffer[512];
-		CDFstatus status = CDFgetzVarName((void *) current_file_id, variable_id, variableNameBuffer);
-		long numElements;
-		status = CDFgetzVarNumElements((void *) current_file_id, variable_id, &numElements);
-		variableNameBuffer[numElements] = '\0';
-		std::string variableName = variableNameBuffer;
 		if (variableName != "")
 		{
-			variableNames[variable_id] = variableName;
+			variableNames[variable] = variableName;
 		}
 		return variableName;
 	}
@@ -708,15 +829,22 @@ namespace ccmc
 		boost::unordered_map<std::string, long>::iterator iter = variableIDs.find(variable);
 		if (iter != variableIDs.end())
 			return true;
-
-		long variableNumber = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
-		//std::cout << "variableNumber: " << variableNumber << std::endl;
-		if (variableNumber >= 0)
+/*
+		try
 		{
-			variableIDs[variable] = variableNumber;
-			variableNames[variableNumber] = variable;
-			return true;
-		}
+			H5::DataSet * dataset = new H5::DataSet(this->variableGroup->openDataSet(variable));
+			long variableNumber = dataset->getId();
+			//std::cout << "variableNumber: " << variableNumber << std::endl;
+			if (variableNumber >= 0)
+			{
+				variableIDs[variable] = variableNumber;
+				variableNames[variableNumber] = variable;
+				return true;
+			}
+		} catch (H5::Exception const& ex)
+		{
+
+		}*/
 
 		return false;
 	}
@@ -736,9 +864,9 @@ namespace ccmc
 	 */
 	std::string HDF5FileReader::getGlobalAttributeName(long attribute_id)
 	{
-		char buffer[256];
-		CDFgetAttrName((void *) current_file_id, attribute_id, buffer);
-		std::string buffer_string = buffer;
+//		CDFgetAttrName((void *) current_file_id, attribute_id, buffer);
+		H5::Attribute attribute = this->rootGroup->openAttribute(attribute_id);
+		std::string buffer_string = attribute.getName();
 		//cout << "Attribute Name: '" << buffer_string << "'" << endl;
 
 
@@ -751,7 +879,8 @@ namespace ccmc
 	int HDF5FileReader::getNumberOfVariables()
 	{
 		long numVars;
-		CDFgetNumzVars((void *) current_file_id, &numVars);
+		H5::Group group = this->current_file->openGroup("Variables");
+		numVars = group.getNumObjs();
 		return (int)numVars;
 	}
 
@@ -765,12 +894,11 @@ namespace ccmc
 	{
 		int numVariables = this->getNumberOfVariables();
 		//cout << "numVariables: " << numVariables << endl;
-		char variableName[512];
 		for (int i = 0; i < numVariables; i++)
 		{
-			CDFgetzVarName((void *) current_file_id, i, variableName);
-			std::string variableNameString = variableName;
-			variableIDs[variableNameString] = i;
+			std::string variableName = this->variableGroup->getObjnameByIdx(i);
+			variableIDs[variableName] = i;
+			//std::cout << "variable[" << i << "]: " << variableName << std::endl;
 
 		}
 	}
@@ -783,12 +911,12 @@ namespace ccmc
 	{
 		int numVariables = this->getNumberOfVariables();
 		//cout << "numVariables: " << numVariables << endl;
-		char variableName[512];
+
+		std::string variableName = "";
 		for (int i = 0; i < numVariables; i++)
 		{
-			CDFgetzVarName((void *) current_file_id, i, variableName);
-			std::string variableNameString = variableName;
-			variableNames[(long)i] = variableNameString;
+			std::string variableName = this->variableGroup->getObjnameByIdx(i);
+			variableNames[(long)i] = variableName;
 
 		}
 	}
@@ -799,10 +927,12 @@ namespace ccmc
 	 */
 	int HDF5FileReader::getNumberOfVariableAttributes()
 	{
-		long numVAttributes;
+		int numVAttributes;
 
-		CDFgetNumvAttributes((void *) current_file_id, &numVAttributes);
-		return (int)numVAttributes;
+		//get the first variable and see how many attributes. They should all be the same.
+		H5::DataSet dataset = this->variableGroup->openDataSet(this->variableGroup->getObjnameByIdx(0));
+		numVAttributes = dataset.getNumAttrs();
+		return numVAttributes;
 	}
 
 	/**
@@ -811,11 +941,11 @@ namespace ccmc
 	 */
 	std::string HDF5FileReader::getVariableAttributeName(long attribute_id)
 	{
-		char buffer[256];
-		CDFgetAttrName((void *) current_file_id, attribute_id, buffer);
-		std::string buffer_string = buffer;
-		//cout << "Attribute Name: '" << buffer_string << "'" << endl;
-		return buffer_string;
+		H5::DataSet dataset = this->variableGroup->openDataSet(this->variableGroup->getObjnameByIdx(0));
+		H5::Attribute attribute = dataset.openAttribute(attribute_id);
+		std::string buffer = attribute.getName();
+		cout << "Attribute Name: '" << buffer << "'" << endl;
+		return buffer;
 	}
 
 
@@ -827,21 +957,21 @@ namespace ccmc
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		long variableNum = CDFgetVarNum((void *) current_file_id, (char *) variable.c_str());
+		H5::DataSet dataset = this->variableGroup->openDataSet(variable);
 
-		return getNumberOfRecords(variableNum);
+		H5::DataSpace dataspace = dataset.getSpace();
+		hsize_t count[1];
+		int ndims = dataspace.getSimpleExtentDims(count, NULL);
+		return (long)count[0];
 	}
 
 	/**
 	 * @param variable_id
 	 * @return
 	 */
-	long HDF5FileReader::getNumberOfRecords(long variable_id)
+	long HDF5FileReader::getNumberOfRecords(long variable)
 	{
-		long counts[1];
-		//get dim sizes
-		CDFgetzVarDimSizes((void *) current_file_id, variable_id, counts);
-		return counts[0];
+		return getNumberOfRecords(this->variableGroup->getObjnameByIdx(variable));
 	}
 
 	/**
@@ -850,24 +980,14 @@ namespace ccmc
 	std::vector<std::string> HDF5FileReader::getVariableAttributeNames()
 	{
 		std::vector<std::string> attributeNames;
-		long numAttributes;
-		CDFgetNumAttributes((void *) current_file_id, &numAttributes);
-		char name[512];
-		long attrScope;
-		long maxgEntry;
-		long maxrEntry;
-		long maxzEntry;
-
+		int numAttributes = this->getNumberOfVariableAttributes();
+		H5::DataSet dataset = this->variableGroup->openDataSet(this->variableGroup->getObjnameByIdx(0));
 		for (int i = 0; i < numAttributes; i++)
 		{
 			std::string value = "";
-			CDFinquireAttr((void *) current_file_id, i,name, &attrScope, &maxgEntry, &maxrEntry, &maxzEntry);
-			//CDFgetAttrName((void *) current_file_id, i, buffer);
-			if (attrScope == VARIABLE_SCOPE)
-			{
-				value = name;
-				attributeNames.push_back(value);
-			}
+			H5::Attribute attribute = dataset.openAttribute(i);
+			attributeNames.push_back(attribute.getName());
+
 		}
 		return attributeNames;
 	}
@@ -877,7 +997,7 @@ namespace ccmc
 	 */
 	HDF5FileReader::~HDF5FileReader()
 	{
-		if (file != NULL)
+		if (current_file != NULL)
 			close();
 	}
 }

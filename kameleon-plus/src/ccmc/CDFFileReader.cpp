@@ -48,6 +48,7 @@ namespace ccmc
 		}
 		else{
 			std::cerr << "about to open CDF file" << std::endl;
+
 			status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
 
@@ -68,6 +69,7 @@ namespace ccmc
 			{
 				status = OPEN_ERROR;
 				std::cerr << "Error opening \"" << filename << "\"." << std::endl;
+				current_file_id = NULL;
 			}
 
 		}
@@ -76,17 +78,6 @@ namespace ccmc
 
 		return status;
 	}
-
-	/**
-	 * Returns the CDFid value of the currently opened CDF file
-	 * @return CDFid returned from the CDF library for currently selected file.
-	 */
-	long CDFFileReader::getCurrentFileID()
-	{
-		return *current_file_id;
-	}
-
-
 
 	/**
 	 * Closes the currently selected file.  Call this from the close() method.
@@ -98,6 +89,8 @@ namespace ccmc
 		if (current_file_id != NULL)
 		{
 			status = CDFcloseCDF(current_file_id);
+			//delete current_file_id; //CDF deletes it?
+			current_file_id = NULL;
 		}
 
 		return status;
@@ -683,8 +676,8 @@ namespace ccmc
 		boost::unordered_map<long, std::string>::iterator iter = variableNames.find(variable_id);
 		if (iter != variableNames.end())
 			return (*iter).second;
-
-		char variableNameBuffer[512];
+		return "";
+		/*char variableNameBuffer[512];
 		CDFstatus status = CDFgetzVarName(current_file_id, variable_id, variableNameBuffer);
 		long numElements;
 		status = CDFgetzVarNumElements(current_file_id, variable_id, &numElements);
@@ -694,7 +687,7 @@ namespace ccmc
 		{
 			variableNames[variable_id] = variableName;
 		}
-		return variableName;
+		return variableName;*/
 	}
 
 	/**
@@ -709,7 +702,7 @@ namespace ccmc
 		if (iter != variableIDs.end())
 			return true;
 
-		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		/*long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 		//std::cout << "variableNumber: " << variableNumber << std::endl;
 		if (variableNumber >= 0)
 		{
@@ -717,6 +710,7 @@ namespace ccmc
 			variableNames[variableNumber] = variable;
 			return true;
 		}
+		 */
 
 		return false;
 	}

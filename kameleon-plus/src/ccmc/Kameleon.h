@@ -129,8 +129,6 @@ namespace ccmc
 			bool doesAttributeExist(const std::string& attribute);
 			bool doesVariableExist(const std::string& variable);
 
-
-			long getCurrentFileID();
 			const std::string& getCurrentFilename();
 
 
@@ -191,7 +189,7 @@ namespace ccmc
 	static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
 	static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
 	static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
-	static boost::unordered_map<int, ccmc::FileReader *> fileReaderObjects;
+	static boost::unordered_map<int, ccmc::GeneralFileReader *> fileReaderObjects;
 }
 
 

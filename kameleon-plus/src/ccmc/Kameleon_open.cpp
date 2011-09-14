@@ -30,8 +30,9 @@ std::cout << "Kameleon::open(" << filename << ")" << std::endl;
 			{
 
 				this->modelName = (generalFileReader.getGlobalAttribute("model_name")).getAttributeString();
+				std::cout << "modelName: '" << modelName << "'" << std::endl;
+
 				generalFileReader.close();
-				//std::cout << "modelName: '" << modelName << "'" << std::endl;
 				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 				{
 					std::cout << "created OpenGGCM object" << std::endl;

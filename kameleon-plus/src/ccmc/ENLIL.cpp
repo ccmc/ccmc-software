@@ -37,6 +37,7 @@ namespace ccmc
 		//check the names of the components
 		if (this->doesVariableExist(ccmc::strings::variables::r_))
 		{
+			std::cout << "r exists" << std::endl;
 			r_string = ccmc::strings::variables::r_;
 			lat_string = ccmc::strings::variables::phi_;
 			lon_string = ccmc::strings::variables::theta_;
@@ -48,9 +49,11 @@ namespace ccmc
 		}
 
 		long success = loadVariable(r_string);
+		std::cout << "loaded r" << std::endl;
 		if (success != FileReader::OK)
 			return success;
 		success = loadVariable(lat_string);
+		std::cout << "loaded lat" << std::endl;
 		if (success != FileReader::OK)
 			return success;
 		loadVariable(lon_string);

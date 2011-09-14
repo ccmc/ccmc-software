@@ -60,10 +60,11 @@ namespace ccmc
 			virtual bool doesAttributeExist(const std::string& attribute) = 0;
 			virtual bool doesVariableExist(const std::string& variable) = 0;
 			long close();
-			virtual long getCurrentFileID() = 0;
 			virtual const std::string& getCurrentFilename() = 0;
 			virtual void initializeVariableIDs() = 0;
 			virtual void initializeVariableNames() = 0;
+			virtual long closeFile() = 0;
+			virtual long openFile(const std::string& filename) = 0;
 			virtual ~FileReader();
 
 			static const long OK = 0L;
@@ -79,8 +80,8 @@ namespace ccmc
 
 		protected:
 			std::string current_filename;
-			virtual long closeFile() = 0;
-			virtual long openFile(const std::string& filename) = 0;
+
+
 			boost::unordered_map<std::string, long> variableIDs;
 			boost::unordered_map<long, std::string> variableNames;
 			boost::unordered_map<std::string, Attribute> gAttributes;
