@@ -222,6 +222,8 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 
 
 #include <ccmc/FileReader.h>
+#include <ccmc/GeneralFileReader.h>
+#include <ccmc/CDFFileReader.h>
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
 #include <ccmc/KameleonInterpolator.h>
@@ -238,6 +240,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include <ccmc/ENLILInterpolator.h>
 #include <ccmc/MASInterpolator.h>
 #include <ccmc/OpenGGCMInterpolator.h>
+#include <ccmc/CCMCTime.h>
 using namespace std;
 
 
@@ -316,18 +319,6 @@ SWIGINTERN void vector_Sl_int_Sg__set(vector< int > *self,int i,vector< int >::v
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1FileReader(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  ccmc::FileReader *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (ccmc::FileReader *)new ccmc::FileReader();
-  *(ccmc::FileReader **)&jresult = result; 
-  return jresult;
-}
-
 
 SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jint jresult = 0 ;
@@ -864,21 +855,6 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1close(JNIEnv
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getCurrentFileID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
-  CDFid result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::FileReader **)&jarg1; 
-  result = (CDFid)(arg1)->getCurrentFileID();
-  *(CDFid *)&jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
@@ -890,6 +866,68 @@ SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1getCurren
   arg1 = *(ccmc::FileReader **)&jarg1; 
   result = (std::string *) &(arg1)->getCurrentFilename();
   jresult = jenv->NewStringUTF(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1initializeVariableIDs(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::FileReader **)&jarg1; 
+  (arg1)->initializeVariableIDs();
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1initializeVariableNames(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::FileReader **)&jarg1; 
+  (arg1)->initializeVariableNames();
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1closeFile(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::FileReader **)&jarg1; 
+  result = (long)(arg1)->closeFile();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1openFile(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::FileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->openFile((std::string const &)*arg2);
+  jresult = (jint)result; 
   return jresult;
 }
 
@@ -1021,6 +1059,1110 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_FileReader_1NOT_1A_1VALI
   result = (long)ccmc::FileReader::NOT_A_VALID_KAMELEON_FILE;
   jresult = (jint)result; 
   return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1GeneralFileReader(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (ccmc::GeneralFileReader *)new ccmc::GeneralFileReader();
+  *(ccmc::GeneralFileReader **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariable_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< float > *)(arg1)->getVariable((std::string const &)*arg2);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariable_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (std::vector< float > *)(arg1)->getVariable(arg2);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariable_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3, jint jarg4) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  long arg4 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (long)jarg3; 
+  arg4 = (long)jarg4; 
+  result = (std::vector< float > *)(arg1)->getVariable((std::string const &)*arg2,arg3,arg4);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariable_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  long arg4 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  arg3 = (long)jarg3; 
+  arg4 = (long)jarg4; 
+  result = (std::vector< float > *)(arg1)->getVariable(arg2,arg3,arg4);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableAtIndex_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+  jfloat jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (long)jarg3; 
+  result = (float)(arg1)->getVariableAtIndex((std::string const &)*arg2,arg3);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableAtIndex_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  jfloat jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  arg3 = (long)jarg3; 
+  result = (float)(arg1)->getVariableAtIndex(arg2,arg3);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< int > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableIntAtIndex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (long)jarg3; 
+  result = (int)(arg1)->getVariableIntAtIndex((std::string const &)*arg2,arg3);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getNumberOfGlobalAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  result = (int)(arg1)->getNumberOfGlobalAttributes();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  result = (int)(arg1)->getNumberOfVariables();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getNumberOfVariableAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  result = (int)(arg1)->getNumberOfVariableAttributes();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getNumberOfRecords_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->getNumberOfRecords((std::string const &)*arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getNumberOfRecords_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (long)(arg1)->getNumberOfRecords(arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getVariableName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  Attribute result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getGlobalAttribute(arg2);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getGlobalAttributeName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getVariableAttributeName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  Attribute result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (arg1)->getGlobalAttribute((std::string const &)*arg2);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  Attribute result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  result = (arg1)->getVariableAttribute((std::string const &)*arg2,(std::string const &)*arg3);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getVariableAttributeNames(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::vector< std::string > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  result = (arg1)->getVariableAttributeNames();
+  *(std::vector< std::string > **)&jresult = new std::vector< std::string >((const std::vector< std::string > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  result = (long)(arg1)->close();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_GeneralFileReader_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  result = (std::string *) &(arg1)->getCurrentFilename();
+  jresult = jenv->NewStringUTF(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1GeneralFileReader(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  ccmc::GeneralFileReader *arg1 = (ccmc::GeneralFileReader *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(ccmc::GeneralFileReader **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1CDFFileReader(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (ccmc::CDFFileReader *)new ccmc::CDFFileReader();
+  *(ccmc::CDFFileReader **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariable_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< float > *)(arg1)->getVariable((std::string const &)*arg2);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariable_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (std::vector< float > *)(arg1)->getVariable(arg2);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariable_1_1SWIG_12(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3, jint jarg4) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  long arg4 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (long)jarg3; 
+  arg4 = (long)jarg4; 
+  result = (std::vector< float > *)(arg1)->getVariable((std::string const &)*arg2,arg3,arg4);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariable_1_1SWIG_13(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3, jint jarg4) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  long arg4 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  arg3 = (long)jarg3; 
+  arg4 = (long)jarg4; 
+  result = (std::vector< float > *)(arg1)->getVariable(arg2,arg3,arg4);
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableAtIndex_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+  jfloat jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (long)jarg3; 
+  result = (float)(arg1)->getVariableAtIndex((std::string const &)*arg2,arg3);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableAtIndex_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2, jint jarg3) {
+  jfloat jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  long arg3 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  arg3 = (long)jarg3; 
+  result = (float)(arg1)->getVariableAtIndex(arg2,arg3);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< int > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableIntAtIndex(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jint jarg3) {
+  jint jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long arg3 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  arg3 = (long)jarg3; 
+  result = (int)(arg1)->getVariableIntAtIndex((std::string const &)*arg2,arg3);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getNumberOfGlobalAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  result = (int)(arg1)->getNumberOfGlobalAttributes();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  result = (int)(arg1)->getNumberOfVariables();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getNumberOfVariableAttributes(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  result = (int)(arg1)->getNumberOfVariableAttributes();
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getNumberOfRecords_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->getNumberOfRecords((std::string const &)*arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getNumberOfRecords_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jint jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (long)(arg1)->getNumberOfRecords(arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getVariableName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  Attribute result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getGlobalAttribute(arg2);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getGlobalAttributeName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getVariableAttributeName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  Attribute result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (arg1)->getGlobalAttribute((std::string const &)*arg2);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableAttribute(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jstring jarg3) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string *arg3 = 0 ;
+  Attribute result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  if(!jarg3) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg3_pstr = (const char *)jenv->GetStringUTFChars(jarg3, 0); 
+  if (!arg3_pstr) return 0;
+  std::string arg3_str(arg3_pstr);
+  arg3 = &arg3_str;
+  jenv->ReleaseStringUTFChars(jarg3, arg3_pstr); 
+  result = (arg1)->getVariableAttribute((std::string const &)*arg2,(std::string const &)*arg3);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVariableAttributeNames(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::vector< std::string > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  result = (arg1)->getVariableAttributeNames();
+  *(std::vector< std::string > **)&jresult = new std::vector< std::string >((const std::vector< std::string > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  result = (std::string *) &(arg1)->getCurrentFilename();
+  jresult = jenv->NewStringUTF(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1CDFFileReader(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  delete arg1;
 }
 
 
@@ -1164,196 +2306,6 @@ SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Position(JNIEnv 
   (void)jenv;
   (void)jcls;
   arg1 = *(ccmc::Position **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1year_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->year = arg2;
-}
-
-
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1year_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  result = (int) ((arg1)->year);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1month_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->month = arg2;
-}
-
-
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1month_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  result = (int) ((arg1)->month);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1day_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->day = arg2;
-}
-
-
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1day_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  result = (int) ((arg1)->day);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1hour_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->hour = arg2;
-}
-
-
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1hour_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  result = (int) ((arg1)->hour);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1minute_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  arg2 = (int)jarg2; 
-  if (arg1) (arg1)->minute = arg2;
-}
-
-
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1minute_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  int result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  result = (int) ((arg1)->minute);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1second_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  float arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  arg2 = (float)jarg2; 
-  if (arg1) (arg1)->second = arg2;
-}
-
-
-SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1second_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jfloat jresult = 0 ;
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  float result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Time **)&jarg1; 
-  result = (float) ((arg1)->second);
-  jresult = (jfloat)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Time(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  ccmc::Time *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (ccmc::Time *)new ccmc::Time();
-  *(ccmc::Time **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Time(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(ccmc::Time **)&jarg1; 
   delete arg1;
 }
 
@@ -2016,21 +2968,6 @@ SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesVariab
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentFileID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  CDFid result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (CDFid)(arg1)->getCurrentFileID();
-  *(CDFid *)&jresult = result; 
-  return jresult;
-}
-
-
 SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
@@ -2160,14 +3097,14 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1close(JNIEnv *
 SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentTime(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  ccmc::Time result;
+  Time result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
   result = (arg1)->getCurrentTime();
-  *(ccmc::Time **)&jresult = new ccmc::Time((const ccmc::Time &)result); 
+  *(Time **)&jresult = new Time((const Time &)result); 
   return jresult;
 }
 
@@ -2267,14 +3204,14 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_interpolatorObjects_1ge
 
 
 SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_fileReaderObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  boost::unordered_map< int,ccmc::FileReader * > arg1 ;
-  boost::unordered_map< int,ccmc::FileReader * > *argp1 ;
+  boost::unordered_map< int,ccmc::GeneralFileReader * > arg1 ;
+  boost::unordered_map< int,ccmc::GeneralFileReader * > *argp1 ;
   
   (void)jenv;
   (void)jcls;
-  argp1 = *(boost::unordered_map< int,ccmc::FileReader * > **)&jarg1; 
+  argp1 = *(boost::unordered_map< int,ccmc::GeneralFileReader * > **)&jarg1; 
   if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::FileReader * >");
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::GeneralFileReader * >");
     return ;
   }
   arg1 = *argp1; 
@@ -2284,12 +3221,12 @@ SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_fileReaderObjects_1set(J
 
 SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_fileReaderObjects_1get(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
-  boost::unordered_map< int,ccmc::FileReader * > result;
+  boost::unordered_map< int,ccmc::GeneralFileReader * > result;
   
   (void)jenv;
   (void)jcls;
   result = ccmc::fileReaderObjects;
-  *(boost::unordered_map< int,ccmc::FileReader * > **)&jresult = new boost::unordered_map< int,ccmc::FileReader * >((const boost::unordered_map< int,ccmc::FileReader * > &)result); 
+  *(boost::unordered_map< int,ccmc::GeneralFileReader * > **)&jresult = new boost::unordered_map< int,ccmc::GeneralFileReader * >((const boost::unordered_map< int,ccmc::GeneralFileReader * > &)result); 
   return jresult;
 }
 
@@ -3110,7 +4047,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1getLastClosedFi
   int arg2 ;
   int arg3 ;
   int arg4 ;
-  vector< Fieldline > result;
+  std::vector< Fieldline > result;
   
   (void)jenv;
   (void)jcls;
@@ -3120,7 +4057,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Tracer_1getLastClosedFi
   arg3 = (int)jarg3; 
   arg4 = (int)jarg4; 
   result = (arg1)->getLastClosedFieldlines(arg2,arg3,arg4);
-  *(vector< Fieldline > **)&jresult = new vector< Fieldline >((const vector< Fieldline > &)result); 
+  *(std::vector< Fieldline > **)&jresult = new std::vector< Fieldline >((const std::vector< Fieldline > &)result); 
   return jresult;
 }
 
@@ -4121,7 +5058,7 @@ SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Attribute_1toString(J
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Attribute **)&jarg1; 
-  result = (arg1)->toString();
+  result = ((ccmc::Attribute const *)arg1)->toString();
   jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
 }
@@ -5928,6 +6865,211 @@ SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1OpenGGCMInterpol
 }
 
 
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1year_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->year = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1year_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  result = (int) ((arg1)->year);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1month_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->month = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1month_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  result = (int) ((arg1)->month);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1day_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->day = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1day_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  result = (int) ((arg1)->day);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1hour_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->hour = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1hour_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  result = (int) ((arg1)->hour);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1minute_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->minute = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1minute_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  result = (int) ((arg1)->minute);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1second_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  float arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  arg2 = (float)jarg2; 
+  if (arg1) (arg1)->second = arg2;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1second_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jfloat jresult = 0 ;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  result = (float) ((arg1)->second);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Time_1toString(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  result = ((ccmc::Time const *)arg1)->toString();
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Time(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  ccmc::Time *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (ccmc::Time *)new ccmc::Time();
+  *(ccmc::Time **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Time(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  ccmc::Time *arg1 = (ccmc::Time *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(ccmc::Time **)&jarg1; 
+  delete arg1;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1vector_1point3f_1_1SWIG_10(JNIEnv *jenv, jclass jcls) {
   jlong jresult = 0 ;
   vector< Point3f > *result = 0 ;
@@ -6792,6 +7934,14 @@ SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1vector_1int(JNIE
 }
 
 
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+    jlong baseptr = 0;
+    (void)jenv;
+    (void)jcls;
+    *(ccmc::FileReader **)&baseptr = *(ccmc::CDFFileReader **)&jarg1;
+    return baseptr;
+}
+
 SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_KameleonInterpolator_1SWIGUpcast(JNIEnv *jenv, jclass jcls, jlong jarg1) {
     jlong baseptr = 0;
     (void)jenv;
@@ -6804,7 +7954,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Model_1SWIGUpcast(JNIEn
     jlong baseptr = 0;
     (void)jenv;
     (void)jcls;
-    *(ccmc::FileReader **)&baseptr = *(ccmc::Model **)&jarg1;
+    *(ccmc::GeneralFileReader **)&baseptr = *(ccmc::Model **)&jarg1;
     return baseptr;
 }
 

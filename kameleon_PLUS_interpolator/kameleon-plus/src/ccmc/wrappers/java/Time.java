@@ -83,6 +83,10 @@ public class Time {
     return CCMCJNI.Time_second_get(swigCPtr, this);
   }
 
+  public String toString() {
+    return CCMCJNI.Time_toString(swigCPtr, this);
+  }
+
   public Time() {
     this(CCMCJNI.new_Time(), true);
   }

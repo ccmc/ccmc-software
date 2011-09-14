@@ -164,11 +164,6 @@ public class Kameleon {
     return CCMCJNI.Kameleon_doesVariableExist(swigCPtr, this, variable);
   }
 
-  public SWIGTYPE_p_void getCurrentFileID() {
-    long cPtr = CCMCJNI.Kameleon_getCurrentFileID(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr, false);
-  }
-
   public String getCurrentFilename() {
     return CCMCJNI.Kameleon_getCurrentFilename(swigCPtr, this);
   }
