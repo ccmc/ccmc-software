@@ -9,6 +9,7 @@
 #include <ccmc/FileReader.h>
 #include <ccmc/GeneralFileReader.h>
 #include <ccmc/CDFFileReader.h>
+#include <ccmc/HDF5FileReader.h>
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
 #include <ccmc/KameleonInterpolator.h>
@@ -25,6 +26,7 @@
 #include <ccmc/ENLILInterpolator.h>
 #include <ccmc/MASInterpolator.h>
 #include <ccmc/OpenGGCMInterpolator.h>
+#include <ccmc/CCMCTime.h>
 using namespace std;
 
 
@@ -33,6 +35,7 @@ using namespace std;
 %include <ccmc/FileReader.h>
 %include <ccmc/GeneralFileReader.h>
 %include <ccmc/CDFFileReader.h>
+%include <ccmc/HDF5FileReader.h>
 %include <ccmc/Kameleon.h>
 %include <ccmc/Interpolator.h>
 %include <ccmc/KameleonInterpolator.h>
@@ -50,8 +53,10 @@ using namespace std;
 %include <ccmc/ENLILInterpolator.h>
 %include <ccmc/MASInterpolator.h>
 %include <ccmc/OpenGGCMInterpolator.h>
+%include <ccmc/CCMCTime.h>
 
 using namespace ccmc;
+using namespace std;
 typedef ccmc::Fieldline Fieldline;
 typedef ccmc::Point3f Point3f;
 
