@@ -2,13 +2,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([kameleon-plus], [0.1.19], [David.H.Berrios@nasa.gov], [kameleon-plus])
+AC_INIT([kameleon-plus], [0.1.24], [David.H.Berrios@nasa.gov], [kameleon-plus])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_SUBST([RELEASE],[0.1.19])
+AC_SUBST([RELEASE],[0.1.24])
 AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
@@ -17,6 +17,8 @@ AC_PROG_CC
 AM_PROG_LIBTOOL
 AM_PROG_CC_C_O
 AM_PATH_PYTHON([2.5],,[:])
+AX_BOOST_BASE([1.40])
+AX_BOOST_PROGRAM_OPTIONS
 
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
@@ -99,19 +101,32 @@ AC_ARG_WITH([cdf],
             [LDFLAGS="-L$withval $LDFLAGS"])                
 AC_ARG_WITH([boost-includes],
 			[AC_HELP_STRING([--with-boost-includes=<dir>],
-                            [specify the location of the boost header files])],
+                            [specify the location of the boost header files. This is the directory that contains the boost directory.])],
             [CPPFLAGS="-I$withval $CPPFLAGS"])
+AC_ARG_WITH([hdf5],
+			[AC_HELP_STRING([--with-hdf5=<dir>],
+							[specify the location of the HDF5 library])],
+			[LDFLAGS="-L$withval $LDFLAGS"])
+AC_ARG_WITH([hdf5-includes],
+			[AC_HELP_STRING([--with-hdf5-includes=<dir>],
+							[specify the location of the HDF5 header files. This is the directory that contains the H5Cpp.h file.])],
+			[CPPFLAGS="-I$withval $CPPFLAGS"])
 HAVE_PYTHON= false;
 AC_PYTHON_INCLUDES
 AC_CHECK_LIB([cdf],
              [main],,
              [AC_MSG_ERROR([The CDF library was not found. Specify the directory using the --with-cdf option],1)])
 
+AC_CHECK_LIB([hdf5_cpp],
+			 [main],,
+			 [AC_MSG_ERROR([The HDF5 library was not found. Specify the directory using the --with-hdf5 option],1)])
 # Checks for header files.
 AC_HEADER_STDC
 AC_CHECK_HEADER([string.h])
 AC_CHECK_HEADER([boost/unordered_map.hpp],,
 					AC_MSG_ERROR(Cannot find boost/unordered_map.hpp. Specify the boost include directory using --with-boost-includes=<dir>))
+#AC_CHECK_HEADER([H5Cpp.h],,
+#					AC_MSG_ERROR(Cannot find H5Cpp.h. Specify the HDF5 include directory using --with-hdf5-includes=<dir>))
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
 
@@ -135,6 +150,7 @@ AC_MSG_NOTICE( )
 AC_MSG_NOTICE([------------------------------------------------------------])
 AC_MSG_NOTICE([|                        Summary                           |])
 AC_MSG_NOTICE([------------------------------------------------------------])
+AC_MSG_NOTICE([ LDFLAGS: $LDFLAGS])
 AC_MSG_NOTICE([ LIBS: $LIBS])
 AC_MSG_NOTICE([ CFLAGS: $CFLAGS]) 
 AC_MSG_NOTICE([ CXXFLAGS: $CXXFLAGS])
