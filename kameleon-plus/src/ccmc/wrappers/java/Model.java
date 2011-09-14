@@ -8,7 +8,7 @@
 
 package gov.nasa.gsfc.ccmc;
 
-public class Model extends FileReader {
+public class Model extends GeneralFileReader {
   private long swigCPtr;
 
   public Model(long cPtr, boolean cMemoryOwn) {

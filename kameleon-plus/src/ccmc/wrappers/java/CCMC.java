@@ -41,12 +41,12 @@ public class CCMC {
     return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t(CCMCJNI.interpolatorObjects_get(), true);
   }
 
-  public static void setFileReaderObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t value) {
-    CCMCJNI.fileReaderObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t.getCPtr(value));
+  public static void setFileReaderObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t value) {
+    CCMCJNI.fileReaderObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t.getCPtr(value));
   }
 
-  public static SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t getFileReaderObjects() {
-    return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__FileReader_p_t(CCMCJNI.fileReaderObjects_get(), true);
+  public static SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t getFileReaderObjects() {
+    return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t(CCMCJNI.fileReaderObjects_get(), true);
   }
 
 }

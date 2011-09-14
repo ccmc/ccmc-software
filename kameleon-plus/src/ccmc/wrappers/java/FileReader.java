@@ -35,10 +35,6 @@ public class FileReader {
     }
   }
 
-  public FileReader() {
-    this(CCMCJNI.new_FileReader(), true);
-  }
-
   public int open(String filename) {
     return CCMCJNI.FileReader_open(swigCPtr, this, filename);
   }
@@ -144,13 +140,24 @@ public class FileReader {
     return CCMCJNI.FileReader_close(swigCPtr, this);
   }
 
-  public SWIGTYPE_p_void getCurrentFileID() {
-    long cPtr = CCMCJNI.FileReader_getCurrentFileID(swigCPtr, this);
-    return (cPtr == 0) ? null : new SWIGTYPE_p_void(cPtr, false);
-  }
-
   public String getCurrentFilename() {
     return CCMCJNI.FileReader_getCurrentFilename(swigCPtr, this);
+  }
+
+  public void initializeVariableIDs() {
+    CCMCJNI.FileReader_initializeVariableIDs(swigCPtr, this);
+  }
+
+  public void initializeVariableNames() {
+    CCMCJNI.FileReader_initializeVariableNames(swigCPtr, this);
+  }
+
+  public int closeFile() {
+    return CCMCJNI.FileReader_closeFile(swigCPtr, this);
+  }
+
+  public int openFile(String filename) {
+    return CCMCJNI.FileReader_openFile(swigCPtr, this, filename);
   }
 
   public final static int OK = CCMCJNI.FileReader_OK_get();
