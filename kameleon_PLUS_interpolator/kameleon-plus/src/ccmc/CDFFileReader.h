@@ -67,6 +67,7 @@ namespace ccmc
 
 		protected:
 			std::string current_filename;
+			CDFid current_file_id;
 			long closeFile();
 			long openFile(const std::string& filename);
 			void initializeGlobalAttributes();

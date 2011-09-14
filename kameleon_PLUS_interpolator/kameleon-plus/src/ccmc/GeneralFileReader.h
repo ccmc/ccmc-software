@@ -61,13 +61,12 @@ namespace ccmc
 			bool doesAttributeExist(const std::string& attribute);
 			bool doesVariableExist(const std::string& variable);
 			long close();
-			long closeFile();
-			long openFile(const std::string& filename);
+			//long closeFile();
+			//long openFile(const std::string& filename);
 			const std::string& getCurrentFilename();
 			~GeneralFileReader();
 
 		protected:
-			long * current_file_id;
 			std::string current_filename;
 
 			boost::unordered_map<std::string, long> variableIDs;

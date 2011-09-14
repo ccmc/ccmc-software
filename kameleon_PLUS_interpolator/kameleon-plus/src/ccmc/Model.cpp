@@ -136,7 +136,10 @@ namespace ccmc
 			variableDataByID[id] = data;
 		} //else return false;
 		else
+		{
 			std::cout << "not adding " << variable << " to maps" << std::endl;
+			delete data;
+		}
 
 		return FileReader::OK;
 	}

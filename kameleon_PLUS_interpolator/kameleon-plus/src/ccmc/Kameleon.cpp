@@ -418,9 +418,11 @@ namespace ccmc
 		bool success = true;
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
-//			std::cout << "loading " << requiredVariables[i] << std::endl;
+			std::cout << "loading " << requiredVariables[i] << std::endl;
 			if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
-				success = false;
+			{
+				return false;
+			}
 		}
 		return success;
 	}
@@ -887,14 +889,6 @@ namespace ccmc
 
 		}
 		return success;
-	}
-
-	/**
-	 * @return
-	 */
-	long Kameleon::getCurrentFileID()
-	{
-		return model->getCurrentFileID();
 	}
 
 	/**

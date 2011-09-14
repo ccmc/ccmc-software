@@ -23,8 +23,6 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						ENLILInterpolator.cpp \
 						GeneralFileReader.h \
 						GeneralFileReader.cpp \
-						HDF5FileReader.h \
-						HDF5FileReader.cpp \
 						KameleonInterpolator_compute_etaj.cpp \
 						KameleonInterpolator_compute_beta.cpp \
 						KameleonInterpolator_compute_e.cpp \
@@ -89,7 +87,10 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						Adapt3DInterpolator.h \
 						Adapt3DInterpolator.cpp \
 						MathHelper.h \
-						MathHelper.cpp						
+						MathHelper.cpp \
+						HDF5FileReader.h \
+						HDF5FileReader.cpp
+											
 						
 libkameleon_plus_la_LDFLAGS = -release @RELEASE@ 
 #-enable-runtime-pseudo-reloc --enable-auto-import
