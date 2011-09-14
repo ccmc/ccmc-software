@@ -13,7 +13,8 @@ pkgpath = @builddir@
 jar_DATA = $(jarfile)
 JAVAROOT= @builddir@
 
-CLEANFILES = $(jarfile) $(pkgpath)/gov/nasa/gsfc/ccmc/*.class
+#CLEANFILES = $(pkgpath)/*.jar $(pkgpath)/gov/
+CLEANFILES = $(pkgpath)/*.jar
 AM_JAVACFLAGS=-nowarn
 
 dist_noinst_JAVA = 	Attribute.java \
@@ -57,6 +58,9 @@ EXTRA_DIST = SWIG_COMMAND
 					
 
 .NOTPARALLEL:
+
+clean-local:
+	-rm -rf $(pkgpath)/gov
 
 $(jarfile): $(dist_noinst_JAVA)
 	echo $(dist_noinst_SWIG_COMMAND)
