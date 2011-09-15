@@ -75,15 +75,15 @@ AC_ARG_ENABLE([java],
 				],)
 
 
-ENABLE_PYTHON=false
+
 AC_ARG_ENABLE([python],
 	AC_HELP_STRING([--enable-python],
 				[Build the Python wrappers]),
 				[if test "$enableval" = "yes"; then
-					ENABLE_PYTHON = true
+					AC_SUBST([PYTHON_WRAPPER],['python'])
 				 fi
 				],)
-AM_CONDITIONAL([ENABLE_PYTHON], [$ENABLE_PYTHON])
+
 AC_ARG_WITH([cdf],
             [AC_HELP_STRING([--with-cdf=<dir>],
                             [specify the location of the CDF library])],
