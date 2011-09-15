@@ -1,7 +1,7 @@
 2011 Sep 14   David Berrios
 -------------
   kameleon-plus-0.1.24
-  - Updated HDF5FileReader class. Does no segfault, but still does not work correctly..
+  - Updated HDF5FileReader class. Seems to work.
   
 2011 Sep 02   David Berrios
 -------------
