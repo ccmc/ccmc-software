@@ -126,7 +126,6 @@ AC_CONFIG_FILES([Makefile])
 AC_CONFIG_FILES([src/Makefile])
 AC_CONFIG_FILES([src/ccmc/Makefile])
 AC_CONFIG_FILES([src/ccmc/wrappers/Makefile])
-AC_CONFIG_FILES([src/ccmc/wrappers/c/Makefile])
 AC_CONFIG_FILES([src/ccmc/wrappers/fortran/Makefile])
 AC_CONFIG_FILES([src/ccmc/wrappers/java/Makefile])
 AC_CONFIG_FILES([src/ccmc/wrappers/python/Makefile])
@@ -149,6 +148,8 @@ AC_MSG_NOTICE([ JNI_INCLUDE_DIRS: $JNI_INCLUDE_DIRS])
 AC_MSG_NOTICE([ Python: $PYTHON_VERSION])
 AC_MSG_NOTICE([ pyexecdir: $pyexecdir])
 AC_MSG_NOTICE([ pkgpyexecdir: $pkgpyexecdir])
+AC_MSG_NOTICE()
+AC_MSG_NOTICE()
 
 
 
