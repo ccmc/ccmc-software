@@ -10,6 +10,59 @@
 #ifndef KAMELEON_H
 #define KAMELEON_H
 
+#ifndef __cplusplus
+typedef struct Kameleon Kameleon;
+
+
+/*long open(const std::string& filename); //the individual models need a different open method
+const std::string& getModelName();
+void setMissingValue(float missingValue);
+float getMissingValue();
+
+Interpolator* createNewInterpolator();
+bool loadVariable(const std::string& variable);
+bool unloadVariable(const std::string& variable);
+bool loadVectorVariable(const std::string& variable);
+bool unloadVectorVariable(const std::string& variable);
+std::string getNativeUnit(const std::string& variable);
+std::string getSIUnit(const std::string& variable);
+std::string getVisUnit(const std::string& variable);
+float getConversionFactorToSI(const std::string& variable);
+//float getConversionFactorToVis(const std::string& variable);
+
+
+std::vector<float>* getVariable(const std::string& variable);
+const std::vector<float>* const getVariableFromMap(const std::string& variable);
+std::vector<int>* getVariableInt(const std::string& variable);
+const std::vector<int>* const getVariableIntFromMap(const std::string& variable);
+int getNumberOfGlobalAttributes();
+int getNumberOfVariableAttributes();
+long getVariableID(const std::string& variable);
+std::string getVariableName(long variable_id);
+Attribute getGlobalAttribute(long i);
+std::string getGlobalAttributeName(long attribute_id);
+Attribute getGlobalAttribute(const std::string& attribute);
+Attribute getVariableAttribute(const std::string& variable, const std::string& attribute);
+std::string getVariableAttributeName(long attribute_id);
+std::vector<std::string> getLoadedVariables();
+int getNumberOfVariables();
+bool doesAttributeExist(const std::string& attribute);
+bool doesVariableExist(const std::string& variable);
+
+const std::string& getCurrentFilename();
+
+
+
+static int _cxform(const char *from,const char *to,const double et,Position* v_in,Position* v_out);
+static double _gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
+static long _cxRound(double doub);
+static long _date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
+long close();
+Time getCurrentTime();
+*/
+extern Kameleon * Kameleon_new();
+extern void Kameleon_delete(Kameleon * kameleon);
+#else
 
 /**
  * @mainpage Kameleon Interpolator
@@ -191,8 +244,9 @@ namespace ccmc
 	static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
 	static boost::unordered_map<int, ccmc::GeneralFileReader *> fileReaderObjects;
 }
+extern "C" Kameleon * Kameleon_new();
+extern "C" void Kameleon_delete(Kameleon * kameleon);
 
-
-
-#endif /** KAMELEON_H **/
+#endif
+#endif/** KAMELEON_H **/
 
