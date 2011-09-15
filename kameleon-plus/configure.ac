@@ -44,7 +44,7 @@ AC_ARG_ENABLE([c],
 				   
 AC_ARG_ENABLE([fortran],
 	AC_HELP_STRING([--enable-fortran],
-				   [Build the fortran (F77) wrappers]),
+				   [Build the fortran (F90 compatible) wrappers]),
 				   [if test "$enableval" = "yes"; then
 				   		if test x$ENABLE_C = xtrue; then
 				   			AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])
