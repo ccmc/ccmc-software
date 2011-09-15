@@ -2,13 +2,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([kameleon-plus], [0.1.24], [David.H.Berrios@nasa.gov], [kameleon-plus])
-AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
+AC_INIT([kameleon-plus], [0.1.25], [David.H.Berrios@nasa.gov], [kameleon-plus])
+AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip dist-xz])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_SUBST([RELEASE],[0.1.24])
+AC_SUBST([RELEASE],[0.1.25])
 AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
@@ -29,28 +29,26 @@ AC_ARG_ENABLE([universal],
 
                CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"
                CFLAGS="-arch i386 -arch ppc -arch x86_64 $CFLAGS"])
-C_EXAMPLES=false
+ENABLE_C=false
 AC_ARG_ENABLE([c],
 	AC_HELP_STRING([--enable-c],
 				   [Build the C-language wrappers]),
 				   [if test "$enableval" = "yes"; then
 				   		AC_SUBST([FILEREADER_C], ['filereader_compat${EXEEXT}'])
-				   		C_EXAMPLES=true
-				   		AC_SUBST([C_WRAPPERS],['c'])
-				   		C_WRAPPERS_ENABLED=true
+				   		ENABLE_C=true
 				   	fi
 				   ],)
+AM_CONDITIONAL([ENABLE_C], [$ENABLE_C])
+				   
 
-FORTRAN_EXAMPLES=false
+ENABLE_FORTRAN=false
 AC_ARG_ENABLE([fortran],
 	AC_HELP_STRING([--enable-fortran],
 				   [Build the fortran (F77) wrappers]),
 				   [if test "$enableval" = "yes"; then
-				   		if test x$C_WRAPPERS_ENABLED = xtrue; then
+				   		if test x$ENABLE_C = xtrue; then
 				   			AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])
-				   			FORTRAN_EXAMPLES=true
-				   			AC_SUBST([FORTRAN_WRAPPERS],['fortran'])
-				   			FORTRAN_WRAPPERS_ENABLED=true
+				   			ENABLE_FORTRAN=true
 				   		else
 				   			AC_MSG_ERROR([The C-language wrappers must also be enabled when enabling the Fortran-language wrappers. Use the --enable-c option],1)
 				   		fi
@@ -60,9 +58,10 @@ AC_ARG_ENABLE([fortran],
 				   		fi
 				   	fi
 				   ],)
+AM_CONDITIONAL([ENABLE_FORTRAN], [$ENABLE_FORTRAN])
 
 
-JAVA_WRAPPER_ENABLED=false
+ENABLE_JAVA=false
 AC_ARG_ENABLE([java],
 	AC_HELP_STRING([--enable-java],
 				[Build the Java wrappers]),
@@ -71,10 +70,7 @@ AC_ARG_ENABLE([java],
 					AX_JNI_INCLUDE_DIR
 					#AX_PROG_JAR
 					AC_SUBST(JNI_INCLUDE_DIRS)
-					AC_SUBST([JAVA_SOURCES],['blah'])
-					AC_SUBST([JAVA_WRAPPER],['java'])
-					JAVA_WRAPPER_ENABLED=true
-					AC_SUBST([JAVA_WRAPPER_ENABLED],[$JAVA_WRAPPER_ENABLED])
+					ENABLE_JAVA=true
 					for JNI_INCLUDE_DIR in $JNI_INCLUDE_DIRS
 				    do
 				           CPPFLAGS="$CPPFLAGS -I$JNI_INCLUDE_DIR"
@@ -82,19 +78,17 @@ AC_ARG_ENABLE([java],
 					
 				 fi
 				],)
-AM_CONDITIONAL([JAVA_WRAPPER_ENABLED], [$JAVA_WRAPPER_ENABLED])
+AM_CONDITIONAL([ENABLE_JAVA], [$ENABLE_JAVA])
 
-PYTHON_WRAPPER_ENABLED=false
+ENABLE_PYTHON=false
 AC_ARG_ENABLE([python],
 	AC_HELP_STRING([--enable-python],
 				[Build the Python wrappers]),
 				[if test "$enableval" = "yes"; then
-					AC_SUBST([PYTHON_WRAPPER],['python'])
-					PYTHON_WRAPPER_ENABLED=true
-					AC_SUBST([PYTHON_WRAPPER_ENABLED],[$PYTHON_WRAPPER_ENABLED])
+					ENABLE_PYTHON = true
 				 fi
 				],)
-AM_CONDITIONAL([PYTHON_WRAPPER_ENABLED], [$PYTHON_WRAPPER_ENABLED])
+AM_CONDITIONAL([ENABLE_PYTHON], [$ENABLE_PYTHON])
 AC_ARG_WITH([cdf],
             [AC_HELP_STRING([--with-cdf=<dir>],
                             [specify the location of the CDF library])],
@@ -183,7 +177,7 @@ else
 	AC_MSG_NOTICE([ Java wrappers: not included])
 fi
 
-if $PYTHON_WRAPPER_ENABLED; then
+if $ENABLE_PYTHON; then
 	AC_MSG_NOTICE([ Python wrappers: included])
 	AC_MSG_NOTICE([ Python include dir: $PYTHON_INCLUDES])
 
