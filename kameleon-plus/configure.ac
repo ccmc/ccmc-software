@@ -29,26 +29,24 @@ AC_ARG_ENABLE([universal],
 
                CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"
                CFLAGS="-arch i386 -arch ppc -arch x86_64 $CFLAGS"])
-ENABLE_C=false
+
 AC_ARG_ENABLE([c],
 	AC_HELP_STRING([--enable-c],
 				   [Build the C-language wrappers]),
 				   [if test "$enableval" = "yes"; then
 				   		AC_SUBST([FILEREADER_C], ['filereader_compat${EXEEXT}'])
-				   		ENABLE_C=true
+				   		AC_SUBST([C_WRAPPER],['c'])
 				   	fi
 				   ],)
-AM_CONDITIONAL([ENABLE_C], [$ENABLE_C])
 				   
 
-ENABLE_FORTRAN=false
 AC_ARG_ENABLE([fortran],
 	AC_HELP_STRING([--enable-fortran],
 				   [Build the fortran (F77) wrappers]),
 				   [if test "$enableval" = "yes"; then
 				   		if test x$ENABLE_C = xtrue; then
 				   			AC_SUBST([FILEREADER_FORTRAN], ['filereader_compat_f${EXEEXT}'])
-				   			ENABLE_FORTRAN=true
+				   			AC_SUBST([FORTRAN_WRAPPER],['fortran'])
 				   		else
 				   			AC_MSG_ERROR([The C-language wrappers must also be enabled when enabling the Fortran-language wrappers. Use the --enable-c option],1)
 				   		fi
@@ -58,10 +56,7 @@ AC_ARG_ENABLE([fortran],
 				   		fi
 				   	fi
 				   ],)
-AM_CONDITIONAL([ENABLE_FORTRAN], [$ENABLE_FORTRAN])
 
-
-ENABLE_JAVA=false
 AC_ARG_ENABLE([java],
 	AC_HELP_STRING([--enable-java],
 				[Build the Java wrappers]),
@@ -70,7 +65,7 @@ AC_ARG_ENABLE([java],
 					AX_JNI_INCLUDE_DIR
 					#AX_PROG_JAR
 					AC_SUBST(JNI_INCLUDE_DIRS)
-					ENABLE_JAVA=true
+					AC_SUBST([JAVA_WRAPPER],['java'])
 					for JNI_INCLUDE_DIR in $JNI_INCLUDE_DIRS
 				    do
 				           CPPFLAGS="$CPPFLAGS -I$JNI_INCLUDE_DIR"
@@ -78,7 +73,7 @@ AC_ARG_ENABLE([java],
 					
 				 fi
 				],)
-AM_CONDITIONAL([ENABLE_JAVA], [$ENABLE_JAVA])
+
 
 ENABLE_PYTHON=false
 AC_ARG_ENABLE([python],
@@ -157,10 +152,16 @@ AC_MSG_NOTICE([ pkgpyexecdir: $pkgpyexecdir])
 
 
 
-if test x$FORTRAN_EXAMPLES = xtrue; then
+if test x$ENABLE_FORTRAN = xtrue; then
 	AC_MSG_NOTICE([ Fortran wrappers: included])
 else
 	AC_MSG_NOTICE([ Fortran wrappers: not included])
+fi
+
+if test x$ENABLE_C = xtrue; then
+	AC_MSG_NOTICE([ C wrappers: included])
+else
+	AC_MSG_NOTICE([ C wrappers: not included])
 fi
 
 case $host_os in
