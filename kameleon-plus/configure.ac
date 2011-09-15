@@ -30,16 +30,18 @@ AC_ARG_ENABLE([universal],
                CXXFLAGS="-arch i386 -arch ppc -arch x86_64 $CXXFLAGS"
                CFLAGS="-arch i386 -arch ppc -arch x86_64 $CFLAGS"])
 
+ENABLE_C=false
 AC_ARG_ENABLE([c],
 	AC_HELP_STRING([--enable-c],
 				   [Build the C-language wrappers]),
 				   [if test "$enableval" = "yes"; then
 				   		AC_SUBST([FILEREADER_C], ['filereader_compat${EXEEXT}'])
 				   		AC_SUBST([C_WRAPPER],['c'])
+				   		ENABLE_C=true
+				   		
 				   	fi
 				   ],)
 				   
-
 AC_ARG_ENABLE([fortran],
 	AC_HELP_STRING([--enable-fortran],
 				   [Build the fortran (F77) wrappers]),
@@ -57,6 +59,7 @@ AC_ARG_ENABLE([fortran],
 				   	fi
 				   ],)
 
+ENABLE_JAVA=false
 AC_ARG_ENABLE([java],
 	AC_HELP_STRING([--enable-java],
 				[Build the Java wrappers]),
@@ -70,17 +73,18 @@ AC_ARG_ENABLE([java],
 				    do
 				           CPPFLAGS="$CPPFLAGS -I$JNI_INCLUDE_DIR"
 				    done
+				    ENABLE_JAVA=true
 					
 				 fi
 				],)
 
-
-
+ENABLE_PYTHON=false
 AC_ARG_ENABLE([python],
 	AC_HELP_STRING([--enable-python],
 				[Build the Python wrappers]),
 				[if test "$enableval" = "yes"; then
 					AC_SUBST([PYTHON_WRAPPER],['python'])
+					ENABLE_PYTHON=true
 				 fi
 				],)
 
@@ -100,6 +104,7 @@ AC_ARG_WITH([hdf5-includes],
 			[AC_HELP_STRING([--with-hdf5-includes=<dir>],
 							[specify the location of the HDF5 header files. This is the directory that contains the H5Cpp.h file.])],
 			[CPPFLAGS="-I$withval $CPPFLAGS"])
+
 HAVE_PYTHON= false;
 AC_PYTHON_INCLUDES
 AC_CHECK_LIB([cdf],
@@ -172,7 +177,7 @@ esac
 
 AC_SUBST(JNI_EXTRA_LDFLAGS)
 	
-if $JAVA_WRAPPER_ENABLED; then
+if $ENABLE_JAVA; then
 	AC_MSG_NOTICE([ Java wrappers: included])
 
 else
