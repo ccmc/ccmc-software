@@ -28,6 +28,7 @@ dist_noinst_JAVA = 	Attribute.java \
 					Fieldline.java \
 					FileReader.java \
 					CDFFileReader.java \
+					HDF5FileReader.java \
 					GeneralFileReader.java \
 					Interpolator.java \
 					Kameleon.java \
