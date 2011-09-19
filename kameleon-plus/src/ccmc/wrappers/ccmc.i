@@ -28,6 +28,7 @@
 #include <ccmc/OpenGGCMInterpolator.h>
 #include <ccmc/CCMCTime.h>
 using namespace std;
+using namespace ccmc;
 
 
 %}
