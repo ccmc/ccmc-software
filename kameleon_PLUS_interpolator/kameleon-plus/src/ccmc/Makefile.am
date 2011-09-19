@@ -53,8 +53,8 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						KameleonInterpolator.h \
 						FileReader.cpp \
 						FileReader.h \
-						Interpolator.h \
 						Interpolator.cpp \
+						Interpolator.h \
 						Magnetogram.h \
 						Magnetogram.cpp \
 						MagnetogramInterpolator.h \

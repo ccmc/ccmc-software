@@ -7,8 +7,8 @@
 
 #ifndef INTERPOLATOR_H_
 #define INTERPOLATOR_H_
-#include "Model.h"
 
+#include "Model.h"
 namespace ccmc
 {
 	class Model;
@@ -48,6 +48,6 @@ namespace ccmc
 			std::string modelName;
 			float missingValue;
 	};
-}
 
+}
 #endif /* INTERPOLATOR_H_ */
