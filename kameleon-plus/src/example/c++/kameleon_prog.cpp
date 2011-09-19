@@ -8,6 +8,7 @@
 #include <ccmc/Kameleon.h>
 #include <ccmc/FileReader.h>
 #include <boost/lexical_cast.hpp>
+using namespace ccmc;
 
 int main (int argc, char * argv[])
 {
