@@ -924,14 +924,3 @@ namespace ccmc
 		return model->getVariableAttributeName(attribute_id);
 	}
 }
-
-Kameleon * Kameleon_new()
-{
-	Kameleon * kameleon = new Kameleon();
-	return kameleon;
-}
-
-void Kameleon_delete(Kameleon * kameleon)
-{
-	delete kameleon;
-}
