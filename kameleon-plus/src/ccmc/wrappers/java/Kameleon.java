@@ -39,20 +39,8 @@ public class Kameleon {
     this(CCMCJNI.new_Kameleon(), true);
   }
 
-  public int open(String filename) {
-    return CCMCJNI.Kameleon_open(swigCPtr, this, filename);
-  }
-
-  public String getModelName() {
-    return CCMCJNI.Kameleon_getModelName(swigCPtr, this);
-  }
-
-  public void setMissingValue(float missingValue) {
-    CCMCJNI.Kameleon_setMissingValue(swigCPtr, this, missingValue);
-  }
-
-  public float getMissingValue() {
-    return CCMCJNI.Kameleon_getMissingValue(swigCPtr, this);
+  public int close() {
+    return CCMCJNI.Kameleon_close(swigCPtr, this);
   }
 
   public Interpolator createNewInterpolator() {
@@ -60,36 +48,68 @@ public class Kameleon {
     return (cPtr == 0) ? null : new Interpolator(cPtr, false);
   }
 
-  public boolean loadVariable(String variable) {
-    return CCMCJNI.Kameleon_loadVariable(swigCPtr, this, variable);
+  public boolean doesAttributeExist(String attribute) {
+    return CCMCJNI.Kameleon_doesAttributeExist(swigCPtr, this, attribute);
   }
 
-  public boolean unloadVariable(String variable) {
-    return CCMCJNI.Kameleon_unloadVariable(swigCPtr, this, variable);
+  public boolean doesVariableExist(String variable) {
+    return CCMCJNI.Kameleon_doesVariableExist(swigCPtr, this, variable);
   }
 
-  public boolean loadVectorVariable(String variable) {
-    return CCMCJNI.Kameleon_loadVectorVariable(swigCPtr, this, variable);
+  public float getConversionFactorToSI(String variable) {
+    return CCMCJNI.Kameleon_getConversionFactorToSI(swigCPtr, this, variable);
   }
 
-  public boolean unloadVectorVariable(String variable) {
-    return CCMCJNI.Kameleon_unloadVectorVariable(swigCPtr, this, variable);
+  public String getCurrentFilename() {
+    return CCMCJNI.Kameleon_getCurrentFilename(swigCPtr, this);
+  }
+
+  public Time getCurrentTime() {
+    return new Time(CCMCJNI.Kameleon_getCurrentTime(swigCPtr, this), true);
+  }
+
+  public Attribute getGlobalAttribute(int i) {
+    return new Attribute(CCMCJNI.Kameleon_getGlobalAttribute__SWIG_0(swigCPtr, this, i), true);
+  }
+
+  public Attribute getGlobalAttribute(String attribute) {
+    return new Attribute(CCMCJNI.Kameleon_getGlobalAttribute__SWIG_1(swigCPtr, this, attribute), true);
+  }
+
+  public String getGlobalAttributeName(int attribute_id) {
+    return CCMCJNI.Kameleon_getGlobalAttributeName(swigCPtr, this, attribute_id);
+  }
+
+  public vector_string getLoadedVariables() {
+    return new vector_string(CCMCJNI.Kameleon_getLoadedVariables(swigCPtr, this), true);
+  }
+
+  public float getMissingValue() {
+    return CCMCJNI.Kameleon_getMissingValue(swigCPtr, this);
+  }
+
+  public String getModelName() {
+    return CCMCJNI.Kameleon_getModelName(swigCPtr, this);
   }
 
   public String getNativeUnit(String variable) {
     return CCMCJNI.Kameleon_getNativeUnit(swigCPtr, this, variable);
   }
 
+  public int getNumberOfGlobalAttributes() {
+    return CCMCJNI.Kameleon_getNumberOfGlobalAttributes(swigCPtr, this);
+  }
+
+  public int getNumberOfVariableAttributes() {
+    return CCMCJNI.Kameleon_getNumberOfVariableAttributes(swigCPtr, this);
+  }
+
+  public int getNumberOfVariables() {
+    return CCMCJNI.Kameleon_getNumberOfVariables(swigCPtr, this);
+  }
+
   public String getSIUnit(String variable) {
     return CCMCJNI.Kameleon_getSIUnit(swigCPtr, this, variable);
-  }
-
-  public String getVisUnit(String variable) {
-    return CCMCJNI.Kameleon_getVisUnit(swigCPtr, this, variable);
-  }
-
-  public float getConversionFactorToSI(String variable) {
-    return CCMCJNI.Kameleon_getConversionFactorToSI(swigCPtr, this, variable);
   }
 
   public vector_float getVariable(String variable) {
@@ -97,9 +117,21 @@ public class Kameleon {
     return (cPtr == 0) ? null : new vector_float(cPtr, false);
   }
 
+  public Attribute getVariableAttribute(String variable, String attribute) {
+    return new Attribute(CCMCJNI.Kameleon_getVariableAttribute(swigCPtr, this, variable, attribute), true);
+  }
+
+  public String getVariableAttributeName(int attribute_id) {
+    return CCMCJNI.Kameleon_getVariableAttributeName(swigCPtr, this, attribute_id);
+  }
+
   public vector_float getVariableFromMap(String variable) {
     long cPtr = CCMCJNI.Kameleon_getVariableFromMap(swigCPtr, this, variable);
     return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
+  public int getVariableID(String variable) {
+    return CCMCJNI.Kameleon_getVariableID(swigCPtr, this, variable);
   }
 
   public vector_int getVariableInt(String variable) {
@@ -112,68 +144,40 @@ public class Kameleon {
     return (cPtr == 0) ? null : new vector_int(cPtr, false);
   }
 
-  public int getNumberOfGlobalAttributes() {
-    return CCMCJNI.Kameleon_getNumberOfGlobalAttributes(swigCPtr, this);
-  }
-
-  public int getNumberOfVariableAttributes() {
-    return CCMCJNI.Kameleon_getNumberOfVariableAttributes(swigCPtr, this);
-  }
-
-  public int getVariableID(String variable) {
-    return CCMCJNI.Kameleon_getVariableID(swigCPtr, this, variable);
-  }
-
   public String getVariableName(int variable_id) {
     return CCMCJNI.Kameleon_getVariableName(swigCPtr, this, variable_id);
   }
 
-  public Attribute getGlobalAttribute(int i) {
-    return new Attribute(CCMCJNI.Kameleon_getGlobalAttribute__SWIG_0(swigCPtr, this, i), true);
+  public String getVisUnit(String variable) {
+    return CCMCJNI.Kameleon_getVisUnit(swigCPtr, this, variable);
   }
 
-  public String getGlobalAttributeName(int attribute_id) {
-    return CCMCJNI.Kameleon_getGlobalAttributeName(swigCPtr, this, attribute_id);
+  public boolean loadVariable(String variable) {
+    return CCMCJNI.Kameleon_loadVariable(swigCPtr, this, variable);
   }
 
-  public Attribute getGlobalAttribute(String attribute) {
-    return new Attribute(CCMCJNI.Kameleon_getGlobalAttribute__SWIG_1(swigCPtr, this, attribute), true);
+  public boolean loadVectorVariable(String variable) {
+    return CCMCJNI.Kameleon_loadVectorVariable(swigCPtr, this, variable);
   }
 
-  public Attribute getVariableAttribute(String variable, String attribute) {
-    return new Attribute(CCMCJNI.Kameleon_getVariableAttribute(swigCPtr, this, variable, attribute), true);
+  public int open(String filename) {
+    return CCMCJNI.Kameleon_open(swigCPtr, this, filename);
   }
 
-  public String getVariableAttributeName(int attribute_id) {
-    return CCMCJNI.Kameleon_getVariableAttributeName(swigCPtr, this, attribute_id);
+  public void setMissingValue(float missingValue) {
+    CCMCJNI.Kameleon_setMissingValue(swigCPtr, this, missingValue);
   }
 
-  public vector_string getLoadedVariables() {
-    return new vector_string(CCMCJNI.Kameleon_getLoadedVariables(swigCPtr, this), true);
+  public boolean unloadVariable(String variable) {
+    return CCMCJNI.Kameleon_unloadVariable(swigCPtr, this, variable);
   }
 
-  public int getNumberOfVariables() {
-    return CCMCJNI.Kameleon_getNumberOfVariables(swigCPtr, this);
-  }
-
-  public boolean doesAttributeExist(String attribute) {
-    return CCMCJNI.Kameleon_doesAttributeExist(swigCPtr, this, attribute);
-  }
-
-  public boolean doesVariableExist(String variable) {
-    return CCMCJNI.Kameleon_doesVariableExist(swigCPtr, this, variable);
-  }
-
-  public String getCurrentFilename() {
-    return CCMCJNI.Kameleon_getCurrentFilename(swigCPtr, this);
+  public boolean unloadVectorVariable(String variable) {
+    return CCMCJNI.Kameleon_unloadVectorVariable(swigCPtr, this, variable);
   }
 
   public static int _cxform(String from, String to, double et, Position v_in, Position v_out) {
     return CCMCJNI.Kameleon__cxform(from, to, et, Position.getCPtr(v_in), v_in, Position.getCPtr(v_out), v_out);
-  }
-
-  public static double _gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s) {
-    return CCMCJNI.Kameleon__gregorian_calendar_to_jd(y, m, d, h, mi, s);
   }
 
   public static int _cxRound(double doub) {
@@ -184,12 +188,8 @@ public class Kameleon {
     return CCMCJNI.Kameleon__date2es(yyyy, mm, dd, hh, mm2, ss);
   }
 
-  public int close() {
-    return CCMCJNI.Kameleon_close(swigCPtr, this);
-  }
-
-  public Time getCurrentTime() {
-    return new Time(CCMCJNI.Kameleon_getCurrentTime(swigCPtr, this), true);
+  public static double _gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s) {
+    return CCMCJNI.Kameleon__gregorian_calendar_to_jd(y, m, d, h, mi, s);
   }
 
 }
