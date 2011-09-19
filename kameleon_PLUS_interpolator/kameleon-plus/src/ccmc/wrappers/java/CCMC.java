@@ -17,36 +17,41 @@ public class CCMC {
     CCMCJNI.encodeEPOCH3(epoch, epString);
   }
 
-  public static void setKameleonObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t value) {
-    CCMCJNI.kameleonObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t.getCPtr(value));
+  public static Kameleon ccmc_Kameleon_new() {
+    long cPtr = CCMCJNI.ccmc_Kameleon_new();
+    return (cPtr == 0) ? null : new Kameleon(cPtr, false);
   }
 
-  public static SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t getKameleonObjects() {
-    return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t(CCMCJNI.kameleonObjects_get(), true);
+  public static void ccmc_Kameleon_createNewInterpolator(Kameleon kameleon) {
+    CCMCJNI.ccmc_Kameleon_createNewInterpolator(Kameleon.getCPtr(kameleon), kameleon);
   }
 
-  public static void setTracerObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t value) {
-    CCMCJNI.tracerObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t.getCPtr(value));
+  public static int ccmc_Kameleon_open(Kameleon kameleon, String filename) {
+    return CCMCJNI.ccmc_Kameleon_open(Kameleon.getCPtr(kameleon), kameleon, filename);
   }
 
-  public static SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t getTracerObjects() {
-    return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t(CCMCJNI.tracerObjects_get(), true);
+  public static void ccmc_Kameleon_getModelName(Kameleon kameleon, String buffer) {
+    CCMCJNI.ccmc_Kameleon_getModelName(Kameleon.getCPtr(kameleon), kameleon, buffer);
   }
 
-  public static void setInterpolatorObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t value) {
-    CCMCJNI.interpolatorObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t.getCPtr(value));
+  public static void ccmc_Kameleon_setMissingValue(Kameleon kameleon, float missingValue) {
+    CCMCJNI.ccmc_Kameleon_setMissingValue(Kameleon.getCPtr(kameleon), kameleon, missingValue);
   }
 
-  public static SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t getInterpolatorObjects() {
-    return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t(CCMCJNI.interpolatorObjects_get(), true);
+  public static float ccmc_Kameleon_getMissingValue(Kameleon kameleon) {
+    return CCMCJNI.ccmc_Kameleon_getMissingValue(Kameleon.getCPtr(kameleon), kameleon);
   }
 
-  public static void setFileReaderObjects(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t value) {
-    CCMCJNI.fileReaderObjects_set(SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t.getCPtr(value));
+  public static int ccmc_Kameleon_close(Kameleon kameleon) {
+    return CCMCJNI.ccmc_Kameleon_close(Kameleon.getCPtr(kameleon), kameleon);
   }
 
-  public static SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t getFileReaderObjects() {
-    return new SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t(CCMCJNI.fileReaderObjects_get(), true);
+  public static void ccmc_Kameleon_delete(Kameleon kameleon) {
+    CCMCJNI.ccmc_Kameleon_delete(Kameleon.getCPtr(kameleon), kameleon);
+  }
+
+  public static void ccmc_Interpolator_delete(Interpolator interpolator) {
+    CCMCJNI.ccmc_Interpolator_delete(Interpolator.getCPtr(interpolator), interpolator);
   }
 
 }

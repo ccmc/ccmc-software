@@ -243,6 +243,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include <ccmc/OpenGGCMInterpolator.h>
 #include <ccmc/CCMCTime.h>
 using namespace std;
+using namespace ccmc;
 
 
 
@@ -2855,70 +2856,27 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_new_1Kameleon(JNIEnv *j
 }
 
 
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Kameleon(JNIEnv *jenv, jclass jcls, jlong jarg1) {
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  delete arg1;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
   long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (long)(arg1)->open((std::string const &)*arg2);
+  result = (long)(arg1)->close();
   jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getModelName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jstring jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (std::string *) &(arg1)->getModelName();
-  jresult = jenv->NewStringUTF(result->c_str()); 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  float arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  arg2 = (float)jarg2; 
-  (arg1)->setMissingValue(arg2);
-}
-
-
-SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jfloat jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  float result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (float)(arg1)->getMissingValue();
-  jresult = (jfloat)result; 
   return jresult;
 }
 
@@ -2938,7 +2896,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1createNewInte
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1loadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -2957,13 +2915,13 @@ SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1loadVariab
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (bool)(arg1)->loadVariable((std::string const &)*arg2);
+  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
   jresult = (jboolean)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1unloadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -2982,133 +2940,8 @@ SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1unloadVari
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (bool)(arg1)->unloadVariable((std::string const &)*arg2);
+  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
   jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1loadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jboolean jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (bool)(arg1)->loadVectorVariable((std::string const &)*arg2);
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1unloadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jboolean jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  bool result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (bool)(arg1)->unloadVectorVariable((std::string const &)*arg2);
-  jresult = (jboolean)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNativeUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jstring jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (arg1)->getNativeUnit((std::string const &)*arg2);
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getSIUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jstring jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (arg1)->getSIUnit((std::string const &)*arg2);
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVisUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jstring jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  std::string result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (arg1)->getVisUnit((std::string const &)*arg2);
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
 }
 
@@ -3138,86 +2971,58 @@ SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getConversio
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jlong jresult = 0 ;
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  std::vector< float > *result = 0 ;
+  std::string *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (std::vector< float > *)(arg1)->getVariable((std::string const &)*arg2);
-  *(std::vector< float > **)&jresult = result; 
+  result = (std::string *) &(arg1)->getCurrentFilename();
+  jresult = jenv->NewStringUTF(result->c_str()); 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableFromMap(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentTime(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  std::vector< float > *result = 0 ;
+  Time result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (std::vector< float > *)(arg1)->getVariableFromMap((std::string const &)*arg2);
-  *(std::vector< float > **)&jresult = result; 
+  result = (arg1)->getCurrentTime();
+  *(Time **)&jresult = new Time((const Time &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  std::vector< int > *result = 0 ;
+  long arg2 ;
+  Attribute result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (std::vector< int > *)(arg1)->getVariableInt((std::string const &)*arg2);
-  *(std::vector< int > **)&jresult = result; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getGlobalAttribute(arg2);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableIntFromMap(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
-  std::vector< int > *result = 0 ;
+  Attribute result;
   
   (void)jenv;
   (void)jcls;
@@ -3232,8 +3037,95 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableIn
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (std::vector< int > *)(arg1)->getVariableIntFromMap((std::string const &)*arg2);
-  *(std::vector< int > **)&jresult = result; 
+  result = (arg1)->getGlobalAttribute((std::string const &)*arg2);
+  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jstring jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  long arg2 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getGlobalAttributeName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getLoadedVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::vector< std::string > result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  result = (arg1)->getLoadedVariables();
+  *(std::vector< std::string > **)&jresult = new std::vector< std::string >((const std::vector< std::string > &)result); 
+  return jresult;
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jfloat jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  result = (float)(arg1)->getMissingValue();
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getModelName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jstring jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  result = (std::string *) &(arg1)->getModelName();
+  jresult = jenv->NewStringUTF(result->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNativeUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jstring jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (arg1)->getNativeUnit((std::string const &)*arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
   return jresult;
 }
 
@@ -3268,87 +3160,26 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNumberOfVar
 }
 
 
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  long result;
+  int result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  if(!jarg2) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
-    return 0;
-  }
-  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
-  if (!arg2_pstr) return 0;
-  std::string arg2_str(arg2_pstr);
-  arg2 = &arg2_str;
-  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
+  result = (int)(arg1)->getNumberOfVariables();
   jresult = (jint)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getSIUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jstring jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  long arg2 ;
-  std::string result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  arg2 = (long)jarg2; 
-  result = (arg1)->getVariableName(arg2);
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  jlong jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  long arg2 ;
-  Attribute result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  arg2 = (long)jarg2; 
-  result = (arg1)->getGlobalAttribute(arg2);
-  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttributeName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
-  jstring jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  long arg2 ;
-  std::string result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  arg2 = (long)jarg2; 
-  result = (arg1)->getGlobalAttributeName(arg2);
-  jresult = jenv->NewStringUTF((&result)->c_str()); 
-  return jresult;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttribute_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
-  Attribute result;
+  std::string result;
   
   (void)jenv;
   (void)jcls;
@@ -3363,8 +3194,33 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getGlobalAttr
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (arg1)->getGlobalAttribute((std::string const &)*arg2);
-  *(Attribute **)&jresult = new Attribute((const Attribute &)result); 
+  result = (arg1)->getSIUnit((std::string const &)*arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< float > *)(arg1)->getVariable((std::string const &)*arg2);
+  *(std::vector< float > **)&jresult = result; 
   return jresult;
 }
 
@@ -3421,41 +3277,61 @@ SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariable
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getLoadedVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableFromMap(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::vector< std::string > result;
+  std::string *arg2 = 0 ;
+  std::vector< float > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (arg1)->getLoadedVariables();
-  *(std::vector< std::string > **)&jresult = new std::vector< std::string >((const std::vector< std::string > &)result); 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (std::vector< float > *)(arg1)->getVariableFromMap((std::string const &)*arg2);
+  *(std::vector< float > **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getNumberOfVariables(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableID(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  int result;
+  std::string *arg2 = 0 ;
+  long result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (int)(arg1)->getNumberOfVariables();
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
   jresult = (jint)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jboolean jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableInt(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
-  bool result;
+  std::vector< int > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
@@ -3470,17 +3346,17 @@ SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesAttrib
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
-  jresult = (jboolean)result; 
+  result = (std::vector< int > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  *(std::vector< int > **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jboolean jresult = 0 ;
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableIntFromMap(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jlong jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
-  bool result;
+  std::vector< int > *result = 0 ;
   
   (void)jenv;
   (void)jcls;
@@ -3495,23 +3371,188 @@ SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1doesVariab
   std::string arg2_str(arg2_pstr);
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
-  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
-  jresult = (jboolean)result; 
+  result = (std::vector< int > *)(arg1)->getVariableIntFromMap((std::string const &)*arg2);
+  *(std::vector< int > **)&jresult = result; 
   return jresult;
 }
 
 
-SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentFilename(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVariableName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
   jstring jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *result = 0 ;
+  long arg2 ;
+  std::string result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (std::string *) &(arg1)->getCurrentFilename();
-  jresult = jenv->NewStringUTF(result->c_str()); 
+  arg2 = (long)jarg2; 
+  result = (arg1)->getVariableName(arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jstring JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getVisUnit(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jstring jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  std::string result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (arg1)->getVisUnit((std::string const &)*arg2);
+  jresult = jenv->NewStringUTF((&result)->c_str()); 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1loadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->loadVariable((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1loadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->loadVectorVariable((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  float arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  arg2 = (float)jarg2; 
+  (arg1)->setMissingValue(arg2);
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1unloadVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->unloadVariable((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1unloadVectorVariable(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  if(!jarg2) {
+    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "null std::string");
+    return 0;
+  }
+  const char *arg2_pstr = (const char *)jenv->GetStringUTFChars(jarg2, 0); 
+  if (!arg2_pstr) return 0;
+  std::string arg2_str(arg2_pstr);
+  arg2 = &arg2_str;
+  jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
+  result = (bool)(arg1)->unloadVectorVariable((std::string const &)*arg2);
+  jresult = (jboolean)result; 
   return jresult;
 }
 
@@ -3546,30 +3587,6 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1cxform(JNIEn
   jresult = (jint)result; 
   if (arg1) jenv->ReleaseStringUTFChars(jarg1, (const char *)arg1);
   if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
-  return jresult;
-}
-
-
-SWIGEXPORT jdouble JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1gregorian_1calendar_1to_1jd(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jint jarg3, jint jarg4, jint jarg5, jint jarg6) {
-  jdouble jresult = 0 ;
-  int arg1 ;
-  int arg2 ;
-  int arg3 ;
-  int arg4 ;
-  int arg5 ;
-  int arg6 ;
-  double result;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = (int)jarg1; 
-  arg2 = (int)jarg2; 
-  arg3 = (int)jarg3; 
-  arg4 = (int)jarg4; 
-  arg5 = (int)jarg5; 
-  arg6 = (int)jarg6; 
-  result = (double)ccmc::Kameleon::_gregorian_calendar_to_jd(arg1,arg2,arg3,arg4,arg5,arg6);
-  jresult = (jdouble)result; 
   return jresult;
 }
 
@@ -3612,7 +3629,122 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1date2es(JNIE
 }
 
 
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+SWIGEXPORT jdouble JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1gregorian_1calendar_1to_1jd(JNIEnv *jenv, jclass jcls, jint jarg1, jint jarg2, jint jarg3, jint jarg4, jint jarg5, jint jarg6) {
+  jdouble jresult = 0 ;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  double result;
+  
+  (void)jenv;
+  (void)jcls;
+  arg1 = (int)jarg1; 
+  arg2 = (int)jarg2; 
+  arg3 = (int)jarg3; 
+  arg4 = (int)jarg4; 
+  arg5 = (int)jarg5; 
+  arg6 = (int)jarg6; 
+  result = (double)ccmc::Kameleon::_gregorian_calendar_to_jd(arg1,arg2,arg3,arg4,arg5,arg6);
+  jresult = (jdouble)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1new(JNIEnv *jenv, jclass jcls) {
+  jlong jresult = 0 ;
+  ccmc::Kameleon *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  result = (ccmc::Kameleon *)ccmc_Kameleon_new();
+  *(ccmc::Kameleon **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1createNewInterpolator(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  ccmc_Kameleon_createNewInterpolator(arg1);
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  jint jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  char *arg2 = (char *) 0 ;
+  long result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return 0;
+  }
+  result = (long)ccmc_Kameleon_open(arg1,(char const *)arg2);
+  jresult = (jint)result; 
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1getModelName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  arg2 = 0;
+  if (jarg2) {
+    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
+    if (!arg2) return ;
+  }
+  ccmc_Kameleon_getModelName(arg1,arg2);
+  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  float arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  arg2 = (float)jarg2; 
+  ccmc_Kameleon_setMissingValue(arg1,arg2);
+}
+
+
+SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1getMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jfloat jresult = 0 ;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  float result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Kameleon **)&jarg1; 
+  result = (float)ccmc_Kameleon_getMissingValue(arg1);
+  jresult = (jfloat)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jint jresult = 0 ;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   long result;
@@ -3621,146 +3753,20 @@ SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1close(JNIEnv *
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (long)(arg1)->close();
+  result = (long)ccmc_Kameleon_close(arg1);
   jresult = (jint)result; 
   return jresult;
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1getCurrentTime(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jlong jresult = 0 ;
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1delete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  Time result;
   
   (void)jenv;
   (void)jcls;
   (void)jarg1_;
   arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (arg1)->getCurrentTime();
-  *(Time **)&jresult = new Time((const Time &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Kameleon(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  delete arg1;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_kameleonObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  boost::unordered_map< int,ccmc::Kameleon * > arg1 ;
-  boost::unordered_map< int,ccmc::Kameleon * > *argp1 ;
-  
-  (void)jenv;
-  (void)jcls;
-  argp1 = *(boost::unordered_map< int,ccmc::Kameleon * > **)&jarg1; 
-  if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::Kameleon * >");
-    return ;
-  }
-  arg1 = *argp1; 
-  ccmc::kameleonObjects = arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_kameleonObjects_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  boost::unordered_map< int,ccmc::Kameleon * > result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = ccmc::kameleonObjects;
-  *(boost::unordered_map< int,ccmc::Kameleon * > **)&jresult = new boost::unordered_map< int,ccmc::Kameleon * >((const boost::unordered_map< int,ccmc::Kameleon * > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_tracerObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  boost::unordered_map< int,ccmc::Tracer * > arg1 ;
-  boost::unordered_map< int,ccmc::Tracer * > *argp1 ;
-  
-  (void)jenv;
-  (void)jcls;
-  argp1 = *(boost::unordered_map< int,ccmc::Tracer * > **)&jarg1; 
-  if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::Tracer * >");
-    return ;
-  }
-  arg1 = *argp1; 
-  ccmc::tracerObjects = arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_tracerObjects_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  boost::unordered_map< int,ccmc::Tracer * > result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = ccmc::tracerObjects;
-  *(boost::unordered_map< int,ccmc::Tracer * > **)&jresult = new boost::unordered_map< int,ccmc::Tracer * >((const boost::unordered_map< int,ccmc::Tracer * > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_interpolatorObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  boost::unordered_map< int,ccmc::Interpolator * > arg1 ;
-  boost::unordered_map< int,ccmc::Interpolator * > *argp1 ;
-  
-  (void)jenv;
-  (void)jcls;
-  argp1 = *(boost::unordered_map< int,ccmc::Interpolator * > **)&jarg1; 
-  if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::Interpolator * >");
-    return ;
-  }
-  arg1 = *argp1; 
-  ccmc::interpolatorObjects = arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_interpolatorObjects_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  boost::unordered_map< int,ccmc::Interpolator * > result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = ccmc::interpolatorObjects;
-  *(boost::unordered_map< int,ccmc::Interpolator * > **)&jresult = new boost::unordered_map< int,ccmc::Interpolator * >((const boost::unordered_map< int,ccmc::Interpolator * > &)result); 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_fileReaderObjects_1set(JNIEnv *jenv, jclass jcls, jlong jarg1) {
-  boost::unordered_map< int,ccmc::GeneralFileReader * > arg1 ;
-  boost::unordered_map< int,ccmc::GeneralFileReader * > *argp1 ;
-  
-  (void)jenv;
-  (void)jcls;
-  argp1 = *(boost::unordered_map< int,ccmc::GeneralFileReader * > **)&jarg1; 
-  if (!argp1) {
-    SWIG_JavaThrowException(jenv, SWIG_JavaNullPointerException, "Attempt to dereference null boost::unordered_map< int,ccmc::GeneralFileReader * >");
-    return ;
-  }
-  arg1 = *argp1; 
-  ccmc::fileReaderObjects = arg1;
-}
-
-
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_fileReaderObjects_1get(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  boost::unordered_map< int,ccmc::GeneralFileReader * > result;
-  
-  (void)jenv;
-  (void)jcls;
-  result = ccmc::fileReaderObjects;
-  *(boost::unordered_map< int,ccmc::GeneralFileReader * > **)&jresult = new boost::unordered_map< int,ccmc::GeneralFileReader * >((const boost::unordered_map< int,ccmc::GeneralFileReader * > &)result); 
-  return jresult;
+  ccmc_Kameleon_delete(arg1);
 }
 
 
@@ -4015,6 +4021,17 @@ SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Interpolator(JNI
   (void)jcls;
   arg1 = *(ccmc::Interpolator **)&jarg1; 
   delete arg1;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Interpolator_1delete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Interpolator **)&jarg1; 
+  ccmc_Interpolator_delete(arg1);
 }
 
 
