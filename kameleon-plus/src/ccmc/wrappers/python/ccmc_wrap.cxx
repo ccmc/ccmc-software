@@ -3446,55 +3446,51 @@ SwigPyBuiltin_SetMetaType (PyTypeObject *type, PyTypeObject *metatype)
 
 #define SWIGTYPE_p_SwigPyObject swig_types[0]
 #define SWIGTYPE_p_allocator_type swig_types[1]
-#define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t swig_types[2]
-#define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t swig_types[3]
-#define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t swig_types[4]
-#define SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t swig_types[5]
-#define SWIGTYPE_p_ccmc__Attribute swig_types[6]
-#define SWIGTYPE_p_ccmc__BATSRUS swig_types[7]
-#define SWIGTYPE_p_ccmc__BATSRUSInterpolator swig_types[8]
-#define SWIGTYPE_p_ccmc__CDFFileReader swig_types[9]
-#define SWIGTYPE_p_ccmc__ENLIL swig_types[10]
-#define SWIGTYPE_p_ccmc__ENLILInterpolator swig_types[11]
-#define SWIGTYPE_p_ccmc__Fieldline swig_types[12]
-#define SWIGTYPE_p_ccmc__FileReader swig_types[13]
-#define SWIGTYPE_p_ccmc__GeneralFileReader swig_types[14]
-#define SWIGTYPE_p_ccmc__HDF5FileReader swig_types[15]
-#define SWIGTYPE_p_ccmc__Interpolator swig_types[16]
-#define SWIGTYPE_p_ccmc__Kameleon swig_types[17]
-#define SWIGTYPE_p_ccmc__KameleonInterpolator swig_types[18]
-#define SWIGTYPE_p_ccmc__MAS swig_types[19]
-#define SWIGTYPE_p_ccmc__MASInterpolator swig_types[20]
-#define SWIGTYPE_p_ccmc__Model swig_types[21]
-#define SWIGTYPE_p_ccmc__OpenGGCM swig_types[22]
-#define SWIGTYPE_p_ccmc__OpenGGCMInterpolator swig_types[23]
-#define SWIGTYPE_p_ccmc__Point3f swig_types[24]
-#define SWIGTYPE_p_ccmc__Position swig_types[25]
-#define SWIGTYPE_p_ccmc__Time swig_types[26]
-#define SWIGTYPE_p_ccmc__Tracer swig_types[27]
-#define SWIGTYPE_p_char swig_types[28]
-#define SWIGTYPE_p_difference_type swig_types[29]
-#define SWIGTYPE_p_float swig_types[30]
-#define SWIGTYPE_p_int swig_types[31]
-#define SWIGTYPE_p_long swig_types[32]
-#define SWIGTYPE_p_p_PyObject swig_types[33]
-#define SWIGTYPE_p_size_type swig_types[34]
-#define SWIGTYPE_p_std__allocatorT_ccmc__Fieldline_t swig_types[35]
-#define SWIGTYPE_p_std__allocatorT_ccmc__Point3f_t swig_types[36]
-#define SWIGTYPE_p_std__allocatorT_float_t swig_types[37]
-#define SWIGTYPE_p_std__allocatorT_int_t swig_types[38]
-#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[39]
-#define SWIGTYPE_p_std__invalid_argument swig_types[40]
-#define SWIGTYPE_p_std__string swig_types[41]
-#define SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t swig_types[42]
-#define SWIGTYPE_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t swig_types[43]
-#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[44]
-#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[45]
-#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[46]
-#define SWIGTYPE_p_swig__SwigPyIterator swig_types[47]
-#define SWIGTYPE_p_value_type swig_types[48]
-static swig_type_info *swig_types[50];
-static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
+#define SWIGTYPE_p_ccmc__Attribute swig_types[2]
+#define SWIGTYPE_p_ccmc__BATSRUS swig_types[3]
+#define SWIGTYPE_p_ccmc__BATSRUSInterpolator swig_types[4]
+#define SWIGTYPE_p_ccmc__CDFFileReader swig_types[5]
+#define SWIGTYPE_p_ccmc__ENLIL swig_types[6]
+#define SWIGTYPE_p_ccmc__ENLILInterpolator swig_types[7]
+#define SWIGTYPE_p_ccmc__Fieldline swig_types[8]
+#define SWIGTYPE_p_ccmc__FileReader swig_types[9]
+#define SWIGTYPE_p_ccmc__GeneralFileReader swig_types[10]
+#define SWIGTYPE_p_ccmc__HDF5FileReader swig_types[11]
+#define SWIGTYPE_p_ccmc__Interpolator swig_types[12]
+#define SWIGTYPE_p_ccmc__Kameleon swig_types[13]
+#define SWIGTYPE_p_ccmc__KameleonInterpolator swig_types[14]
+#define SWIGTYPE_p_ccmc__MAS swig_types[15]
+#define SWIGTYPE_p_ccmc__MASInterpolator swig_types[16]
+#define SWIGTYPE_p_ccmc__Model swig_types[17]
+#define SWIGTYPE_p_ccmc__OpenGGCM swig_types[18]
+#define SWIGTYPE_p_ccmc__OpenGGCMInterpolator swig_types[19]
+#define SWIGTYPE_p_ccmc__Point3f swig_types[20]
+#define SWIGTYPE_p_ccmc__Position swig_types[21]
+#define SWIGTYPE_p_ccmc__Time swig_types[22]
+#define SWIGTYPE_p_ccmc__Tracer swig_types[23]
+#define SWIGTYPE_p_char swig_types[24]
+#define SWIGTYPE_p_difference_type swig_types[25]
+#define SWIGTYPE_p_float swig_types[26]
+#define SWIGTYPE_p_int swig_types[27]
+#define SWIGTYPE_p_long swig_types[28]
+#define SWIGTYPE_p_p_PyObject swig_types[29]
+#define SWIGTYPE_p_size_type swig_types[30]
+#define SWIGTYPE_p_std__allocatorT_ccmc__Fieldline_t swig_types[31]
+#define SWIGTYPE_p_std__allocatorT_ccmc__Point3f_t swig_types[32]
+#define SWIGTYPE_p_std__allocatorT_float_t swig_types[33]
+#define SWIGTYPE_p_std__allocatorT_int_t swig_types[34]
+#define SWIGTYPE_p_std__allocatorT_std__string_t swig_types[35]
+#define SWIGTYPE_p_std__invalid_argument swig_types[36]
+#define SWIGTYPE_p_std__string swig_types[37]
+#define SWIGTYPE_p_std__vectorT_ccmc__Fieldline_std__allocatorT_ccmc__Fieldline_t_t swig_types[38]
+#define SWIGTYPE_p_std__vectorT_ccmc__Point3f_std__allocatorT_ccmc__Point3f_t_t swig_types[39]
+#define SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t swig_types[40]
+#define SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t swig_types[41]
+#define SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t swig_types[42]
+#define SWIGTYPE_p_swig__SwigPyIterator swig_types[43]
+#define SWIGTYPE_p_value_type swig_types[44]
+static swig_type_info *swig_types[46];
+static swig_module_info swig_module = {swig_types, 45, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3976,6 +3972,7 @@ SWIG_AsVal_ptrdiff_t (PyObject * obj, ptrdiff_t *val)
 #include <ccmc/OpenGGCMInterpolator.h>
 #include <ccmc/CCMCTime.h>
 using namespace std;
+using namespace ccmc;
 
 
 
@@ -11558,86 +11555,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_open(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  long result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_open",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_open" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_open" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_open" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (long)(arg1)->open((std::string const &)*arg2);
-  resultobj = SWIG_From_long(static_cast< long >(result));
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getModelName(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_Kameleon(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::string *result = 0 ;
   
   if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getModelName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Kameleon" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (std::string *) &(arg1)->getModelName();
-  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_setMissingValue(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  float arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  float val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_setMissingValue",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_setMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  ecode2 = SWIG_AsVal_float(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon_setMissingValue" "', argument " "2"" of type '" "float""'");
-  } 
-  arg2 = static_cast< float >(val2);
-  (arg1)->setMissingValue(arg2);
+  delete arg1;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -11645,21 +11575,21 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getMissingValue(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_close(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  float result;
+  long result;
   
   if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_close" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (float)(arg1)->getMissingValue();
-  resultobj = SWIG_From_float(static_cast< float >(result));
+  result = (long)(arg1)->close();
+  resultobj = SWIG_From_long(static_cast< long >(result));
   return resultobj;
 fail:
   return NULL;
@@ -11687,7 +11617,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_loadVariable(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_doesAttributeExist(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -11697,24 +11627,24 @@ SWIGINTERN PyObject *_wrap_Kameleon_loadVariable(PyObject *self, PyObject *args)
   PyObject * obj1 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_loadVariable",&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_doesAttributeExist",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_loadVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_doesAttributeExist" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_loadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_loadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  result = (bool)(arg1)->loadVariable((std::string const &)*arg2);
+  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -11724,7 +11654,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_unloadVariable(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_doesVariableExist(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -11734,210 +11664,25 @@ SWIGINTERN PyObject *_wrap_Kameleon_unloadVariable(PyObject *self, PyObject *arg
   PyObject * obj1 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_unloadVariable",&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_doesVariableExist",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_unloadVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_doesVariableExist" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_unloadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_unloadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  result = (bool)(arg1)->unloadVariable((std::string const &)*arg2);
+  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_loadVectorVariable(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  bool result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_loadVectorVariable",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_loadVectorVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_loadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_loadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (bool)(arg1)->loadVectorVariable((std::string const &)*arg2);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_unloadVectorVariable(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  bool result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_unloadVectorVariable",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_unloadVectorVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_unloadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_unloadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (bool)(arg1)->unloadVectorVariable((std::string const &)*arg2);
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getNativeUnit(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  std::string result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getNativeUnit",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNativeUnit" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getNativeUnit" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getNativeUnit" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (arg1)->getNativeUnit((std::string const &)*arg2);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getSIUnit(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  std::string result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getSIUnit",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getSIUnit" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getSIUnit" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getSIUnit" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (arg1)->getSIUnit((std::string const &)*arg2);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getVisUnit(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  std::string result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVisUnit",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVisUnit" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVisUnit" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVisUnit" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (arg1)->getVisUnit((std::string const &)*arg2);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
@@ -11983,257 +11728,42 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getVariable(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  std::vector< float,std::allocator< float > > *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariable",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getVariableFromMap(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  std::vector< float,std::allocator< float > > *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableFromMap",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableFromMap" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariableFromMap((std::string const &)*arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getVariableInt(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  std::vector< int,std::allocator< int > > *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableInt",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableInt" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableInt((std::string const &)*arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getVariableIntFromMap(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  std::vector< int,std::allocator< int > > *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableIntFromMap",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableIntFromMap" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableIntFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableIntFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableIntFromMap((std::string const &)*arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getNumberOfGlobalAttributes(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_getCurrentFilename(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int result;
+  std::string *result = 0 ;
   
   if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNumberOfGlobalAttributes" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getCurrentFilename" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (int)(arg1)->getNumberOfGlobalAttributes();
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  result = (std::string *) &(arg1)->getCurrentFilename();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getNumberOfVariableAttributes(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_getCurrentTime(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int result;
+  Time result;
   
   if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNumberOfVariableAttributes" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getCurrentTime" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (int)(arg1)->getNumberOfVariableAttributes();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getVariableID(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  std::string *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 = SWIG_OLDOBJ ;
-  PyObject * obj1 = 0 ;
-  long result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableID",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableID" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  {
-    std::string *ptr = (std::string *)0;
-    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
-    }
-    arg2 = ptr;
-  }
-  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
-  resultobj = SWIG_From_long(static_cast< long >(result));
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return resultobj;
-fail:
-  if (SWIG_IsNewObj(res2)) delete arg2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getVariableName(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  long arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  std::string result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableName",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  ecode2 = SWIG_AsVal_long(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon_getVariableName" "', argument " "2"" of type '" "long""'");
-  } 
-  arg2 = static_cast< long >(val2);
-  result = (arg1)->getVariableName(arg2);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  result = (arg1)->getCurrentTime();
+  resultobj = SWIG_NewPointerObj((new Time(static_cast< const Time& >(result))), SWIGTYPE_p_ccmc__Time, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -12264,36 +11794,6 @@ SWIGINTERN PyObject *_wrap_Kameleon_getGlobalAttribute__SWIG_0(PyObject *self, P
   arg2 = static_cast< long >(val2);
   result = (arg1)->getGlobalAttribute(arg2);
   resultobj = SWIG_NewPointerObj((new Attribute(static_cast< const Attribute& >(result))), SWIGTYPE_p_ccmc__Attribute, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon_getGlobalAttributeName(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  long arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj1 = 0 ;
-  std::string result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getGlobalAttributeName",&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getGlobalAttributeName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  ecode2 = SWIG_AsVal_long(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon_getGlobalAttributeName" "', argument " "2"" of type '" "long""'");
-  } 
-  arg2 = static_cast< long >(val2);
-  result = (arg1)->getGlobalAttributeName(arg2);
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -12387,6 +11887,273 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Kameleon_getGlobalAttributeName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getGlobalAttributeName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getGlobalAttributeName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon_getGlobalAttributeName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getGlobalAttributeName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getLoadedVariables(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  SwigValueWrapper< std::vector< std::string,std::allocator< std::string > > > result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getLoadedVariables" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (arg1)->getLoadedVariables();
+  resultobj = SWIG_NewPointerObj((new std::vector< std::string,std::allocator< std::string > >(static_cast< const std::vector< std::string,std::allocator< std::string > >& >(result))), SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getMissingValue(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (float)(arg1)->getMissingValue();
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getModelName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::string *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getModelName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (std::string *) &(arg1)->getModelName();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getNativeUnit(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getNativeUnit",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNativeUnit" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getNativeUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getNativeUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getNativeUnit((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getNumberOfGlobalAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNumberOfGlobalAttributes" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (int)(arg1)->getNumberOfGlobalAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getNumberOfVariableAttributes(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNumberOfVariableAttributes" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (int)(arg1)->getNumberOfVariableAttributes();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getNumberOfVariables(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNumberOfVariables" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (int)(arg1)->getNumberOfVariables();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getSIUnit(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getSIUnit",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getSIUnit" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getSIUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getSIUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getSIUnit((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getVariable(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariable((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Kameleon_getVariableAttribute(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
@@ -12470,49 +12237,222 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getLoadedVariables(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_getVariableFromMap(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  SwigValueWrapper< std::vector< std::string,std::allocator< std::string > > > result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
   
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableFromMap",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getLoadedVariables" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableFromMap" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (arg1)->getLoadedVariables();
-  resultobj = SWIG_NewPointerObj((new std::vector< std::string,std::allocator< std::string > >(static_cast< const std::vector< std::string,std::allocator< std::string > >& >(result))), SWIGTYPE_p_std__vectorT_std__string_std__allocatorT_std__string_t_t, SWIG_POINTER_OWN |  0 );
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getVariableFromMap((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getVariableID(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableID",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableID" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getVariableID((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getVariableInt(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableInt",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableInt" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableInt" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableInt((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getVariableIntFromMap(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableIntFromMap",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableIntFromMap" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVariableIntFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVariableIntFromMap" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< int,std::allocator< int > > *)(arg1)->getVariableIntFromMap((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_getVariableName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVariableName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVariableName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon_getVariableName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getVariableName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getNumberOfVariables(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_getVisUnit(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int result;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
   
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_getVisUnit",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getNumberOfVariables" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getVisUnit" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (int)(arg1)->getNumberOfVariables();
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_getVisUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_getVisUnit" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getVisUnit((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_doesAttributeExist(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_loadVariable(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -12522,24 +12462,24 @@ SWIGINTERN PyObject *_wrap_Kameleon_doesAttributeExist(PyObject *self, PyObject 
   PyObject * obj1 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_doesAttributeExist",&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_loadVariable",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_doesAttributeExist" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_loadVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_loadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_doesAttributeExist" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_loadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  result = (bool)(arg1)->doesAttributeExist((std::string const &)*arg2);
+  result = (bool)(arg1)->loadVariable((std::string const &)*arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -12549,7 +12489,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_doesVariableExist(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_loadVectorVariable(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   std::string *arg2 = 0 ;
@@ -12559,24 +12499,24 @@ SWIGINTERN PyObject *_wrap_Kameleon_doesVariableExist(PyObject *self, PyObject *
   PyObject * obj1 = 0 ;
   bool result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_doesVariableExist",&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_loadVectorVariable",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_doesVariableExist" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_loadVectorVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
   {
     std::string *ptr = (std::string *)0;
     res2 = SWIG_AsPtr_std_string(obj1, &ptr);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_loadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     if (!ptr) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_doesVariableExist" "', argument " "2"" of type '" "std::string const &""'"); 
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_loadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
     }
     arg2 = ptr;
   }
-  result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
+  result = (bool)(arg1)->loadVectorVariable((std::string const &)*arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -12586,23 +12526,142 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getCurrentFilename(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon_open(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  std::string *result = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
   
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_open",&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getCurrentFilename" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_open" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (std::string *) &(arg1)->getCurrentFilename();
-  resultobj = SWIG_From_std_string(static_cast< std::string >(*result));
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->open((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
 fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_setMissingValue(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_setMissingValue",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_setMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon_setMissingValue" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  (arg1)->setMissingValue(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_unloadVariable(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_unloadVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_unloadVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_unloadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_unloadVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->unloadVariable((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Kameleon_unloadVectorVariable(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Kameleon_unloadVectorVariable",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_unloadVectorVariable" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Kameleon_unloadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Kameleon_unloadVectorVariable" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (bool)(arg1)->unloadVectorVariable((std::string const &)*arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
 }
 
@@ -12667,73 +12726,6 @@ SWIGINTERN PyObject *_wrap_Kameleon__cxform(PyObject *self, PyObject *args) {
 fail:
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Kameleon__gregorian_calendar_to_jd(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  int arg3 ;
-  int arg4 ;
-  int arg5 ;
-  int arg6 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  int val4 ;
-  int ecode4 = 0 ;
-  int val5 ;
-  int ecode5 = 0 ;
-  int val6 ;
-  int ecode6 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
-  double result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:Kameleon__gregorian_calendar_to_jd",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
-  ecode4 = SWIG_AsVal_int(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "4"" of type '" "int""'");
-  } 
-  arg4 = static_cast< int >(val4);
-  ecode5 = SWIG_AsVal_int(obj4, &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "5"" of type '" "int""'");
-  } 
-  arg5 = static_cast< int >(val5);
-  ecode6 = SWIG_AsVal_int(obj5, &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "6"" of type '" "int""'");
-  } 
-  arg6 = static_cast< int >(val6);
-  result = (double)ccmc::Kameleon::_gregorian_calendar_to_jd(arg1,arg2,arg3,arg4,arg5,arg6);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
   return NULL;
 }
 
@@ -12827,61 +12819,100 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_close(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_Kameleon__gregorian_calendar_to_jd(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long result;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
+  int val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  double result;
   
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_close" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (long)(arg1)->close();
-  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:Kameleon__gregorian_calendar_to_jd",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  ecode5 = SWIG_AsVal_int(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "5"" of type '" "int""'");
+  } 
+  arg5 = static_cast< int >(val5);
+  ecode6 = SWIG_AsVal_int(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "Kameleon__gregorian_calendar_to_jd" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
+  result = (double)ccmc::Kameleon::_gregorian_calendar_to_jd(arg1,arg2,arg3,arg4,arg5,arg6);
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Kameleon_getCurrentTime(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_new(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  Time result;
+  ccmc::Kameleon *result = 0 ;
   
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Kameleon_getCurrentTime" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (arg1)->getCurrentTime();
-  resultobj = SWIG_NewPointerObj((new Time(static_cast< const Time& >(result))), SWIGTYPE_p_ccmc__Time, SWIG_POINTER_OWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)":ccmc_Kameleon_new")) SWIG_fail;
+  result = (ccmc::Kameleon *)ccmc_Kameleon_new();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_Kameleon(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_createNewInterpolator(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
   
-  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
-  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Kameleon, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_createNewInterpolator",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Kameleon" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_createNewInterpolator" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
   arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  delete arg1;
+  ccmc_Kameleon_createNewInterpolator(arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -12889,131 +12920,165 @@ fail:
 }
 
 
-SWIGINTERN int Swig_var_kameleonObjects_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,  0  | 0);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ccmc::kameleonObjects""' of type '""boost::unordered_map< int,ccmc::Kameleon * >""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ccmc::kameleonObjects""' of type '""boost::unordered_map< int,ccmc::Kameleon * >""'");
-    } else {
-      boost::unordered_map< int,ccmc::Kameleon * > * temp;
-      temp  = reinterpret_cast< boost::unordered_map< int,ccmc::Kameleon * > * >(argp);
-      ccmc::kameleonObjects = *temp;
-      if (SWIG_IsNewObj(res)) delete temp;
-    }
-  }
-  return 0;
-fail:
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_kameleonObjects_get(void) {
-  PyObject *pyobj = 0;
-  PyObject *self = 0;
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_open(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  long result;
   
-  (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&ccmc::kameleonObjects), SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,  0 );
-  return pyobj;
-}
-
-
-SWIGINTERN int Swig_var_tracerObjects_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t,  0  | 0);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ccmc::tracerObjects""' of type '""boost::unordered_map< int,ccmc::Tracer * >""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ccmc::tracerObjects""' of type '""boost::unordered_map< int,ccmc::Tracer * >""'");
-    } else {
-      boost::unordered_map< int,ccmc::Tracer * > * temp;
-      temp  = reinterpret_cast< boost::unordered_map< int,ccmc::Tracer * > * >(argp);
-      ccmc::tracerObjects = *temp;
-      if (SWIG_IsNewObj(res)) delete temp;
-    }
+  if (!PyArg_ParseTuple(args,(char *)"OO:ccmc_Kameleon_open",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_open" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
-  return 0;
-fail:
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_tracerObjects_get(void) {
-  PyObject *pyobj = 0;
-  PyObject *self = 0;
-  
-  (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&ccmc::tracerObjects), SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t,  0 );
-  return pyobj;
-}
-
-
-SWIGINTERN int Swig_var_interpolatorObjects_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t,  0  | 0);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ccmc::interpolatorObjects""' of type '""boost::unordered_map< int,ccmc::Interpolator * >""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ccmc::interpolatorObjects""' of type '""boost::unordered_map< int,ccmc::Interpolator * >""'");
-    } else {
-      boost::unordered_map< int,ccmc::Interpolator * > * temp;
-      temp  = reinterpret_cast< boost::unordered_map< int,ccmc::Interpolator * > * >(argp);
-      ccmc::interpolatorObjects = *temp;
-      if (SWIG_IsNewObj(res)) delete temp;
-    }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ccmc_Kameleon_open" "', argument " "2"" of type '" "char const *""'");
   }
-  return 0;
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (long)ccmc_Kameleon_open(arg1,(char const *)arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
 fail:
-  return 1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
-SWIGINTERN PyObject *Swig_var_interpolatorObjects_get(void) {
-  PyObject *pyobj = 0;
-  PyObject *self = 0;
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_getModelName(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&ccmc::interpolatorObjects), SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t,  0 );
-  return pyobj;
-}
-
-
-SWIGINTERN int Swig_var_fileReaderObjects_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,  0  | 0);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""ccmc::fileReaderObjects""' of type '""boost::unordered_map< int,ccmc::GeneralFileReader * >""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""ccmc::fileReaderObjects""' of type '""boost::unordered_map< int,ccmc::GeneralFileReader * >""'");
-    } else {
-      boost::unordered_map< int,ccmc::GeneralFileReader * > * temp;
-      temp  = reinterpret_cast< boost::unordered_map< int,ccmc::GeneralFileReader * > * >(argp);
-      ccmc::fileReaderObjects = *temp;
-      if (SWIG_IsNewObj(res)) delete temp;
-    }
+  if (!PyArg_ParseTuple(args,(char *)"OO:ccmc_Kameleon_getModelName",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_getModelName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
   }
-  return 0;
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ccmc_Kameleon_getModelName" "', argument " "2"" of type '" "char *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ccmc_Kameleon_getModelName(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
 fail:
-  return 1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
 }
 
 
-SWIGINTERN PyObject *Swig_var_fileReaderObjects_get(void) {
-  PyObject *pyobj = 0;
-  PyObject *self = 0;
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_setMissingValue(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   
-  (void)self;
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&ccmc::fileReaderObjects), SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,  0 );
-  return pyobj;
+  if (!PyArg_ParseTuple(args,(char *)"OO:ccmc_Kameleon_setMissingValue",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_setMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ccmc_Kameleon_setMissingValue" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  ccmc_Kameleon_setMissingValue(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_getMissingValue(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_getMissingValue",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_getMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (float)ccmc_Kameleon_getMissingValue(arg1);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_close(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_close",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_close" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  result = (long)ccmc_Kameleon_close(arg1);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ccmc_Kameleon_delete(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_delete",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_delete" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
+  ccmc_Kameleon_delete(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -13723,6 +13788,27 @@ SWIGINTERN PyObject *_wrap_delete_Interpolator(PyObject *self, PyObject *args) {
   }
   arg1 = reinterpret_cast< ccmc::Interpolator * >(argp1);
   delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ccmc_Interpolator_delete(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Interpolator_delete",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Interpolator_delete" "', argument " "1"" of type '" "ccmc::Interpolator *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Interpolator * >(argp1);
+  ccmc_Interpolator_delete(arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -31342,9 +31428,18 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"parseEPOCH3", _wrap_parseEPOCH3, METH_VARARGS, NULL},
 	 { (char *)"encodeEPOCH3", _wrap_encodeEPOCH3, METH_VARARGS, NULL},
 	 { (char *)"Kameleon__cxform", _wrap_Kameleon__cxform, METH_VARARGS, NULL},
-	 { (char *)"Kameleon__gregorian_calendar_to_jd", _wrap_Kameleon__gregorian_calendar_to_jd, METH_VARARGS, NULL},
 	 { (char *)"Kameleon__cxRound", _wrap_Kameleon__cxRound, METH_VARARGS, NULL},
 	 { (char *)"Kameleon__date2es", _wrap_Kameleon__date2es, METH_VARARGS, NULL},
+	 { (char *)"Kameleon__gregorian_calendar_to_jd", _wrap_Kameleon__gregorian_calendar_to_jd, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_new", _wrap_ccmc_Kameleon_new, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_createNewInterpolator", _wrap_ccmc_Kameleon_createNewInterpolator, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_open", _wrap_ccmc_Kameleon_open, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_getModelName", _wrap_ccmc_Kameleon_getModelName, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_setMissingValue", _wrap_ccmc_Kameleon_setMissingValue, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_getMissingValue", _wrap_ccmc_Kameleon_getMissingValue, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_close", _wrap_ccmc_Kameleon_close, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Kameleon_delete", _wrap_ccmc_Kameleon_delete, METH_VARARGS, NULL},
+	 { (char *)"ccmc_Interpolator_delete", _wrap_ccmc_Interpolator_delete, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -32629,42 +32724,42 @@ SwigPyBuiltin__ccmc__Kameleon_richcompare(PyObject *self, PyObject *other, int o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Kameleon_methods[] = {
-  { "open", (PyCFunction) _wrap_Kameleon_open, METH_VARARGS, (char*) "" },
-  { "getModelName", (PyCFunction) _wrap_Kameleon_getModelName, METH_VARARGS, (char*) "" },
-  { "setMissingValue", (PyCFunction) _wrap_Kameleon_setMissingValue, METH_VARARGS, (char*) "" },
-  { "getMissingValue", (PyCFunction) _wrap_Kameleon_getMissingValue, METH_VARARGS, (char*) "" },
+  { "close", (PyCFunction) _wrap_Kameleon_close, METH_VARARGS, (char*) "" },
   { "createNewInterpolator", (PyCFunction) _wrap_Kameleon_createNewInterpolator, METH_VARARGS, (char*) "" },
-  { "loadVariable", (PyCFunction) _wrap_Kameleon_loadVariable, METH_VARARGS, (char*) "" },
-  { "unloadVariable", (PyCFunction) _wrap_Kameleon_unloadVariable, METH_VARARGS, (char*) "" },
-  { "loadVectorVariable", (PyCFunction) _wrap_Kameleon_loadVectorVariable, METH_VARARGS, (char*) "" },
-  { "unloadVectorVariable", (PyCFunction) _wrap_Kameleon_unloadVectorVariable, METH_VARARGS, (char*) "" },
-  { "getNativeUnit", (PyCFunction) _wrap_Kameleon_getNativeUnit, METH_VARARGS, (char*) "" },
-  { "getSIUnit", (PyCFunction) _wrap_Kameleon_getSIUnit, METH_VARARGS, (char*) "" },
-  { "getVisUnit", (PyCFunction) _wrap_Kameleon_getVisUnit, METH_VARARGS, (char*) "" },
-  { "getConversionFactorToSI", (PyCFunction) _wrap_Kameleon_getConversionFactorToSI, METH_VARARGS, (char*) "" },
-  { "getVariable", (PyCFunction) _wrap_Kameleon_getVariable, METH_VARARGS, (char*) "" },
-  { "getVariableFromMap", (PyCFunction) _wrap_Kameleon_getVariableFromMap, METH_VARARGS, (char*) "" },
-  { "getVariableInt", (PyCFunction) _wrap_Kameleon_getVariableInt, METH_VARARGS, (char*) "" },
-  { "getVariableIntFromMap", (PyCFunction) _wrap_Kameleon_getVariableIntFromMap, METH_VARARGS, (char*) "" },
-  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
-  { "getVariableID", (PyCFunction) _wrap_Kameleon_getVariableID, METH_VARARGS, (char*) "" },
-  { "getVariableName", (PyCFunction) _wrap_Kameleon_getVariableName, METH_VARARGS, (char*) "" },
-  { "getGlobalAttribute", (PyCFunction) _wrap_Kameleon_getGlobalAttribute, METH_VARARGS, (char*) "" },
-  { "getGlobalAttributeName", (PyCFunction) _wrap_Kameleon_getGlobalAttributeName, METH_VARARGS, (char*) "" },
-  { "getVariableAttribute", (PyCFunction) _wrap_Kameleon_getVariableAttribute, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeName", (PyCFunction) _wrap_Kameleon_getVariableAttributeName, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_Kameleon_getLoadedVariables, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariables", (PyCFunction) _wrap_Kameleon_getNumberOfVariables, METH_VARARGS, (char*) "" },
   { "doesAttributeExist", (PyCFunction) _wrap_Kameleon_doesAttributeExist, METH_VARARGS, (char*) "" },
   { "doesVariableExist", (PyCFunction) _wrap_Kameleon_doesVariableExist, METH_VARARGS, (char*) "" },
+  { "getConversionFactorToSI", (PyCFunction) _wrap_Kameleon_getConversionFactorToSI, METH_VARARGS, (char*) "" },
   { "getCurrentFilename", (PyCFunction) _wrap_Kameleon_getCurrentFilename, METH_VARARGS, (char*) "" },
+  { "getCurrentTime", (PyCFunction) _wrap_Kameleon_getCurrentTime, METH_VARARGS, (char*) "" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_Kameleon_getGlobalAttribute, METH_VARARGS, (char*) "" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_Kameleon_getGlobalAttributeName, METH_VARARGS, (char*) "" },
+  { "getLoadedVariables", (PyCFunction) _wrap_Kameleon_getLoadedVariables, METH_VARARGS, (char*) "" },
+  { "getMissingValue", (PyCFunction) _wrap_Kameleon_getMissingValue, METH_VARARGS, (char*) "" },
+  { "getModelName", (PyCFunction) _wrap_Kameleon_getModelName, METH_VARARGS, (char*) "" },
+  { "getNativeUnit", (PyCFunction) _wrap_Kameleon_getNativeUnit, METH_VARARGS, (char*) "" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
+  { "getNumberOfVariables", (PyCFunction) _wrap_Kameleon_getNumberOfVariables, METH_VARARGS, (char*) "" },
+  { "getSIUnit", (PyCFunction) _wrap_Kameleon_getSIUnit, METH_VARARGS, (char*) "" },
+  { "getVariable", (PyCFunction) _wrap_Kameleon_getVariable, METH_VARARGS, (char*) "" },
+  { "getVariableAttribute", (PyCFunction) _wrap_Kameleon_getVariableAttribute, METH_VARARGS, (char*) "" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_Kameleon_getVariableAttributeName, METH_VARARGS, (char*) "" },
+  { "getVariableFromMap", (PyCFunction) _wrap_Kameleon_getVariableFromMap, METH_VARARGS, (char*) "" },
+  { "getVariableID", (PyCFunction) _wrap_Kameleon_getVariableID, METH_VARARGS, (char*) "" },
+  { "getVariableInt", (PyCFunction) _wrap_Kameleon_getVariableInt, METH_VARARGS, (char*) "" },
+  { "getVariableIntFromMap", (PyCFunction) _wrap_Kameleon_getVariableIntFromMap, METH_VARARGS, (char*) "" },
+  { "getVariableName", (PyCFunction) _wrap_Kameleon_getVariableName, METH_VARARGS, (char*) "" },
+  { "getVisUnit", (PyCFunction) _wrap_Kameleon_getVisUnit, METH_VARARGS, (char*) "" },
+  { "loadVariable", (PyCFunction) _wrap_Kameleon_loadVariable, METH_VARARGS, (char*) "" },
+  { "loadVectorVariable", (PyCFunction) _wrap_Kameleon_loadVectorVariable, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_Kameleon_open, METH_VARARGS, (char*) "" },
+  { "setMissingValue", (PyCFunction) _wrap_Kameleon_setMissingValue, METH_VARARGS, (char*) "" },
+  { "unloadVariable", (PyCFunction) _wrap_Kameleon_unloadVariable, METH_VARARGS, (char*) "" },
+  { "unloadVectorVariable", (PyCFunction) _wrap_Kameleon_unloadVectorVariable, METH_VARARGS, (char*) "" },
   { "_cxform", (PyCFunction) _wrap_Kameleon__cxform, METH_STATIC|METH_VARARGS, "" },
-  { "_gregorian_calendar_to_jd", (PyCFunction) _wrap_Kameleon__gregorian_calendar_to_jd, METH_STATIC|METH_VARARGS, "" },
   { "_cxRound", (PyCFunction) _wrap_Kameleon__cxRound, METH_STATIC|METH_VARARGS, "" },
   { "_date2es", (PyCFunction) _wrap_Kameleon__date2es, METH_STATIC|METH_VARARGS, "" },
-  { "close", (PyCFunction) _wrap_Kameleon_close, METH_VARARGS, (char*) "" },
-  { "getCurrentTime", (PyCFunction) _wrap_Kameleon_getCurrentTime, METH_VARARGS, (char*) "" },
+  { "_gregorian_calendar_to_jd", (PyCFunction) _wrap_Kameleon__gregorian_calendar_to_jd, METH_STATIC|METH_VARARGS, "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -37179,10 +37274,6 @@ static void *_p_ccmc__ENLILTo_p_ccmc__Model(void *x, int *SWIGUNUSEDPARM(newmemo
 }
 static swig_type_info _swigt__p_SwigPyObject = {"_p_SwigPyObject", "SwigPyObject *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_allocator_type = {"_p_allocator_type", "allocator_type *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t = {"_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t", "boost::unordered_map< int,ccmc::GeneralFileReader * > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t = {"_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t", "boost::unordered_map< int,ccmc::Interpolator * > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t = {"_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t", "boost::unordered_map< int,ccmc::Kameleon * > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t = {"_p_boost__unordered_mapT_int_ccmc__Tracer_p_t", "boost::unordered_map< int,ccmc::Tracer * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ccmc__Attribute = {"_p_ccmc__Attribute", "Attribute *|ccmc::Attribute *", 0, 0, (void*)&SwigPyBuiltin__ccmc__Attribute_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__BATSRUS = {"_p_ccmc__BATSRUS", "ccmc::BATSRUS *", 0, 0, (void*)&SwigPyBuiltin__ccmc__BATSRUS_clientdata, 0};
 static swig_type_info _swigt__p_ccmc__BATSRUSInterpolator = {"_p_ccmc__BATSRUSInterpolator", "ccmc::BATSRUSInterpolator *", 0, 0, (void*)&SwigPyBuiltin__ccmc__BATSRUSInterpolator_clientdata, 0};
@@ -37230,10 +37321,6 @@ static swig_type_info _swigt__p_value_type = {"_p_value_type", "value_type *", 0
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_SwigPyObject,
   &_swigt__p_allocator_type,
-  &_swigt__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,
-  &_swigt__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t,
-  &_swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,
-  &_swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t,
   &_swigt__p_ccmc__Attribute,
   &_swigt__p_ccmc__BATSRUS,
   &_swigt__p_ccmc__BATSRUSInterpolator,
@@ -37281,10 +37368,6 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_SwigPyObject[] = {  {&_swigt__p_SwigPyObject, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_allocator_type[] = {  {&_swigt__p_allocator_type, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_boost__unordered_mapT_int_ccmc__Tracer_p_t[] = {  {&_swigt__p_boost__unordered_mapT_int_ccmc__Tracer_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__Attribute[] = {  {&_swigt__p_ccmc__Attribute, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__BATSRUS[] = {  {&_swigt__p_ccmc__BATSRUS, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ccmc__BATSRUSInterpolator[] = {  {&_swigt__p_ccmc__BATSRUSInterpolator, 0, 0, 0},{0, 0, 0, 0}};
@@ -37332,10 +37415,6 @@ static swig_cast_info _swigc__p_value_type[] = {  {&_swigt__p_value_type, 0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_SwigPyObject,
   _swigc__p_allocator_type,
-  _swigc__p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t,
-  _swigc__p_boost__unordered_mapT_int_ccmc__Interpolator_p_t,
-  _swigc__p_boost__unordered_mapT_int_ccmc__Kameleon_p_t,
-  _swigc__p_boost__unordered_mapT_int_ccmc__Tracer_p_t,
   _swigc__p_ccmc__Attribute,
   _swigc__p_ccmc__BATSRUS,
   _swigc__p_ccmc__BATSRUSInterpolator,
@@ -38259,12 +38338,6 @@ SWIG_init(void) {
   PyModule_AddObject(m, "Kameleon", (PyObject*) builtin_pytype);
   SwigPyBuiltin_AddPublicSymbol(public_interface, "Kameleon");
   d = md;
-  PyDict_SetItemString(md,(char*)"cvar", SWIG_globals());
-  SwigPyBuiltin_AddPublicSymbol(public_interface, "cvar");
-  SWIG_addvarlink(SWIG_globals(),(char*)"kameleonObjects",Swig_var_kameleonObjects_get, Swig_var_kameleonObjects_set);
-  SWIG_addvarlink(SWIG_globals(),(char*)"tracerObjects",Swig_var_tracerObjects_get, Swig_var_tracerObjects_set);
-  SWIG_addvarlink(SWIG_globals(),(char*)"interpolatorObjects",Swig_var_interpolatorObjects_get, Swig_var_interpolatorObjects_set);
-  SWIG_addvarlink(SWIG_globals(),(char*)"fileReaderObjects",Swig_var_fileReaderObjects_get, Swig_var_fileReaderObjects_set);
   
   /* type 'ccmc::Interpolator' */
   builtin_pytype = (PyTypeObject *)&SwigPyBuiltin__ccmc__Interpolator_type;
