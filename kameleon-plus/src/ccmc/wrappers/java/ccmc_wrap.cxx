@@ -2093,7 +2093,7 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1getVaria
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesAttributeExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesAttributeExist_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -2118,7 +2118,7 @@ SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesA
 }
 
 
-SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesVariableExist(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesVariableExist_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
   jboolean jresult = 0 ;
   ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -2138,6 +2138,40 @@ SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesV
   arg2 = &arg2_str;
   jenv->ReleaseStringUTFChars(jarg2, arg2_pstr); 
   result = (bool)(arg1)->doesVariableExist((std::string const &)*arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesAttributeExist_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (bool)(arg1)->doesAttributeExist(arg2);
+  jresult = (jboolean)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jboolean JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_CDFFileReader_1doesVariableExist_1_1SWIG_11(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  jboolean jresult = 0 ;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  bool result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::CDFFileReader **)&jarg1; 
+  arg2 = (long)jarg2; 
+  result = (bool)(arg1)->doesVariableExist(arg2);
   jresult = (jboolean)result; 
   return jresult;
 }
@@ -3653,123 +3687,6 @@ SWIGEXPORT jdouble JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Kameleon_1_1gregorian
 }
 
 
-SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1new(JNIEnv *jenv, jclass jcls) {
-  jlong jresult = 0 ;
-  ccmc::Kameleon *result = 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  result = (ccmc::Kameleon *)ccmc_Kameleon_new();
-  *(ccmc::Kameleon **)&jresult = result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1createNewInterpolator(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  ccmc_Kameleon_createNewInterpolator(arg1);
-}
-
-
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1open(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  jint jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  char *arg2 = (char *) 0 ;
-  long result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  arg2 = 0;
-  if (jarg2) {
-    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
-    if (!arg2) return 0;
-  }
-  result = (long)ccmc_Kameleon_open(arg1,(char const *)arg2);
-  jresult = (jint)result; 
-  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1getModelName(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2) {
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  char *arg2 = (char *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  arg2 = 0;
-  if (jarg2) {
-    arg2 = (char *)jenv->GetStringUTFChars(jarg2, 0);
-    if (!arg2) return ;
-  }
-  ccmc_Kameleon_getModelName(arg1,arg2);
-  if (arg2) jenv->ReleaseStringUTFChars(jarg2, (const char *)arg2);
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1setMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jfloat jarg2) {
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  float arg2 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  arg2 = (float)jarg2; 
-  ccmc_Kameleon_setMissingValue(arg1,arg2);
-}
-
-
-SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1getMissingValue(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jfloat jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  float result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (float)ccmc_Kameleon_getMissingValue(arg1);
-  jresult = (jfloat)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1close(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  jint jresult = 0 ;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  long result;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  result = (long)ccmc_Kameleon_close(arg1);
-  jresult = (jint)result; 
-  return jresult;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Kameleon_1delete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Kameleon **)&jarg1; 
-  ccmc_Kameleon_delete(arg1);
-}
-
-
 SWIGEXPORT jfloat JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Interpolator_1interpolate_1_1SWIG_10(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jstring jarg2, jfloat jarg3, jfloat jarg4, jfloat jarg5) {
   jfloat jresult = 0 ;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
@@ -4021,17 +3938,6 @@ SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_delete_1Interpolator(JNI
   (void)jcls;
   arg1 = *(ccmc::Interpolator **)&jarg1; 
   delete arg1;
-}
-
-
-SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_ccmc_1Interpolator_1delete(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
-  ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
-  
-  (void)jenv;
-  (void)jcls;
-  (void)jarg1_;
-  arg1 = *(ccmc::Interpolator **)&jarg1; 
-  ccmc_Interpolator_delete(arg1);
 }
 
 

@@ -10062,7 +10062,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_CDFFileReader_doesAttributeExist(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesAttributeExist__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -10099,7 +10099,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_CDFFileReader_doesVariableExist(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesVariableExist__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -10133,6 +10133,166 @@ SWIGINTERN PyObject *_wrap_CDFFileReader_doesVariableExist(PyObject *self, PyObj
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesAttributeExist__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_doesAttributeExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_doesAttributeExist" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_doesAttributeExist" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (bool)(arg1)->doesAttributeExist(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesAttributeExist(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_CDFFileReader_doesAttributeExist__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_CDFFileReader_doesAttributeExist__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'CDFFileReader_doesAttributeExist'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::CDFFileReader::doesAttributeExist(std::string const &)\n"
+    "    ccmc::CDFFileReader::doesAttributeExist(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesVariableExist__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_doesVariableExist",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_doesVariableExist" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CDFFileReader_doesVariableExist" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (bool)(arg1)->doesVariableExist(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_doesVariableExist(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_CDFFileReader_doesVariableExist__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__CDFFileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_CDFFileReader_doesVariableExist__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'CDFFileReader_doesVariableExist'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::CDFFileReader::doesVariableExist(std::string const &)\n"
+    "    ccmc::CDFFileReader::doesVariableExist(long)\n");
+  return 0;
 }
 
 
@@ -12886,202 +13046,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_new(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)":ccmc_Kameleon_new")) SWIG_fail;
-  result = (ccmc::Kameleon *)ccmc_Kameleon_new();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_createNewInterpolator(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_createNewInterpolator",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_createNewInterpolator" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  ccmc_Kameleon_createNewInterpolator(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_open(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  long result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:ccmc_Kameleon_open",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_open" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ccmc_Kameleon_open" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  result = (long)ccmc_Kameleon_open(arg1,(char const *)arg2);
-  resultobj = SWIG_From_long(static_cast< long >(result));
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_getModelName(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:ccmc_Kameleon_getModelName",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_getModelName" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ccmc_Kameleon_getModelName" "', argument " "2"" of type '" "char *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  ccmc_Kameleon_getModelName(arg1,arg2);
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_setMissingValue(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  float arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  float val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:ccmc_Kameleon_setMissingValue",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_setMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  ecode2 = SWIG_AsVal_float(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ccmc_Kameleon_setMissingValue" "', argument " "2"" of type '" "float""'");
-  } 
-  arg2 = static_cast< float >(val2);
-  ccmc_Kameleon_setMissingValue(arg1,arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_getMissingValue(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  float result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_getMissingValue",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_getMissingValue" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (float)ccmc_Kameleon_getMissingValue(arg1);
-  resultobj = SWIG_From_float(static_cast< float >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_close(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  long result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_close",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_close" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  result = (long)ccmc_Kameleon_close(arg1);
-  resultobj = SWIG_From_long(static_cast< long >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Kameleon_delete(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Kameleon *arg1 = (ccmc::Kameleon *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Kameleon_delete",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Kameleon, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Kameleon_delete" "', argument " "1"" of type '" "ccmc::Kameleon *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Kameleon * >(argp1);
-  ccmc_Kameleon_delete(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Interpolator_interpolate__SWIG_0(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
@@ -13788,27 +13752,6 @@ SWIGINTERN PyObject *_wrap_delete_Interpolator(PyObject *self, PyObject *args) {
   }
   arg1 = reinterpret_cast< ccmc::Interpolator * >(argp1);
   delete arg1;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ccmc_Interpolator_delete(PyObject *self, PyObject *args) {
-  PyObject *resultobj = 0;
-  ccmc::Interpolator *arg1 = (ccmc::Interpolator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:ccmc_Interpolator_delete",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ccmc__Interpolator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ccmc_Interpolator_delete" "', argument " "1"" of type '" "ccmc::Interpolator *""'"); 
-  }
-  arg1 = reinterpret_cast< ccmc::Interpolator * >(argp1);
-  ccmc_Interpolator_delete(arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -31431,15 +31374,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Kameleon__cxRound", _wrap_Kameleon__cxRound, METH_VARARGS, NULL},
 	 { (char *)"Kameleon__date2es", _wrap_Kameleon__date2es, METH_VARARGS, NULL},
 	 { (char *)"Kameleon__gregorian_calendar_to_jd", _wrap_Kameleon__gregorian_calendar_to_jd, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_new", _wrap_ccmc_Kameleon_new, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_createNewInterpolator", _wrap_ccmc_Kameleon_createNewInterpolator, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_open", _wrap_ccmc_Kameleon_open, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_getModelName", _wrap_ccmc_Kameleon_getModelName, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_setMissingValue", _wrap_ccmc_Kameleon_setMissingValue, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_getMissingValue", _wrap_ccmc_Kameleon_getMissingValue, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_close", _wrap_ccmc_Kameleon_close, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Kameleon_delete", _wrap_ccmc_Kameleon_delete, METH_VARARGS, NULL},
-	 { (char *)"ccmc_Interpolator_delete", _wrap_ccmc_Interpolator_delete, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
