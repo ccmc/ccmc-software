@@ -12,6 +12,7 @@
 #include <string>
 
 using namespace std;
+using namespace ccmc;
 
 /**
  * open_ggcm <inputfile> variable x y z
@@ -29,11 +30,11 @@ int main (int argc, char * argv[])
 	float x = boost::lexical_cast<float>(argv[3]);
 	float y = boost::lexical_cast<float>(argv[4]);
 	float z = boost::lexical_cast<float>(argv[5]);
-	ccmc::OpenGGCM open_ggcm;
+	OpenGGCM open_ggcm;
 	open_ggcm.open(filename);
 	open_ggcm.loadVariable(variable);
 
-	ccmc::Interpolator * interpolator = open_ggcm.createNewInterpolator();
+	Interpolator * interpolator = open_ggcm.createNewInterpolator();
 	float value = interpolator->interpolate(variable, x, y, z);
 	delete interpolator;
 

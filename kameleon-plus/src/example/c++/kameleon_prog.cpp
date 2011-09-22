@@ -8,12 +8,11 @@
 #include <ccmc/Kameleon.h>
 #include <ccmc/FileReader.h>
 #include <boost/lexical_cast.hpp>
-using namespace ccmc;
 
 int main (int argc, char * argv[])
 {
 
-	Kameleon kameleon;
+	ccmc::Kameleon kameleon;
 	std::string filename;
 	std::string variable;
 	int iterations = 10;
@@ -31,22 +30,22 @@ int main (int argc, char * argv[])
 	c1 = boost::lexical_cast<float>(argv[4]);
 	c2 = boost::lexical_cast<float>(argv[5]);
 	long status = kameleon.open(filename);
-	std::cout << "Opened file: " << filename << " with status: " << status << std::endl;
-	std::cout << "FileReader::OK = " << FileReader::OK << std::endl;
-	if (status == FileReader::OK)
+//	std::cout << "Opened file: " << filename << " with status: " << status << std::endl;
+//	std::cout << "FileReader::OK = " << ccmc::FileReader::OK << std::endl;
+	if (status == ccmc::FileReader::OK)
 	{
 		std::string rho_ = "rho";
 		std::string n_ = "n";
 		std::string pram_ = "pram";
-		std::cout << "Getting model name" << std::endl;
-		std::cout << "Model name: " << kameleon.getGlobalAttribute("model_name").getAttributeString() << std::endl;
-		std::cout << "Loading variables" << std::endl;
+//		std::cout << "Getting model name" << std::endl;
+//		std::cout << "Model name: " << kameleon.getGlobalAttribute("model_name").getAttributeString() << std::endl;
+		//std::cout << "Loading variables" << std::endl;
 		bool successLoading = kameleon.loadVariable(variable);
-		std::cout << "Variable: " << variable << " load status: " << successLoading << std::endl;
+		//std::cout << "Variable: " << variable << " load status: " << successLoading << std::endl;
 		//bool success = kameleon.doesVariableExist(variable);
 		//std::cout << "Does " << variable << " exist? " << success << std::endl;
 		//std::cout << "Creating new interpolator" << std::endl;
-		Interpolator * interpolator = kameleon.createNewInterpolator();
+		ccmc::Interpolator * interpolator = kameleon.createNewInterpolator();
 		clock_t start, finish;
 
 		start = clock();

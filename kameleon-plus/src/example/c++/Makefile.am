@@ -1,5 +1,7 @@
 bin_PROGRAMS = kameleon coord_test open_ggcm adapt3d \
-				magnetogram  enlil tracer integrator mas# h5reader
+				magnetogram  enlil tracer integrator mas \
+				cdfreader				
+# h5reader
 				
 kameleon_SOURCES = kameleon_prog.cpp
 kameleon_CPPFLAGS = -I@srcdir@/../..
@@ -40,3 +42,7 @@ adapt3d_CPPFLAGS = -I@srcdir@/../..
 #h5reader_SOURCES = HDF5Reader.cpp
 #h5reader_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
 #h5reader_CPPFLAGS = -I@srcdir@/../..
+
+cdfreader_SOURCES = CDFReader.cpp
+cdfreader_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
+cdfreader_CPPFLAGS = -I@srcdir@/../..
