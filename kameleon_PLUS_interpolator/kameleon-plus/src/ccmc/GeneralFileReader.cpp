@@ -29,26 +29,26 @@ namespace ccmc
 	{
 
 		//check the file
-		std::cerr << "First, checking if the file is a CDF file" << std::endl;
+//		std::cerr << "First, checking if the file is a CDF file" << std::endl;
 		this->fileReader = new CDFFileReader();
 		long status = fileReader->open(filename);
 		if (status == FileReader::OK)
 		{
-			std::cerr << "Initialized a CDF file reader" << std::endl;
+//			std::cerr << "Initialized a CDF file reader" << std::endl;
 			this->fileReader = fileReader;
 			return status;
 		} else
 		{
-			std::cerr << "Checking if the file is an HDF5 file" << std::endl;
+//			std::cerr << "Checking if the file is an HDF5 file" << std::endl;
 			delete fileReader;
 
 			this->fileReader = new HDF5FileReader();
 
 			long status = fileReader->open(filename);
-			std::cerr << "opened HDF5 file. status: " << status << std::endl;
+//			std::cerr << "opened HDF5 file. status: " << status << std::endl;
 			if (status == FileReader::OK)
 			{
-				std::cerr << "Initialized an HDF5 file reader" << std::endl;
+//				std::cerr << "Initialized an HDF5 file reader" << std::endl;
 				return status;
 			} else
 				return FileReader::OPEN_ERROR;

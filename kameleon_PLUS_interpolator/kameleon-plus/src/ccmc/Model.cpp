@@ -127,17 +127,17 @@ namespace ccmc
 		}
 		std::vector<float> * data = getVariable(variable);
 		long id = getVariableID(variable);
-
+//std::cout << BOOST_CURRENT_FUNCTION << " id: " << id << std::endl;
 		if (data->size() > 0)
 		{
 
-			std::cout << "adding " << variable << " to maps" << std::endl;
+			//std::cout << "adding " << variable << " to maps" << std::endl;
 			variableData[variable] = data;
 			variableDataByID[id] = data;
 		} //else return false;
 		else
 		{
-			std::cout << "not adding " << variable << " to maps" << std::endl;
+			//std::cout << "not adding " << variable << " to maps" << std::endl;
 			delete data;
 		}
 
@@ -186,8 +186,9 @@ namespace ccmc
 
 		//first check if the variable exists in the file!!
 		if (!this->doesVariableExist(variable))
+		{
 			return FileReader::VARIABLE_DOES_NOT_EXIST;
-
+		}
 		std::vector<int> * data = getVariableInt(variable);
 		long id = getVariableID(variable);
 		if (data->size() > 0)
