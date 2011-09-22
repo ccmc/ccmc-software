@@ -129,11 +129,19 @@ public class CDFFileReader extends FileReader {
   }
 
   public boolean doesAttributeExist(String attribute) {
-    return CCMCJNI.CDFFileReader_doesAttributeExist(swigCPtr, this, attribute);
+    return CCMCJNI.CDFFileReader_doesAttributeExist__SWIG_0(swigCPtr, this, attribute);
   }
 
   public boolean doesVariableExist(String variable) {
-    return CCMCJNI.CDFFileReader_doesVariableExist(swigCPtr, this, variable);
+    return CCMCJNI.CDFFileReader_doesVariableExist__SWIG_0(swigCPtr, this, variable);
+  }
+
+  public boolean doesAttributeExist(int attribute) {
+    return CCMCJNI.CDFFileReader_doesAttributeExist__SWIG_1(swigCPtr, this, attribute);
+  }
+
+  public boolean doesVariableExist(int variable) {
+    return CCMCJNI.CDFFileReader_doesVariableExist__SWIG_1(swigCPtr, this, variable);
   }
 
   public String getCurrentFilename() {

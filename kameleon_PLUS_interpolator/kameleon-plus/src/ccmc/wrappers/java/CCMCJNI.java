@@ -100,8 +100,10 @@ public class CCMCJNI {
   public final static native long CDFFileReader_getGlobalAttribute__SWIG_1(long jarg1, CDFFileReader jarg1_, String jarg2);
   public final static native long CDFFileReader_getVariableAttribute(long jarg1, CDFFileReader jarg1_, String jarg2, String jarg3);
   public final static native long CDFFileReader_getVariableAttributeNames(long jarg1, CDFFileReader jarg1_);
-  public final static native boolean CDFFileReader_doesAttributeExist(long jarg1, CDFFileReader jarg1_, String jarg2);
-  public final static native boolean CDFFileReader_doesVariableExist(long jarg1, CDFFileReader jarg1_, String jarg2);
+  public final static native boolean CDFFileReader_doesAttributeExist__SWIG_0(long jarg1, CDFFileReader jarg1_, String jarg2);
+  public final static native boolean CDFFileReader_doesVariableExist__SWIG_0(long jarg1, CDFFileReader jarg1_, String jarg2);
+  public final static native boolean CDFFileReader_doesAttributeExist__SWIG_1(long jarg1, CDFFileReader jarg1_, int jarg2);
+  public final static native boolean CDFFileReader_doesVariableExist__SWIG_1(long jarg1, CDFFileReader jarg1_, int jarg2);
   public final static native String CDFFileReader_getCurrentFilename(long jarg1, CDFFileReader jarg1_);
   public final static native void delete_CDFFileReader(long jarg1);
   public final static native long new_HDF5FileReader();
@@ -179,14 +181,6 @@ public class CCMCJNI {
   public final static native int Kameleon__cxRound(double jarg1);
   public final static native int Kameleon__date2es(int jarg1, int jarg2, int jarg3, int jarg4, int jarg5, int jarg6);
   public final static native double Kameleon__gregorian_calendar_to_jd(int jarg1, int jarg2, int jarg3, int jarg4, int jarg5, int jarg6);
-  public final static native long ccmc_Kameleon_new();
-  public final static native void ccmc_Kameleon_createNewInterpolator(long jarg1, Kameleon jarg1_);
-  public final static native int ccmc_Kameleon_open(long jarg1, Kameleon jarg1_, String jarg2);
-  public final static native void ccmc_Kameleon_getModelName(long jarg1, Kameleon jarg1_, String jarg2);
-  public final static native void ccmc_Kameleon_setMissingValue(long jarg1, Kameleon jarg1_, float jarg2);
-  public final static native float ccmc_Kameleon_getMissingValue(long jarg1, Kameleon jarg1_);
-  public final static native int ccmc_Kameleon_close(long jarg1, Kameleon jarg1_);
-  public final static native void ccmc_Kameleon_delete(long jarg1, Kameleon jarg1_);
   public final static native float Interpolator_interpolate__SWIG_0(long jarg1, Interpolator jarg1_, String jarg2, float jarg3, float jarg4, float jarg5);
   public final static native float Interpolator_interpolate__SWIG_1(long jarg1, Interpolator jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, long jarg6, long jarg7, long jarg8);
   public final static native float Interpolator_interpolate__SWIG_2(long jarg1, Interpolator jarg1_, int jarg2, float jarg3, float jarg4, float jarg5);
@@ -196,7 +190,6 @@ public class CCMCJNI {
   public final static native void Interpolator_setMissingValue(long jarg1, Interpolator jarg1_, float jarg2);
   public final static native String Interpolator_getModelName(long jarg1, Interpolator jarg1_);
   public final static native void delete_Interpolator(long jarg1);
-  public final static native void ccmc_Interpolator_delete(long jarg1, Interpolator jarg1_);
   public final static native long new_KameleonInterpolator(long jarg1, Model jarg1_);
   public final static native float KameleonInterpolator_interpolate__SWIG_0(long jarg1, KameleonInterpolator jarg1_, String jarg2, float jarg3, float jarg4, float jarg5);
   public final static native float KameleonInterpolator_interpolate__SWIG_1(long jarg1, KameleonInterpolator jarg1_, String jarg2, float jarg3, float jarg4, float jarg5, long jarg6, long jarg7, long jarg8);
