@@ -51,14 +51,13 @@ namespace ccmc
 		//intervals[0] = 1;
 
 		   /* get all of the cdf attribute/variable numbers that will be needed *******/
+		//if (!this->doesVariableExist(ccmc::strings::variables::coord_))
+		{
+		//	return FileReader::VARIABLE_DOES_NOT_EXIST;
+		}
 		long loadStatus = this->loadVariable(ccmc::strings::variables::coord_);
 		if (loadStatus != FileReader::OK)
 				return loadStatus;
-
-		loadStatus = this->loadVariable(ccmc::strings::variables::unkno_);
-		if (status != FileReader::OK)
-			return loadStatus;
-
 		loadStatus = this->loadVariableInt(ccmc::strings::variables::intmat_);
 		if (status != FileReader::OK)
 			return loadStatus;
@@ -242,11 +241,11 @@ namespace ccmc
 
 
 		/*-----------------------------------------------------------------*/
-		std::cout << "Entered Structured Search Grid" << std::endl;
+//		std::cout << "Entered Structured Search Grid" << std::endl;
 
 
 		/* allocate for ELEM_INDEX_STRUCT */
-		printf("Begin allocation of elem_index_struct \n");
+//		printf("Begin allocation of elem_index_struct \n");
 		int (* elem_index_struct)[3] = NULL;
 		try
 		{
@@ -257,7 +256,7 @@ namespace ccmc
 			std::cerr << "Unable to allocate memory: " << ba.what() << std::endl;
 			return false;
 		}
-		printf("Allocation of elem_index_struct complete \n");
+//		printf("Allocation of elem_index_struct complete \n");
 		int last_element_found = -1;
 
 
@@ -268,7 +267,7 @@ namespace ccmc
 		this->smartSearchValues.zl_sg=std::numeric_limits<float>::max();
 		this->smartSearchValues.zr_sg=std::numeric_limits<float>::min();
 
-		printf("npoin,ndimn %d %d \n",npoin, ndimn);
+//		printf("npoin,ndimn %d %d \n",npoin, ndimn);
 
 		/* coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
 		* for node 1, etc
@@ -282,15 +281,15 @@ namespace ccmc
 			this->smartSearchValues.zr_sg=std::max(this->smartSearchValues.zr_sg,(*coord)[ index_2d_to_1d(2,i,0,npoin) ]);
 		}
 
-		printf("-------------------------------\n");
-		printf("Range of Structured Search Grid\n");
-		printf("xl_sg= %e \n",this->smartSearchValues.xl_sg);
-		printf("xr_sg= %e \n",this->smartSearchValues.xr_sg);
-		printf("yl_sg= %e \n",this->smartSearchValues.yl_sg);
-		printf("yr_sg= %e \n",this->smartSearchValues.yr_sg);
-		printf("zl_sg= %e \n",this->smartSearchValues.zl_sg);
-		printf("zr_sg= %e \n",this->smartSearchValues.zr_sg);
-		printf("-------------------------------\n");
+//		printf("-------------------------------\n");
+//		printf("Range of Structured Search Grid\n");
+//		printf("xl_sg= %e \n",this->smartSearchValues.xl_sg);
+//		printf("xr_sg= %e \n",this->smartSearchValues.xr_sg);
+//		printf("yl_sg= %e \n",this->smartSearchValues.yl_sg);
+//		printf("yr_sg= %e \n",this->smartSearchValues.yr_sg);
+//		printf("zl_sg= %e \n",this->smartSearchValues.zl_sg);
+//		printf("zr_sg= %e \n",this->smartSearchValues.zr_sg);
+//		printf("-------------------------------\n");
 
 
 		/* Step 1 - Define structured grid */
@@ -439,11 +438,11 @@ namespace ccmc
 		}
 		max_element_length = sqrt(max_length_sqrd);
 
-		printf("Maximum element length = %e \n",max_element_length);
-		printf("Grid cell spacing = %e \n",dxyz_min);
+//		printf("Maximum element length = %e \n",max_element_length);
+//		printf("Grid cell spacing = %e \n",dxyz_min);
 
-		printf("Ratio of search grid spacing to max element length (Must be greater than 1) = %e \n",
-								   dxyz_min/max_element_length);
+///		printf("Ratio of search grid spacing to max element length (Must be greater than 1) = %e \n",
+//								   dxyz_min/max_element_length);
 		if(max_element_length > dxyz_min) {
 			printf("ERROR: UNSTRUCTURED SEARCH GRID SPACING IS TOO FINE \n");
 			printf("ERROR: SOLUTION - INCREASE NO OF GRID POINTS BY FACTOR %e \n", max_element_length/dxyz_min);
@@ -554,7 +553,7 @@ namespace ccmc
 		!...  loop over the elements, storing 'ahead'
 		!
 		*/
-		printf(" nnode: %d\n",nnode);
+//		printf(" nnode: %d\n",nnode);
 		for( ie=0; ie<nelem; ie++)
 		{
 			for( inode=0; inode<nnode; inode++)

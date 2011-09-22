@@ -56,7 +56,7 @@ namespace ccmc
 
 			const std::vector<float> * coord;
 			const std::vector<int> * intmat;
-			const std::vector<float> * unkno;
+			//const std::vector<float> * unkno;
 
 			/* support routines */
 
@@ -67,7 +67,7 @@ namespace ccmc
 			int point_within_grid( float * scoord );
 			int point_within_grid( const float& c0, const float& c1, const float& c2);
 			int index_2d_to_1d( int i1, int i2, int n1, int n2);
-			void interpolate_adapt3d_solution(float *coord1,int ielem, float *unkno_local);
+			float interpolate_adapt3d_solution(float *coord1,int ielem, const std::string& variable);
 
 	};
 }

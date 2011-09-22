@@ -37,7 +37,7 @@ namespace ccmc
 		//this->nconi = (modelReader->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
 		this->coord = (modelReader->getVariableFromMap(ccmc::strings::variables::coord_));
 		this->intmat = (modelReader->getIntVariableFromMap(ccmc::strings::variables::intmat_));
-		this->unkno = (modelReader->getVariableFromMap(ccmc::strings::variables::unkno_));
+		//this->unkno = (modelReader->getVariableFromMap(ccmc::strings::variables::unkno_));
 
 		this->smartSearchValues = ((Adapt3D*)(modelReader))->getSmartGridSearchValues();
 		//indx = new int[nelem];
@@ -136,7 +136,7 @@ namespace ccmc
 
 		   int     array_size;
 		   int     istatus;
-		   int     ielem, unkno_index;
+		   int     ielem;
 
 		   //char variable_name0[] = "intmat";
 		   //char variable_name1[] = "coord";
@@ -186,39 +186,39 @@ namespace ccmc
 
 		   if ( variable == ccmc::strings::variables::bx_ || variable == "b1")
 		   {
-		      unkno_index=5;
+		      //unkno_index=5;
 		   }
 		   else if ( variable == "by" || variable == "b2")
 		   {
-		      unkno_index=6;
+		     // unkno_index=6;
 		   }
 		   else if ( variable == "bz" || variable == "b3")
 		   {
-		      unkno_index=7;
+		     // unkno_index=7;
 		   }
 		   else if ( variable == "ux" || variable == "u1")
 		   {
-		      unkno_index=1;
+		      //unkno_index=1;
 		   }
 		   else if ( variable == "uy" || variable == "u2")
 		   {
-		      unkno_index=2;
+		      //unkno_index=2;
 		   }
 		   else if ( variable == "uz" || variable == "u3")
 		   {
-		      unkno_index=3;
+		      //unkno_index=3;
 		   }
 		   else if (variable == ccmc::strings::variables::rho_)
 		   {
-		      unkno_index=0;
+		      //unkno_index=0;
 		   }
 		   else if (variable == ccmc::strings::variables::p_ || variable == ccmc::strings::variables::e_)
 		   {
-		      unkno_index=4;
+		      //unkno_index=4;
 		   }
 		   else if ( variable == ccmc::strings::variables::temp_ )
 		   {
-		      unkno_index=8;
+		      //unkno_index=8;
 		   }
 		   else
 		   {
@@ -241,12 +241,12 @@ namespace ccmc
 		       interpolated_value=this->missingValue;     /* test value */
 
 		       if(ielem > -1) {
-		         interpolate_adapt3d_solution(coord1, ielem, unkno_local);
+
 		#ifdef DEBUG
 		       printf("interpolate_adapt3d_cdf: unkno_local %e %e %e  %e %e %e  %e %e %e \n", unkno_local[0],unkno_local[1],unkno_local[2],unkno_local[3],unkno_local[4],
 		                          unkno_local[5],unkno_local[6],unkno_local[7],unkno_local[8]);
 		#endif
-		         interpolated_value = unkno_local[unkno_index];
+		         interpolated_value = interpolate_adapt3d_solution(coord1, ielem, variable);
 		         last_element_found = ielem;
 		       } else {
 		         //printf("Failed to find point in grid\n");
@@ -894,7 +894,7 @@ namespace ccmc
 	/*       end subroutine chkineln */
 	}
 
-    void Adapt3DInterpolator::interpolate_adapt3d_solution(float *coord1,int ielem, float *unkno_local)
+    float Adapt3DInterpolator::interpolate_adapt3d_solution(float *coord1,int ielem, const std::string& variable)
     {
     /*
      * Interpolate values of unkno to position coord in element ielem
@@ -981,7 +981,8 @@ namespace ccmc
            printf("Correct Volume should be 1.0\n");
     #endif
 
-           for ( iv=0; iv<9; iv++) {
+           const std::vector<float> * vData = modelReader->getVariableFromMap(variable);
+          /* for ( iv=0; iv<9; iv++) {
 
              unkno_local[iv] = 0.;
              f1 =  (a1 + b1*x + c1*y + d1*z)/vol6;
@@ -992,7 +993,32 @@ namespace ccmc
              unkno_local[iv] = f1*(*unkno)[ index_2d_to_1d(ipa,iv,npoin,NVARS_ADAPT3D) ]+f2*(*unkno)[ index_2d_to_1d(ipb,iv,npoin,NVARS_ADAPT3D) ]
                               +f3*(*unkno)[ index_2d_to_1d(ipc,iv,npoin,NVARS_ADAPT3D) ]+f4*(*unkno)[ index_2d_to_1d(ipd,iv,npoin,NVARS_ADAPT3D) ] ;
 
-           }
+           }*/
+
+           /*
+            * int Adapt3DInterpolator::index_2d_to_1d( int i1, int i2, int n1, int n2)
+			{
+
+				  int idx = n2*i1 + i2;
+
+				  return idx;
+			}
+    */
+           f1 =  (a1 + b1*x + c1*y + d1*z)/vol6;
+           f2 = -(a2 + b2*x + c2*y + d2*z)/vol6;
+           f3 =  (a3 + b3*x + c3*y + d3*z)/vol6;
+           f4 = -(a4 + b4*x + c4*y + d4*z)/vol6;
+
+/*           std::cout << "f1: " << f1 << " f2: " << f2 << " f3: " << f3 << " f4: " << f4 << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipa << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipa,0,npoin,1) ] << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipb << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipb,0,npoin,1) ] << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipc << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipc,0,npoin,1) ] << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipd << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipd,0,npoin,1) ] << std::endl;
+*/
+
+           return f1*(*vData)[ index_2d_to_1d(ipa,0,npoin,1) ]+f2*(*vData)[ index_2d_to_1d(ipb,0,npoin,1) ]
+				 +f3*(*vData)[ index_2d_to_1d(ipc,0,npoin,1) ]+f4*(*vData)[ index_2d_to_1d(ipd,0,npoin,1) ] ;
+
     #endif
 
 
