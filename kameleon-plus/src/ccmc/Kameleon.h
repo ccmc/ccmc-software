@@ -180,38 +180,5 @@ namespace ccmc
 
 }
 
-//extern "C" {
-//			extern ccmc::Kameleon * ccmc_Kameleon_new();
-//			extern ccmc::Kameleon * ccmc_Kameleon_new_callback();
-	/*		extern void ccmc_Kameleon_createNewInterpolator(Kameleon * kameleon, Interpolator **);
-			extern void ccmc_Kameleon_createNewInterpolator_callback(Kameleon * kameleon, Interpolator **);
-			extern long ccmc_Kameleon_open(Kameleon * kameleon, const char * filename); //the individual models need a different open method
-			extern long ccmc_Kameleon_open_callback(Kameleon * kameleon, const char * filename); //the individual models need a different open method
-			extern void ccmc_Kameleon_getModelName(Kameleon * kameleon, char * buffer);
-			extern void ccmc_Kameleon_getModelName_callback(Kameleon * kameleon, char * buffer);
-			extern void ccmc_Kameleon_setMissingValue(Kameleon * kameleon, float missingValue);
-			extern void ccmc_Kameleon_setMissingValue_callback(Kameleon * kameleon, float missingValue);
-			extern float ccmc_Kameleon_getMissingValue(Kameleon * kameleon);
-			extern float ccmc_Kameleon_getMissingValue_callback(Kameleon * kameleon);
-			extern long ccmc_Kameleon_close(Kameleon * kameleon);
-			extern long ccmc_Kameleon_close_callback(Kameleon * kameleon);
-			extern void ccmc_Kameleon_delete(Kameleon * kameleon);
-			extern void ccmc_Kameleon_delete_callback(Kameleon * kameleon);
-			*/
-//	}
-//#endif
-
-//#ifndef __cplusplus
-//typedef struct Kameleon Kameleon;
-//extern Kameleon * ccmc_Kameleon_new();
-//extern void ccmc_Kameleon_createNewInterpolator(Kameleon * kameleon, Interpolator ** interpolator);
-//extern long ccmc_Kameleon_open(Kameleon * kameleon, const char * filename); //the individual models need a different open method
-//extern void ccmc_Kameleon_getModelName(Kameleon * kameleon, char * buffer);
-//extern void ccmc_Kameleon_setMissingValue(Kameleon * kameleon, float missingValue);
-//extern float ccmc_Kameleon_getMissingValue(Kameleon * kameleon);
-//extern long ccmc_Kameleon_close(Kameleon * kameleon);
-//extern void ccmc_Kameleon_delete(Kameleon * kameleon);
-//#endif
-
 #endif/** KAMELEON_H **/
 
