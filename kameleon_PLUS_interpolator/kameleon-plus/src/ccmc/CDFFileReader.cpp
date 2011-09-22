@@ -12,6 +12,7 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <boost/current_function.hpp>
 
 
 namespace ccmc
@@ -34,7 +35,7 @@ namespace ccmc
 	 */
 	long CDFFileReader::openFile(const std::string& filename)
 	{
-		std::cerr << "inside openFile" << std::endl;
+//		std::cerr << "inside openFile" << std::endl;
 		long status;
 		if (current_file_id != NULL && filename != current_filename)
 		{
@@ -47,7 +48,7 @@ namespace ccmc
 			std::cerr << "Filename: \"" << filename << "\" does not exist." << std::endl;
 		}
 		else{
-			std::cerr << "about to open CDF file" << std::endl;
+//			std::cerr << "about to open CDF file" << std::endl;
 
 			status = CDFopenCDF((char *)filename.c_str(), &current_file_id);
 
@@ -107,42 +108,66 @@ namespace ccmc
 	 */
 	std::vector<float>* CDFFileReader::getVariable(const std::string& variable)
 	{
-		long counts[1];
+
 		std::vector<float>* variableData = new std::vector<float>();
 
 		if (this->doesVariableExist(variable))
 		{
-			//std::cout << "reading " << variable << std::endl;
 			//get variable number
 			long variableNum = this->getVariableID(variable);
 
-			//check if variable exists
-
-
-			long recStart = 0L;
-			long recCount = 1L;
-			long recInterval = 1L;
-			long dimIndices[] = { 0 };
-			long dimIntervals[] = { 1 };
-
-			//get dim sizes
-
-			CDFgetzVarDimSizes(current_file_id, variableNum, counts);
-			std::cout << "variable: " << variable << ": " << counts[0] << std::endl;
-			float * buffer = new float[counts[0]];
-			CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
-					dimIntervals, buffer);
-			//add data to vector type, and delete original array
-			variableData->reserve(counts[0]);
-			for (int i = 0; i < counts[0]; i++)
+			if (variableNum >= CDF_OK)
 			{
-				variableData->push_back(buffer[i]);
+				//check if variable exists
+
+
+				long recStart = 0L;
+				long recCount = 1L;
+				long recInterval = 1L;
+				long dimIndices[] = { 0 };
+				long dimIntervals[] = { 1 };
+				long counts[1];
+				//get dim sizes
+				CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+
+				long dataType;
+				CDFgetzVarDataType(current_file_id, variableNum, &dataType);
+
+				if (dataType == CDF_FLOAT)
+				{
+					float * buffer = new float[counts[0]];
+					CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
+							dimIntervals, buffer);
+
+					//add data to vector type, and delete original array
+					variableData->reserve(counts[0]);
+					for (int i = 0; i < counts[0]; i++)
+					{
+						variableData->push_back(buffer[i]);
+					}
+
+					delete[] buffer;
+				} else if (dataType == CDF_DOUBLE)
+				{
+					double * buffer = new double[counts[0]];
+					CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
+							dimIntervals, buffer);
+
+					//add data to vector type, and delete original array
+					variableData->reserve(counts[0]);
+					for (int i = 0; i < counts[0]; i++)
+					{
+						variableData->push_back((float)buffer[i]);
+					}
+
+					delete[] buffer;
+
+				}
+			}else
+			{
+				std::cerr << BOOST_CURRENT_FUNCTION << ": Variable number was negative." << std::endl;
 			}
 
-			delete[] buffer;
-			std::cout << "finished reading " << variable << std::endl;
-			//std::cout << "size of variable: " << variableData.size() << std::endl;
-			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
 
 		}
 
@@ -163,32 +188,57 @@ namespace ccmc
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
-
-		long counts[1] = {count};
-		//get dim sizes
-		//CDFgetzVarDimSizes(current_file_id, variableNum, counts);
-		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
-		variableData->reserve(counts[0]);
-		for (int i = 0; i < counts[0]; i++)
-		{
-			variableData->push_back(buffer[i]);
-		}
 
-		delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
-		//std::cout << "size of variable: " << variableData.size() << std::endl;
-		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+		if (this->doesVariableExist(variable))
+		{
+			long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+
+			long recStart = 0L;
+			long recCount = 1L;
+			long recInterval = 1L;
+			long dimIndices[] = { 0 };
+			long dimIntervals[] = { 1 };
+			long counts[1] = {count};
+			//get dim sizes
+			//CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+			long dataType;
+			CDFgetzVarDataType(current_file_id, variableNum, &dataType);
+
+			if (dataType == CDF_DOUBLE)
+			{
+				double * buffer = new double[counts[0]];
+				CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
+						dimIntervals, buffer);
+				//add data to vector type, and delete original array
+				variableData->reserve(counts[0]);
+				for (int i = 0; i < counts[0]; i++)
+				{
+					variableData->push_back((float)buffer[i]);
+				}
+
+				delete[] buffer;
+			} else if (dataType == CDF_FLOAT)
+			{
+				float * buffer = new float[counts[0]];
+				CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
+						dimIntervals, buffer);
+				//add data to vector type, and delete original array
+				variableData->reserve(counts[0]);
+				for (int i = 0; i < counts[0]; i++)
+				{
+					variableData->push_back(buffer[i]);
+				}
+
+				delete[] buffer;
+
+			}
+
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+		}
 		return variableData;
 	}
 
@@ -202,34 +252,58 @@ namespace ccmc
 	 * @param count
 	 * @return std::vector<float> containing the values of the selected variable.
 	 */
-	std::vector<float>* CDFFileReader::getVariable(long variableID, long startIndex, long count)
+	std::vector<float>* CDFFileReader::getVariable(long variable, long startIndex, long count)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
 
-		long counts[1] = {count};
-		//get dim sizes
-		//CDFgetzVarDimSizes(current_file_id, variableNum, counts);
-		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData(current_file_id, variableID, recStart, recCount, recInterval, dimIndices, counts,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
-		variableData->reserve(counts[0]);
-		for (long i = 0; i < counts[0]; i++)
-		{
-			variableData->push_back(buffer[i]);
-		}
 
-		delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
-		//std::cout << "size of variable: " << variableData.size() << std::endl;
-		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+		if (this->doesVariableExist(variable))
+		{
+			long recStart = 0L;
+			long recCount = 1L;
+			long recInterval = 1L;
+			long dimIndices[] = { 0 };
+			long dimIntervals[] = { 1 };
+
+			long counts[1] = {count};
+			//get dim sizes
+			//CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+			long dataType;
+			CDFgetzVarDataType(current_file_id, variable, &dataType);
+			if (dataType == CDF_FLOAT)
+			{
+				float * buffer = new float[counts[0]];
+				CDFhyperGetzVarData(current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
+						dimIntervals, buffer);
+				//add data to vector type, and delete original array
+				std::vector<float>* variableData = new std::vector<float>();
+				variableData->reserve(counts[0]);
+				for (long i = 0; i < counts[0]; i++)
+				{
+					variableData->push_back(buffer[i]);
+				}
+
+				delete[] buffer;
+			} else if (dataType == CDF_DOUBLE)
+			{
+				double * buffer = new double[counts[0]];
+				CDFhyperGetzVarData(current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
+						dimIntervals, buffer);
+				//add data to vector type, and delete original array
+				std::vector<float>* variableData = new std::vector<float>();
+				variableData->reserve(counts[0]);
+				for (long i = 0; i < counts[0]; i++)
+				{
+					variableData->push_back((float)buffer[i]);
+				}
+
+				delete[] buffer;
+
+			}
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+		}
 		return variableData;
 	}
 
@@ -244,30 +318,54 @@ namespace ccmc
 	{
 		//std::cout << "reading " << variable << std::endl;
 		//get variable number
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
-
-		long counts[1];
-		//get dim sizes
-		CDFgetzVarDimSizes(current_file_id, variable, counts);
-		float * buffer = new float[counts[0]];
-		CDFhyperGetzVarData(current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
 		std::vector<float>* variableData = new std::vector<float>();
-		variableData->reserve(counts[0]);
-		for (long i = 0; i < counts[0]; i++)
+		if(doesVariableExist(variable))
 		{
-			variableData->push_back(buffer[i]);
-		}
 
-		delete[] buffer;
-		//std::cout << "finished reading " << variable << std::endl;
-		//std::cout << "size of variable: " << variableData.size() << std::endl;
-		//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+			long recStart = 0L;
+			long recCount = 1L;
+			long recInterval = 1L;
+			long dimIndices[] = { 0 };
+			long dimIntervals[] = { 1 };
+
+			long counts[1];
+			//get dim sizes
+			//std::cout << BOOST_CURRENT_FUNCTION << ": current_file_id: " << current_file_id << std::endl;
+
+			CDFgetzVarDimSizes(current_file_id, variable, counts);
+			long dataType;
+			CDFgetzVarDataType(current_file_id, variable, &dataType);
+			if (dataType == CDF_FLOAT)
+			{
+				float * buffer = new float[counts[0]];
+				CDFhyperGetzVarData(current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
+						dimIntervals, buffer);
+				//add data to vector type, and delete original array
+				variableData->reserve(counts[0]);
+				for (long i = 0; i < counts[0]; i++)
+				{
+					variableData->push_back(buffer[i]);
+				}
+
+				delete[] buffer;
+			} else if (dataType == CDF_DOUBLE)
+			{
+				double * buffer = new double[counts[0]];
+				CDFhyperGetzVarData(current_file_id, variable, recStart, recCount, recInterval, dimIndices, counts,
+						dimIntervals, buffer);
+				//add data to vector type, and delete original array
+				variableData->reserve(counts[0]);
+				for (long i = 0; i < counts[0]; i++)
+				{
+					variableData->push_back((float)buffer[i]);
+				}
+
+				delete[] buffer;
+			}
+			//std::cout << "finished reading " << variable << std::endl;
+			//std::cout << "size of variable: " << variableData.size() << std::endl;
+			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+		}
 		return variableData;
 	}
 
@@ -317,31 +415,54 @@ namespace ccmc
 	 */
 	std::vector<int>* CDFFileReader::getVariableInt(const std::string& variable)
 	{
-		//std::cout << "reading " << variable << std::endl;
-		//get variable number
-		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
-
-		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
-		long dimIndices[] = { 0 };
-		long dimIntervals[] = { 1 };
-
-		long count[1];
-		//get dim sizes
-		CDFgetzVarDimSizes(current_file_id, variableNum, count);
-		int * buffer = new int[count[0]];
-		CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, count,
-				dimIntervals, buffer);
-		//add data to vector type, and delete original array
-		std::vector<int> * variableData = new std::vector<int>();
-		variableData->reserve(count[0]);
-		for (int i = 0; i < count[0]; i++)
+		long counts[1];
+		std::vector<int>* variableData = new std::vector<int>();
+		if (this->doesVariableExist(variable))
 		{
-			variableData->push_back(buffer[i]);
-		}
+			//std::cout << "reading " << variable << std::endl;
+			//get variable number
+			long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 
-		delete[] buffer;
+			long recStart = 0L;
+			long recCount = 1L;
+			long recInterval = 1L;
+			long dimIndices[] = { 0 };
+			long dimIntervals[] = { 1 };
+
+
+			//get dim sizes
+			CDFgetzVarDimSizes(current_file_id, variableNum, counts);
+//			std::cerr << "("  << ") count: " << (int)counts[0] << std::endl;
+//			std::cerr << "(" << variable << ") variableNum: " << variableNum << std::endl;
+//			std::cout << BOOST_CURRENT_FUNCTION << ": current_file_id: " << current_file_id << std::endl;
+
+			if (counts[0] > 0)
+			{
+				try
+				{
+					int * buffer = new int[counts[0]];
+					CDFhyperGetzVarData(current_file_id, variableNum, recStart, recCount, recInterval, dimIndices, counts,
+							dimIntervals, buffer);
+					//add data to vector type, and delete original array
+					variableData->reserve(counts[0]);
+					for (int i = 0; i < counts[0]; i++)
+					{
+						variableData->push_back(buffer[i]);
+					}
+					delete[] buffer;
+
+				}
+				catch (std::bad_alloc& ba)
+				{
+					std::cerr << "bad_alloc caught: " << ba.what() << std::endl;
+				}
+
+
+			}
+		} else
+		{
+			std::cout << "variable: " << variable << " does not exist!!!!" << std::endl;
+		}
 		//std::cout << "finished reading " << variable << std::endl;
 		return variableData;
 	}
@@ -641,6 +762,25 @@ namespace ccmc
 	}
 
 	/**
+	 * @param attribute
+	 * @return
+	 */
+	bool CDFFileReader::doesAttributeExist(long attribute)
+	{
+		bool exists = false;
+		/*CDFstatus status = CDFconfirmAttrExistence(current_file_id, (char*) attribute.c_str());
+		if (status == CDF_OK)
+			exists = true;
+*/
+		boost::unordered_map<long, Attribute>::iterator iter = gAttributeByID.find(attribute);
+		if (iter != gAttributeByID.end())
+			return true;
+		else
+			return false;
+
+	}
+
+	/**
 	 * Returns the variable ID as a long. Using the variable ID wherever possible is significantly faster than the
 	 * equivalent methods accepting the variable string.
 	 * @return Status of the file operation.
@@ -716,6 +856,31 @@ namespace ccmc
 	}
 
 	/**
+	 * @param variable
+	 * @return
+	 */
+	bool CDFFileReader::doesVariableExist(long variable)
+	{
+
+		//first, check the current variableIDs map.  fetching the variableID from the file is expensive
+		boost::unordered_map<long, std::string>::iterator iter = variableNames.find(variable);
+		if (iter != variableNames.end())
+			return true;
+
+		/*long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+		//std::cout << "variableNumber: " << variableNumber << std::endl;
+		if (variableNumber >= 0)
+		{
+			variableIDs[variable] = variableNumber;
+			variableNames[variableNumber] = variable;
+			return true;
+		}
+		 */
+
+		return false;
+	}
+
+	/**
 	 * Returns the current filename.
 	 * @return The current filename.
 	 */
@@ -758,7 +923,7 @@ namespace ccmc
 	void CDFFileReader::initializeVariableIDs()
 	{
 		int numVariables = this->getNumberOfVariables();
-		//cout << "numVariables: " << numVariables << endl;
+//		std::cout << "numVariables: " << numVariables << std::endl;
 		char variableName[512];
 		for (int i = 0; i < numVariables; i++)
 		{

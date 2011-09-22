@@ -34,6 +34,8 @@ namespace ccmc
 	{
 
 		private:
+			std::string current_filename;
+			CDFid current_file_id;
 
 		public:
 
@@ -61,13 +63,15 @@ namespace ccmc
 			std::vector<std::string> getVariableAttributeNames();
 			bool doesAttributeExist(const std::string& attribute);
 			bool doesVariableExist(const std::string& variable);
+			bool doesAttributeExist(long attribute);
+			bool doesVariableExist(long variable);
 			const std::string& getCurrentFilename();
 			virtual ~CDFFileReader();
 
 
 		protected:
-			std::string current_filename;
-			CDFid current_file_id;
+
+
 			long closeFile();
 			long openFile(const std::string& filename);
 			void initializeGlobalAttributes();
