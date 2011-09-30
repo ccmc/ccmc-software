@@ -1,3 +1,9 @@
+2011 Sep 21   David Berrios
+-------------
+  kameleon-plus-0.1.26
+  - Updated the Adapt3D code to support the new file format (removal of unkno).
+  - Updated CDFFileReader to handle floats stored as doubles in CDF file. Still just casts them to floats, but doesn't seg fault.
+  
 2011 Sep 15   David Berrios
 -------------
   kameleon-plus-0.1.25
