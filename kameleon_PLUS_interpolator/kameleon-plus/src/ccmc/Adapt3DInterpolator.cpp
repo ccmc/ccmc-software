@@ -118,156 +118,151 @@ namespace ccmc
 		//this->last_element_found = -1;
 		if (!point_within_grid(c0,c1,c2))
 			return this->missingValue;
-		   float rsun_in_meters = 7.0e8;
+		float rsun_in_meters = 7.0e8;
 
-		   float coord1[3];
-		   float unkno_local[9];
+		float coord1[3];
+		float unkno_local[9];
 
-		   long counts[1] = { 0 };
-		   long intervals[1] = { 1 };
+		long counts[1] = { 0 };
+		long intervals[1] = { 1 };
 
-		   float interpolated_value;
-		   float X = c0, Y= c1, Z= c2;
-
-
-
-
-
-
-		   int     array_size;
-		   int     istatus;
-		   int     ielem;
-
-		   //char variable_name0[] = "intmat";
-		   //char variable_name1[] = "coord";
-
-		   /**
-		    * TODO: figure out what to do about the dc0,dc1,dc2 values
-		    */
-		   dc0=dc1=dc2=.02f;
+		float interpolated_value;
+		float X = c0, Y= c1, Z= c2;
 
 
 
 
 
-		   /** lets see if required variables are in memory **/
+
+		int     array_size;
+		int     istatus;
+		int     ielem;
+
+		//char variable_name0[] = "intmat";
+		//char variable_name1[] = "coord";
+
+		/**
+		* TODO: figure out what to do about the dc0,dc1,dc2 values
+		*/
+		dc0=dc1=dc2=.02f;
 
 
-		   /****     since the cdf data is stored in r[meters], radians, radians or r, phi theta
-		    *         but we are accepting input as r[AU], lon, lat - we must do some coordiante transformations
-		    */
 
-		   /* convert rsun to meters */
+
+
+		/** lets see if required variables are in memory **/
+
+
+		/****     since the cdf data is stored in r[meters], radians, radians or r, phi theta
+		*         but we are accepting input as r[AU], lon, lat - we must do some coordiante transformations
+		*/
+
+		/* convert rsun to meters */
 		/*
 		   coord1[0] = X * rsun_in_meters;
 		   coord1[1] = Y * rsun_in_meters;
 		   coord1[2] = Z * rsun_in_meters;
 		*/
-		   coord1[0] = X;
-		   coord1[1] = Y;
-		   coord1[2] = Z;
+		coord1[0] = X;
+		coord1[1] = Y;
+		coord1[2] = Z;
 
 
 
-		   counts[0] = 0; /*reset values after once through */
-		   intervals[0] = 1;
+		counts[0] = 0; /*reset values after once through */
+		intervals[0] = 1;
 
 
-		   /* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
-		   /* also select appropriate position arrays x, y , z for bx1, by1,bz1 */
+		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
+		/* also select appropriate position arrays x, y , z for bx1, by1,bz1 */
 
-		   /* set default grid arrays and change if neccessary */
-
-
-		   //char *filename="adapt3d_kameleon_soln.cdf";
+		/* set default grid arrays and change if neccessary */
 
 
+		//char *filename="adapt3d_kameleon_soln.cdf";
 
 
-		   if ( variable == ccmc::strings::variables::bx_ || variable == "b1")
-		   {
-		      //unkno_index=5;
-		   }
-		   else if ( variable == "by" || variable == "b2")
-		   {
-		     // unkno_index=6;
-		   }
-		   else if ( variable == "bz" || variable == "b3")
-		   {
-		     // unkno_index=7;
-		   }
-		   else if ( variable == "ux" || variable == "u1")
-		   {
-		      //unkno_index=1;
-		   }
-		   else if ( variable == "uy" || variable == "u2")
-		   {
-		      //unkno_index=2;
-		   }
-		   else if ( variable == "uz" || variable == "u3")
-		   {
-		      //unkno_index=3;
-		   }
-		   else if (variable == ccmc::strings::variables::rho_)
-		   {
-		      //unkno_index=0;
-		   }
-		   else if (variable == ccmc::strings::variables::p_ || variable == ccmc::strings::variables::e_)
-		   {
-		      //unkno_index=4;
-		   }
-		   else if ( variable == ccmc::strings::variables::temp_ )
-		   {
-		      //unkno_index=8;
-		   }
-		   else
-		   {
-		      printf(
-		            "ERROR:\tcould not find cdf variable number for %s\n",
-		            variable.c_str());
-		      printf(
-		            "Valid Variable Names for ADAPT3D :\n bx OR b1 \n by OR b2 \n bz OR b3\n ux OR u1 \n uy OR u2 \n uz OR u3 \n p OR e \n OR temp\n----------------------------------------------\n"
-		            );
-		      return 0;
-		   }
+
+
+		if ( variable == ccmc::strings::variables::bx_ || variable == "b1")
+		{
+		  //unkno_index=5;
+		}
+		else if ( variable == "by" || variable == "b2")
+		{
+		 // unkno_index=6;
+		}
+		else if ( variable == "bz" || variable == "b3")
+		{
+		 // unkno_index=7;
+		}
+		else if ( variable == "ux" || variable == "u1")
+		{
+		  //unkno_index=1;
+		}
+		else if ( variable == "uy" || variable == "u2")
+		{
+		  //unkno_index=2;
+		}
+		else if ( variable == "uz" || variable == "u3")
+		{
+		  //unkno_index=3;
+		}
+		else if (variable == ccmc::strings::variables::rho_)
+		{
+		  //unkno_index=0;
+		}
+		else if (variable == ccmc::strings::variables::p_ || variable == ccmc::strings::variables::e_)
+		{
+		  //unkno_index=4;
+		}
+		else if ( variable == ccmc::strings::variables::temp_ )
+		{
+		  //unkno_index=8;
+		}
+		else
+		{
+		  printf(
+				"ERROR:\tcould not find cdf variable number for %s\n",
+				variable.c_str());
+		  printf(
+				"Valid Variable Names for ADAPT3D :\n bx OR b1 \n by OR b2 \n bz OR b3\n ux OR u1 \n uy OR u2 \n uz OR u3 \n p OR e \n OR temp\n----------------------------------------------\n"
+				);
+		  return 0;
+		}
 
 
 			/* locate the grid element that contains the point coord1 */
-
-		       ielem = smartSearch(coord1);
+		ielem = smartSearch(coord1);
 #ifdef DEBUG
-		       std::cerr << "ielem: " << ielem << " for position " << X << "," << Y << "," << Z << std::endl;
+	   std::cerr << "ielem: " << ielem << " for position " << X << "," << Y << "," << Z << std::endl;
 #endif
-		       interpolated_value=this->missingValue;     /* test value */
+		interpolated_value=this->missingValue;     /* test value */
 
-		       if(ielem > -1) {
-
-		#ifdef DEBUG
-		       printf("interpolate_adapt3d_cdf: unkno_local %e %e %e  %e %e %e  %e %e %e \n", unkno_local[0],unkno_local[1],unkno_local[2],unkno_local[3],unkno_local[4],
-		                          unkno_local[5],unkno_local[6],unkno_local[7],unkno_local[8]);
-		#endif
-		         interpolated_value = interpolate_adapt3d_solution(coord1, ielem, variable);
-		         last_element_found = ielem;
-		       } else {
-		         //printf("Failed to find point in grid\n");
-		         last_element_found = -1;
-		       }
+		if(ielem > -1)
+		{
+		   interpolated_value = interpolate_adapt3d_solution(coord1, ielem, variable);
+		   last_element_found = ielem;
+		} else {
+			//printf("Failed to find point in grid\n");
+			last_element_found = -1;
+		}
 
 
-		      /*  return interpolated_value  */
+		/*  return interpolated_value  */
 
-		      if (interpolated_value >= MIN_RANGE && interpolated_value <= MAX_RANGE && interpolated_value != this->missingValue)
-		      {
+		if (interpolated_value >= MIN_RANGE && interpolated_value <= MAX_RANGE && interpolated_value != this->missingValue)
+		{
 
-		    	  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << (float)interpolated_value << std::endl;
-		    	  return (float)interpolated_value;
+		  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << (float)interpolated_value << std::endl;
+		  return (float)interpolated_value;
 
-		      }
-		      else
-		      {
-		    	  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << this->missingValue << std::endl;
-		    	  return this->missingValue;
-		      }
+		}
+		else
+		{
+		  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << this->missingValue << std::endl;
+		  return this->missingValue;
+		}
 	}
 
 
@@ -348,19 +343,16 @@ namespace ccmc
 				! Compute the distances of the new point from each of the nodes of the
 				! starting_element.
 				*/
+				float a,b,c;
 				for (jnode=0; jnode<nnode; jnode++)
 				{
 					mask[jnode]=1;
 					inode = (*intmat)[ index_2d_to_1d(last_element_found,jnode,nelem,4) ] -1 ;
-					distance[jnode] =
-							((*coord)[ index_2d_to_1d(0,inode,0,npoin) ] -search_point_coords[0]) *
-							((*coord)[ index_2d_to_1d(0,inode,0,npoin) ] -search_point_coords[0])
-							+
-							((*coord)[ index_2d_to_1d(1,inode,0,npoin) ] -search_point_coords[1]) *
-							((*coord)[ index_2d_to_1d(1,inode,0,npoin) ] -search_point_coords[1])
-							+
-							((*coord)[ index_2d_to_1d(2,inode,0,npoin) ] -search_point_coords[2]) *
-							((*coord)[ index_2d_to_1d(2,inode,0,npoin) ] -search_point_coords[2]);
+					a = ((*coord)[ index_2d_to_1d(0,inode,0,npoin) ] -search_point_coords[0]);
+					b = ((*coord)[ index_2d_to_1d(1,inode,0,npoin) ] -search_point_coords[1]);
+					c = ((*coord)[ index_2d_to_1d(2,inode,0,npoin) ] -search_point_coords[2]);
+
+					distance[jnode] = a*a + b*b + c*c;
 				}
 
 				/*
@@ -982,6 +974,10 @@ namespace ccmc
     #endif
 
            const std::vector<float> * vData = modelReader->getVariableFromMap(variable);
+           if (vData == NULL || vData->size() == 0)
+           {
+        	   return this->missingValue;
+           }
           /* for ( iv=0; iv<9; iv++) {
 
              unkno_local[iv] = 0.;
