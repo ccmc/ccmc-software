@@ -2,7 +2,7 @@
 #include <cmath>
 #include <sstream>
 #include <ostream>
-#include "constants.h"
+#include "Constants.h"
 #include <boost/lexical_cast.hpp>
 
 namespace ccmc
