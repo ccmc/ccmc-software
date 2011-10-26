@@ -3,7 +3,7 @@
 
 AC_PREREQ(2.59)
 AC_INIT([kameleon-plus], [0.1.26], [David.H.Berrios@nasa.gov], [kameleon-plus])
-AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip dist-xz])
+AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
@@ -19,6 +19,7 @@ AM_PROG_CC_C_O
 AM_PATH_PYTHON([2.5],,[:])
 AX_BOOST_BASE([1.40])
 AX_BOOST_PROGRAM_OPTIONS
+AX_BOOST_THREAD
 
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
