@@ -11,6 +11,7 @@
 #include "MathHelper.h"
 #include <stdio.h>
 #include <iostream>
+#include <boost/thread.hpp>
 #define MIN_RANGE    -1e9
 #define MAX_RANGE    +1e9
 #define NNODE_ADAPT3D 4
@@ -127,7 +128,7 @@ namespace ccmc
 		long intervals[1] = { 1 };
 
 		float interpolated_value;
-		float X = c0, Y= c1, Z= c2;
+
 
 
 
@@ -163,9 +164,7 @@ namespace ccmc
 		   coord1[1] = Y * rsun_in_meters;
 		   coord1[2] = Z * rsun_in_meters;
 		*/
-		coord1[0] = X;
-		coord1[1] = Y;
-		coord1[2] = Z;
+
 
 
 
@@ -233,7 +232,7 @@ namespace ccmc
 
 
 			/* locate the grid element that contains the point coord1 */
-		ielem = smartSearch(coord1);
+		ielem = findElement(c0,c1,c2, 0);
 #ifdef DEBUG
 	   std::cerr << "ielem: " << ielem << " for position " << X << "," << Y << "," << Z << std::endl;
 #endif
@@ -271,7 +270,7 @@ namespace ccmc
 
 
 
-	int Adapt3DInterpolator::smartSearch(float * search_point_coords)
+	int Adapt3DInterpolator::smartSearch(const float& c0, const float& c1, const float& c2)
 	{
 //#define DEBUGS
 		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
@@ -301,11 +300,11 @@ namespace ccmc
 		ifound = -1;
 		if( last_element_found >= 0 )
 		{
-			#ifdef DEBUGS
+#ifdef DEBUGS
 			printf("Checkin if still in last element \n");
-			#endif
+#endif
 
-			ifound = chkineln( search_point_coords, last_element_found ,shapex);
+			ifound = chkineln(c0,c1,c2, last_element_found ,shapex);
 			nelems_checked = 1;
 		}
 
@@ -333,9 +332,10 @@ namespace ccmc
 
 
 				#ifdef DEBUGS
-				printf("Point is not still in starting element! \n");
+				std::cout << "Point " << c0 << "," << c1 << "," << c2 << " is not still in starting element! \n";
 				#endif
 
+//				std::cout << "starting step b" << std::endl;
 				/*
 				!
 				! Step B
@@ -347,14 +347,15 @@ namespace ccmc
 				for (jnode=0; jnode<nnode; jnode++)
 				{
 					mask[jnode]=1;
-					inode = (*intmat)[ index_2d_to_1d(last_element_found,jnode,nelem,4) ] -1 ;
-					a = ((*coord)[ index_2d_to_1d(0,inode,0,npoin) ] -search_point_coords[0]);
-					b = ((*coord)[ index_2d_to_1d(1,inode,0,npoin) ] -search_point_coords[1]);
-					c = ((*coord)[ index_2d_to_1d(2,inode,0,npoin) ] -search_point_coords[2]);
+					inode = intmat->at(index_2d_to_1d(last_element_found,jnode,nelem,4)) -1 ;
+					a = (coord->at(index_2d_to_1d(0,inode,0,npoin)) -c0);
+					b = (coord->at(index_2d_to_1d(1,inode,0,npoin)) -c1);
+					c = (coord->at(index_2d_to_1d(2,inode,0,npoin)) -c2);
 
 					distance[jnode] = a*a + b*b + c*c;
 				}
 
+//				std::cout << "starting step c" << std::endl;
 				/*
 				!
 				! Step C
@@ -384,20 +385,21 @@ namespace ccmc
 					exit(EXIT_FAILURE);
 				}
 
-
+//				std::cout << "starting step d" << std::endl;
 				/*
 				! Step D
 				!
 				! Begin search through the element lists for these nodes
 				*/
 
-				i_order = -1;
+				i_order = 0;
 				/*++++*/
 				while( (ifound != 0) && (i_order < nnode ) )
 				{
 					/*++++*/
 
-					i_order += 1;
+
+//					std::cout << "nnode: " << nnode << " i_order: " << i_order << std::endl;
 					next_node = node_order[i_order];
 
 
@@ -407,29 +409,29 @@ namespace ccmc
 					std::cerr << "last_element_found: " << last_element_found << " next_node: " << next_node << std::endl;
 					std::cerr << "intmat.size(): " << intmat->size() << std::endl;
 #endif
-					inode = (*intmat)[ index_2d_to_1d(last_element_found,next_node,nelem,4) ] -1 ;
+					inode = intmat->at(index_2d_to_1d(last_element_found,next_node,nelem,4)) -1 ;
 
 					#ifdef DEBUGS
 					printf("node list for this element is %i %i %i %i \n",
-					(*intmat)[ index_2d_to_1d(last_element_found,0,nelem,4) ]-1,
-					(*intmat)[ index_2d_to_1d(last_element_found,1,nelem,4) ]-1,
-					(*intmat)[ index_2d_to_1d(last_element_found,2,nelem,4) ]-1,
-					(*intmat)[ index_2d_to_1d(last_element_found,3,nelem,4) ]-1);
+					intmat->at(index_2d_to_1d(last_element_found,0,nelem,4))-1,
+					intmat->at(index_2d_to_1d(last_element_found,1,nelem,4))-1,
+					intmat->at(index_2d_to_1d(last_element_found,2,nelem,4))-1,
+					intmat->at(index_2d_to_1d(last_element_found,3,nelem,4))-1);
 					printf("First node in list is %i \n",inode);
 					#endif
 
 
 
-					k_node    = this->smartSearchValues->esup2[inode]   +1 ;
-					k_node_hi = this->smartSearchValues->esup2[inode+1] +1 ;
+					k_node    = this->smartSearchValues->esup2->at(inode)   +1 ;
+					k_node_hi = this->smartSearchValues->esup2->at(inode+1) +1 ;
 #ifdef DEBUGS
-					std::cerr << "inode: " << inode << " k_node: " << k_node << " sizeof(esup1) " << (nelem*4) << std::endl;
+					std::cerr << "inode: " << inode << " k_node: " << k_node << " k_node_hi: " << k_node_hi << " sizeof(esup1) " << (nelem*4) << std::endl;
 #endif
-					jelem =  this->smartSearchValues->esup1[k_node];
+					jelem =  this->smartSearchValues->esup1->at(k_node);
 					while( (ifound != 0) && (k_node < k_node_hi) )
 					{
-
-						ifound = chkineln( search_point_coords, jelem ,shapex);
+//std::cout << "search_point_coords: " << c0 << " " << c1 << " " << c2 << std::endl;
+						ifound = chkineln( c0,c1,c2, jelem ,shapex);
 
 						nelems_checked = nelems_checked + 1;
 						if(ifound != 0)
@@ -438,7 +440,7 @@ namespace ccmc
 							printf("Not found in elem %i \n",jelem);
 							#endif
 							k_node += 1;
-							jelem =  this->smartSearchValues->esup1[k_node];
+							jelem =  this->smartSearchValues->esup1->at(k_node);
 							#ifdef DEBUGS
 							printf("Next element to check is %i %i %i \n",jelem,i_node,i_order);
 							#endif
@@ -456,9 +458,10 @@ namespace ccmc
 						#endif
 
 					}    /* while */
-
+//					std::cout << "after checking elements" << std::endl;
 
 					/*++++*/
+					i_order++;
 				}     /* while */
 				/*++++*/
 
@@ -467,33 +470,39 @@ namespace ccmc
 			/*--------*/
 		}      /*   if( ifound .eq. 0)  */
 		/*--------*/
+
+//		std::cout << "after search" << std::endl;
 		if( ifound != 0)
 		{
-			#ifdef DEBUGS
-			printf("Smart search failed! \n");
-			printf("search_point_coords %e %e %e \n",search_point_coords[0]
-				  ,search_point_coords[1] ,search_point_coords[2]);
-			#endif
+		//	#ifdef DEBUGS
+//			std::cout << "Smart search failed!" << std::endl;
+//			std::cout << " search_point_coords: " << std::endl;
+//			std::cout << c0 << " " << c1 << " " << c2 << std::endl;
+			//#endif
 
 			/* Check to see if the point is still within the grid bounds */
-			try_grid_search = point_within_grid(search_point_coords);
+			try_grid_search = point_within_grid(c0,c1,c2);
 			#ifdef DEBUGS
 			std::cerr << "is point inside grid: " << try_grid_search << std::endl;
 			#endif
 			kelem=-1;
 			if(try_grid_search)
 			{
-				#ifdef DEBUGS
-				radius=sqrt( search_point_coords[0]*search_point_coords[0]+
-					 search_point_coords[1]*search_point_coords[1]+
-					 search_point_coords[2]*search_point_coords[2] );
-				printf("Using grid based search \n");
-				printf("search_point_coords %e %e %e \n",search_point_coords[0]
-					  ,search_point_coords[1] ,search_point_coords[2]);
-				printf("radius %e \n",radius);
-				#endif
-				clear_cache=1;
-				kelem=findElement(search_point_coords,clear_cache);
+//				#ifdef DEBUGS
+//				radius=sqrt( search_point_coords[0]*search_point_coords[0]+
+//					 search_point_coords[1]*search_point_coords[1]+
+//					 search_point_coords[2]*search_point_coords[2] );
+//				printf("Using grid based search \n");
+//				printf("search_point_coords %e %e %e \n",search_point_coords[0]
+//					  ,search_point_coords[1] ,search_point_coords[2]);
+//				printf("radius %e \n",radius);
+//				#endif
+//				clear_cache=1;
+//				kelem=findElement(c0,c1,c2,clear_cache);
+			} else
+			{
+				std::cout << "uh oh." << std::endl;
+				exit(1);
 			}
 			#ifdef DEBUGS
 			if(kelem > 0)
@@ -510,7 +519,7 @@ namespace ccmc
 
 	}
 
-	int Adapt3DInterpolator::findElement(float * cintp, int clear_cache)
+	int Adapt3DInterpolator::findElement(const float& c0, const float& c1, const float& c2, int clear_cache)
 	{
 
 	       int                 ielem,kelem;
@@ -533,7 +542,7 @@ namespace ccmc
 	#ifdef DEBUG
 	       printf("find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin) ],coord[ index_2d_to_1d(0,1,npoin) ],coord[ index_2d_to_1d(0,2,npoin) ]);
 	#endif
-	           kelem = smartSearch(cintp);
+	           kelem = smartSearch(c0,c1,c2);
 	         }
 
 	/* If there is no starting guess for the element number in last_element_found
@@ -543,9 +552,9 @@ namespace ccmc
 	        if(kelem == -1) {
 
 
-	         x = cintp[0];
-	         y = cintp[1];
-	         z = cintp[2];
+	         x = c0;
+	         y = c1;
+	         z = c2;
 	#ifdef DEBUG
 	         printf("Searching for point x y z = %e %e %e\n",x,y,z);
 	#endif
@@ -570,7 +579,7 @@ namespace ccmc
 	         while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) )
 	         {
 	           jelem=this->smartSearchValues->indx[indx1];
-	           ifound = chkineln(cintp ,jelem ,shapex);
+	           ifound = chkineln(c0,c1,c2 ,jelem ,shapex);
 	           if (ifound == 0) ielem=indx1;
 	           indx1=indx1+1;
 	         }
@@ -598,7 +607,7 @@ namespace ccmc
 	               ifound = 1;
 	               while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) ) {
 	                 jelem=this->smartSearchValues->indx[indx1];
-	                 ifound = chkineln(cintp ,jelem ,shapex);
+	                 ifound = chkineln(c0,c1,c2 ,jelem ,shapex);
 	                 if (ifound == 0 ) {
 	                   ielem=indx1;
 	                   just_found=0;
@@ -661,35 +670,35 @@ namespace ccmc
 	      radius=std::sqrt(c0*c0+c1*c1+c2*c2);
 	      if(c0 < this->smartSearchValues->xl_sg)
 	      {
-	    	  within_bounds = 0;
+	    	  return 0;
 
 	    	  //std::cerr << "scoord[0]: " << scoord[0] << " < " << this->smartSearchValues->xl_sg << std::endl;
 	      } else if(c0 > this->smartSearchValues->xr_sg)
 	      {
-	    	  within_bounds = 0;
+	    	  return 0;
 	    	  //std::cerr << "scoord[0]: " << scoord[0] << " > " << this->smartSearchValues->xr_sg << std::endl;
 	      } else if (c1 < this->smartSearchValues->yl_sg)
 	      {
-	    	  within_bounds = 0;
+	    	  return 0;
 	    	  //std::cerr << "scoord[1]: " << scoord[1] << " < " << this->smartSearchValues->yl_sg << std::endl;
 	      } else if (c1 > this->smartSearchValues->yr_sg)
 	      {
-	    	  within_bounds = 0;
+	    	  return 0;
 	    	  //std::cerr << "scoord[1]: " << scoord[1] << " > " << this->smartSearchValues->yr_sg << std::endl;
 
 	      } else if(c2 < this->smartSearchValues->zl_sg)
 	      {
-	    	  within_bounds = 0;
+	    	  return 0;
 	    	  //std::cerr << "scoord[2]: " << scoord[2] << " < " << this->smartSearchValues->zl_sg << std::endl;
 
 	      } else if(c2 > this->smartSearchValues->zr_sg)
 	      {
-	    	  within_bounds = 0;
+	    	  return 0;
 	    	  //std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
 
 	      }
-	      if(radius < INNER_RADIUS) within_bounds = 0;
-	      if(radius > OUTER_RADIUS) within_bounds = 0;
+	      if(radius < INNER_RADIUS) return 0;
+	      if(radius > OUTER_RADIUS) return 0;
 
 
 	      return within_bounds;
@@ -697,7 +706,7 @@ namespace ccmc
 
 	}
 
-	int Adapt3DInterpolator::point_within_grid( float * scoord )
+	int Adapt3DInterpolator::point_within_grid( const float * scoord )
 	{
 		/*
 		!
@@ -749,8 +758,18 @@ namespace ccmc
 
 	}
 
-    int Adapt3DInterpolator::chkineln( float * cintp ,int ielem , float * shapex)
+	void Adapt3DInterpolator::calculation1(const float& a, const float& b, const float& c, const float& d, const float& e, float& result)
 	{
+		result = a*(b*c-d*e);
+
+	}
+
+
+
+    int Adapt3DInterpolator::chkineln( const float& c0, const float& c1, const float& c2, int ielem , float * shapex)
+	{
+
+    	int numThreads = boost::thread::hardware_concurrency();
 //#define DEBUG
 	/*
 	!...  mesh arrays
@@ -786,33 +805,44 @@ namespace ccmc
 	!...  find the local coordinates
 	!
 	*/
-
-		ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ]-1;
-		ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ]-1;
-		ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ]-1;
-		ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
+		ipa = intmat->at(index_2d_to_1d(ielem,0,nelem,4))-1;
+		ipb = intmat->at(index_2d_to_1d(ielem,1,nelem,4))-1;
+		ipc = intmat->at(index_2d_to_1d(ielem,2,nelem,4))-1;
+		ipd = intmat->at(index_2d_to_1d(ielem,3,nelem,4))-1;
 
 		//std::cerr << "npoin: " << npoin << " ndimn: " << ndimn << " ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
-		xa  = (*coord)[ index_2d_to_1d(0,ipa,0,npoin) ];
-		ya  = (*coord)[ index_2d_to_1d(1,ipa,0,npoin) ];
-		za  = (*coord)[ index_2d_to_1d(2,ipa,0,npoin) ];
-		xba = (*coord)[ index_2d_to_1d(0,ipb,0,npoin) ] - xa;
-		yba = (*coord)[ index_2d_to_1d(1,ipb,0,npoin) ] - ya;
-		zba = (*coord)[ index_2d_to_1d(2,ipb,0,npoin) ] - za;
-		xca = (*coord)[ index_2d_to_1d(0,ipc,0,npoin) ] - xa;
-		yca = (*coord)[ index_2d_to_1d(1,ipc,0,npoin) ] - ya;
-		zca = (*coord)[ index_2d_to_1d(2,ipc,0,npoin) ] - za;
-		xda = (*coord)[ index_2d_to_1d(0,ipd,0,npoin) ] - xa;
-		yda = (*coord)[ index_2d_to_1d(1,ipd,0,npoin) ] - ya;
-		zda = (*coord)[ index_2d_to_1d(2,ipd,0,npoin) ] - za;
+		xa  = coord->at(index_2d_to_1d(0,ipa,0,npoin));
+		ya  = coord->at(index_2d_to_1d(1,ipa,0,npoin));
+		za  = coord->at(index_2d_to_1d(2,ipa,0,npoin));
+		xba = coord->at(index_2d_to_1d(0,ipb,0,npoin)) - xa;
+		yba = coord->at(index_2d_to_1d(1,ipb,0,npoin)) - ya;
+		zba = coord->at(index_2d_to_1d(2,ipb,0,npoin)) - za;
+		xca = coord->at(index_2d_to_1d(0,ipc,0,npoin)) - xa;
+		yca = coord->at(index_2d_to_1d(1,ipc,0,npoin)) - ya;
+		zca = coord->at(index_2d_to_1d(2,ipc,0,npoin)) - za;
+		xda = coord->at(index_2d_to_1d(0,ipd,0,npoin)) - xa;
+		yda = coord->at(index_2d_to_1d(1,ipd,0,npoin)) - ya;
+		zda = coord->at(index_2d_to_1d(2,ipd,0,npoin)) - za;
 
-		deter = xba*(yca*zda-zca*yda) - yba*(xca*zda-zca*xda) + zba*(xca*yda-yca*xda);
+		float t1 = 0.f;
+		float t2 = 0.f;
+		float t3 = 0.f;
+		boost::thread thread1(&Adapt3DInterpolator::calculation1,xba,yca,zda,zca,yda, t1);
+		boost::thread thread2(&Adapt3DInterpolator::calculation1,yba,xca,zda,zca,xda, t2);
+		boost::thread thread3(&Adapt3DInterpolator::calculation1,zba,xca,yda,yca,xda, t3);
+		thread1.join();
+		thread2.join();
+		thread3.join();
+
+		//float deter = xba*(yca*zda-zca*yda) - yba*(xca*zda-zca*xda) + zba*(xca*yda-yca*xda);
+		deter = t1 - t2 + t3;
+
 
 	#ifdef DEBUG
 //		std::cerr << "xa: " << xa << " ya: " << ya << " za: " << za << " xba: " << xba;
 //		std::cerr << " yba: " << yba << " zba: " << zba << " xca: " << xca << " yca: " << yca;
 //		std::cerr << " zca: " << zca << " xda: " << xda << " yda: " << yda << " zda: " << zda << std::endl;
-		  printf("coord[ipa]= %d %e %e %e \n",ipa,(*coord)[ index_2d_to_1d(0,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipa,0,npoin) ]);
+		  printf("coord[ipa]= %d %e %e %e \n",ipa,coord->at(index_2d_to_1d(0,ipa,0,npoin)),coord->at(index_2d_to_1d(1,ipa,0,npoin)),coord->at(index_2d_to_1d(2,ipa,0,npoin)));
 		  std::cerr << "deter= " << deter << std::endl;
 	#endif
 	/*       detin = c10/deter */
@@ -828,9 +858,9 @@ namespace ccmc
 		rin32 =-detin*(xba*zca-zba*xca);
 		rin33 = detin*(xba*yca-yba*xca);
 
-		xpa = cintp[0]-xa;
-		ypa = cintp[1]-ya;
-		zpa = cintp[2]-za;
+		xpa = c0-xa;
+		ypa = c1-ya;
+		zpa = c2-za;
 	/*
 	!...  local coordinates & shape-function values
 	*/
@@ -850,6 +880,7 @@ namespace ccmc
 	!...  max/min of these shape-functions
 	!
 	*/
+		//float t = shapex[0] + shapex[1] + shapex[2] + shapex[3];
 		shmin = ccmc::Math::ffindmin(shapex,4);
 		shmax = ccmc::Math::ffindmax(shapex,4);
 	/*
@@ -874,10 +905,10 @@ namespace ccmc
 		  printf("shmax= %e \n",shmax);
 		  printf("ierro= %d \n",ierro);
 		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
-		  printf("node 1 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipa,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipa,0,npoin) ],ipa);
-		  printf("node 2 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipb,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipb,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipb,0,npoin) ],ipb);
-		  printf("node 3 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipc,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipc,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipc,0,npoin) ],ipc);
-		  printf("node 4 = %e %e %e %d \n",(*coord)[ index_2d_to_1d(0,ipd,0,npoin) ],(*coord)[ index_2d_to_1d(1,ipd,0,npoin) ],(*coord)[ index_2d_to_1d(2,ipd,0,npoin) ],ipd);
+		  printf("node 1 = %e %e %e %d \n",coord->at(index_2d_to_1d(0,ipa,0,npoin)),coord->at(index_2d_to_1d(1,ipa,0,npoin)),coord->at(index_2d_to_1d(2,ipa,0,npoin)),ipa);
+		  printf("node 2 = %e %e %e %d \n",coord->at(index_2d_to_1d(0,ipb,0,npoin)),coord->at(index_2d_to_1d(1,ipb,0,npoin)),coord->at(index_2d_to_1d(2,ipb,0,npoin)),ipb);
+		  printf("node 3 = %e %e %e %d \n",coord->at(index_2d_to_1d(0,ipc,0,npoin)),coord->at(index_2d_to_1d(1,ipc,0,npoin)),coord->at(index_2d_to_1d(2,ipc,0,npoin)),ipc);
+		  printf("node 4 = %e %e %e %d \n",coord->at(index_2d_to_1d(0,ipd,0,npoin)),coord->at(index_2d_to_1d(1,ipd,0,npoin)),coord->at(index_2d_to_1d(2,ipd,0,npoin)),ipd);
 		 }
 	#endif
 
@@ -907,23 +938,22 @@ namespace ccmc
            float f1,f2,f3,f4;
            float x,y,z;
 
-
-           ipa = (*intmat)[ index_2d_to_1d(ielem,0,nelem,4) ]-1;
-           ipb = (*intmat)[ index_2d_to_1d(ielem,1,nelem,4) ]-1;
-           ipc = (*intmat)[ index_2d_to_1d(ielem,2,nelem,4) ]-1;
-           ipd = (*intmat)[ index_2d_to_1d(ielem,3,nelem,4) ]-1;
-           x1 = (*coord)[ index_2d_to_1d(0,ipa,0,npoin) ];
-           y1 = (*coord)[ index_2d_to_1d(1,ipa,0,npoin) ];
-           z1 = (*coord)[ index_2d_to_1d(2,ipa,0,npoin) ];
-           x2 = (*coord)[ index_2d_to_1d(0,ipb,0,npoin) ];
-           y2 = (*coord)[ index_2d_to_1d(1,ipb,0,npoin) ];
-           z2 = (*coord)[ index_2d_to_1d(2,ipb,0,npoin) ];
-           x3 = (*coord)[ index_2d_to_1d(0,ipc,0,npoin) ];
-           y3 = (*coord)[ index_2d_to_1d(1,ipc,0,npoin) ];
-           z3 = (*coord)[ index_2d_to_1d(2,ipc,0,npoin) ];
-           x4 = (*coord)[ index_2d_to_1d(0,ipd,0,npoin) ];
-           y4 = (*coord)[ index_2d_to_1d(1,ipd,0,npoin) ];
-           z4 = (*coord)[ index_2d_to_1d(2,ipd,0,npoin) ];
+           ipa = intmat->at(index_2d_to_1d(ielem,0,nelem,4))-1;
+           ipb = intmat->at(index_2d_to_1d(ielem,1,nelem,4))-1;
+           ipc = intmat->at(index_2d_to_1d(ielem,2,nelem,4))-1;
+           ipd = intmat->at(index_2d_to_1d(ielem,3,nelem,4))-1;
+           x1 = coord->at(index_2d_to_1d(0,ipa,0,npoin));
+           y1 = coord->at(index_2d_to_1d(1,ipa,0,npoin));
+           z1 = coord->at(index_2d_to_1d(2,ipa,0,npoin));
+           x2 = coord->at(index_2d_to_1d(0,ipb,0,npoin));
+           y2 = coord->at(index_2d_to_1d(1,ipb,0,npoin));
+           z2 = coord->at(index_2d_to_1d(2,ipb,0,npoin));
+           x3 = coord->at(index_2d_to_1d(0,ipc,0,npoin));
+           y3 = coord->at(index_2d_to_1d(1,ipc,0,npoin));
+           z3 = coord->at(index_2d_to_1d(2,ipc,0,npoin));
+           x4 = coord->at(index_2d_to_1d(0,ipd,0,npoin));
+           y4 = coord->at(index_2d_to_1d(1,ipd,0,npoin));
+           z4 = coord->at(index_2d_to_1d(2,ipd,0,npoin));
 
            x = coord1[0];
            y = coord1[1];
@@ -986,7 +1016,7 @@ namespace ccmc
              f3 =  (a3 + b3*x + c3*y + d3*z)/vol6;
              f4 = -(a4 + b4*x + c4*y + d4*z)/vol6;
 
-             unkno_local[iv] = f1*(*unkno)[ index_2d_to_1d(ipa,iv,npoin,NVARS_ADAPT3D) ]+f2*(*unkno)[ index_2d_to_1d(ipb,iv,npoin,NVARS_ADAPT3D) ]
+             unkno_local[iv] = f1*(*unkno)[ index_2d_to_1d(ipa,iv,npoin,NVARS_ADAPT3D))+f2*(*unkno)[ index_2d_to_1d(ipb,iv,npoin,NVARS_ADAPT3D) ]
                               +f3*(*unkno)[ index_2d_to_1d(ipc,iv,npoin,NVARS_ADAPT3D) ]+f4*(*unkno)[ index_2d_to_1d(ipd,iv,npoin,NVARS_ADAPT3D) ] ;
 
            }*/

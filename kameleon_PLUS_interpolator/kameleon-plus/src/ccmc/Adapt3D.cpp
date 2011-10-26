@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <algorithm>
 #include <limits>
+#include <vector>
 
 
 namespace ccmc
@@ -118,8 +119,18 @@ namespace ccmc
 		this->nelem = (this->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
 		this->npoin = (this->getGlobalAttribute(ccmc::strings::variables::npoin_)).getAttributeInt();
 		this->smartSearchValues.indx = new int[nelem];
-		this->smartSearchValues.esup1 = new int[nelem*4];
-		this->smartSearchValues.esup2 = new int[npoin+1];
+
+		this->smartSearchValues.esup1 = new std::vector<int>(nelem*4);
+		for (int i = 0; i < nelem*4; i++)
+		{
+			this->smartSearchValues.esup1->push_back(0);
+		}
+		this->smartSearchValues.esup2 = new std::vector<int>(npoin+1);
+		for (int i = 0; i < npoin+1; i++)
+		{
+			this->smartSearchValues.esup2->push_back(0);
+		}
+
 
 		this->coord = (this->getVariableFromMap(ccmc::strings::variables::coord_));
 		this->intmat = (this->getIntVariableFromMap(ccmc::strings::variables::intmat_));
@@ -545,7 +556,7 @@ namespace ccmc
 
 		for( ip=0; ip<npoin+1; ip++)
 		{
-			this->smartSearchValues.esup2[ip] = 0;
+			(*this->smartSearchValues.esup2)[ip] = 0;
 		}
 
 		/*
@@ -560,7 +571,7 @@ namespace ccmc
 			{
 				ip         = (*intmat)[ index_2d_to_1d(ie,inode,nelem,4) ];
 				//std::cerr << "ip: " << ip << std::endl;
-				this->smartSearchValues.esup2[ip]  = this->smartSearchValues.esup2[ip] + 1;
+				(*this->smartSearchValues.esup2)[ip]  = this->smartSearchValues.esup2->at(ip) + 1;
 			}
 		}
 		/*
@@ -570,10 +581,10 @@ namespace ccmc
 		*/
 		for( ip=1; ip<npoin+1; ip++)
 		{
-			this->smartSearchValues.esup2[ip] = this->smartSearchValues.esup2[ip] + this->smartSearchValues.esup2[ip-1];
+			(*this->smartSearchValues.esup2)[ip] = this->smartSearchValues.esup2->at(ip) + this->smartSearchValues.esup2->at(ip-1);
 		}
 
-		nstor = this->smartSearchValues.esup2[npoin];
+		nstor = this->smartSearchValues.esup2->at(npoin);
 
 		/*
 		!
@@ -593,9 +604,9 @@ namespace ccmc
 			for( inode=0; inode<nnode; inode++)
 			{
 				ipoin        = (*intmat)[ index_2d_to_1d(ielem,inode,nelem,4) ] -1;
-				istor        = this->smartSearchValues.esup2[ipoin] + 1;
-				this->smartSearchValues.esup2[ipoin] = istor;
-				this->smartSearchValues.esup1[istor-1] = ielem;
+				istor        = this->smartSearchValues.esup2->at(ipoin) + 1;
+				(*this->smartSearchValues.esup2)[ipoin] = istor;
+				(*this->smartSearchValues.esup1)[istor-1] = ielem;
 			}
 		}
 		/*
@@ -604,10 +615,10 @@ namespace ccmc
 		!
 		*/
 		for( ip=npoin; ip>0; ip--) {
-			this->smartSearchValues.esup2[ip] = this->smartSearchValues.esup2[ip-1];
+			(*this->smartSearchValues.esup2)[ip] = this->smartSearchValues.esup2->at(ip-1);
 		}
 
-		this->smartSearchValues.esup2[0] = 0;
+		(*this->smartSearchValues.esup2)[0] = 0;
 
 
 		/*    int nesup    = esup2[npoin];

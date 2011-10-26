@@ -30,8 +30,8 @@ namespace ccmc
 		float xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
 		float dx_sg,dy_sg,dz_sg;
 		int *indx;
-		int *esup1;
-		int *esup2;
+		std::vector<int> * esup1;
+		std::vector<int> * esup2;
 		int start_index[nz_sg][ny_sg][nx_sg];
 		int end_index[nz_sg][ny_sg][nx_sg];
 	};
