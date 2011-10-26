@@ -7,6 +7,7 @@
 
 #include "MathHelper.h"
 #include <limits>
+#include <algorithm>
 
 namespace ccmc
 {
@@ -160,13 +161,12 @@ namespace ccmc
 	float Math::ffindmin(float * array, long n)
 	{
 	   long i;
-	   float min;
-	   min = 1.e13; //if highest value possible in array is 1.e13
+	   float min = std::numeric_limits<float>::max(); //if highest value possible in array is 1.e13
 	   for (i=0; i<n; i++)
-		   {
-				  if(array[i] < min)
-					 min=array[i];
-		   }
+	   {
+			  min = std::min(array[i], min);
+
+	   }
 	   return min;
 	}
 
@@ -174,12 +174,12 @@ namespace ccmc
 	{
 	   long i;
 	   float max;
-	   max = -1.e13; //if lowest value possible in array is -1.e13
+	   max = std::numeric_limits<float>::min(); //if lowest value possible in array is -1.e13
 	   for (i=0; i<n; i++)
-		   {
-				  if(array[i] > max)
-					 max=array[i];
-		   }
+	   {
+			  max = std::max(array[i] , max);
+
+	   }
 	   return max;
 	}
 

@@ -36,6 +36,7 @@ namespace ccmc
 			float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2);
 			float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 					float& dc2);
+			static void calculation1(const float& a, const float& b, const float& c, const float& d, const float& e, float& result);
 			virtual ~Adapt3DInterpolator();
 
 		private:
@@ -60,11 +61,11 @@ namespace ccmc
 
 			/* support routines */
 
-			int findElement(float *cintp, int clear_cache);
-			int chkineln(float * cintp ,int ielem , float * shapex);
+			int findElement(const float& c0, const float& c1, const float& c2, int clear_cache);
+			int chkineln(const float& c0, const float& c1, const float& c2, int ielem , float * shapex);
 
-			int smartSearch(float *search_point_coords);
-			int point_within_grid( float * scoord );
+			int smartSearch(const float& c0, const float& c1, const float& c2);
+			int point_within_grid( const float * scoord );
 			int point_within_grid( const float& c0, const float& c1, const float& c2);
 			int index_2d_to_1d( int i1, int i2, int n1, int n2);
 			float interpolate_adapt3d_solution(float *coord1,int ielem, const std::string& variable);
