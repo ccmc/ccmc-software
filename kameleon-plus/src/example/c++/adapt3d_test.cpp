@@ -34,13 +34,30 @@ int main (int argc, char * argv[])
 	adapt3d.loadVariable(variable);
 
 	ccmc::Interpolator * interpolator = adapt3d.createNewInterpolator();
+	int upper = 30;
+	float delta = 10.f/(float)(upper -1);
+	for (int i = 0; i < upper; i++)
+	{
+		for (int j = 0; j < upper; j++)
+		{
+			for (int k = 0; k < upper; k++)
+			{
+				float x = -5.f+delta*(float)i;
+				float y = -5.f+delta*(float)j;
+				float z = -5.f+delta*(float)k;
+				//std::cout << "x: " << x << " y: " << y << " z: " << z << std::endl;
+				float value = interpolator->interpolate(variable, x,y,z);
+
+			}
+		}
+	}
 	float value = interpolator->interpolate(variable, x, y, z);
-	float density = interpolator->interpolate("rho", x, y, z);
+	//float density = interpolator->interpolate("rho", x, y, z);
 	delete interpolator;
 
 	string units = adapt3d.getNativeUnit(variable);
 
-	cout << "interpolated value: " << value/density << " " << units << endl;
+	cout << "interpolated value: " << value << " " << units << endl;
 	adapt3d.close();
 	return 0;
 
