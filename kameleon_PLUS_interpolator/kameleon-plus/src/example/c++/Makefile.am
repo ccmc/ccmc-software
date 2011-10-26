@@ -36,7 +36,7 @@ mas_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
 mas_CPPFLAGS = -I@srcdir@/../..
 
 adapt3d_SOURCES = adapt3d_test.cpp
-adapt3d_LDADD = @builddir@/../../ccmc/libkameleon-plus.la
+adapt3d_LDADD = @builddir@/../../ccmc/libkameleon-plus.la -lprofiler $(BOOST_THREAD_LIB)
 adapt3d_CPPFLAGS = -I@srcdir@/../..
 
 #h5reader_SOURCES = HDF5Reader.cpp
