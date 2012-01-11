@@ -13,10 +13,7 @@
 
 #define NNODE_ADAPT3D 4
 #define NDIMN_ADAPT3D 3
-
-#define nx_sg 10
-#define ny_sg 10
-#define nz_sg 10
+#define DELAUNEY_SEARCH
 
 namespace ccmc
 {
@@ -44,19 +41,24 @@ namespace ccmc
 
 			/* variables needed for searching unstructured grids */
 
-
-			const SmartGridSearchValues *smartSearchValues;
+			int numThreads;
+			SmartGridSearchValues *smartSearchValues;
 			//int               unstructured_grid_setup_done;
 
 			//bool setupUnstructuredGridSearchFinished;
 			//bool setupUnstructuredGridSearch();
-			int last_element_found;
+
 
 
 			int ndimn, grid_reg_no, npoin, nelem;
 
 			const std::vector<float> * coord;
 			const std::vector<int> * intmat;
+			float previous_c0;
+			float previous_c1;
+			float previous_c2;
+	    int last_node_found;
+	    int clear_cache;
 			//const std::vector<float> * unkno;
 
 			/* support routines */
@@ -67,8 +69,8 @@ namespace ccmc
 			int smartSearch(const float& c0, const float& c1, const float& c2);
 			int point_within_grid( const float * scoord );
 			int point_within_grid( const float& c0, const float& c1, const float& c2);
-			int index_2d_to_1d( int i1, int i2, int n1, int n2);
-			float interpolate_adapt3d_solution(float *coord1,int ielem, const std::string& variable);
+			int index_2d_to_1d( int i1, int i2, int n2);
+			float interpolate_adapt3d_solution(const float& c0, const float& c1, const float& c2,int ielem, const std::string& variable);
 
 	};
 }
