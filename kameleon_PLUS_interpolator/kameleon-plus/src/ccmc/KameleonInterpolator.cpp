@@ -220,7 +220,19 @@ namespace ccmc
 			conversionFactorsToVis["beta"] = 1.e9;
 
 
-		} else //just BATSRUS for now
+		} else if (modelName == "ADAPT3D")//just BATSRUS for now
+		{
+			conversionFactorsToVis["b"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["bx"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["by"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["bz"] = 2.205 * gauss2Tesla * 1.e9;
+
+			conversionFactorsToVis["b"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["bx"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["by"] = 2.205 * gauss2Tesla * 1.e9;
+			conversionFactorsToVis["bz"] = 2.205 * gauss2Tesla * 1.e9;
+
+		} else
 		{
 			conversionFactorsToVis["p"] = 1.e-3;
 			conversionFactorsToVis["t"] = 1.e-12 / ccmc::constants::Boltzmann;
