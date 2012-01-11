@@ -31,6 +31,11 @@ namespace ccmc
 			static float ffindmax(float * array, long n);
 			static double dfindmin(double * array, long n);
 			static double dfindmax(double * array, long n);
+			static void convert_xyz_to_rthetaphi(const float& x, const float& y, const float& z,
+					float * r, float * t, float * p);
+			static void convert_rthetaphi_to_xyz(const float& r, const float& t, const float& p,
+					float * x, float * y, float * z);
+			static int sign(int v);
 
 	};
 }
