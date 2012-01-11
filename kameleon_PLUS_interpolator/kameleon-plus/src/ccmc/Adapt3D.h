@@ -11,7 +11,9 @@
 #include "Cell3D.h"
 #include "Model.h"
 #include "Constants.h"
+#include "Point3f.h"
 #include <vector>
+#include <boost/unordered_map.hpp>
 
 #define NNODE_ADAPT3D 4
 #define NVARS_ADAPT3D 12
@@ -22,6 +24,15 @@
 #define nx_sg 10
 #define ny_sg 10
 #define nz_sg 10
+#define nx_b 2
+#define ny_b 2
+#define nz_b 2
+
+//#define CARTESIAN_S_GRID
+#define SPHERICAL_S_GRID
+#define DELAUNEY_SEARCH
+#define DELAUNEY_ITER_MAX 1000                                          /* new 11-16-11 */
+
 
 namespace ccmc
 {
@@ -32,8 +43,19 @@ namespace ccmc
 		int *indx;
 		std::vector<int> * esup1;
 		std::vector<int> * esup2;
+		int nelems_in_cell[nz_sg][ny_sg][nx_sg];
+		int nnodes_in_cell[nz_sg][ny_sg][nx_sg];
 		int start_index[nz_sg][ny_sg][nx_sg];
+		int start_index_nodes[nz_sg][ny_sg][nx_sg];
 		int end_index[nz_sg][ny_sg][nx_sg];
+		int end_index_nodes[nz_sg][ny_sg][nx_sg];
+		int * indx_nodes;
+		int still_in_same_element;
+		int * delauney_search_iteration_profile;
+		int * facing_elements;
+		int outside_grid;
+		int last_element_found;
+		//BoundingBox * parent;
 	};
 	/**
 	 * @class Adapt3D
@@ -49,7 +71,8 @@ namespace ccmc
 			long open(const std::string& filename);
 
 			Interpolator * createNewInterpolator();
-			const SmartGridSearchValues * getSmartGridSearchValues();
+			SmartGridSearchValues * getSmartGridSearchValues();
+			const std::vector<float> * getModifiedCoords();
 
 			virtual ~Adapt3D();
 
@@ -68,11 +91,20 @@ namespace ccmc
 			long GRID_REG_NO_cdf_num, NPOIN_cdf_num, NELEM_cdf_num, NDIMN_cdf_num;
 			long NBOUN_cdf_num, NCONI_cdf_num;
 			void smartSearchSetup();
-			bool setupUnstructuredGridSearch();
+			bool setupSearchUnstructuredGrid();
+			void setupOctreeGrid();
+			std::vector<Point3f> vertices;
 			SmartGridSearchValues smartSearchValues;
 			const std::vector<float> * coord;
+			std::vector<float> * coord_modified;
 			const std::vector<int> * intmat;
-			int index_2d_to_1d( int i1, int i2, int n1, int n2);
+			//int still_in_same_element;
+			//int outside_grid;
+			//boost::unordered_map<float, boost::unordered_map<float, boost::unordered_map<float, Point3f*> *> *> * positions;
+			int index_2d_to_1d( int i1, int i2, int n);
+
+			void locate_facing_elements();
+
 
 
 

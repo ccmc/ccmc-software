@@ -26,6 +26,7 @@ namespace ccmc
 	 */
 	Adapt3DInterpolator::Adapt3DInterpolator(Model * modelReader)
 	{
+		this->numThreads = boost::thread::hardware_concurrency();
 		// TODO Auto-generated constructor stub
 		this->modelReader = modelReader;
 		/***  Open should have failed previosly, so they should exist! ***/
@@ -36,7 +37,7 @@ namespace ccmc
 		this->nelem = (modelReader->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
 		//->nboun = (modelReader->getGlobalAttribute(ccmc::strings::variables::nboun_)).getAttributeInt();
 		//this->nconi = (modelReader->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
-		this->coord = (modelReader->getVariableFromMap(ccmc::strings::variables::coord_));
+		this->coord = ((Adapt3D*)modelReader)->getModifiedCoords();
 		this->intmat = (modelReader->getIntVariableFromMap(ccmc::strings::variables::intmat_));
 		//this->unkno = (modelReader->getVariableFromMap(ccmc::strings::variables::unkno_));
 
@@ -47,7 +48,8 @@ namespace ccmc
 		this->nnode = NNODE_ADAPT3D;
 		//this->unstructured_grid_setup_done = this->setupUnstructuredGridSearch();
 		//this->smartSearchSetup();
-		this->last_element_found = -1;
+		this->smartSearchValues->last_element_found = -1;
+		std::cout << "created Adapt3DInterpolator object" << std::endl;
 	}
 
 	/**
@@ -120,8 +122,6 @@ namespace ccmc
 		if (!point_within_grid(c0,c1,c2))
 			return this->missingValue;
 		float rsun_in_meters = 7.0e8;
-
-		float coord1[3];
 		float unkno_local[9];
 
 		long counts[1] = { 0 };
@@ -129,7 +129,7 @@ namespace ccmc
 
 		float interpolated_value;
 
-
+		int clear_cache;
 
 
 
@@ -231,25 +231,31 @@ namespace ccmc
 		}
 
 
+		clear_cache = 0;
 			/* locate the grid element that contains the point coord1 */
-		ielem = findElement(c0,c1,c2, 0);
-#ifdef DEBUG
-	   std::cerr << "ielem: " << ielem << " for position " << X << "," << Y << "," << Z << std::endl;
-#endif
+		//ielem = smartSearch(c0,c1,c2);
+		ielem = findElement(c0,c1,c2, clear_cache);
+		//Element * element = this->smartSearchValues->parent->findElement(c0, c1, c2);
+		//if (element != NULL)
+		//	ielem = this->smartSearchValues->parent->findElement(c0, c1, c2)->getIndex();
+		//else ielem = -1;
+//#ifdef DEBUG
+	   std::cerr << "ielem: " << ielem << " for position " << c0 << "," << c1 << "," << c2 << std::endl;
+//#endif
 		interpolated_value=this->missingValue;     /* test value */
 
 		if(ielem > -1)
 		{
-		   interpolated_value = interpolate_adapt3d_solution(coord1, ielem, variable);
-		   last_element_found = ielem;
+		   interpolated_value = interpolate_adapt3d_solution(c0, c1, c2, ielem, variable);
+		   std::cout << "MIN_RANGE: " << MIN_RANGE << " this->missingValue: " << this->missingValue << " interpolated_value: " << interpolated_value << std::endl;
+		   this->smartSearchValues->last_element_found = ielem;
 		} else {
 			//printf("Failed to find point in grid\n");
-			last_element_found = -1;
+			this->smartSearchValues->last_element_found = -1;
 		}
 
 
 		/*  return interpolated_value  */
-
 		if (interpolated_value >= MIN_RANGE && interpolated_value <= MAX_RANGE && interpolated_value != this->missingValue)
 		{
 
@@ -272,7 +278,7 @@ namespace ccmc
 
 	int Adapt3DInterpolator::smartSearch(const float& c0, const float& c1, const float& c2)
 	{
-//#define DEBUGS
+#define DEBUGS
 		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
 
 		int  i,j,k,ielem,inode,jnode ;
@@ -289,7 +295,19 @@ namespace ccmc
 
 		float  distance[NNODE_ADAPT3D];
 
+		float size_of_last_element;
 
+#ifdef DELAUNEY_SEARCH
+       int   iteration, iteration_max;
+       int   next_element, next_element0;
+       int   in0,in1,in2,in3,iselect;
+       int   jnext,jk,jrand;
+       int   i_s,j_s,k_s;
+       float x_last_element,y_last_element,z_last_element,distance0;
+       float x,y,z,r,t,p;
+#endif
+
+std::cout << "smart search" << std::endl;
 		/*----------------------------------------------------------------
 		!
 		! Step A
@@ -298,16 +316,16 @@ namespace ccmc
 		! inside it. If yes, then set ifound=.true'
 		*/
 		ifound = -1;
-		if( last_element_found >= 0 )
+		if( this->smartSearchValues->last_element_found >= 0 )
 		{
 #ifdef DEBUGS
 			printf("Checkin if still in last element \n");
 #endif
 
-			ifound = chkineln(c0,c1,c2, last_element_found ,shapex);
+			ifound = chkineln(c0,c1,c2, this->smartSearchValues->last_element_found ,shapex);
 			nelems_checked = 1;
 		}
-
+std::cout << "ifound: " << ifound << std::endl;
 		/*--------*/
 		if( ifound == 0 )
 		{
@@ -315,9 +333,10 @@ namespace ccmc
 
 			#ifdef DEBUGS
 			printf("Point is still in starting element! \n");
-			std::cerr << "last_element_found: " << last_element_found << std::endl;
+			std::cerr << "this->smartSearchValues->last_element_found: " << this->smartSearchValues->last_element_found << std::endl;
 			#endif
-			kelem = last_element_found;
+			kelem = this->smartSearchValues->last_element_found;
+			this->smartSearchValues->still_in_same_element++;
 
 
 			/*--------*/
@@ -327,193 +346,141 @@ namespace ccmc
 
 
 			/* If we have a starting_element number set to begin the search  */
-			if( last_element_found >= 0 )
+			if( this->smartSearchValues->last_element_found >= 0 )
 			{
 
+std::cout << "starting search" << std::endl;
+#ifdef DELAUNEY_SEARCH
+/* Delauney algorithm */
+           ifound=1;
+           iteration=0;
+           next_element=this->smartSearchValues->last_element_found;
+           iteration_max=DELAUNEY_ITER_MAX;
+           while ((ifound != 0) && (iteration < iteration_max)) {
+             kelem = chkineln(c0,c1,c2,next_element ,shapex);
 
-				#ifdef DEBUGS
-				std::cout << "Point " << c0 << "," << c1 << "," << c2 << " is not still in starting element! \n";
-				#endif
+             in0=(*intmat)[ index_2d_to_1d(next_element,0,4) ];
+             in1=(*intmat)[ index_2d_to_1d(next_element,1,4) ];
+             in2=(*intmat)[ index_2d_to_1d(next_element,2,4) ];
+             in3=(*intmat)[ index_2d_to_1d(next_element,3,4) ];
+             x_last_element = 0.25*(
+                    (*coord)[ index_2d_to_1d(in0,0,3) ]
+                   +(*coord)[ index_2d_to_1d(in1,0,3) ]
+                   +(*coord)[ index_2d_to_1d(in2,0,3) ]
+                   +(*coord)[ index_2d_to_1d(in3,0,3) ] );
+             y_last_element = 0.25*(
+                    (*coord)[ index_2d_to_1d(in0,1,3) ]
+                   +(*coord)[ index_2d_to_1d(in1,1,3) ]
+                   +(*coord)[ index_2d_to_1d(in2,1,3) ]
+                   +(*coord)[ index_2d_to_1d(in3,1,3) ] );
+             z_last_element = 0.25*(
+                    (*coord)[ index_2d_to_1d(in0,2,3) ]
+                   +(*coord)[ index_2d_to_1d(in1,2,3) ]
+                   +(*coord)[ index_2d_to_1d(in2,2,3) ]
+                   +(*coord)[ index_2d_to_1d(in3,2,3) ] );
+             distance0=std::sqrt( (x_last_element-c0)*(x_last_element-c0)
+                           + (y_last_element-c1)*(y_last_element-c1)
+                           + (z_last_element-c2)*(z_last_element-c2) );
 
-//				std::cout << "starting step b" << std::endl;
-				/*
-				!
-				! Step B
-				!
-				! Compute the distances of the new point from each of the nodes of the
-				! starting_element.
-				*/
-				float a,b,c;
-				for (jnode=0; jnode<nnode; jnode++)
-				{
-					mask[jnode]=1;
-					inode = intmat->at(index_2d_to_1d(last_element_found,jnode,nelem,4)) -1 ;
-					a = (coord->at(index_2d_to_1d(0,inode,0,npoin)) -c0);
-					b = (coord->at(index_2d_to_1d(1,inode,0,npoin)) -c1);
-					c = (coord->at(index_2d_to_1d(2,inode,0,npoin)) -c2);
+/* If the distance  from last element found is too great compared with the element size then force use of the structured grid */
 
-					distance[jnode] = a*a + b*b + c*c;
-				}
-
-//				std::cout << "starting step c" << std::endl;
-				/*
-				!
-				! Step C
-				!
-				! Sort the starting element nodes based on distance from the new search point
-				*/
-				node_order[0]       = ccmc::Math::fminloc1d(distance,nnode,mask);
-				node_order[nnode-1] = ccmc::Math::fmaxloc1d(distance,nnode,mask);
-				mask[node_order[0]] = 0;                        /* false */
-				mask[node_order[nnode-1]] = 0;
-				//std::cerr << "-----nnode: " << nnode << std::endl;
-				if(nnode == 3)
-				{
-					for (j=0; j<nnode; j++)
-					{
-						if(mask[j]) node_order[1] = j;
-					}
-				}
-				if(nnode == 4)
-				{
-					node_order[1] = ccmc::Math::fminloc1d(distance,nnode,mask);
-					node_order[2] = ccmc::Math::fmaxloc1d(distance,nnode,mask);
-				}
-				if(nnode > 4)
-				{
-					printf("Error : Code only works for nnode=3 or 4 ! \n");
-					exit(EXIT_FAILURE);
-				}
-
-//				std::cout << "starting step d" << std::endl;
-				/*
-				! Step D
-				!
-				! Begin search through the element lists for these nodes
-				*/
-
-				i_order = 0;
-				/*++++*/
-				while( (ifound != 0) && (i_order < nnode ) )
-				{
-					/*++++*/
-
-
-//					std::cout << "nnode: " << nnode << " i_order: " << i_order << std::endl;
-					next_node = node_order[i_order];
-
-
-					/* Now we search the list of elements that contain this node */
 #ifdef DEBUGS
-					std::cerr << "index_2d_to_1d(last_element_found,next_node,nelem,4): " << index_2d_to_1d(last_element_found,next_node,nelem,4) << std::endl;
-					std::cerr << "last_element_found: " << last_element_found << " next_node: " << next_node << std::endl;
-					std::cerr << "intmat.size(): " << intmat->size() << std::endl;
+             printf("Delauney iteration no %d\n",iteration);
+             radius=sqrt(x_last_element*x_last_element+y_last_element*y_last_element+z_last_element*z_last_element);
+             printf("Center of last element %d in search : radius %e\n",next_element,radius);
+             printf("Center of last element %d in search %e %e %e\n",next_element,x_last_element,y_last_element,z_last_element);
+        x=x_last_element;
+        y=y_last_element;
+        z=z_last_element;
+        Math::convert_xyz_to_rthetaphi(x,y,z,&r,&t,&p);
+             printf("Center of last element (rtp) %d in search %e %e %e\n",next_element,r,t,p);
+
+           i_s = (int)( (r-this->smartSearchValues->xl_sg)/this->smartSearchValues->dx_sg );
+           j_s = (int)( (t-this->smartSearchValues->yl_sg)/this->smartSearchValues->dy_sg );
+           k_s = (int)( (p-this->smartSearchValues->zl_sg)/this->smartSearchValues->dz_sg );
+           printf("Located in structured cell %d %d %d\n",i_s,j_s,k_s);
+
+
+             printf("Distance from last element to search point is %e\n",distance0);
+             printf("Search pt coords %e %e %e \n",c0,c1,c2);
+             printf("Search pt radius %e\n",std::sqrt(c0*c0+c1*c1+c2*c2));
+             fflush(stdout);
 #endif
-					inode = intmat->at(index_2d_to_1d(last_element_found,next_node,nelem,4)) -1 ;
-
-					#ifdef DEBUGS
-					printf("node list for this element is %i %i %i %i \n",
-					intmat->at(index_2d_to_1d(last_element_found,0,nelem,4))-1,
-					intmat->at(index_2d_to_1d(last_element_found,1,nelem,4))-1,
-					intmat->at(index_2d_to_1d(last_element_found,2,nelem,4))-1,
-					intmat->at(index_2d_to_1d(last_element_found,3,nelem,4))-1);
-					printf("First node in list is %i \n",inode);
-					#endif
-
-
-
-					k_node    = this->smartSearchValues->esup2->at(inode)   +1 ;
-					k_node_hi = this->smartSearchValues->esup2->at(inode+1) +1 ;
+             next_element0=next_element;
+             jrand=(int)(3.0001 *(float)rand() / (float)RAND_MAX );
+             jk=0;
+             iselect=-1;
+             while ((iselect == -1) && (jk < 4)) {
+               jnext=(jk+jrand)%4;
+               if(shapex[ jnext ] < 0.) {
+                 next_element=this->smartSearchValues->facing_elements[ index_2d_to_1d(next_element0,jnext,4) ];
+                 if(next_element > -1) {
+                   iselect=jnext;
 #ifdef DEBUGS
-					std::cerr << "inode: " << inode << " k_node: " << k_node << " k_node_hi: " << k_node_hi << " sizeof(esup1) " << (nelem*4) << std::endl;
+                 } else {
+                  printf("Loop %d: Face %d is a boundary with next_element=%d. Skip to next face\n",jk,jnext,next_element);
+                  printf("shapex %e %e %e %e\n",shapex[0],shapex[1],shapex[2],shapex[3]);
+                  fflush(stdout);
 #endif
-					jelem =  this->smartSearchValues->esup1->at(k_node);
-					while( (ifound != 0) && (k_node < k_node_hi) )
-					{
-//std::cout << "search_point_coords: " << c0 << " " << c1 << " " << c2 << std::endl;
-						ifound = chkineln( c0,c1,c2, jelem ,shapex);
+                 }
+#ifdef DEBUGS
+                 printf("jrand=%d\n",jrand);
+                 printf("iselect=%d\n",iselect);
+                 fflush(stdout);
+#endif
+               }
+               jk=jk+1;
+             }
 
-						nelems_checked = nelems_checked + 1;
-						if(ifound != 0)
-						{
-							#ifdef DEBUGS
-							printf("Not found in elem %i \n",jelem);
-							#endif
-							k_node += 1;
-							jelem =  this->smartSearchValues->esup1->at(k_node);
-							#ifdef DEBUGS
-							printf("Next element to check is %i %i %i \n",jelem,i_node,i_order);
-							#endif
-						}
-						if(ifound == 0)
-						{
-							kelem = jelem;
-						}
-						#ifdef DEBUGS
-						if(ifound == 0)
-						{
-							printf("Found in elem %i \n",jelem);
-							printf("Found after checking %i elements \n",nelems_checked);
-						}
-						#endif
 
-					}    /* while */
-//					std::cout << "after checking elements" << std::endl;
+             iteration++;
 
-					/*++++*/
-					i_order++;
-				}     /* while */
-				/*++++*/
+/* If only face in direction of search point is a boundary then end search and reset last-element_found */
+             if(next_element == -999) {
+                iteration=iteration_max;
+                this->smartSearchValues->last_element_found=-1;
+                kelem=-1;
+                this->smartSearchValues->outside_grid += 1;
+             }
 
-			}      /*   if( last_element_found .ge. 0 )  */
+             if(kelem == 0) {
+               ifound=0;
+//#ifdef DEBUGS
+                 printf("Delauney search successful : found in element %d \n",next_element);
+    //             fflush(stdout);
+//#endif
+                 if(iteration-1 < DELAUNEY_ITER_MAX) this->smartSearchValues->delauney_search_iteration_profile[iteration-1] += 1;
+             }
+           }
+           if(ifound == 0)  kelem=next_element;
 
-			/*--------*/
-		}      /*   if( ifound .eq. 0)  */
-		/*--------*/
+/* End of Delauney algorithm */
+#endif /* ifdef DELAUNEY_SEARCH */
 
-//		std::cout << "after search" << std::endl;
-		if( ifound != 0)
-		{
-		//	#ifdef DEBUGS
-//			std::cout << "Smart search failed!" << std::endl;
-//			std::cout << " search_point_coords: " << std::endl;
-//			std::cout << c0 << " " << c1 << " " << c2 << std::endl;
-			//#endif
 
-			/* Check to see if the point is still within the grid bounds */
-			try_grid_search = point_within_grid(c0,c1,c2);
-			#ifdef DEBUGS
-			std::cerr << "is point inside grid: " << try_grid_search << std::endl;
-			#endif
-			kelem=-1;
-			if(try_grid_search)
-			{
-//				#ifdef DEBUGS
-//				radius=sqrt( search_point_coords[0]*search_point_coords[0]+
-//					 search_point_coords[1]*search_point_coords[1]+
-//					 search_point_coords[2]*search_point_coords[2] );
-//				printf("Using grid based search \n");
-//				printf("search_point_coords %e %e %e \n",search_point_coords[0]
-//					  ,search_point_coords[1] ,search_point_coords[2]);
-//				printf("radius %e \n",radius);
-//				#endif
-//				clear_cache=1;
-//				kelem=findElement(c0,c1,c2,clear_cache);
-			} else
-			{
-				std::cout << "uh oh." << std::endl;
-				exit(1);
-			}
-			#ifdef DEBUGS
-			if(kelem > 0)
-			{
-				printf("Found in element %i \n",kelem);
-			} else
-			{
-				printf("Failed to locate element in grid \n");
-			}
-			#endif
-		}
+       }      /*   if( last_element_found .ge. 0 )  */
+
+/*--------*/
+       }      /*   if( ifound .eq. 0)  */
+/*--------*/
+
+
+#ifdef DEBUGS
+       if( ifound != 0) {
+          printf("Smart search failed! \n");
+          printf("search_point_coords %e %e %e \n",c0,c1,c2);
+                 fflush(stdout);
+
+          if(kelem > 0) {
+              printf("Found in element %i \n",kelem);
+              fflush(stdout);
+          } else {
+              printf("Failed to locate element in grid \n");
+              fflush(stdout);
+          }
+       }
+#endif
+
 
 		return kelem;
 
@@ -522,130 +489,382 @@ namespace ccmc
 	int Adapt3DInterpolator::findElement(const float& c0, const float& c1, const float& c2, int clear_cache)
 	{
 
-	       int                 ielem,kelem;
-	       int                 i_s,j_s,k_s,i,j,k,indx_start,indx_end;
-	       int                 indx1,ifound,just_found,jelem;
-	       float              x,y,z,shapex[NNODE_ADAPT3D];
+//#define DEBUGS
 
+		//std::cout << "entered findElement" << std::endl;
 
+		int			ielem,kelem, inode;
+		int         i_s,j_s,k_s,i,j,k,indx_start,indx_end;
+		int         indx1,ifound,just_found,jelem;
+		float       x,y,z,shapex[nnode];
+		int			next_element, next_element0, iselect;
 
-	         kelem=-1;
-	         ielem=-1;
+		int        in0,in1,in2,in3,iteration;
+		int        delta_i;
+		float      x_last_element,y_last_element,z_last_element;
+		float      distance;
+		float      ddx,ddy,ddz,ss,xx,yy,zz,radius;
+		int        new_del,i_new,j_new,k_new;
+		float      r, t, p;
+		float      distance0,size_of_last_element;
 
-	         if(clear_cache == 1) last_element_found=-1;
+		int      i_min,i_max;
+		int      j_min,j_max;
+		int      k_min,k_max;
+		int      j0,k0;
+
+		kelem=-1;
+		ielem=-1;
+		ifound=-1;
+		std::cout << "inside" << std::endl;
+		if ( point_within_grid(c0, c1, c2) == 1)
+		{
+
+	         if(clear_cache == 1) this->smartSearchValues->last_element_found=-1;
 	#ifdef DEBUG
-	       printf("0find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin) ],coord[ index_2d_to_1d(0,1,npoin) ],coord[ index_2d_to_1d(0,2,npoin) ]);
+	       printf("0find_element: (*coord)[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin) ],coord[ index_2d_to_1d(0,1,npoin) ],coord[ index_2d_to_1d(0,2,npoin) ]);
 	#endif
 
-	/* If available, use the last element found to begin the search */
-	         if(last_element_found != -1) {
-	#ifdef DEBUG
-	       printf("find_element: coord[0][0-2] : %e %e %e \n",coord[ index_2d_to_1d(0,0,npoin) ],coord[ index_2d_to_1d(0,1,npoin) ],coord[ index_2d_to_1d(0,2,npoin) ]);
-	#endif
-	           kelem = smartSearch(c0,c1,c2);
-	         }
+	       /* If available, use the last element found to begin the search */
+	       if(this->smartSearchValues->last_element_found != -1) {
+	    	   in0=(*intmat)[ index_2d_to_1d(this->smartSearchValues->last_element_found,0,4) ];
+	    	   in1=(*intmat)[ index_2d_to_1d(this->smartSearchValues->last_element_found,1,4) ];
+	    	   x_last_element=(*coord)[ index_2d_to_1d(in0,0,3) ];
+	    	   y_last_element=(*coord)[ index_2d_to_1d(in0,1,3) ];
+	    	   z_last_element=(*coord)[ index_2d_to_1d(in0,2,3) ];
+	    	   distance0=std::sqrt( (x_last_element-c0)*(x_last_element-c0)
+	    			   + (y_last_element-c1)*(y_last_element-c1)
+	    			   + (z_last_element-c2)*(z_last_element-c2) );
+	    	   size_of_last_element=std::sqrt(
+	    			   ( (*coord)[ index_2d_to_1d(in0,0,3) ] -(*coord)[ index_2d_to_1d(in1,0,3) ] )*
+	    			   ( (*coord)[ index_2d_to_1d(in0,0,3) ] -(*coord)[ index_2d_to_1d(in1,0,3) ] )
+	    			   +( (*coord)[ index_2d_to_1d(in0,1,3) ] -(*coord)[ index_2d_to_1d(in1,1,3) ] )*
+	    			   ( (*coord)[ index_2d_to_1d(in0,1,3) ] -(*coord)[ index_2d_to_1d(in1,1,3) ] )
+	    			   +( (*coord)[ index_2d_to_1d(in0,2,3) ] -(*coord)[ index_2d_to_1d(in1,2,3) ] )*
+	    			   ( (*coord)[ index_2d_to_1d(in0,2,3) ] -(*coord)[ index_2d_to_1d(in1,2,3) ] ) );
 
-	/* If there is no starting guess for the element number in last_element_found
-	   or the smart search failed, use the grid based search
-	*/
-	 //kelem = -1;
-	        if(kelem == -1) {
-
-
-	         x = c0;
-	         y = c1;
-	         z = c2;
-	#ifdef DEBUG
-	         printf("Searching for point x y z = %e %e %e\n",x,y,z);
-	#endif
-	         i_s = (int)( (x-this->smartSearchValues->xl_sg)/this->smartSearchValues->dx_sg );
-	         j_s = (int)( (y-this->smartSearchValues->yl_sg)/this->smartSearchValues->dy_sg );
-	         k_s = (int)( (z-this->smartSearchValues->zl_sg)/this->smartSearchValues->dz_sg );
-
-	#ifdef DEBUG
-	         printf("Located in structured cell %d %d %d\n",i_s,j_s,k_s);
-	#endif
-	         indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
-	         indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
-
-	/* test each element between indx_start and indx_end to find the cell
-	   containing coord1 = (x,y,z)         */
-	#ifdef DEBUG
-	         printf("Searching index list %d to %d \n",indx_start,indx_end);
-	#endif
-
-	         indx1 = indx_start;
-	         ifound = 1;
-	         while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) )
-	         {
-	           jelem=this->smartSearchValues->indx[indx1];
-	           ifound = chkineln(c0,c1,c2 ,jelem ,shapex);
-	           if (ifound == 0) ielem=indx1;
-	           indx1=indx1+1;
-	         }
-	#ifdef DEBUG
-	         if (ifound == 0) {
-	           printf("Found point in first cell\n");
-	         } else {
-	           printf("Did not find point in first cell\n");
-	         }
-	#endif
+	    	   // #ifdef DEBUGS
+	    	   printf("coords %e %e %e %e %e %e\n", (*coord)[ index_2d_to_1d(in0,0,3) ],(*coord)[ index_2d_to_1d(in1,0,3) ],
+	    			   (*coord)[ index_2d_to_1d(in0,1,3) ] ,(*coord)[ index_2d_to_1d(in1,1,3) ],
+	    			   (*coord)[ index_2d_to_1d(in0,2,3) ] ,(*coord)[ index_2d_to_1d(in1,2,3) ] );
+	    	   printf("distance to element  : %e\n",distance0);
+	    	   printf("element size  : %e\n",size_of_last_element);
+	    	   printf("Ratio of distance to element size  : %e\n",distance0/size_of_last_element);
+	    	   //#endif
 
 
-	/* If element has still not been found then search in list for
-	    neighboring structured grid cells */
-	         if (ifound == 1) {
-	         for ( k=std::max(0,k_s-1); k<=std::min(k_s+1,nz_sg-1); k++) {
-	         for ( j=std::max(0,j_s-1); j<=std::min(j_s+1,ny_sg-1); j++) {
-	         for ( i=std::max(0,i_s-1); i<=std::min(i_s+1,nx_sg-1); i++) {
-	           if(ifound == 1) {
-	             just_found=1;
-	             if( ( (i != i_s) || (j != j_s) || (k != k_s) ) ) {
-	               indx_start = this->smartSearchValues->start_index[k][j][i];
-	               indx_end   = this->smartSearchValues->end_index[k][j][i];
-	               indx1 = indx_start;
-	               ifound = 1;
-	               while ( (ifound == 1) && (indx1 <= indx_end) && (indx1 > -1) ) {
-	                 jelem=this->smartSearchValues->indx[indx1];
-	                 ifound = chkineln(c0,c1,c2 ,jelem ,shapex);
-	                 if (ifound == 0 ) {
-	                   ielem=indx1;
-	                   just_found=0;
-	                 }
-	                 indx1=indx1+1;
-	               }
-	             }
-	#ifdef DEBUG
-	             if ( (ifound == 0) && (just_found == 0) ) {
-	               printf("Found point in neighbor cell %d %d %d \n",i,j,k);
-	             } else {
-	               printf("Did not find point in neighbor cell %d %d %d \n",i,j,k);
-	             }
-	#endif
-	           }
-	         }}}
-	         }
+	    	   /* If the distance  from last element found is too great compared with the element size then force use of the structured grid */
+	    	   if (distance0/size_of_last_element > 50.) {
+	    		   this->smartSearchValues->last_element_found = -1;
+#ifdef DEBUGS
+	    		   printf("Force new structured grid search\n");
+#endif
+	    	   }
 
-	#ifdef DEBUG
-	           printf("ielem is now ielem=%d\n",ielem);
-	#endif
+	       }
+	       /* If necessary generate a first guess element to begin search */
+	       if(this->smartSearchValues->last_element_found == -1) {
 
-	         if( ielem == -1) {
-	           //printf("Failed to find element using smart search\n");
-	           //printf("Using Brute force now!\n");
-	         }
-	         kelem=-1;
-	         if( ielem != -1) kelem=this->smartSearchValues->indx[ielem];
 
-	         }
-	         last_element_found=kelem;
+#ifdef CARTESIAN_S_GRID
+	    	   x = cintp[0];
+	    	   y = cintp[1];
+	    	   z = cintp[2];
+#endif /* CARTESIAN_S_GRID */
+#ifdef SPHERICAL_S_GRID
+	    	   Math::convert_xyz_to_rthetaphi(c0,c1,c2,&r,&t,&p);
+	    	   x=r;
+	    	   y=t;
+	    	   z=p;
+#endif /* SPHERICAL_S_GRID */
 
+#ifdef DEBUGS
+	    	   printf("find_element: Searching for point x y z = %e %e %e\n",x,y,z);
+#endif
+	    	   i_s = (int)( (x-this->smartSearchValues->xl_sg)/this->smartSearchValues->dx_sg );
+	    	   j_s = (int)( (y-this->smartSearchValues->yl_sg)/this->smartSearchValues->dy_sg );
+	    	   k_s = (int)( (z-this->smartSearchValues->zl_sg)/this->smartSearchValues->dz_sg );
+
+#ifdef DEBUGS
+	    	   printf("Located in structured cell %d %d %d\n",i_s,j_s,k_s);
+#endif
+	    	   if(this->smartSearchValues->nelems_in_cell[k_s][j_s][i_s] > 0) {
+	    		   indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
+	    		   indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
+	    		   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
+	    		   this->smartSearchValues->last_element_found = this->smartSearchValues->indx[indx_start + delta_i];
+//  #ifdef DEBUGS
+	    		   printf("Reseting last_element_found from structured grid to %d delta_i %d\n",this->smartSearchValues->last_element_found,indx_end-indx_start);
+// #endif
+	    	   } else {
+	    		   this->smartSearchValues->last_element_found = -1;
+#ifdef DEBUGS
+	    		   printf("Structured cell has no elements - Trying the node list now\n");
+	    		   printf("nnodes_in_cell %d %d %d is %d \n",i_s,j_s,k_s,this->smartSearchValues->nnodes_in_cell[k_s][j_s][i_s]);
+	    		   fflush(stdout);
+#endif
+	    		   if(this->smartSearchValues->nnodes_in_cell[k_s][j_s][i_s] > 0) {
+	    			   indx_start = this->smartSearchValues->start_index_nodes[k_s][j_s][i_s];
+	    			   indx_end = this->smartSearchValues->end_index_nodes[k_s][j_s][i_s];
+#ifdef DEBUGS
+	    			   printf("nnodes_in_cell %d %d %d is %d \n",i_s,j_s,k_s,this->smartSearchValues->nnodes_in_cell[k_s][j_s][i_s]);
+	    			   printf("indx_start indx_end %d %d\n",indx_start,indx_end);
+	    			   fflush(stdout);
+#endif
+	    			   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
+	    			   last_node_found = this->smartSearchValues->indx_nodes[indx_start + delta_i];
+#ifdef DEBUGS
+	    			   printf("last_node_found=%d\n",last_node_found);
+	    			   printf("coords of last node are %e %e %e\n",(*coord)[last_node_found*3],
+	    					   (*coord)[last_node_found*3+1],(*coord)[last_node_found*3+2]);
+	    			   fflush(stdout);
+#endif
+	    			   this->smartSearchValues->last_element_found = this->smartSearchValues->esup1->at( this->smartSearchValues->esup2->at(last_node_found) );
+#ifdef DEBUGS
+	    			   printf("Node search found element %d as starting point for search\n", this->smartSearchValues->last_element_found);
+	    			   //fflush(stdout);
+#endif
+	    		   } else {
+
+#ifdef DEBUGS
+	    			   printf("Structured cell is empty - Node search also failed\n");
+	    			   printf("Start scanning neighbor cells using elements\n");
+#endif
+	    			   /* search immediate neighbor cells for search starting point */
+
+	    			   /* Locate a neighboring cell of the structured grid that contains a node */
+	    			   iselect = 1 ;
+
+	    			   i_min = std::max(0,i_s-1);
+	    			   i_max = std::min(nx_sg-1,i_s+1);
+#ifdef CARTESIAN_S_GRID
+	    			   j_min = max(0,j_s-1);
+	    			   j_max = min(ny_sg-1,j_s+1);
+	    			   k_min = max(0,k_s-1);
+	    			   k_max = min(nz_sg-1,k_s+1);
+#endif  /* CARTESIAN_S_GRID */
+#ifdef SPHERICAL_S_GRID
+	    			   j_min = j_s-1;
+	    			   j_max = j_s+1;
+	    			   k_min = k_s-1;
+	    			   k_max = k_s+1;
+#endif  /* SPHERICAL_S_GRID */
+
+	    			   /* if using elements for search */
+	    			   for(k=k_min;k<k_max+1;k++) {
+	    				   k0=k;
+#ifdef SPHERICAL_S_GRID
+	    				   if(k==-1) k0=nz_sg-1;
+	    				   if(k==nz_sg) k0=0;
+#endif  /* SPHERICAL_S_GRID */
+	    				   for(j=j_min;j<j_max+1;j++) {
+	    					   j0=j;
+#ifdef SPHERICAL_S_GRID
+	    					   if(j==ny_sg) {
+	    						   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    						   j0 = ny_sg-1;
+	    					   }
+	    					   if(j==-1) {
+	    						   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    						   j0 = 0;
+	    					   }
+#endif  /* SPHERICAL_S_GRID */
+	    					   for(i=i_min;i<i_max+1;i++) {
+#ifdef DEBUGS
+	    						   printf("cell %d %d %d nelems_in_cell %d\n",i,j0,k0,this->smartSearchValues->nelems_in_cell[k0][j0][i]);
+#endif
+	    						   if(this->smartSearchValues->nelems_in_cell[k0][j0][i]>0) {
+	    							   iselect=0;
+	    							   i_s=i;
+	    							   j_s=j0;
+	    							   k_s=k0;
+	    						   }
+	    					   }}}
+	    			   if(iselect==0)  {
+#ifdef DEBUGS
+	    				   printf("Found a starting element in neighbor %d %d %d\n",i_s,j_s,k_s);
+#endif
+	    				   indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
+	    				   indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
+	    				   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
+	    				   this->smartSearchValues->last_element_found = this->smartSearchValues->indx[indx_start + delta_i];
+#ifdef DEBUGS
+	    				   printf("Element is %d\n",this->smartSearchValues->last_element_found);
+#endif
+	    			   }
+
+	    			   /* if using nodes for search */
+	    			   if(iselect == 1) {
+#ifdef DEBUGS
+	    				   printf("Neighbor search using elements failed also\n");
+	    				   printf("Start scanning neighbor cells using nodes\n");
+#endif
+	    				   for(k=k_min;k<k_max+1;k++) {
+	    					   k0=k;
+#ifdef SPHERICAL_S_GRID
+	    					   if(k==-1) k0=nz_sg-1;
+	    					   if(k==nz_sg) k0=0;
+#endif  /* SPHERICAL_S_GRID */
+	    					   for(j=j_min;j<j_max+1;j++) {
+	    						   j0=j;
+#ifdef SPHERICAL_S_GRID
+	    						   if(j==ny_sg) {
+	    							   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    							   j0 = ny_sg-1;
+	    						   }
+	    						   if(j==-1) {
+	    							   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    							   j0 = 0;
+	    						   }
+#endif  /* SPHERICAL_S_GRID */
+	    						   for(i=i_min;i<i_max+1;i++) {
+#ifdef DEBUGS
+	    							   printf("cell %d %d %d nnodes_in_cell %d \n",i,j0,k0,this->smartSearchValues->nnodes_in_cell[k0][j0][i]);
+#endif
+	    							   if(this->smartSearchValues->nnodes_in_cell[k0][j0][i]>0) {
+	    								   iselect=0;
+	    								   i_s=i;
+	    								   j_s=j0;
+	    								   k_s=k0;
+	    							   }
+	    						   }}}
+	    				   if(iselect==0)  {
+#ifdef DEBUGS
+	    					   printf("Found a starting node in neighbor %d %d %d\n",i_s,j_s,k_s);
+#endif
+	    					   indx_start = this->smartSearchValues->start_index_nodes[k_s][j_s][i_s];
+	    					   indx_end = this->smartSearchValues->end_index_nodes[k_s][j_s][i_s];
+	    					   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
+	    					   last_node_found = this->smartSearchValues->indx_nodes[indx_start + delta_i];
+#ifdef DEBUGS
+	    					   printf("Node is %d\n",last_node_found);
+#endif
+	    					   this->smartSearchValues->last_element_found = this->smartSearchValues->esup1->at( this->smartSearchValues->esup2->at(last_node_found) );
+#ifdef DEBUGS
+	    					   printf("Element is %d\n",this->smartSearchValues->last_element_found);
+	    				   } else {
+	    					   printf("\n\n Final part of search failed\n\n\n");
+#endif
+	    				   }
+
+	    				   /* end of immediate neighbor search */
+
+	    				   /* If still not found search up to 2 neighbors away */
+	    				   if(iselect == 1) {
+
+	    					   i_min = std::max(0,i_s-2);
+	    					   i_max = std::min(nx_sg-1,i_s+2);
+#ifdef CARTESIAN_S_GRID
+	    					   j_min = max(0,j_s-2);
+	    					   j_max = min(ny_sg-1,j_s+2);
+	    					   k_min = max(0,k_s-2);
+	    					   k_max = min(nz_sg-1,k_s+2);
+#endif  /* CARTESIAN_S_GRID */
+#ifdef SPHERICAL_S_GRID
+	    					   j_min = j_s-2;
+	    					   j_max = j_s+2;
+	    					   k_min = k_s-2;
+	    					   k_max = k_s+2;
+#endif  /* SPHERICAL_S_GRID */
+
+	    					   /* if using elements for search */
+	    					   for(k=k_min;k<k_max+1;k++) {
+	    						   k0=k;
+#ifdef SPHERICAL_S_GRID
+	    						   if(k==-1) k0=nz_sg-1;
+	    						   if(k==nz_sg) k0=0;
+	    						   if(k==-2) k0=nz_sg-2;
+	    						   if(k==nz_sg+1) k0=1;
+#endif  /* SPHERICAL_S_GRID */
+	    						   for(j=j_min;j<j_max+1;j++) {
+	    							   j0=j;
+#ifdef SPHERICAL_S_GRID
+	    							   if(j==ny_sg) {
+	    								   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    								   j0 = ny_sg-1;
+	    							   }
+	    							   if(j==ny_sg+1) {
+	    								   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    								   j0 = ny_sg-2;
+	    							   }
+	    							   if(j==-1) {
+	    								   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    								   j0 = 0;
+	    							   }
+	    							   if(j==-2) {
+	    								   k0 = (k0+nz_sg/2)%(nz_sg-1);
+	    								   j0 = 1;
+	    							   }
+#endif  /* SPHERICAL_S_GRID */
+	    							   for(i=i_min;i<i_max+1;i++) {
+#ifdef DEBUGS
+	    								   printf("cell %d %d %d nelems_in_cell %d\n",i,j0,k0,this->smartSearchValues->nelems_in_cell[k0][j0][i]);
+#endif
+	    								   if(this->smartSearchValues->nelems_in_cell[k0][j0][i]>0) {
+	    									   iselect=0;
+	    									   i_s=i;
+	    									   j_s=j0;
+	    									   k_s=k0;
+	    								   }
+	    							   }}}
+	    					   if(iselect==0)  {
+#ifdef DEBUGS
+	    						   printf("Found a starting element in neighbor %d %d %d\n",i_s,j_s,k_s);
+#endif
+	    						   indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
+	    						   indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
+	    						   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
+	    						   this->smartSearchValues->last_element_found = this->smartSearchValues->indx[indx_start + delta_i];
+#ifdef DEBUGS
+	    						   printf("Element is %d\n",this->smartSearchValues->last_element_found);
+#endif
+	    					   }
+
+	    				   }
+	    				   /* end of 2 neighbor search */
+
+
+	    			   }
+	    			   /* next cell to pick from should be i_s,j_s,k_s */
+
+
+	    		   }
+	    	   }
+
+
+	       }
+	       std::cout << "last_element_found = " << this->smartSearchValues->last_element_found << std::endl;
+	       /* If available, use the last element found to begin the search */
+	       if(this->smartSearchValues->last_element_found != -1) kelem = smartSearch(c0,c1,c2);
+
+
+	       this->smartSearchValues->last_element_found=kelem;
+	       previous_c0=c0;
+	       previous_c1=c1;
+	       previous_c2=c2;
+
+	       //	         #ifdef DEBUGS
+	       printf("Exiting find element with last_element_found=%d\n",this->smartSearchValues->last_element_found);
+	       //	         #endif
+
+
+
+		} else
+		{
+#ifdef DEBUGS
+			this->smartSearchValues->outside_grid += 1;
+			this->smartSearchValues->last_element_found = -1;
+			previous_c0 = 0.f;
+			previous_c1 = 0.f;
+			previous_c2 = 0.f;
+#endif
+		}
 	         return kelem;
 
 	/*       end subroutine find_element  */
 	}
 
-	int Adapt3DInterpolator::index_2d_to_1d( int i1, int i2, int n1, int n2)
+	int Adapt3DInterpolator::index_2d_to_1d( int i1, int i2, int n2)
 	{
 	/* converts a 2D array index into a flat 1D index */
 	      int idx = n2*i1 + i2;
@@ -769,7 +988,7 @@ namespace ccmc
     int Adapt3DInterpolator::chkineln( const float& c0, const float& c1, const float& c2, int ielem , float * shapex)
 	{
 
-    	int numThreads = boost::thread::hardware_concurrency();
+    	//
 //#define DEBUG
 	/*
 	!...  mesh arrays
@@ -805,35 +1024,41 @@ namespace ccmc
 	!...  find the local coordinates
 	!
 	*/
-		ipa = intmat->at(index_2d_to_1d(ielem,0,nelem,4))-1;
-		ipb = intmat->at(index_2d_to_1d(ielem,1,nelem,4))-1;
-		ipc = intmat->at(index_2d_to_1d(ielem,2,nelem,4))-1;
-		ipd = intmat->at(index_2d_to_1d(ielem,3,nelem,4))-1;
+		ipa = intmat->at(index_2d_to_1d(ielem,0,4));
+		ipb = intmat->at(index_2d_to_1d(ielem,1,4));
+		ipc = intmat->at(index_2d_to_1d(ielem,2,4));
+		ipd = intmat->at(index_2d_to_1d(ielem,3,4));
 
 		//std::cerr << "npoin: " << npoin << " ndimn: " << ndimn << " ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
-		xa  = coord->at(index_2d_to_1d(0,ipa,0,npoin));
-		ya  = coord->at(index_2d_to_1d(1,ipa,0,npoin));
-		za  = coord->at(index_2d_to_1d(2,ipa,0,npoin));
-		xba = coord->at(index_2d_to_1d(0,ipb,0,npoin)) - xa;
-		yba = coord->at(index_2d_to_1d(1,ipb,0,npoin)) - ya;
-		zba = coord->at(index_2d_to_1d(2,ipb,0,npoin)) - za;
-		xca = coord->at(index_2d_to_1d(0,ipc,0,npoin)) - xa;
-		yca = coord->at(index_2d_to_1d(1,ipc,0,npoin)) - ya;
-		zca = coord->at(index_2d_to_1d(2,ipc,0,npoin)) - za;
-		xda = coord->at(index_2d_to_1d(0,ipd,0,npoin)) - xa;
-		yda = coord->at(index_2d_to_1d(1,ipd,0,npoin)) - ya;
-		zda = coord->at(index_2d_to_1d(2,ipd,0,npoin)) - za;
+		xa  = coord->at(index_2d_to_1d(ipa,0,3));
+		ya  = coord->at(index_2d_to_1d(ipa,1,3));
+		za  = coord->at(index_2d_to_1d(ipa,2,3));
+		xba = coord->at(index_2d_to_1d(ipb,0,3)) - xa;
+		yba = coord->at(index_2d_to_1d(ipb,1,3)) - ya;
+		zba = coord->at(index_2d_to_1d(ipb,2,3)) - za;
+		xca = coord->at(index_2d_to_1d(ipc,0,3)) - xa;
+		yca = coord->at(index_2d_to_1d(ipc,1,3)) - ya;
+		zca = coord->at(index_2d_to_1d(ipc,2,3)) - za;
+		xda = coord->at(index_2d_to_1d(ipd,0,3)) - xa;
+		yda = coord->at(index_2d_to_1d(ipd,1,3)) - ya;
+		zda = coord->at(index_2d_to_1d(ipd,2,3)) - za;
 
 		float t1 = 0.f;
 		float t2 = 0.f;
 		float t3 = 0.f;
-		boost::thread thread1(&Adapt3DInterpolator::calculation1,xba,yca,zda,zca,yda, t1);
-		boost::thread thread2(&Adapt3DInterpolator::calculation1,yba,xca,zda,zca,xda, t2);
-		boost::thread thread3(&Adapt3DInterpolator::calculation1,zba,xca,yda,yca,xda, t3);
-		thread1.join();
-		thread2.join();
-		thread3.join();
-
+		t1 = xba*(yca*zda - zca*yda);
+		t2 = yba*(xca*zda - zca*xda);
+		t3 = zba*(xca*yda - yca*xda);
+		//a*(b*c-d*e);
+//		boost::thread thread1(&Adapt3DInterpolator::calculation1,boost::ref(xba),boost::ref(yca),boost::ref(zda),boost::ref(zca),boost::ref(yda), boost::ref(t1));
+//		boost::thread thread2(&Adapt3DInterpolator::calculation1,boost::ref(yba),boost::ref(xca),boost::ref(zda),boost::ref(zca),boost::ref(xda), boost::ref(t2));
+//		boost::thread thread3(&Adapt3DInterpolator::calculation1,boost::ref(zba),boost::ref(xca),boost::ref(yda),boost::ref(yca),boost::ref(xda), boost::ref(t3));
+//		thread1.join();
+//		thread2.join();
+//		thread3.join();
+		//calculation1(xba,yca,zda,zca,yda, t1);
+		//calculation1(yba,xca,zda,zca,xda, t2);
+		//calculation1(zba,xca,yda,yca,xda, t3);
 		//float deter = xba*(yca*zda-zca*yda) - yba*(xca*zda-zca*xda) + zba*(xca*yda-yca*xda);
 		deter = t1 - t2 + t3;
 
@@ -917,7 +1142,7 @@ namespace ccmc
 	/*       end subroutine chkineln */
 	}
 
-    float Adapt3DInterpolator::interpolate_adapt3d_solution(float *coord1,int ielem, const std::string& variable)
+    float Adapt3DInterpolator::interpolate_adapt3d_solution(const float& x, const float& y, const float& z, int ielem, const std::string& variable)
     {
     /*
      * Interpolate values of unkno to position coord in element ielem
@@ -936,28 +1161,26 @@ namespace ccmc
            float a3,b3,c3,d3;
            float a4,b4,c4,d4;
            float f1,f2,f3,f4;
-           float x,y,z;
 
-           ipa = intmat->at(index_2d_to_1d(ielem,0,nelem,4))-1;
-           ipb = intmat->at(index_2d_to_1d(ielem,1,nelem,4))-1;
-           ipc = intmat->at(index_2d_to_1d(ielem,2,nelem,4))-1;
-           ipd = intmat->at(index_2d_to_1d(ielem,3,nelem,4))-1;
-           x1 = coord->at(index_2d_to_1d(0,ipa,0,npoin));
-           y1 = coord->at(index_2d_to_1d(1,ipa,0,npoin));
-           z1 = coord->at(index_2d_to_1d(2,ipa,0,npoin));
-           x2 = coord->at(index_2d_to_1d(0,ipb,0,npoin));
-           y2 = coord->at(index_2d_to_1d(1,ipb,0,npoin));
-           z2 = coord->at(index_2d_to_1d(2,ipb,0,npoin));
-           x3 = coord->at(index_2d_to_1d(0,ipc,0,npoin));
-           y3 = coord->at(index_2d_to_1d(1,ipc,0,npoin));
-           z3 = coord->at(index_2d_to_1d(2,ipc,0,npoin));
-           x4 = coord->at(index_2d_to_1d(0,ipd,0,npoin));
-           y4 = coord->at(index_2d_to_1d(1,ipd,0,npoin));
-           z4 = coord->at(index_2d_to_1d(2,ipd,0,npoin));
 
-           x = coord1[0];
-           y = coord1[1];
-           z = coord1[2];
+           ipa = intmat->at(index_2d_to_1d(ielem,0,4));
+           ipb = intmat->at(index_2d_to_1d(ielem,1,4));
+           ipc = intmat->at(index_2d_to_1d(ielem,2,4));
+           ipd = intmat->at(index_2d_to_1d(ielem,3,4));
+           x1 = coord->at(index_2d_to_1d(ipa,0,3));
+           y1 = coord->at(index_2d_to_1d(ipa,1,3));
+           z1 = coord->at(index_2d_to_1d(ipa,2,3));
+           x2 = coord->at(index_2d_to_1d(ipb,0,3));
+           y2 = coord->at(index_2d_to_1d(ipb,1,3));
+           z2 = coord->at(index_2d_to_1d(ipb,2,3));
+           x3 = coord->at(index_2d_to_1d(ipc,0,3));
+           y3 = coord->at(index_2d_to_1d(ipc,1,3));
+           z3 = coord->at(index_2d_to_1d(ipc,2,3));
+           x4 = coord->at(index_2d_to_1d(ipd,0,3));
+           y4 = coord->at(index_2d_to_1d(ipd,1,3));
+           z4 = coord->at(index_2d_to_1d(ipd,2,3));
+
+
 
     #ifdef TEST_CASE1
            x1=0.;
@@ -974,7 +1197,7 @@ namespace ccmc
            z4=3.;
     #endif
 
-    #ifdef LINEAR_INTERPOL
+//    #ifdef LINEAR_INTERPOL
            a1 = x2*(y3*z4-z3*y4)+y2*(z3*x4-z4*x3)+z2*(x3*y4-x4*y3);
            b1 = - ( y3*z4-z3*y4 + y2*(z3-z4) + z2*(y4-y3) );
            c1 = - ( x2*(z4-z3) + (z3*x4-z4*x3) + z2*(x3-x4) );
@@ -1006,6 +1229,7 @@ namespace ccmc
            const std::vector<float> * vData = modelReader->getVariableFromMap(variable);
            if (vData == NULL || vData->size() == 0)
            {
+        	   std::cerr << "missing value" << std::endl;
         	   return this->missingValue;
            }
           /* for ( iv=0; iv<9; iv++) {
@@ -1034,18 +1258,22 @@ namespace ccmc
            f2 = -(a2 + b2*x + c2*y + d2*z)/vol6;
            f3 =  (a3 + b3*x + c3*y + d3*z)/vol6;
            f4 = -(a4 + b4*x + c4*y + d4*z)/vol6;
+           std::cout << "a1: " << a1 << " a2: " << a2 << " a3: " << a3 << " a4: " << a4 << std::endl;
+           std::cout << "b1: " << b1 << " b2: " << b2 << " b3: " << b3 << " b4: " << b4 << std::endl;
+           std::cout << "c1: " << c1 << " c2: " << c2 << " c3: " << c3 << " c4: " << c4 << std::endl;
+           std::cout << "d1: " << d1 << " d2: " << d2 << " d3: " << d3 << " d4: " << d4 << std::endl;
+           std::cout << "vol6: " << vol6 << " vol: " << vol << std::endl;
+           std::cout << "f1: " << f1 << " f2: " << f2 << " f3: " << f3 << " f4: " << f4 << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipa << ",0,1) ] " << (*vData)[ ipa ] << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipb << ",0,1) ] " << (*vData)[ ipb ] << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipc << ",0,1) ] " << (*vData)[ ipc ] << std::endl;
+           std::cout << "(*vData)[ index_2d_to_1d(" << ipd << ",0,1) ] " << (*vData)[ ipd ] << std::endl;
 
-/*           std::cout << "f1: " << f1 << " f2: " << f2 << " f3: " << f3 << " f4: " << f4 << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipa << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipa,0,npoin,1) ] << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipb << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipb,0,npoin,1) ] << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipc << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipc,0,npoin,1) ] << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipd << ",0," << npoin << ",1) ] " << (*vData)[ index_2d_to_1d(ipd,0,npoin,1) ] << std::endl;
-*/
 
-           return f1*(*vData)[ index_2d_to_1d(ipa,0,npoin,1) ]+f2*(*vData)[ index_2d_to_1d(ipb,0,npoin,1) ]
-				 +f3*(*vData)[ index_2d_to_1d(ipc,0,npoin,1) ]+f4*(*vData)[ index_2d_to_1d(ipd,0,npoin,1) ] ;
+           return f1*(*vData)[ ipa ]+f2*(*vData)[ ipb ]
+				 +f3*(*vData)[ ipc ]+f4*(*vData)[ ipd ] ;
 
-    #endif
+
 
 
     /*       end subroutine interpolate_solution  */
