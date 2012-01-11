@@ -10,6 +10,7 @@
 #include <ccmc/Adapt3D.h>
 #include <ccmc/Interpolator.h>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -33,8 +34,9 @@ int main (int argc, char * argv[])
 	adapt3d.open(filename);
 	adapt3d.loadVariable(variable);
 
+	clock_t begin = clock();
 	ccmc::Interpolator * interpolator = adapt3d.createNewInterpolator();
-	int upper = 30;
+	/*int upper = 5;
 	float delta = 10.f/(float)(upper -1);
 	for (int i = 0; i < upper; i++)
 	{
@@ -50,7 +52,10 @@ int main (int argc, char * argv[])
 
 			}
 		}
-	}
+	}*/
+	clock_t end = clock();
+	float final = (end-begin)/CLOCKS_PER_SEC;
+	std::cout << "elapsed time: " << final << " seconds" << std::endl;
 	float value = interpolator->interpolate(variable, x, y, z);
 	//float density = interpolator->interpolate("rho", x, y, z);
 	delete interpolator;
