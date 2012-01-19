@@ -28,9 +28,16 @@ namespace ccmc
 	 */
 	Adapt3D::Adapt3D()
 	{
+		std::cout << "entered constructor" << std::endl;
 		this->ndimn=NDIMN_ADAPT3D;
 		this->nnode=NNODE_ADAPT3D;
 		this->nvars=NVARS_ADAPT3D;
+		this->smartSearchValues.nelems_in_cell.resize(boost::extents[nz_sg][ny_sg][nx_sg]);
+		this->smartSearchValues.nnodes_in_cell.resize(boost::extents[nz_sg][ny_sg][nx_sg]);
+		this->smartSearchValues.start_index.resize(boost::extents[nz_sg][ny_sg][nx_sg]);
+		this->smartSearchValues.start_index_nodes.resize(boost::extents[nz_sg][ny_sg][nx_sg]);
+		this->smartSearchValues.end_index.resize(boost::extents[nz_sg][ny_sg][nx_sg]);
+		this->smartSearchValues.end_index_nodes.resize(boost::extents[nz_sg][ny_sg][nx_sg]);
 
 		this->smartSearchValues.indx = NULL;
 		this->smartSearchValues.esup1 = NULL;
@@ -104,33 +111,16 @@ namespace ccmc
 			std::cerr << "nelem not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
 		}
-		/*if (doesAttributeExist(ccmc::strings::variables::nboun_))
-		{
-			this->nboun = (this->getGlobalAttribute(ccmc::strings::variables::nboun_)).getAttributeInt();
-		} else
-		{
-			std::cerr << "nboun not found" << std::endl;
-			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
-		}
-		if (doesAttributeExist(ccmc::strings::variables::nconi_))
-		{
-			this->nconi = (this->getGlobalAttribute(ccmc::strings::variables::nconi_)).getAttributeInt();
-		} else
-		{
-			std::cerr << "nconi not found" << std::endl;
-			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
-		}*/
 
 		//create and setup the necessary smart search stuff
 		this->nelem = (this->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
 
 		this->npoin = (this->getGlobalAttribute(ccmc::strings::variables::npoin_)).getAttributeInt();
-		this->smartSearchValues.indx = new int[nelem];
-		this->smartSearchValues.delauney_search_iteration_profile = new int[DELAUNEY_ITER_MAX];
-		this->smartSearchValues.facing_elements = new int[this->nelem*4];
-		//this->positions = new boost::unordered_map<float, boost::unordered_map<float, boost::unordered_map<float, Point3f *> * > *> ();
-
-//		this->smartSearchValues.parent = new BoundingBox();
+		this->smartSearchValues.indx = new std::vector<int>(nelem);
+		this->smartSearchValues.delauney_search_iteration_profile = new std::vector<int>(DELAUNEY_ITER_MAX);
+		if (this->smartSearchValues.facing_elements != NULL)
+			delete this->smartSearchValues.facing_elements;
+		this->smartSearchValues.facing_elements = new std::vector<int>(this->nelem*4);
 		this->smartSearchValues.esup1 = new std::vector<int>(nelem*4);
 		for (int i = 0; i < nelem*4; i++)
 		{
@@ -142,27 +132,38 @@ namespace ccmc
 			this->smartSearchValues.esup2->push_back(0);
 		}
 
-		if (coord_modified != NULL)
-			delete coord_modified;
-
-
-		this->coord = (this->getVariableFromMap(ccmc::strings::variables::coord_));
-		this->coord_modified = new std::vector<float>(coord->size());
-		for ( int i=0; i< npoin; i++)
+		//this->coord = (this->getVariableFromMap(ccmc::strings::variables::coord_));
+		coord_modified = this->getVariableFromMapRW(ccmc::strings::variables::coord_);
+		std::cout << "this->coord->size(): " << this->coord_modified->size() << std::endl;
+		std::vector<float> * buffer = new std::vector<float>(coord_modified->size());
+		for (int i = 0; i < coord_modified->size(); i++)
 		{
-			this->coord_modified->push_back((*coord)[i]);
+			(*buffer)[i] = coord_modified->at(i);
 		}
 
-		float tempc;
+		float tempc = 0;
 		for ( int i=0; i<npoin; i++) {
-			tempc=(*coord_modified)[i+npoin*2];
-			(*coord_modified)[i+npoin*2]=(*coord_modified)[i+npoin];
-			(*coord_modified)[i+npoin]=(*coord_modified)[i];
-			(*coord_modified)[i]=tempc;
+//			(*coord_modified)[i]=(*buffer)[i*3];
+//			(*coord_modified)[i+npoin]=(*buffer)[i*3+1];
+//			(*coord_modified)[i+npoin*2]=(*buffer)[i*3+2];
+			(*coord_modified)[i*3]=(*buffer)[i];
+			(*coord_modified)[i*3+1]=(*buffer)[i+npoin];
+			(*coord_modified)[i*3+2]=(*buffer)[i+npoin*2];
+			//std::cout << "this->coord_modifed->size(): " << this->coord_modified->size() << " tempc: " << tempc << " [i+npoin*2]: " << (i+npoin*2) <<  " i+npoin " << (i+npoin) << std::endl;
 		}
 
-		this->intmat = (this->getIntVariableFromMap(ccmc::strings::variables::intmat_));
-		this->smartSearchValues.indx_nodes = new int[npoin];
+		delete buffer;
+
+		this->intmat_modified = (this->getIntVariableFromMapRW(ccmc::strings::variables::intmat_));
+
+		//intmat_modified = new std::vector<int>(intmat->size());
+		for (int i = 0; i < this->intmat_modified->size(); i++)
+		{
+			(*intmat_modified)[i] = (*intmat_modified)[i] - 1;
+		}
+		//this->unloadVariable(ccmc::strings::variables::intmat_);
+
+		this->smartSearchValues.indx_nodes = new std::vector<int>(npoin);
 		this->setupSearchUnstructuredGrid();
 		this->smartSearchSetup();
 		//this->setupOctreeGrid();
@@ -255,7 +256,7 @@ namespace ccmc
 
 		int ipa,ipb,ipc,ipd;
 		int i_s,j_s,k_s,ielem;
-		int i,j,k;
+		//int i,j,k;
 		int ii;
 		//int nelems_in_cell[nz_sg][ny_sg][nx_sg];
 		//int nnodes_in_cell[nz_sg][ny_sg][nx_sg];
@@ -313,17 +314,18 @@ namespace ccmc
 			std::cerr << "Unable to allocate memory: " << ba.what() << std::endl;
 			return false;
 		}
+
 		//this->smartSearchValues.indx_nodes = new int[npoin];
 		this->smartSearchValues.last_element_found = -1;
 //		printf("Allocation of elem_index_struct complete \n");
 
 
-	    float  xl_gr=1.e30;
-	    float  xr_gr=-1.e30;
-	    float  yl_gr=1.e30;
-	    float  yr_gr=-1.e30;
-	    float  zl_gr=1.e30;
-	    float  zr_gr=-1.e30;
+		this->smartSearchValues.xl_gr=1.e30;
+		this->smartSearchValues.xr_gr=-1.e30;
+		this->smartSearchValues.yl_gr=1.e30;
+		this->smartSearchValues.yr_gr=-1.e30;
+		this->smartSearchValues.zl_gr=1.e30;
+		this->smartSearchValues.zr_gr=-1.e30;
 
 	#ifdef CARTESIAN_S_GRID
 	      xl_sg=1.e30;
@@ -348,15 +350,15 @@ namespace ccmc
 	/* coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
 	 * for node 1, etc
 	*/
-	      for ( i=0; i<(int)npoin; i++) {
-#ifdef CARTESIAN_S_GRID
-	    	xl_gr=std::min(xl_gr,(*coord_modified)[ index_2d_to_1d(i,0,3) ]);
-	        xr_gr=std::max(xr_gr,(*coord_modified)[ index_2d_to_1d(i,0,3) ]);
-	        yl_gr=std::min(yl_gr,(*coord_modified)[ index_2d_to_1d(i,1,3) ]);
-	        yr_gr=std::max(yr_gr,(*coord_modified)[ index_2d_to_1d(i,1,3) ]);
-	        zl_gr=std::min(zl_gr,(*coord_modified)[ index_2d_to_1d(i,2,3) ]);
-	        zr_gr=std::max(zr_gr,(*coord_modified)[ index_2d_to_1d(i,2,3) ]);
-#endif
+	      for ( int i=0; i<(int)npoin; i++) {
+//#ifdef CARTESIAN_S_GRID
+	    	this->smartSearchValues.xl_gr=std::min(this->smartSearchValues.xl_gr,(*coord_modified)[ index_2d_to_1d(i,0,3) ]);
+	    	this->smartSearchValues.xr_gr=std::max(this->smartSearchValues.xr_gr,(*coord_modified)[ index_2d_to_1d(i,0,3) ]);
+	    	this->smartSearchValues.yl_gr=std::min(this->smartSearchValues.yl_gr,(*coord_modified)[ index_2d_to_1d(i,1,3) ]);
+	    	this->smartSearchValues.yr_gr=std::max(this->smartSearchValues.yr_gr,(*coord_modified)[ index_2d_to_1d(i,1,3) ]);
+	    	this->smartSearchValues.zl_gr=std::min(this->smartSearchValues.zl_gr,(*coord_modified)[ index_2d_to_1d(i,2,3) ]);
+	    	this->smartSearchValues.zr_gr=std::max(this->smartSearchValues.zr_gr,(*coord_modified)[ index_2d_to_1d(i,2,3) ]);
+//#endif
 
 #ifdef SPHERICAL_S_GRID
 	        int a = 0, b = 0, c = 0;
@@ -364,10 +366,13 @@ namespace ccmc
 	        b = index_2d_to_1d(i,1,3);
 	        c = index_2d_to_1d(i,2,3);
 	        //std::cout << "a: " << a << " b: " << b << " c: " << c << std::endl;
+
 	        x=(*coord_modified)[ a ];
 	        y=(*coord_modified)[ b ];
 	        z=(*coord_modified)[ c ];
 	        Math::convert_xyz_to_rthetaphi(x,y,z,&r,&t,&p);
+	        if (r < .001)
+	        	std::cout << "x: " << x << " y: " << y << " z: " << z << std::endl;
 	        this->smartSearchValues.xl_sg=std::min(this->smartSearchValues.xl_sg,r);
 	        this->smartSearchValues.xr_sg=std::max(this->smartSearchValues.xr_sg,r);
 	        this->smartSearchValues.yl_sg=std::min(this->smartSearchValues.yl_sg,t);
@@ -417,16 +422,14 @@ namespace ccmc
 
 
 		/* Initialize the counters for the number of elements in each grid cell */
-		for ( k=0; k<nz_sg; k++)
-		{
-			for ( j=0; j<ny_sg; j++)
-			{
-				for ( i=0; i<nx_sg; i++)
-				{
+		for (int k=0; k<nz_sg; k++) {
+		for (int j=0; j<ny_sg; j++) {
+		for (int i=0; i<nx_sg; i++) {
+
 					this->smartSearchValues.nelems_in_cell[k][j][i] = 0;
 					this->smartSearchValues.nnodes_in_cell[k][j][i] = 0;
-				}
-			}
+		}
+		}
 		}
 
 
@@ -445,10 +448,11 @@ namespace ccmc
 		{
 			//std::cerr << "index_2d_to_1d(" << ielem << ",0," << nelem << ",4): " << index_2d_to_1d(ielem,0,nelem,4)  << std::endl;
 			//std::cerr << "sizeof intmat: " << (*intmat).size() << std::endl;
-			ipa = (*intmat)[ index_2d_to_1d(ielem,0,4) ] ;
-			ipb = (*intmat)[ index_2d_to_1d(ielem,1,4) ] ;
-			ipc = (*intmat)[ index_2d_to_1d(ielem,2,4) ] ;
-			ipd = (*intmat)[ index_2d_to_1d(ielem,3,4) ] ;
+			ipa = (*intmat_modified)[ index_2d_to_1d(ielem,0,4) ] ;
+			ipb = (*intmat_modified)[ index_2d_to_1d(ielem,1,4) ] ;
+			ipc = (*intmat_modified)[ index_2d_to_1d(ielem,2,4) ] ;
+			ipd = (*intmat_modified)[ index_2d_to_1d(ielem,3,4) ] ;
+#ifdef CARTESIAN_S_GRID
 			/*
 			 *  coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
 			 * for node 1, etc
@@ -481,6 +485,7 @@ namespace ccmc
 			arr7[6] = side_l_6;
 
 			max_length_sqrd=ccmc::Math::ffindmax(arr7,7);
+#endif
 
 			arr4[0] = (*coord_modified)[ index_2d_to_1d(ipa,0,3) ];
 			arr4[1] = (*coord_modified)[ index_2d_to_1d(ipb,0,3) ];
@@ -550,47 +555,34 @@ namespace ccmc
 		index to the element list */
 		countup   = 0;
 		countdown = nelem-1;
-		for ( k=0; k<nz_sg; k++ )
-		{
-			for ( j=0; j<ny_sg; j++ )
-			{
-				for ( i=0; i<nx_sg; i++ )
-				{
-					this->smartSearchValues.start_index[k][j][i] = countup;
-					countup = countup + this->smartSearchValues.nelems_in_cell[k][j][i];
-					this->smartSearchValues.end_index[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i] = countdown;
-					countdown = countdown - this->smartSearchValues.nelems_in_cell[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i];
-				}
-			}
-		}
-		for ( k=0; k<nz_sg; k++ )
-		{
-			for ( j=0; j<ny_sg; j++ )
-				{
-					for ( i=0; i<nx_sg; i++ )
-					{
-						this->smartSearchValues.end_index[k][j][i] = std::max(this->smartSearchValues.start_index[k][j][i],this->smartSearchValues.end_index[k][j][i]);
-					}
-			}
-		}
+		for (int k=0; k<nz_sg; k++ ) {
+		for (int j=0; j<ny_sg; j++ ) {
+		for (int i=0; i<nx_sg; i++ ) {
+			this->smartSearchValues.start_index[k][j][i] = countup;
+			countup = countup + this->smartSearchValues.nelems_in_cell[k][j][i];
+			this->smartSearchValues.end_index[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i] = countdown;
+			countdown = countdown - this->smartSearchValues.nelems_in_cell[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i];
+		}}}
+
+		for (int k=0; k<nz_sg; k++ ) {
+		for (int j=0; j<ny_sg; j++ ) {
+		for (int i=0; i<nx_sg; i++ ) {
+			this->smartSearchValues.end_index[k][j][i] = std::max((float)(this->smartSearchValues.start_index[k][j][i]),(float)(this->smartSearchValues.end_index[k][j][i]));
+		}}}
 
 
 		/* Step 4 - Create the index */
-		for ( k=0; k<nz_sg; k++)
-		{
-			for ( j=0; j<ny_sg; j++)
-			{
-				for ( i=0; i<nx_sg; i++)
-				{
+		for (int k=0; k<nz_sg; k++) {
+		for (int j=0; j<ny_sg; j++) {
+		for (int i=0; i<nx_sg; i++) {
 					this->smartSearchValues.nelems_in_cell[k][j][i] = 0;
-				}
-			}
-		}
-		for ( ielem=0; ielem<nelem; ielem++)
+		}}}
+
+		for (int ielem=0; ielem<nelem; ielem++)
 		{
-			i = elem_index_struct[ielem][0];
-			j = elem_index_struct[ielem][1];
-			k = elem_index_struct[ielem][2];
+			int i = elem_index_struct[ielem][0];
+			int j = elem_index_struct[ielem][1];
+			int k = elem_index_struct[ielem][2];
 			ii = this->smartSearchValues.start_index[k][j][i] + this->smartSearchValues.nelems_in_cell[k][j][i];
 			this->smartSearchValues.indx[ii] = ielem;
 			this->smartSearchValues.nelems_in_cell[k][j][i] = this->smartSearchValues.nelems_in_cell[k][j][i] + 1;
@@ -615,8 +607,8 @@ namespace ccmc
 		         j_s = std::max( 0, std::min(j_s,ny_sg-1) );  /* prevent roundoff messing up index calc */
 		         k_s = std::max( 0, std::min(k_s,nz_sg-1) );  /* prevent roundoff messing up index calc */
 		         node_index_struct[inode][0] = i_s;
-		         node_index_struct[inode][0] = j_s;
-		         node_index_struct[inode][0] = k_s;
+		         node_index_struct[inode][1] = j_s;
+		         node_index_struct[inode][2] = k_s;
 		         this->smartSearchValues.nnodes_in_cell[k_s][j_s][i_s] = this->smartSearchValues.nnodes_in_cell[k_s][j_s][i_s] + 1;
 		      }
 		#ifdef DEBUG
@@ -628,9 +620,9 @@ namespace ccmc
 		 index to the node list */
 		      countup   = 0;
 		      countdown = npoin-1;
-		      for ( k=0; k<nz_sg; k++ ) {
-		      for ( j=0; j<ny_sg; j++ ) {
-		      for ( i=0; i<nx_sg; i++ ) {
+		      for (int k=0; k<nz_sg; k++ ) {
+		      for (int j=0; j<ny_sg; j++ ) {
+		      for (int i=0; i<nx_sg; i++ ) {
 		    	  this->smartSearchValues.start_index_nodes[k][j][i] = countup;
 		         countup = countup + this->smartSearchValues.nnodes_in_cell[k][j][i];
 		         this->smartSearchValues.end_index_nodes[nz_sg-1-k][ny_sg-1-j][nx_sg-1-i] = countdown;
@@ -641,11 +633,11 @@ namespace ccmc
 		         fflush(stdout);
 		#endif
 
-		      for ( k=0; k<nz_sg; k++ ) {
-		      for ( j=0; j<ny_sg; j++ ) {
-		      for ( i=0; i<nx_sg; i++ ) {
-		    	  this->smartSearchValues.end_index_nodes[k][j][i] = std::max(this->smartSearchValues.start_index_nodes[k][j][i],
-		    			  this->smartSearchValues.end_index_nodes[k][j][i]);
+		      for (int k=0; k<nz_sg; k++ ) {
+		      for (int j=0; j<ny_sg; j++ ) {
+		      for (int i=0; i<nx_sg; i++ ) {
+		    	  this->smartSearchValues.end_index_nodes[k][j][i] = std::max((float)this->smartSearchValues.start_index_nodes[k][j][i],
+		    			  (float)this->smartSearchValues.end_index_nodes[k][j][i]);
 		      }}}
 
 		#ifdef DEBUG
@@ -654,9 +646,9 @@ namespace ccmc
 		#endif
 
 		/* Step 7 - Create the index */
-		      for ( k=0; k<nz_sg; k++) {
-		      for ( j=0; j<ny_sg; j++) {
-		      for ( i=0; i<nx_sg; i++) {
+		      for (int k=0; k<nz_sg; k++) {
+		      for (int j=0; j<ny_sg; j++) {
+		      for (int i=0; i<nx_sg; i++) {
 		    	  this->smartSearchValues.nnodes_in_cell[k][j][i] = 0;
 		      }}}
 
@@ -665,9 +657,9 @@ namespace ccmc
 		         fflush(stdout);
 		#endif
 		      for (int inode=0; inode<npoin; inode++) {
-		         i = node_index_struct[inode][0];
-		         j = node_index_struct[inode][1];
-		         k = node_index_struct[inode][2];
+		         int i = node_index_struct[inode][0];
+		         int j = node_index_struct[inode][1];
+		         int k = node_index_struct[inode][2];
 		         ii = this->smartSearchValues.start_index_nodes[k][j][i] + this->smartSearchValues.nnodes_in_cell[k][j][i];
 		         this->smartSearchValues.indx_nodes[ii] = inode;
 		         this->smartSearchValues.nnodes_in_cell[k][j][i] = this->smartSearchValues.nnodes_in_cell[k][j][i] + 1;
@@ -708,8 +700,8 @@ namespace ccmc
 		for(int i=0;i<DELAUNEY_ITER_MAX;i++) {
 			this->smartSearchValues.delauney_search_iteration_profile[i]=0;
 		}
-		this->smartSearchValues.still_in_same_element=0;
-		this->smartSearchValues.outside_grid=0;
+		//this->smartSearchValues.still_in_same_element=0;
+		//this->smartSearchValues.outside_grid=0;
 		printf("Delauney counter allocated and initialized\n");
 
 
@@ -734,7 +726,7 @@ namespace ccmc
 		 */
 		for( inode=0; inode<nnode; inode++)
 		{
-			ip         = (*intmat)[ inode]+1;
+			ip         = (*intmat_modified)[ inode]+1;
 			//std::cerr << "ip: " << ip << std::endl;
 			(*this->smartSearchValues.esup2)[ip]  = this->smartSearchValues.esup2->at(ip) + 1;
 		}
@@ -768,7 +760,7 @@ namespace ccmc
 		{
 			for( inode=0; inode<nnode; inode++)
 			{
-				ipoin        = (*intmat)[ index_2d_to_1d(ielem,inode,4) ];
+				ipoin        = (*intmat_modified)[ index_2d_to_1d(ielem,inode,4) ];
 				istor        = this->smartSearchValues.esup2->at(ipoin) + 1;
 				(*this->smartSearchValues.esup2)[ipoin] = istor;
 				(*this->smartSearchValues.esup1)[istor-1] = ielem;
@@ -816,7 +808,7 @@ namespace ccmc
 	      int  in1,in2,in3,ip1,ip2,ip3;
 	      int  j1,j2,j3,j4;
 	      int  iesu0 ,iesu1,iesup,icoun;
-	      int  *lpoin;
+	      std::vector<int> *  lpoin;
 
 	      lhelp[0][0] = 2;
 	      lhelp[0][1] = 3;
@@ -835,13 +827,13 @@ namespace ccmc
 	/* initialize facing_elements=0 */
 	      nnodes = nelem*nnode;     /* number of element/node couples */
 	      for (i=0;i<nnodes;i++) {
-	        this->smartSearchValues.facing_elements[i]=0;
+	        (*this->smartSearchValues.facing_elements)[i]=0;
 	      }
 
 	/* initialize lpoin */
-	      lpoin = (int *) malloc(npoin*sizeof(int));
+	      lpoin = new std::vector<int>(npoin);
 	      for (i=0;i<npoin;i++) {
-	        lpoin[i]=0;
+	        (*lpoin)[i]=0;
 	      }
 
 	/* loop over the elements */
@@ -856,9 +848,9 @@ namespace ccmc
 	          in3 = lhelp[iface][2]-1;
 
 	/* For each of these three nodes, store the global index */
-	          ip1 = (*intmat)[ index_2d_to_1d(ielem,in1,4) ];
-	          ip2 = (*intmat)[ index_2d_to_1d(ielem,in2,4) ];
-	          ip3 = (*intmat)[ index_2d_to_1d(ielem,in3,4) ];
+	          ip1 = (*intmat_modified)[ index_2d_to_1d(ielem,in1,4) ];
+	          ip2 = (*intmat_modified)[ index_2d_to_1d(ielem,in2,4) ];
+	          ip3 = (*intmat_modified)[ index_2d_to_1d(ielem,in3,4) ];
 
 	#ifdef DEBUG
 	          if(ielem == 1) {
@@ -867,9 +859,9 @@ namespace ccmc
 	#endif
 
 	/* mark lpoin identifying these nodes as the current active nodes for this search*/
-	          lpoin[ip1] = 1;
-	          lpoin[ip2] = 1;
-	          lpoin[ip3] = 1;
+	          (*lpoin)[ip1] = 1;
+	          (*lpoin)[ip2] = 1;
+	          (*lpoin)[ip3] = 1;
 
 	/* store the range of element indeces of elements which contain the first of these nodes */
 	          iesu0 = this->smartSearchValues.esup2->at(ip1);
@@ -894,10 +886,10 @@ namespace ccmc
 	        	  if(je != ielem) {
 
 	        		  /* For the current test element store its node numbers */
-	        		  j1=(*intmat)[ index_2d_to_1d(je,0,4) ] ;
-	        		  j2=(*intmat)[ index_2d_to_1d(je,1,4) ] ;
-	        		  j3=(*intmat)[ index_2d_to_1d(je,2,4) ] ;
-	        		  j4=(*intmat)[ index_2d_to_1d(je,3,4) ] ;
+	        		  j1=(*intmat_modified)[ index_2d_to_1d(je,0,4) ] ;
+	        		  j2=(*intmat_modified)[ index_2d_to_1d(je,1,4) ] ;
+	        		  j3=(*intmat_modified)[ index_2d_to_1d(je,2,4) ] ;
+	        		  j4=(*intmat_modified)[ index_2d_to_1d(je,3,4) ] ;
 	        		  //	#ifdef DEBUG
 	        		  if(ielem == 1) {
 	        			  printf("locate_face: testing neighbor element no %d\n",je);
@@ -907,7 +899,7 @@ namespace ccmc
 
 	        		  /* For each of the test elements nodes, add the corresponding entry from lpoin, which is 1 if
 	        		   * the node belongs to the original element, but is otherwise 0. */
-	        		  icoun = lpoin[j1]+lpoin[j2]+lpoin[j3]+lpoin[j4];
+	        		  icoun = (*lpoin)[j1]+(*lpoin)[j2]+(*lpoin)[j3]+(*lpoin)[j4];
 	        		  //	#ifdef DEBUG
 	        		  if(ielem == 1) {
 	        			  printf("locate_face: testing neighbor element no %d  icoun=%d\n",je,icoun);
@@ -922,18 +914,18 @@ namespace ccmc
 
 	/* this is the element ! */
 	          je = index_2d_to_1d(ielem,iface,4);
-	          this->smartSearchValues.facing_elements[je] = ieadj;
+	          (*(this->smartSearchValues.facing_elements))[je] = ieadj;
 //std::cout << "facing element: " << ieadj << std::endl;
 	/* re-mark lpoin */
-	          lpoin[ip1] = 0;
-	          lpoin[ip2] = 0;
-	          lpoin[ip3] = 0;
+	          (*lpoin)[ip1] = 0;
+	          (*lpoin)[ip2] = 0;
+	          (*lpoin)[ip3] = 0;
 
 	        }
 
 	      }
 
-	      free(lpoin);
+	      delete lpoin;
 	}
 
 	SmartGridSearchValues * Adapt3D::getSmartGridSearchValues()
@@ -1066,10 +1058,6 @@ exit(0);
 
 	}
 */
-	const std::vector<float> * Adapt3D::getModifiedCoords()
-	{
-		return this->coord_modified;
-	}
 
 
 	/**
@@ -1091,6 +1079,7 @@ exit(0);
 			delete this->smartSearchValues.delauney_search_iteration_profile;
 		if (this->smartSearchValues.facing_elements != NULL)
 			delete this->smartSearchValues.facing_elements;
+
 	}
 
 }

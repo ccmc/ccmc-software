@@ -14,6 +14,7 @@
 #include "Point3f.h"
 #include <vector>
 #include <boost/unordered_map.hpp>
+#include <boost/multi_array.hpp>
 
 #define NNODE_ADAPT3D 4
 #define NVARS_ADAPT3D 12
@@ -21,9 +22,9 @@
 #define INNER_RADIUS 1.0
 #define OUTER_RADIUS 30.0
 
-#define nx_sg 10
-#define ny_sg 10
-#define nz_sg 10
+#define nx_sg 100
+#define ny_sg 100
+#define nz_sg 100
 #define nx_b 2
 #define ny_b 2
 #define nz_b 2
@@ -36,24 +37,26 @@
 
 namespace ccmc
 {
+
 	struct SmartGridSearchValues
 	{
 		float xl_sg,xr_sg,yl_sg,yr_sg,zl_sg,zr_sg;
+		float xl_gr,xr_gr,yl_gr,yr_gr,zl_gr,zr_gr;
 		float dx_sg,dy_sg,dz_sg;
-		int *indx;
+		std::vector<int> * indx;
 		std::vector<int> * esup1;
 		std::vector<int> * esup2;
-		int nelems_in_cell[nz_sg][ny_sg][nx_sg];
-		int nnodes_in_cell[nz_sg][ny_sg][nx_sg];
-		int start_index[nz_sg][ny_sg][nx_sg];
-		int start_index_nodes[nz_sg][ny_sg][nx_sg];
-		int end_index[nz_sg][ny_sg][nx_sg];
-		int end_index_nodes[nz_sg][ny_sg][nx_sg];
-		int * indx_nodes;
-		int still_in_same_element;
-		int * delauney_search_iteration_profile;
-		int * facing_elements;
-		int outside_grid;
+		boost::multi_array<int, 3> nelems_in_cell;//(boost::extents[nz_sg][ny_sg][nx_sg]);
+		boost::multi_array<int, 3> nnodes_in_cell;//(boost::extents[nz_sg][ny_sg][nx_sg]);
+		boost::multi_array<int, 3> start_index;//(boost::extents[nz_sg][ny_sg][nx_sg]);
+		boost::multi_array<int, 3> start_index_nodes;//(boost::extents[nz_sg][ny_sg][nx_sg]);
+		boost::multi_array<int, 3> end_index;//(boost::extents[nz_sg][ny_sg][nx_sg]);
+		boost::multi_array<int, 3> end_index_nodes;//(boost::extents[nz_sg][ny_sg][nx_sg]);
+		std::vector<int> * indx_nodes;
+		//int still_in_same_element;
+		std::vector<int> * delauney_search_iteration_profile;
+		std::vector<int> * facing_elements;
+		//int outside_grid;
 		int last_element_found;
 		//BoundingBox * parent;
 	};
@@ -72,7 +75,8 @@ namespace ccmc
 
 			Interpolator * createNewInterpolator();
 			SmartGridSearchValues * getSmartGridSearchValues();
-			const std::vector<float> * getModifiedCoords();
+			//float * getModifiedCoords();
+
 
 			virtual ~Adapt3D();
 
@@ -95,12 +99,8 @@ namespace ccmc
 			void setupOctreeGrid();
 			std::vector<Point3f> vertices;
 			SmartGridSearchValues smartSearchValues;
-			const std::vector<float> * coord;
-			std::vector<float> * coord_modified;
-			const std::vector<int> * intmat;
-			//int still_in_same_element;
-			//int outside_grid;
-			//boost::unordered_map<float, boost::unordered_map<float, boost::unordered_map<float, Point3f*> *> *> * positions;
+			std::vector<float> *coord_modified;
+			std::vector<int> * intmat_modified;
 			int index_2d_to_1d( int i1, int i2, int n);
 
 			void locate_facing_elements();
