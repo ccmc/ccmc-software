@@ -45,11 +45,17 @@ namespace ccmc
 			long unloadVariable(const std::string& variable);
 			long loadVariableInt(const std::string& variable);
 
+			std::vector<float>* getVariableFromMapRW(const std::string& variable);
+			std::vector<int>* getIntVariableFromMapRW(const std::string& variable);
 			const std::vector<float>* const getVariableFromMap(const std::string& variable);
 			const std::vector<int>* const getIntVariableFromMap(const std::string& variable);
 
 			const std::vector<float>* const getVariableFromMap(long variable_id);
 			const std::vector<int>* const getIntVariableFromMap(long variable_id);
+
+			std::vector<float>* getVariableFromMapRW(long variable_id);
+			std::vector<int>* getIntVariableFromMapRW(long variable_id);
+
 			const std::vector<std::string> getLoadedVariables();
 
 			void setMissingValue(float missingValue);
