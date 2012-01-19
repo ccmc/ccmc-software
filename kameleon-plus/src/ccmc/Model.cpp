@@ -201,6 +201,32 @@ namespace ccmc
 	}
 
 	/**
+	 * @brief Returns a pointer to the entry in the variableData map containing the variable data.
+	 *
+	 * This pointer can be modified.
+	 *
+	 * @param variable Variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.
+	 *
+	 * @return std::vector<float>* of the requested variable.  Note that the pointer points to an entry in
+	 * a map. The memory pointed to by the pointer will automatically be freed when
+	 * the file is closed, or the Model object is deleted.
+	 */
+	std::vector<float>* Model::getVariableFromMapRW(const std::string& variable)
+	{
+		boost::unordered_map<std::string, std::vector<float>*>::iterator iter = variableData.find(variable);
+
+		std::vector<float>* vData = NULL;
+		if (iter != variableData.end())
+			vData = (*iter).second;
+		else
+		{
+			std::cerr << "variable: " << variable << " not found!!!" << std::endl;
+		}
+		return vData;
+	}
+
+	/**
 	 * @brief Returns a const pointer to the entry in the variableData map containing the variable data.
 	 *
 	 * This pointer cannot be modified.
@@ -214,16 +240,7 @@ namespace ccmc
 	 */
 	const std::vector<float>* const Model::getVariableFromMap(const std::string& variable)
 	{
-		boost::unordered_map<std::string, std::vector<float>*>::iterator iter = variableData.find(variable);
-
-		std::vector<float>* vData = NULL;
-		if (iter != variableData.end())
-			vData = (*iter).second;
-		else
-		{
-			std::cerr << "variable: " << variable << " not found!!!" << std::endl;
-		}
-		return vData;
+		return getVariableFromMapRW(variable);
 	}
 
 	/**
@@ -247,6 +264,28 @@ namespace ccmc
 	}
 
 	/**
+	 * @brief Returns a pointer to the entry in the variableDataInt map containing the variable data.
+	 *
+	 * This pointer cannot be modified.
+	 *
+	 * @param variable Variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.
+	 *
+	 * @return std::vector<int>* of the requested variable.  Note that the pointer points to an entry in
+	 * a map. The memory pointed to by the pointer will automatically be freed when
+	 * the file is closed, or the Model object is deleted.
+	 */
+	std::vector<int>* Model::getIntVariableFromMapRW(const std::string& variable)
+	{
+		boost::unordered_map<std::string, std::vector<int>*>::iterator iter = variableDataInt.find(variable);
+
+		std::vector<int>* vData = NULL;
+		if (iter != variableDataInt.end())
+			vData = (*iter).second;
+		return vData;
+	}
+
+	/**
 	 * @brief Returns a const pointer to the entry in the variableDataInt map containing the variable data.
 	 *
 	 * This pointer cannot be modified.
@@ -260,10 +299,27 @@ namespace ccmc
 	 */
 	const std::vector<int>* const Model::getIntVariableFromMap(const std::string& variable)
 	{
-		boost::unordered_map<std::string, std::vector<int>*>::iterator iter = variableDataInt.find(variable);
+		return getIntVariableFromMapRW(variable);
+	}
 
-		std::vector<int>* vData = NULL;
-		if (iter != variableDataInt.end())
+	/**
+	 * @brief Returns a pointer to the entry in the variableDataByID map containing the variable data.
+	 *
+	 * This pointer cannot be modified.
+	 *
+	 * @param variable_id Variable id of the variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.  Request the variable id by using FileReader::getVariableID(const std::string& variable)
+	 *
+	 * @return std::vector<float>* of the requested variable.  Note that the pointer points to an entry in
+	 * a map. The memory pointed to by the pointer will automatically be freed when
+	 * the file is closed, or the Model object is deleted.
+	 */
+	std::vector<float>* Model::getVariableFromMapRW(long variable_id)
+	{
+		boost::unordered_map<long, std::vector<float>*>::iterator iter = variableDataByID.find(variable_id);
+
+		std::vector<float>* vData = NULL;
+		if (iter != variableDataByID.end())
 			vData = (*iter).second;
 		return vData;
 	}
@@ -282,10 +338,28 @@ namespace ccmc
 	 */
 	const std::vector<float>* const Model::getVariableFromMap(long variable_id)
 	{
-		boost::unordered_map<long, std::vector<float>*>::iterator iter = variableDataByID.find(variable_id);
 
-		std::vector<float>* vData = NULL;
-		if (iter != variableDataByID.end())
+		return getVariableFromMapRW(variable_id);
+	}
+
+	/**
+	 * @brief Returns a pointer to the entry in the variableDataIntByID map containing the variable data.
+	 *
+	 * This pointer cannot be modified.
+	 *
+	 * @param variable_id Variable id of the variable to fetch from memory.  This assumes the variable has already been loaded into memory.
+	 * If the variable has not been loaded, the pointer will be NULL.  Request the variable id by using FileReader::getVariableID(const std::string& variable)
+	 *
+	 * @return std::vector<int>* of the requested variable.  Note that the pointer points to an entry in
+	 * a map. The memory pointed to by the pointer will automatically be freed when
+	 * the file is closed, or the Model object is deleted.
+	 */
+	std::vector<int>* Model::getIntVariableFromMapRW(long variable_id)
+	{
+		boost::unordered_map<long, std::vector<int>*>::iterator iter = variableDataIntByID.find(variable_id);
+
+		std::vector<int>* vData = NULL;
+		if (iter != variableDataIntByID.end())
 			vData = (*iter).second;
 		return vData;
 	}
@@ -304,12 +378,7 @@ namespace ccmc
 	 */
 	const std::vector<int>* const Model::getIntVariableFromMap(long variable_id)
 	{
-		boost::unordered_map<long, std::vector<int>*>::iterator iter = variableDataIntByID.find(variable_id);
-
-		std::vector<int>* vData = NULL;
-		if (iter != variableDataIntByID.end())
-			vData = (*iter).second;
-		return vData;
+		return getIntVariableFromMapRW(variable_id);
 	}
 
 	/**
