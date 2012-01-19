@@ -2,6 +2,7 @@
 #include <cmath>
 #include <sstream>
 #include <ostream>
+#include <cmath>
 #include "Constants.h"
 #include <boost/lexical_cast.hpp>
 
@@ -180,7 +181,7 @@ namespace ccmc
 	{
 
 		float mag = magnitude();
-		if (abs(mag - 0.0) > .0000001)
+		if (std::abs(mag - 0.0) > .0000001)
 		{
 			this->component1 /= mag;
 			this->component2 /= mag;
