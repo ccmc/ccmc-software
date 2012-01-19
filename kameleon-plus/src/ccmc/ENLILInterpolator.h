@@ -37,8 +37,8 @@ namespace ccmc
 		private:
 			//TODO: fix these coordinate names. phi should be longitude, theta should be latitude
 			const std::vector<float> * r_data;
-			const std::vector<float> * lat_data; //phi
-			const std::vector<float> * lon_data; //theta
+			const std::vector<float> * lat_data; //theta
+			const std::vector<float> * lon_data; //phi
 			std::string r_string;
 			std::string lat_string;
 			std::string lon_string;
