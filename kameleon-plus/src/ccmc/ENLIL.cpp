@@ -39,13 +39,11 @@ namespace ccmc
 		{
 			std::cout << "r exists" << std::endl;
 			r_string = ccmc::strings::variables::r_;
-			lat_string = ccmc::strings::variables::phi_;
-			lon_string = ccmc::strings::variables::theta_;
+			lat_string = ccmc::strings::variables::theta_;
+			lon_string = ccmc::strings::variables::phi_;
 		} else
 		{
-			r_string = ccmc::strings::variables::x_;
-			lat_string = ccmc::strings::variables::y_;
-			lon_string = ccmc::strings::variables::z_;
+			return FileReader::VARIABLE_DOES_NOT_EXIST;
 		}
 
 		long success = loadVariable(r_string);
