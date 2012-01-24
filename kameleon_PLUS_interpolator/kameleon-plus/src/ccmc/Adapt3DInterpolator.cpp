@@ -450,7 +450,7 @@ std::cout << "starting search" << std::endl;
                  printf("Delauney search successful : found in element %d \n",next_element);
     //             fflush(stdout);
 //#endif
-                 if(iteration-1 < DELAUNEY_ITER_MAX) this->smartSearchValues->delauney_search_iteration_profile[iteration-1] += 1;
+                 if(iteration-1 < DELAUNEY_ITER_MAX) (*this->smartSearchValues->delauney_search_iteration_profile)[iteration-1] += 1;
              }
            }
            if(ifound == 0)  kelem=next_element;
@@ -490,7 +490,7 @@ std::cout << "starting search" << std::endl;
 	int Adapt3DInterpolator::findElement(const float& c0, const float& c1, const float& c2, int clear_cache)
 	{
 
-//#define DEBUGS
+#define DEBUGS
 
 		//std::cout << "entered findElement" << std::endl;
 
@@ -593,7 +593,7 @@ std::cout << "starting search" << std::endl;
 	    		   indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
 	    		   indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
 	    		   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
-	    		   this->smartSearchValues->last_element_found = this->smartSearchValues->indx[indx_start + delta_i];
+	    		   this->smartSearchValues->last_element_found = (*this->smartSearchValues->indx)[indx_start + delta_i];
 //  #ifdef DEBUGS
 	    		   printf("Reseting last_element_found from structured grid to %d delta_i %d\n",this->smartSearchValues->last_element_found,indx_end-indx_start);
 // #endif
@@ -613,7 +613,7 @@ std::cout << "starting search" << std::endl;
 	    			   fflush(stdout);
 #endif
 	    			   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
-	    			   last_node_found = this->smartSearchValues->indx_nodes[indx_start + delta_i];
+	    			   last_node_found = (*this->smartSearchValues->indx_nodes)[indx_start + delta_i];
 #ifdef DEBUGS
 	    			   printf("last_node_found=%d\n",last_node_found);
 	    			   printf("coords of last node are %e %e %e\n",(*coord)[last_node_found*3],
@@ -688,7 +688,7 @@ std::cout << "starting search" << std::endl;
 	    				   indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
 	    				   indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
 	    				   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
-	    				   this->smartSearchValues->last_element_found = this->smartSearchValues->indx[indx_start + delta_i];
+	    				   this->smartSearchValues->last_element_found = (*this->smartSearchValues->indx)[indx_start + delta_i];
 #ifdef DEBUGS
 	    				   printf("Element is %d\n",this->smartSearchValues->last_element_found);
 #endif
@@ -736,7 +736,7 @@ std::cout << "starting search" << std::endl;
 	    					   indx_start = this->smartSearchValues->start_index_nodes[k_s][j_s][i_s];
 	    					   indx_end = this->smartSearchValues->end_index_nodes[k_s][j_s][i_s];
 	    					   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
-	    					   last_node_found = this->smartSearchValues->indx_nodes[indx_start + delta_i];
+	    					   last_node_found = (*this->smartSearchValues->indx_nodes)[indx_start + delta_i];
 #ifdef DEBUGS
 	    					   printf("Node is %d\n",last_node_found);
 #endif
@@ -815,7 +815,7 @@ std::cout << "starting search" << std::endl;
 	    						   indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
 	    						   indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
 	    						   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
-	    						   this->smartSearchValues->last_element_found = this->smartSearchValues->indx[indx_start + delta_i];
+	    						   this->smartSearchValues->last_element_found = (*this->smartSearchValues->indx)[indx_start + delta_i];
 #ifdef DEBUGS
 	    						   printf("Element is %d\n",this->smartSearchValues->last_element_found);
 #endif
@@ -990,7 +990,7 @@ std::cout << "starting search" << std::endl;
 	{
 
     	//
-//#define DEBUG
+#define DEBUG
 	/*
 	!...  mesh arrays
 	*/
@@ -1068,7 +1068,7 @@ std::cout << "starting search" << std::endl;
 //		std::cerr << "xa: " << xa << " ya: " << ya << " za: " << za << " xba: " << xba;
 //		std::cerr << " yba: " << yba << " zba: " << zba << " xca: " << xca << " yca: " << yca;
 //		std::cerr << " zca: " << zca << " xda: " << xda << " yda: " << yda << " zda: " << zda << std::endl;
-		  printf("(*coord)[ipa]= %d %e %e %e \n",ipa,(*coord)[index_2d_to_1d(0,ipa,0,npoin)),(*coord)[index_2d_to_1d(1,ipa,0,npoin)),(*coord)[index_2d_to_1d(2,ipa,0,npoin)));
+		  printf("(*coord)[ipa]= %d %e %e %e \n",ipa,(*coord)[index_2d_to_1d(ipa,0, 3)],(*coord)[index_2d_to_1d(ipa,1,3)],(*coord)[index_2d_to_1d(ipa,2,3)]);
 		  std::cerr << "deter= " << deter << std::endl;
 	#endif
 	/*       detin = c10/deter */
@@ -1098,7 +1098,7 @@ std::cout << "starting search" << std::endl;
 //		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
 //		  printf("xa-za= %e %e %e \n",xa,ya,za);
 		  //std::cerr << "rin11: " << rin11 << " xpa: " << xpa << " rin12: " << rin12 << " ypa: " << ypa << " rin13: " << rin13 << " zpa: " << zpa << std::endl;
-		std::cerr << "cintp: " << cintp[0] << "," << cintp[1] << "," << cintp[2] << std::endl;
+		std::cerr << "cintp: " << c0 << "," << c1 << "," << c2 << std::endl;
 		std::cerr << "ielem: " << ielem << " shapex = " << shapex[0] << " " << shapex[1] << " " << shapex[2] << " " << shapex[3] << std::endl;
 	#endif
 	/*       shape(1) = c10 - shape(2) - shape(3) - shape(4)
@@ -1130,11 +1130,11 @@ std::cout << "starting search" << std::endl;
 		  printf("shmin= %e \n",shmin);
 		  printf("shmax= %e \n",shmax);
 		  printf("ierro= %d \n",ierro);
-		  printf("cintp= %e %e %e \n",cintp[0],cintp[1],cintp[2]);
-		  printf("node 1 = %e %e %e %d \n",(*coord)[index_2d_to_1d(0,ipa,0,npoin)),(*coord)[index_2d_to_1d(1,ipa,0,npoin)),(*coord)[index_2d_to_1d(2,ipa,0,npoin)),ipa);
-		  printf("node 2 = %e %e %e %d \n",(*coord)[index_2d_to_1d(0,ipb,0,npoin)),(*coord)[index_2d_to_1d(1,ipb,0,npoin)),(*coord)[index_2d_to_1d(2,ipb,0,npoin)),ipb);
-		  printf("node 3 = %e %e %e %d \n",(*coord)[index_2d_to_1d(0,ipc,0,npoin)),(*coord)[index_2d_to_1d(1,ipc,0,npoin)),(*coord)[index_2d_to_1d(2,ipc,0,npoin)),ipc);
-		  printf("node 4 = %e %e %e %d \n",(*coord)[index_2d_to_1d(0,ipd,0,npoin)),(*coord)[index_2d_to_1d(1,ipd,0,npoin)),(*coord)[index_2d_to_1d(2,ipd,0,npoin)),ipd);
+		  printf("cintp= %e %e %e \n",c0,c1,c2);
+		  printf("node 1 = %e %e %e %d \n",(*coord)[index_2d_to_1d(ipa,0,3)],(*coord)[index_2d_to_1d(ipa,1,3)],(*coord)[index_2d_to_1d(ipa,2,3)],ipa);
+		  printf("node 2 = %e %e %e %d \n",(*coord)[index_2d_to_1d(ipb,0,3)],(*coord)[index_2d_to_1d(ipb,1,3)],(*coord)[index_2d_to_1d(ipb,2,3)],ipb);
+		  printf("node 3 = %e %e %e %d \n",(*coord)[index_2d_to_1d(ipc,0,3)],(*coord)[index_2d_to_1d(ipc,1,3)],(*coord)[index_2d_to_1d(ipc,2,3)],ipc);
+		  printf("node 4 = %e %e %e %d \n",(*coord)[index_2d_to_1d(ipd,0,3)],(*coord)[index_2d_to_1d(ipd,1,3)],(*coord)[index_2d_to_1d(ipd,2,3)],ipd);
 		 }
 	#endif
 
@@ -1259,16 +1259,17 @@ std::cout << "starting search" << std::endl;
            f2 = -(a2 + b2*x + c2*y + d2*z)/vol6;
            f3 =  (a3 + b3*x + c3*y + d3*z)/vol6;
            f4 = -(a4 + b4*x + c4*y + d4*z)/vol6;
-           std::cout << "a1: " << a1 << " a2: " << a2 << " a3: " << a3 << " a4: " << a4 << std::endl;
-           std::cout << "b1: " << b1 << " b2: " << b2 << " b3: " << b3 << " b4: " << b4 << std::endl;
-           std::cout << "c1: " << c1 << " c2: " << c2 << " c3: " << c3 << " c4: " << c4 << std::endl;
-           std::cout << "d1: " << d1 << " d2: " << d2 << " d3: " << d3 << " d4: " << d4 << std::endl;
+//           std::cout << "a1: " << a1 << " a2: " << a2 << " a3: " << a3 << " a4: " << a4 << std::endl;
+//           std::cout << "b1: " << b1 << " b2: " << b2 << " b3: " << b3 << " b4: " << b4 << std::endl;
+//           std::cout << "c1: " << c1 << " c2: " << c2 << " c3: " << c3 << " c4: " << c4 << std::endl;
+//           std::cout << "d1: " << d1 << " d2: " << d2 << " d3: " << d3 << " d4: " << d4 << std::endl;
            std::cout << "vol6: " << vol6 << " vol: " << vol << std::endl;
            std::cout << "f1: " << f1 << " f2: " << f2 << " f3: " << f3 << " f4: " << f4 << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipa << ",0,1) ] " << (*vData)[ ipa ] << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipb << ",0,1) ] " << (*vData)[ ipb ] << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipc << ",0,1) ] " << (*vData)[ ipc ] << std::endl;
-           std::cout << "(*vData)[ index_2d_to_1d(" << ipd << ",0,1) ] " << (*vData)[ ipd ] << std::endl;
+           std::cout << "ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
+           std::cout << "(*vData)[" << ipa << "] " << (*vData)[ ipa ] << std::endl;
+           std::cout << "(*vData)[" << ipb << "] " << (*vData)[ ipb ] << std::endl;
+           std::cout << "(*vData)[" << ipc << "] " << (*vData)[ ipc ] << std::endl;
+           std::cout << "(*vData)[" << ipd << "] " << (*vData)[ ipd ] << std::endl;
 
 
            return f1*(*vData)[ ipa ]+f2*(*vData)[ ipb ]
