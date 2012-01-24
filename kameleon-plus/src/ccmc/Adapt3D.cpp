@@ -584,7 +584,7 @@ namespace ccmc
 			int j = elem_index_struct[ielem][1];
 			int k = elem_index_struct[ielem][2];
 			ii = this->smartSearchValues.start_index[k][j][i] + this->smartSearchValues.nelems_in_cell[k][j][i];
-			this->smartSearchValues.indx[ii] = ielem;
+			(*this->smartSearchValues.indx)[ii] = ielem;
 			this->smartSearchValues.nelems_in_cell[k][j][i] = this->smartSearchValues.nelems_in_cell[k][j][i] + 1;
 		}
 
@@ -661,7 +661,7 @@ namespace ccmc
 		         int j = node_index_struct[inode][1];
 		         int k = node_index_struct[inode][2];
 		         ii = this->smartSearchValues.start_index_nodes[k][j][i] + this->smartSearchValues.nnodes_in_cell[k][j][i];
-		         this->smartSearchValues.indx_nodes[ii] = inode;
+		         (*this->smartSearchValues.indx_nodes)[ii] = inode;
 		         this->smartSearchValues.nnodes_in_cell[k][j][i] = this->smartSearchValues.nnodes_in_cell[k][j][i] + 1;
 		      }
 
@@ -698,7 +698,7 @@ namespace ccmc
 		/* Settings for monitoring the usefulness of parts of the smart search algorithm */
 		                                                                        /* new 11-16-11 - next 6 lines */
 		for(int i=0;i<DELAUNEY_ITER_MAX;i++) {
-			this->smartSearchValues.delauney_search_iteration_profile[i]=0;
+			(*this->smartSearchValues.delauney_search_iteration_profile)[i]=0;
 		}
 		//this->smartSearchValues.still_in_same_element=0;
 		//this->smartSearchValues.outside_grid=0;
@@ -724,7 +724,7 @@ namespace ccmc
 		/* Count the number of times each node number appears in intmat. This gives the number of elements
 		 * which include that node number
 		 */
-		for( inode=0; inode<nnode; inode++)
+		for( inode=0; inode<nnodes; inode++)
 		{
 			ip         = (*intmat_modified)[ inode]+1;
 			//std::cerr << "ip: " << ip << std::endl;
@@ -804,10 +804,10 @@ namespace ccmc
 
 	{
 	      int  lhelp[4][3];
-	      int  ielem,iface,ip,ieadj,je,i,nnodes;
-	      int  in1,in2,in3,ip1,ip2,ip3;
-	      int  j1,j2,j3,j4;
-	      int  iesu0 ,iesu1,iesup,icoun;
+	      //int  ielem,iface,ip,ieadj,je,i,nnodes;
+	      //int  in1,in2,in3,ip1,ip2,ip3;
+	      //int  j1,j2,j3,j4;
+	      //int  iesu0 ,iesu1,iesup,icoun;
 	      std::vector<int> *  lpoin;
 
 	      lhelp[0][0] = 2;
@@ -825,33 +825,34 @@ namespace ccmc
 
 
 	/* initialize facing_elements=0 */
-	      nnodes = nelem*nnode;     /* number of element/node couples */
-	      for (i=0;i<nnodes;i++) {
+	      int nnodes = nelem*nnode;     /* number of element/node couples */
+	      int size = this->smartSearchValues.facing_elements->size();
+	      for (int i=0;i<nnodes;i++) {
 	        (*this->smartSearchValues.facing_elements)[i]=0;
 	      }
 
 	/* initialize lpoin */
 	      lpoin = new std::vector<int>(npoin);
-	      for (i=0;i<npoin;i++) {
+	      for (int i=0;i<npoin;i++) {
 	        (*lpoin)[i]=0;
 	      }
 
 	/* loop over the elements */
-	      for (ielem=0;ielem<nelem;ielem++) {
+	      for (int ielem=0;ielem<nelem;ielem++) {
 
 	/* loop over the faces */
-	        for (iface=0;iface<nnode;iface++) {
+	        for (int iface=0;iface<nnode;iface++) {
 
 	/* store the three local node numbers (ie between 0 and 3) of the current face */
-	          in1 = lhelp[iface][0]-1;
-	          in2 = lhelp[iface][1]-1;
-	          in3 = lhelp[iface][2]-1;
+	          int in1 = lhelp[iface][0]-1;
+	          int in2 = lhelp[iface][1]-1;
+	          int in3 = lhelp[iface][2]-1;
 
 	/* For each of these three nodes, store the global index */
-	          ip1 = (*intmat_modified)[ index_2d_to_1d(ielem,in1,4) ];
-	          ip2 = (*intmat_modified)[ index_2d_to_1d(ielem,in2,4) ];
-	          ip3 = (*intmat_modified)[ index_2d_to_1d(ielem,in3,4) ];
-
+	          int ip1 = (*intmat_modified)[ index_2d_to_1d(ielem,in1,4) ];
+	          int ip2 = (*intmat_modified)[ index_2d_to_1d(ielem,in2,4) ];
+	          int ip3 = (*intmat_modified)[ index_2d_to_1d(ielem,in3,4) ];
+#define DEBUG
 	#ifdef DEBUG
 	          if(ielem == 1) {
 	            printf("locate_face: ielem=%d  face=%d nodes are %d %d %d\n",ielem,iface,ip1,ip2,ip3);
@@ -864,8 +865,8 @@ namespace ccmc
 	          (*lpoin)[ip3] = 1;
 
 	/* store the range of element indeces of elements which contain the first of these nodes */
-	          iesu0 = this->smartSearchValues.esup2->at(ip1);
-	          iesu1 = this->smartSearchValues.esup2->at(ip1+1);
+	          int iesu0 = this->smartSearchValues.esup2->at(ip1);
+	          int iesu1 = this->smartSearchValues.esup2->at(ip1+1);
 
 	#ifdef DEBUG
 	          if(ielem == 1) {
@@ -873,23 +874,23 @@ namespace ccmc
 	          }
 	#endif
 
-	          ieadj = -999;
+	          int ieadj = -999;
 
 	/* then loop over the surrounding elements than contain the first of these nodes, testing
 	 * each of these elements to see if it has 3 nodes in common with our original element. If it
 	 * does, then record this element as the neighboring element to face iface */
-	          iesup = iesu0;
+	          int iesup = iesu0;
 	          while ((iesup < iesu1) && (ieadj == -999))
 	          {
 	        	  //std::cout << "inside" << std::endl;
-	        	  je = this->smartSearchValues.esup1->at(iesup);
+	        	  int je = this->smartSearchValues.esup1->at(iesup);
 	        	  if(je != ielem) {
 
 	        		  /* For the current test element store its node numbers */
-	        		  j1=(*intmat_modified)[ index_2d_to_1d(je,0,4) ] ;
-	        		  j2=(*intmat_modified)[ index_2d_to_1d(je,1,4) ] ;
-	        		  j3=(*intmat_modified)[ index_2d_to_1d(je,2,4) ] ;
-	        		  j4=(*intmat_modified)[ index_2d_to_1d(je,3,4) ] ;
+	        		  int j1=(*intmat_modified)[ index_2d_to_1d(je,0,4) ] ;
+	        		  int j2=(*intmat_modified)[ index_2d_to_1d(je,1,4) ] ;
+	        		  int j3=(*intmat_modified)[ index_2d_to_1d(je,2,4) ] ;
+	        		  int j4=(*intmat_modified)[ index_2d_to_1d(je,3,4) ] ;
 	        		  //	#ifdef DEBUG
 	        		  if(ielem == 1) {
 	        			  printf("locate_face: testing neighbor element no %d\n",je);
@@ -899,7 +900,7 @@ namespace ccmc
 
 	        		  /* For each of the test elements nodes, add the corresponding entry from lpoin, which is 1 if
 	        		   * the node belongs to the original element, but is otherwise 0. */
-	        		  icoun = (*lpoin)[j1]+(*lpoin)[j2]+(*lpoin)[j3]+(*lpoin)[j4];
+	        		  int icoun = (*lpoin)[j1]+(*lpoin)[j2]+(*lpoin)[j3]+(*lpoin)[j4];
 	        		  //	#ifdef DEBUG
 	        		  if(ielem == 1) {
 	        			  printf("locate_face: testing neighbor element no %d  icoun=%d\n",je,icoun);
@@ -913,7 +914,7 @@ namespace ccmc
 //	          std::cout << "ielem = " << ielem << " iface = " << iface << std::endl;
 
 	/* this is the element ! */
-	          je = index_2d_to_1d(ielem,iface,4);
+	          int je = index_2d_to_1d(ielem,iface,4);
 	          (*(this->smartSearchValues.facing_elements))[je] = ieadj;
 //std::cout << "facing element: " << ieadj << std::endl;
 	/* re-mark lpoin */
