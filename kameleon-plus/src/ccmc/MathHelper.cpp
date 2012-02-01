@@ -6,7 +6,8 @@
  */
 
 #include "MathHelper.h"
-#include <limits>
+#include <boost/numeric/conversion/bounds.hpp>
+#include <boost/limits.hpp>
 #include <cmath>
 #include <algorithm>
 
@@ -32,7 +33,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   int max;
-	   max = std::numeric_limits<int>::min( ); //if lowest value possible in array is -99999999999
+	   max = boost::numeric::bounds<int>::lowest(); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] > max) && (mask[i] > 0)) {
@@ -64,7 +65,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   float max;
-	   max = std::numeric_limits<float>::min( ); //if lowest value possible in array is -99999999999
+	   max = boost::numeric::bounds<float>::lowest(); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] > max) && (mask[i] > 0)) {
@@ -95,7 +96,7 @@ namespace ccmc
 	{
 	   long i,loc;
 	   double max;
-	   max = std::numeric_limits<double>::min( ); //if lowest value possible in array is -99999999999
+	   max = boost::numeric::bounds<double>::lowest(); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if( (array[i] > max) && (mask[i] > 0)) {
@@ -124,7 +125,7 @@ namespace ccmc
 	{
 	   long i;
 	   int max;
-	   max = std::numeric_limits<int>::min( ); //if lowest value possible in array is -99999999999
+	   max = boost::numeric::bounds<int>::lowest(); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if(array[i] > max)
@@ -150,7 +151,7 @@ namespace ccmc
 	{
 	   long i;
 	   long max;
-	   max = std::numeric_limits<long>::min( ); //if lowest value possible in array is -99999999999
+	   max = boost::numeric::bounds<long>::lowest(); //if lowest value possible in array is -99999999999
 	   for (i=0; i<n; i++)
 		   {
 				  if(array[i] > max)
@@ -174,11 +175,11 @@ namespace ccmc
 	float Math::ffindmax(float * array, long n)
 	{
 	   long i;
-	   float max;
-	   max = std::numeric_limits<float>::min(); //if lowest value possible in array is -1.e13
+	   float max = -1.e20;
+	   max = boost::numeric::bounds<float>::lowest(); //if lowest value possible in array is -1.e13
 	   for (i=0; i<n; i++)
 	   {
-			  max = std::max(array[i] , max);
+		   max = std::max((double)array[i] , (double)max);
 
 	   }
 	   return max;
@@ -224,7 +225,7 @@ namespace ccmc
 	      r2 = x*x+y*y+z*z;
 	      if(r2 > 0.) {
 	        *r  = std::sqrt(r2);
-	        zr=z/ *r;
+	        zr=z/ (*r);
 	        *t = acos(zr);
 	        if(x > 0.) {
 	          yx=y/x;

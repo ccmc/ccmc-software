@@ -20,7 +20,8 @@
 #include <cmath>
 #include <vector>
 
-
+//#define DEBUG
+//#define DEBUGS
 namespace ccmc
 {
 	/**
@@ -134,7 +135,9 @@ namespace ccmc
 
 		//this->coord = (this->getVariableFromMap(ccmc::strings::variables::coord_));
 		coord_modified = this->getVariableFromMapRW(ccmc::strings::variables::coord_);
+#ifdef DEBUG
 		std::cout << "this->coord->size(): " << this->coord_modified->size() << std::endl;
+#endif
 		std::vector<float> * buffer = new std::vector<float>(coord_modified->size());
 		for (int i = 0; i < coord_modified->size(); i++)
 		{
@@ -532,6 +535,9 @@ namespace ccmc
 			elem_index_struct[ielem][0] = i_s;
 			elem_index_struct[ielem][1] = j_s;
 			elem_index_struct[ielem][2] = k_s;
+#ifdef DEBUG
+	//		std::cout << "elem_index_struct[" << ielem << "] = [" << i_s << " " << j_s << " " << k_s << "]" << std::endl;
+#endif
 			this->smartSearchValues.nelems_in_cell[k_s][j_s][i_s] = this->smartSearchValues.nelems_in_cell[k_s][j_s][i_s] + 1;
 
 		}
@@ -589,6 +595,15 @@ namespace ccmc
 			(*this->smartSearchValues.indx)[ii] = ielem;
 			this->smartSearchValues.nelems_in_cell[k][j][i] = this->smartSearchValues.nelems_in_cell[k][j][i] + 1;
 		}
+#ifdef DEBUG
+		for (int k=0; k<nz_sg; k++) {
+		for (int j=0; j<ny_sg; j++) {
+		for (int i=0; i<nx_sg; i++) {
+			if (this->smartSearchValues.nelems_in_cell[k][j][i] > 0)
+				std::cout << "nelems_in_cell[" << k << "][" << j << "][" << i << "]: " << this->smartSearchValues.nelems_in_cell[k][j][i] << "\n";
+		}}}
+		std::cout << std::endl;
+#endif
 
 /* Step 5 - Count number of nodes that lie in each cell of the structured grid */
 		for (int inode=0; inode<npoin; inode++) {

@@ -17,7 +17,8 @@
 #define NNODE_ADAPT3D 4
 #define LINEAR_INTERPOL
 
-
+//#define DEBUG
+//#define DEBUGS
 namespace ccmc
 {
 	/**

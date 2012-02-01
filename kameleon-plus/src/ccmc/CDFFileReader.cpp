@@ -789,6 +789,7 @@ namespace ccmc
 	{
 		//first, check the current variableIDs map.  fetching the variableID from the file is expensive
 		boost::unordered_map<std::string, long>::iterator iter = variableIDs.find(variable);
+
 		if (iter != variableIDs.end())
 			return (*iter).second;
 		else
@@ -798,7 +799,7 @@ namespace ccmc
 		}
 
 		/*std::cout << "getting variable id for: " << variable << std::endl;
-		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
+
 		//std::cout << "variableNumber: " << variableNumber << std::endl;
 		if (variableNumber >= 0) //we want to keep the crappy negative ids
 			variableIDs[variable] = variableNumber;
