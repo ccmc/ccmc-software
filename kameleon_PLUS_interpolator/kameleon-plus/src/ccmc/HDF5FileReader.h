@@ -4,9 +4,10 @@
  *  Created on: July 12, 2011
  *      Author: David Berrios
  */
-
 #ifndef HDFFILEREADER_H_
 #define HDFFILEREADER_H_
+#include "config.h"
+#ifdef HAVE_LIBHDF5_CPP
 #include <string>
 #include <vector>
 #include <iostream>
@@ -79,5 +80,5 @@ namespace ccmc
 
 	};
 }
-
+#endif /* HAVE_LIBHDF5_CPP */
 #endif /* HDFFILEREADER_H_ */
