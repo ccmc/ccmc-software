@@ -345,7 +345,9 @@ namespace ccmc
 	      this->smartSearchValues.zr_sg=0.;
 	#endif /* SPHERICAL_S_GRID */
 
+#ifdef DEBUG
 	      printf("npoin,ndimn %d %d \n",npoin, ndimn);
+#endif
 
 	/* coord is a 1D vector where the first ndimn words are x,y,z of node 0, the next ndimn words
 	 * for node 1, etc
@@ -702,8 +704,9 @@ namespace ccmc
 		}
 		//this->smartSearchValues.still_in_same_element=0;
 		//this->smartSearchValues.outside_grid=0;
+#ifdef DEBUG
 		printf("Delauney counter allocated and initialized\n");
-
+#endif
 
 
 		/*
@@ -852,7 +855,7 @@ namespace ccmc
 	          int ip1 = (*intmat_modified)[ index_2d_to_1d(ielem,in1,4) ];
 	          int ip2 = (*intmat_modified)[ index_2d_to_1d(ielem,in2,4) ];
 	          int ip3 = (*intmat_modified)[ index_2d_to_1d(ielem,in3,4) ];
-#define DEBUG
+//#define DEBUG
 	#ifdef DEBUG
 	          if(ielem == 1) {
 	            printf("locate_face: ielem=%d  face=%d nodes are %d %d %d\n",ielem,iface,ip1,ip2,ip3);
@@ -891,21 +894,21 @@ namespace ccmc
 	        		  int j2=(*intmat_modified)[ index_2d_to_1d(je,1,4) ] ;
 	        		  int j3=(*intmat_modified)[ index_2d_to_1d(je,2,4) ] ;
 	        		  int j4=(*intmat_modified)[ index_2d_to_1d(je,3,4) ] ;
-	        		  //	#ifdef DEBUG
+#ifdef DEBUG
 	        		  if(ielem == 1) {
 	        			  printf("locate_face: testing neighbor element no %d\n",je);
 	        			  printf("locate_face: neighbor element nodes are %d %d %d %d\n",j1,j2,j3,j4);
 	        		  }
-	        		  //	#endif
+#endif
 
 	        		  /* For each of the test elements nodes, add the corresponding entry from lpoin, which is 1 if
 	        		   * the node belongs to the original element, but is otherwise 0. */
 	        		  int icoun = (*lpoin)[j1]+(*lpoin)[j2]+(*lpoin)[j3]+(*lpoin)[j4];
-	        		  //	#ifdef DEBUG
+#ifdef DEBUG
 	        		  if(ielem == 1) {
 	        			  printf("locate_face: testing neighbor element no %d  icoun=%d\n",je,icoun);
 	        		  }
-	        		  //	#endif
+#endif
 	        		  if(icoun == 3) ieadj=je;
 	        	  }
 	        	  iesup = iesup+1;

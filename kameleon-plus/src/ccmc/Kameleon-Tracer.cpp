@@ -13,7 +13,7 @@
 #include "Point3f.h"
 #include <boost/lexical_cast.hpp>
 #include <StringConstants.h>
-#define DEBUG_TRACER
+//#define DEBUG_TRACER
 #define DEPRECATED_WARNING
 
 using namespace std;
@@ -336,7 +336,7 @@ namespace ccmc
 		Fieldline f1(this->step_max*2);
 		std::string model_name = kameleon->getModelName();
 		Interpolator * interpolator = kameleon->createNewInterpolator();
-		cout << "model_name: '" << model_name << "'" << endl;
+//		cout << "model_name: '" << model_name << "'" << endl;
 		if (model_name == ccmc::strings::models::open_ggcm_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::batsrus_ ||

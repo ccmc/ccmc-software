@@ -26,7 +26,6 @@ namespace ccmc
 	 */
 	Adapt3DInterpolator::Adapt3DInterpolator(Model * modelReader)
 	{
-		this->numThreads = boost::thread::hardware_concurrency();
 		// TODO Auto-generated constructor stub
 		this->modelReader = modelReader;
 		/***  Open should have failed previosly, so they should exist! ***/
@@ -49,7 +48,8 @@ namespace ccmc
 		//this->unstructured_grid_setup_done = this->setupUnstructuredGridSearch();
 		//this->smartSearchSetup();
 		this->smartSearchValues->last_element_found = -1;
-		std::cout << "created Adapt3DInterpolator object" << std::endl;
+//		std::cout << "created Adapt3DInterpolator object" << std::endl;
+		this->missingValue = modelReader->getMissingValue();
 	}
 
 	/**
@@ -117,8 +117,6 @@ namespace ccmc
 	float Adapt3DInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
-		std::cout << "inside interpolate" << std::endl;
-
 		//this->last_element_found = -1;
 		if (!point_within_grid(c0,c1,c2))
 			return this->missingValue;
@@ -240,15 +238,17 @@ namespace ccmc
 		//if (element != NULL)
 		//	ielem = this->smartSearchValues->parent->findElement(c0, c1, c2)->getIndex();
 		//else ielem = -1;
-//#ifdef DEBUG
+#ifdef DEBUG
 	   std::cerr << "ielem: " << ielem << " for position " << c0 << "," << c1 << "," << c2 << std::endl;
-//#endif
+#endif
 		interpolated_value=this->missingValue;     /* test value */
 
 		if(ielem > -1)
 		{
 		   interpolated_value = interpolate_adapt3d_solution(c0, c1, c2, ielem, variable);
+#ifdef DEBUG
 		   std::cout << "MIN_RANGE: " << MIN_RANGE << " this->missingValue: " << this->missingValue << " interpolated_value: " << interpolated_value << std::endl;
+#endif
 		   this->smartSearchValues->last_element_found = ielem;
 		} else {
 			printf("Failed to find point in grid\n");
@@ -279,7 +279,7 @@ namespace ccmc
 
 	int Adapt3DInterpolator::smartSearch(const float& c0, const float& c1, const float& c2)
 	{
-#define DEBUGS
+//#define DEBUGS
 		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
 
 		int  i,j,k,ielem,inode,jnode ;
@@ -308,7 +308,7 @@ namespace ccmc
        float x,y,z,r,t,p;
 #endif
 
-std::cout << "smart search" << std::endl;
+//std::cout << "smart search" << std::endl;
 /*----------------------------------------------------------------
 !
 ! Step A
@@ -326,7 +326,7 @@ std::cout << "smart search" << std::endl;
 			ifound = chkineln(c0,c1,c2, this->smartSearchValues->last_element_found ,shapex);
 			nelems_checked = 1;
 		}
-std::cout << "ifound: " << ifound << std::endl;
+//std::cout << "ifound: " << ifound << std::endl;
 /*--------*/
 		if( ifound == 0 )
 		{
@@ -350,7 +350,7 @@ std::cout << "ifound: " << ifound << std::endl;
 			if( this->smartSearchValues->last_element_found >= 0 )
 			{
 
-std::cout << "starting search" << std::endl;
+//std::cout << "starting search" << std::endl;
 #ifdef DELAUNEY_SEARCH
 /* Delauney algorithm */
            ifound=1;
@@ -385,7 +385,7 @@ std::cout << "starting search" << std::endl;
 
 /* If the distance  from last element found is too great compared with the element size then force use of the structured grid */
 
-//#ifdef DEBUGS
+#ifdef DEBUGS
              printf("Delauney iteration no %d\n",iteration);
              radius=sqrt(x_last_element*x_last_element+y_last_element*y_last_element+z_last_element*z_last_element);
              printf("Center of last element %d in search : radius %e\n",next_element,radius);
@@ -406,7 +406,7 @@ std::cout << "starting search" << std::endl;
              printf("Search pt coords %e %e %e \n",c0,c1,c2);
              printf("Search pt radius %e\n",std::sqrt(c0*c0+c1*c1+c2*c2));
              fflush(stdout);
-//#endif
+#endif
              next_element0=next_element;
              jrand=(int)(3.0001 *(float)rand() / (float)RAND_MAX );
              jk=0;
@@ -446,10 +446,10 @@ std::cout << "starting search" << std::endl;
 
              if(kelem == 0) {
                ifound=0;
-//#ifdef DEBUGS
+#ifdef DEBUGS
                  printf("Delauney search successful : found in element %d \n",next_element);
     //             fflush(stdout);
-//#endif
+#endif
                  if(iteration-1 < DELAUNEY_ITER_MAX) (*this->smartSearchValues->delauney_search_iteration_profile)[iteration-1] += 1;
              }
            }
@@ -490,7 +490,7 @@ std::cout << "starting search" << std::endl;
 	int Adapt3DInterpolator::findElement(const float& c0, const float& c1, const float& c2, int clear_cache)
 	{
 
-#define DEBUGS
+//#define DEBUGS
 
 		//std::cout << "entered findElement" << std::endl;
 
@@ -517,7 +517,6 @@ std::cout << "starting search" << std::endl;
 		kelem=-1;
 		ielem=-1;
 		ifound=-1;
-		std::cout << "inside" << std::endl;
 		if ( point_within_grid(c0, c1, c2) == 1)
 		{
 
@@ -544,14 +543,14 @@ std::cout << "starting search" << std::endl;
 	    			   +( (*coord)[ index_2d_to_1d(in0,2,3) ] -(*coord)[ index_2d_to_1d(in1,2,3) ] )*
 	    			   ( (*coord)[ index_2d_to_1d(in0,2,3) ] -(*coord)[ index_2d_to_1d(in1,2,3) ] ) );
 
-	    	   // #ifdef DEBUGS
+#ifdef DEBUGS
 	    	   printf("coords %e %e %e %e %e %e\n", (*coord)[ index_2d_to_1d(in0,0,3) ],(*coord)[ index_2d_to_1d(in1,0,3) ],
 	    			   (*coord)[ index_2d_to_1d(in0,1,3) ] ,(*coord)[ index_2d_to_1d(in1,1,3) ],
 	    			   (*coord)[ index_2d_to_1d(in0,2,3) ] ,(*coord)[ index_2d_to_1d(in1,2,3) ] );
 	    	   printf("distance to element  : %e\n",distance0);
 	    	   printf("element size  : %e\n",size_of_last_element);
 	    	   printf("Ratio of distance to element size  : %e\n",distance0/size_of_last_element);
-	    	   //#endif
+#endif
 
 
 	    	   /* If the distance  from last element found is too great compared with the element size then force use of the structured grid */
@@ -579,24 +578,31 @@ std::cout << "starting search" << std::endl;
 	    	   z=p;
 #endif /* SPHERICAL_S_GRID */
 
-//#ifdef DEBUGS
+#ifdef DEBUGS
 	    	   printf("find_element: Searching for point x y z = %e %e %e\n",x,y,z);
-//#endif
+#endif
 	    	   i_s = (int)( (x-this->smartSearchValues->xl_sg)/this->smartSearchValues->dx_sg );
 	    	   j_s = (int)( (y-this->smartSearchValues->yl_sg)/this->smartSearchValues->dy_sg );
 	    	   k_s = (int)( (z-this->smartSearchValues->zl_sg)/this->smartSearchValues->dz_sg );
-
-//#ifdef DEBUGS
+	    	   /* pmn fix section */
+	    	   i_s = std::min(i_s,nx_sg-1);
+	    	   i_s = std::max(i_s,0);
+	    	   j_s = std::min(j_s,ny_sg-1);
+	    	   j_s = std::max(j_s,0);
+	    	   k_s = std::min(k_s,nz_sg-1);
+	    	   k_s = std::max(k_s,0);
+	    	   /* end pmn fix section */
+#ifdef DEBUGS
 	    	   printf("Located in structured cell %d %d %d\n",i_s,j_s,k_s);
-//#endif
+#endif
 	    	   if(this->smartSearchValues->nelems_in_cell[k_s][j_s][i_s] > 0) {
 	    		   indx_start = this->smartSearchValues->start_index[k_s][j_s][i_s];
 	    		   indx_end   = this->smartSearchValues->end_index[k_s][j_s][i_s];
 	    		   delta_i=(int)( (float)(indx_end-indx_start) * ( (float)rand() / (float)RAND_MAX ) );
 	    		   this->smartSearchValues->last_element_found = (*this->smartSearchValues->indx)[indx_start + delta_i];
-//  #ifdef DEBUGS
+#ifdef DEBUGS
 	    		   printf("Reseting last_element_found from structured grid to %d delta_i %d\n",this->smartSearchValues->last_element_found,indx_end-indx_start);
-// #endif
+#endif
 	    	   } else {
 	    		   this->smartSearchValues->last_element_found = -1;
 #ifdef DEBUGS
@@ -645,8 +651,8 @@ std::cout << "starting search" << std::endl;
 	    			   k_max = min(nz_sg-1,k_s+1);
 #endif  /* CARTESIAN_S_GRID */
 #ifdef SPHERICAL_S_GRID
-	    			   j_min = j_s-1;
-	    			   j_max = j_s+1;
+	    			   j_min = std::max(j_s-1, 0);			/* pmn fix */
+	    			   j_max = std::min(j_s+1, ny_sg-1); 	/* pmn fix */
 	    			   k_min = k_s-1;
 	    			   k_max = k_s+1;
 #endif  /* SPHERICAL_S_GRID */
@@ -762,8 +768,8 @@ std::cout << "starting search" << std::endl;
 	    					   k_max = min(nz_sg-1,k_s+2);
 #endif  /* CARTESIAN_S_GRID */
 #ifdef SPHERICAL_S_GRID
-	    					   j_min = j_s-2;
-	    					   j_max = j_s+2;
+	    					   j_min = std::max(j_s-2, 0);
+	    					   j_max = std::min(j_s+2, ny_sg-1);
 	    					   k_min = k_s-2;
 	    					   k_max = k_s+2;
 #endif  /* SPHERICAL_S_GRID */
@@ -834,7 +840,7 @@ std::cout << "starting search" << std::endl;
 
 
 	       }
-	       std::cout << "last_element_found = " << this->smartSearchValues->last_element_found << std::endl;
+//	       std::cout << "last_element_found = " << this->smartSearchValues->last_element_found << std::endl;
 	       /* If available, use the last element found to begin the search */
 	       if(this->smartSearchValues->last_element_found != -1) kelem = smartSearch(c0,c1,c2);
 
@@ -844,9 +850,9 @@ std::cout << "starting search" << std::endl;
 	       previous_c1=c1;
 	       previous_c2=c2;
 
-	       //	         #ifdef DEBUGS
+#ifdef DEBUGS
 	       printf("Exiting find element with last_element_found=%d\n",this->smartSearchValues->last_element_found);
-	       //	         #endif
+#endif
 
 
 
@@ -888,33 +894,38 @@ std::cout << "starting search" << std::endl;
 	      int within_bounds = 1;
 
 	      radius=std::sqrt(c0*c0+c1*c1+c2*c2);
-	      if(c0 < this->smartSearchValues->xl_sg)
+	      if(c0 < this->smartSearchValues->xl_gr)
 	      {
+	    	  std::cerr << "c0: " << c0 << " < " << this->smartSearchValues->xl_gr << std::endl;
 	    	  return 0;
 
-	    	  //std::cerr << "scoord[0]: " << scoord[0] << " < " << this->smartSearchValues->xl_sg << std::endl;
-	      } else if(c0 > this->smartSearchValues->xr_sg)
+	      } else if(c0 > this->smartSearchValues->xr_gr)
 	      {
+	    	  std::cerr << "c0: " << c0 << " > " << this->smartSearchValues->xr_gr << std::endl;
 	    	  return 0;
-	    	  //std::cerr << "scoord[0]: " << scoord[0] << " > " << this->smartSearchValues->xr_sg << std::endl;
-	      } else if (c1 < this->smartSearchValues->yl_sg)
-	      {
-	    	  return 0;
-	    	  //std::cerr << "scoord[1]: " << scoord[1] << " < " << this->smartSearchValues->yl_sg << std::endl;
-	      } else if (c1 > this->smartSearchValues->yr_sg)
-	      {
-	    	  return 0;
-	    	  //std::cerr << "scoord[1]: " << scoord[1] << " > " << this->smartSearchValues->yr_sg << std::endl;
 
-	      } else if(c2 < this->smartSearchValues->zl_sg)
+	      } else if (c1 < this->smartSearchValues->yl_gr)
 	      {
+	    	  std::cerr << "c1: " << c1 << " < " << this->smartSearchValues->yl_gr << std::endl;
 	    	  return 0;
-	    	  //std::cerr << "scoord[2]: " << scoord[2] << " < " << this->smartSearchValues->zl_sg << std::endl;
 
-	      } else if(c2 > this->smartSearchValues->zr_sg)
+	      } else if (c1 > this->smartSearchValues->yr_gr)
 	      {
+	    	  std::cerr << "c1: " << c1 << " > " << this->smartSearchValues->yr_gr << std::endl;
 	    	  return 0;
-	    	  //std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
+
+
+	      } else if(c2 < this->smartSearchValues->zl_gr)
+	      {
+	    	  std::cerr << "c2: " << c2 << " < " << this->smartSearchValues->zl_gr << std::endl;
+	    	  return 0;
+
+
+	      } else if(c2 > this->smartSearchValues->zr_gr)
+	      {
+	    	  std::cerr << "c2: " << c2 << " > " << this->smartSearchValues->zr_gr << std::endl;
+	    	  return 0;
+
 
 	      }
 	      if(radius < INNER_RADIUS) return 0;
@@ -941,33 +952,33 @@ std::cout << "starting search" << std::endl;
 	      int within_bounds = 1;
 
 	      radius=std::sqrt(scoord[0]*scoord[0]+scoord[1]*scoord[1]+scoord[2]*scoord[2]);
-	      if(scoord[0] < this->smartSearchValues->xl_sg)
+	      if(scoord[0] < this->smartSearchValues->xl_gr)
 	      {
 	    	  within_bounds = 0;
 
-	    	  //std::cerr << "scoord[0]: " << scoord[0] << " < " << this->smartSearchValues->xl_sg << std::endl;
-	      } else if(scoord[0] > this->smartSearchValues->xr_sg)
+	    	  std::cerr << "scoord[0]: " << scoord[0] << " < " << this->smartSearchValues->xl_gr << std::endl;
+	      } else if(scoord[0] > this->smartSearchValues->xr_gr)
 	      {
 	    	  within_bounds = 0;
-	    	  //std::cerr << "scoord[0]: " << scoord[0] << " > " << this->smartSearchValues->xr_sg << std::endl;
-	      } else if (scoord[1] < this->smartSearchValues->yl_sg)
+	    	  std::cerr << "scoord[0]: " << scoord[0] << " > " << this->smartSearchValues->xr_gr << std::endl;
+	      } else if (scoord[1] < this->smartSearchValues->yl_gr)
 	      {
 	    	  within_bounds = 0;
-	    	  //std::cerr << "scoord[1]: " << scoord[1] << " < " << this->smartSearchValues->yl_sg << std::endl;
-	      } else if (scoord[1] > this->smartSearchValues->yr_sg)
+	    	  std::cerr << "scoord[1]: " << scoord[1] << " < " << this->smartSearchValues->yl_gr << std::endl;
+	      } else if (scoord[1] > this->smartSearchValues->yr_gr)
 	      {
 	    	  within_bounds = 0;
-	    	  //std::cerr << "scoord[1]: " << scoord[1] << " > " << this->smartSearchValues->yr_sg << std::endl;
+	    	  std::cerr << "scoord[1]: " << scoord[1] << " > " << this->smartSearchValues->yr_gr << std::endl;
 
-	      } else if(scoord[2] < this->smartSearchValues->zl_sg)
+	      } else if(scoord[2] < this->smartSearchValues->zl_gr)
 	      {
 	    	  within_bounds = 0;
-	    	  //std::cerr << "scoord[2]: " << scoord[2] << " < " << this->smartSearchValues->zl_sg << std::endl;
+	    	  std::cerr << "scoord[2]: " << scoord[2] << " < " << this->smartSearchValues->zl_gr << std::endl;
 
-	      } else if(scoord[2] > this->smartSearchValues->zr_sg)
+	      } else if(scoord[2] > this->smartSearchValues->zr_gr)
 	      {
 	    	  within_bounds = 0;
-	    	  //std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
+	    	  std::cerr << "scoord[2]: " << scoord[2] << " > " << this->smartSearchValues->zr_sg << std::endl;
 
 	      }
 	      if(radius < INNER_RADIUS) within_bounds = 0;
@@ -990,7 +1001,7 @@ std::cout << "starting search" << std::endl;
 	{
 
     	//
-#define DEBUG
+//#define DEBUG
 	/*
 	!...  mesh arrays
 	*/
@@ -1263,6 +1274,7 @@ std::cout << "starting search" << std::endl;
 //           std::cout << "b1: " << b1 << " b2: " << b2 << " b3: " << b3 << " b4: " << b4 << std::endl;
 //           std::cout << "c1: " << c1 << " c2: " << c2 << " c3: " << c3 << " c4: " << c4 << std::endl;
 //           std::cout << "d1: " << d1 << " d2: " << d2 << " d3: " << d3 << " d4: " << d4 << std::endl;
+#ifdef DEBUG
            std::cout << "vol6: " << vol6 << " vol: " << vol << std::endl;
            std::cout << "f1: " << f1 << " f2: " << f2 << " f3: " << f3 << " f4: " << f4 << std::endl;
            std::cout << "ipa: " << ipa << " ipb: " << ipb << " ipc: " << ipc << " ipd: " << ipd << std::endl;
@@ -1270,7 +1282,7 @@ std::cout << "starting search" << std::endl;
            std::cout << "(*vData)[" << ipb << "] " << (*vData)[ ipb ] << std::endl;
            std::cout << "(*vData)[" << ipc << "] " << (*vData)[ ipc ] << std::endl;
            std::cout << "(*vData)[" << ipd << "] " << (*vData)[ ipd ] << std::endl;
-
+#endif
 
            return f1*(*vData)[ ipa ]+f2*(*vData)[ ipb ]
 				 +f3*(*vData)[ ipc ]+f4*(*vData)[ ipd ] ;

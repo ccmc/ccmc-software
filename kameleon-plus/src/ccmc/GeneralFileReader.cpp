@@ -4,7 +4,7 @@
  *  Created on: Apr 22, 2009
  *      Author: David Berrios
  */
-
+#include "config.h"
 #include "FileReader.h"
 #include "CDFFileReader.h"
 #include "HDF5FileReader.h"
@@ -37,7 +37,9 @@ namespace ccmc
 //			std::cerr << "Initialized a CDF file reader" << std::endl;
 			this->fileReader = fileReader;
 			return status;
-		} else
+		}
+#ifdef HAVE_LIBHDF5_CPP
+		else
 		{
 //			std::cerr << "Checking if the file is an HDF5 file" << std::endl;
 			delete fileReader;
@@ -54,6 +56,7 @@ namespace ccmc
 				return FileReader::OPEN_ERROR;
 
 		}
+#endif
 	}
 
 
