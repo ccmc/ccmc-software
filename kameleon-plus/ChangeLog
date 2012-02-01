@@ -3,6 +3,12 @@
   kameleon-plus-0.1.31
   - Finally fixed Adapt3D code.
   
+2012 Jan 26   David Berrios
+-------------
+  kameleon-plus-0.1.30
+  - Removed debugging output
+  - Updated configure script to disable HDF5 support by default. Regenerate SWIG wrappers if you enable HDF5.
+  
 2012 Jan 24   David Berrios
 -------------
   kameleon-plus-0.1.29
