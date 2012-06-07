@@ -9,7 +9,6 @@
 #include <ccmc/FileReader.h>
 #include <ccmc/GeneralFileReader.h>
 #include <ccmc/CDFFileReader.h>
-#include <ccmc/HDF5FileReader.h>
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
 #include <ccmc/KameleonInterpolator.h>
@@ -22,10 +21,12 @@
 #include <ccmc/ENLIL.h>
 #include <ccmc/MAS.h>
 #include <ccmc/OpenGGCM.h>
+#include <ccmc/SWMFIono.h>
 #include <ccmc/BATSRUSInterpolator.h>
 #include <ccmc/ENLILInterpolator.h>
 #include <ccmc/MASInterpolator.h>
 #include <ccmc/OpenGGCMInterpolator.h>
+#include <ccmc/SWMFIonoInterpolator.h>
 #include <ccmc/CCMCTime.h>
 using namespace std;
 using namespace ccmc;
@@ -36,7 +37,6 @@ using namespace ccmc;
 %include <ccmc/FileReader.h>
 %include <ccmc/GeneralFileReader.h>
 %include <ccmc/CDFFileReader.h>
-%include <ccmc/HDF5FileReader.h>
 %include <ccmc/Kameleon.h>
 %include <ccmc/Interpolator.h>
 %include <ccmc/KameleonInterpolator.h>
@@ -50,10 +50,12 @@ using namespace ccmc;
 %include <ccmc/ENLIL.h>
 %include <ccmc/MAS.h>
 %include <ccmc/OpenGGCM.h>
+%include <ccmc/SWMFIono.h>
 %include <ccmc/BATSRUSInterpolator.h>
 %include <ccmc/ENLILInterpolator.h>
 %include <ccmc/MASInterpolator.h>
 %include <ccmc/OpenGGCMInterpolator.h>
+%include <ccmc/SWMFIonoInterpolator.h>
 %include <ccmc/CCMCTime.h>
 
 using namespace ccmc;
