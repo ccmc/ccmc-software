@@ -1,6 +1,3 @@
-/**
- * @mainpage Test main page
- */
 #include <vector>
 #include <string>
 //#include <string.h>
