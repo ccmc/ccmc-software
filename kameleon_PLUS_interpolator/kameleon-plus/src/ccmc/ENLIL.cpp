@@ -30,6 +30,7 @@ namespace ccmc
 	 */
 	long ENLIL::open(const std::string& filename)
 	{
+		this->setBusyStatus(Model::BUSY);
 		//open the file
 		long status;
 		status = GeneralFileReader::open(filename);
@@ -59,7 +60,7 @@ namespace ccmc
 			return success;
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
-
+		this->setBusyStatus(Model::OK);
 		return status;
 	}
 
