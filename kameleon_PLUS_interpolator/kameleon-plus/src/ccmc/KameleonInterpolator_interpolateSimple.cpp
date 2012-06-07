@@ -44,6 +44,8 @@ namespace ccmc
 			float& dComponent3)
 	{
 		//selectCDF(current_cdf_id);
+		float missingValue = this->modelReader->getMissingValue();
+
 		float interp_value = missingValue;//model->getMissingValue();
 		int flag1 = 0;
 		int flag2 = 1;
@@ -92,6 +94,8 @@ namespace ccmc
 			float& dComponent3)
 	{
 		//selectCDF(current_cdf_id);
+		float missingValue = this->modelReader->getMissingValue();
+
 		float interp_value = missingValue;//model->getMissingValue();
 		int flag1 = 0;
 		int flag2 = 1;
