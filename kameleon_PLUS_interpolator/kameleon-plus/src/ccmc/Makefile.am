@@ -89,7 +89,11 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						MathHelper.h \
 						MathHelper.cpp \
 						HDF5FileReader.h \
-						HDF5FileReader.cpp
+						HDF5FileReader.cpp \
+						SWMFIono.h \
+						SWMFIono.cpp \
+						SWMFIonoInterpolator.h \
+						SWMFIonoInterpolator.cpp
 											
 						
 libkameleon_plus_la_LDFLAGS = -release @RELEASE@ 
