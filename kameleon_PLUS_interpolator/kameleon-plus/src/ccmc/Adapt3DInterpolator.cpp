@@ -11,7 +11,7 @@
 #include "MathHelper.h"
 #include <stdio.h>
 #include <iostream>
-#include <boost/thread.hpp>
+//#include <boost/thread.hpp>
 #define MIN_RANGE    -1e9
 #define MAX_RANGE    +1e9
 #define NNODE_ADAPT3D 4
@@ -50,7 +50,7 @@ namespace ccmc
 		//this->smartSearchSetup();
 		this->smartSearchValues->last_element_found = -1;
 //		std::cout << "created Adapt3DInterpolator object" << std::endl;
-		this->missingValue = modelReader->getMissingValue();
+
 	}
 
 	/**
@@ -118,9 +118,10 @@ namespace ccmc
 	float Adapt3DInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
+		float missingValue = this->modelReader->getMissingValue();
 		//this->last_element_found = -1;
 		if (!point_within_grid(c0,c1,c2))
-			return this->missingValue;
+			return missingValue;
 		//float rsun_in_meters = 7.0e8;
 		//float unkno_local[9];
 
@@ -242,7 +243,7 @@ namespace ccmc
 #ifdef DEBUG
 	   std::cerr << "ielem: " << ielem << " for position " << c0 << "," << c1 << "," << c2 << std::endl;
 #endif
-		interpolated_value=this->missingValue;     /* test value */
+		interpolated_value = missingValue;     /* test value */
 
 		if(ielem > -1)
 		{
@@ -252,13 +253,13 @@ namespace ccmc
 #endif
 		   this->smartSearchValues->last_element_found = ielem;
 		} else {
-			printf("Failed to find point in grid\n");
+			//printf("Failed to find point in grid\n");
 			this->smartSearchValues->last_element_found = -1;
 		}
 
 
 		/*  return interpolated_value  */
-		if (interpolated_value >= MIN_RANGE && interpolated_value <= MAX_RANGE && interpolated_value != this->missingValue)
+		if (interpolated_value >= MIN_RANGE && interpolated_value <= MAX_RANGE && interpolated_value != missingValue)
 		{
 
 		  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << (float)interpolated_value << std::endl;
@@ -268,7 +269,7 @@ namespace ccmc
 		else
 		{
 		  //std::cerr << "position: " << c0 << "," << c1 << "," << c2 << ": " << this->missingValue << std::endl;
-		  return this->missingValue;
+		  return missingValue;
 		}
 	}
 
@@ -897,34 +898,28 @@ namespace ccmc
 	      radius=std::sqrt(c0*c0+c1*c1+c2*c2);
 	      if(c0 < this->smartSearchValues->xl_gr)
 	      {
-	    	  std::cerr << "c0: " << c0 << " < " << this->smartSearchValues->xl_gr << std::endl;
 	    	  return 0;
 
 	      } else if(c0 > this->smartSearchValues->xr_gr)
 	      {
-	    	  std::cerr << "c0: " << c0 << " > " << this->smartSearchValues->xr_gr << std::endl;
 	    	  return 0;
 
 	      } else if (c1 < this->smartSearchValues->yl_gr)
 	      {
-	    	  std::cerr << "c1: " << c1 << " < " << this->smartSearchValues->yl_gr << std::endl;
 	    	  return 0;
 
 	      } else if (c1 > this->smartSearchValues->yr_gr)
 	      {
-	    	  std::cerr << "c1: " << c1 << " > " << this->smartSearchValues->yr_gr << std::endl;
 	    	  return 0;
 
 
 	      } else if(c2 < this->smartSearchValues->zl_gr)
 	      {
-	    	  std::cerr << "c2: " << c2 << " < " << this->smartSearchValues->zl_gr << std::endl;
 	    	  return 0;
 
 
 	      } else if(c2 > this->smartSearchValues->zr_gr)
 	      {
-	    	  std::cerr << "c2: " << c2 << " > " << this->smartSearchValues->zr_gr << std::endl;
 	    	  return 0;
 
 
@@ -1157,6 +1152,7 @@ namespace ccmc
 
     float Adapt3DInterpolator::interpolate_adapt3d_solution(const float& x, const float& y, const float& z, int ielem, const std::string& variable)
     {
+    	float missingValue = this->modelReader->getMissingValue();
     /*
      * Interpolate values of unkno to position coord in element ielem
     */
@@ -1243,7 +1239,7 @@ namespace ccmc
            if (vData == NULL || vData->size() == 0)
            {
         	   std::cerr << "missing value" << std::endl;
-        	   return this->missingValue;
+        	   return missingValue;
            }
           /* for ( iv=0; iv<9; iv++) {
 
