@@ -29,6 +29,7 @@ namespace ccmc
 	 */
 	long BATSRUS::open(const std::string& filename)
 	{
+		this->setBusyStatus(Model::BUSY);
 		long status;
 		status = GeneralFileReader::open(filename);
 
@@ -98,7 +99,7 @@ namespace ccmc
 		GeneralFileReader::initializeVariableNames();
 		initializeConversionFactorsToSI();
 		initializeSIUnits();
-
+		this->setBusyStatus(Model::OK);
 		return status;
 	}
 
