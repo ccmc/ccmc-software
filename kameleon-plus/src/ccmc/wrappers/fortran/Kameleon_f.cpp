@@ -5,13 +5,10 @@
  *      Author: dberrios
  */
 #include "Kameleon_f.h"
-#include <ccmc/Kameleon.h>
 #include <ccmc/wrappers/c/Kameleon_c.h>
 #include <string>
 #include <string.h>
 #include <iostream>
-
-using namespace ccmc;
 
 void f_kameleon_create_(int * id)
 {
@@ -20,22 +17,31 @@ void f_kameleon_create_(int * id)
 //	std::cout << "after C create function" << std::endl;
 }
 
-void f_interpolator_create(int * kid, int * id)
+void f_interpolator_create_(int * kid, int * id)
 {
 	*id = Interpolator_create(*kid);
+
 }
 
-void f_kameleon_open_(int * id, const char * filename, long * status)
+void f_interpolator_delete_(int * id)
 {
+	Interpolator_delete(*id);
+
+}
+
+void f_kameleon_open_(int * id, const char * filename, int * status)
+{
+
 	std::string filename_str = filename;
 	//get string length
 	int length = filename_str.size();
 	char filename_corrected[length+1];
+
 	strcpy(filename_corrected, filename_str.c_str());
 	//std::cout << "string length: " << length << std::endl;
-	for (int i = length; i> 1; i--)
+	for (int i = 0; i< length; i++)
 	{
-		if (filename_corrected[i-1] != ' ')
+		if (filename_corrected[i] == ' ')
 		{
 	//		std::cout << "add the character at index: " << i << std::endl;
 			filename_corrected[i] = '\0';
@@ -43,10 +49,11 @@ void f_kameleon_open_(int * id, const char * filename, long * status)
 		}
 
 	}
+//	std::cout << "filename: '" << filename_corrected << "'" << std::endl;
 	*status = Kameleon_open(*id, filename_corrected);
 }
 
-void f_kameleon_interpolate(int * id, const char * variable, const float * c0,
+void f_kameleon_interpolate_(int * id, const char * variable, float * c0,
 		float * c1, float *c2, float * dc0, float * dc1, float * dc2, float * returnValue)
 {
 	std::string variable_str = variable;
@@ -55,9 +62,9 @@ void f_kameleon_interpolate(int * id, const char * variable, const float * c0,
 	char variable_corrected[length+1];
 	strcpy(variable_corrected, variable_str.c_str());
 	//std::cout << "string length: " << length << std::endl;
-	for (int i = length; i> 1; i--)
+	for (int i = 0; i< length; i++)
 	{
-		if (variable_corrected[i-1] != ' ')
+		if (variable_corrected[i] == ' ')
 		{
 	//		std::cout << "add the character at index: " << i << std::endl;
 			variable_corrected[i] = '\0';
@@ -65,8 +72,10 @@ void f_kameleon_interpolate(int * id, const char * variable, const float * c0,
 		}
 
 	}
-
-	*returnValue = Kameleon_interpolate(*id, variable, c0, c1, c2, dc0, dc1, dc2);
+//	std::cout << "inside f_kameleon_interpolate. lat: " << *c1 << " mlt: " << *c2 << std::endl;
+	*returnValue = Kameleon_interpolate(*id, variable_corrected, c0, c1, c2, dc0, dc1, dc2);
+//	std::cout << "returning " << *returnValue << std::endl;
+	//*returnValue = Kameleon_interpolate(*id, variable_corrected, c0, c1, c2, dc0, dc1, dc2);
 
 }
 //extern _C_ void f_kameleon_get_model_name(int id, char * model_name);
@@ -79,15 +88,41 @@ void f_kameleon_interpolate(int * id, const char * variable, const float * c0,
  * pass the string to this function with a null terminal at the correct position. Not sure how
  * to do that in fortran
  */
+void f_kameleon_load_variable_(int *id, const char * variable)
+{
+	std::string variable_str = variable;
+	int length = variable_str.size();
+	char variable_corrected[length+1];
+	strcpy(variable_corrected, variable_str.c_str());
+	for (int i = 0; i< length; i++)
+	{
+		if (variable_corrected[i] == ' ')
+		{
+			variable_corrected[i] = '\0';
+			break;
+		}
+	}
+
+//	std::cout << "variable_corrected: '" << variable_corrected << "'" << std::endl;
+//	std::cout << "calling Kameleon_load_variable" << std::endl;
+	Kameleon_load_variable(*id, variable_corrected);
+//	std::cout << "finished calling Kameleon_load_variable" << std::endl;
+}
+
+/**
+ * This creates a copy of the string to make it compatible with C. The better way would be to
+ * pass the string to this function with a null terminal at the correct position. Not sure how
+ * to do that in fortran
+ */
 void f_kameleon_load_vector_variable_(int *id, const char * variable)
 {
 	std::string variable_str = variable;
 	int length = variable_str.size();
 	char variable_corrected[length+1];
 	strcpy(variable_corrected, variable_str.c_str());
-	for (int i = length; i>1; i--)
+	for (int i = 0; i< length; i++)
 	{
-		if (variable_corrected[i-1] != ' ')
+		if (variable_corrected[i] == ' ')
 		{
 			variable_corrected[i] = '\0';
 			break;
@@ -102,7 +137,7 @@ void f_kameleon_close_(int * id)
 	Kameleon_close(*id);
 }
 
-void f_kameleon_delete_(int * id, long * status)
+void f_kameleon_delete_(int * id, int * status)
 {
 	*status = Kameleon_delete(*id);
 }
