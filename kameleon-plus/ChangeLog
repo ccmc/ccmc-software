@@ -1,3 +1,29 @@
+2012 Jun 07   David Berrios
+-------------
+  kameleon-plus-0.3.2
+  - Updated Fortran example code and fixed string parameters
+  
+2012 May 30   David Berrios
+-------------
+  kameleon-plus-0.3.1
+  - Fixed fortran wrappers and c wrappers
+  
+2012 May 25   David Berrios
+-------------
+  kameleon-plus-0.3.0
+  - Added support for the Ionospheric output of SWMF
+  
+2012 Feb 07   David Berrios
+-------------
+  kameleon-plus-0.2.1
+  - Added code to keep track of progress during open call.
+  
+2012 Feb 06   David Berrios
+-------------
+  kameleon-plus-0.2.0
+  - Removed debugging output.
+  - Modified logic for missing values.
+  
 2012 Feb 01   David Berrios
 -------------
   kameleon-plus-0.1.31
