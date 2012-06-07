@@ -8,15 +8,15 @@
 
 package gov.nasa.gsfc.ccmc;
 
-public class ENLIL extends Model {
+public class SWMFIono extends Model {
   private long swigCPtr;
 
-  protected ENLIL(long cPtr, boolean cMemoryOwn) {
-    super(CCMCJNI.ENLIL_SWIGUpcast(cPtr), cMemoryOwn);
+  protected SWMFIono(long cPtr, boolean cMemoryOwn) {
+    super(CCMCJNI.SWMFIono_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(ENLIL obj) {
+  protected static long getCPtr(SWMFIono obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -28,32 +28,24 @@ public class ENLIL extends Model {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        CCMCJNI.delete_ENLIL(swigCPtr);
+        CCMCJNI.delete_SWMFIono(swigCPtr);
       }
       swigCPtr = 0;
     }
     super.delete();
   }
 
-  public ENLIL() {
-    this(CCMCJNI.new_ENLIL(), true);
+  public SWMFIono() {
+    this(CCMCJNI.new_SWMFIono(), true);
   }
 
   public int open(String filename) {
-    return CCMCJNI.ENLIL_open(swigCPtr, this, filename);
+    return CCMCJNI.SWMFIono_open(swigCPtr, this, filename);
   }
 
   public Interpolator createNewInterpolator() {
-    long cPtr = CCMCJNI.ENLIL_createNewInterpolator(swigCPtr, this);
+    long cPtr = CCMCJNI.SWMFIono_createNewInterpolator(swigCPtr, this);
     return (cPtr == 0) ? null : new Interpolator(cPtr, false);
-  }
-
-  public boolean getChangeSignFlag(String variable) {
-    return CCMCJNI.ENLIL_getChangeSignFlag(swigCPtr, this, variable);
-  }
-
-  public boolean getChangeSignFlagByID(int variable_id) {
-    return CCMCJNI.ENLIL_getChangeSignFlagByID(swigCPtr, this, variable_id);
   }
 
 }

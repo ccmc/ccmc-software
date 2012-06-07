@@ -8,15 +8,15 @@
 
 package gov.nasa.gsfc.ccmc;
 
-public class MASInterpolator extends Interpolator {
+public class SWMFIonoInterpolator extends Interpolator {
   private long swigCPtr;
 
-  protected MASInterpolator(long cPtr, boolean cMemoryOwn) {
-    super(CCMCJNI.MASInterpolator_SWIGUpcast(cPtr), cMemoryOwn);
+  protected SWMFIonoInterpolator(long cPtr, boolean cMemoryOwn) {
+    super(CCMCJNI.SWMFIonoInterpolator_SWIGUpcast(cPtr), cMemoryOwn);
     swigCPtr = cPtr;
   }
 
-  protected static long getCPtr(MASInterpolator obj) {
+  protected static long getCPtr(SWMFIonoInterpolator obj) {
     return (obj == null) ? 0 : obj.swigCPtr;
   }
 
@@ -28,31 +28,31 @@ public class MASInterpolator extends Interpolator {
     if (swigCPtr != 0) {
       if (swigCMemOwn) {
         swigCMemOwn = false;
-        CCMCJNI.delete_MASInterpolator(swigCPtr);
+        CCMCJNI.delete_SWMFIonoInterpolator(swigCPtr);
       }
       swigCPtr = 0;
     }
     super.delete();
   }
 
-  public MASInterpolator(Model model) {
-    this(CCMCJNI.new_MASInterpolator(Model.getCPtr(model), model), true);
+  public SWMFIonoInterpolator(Model model) {
+    this(CCMCJNI.new_SWMFIonoInterpolator(Model.getCPtr(model), model), true);
   }
 
   public float interpolate(String variable, float r, float lat, float lon) {
-    return CCMCJNI.MASInterpolator_interpolate__SWIG_0(swigCPtr, this, variable, r, lat, lon);
+    return CCMCJNI.SWMFIonoInterpolator_interpolate__SWIG_0(swigCPtr, this, variable, r, lat, lon);
   }
 
   public float interpolate(String variable, float r, float lat, float lon, SWIGTYPE_p_float dr, SWIGTYPE_p_float dlat, SWIGTYPE_p_float dlon) {
-    return CCMCJNI.MASInterpolator_interpolate__SWIG_1(swigCPtr, this, variable, r, lat, lon, SWIGTYPE_p_float.getCPtr(dr), SWIGTYPE_p_float.getCPtr(dlat), SWIGTYPE_p_float.getCPtr(dlon));
+    return CCMCJNI.SWMFIonoInterpolator_interpolate__SWIG_1(swigCPtr, this, variable, r, lat, lon, SWIGTYPE_p_float.getCPtr(dr), SWIGTYPE_p_float.getCPtr(dlat), SWIGTYPE_p_float.getCPtr(dlon));
   }
 
   public float interpolate(int variable_id, float r, float lat, float lon) {
-    return CCMCJNI.MASInterpolator_interpolate__SWIG_2(swigCPtr, this, variable_id, r, lat, lon);
+    return CCMCJNI.SWMFIonoInterpolator_interpolate__SWIG_2(swigCPtr, this, variable_id, r, lat, lon);
   }
 
   public float interpolate(int variable_id, float r, float lat, float lon, SWIGTYPE_p_float dr, SWIGTYPE_p_float dlat, SWIGTYPE_p_float dlon) {
-    return CCMCJNI.MASInterpolator_interpolate__SWIG_3(swigCPtr, this, variable_id, r, lat, lon, SWIGTYPE_p_float.getCPtr(dr), SWIGTYPE_p_float.getCPtr(dlat), SWIGTYPE_p_float.getCPtr(dlon));
+    return CCMCJNI.SWMFIonoInterpolator_interpolate__SWIG_3(swigCPtr, this, variable_id, r, lat, lon, SWIGTYPE_p_float.getCPtr(dr), SWIGTYPE_p_float.getCPtr(dlat), SWIGTYPE_p_float.getCPtr(dlon));
   }
 
 }
