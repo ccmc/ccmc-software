@@ -1,14 +1,14 @@
-//
-//  SWMF.cpp
-//  
-//
-//  Created by Nitesh Donti on 1/10/12.
-//  Copyright 2012 Cornell University. All rights reserved.
-//
+/*
+ * SWMFIono.cpp
+ *
+ *  Created on: May 25, 2012
+ *      Author: David Berrios
+ */
 
 #include "SWMFIono.h"
 #include "SWMFIonoInterpolator.h"
 #include "StringConstants.h"
+#include "GeneralFileReader.h"
 
 
 namespace ccmc{
@@ -19,17 +19,21 @@ namespace ccmc{
     
     long SWMFIono::open(const std::string& filename)
     {
+    	this->setBusyStatus(Model::BUSY);
+    
         long status;
-		status = openFile(filename);
+		status = GeneralFileReader::open(filename);
 
-		loadVariable(ccmc::strings::variables::r_);
+		//loadVariable(ccmc::strings::variables::r_);
 		loadVariable(ccmc::strings::variables::theta_);
-		loadVariable(ccmc::strings::variables::phi_);
+		loadVariable(ccmc::strings::variables::psi_);
 
         //....
 
         initializeSIUnits();
 		initializeConversionFactorsToSI();
+		this->setBusyStatus(Model::OK);
+		
 		return status;
     }
     
@@ -38,7 +42,7 @@ namespace ccmc{
 	 */
 	Interpolator* SWMFIono::createNewInterpolator()
 	{
-		Interpolator * interpolator = new SWMFInterpolator(this);
+		Interpolator * interpolator = new SWMFIonoInterpolator(this);
 		return interpolator;
 	}
     
@@ -56,6 +60,11 @@ namespace ccmc{
 	void SWMFIono::initializeSIUnits()
 	{
         
+	}
+
+	SWMFIono::~SWMFIono()
+	{
+		// TODO Auto-generated destructor stub
 	}
     
     
