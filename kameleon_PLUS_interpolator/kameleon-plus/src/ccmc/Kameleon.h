@@ -3,7 +3,7 @@
 
 
  Header file for derived variable functionality.  Just include this file
- and link to the interoplation library.  Include derived_compatibility.h if
+ and link to the interplation library.  Include derived_compatibility.h if
  you want to use the C interface instead.
  **/
 
@@ -16,20 +16,23 @@
  * produced by multiple space weather products.  It currently supports the output from the following products:
  * - OpenGGCM
  * - BATSRUS (Global MHD) and the BATSRUS component of SWMF
+ * - Ionospheric component of SWMF
  * - ENLIL
  * - MAS
  * - CTIP
+ * - ADAPT3D
  *
- * A C and Fortran compatible interface is provided through the use of the compatibility header (ccmc/kameleon_compatibility.h).
+ * Java, C, and Fortran compatible interfaces are provided through the use of the wrapper headers and code (ccmc/wrappers/*).
  *
  * @section Purpose
  * The purpose of this library is to provide easy access and interpolation methods
- * for multiple space weather simulation models, and to provide access to derived variables.  Derived
+ * for multiple space weather simulation model datasets, to provide access to derived variables, and
+ * to calculate fieldlines using any of the model vector field variables.  Derived
  * variables are those that can be calculated from the base variables provided by the native data files.
  *
  * @section Examples Example code
  *
- * @section License License blurb
+ * @section License License
  * @class Kameleon Kameleon.h ccmc/Kameleon.h
  */
 
@@ -44,7 +47,7 @@
 #include <boost/format.hpp>
 #include "Interpolator.h"
 #include "Model.h"
-#include "FileReader.h"
+#include "GeneralFileReader.h"
 #include "Constants.h"
 #include "cxform.h"
 #include <iostream>
@@ -124,6 +127,7 @@ namespace ccmc
 			void setMissingValue(float missingValue);
 			bool unloadVariable(const std::string& variable);
 			bool unloadVectorVariable(const std::string& variable);
+			int getProgress();
 			static int _cxform(const char *from,const char *to,const double et,Position* v_in,Position* v_out);
 			static long _cxRound(double doub);
 			static long _date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
@@ -177,6 +181,10 @@ namespace ccmc
 
 
 	};
+	static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
+	static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
+	static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
+	static boost::unordered_map<int, ccmc::GeneralFileReader *> generalFileReaderObjects;
 
 }
 
