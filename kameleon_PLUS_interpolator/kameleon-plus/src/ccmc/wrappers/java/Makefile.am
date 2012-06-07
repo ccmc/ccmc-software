@@ -28,7 +28,6 @@ dist_noinst_JAVA = 	Attribute.java \
 					Fieldline.java \
 					FileReader.java \
 					CDFFileReader.java \
-					HDF5FileReader.java \
 					GeneralFileReader.java \
 					Interpolator.java \
 					Kameleon.java \
@@ -40,10 +39,6 @@ dist_noinst_JAVA = 	Attribute.java \
 					OpenGGCMInterpolator.java \
 					Point3f.java \
 					Position.java \
-					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t.java \
-					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t.java \
-					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t.java \
-					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t.java \
 					SWIGTYPE_p_float.java \
 					SWIGTYPE_p_int.java \
 					SWIGTYPE_p_std__string.java \
@@ -54,6 +49,12 @@ dist_noinst_JAVA = 	Attribute.java \
 					vector_int.java \
 					vector_point3f.java \
 					vector_string.java 
+
+#					HDF5FileReader.java 
+#SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t.java 
+#					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t.java 
+#					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t.java 
+#					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t.java 
 
 EXTRA_DIST = SWIG_COMMAND
 					
