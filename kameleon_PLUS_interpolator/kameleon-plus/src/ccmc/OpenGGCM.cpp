@@ -25,6 +25,7 @@ namespace ccmc
 		previous_x = missingValue;
 		previous_y = missingValue;
 		previous_z = missingValue;
+		this->busyStatus = Model::OK;
 
 	}
 
@@ -33,16 +34,21 @@ namespace ccmc
 	 */
 	long OpenGGCM::open(const std::string& filename)
 	{
+		this->setBusyStatus(Model::BUSY);
 		long status;
 		status = GeneralFileReader::open(filename);
-
+		this->progress = 20;
 		loadVariable(ccmc::strings::variables::x_);
+		this->progress = 40;
 		loadVariable(ccmc::strings::variables::y_);
+		this->progress = 60;
 		loadVariable(ccmc::strings::variables::z_);
+		this->progress = 80;
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
-
+		this->progress = 100;
 //		cout << "testing open in OpenGGCM class" << endl;
+		this->setBusyStatus(Model::OK);
 		return status;
 	}
 
