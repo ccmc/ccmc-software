@@ -5,6 +5,7 @@
 #include "ENLIL.h"
 #include "MAS.h"
 #include "Adapt3D.h"
+#include "SWMFIono.h"
 #include "CDFFileReader.h"
 #include <string>
 #include <boost/algorithm/string.hpp>
@@ -53,6 +54,9 @@ namespace ccmc
 				{
 					//std::cout << "created Adapt3D object" << std::endl;
 					model = new Adapt3D();
+				} else if (modelName == "swmf")
+				{
+					model = new SWMFIono();
 				} else //unknown model
 				{
 
