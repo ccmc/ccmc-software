@@ -463,4 +463,23 @@ namespace ccmc
 		 boost::unordered_map<long, std::vector<float>* > variableDataByID;
 		 boost::unordered_map<long, std::vector<int>* > variableDataIntByID;*/
 	}
+
+	void Model::setBusyStatus(int busyStatus)
+	{
+		this->busyStatus = busyStatus;
+		if (busyStatus == Model::OK)
+			this->progress = 100;
+		else //busyStatus == Model::BUSY
+			this->progress = 0;
+	}
+
+	int Model::getBusyStatus()
+	{
+		return this->busyStatus;
+	}
+
+	int Model::getProgress()
+	{
+		return this->progress;
+	}
 }

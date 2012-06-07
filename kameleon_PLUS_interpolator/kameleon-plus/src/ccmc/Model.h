@@ -30,6 +30,9 @@ namespace ccmc
 		public:
 			Model();
 
+			static const int BUSY=1;
+			static const int OK=2;
+
 			/**
 			 * @brief Opens a file
 			 *
@@ -63,6 +66,8 @@ namespace ccmc
 			float getConversionFactorToSI(const std::string& variable);
 			std::string getNativeUnit(const std::string& variable);
 			std::string getSIUnit(const std::string& variable);
+			int getProgress();
+			int getBusyStatus();
 
 
 			long close();
@@ -101,6 +106,8 @@ namespace ccmc
 			 */
 			virtual void initializeConversionFactorsToSI() = 0;
 
+			void setBusyStatus(int busyStatus);
+
 			/**
 			 * @brief Initializes the variableSIUnits map.
 			 */
@@ -108,6 +115,8 @@ namespace ccmc
 			std::string units_;
 
 			float missingValue;
+			int busyStatus;
+			int progress;
 
 	};
 }
