@@ -31,10 +31,7 @@ using namespace std;
 
 
 //const Derived * derived = new Derived();
-static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
-static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
-static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
-static boost::unordered_map<int, ccmc::FileReader *> fileReaderObjects;
+
 //Kameleon derived;
 namespace ccmc
 {
@@ -88,6 +85,7 @@ namespace ccmc
 	void Kameleon::setMissingValue(float missingValue)
 	{
 		this->missingValue = missingValue;
+		this->model->setMissingValue(missingValue);
 	}
 
 	/**
@@ -396,7 +394,6 @@ namespace ccmc
 	Interpolator * Kameleon::createNewInterpolator()
 	{
 		Interpolator * interpolator = new KameleonInterpolator(model);
-		interpolator->setMissingValue(model->getMissingValue());
 		return interpolator;
 	}
 
@@ -922,5 +919,10 @@ namespace ccmc
 	std::string Kameleon::getVariableAttributeName(long attribute_id)
 	{
 		return model->getVariableAttributeName(attribute_id);
+	}
+
+	int Kameleon::getProgress()
+	{
+		return model->getProgress();
 	}
 }
