@@ -27,6 +27,7 @@ namespace ccmc
 	 */
 	long MAS::open(const std::string& filename)
 	{
+		this->setBusyStatus(Model::BUSY);
 		long status;
 		status = GeneralFileReader::open(filename);
 		initializeMaps();
@@ -51,6 +52,7 @@ namespace ccmc
 
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
+		this->setBusyStatus(Model::OK);
 		return status;
 	}
 
