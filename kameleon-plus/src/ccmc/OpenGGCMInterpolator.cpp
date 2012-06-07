@@ -45,6 +45,7 @@ namespace ccmc
 		 variableDataY[i] = -variableDataY[i];
 
 		 }*/
+		float missingValue = this->modelReader->getMissingValue();
 
 		previousVariable = "NULL";
 		previousVariableID = -1L;
@@ -172,6 +173,8 @@ namespace ccmc
 		//flip c0 and c1;
 		float flipped_c0 = -c0;
 		float flipped_c1 = -c1;
+		float missingValue = this->modelReader->getMissingValue();
+
 		int ix, iy, iz;
 		if (previous_x == c0 && previous_y == c1 && previous_z == c2)
 		{
