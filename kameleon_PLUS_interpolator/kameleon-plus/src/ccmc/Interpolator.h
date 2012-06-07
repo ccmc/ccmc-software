@@ -39,14 +39,13 @@ namespace ccmc
 					float& dc1, float& dc2) = 0;
 			virtual float getConversionFactor(const std::string&);
 			virtual float getConversionFactor(const long& variable_id);
-			void setMissingValue(float missingValue);
 			std::string getModelName();
 			virtual ~Interpolator();
 
 		protected:
 			Model * modelReader;
 			std::string modelName;
-			float missingValue;
+			//float missingValue;
 	};
 
 }
