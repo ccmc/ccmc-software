@@ -47,6 +47,7 @@ namespace ccmc
 		this->smartSearchValues.delauney_search_iteration_profile = NULL;
 		this->smartSearchValues.facing_elements = NULL;
 		this->coord_modified = NULL;
+		this->busyStatus = Model::OK;
 
 	}
 
@@ -56,9 +57,10 @@ namespace ccmc
 	long Adapt3D::open(const std::string& filename)
 	{
 
+		this->setBusyStatus(Model::BUSY);
 		long status;
 		status = GeneralFileReader::open(filename);
-
+		this->progress = 10;
 		if (status != FileReader::OK)
 		   return status;
 
@@ -73,10 +75,11 @@ namespace ccmc
 		long loadStatus = this->loadVariable(ccmc::strings::variables::coord_);
 		if (loadStatus != FileReader::OK)
 				return loadStatus;
+		this->progress = 15;
 		loadStatus = this->loadVariableInt(ccmc::strings::variables::intmat_);
 		if (status != FileReader::OK)
 			return loadStatus;
-
+		this->progress = 20;
 		/***  Check the existence of necessary attributes.  Fail if any don't exist ***/
 		if (doesAttributeExist(ccmc::strings::variables::grid_reg_no_))
 		{
@@ -86,6 +89,7 @@ namespace ccmc
 			std::cerr << "grid_reg_no not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
 		}
+		this->progress = 25;
 		if (doesAttributeExist(ccmc::strings::variables::ndimn_))
 		{
 			this->ndimn = (this->getGlobalAttribute(ccmc::strings::variables::ndimn_)).getAttributeInt();
@@ -94,7 +98,7 @@ namespace ccmc
 			std::cerr << "ndimn not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
 		}
-
+		//this->progress = 40;
 		if (doesAttributeExist(ccmc::strings::variables::npoin_))
 		{
 			this->npoin = (this->getGlobalAttribute(ccmc::strings::variables::npoin_)).getAttributeInt();
@@ -103,7 +107,7 @@ namespace ccmc
 			std::cerr << "npoin not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
 		}
-
+		this->progress = 30;
 		if (doesAttributeExist(ccmc::strings::variables::nelem_))
 		{
 			this->nelem = (this->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
@@ -112,7 +116,7 @@ namespace ccmc
 			std::cerr << "nelem not found" << std::endl;
 			return FileReader::ATTRIBUTE_DOES_NOT_EXIST;
 		}
-
+		this->progress = 35;
 		//create and setup the necessary smart search stuff
 		this->nelem = (this->getGlobalAttribute(ccmc::strings::variables::nelem_)).getAttributeInt();
 
@@ -132,7 +136,7 @@ namespace ccmc
 		{
 			this->smartSearchValues.esup2->push_back(0);
 		}
-
+		this->progress = 45;
 		//this->coord = (this->getVariableFromMap(ccmc::strings::variables::coord_));
 		coord_modified = this->getVariableFromMapRW(ccmc::strings::variables::coord_);
 #ifdef DEBUG
@@ -143,7 +147,7 @@ namespace ccmc
 		{
 			(*buffer)[i] = coord_modified->at(i);
 		}
-
+		this->progress = 50;
 		float tempc = 0;
 		for ( int i=0; i<npoin; i++) {
 //			(*coord_modified)[i]=(*buffer)[i*3];
@@ -156,7 +160,7 @@ namespace ccmc
 		}
 
 		delete buffer;
-
+		this->progress = 55;
 		this->intmat_modified = (this->getIntVariableFromMapRW(ccmc::strings::variables::intmat_));
 
 		//intmat_modified = new std::vector<int>(intmat->size());
@@ -167,9 +171,14 @@ namespace ccmc
 		//this->unloadVariable(ccmc::strings::variables::intmat_);
 
 		this->smartSearchValues.indx_nodes = new std::vector<int>(npoin);
+		this->progress = 65;
 		this->setupSearchUnstructuredGrid();
+		this->progress = 75;
 		this->smartSearchSetup();
+
 		//this->setupOctreeGrid();
+		this->setBusyStatus(Model::OK);
+
 		return status;
 
 	}
@@ -794,7 +803,7 @@ namespace ccmc
 		}
 
 		(*this->smartSearchValues.esup2)[0] = 0;
-
+		this->progress = 80;
 
 		/*    int nesup    = esup2[npoin];
 		printf(" nesup = %i in fielsup1 \n",nesup); */
@@ -857,6 +866,7 @@ namespace ccmc
 
 	/* loop over the elements */
 	      for (int ielem=0;ielem<nelem;ielem++) {
+	    	  this->progress = 80 + (int)((float)ielem/(float)nelem*20);
 
 	/* loop over the faces */
 	        for (int iface=0;iface<nnode;iface++) {
@@ -928,6 +938,7 @@ namespace ccmc
 	        	  }
 	        	  iesup = iesup+1;
 	          }
+
 
 //	          std::cout << "ielem = " << ielem << " iface = " << iface << std::endl;
 
