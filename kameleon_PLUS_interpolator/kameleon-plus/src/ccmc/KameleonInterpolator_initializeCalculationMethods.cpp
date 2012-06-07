@@ -60,6 +60,7 @@ namespace ccmc
 		calculationMethod["s"] = &KameleonInterpolator::compute_s;
 		calculationMethod["n"] = &KameleonInterpolator::compute_n;
 		calculationMethod["n*r^2"] = &KameleonInterpolator::compute_scaleByRadius;
+		calculationMethod["rho*r^2"] = &KameleonInterpolator::compute_scaleByRadius;
 		calculationMethod["nv"] = &KameleonInterpolator::compute_nv;
 		calculationMethod["nvx"] = &KameleonInterpolator::compute_nvComponent1;
 		calculationMethod["nv_r"] = &KameleonInterpolator::compute_nvComponent1;
