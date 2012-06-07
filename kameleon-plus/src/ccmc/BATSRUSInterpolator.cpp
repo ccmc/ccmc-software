@@ -114,6 +114,7 @@ namespace ccmc
 			float& dc0, float& dc1, float& dc2)
 	{
 
+		float missingValue = this->modelReader->getMissingValue();
 		bool main_memory_flag = true;
 		if (this->modelReader->getVariableFromMap(variable_id) == NULL)
 			main_memory_flag = false;
@@ -175,12 +176,12 @@ namespace ccmc
 
 			/*** indices of grid positions around sample locations ***/
 
-			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = std::floor(ixx);
-			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = std::floor(ixx + 1);
-			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = std::floor(iyy);
-			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = std::floor(iyy + 1);
-			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = std::floor(izz);
-			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = std::floor(izz + 1);
+			ix_c[0] = ix_c[2] = ix_c[4] = ix_c[6] = (int)std::floor(ixx);
+			ix_c[1] = ix_c[3] = ix_c[5] = ix_c[7] = (int)std::floor(ixx + 1);
+			iy_c[0] = iy_c[1] = iy_c[4] = iy_c[5] = (int)std::floor(iyy);
+			iy_c[2] = iy_c[3] = iy_c[6] = iy_c[7] = (int)std::floor(iyy + 1);
+			iz_c[0] = iz_c[1] = iz_c[2] = iz_c[3] = (int)std::floor(izz);
+			iz_c[4] = iz_c[5] = iz_c[6] = iz_c[7] = (int)std::floor(izz + 1);
 
 			for (ic = 0; ic < 8; ic++)
 			{
@@ -496,6 +497,7 @@ namespace ccmc
 	float BATSRUSInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
+		float missingValue = this->modelReader->getMissingValue();
 		//	std::cout << "BATSRUSInterpolator::interpolate. variable: " << variable << std::endl;
 		bool main_memory_flag = true;
 		if (this->modelReader->getVariableFromMap(variable) == NULL)
