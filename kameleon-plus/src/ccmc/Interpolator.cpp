@@ -20,15 +20,6 @@ namespace ccmc
 	}
 
 	/**
-	 * Sets the missing value;
-	 * @param missingValue
-	 */
-	void Interpolator::setMissingValue(float missingValue)
-	{
-		this->missingValue = missingValue;
-	}
-
-	/**
 	 * @param variable
 	 * @return
 	 */
