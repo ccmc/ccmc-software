@@ -35,7 +35,7 @@ namespace ccmc
 		if (status == FileReader::OK)
 		{
 //			std::cerr << "Initialized a CDF file reader" << std::endl;
-			this->fileReader = fileReader;
+			//this->fileReader = fileReader;
 			return status;
 		}
 #ifdef HAVE_LIBHDF5_CPP
@@ -57,6 +57,7 @@ namespace ccmc
 
 		}
 #endif
+		return status;
 	}
 
 
