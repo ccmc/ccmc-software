@@ -40,6 +40,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		//tokenize variable
 		//interpolate base variable
 		//multiply the value returned by the parsed power of the radius

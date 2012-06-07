@@ -27,6 +27,8 @@ namespace ccmc
 			float& dComponent3)
 	{
 		float component1, component2, component3, magnitude;
+		float missingValue = this->modelReader->getMissingValue();
+
 		//string variable_name = variable;
 		std::string component1Name, component2Name, component3Name;
 		if (modelName == mas_ || modelName == enlil_)

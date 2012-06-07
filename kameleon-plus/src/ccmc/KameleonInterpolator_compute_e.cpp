@@ -21,6 +21,7 @@ namespace ccmc
 			float& dComponent3)
 	{
 
+		float missingValue = this->modelReader->getMissingValue();
 		float b_y, b_z, v_y, v_z, e_x;
 
 		if (modelName == mas_)
@@ -65,7 +66,7 @@ namespace ccmc
 				return missingValue;
 		}
 		e_x = v_y * b_z - v_z * b_y;
-		e_x = e_x;
+		//e_x = e_x;
 #ifdef DEBUG_DERIVED
 
 		cerr << "return e_x" << e_x << endl;
@@ -104,6 +105,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		float b_x, b_z, v_x, v_z, e_y;
 		if (modelName == mas_)
 		{
@@ -146,7 +149,7 @@ namespace ccmc
 		}
 
 		e_y = v_z * b_x - v_x * b_z;
-		e_y = e_y;
+		//e_y = e_y;
 #ifdef DEBUG_DERIVED
 
 		cerr << "return e_y" << e_y << endl;
@@ -171,6 +174,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		float b_x, b_y, v_x, v_y, e_z;
 		if (modelName == mas_)
 		{
@@ -213,7 +218,7 @@ namespace ccmc
 
 		}
 		e_z = v_x * b_y - v_y * b_x;
-		e_z = e_z;
+	//	e_z = e_z;
 
 #ifdef DEBUG_DERIVED
 

@@ -20,6 +20,8 @@ namespace ccmc
 	float KameleonInterpolator::compute_exbComponent1(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dComponent1, float& dComponent2, float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		//J_x*B_y-J_y*B_x
 		float value;
 		float mu_0 = 4e-7 * 3.141592;
@@ -94,6 +96,8 @@ namespace ccmc
 		float mu_0 = 4e-7 * 3.141592;
 		float exb_factor = 1.e-6 / mu_0;
 		float e_x, e_z, b_x, b_z;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		if (modelName == mas_)
 		{
@@ -149,6 +153,8 @@ namespace ccmc
 		float mu_0 = 4e-7 * 3.141592;
 		float exb_factor = 1.e-6 / mu_0;
 		float e_x, e_y, b_x, b_y;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		if (modelName == mas_)
 		{
@@ -203,6 +209,8 @@ namespace ccmc
 		float value, value_x, value_y, value_z;
 		float mu_0 = 4e-7 * 3.141592;
 		float exb_factor = 1.e-6 / mu_0;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		/** need to reduce number of duplicate interpolates to increase speed **/
 

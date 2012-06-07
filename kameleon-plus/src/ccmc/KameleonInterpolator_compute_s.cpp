@@ -35,6 +35,8 @@ namespace ccmc
 	{
 		float t = 0.0;
 		float n = 0.0;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		t = interpolate("t", positionComponent1, positionComponent2, positionComponent3, dComponent1, dComponent2,
 				dComponent3);

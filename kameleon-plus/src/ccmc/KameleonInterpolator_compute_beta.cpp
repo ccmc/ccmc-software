@@ -27,7 +27,7 @@ namespace ccmc
 		float bComponent2;
 		float bComponent3;
 		float p;
-
+		float missingValue = this->modelReader->getMissingValue();
 		if (modelName == "mas")
 		{
 			bComponent1 = interpolate("br", positionComponent1, positionComponent2, positionComponent3, dComponent1,
