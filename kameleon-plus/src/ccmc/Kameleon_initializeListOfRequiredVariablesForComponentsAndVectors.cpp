@@ -65,6 +65,7 @@ namespace ccmc
 		std::string nvz[] = {rho_,uz_};
 		std::string n[] = {rho_};
 		std::string n_times_r_tothe_2_power[] = {rho_};
+		std::string rho_times_r_tothe_2_power[] = {rho_};
 		std::string polb[] = {bp_};
 		std::string p_times_r_tothe_2_power[] = {p_};
 		std::string eta_times_jx[] = {eta_, jx_};
@@ -136,6 +137,7 @@ namespace ccmc
 		addRequirementsForComponents(p_, 2, p_without_p_t);
 		addRequirementsForComponents(beta_, 5, beta_without_p_T);
 		addRequirementsForComponents(beta_, 5, beta_without_p_t);
+		addRequirementsForComponents(rho_times_r_tothe_2_power_, 1, rho_times_r_tothe_2_power);
 
 		if (modelName == ccmc::strings::models::enlil_)
 		{
