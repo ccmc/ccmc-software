@@ -1,10 +1,9 @@
-//
-//  SWMF.h
-//  
-//
-//  Created by Nitesh Donti on 1/10/12.
-//  Copyright 2012 Cornell University. All rights reserved.
-//
+/*
+ * SWMFIono.h
+ *
+ *  Created on: May 25, 2012
+ *      Author: David Berrios
+ */
 
 #ifndef _SWMFIono_h
 #define _SWMFIono_h
