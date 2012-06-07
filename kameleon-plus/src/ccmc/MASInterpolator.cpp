@@ -23,7 +23,8 @@ namespace ccmc
 		// TODO Auto-generated constructor stub
 		// TODO Auto-generated constructor stub
 		this->modelReader = model;
-		this->setMissingValue(this->modelReader->getMissingValue());
+		float missingValue = this->modelReader->getMissingValue();
+
 		previous_r = missingValue;
 		previous_lon = missingValue;
 		previous_lat = missingValue;
@@ -100,10 +101,11 @@ namespace ccmc
 
 
 
+		float missingValue = this->modelReader->getMissingValue();
 
 
 		if (variable_id < 0)
-			return this->missingValue;
+			return missingValue;
 
 		//std::cout << "calling MASInterpolator::interpolate(const std::string& variable, const float& r, const float& lat, const float& lon, float& dr, float& dlat,	float& dlon)" << std::endl;
 
@@ -197,7 +199,7 @@ namespace ccmc
 		float value;
 		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
-			value = this->missingValue;
+			value = missingValue;
 //			std::cerr << "returning missing value" << std::endl;
 		} else
 		{
