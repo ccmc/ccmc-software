@@ -19,8 +19,8 @@ namespace ccmc
 	 */
 	ENLILInterpolator::ENLILInterpolator(Model * model)
 	{
+
 		this->modelReader = model;
-		this->setMissingValue(this->modelReader->getMissingValue());
 		r_string = ccmc::strings::variables::r_;
 		lat_string = ccmc::strings::variables::theta_;
 		lon_string = ccmc::strings::variables::phi_;
@@ -34,9 +34,9 @@ namespace ccmc
 		nlat = lat_data->size();
 		nlon = lon_data->size();
 
-		previous_r = missingValue;
-		previous_lon = missingValue;
-		previous_lat = missingValue;
+		previous_r = model->getMissingValue();
+		previous_lon = model->getMissingValue();
+		previous_lat = model->getMissingValue();
 
 
 	}
@@ -90,6 +90,7 @@ namespace ccmc
 			const float& lon, float& dr, float& dlat, float& dlon)
 	{
 
+		float missingValue = this->modelReader->getMissingValue();
 		int change_sign_flag = 0;
 
 
@@ -142,10 +143,10 @@ namespace ccmc
 			ilon = Utils<float>::binary_search(*lon_data, 0, (*lon_data).size() - 1, lon_converted);
 		}
 
-		float value = this->missingValue;
+		float value = missingValue;
 		if ((ir < 0) || (ir >= nr - 1) || (ilat < 0) || (ilat >= nlat - 1))
 		{
-			value = this->missingValue;
+			value = missingValue;
 //			std::cerr << "returning missing value" << std::endl;
 		} else
 		{
@@ -212,6 +213,7 @@ namespace ccmc
 			long variableID, float& dr, float& dlat, float& dlon)
 	{
 
+		float missingValue = this->modelReader->getMissingValue();
 		bool main_memory_flag = true;
 		const std::vector<float> * vData = modelReader->getVariableFromMap(variableID);
 		if (vData == NULL)
