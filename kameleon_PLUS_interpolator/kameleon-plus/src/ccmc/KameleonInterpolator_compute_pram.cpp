@@ -25,6 +25,8 @@ namespace ccmc
 		n = interpolate(n_, c0, c1, c2, dc0, dc1, dc2);
 		//std::cout << "after interpolating n" << std::endl;
 		std::string component0, component1, component2;
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (modelName == mas_)
 		{
 			v0 = interpolate("ur", c0, c1, c2, dc0, dc1, dc2);

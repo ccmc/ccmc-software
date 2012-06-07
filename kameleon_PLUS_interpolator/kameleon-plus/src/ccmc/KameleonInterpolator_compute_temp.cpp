@@ -19,6 +19,8 @@ namespace ccmc
 	{
 
 		float interp_value = 0.0;
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (modelReader->doesVariableExist("T"))
 		{
 			interp_value = interpolateSimple("T", positionComponent1, positionComponent2, positionComponent3,

@@ -20,6 +20,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		float j_x, j_y, j_z, e_x, e_y, e_z;
 		if (modelName == mas_)
 		{

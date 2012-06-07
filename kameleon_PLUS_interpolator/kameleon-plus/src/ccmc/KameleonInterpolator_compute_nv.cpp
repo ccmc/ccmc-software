@@ -1,5 +1,5 @@
 #include "KameleonInterpolator.h"
-#include "StringConstants.h";
+#include "StringConstants.h"
 #include <math.h>
 #include <string>
 
@@ -24,6 +24,8 @@ namespace ccmc
 	{
 		float n, vx, nvx;
 		std::string n_name, vx_name;
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = n_;
@@ -100,6 +102,8 @@ namespace ccmc
 	{
 		float n, v, vx, vy, vz, nv;
 		std::string n_name, vx_name, vy_name, vz_name;
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = n_;
@@ -163,6 +167,8 @@ namespace ccmc
 	{
 		float n, vy, nvy;
 		std::string n_name, vy_name;
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = "n";
@@ -210,6 +216,8 @@ namespace ccmc
 	{
 		float n, vz, nvz;
 		std::string n_name, vz_name;
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (modelName == enlil_ || modelName == mas_)
 		{
 			n_name = "n";

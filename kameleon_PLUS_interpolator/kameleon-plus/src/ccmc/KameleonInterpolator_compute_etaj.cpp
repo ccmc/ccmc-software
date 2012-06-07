@@ -20,6 +20,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		float eta, jx;
 		eta = interpolate("eta", positionComponent1, positionComponent2, positionComponent3, dComponent1, dComponent2,
 				dComponent3);
@@ -80,6 +82,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		float eta, jx, jy, jz;
 		eta = interpolate("eta", positionComponent1, positionComponent2, positionComponent3, dComponent1, dComponent2,
 				dComponent3);
@@ -121,6 +125,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		float eta, jy;
 		eta = interpolate("eta", positionComponent1, positionComponent2, positionComponent3, dComponent1, dComponent2,
 				dComponent3);
@@ -150,6 +156,8 @@ namespace ccmc
 			const float& positionComponent2, const float& positionComponent3, float& dComponent1, float& dComponent2,
 			float& dComponent3)
 	{
+		float missingValue = this->modelReader->getMissingValue();
+
 		float eta, jz;
 		eta = interpolate("eta", positionComponent1, positionComponent2, positionComponent3, dComponent1, dComponent2,
 				dComponent3);

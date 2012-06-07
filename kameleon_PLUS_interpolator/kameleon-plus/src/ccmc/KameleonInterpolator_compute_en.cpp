@@ -21,6 +21,8 @@ namespace ccmc
 			float& dComponent3)
 	{
 		float interp_value = 0.0;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		//std::string modelName = gattribute_char_get("model_name");
 		if (modelName == batsrus_)

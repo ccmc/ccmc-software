@@ -24,6 +24,8 @@ namespace ccmc
 		float b0, b1, b2, j0, j1, j2, b;
 		std::string bComponent0, bComponent1, bComponent2;
 		std::string jComponent0, jComponent1, jComponent2;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		if (modelName == mas_)
 		{
@@ -100,6 +102,8 @@ namespace ccmc
 		float b0, b1, b2, j0, j1, j2, b, value, value0, value1, value2;
 		std::string bComponent0, bComponent1, bComponent2;
 		std::string jComponent0, jComponent1, jComponent2;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		if (modelName == mas_)
 		{
@@ -180,6 +184,8 @@ namespace ccmc
 		float b0, b1, b2, j0, j1, j2, b;
 		std::string bComponent0, bComponent1, bComponent2;
 		std::string jComponent0, jComponent1, jComponent2;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		if (modelName == mas_)
 		{
@@ -242,6 +248,8 @@ namespace ccmc
 		float b0, b1, b2, j0, j1, j2, b;
 		std::string bComponent0, bComponent1, bComponent2;
 		std::string jComponent0, jComponent1, jComponent2;
+		float missingValue = this->modelReader->getMissingValue();
+
 
 		if (modelName == mas_)
 		{

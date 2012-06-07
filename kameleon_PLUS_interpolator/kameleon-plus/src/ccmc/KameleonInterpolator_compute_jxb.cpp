@@ -23,6 +23,8 @@ namespace ccmc
 		//J_y*B_z-J_z*B_y
 		float value;
 		float b_y, b_z, j_y, j_z;
+		float missingValue = this->modelReader->getMissingValue();
+
 		b_y = interpolate(by_, c0, c1, c2, dc0, dc1, dc2);
 		if (b_y == missingValue)
 			return missingValue;
@@ -72,6 +74,8 @@ namespace ccmc
 
 		float value, value_x, value_y, value_z;
 		float b_x, b_y, b_z, j_x, j_y, j_z;
+		float missingValue = this->modelReader->getMissingValue();
+
 		b_x = interpolate(bx_, c0, c1, c2, dc0, dc1, dc2);
 		if (b_x == missingValue)
 			return missingValue;
@@ -128,6 +132,8 @@ namespace ccmc
 	{
 		//J_z*B_x-J_x*B_z
 		float value, b_x, b_z, j_x, j_z;
+		float missingValue = this->modelReader->getMissingValue();
+
 		b_x = interpolate(bx_, c0, c1, c2, dc0, dc1, dc2);
 		if (b_x == missingValue)
 			return missingValue;
@@ -162,6 +168,8 @@ namespace ccmc
 	{
 		//J_x*B_y-J_y*B_x
 		float value, b_x, b_y, j_x, j_y;
+		float missingValue = this->modelReader->getMissingValue();
+
 		b_x = interpolate(bx_, c0, c1, c2, dc0, dc1, dc2);
 		if (b_x == missingValue)
 			return missingValue;
