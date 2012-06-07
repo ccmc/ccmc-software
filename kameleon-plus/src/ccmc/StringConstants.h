@@ -24,6 +24,7 @@ namespace ccmc
 			static const std::string r1_ = "r1";
 			static const std::string phi_ = "phi";
 			static const std::string phi1_ = "phi1";
+			static const std::string psi_ = "psi";
 			static const std::string theta_ = "theta";
 			static const std::string theta1_ = "theta1";
 
@@ -68,6 +69,7 @@ namespace ccmc
 			static const std::string nvy_ = "nvy";
 			static const std::string nvz_ = "nvz";
 			static const std::string n_times_r_tothe_2_power_ = "n*r^2";
+			static const std::string rho_times_r_tothe_2_power_ = "rho*r^2";
 			static const std::string polb_ = "polb";
 			static const std::string eta_ = "eta";
 			static const std::string p_times_r_tothe_2_power_ = "p*r^2";
