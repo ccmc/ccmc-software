@@ -1,0 +1,792 @@
+\hypertarget{classccmc_1_1_h_d_f5_file_reader}{
+\section{ccmc::HDF5FileReader Class Reference}
+\label{classccmc_1_1_h_d_f5_file_reader}\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+}
+
+
+{\ttfamily \#include $<$HDF5FileReader.h$>$}
+
+
+
+Inheritance diagram for ccmc::HDF5FileReader:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=198pt]{classccmc_1_1_h_d_f5_file_reader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc::HDF5FileReader:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{classccmc_1_1_h_d_f5_file_reader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_h_d_f5_file_reader_aa3382466b3e80849c9c03f7400c9dc17}{HDF5FileReader} ()
+\item 
+std::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_a69e8ed3754fb9627d21cb5556b2e1223}{getVariable} (const std::string \&variable)
+\begin{DoxyCompactList}\small\item\em Returns a pointer to a std::vector$<$float$>$ containing the values of the selected variable. \end{DoxyCompactList}\item 
+std::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_a52e50180779e1b743d2a4766b9fc842b}{getVariable} (long variable)
+\item 
+std::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_a7ee5a24334d0056b2350a1505f38b095}{getVariable} (const std::string \&variable, long startIndex, long count)
+\item 
+std::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_abb117e460234e1c06b44bcbaaf52108e}{getVariable} (long variable, long startIndex, long count)
+\item 
+float \hyperlink{classccmc_1_1_h_d_f5_file_reader_a544b306f0f39ab05b921a6016f164d03}{getVariableAtIndex} (const std::string \&variable, long index)
+\begin{DoxyCompactList}\small\item\em Returns a value in the flat array of the variable and index requested. \end{DoxyCompactList}\item 
+float \hyperlink{classccmc_1_1_h_d_f5_file_reader_aaa4d2db7154044d63f62f497e99b6b49}{getVariableAtIndex} (long variable\_\-id, long index)
+\item 
+std::vector$<$ int $>$ $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_a3946081d5b79e78300ac8cbe04446a80}{getVariableInt} (const std::string \&variable)
+\item 
+int \hyperlink{classccmc_1_1_h_d_f5_file_reader_a216a98563f5a62fc12ea414552f65b55}{getVariableIntAtIndex} (const std::string \&variable, long index)
+\begin{DoxyCompactList}\small\item\em Returns a value in the flat array of the variable and index requested. \end{DoxyCompactList}\item 
+int \hyperlink{classccmc_1_1_h_d_f5_file_reader_a45bedc5f59d3c0c56778463f82c1a48e}{getNumberOfGlobalAttributes} ()
+\item 
+int \hyperlink{classccmc_1_1_h_d_f5_file_reader_a038ff97710e89d57bccbc5ad9509d277}{getNumberOfVariables} ()
+\item 
+int \hyperlink{classccmc_1_1_h_d_f5_file_reader_abf30f40a7f95a65c9c5fbfb638a0b3e6}{getNumberOfVariableAttributes} ()
+\item 
+long \hyperlink{classccmc_1_1_h_d_f5_file_reader_af54630ca885c698be2ffbefac7b236e2}{getNumberOfRecords} (const std::string \&variable)
+\item 
+long \hyperlink{classccmc_1_1_h_d_f5_file_reader_af1c8021e432d165c10d754f0a067d7f0}{getNumberOfRecords} (long variable\_\-id)
+\item 
+long \hyperlink{classccmc_1_1_h_d_f5_file_reader_a1172c9abfe37a6e0bd9556a841457740}{getVariableID} (const std::string \&variable)
+\item 
+std::string \hyperlink{classccmc_1_1_h_d_f5_file_reader_add8a20386da8a7188a5a67a35cbb94eb}{getVariableName} (long variable\_\-id)
+\item 
+\hyperlink{classccmc_1_1_attribute}{Attribute} \hyperlink{classccmc_1_1_h_d_f5_file_reader_ae58b480499186a84535f616687e75a7c}{getGlobalAttribute} (long i)
+\item 
+std::string \hyperlink{classccmc_1_1_h_d_f5_file_reader_adfa3cf1ea14b0e05eb03915851c561c4}{getGlobalAttributeName} (long attribute\_\-id)
+\item 
+std::string \hyperlink{classccmc_1_1_h_d_f5_file_reader_aa53c82e359a5af886ae96ebdf801cf89}{getVariableAttributeName} (long attribute\_\-id)
+\item 
+\hyperlink{classccmc_1_1_attribute}{Attribute} \hyperlink{classccmc_1_1_h_d_f5_file_reader_abc4eb472a8eb35aeb133e3b54f239de0}{getGlobalAttribute} (const std::string \&attribute)
+\item 
+\hyperlink{classccmc_1_1_attribute}{Attribute} \hyperlink{classccmc_1_1_h_d_f5_file_reader_a30acff0de40e77d8e6ee15bbdf68942c}{getVariableAttribute} (const std::string \&variable, const std::string \&attribute)
+\item 
+std::vector$<$ std::string $>$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_a5e97e629beec751e0da373f5a1e4c6d9}{getVariableAttributeNames} ()
+\item 
+bool \hyperlink{classccmc_1_1_h_d_f5_file_reader_ac421d19d5c59697a0117dfa763d77de0}{doesAttributeExist} (const std::string \&attribute)
+\item 
+bool \hyperlink{classccmc_1_1_h_d_f5_file_reader_ad2753042d297a408ad4c1128a9e2939d}{doesVariableExist} (const std::string \&variable)
+\item 
+const std::string \& \hyperlink{classccmc_1_1_h_d_f5_file_reader_ae19127c20fa9b5ec6cebfeea3578476f}{getCurrentFilename} ()
+\item 
+virtual \hyperlink{classccmc_1_1_h_d_f5_file_reader_a255f413aabbdf4c694934725444bb178}{$\sim$HDF5FileReader} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{classccmc_1_1_h_d_f5_file_reader_a67f6c64b42842dac85a2d63825d28be8}{closeFile} ()
+\item 
+long \hyperlink{classccmc_1_1_h_d_f5_file_reader_ab77b5d7f5d7e8d3ac0dfac8758441974}{openFile} (const std::string \&filename)
+\item 
+void \hyperlink{classccmc_1_1_h_d_f5_file_reader_a8f2f2d119e4f7ef8fca38d9977d46586}{initializeGlobalAttributes} ()
+\item 
+void \hyperlink{classccmc_1_1_h_d_f5_file_reader_a0e8d988b4b07e9d9d842a52eeebc6d7c}{initializeVariableAttributes} ()
+\item 
+void \hyperlink{classccmc_1_1_h_d_f5_file_reader_ab0255720c8996540dcffbdc7a7a8f76c}{initializeVariableIDs} ()
+\item 
+void \hyperlink{classccmc_1_1_h_d_f5_file_reader_ad38b7dce075a9bafbd48d10e25a92261}{initializeVariableNames} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::string \hyperlink{classccmc_1_1_h_d_f5_file_reader_a5da3b247b15096662a5c13d1ba5c7834}{current\_\-filename}
+\item 
+H5::H5File $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_aeee4da6197287cede72ac14784ff2d8f}{current\_\-file}
+\item 
+H5::Group $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_ab625127a9cb1f09262ba79874c4479ba}{rootGroup}
+\item 
+H5::Group $\ast$ \hyperlink{classccmc_1_1_h_d_f5_file_reader_a8030944befcec51a0cca62bacee4ac47}{variableGroup}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_aa3382466b3e80849c9c03f7400c9dc17}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!HDF5FileReader@{HDF5FileReader}}
+\index{HDF5FileReader@{HDF5FileReader}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{HDF5FileReader}]{\setlength{\rightskip}{0pt plus 5cm}ccmc::HDF5FileReader::HDF5FileReader (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classccmc_1_1_h_d_f5_file_reader_aa3382466b3e80849c9c03f7400c9dc17}
+Default constructor. Does nothing. \hypertarget{classccmc_1_1_h_d_f5_file_reader_a255f413aabbdf4c694934725444bb178}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!$\sim$HDF5FileReader@{$\sim$HDF5FileReader}}
+\index{$\sim$HDF5FileReader@{$\sim$HDF5FileReader}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{$\sim$HDF5FileReader}]{\setlength{\rightskip}{0pt plus 5cm}ccmc::HDF5FileReader::$\sim$HDF5FileReader (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a255f413aabbdf4c694934725444bb178}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a67f6c64b42842dac85a2d63825d28be8}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!closeFile@{closeFile}}
+\index{closeFile@{closeFile}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{closeFile}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc::HDF5FileReader::closeFile (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a67f6c64b42842dac85a2d63825d28be8}
+Closes the currently selected file. Call this from the \hyperlink{classccmc_1_1_file_reader_a036ac2d85ad32a98b81c9e6ebf0ef133}{close()} method. \begin{DoxyReturn}{Returns}
+Status of close operation. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_aa9b2ff7591f3d3f40ceb0007acbbe3ca}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ac421d19d5c59697a0117dfa763d77de0}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!doesAttributeExist@{doesAttributeExist}}
+\index{doesAttributeExist@{doesAttributeExist}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{doesAttributeExist}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc::HDF5FileReader::doesAttributeExist (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{attribute}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ac421d19d5c59697a0117dfa763d77de0}
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ac27cfdd9ceabe3af0f14b18fbebcafa5}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ad2753042d297a408ad4c1128a9e2939d}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!doesVariableExist@{doesVariableExist}}
+\index{doesVariableExist@{doesVariableExist}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{doesVariableExist}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc::HDF5FileReader::doesVariableExist (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ad2753042d297a408ad4c1128a9e2939d}
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ab8893f7d2b0f62041c37a788affe6b36}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ae19127c20fa9b5ec6cebfeea3578476f}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getCurrentFilename@{getCurrentFilename}}
+\index{getCurrentFilename@{getCurrentFilename}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getCurrentFilename}]{\setlength{\rightskip}{0pt plus 5cm}const std::string \& ccmc::HDF5FileReader::getCurrentFilename (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ae19127c20fa9b5ec6cebfeea3578476f}
+Returns the current filename. \begin{DoxyReturn}{Returns}
+The current filename. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a9f266e85464a71985e6c922ba508aa9e}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ae58b480499186a84535f616687e75a7c}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getGlobalAttribute@{getGlobalAttribute}}
+\index{getGlobalAttribute@{getGlobalAttribute}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getGlobalAttribute}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attribute} ccmc::HDF5FileReader::getGlobalAttribute (
+\begin{DoxyParamCaption}
+\item[{long}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ae58b480499186a84535f616687e75a7c}
+
+\begin{DoxyParams}{Parameters}
+{\em i} & The attribute number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a11885da1a8d6775a7d2764494474d067}{ccmc::FileReader}.
+
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classccmc_1_1_h_d_f5_file_reader_ae58b480499186a84535f616687e75a7c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_abc4eb472a8eb35aeb133e3b54f239de0}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getGlobalAttribute@{getGlobalAttribute}}
+\index{getGlobalAttribute@{getGlobalAttribute}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getGlobalAttribute}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attribute} ccmc::HDF5FileReader::getGlobalAttribute (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{attribute}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_abc4eb472a8eb35aeb133e3b54f239de0}
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ac8c307cb70a6a99892e2538761867998}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_adfa3cf1ea14b0e05eb03915851c561c4}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getGlobalAttributeName@{getGlobalAttributeName}}
+\index{getGlobalAttributeName@{getGlobalAttributeName}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getGlobalAttributeName}]{\setlength{\rightskip}{0pt plus 5cm}std::string ccmc::HDF5FileReader::getGlobalAttributeName (
+\begin{DoxyParamCaption}
+\item[{long}]{attribute\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_adfa3cf1ea14b0e05eb03915851c561c4}
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\_\-id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a7a4fc5909fce20cb6a40d0a1af56e9a1}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a45bedc5f59d3c0c56778463f82c1a48e}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getNumberOfGlobalAttributes@{getNumberOfGlobalAttributes}}
+\index{getNumberOfGlobalAttributes@{getNumberOfGlobalAttributes}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getNumberOfGlobalAttributes}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc::HDF5FileReader::getNumberOfGlobalAttributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a45bedc5f59d3c0c56778463f82c1a48e}
+TODO Retrieves the number of global attributes in the selected file. This is useful for iterating over all available global attributes. \begin{DoxyReturn}{Returns}
+The number of global attributes stored in the selected file. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a006779f8e665219a7de5214f4d12f80f}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_af54630ca885c698be2ffbefac7b236e2}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getNumberOfRecords@{getNumberOfRecords}}
+\index{getNumberOfRecords@{getNumberOfRecords}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getNumberOfRecords}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc::HDF5FileReader::getNumberOfRecords (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_af54630ca885c698be2ffbefac7b236e2}
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a6bed5da48bfcdf635a2f6cc71a1d5ca3}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_af1c8021e432d165c10d754f0a067d7f0}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getNumberOfRecords@{getNumberOfRecords}}
+\index{getNumberOfRecords@{getNumberOfRecords}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getNumberOfRecords}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc::HDF5FileReader::getNumberOfRecords (
+\begin{DoxyParamCaption}
+\item[{long}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_af1c8021e432d165c10d754f0a067d7f0}
+
+\begin{DoxyParams}{Parameters}
+{\em variable\_\-id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a34a7240022397c1ee0efb71751ded69c}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_abf30f40a7f95a65c9c5fbfb638a0b3e6}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getNumberOfVariableAttributes@{getNumberOfVariableAttributes}}
+\index{getNumberOfVariableAttributes@{getNumberOfVariableAttributes}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getNumberOfVariableAttributes}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc::HDF5FileReader::getNumberOfVariableAttributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_abf30f40a7f95a65c9c5fbfb638a0b3e6}
+Gets the number of variable attributes. \begin{DoxyReturn}{Returns}
+The number of variable attributes in the opened file. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ad5c3584515c7f2896b49af21b2b15890}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a038ff97710e89d57bccbc5ad9509d277}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getNumberOfVariables@{getNumberOfVariables}}
+\index{getNumberOfVariables@{getNumberOfVariables}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getNumberOfVariables}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc::HDF5FileReader::getNumberOfVariables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a038ff97710e89d57bccbc5ad9509d277}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_adf9f77e1e774cd1873648cde6ba0e479}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a52e50180779e1b743d2a4766b9fc842b}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariable@{getVariable}}
+\index{getVariable@{getVariable}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariable}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ float $>$ $\ast$ ccmc::HDF5FileReader::getVariable (
+\begin{DoxyParamCaption}
+\item[{long}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a52e50180779e1b743d2a4766b9fc842b}
+Returns a pointer to a std::vector$<$float$>$ containing the values of the selected variable stored in the selected file. This allocates a new std::vector$<$float$>$ pointer. Make sure you delete the contents when you done using it, or you will have a memory leak. 
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::vector$<$float$>$ containing the values of the selected variable. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a47fafa0e59e4d5f379a48b3d0b1add6e}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_abb117e460234e1c06b44bcbaaf52108e}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariable@{getVariable}}
+\index{getVariable@{getVariable}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariable}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ float $>$ $\ast$ ccmc::HDF5FileReader::getVariable (
+\begin{DoxyParamCaption}
+\item[{long}]{variable, }
+\item[{long}]{indexOffset, }
+\item[{long}]{count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_abb117e460234e1c06b44bcbaaf52108e}
+Returns a pointer to a std::vector$<$float$>$ containing the values of the selected variable in the range specified by the startIndex and count (the number of records to read) stored in the selected file. This allocates a new std::vector$<$float$>$ pointer. Make sure you delete the contents when you done using it, or you will have a memory leak. 
+\begin{DoxyParams}{Parameters}
+{\em variableID} & \\
+\hline
+{\em startIndex} & \\
+\hline
+{\em count} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::vector$<$float$>$ containing the values of the selected variable. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a6c127caf47837d72fa46cf5f079399dd}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a69e8ed3754fb9627d21cb5556b2e1223}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariable@{getVariable}}
+\index{getVariable@{getVariable}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariable}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ float $>$ $\ast$ ccmc::HDF5FileReader::getVariable (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a69e8ed3754fb9627d21cb5556b2e1223}
+
+
+Returns a pointer to a std::vector$<$float$>$ containing the values of the selected variable. 
+
+This allocates a new std::vector$<$float$>$ pointer. Make sure you delete the contents when you done using it, or you will have a memory leak.
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::vector$<$float$>$ containing the values of the selected variable. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a3703180de2d7d38c1ccf115d5279d4d0}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a7ee5a24334d0056b2350a1505f38b095}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariable@{getVariable}}
+\index{getVariable@{getVariable}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariable}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ float $>$ $\ast$ ccmc::HDF5FileReader::getVariable (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable, }
+\item[{long}]{indexOffset, }
+\item[{long}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a7ee5a24334d0056b2350a1505f38b095}
+Returns a pointer to a std::vector$<$float$>$ containing the values of the selected variable in the range specified by the startIndex and count (the number of records to read) stored in the selected file. This allocates a new std::vector$<$float$>$ pointer. Make sure you delete the contents when you done using it, or you will have a memory leak. 
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em startIndex} & \\
+\hline
+{\em count} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::vector$<$float$>$ containing the values of the selected variable. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ac8e5796569d9e7df92d6f06edf4d1d79}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a544b306f0f39ab05b921a6016f164d03}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableAtIndex@{getVariableAtIndex}}
+\index{getVariableAtIndex@{getVariableAtIndex}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableAtIndex}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc::HDF5FileReader::getVariableAtIndex (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable, }
+\item[{long}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a544b306f0f39ab05b921a6016f164d03}
+
+
+Returns a value in the flat array of the variable and index requested. 
+
+Use this method on variables that have a type of float
+
+returns std::numeric\_\-limits$<$float$>$::min() if missing
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & The variable in the file \\
+\hline
+{\em index} & The index in the variable's array in the file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float of the value in the array. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_afb0680751b96215f3ba350b290b62f35}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_aaa4d2db7154044d63f62f497e99b6b49}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableAtIndex@{getVariableAtIndex}}
+\index{getVariableAtIndex@{getVariableAtIndex}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableAtIndex}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc::HDF5FileReader::getVariableAtIndex (
+\begin{DoxyParamCaption}
+\item[{long}]{variable, }
+\item[{long}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_aaa4d2db7154044d63f62f497e99b6b49}
+
+\begin{DoxyParams}{Parameters}
+{\em variableNum} & \\
+\hline
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_acfe13750b7afba1cb59925e6073f1731}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a30acff0de40e77d8e6ee15bbdf68942c}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableAttribute@{getVariableAttribute}}
+\index{getVariableAttribute@{getVariableAttribute}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableAttribute}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attribute} ccmc::HDF5FileReader::getVariableAttribute (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable, }
+\item[{const std::string \&}]{vattribute}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a30acff0de40e77d8e6ee15bbdf68942c}
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em vattribute} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ada8128e0f00555a8911be5e95ec18b6e}{ccmc::FileReader}.
+
+
+
+Here is the call graph for this function:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=400pt]{classccmc_1_1_h_d_f5_file_reader_a30acff0de40e77d8e6ee15bbdf68942c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_aa53c82e359a5af886ae96ebdf801cf89}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableAttributeName@{getVariableAttributeName}}
+\index{getVariableAttributeName@{getVariableAttributeName}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableAttributeName}]{\setlength{\rightskip}{0pt plus 5cm}std::string ccmc::HDF5FileReader::getVariableAttributeName (
+\begin{DoxyParamCaption}
+\item[{long}]{attribute\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_aa53c82e359a5af886ae96ebdf801cf89}
+
+\begin{DoxyParams}{Parameters}
+{\em attribute\_\-id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+String representing the name of the attribute specified by attribute\_\-id 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ab901c44fdd1d8f7d4fac85f0747750ee}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a5e97e629beec751e0da373f5a1e4c6d9}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableAttributeNames@{getVariableAttributeNames}}
+\index{getVariableAttributeNames@{getVariableAttributeNames}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableAttributeNames}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ std::string $>$ ccmc::HDF5FileReader::getVariableAttributeNames (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a5e97e629beec751e0da373f5a1e4c6d9}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a6f11a946eac2b10674e948a3c3785966}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a1172c9abfe37a6e0bd9556a841457740}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableID@{getVariableID}}
+\index{getVariableID@{getVariableID}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableID}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc::HDF5FileReader::getVariableID (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a1172c9abfe37a6e0bd9556a841457740}
+Returns the variable ID as a long. Using the variable ID wherever possible is significantly faster than the equivalent methods accepting the variable string. \begin{DoxyReturn}{Returns}
+Status of the file operation. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a937185c6d323262f7c3f3c4d39b59e37}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a3946081d5b79e78300ac8cbe04446a80}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableInt@{getVariableInt}}
+\index{getVariableInt@{getVariableInt}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableInt}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ int $>$ $\ast$ ccmc::HDF5FileReader::getVariableInt (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a3946081d5b79e78300ac8cbe04446a80}
+This allocates a new std::vector$<$int$>$ pointer. Make sure you delete the contents when you done using it, or you will have a memory leak. 
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$int$>$ containing the integer values of the variable 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_ab8f4f917ca18681189e3ac8001282c34}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a216a98563f5a62fc12ea414552f65b55}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableIntAtIndex@{getVariableIntAtIndex}}
+\index{getVariableIntAtIndex@{getVariableIntAtIndex}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableIntAtIndex}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc::HDF5FileReader::getVariableIntAtIndex (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{variable, }
+\item[{long}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a216a98563f5a62fc12ea414552f65b55}
+
+
+Returns a value in the flat array of the variable and index requested. 
+
+Use this method on variables that have a type of int
+
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & The variable in the file \\
+\hline
+{\em index} & The index in the variable's array in the file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int of the value in the array. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_a1ef9e0b43e1a3f051ceea507f00598f5}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_add8a20386da8a7188a5a67a35cbb94eb}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!getVariableName@{getVariableName}}
+\index{getVariableName@{getVariableName}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{getVariableName}]{\setlength{\rightskip}{0pt plus 5cm}std::string ccmc::HDF5FileReader::getVariableName (
+\begin{DoxyParamCaption}
+\item[{long}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_add8a20386da8a7188a5a67a35cbb94eb}
+Returns the string representation of the variable referred to by variable\_\-id \begin{DoxyReturn}{Returns}
+String representation of the variable. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_af688dd7824a25f91404e5f586d1ebe86}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a8f2f2d119e4f7ef8fca38d9977d46586}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!initializeGlobalAttributes@{initializeGlobalAttributes}}
+\index{initializeGlobalAttributes@{initializeGlobalAttributes}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{initializeGlobalAttributes}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc::HDF5FileReader::initializeGlobalAttributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a8f2f2d119e4f7ef8fca38d9977d46586}
+Helper method to store the global attributes in a map. This solves some issues with threaded operations on CDF files. 
+
+Reimplemented from \hyperlink{classccmc_1_1_file_reader_a38580b9175bb58240630ed1c98147209}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a0e8d988b4b07e9d9d842a52eeebc6d7c}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!initializeVariableAttributes@{initializeVariableAttributes}}
+\index{initializeVariableAttributes@{initializeVariableAttributes}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{initializeVariableAttributes}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc::HDF5FileReader::initializeVariableAttributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a0e8d988b4b07e9d9d842a52eeebc6d7c}
+
+
+Reimplemented from \hyperlink{classccmc_1_1_file_reader_a9a5bc837ba6c1ccba7543fe934b9879b}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ab0255720c8996540dcffbdc7a7a8f76c}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!initializeVariableIDs@{initializeVariableIDs}}
+\index{initializeVariableIDs@{initializeVariableIDs}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{initializeVariableIDs}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc::HDF5FileReader::initializeVariableIDs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ab0255720c8996540dcffbdc7a7a8f76c}
+Helper method to initialize a map containing variable IDs. This solves some issues with threaded operations on CDF files. 
+
+Implements \hyperlink{classccmc_1_1_file_reader_a2663bad21fc69c24f555b27d1cc2b8c8}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ad38b7dce075a9bafbd48d10e25a92261}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!initializeVariableNames@{initializeVariableNames}}
+\index{initializeVariableNames@{initializeVariableNames}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{initializeVariableNames}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc::HDF5FileReader::initializeVariableNames (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ad38b7dce075a9bafbd48d10e25a92261}
+Helper method to initialize a variable names map. This solves some issues with threaded operations on CDF files. 
+
+Implements \hyperlink{classccmc_1_1_file_reader_a3517b66817277210916f6e5aa3db21a8}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ab77b5d7f5d7e8d3ac0dfac8758441974}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!openFile@{openFile}}
+\index{openFile@{openFile}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{openFile}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc::HDF5FileReader::openFile (
+\begin{DoxyParamCaption}
+\item[{const std::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ab77b5d7f5d7e8d3ac0dfac8758441974}
+Opens a new file. If the previous file has been opened successfuly, and has the same filename as the requested filename, nothing will be done. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The status of the open call. This method should be called from \hyperlink{classccmc_1_1_file_reader_a932f3df08ebbcdf4527be1908fec118c}{open()}. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_file_reader_aa4afaba431365ecd756641e479140768}{ccmc::FileReader}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_aeee4da6197287cede72ac14784ff2d8f}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!current\_\-file@{current\_\-file}}
+\index{current\_\-file@{current\_\-file}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{current\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}H5::H5File$\ast$ {\bf ccmc::HDF5FileReader::current\_\-file}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_aeee4da6197287cede72ac14784ff2d8f}
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a5da3b247b15096662a5c13d1ba5c7834}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!current\_\-filename@{current\_\-filename}}
+\index{current\_\-filename@{current\_\-filename}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{current\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}std::string {\bf ccmc::HDF5FileReader::current\_\-filename}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a5da3b247b15096662a5c13d1ba5c7834}
+
+
+Reimplemented from \hyperlink{classccmc_1_1_file_reader_a2afb0635bf14f222991efc4d63e5f17a}{ccmc::FileReader}.
+
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_ab625127a9cb1f09262ba79874c4479ba}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!rootGroup@{rootGroup}}
+\index{rootGroup@{rootGroup}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{rootGroup}]{\setlength{\rightskip}{0pt plus 5cm}H5::Group$\ast$ {\bf ccmc::HDF5FileReader::rootGroup}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_ab625127a9cb1f09262ba79874c4479ba}
+\hypertarget{classccmc_1_1_h_d_f5_file_reader_a8030944befcec51a0cca62bacee4ac47}{
+\index{ccmc::HDF5FileReader@{ccmc::HDF5FileReader}!variableGroup@{variableGroup}}
+\index{variableGroup@{variableGroup}!ccmc::HDF5FileReader@{ccmc::HDF5FileReader}}
+\subsubsection[{variableGroup}]{\setlength{\rightskip}{0pt plus 5cm}H5::Group$\ast$ {\bf ccmc::HDF5FileReader::variableGroup}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classccmc_1_1_h_d_f5_file_reader_a8030944befcec51a0cca62bacee4ac47}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+/Users/dberrios/Documents/workspace/kameleon-\/plus/src/ccmc/\hyperlink{_h_d_f5_file_reader_8h}{HDF5FileReader.h}\item 
+/Users/dberrios/Documents/workspace/kameleon-\/plus/src/ccmc/\hyperlink{_h_d_f5_file_reader_8cpp}{HDF5FileReader.cpp}\end{DoxyCompactItemize}
