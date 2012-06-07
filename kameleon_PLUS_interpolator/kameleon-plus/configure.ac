@@ -2,13 +2,13 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([kameleon-plus], [0.1.31], [David.H.Berrios@nasa.gov], [kameleon-plus])
+AC_INIT([kameleon-plus], [0.3.2], [David.H.Berrios@nasa.gov], [kameleon-plus])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_SUBST([RELEASE],[0.1.31])
+AC_SUBST([RELEASE],[0.3.2])
 AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
@@ -17,9 +17,9 @@ AC_PROG_CC
 AM_PROG_LIBTOOL
 AM_PROG_CC_C_O
 AM_PATH_PYTHON([2.5],,[:])
-AX_BOOST_BASE([1.40])
-AX_BOOST_PROGRAM_OPTIONS
-AX_BOOST_THREAD
+#AX_BOOST_BASE([1.40])
+#AX_BOOST_PROGRAM_OPTIONS
+#AX_BOOST_THREAD
 
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
@@ -42,7 +42,8 @@ AC_ARG_ENABLE([c],
 				   		
 				   	fi
 				   ],)
-				   
+
+ENABLE_FORTRAN=false				   
 AC_ARG_ENABLE([fortran],
 	AC_HELP_STRING([--enable-fortran],
 				   [Build the fortran (F90 compatible) wrappers]),
@@ -57,6 +58,7 @@ AC_ARG_ENABLE([fortran],
 				   		if test x"$F77" == x""; then
 				   			AC_MSG_ERROR([F77 must point to a valid Fortran compiler. Set the environment variable prior to running configure])
 				   		fi
+				   		ENABLE_FORTRAN=true
 				   	fi
 				   ],)
 
@@ -150,6 +152,7 @@ AC_CONFIG_FILES([src/ccmc/wrappers/Makefile])
 AC_CONFIG_FILES([src/ccmc/wrappers/fortran/Makefile])
 AC_CONFIG_FILES([src/ccmc/wrappers/java/Makefile])
 AC_CONFIG_FILES([src/ccmc/wrappers/python/Makefile])
+AC_CONFIG_FILES([src/ccmc/wrappers/c/Makefile])
 AC_CONFIG_FILES([src/example/Makefile])
 AC_CONFIG_FILES([src/example/c/Makefile])
 AC_CONFIG_FILES([src/example/c++/Makefile])
