@@ -5,7 +5,7 @@
  *      Author: dberrios
  */
 
-#include <ccmc/Kameleon.h>
+#include <ccmc/wrappers/c/Kameleon_c.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -18,7 +18,7 @@ int main( int argc, char * argv[])
 	}
 
 	printf("creating kameleon object\n");
-	Kameleon * kameleon = Kameleon_new();
+	int kameleon = Kameleon_create();
 	printf("created kameleon object\n");
 	Kameleon_delete(kameleon);
 	printf("deleted kameleon\n");
