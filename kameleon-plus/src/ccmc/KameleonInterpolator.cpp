@@ -54,6 +54,8 @@ namespace ccmc
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
 		float interp_value;
+		float missingValue = this->modelReader->getMissingValue();
+
 		//	std::cout << "variable: '" << variable << "'" << std::endl;
 		if (calculationMethod.find(variable) != calculationMethod.end())
 		{
@@ -97,6 +99,8 @@ namespace ccmc
 		// Variable: Wish me luck!
 		// Derived: Good luck variable!
 		float interp_value = interpolateSimple(variable_id, c0, c1, c2);
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (interp_value == missingValue)
 		{
 			return missingValue;
@@ -126,6 +130,8 @@ namespace ccmc
 		// Variable: Wish me luck!
 		// Derived: Good luck variable!
 		float interp_value = interpolateSimple(variable_id, c0, c1, c2, dc0, dc1, dc2);
+		float missingValue = this->modelReader->getMissingValue();
+
 		if (interp_value == missingValue)
 		{
 			return missingValue;
