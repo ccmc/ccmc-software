@@ -6,6 +6,9 @@
  */
 
 #include <boost/lexical_cast.hpp>
+#include <boost/random/linear_congruential.hpp>
+#include <boost/random/uniform_real.hpp>
+#include <boost/random/variate_generator.hpp>
 #include <iostream>
 #include <ccmc/Adapt3D.h>
 #include <ccmc/Interpolator.h>
@@ -17,6 +20,13 @@
  */
 int main (int argc, char * argv[])
 {
+	boost::minstd_rand generator(42u);
+	boost::uniform_real<> xrandom(-30.0,-27);
+	boost::uniform_real<> yrandom(-3.0, 3.0);
+	boost::uniform_real<> zrandom(-3.0, 3.0);
+	boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > xrandomGenerator(generator, xrandom);
+	boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > yrandomGenerator(generator, yrandom);
+	boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > zrandomGenerator(generator, zrandom);
 	if (argc != 6)
 	{
 		std::cout << "adapt3d <inputfile> variable x y z" << std::endl;
@@ -36,23 +46,44 @@ int main (int argc, char * argv[])
 
 	clock_t begin = clock();
 	ccmc::Interpolator * interpolator = adapt3d.createNewInterpolator();
-//	int upper = 5;
-//	float delta = 10.f/(float)(upper -1);
-//	for (int i = 0; i < upper; i++)
-//	{
-//		for (int j = 0; j < upper; j++)
-//		{
-//			for (int k = 0; k < upper; k++)
-//			{
-//				float x = -5.f+delta*(float)i;
-//				float y = -5.f+delta*(float)j;
-//				float z = -5.f+delta*(float)k;
-//				//std::cout << "x: " << x << " y: " << y << " z: " << z << std::endl;
-//				float value = interpolator->interpolate(variable, x,y,z);
-//
-//			}
-//		}
-//	}
+	float upper = 30.0;
+	int numValues = 300;
+	int numPositions = 1000;
+	std::vector<float> xvalues(numPositions);
+	std::vector<float> yvalues(numPositions);
+	std::vector<float> zvalues(numPositions);
+	for (int i = 0; i < numPositions; i++)
+	{
+		float c0,c1,c2;
+
+		c0 = xrandomGenerator();
+		c1 = yrandomGenerator();
+		c2 = zrandomGenerator();
+
+		xvalues[i] = c0;
+		yvalues[i] = c1;
+		zvalues[i] = c2;
+		//if (randomGenerator() > .5) { c0 *= -1.0f;};
+		//if (randomGenerator() > .5) { c1 *= -1.0f;};
+		//if (randomGenerator() > .5) { c2 *= -1.0f;};
+		//float value = interpolator->interpolate(variable, c0, c1, c2);
+	}
+	std::vector<float> previousResults(numPositions);
+	for (int num = 0; num < numValues; num++)
+	{
+		for (int i = 0; i <numPositions; i++)
+		{
+			float value = interpolator->interpolate(variable, xvalues[i], yvalues[i], zvalues[i]);
+			if (num != 0 && previousResults[i] != value)
+			{
+				std::cout << "Current result (" << value << ") is different from previous result (";
+				std::cout << previousResults[i] << ") for position(" << xvalues[i] << "," << yvalues[i] ;
+				std::cout << "," << zvalues[i] << ")" << std::endl;
+			}
+			previousResults[i] = value;
+
+		}
+	}
 	clock_t end = clock();
 	float final = (end-begin)/CLOCKS_PER_SEC;
 	std::cout << "elapsed time: " << final << " seconds" << std::endl;

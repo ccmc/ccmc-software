@@ -8,6 +8,9 @@
 #include <ccmc/Kameleon.h>
 #include <ccmc/FileReader.h>
 #include <boost/lexical_cast.hpp>
+#include <boost/random/linear_congruential.hpp>
+#include <boost/random/uniform_real.hpp>
+#include <boost/random/variate_generator.hpp>
 
 int main (int argc, char * argv[])
 {
@@ -86,6 +89,53 @@ int main (int argc, char * argv[])
 				}
 			}
 		}*/
+
+		boost::minstd_rand generator(42u);
+		generator.seed(static_cast<unsigned int>(std::time(0)));
+		boost::uniform_real<> xrandom(-30.0,-27);
+		boost::uniform_real<> yrandom(-3.0, 3.0);
+		boost::uniform_real<> zrandom(-3.0, 3.0);
+		boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > xrandomGenerator(generator, xrandom);
+		boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > yrandomGenerator(generator, yrandom);
+		boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > zrandomGenerator(generator, zrandom);
+
+		int numValues = 3000;
+		int numPositions = 1000;
+		std::vector<float> xvalues(numPositions);
+		std::vector<float> yvalues(numPositions);
+		std::vector<float> zvalues(numPositions);
+		for (int i = 0; i < numPositions; i++)
+		{
+			float c0,c1,c2;
+
+			c0 = xrandomGenerator();
+			c1 = yrandomGenerator();
+			c2 = zrandomGenerator();
+
+			xvalues[i] = c0;
+			yvalues[i] = c1;
+			zvalues[i] = c2;
+			//if (randomGenerator() > .5) { c0 *= -1.0f;};
+			//if (randomGenerator() > .5) { c1 *= -1.0f;};
+			//if (randomGenerator() > .5) { c2 *= -1.0f;};
+			//float value = interpolator->interpolate(variable, c0, c1, c2);
+		}
+		std::vector<float> previousResults(numPositions);
+		for (int num = 0; num < numValues; num++)
+		{
+			for (int i = 0; i <numPositions; i++)
+			{
+				float value = interpolator->interpolate(variable, xvalues[i], yvalues[i], zvalues[i]);
+				if (num != 0 && previousResults[i] != value)
+				{
+					std::cout << "Current result (" << value << ") is different from previous result (";
+					std::cout << previousResults[i] << ") for position(" << xvalues[i] << "," << yvalues[i] ;
+					std::cout << "," << zvalues[i] << ")" << std::endl;
+				}
+				previousResults[i] = value;
+
+			}
+		}
 		if (successLoading)
 		{
 			value = interpolator->interpolate(variable, c0,c1,c2 );

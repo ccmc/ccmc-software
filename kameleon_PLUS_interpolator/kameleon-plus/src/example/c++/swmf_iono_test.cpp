@@ -8,9 +8,10 @@
 
 #include <boost/lexical_cast.hpp>
 #include <iostream>
-#include <ccmc/Magnetogram.h>
+#include <ccmc/SWMFIono.h>
 #include <ccmc/Interpolator.h>
 #include <string>
+#include <math.h>
 
 using namespace std;
 
@@ -22,27 +23,29 @@ int main (int argc, char * argv[])
 {
 	if (argc != 5)
 	{
-		cout << "magnetogram <inputfile> variable lat lon" << endl;
+		cout << "swmf_iono <inputfile> variable lat mlt" << endl;
 		exit(1);
 	}
 
 	string filename = argv[1];
 	string variable = argv[2];
 	float lat = boost::lexical_cast<float>(argv[3]);
-	float lon = boost::lexical_cast<float>(argv[4]);
-	ccmc::Magnetogram magnetogram;
-	magnetogram.open(filename);
-	magnetogram.loadVariable(variable);
+	float mlt = boost::lexical_cast<float>(argv[4]);
+	ccmc::SWMFIono swmfIono;
+	swmfIono.open(filename);
+	swmfIono.loadVariable(variable);
 
-	ccmc::Interpolator * interpolator = magnetogram.createNewInterpolator();
+	ccmc::Interpolator * interpolator = swmfIono.createNewInterpolator();
 
-	//needs three position components. Just ignore the last one.
-	float value = interpolator->interpolate(variable, lat, lon, 0);
+	//needs three position components. Just ignore the first one.
+	float lon = mlt;//fmod((mlt * 15. + 180.), 360.);
+	std::cout << "mlt: " << mlt << " lon: " << lon << std::endl;
+	float value = interpolator->interpolate(variable, 0, lat, lon);
 	delete interpolator;
 
-	string units = magnetogram.getNativeUnit(variable);
+	string units = swmfIono.getNativeUnit(variable);
 
 	cout << "interpolated value: " << value << " " << units << endl;
-	magnetogram.close();
+	swmfIono.close();
 
 }
