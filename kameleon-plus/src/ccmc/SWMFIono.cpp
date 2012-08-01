@@ -21,19 +21,17 @@ namespace ccmc{
     {
     	this->setBusyStatus(Model::BUSY);
     
-        long status;
-		status = GeneralFileReader::open(filename);
+        long status =  GeneralFileReader::open(filename);
 
 		//loadVariable(ccmc::strings::variables::r_);
 		loadVariable(ccmc::strings::variables::theta_);
-		loadVariable(ccmc::strings::variables::psi_);
+		loadVariable(ccmc::strings::variables::phi_);
 
         //....
 
         initializeSIUnits();
 		initializeConversionFactorsToSI();
 		this->setBusyStatus(Model::OK);
-		
 		return status;
     }
     
