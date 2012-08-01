@@ -8,6 +8,7 @@
 #include "Tracer_c.h"
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
+#include <ccmc/Kameleon-Tracer.h>
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -84,15 +85,15 @@ int Kameleon_open(int id, const char * filename)
 		//first, open the file
 
 		ccmc::Kameleon * kameleon = (*iter).second;
-		std::cout << "before calling kameleon->open" << std::endl;
+//		std::cout << "before calling kameleon->open" << std::endl;
 		status = kameleon->open(filename);
-		std::cout << "filename: " << filename << " status: " << status << " after" << std::endl;
+//		std::cout << "filename: " << filename << " status: " << status << " after" << std::endl;
 		//kameleonObjects.erase(iter);
 	} else
 	{
 
 		//should never happen
-		std::cout << "this should never happen!" << std::endl;
+		std::cerr << "this should never happen!" << std::endl;
 
 	}
 //	std::cout << "new size of kameleonObjects: " << ccmc::kameleonObjects.size() << std::endl;
@@ -142,13 +143,33 @@ float Kameleon_interpolate(int id, const char * variable, const float * c0, cons
 	return value;
 }
 
+float Kameleon_interpolate_by_id(int id, int variable, const float * c0, const float * c1, const float * c2, float * dc0, float * dc1, float * dc2)
+{
+	//TODO: error checking
+	//first, fetch the interpolator
+	ccmc::Interpolator * interpolator = ccmc::interpolatorObjects[id];
+	float value = interpolator->interpolate(variable, *c0,*c1,*c2,*dc0,*dc1,*dc2);
+//	std::cout << "inside c. returning value: " << value << " for variable " << variable << std::endl;
+	return value;
+}
+
 int Kameleon_load_variable(int id, char * variable)
 {
 	//TODO: error checking
-	std::cout << "variable: " << variable << std::endl;
+//	std::cout << "variable: " << variable << std::endl;
 	ccmc::Kameleon * kameleon = ccmc::kameleonObjects[id];
 
 	int status = kameleon->loadVariable(variable);
+	return status;
+}
+
+int Kameleon_unload_variable(int id, char * variable)
+{
+	//TODO: error checking
+//	std::cout << "variable: " << variable << std::endl;
+	ccmc::Kameleon * kameleon = ccmc::kameleonObjects[id];
+
+	int status = kameleon->unloadVariable(variable);
 	return status;
 }
 
@@ -254,6 +275,37 @@ void Tracer_bidirectionalTrace(int id, const char * variable, const float& start
 	}
 }
 
+void Tracer_unidirectionalTrace(int id, const char * variable, const float * startComponent1, const float * startComponent2,
+		const float * startComponent3, const int * step_max, const float * dn, int * actual_steps, float * x_array, float * y_array, float * z_array)
+{
+	ccmc::Tracer * tracer = tracerObjects[id];
+	tracer->setMaxIterations(*step_max);
+	if (dn < 0)
+	{
+		tracer->setDn(-*dn);
+		Fieldline fieldline = tracer->unidirectionalTrace(variable, *startComponent1, *startComponent2, *startComponent3, ccmc::Tracer::REVERSE);
+		*actual_steps = fieldline.size();
+		for (int i = 0; i < fieldline.size(); i++)
+		{
+			x_array[i] = fieldline.getPositions()[i].component1;
+			y_array[i] = fieldline.getPositions()[i].component2;
+			z_array[i] = fieldline.getPositions()[i].component3;
+		}
+	}else
+	{
+		tracer->setDn(*dn);
+		Fieldline fieldline = tracer->unidirectionalTrace(variable, *startComponent1, *startComponent2, *startComponent3, ccmc::Tracer::FOWARD);
+		*actual_steps = fieldline.size();
+		for (int i = 0; i < fieldline.size(); i++)
+		{
+			x_array[i] = fieldline.getPositions()[i].component1;
+			y_array[i] = fieldline.getPositions()[i].component2;
+			z_array[i] = fieldline.getPositions()[i].component3;
+		}
+	}
+
+}
+
 int Tracer_delete(int id)
 {
 	//TODO: error checking
@@ -264,7 +316,15 @@ int Tracer_delete(int id)
 		ccmc::tracerObjects.erase(iter);
 		return 0;
 	} else
-		1;
+		return 1;
+}
+
+int Kameleon_get_variable_id(int id, const char * variable)
+{
+	ccmc::Kameleon * kameleon = ccmc::kameleonObjects[id];
+	int variable_id = kameleon->getVariableID(variable);
+//	std::cout << "from c. kid: " << id << " variable_id: " << variable_id << std::endl;
+	return variable_id;
 }
 
 
