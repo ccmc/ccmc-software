@@ -1,6 +1,6 @@
 SUBDIRS = . wrappers
 #EXTRA_LTLIBRARIES = libkameleon-tracer.la
-lib_LTLIBRARIES = libkameleon-plus.la
+lib_LTLIBRARIES = libkameleon_plus.la
 
 libkameleon_plus_la_SOURCES = Attribute.h \
 						Attribute.cpp \
