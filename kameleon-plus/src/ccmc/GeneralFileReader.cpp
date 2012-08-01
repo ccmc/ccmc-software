@@ -22,7 +22,7 @@ namespace ccmc
 
 	GeneralFileReader::GeneralFileReader()
 	{
-
+		this->fileReader = NULL;
 	}
 
 	long GeneralFileReader::open(const std::string& filename)
@@ -30,7 +30,14 @@ namespace ccmc
 
 		//check the file
 //		std::cerr << "First, checking if the file is a CDF file" << std::endl;
-		this->fileReader = new CDFFileReader();
+		if (this->fileReader == NULL)
+			this->fileReader = new CDFFileReader();
+		else
+		{
+			this->close();
+			//delete this->fileReader;
+			this->fileReader = new CDFFileReader();
+		}
 		long status = fileReader->open(filename);
 		if (status == FileReader::OK)
 		{
@@ -179,7 +186,10 @@ namespace ccmc
 
 	long GeneralFileReader:: close()
 	{
-		return fileReader->close();
+		long status = fileReader->close();
+		delete fileReader;
+		fileReader = NULL;
+		return status;
 	}
 
 	const std::string& GeneralFileReader::getCurrentFilename()
@@ -189,7 +199,8 @@ namespace ccmc
 
 	GeneralFileReader::~GeneralFileReader()
 	{
-		//close();
+		if (fileReader != NULL)
+			close();
 	}
 
 	void GeneralFileReader::initializeVariableIDs()
