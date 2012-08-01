@@ -34,7 +34,10 @@ static char const Ident[] =
 **                     library for convenience;  updated IGRF coefficients to the 9th
 **                     generation which adds definitive values for 1995 & 2000
 **	 2006/09/24  v0.7  Ryan Boller: Updated IGRF coefficients to 10th generation
-** 
+**
+**	 2012/07/05  v0.8  David Berrios: Updated IGRF coefficients to 11th generation
+**	 					http://www.ngdc.noaa.gov/IAGA/vmod/igrf11coeffs.txt
+**
 */
 
 #include <stdio.h>
@@ -68,7 +71,7 @@ static char const Ident[] =
 
 #define	SECONDS_PER_CENTURY	(86400 * 365.25 * 100)
 
-#define NUM_IGRF_YEARS_DEFINED 23
+#define NUM_IGRF_YEARS_DEFINED 24
 
 /* for debugging */
 #define	DUMP_MAT	{ int i,j; for (i=0;i<3;i++) { for (j=0;j<3;j++) printf("%15lf ", mat[i][j]); printf("\n"); }}
@@ -272,7 +275,7 @@ T0(const double et)
   */
 
   /*  Seconds --> days --> centuries  */
-  return (et / 86400.0)/36525.0;  
+  return (et / 86400.0)/36525.0;
 }
 
 
@@ -349,9 +352,9 @@ epsilon(const double et)
 double calcG01(double fracYearIndex, double fracYear)
 {
 	static int g01[NUM_IGRF_YEARS_DEFINED] =
-		{-31543, -31464, -31354, -31212, -31060, -30926, -30805, -30715,
-		 -30654, -30594, -30554, -30500, -30421, -30334, -30220, -30100,
-		 -29992, -29873, -29775, -29692, -29619.4, -29556.8, -29512.8};
+		{-31543, -31464, -31354, -31212, -31060, -30926, -30805, -30715, -30654,
+		 -30594, -30554, -30500, -30421, -30334, -30220, -30100, -29992, -29873,
+		 -29775, -29692, -29619.4, -29554.63, -29496.5, 11.4};
 	
 	return (g01[(int)floor(fracYearIndex)]*(1.0-fracYear) + 
 		g01[(int)ceil(fracYearIndex)]*fracYear);
@@ -360,9 +363,9 @@ double calcG01(double fracYearIndex, double fracYear)
 double calcG11(double fracYearIndex, double fracYear)
 {
 	static int g11[NUM_IGRF_YEARS_DEFINED] = 
-		{-2298, -2298, -2297, -2306, -2317, -2318, -2316, -2306, -2292, -2285,
-		 -2250, -2215, -2169, -2119, -2068, -2013, -1956, -1905, -1848, -1784,
-		 -1728.2, -1671.8, -1617.8};
+		{-2298,  -2298,  -2297,  -2306,  -2317,  -2318,  -2316,  -2306,  -2292,
+		 -2285,  -2250,  -2215,  -2169,  -2119,  -2068,  -2013,  -1956,  -1905,
+		 -1848,  -1784,  -1728.2,  -1669.05,  -1585.9,   16.7};
 	
 	return (g11[(int)floor(fracYearIndex)]*(1.0-fracYear) + 
 		g11[(int)ceil(fracYearIndex)]*fracYear);
@@ -371,9 +374,9 @@ double calcG11(double fracYearIndex, double fracYear)
 double calcH11(double fracYearIndex, double fracYear)
 {
 	static int h11[NUM_IGRF_YEARS_DEFINED] = 
-		{5922, 5909, 5898, 5875, 5845, 5817, 5808, 5812, 5821, 5810, 5815,
-		 5820, 5791, 5776, 5737, 5675, 5604, 5500, 5406, 5306, 5186.1, 5080.0, 
-		 4973.5};
+		{5922,   5909,   5898,   5875,   5845,   5817,   5808,   5812,   5821,
+		 5810,   5815,   5820,   5791,   5776,   5737,   5675,   5604,   5500,
+		 5406,   5306,   5186.1,   5077.99,   4945.1,  -28.8};
 		 
 	return (h11[(int)floor(fracYearIndex)]*(1.0-fracYear) + 
 		h11[(int)ceil(fracYearIndex)]*fracYear);
@@ -518,7 +521,7 @@ mat_T1(const double et, Mat mat)
   if (theta < 0.0)
     theta += 360.0;
   */
-  
+
   /*  printf("T0= %20.20lf, H= %15.10lf, theta= %15lf\n", T0(et), H(et), theta);  */
 
   hapgood_matrix(theta, Z, mat);
@@ -738,7 +741,7 @@ mat_S2(const double et, Mat mat)
   double angle_1 = lambda0(et)-Omega;
   angle_1=fmod(angle_1,360.0);
   if (angle_1 < 0.0) angle_1+=360.0;
-  
+
   theta0=fmod(theta0,360.0);
   if (theta0 < 0.0) theta0+=360.0;
   if (angle_1 < 180.0) {
@@ -897,7 +900,7 @@ gse_twixt_gseq(const double et, Vec v_in, Vec v_out, Direction direction)
 **
 **      R = [ Rsun, 0, 0 ]
 **
-** where 
+** where
 **
 **             r0 (1 - e^2)
 **    Rsun =   ------------
@@ -935,7 +938,7 @@ gse_twixt_hee(const double et, Vec v_in, Vec v_out, Direction direction)
   v = lambda0(et) - w; 
   Rsun = r0*(1-e*e)/(1.+e*cosd(v)); 
   /*  v_out[0] += (double)1.5e8;  */
-  
+
   v_out[0] += Rsun;
 
   return 0;
@@ -996,7 +999,7 @@ long cxRound(double doub)
 
 
 /* date2es
-** 		Converts a standard Gregorian date and UT (YYYY/MM/DD  HH:MM:SS) to 
+** 		Converts a standard Gregorian date and UT (YYYY/MM/DD  HH:MM:SS) to
 ** 		ephemeris seconds past J2000, as required by CXFORM
 **
 ** Modification History:
