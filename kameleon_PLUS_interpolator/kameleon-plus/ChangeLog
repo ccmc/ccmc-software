@@ -1,3 +1,38 @@
+2012 Aug 14   David Berrios
+-------------
+  kameleon-plus-0.3.8
+  - Added a setInnerBoundary function for the C wrappers for the Tracer library
+  - Renamed the Kameleon-Tracer.h and Kameleon-Tracer.cpp files to 
+    Tracer.h and Tracer.cpp, respectively
+  - Code cleanup
+  
+2012 Aug 01   David Berrios
+-------------
+  kameleon-plus-0.3.7
+  - Added C wrapper for setting the Tracer objects inner boundary
+  
+2012 Aug 01   David Berrios
+-------------
+  kameleon-plus-0.3.6
+  - Fixed the Tracer C wrapper code
+  - Fixed a spelling mistake in the Tracer header file.
+
+2012 Jul 06   David Berrios
+-------------
+  kameleon-plus-0.3.5
+  - Fixed memory leak in GeneralFileReader
+  
+2012 Jul 05   David Berrios
+-------------
+  kameleon-plus-0.3.4
+  - Updated IGRF coefficients to 11th generation - CXFORM code
+  
+2012 Jun 13   David Berrios
+-------------
+  kameleon-plus-0.3.3
+  - Updated Fortran example code
+  - Fixed a very serious memory leak in the SWMFIonoInterpolator code
+  
 2012 Jun 07   David Berrios
 -------------
   kameleon-plus-0.3.2
