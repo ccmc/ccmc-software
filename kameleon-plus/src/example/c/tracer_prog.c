@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ccmc/wrappers/c/Kameleon_c.h>
+#include <ccmc/wrappers/c/Tracer_c.h>
 
 
 #define LENGTH 500;
@@ -10,7 +12,7 @@
 int main (int argc, char * argv[])
 {
 
-/*	float * flx;
+	float * flx;
 	float * fly;
 	float * flz;
 	float * v_mag;
@@ -34,16 +36,30 @@ int main (int argc, char * argv[])
 	flz = (float *) calloc(5000, sizeof(float));
 	v_mag = (float *) calloc(5000, sizeof(float));
 
-//	ccmc_tracer_open(argv[1], NULL);
+	int kid = Kameleon_create();
+	int status = Kameleon_open(kid, argv[1]);
+	//load the vector variable (all components)
+	status = Kameleon_load_vector_variable(kid, variable);
+
+	//create a tracer object using the kameleon object previously created. store the id of the tracer object
+	int tid = Tracer_create(kid);
+	int actual_steps = 0;
+	Tracer_unidirectionalTrace(tid, variable, &x, &y, &z, &step_max, &dn, &actual_steps, flx, fly, flz);
+
 //	ccmc_tracer_otrace(argv[1], variable, x,y,z, flx, fly, flz, v_mag, r_end, &step_max, dn, 0.0, 0.0, -1234.f);
 //	ccmc_derived_close_cdf();
+	Tracer_delete(tid);
+
+	Kameleon_close(kid);
+	Kameleon_delete(kid);
+
 
 	free(flx);
 	free(fly);
 	free(flz);
 	free (v_mag);
 
-*/
+
 
 	return 0;
 }
