@@ -6,7 +6,7 @@
  */
 #include "Tracer_f.h"
 #include <ccmc/wrappers/c/Tracer_c.h>
-#include <ccmc/Kameleon-Tracer.h>
+#include <ccmc/Tracer.h>
 #include <ccmc/Kameleon.h>
 #include <string>
 #include <string.h>
