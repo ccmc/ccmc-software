@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 #include <ccmc/Kameleon.h>
-#include <ccmc/Kameleon-Tracer.h>
+#include <ccmc/Tracer.h>
 #include <ccmc/Fieldline.h>
 //#include <ccmc/old-tracer.h>
 #include <ccmc/Point3f.h>
@@ -24,26 +24,26 @@ using namespace ccmc;
 
 int main (int argc, char * argv[])
 {
-//	std::string filename;
-//	std::string variable;
-//	std::string seedfile;
-//	std::string additional;
-//	float c0;
-//	float c1;
-//	float c2;
-//	int iterations = 10;
-//
-///*	if (argc != 7)
-//	{
-//		std::cout << "tracer <filename> <variable> c0 c1 c2 <optional: target variables, comma separated>" << std::endl;
-//		exit(1);
-//	}*/
-//
-//	/*filename = argv[1];
-//	variable = argv[2];
-//	c0 = boost::lexical_cast<float>(argv[3]);
-//	c1 = boost::lexical_cast<float>(argv[4]);
-//	c2 = boost::lexical_cast<float>(argv[5]);*/
+	std::string filename;
+	std::string variable;
+	std::string seedfile;
+	std::string additional;
+	float c0;
+	float c1;
+	float c2;
+	int iterations = 10;
+
+	if (argc != 6)
+	{
+		std::cout << "tracer <filename> <variable> c0 c1 c2" << std::endl;
+		exit(1);
+	}
+
+	filename = argv[1];
+	variable = argv[2];
+	c0 = boost::lexical_cast<float>(argv[3]);
+	c1 = boost::lexical_cast<float>(argv[4]);
+	c2 = boost::lexical_cast<float>(argv[5]);
 //	boost::program_options::options_description desc("Fieldline tracer example program.");
 //	desc.add_options()("help", "produce help message")
 //			          ("input-file", boost::program_options::value<std::string>(&filename), "input file")
@@ -97,143 +97,143 @@ int main (int argc, char * argv[])
 //		exit(1);
 //	}
 //
-//
-//
-//	Kameleon kameleon;
-//	kameleon.open(filename);
-//	std::cout << "about to load vector variable" << std::endl;
-//
-//	for (int i = 0; i < 1000; i++)
-//		kameleon.loadVectorVariable(variable);
-//
-//	std::cout << "finished loading variable 1000 times" << std::endl;
-//	Tracer tracer(&kameleon);
-//
-//	tracer.setMaxIterations(20000);
-//	if (kameleon.getModelName() == "ADAPT3D")
-//	{
-//		tracer.setInnerBoundary(1.f);
-//	} else if (kameleon.getModelName() == "enlil")
-//	{
-//		tracer.setInnerBoundary(kameleon.getVariableAttribute("r","actual_min").getAttributeFloat()/ccmc::constants::AU_in_meters);
-//	}
-//	//tracer.setInnerBoundary(2.5f);
-//	tracer.setDn(.2f);
-//
-//	clock_t start, finish;
-////	ProfilerStart("/tmp/tracer.prof");
-//	boost::char_separator<char> sep(",");
-//	std::string variables_selected = additional;
-//	boost::tokenizer<boost::char_separator<char> > tokens(variables_selected, sep);
-//	std::vector<std::string> variables;
-//	foreach(std::string t, tokens)
-//	{
-//		variables.push_back(t);
-//	}
-//	std::cout << "finished pushing variables" << std::endl;
-//
-//	std::vector<Point3f> seedsVector;
-//	if (useSeedPosition)
-//	{
-//
-//		seedsVector.push_back(Point3f(c0,c1,c2));
-//		std::cout << "added position" << std::endl;
-//	} else
-//	{
-//		std::ifstream seedsFileStream;
-//		seedsFileStream.open(seedfile.c_str());
-//		if (!seedsFileStream.is_open())
-//		{
-//			std::cerr << "Error opening seeds position file " << seedfile << "." << std::endl;
-//			exit(1);
-//		}else
-//		{
-//			std::string line;
-//			while(seedsFileStream.good())
-//			{
-//				getline(seedsFileStream, line);
-//				//std::cout << line << std::endl;
-//				boost::char_separator<char> sep(" ");
-//				std::string variables_selected = additional;
-//				boost::tokenizer<boost::char_separator<char> > tokens(line, sep);
-//				std::vector<std::string> variables;
-//				int count = 0;
-//				Point3f position;
-//				foreach(std::string t, tokens)
-//				{
-//					if (count == 0)
-//					{
-//						position.component1 = boost::lexical_cast<float>(t);
-//						count++;
-//					} else if (count == 1)
-//					{
-//						position.component2 = boost::lexical_cast<float>(t);
-//						count++;
-//					} else
-//					{
-//						position.component3 = boost::lexical_cast<float>(t);
-//					}
-//				}
-//				if (count > 0)
-//					seedsVector.push_back(position);
-//			}
-//		}
-//
-//
-//		//ifstream
-//	}
-//
-//	for (int i = 0; i < seedsVector.size(); i++)
-//	{
-//		Point3f curr = seedsVector[i];
-//		std::cout << "--------------------------------------------------" << std::endl;
-//		std::cout << "Tracing using seed position (" << curr.component1 << ",";
-//		std::cout << curr.component2 << "," << curr.component3 << ") in timestep: ";
-//		std::cout << kameleon.getCurrentTime() << " for run: " << kameleon.getGlobalAttribute("run_registration_number").getAttributeString() << std::endl;
-//		start = clock();
-//		Fieldline f1;
-//		//for (int i = 0; i < 25; i++)
-//		{
-//
-//			f1 = tracer.bidirectionalTrace(variable,curr.component1, curr.component2, curr.component3);
-//		}
-//		finish = clock();
-//		float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
-//
-//
-//		float dn = .2f;
-//		int step_max = 20000;
-//		float r_end = 2.5f;
-//
-//		std::cout << "Position";
-//		for (int j = 0; j < variables.size(); j++)
-//		{
-//			std::cout << " " << variables[j];
-//			kameleon.loadVariable(variables[j]);
-//		}
-//		std::cout << std::endl;
-//		Interpolator * interpolator = kameleon.createNewInterpolator();
-//		for (int i = 0; i < f1.size(); i++)
-//		{
-//			Point3f position = f1.getPosition(i);
-//			std::cout << position;
-//			for (int j = 0; j < variables.size(); j++)
-//			{
-//
-//				std::cout << " " << interpolator->interpolate(variables[j], position.component1, position.component2, position.component3);
-//			}
-//			std::cout << std::endl;
-//
-//
-//
-//		}
-//
-//		std::cout << "Elapsed time: " << elapsed_time << " with " << f1.getPositions().size() << " positions." << std::endl;
-//		std::cout << "End Tracing for seed position (" << curr.component1 << "," << curr.component2 << "," << curr.component3 << ") in timestep: " << kameleon.getCurrentTime() << " for run: " << kameleon.getGlobalAttribute("run_registration_number").getAttributeString() << std::endl;
-//		std::cout << "--------------------------------------------------" << std::endl;
-//	}
-//	kameleon.close();
-//
+
+
+	Kameleon kameleon;
+	kameleon.open(filename);
+	std::cout << "about to load vector variable" << std::endl;
+
+	for (int i = 0; i < 1000; i++)
+		kameleon.loadVectorVariable(variable);
+
+	std::cout << "finished loading variable 1000 times" << std::endl;
+	Tracer tracer(&kameleon);
+
+	tracer.setMaxIterations(20000);
+	if (kameleon.getModelName() == "ADAPT3D")
+	{
+		tracer.setInnerBoundary(1.f);
+	} else if (kameleon.getModelName() == "enlil")
+	{
+		tracer.setInnerBoundary(kameleon.getVariableAttribute("r","actual_min").getAttributeFloat()/ccmc::constants::AU_in_meters);
+	}
+	//tracer.setInnerBoundary(2.5f);
+	tracer.setDn(.2f);
+
+	clock_t start, finish;
+//	ProfilerStart("/tmp/tracer.prof");
+	boost::char_separator<char> sep(",");
+	std::string variables_selected = additional;
+	boost::tokenizer<boost::char_separator<char> > tokens(variables_selected, sep);
+	std::vector<std::string> variables;
+	foreach(std::string t, tokens)
+	{
+		variables.push_back(t);
+	}
+	std::cout << "finished pushing variables" << std::endl;
+
+	std::vector<Point3f> seedsVector;
+	if (true)
+	{
+
+		seedsVector.push_back(Point3f(c0,c1,c2));
+		std::cout << "added position" << std::endl;
+	} else
+	{
+		std::ifstream seedsFileStream;
+		seedsFileStream.open(seedfile.c_str());
+		if (!seedsFileStream.is_open())
+		{
+			std::cerr << "Error opening seeds position file " << seedfile << "." << std::endl;
+			exit(1);
+		}else
+		{
+			std::string line;
+			while(seedsFileStream.good())
+			{
+				getline(seedsFileStream, line);
+				//std::cout << line << std::endl;
+				boost::char_separator<char> sep(" ");
+				std::string variables_selected = additional;
+				boost::tokenizer<boost::char_separator<char> > tokens(line, sep);
+				std::vector<std::string> variables;
+				int count = 0;
+				Point3f position;
+				foreach(std::string t, tokens)
+				{
+					if (count == 0)
+					{
+						position.component1 = boost::lexical_cast<float>(t);
+						count++;
+					} else if (count == 1)
+					{
+						position.component2 = boost::lexical_cast<float>(t);
+						count++;
+					} else
+					{
+						position.component3 = boost::lexical_cast<float>(t);
+					}
+				}
+				if (count > 0)
+					seedsVector.push_back(position);
+			}
+		}
+
+
+		//ifstream
+	}
+
+	for (int i = 0; i < seedsVector.size(); i++)
+	{
+		Point3f curr = seedsVector[i];
+		std::cout << "--------------------------------------------------" << std::endl;
+		std::cout << "Tracing using seed position (" << curr.component1 << ",";
+		std::cout << curr.component2 << "," << curr.component3 << ") in timestep: ";
+		std::cout << kameleon.getCurrentTime() << " for run: " << kameleon.getGlobalAttribute("run_registration_number").getAttributeString() << std::endl;
+		start = clock();
+		Fieldline f1;
+		//for (int i = 0; i < 25; i++)
+		{
+
+			f1 = tracer.bidirectionalTrace(variable,curr.component1, curr.component2, curr.component3);
+		}
+		finish = clock();
+		float elapsed_time = ((double) finish - (double) start) / CLOCKS_PER_SEC;
+
+
+		float dn = .2f;
+		int step_max = 20000;
+		float r_end = 2.5f;
+
+		std::cout << "Position";
+		for (int j = 0; j < variables.size(); j++)
+		{
+			std::cout << " " << variables[j];
+			kameleon.loadVariable(variables[j]);
+		}
+		std::cout << std::endl;
+		Interpolator * interpolator = kameleon.createNewInterpolator();
+		for (int i = 0; i < f1.size(); i++)
+		{
+			Point3f position = f1.getPosition(i);
+			std::cout << position;
+			for (int j = 0; j < variables.size(); j++)
+			{
+
+				std::cout << " " << interpolator->interpolate(variables[j], position.component1, position.component2, position.component3);
+			}
+			std::cout << std::endl;
+
+
+
+		}
+
+		std::cout << "Elapsed time: " << elapsed_time << " with " << f1.getPositions().size() << " positions." << std::endl;
+		std::cout << "End Tracing for seed position (" << curr.component1 << "," << curr.component2 << "," << curr.component3 << ") in timestep: " << kameleon.getCurrentTime() << " for run: " << kameleon.getGlobalAttribute("run_registration_number").getAttributeString() << std::endl;
+		std::cout << "--------------------------------------------------" << std::endl;
+	}
+	kameleon.close();
+
 
 	return 0;
 }
