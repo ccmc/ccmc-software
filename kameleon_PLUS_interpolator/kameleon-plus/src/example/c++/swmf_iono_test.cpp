@@ -32,7 +32,8 @@ int main (int argc, char * argv[])
 	float lat = boost::lexical_cast<float>(argv[3]);
 	float mlt = boost::lexical_cast<float>(argv[4]);
 	ccmc::SWMFIono swmfIono;
-	swmfIono.open(filename);
+	long status = swmfIono.open(filename);
+	std::cout << "File opened with status: " << status << std::endl;
 	swmfIono.loadVariable(variable);
 
 	ccmc::Interpolator * interpolator = swmfIono.createNewInterpolator();

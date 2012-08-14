@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include <ccmc/Kameleon.h>
-#include <ccmc/Kameleon-Tracer.h>
+#include <ccmc/Tracer.h>
 #include <ccmc/Fieldline.h>
 #include <ccmc/StringConstants.h>
 #include <ccmc/Interpolator.h>
