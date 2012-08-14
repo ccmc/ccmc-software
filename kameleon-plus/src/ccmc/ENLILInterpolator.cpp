@@ -37,6 +37,9 @@ namespace ccmc
 		previous_r = model->getMissingValue();
 		previous_lon = model->getMissingValue();
 		previous_lat = model->getMissingValue();
+		previous_ir = 0;
+		previous_ilon = 0;
+		previous_ilat = 0;
 
 
 	}
