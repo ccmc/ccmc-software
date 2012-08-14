@@ -194,6 +194,10 @@ namespace ccmc
 			static const std::string global_x_max_ = "global_x_max";
 			static const std::string global_y_max_ = "global_y_max";
 			static const std::string global_z_max_ = "global_z_max";
+			static const std::string number_of_blocks_ = "number_of_blocks";
+			static const std::string special_parameter_NX_ = "special_parameter_NX";
+			static const std::string special_parameter_NY_ = "special_parameter_NY";
+			static const std::string special_parameter_NZ_ = "special_parameter_NZ";
 		}
 	}
 }
