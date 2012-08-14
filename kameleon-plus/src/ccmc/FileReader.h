@@ -80,6 +80,8 @@ namespace ccmc
 
 		protected:
 			std::string current_filename;
+			int numGAttributes;
+			int numVAttributes;
 
 
 			boost::unordered_map<std::string, long> variableIDs;
