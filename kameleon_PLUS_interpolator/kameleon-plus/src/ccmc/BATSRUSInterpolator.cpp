@@ -51,20 +51,20 @@ namespace ccmc
 
 		/********* get values for NX, NY, NZ **********/
 		/** They are stored as floats.  Need to fetch them, and convert to int **/
-		nx = (int) (modelReader->getGlobalAttribute("special_parameter_NX")).getAttributeFloat();
-		ny = (int) (modelReader->getGlobalAttribute("special_parameter_NY")).getAttributeFloat();
-		nz = (int) (modelReader->getGlobalAttribute("special_parameter_NZ")).getAttributeFloat();
+		nx = (int) (modelReader->getGlobalAttribute(strings::attributes::special_parameter_NX_)).getAttributeFloat();
+		ny = (int) (modelReader->getGlobalAttribute(strings::attributes::special_parameter_NY_)).getAttributeFloat();
+		nz = (int) (modelReader->getGlobalAttribute(strings::attributes::special_parameter_NZ_)).getAttributeFloat();
 
 		//std::cout << "finished reading nx, ny, nz" << std::endl;
 		/********* get value for number_of_blocks **********/
-		int number_of_blocks = (modelReader->getGlobalAttribute("number_of_blocks")).getAttributeInt();
+		int number_of_blocks = (modelReader->getGlobalAttribute(strings::attributes::number_of_blocks_)).getAttributeInt();
 
-		global_x_max = (modelReader->getGlobalAttribute("global_x_max")).getAttributeFloat();
-		global_y_max = (modelReader->getGlobalAttribute("global_y_max")).getAttributeFloat();
-		global_z_max = (modelReader->getGlobalAttribute("global_z_max")).getAttributeFloat();
-		global_x_min = (modelReader->getGlobalAttribute("global_x_min")).getAttributeFloat();
-		global_y_min = (modelReader->getGlobalAttribute("global_y_min")).getAttributeFloat();
-		global_z_min = (modelReader->getGlobalAttribute("global_z_min")).getAttributeFloat();
+		global_x_max = (modelReader->getGlobalAttribute(strings::attributes::global_x_max_)).getAttributeFloat();
+		global_y_max = (modelReader->getGlobalAttribute(strings::attributes::global_y_max_)).getAttributeFloat();
+		global_z_max = (modelReader->getGlobalAttribute(strings::attributes::global_z_max_)).getAttributeFloat();
+		global_x_min = (modelReader->getGlobalAttribute(strings::attributes::global_x_min_)).getAttributeFloat();
+		global_y_min = (modelReader->getGlobalAttribute(strings::attributes::global_y_min_)).getAttributeFloat();
+		global_z_min = (modelReader->getGlobalAttribute(strings::attributes::global_z_min_)).getAttributeFloat();
 	}
 
 	/**
@@ -121,7 +121,7 @@ namespace ccmc
 		long status;
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
-		int ic, new_blk[8], valid;
+		int ib, ic, new_blk[8], valid;
 		float ixx, iyy, izz, dx1, dy1, dz1, dx2, dy2, dz2, data_c[8], d_m1, d_m2, yy_c2[4], zz_c2[4];
 
 		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
@@ -508,7 +508,7 @@ namespace ccmc
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
 
-		int ic, new_blk[8], valid;
+		int ib, ic, new_blk[8], valid;
 		float ixx, iyy, izz, dx1, dy1, dz1, dx2, dy2, dz2, data_c[8], d_m1, d_m2, yy_c2[4], zz_c2[4];
 
 		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
