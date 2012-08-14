@@ -184,7 +184,7 @@ namespace ccmc
 
 
 
-		if ( variable == ccmc::strings::variables::bx_ || variable == "b1")
+		if ( variable == ccmc::strings::variables::bx_ || variable == ccmc::strings::variables::b1_)
 		{
 		  //unkno_index=5;
 		}
@@ -196,15 +196,15 @@ namespace ccmc
 		{
 		 // unkno_index=7;
 		}
-		else if ( variable == "ux" || variable == "u1")
+		else if ( variable == ccmc::strings::variables::ux_ || variable == "u1")
 		{
 		  //unkno_index=1;
 		}
-		else if ( variable == "uy" || variable == "u2")
+		else if ( variable == ccmc::strings::variables::uy_ || variable == "u2")
 		{
 		  //unkno_index=2;
 		}
-		else if ( variable == "uz" || variable == "u3")
+		else if ( variable == ccmc::strings::variables::uz_ || variable == "u3")
 		{
 		  //unkno_index=3;
 		}
