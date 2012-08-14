@@ -1,12 +1,12 @@
-lib_LTLIBRARIES = libkameleon-plus-wrapper-java.la
+lib_LTLIBRARIES = libkameleon_plus_wrapper_java.la
 libkameleon_plus_wrapper_java_la_SOURCES = ccmc_wrap.cxx
-libkameleon_plus_wrapper_java_la_LDFLAGS = -module -avoid-version @JNI_EXTRA_LDFLAGS@ @builddir@/../../../ccmc/libkameleon-plus.la
+libkameleon_plus_wrapper_java_la_LDFLAGS = -module -avoid-version @JNI_EXTRA_LDFLAGS@ @builddir@/../../../ccmc/libkameleon_plus.la
 #libkameleon_plus_wrapper_java_la_LDFLAGS = -release @RELEASE@ @JNI_EXTRA_LDFLAGS@
 libkameleon_plus_wrapper_java_la_CXXFLAGS = -fPIC
 libkameleon_plus_wrapper_java_la_CPPFLAGS = -I@JNI_INCLUDE_DIRS@ -I@srcdir@/../../..
 libkameleon_plus_wrapper_java_la_LIBTOOLFLAGS = --tag=disable-static
 
-jarfile = kameleon-plus-wrapper-@RELEASE@.jar
+jarfile = kameleon_plus_wrapper_@RELEASE@.jar
 
 jardir = $(datadir)/java
 pkgpath = @builddir@
@@ -48,13 +48,16 @@ dist_noinst_JAVA = 	Attribute.java \
 					vector_float.java \
 					vector_int.java \
 					vector_point3f.java \
-					vector_string.java 
+					vector_string.java \
+					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t.java \
+					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t.java \
+					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t.java \
+					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t.java \
+					SWMFIono.java \
+					SWMFIonoInterpolator.java
 
 #					HDF5FileReader.java 
-#SWIGTYPE_p_boost__unordered_mapT_int_ccmc__GeneralFileReader_p_t.java 
-#					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Interpolator_p_t.java 
-#					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Kameleon_p_t.java 
-#					SWIGTYPE_p_boost__unordered_mapT_int_ccmc__Tracer_p_t.java 
+					
 
 EXTRA_DIST = SWIG_COMMAND
 					
