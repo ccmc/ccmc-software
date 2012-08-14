@@ -8,7 +8,7 @@
 #include "Tracer_c.h"
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
-#include <ccmc/Kameleon-Tracer.h>
+#include <ccmc/Tracer.h>
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -71,7 +71,7 @@ int Interpolator_delete(int id)
 		interpolatorObjects.erase(iter);
 		return 0;
 	} else
-		1;
+		return 1;
 }
 
 int Kameleon_open(int id, const char * filename)
@@ -119,7 +119,7 @@ int Kameleon_delete(int id)
 		ccmc::kameleonObjects.erase(iter);
 		return 0;
 	} else
-		1;
+		return 1;
 }
 
 void Kameleon_get_model_name(int id, char * model_name)
@@ -325,6 +325,18 @@ int Kameleon_get_variable_id(int id, const char * variable)
 	int variable_id = kameleon->getVariableID(variable);
 //	std::cout << "from c. kid: " << id << " variable_id: " << variable_id << std::endl;
 	return variable_id;
+}
+
+int Tracer_setInnerBoundary(int tid, float innerBoundary)
+{
+	//TODO: error checking
+	map_i_T::iterator iter = ccmc::tracerObjects.find(tid);
+	if (iter != ccmc::tracerObjects.end())
+	{
+		(*iter).second->setInnerBoundary(innerBoundary);
+		return 0;
+	} else
+		return 1;
 }
 
 
