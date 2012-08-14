@@ -22,7 +22,8 @@ namespace ccmc
 	 */
 	FileReader::FileReader()
 	{
-
+		numGAttributes = 0;
+		numVAttributes = 0;
 	}
 
 	/**
@@ -82,7 +83,6 @@ namespace ccmc
 	 */
 	void FileReader::initializeGlobalAttributes()
 	{
-		int numGAttributes = this->getNumberOfGlobalAttributes();
 		//cout << "numGAttributes: " << numGAttributes << endl;
 		for (int i = 0; i < numGAttributes; i++)
 		{
@@ -113,6 +113,7 @@ namespace ccmc
 			this->getVariableAttribute("y","actual_max");
 			this->getVariableAttribute("z","actual_max");
 		}
+
 	}
 
 
