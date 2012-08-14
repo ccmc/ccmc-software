@@ -80,8 +80,8 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						Point3f.cpp \
 						Fieldline.h \
 						Fieldline.cpp \
-						Kameleon-Tracer.h \
-						Kameleon-Tracer.cpp \
+						Tracer.h \
+						Tracer.cpp \
 						Adapt3D.h \
 						Adapt3D.cpp \
 						Adapt3DInterpolator.h \
@@ -101,7 +101,7 @@ libkameleon_plus_la_LDFLAGS = -release @RELEASE@
 libkameleon_plus_la_CFLAGS = -fPIC
 
 pkgincludedir = $(includedir)/ccmc
-pkginclude_HEADERS = Kameleon-Tracer.h Fieldline.h Point3f.h Attribute.h FileReader.h \
+pkginclude_HEADERS = Tracer.h Fieldline.h Point3f.h Attribute.h FileReader.h \
 					 Kameleon.h Interpolator.h KameleonInterpolator.h Constants.h cxform.h\
 		 			 Model.h Point.h BATSRUS.h OpenGGCM.h MAS.h ENLIL.h CTIP.h \
 		 			 Adapt3D.h Adapt3DInterpolator.h MathHelper.h
