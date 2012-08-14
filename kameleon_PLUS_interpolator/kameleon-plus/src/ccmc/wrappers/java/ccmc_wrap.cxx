@@ -227,7 +227,7 @@ static void SWIGUNUSED SWIG_JavaThrowException(JNIEnv *jenv, SWIG_JavaExceptionC
 #include <ccmc/Kameleon.h>
 #include <ccmc/Interpolator.h>
 #include <ccmc/KameleonInterpolator.h>
-#include <ccmc/Kameleon-Tracer.h>
+#include <ccmc/Tracer.h>
 #include <ccmc/Fieldline.h>
 #include <ccmc/Point3f.h>
 #include <ccmc/Attribute.h>
