@@ -1,4 +1,4 @@
-lib_LTLIBRARIES = libkameleon-plus-wrapper-fortran.la
+lib_LTLIBRARIES = libkameleon_plus_wrapper_fortran.la
 libkameleon_plus_wrapper_fortran_la_SOURCES = GeneralFileReader_f.h GeneralFileReader_f.cpp Kameleon_f.h Kameleon_f.cpp Tracer_f.h Tracer_f.cpp
 libkameleon_plus_wrapper_fortran_la_LDFLAGS = -release @RELEASE@
 libkameleon_plus_wrapper_fortran_la_CXXFLAGS = -fPIC

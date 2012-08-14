@@ -16,8 +16,12 @@ extern _C_ void f_interpolator_delete_(int * id);
 //extern _C_ void f_kameleon_get_model_name(int id, char * model_name);
 extern _C_ void f_kameleon_interpolate_(int * id, const char * variable, float * c0,
 		float * c1, float *c2, float * dc0, float * dc1, float * dc2, float * returnValue);
+extern _C_ void f_kameleon_interpolate_by_id_(int * id, int * variable, float * c0,
+		float * c1, float *c2, float * dc0, float * dc1, float * dc2, float * returnValue);
 extern _C_ void f_kameleon_load_variable_(int *id, const char * variable);
+extern _C_ void f_kameleon_unload_variable_(int *id, const char * variable);
 extern _C_ void f_kameleon_load_vector_variable_(int *id, const char * variable);
+extern _C_ void f_kameleon_get_variable_id_(int * kid, const char * variable, int * vid);
 //extern _C_ void Kameleon_get_global_attribute_string(int id, const char * gAttribute, char * destbuffer);
 extern _C_ void f_kameleon_close_(int * id);
 extern _C_ void f_kameleon_delete_(int * id, int * status);
