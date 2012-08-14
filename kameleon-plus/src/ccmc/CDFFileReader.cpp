@@ -61,6 +61,13 @@ namespace ccmc
 				//check if this is a valid Kameleon converted file
 
 				current_filename = filename;
+				long num_attributes;
+				CDFgetNumgAttributes(current_file_id, &num_attributes);
+				this->numGAttributes = (int)num_attributes;
+
+				CDFgetNumvAttributes(current_file_id, &num_attributes);
+				this->numVAttributes = (int)num_attributes;
+
 				FileReader::initializeGlobalAttributes();
 				FileReader::initializeVariableAttributes();
 				initializeVariableIDs();
@@ -741,9 +748,10 @@ namespace ccmc
 	 */
 	int CDFFileReader::getNumberOfGlobalAttributes()
 	{
-		long num_attributes;
-		CDFgetNumgAttributes(current_file_id, &num_attributes);
-		return (int)num_attributes;
+//		long num_attributes;
+//		CDFgetNumgAttributes(current_file_id, &num_attributes);
+//		return (int)num_attributes;
+		return this->numGAttributes;
 	}
 
 	/**
@@ -752,13 +760,17 @@ namespace ccmc
 	 */
 	bool CDFFileReader::doesAttributeExist(const std::string& attribute)
 	{
-		bool exists = false;
-		CDFstatus status = CDFconfirmAttrExistence(current_file_id, (char*) attribute.c_str());
-		if (status == CDF_OK)
-			exists = true;
-
-		return exists;
-
+//		bool exists = false;
+//		CDFstatus status = CDFconfirmAttrExistence(current_file_id, (char*) attribute.c_str());
+//		if (status == CDF_OK)
+//			exists = true;
+//
+//		return exists;
+		boost::unordered_map<std::string, Attribute>::iterator iter = this->gAttributes.find(attribute);
+		if (iter != gAttributes.end())
+			return true;
+		else
+			return false;
 	}
 
 	/**
@@ -959,10 +971,10 @@ namespace ccmc
 	 */
 	int CDFFileReader::getNumberOfVariableAttributes()
 	{
-		long numVAttributes;
-
-		CDFgetNumvAttributes(current_file_id, &numVAttributes);
-		return (int)numVAttributes;
+//		long numVAttributes;
+//
+//		CDFgetNumvAttributes(current_file_id, &numVAttributes);
+		return this->numVAttributes;
 	}
 
 	/**
