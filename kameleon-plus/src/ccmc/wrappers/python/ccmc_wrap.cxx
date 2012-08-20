@@ -17572,6 +17572,708 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_OpenGGCM_getXGrid__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getXGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getXGrid" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCM_getXGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCM_getXGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getXGrid((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getXGrid__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getXGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getXGrid" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCM_getXGrid" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getXGrid(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getXGrid(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_OpenGGCM_getXGrid__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OpenGGCM_getXGrid__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCM_getXGrid'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCM::getXGrid(std::string const &)\n"
+    "    ccmc::OpenGGCM::getXGrid(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getYGrid__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getYGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getYGrid" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCM_getYGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCM_getYGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getYGrid((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getYGrid__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getYGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getYGrid" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCM_getYGrid" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getYGrid(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getYGrid(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_OpenGGCM_getYGrid__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OpenGGCM_getYGrid__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCM_getYGrid'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCM::getYGrid(std::string const &)\n"
+    "    ccmc::OpenGGCM::getYGrid(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getZGrid__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getZGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getZGrid" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCM_getZGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCM_getZGrid" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getZGrid((std::string const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getZGrid__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getZGrid",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getZGrid" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCM_getZGrid" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (std::vector< float,std::allocator< float > > *)(arg1)->getZGrid(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getZGrid(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_OpenGGCM_getZGrid__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OpenGGCM_getZGrid__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCM_getZGrid'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCM::getZGrid(std::string const &)\n"
+    "    ccmc::OpenGGCM::getZGrid(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getXGridName__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getXGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getXGridName" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCM_getXGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCM_getXGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getXGridName((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getXGridName__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getXGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getXGridName" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCM_getXGridName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getXGridName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getXGridName(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_OpenGGCM_getXGridName__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OpenGGCM_getXGridName__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCM_getXGridName'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCM::getXGridName(std::string const &)\n"
+    "    ccmc::OpenGGCM::getXGridName(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getYGridName__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getYGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getYGridName" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCM_getYGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCM_getYGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getYGridName((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getYGridName__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getYGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getYGridName" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCM_getYGridName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getYGridName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getYGridName(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_OpenGGCM_getYGridName__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OpenGGCM_getYGridName__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCM_getYGridName'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCM::getYGridName(std::string const &)\n"
+    "    ccmc::OpenGGCM::getYGridName(long)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getZGridName__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getZGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getZGridName" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OpenGGCM_getZGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OpenGGCM_getZGridName" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (arg1)->getZGridName((std::string const &)*arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getZGridName__SWIG_1(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
+  long arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  long val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  std::string result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:OpenGGCM_getZGridName",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__OpenGGCM, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OpenGGCM_getZGridName" "', argument " "1"" of type '" "ccmc::OpenGGCM *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::OpenGGCM * >(argp1);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "OpenGGCM_getZGridName" "', argument " "2"" of type '" "long""'");
+  } 
+  arg2 = static_cast< long >(val2);
+  result = (arg1)->getZGridName(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OpenGGCM_getZGridName(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[3];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_long(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_OpenGGCM_getZGridName__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__OpenGGCM, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_OpenGGCM_getZGridName__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'OpenGGCM_getZGridName'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::OpenGGCM::getZGridName(std::string const &)\n"
+    "    ccmc::OpenGGCM::getZGridName(long)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_OpenGGCM(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::OpenGGCM *arg1 = (ccmc::OpenGGCM *) 0 ;
@@ -34296,6 +34998,12 @@ SwigPyBuiltin__ccmc__OpenGGCM_richcompare(PyObject *self, PyObject *other, int o
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__OpenGGCM_methods[] = {
   { "open", (PyCFunction) _wrap_OpenGGCM_open, METH_VARARGS, (char*) "" },
   { "createNewInterpolator", (PyCFunction) _wrap_OpenGGCM_createNewInterpolator, METH_VARARGS, (char*) "" },
+  { "getXGrid", (PyCFunction) _wrap_OpenGGCM_getXGrid, METH_VARARGS, (char*) "" },
+  { "getYGrid", (PyCFunction) _wrap_OpenGGCM_getYGrid, METH_VARARGS, (char*) "" },
+  { "getZGrid", (PyCFunction) _wrap_OpenGGCM_getZGrid, METH_VARARGS, (char*) "" },
+  { "getXGridName", (PyCFunction) _wrap_OpenGGCM_getXGridName, METH_VARARGS, (char*) "" },
+  { "getYGridName", (PyCFunction) _wrap_OpenGGCM_getYGridName, METH_VARARGS, (char*) "" },
+  { "getZGridName", (PyCFunction) _wrap_OpenGGCM_getZGridName, METH_VARARGS, (char*) "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
