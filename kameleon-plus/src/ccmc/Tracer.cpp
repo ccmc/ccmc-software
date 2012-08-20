@@ -54,6 +54,7 @@ namespace ccmc
 	{
 		std::vector<std::string> bnames;
 		std::vector<std::string> b1names;
+		std::vector<std::string> b_1names;
 		std::vector<std::string> unames;
 		std::vector<std::string> jnames;
 		std::vector<std::string> jxbnames;
@@ -123,6 +124,10 @@ namespace ccmc
 			b1names.push_back("b1y");
 			b1names.push_back("b1z");
 
+			b_1names.push_back("bx1");
+			b_1names.push_back("by1");
+			b_1names.push_back("bz1");
+
 			unames.push_back("ux");
 			unames.push_back("uy");
 			unames.push_back("uz");
@@ -167,6 +172,11 @@ namespace ccmc
 			componentNamesMap["exbx"] = exbnames;
 			componentNamesMap["exby"] = exbnames;
 			componentNamesMap["exbz"] = exbnames;
+
+			componentNamesMap["b_1"] = b_1names;
+			componentNamesMap["bx1"] = b_1names;
+			componentNamesMap["by1"] = b_1names;
+			componentNamesMap["bz1"] = b_1names;
 
 		}
 
@@ -344,6 +354,11 @@ namespace ccmc
 			f1 = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, FOWARD);
 		}
 //		std::cerr << "after the first trace" << std::endl;
+		if (f1.size() == 0)
+		{
+			delete interpolator;
+			return f1;
+		}
 		f1.removePoint(0);
 
 		Fieldline f2(this->step_max *2);
@@ -357,6 +372,11 @@ namespace ccmc
 		} else
 		{
 			f2 = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, REVERSE);
+		}
+		if (f2.size() == 0)
+		{
+			delete interpolator;
+			return f1;
 		}
 
 		//Fieldline f;
@@ -773,6 +793,10 @@ namespace ccmc
 		cerr << "After getVector for: " << variable << " = " << vectorValue<< endl;
 #endif
 
+		if (vectorValue.component1 == missing ||
+			vectorValue.component2 == missing ||
+			vectorValue.component3 == missing)
+			return fieldline; //empty
 		//start.addVariableData(variable, vectorValue.magnitude());
 
 		Point3f start = Point3f(startComponent1, startComponent2, startComponent3);
