@@ -416,7 +416,7 @@ namespace ccmc
 		bool success = true;
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
-			std::cout << "loading " << requiredVariables[i] << std::endl;
+//			std::cout << "loading " << requiredVariables[i] << std::endl;
 			if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
 			{
 				return false;
@@ -460,7 +460,7 @@ namespace ccmc
 			{
 				for (int i = 0; i < requiredVariables.size(); i++)
 				{
-					std::cout << "loading " << requiredVariables[i] << std::endl;
+//					std::cout << "loading " << requiredVariables[i] << std::endl;
 					if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
 						success = false;
 				}
@@ -469,7 +469,7 @@ namespace ccmc
 		{
 			for (int i = 0; i < requiredVariables.size(); i++)
 			{
-				std::cout << "loading " << requiredVariables[i] << std::endl;
+//				std::cout << "loading " << requiredVariables[i] << std::endl;
 				if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
 					success = false;
 			}
@@ -495,7 +495,7 @@ namespace ccmc
 			{
 				for (int i = 0; i < requiredVariables.size(); i++)
 				{
-					std::cout << "loading " << requiredVariables[i] << std::endl;
+//					std::cout << "loading " << requiredVariables[i] << std::endl;
 					if (model->unloadVariable(requiredVariables[i]) != FileReader::OK)
 						success = false;
 				}
@@ -504,7 +504,7 @@ namespace ccmc
 		{
 			for (int i = 0; i < requiredVariables.size(); i++)
 			{
-				std::cout << "loading " << requiredVariables[i] << std::endl;
+//				std::cout << "loading " << requiredVariables[i] << std::endl;
 				if (model->unloadVariable(requiredVariables[i]) != FileReader::OK)
 					success = false;
 			}
