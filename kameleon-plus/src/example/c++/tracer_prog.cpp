@@ -192,7 +192,7 @@ int main (int argc, char * argv[])
 		std::cout << kameleon.getCurrentTime() << " for run: " << kameleon.getGlobalAttribute("run_registration_number").getAttributeString() << std::endl;
 		start = clock();
 		Fieldline f1;
-		//for (int i = 0; i < 25; i++)
+		for (int i = 0; i < 1000; i++)
 		{
 
 			f1 = tracer.bidirectionalTrace(variable,curr.component1, curr.component2, curr.component3);
