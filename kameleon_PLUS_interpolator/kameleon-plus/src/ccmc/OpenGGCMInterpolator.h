@@ -39,9 +39,9 @@ namespace ccmc
 			boost::unordered_map<long, float> conversionFactorsByID;
 
 
-			int nx;
-			int ny;
-			int nz;
+//			int nx;
+//			int ny;
+//			int nz;
 			const std::vector<float> * x_array;
 			const std::vector<float> * y_array;
 			const std::vector<float> * z_array;

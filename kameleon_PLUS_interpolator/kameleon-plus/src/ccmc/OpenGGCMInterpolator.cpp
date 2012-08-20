@@ -6,6 +6,7 @@
  */
 
 #include "OpenGGCMInterpolator.h"
+#include "OpenGGCM.h"
 #include "Utils.h"
 #include "StringConstants.h"
 
@@ -24,6 +25,8 @@ namespace ccmc
 		conversionFactors["y"] = -1.0f;
 		conversionFactors["bx"] = -1.0f;
 		conversionFactors["by"] = -1.0f;
+		conversionFactors["bx1"] = -1.0f;
+		conversionFactors["by1"] = -1.0f;
 		conversionFactors["ux"] = -1.0f;
 		conversionFactors["uy"] = -1.0f;
 		conversionFactors["jx"] = -1.0f;
@@ -33,6 +36,8 @@ namespace ccmc
 		conversionFactorsByID[modelReader->getVariableID("y")] = -1.0f;
 		conversionFactorsByID[modelReader->getVariableID("bx")] = -1.0f;
 		conversionFactorsByID[modelReader->getVariableID("by")] = -1.0f;
+		conversionFactorsByID[modelReader->getVariableID("bx1")] = -1.0f;
+		conversionFactorsByID[modelReader->getVariableID("by1")] = -1.0f;
 		conversionFactorsByID[modelReader->getVariableID("ux")] = -1.0f;
 		conversionFactorsByID[modelReader->getVariableID("uy")] = -1.0f;
 		conversionFactorsByID[modelReader->getVariableID("jx")] = -1.0f;
@@ -54,10 +59,13 @@ namespace ccmc
 		previous_x = missingValue;
 		previous_y = missingValue;
 		previous_z = missingValue;
+		previous_ix = 0;
+		previous_iy = 0;
+		previous_iz = 0;
 
-		x_array = this->modelReader->getVariableFromMap(ccmc::strings::variables::x_);
-		y_array = this->modelReader->getVariableFromMap(ccmc::strings::variables::y_);
-		z_array = this->modelReader->getVariableFromMap(ccmc::strings::variables::z_);
+		x_array = NULL;
+		y_array = NULL;
+		z_array = NULL;
 
 	}
 
@@ -186,7 +194,9 @@ namespace ccmc
 		} else
 		{
 			//first, find the cell
-
+			x_array = ((OpenGGCM*)this->modelReader)->getXGrid(variable_id);
+			y_array = ((OpenGGCM*)this->modelReader)->getYGrid(variable_id);
+			z_array = ((OpenGGCM*)this->modelReader)->getZGrid(variable_id);
 			ix = Utils<float>::binary_search(*x_array, 0, (*x_array).size() - 1, flipped_c0);
 			iy = Utils<float>::binary_search(*y_array, 0, (*y_array).size() - 1, flipped_c1);
 			iz = Utils<float>::binary_search(*z_array, 0, (*z_array).size() - 1, c2);
