@@ -107,6 +107,159 @@ namespace ccmc
 		variableSIUnits["p"] = "Pa";
 	}
 
+	void OpenGGCM::initializeMaps()
+	{
+		//Staggared grid
+		xGrid["bx1"] = ccmc::strings::variables::x_bx_;
+		xGrid["by1"] = ccmc::strings::variables::x_by_;
+		xGrid["bz1"] = ccmc::strings::variables::x_bz_;
+
+		yGrid["bx1"] = ccmc::strings::variables::y_bx_;
+		yGrid["by1"] = ccmc::strings::variables::y_by_;
+		yGrid["bz1"] = ccmc::strings::variables::y_bz_;
+
+		zGrid["bx1"] = ccmc::strings::variables::z_bx_;
+		zGrid["by1"] = ccmc::strings::variables::z_by_;
+		zGrid["bz1"] = ccmc::strings::variables::z_bz_;
+
+		xGridByID[this->getVariableID("bx1")] = ccmc::strings::variables::x_bx_;
+		xGridByID[this->getVariableID("by1")] = ccmc::strings::variables::x_by_;
+		xGridByID[this->getVariableID("bz1")] = ccmc::strings::variables::x_bz_;
+
+		yGridByID[this->getVariableID("bx1")] = ccmc::strings::variables::y_bx_;
+		yGridByID[this->getVariableID("by1")] = ccmc::strings::variables::y_by_;
+		yGridByID[this->getVariableID("bz1")] = ccmc::strings::variables::y_bz_;
+
+		zGridByID[this->getVariableID("bx1")] = ccmc::strings::variables::z_bx_;
+		zGridByID[this->getVariableID("by1")] = ccmc::strings::variables::z_by_;
+		zGridByID[this->getVariableID("bz1")] = ccmc::strings::variables::z_bz_;
+
+	}
+
+	std::string OpenGGCM::getXGridName(const std::string& variable)
+	{
+		boost::unordered_map<std::string, std::string>::iterator iter = this->xGrid.find(variable);
+		if (iter != xGrid.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return ccmc::strings::variables::x_;
+		}
+	}
+
+
+	std::string OpenGGCM::getXGridName(long variable)
+	{
+		boost::unordered_map<long, std::string>::iterator iter = this->xGridByID.find(variable);
+		if (iter != xGridByID.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return ccmc::strings::variables::x_;
+		}
+	}
+
+	std::string OpenGGCM::getYGridName(const std::string& variable)
+	{
+		boost::unordered_map<std::string, std::string>::iterator iter = this->yGrid.find(variable);
+		if (iter != yGrid.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return ccmc::strings::variables::y_;
+		}
+	}
+
+
+	std::string OpenGGCM::getYGridName(long variable)
+	{
+		boost::unordered_map<long, std::string>::iterator iter = this->yGridByID.find(variable);
+		if (iter != yGridByID.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return ccmc::strings::variables::y_;
+		}
+	}
+
+	std::string OpenGGCM::getZGridName(const std::string& variable)
+	{
+		boost::unordered_map<std::string, std::string>::iterator iter = this->zGrid.find(variable);
+		if (iter != zGrid.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return ccmc::strings::variables::z_;
+		}
+	}
+
+
+	std::string OpenGGCM::getZGridName(long variable)
+	{
+		boost::unordered_map<long, std::string>::iterator iter = this->zGridByID.find(variable);
+		if (iter != zGridByID.end())
+		{
+			//std::cerr << "grid: " << (*iter).second << std::endl;
+			return (*iter).second;
+		}
+		else
+		{
+			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
+			return ccmc::strings::variables::z_;
+		}
+	}
+
+
+	const std::vector<float>* const OpenGGCM::getXGrid(const std::string& variable)
+	{
+		return this->getVariableFromMap(getXGridName(variable));
+	}
+
+	const std::vector<float>* const OpenGGCM::getXGrid(long variable)
+	{
+		return this->getVariableFromMap(getXGridName(variable));
+	}
+
+	const std::vector<float>* const OpenGGCM::getYGrid(const std::string& variable)
+	{
+		return this->getVariableFromMap(getYGridName(variable));
+	}
+
+	const std::vector<float>* const OpenGGCM::getYGrid(long variable)
+	{
+		return this->getVariableFromMap(getYGridName(variable));
+	}
+
+	const std::vector<float>* const OpenGGCM::getZGrid(const std::string& variable)
+	{
+		return this->getVariableFromMap(getZGridName(variable));
+	}
+
+	const std::vector<float>* const OpenGGCM::getZGrid(long variable)
+	{
+		return this->getVariableFromMap(getZGridName(variable));
+	}
+
 	/**
 	 *
 	 */
