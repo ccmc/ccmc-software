@@ -46,6 +46,10 @@ namespace ccmc
 		std::string j_spherical[] = {jr_, jphi_, jtheta_};
 		std::string b[] = {bx_,by_,bz_};
 		std::string b1[] = {b1x_,b1y_,b1z_};
+		std::string b_1[] = {bx1_,by1_,bz1_,x_bx_, y_bx_, z_bx_,x_by_, y_by_, z_by_,x_bz_, y_bz_, z_bz_};
+		std::string bx1[] = {bx1_,x_bx_, y_bx_, z_bx_};
+		std::string by1[] = {by1_,x_by_, y_by_, z_by_};
+		std::string bz1[] = {bz1_,x_bz_, y_bz_, z_bz_};
 		std::string br[] = {br_};
 		std::string bphi[] = {bphi_};
 		std::string btheta[] = {btheta_};
@@ -138,6 +142,11 @@ namespace ccmc
 		addRequirementsForComponents(beta_, 5, beta_without_p_T);
 		addRequirementsForComponents(beta_, 5, beta_without_p_t);
 		addRequirementsForComponents(rho_times_r_tothe_2_power_, 1, rho_times_r_tothe_2_power);
+		addRequirementsForComponents(bx1_, 4, bx1);
+		addRequirementsForComponents(by1_, 4, by1);
+		addRequirementsForComponents(bz1_, 4, bz1);
+		addRequirementsForComponents(b_1_, 12, b_1);
+
 
 		if (modelName == ccmc::strings::models::enlil_)
 		{
@@ -201,7 +210,12 @@ namespace ccmc
 			addRequirementsForVectors(eta_times_jx_, 3, eta_times_j);
 			addRequirementsForVectors(eta_times_jy_, 3, eta_times_j);
 			addRequirementsForVectors(eta_times_jz_, 3, eta_times_j);
-		} else
+			addRequirementsForVectors(bx1_, 12, b_1);
+			addRequirementsForVectors(by1_, 12, b_1);
+			addRequirementsForVectors(bz1_, 12, b_1);
+			addRequirementsForVectors(b_1_, 12, b_1);
+		}
+		else
 		{
 			addRequirementsForVectors(er_, 6, mag_velocity_spherical);
 			addRequirementsForVectors(ephi_, 6, mag_velocity_spherical);
