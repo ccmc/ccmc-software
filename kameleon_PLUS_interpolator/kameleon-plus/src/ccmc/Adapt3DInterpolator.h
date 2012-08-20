@@ -41,7 +41,7 @@ namespace ccmc
 
 			/* variables needed for searching unstructured grids */
 
-			int numThreads;
+//			int numThreads;
 			SmartGridSearchValues *smartSearchValues;
 			//int               unstructured_grid_setup_done;
 
