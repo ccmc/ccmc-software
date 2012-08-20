@@ -1,3 +1,11 @@
+2012 Aug 16   David Berrios
+-------------
+  kameleon-plus-0.3.9
+  - Added support for bx1, by1, and bz1 to the OpenGGCM Interpolator
+  - Fixed fieldline tracer for bx1,by1,bz1 and b_1 for OpenGGCM
+  - Force the fieldline tracer to return when a missing value is found
+  - Bug fixes in the Tracer.
+  
 2012 Aug 14   David Berrios
 -------------
   kameleon-plus-0.3.8
