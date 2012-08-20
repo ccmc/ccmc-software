@@ -48,4 +48,58 @@ public class OpenGGCM extends Model {
     return (cPtr == 0) ? null : new Interpolator(cPtr, false);
   }
 
+  public vector_float getXGrid(String variable) {
+    long cPtr = CCMCJNI.OpenGGCM_getXGrid__SWIG_0(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
+  public vector_float getXGrid(int variable) {
+    long cPtr = CCMCJNI.OpenGGCM_getXGrid__SWIG_1(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
+  public vector_float getYGrid(String variable) {
+    long cPtr = CCMCJNI.OpenGGCM_getYGrid__SWIG_0(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
+  public vector_float getYGrid(int variable) {
+    long cPtr = CCMCJNI.OpenGGCM_getYGrid__SWIG_1(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
+  public vector_float getZGrid(String variable) {
+    long cPtr = CCMCJNI.OpenGGCM_getZGrid__SWIG_0(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
+  public vector_float getZGrid(int variable) {
+    long cPtr = CCMCJNI.OpenGGCM_getZGrid__SWIG_1(swigCPtr, this, variable);
+    return (cPtr == 0) ? null : new vector_float(cPtr, false);
+  }
+
+  public String getXGridName(String variable) {
+    return CCMCJNI.OpenGGCM_getXGridName__SWIG_0(swigCPtr, this, variable);
+  }
+
+  public String getXGridName(int variable_id) {
+    return CCMCJNI.OpenGGCM_getXGridName__SWIG_1(swigCPtr, this, variable_id);
+  }
+
+  public String getYGridName(String variable) {
+    return CCMCJNI.OpenGGCM_getYGridName__SWIG_0(swigCPtr, this, variable);
+  }
+
+  public String getYGridName(int variable_id) {
+    return CCMCJNI.OpenGGCM_getYGridName__SWIG_1(swigCPtr, this, variable_id);
+  }
+
+  public String getZGridName(String variable) {
+    return CCMCJNI.OpenGGCM_getZGridName__SWIG_0(swigCPtr, this, variable);
+  }
+
+  public String getZGridName(int variable_id) {
+    return CCMCJNI.OpenGGCM_getZGridName__SWIG_1(swigCPtr, this, variable_id);
+  }
+
 }
