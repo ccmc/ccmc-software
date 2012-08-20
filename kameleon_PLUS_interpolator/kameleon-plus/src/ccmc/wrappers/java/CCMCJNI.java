@@ -286,6 +286,18 @@ public class CCMCJNI {
   public final static native long new_OpenGGCM();
   public final static native int OpenGGCM_open(long jarg1, OpenGGCM jarg1_, String jarg2);
   public final static native long OpenGGCM_createNewInterpolator(long jarg1, OpenGGCM jarg1_);
+  public final static native long OpenGGCM_getXGrid__SWIG_0(long jarg1, OpenGGCM jarg1_, String jarg2);
+  public final static native long OpenGGCM_getXGrid__SWIG_1(long jarg1, OpenGGCM jarg1_, int jarg2);
+  public final static native long OpenGGCM_getYGrid__SWIG_0(long jarg1, OpenGGCM jarg1_, String jarg2);
+  public final static native long OpenGGCM_getYGrid__SWIG_1(long jarg1, OpenGGCM jarg1_, int jarg2);
+  public final static native long OpenGGCM_getZGrid__SWIG_0(long jarg1, OpenGGCM jarg1_, String jarg2);
+  public final static native long OpenGGCM_getZGrid__SWIG_1(long jarg1, OpenGGCM jarg1_, int jarg2);
+  public final static native String OpenGGCM_getXGridName__SWIG_0(long jarg1, OpenGGCM jarg1_, String jarg2);
+  public final static native String OpenGGCM_getXGridName__SWIG_1(long jarg1, OpenGGCM jarg1_, int jarg2);
+  public final static native String OpenGGCM_getYGridName__SWIG_0(long jarg1, OpenGGCM jarg1_, String jarg2);
+  public final static native String OpenGGCM_getYGridName__SWIG_1(long jarg1, OpenGGCM jarg1_, int jarg2);
+  public final static native String OpenGGCM_getZGridName__SWIG_0(long jarg1, OpenGGCM jarg1_, String jarg2);
+  public final static native String OpenGGCM_getZGridName__SWIG_1(long jarg1, OpenGGCM jarg1_, int jarg2);
   public final static native void delete_OpenGGCM(long jarg1);
   public final static native long new_BATSRUS();
   public final static native int BATSRUS_open(long jarg1, BATSRUS jarg1_, String jarg2);
