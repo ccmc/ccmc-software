@@ -106,9 +106,20 @@ namespace ccmc
 
 
 
+			static const std::string bx1_ = "bx1";
+			static const std::string by1_ = "by1";
+			static const std::string bz1_ = "bz1";
+			static const std::string b_1_ = "b_1";
 
-
-
+			static const std::string x_bx_ = "x_bx";
+			static const std::string y_bx_ = "y_bx";
+			static const std::string z_bx_ = "z_bx";
+			static const std::string x_by_ = "x_by";
+			static const std::string y_by_ = "y_by";
+			static const std::string z_by_ = "z_by";
+			static const std::string x_bz_ = "x_bz";
+			static const std::string y_bz_ = "y_bz";
+			static const std::string z_bz_ = "z_bz";
 
 
 
