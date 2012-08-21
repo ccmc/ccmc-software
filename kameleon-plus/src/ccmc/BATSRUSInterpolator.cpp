@@ -113,7 +113,6 @@ namespace ccmc
 	float BATSRUSInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
 	{
-
 		float missingValue = this->modelReader->getMissingValue();
 		bool main_memory_flag = true;
 		if (this->modelReader->getVariableFromMap(variable_id) == NULL)
@@ -121,7 +120,7 @@ namespace ccmc
 		long status;
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
-		int ib, ic, new_blk[8], valid;
+		int ic, new_blk[8], valid;
 		float ixx, iyy, izz, dx1, dy1, dz1, dx2, dy2, dz2, data_c[8], d_m1, d_m2, yy_c2[4], zz_c2[4];
 
 		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
@@ -498,7 +497,7 @@ namespace ccmc
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
 		float missingValue = this->modelReader->getMissingValue();
-		//	std::cout << "BATSRUSInterpolator::interpolate. variable: " << variable << std::endl;
+		//std::cout << "BATSRUSInterpolator::interpolate. variable: " << variable << std::endl;
 		bool main_memory_flag = true;
 		if (this->modelReader->getVariableFromMap(variable) == NULL)
 			main_memory_flag = false;
@@ -508,7 +507,7 @@ namespace ccmc
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
 
-		int ib, ic, new_blk[8], valid;
+		int ic, new_blk[8], valid;
 		float ixx, iyy, izz, dx1, dy1, dz1, dx2, dy2, dz2, data_c[8], d_m1, d_m2, yy_c2[4], zz_c2[4];
 
 		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
