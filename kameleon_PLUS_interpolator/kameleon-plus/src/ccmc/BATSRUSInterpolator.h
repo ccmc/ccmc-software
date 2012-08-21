@@ -36,12 +36,12 @@ namespace ccmc
 			int nx;
 			int ny;
 			int nz;
-			//int old_block;
+			int old_block;
 			int callCount;
 			float old_x;
 			float old_y;
 			float old_z;
-			long int ib_c[8], ix_c[8], iy_c[8], iz_c[8];
+			long int ib, ib_c[8], ix_c[8], iy_c[8], iz_c[8];
 			float xx_c[8], yy_c[8], zz_c[8];
 			int valid_c[8];
 			const std::vector<float> * block_x_min_array;
