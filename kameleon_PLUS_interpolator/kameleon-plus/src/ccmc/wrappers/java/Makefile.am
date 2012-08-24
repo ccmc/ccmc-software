@@ -1,4 +1,4 @@
-lib_LTLIBRARIES = libkameleon_plus_wrapper_java.la
+lib_LTLIBRARIES = libkameleon_plus-wrapper-java.la
 libkameleon_plus_wrapper_java_la_SOURCES = ccmc_wrap.cxx
 libkameleon_plus_wrapper_java_la_LDFLAGS = -module -avoid-version @JNI_EXTRA_LDFLAGS@ @builddir@/../../../ccmc/libkameleon_plus.la
 #libkameleon_plus_wrapper_java_la_LDFLAGS = -release @RELEASE@ @JNI_EXTRA_LDFLAGS@
