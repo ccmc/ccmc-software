@@ -32,7 +32,7 @@ int main (int argc, char * argv[])
 	c0 = boost::lexical_cast<float>(argv[3]);
 	c1 = boost::lexical_cast<float>(argv[4]);
 	c2 = boost::lexical_cast<float>(argv[5]);
-	for (int o = 0; o < 5; o++)
+	//for (int o = 0; o < 5; o++)
 	{
 		long status = kameleon.open(filename);
 		std::cout << "Opened file: " << filename << " with status: " << status << std::endl;
@@ -47,7 +47,7 @@ int main (int argc, char * argv[])
 			std::cout << "starting interpolations" << std::endl;
 			//start = clock();
 			float value = 0.f;
-			for (int i = 0; i < 1; i++)
+			//for (int i = 0; i < 1; i++)
 			{
 				value = interpolator->interpolate(variable, c0, c1, c2);
 				std::cout << "value: " << value << std::endl;
