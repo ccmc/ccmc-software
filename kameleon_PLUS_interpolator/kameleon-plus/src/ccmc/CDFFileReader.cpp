@@ -33,7 +33,7 @@ namespace ccmc
 	 * @param filename
 	 * @return The status of the open call.  This method should be called from open().
 	 */
-	long CDFFileReader::openFile(const std::string& filename)
+	long CDFFileReader::openFile(const std::string& filename, bool readonly)
 	{
 //		std::cerr << "inside openFile" << std::endl;
 		long status;
@@ -658,7 +658,7 @@ namespace ccmc
 		//std::cout << "after search in getGlobalAttribute(const std::string& attribute" << std::endl;
 
 		//cout << "attribute: " << attribute;
-		long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
+		long attrNum = getGlobalAttributeID(attribute);
 		//cout << "attrNum after attribute: " << attrNum << endl;
 		Attribute current_attribute;
 		if (attrNum < 0)
@@ -670,6 +670,16 @@ namespace ccmc
 			current_attribute = getGlobalAttribute(attrNum);
 		}//gAttributes[attribute] = current_attribute;
 		return current_attribute;
+	}
+
+	/**
+	 * @param attribute
+	 * @return
+	 */
+	long CDFFileReader::getGlobalAttributeID(const std::string& attribute)
+	{
+		long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
+		return attrNum;
 	}
 
 	/**
