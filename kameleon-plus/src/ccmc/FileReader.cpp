@@ -26,13 +26,14 @@ namespace ccmc
 		numVAttributes = 0;
 	}
 
+
 	/**
 	 * @param filename
 	 * @return The CDF status of the open call.  CDF_OK is the standard successful status.
 	 */
-	long FileReader::open(const std::string& filename)
+	long FileReader::open(const std::string& filename, bool readonly)
 	{
-		return openFile(filename);
+		return openFile(filename, readonly);
 	}
 
 	/**
