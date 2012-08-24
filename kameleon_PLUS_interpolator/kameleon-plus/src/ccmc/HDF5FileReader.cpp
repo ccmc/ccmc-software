@@ -39,7 +39,7 @@ namespace ccmc
 	 * @param filename
 	 * @return The status of the open call.  This method should be called from open().
 	 */
-	long HDF5FileReader::openFile(const std::string& filename)
+	long HDF5FileReader::openFile(const std::string& filename, bool readonly)
 	{
 		std::cerr << "HDF5FileReader::openFile" << std::endl;
 		long status = -1L;
