@@ -34,7 +34,7 @@ namespace ccmc
 		public:
 
 			FileReader();
-			long open(const std::string& filename);
+			long open(const std::string& filename, bool readonly = true);
 
 			virtual std::vector<float>* getVariable(const std::string& variable) = 0;
 			virtual std::vector<float>* getVariable(long variableID) = 0;
@@ -55,6 +55,7 @@ namespace ccmc
 			virtual std::string getGlobalAttributeName(long attribute_id) = 0;
 			virtual std::string getVariableAttributeName(long attribute_id) = 0;
 			virtual Attribute getGlobalAttribute(const std::string& attribute) = 0;
+			virtual long getGlobalAttributeID(const std::string& attribute) = 0;
 			virtual Attribute getVariableAttribute(const std::string& variable, const std::string& attribute) = 0;
 			virtual std::vector<std::string> getVariableAttributeNames() = 0;
 			virtual bool doesAttributeExist(const std::string& attribute) = 0;
@@ -64,7 +65,7 @@ namespace ccmc
 			virtual void initializeVariableIDs() = 0;
 			virtual void initializeVariableNames() = 0;
 			virtual long closeFile() = 0;
-			virtual long openFile(const std::string& filename) = 0;
+			virtual long openFile(const std::string& filename, bool readonly) = 0;
 			virtual ~FileReader();
 
 			static const long OK = 0L;
