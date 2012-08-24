@@ -72,7 +72,7 @@ namespace ccmc
 			H5::Group * rootGroup;
 			H5::Group * variableGroup;
 			long closeFile();
-			long openFile(const std::string& filename);
+			long openFile(const std::string& filename, bool readonly);
 			void initializeGlobalAttributes();
 			void initializeVariableAttributes();
 			void initializeVariableIDs();
