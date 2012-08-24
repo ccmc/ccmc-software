@@ -1,3 +1,8 @@
+2012 Aug 21   David Berrios
+-------------
+  kameleon-plus-0.3.10
+  - Whoops! Fixed the BATSRUS Interpolator for derived variables.
+  
 2012 Aug 16   David Berrios
 -------------
   kameleon-plus-0.3.9
