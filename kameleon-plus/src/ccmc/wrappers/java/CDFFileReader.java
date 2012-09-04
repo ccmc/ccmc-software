@@ -120,6 +120,10 @@ public class CDFFileReader extends FileReader {
     return new Attribute(CCMCJNI.CDFFileReader_getGlobalAttribute__SWIG_1(swigCPtr, this, attribute), true);
   }
 
+  public int getGlobalAttributeID(String attribute) {
+    return CCMCJNI.CDFFileReader_getGlobalAttributeID(swigCPtr, this, attribute);
+  }
+
   public Attribute getVariableAttribute(String variable, String attribute) {
     return new Attribute(CCMCJNI.CDFFileReader_getVariableAttribute(swigCPtr, this, variable, attribute), true);
   }
