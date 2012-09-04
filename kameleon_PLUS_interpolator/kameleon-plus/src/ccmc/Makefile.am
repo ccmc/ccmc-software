@@ -98,7 +98,7 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						SWMFIonoInterpolator.cpp
 											
 						
-libkameleon_plus_la_LDFLAGS = -release @RELEASE@ 
+libkameleon_plus_la_LDFLAGS = -release @RELEASE@ @BOOST_DATE_TIME_LIB@
 #-enable-runtime-pseudo-reloc --enable-auto-import
 libkameleon_plus_la_CFLAGS = -fPIC
 
