@@ -15,6 +15,10 @@
 
 namespace ccmc
 {
+
+
+
+
 	/*
 	 *
 	 */
@@ -30,10 +34,13 @@ namespace ccmc
 			bool unloadVariable(const boost::posix_time::ptime& time, const std::string& variable);
 			float interpolate(const boost::posix_time::ptime& time, const std::string& variable, const float& c0, const float& c1, const float& c2);
 			float interpolate(const boost::posix_time::ptime& time, int variable, const float& c0, const float& c1, const float& c2);
+			void clearAll();
 
 		private:
 			std::vector<boost::posix_time::ptime> timesteps;
-			boost::unordered_map<boost::posix_time::ptime, Kameleon> timesteps_map;
+			boost::unordered_map<boost::posix_time::ptime, const std::string&> timesteps_map;
+			boost::unordered_map<boost::posix_time::ptime, Kameleon *> current_kameleon_files;
+			bool isSorted;
 	};
 }
 
