@@ -4128,6 +4128,17 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
@@ -4239,17 +4250,6 @@ SWIG_AsVal_int (PyObject * obj, int *val)
     }
   }  
   return res;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_bool (PyObject *obj, bool *val)
-{
-  int r = PyObject_IsTrue(obj);
-  if (r == -1)
-    return SWIG_ERROR;
-  if (val) *val = r ? true : false;
-  return SWIG_OK;
 }
 
 
@@ -6778,7 +6778,53 @@ fail:
 
 SWIGPY_BINARYFUNC_CLOSURE(_wrap_SwigPyIterator___sub__)
 
-SWIGINTERN PyObject *_wrap_FileReader_open(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_FileReader_open__SWIG_0(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  bool arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FileReader_open",&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_open" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FileReader_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FileReader_open" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "FileReader_open" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  result = (long)(arg1)->open((std::string const &)*arg2,arg3);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FileReader_open__SWIG_1(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
@@ -6812,6 +6858,60 @@ SWIGINTERN PyObject *_wrap_FileReader_open(PyObject *self, PyObject *args) {
 fail:
   if (SWIG_IsNewObj(res2)) delete arg2;
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FileReader_open(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  argv[0] = self;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii + 1] = PyTuple_GET_ITEM(args,ii);
+  }
+  argc++;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_FileReader_open__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_ccmc__FileReader, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_FileReader_open__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'FileReader_open'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ccmc::FileReader::open(std::string const &,bool)\n"
+    "    ccmc::FileReader::open(std::string const &)\n");
+  return 0;
 }
 
 
@@ -7743,6 +7843,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_FileReader_getGlobalAttributeID(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FileReader_getGlobalAttributeID",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_getGlobalAttributeID" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::FileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FileReader_getGlobalAttributeID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FileReader_getGlobalAttributeID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getGlobalAttributeID((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_FileReader_getVariableAttribute(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
@@ -7998,13 +8135,17 @@ SWIGINTERN PyObject *_wrap_FileReader_openFile(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::FileReader *arg1 = (ccmc::FileReader *) 0 ;
   std::string *arg2 = 0 ;
+  bool arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 = SWIG_OLDOBJ ;
+  bool val3 ;
+  int ecode3 = 0 ;
   PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   long result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:FileReader_openFile",&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:FileReader_openFile",&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__FileReader, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FileReader_openFile" "', argument " "1"" of type '" "ccmc::FileReader *""'"); 
@@ -8021,7 +8162,12 @@ SWIGINTERN PyObject *_wrap_FileReader_openFile(PyObject *self, PyObject *args) {
     }
     arg2 = ptr;
   }
-  result = (long)(arg1)->openFile((std::string const &)*arg2);
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "FileReader_openFile" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  result = (long)(arg1)->openFile((std::string const &)*arg2,arg3);
   resultobj = SWIG_From_long(static_cast< long >(result));
   if (SWIG_IsNewObj(res2)) delete arg2;
   return resultobj;
@@ -10177,6 +10323,43 @@ fail:
     "    ccmc::CDFFileReader::getGlobalAttribute(long)\n"
     "    ccmc::CDFFileReader::getGlobalAttribute(std::string const &)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_CDFFileReader_getGlobalAttributeID(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::CDFFileReader *arg1 = (ccmc::CDFFileReader *) 0 ;
+  std::string *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 = SWIG_OLDOBJ ;
+  PyObject * obj1 = 0 ;
+  long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CDFFileReader_getGlobalAttributeID",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__CDFFileReader, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CDFFileReader_getGlobalAttributeID" "', argument " "1"" of type '" "ccmc::CDFFileReader *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::CDFFileReader * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    res2 = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CDFFileReader_getGlobalAttributeID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CDFFileReader_getGlobalAttributeID" "', argument " "2"" of type '" "std::string const &""'"); 
+    }
+    arg2 = ptr;
+  }
+  result = (long)(arg1)->getGlobalAttributeID((std::string const &)*arg2);
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return resultobj;
+fail:
+  if (SWIG_IsNewObj(res2)) delete arg2;
+  return NULL;
 }
 
 
@@ -32520,6 +32703,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__FileReader_methods[] = {
   { "getGlobalAttribute", (PyCFunction) _wrap_FileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
   { "getGlobalAttributeName", (PyCFunction) _wrap_FileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
   { "getVariableAttributeName", (PyCFunction) _wrap_FileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
+  { "getGlobalAttributeID", (PyCFunction) _wrap_FileReader_getGlobalAttributeID, METH_VARARGS, (char*) "" },
   { "getVariableAttribute", (PyCFunction) _wrap_FileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
   { "getVariableAttributeNames", (PyCFunction) _wrap_FileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
   { "doesAttributeExist", (PyCFunction) _wrap_FileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
@@ -32945,6 +33129,7 @@ SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__CDFFileReader_methods[] = {
   { "getGlobalAttribute", (PyCFunction) _wrap_CDFFileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
   { "getGlobalAttributeName", (PyCFunction) _wrap_CDFFileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
   { "getVariableAttributeName", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
+  { "getGlobalAttributeID", (PyCFunction) _wrap_CDFFileReader_getGlobalAttributeID, METH_VARARGS, (char*) "" },
   { "getVariableAttribute", (PyCFunction) _wrap_CDFFileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
   { "getVariableAttributeNames", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
   { "doesAttributeExist", (PyCFunction) _wrap_CDFFileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
