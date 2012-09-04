@@ -35,8 +35,12 @@ public class FileReader {
     }
   }
 
+  public int open(String filename, boolean readonly) {
+    return CCMCJNI.FileReader_open__SWIG_0(swigCPtr, this, filename, readonly);
+  }
+
   public int open(String filename) {
-    return CCMCJNI.FileReader_open(swigCPtr, this, filename);
+    return CCMCJNI.FileReader_open__SWIG_1(swigCPtr, this, filename);
   }
 
   public vector_float getVariable(String variable) {
@@ -120,6 +124,10 @@ public class FileReader {
     return new Attribute(CCMCJNI.FileReader_getGlobalAttribute__SWIG_1(swigCPtr, this, attribute), true);
   }
 
+  public int getGlobalAttributeID(String attribute) {
+    return CCMCJNI.FileReader_getGlobalAttributeID(swigCPtr, this, attribute);
+  }
+
   public Attribute getVariableAttribute(String variable, String attribute) {
     return new Attribute(CCMCJNI.FileReader_getVariableAttribute(swigCPtr, this, variable, attribute), true);
   }
@@ -156,8 +164,8 @@ public class FileReader {
     return CCMCJNI.FileReader_closeFile(swigCPtr, this);
   }
 
-  public int openFile(String filename) {
-    return CCMCJNI.FileReader_openFile(swigCPtr, this, filename);
+  public int openFile(String filename, boolean readonly) {
+    return CCMCJNI.FileReader_openFile(swigCPtr, this, filename, readonly);
   }
 
   public final static int OK = CCMCJNI.FileReader_OK_get();

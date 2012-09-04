@@ -9,7 +9,8 @@
 package gov.nasa.gsfc.ccmc;
 
 public class CCMCJNI {
-  public final static native int FileReader_open(long jarg1, FileReader jarg1_, String jarg2);
+  public final static native int FileReader_open__SWIG_0(long jarg1, FileReader jarg1_, String jarg2, boolean jarg3);
+  public final static native int FileReader_open__SWIG_1(long jarg1, FileReader jarg1_, String jarg2);
   public final static native long FileReader_getVariable__SWIG_0(long jarg1, FileReader jarg1_, String jarg2);
   public final static native long FileReader_getVariable__SWIG_1(long jarg1, FileReader jarg1_, int jarg2);
   public final static native long FileReader_getVariable__SWIG_2(long jarg1, FileReader jarg1_, String jarg2, int jarg3, int jarg4);
@@ -29,6 +30,7 @@ public class CCMCJNI {
   public final static native String FileReader_getGlobalAttributeName(long jarg1, FileReader jarg1_, int jarg2);
   public final static native String FileReader_getVariableAttributeName(long jarg1, FileReader jarg1_, int jarg2);
   public final static native long FileReader_getGlobalAttribute__SWIG_1(long jarg1, FileReader jarg1_, String jarg2);
+  public final static native int FileReader_getGlobalAttributeID(long jarg1, FileReader jarg1_, String jarg2);
   public final static native long FileReader_getVariableAttribute(long jarg1, FileReader jarg1_, String jarg2, String jarg3);
   public final static native long FileReader_getVariableAttributeNames(long jarg1, FileReader jarg1_);
   public final static native boolean FileReader_doesAttributeExist(long jarg1, FileReader jarg1_, String jarg2);
@@ -38,7 +40,7 @@ public class CCMCJNI {
   public final static native void FileReader_initializeVariableIDs(long jarg1, FileReader jarg1_);
   public final static native void FileReader_initializeVariableNames(long jarg1, FileReader jarg1_);
   public final static native int FileReader_closeFile(long jarg1, FileReader jarg1_);
-  public final static native int FileReader_openFile(long jarg1, FileReader jarg1_, String jarg2);
+  public final static native int FileReader_openFile(long jarg1, FileReader jarg1_, String jarg2, boolean jarg3);
   public final static native void delete_FileReader(long jarg1);
   public final static native int FileReader_OK_get();
   public final static native int FileReader_OPEN_ERROR_get();
@@ -98,6 +100,7 @@ public class CCMCJNI {
   public final static native String CDFFileReader_getGlobalAttributeName(long jarg1, CDFFileReader jarg1_, int jarg2);
   public final static native String CDFFileReader_getVariableAttributeName(long jarg1, CDFFileReader jarg1_, int jarg2);
   public final static native long CDFFileReader_getGlobalAttribute__SWIG_1(long jarg1, CDFFileReader jarg1_, String jarg2);
+  public final static native int CDFFileReader_getGlobalAttributeID(long jarg1, CDFFileReader jarg1_, String jarg2);
   public final static native long CDFFileReader_getVariableAttribute(long jarg1, CDFFileReader jarg1_, String jarg2, String jarg3);
   public final static native long CDFFileReader_getVariableAttributeNames(long jarg1, CDFFileReader jarg1_);
   public final static native boolean CDFFileReader_doesAttributeExist__SWIG_0(long jarg1, CDFFileReader jarg1_, String jarg2);
