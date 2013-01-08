@@ -43,6 +43,7 @@ namespace ccmc
 			std::string getYGridName(long variable_id);
 			std::string getZGridName(const std::string& variable);
 			std::string getZGridName(long variable_id);
+			const std::vector<std::string> getLoadedVariables();
 
 			//void loadVariable(std::string variable);
 			virtual ~OpenGGCM();
