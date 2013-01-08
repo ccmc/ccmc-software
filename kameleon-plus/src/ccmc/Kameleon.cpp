@@ -226,8 +226,10 @@ namespace ccmc
 	 */
 	Time Kameleon::getCurrentTime()
 	{
+		ccmc::Attribute attribute = model->getGlobalAttribute("timestep_time");
+		ccmc::Time time = TimeInterpolator::parseTime(attribute.getAttributeString());
 		//selectCDF(current_cdf_id);
-		std::string time_string;
+/*		std::string time_string;
 		//string model_name = gattribute_char_get("model_name");
 		Time time;
 		std::string start_time_char = "";
@@ -265,19 +267,22 @@ namespace ccmc
 
 				}
 				float hours = remainder * 24.0;
-				float hours_int = (int) hours;
+				int hours_int = (int) hours;
 				float minutes = (hours - hours_int) * 60.0;
-				float minutes_int = (int) minutes;
+				int minutes_int = (int) minutes;
 				float seconds = (minutes - minutes_int) * 60.0;
 				//double seconds_int = (int)(seconds + .5);
-				float seconds_int = (int) (seconds);
+				int seconds_int = (int) (seconds);
+				float milliseconds = (seconds - (float)seconds_int)*1000.0;
+				int milliseconds_int = (int)milliseconds;
 
-				time.year = Y;
-				time.month = M;
-				time.day = D;
-				time.hour = hours;
-				time.minute = minutes;
-				time.second = seconds;
+				time.setYear(Y);
+				time.setMonth(M);
+				time.setDay(D);
+				time.setHour(hours_int);
+				time.setMinute(minutes_int);
+				time.setSeconds(seconds_int);
+				time.setMilliseconds(milliseconds_int);
 
 
 				string time_string_month = boost::lexical_cast<std::string>(M);
@@ -308,20 +313,20 @@ namespace ccmc
 			//"2007-05-20T20:30:00.000Z";
 			// << "current_time: " << current_time << endl;
 			string current_time_str = current_time;
-			time.year = boost::lexical_cast<int>(current_time_str.substr(0,4));
+			time.setYear(boost::lexical_cast<int>(current_time_str.substr(0,4)));
 //			cout << "time.year: " << time.year << endl;
-			time.month = boost::lexical_cast<int>(current_time_str.substr(5,2));
+			time.setMonth(boost::lexical_cast<int>(current_time_str.substr(5,2)));
 //			cout << "time.month: " << time.month << endl;
-			time.day = boost::lexical_cast<int>(current_time_str.substr(8,2));
+			time.setDay(boost::lexical_cast<int>(current_time_str.substr(8,2)));
 //			cout << "time.day: " << time.day << endl;
-			time.hour = boost::lexical_cast<int>(current_time_str.substr(11,2));
+			time.setHour(boost::lexical_cast<int>(current_time_str.substr(11,2)));
 //			cout << "time.hour: " << time.hour << endl;
-			time.minute = boost::lexical_cast<int>(current_time_str.substr(14,2));
+			time.setMinute(boost::lexical_cast<int>(current_time_str.substr(14,2)));
 //			cout << "time.minute: " << time.minute << endl;
-			time.second = boost::lexical_cast<float>(current_time_str.substr(17,6));
+			time.setSeconds(boost::lexical_cast<float>(current_time_str.substr(17,6)));
 //			cout << "time.second: " << time.second << endl;
 			time_string = current_time;
-		}
+		}*/
 		return time;
 	}
 
