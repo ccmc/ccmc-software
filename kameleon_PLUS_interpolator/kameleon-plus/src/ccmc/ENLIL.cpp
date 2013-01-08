@@ -64,6 +64,32 @@ namespace ccmc
 		return status;
 	}
 
+	const std::vector<std::string> ENLIL::getLoadedVariables()
+	{
+		std::vector<std::string> requiredVariables;
+		requiredVariables.push_back(r_string);
+		requiredVariables.push_back(lat_string);
+		requiredVariables.push_back(lon_string);
+
+		std::vector<std::string> variablesLoaded = Model::getLoadedVariables();
+
+		for (int i = 0; i < requiredVariables.size(); i++)
+		{
+			int size = variablesLoaded.size();
+			for (int j = 0; j < size; j++)
+			{
+				if (variablesLoaded[j] == requiredVariables[i])
+				{
+					variablesLoaded.erase(variablesLoaded.begin() + j);
+					j = size;
+				}
+
+
+			}
+		}
+		return variablesLoaded;
+	}
+
 	/**
 	 * @copydoc Model::createNewInterpolator()
 	 */
