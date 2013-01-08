@@ -2,13 +2,16 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ(2.59)
-AC_INIT([kameleon_plus], [0.3.10], [David.H.Berrios@nasa.gov], [kameleon_plus])
+#The version specified here is for the distribution version number
+AC_INIT([kameleon_plus], [0.3.15], [David.H.Berrios@nasa.gov], [kameleon_plus])
 AM_INIT_AUTOMAKE([-Wall -Werror no-dependencies tar-ustar dist-bzip2 dist-zip])
 AC_CONFIG_SRCDIR([src/ccmc/Kameleon.h])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AC_SUBST([RELEASE],[0.3.10])
+#changes
+#this specifies the version number on the shared libraries
+AC_SUBST([RELEASE],[0.3.15])
 AC_LANG([C++])
 # Checks for programs.
 AC_PROG_CXX
@@ -19,9 +22,9 @@ AM_PROG_LIBTOOL
 AM_PROG_CC_C_O
 AM_PATH_PYTHON([2.5],,[:])
 AX_BOOST_BASE([1.40])
+#AX_BOOST_FILESYSTEM
 #AX_BOOST_PROGRAM_OPTIONS
 #AX_BOOST_THREAD
-AX_BOOST_DATE_TIME
 
 AC_ARG_ENABLE([universal],
               AC_HELP_STRING([--enable-universal],
