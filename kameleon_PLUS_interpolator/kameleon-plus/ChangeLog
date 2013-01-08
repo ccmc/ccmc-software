@@ -1,3 +1,24 @@
+2012 Oct 11   David Berrios
+-------------
+  kameleon-plus-0.3.15
+  - Fortran wrapper updates for the Time Interpolator
+  - Fixed binary search boundary case
+  
+2012 Oct 10   David Berrios
+-------------
+  kameleon-plus-0.3.13
+  - Updated time interpolator. No longer unloads required variables when calling manageMemory
+  
+2012 Oct 09   David Berrios
+-------------
+  kameleon-plus-0.3.12
+  - Updated time interpolator
+  
+2012 Oct 03   David Berrios
+-------------
+  kameleon-plus-0.3.11
+  - Initial version of time interpolator
+  
 2012 Aug 21   David Berrios
 -------------
   kameleon-plus-0.3.10
