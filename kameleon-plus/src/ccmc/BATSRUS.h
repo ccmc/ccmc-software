@@ -29,7 +29,7 @@ namespace ccmc
 			long open(const std::string& filename);
 
 			Interpolator * createNewInterpolator();
-
+			const std::vector<std::string> getLoadedVariables();
 			virtual ~BATSRUS();
 
 			template<typename T>

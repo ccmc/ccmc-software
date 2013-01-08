@@ -103,6 +103,51 @@ namespace ccmc
 		return status;
 	}
 
+
+
+	const std::vector<std::string> BATSRUS::getLoadedVariables()
+	{
+		std::vector<std::string> requiredVariables;
+		requiredVariables.push_back(ccmc::strings::variables::block_x_min_);
+		requiredVariables.push_back(ccmc::strings::variables::block_x_max_);
+		requiredVariables.push_back(ccmc::strings::variables::block_y_min_);
+		requiredVariables.push_back(ccmc::strings::variables::block_y_max_);
+		requiredVariables.push_back(ccmc::strings::variables::block_z_min_);
+		requiredVariables.push_back(ccmc::strings::variables::block_z_max_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_count_);
+		requiredVariables.push_back(ccmc::strings::variables::block_x_center_);
+		requiredVariables.push_back(ccmc::strings::variables::block_y_center_);
+		requiredVariables.push_back(ccmc::strings::variables::block_z_center_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_1_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_2_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_3_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_4_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_5_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_6_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_7_);
+		requiredVariables.push_back(ccmc::strings::variables::block_child_id_8_);
+		requiredVariables.push_back(ccmc::strings::variables::block_at_amr_level_);
+
+
+		std::vector<std::string> variablesLoaded = Model::getLoadedVariables();
+
+		for (int i = 0; i < requiredVariables.size(); i++)
+		{
+			int size = variablesLoaded.size();
+			for (int j = 0; j < size; j++)
+			{
+				if (variablesLoaded[j] == requiredVariables[i])
+				{
+					variablesLoaded.erase(variablesLoaded.begin() + j);
+					j = size;
+				}
+
+
+			}
+		}
+		return variablesLoaded;
+	}
+
 	/**
 	 *
 	 * @copydoc Model::initializeSIUnits()
