@@ -22,6 +22,7 @@ namespace ccmc{
         SWMFIono();
         long open(const std::string& filename);
         Interpolator* createNewInterpolator();
+        const std::vector<std::string> getLoadedVariables();
         
         virtual ~SWMFIono();
         
