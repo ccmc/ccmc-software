@@ -30,7 +30,6 @@ namespace ccmc
 	template<class T>
 	int Utils<T>::binary_search(const std::vector<T>& vec, unsigned int start, unsigned int end, const T& key)
 	{
-
 		// Termination condition: start index greater than end index
 
 		if (start > end)
@@ -43,17 +42,19 @@ namespace ccmc
 		unsigned int middle = (start + ((end - start) / 2));
 
 		//outside valid range
-		if (middle >= vec.size())
+		if (middle > vec.size())
 			return -1;
 
-		if (key < vec[middle + 1] && key >= vec[middle])
+		if (key == vec[middle])
+		{
+			return middle;
+		} else if (key < vec[middle + 1] && key >= vec[middle])
 		{
 			return middle;
 		} else if (key < vec[middle])
 		{
 			return binary_search(vec, start, middle - 1, key);
 		}
-
 		return binary_search(vec, middle + 1, end, key);
 	}
 }
