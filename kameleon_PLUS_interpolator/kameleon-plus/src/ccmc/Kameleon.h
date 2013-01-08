@@ -48,6 +48,7 @@
 #include "Interpolator.h"
 #include "Model.h"
 #include "GeneralFileReader.h"
+#include "TimeInterpolator.h"
 #include "Constants.h"
 #include "cxform.h"
 #include <iostream>
@@ -70,8 +71,18 @@ namespace ccmc
 
 	extern "C" double parseEPOCH3(char epString[EPOCH3_STRING_LEN+1]);
 	extern "C" void encodeEPOCH3(double epoch, char epString[EPOCH3_STRING_LEN+1]);
+	extern "C" void EPOCHbreakdown(
+			double epoch,
+			long *year,
+			long *month,
+			long *day,
+			long *hour,
+			long *minute,
+			long *second,
+			long *msec);
 
 	class Tracer;
+	class TimeInterpolator;
 	struct Position
 	{
 		float c0;
@@ -185,6 +196,7 @@ namespace ccmc
 	static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
 	static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
 	static boost::unordered_map<int, ccmc::GeneralFileReader *> generalFileReaderObjects;
+	static boost::unordered_map<int, ccmc::TimeInterpolator *> timeInterpolatorObjects;
 
 }
 
