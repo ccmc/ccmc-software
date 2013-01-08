@@ -52,6 +52,36 @@ namespace ccmc
 		return status;
 	}
 
+	const std::vector<std::string> OpenGGCM::getLoadedVariables()
+	{
+		std::vector<std::string> requiredVariables;
+		requiredVariables.push_back(ccmc::strings::variables::x_bx_);
+		requiredVariables.push_back(ccmc::strings::variables::x_by_);
+		requiredVariables.push_back(ccmc::strings::variables::x_bz_);
+		requiredVariables.push_back(ccmc::strings::variables::y_bx_);
+		requiredVariables.push_back(ccmc::strings::variables::y_by_);
+		requiredVariables.push_back(ccmc::strings::variables::y_bz_);
+		requiredVariables.push_back(ccmc::strings::variables::z_bx_);
+		requiredVariables.push_back(ccmc::strings::variables::z_by_);
+		requiredVariables.push_back(ccmc::strings::variables::z_bz_);
+
+		std::vector<std::string> variablesLoaded = Model::getLoadedVariables();
+
+		for (int i = 0; i < requiredVariables.size(); i++)
+		{
+			int size = variablesLoaded.size();
+			for (int j = 0; j < size; j++)
+			{
+				if (variablesLoaded[j] == requiredVariables[i])
+				{
+					variablesLoaded.erase(variablesLoaded.begin() + j);
+					j = size;
+				}
+			}
+		}
+		return variablesLoaded;
+	}
+
 	/**
 	 * @copydoc Model::createNewInterpolator()
 	 */
