@@ -59,7 +59,7 @@ namespace ccmc
 			std::vector<float>* getVariableFromMapRW(long variable_id);
 			std::vector<int>* getIntVariableFromMapRW(long variable_id);
 
-			const std::vector<std::string> getLoadedVariables();
+			virtual const std::vector<std::string> getLoadedVariables();
 
 			void setMissingValue(float missingValue);
 			float getMissingValue();
