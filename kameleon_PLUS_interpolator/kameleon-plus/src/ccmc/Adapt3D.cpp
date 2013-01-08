@@ -19,6 +19,7 @@
 #include <limits>
 #include <cmath>
 #include <vector>
+#include <string>
 
 //#define DEBUG
 //#define DEBUGS
@@ -185,7 +186,31 @@ namespace ccmc
 
 
 
+	const std::vector<std::string> Adapt3D::getLoadedVariables()
+	{
+		std::vector<std::string> requiredVariables;
+		requiredVariables.push_back(ccmc::strings::variables::coord_);
+		requiredVariables.push_back(ccmc::strings::variables::intmat_);
 
+
+		std::vector<std::string> variablesLoaded = Model::getLoadedVariables();
+
+		for (int i = 0; i < requiredVariables.size(); i++)
+		{
+			int size = variablesLoaded.size();
+			for (int j = 0; j < size; j++)
+			{
+				if (variablesLoaded[j] == requiredVariables[i])
+				{
+					variablesLoaded.erase(variablesLoaded.begin() + j);
+					j = size;
+				}
+
+
+			}
+		}
+		return variablesLoaded;
+	}
 
 
 
