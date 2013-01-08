@@ -15,6 +15,7 @@
 #include <vector>
 #include <boost/unordered_map.hpp>
 #include <boost/multi_array.hpp>
+#include <string>
 
 #define NNODE_ADAPT3D 4
 #define NVARS_ADAPT3D 12
@@ -76,7 +77,7 @@ namespace ccmc
 			Interpolator * createNewInterpolator();
 			SmartGridSearchValues * getSmartGridSearchValues();
 			//float * getModifiedCoords();
-
+			const std::vector<std::string> getLoadedVariables();
 
 			virtual ~Adapt3D();
 
