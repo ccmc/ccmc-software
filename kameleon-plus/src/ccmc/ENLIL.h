@@ -29,6 +29,7 @@ namespace ccmc
 			Interpolator* createNewInterpolator();
 			bool getChangeSignFlag(std::string variable);
 			bool getChangeSignFlagByID(long variable_id);
+			const std::vector<std::string> getLoadedVariables();
 
 			virtual ~ENLIL();
 
