@@ -43,6 +43,7 @@ namespace ccmc
 
 			bool getChangeSignFlag(std::string variable);
 			bool getChangeSignFlag(long variable_id);
+			const std::vector<std::string> getLoadedVariables();
 			virtual ~MAS();
 
 		protected:
