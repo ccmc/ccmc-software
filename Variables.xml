@@ -1,0 +1,3530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Fri Jun 10 10:10:15 EDT 2011 -->
+<Variables>
+
+
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown0</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown1</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown2</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown3</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown4</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown5</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown6</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown7</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown8</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown9</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown10</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown11</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown12</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown13</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown14</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown15</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown16</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown17</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown18</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+<Variable>
+   <category>variable</category>
+   <name>kameleon_identity_unknown19</name>
+   <dataType>float</dataType> 
+   <classification>?</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>0.00000E+00</valid_max> 
+   <units>?</units> 
+   <grid_system>?</grid_system> 
+   <mask>?</mask> 
+   <description>?</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>?</position_grid_system> 
+   <data_grid_system>?</data_grid_system> 
+</Variable>
+    
+    
+
+<Variable>
+   <category>polar variable</category>
+   <name>r</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>radius r in spherical coordinates, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>r1</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>radius r in spherical coordinates, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>r2</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>radius r in spherical coordinates, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>r3</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>radius r in spherical coordinates, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>r4</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>radius r in spherical coordinates, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>r5</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>radius r in spherical coordinates, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>phi</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle phi in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>phi1</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle phi in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>phi2</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle phi in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>phi3</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle phi in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>phi4</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle phi in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>phi5</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle phi in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>theta</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle theta in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>theta1</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle theta in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>theta2</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle theta in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>theta3</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle theta in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>theta4</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle theta in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>polar variable</category>
+   <name>theta5</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>360.0</valid_max> 
+   <units>degrees</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>angle theta in spherical coordinates</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>x</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>x1</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>x2</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>x3</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>x4</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>x5</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>y</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>y1</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>y2</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>y3</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>y4</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>y5</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>z</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>z1</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>z2</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>z3</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>z4</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>cartesian variable</category>
+   <name>z5</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate, R = R_E or R_S or AU, 1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit for Heliosphere )</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>H</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>km</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Height above ground.</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>x_bx</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate for BX1.  BX1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>x_by</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate for BY1.  BY1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>x_bz</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Coordinate for BZ1.  BZ1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>y_bx</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Coordinate for BX1.  BX1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>y_by</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Coordinate for BY1.  BY1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>y_bz</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Coordinate for BZ1.  BZ1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>z_bx</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate for BX1.  BX1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>z_by</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate for BY1.  BY1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>special coordinate variable</category>
+   <name>z_bz</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Coordinate for BZ1.  BZ1 is defined on a staggered grid different from X,Y,Z for the other variables</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>geographic</category>
+   <name>c_lon</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>360</valid_max> 
+   <units>deg</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Carrington Longitude</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>geographic</category>
+   <name>c_sine_lat</name>
+   <dataType>float</dataType> 
+   <classification>position</classification> 
+   <valid_min>-1.0</valid_min> 
+   <valid_max>1.0</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Carrington Sine Latitude</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>geographic</category>
+   <name>lon</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-100000000</valid_min> 
+   <valid_max>100000000</valid_max> 
+   <units>****** PROTOTYPE****** rad or deg </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>****** PROTOTYPE****** Longitude</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>geographic</category>
+   <name>lat</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-100000000</valid_min> 
+   <valid_max>100000000</valid_max> 
+   <units>****** PROTOTYPE****** rad or deg </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>****** PROTOTYPE****** Latitude</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>br</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>br_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>br_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>br_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>br_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>bphi</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>bphi_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>bphi_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>bphi_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>bphi_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>btheta</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>btheta_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>btheta_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>btheta_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>btheta_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>b1r</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>R magnetic field component generated from br and bp.  b1r corrects the polarity of br which may have been flipped due to the anti-reconnection feature of advection.  This value is essentially calculated bphi multiplying the sign of bp * br.</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>b1phi</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>PHI magnetic field component generated from bphi and bp. b1phi corrects the polarity of bphi which may have been flipped due to the anti-reconnection feature of advection.  This value is essentially calculated by multiplying the sign of bp * bphi.</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on r,phi,theta</category>
+   <name>b1theta</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>THETA magnetic field component generated from btheta and bp. b1theta corrects the polarity of btheta which may have been flipped due to the anti-reconnection feature of advection. This value is essentially calculated by multiplying the sign of bp * btheta.</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bx</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>THETA magnetic field component generated from btheta and bp. b1theta corrects the polarity of btheta which may have been flipped due to the anti-reconnection feature of advection. This value is essentially calculated by multiplying the sign of bp * btheta.</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bx_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bx_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bx_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bx_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>by</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>by_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>by_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>by_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>by_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bz</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bz_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bz_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bz_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bz_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>b1x</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Derivative X Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>b1y</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Derivative Y Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>b1z</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Derivative Z Magnetic Field Component, Earth field up to 60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not exceeded in Solar/Heliospheric/Earth context</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bx1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.00</valid_min> 
+   <valid_max>1000000000.00</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>B Defined on staggered grid [ x_bx, y_bx, z_bx ]</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>by1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.00</valid_min> 
+   <valid_max>1000000000.00</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>B Defined on staggered grid [ x_by, y_by, z_by ]</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field vector components on x,y,z</category>
+   <name>bz1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.00</valid_min> 
+   <valid_max>1000000000.00</valid_max> 
+   <units>nT</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>B Defined on staggered grid [ x_bz, y_bz, z_bz ]</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>bp</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Magnetic Field Polarity</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>bp_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Magnetic Field Polarity</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>bp_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Magnetic Field Polarity</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>bp_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Magnetic Field Polarity</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>bp_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Magnetic Field Polarity</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>b_l</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-100000000</valid_min> 
+   <valid_max>100000000</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>****** PROTOTYPE****** Line Of Sight Magnetic Field...</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>b_t</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-100000000</valid_min> 
+   <valid_max>100000000</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>****** PROTOTYPE****** Transversal Magnetic Field...</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>raz</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-100000000</valid_min> 
+   <valid_max>100000000</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>****** PROTOTYPE****** </description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>****** PROTOTYPE****** </position_grid_system> 
+   <data_grid_system>****** PROTOTYPE****** </data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>net_flux</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>Gs</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Net Magnetic Flux</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>magnetic field scalar</category>
+   <name>total_flux</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>Gs</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Total Magnetic Flux</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>ur</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>ur_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>ur_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>ur_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>ur_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>uphi</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>uphi_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>uphi_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>uphi_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>uphi_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>utheta</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>utheta_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>utheta_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>utheta_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on r,phi,theta</category>
+   <name>utheta_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>ux</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.00</valid_min> 
+   <valid_max>300000.00</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>ux_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>ux_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>ux_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>ux_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uy</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.00</valid_min> 
+   <valid_max>300000.00</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uy_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uy_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uy_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uy_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uz</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.00</valid_min> 
+   <valid_max>300000.00</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uz_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uz_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uz_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>uz_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-300000.0</valid_min> 
+   <valid_max>300000.0</valid_max> 
+   <units>km/s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Velocity Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>Vn_x</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-100000.0</valid_min> 
+   <valid_max>100000.0</valid_max> 
+   <units>m/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Neutral Velocity - latitudinal / meridian component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>Vn_y</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>m/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Neutral Velocity - longitudinal / zonal component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>Vn_z</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>m/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Neutral Velocity - vertical direction</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>Vi_x</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-100000.0</valid_min> 
+   <valid_max>100000.0</valid_max> 
+   <units>m/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Plasma Velocity - latitudinal / meridian component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>velocity components on x,y,z</category>
+   <name>Vi_y</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>m/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Plasma Velocity - longitudinal / zonal component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>current</category>
+   <name>jr</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>muA/m^2</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>r current Component, Speed of Light is the Maximum</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>current</category>
+   <name>jphi</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>muA/m^2</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>phi current Component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>current</category>
+   <name>jtheta</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>muA/m^2</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>theta current Component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>current</category>
+   <name>jx</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>muA/m^2</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>X Current Component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>current</category>
+   <name>jy</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>muA/m^2</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Y Current Component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>current</category>
+   <name>jz</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>muA/m^2</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Z Current Component</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>resistivity</category>
+   <name>eta</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>Vm/A</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>resistivity</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>rho</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>amu/cm^3</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>rho_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>amu/cm^3</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>rho_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>amu/cm^3</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>rho_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>amu/cm^3</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>rho_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>amu/cm^3</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>dp</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>kg/m^3</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Cloud Mass Density</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>dp_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>kg/m^3</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Cloud Mass Density</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>dp_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>kg/m^3</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Cloud Mass Density</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>dp_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>kg/m^3</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Cloud Mass Density</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>dp_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>kg/m^3</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Cloud Mass Density</description> 
+   <is_vector>true</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>p</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>nPa</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>pressure, limit may be exceeded in dense atmosphere</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>e</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000.0</valid_max> 
+   <units>J/m^3</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>energy, limit may be exceeded in dense atmosphere</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>N_e</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000000000000000000000.0</valid_max> 
+   <units>m/^-3</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Number of Electrons</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>N_O</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000000000000000000000.0</valid_max> 
+   <units>m/^-3</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Number Density of Oxygen Ions</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>N_O2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000000000000000000000.0</valid_max> 
+   <units>m/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Number Density of Molecular Oxygen</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>N_N2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000000000000000000000000000.0</valid_max> 
+   <units>m/s</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Number Density of Molecular Nitrogen</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>Tn</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>K</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Neutral Temperature</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>T</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>K</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Temperature</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>T_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>K</units> 
+   <grid_system>grid_system_2</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Temperature</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_2</position_grid_system> 
+   <data_grid_system>grid_system_2</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>T_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>K</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Temperature</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>T_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>K</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Temperature</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>T_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>K</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Temperature</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>Rmt</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>amu</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Mean Molecular Mass</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>sigmaP</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>mho/m</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Pedersen Conductivity</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>sigmaH</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>mho/m</units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Hall Conductivity</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_amr_levels</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>FLOAT_MASK</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>BATSRUS Adaptive Mesh Refinement Level - the number of levels typically less than 10, can be greater than 20</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_at_amr_level</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>INT_MASK</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Truncated look up table to get block id of root blocks.  Number of elements stored in CDF equal to number of parents at amr level 0</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_x_min</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>R</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Smallest X position value included in current block, limits same as X,Y,Z</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_x_max</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Largest X position value included in current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_y_min</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Smallest Y position value included in current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_y_max</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Largest Y position value included in current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_z_min</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Smallest Z position value included in current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_z_max</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Largest Z position value included in current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_x_center</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Center position value X for current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_y_center</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Center position value Y for current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_z_center</name>
+   <dataType>float</dataType> 
+   <classification>grid</classification> 
+   <valid_min>-10000.0</valid_min> 
+   <valid_max>10000.0</valid_max> 
+   <units>RE</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Center position value Z for current block, limits same as X,Y,Z </description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_parent_id</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>1</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Parent Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_count</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>8</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Number of children blocks created from current block, 0 or 8 children per block by design of BATSRUS grid</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_1</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 1 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_2</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 2 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_3</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 3 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_4</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 4 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_5</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 5 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_6</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 6 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_7</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 7 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>block_child_id_8</name>
+   <dataType>int</dataType> 
+   <classification>grid</classification> 
+   <valid_min>0.0</valid_min> 
+   <valid_max>1000000.0</valid_max> 
+   <units>N/A</units> 
+   <grid_system>N/A</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Child 8 Block ID for current block, -1 would be invalid/empty - arrays prefilled with -1</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>N/A</position_grid_system> 
+   <data_grid_system>N/A</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>density</category>
+   <name>weights</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_1</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Weight Values</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_1</position_grid_system> 
+   <data_grid_system>grid_system_1</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Physical Time Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Physical Time Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Physical Time Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Physical Time Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_step_1</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Time StepVariable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_step_2</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Time Step Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_step_3</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Time Step Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>time_step_4</name>
+   <dataType>float</dataType> 
+   <classification>data</classification> 
+   <valid_min>-1000000000.0</valid_min> 
+   <valid_max>1000000000.0</valid_max> 
+   <units>s</units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>FLOAT_MASK</mask> 
+   <description>Time Step Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>numerical_step_1</name>
+   <dataType>int</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>1000000000</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_3</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Numerical Step Number Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_3</position_grid_system> 
+   <data_grid_system>grid_system_3</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>numerical_step_2</name>
+   <dataType>int</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>1000000000</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_4</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Numerical Step Number Variable for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_4</position_grid_system> 
+   <data_grid_system>grid_system_4</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>numerical_step_3</name>
+   <dataType>int</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>1000000000</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_5</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Numerical Step Number for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_5</position_grid_system> 
+   <data_grid_system>grid_system_5</data_grid_system> 
+</Variable>
+
+<Variable>
+   <category>time-related</category>
+   <name>numerical_step_4</name>
+   <dataType>int</dataType> 
+   <classification>data</classification> 
+   <valid_min>0.00000E+00</valid_min> 
+   <valid_max>1000000000</valid_max> 
+   <units> </units> 
+   <grid_system>grid_system_6</grid_system> 
+   <mask>INT_MASK</mask> 
+   <description>Numerical Step Number for time variant data</description> 
+   <is_vector>false</is_vector> 
+   <position_grid_system>grid_system_6</position_grid_system> 
+   <data_grid_system>grid_system_6</data_grid_system> 
+</Variable>
+
+</Variables>
