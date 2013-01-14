@@ -66,7 +66,7 @@ public class AttributeXMLParser {
 	/**
 	 * Constructor for this class calls the read method
 	 * @param xmlName The name of the XML document that stores the information about 
-	 * the CCMC Attributes Ð typically GlobalCCMCAttributeNames.xml or VariableCCMCAttributeNames.xml . 
+	 * the CCMC Attributes typically GlobalCCMCAttributeNames.xml or VariableCCMCAttributeNames.xml . 
 	 */
 	AttributeXMLParser(String xmlName){ 
 		read(xmlName);	
