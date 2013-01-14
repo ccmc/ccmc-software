@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Tue Jun 14 17:54:06 EDT 2011 -->
+
+<KPVTattrs>
+
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>carrington_longitiude_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>carrington_longitiude_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>carrington_sine_latitude_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>carrington_sine_latitude_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>net_flux_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>net_flux_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>total_flux_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>total_flux_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>weights_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>weights_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>carrington_longitiude</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>carrington_sine_latitude</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>net_flux_2d</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>total_flux_2d</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>weights_2d</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>net_flux</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>total_flux</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>weights</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis1</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis2</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis3</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis_size</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>date</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>telescope</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>instrument</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>observation_site</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>carrington_rotation</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>number_of_elements</name>
+      <datatype>long</datatype>
+</Variable>
+
+
+
+
+
+
+
+
+</KPVTattrs>
