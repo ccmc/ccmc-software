@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="gov/nasa/gsfc/ccmc/KameleonConverter/FileTester.java|gov/nasa/gsfc/ccmc/KameleonConverter/HDF5.java" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/netCDF"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Nujan"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.5.6.jar"/>
+	<classpathentry kind="lib" path="lib/netcdf-4.2.jar"/>
+	<classpathentry kind="lib" path="lib/jargs.jar"/>
+	<classpathentry kind="lib" path="lib/cdfjava.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Applications/cdf34_1-dist/cdfjava/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/nujan-1.4.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/jhdf.jar"/>
+	<classpathentry kind="lib" path="lib/jhdf5.jar"/>
+	<classpathentry kind="lib" path="lib/jhdf5obj.jar"/>
+	<classpathentry kind="lib" path="lib/jhdfobj.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
