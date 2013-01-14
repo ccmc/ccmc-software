@@ -1,57 +1,10 @@
-/*
- * 
- * Name: HDF5Writer.java
- * 
- * Version: 6.0
- * 
- * Author: Nitesh Donti
- * 		   NASA-GSFC-CCMC (Code 587)
- * 		   Intern
- * 
- * Purpose: A class for Attribute information.
- * 			This includes both Global attributes 
- * 			and Variable attributes.  
- * 			Name, Value, Description, Data type, and Attribute type (CCMC vs Model Specific)
- * 			are all included in each KAttribute Object. 
- * 
- * Modification History:
- *  
- * Summer 2011 	Donti, Nitesh
- * 				Initial development started
- * 				Removed Subclasses of KAttribute 
- * 				Added enums for KAttribute type
- * 				All tasks complete
- * 
- * Tasks: 	
- * 
- */
-
 package gov.nasa.gsfc.ccmc.KameleonConverter;
 public class KAttribute {
 
-	/**
-	 * Name of the Attribute
-	 */
 	String name;
-	
-	/**
-	 * What the attribute means or represents
-	 */
 	String description; 
-	
-	/**
-	 * Specifying the Data type of the Attribute
-	 */
-	private DataType dataType;
-	
-	/**
-	 * Specifying whether the Attribute is a CCMC one, which all model types will have, or one that is specific to only this type of model or this exact model.
-	 */
-	private KAttributeType attType;
-	
-	/**
-	 * The value of the attribute
-	 */
+	DataType dataType;
+	KAttributeType attType;
 	Object value;
 
 	/**Enumerator specifying the Data type of the Attribute*/
@@ -59,7 +12,7 @@ public class KAttribute {
 		INT, FLOAT, DOUBLE, STRING, BOOLEAN
 	}
 
-	/**Enumerator specifying whether the Attribute is a CCMC one, which all model types will have, or one that is specific to only this type of model or this exact model.*/
+	/**Enumerator specifying whether the Attribute is a CCMC one, which all model types will have, or one that is specific to only this type of model.*/
 	public enum KAttributeType{
 		CCMC, MODELSPEC
 	}
@@ -101,10 +54,6 @@ public class KAttribute {
 		}
 	}
 
-	/**
-	 * Returns all five components of an Attribute in text form. 
-	 * - Name, Description, DataType, Value, Kameleon Attribute Type
-	 */
 	public String toString(){
 		return "\n[Attribute Name : " + name + 
 		"\n Description    : " + description + 
@@ -113,42 +62,14 @@ public class KAttribute {
 		"\n Attribute Type : " + attType + "]";
 	}
 
-	
-
 	/**
-	 * Sets the data type for this Attribute Object. 
-	 * @param data_type A string stating what type of data the value of this
-	 * Attribute is (e.g. String, boolean, float, etc.)
+	 * Sets the specific value of this Attribute object.
+	 * 
+	 * @param val The value of this attribute object, in any form (String, int, object, array, etc.)
 	 */
-	public void setDataType(String data_type){
-		if(data_type.toLowerCase().indexOf("boo")!=-1)
-			dataType=DataType.BOOLEAN;
-		else if(data_type.toLowerCase().indexOf("dou")!=-1)
-			dataType=DataType.DOUBLE;
-		else if(data_type.toLowerCase().indexOf("str")!=-1)
-			dataType=DataType.STRING;
-		else if(data_type.toLowerCase().indexOf("int")!=-1)
-			dataType=DataType.INT;
-		else if(data_type.toLowerCase().indexOf("flo")!=-1)
-			dataType=DataType.FLOAT;
+	public void setValue(Object val){
+		value=val;
 	}
 
-	/**
-	 * 
-	 * @return An enum stating the data type (String, int, float, etc.) of the
-	 * value of this Attribute
-	 */
-	public DataType getDataType(){
-		return dataType;
-	}
-	
-	/**
-	 * 
-	 * @return An enum stating whether the Attribute is one that is standard (CCMC) or 
-	 * if it is Specific to each unique model
-	 */
-	public KAttributeType getKType(){
-		return attType;
-	}
-	
+
 }

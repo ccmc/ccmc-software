@@ -8,10 +8,10 @@
 
 
 
-<!-- //I only did the first section, up to line 189.  -->
+//I only did the first section, up to line 189. 
 
 
-<!-- //I did not do any netCDF ones, either.  -->
+//I did not do any netCDF ones, either. 
 
 
 <Variable type="object" specification="position variable arrays">
@@ -298,6 +298,7 @@
       <name>tim_polarity_of_magnetic_field_BP_units_vattr</name>
       <datatype>char</datatype>
 </Variable>
+
 
 
 

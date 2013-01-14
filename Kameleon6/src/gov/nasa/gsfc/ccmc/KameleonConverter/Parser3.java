@@ -1,46 +1,7 @@
-/*
- * 
- * Name: Parser3.java
- * 
- * Version: 6.0
- * 
- * Author: Nitesh Donti
- * 		   NASA-GSFC-CCMC (Code 587)
- * 		   Intern
- * 
- * Purpose: *No Longer Necessary. Used Previously to Obtain Information.*
- * 			 
- * 			//Deprecated
- * 			//[Model]attrs.xml NOT currently used
- * 
- * 			This parses a C file from the original 
- * 			Kameleon Converter and helps convert it
- * 			to a format that works well with some
- * 			XML files that include and Model name 
- * 			and "Attributes" in their titles. 
- * 
- *   		Copy everything from the C file and paste it into
- * 			the console. After conversion, copy the resulting 
- * 			text and paste into appropriate XML document.
- * 
- *  		So far, this parser has converted from 
- *  		read_[model].h files to [Model]attrs.xml. 
- * 
- * Modification History:
- *  
- * Summer 2011 	Donti, Nitesh
- * 				Parser Complete
- * 				Parser used to convert to XML
- * 
- * Tasks:
- * 
- */
-
-
 package gov.nasa.gsfc.ccmc.KameleonConverter;
 import java.util.Scanner;
 
-
+//This parser is for turning the read_[model].h files into XML entries under the title [Model]attrs.xml. 
 public class Parser3 {
 
 	public static void main(String[] args) {

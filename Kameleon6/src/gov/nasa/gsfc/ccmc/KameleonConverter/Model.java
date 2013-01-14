@@ -1,27 +1,3 @@
-/*
- * 
- * Name: Model.java
- * 
- * Version: 6.0
- * 
- * Author: Nitesh Donti
- * 		   NASA-GSFC-CCMC (Code 587)
- * 		   Intern
- * 
- * Purpose: The object that stores all of the 
- * 			Variables (Objects) and Global Attributes 
- * 			(KAttribute Objects) for each Model. 
- *  
- * Modification History:
- *  
- * Summer 2011 	Donti, Nitesh
- * 				Initial Development Started
- * 				All tasks complete
- * 				Ready to use
- * 
- * 
- */
-
 package gov.nasa.gsfc.ccmc.KameleonConverter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,7 +30,7 @@ public abstract class Model {
 	 */
 	protected HashMap<String, String> orig2kamel;
 
-	protected VariableXMLParser varxmlparser;
+	protected VariableXMLParser varxmlparser = new VariableXMLParser("Variables.xml");
 
 
 	/**
@@ -64,7 +40,6 @@ public abstract class Model {
 	 */
 	Model(String xmlmodelfile){
 		ModelXMLParser modelparser = new ModelXMLParser(xmlmodelfile);
-		varxmlparser = new VariableXMLParser("Variables.xml");
 
 		for(int i=0; i< modelparser.getModelSpecGlbAttrs().length; i++){
 			this.addGlobalAttribute(modelparser.getModelSpecGlbAttrs()[i]);
@@ -75,36 +50,15 @@ public abstract class Model {
 	/**
 	 * Adds to a CCMC standard variable the attribute values that have already been registered 
 	 * in the XML document entitled "Variables.xml".
-	 * Needs to make sure to not overwrite anything that has already been written. 
 	 * @param var A variable that is in the XML document "Variables.xml".
-	 * @throws NoAttributeException 
 	 */
-	public void getAttrValues(Variable var) throws NoAttributeException{
+	public void getCCMCstandardattrs(Variable var){
+
+		var.cal=varxmlparser.Kname2var.get(var.KameleonName).cal;
+		for(int p=0; p<var.cal.length; p++)
+			var.nameToAttribute.put(var.cal[p].name, var.cal[p]);
 
 
-		try
-		{
-			var.cal=varxmlparser.Kname2var.get(var.KameleonName).cal;
-		}
-		catch (NullPointerException n){
-			logger.info("**Problem with finding the CCMC attributes for this variable: "+var.KameleonName);
-		}
-
-
-		for(int p=0; p<var.cal.length-2; p++) {
-
-			try{
-				if(CommandLineInterface.verboseFlag)
-					logger.info("variable attribute: " + var.cal[p].name + " attribute value: " + var.cal[p].value);
-				if(var.getAttributeObject(var.cal[p].name).value==null){
-					var.nameToAttribute.put(var.cal[p].name, var.cal[p]);
-				}
-			}
-			catch(NullPointerException e){
-				e.printStackTrace();
-			}
-
-		}
 	}
 
 	/**Adds a variable object to the model and to the model's hashmap.
@@ -166,11 +120,11 @@ public abstract class Model {
 		return nameToAttribute.get(s);
 	}
 
-	public int getNumVariables(){
+	public int VarObjsSize(){
 		return variableObjects.size();
 	}
 
-	public int getGlobAttrsSize(){
+	public int GloAttrsSize(){
 		return globalattributes.size();
 	}
 
@@ -184,7 +138,7 @@ public abstract class Model {
 	String FilePathname;
 	String OutputDirectory;
 	String DatabaseInfoFile;
-	String[] AuxiliaryFiles;
+	String AuxiliaryFile;
 
 
 	public void setFilePathname(String path){
@@ -196,8 +150,8 @@ public abstract class Model {
 	public void setDatabaseInfoFile(String file){
 		DatabaseInfoFile = file;
 	}
-	public void setAuxiliaryFiles(String[] af){
-		AuxiliaryFiles = af;
+	public void setAuxiliaryFile(String af){
+		AuxiliaryFile = af;
 	}
 	public void setTimestep(String t){
 		instanceNumber=t;
@@ -214,9 +168,8 @@ public abstract class Model {
 	 * @throws FileNotFoundException 
 	 * @throws IOException 
 	 * @throws NoVariableException 
-	 * @throws Exception 
 	 */
-	public void read() throws NoAttributeException, FileNotFoundException, NoVariableException, IOException{
+	public void read() throws NoAttributeException, FileNotFoundException, NoVariableException, IOException {
 
 		//Parses an XML file with the standard CCMC Global Attributes for each Model
 		String f = "GlobalCCMCAttributeNames.xml";
@@ -245,16 +198,9 @@ public abstract class Model {
 	}
 
 
-	/**
-	 * Calculates the Actual Minimum Value and the Actual Maximum Value
-	 * of the data array of the Variable Object that is passed in. 
-	 * @param var A Variable Object
-	 * @param f The float[] that holds the data of the Variable Object that is passed in. This float[] should be the Variable's dataValues Object, but cast to a float[].
-	 * @throws NoAttributeException 
-	 */
 	public void minmaxCalculator(Variable var, float[] f){
 		float min_value = Float.MAX_VALUE;
-		float max_value = -Float.MAX_VALUE;
+		float max_value = Float.MIN_VALUE;
 		for (int t = 0; t < f.length; t++){
 			if (f[t] < min_value)
 			{
@@ -264,38 +210,11 @@ public abstract class Model {
 				max_value = f[t];
 			}
 		}
-
-		try
-		{
-			var.getAttributeObject("actual_min").value=min_value;
-			var.getAttributeObject("actual_max").value=max_value;
-			int min_location=-1;
-			int max_location=-1;
-			for (int u = 0; u<var.cal.length; u++){
-				KAttribute k = var.cal[u];
-				if (k.name.equals("actual_min")){
-					min_location = u;
-				}
-				else if (k.name.equals("actual_max")){
-					max_location = u;
-				}
-			}
-			var.cal[min_location]=var.getAttributeObject("actual_min");
-			var.cal[max_location]=var.getAttributeObject("actual_max");
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-
+		var.addAttribute(new KAttribute("actual_min", min_value, "Smallest value in the data for a particular variable.","model", "float"));
+		var.addAttribute(new KAttribute("actual_max", max_value, "Largest value in the data for a particular variable.", "model", "float"));
 	}
 
-	/**
-	 * Calculates the Actual Minimum Value and the Actual Maximum Value
-	 * of the data array of the Variable Object that is passed in. 
-	 * @param var A Variable Object
-	 * @param f The int[] that holds the data of the Variable Object that is passed in. This int[] should be the Variable's dataValues Object, but cast to a float[].
-	 * @throws NoAttributeException 
-	 */
+
 	public void minmaxCalculator(Variable var, int[] f){
 		int min_value = Integer.MAX_VALUE;
 		int max_value = Integer.MIN_VALUE;
@@ -309,17 +228,8 @@ public abstract class Model {
 				max_value = f[t];
 			}
 		}
-
-		try
-		{
-			var.getAttributeObject("actual_min").value=min_value;
-			logger.debug(var.getAttributeObject("actual_min").value);
-			var.getAttributeObject("actual_max").value=max_value;
-			logger.debug(var.getAttributeObject("actual_max").value);
-		} catch (NoAttributeException e)
-		{
-			e.printStackTrace();
-		}
+		var.addAttribute(new KAttribute("actual_min", min_value, "Smallest value in the data for a particular variable.", "model", "int"));
+		var.addAttribute(new KAttribute("actual_max", max_value, "Largest value in the data for a particular variable.","model", "int"));
 	}
 
 

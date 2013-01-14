@@ -51,4 +51,22 @@
 
 
 
+
+
+<!--
+<attribute>
+	<name>grid_system_n_number_of_dimensions</name>
+	<description>The number m of how many dimensions are in grid n. So for every grid there will be a corresponding grid_system_n_number_of_dimensions attribute (e.g. The first grid will have an attribute grid_system_1_number_of_dimensions)</description>
+	<datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>grid_system_n_dimension_m_size</name>
+	<description>Size of dimension m for grid n (e.g. grid_system_1_dimension_2_size)</description>
+	<datatype>String</datatype>
+</attribute>
+
+-->
+
+
 </Type>

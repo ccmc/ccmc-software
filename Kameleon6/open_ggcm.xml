@@ -6,85 +6,33 @@
 
 <!--there are just guesses. get an expert to do the mapping.-->
 
-	<variable>
+		           <variable>
         <OriginalName>bx</OriginalName>
-        <KameleonName>bx</KameleonName>
+        <KameleonName>br</KameleonName>
     </variable>
     <variable>
         <OriginalName>by</OriginalName>
-        <KameleonName>by</KameleonName>
+        <KameleonName>btheta</KameleonName>
     </variable>
     <variable>
         <OriginalName>bz</OriginalName>
-        <KameleonName>bz</KameleonName>
+        <KameleonName>bphi</KameleonName>
     </variable>
        <variable>
         <OriginalName>vx</OriginalName>
-        <KameleonName>ux</KameleonName>
+        <KameleonName>ur</KameleonName>
     </variable>
     <variable>
         <OriginalName>vy</OriginalName>
-        <KameleonName>uy</KameleonName>
+        <KameleonName>utheta</KameleonName>
     </variable>
     <variable>
         <OriginalName>vz</OriginalName>
-        <KameleonName>uz</KameleonName>
-    </variable>  
-    <variable>
-        <OriginalName>rr</OriginalName>
-        <KameleonName>rho</KameleonName>
-    </variable>  
-    <variable>
-        <OriginalName>pp</OriginalName>
-        <KameleonName>p</KameleonName>
-    </variable>  
-    <variable>
-        <OriginalName>resis</OriginalName>
-        <KameleonName>eta</KameleonName>
-    </variable>    
-    <variable>
-        <OriginalName>gridx_bx</OriginalName>
-        <KameleonName>x_bx</KameleonName>
-    </variable>    
-    <variable>
-        <OriginalName>gridx_by</OriginalName>
-        <KameleonName>x_by</KameleonName>
-    </variable>    
-    <variable>
-        <OriginalName>gridx_bz</OriginalName>
-        <KameleonName>x_bz</KameleonName>
+        <KameleonName>uphi</KameleonName>
     </variable>
-	<variable>
-        <OriginalName>gridy_bx</OriginalName>
-        <KameleonName>y_bx</KameleonName>
-    </variable>    
-    <variable>
-        <OriginalName>gridy_by</OriginalName>
-        <KameleonName>y_by</KameleonName>
-    </variable>    
-    <variable>
-        <OriginalName>gridy_bz</OriginalName>
-        <KameleonName>y_bz</KameleonName>
-    </variable>    
-
-	<variable>
-        <OriginalName>xjx</OriginalName>
-        <KameleonName>jx</KameleonName>
-    </variable>    
-    <variable>
-        <OriginalName>xjy</OriginalName>
-        <KameleonName>jy</KameleonName>
-    </variable>    
-    <variable>
-        <OriginalName>xjz</OriginalName>
-        <KameleonName>jz</KameleonName>
-    </variable>    
-
-
-
-
-
-<attribute>
+    
+    
+                <attribute>
 	<name>README</name>
 	<description>General description of the model, CDF contents, and HOWTO usage</description>
 	<dataType>String</dataType>
@@ -112,7 +60,7 @@
 	<name>model_name</name>
 	<description>Name of the registered model that produced the data</description>
 	<dataType>String</dataType>
-	<value>open_ggcm</value>
+	<value>openggcm</value>
 </attribute>
 
 <attribute>

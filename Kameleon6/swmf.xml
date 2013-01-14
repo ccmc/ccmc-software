@@ -41,21 +41,14 @@
 	<name>output_type</name>
 	<description>Define the type of output that is contained in the file (e.g. Global Magnetosphere model with Ionosphere output)</description>
 	<dataType>String</dataType>
-	<value>Ionosphere</value>
+	<value>Ionosphere?</value>
 </attribute>
 
 <attribute>
 	<name>grid_system_1</name>
 	<description>Outline how a particular grid system is defined by showing coordinates used (e.g. [X,Y,Z] where X,Y,Z are position variables defined in current file)</description>
 	<dataType>String</dataType>
-	<value>[theta,phi]</value>
-</attribute>
-
-<attribute>
-	<name>grid_system_2</name>
-	<description>Outline how a particular grid system is defined by showing coordinates used (e.g. [X,Y,Z] where X,Y,Z are position variables defined in current file)</description>
-	<dataType>String</dataType>
-	<value>[x,y,z]</value>
+	<value>[r,theta,phi]</value>
 </attribute>
 
 
@@ -63,124 +56,107 @@
 	<name>grid_1_type</name>
 	<description>Keywords identifying all grids used in current model output. Grid types will be registered in external coordinate transformation package. (e.g. grid_1_type=GSM)</description>
 	<dataType>String</dataType>
-	<value>Spherical</value>
+	<value>?</value>
 </attribute>
-<attribute>
-	<name>grid_2_type</name>
-	<description>Keywords identifying all grids used in current model output. Grid types will be registered in external coordinate transformation package. (e.g. grid_1_type=GSM)</description>
-	<dataType>String</dataType>
-	<value>SM</value>
-</attribute>
-
 
 <attribute>
 	<name>run_type</name>
 	<description>Signifies either an event or modeled run</description>
 	<dataType>String</dataType>
-	<value>?</value>  <!-- don't we get that from DatabaseInfo? -->
+	<value>?</value>
 </attribute>
-
-
-
 
 
 <attribute>
 	<name>standard_grid_target</name>
 	<description>Defines a standard target grid and coordinate system to which the current model's output can be interpolated using Kameleon Access/Interpolation Library or a coupled coordinate transformation package</description>
 	<dataType>String</dataType>
-	<value>SM</value>
+	<value>?</value>
 </attribute>
 
 
 
 <variable>
-  <OriginalName>Psi</OriginalName>
-  <KameleonName>phi</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Theta</OriginalName>
-  <KameleonName>theta</KameleonName>
-</variable>
-<variable>
-  <OriginalName>PHI</OriginalName>
-  <KameleonName>ep</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Ux</OriginalName>
-  <KameleonName>ux</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Uy</OriginalName>
-  <KameleonName>uy</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Uz</OriginalName>
-  <KameleonName>uz</KameleonName>
-</variable>
-<variable>
-  <OriginalName>X</OriginalName>
-  <KameleonName>x</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Y</OriginalName>
-  <KameleonName>y</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Z</OriginalName>
-  <KameleonName>z</KameleonName>
-</variable>
-<variable>
-  <OriginalName>SigmaP</OriginalName>
-  <KameleonName>sigmaP</KameleonName>
-</variable>
-<variable>
-  <OriginalName>SigmaH</OriginalName>
-  <KameleonName>sigmaH</KameleonName>
-</variable>
-<variable>
-  <OriginalName>E-Flux</OriginalName>
-  <KameleonName>eflux</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Ave-E</OriginalName>
-  <KameleonName>eave</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Ex</OriginalName>
-  <KameleonName>ex</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Ey</OriginalName>
-  <KameleonName>ey</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Ez</OriginalName>
-  <KameleonName>ez</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Jx</OriginalName>
-  <KameleonName>jx</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Jy</OriginalName>
-  <KameleonName>jy</KameleonName>
-</variable>
-<variable>
-  <OriginalName>Jz</OriginalName>
-  <KameleonName>jz</KameleonName>
-</variable>
-<variable>
-  <OriginalName>JR</OriginalName>
-  <KameleonName>jr</KameleonName>
-</variable>
-<!-- <variable> -->
-<!--   <OriginalName>JouleHeat</OriginalName> -->
-<!--   <KameleonName>jouleheating</KameleonName> -->
-<!-- </variable> -->
-<!-- <variable> -->
-<!--   <OriginalName>IonNumFlux</OriginalName> -->
-<!--   <KameleonName>ionnumflux</KameleonName> -->
-<!-- </variable>     -->
+        <OriginalName>Psi</OriginalName>
+        <KameleonName>r</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Theta</OriginalName>
+        <KameleonName>theta</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>PHI</OriginalName>
+        <KameleonName>phi</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Ux</OriginalName>
+        <KameleonName>ur</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Uy</OriginalName>
+        <KameleonName>utheta</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Uz</OriginalName>
+        <KameleonName>uphi</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>X</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Y</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Z</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>SigmaP</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>SigmaH</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>E-Flux</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Ave-E</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Ex</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Ey</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Ez</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Jx</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Jy</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Jz</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>JR</OriginalName>
+        <KameleonName></KameleonName>
+    </variable>
+    
 
 
 

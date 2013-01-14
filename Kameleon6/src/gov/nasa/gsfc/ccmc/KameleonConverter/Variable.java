@@ -7,30 +7,12 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 
 public class Variable{
-
-	/**
-	 * Logger for the Variable.java class. 
-	 * Use Logger.info(), Logger.debug(), and Logger.error() to print
-	 * statements out within the class. 
-	 */
-	static Logger logger = Logger.getLogger(Variable.class);
-
-	/**
-	 * The name of the Variable, as named by the 
-	 * original input model file
-	 */
+	
+	Logger logger = Logger.getLogger(Variable.class);
+	
 	public String originalName;
-
-	/**
-	 * The name of the Variable, as accepted/called
-	 * by the Kameleon Software  as a method of
-	 * name standardization
-	 */
 	public String KameleonName;
 
-	/**
-	 * The array of data for this Variable
-	 */
 	public Object dataValues;
 
 	/**
@@ -48,23 +30,22 @@ public class Variable{
 	 * The number of elements in the variable's array of values.
 	 */
 	public int numElem;
-
+	
 	/**
 	 *A long array, with dimSizes.length == numDim. List the number of elements in each dimension. Example: {10, 20} 
 	 */
 	public int[] dimSizes;
 
 	/**
-	 * "CCMC Attribute List"
-	 * An array for Variable Attributes that are standard across all models. 
+	 * An array for Variable Attributes that are standard across all model. 
 	 * Since these are all CCMC Attributes, we know which ones to expect and look for,
 	 * and therefore know the size of the array (so no need for an ArrayList).
 	 */
 	KAttribute[] cal = null;
 
 	/**
-	 * "Model-Specific Attribute Array List"
-	 * An Array List for Variable Attributes that vary across different model.
+	 * An Array List for Variable Attributes that vary across different model types. 
+	 * Since they are Model Specific Variable Attributes, we do not know how
 	 * many to expect so an ArrayList is more ideal so that we can add on attributes 
 	 * as we go along. 
 	 */
@@ -80,13 +61,13 @@ public class Variable{
 	 * Constructor for Variable Object. 
 	 * 
 	 * Also, parses the XML file "VariableCCMCAttributeNames.xml" in order to 
-	 * assign the Variable Object its 9 CCMC Standard Variable Attributes and values. 
+	 * assign the Variable Object its 9 CCMC Standard Variable Attributes. 
 	 * 
 	 * Puts those Variable Attributes in the array and in the hashmap.
 	 * 
 	 * Also, adds a Model Specific Variable Attribute that states what the original name of the variable is. 
 	 * 
-	 * @param orig    The variable's original name. 
+	 * @param orig    The variables original name. 
 	 * @param kamel	  The new Kameleon standard name for the variable. 
 	 */
 	Variable(String orig, String kamel) {
@@ -94,14 +75,13 @@ public class Variable{
 		originalName = orig; 
 		KameleonName = kamel;
 		addAttribute(new KAttribute("Original Name", originalName, "The original name of the variable, as stated in the Input File" , "model", "String"));
-
+		
 
 		AttributeXMLParser attrxmlparser = new AttributeXMLParser("VariableCCMCAttributeNames.xml");
 		cal=attrxmlparser.getAttributes();
 
-		for(int i=0; i<cal.length; i++){
+		for(int i=0; i<cal.length; i++)
 			nameToAttribute.put(cal[i].name, cal[i]);
-			}
 	}
 
 	/** 
@@ -110,7 +90,7 @@ public class Variable{
 	public KAttribute getAttributeObject (String attributeName) throws NoAttributeException{
 
 		if(nameToAttribute.get(attributeName)==null)
-			throw new NoAttributeException(attributeName);
+			throw new NoAttributeException();
 		KAttribute b = nameToAttribute.get(attributeName);
 
 		return b;
@@ -123,7 +103,7 @@ public class Variable{
 	 * @param k ModelSpecificAttribute (only) to be added to the Variable Object's collection of attributes. 
 	 */
 	public void addAttribute(KAttribute k){
-		if(k.getKType()==KAttributeType.MODELSPEC){
+		if(k.attType==KAttributeType.MODELSPEC){
 			nameToAttribute.put(k.name, k);
 			msaal.add(k);
 		}
@@ -170,13 +150,13 @@ public class Variable{
 		"\n Kameleon Name : " + KameleonName;
 
 	}
-
+	
 	/**
 	 * Prints out a String representation of the Variable's Attribute names and their corresponding values
 	 * @throws NoAttributeException
 	 */
 	public void printAllAttrs() throws NoAttributeException{
-
+		
 		StringBuffer line = new StringBuffer().append("[\n");
 		for(int i = 0; i<getAllAttributeNames().length; i++){
 			line.append(getAttributeObject(getAllAttributeNames()[i]).name + " = " + getAttributeObject(getAllAttributeNames()[i]).value+"\n");
@@ -185,5 +165,5 @@ public class Variable{
 		logger.debug(line.toString());
 	}
 
-
+	
 }

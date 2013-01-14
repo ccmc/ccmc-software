@@ -1,32 +1,3 @@
-/*
- * 
- * Name: ModelXMLParser.java
- * 
- * Version: 6.0
- * 
- * Author: Nitesh Donti
- * 		   NASA-GSFC-CCMC (Code 587)
- * 		   Intern
- * 
- * Purpose: This parses XML files that are entitled with the name of an input
- * 			Model type (e.g. enlil.xml, batsrus.xml, [model].xml). 
- * 			1) It gets all of the information for hardcoded Global Attributes (e.g. README). 
- * 			2) It gets the original names and Kameleon names of expected variables
- * 			   and maps them together. 
- *  
- * Modification History:
- *  
- * Summer 2011 	Donti, Nitesh
- * 				Initial Development Started
- * 				All tasks complete
- * 				Ready to use
- * 
- * Tasks:
- * 
- */
-
-
-
 package gov.nasa.gsfc.ccmc.KameleonConverter;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -39,52 +10,26 @@ import org.w3c.dom.Element;
 import java.io.File;
 import java.util.HashMap;
 
+//This parses the [model].xml files and gets all of the hardcoded Global Attributes
 public class ModelXMLParser {
 
-	/**
-	 * A logger for the ModelXMLParser class. 
-	 * To print, use logger.info(), logger.debug(), or logger.error().
-	 */
 	static Logger logger = Logger.getLogger(ModelXMLParser.class);
 
-	/**
-	 * Holds the array of (Model-Specific, Global) KAttributes, produced from the information
-	 * provided by the model's XML file
-	 */
 	private KAttribute[] attrs=null;
 
-	/**
-	 * Key = Original Name of the Variable 
-	 * Value = Kameleon Name of the Variable
-	 */
 	private HashMap<String, String>namesMap= new HashMap<String, String>();
 
-	/**
-	 * Constructor for ModelXMLParser
-	 * @param f XML file for the model (e.g. enlil.xml)
-	 */
 	ModelXMLParser(String f){
 		read(f);
 	}
 
-	/**
-	 * 
-	 * @return An array of (Model-Specific, Global) KAttributes, produced from the information
-	 * provided by the model's XML file
-	 */
 	public KAttribute[] getModelSpecGlbAttrs(){
 		return attrs;
 	}
-	
-	/**
-	 * Reads an XML file for a model (e.g. enlil.xml, swmf.xml) and gets from it the information 
-	 * about hardcoded Global Attributes and also gets the original & Kameleon names of expected
-	 * variables in order to map them together. 
-	 * @param f XML file for a model (e.g. enlil.xml, swmf.xml)
-	 */
 	public void read (String f) {
 
 		try {
+
 			File file = new File(f);
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
@@ -93,6 +38,7 @@ public class ModelXMLParser {
 			//if(CommandLineInterface.verboseFlag)logger.debug("---------------------------------\n"  + "Model Type: " + doc.getDocumentElement().getAttribute("name") + "\n---------------------------------");
 
 			NodeList nodeAttrLst = doc.getElementsByTagName("attribute");
+
 
 			attrs = new KAttribute[nodeAttrLst.getLength()];
 
@@ -143,10 +89,13 @@ public class ModelXMLParser {
 
 			}
 
+
 			//if(CommandLineInterface.verboseFlag) logger.debug("Attributes: " + attrs.length);
 
+
+
 			NodeList nodeNamesList = doc.getElementsByTagName("variable");
-			//this for-loop parses children with 2 types of children
+
 			for(int s=0; s<nodeNamesList.getLength(); s++){
 				Node node1 = nodeNamesList.item(s);
 
@@ -170,17 +119,21 @@ public class ModelXMLParser {
 						if(CommandLineInterface.verboseFlag)
 							logger.debug("Mapping Original Name \""+ ((Node) aName.item(0)).getNodeValue() +"\" to Kameleon Name \"" + ((Node) bName.item(0)).getNodeValue() + "\"") ;
 					}
+
 				}
+
 			}
+
+
+
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
 	}
 
-	/**
-	 * 
-	 * @return A hashmap that maps the Original Name of a Variable to its Kameleon Name
-	 */
 	public HashMap<String, String> getNamesMap() {
 		return namesMap;
 	}

@@ -1,35 +1,3 @@
-/*
- * 
- * Name: Parser1.java
- * 
- * Version: 6.0
- * 
- * Author: Nitesh Donti
- * 		   NASA-GSFC-CCMC (Code 587)
- * 		   Intern
- * 
- * Purpose: *No Longer Necessary. Used Previously to Obtain Information.*
- * 			
- * 	
- * 			This parses a C file from the original 
- * 			Kameleon Converter and helps convert it
- * 			to a format that works well with the 
- * 			GlobalCCMCAttributeNames.xml file. 
- * 
- *   		Copy everything from the C file and paste it into
- * 			the console. After conversion, copy the resulting 
- * 			text and paste into GlobalCCMCAttributeNames.xml. 
- * 
- * Modification History:
- *  
- * Summer 2011 	Donti, Nitesh
- * 				Parser Complete
- * 				Parser used to convert to XML
- * 
- * Tasks:       None. No further development necessary.  
- * 
- */
-
 package gov.nasa.gsfc.ccmc.KameleonConverter;
 import java.util.Scanner;
 

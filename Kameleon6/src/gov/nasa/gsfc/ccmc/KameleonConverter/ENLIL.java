@@ -1,62 +1,74 @@
-/*
- * 
- * Name: ENLIL.java
- * 
- * Version: 6.0
- * 
- * Author: Nitesh Donti
- * 		   NASA-GSFC-CCMC (Code 587)
- * 		   Intern
- * 
- * Purpose: Custom read routine for the 
- * 			Enlil input model file. Supports those
- * 			with and without extra CME data. 
- *  
- * Modification History:
- *  
- * Summer 2011 	Donti, Nitesh
- * 				Initial Development Started
- * 				All tasks complete
- * 				Ready to use
- * 
- * Tasks:	Need to update the README because developers
- * 	 		no longer use the EVP files. 	 
- * 
- * Winter 2012: Starting to build support for Enlil files with CMEs
- *  			Bug fixes and adapting to other changes that occurred over the year  
- * 
- */
-
-
 package gov.nasa.gsfc.ccmc.KameleonConverter;
 import java.io.IOException;
 import org.apache.log4j.Logger;
 import ucar.ma2.Array;
+/*import ucar.ma2.ArrayFloat;
+import ucar.ma2.ArrayFloat.D4;
+
+
+					if(tempV.numDim==4){
+
+						System.out.println("hi");
+
+						ArrayFloat.D4 a = (D4) ncVariables.get(i).read();
+						tempV.dataValues=new float[(int) tempV.numElem];
+						int num=0;
+
+						float b;	
+
+						float min_value = Float.MAX_VALUE;
+						float max_value = Float.MIN_VALUE;
+
+						for(int m=0;m<a.getShape()[0];m++)
+							for(int j=0;j<a.getShape()[1];j++)
+								for(int k=0;k<a.getShape()[2];k++)
+									for(int l=0;l<a.getShape()[3];l++){
+										b= (float) a.get(m, j, k, l);
+
+										((float[])(tempV.dataValues))[num]= b;
+
+
+
+										if ( b< min_value)
+										{
+											min_value = b;
+										} else if (b > max_value)
+										{
+											max_value = b;
+										}	
+
+										num++;
+
+									}
+
+
+						tempV.addAttribute(new KAttribute("actual_min", min_value, "Smallest value in the data for a particular variable.", "model", "float"));
+						tempV.addAttribute(new KAttribute("actual_max", max_value, "Largest value in the data for a particular variable.","model", "float"));
+
+				}
+
+				else{
+
+ */
 import ucar.nc2.NetcdfFile;
 
+//Task?: Change the valid_min and valid_max to String values
+// Update the README because we do not use the evp files anymore. 
 
 public class ENLIL extends Model{
-	boolean has_CME;
 
-	/**
-	 * Logger for the ENLIL.java class. 
-	 * Use Logger.info(), Logger.debug(), and Logger.error() to print
-	 * statements out within the class. 
-	 */
 	static Logger logger = Logger.getLogger(ENLIL.class);
 
 	/**The Netcdf/Enlil file from which to read.*/
 	NetcdfFile file;          		
 
 	/**
-	 * The List of Variables from the NetCDF File. Note that these Variables are
-	 * different from the CDF Variables and from the KameleonConverter Variables. 
+	 * The List of Variables from the NetCDF File. Note that these Variables are different from the CDF Variables and from the KameleonConverter Variables. 
 	 */
 	java.util.List<ucar.nc2.Variable> ncVariables;
 
-	ENLIL(boolean has_CME){
-		super(has_CME? "enlilcme.xml":"enlil.xml");
-		this.has_CME = has_CME;
+	ENLIL(){
+		super("enlil.xml");
 	}
 
 	/**
@@ -71,19 +83,20 @@ public class ENLIL extends Model{
 		logger.info("Now OPENING " + FilePathname);
 		//if opening this file does not work, the Command Line Interface will handle the exception and alert the user
 		file=NetcdfFile.open(FilePathname);
+
+		logger.info("\nsetting Global Attributes...");
 		setGlobalAttrs();
+
+		logger.info("\nsetting Variable Attributes...");
 		setVariableAttrs();
-		
-		this.getGlobalAttribute("original_output_file_name").value=
-			this.FilePathname.substring(this.FilePathname.lastIndexOf('/'));
-		logger.info("\n\nThe information for your new java "+ this 
-				+" has just been read from the original file!");
-		logger.debug(super.getVariableObject(6).cal[9]);
+
+		this.getGlobalAttribute("original_output_file_name").value=this.FilePathname.substring(this.FilePathname.lastIndexOf('/'));
+
+		System.out.println("\n\nThe information for your new java "+ this +" has just been read from the original file!");
 	}
 
 
 	public void setGlobalAttrs() throws NoAttributeException{
-		logger.info("\nsetting Global Attributes...");
 
 		for (int i=0; i <file.getGlobalAttributes().size(); i++){
 			if(CommandLineInterface.verboseFlag)
@@ -91,8 +104,7 @@ public class ENLIL extends Model{
 
 			String prefix="";
 
-			//this keyword is the name of the global attribute from the enlil 
-			//file that tells us what time the file is simulating
+			//this keyword is the name of the global attribute from the enlil file that tells us what time the file is simulating
 			String keyword = "refdate_cal";
 
 			if(file.getGlobalAttributes().get(0).getName().toLowerCase().indexOf("type")!=-1){
@@ -109,7 +121,10 @@ public class ENLIL extends Model{
 				else
 					this.addGlobalAttribute(new KAttribute (prefix+file.getGlobalAttributes().get(i).getName(), file.getGlobalAttributes().get(i).getValue(0), null, "model", file.getGlobalAttributes().get(i).getDataType().name()));
 			}
+
+
 		}
+
 
 		int grid_system_1_number_of_dimensions=0;
 		int dimension_num=0;
@@ -119,9 +134,6 @@ public class ENLIL extends Model{
 				this.addGlobalAttribute(new KAttribute("grid_system_1_dimension_" + (++dimension_num) + "_size",file.getDimensions().get(u).getLength(),"Size of dimension m for grid n (e.g. grid_system_1_dimension_2_size)", "model", "int"));
 			}
 		}
-
-		//i'm not sure if this is needed. I have to test.
-		grid_system_1_number_of_dimensions=3;
 		this.addGlobalAttribute(new KAttribute("grid_system_1_number_of_dimensions",grid_system_1_number_of_dimensions,"The number m of how many dimensions are in grid n. So for every grid there will be a corresponding grid_system_n_number_of_dimensions attribute (e.g. The first grid will have an attribute grid_system_1_number_of_dimensions)" ,"model", "int"));
 		if(grid_system_1_number_of_dimensions>3){
 			logger.error("The Grid System has greater than 3 dimensions. There has been a change to the ENLIL structure. Please check the standards and the input files.");
@@ -135,69 +147,65 @@ public class ENLIL extends Model{
 	 * This CREATES the VARIABLES and sets the ModelSpecificVariableAttributes for the Enlil Variables. 
 	 * For the CCMC Variable Attributes, the Writer Object will set the values, because those are hardcoded in an xml file entitled Variables.xml. 
 	 * 
-	 * This Also Writes the Data to the Variable Objects.
 	 * 
 	 * @throws NoAttributeException
 	 * @throws NoVariableException 
 	 * @throws IOException 
 	 */
 	public void setVariableAttrs() throws NoAttributeException, NoVariableException, IOException{
-		logger.info("\nsetting Variable Attributes...");
+
 		ncVariables = file.getVariables();
+		/**
+		 * A temporary variable that holds the place of a variable that was just added to the object. 
+		 */
+		Variable tempV;
 
 		/**
 		 * A temporary model specific attribute that holds the place of a model specific attribute that was just added to the variable.
 		 */
 		KAttribute tempMSA; 
 
+
+		if(CommandLineInterface.testing){
+
+			logger.info("[**Testing Mode: Variables at indices 0,2,4... will be skipped to save time.]");
+
+		}
+
+
 		for(int i=0; i<ncVariables.size() ; i++){
-			/**
-			 * A temporary variable that holds the place of a variable that was just added to the object. 
-			 */
-			Variable tempV = null;
+
 
 			//if we know what to map the original name to, we will
 			//if not, we will add it as an unknown kameleon variable
 			if(!ncVariables.get(i).getName().equals("TIME") && !ncVariables.get(i).getName().equals("DT") && !ncVariables.get(i).getName().equals("NSTEP")){
 
-				logger.info("Starting to read full Variable Data for Variable #" + (i+1) + " of "+ ncVariables.size());
+				//facilitates skipping and saving time when in testing mode
+				if(CommandLineInterface.testing && i!=ncVariables.size()-1){
+					i++; }
+
+				logger.info("Starting to read full Enlil Variable Data for Variable #" + (i+1)+ " of "+ ncVariables.size());
 
 				//mapping original name to kameleon name
-				if(orig2kamel.get(ncVariables.get(i).getName())!=null){
-					tempV=new Variable(ncVariables.get(i).getName(),orig2kamel.get(ncVariables.get(i).getName()));}
-				else{
-					logger.info("**No Kameleon name known for this input variable: "+ncVariables.get(i).getName());
+				if(orig2kamel.get(ncVariables.get(i).getName())!=null)
+					tempV=new Variable(ncVariables.get(i).getName(),orig2kamel.get(ncVariables.get(i).getName()));
+				else
 					tempV= new Variable(ncVariables.get(i).getName(),"kameleon_identity_unknown"+i);
-				}
+
 
 				//setting the number of elements field of an Enlil Variable Object
 				tempV.numElem=(int)(ncVariables.get(i).getSize());
+
+
 				//setting the number of dimensions field for an Enlil Variable Object
 				tempV.numDim=ncVariables.get(i).getRank();
 				//setting the dimension Sizes field for the Enlil Variable Object
 				tempV.dimSizes= new int[ncVariables.get(i).getRank()];
-
-				// both versions have 2+ dimensions here, depending on the variable. The 1st is always either 1 (no CME) or 2 (CME).
-
-				//Adds the Attribute Values to the CCMC Standard Variables. These attributes and attribute values come from Variables.xml. 
-				//This must be added before the Actual Min/Max are converted and before the Model Specific Attributes are added. 
-				getAttrValues(tempV);
-				
-
-				//Adds Model Specific Attributes to Variables
-				for(int j=0; j<ncVariables.get(i).getAttributes().size();j++){
-					tempMSA=new KAttribute(ncVariables.get(i).getAttributes().get(j).getName(), 
-							ncVariables.get(i).getAttributes().get(j).getValue(0), null, "model",
-							ncVariables.get(i).getAttributes().get(j).getDataType().toString());
-					tempV.addAttribute(tempMSA);
-				}
-
-				//The reason we add the CCMC Variable Attributes first is so that the actual data from the NetCDF File can overwrite the standard data if need be. 
-				//lutz says to extract the data in two parts, one for each layer. then, if it's CME, make a new variable with an appended name. so EnlilCMEs have twice the (significant) variables.
+				for(int k=0; k<tempV.dimSizes.length; k++)
+					tempV.dimSizes[k]=ncVariables.get(i).getShape(k);
 
 
-
-				//-------------------------------setting the DATA for the Enlil Variable  AND CALCULATING Actual Min/Max-----------------
+				//setting the DATA for the Enlil Variable  AND CALCULATING Actual Min/Max
 				tempV.dt = ncVariables.get(i).getDataType().toString().toLowerCase();
 				if (tempV.dt.equalsIgnoreCase("double") || tempV.dt.equalsIgnoreCase("boolean")){
 					if(CommandLineInterface.verboseFlag)
@@ -209,59 +217,10 @@ public class ENLIL extends Model{
 						logger.debug("TYPE: INT");
 					try {
 						Array a = ncVariables.get(i).read();
-						tempV.dataValues=(int[]) a.copyTo1DJavaArray();
+						tempV.dataValues= (int[]) a.copyTo1DJavaArray();
 
-						//--
-						if (this.has_CME){
-							int[] vals = ((int []) tempV.dataValues);
-							int val_indexer =0;
-							int[] values_set1 = new int[vals.length/2]; 
-							int[] values_set2 = new int[vals.length/2];
-
-							for (int f : vals){
-								if (val_indexer<vals.length/2){
-									values_set1[val_indexer]=f;
-								}
-								else{
-									values_set2[val_indexer%(vals.length/2)]=f;								
-								}
-								val_indexer++;
-							}
-
-							tempV.dataValues = values_set1;      					//what I'm doing here is only assigning the first layer to this variable (the one with the full output including the CME cone model)
-							tempV.dimSizes[0] = 1;
-							tempV.numElem/=2;
-						
-
-						//----creating a background variable for the EnlilCME case...--
-					
-							Variable background_var;
-							if(orig2kamel.get(ncVariables.get(i).getName())!=null){
-								logger.info(ncVariables.get(i).getName());
-								background_var=new Variable(ncVariables.get(i).getName()+"'",orig2kamel.get(ncVariables.get(i).getName()+"'"));
-								background_var.dataValues = values_set2;
-								background_var.numElem=tempV.numElem;
-								background_var.numDim = tempV.numDim;
-								background_var.dimSizes = tempV.dimSizes;
-								background_var.dt = tempV.dt;
-
-								getAttrValues(background_var);
-
-								//setting min and max values
-								if(!CommandLineInterface.nominmaxFlag){
-									minmaxCalculator(background_var, (int[]) background_var.dataValues);	
-								}
-
-								this.addVariableObject(background_var);
-							}
-							else{
-								logger.error("**"+ncVariables.get(i).getName()+" has no Kameleon name and was not added as a variable.");
-							}
-						}
-						//--
-						
 						if(!CommandLineInterface.nominmaxFlag){
-							super.minmaxCalculator(tempV, ((int[])tempV.dataValues));
+							super.minmaxCalculator(tempV, ((int[])tempV.dataValues));		
 						}
 
 					} catch (IOException e) {
@@ -273,77 +232,50 @@ public class ENLIL extends Model{
 						logger.debug("TYPE: FLOAT");
 					try {
 
+
+
 						Array a = ncVariables.get(i).read();
-						if(CommandLineInterface.verboseFlag){
-							logger.info("info: "+ a.shapeToString());
-						}
 						tempV.dataValues = (float[]) a.copyTo1DJavaArray();
 
-						if (this.has_CME){
-							float[] vals = ((float []) tempV.dataValues);
-							int val_indexer =0;
-							float[] values_set1 = new float[vals.length/2]; 
-							float[] values_set2 = new float[vals.length/2];
 
-							for (float f : vals){
-								if (val_indexer<vals.length/2){
-									values_set1[val_indexer]=f;
-								}
-								else{
-									values_set2[val_indexer%(vals.length/2)]=f;								
-								}
-								val_indexer++;
-							}
-
-							tempV.dataValues = values_set1;      					//what I'm doing here is only assigning the first layer to this variable (the one with the full output including the CME cone model)
-							tempV.dimSizes[0] = 1;
-							tempV.numElem/=2;
-						
-
-						
-
-						//----creating a background variable for the EnlilCME case...--
-					
-							Variable background_var;
-							if(orig2kamel.get(ncVariables.get(i).getName())!=null){
-								logger.info(ncVariables.get(i).getName());
-								background_var=new Variable(ncVariables.get(i).getName()+"'",orig2kamel.get(ncVariables.get(i).getName()+"'"));
-								background_var.dataValues = values_set2;
-								background_var.numElem=tempV.numElem;
-								background_var.numDim = tempV.numDim;
-								background_var.dimSizes = tempV.dimSizes;
-								background_var.dt = tempV.dt;
-
-								getAttrValues(background_var);
-
-								//setting min and max values
-								if(!CommandLineInterface.nominmaxFlag){
-									minmaxCalculator(background_var, (float[]) background_var.dataValues);	
-								}
-
-								this.addVariableObject(background_var);
-							}
-							else{
-								logger.error("**"+ncVariables.get(i).getName()+" has no Kameleon name and was not added as a variable.");
-							}
-						}
-						
-						
 						//setting min and max values
 						if(!CommandLineInterface.nominmaxFlag){
-							super.minmaxCalculator(tempV, (float[]) tempV.dataValues);				
+							super.minmaxCalculator(tempV, ((float[])tempV.dataValues));			
 						}
+						//}
 
-						//---------------------
 
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
 				else {
-					logger.error("\n***ERROR***Data type of variable"+tempV.originalName+" is unknown. Adding anyway with little information...");
+					System.err.println("\n***ERROR***Data type of variable attribute "+tempV.originalName+" is unknown.");
 				}
-				//---------------------------------------end setting data for enlil variable-------------------------------------
+				//end setting data for enlil variable
+
+
+
+
+
+
+				//Adds the Attribute Values to the CCMC Standard Variables. These attributes and attribute values come from Variables.xml. 
+				getCCMCstandardattrs(tempV);
+				
+
+				//Adds Model Specific Attributes to Variables
+				for(int j=0; j<ncVariables.get(i).getAttributes().size();j++){
+
+
+
+					tempMSA=new KAttribute(ncVariables.get(i).getAttributes().get(j).getName(), 
+							ncVariables.get(i).getAttributes().get(j).getValue(0), null, "model",
+							ncVariables.get(i).getAttributes().get(j).getDataType().toString());
+
+					tempV.addAttribute(tempMSA);
+				}
+
+				//The reason we add the CCMC Variable Attributes first is so that the actual data from the NetCDF File can overwrite the standard data if need be. 
 				this.addVariableObject(tempV);
 			}
 			else{
@@ -373,21 +305,9 @@ public class ENLIL extends Model{
 					logger.error("//Purpose of Variable #"+ (i+1) + " unknown.");
 				}
 			}
-			
-			/*
-			if(tempV!=null){
-				logger.debug(tempV);
-
-				for(KAttribute e: tempV.cal){
-					logger.debug(e);
-				}
-			}
-			*/
-			
-			
 		}
 
-		
+
 		if(doesVarExist("r1") && doesVarExist("theta1") && doesVarExist("phi1")){
 			this.getGlobalAttribute("grid_system_count").value=2; 
 			this.addGlobalAttribute(new KAttribute("grid_system_2","[r1,theta1,phi1]" , "Outline how a particular grid system is defined by showing coordinates used (e.g. [X,Y,Z] where X,Y,Z are position variables defined in current file)","model","String" ));
@@ -405,8 +325,8 @@ public class ENLIL extends Model{
 			}
 			this.addGlobalAttribute(new KAttribute("grid_system_2_number_of_dimensions",grid_system_2_number_of_dimensions,"The number m of how many dimensions are in grid n. So for every grid there will be a corresponding grid_system_n_number_of_dimensions attribute (e.g. The first grid will have an attribute grid_system_1_number_of_dimensions)" ,"model","int"));
 			if(grid_system_2_number_of_dimensions>3){
-				logger.error("The Grid System 2 has greater than 3 dimensions. There has been a change to the ENLIL structure. Please check the standards and the input files.");
-				logger.error("EXITING...");
+				System.err.println("The Grid System 2 has greater than 3 dimensions. There has been a change to the ENLIL structure. Please check the standards and the input files.");
+				System.err.println("EXITING...");
 				System.exit(0);
 			}
 
@@ -419,7 +339,7 @@ public class ENLIL extends Model{
 			this.addPolarityCorrectionVariable("VARIABLE CREATED FROM BP/bp + B3/bphi", "b1phi", "bphi");
 		}
 
-		logger.info("\n Created "+ this.getNumVariables() + " variable(s).");
+		logger.info("\n Created "+ this.VarObjsSize() + " variable(s).");
 	}
 
 
@@ -441,6 +361,7 @@ public class ENLIL extends Model{
 		if(doesVarExist(origVarKamelName)){
 			Variable tempNewVar = new Variable(origName, KamelName);
 			Variable tempOrigVar= this.getVariableObject(origVarKamelName);
+			Variable tempBPVar= this.getVariableObject("bp");
 
 			try {
 				tempNewVar.dataValues=((float[])tempOrigVar.dataValues).clone();
@@ -449,7 +370,8 @@ public class ENLIL extends Model{
 			}
 
 			for(int i=0; i<tempOrigVar.numElem; i++){
-				((float[])tempNewVar.dataValues)[i]*=-1;
+				if(((float[])tempBPVar.dataValues)[i]<0)
+					((float[])tempNewVar.dataValues)[i]*=-1;
 			}
 
 			tempNewVar.dimSizes=tempOrigVar.dimSizes.clone();
@@ -459,6 +381,8 @@ public class ENLIL extends Model{
 
 			//Adds the Attribute Values to the CCMC Standard Variables. These attributes and attribute values come from Variables.xml. 
 			try {
+
+
 				tempNewVar.cal=varxmlparser.Kname2var.get(tempNewVar.KameleonName).cal;
 				for(int p=0; p<tempNewVar.cal.length; p++)
 					tempNewVar.nameToAttribute.put(tempNewVar.cal[p].name, tempNewVar.cal[p]);
@@ -469,10 +393,10 @@ public class ENLIL extends Model{
 
 			if(!CommandLineInterface.nominmaxFlag){
 
-				if(tempOrigVar.dt.equalsIgnoreCase("float")){
-					super.minmaxCalculator(tempNewVar, ((float[])tempNewVar.dataValues));}
-				else if(tempOrigVar.dt.equalsIgnoreCase("int")){
-					super.minmaxCalculator(tempNewVar, ((int[])tempNewVar.dataValues));}
+				if(tempOrigVar.dt.equalsIgnoreCase("float"))
+					super.minmaxCalculator(tempNewVar, ((float[])tempNewVar.dataValues));
+				else if(tempOrigVar.dt.equalsIgnoreCase("int"))
+					super.minmaxCalculator(tempNewVar, ((int[])tempNewVar.dataValues));
 
 			}
 
@@ -485,7 +409,7 @@ public class ENLIL extends Model{
 
 
 	public String toString(){
-		return has_CME? "EnlilCME Object" : "Enlil Object";
+		return "Enlil Object";
 	}
 
 }

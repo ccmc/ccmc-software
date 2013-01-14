@@ -1,29 +1,3 @@
-/*
- * 
- * Name: CommandLineInterface.java
- * 
- * Version: 6.0
- * 
- * Author: Nitesh Donti
- * 		   NASA-GSFC-CCMC (Code 587)
- * 		   Intern
- *  
- * Modification History:
- *  
- * January 2012 Donti, Nitesh
- * 				Added support for the HDF5 input model
- * 				Added a check to see if the input directory was a file rather than a directory
- *  
- * Summer 2011 	Donti, Nitesh
- *  			Initial Development Started
- *  			All tasks complete 
- *  			Ready to use 
- *  
- *  *Any changes will only be necessitated pending any new models or formats.
- * 
- * 
- */
-
 package gov.nasa.gsfc.ccmc.KameleonConverter;
 import jargs.gnu.CmdLineParser;
 import java.io.File;
@@ -35,6 +9,7 @@ import java.util.Properties;
 import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -72,21 +47,25 @@ public class CommandLineInterface {
 	 * User can turn this to TRUE by entering "-n" as an argument in the CLI.
 	 */
 	public static boolean nominmaxFlag;	
-
-	public static int num2run;
+	/**
+	 * This boolean determines whether we are running Quick-Testing mode, in which case a few operations are omitted. 
+	 * Only half of the timesteps are created, and of those, only half of the variables are created. 
+	 * You can change this with the argument "-t" at the commandline. 
+	 */
+	public static boolean testing;
 
 	/**
 	 * The current Version number of the Kameleon Conversion Software. 
 	 */
-	public static String KameleonVersion = "6.01";
+	public static String KameleonVersion = "6.0";
 
 
 	/**Prints the options for a proficient command line user.  **/
 	private static void printUsage() {
 		System.err.println(
 				"\n[-h|--help]      [-n|,--nominmax]	  [-i|--indir=string]      [-m|--model=string]\n" +
-						"[-v|--verbose]                            [-o|--outdir=string]     [-a|--aux_file=string]\n" +
-				"[--version]      [-c|--compress=string]	  [-d|--database=string]   [-f|--format=string]");
+				"[-v|--verbose]                            [-o|--outdir=string]     [-a|--aux_file=string]\n" +
+		"[--version]      [-c|--compress=string]	  [-d|--database=string]   [-f|--format=string]");
 	}
 
 	/**Prints the options and also extended descriptions for the
@@ -97,18 +76,18 @@ public class CommandLineInterface {
 
 		System.out.println(
 				"**Always Required\n"+
-						"*Usually Required\n"+
-						"[-h|--help]                 print this help information\n" +
-						"[-v|--verbose]              turn verbose output on\n" +
-						"[--version]                 print software version number\n" +
-						"[-n|--nominmax]             turn OFF actual min/max calculations for each variable\n" +
-						"[-c|--compress=string]      use specified compression algorithm\n" +
-						"[-i|--indir=string]**       directory containing input files to be converted\n" +
-						"[-o|--outdir=string]*       output directory where converted files will be placed (input directory is the default)\n" +
-						"[-d|--database=string]*     ccmc DatabaseInfo file location - for CCMC use only\n" +
-						"[-m|--model=string]**       model name\n" +
-						"[-a|--aux_file=string]*     auxiliary input file - sometimes required (e.g. a grid file seperate from general data files)\n" +
-				"[-f|--format=string]**      data format to convert to");	
+				"*Usually Required\n"+
+				"[-h|--help]                 print this help information\n" +
+				"[-v|--verbose]              turn verbose output on\n" +
+				"[--version]                 print software version number\n" +
+				"[-n|--nominmax]             turn OFF actual min/max calculations for each variable\n" +
+				"[-c|--compress=string]      use specified compression algorithm\n" +
+				"[-i|--indir=string]**       directory containing input files to be converted\n" +
+				"[-o|--outdir=string]*       output directory where converted files will be placed (input directory is the default)\n" +
+				"[-d|--database=string]*     ccmc DatabaseInfo file location - for CCMC use only\n" +
+				"[-m|--model=string]**       model name\n" +
+				"[-a|--aux_file=string]*     auxiliary input file - sometimes required (e.g. a grid file seperate from general data files)\n" +
+		"[-f|--format=string]**      data format to convert to");	
 	}
 
 	/**
@@ -136,6 +115,30 @@ public class CommandLineInterface {
 		 */
 		Model instance;
 
+		if(verboseFlag)
+			logger.info("\n----------------VALIDITY CHECKS----------------");
+
+		//---------------------checking  that all required arguments are present-------------------
+		if(modelValue==null){
+			logger.error("**ERROR**Please specify the type of input model you would like to convert.\nBATS-R-US, CTIP, Enlil, SWMF, KPVT, MAS, MSFC TVM and OPEN GGCM (UCLA GGCM)\n(Use \"-m\")");
+			printExtendedUsage();
+			System.exit(2);
+		}
+		if(formatValue==null){
+			logger.error("**ERROR**Please specify the format to which you would like to convert your input file. \nCDF, HDF5, NetCDF4 \n(Use \"-f\")");
+			printExtendedUsage();
+			System.exit(2);
+		}
+		if(inValue==null){
+			logger.error("**ERROR**Please specify the input directory to process.(Use \"-i\")");
+			printExtendedUsage();
+			System.exit(2);
+		}
+		if(outValue==null){
+			logger.error("**No Output Directory selected. Setting Output Directory to Input Directory..."+inValue);
+			outValue=inValue;
+		}
+		//---------------------END checking  that all required arguments are present-------------------
 
 
 
@@ -157,8 +160,6 @@ public class CommandLineInterface {
 		 *    msfc           = 6                                                    *
 		 *    mas            = 7                  									*
 		 *    swmf_ionosphere= 8                                                    *
-		 *    HDF5           = 9                   									*
-		 *    EnlilCME       = 10                                                   *
 		 *                                                                          *
 		 ****************************************************************************
 		 *
@@ -167,14 +168,8 @@ public class CommandLineInterface {
 		int model_key = 0;
 
 		if(modelValue.toLowerCase().indexOf("enlil")!=-1){
-			if(modelValue.toLowerCase().indexOf("cme")!=-1){
-				model_key=10;
-				modelValue="EnlilCME";
-				}
-			else{
-				model_key=4;
-				modelValue="Enlil";
-			}
+			model_key=4;
+			modelValue="Enlil";
 		}
 		else if(modelValue.toLowerCase().indexOf("ctip")!=-1){
 			model_key=3;
@@ -204,10 +199,6 @@ public class CommandLineInterface {
 		else if(modelValue.toLowerCase().indexOf("swmf")!=-1 || modelValue.toLowerCase().indexOf("ion")!=-1){
 			model_key=8;
 			modelValue="SWMF";
-		}
-		else if(modelValue.toLowerCase().indexOf("hdf")!=-1){
-			model_key=9;
-			modelValue="HDF5";
 		} 
 		else {
 			logger.error("***ERROR***Model Type not found.\nPlease check the name/spelling.");
@@ -244,7 +235,6 @@ public class CommandLineInterface {
 			if(verboseFlag)
 				logger.debug("checking --database argument for validity...");
 			File databasefile = new File(databaseValue);
-			logger.info(databaseValue);
 			if(!databasefile.exists()){
 				logger.error("**ERROR**Could not locate Database Info file.");
 				databaseValue=null;
@@ -257,8 +247,6 @@ public class CommandLineInterface {
 
 
 		//---------------------checking validity of AUXILIARY FILE VALUE-------------------
-		String[] auxFiles = null;
-
 		if(auxValue==null){
 			if(verboseFlag)
 				logger.debug("no --aux file argument specified...\n...checking dependencies and requirements");
@@ -266,69 +254,44 @@ public class CommandLineInterface {
 			switch(model_key){
 
 
-				case 2: 
-				case 3:
-				case 5:
-				case 6:
-				case 7:
-					logger.error("***ERROR***Auxiliary file required for a " + modelValue);
-					System.exit(2);
-					break;
+			case 2:
+				
+			case 3:
+			case 5:
+			case 6:
+			case 7:
+				logger.error("***ERROR***Auxiliary file required for a " + modelValue);
+				System.exit(2);
+				break;
 
-				default: 
-					logger.info("...no auxiliary file selected");
-					break;
+			default: 
+				logger.info("...no auxiliary file selected");
+				break;
 
 			}
 		}else{
-
-			File auxDir = new File(auxValue);
-			Scanner auxReader;
-			ArrayList<String> auxFilesList = null;
-
+			
+			File auxFile = new File(auxValue);
+			Scanner auxReader = new Scanner (auxFile);
+			
 			switch(model_key){
 
-				case 1:
-				case 4:
-				case 10:
-				case 8:
-				case 9:
-					logger.info("No auxiliary file required for "+ modelValue +"... Disregarding entered value ("+auxValue+").");
-					break;
-				case 2:
+			
 
-					if(auxDir.isDirectory()){
-						File[] files = auxDir.listFiles();
-						auxFilesList = new ArrayList<String>();
-						for(int k=0; k<files.length; k++){
-							if(files[k].getName().startsWith("grid") && files[k].getName().endsWith(".txt")){
-								auxFilesList.add(files[k].getAbsolutePath());
-								auxReader= new Scanner(new File(files[k].getAbsolutePath()));
-								if (auxReader.nextLine().indexOf("#") == -1){
-									logger.error("***ERROR***Auxiliary file"+ files[k].getAbsolutePath() + " for " + modelValue + " is invalid.");
-								}
-							}
-						}
-					}
+			case 1:
+			case 4:
+			case 8:
+				logger.info("No auxiliary file required for "+ modelValue +"... Disregarding entered value ("+auxValue+").");
+				break;
+			case 2:
+				if (auxReader.nextLine().indexOf("FIELD-1D-1") == -1){
+					logger.error("***ERROR***Auxiliary file for " + modelValue + " is invalid.");
+					System.exit(2);}
+				break;
 
-					if(auxFilesList == null || auxFilesList.size()!=3){
-						logger.error("**ERROR**Could not locate the 3 necessary grid files (auxiliary files)");
-						logger.error("Please place these files in the auxiliary directory and try again.");
-						logger.error("EXITING...");
-						System.exit(2);
-					}
-					else{
-						auxFiles = auxFilesList.toArray(new String[3]);
-						logger.info("Located the following as auxiliary grid files:");
-						for(int k=0; k<auxFilesList.size(); k++)
-							logger.info("-- " + auxFilesList.get(k));
-					}
-
-					break;
-
-				default: 
-					logger.info("...setting Auxiliary File to "+auxValue);
-					break;	
+			default: 
+				logger.info("...setting Auxiliary File to "+auxValue);
+				break;	
 
 			}
 
@@ -348,11 +311,6 @@ public class CommandLineInterface {
 			System.exit(0);
 		}
 
-		if(bigfolder.isFile())
-		{
-			logger.error("**ERROR**You have listed a file. Please set the input as a directory through which we may search.\nEXITING...");
-			System.exit(2);
-		}
 
 		File[] files = bigfolder.listFiles();
 
@@ -360,96 +318,78 @@ public class CommandLineInterface {
 
 		//this is now going to read in the appropriate files from the Input Directory
 		switch(model_key){
-			case 1:
-			case 3:
-			case 5:
-			case 6:
-			case 7: 
-				logger.error("***"+modelValue.toUpperCase() + " not supported as an input model at this time. " +
-						"Please try again some other day. \n");
-				System.exit(0);
-				break;
+		case 1:
+		case 3:
+		case 5:
+		case 6:
+		case 7: 
+			logger.error("***"+modelValue.toUpperCase() + " not supported as an input model at this time. Please try again some other day. \nWe are working hard to get all of the input model conversions working.");
+			System.exit(0);
+			break;
 
-			case 2:
-				if(verboseFlag)
-					logger.debug("...Searching for \"3df\" files...");
+		case 2:
+			if(verboseFlag)
+				logger.debug("...Searching for \"3df\" files...");
 
-				for(int i=0; i<files.length; i++){
-					if (files[i].getName().toLowerCase().indexOf("3df")!=-1){
-						if(files[i].isFile()){
-							pathholder.add(files[i].getPath());
-							logger.info("...storing "+ files[i].getPath());
-						}
-						else if(files[i].isDirectory()){
-							File folder = new File(files[i].getPath());
-							File[] innerfiles = folder.listFiles();
+			for(int i=0; i<files.length; i++){
+				if (files[i].getName().toLowerCase().indexOf("3df")!=-1){
+					if(files[i].isFile()){
+						pathholder.add(files[i].getPath());
+						logger.info("...storing "+ files[i].getPath());
+					}
+					else if(files[i].isDirectory()){
+						File folder = new File(files[i].getPath());
+						File[] innerfiles = folder.listFiles();
 
-							for(int k=1; k<innerfiles.length; k++){
-								//this is looking for open ggcm files that have "3df.", but not topological files or header files
-								//that contain "topo" or ".h", respectively. 
-								if (innerfiles[k].getName().toLowerCase().indexOf("3df.")!=-1 && innerfiles[k].getName().toLowerCase().indexOf("topo")==-1 && innerfiles[k].getName().toLowerCase().indexOf(".h")==-1 ){
-									pathholder.add(innerfiles[k].getPath());
-									if(pathholder.size()<10)
-										logger.info("...storing "+ innerfiles[k].getPath());
-									else if(pathholder.size()==10){
-										logger.info("...storing more files...");
-									}
-								} else{
-									if(pathholder.size()<10 && CommandLineInterface.verboseFlag)
-										logger.debug("*not adding " + innerfiles[k].getPath());
+						for(int k=1; k<innerfiles.length; k++){
+							//change this back to the original (now it talks about swp). just fix it to what it should be. 
+							if (innerfiles[k].getName().toLowerCase().indexOf("3df")!=-1 && innerfiles[k].getName().toLowerCase().indexOf("swp")==-1){
+								pathholder.add(innerfiles[k].getPath());
+								if(pathholder.size()<10)
+									logger.info("...storing "+ innerfiles[k].getPath());
+								else if(pathholder.size()==10){
+									logger.info("...storing more files...");
 								}
 							}
 						}
-					}
-				}
-				break;
 
-			case 4:
-			case 10:
-				if(verboseFlag)
-					logger.debug("...Searching for \"tim.\" files...");
-				for(int i=0; i<files.length; i++){
-					if (files[i].getName().startsWith("tim.") && files[i].getName().endsWith(".nc")){
-						pathholder.add(files[i].getPath());
-						if(pathholder.size()<10)
-							logger.info("...storing "+ files[i].getPath());
-						else if(pathholder.size()==10){
-							logger.info("...storing more files...");
-						}
 					}
 				}
-				break;
+			}
 
-			case 8:	
-				if(verboseFlag)
-					logger.debug("...Searching for \".tec\" files...");
-				for(int i=0; i<files.length; i++){
-					if (files[i].getName().endsWith(".tec")){
-						pathholder.add(files[i].getPath());
-						if(pathholder.size()<10)
-							logger.info("...storing "+ files[i].getPath());
-						else if(pathholder.size()==10){
-							logger.info("...storing more files...");
-						}
-					}
-				}
-				break;
 
-			case 9:	
-				if(verboseFlag)
-					logger.debug("...Searching for \".h5\" files...");
-				for(int i=0; i<files.length; i++){
-					if (files[i].getName().endsWith(".h5")){
-						pathholder.add(files[i].getPath());
-						if(pathholder.size()<10)
-							logger.info("...storing "+ files[i].getPath());
-						else if(pathholder.size()==10){
-							logger.info("...storing more files...");
-						}
+			break;
+
+		case 4:
+
+			if(verboseFlag)
+				logger.debug("...Searching for \"tim.\" files...");
+			for(int i=0; i<files.length; i++){
+				if (files[i].getName().startsWith("tim.") && files[i].getName().endsWith(".nc")){
+					pathholder.add(files[i].getPath());
+					if(pathholder.size()<10)
+						logger.info("...storing "+ files[i].getPath());
+					else if(pathholder.size()==10){
+						logger.info("...storing more files...");
 					}
 				}
-				break;
-			default: System.err.println("***UNKNOWN ERROR***(input directory validation)");
+			}
+			break;
+		case 8:	
+			if(verboseFlag)
+				logger.debug("...Searching for \".tec\" files...");
+			for(int i=0; i<files.length; i++){
+				if (files[i].getName().endsWith(".tec")){
+					pathholder.add(files[i].getPath());
+					if(pathholder.size()<10)
+						logger.info("...storing "+ files[i].getPath());
+					else if(pathholder.size()==10){
+						logger.info("...storing more files...");
+					}
+				}
+			}
+			break;
+		default: System.err.println("***UNKNOWN ERROR***(input directory validation)");
 		}
 
 		Xfiles = pathholder.toArray();
@@ -460,6 +400,11 @@ public class CommandLineInterface {
 			logger.info("Stored " + Xfiles.length + " files.");
 		}
 		//---------------------END checking validity of INPUT DIRECTORY VALUE--------------
+
+
+
+		
+
 
 
 
@@ -480,6 +425,8 @@ public class CommandLineInterface {
 		//---------------------END checking validity of FORMAT VALUE-------------------
 
 
+
+
 		//---------------------checking validity of COMPRESSION ALGORITHM VALUE-------------------
 		if(compressValue==null){
 			logger.info("...no compresion algorithm selected.");
@@ -493,62 +440,54 @@ public class CommandLineInterface {
 		int start; 
 		int end;
 
-		//The for-loop below will execute all of the conversions unless 
-		//the -t argument from the command line specified a lower number 
-		//of runs to execute
-		int runs = Math.min(CommandLineInterface.num2run, Xfiles.length);
-
-
 		//Assigning the command line arguments to the new model object
-		for(int i=0; i<runs; i++){
+		for(int i=0; i<1; i++){
 
-			logger.info("\n*Beginning Conversion Number " + (i+1) +" of "+ runs+".*");
 			switch(model_key){
 
-				case 1:
-					instance = new BATSRUS(); break;
-				case 2:
-					instance = new OPEN_GGCM();
-					start = Xfiles[i].toString().lastIndexOf("3df");
-					instance.setTimestep(Xfiles[i].toString().substring(start+4));
-					break;
-				case 3:
-					instance = new CTIP(); break;
-				case 4:
-				case 10:
-					instance = new ENLIL(model_key==10);
-					start = Xfiles[i].toString().indexOf(".");
-					end = Xfiles[i].toString().lastIndexOf(".");
-					instance.setTimestep(Xfiles[i].toString().substring(start+1,end));
-					break;
-				case 5:
-					instance = new KPVT(); break;
-				case 6:
-					instance = new MSFC_TVM(); break;
-				case 7:
-					instance = new MAS(); break;
-				case 8: 
-					instance = new SWMF(); 
-					start = Xfiles[i].toString().lastIndexOf("/");
-					end = Xfiles[i].toString().lastIndexOf(".");
-					instance.setTimestep(Xfiles[i].toString().substring(start+1,end)); break;
-				case 9:
-//					instance = new HDF5(); 
-//					start = Xfiles[i].toString().lastIndexOf("/");
-//					end = Xfiles[i].toString().lastIndexOf(".");
-//					instance.setTimestep(Xfiles[i].toString().substring(start+1,end)); break;
-				default: {
-					instance = null;
-					System.err.println("***ERROR***Input Model Type -" + modelValue  +"-not found.\nPlease check the name/spelling.");
-					System.exit(0);
-				}
+			case 1:
+				instance = new BATSRUS(); break;
+			case 2:
+				instance = new OPEN_GGCM();
+				start = Xfiles[i].toString().lastIndexOf("3df");
+				instance.setTimestep(Xfiles[i].toString().substring(start+4));
+				break;
+			case 3:
+				instance = new CTIP(); break;
+			case 4:
+				instance = new ENLIL(); 
+				start = Xfiles[i].toString().indexOf(".");
+				end = Xfiles[i].toString().lastIndexOf(".");
+				instance.setTimestep(Xfiles[i].toString().substring(start+1,end));
+				break;
+			case 5:
+				instance = new KPVT(); break;
+			case 6:
+				instance = new MSFC_TVM(); break;
+			case 7:
+				instance = new MAS(); break;
+			case 8: 
+				instance = new SWMF(); 
+				start = Xfiles[i].toString().lastIndexOf("/");
+				end = Xfiles[i].toString().indexOf(".");
+				instance.setTimestep(Xfiles[i].toString().substring(start+1,end));
+				break;
+			default: {
+				instance = null;
+				System.err.println("***ERROR***Input Model Type -" + modelValue  +"-not found.\nPlease check the name/spelling.");
+				System.exit(0);
+			}
 
 			}
 
-			instance.setAuxiliaryFiles(auxFiles); //sometimes needed
+
+
+			instance.setAuxiliaryFile(auxValue); //sometimes needed
 			instance.setFilePathname((String) Xfiles[i]); //necessary
 			instance.setOutputDirectory(outValue); //necessary
 			instance.setDatabaseInfoFile(databaseValue);//would be nice to have. if null, will take care of it in Model.java. 
+
+
 
 			//End - Assigning Command Line arguments
 
@@ -566,14 +505,23 @@ public class CommandLineInterface {
 				e.printStackTrace();
 			}
 
+			//System.exit(0);
+
 			writer.convert(instance);
 
 			//conversion finished successfully
 			logger.info("\n"+instance+" "+ (i+1) + " of "+ Xfiles.length+ " was successfully converted.\n----------");
 
 
+			if(CommandLineInterface.testing){
+				logger.info("[**Testing Mode: Timesteps 2,4,6...(if they exist) will be skipped in order to save time.]");
+				i++;
+			}
+
 		}
 		return writer;
+
+
 
 	}
 
@@ -583,10 +531,10 @@ public class CommandLineInterface {
 	 * @throws FileNotFoundException 
 	 */
 	public static void main(String[] args) throws NoAttributeException, FileNotFoundException {
-		//AMIE.parseFile();
-		//System.exit(0);
-		
-		
+
+
+
+
 		/**
 		 * The time at which Conversion begins. 
 		 */
@@ -601,14 +549,15 @@ public class CommandLineInterface {
 
 
 		System.out.println("--------------------------KAMELEON CONVERTER----------------------------");
-		System.out.println("  Kameleon is a software suite that is being developed at the CCMC to\n"+
-				"  address the difficulty in analyzing and disseminating the varying\n"+"  output formats of space weather model data.");
+		System.out.println("  Kameleon is a software suite that is being developed at the CCMC to\n"+"  address the difficulty in analyzing and disseminating the varying\n"+"  output formats of space weather model data.");
 		System.out.println("------------------------------------------------------------------------");
 
 		//if no arguments were ever passed in, shows directions and then exits
 		if(args.length==0){
 			printUsage();
 			System.exit(2);}
+
+
 
 		//creates the Command Line Parser and adds all of the options for the user
 		CmdLineParser parser = new CmdLineParser();
@@ -623,7 +572,7 @@ public class CommandLineInterface {
 		CmdLineParser.Option modeltype = parser.addStringOption('m', "model");
 		CmdLineParser.Option aux = parser.addStringOption('a',"aux_file");
 		CmdLineParser.Option format = parser.addStringOption('f',"format");
-		CmdLineParser.Option quicktesting = parser.addIntegerOption('t',"testing");
+		CmdLineParser.Option quicktesting = parser.addBooleanOption('t',"quicktesting");
 
 		//parses command line arguments
 		try {
@@ -641,7 +590,7 @@ public class CommandLineInterface {
 		verboseFlag = (Boolean)parser.getOptionValue(verbose, Boolean.FALSE);
 		Boolean versionFlag = (Boolean)parser.getOptionValue(version, Boolean.FALSE);
 		nominmaxFlag = (Boolean)parser.getOptionValue(nominmax, Boolean.FALSE);
-		num2run = (Integer)parser.getOptionValue(quicktesting,Integer.MAX_VALUE);
+		testing = (Boolean)parser.getOptionValue(quicktesting, Boolean.FALSE);
 		String compressValue = (String)parser.getOptionValue(compress);
 		String databaseValue = (String)parser.getOptionValue(database);
 		String modelValue = (String)parser.getOptionValue(modeltype);
@@ -657,35 +606,12 @@ public class CommandLineInterface {
 		}
 		PropertyConfigurator.configure(properties);
 
+
+
+
 		// The remaining command-line arguments -- those that do not start
 		// with a minus sign -- can be captured with this:
 		String[] otherArgs = parser.getRemainingArgs();
-		
-		if(verboseFlag)
-			logger.info("\n----------------VALIDITY CHECKS----------------");
-
-		//---------------------checking  that all required arguments are present-------------------
-		if(modelValue==null){
-			logger.error("**ERROR**Please specify the type of input model you would like to convert.\nBATS-R-US, CTIP, Enlil, EnlilCME, SWMF, HDF5, KPVT, MAS, MSFC TVM and OPEN GGCM (UCLA GGCM)\n(Use \"-m\")");
-			printExtendedUsage();
-			System.exit(2);
-		}
-		if(formatValue==null){
-			logger.error("**ERROR**Please specify the format to which you would like to convert your input file. \nCDF, HDF5, NetCDF4 \n(Use \"-f\")");
-			printExtendedUsage();
-			System.exit(2);
-		}
-		if(inValue==null){
-			logger.error("**ERROR**Please specify the input directory to process.(Use \"-i\")");
-			printExtendedUsage();
-			System.exit(2);
-		}
-		if(outValue==null){
-			logger.error("**No Output Directory selected. Setting Output Directory to Input Directory..."+inValue);
-			outValue=inValue;
-		}
-		//---------------------END checking  that all required arguments are present-------------------
-		
 
 		if(verboseFlag){
 			logger.info("\nVerbose Output: ON");
@@ -712,10 +638,7 @@ public class CommandLineInterface {
 			logger.info("For example, you can type in following: \"-m mas\" if you want to specify the type of model as \"mas\".");
 			logger.info("Or, for the -d and -v and --help options, simply type in \"-d\" or \"-v\" or \"--help\" to request debugging, verbosity, or help, respectively.");        	
 			logger.info("-------------------------------------------------------------");
-			logger.info("Currently, we accept the following input model types:\n    -BATS-R-US: Block-Adaptive-Tree-Solarwind-Roe-Upwind-Scheme\n    " +
-					"-CTIP: Coupled Thermosphere Ionosphere Plasmasphere\n    -Enlil\n   -HDF5 (Hierarchical Data Format)\n -SWMF: Space Weather Modeling Framework\n    -KPVT: Key Parameter" +
-					" Visualization Tool\n    -MAS\n    -MSFC TVM: Marshall Space Flight Center Tower Vector Magnetograph\n    -Open (or UCLA) GGCM: Open" +
-					" Geospace General Circulation Model");
+			logger.info("Currently, we accept the following input model types:\n    -BATS-R-US: Block-Adaptive-Tree-Solarwind-Roe-Upwind-Scheme\n    -CTIP: Coupled Thermosphere Ionosphere Plasmasphere\n    -Enlil\n    -SWMF: Space Weather Modeling Framework\n    -KPVT: Key Parameter Visualization Tool\n    -MAS\n    -MSFC TVM: Marshall Space Flight Center Tower Vector Magnetograph\n    -Open (or UCLA) GGCM: Open Geospace General Circulation Model");
 			logger.info("We can convert these input files into the following output files:\n    -CDF\n    -HDF5\n    -NetCDF4");
 			logger.info("If your model type requires an auxiliary file, please specify its location.");
 		}
@@ -737,17 +660,17 @@ public class CommandLineInterface {
 		//and creates new model and writer objects accordingly
 		Writer w= createModel(compressValue, 
 				inValue, outValue, databaseValue, modelValue, auxValue, formatValue);
-		
-		outValue+="/conversionResultsFiles";
+
+
 
 		//keeping track of how long everything took and closing remarks
 		logger.info("\n\n-------------\nConversion Complete.");
 		logger.info("-Total Time: " + (System.currentTimeMillis()/1000-epochtime1) + " seconds");
 		logger.info("\nThank you for using the Kameleon Conversion Software.");
 		logger.info("Please check " + outValue + " for your new " + formatValue + " files:\n");
-		for(String newfilename: w.namesOfWrittenFiles){
-			if(newfilename!=null)
-				logger.info("-- "+newfilename);}
+		for(String s: w.namesOfWrittenFiles){
+			if(s!=null)
+				logger.info("-- "+s);}
 		logger.info("\n***For tracking purposes of our government sponsors, we ask that you notify the CCMC \nwhenever you use CCMC results in scientific publications or presentations: ccmc@ccmc.gsfc.nasa.gov");
 		System.exit(0);
 
