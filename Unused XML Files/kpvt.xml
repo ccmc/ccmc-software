@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Thu Jun 09 14:02:03 EDT 2011 -->
+
+<Model name = "KPVT">
+
+			<alias>kpvt</alias>
+
+
+                               <attribute>
+                                   <name>BITPIX</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>NAXIS</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>NAXIS1</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>NAXIS2</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>NAXIS3</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>telescope</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>instrument</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>observation_site</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>carrington_rotation</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>equator_of_map</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>c_lon_of_map_center</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>sine_lat_of_equator</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>lamda_for_lat_coord</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>carrington_lon_step</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>sine_lat_step</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>carrington_step</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+	</Model>
+	
