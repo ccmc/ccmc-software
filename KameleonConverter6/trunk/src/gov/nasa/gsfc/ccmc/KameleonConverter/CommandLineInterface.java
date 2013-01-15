@@ -533,10 +533,13 @@ public class CommandLineInterface {
 					end = Xfiles[i].toString().lastIndexOf(".");
 					instance.setTimestep(Xfiles[i].toString().substring(start+1,end)); break;
 				case 9:
-//					instance = new HDF5(); 
-//					start = Xfiles[i].toString().lastIndexOf("/");
-//					end = Xfiles[i].toString().lastIndexOf(".");
-//					instance.setTimestep(Xfiles[i].toString().substring(start+1,end)); break;
+					instance = new HDF5(); 
+    				start = Xfiles[i].toString().lastIndexOf("/");
+					end = Xfiles[i].toString().lastIndexOf(".");
+					instance.setTimestep(Xfiles[i].toString().substring(start+1,end)); break;
+				case 11:
+					instance = new AMIE();break;
+					
 				default: {
 					instance = null;
 					System.err.println("***ERROR***Input Model Type -" + modelValue  +"-not found.\nPlease check the name/spelling.");

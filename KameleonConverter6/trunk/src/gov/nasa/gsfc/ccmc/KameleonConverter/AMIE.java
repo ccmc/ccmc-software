@@ -6,6 +6,8 @@ package gov.nasa.gsfc.ccmc.KameleonConverter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -14,11 +16,15 @@ import java.util.Scanner;
  */
 public class AMIE extends Model {
 
+	List<AMIEDataObject> amieDataObjs;
+	
 	/**
 	 * @param xmlmodelfile
 	 */
 	public AMIE() {
 		super("amie.xml");
+		 amieDataObjs = new ArrayList<AMIEDataObject>();
+			
 
 	}
 
@@ -27,7 +33,7 @@ public class AMIE extends Model {
 		parseFile();
 	}
 
-	public static void parseFile() throws FileNotFoundException{
+	public void parseFile() throws FileNotFoundException{
 
 		String FilePathname = "/Users/ccmc/Desktop/amie.2006.347-350.dat";
 
@@ -76,7 +82,8 @@ public class AMIE extends Model {
 					currenttime=time;
 					break;
 				}
-				System.out.println(nums.toString());
+				this.amieDataObjs.add(new AMIEDataObject(nextlinenums));
+				//System.out.println(nums.toString());
 				//--finished parsing the line	
 			}while(time.equals(currenttime) && eyes.hasNextLine());
 			//--ends all of the data for the current minute
