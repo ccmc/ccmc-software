@@ -99,6 +99,7 @@ int main (int argc, char * argv[])
 	std::string variables[] = {ccmc::strings::variables::b_};
 	Fieldline f2;
 
+
 	Point3f p;
 	ccmc::Interpolator * interpolator = kameleon.createNewInterpolator();
 	for (int f = 0; f < f1.size(); f++)
