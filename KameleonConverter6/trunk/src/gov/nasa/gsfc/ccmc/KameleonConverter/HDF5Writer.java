@@ -87,6 +87,8 @@ public class HDF5Writer extends Writer {
 					dtype=HdfGroup.DTYPE_FIXED32;
 				else if(var.dt.toLowerCase().indexOf("double")!=-1)
 					dtype=HdfGroup.DTYPE_FLOAT64;
+				else if(var.dt.toLowerCase().indexOf("string")!=-1)
+					dtype=HdfGroup.DTYPE_STRING_VAR;
 				else{
 					logger.error("Data type of Variable is unknown. \nEXITING...");
 					System.exit(0);
@@ -237,6 +239,8 @@ public class HDF5Writer extends Writer {
 					vars[j].writeData(indices,(double[])var.dataValues, false);
 				else if (var.dt.toLowerCase().indexOf("int")!=-1)
 					vars[j].writeData(indices,(int[])var.dataValues, false);
+				else if (var.dt.toLowerCase().indexOf("string")!=-1)
+					vars[j].writeData(indices,(java.lang.String[])var.dataValues, false);
 				else{
 					logger.error("Unsupported data type of variable data values: " + var.dt);
 					System.exit(0);

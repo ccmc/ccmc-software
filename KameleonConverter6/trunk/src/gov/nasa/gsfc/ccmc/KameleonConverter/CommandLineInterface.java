@@ -157,7 +157,7 @@ public class CommandLineInterface {
 		 *    msfc           = 6                                                    *
 		 *    mas            = 7                  									*
 		 *    swmf_ionosphere= 8                                                    *
-		 *    HDF5           = 9                   									*
+		 *    LFM            = 9                   									*
 		 *    EnlilCME       = 10                                                   *
 		 *                                                                          *
 		 ****************************************************************************
@@ -205,9 +205,9 @@ public class CommandLineInterface {
 			model_key=8;
 			modelValue="SWMF";
 		}
-		else if(modelValue.toLowerCase().indexOf("hdf")!=-1){
+		else if(modelValue.toLowerCase().indexOf("lfm")!=-1){
 			model_key=9;
-			modelValue="HDF5";
+			modelValue="LFM";
 		} 
 		else {
 			logger.error("***ERROR***Model Type not found.\nPlease check the name/spelling.");
@@ -437,9 +437,9 @@ public class CommandLineInterface {
 
 			case 9:	
 				if(verboseFlag)
-					logger.debug("...Searching for \".h5\" files...");
+					logger.debug("...Searching for \".hdf\" files...");
 				for(int i=0; i<files.length; i++){
-					if (files[i].getName().endsWith(".h5")){
+					if (files[i].getName().endsWith(".hdf")){
 						pathholder.add(files[i].getPath());
 						if(pathholder.size()<10)
 							logger.info("...storing "+ files[i].getPath());
@@ -533,7 +533,7 @@ public class CommandLineInterface {
 					end = Xfiles[i].toString().lastIndexOf(".");
 					instance.setTimestep(Xfiles[i].toString().substring(start+1,end)); break;
 				case 9:
-					instance = new HDF5(); 
+					instance = new LFM(); 
     				start = Xfiles[i].toString().lastIndexOf("/");
 					end = Xfiles[i].toString().lastIndexOf(".");
 					instance.setTimestep(Xfiles[i].toString().substring(start+1,end)); break;

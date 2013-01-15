@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Thu Jun 09 13:39:05 EDT 2011 -->
+<!-- This is where hardcoded global attributes go. These attributes are unique and standard to each model. -->
+
+<Model name="LFM">
+    <variable>
+        <OriginalName>X_grid</OriginalName>
+        <KameleonName>x</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Y_grid</OriginalName>
+        <KameleonName>y</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>Z_grid</OriginalName>
+        <KameleonName>z</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>rho_</OriginalName>
+        <KameleonName>rho</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vx_</OriginalName>
+        <KameleonName>ux</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy_</OriginalName>
+        <KameleonName>uy</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz_</OriginalName>
+        <KameleonName>uz</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>bx_</OriginalName>
+        <KameleonName>bx</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>by_</OriginalName>
+        <KameleonName>by</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>bz_</OriginalName>
+        <KameleonName>bz</KameleonName>
+    </variable>
+    <variable>
+    	<OriginalName>bi_</OriginalName>
+    	<KameleonName>b1x</KameleonName>
+    </variable>
+    <variable>
+    	<OriginalName>bj_</OriginalName>
+    	<KameleonName>b1y</KameleonName>
+    </variable>
+    <variable>
+    	<OriginalName>bk_</OriginalName>
+    	<KameleonName>b1z</KameleonName>
+    </variable>
+    <variable>
+    	<OriginalName>ei_</OriginalName>
+    	<KameleonName>ex</KameleonName>
+    </variable>
+    <variable>
+    	<OriginalName>ej_</OriginalName>
+    	<KameleonName>ey</KameleonName>
+    </variable>
+    <variable>
+    	<OriginalName>ek_</OriginalName>
+    	<KameleonName>ez</KameleonName>
+    </variable>
+
+
+	<attribute>
+		<name>README</name>
+		<description>General description of the model, CDF contents, and HOWTO usage</description>
+		<dataType>String</dataType>
+		<value>Describe the LFM here </value>
+	</attribute>
+	<attribute>
+		<name>model_type</name>
+		<description>Name of the registered model used to produce data (e.g. Global Magnetosphere)</description>
+		<dataType>String</dataType>
+		<value>Global Magnetosphere</value>
+	</attribute>
+	<attribute>
+		<name>grid_system_count</name>
+		<description>The number n denoting how many grid systems are used and/or described in the current file. NOTE: If n1 the additional grid attributes will be defined in a model specific attributes file.</description>
+		<dataType>String</dataType>
+		<value>1</value>
+	</attribute>
+	<attribute>
+		<name>model_name</name>
+		<description>Name of the registered model that produced the data</description>
+		<dataType>String</dataType>
+		<value>LFM</value>
+	</attribute>
+	<attribute>
+		<name>output_type</name>
+		<description>Define the type of output that is contained in the file (e.g. Global Magnetosphere model with Ionosphere output)</description>
+		<dataType>String</dataType>
+		<value>Global Magnetosphere model with Ionosphere output</value>
+	</attribute>
+	<attribute>
+		<name>grid_system_1</name>
+		<description>Outline how a particular grid system is defined by showing coordinates used (e.g. [X,Y,Z] where X,Y,Z are position variables defined in current file)</description>
+		<dataType>String</dataType>
+		<value>[X,Y,Z]</value>
+	</attribute>
+	<attribute>
+		<name>grid_1_type</name>
+		<description>Keywords identifying all grids used in current model output. Grid types will be registered in external coordinate transformation package. (e.g. grid_1_type=GSM)</description>
+		<dataType>String</dataType>
+		<value>SM</value>
+	</attribute>
+	<attribute>
+		<name>run_type</name>
+		<description>Signifies either an event or modeled run</description>
+		<dataType>String</dataType>
+		<value>Modeled Event</value>
+	</attribute>
+	<attribute>
+		<name>standard_grid_target</name>
+		<description>Defines a standard target grid and coordinate system to which the current model's output can be interpolated using Kameleon Access/Interpolation Library or a coupled coordinate transformation package</description>
+		<dataType>String</dataType>
+		<value>SM</value>
+	</attribute>
+<!-- EXRA RUN INFORMATION -->
+<!--	<attribute>
+		<name>old run name</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>old run info</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>old go namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>old rings namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>old swind namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>old const namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>old ion namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>new run name</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>new run info</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>new go namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>new rings namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>new swind namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>new const namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>new ion namelist</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>solar_wind_file</name>
+		<dataType>Float</dataType>
+	</attribute>
+	<attribute>
+		<name>run params</name>
+		<dataType>String</dataType>
+	</attribute>
+	<attribute>
+		<name>variable list</name>
+		<dataType>String</dataType>
+	</attribute>-->
+<!-- END EXRA RUN INFORMATION -->
+
+</Model>
