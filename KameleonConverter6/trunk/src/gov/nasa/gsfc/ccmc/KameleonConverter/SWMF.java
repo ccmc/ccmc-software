@@ -151,7 +151,13 @@ public class SWMF extends Model {
 		//			tempholder = eyes.next();
 		for (int i = 0; i < (dims[0])*dims[1]; i++)
 		{
-			ionoData.add(new SWMFIonoData(eyes.nextLine()));
+			String nextLine = eyes.nextLine();
+			StringTokenizer st = new StringTokenizer(nextLine);
+			if (st.countTokens() != this.getNumVariables())
+				nextLine += eyes.nextLine();
+			st = new StringTokenizer(nextLine);
+			st.countTokens();
+			ionoData.add(new SWMFIonoData(nextLine));
 			//		((float[])(this.getVariableObject(variableNum).dataValues))[i+(dims[0]*dims[1]-1]=nextFloat;
 			//				} catch (Exception e)
 			//				{
