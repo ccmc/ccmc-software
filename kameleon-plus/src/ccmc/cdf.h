@@ -38,6 +38,16 @@
 *                               epoch functions related to the new type.
 *   V3.7  28-Apr-09, M Liu      Modified MAC_ENCODING/DECODEING to PPC_ENCODING
 *                               /DECODING as Mac and Linux can run on PPC box.
+*   V3.8  10-Dec-10, M Liu      Added encodeEPOCH4, encodeEPOCH16_4,
+*                               parseEPOCH4, parseEPOCH16_4 to handle epochs
+*                               conforming to ISO 8601.
+*   V3.9  04-Apr-11, M Liu      Added a few new functions for TT2000 epoch.
+*   V3.10 03-Jan-12, M Liu      Added CDFgetzVarAllRecordsByVarID,
+*                               CDFgetzVarRangeRecordsByVarID,
+*                               CDFgetVarAllRecordsByVarName,
+*                               CDFgetVarRangeRecordsByVarName functions, and
+*                               a set of similar functions for put operations.
+*                               Added a new error message.
 ******************************************************************************/
 
 #if !defined(CDFh_INCLUDEd__)
@@ -49,6 +59,12 @@
 
 typedef void *CDFid;
 typedef long CDFstatus;
+
+/******************************************************************************
+* CDF defined variables
+******************************************************************************/
+
+static double *TT2000NULL = 0;
 
 /******************************************************************************
 * Limits
@@ -77,11 +93,18 @@ typedef long CDFstatus;
 #define EPOCH1_STRING_LEN	16
 #define EPOCH2_STRING_LEN	14
 #define EPOCH3_STRING_LEN	24
+#define EPOCH4_STRING_LEN	23
 
 #define EPOCH16_STRING_LEN      36
 #define EPOCH16_1_STRING_LEN    24
 #define EPOCH16_2_STRING_LEN    14
 #define EPOCH16_3_STRING_LEN    36
+#define EPOCH16_4_STRING_LEN    32
+
+#define TT2000_0_STRING_LEN     30
+#define TT2000_1_STRING_LEN     19
+#define TT2000_2_STRING_LEN     14
+#define TT2000_3_STRING_LEN     29
 
 #define EPOCHx_STRING_MAX	50
 #define EPOCHx_FORMAT_MAX	68
@@ -93,6 +116,7 @@ typedef long CDFstatus;
 #define CDF_INT1		1L
 #define CDF_INT2		2L
 #define CDF_INT4		4L
+#define CDF_INT8		8L
 #define CDF_UINT1		11L
 #define CDF_UINT2		12L
 #define CDF_UINT4		14L
@@ -100,6 +124,8 @@ typedef long CDFstatus;
 #define CDF_REAL8		22L
 #define CDF_EPOCH		31L	/* Standard style. */
 #define CDF_EPOCH16		32L	/* Extended style. */
+#define CDF_TIME_TT2000		33L	/* One more style with leap seconds
+					   and J2000 base time. */
 #define CDF_BYTE		41L     /* same as CDF_INT1 (signed) */
 #define CDF_FLOAT		44L     /* same as CDF_REAL4 */
 #define CDF_DOUBLE		45L     /* same as CDF_REAL8 */
@@ -253,6 +279,8 @@ typedef long CDFstatus;
 						   hasn't been selected yet. */
 
 #define ILLEGAL_EPOCH_VALUE	(-1.0)
+#define ILLEGAL_TT2000_VALUE    (-9223372036854775805LL)
+#define FILLED_TT2000_VALUE	(-9223372036854775807LL-1)
 
 /******************************************************************************
 * Status codes (CDFstatus)
@@ -398,7 +426,10 @@ typedef long CDFstatus;
 #define BAD_CHECKSUM                    ((CDFstatus) (-2225)) 
 #define CHECKSUM_ERROR                  ((CDFstatus) (-2226))
 #define CHECKSUM_NOT_ALLOWED            ((CDFstatus) (-2227))
-/* #define ZLIB_DECOMPRESSION_ERROR        ((CDFstatus) (-2228)) */
+#define IS_A_NETCDF                     ((CDFstatus) (-2228))
+#define TT2000_TIME_ERROR               ((CDFstatus) (-2229))
+#define UNABLE_TO_PROCESS_CDF           ((CDFstatus) (-2230))
+/* #define ZLIB_DECOMPRESSION_ERROR        ((CDFstatus) (-2231)) */
 
 /******************************************************************************
 * Functions (for INTERNAL interface).
@@ -421,6 +452,7 @@ typedef long CDFstatus;
 #define GETCDFCHECKSUM_         1013L
 #define VALIDATE_               1014L
 #define GETCDFVALIDATE_         1015L
+#define GETLEAPSECONDSENVVAR_   1016L
 
 #define NULL_			1000L
 
@@ -588,6 +620,8 @@ typedef long CDFstatus;
 
 #define CDFwithSTATS_		200L	/* For CDF internal use only! */
 #define CDF_ACCESS_		201L	/* For CDF internal use only! */
+
+#define TT2000END 		-99999.999
 
 /******************************************************************************
 * C interface macros.
@@ -834,6 +868,16 @@ CDFsetVarReservePercent(id,1,varNum,percent)
 CDFgetVarSeqPos(id,1,varNum,recNum,indices)
 #define CDFsetzVarSeqPos(id,varNum,recNum,indices) \
 CDFsetVarSeqPos(id,1,varNum,recNum,indices)
+
+#define CDFgetzVarAllRecordsByVarID(id,varNum,buffer) \
+CDFgetVarAllRecordsByVarID(id,1,varNum,buffer)
+#define CDFputzVarAllRecordsByVarID(id,varNum,numRecs,buffer) \
+CDFputVarAllRecordsByVarID(id,1,varNum,numRecs,buffer)
+
+#define CDFgetzVarRangeRecordsByVarID(id,varNum,startRec,stopRec,buffer) \
+CDFgetVarRangeRecordsByVarID(id,1,varNum,startRec,stopRec,buffer)
+#define CDFputzVarRangeRecordsByVarID(id,varNum,startRec,stopRec,buffer) \
+CDFputVarRangeRecordsByVarID(id,1,varNum,startRec,stopRec,buffer)
 
 /*
  * CLOSE_  *
@@ -1511,6 +1555,16 @@ CDFlib (SELECT_, CDF_, id, \
         NULL_)
 
 /******************************************************************************
+* TT2000 macros define'd
+******************************************************************************/
+
+#define parseTT2000 CDF_TT2000_from_UTC_string
+#define encodeTT2000 CDF_TT2000_to_UTC_string
+#define computeTT2000 CDF_TT2000_from_UTC_parts
+#define breakdownTT2000 CDF_TT2000_to_UTC_parts
+#define TT2000breakdown CDF_TT2000_to_UTC_parts
+
+/******************************************************************************
 * Function prototypes.
 *     It is assumed that `__cplusplus' is defined for ALL C++ compilers.  If
 * ANSI function prototypes are not desired (for whatever reason), define
@@ -1636,6 +1690,32 @@ VISIBLE_PREFIX CDFstatus CDFputVarsRecordDatabyNames PROTOARGs((
   CDFid id, int zVar, long numVars, char *varNames[], long recNum,
   void *buffer[]
 ));
+VISIBLE_PREFIX CDFstatus CDFgetVarAllRecordsByVarID PROTOARGs((
+  CDFid id, int zVar, long varNum, void *buffer
+));
+VISIBLE_PREFIX CDFstatus CDFputVarAllRecordsByVarID PROTOARGs((
+  CDFid id, int zVar, long varNum, long numRec, void *buffer
+));
+VISIBLE_PREFIX CDFstatus CDFgetVarRangeRecordsByVarID PROTOARGs((
+  CDFid id, int zVar, long varNum, long startRec, long stopRec,
+  void *buffer
+));
+VISIBLE_PREFIX CDFstatus CDFputVarRangeRecordsByVarID PROTOARGs((
+  CDFid id, int zVar, long varNum, long startRec, long stopRec,
+  void *buffer
+));
+VISIBLE_PREFIX CDFstatus CDFgetVarAllRecordsByVarName PROTOARGs((
+  CDFid id, char *varName, void *buffer
+));
+VISIBLE_PREFIX CDFstatus CDFputVarAllRecordsByVarName PROTOARGs((
+  CDFid id, char *varName, long numRecs, void *buffer
+));
+VISIBLE_PREFIX CDFstatus CDFgetVarRangeRecordsByVarName PROTOARGs((
+  CDFid id, char *varName, long startRec, long stopRec, void *buffer
+));
+VISIBLE_PREFIX CDFstatus CDFputVarRangeRecordsByVarName PROTOARGs((
+  CDFid id, char *varName, long startRec,long stopRec, void *buffer
+));
 VISIBLE_PREFIX void CDFsetFileBackward PROTOARGs((
   int flag
 ));
@@ -1665,6 +1745,7 @@ VISIBLE_PREFIX double parseEPOCH PROTOARGs((char *inString));
 VISIBLE_PREFIX double parseEPOCH1 PROTOARGs((char *inString));
 VISIBLE_PREFIX double parseEPOCH2 PROTOARGs((char *inString));
 VISIBLE_PREFIX double parseEPOCH3 PROTOARGs((char *inString));
+VISIBLE_PREFIX double parseEPOCH4 PROTOARGs((char *inString));
 VISIBLE_PREFIX void encodeEPOCH PROTOARGs((
   double epoch, char epString[EPOCH_STRING_LEN+1]
 ));
@@ -1677,45 +1758,99 @@ VISIBLE_PREFIX void encodeEPOCH2 PROTOARGs((
 VISIBLE_PREFIX void encodeEPOCH3 PROTOARGs((
   double epoch, char epString[EPOCH3_STRING_LEN+1]
 ));
+VISIBLE_PREFIX void encodeEPOCH4 PROTOARGs((
+  double epoch, char epString[EPOCH4_STRING_LEN+1]
+));
 VISIBLE_PREFIX void encodeEPOCHx PROTOARGs((
   double epoch, char format[EPOCHx_FORMAT_MAX],
   char encoded[EPOCHx_STRING_MAX]
 ));
 VISIBLE_PREFIX void EPOCH16breakdown PROTOARGs((
-  double epoch[], long *year, long *month, long *day, long *hour,
+  double *epoch, long *year, long *month, long *day, long *hour,
   long *minute, long *second, long *msec, long *usec, long *nsec, long *psec
 ));
 VISIBLE_PREFIX double computeEPOCH16 PROTOARGs((
   long year, long month, long day, long hour, long minute, long second,
-  long msec, long usec, long nsec, long psec, double epoch[]
+  long msec, long usec, long nsec, long psec, double *epoch
 ));
 VISIBLE_PREFIX double parseEPOCH16 PROTOARGs((char *inString,
-  double epoch[]
+  double *epoch
 ));
 VISIBLE_PREFIX double parseEPOCH16_1 PROTOARGs((char *inStringch,
-  double epoch[]
+  double *epoch
 ));
 VISIBLE_PREFIX double parseEPOCH16_2 PROTOARGs((char *inStringch,
-  double epoch[]
+  double *epoch
 ));
 VISIBLE_PREFIX double parseEPOCH16_3 PROTOARGs((char *inStringch,
-  double epoch[]
+  double *epoch
+));
+VISIBLE_PREFIX double parseEPOCH16_4 PROTOARGs((char *inStringch,
+  double *epoch
 ));
 VISIBLE_PREFIX void encodeEPOCH16 PROTOARGs((
-  double epoch[], char epString[EPOCH16_STRING_LEN+1]
+  double *epoch, char epString[EPOCH16_STRING_LEN+1]
 ));
 VISIBLE_PREFIX void encodeEPOCH16_1 PROTOARGs((
-  double epoch[], char epString[EPOCH16_1_STRING_LEN+1]
+  double *epoch, char epString[EPOCH16_1_STRING_LEN+1]
 ));
 VISIBLE_PREFIX void encodeEPOCH16_2 PROTOARGs((
-  double epoch[], char epString[EPOCH16_2_STRING_LEN+1]
+  double *epoch, char epString[EPOCH16_2_STRING_LEN+1]
 ));
 VISIBLE_PREFIX void encodeEPOCH16_3 PROTOARGs((
-  double epoch[], char epString[EPOCH16_3_STRING_LEN+1]
+  double *epoch, char epString[EPOCH16_3_STRING_LEN+1]
+));
+VISIBLE_PREFIX void encodeEPOCH16_4 PROTOARGs((
+  double *epoch, char epString[EPOCH16_4_STRING_LEN+1]
 ));
 VISIBLE_PREFIX void encodeEPOCH16_x PROTOARGs((
-  double epoch[], char format[EPOCHx_FORMAT_MAX], char encoded[EPOCHx_STRING_MAX]
+  double *epoch, char format[EPOCHx_FORMAT_MAX],
+  char encoded[EPOCHx_STRING_MAX]
 ));
+/******************************************************************************
+* A new set of functions to handle CDF_TIME_TT2000 time type.
+******************************************************************************/
+
+VISIBLE_PREFIX void CDF_TT2000_to_UTC_parts PROTOARGs((
+  long long tt2000, double *year, double *month, double *day, ...
+));
+VISIBLE_PREFIX long long CDF_TT2000_from_UTC_parts PROTOARGs((
+  double year, double month, double day, ...
+));
+VISIBLE_PREFIX double CDF_TT2000_to_UTC_EPOCH PROTOARGs((
+  long long time
+));
+VISIBLE_PREFIX long long CDF_TT2000_from_UTC_EPOCH PROTOARGs((
+  double epoch
+));
+VISIBLE_PREFIX double CDF_TT2000_to_UTC_EPOCH16 PROTOARGs((
+  long long time, double *epoch16
+));
+VISIBLE_PREFIX long long CDF_TT2000_from_UTC_EPOCH16 PROTOARGs((
+  double *epoch16
+));
+VISIBLE_PREFIX void CDF_TT2000_to_UTC_string PROTOARGs((
+  long long time, char *string, ...
+));
+VISIBLE_PREFIX long long CDF_TT2000_from_UTC_string PROTOARGs((
+  char *string
+));
+VISIBLE_PREFIX void CDFClearLeapSecondsTable PROTOARGs(());
+VISIBLE_PREFIX void CDFfillLeapSecondsTable PROTOARGs((
+  double **table
+));
+VISIBLE_PREFIX int CDFgetRowsinLeapSecondsTable PROTOARGs(());
+#if defined(vms)
+VISIBLE_PREFIX void CDFgetLastDateinLeapSecondsTBL PROTOARGs((
+  long *year, long *month, long *day
+));
+#else
+VISIBLE_PREFIX void CDFgetLastDateinLeapSecondsTable PROTOARGs((
+  long *year, long *month, long *day
+));
+#endif
+VISIBLE_PREFIX char *CDFgetLeapSecondsTableEnvVar PROTOARGs(());
+VISIBLE_PREFIX int CDFgetLeapSecondsTableStatus PROTOARGs(());
 #endif
 #if defined(__cplusplus)
 }
