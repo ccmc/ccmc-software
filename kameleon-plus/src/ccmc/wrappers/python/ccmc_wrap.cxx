@@ -15619,6 +15619,27 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Fieldline_derivative(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_derivative" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< float,std::allocator< float > > *) &(arg1)->derivative();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Fieldline_measure(PyObject *self, PyObject *args) {
   PyObject *resultobj = 0;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
@@ -15754,6 +15775,347 @@ SWIGINTERN PyObject *_wrap_Fieldline_getNearest(PyObject *self, PyObject *args) 
   arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
   result = (std::vector< int,std::allocator< int > > *) &(arg1)->getNearest();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_getTlocal(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::vector< float,std::allocator< float > > *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_getTlocal" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< float,std::allocator< float > > *) &(arg1)->getTlocal();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_float_std__allocatorT_float_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_minmax(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_minmax" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  (arg1)->minmax();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_mincount_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_mincount_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_mincount_set" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_mincount_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->mincount = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_mincount_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_mincount_get" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (int) ((arg1)->mincount);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_maxcount_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_maxcount_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_maxcount_set" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_maxcount_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->maxcount = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_maxcount_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_maxcount_get" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (int) ((arg1)->maxcount);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_minima_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< int,std::allocator< int > > *arg2 = (std::vector< int,std::allocator< int > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_minima_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_minima_set" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Fieldline_minima_set" "', argument " "2"" of type '" "std::vector< int,std::allocator< int > > *""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< int,std::allocator< int > > * >(argp2);
+  if (arg1) (arg1)->minima = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_minima_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_minima_get" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< int,std::allocator< int > > *)& ((arg1)->minima);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_maxima_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< int,std::allocator< int > > *arg2 = (std::vector< int,std::allocator< int > > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_maxima_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_maxima_set" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Fieldline_maxima_set" "', argument " "2"" of type '" "std::vector< int,std::allocator< int > > *""'"); 
+  }
+  arg2 = reinterpret_cast< std::vector< int,std::allocator< int > > * >(argp2);
+  if (arg1) (arg1)->maxima = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_maxima_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  std::vector< int,std::allocator< int > > *result = 0 ;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_maxima_get" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (std::vector< int,std::allocator< int > > *)& ((arg1)->maxima);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__vectorT_int_std__allocatorT_int_t_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_GlobMinIndex_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_GlobMinIndex_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_GlobMinIndex_set" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_GlobMinIndex_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->GlobMinIndex = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_GlobMinIndex_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_GlobMinIndex_get" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (int) ((arg1)->GlobMinIndex);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_GlobMaxIndex_set(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Fieldline_GlobMaxIndex_set",&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_GlobMaxIndex_set" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Fieldline_GlobMaxIndex_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->GlobMaxIndex = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Fieldline_GlobMaxIndex_get(PyObject *self, PyObject *args) {
+  PyObject *resultobj = 0;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if (args && PyTuple_Check(args) && PyTuple_GET_SIZE(args) > 0) SWIG_fail;
+  res1 = SWIG_ConvertPtr(self, &argp1,SWIGTYPE_p_ccmc__Fieldline, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Fieldline_GlobMaxIndex_get" "', argument " "1"" of type '" "ccmc::Fieldline *""'"); 
+  }
+  arg1 = reinterpret_cast< ccmc::Fieldline * >(argp1);
+  result = (int) ((arg1)->GlobMaxIndex);
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -33374,31 +33736,113 @@ SwigPyBuiltin__ccmc__FileReader_richcompare(PyObject *self, PyObject *other, int
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__FileReader_methods[] = {
-  { "open", (PyCFunction) _wrap_FileReader_open, METH_VARARGS, (char*) "" },
-  { "getVariable", (PyCFunction) _wrap_FileReader_getVariable, METH_VARARGS, (char*) "" },
-  { "getVariableAtIndex", (PyCFunction) _wrap_FileReader_getVariableAtIndex, METH_VARARGS, (char*) "" },
-  { "getVariableInt", (PyCFunction) _wrap_FileReader_getVariableInt, METH_VARARGS, (char*) "" },
-  { "getVariableIntAtIndex", (PyCFunction) _wrap_FileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "" },
-  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_FileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariables", (PyCFunction) _wrap_FileReader_getNumberOfVariables, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_FileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfRecords", (PyCFunction) _wrap_FileReader_getNumberOfRecords, METH_VARARGS, (char*) "" },
-  { "getVariableID", (PyCFunction) _wrap_FileReader_getVariableID, METH_VARARGS, (char*) "" },
-  { "getVariableName", (PyCFunction) _wrap_FileReader_getVariableName, METH_VARARGS, (char*) "" },
-  { "getGlobalAttribute", (PyCFunction) _wrap_FileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
-  { "getGlobalAttributeName", (PyCFunction) _wrap_FileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeName", (PyCFunction) _wrap_FileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
-  { "getGlobalAttributeID", (PyCFunction) _wrap_FileReader_getGlobalAttributeID, METH_VARARGS, (char*) "" },
-  { "getVariableAttribute", (PyCFunction) _wrap_FileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeNames", (PyCFunction) _wrap_FileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
-  { "doesAttributeExist", (PyCFunction) _wrap_FileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
-  { "doesVariableExist", (PyCFunction) _wrap_FileReader_doesVariableExist, METH_VARARGS, (char*) "" },
-  { "close", (PyCFunction) _wrap_FileReader_close, METH_VARARGS, (char*) "" },
-  { "getCurrentFilename", (PyCFunction) _wrap_FileReader_getCurrentFilename, METH_VARARGS, (char*) "" },
-  { "initializeVariableIDs", (PyCFunction) _wrap_FileReader_initializeVariableIDs, METH_VARARGS, (char*) "" },
-  { "initializeVariableNames", (PyCFunction) _wrap_FileReader_initializeVariableNames, METH_VARARGS, (char*) "" },
-  { "closeFile", (PyCFunction) _wrap_FileReader_closeFile, METH_VARARGS, (char*) "" },
-  { "openFile", (PyCFunction) _wrap_FileReader_openFile, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_FileReader_open, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::FileReader::open(const std::string &filename, bool\n"
+		"readonly=true)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:\n"
+		"\n"
+		"The CDF status of the open call. CDF_OK is the standard successful\n"
+		"status. \n"
+		"" },
+  { "getVariable", (PyCFunction) _wrap_FileReader_getVariable, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"std::vector<float>* ccmc::FileReader::getVariable(long variableID,\n"
+		"long startIndex, long count)=0 \n"
+		"" },
+  { "getVariableAtIndex", (PyCFunction) _wrap_FileReader_getVariableAtIndex, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"float ccmc::FileReader::getVariableAtIndex(long variable_id, long\n"
+		"index)=0 \n"
+		"" },
+  { "getVariableInt", (PyCFunction) _wrap_FileReader_getVariableInt, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"std::vector<int>* ccmc::FileReader::getVariableInt(const std::string\n"
+		"&variable)=0 \n"
+		"" },
+  { "getVariableIntAtIndex", (PyCFunction) _wrap_FileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "\n"
+		"virtual int ccmc::FileReader::getVariableIntAtIndex(const std::string\n"
+		"&variable, long index)=0 \n"
+		"" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_FileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "virtual int ccmc::FileReader::getNumberOfGlobalAttributes()=0 " },
+  { "getNumberOfVariables", (PyCFunction) _wrap_FileReader_getNumberOfVariables, METH_VARARGS, (char*) "virtual int ccmc::FileReader::getNumberOfVariables()=0 " },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_FileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "virtual int ccmc::FileReader::getNumberOfVariableAttributes()=0 " },
+  { "getNumberOfRecords", (PyCFunction) _wrap_FileReader_getNumberOfRecords, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"long ccmc::FileReader::getNumberOfRecords(long variable_id)=0 \n"
+		"" },
+  { "getVariableID", (PyCFunction) _wrap_FileReader_getVariableID, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::FileReader::getVariableID(const std::string &variable)=0\n"
+		"\n"
+		"Returns the variable ID as a long. Using the variable ID wherever\n"
+		"possible is significantly faster than the equivalent methods accepting\n"
+		"the variable string. Status of the file operation. \n"
+		"" },
+  { "getVariableName", (PyCFunction) _wrap_FileReader_getVariableName, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"std::string ccmc::FileReader::getVariableName(long variable_id)=0 \n"
+		"" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_FileReader_getGlobalAttribute, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"Attribute ccmc::FileReader::getGlobalAttribute(const std::string\n"
+		"&attribute)=0 \n"
+		"" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_FileReader_getGlobalAttributeName, METH_VARARGS, (char*) "\n"
+		"virtual std::string ccmc::FileReader::getGlobalAttributeName(long\n"
+		"attribute_id)=0 \n"
+		"" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_FileReader_getVariableAttributeName, METH_VARARGS, (char*) "\n"
+		"virtual std::string ccmc::FileReader::getVariableAttributeName(long\n"
+		"attribute_id)=0 \n"
+		"" },
+  { "getGlobalAttributeID", (PyCFunction) _wrap_FileReader_getGlobalAttributeID, METH_VARARGS, (char*) "\n"
+		"virtual long ccmc::FileReader::getGlobalAttributeID(const std::string\n"
+		"&attribute)=0 \n"
+		"" },
+  { "getVariableAttribute", (PyCFunction) _wrap_FileReader_getVariableAttribute, METH_VARARGS, (char*) "\n"
+		"virtual Attribute ccmc::FileReader::getVariableAttribute(const\n"
+		"std::string &variable, const std::string &attribute)=0 \n"
+		"" },
+  { "getVariableAttributeNames", (PyCFunction) _wrap_FileReader_getVariableAttributeNames, METH_VARARGS, (char*) "\n"
+		"virtual std::vector<std::string>\n"
+		"ccmc::FileReader::getVariableAttributeNames()=0 \n"
+		"" },
+  { "doesAttributeExist", (PyCFunction) _wrap_FileReader_doesAttributeExist, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"bool ccmc::FileReader::doesAttributeExist(const std::string\n"
+		"&attribute)=0 \n"
+		"" },
+  { "doesVariableExist", (PyCFunction) _wrap_FileReader_doesVariableExist, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"bool ccmc::FileReader::doesVariableExist(const std::string\n"
+		"&variable)=0 \n"
+		"" },
+  { "close", (PyCFunction) _wrap_FileReader_close, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::FileReader::close()\n"
+		"\n"
+		"Closes the currently selected file. Status of close operation. \n"
+		"" },
+  { "getCurrentFilename", (PyCFunction) _wrap_FileReader_getCurrentFilename, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"const std::string& ccmc::FileReader::getCurrentFilename()=0 \n"
+		"" },
+  { "initializeVariableIDs", (PyCFunction) _wrap_FileReader_initializeVariableIDs, METH_VARARGS, (char*) "virtual void ccmc::FileReader::initializeVariableIDs()=0 " },
+  { "initializeVariableNames", (PyCFunction) _wrap_FileReader_initializeVariableNames, METH_VARARGS, (char*) "virtual void ccmc::FileReader::initializeVariableNames()=0 " },
+  { "closeFile", (PyCFunction) _wrap_FileReader_closeFile, METH_VARARGS, (char*) "\n"
+		"virtual long\n"
+		"ccmc::FileReader::closeFile()=0 \n"
+		"" },
+  { "openFile", (PyCFunction) _wrap_FileReader_openFile, METH_VARARGS, (char*) "\n"
+		"virtual long\n"
+		"ccmc::FileReader::openFile(const std::string &filename, bool\n"
+		"readonly)=0 \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -33590,26 +34034,78 @@ SwigPyBuiltin__ccmc__GeneralFileReader_richcompare(PyObject *self, PyObject *oth
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__GeneralFileReader_methods[] = {
-  { "open", (PyCFunction) _wrap_GeneralFileReader_open, METH_VARARGS, (char*) "" },
-  { "getVariable", (PyCFunction) _wrap_GeneralFileReader_getVariable, METH_VARARGS, (char*) "" },
-  { "getVariableAtIndex", (PyCFunction) _wrap_GeneralFileReader_getVariableAtIndex, METH_VARARGS, (char*) "" },
-  { "getVariableInt", (PyCFunction) _wrap_GeneralFileReader_getVariableInt, METH_VARARGS, (char*) "" },
-  { "getVariableIntAtIndex", (PyCFunction) _wrap_GeneralFileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "" },
-  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_GeneralFileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariables", (PyCFunction) _wrap_GeneralFileReader_getNumberOfVariables, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_GeneralFileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfRecords", (PyCFunction) _wrap_GeneralFileReader_getNumberOfRecords, METH_VARARGS, (char*) "" },
-  { "getVariableID", (PyCFunction) _wrap_GeneralFileReader_getVariableID, METH_VARARGS, (char*) "" },
-  { "getVariableName", (PyCFunction) _wrap_GeneralFileReader_getVariableName, METH_VARARGS, (char*) "" },
-  { "getGlobalAttribute", (PyCFunction) _wrap_GeneralFileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
-  { "getGlobalAttributeName", (PyCFunction) _wrap_GeneralFileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeName", (PyCFunction) _wrap_GeneralFileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
-  { "getVariableAttribute", (PyCFunction) _wrap_GeneralFileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeNames", (PyCFunction) _wrap_GeneralFileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
-  { "doesAttributeExist", (PyCFunction) _wrap_GeneralFileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
-  { "doesVariableExist", (PyCFunction) _wrap_GeneralFileReader_doesVariableExist, METH_VARARGS, (char*) "" },
-  { "close", (PyCFunction) _wrap_GeneralFileReader_close, METH_VARARGS, (char*) "" },
-  { "getCurrentFilename", (PyCFunction) _wrap_GeneralFileReader_getCurrentFilename, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_GeneralFileReader_open, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::GeneralFileReader::open(const std::string &filename) \n"
+		"" },
+  { "getVariable", (PyCFunction) _wrap_GeneralFileReader_getVariable, METH_VARARGS, (char*) "\n"
+		"std::vector< float > * ccmc::GeneralFileReader::getVariable(long\n"
+		"variableID, long startIndex, long count) \n"
+		"" },
+  { "getVariableAtIndex", (PyCFunction) _wrap_GeneralFileReader_getVariableAtIndex, METH_VARARGS, (char*) "\n"
+		"float ccmc::GeneralFileReader::getVariableAtIndex(long variable_id,\n"
+		"long index) \n"
+		"" },
+  { "getVariableInt", (PyCFunction) _wrap_GeneralFileReader_getVariableInt, METH_VARARGS, (char*) "\n"
+		"std::vector< int > * ccmc::GeneralFileReader::getVariableInt(const\n"
+		"std::string &variable) \n"
+		"" },
+  { "getVariableIntAtIndex", (PyCFunction) _wrap_GeneralFileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "\n"
+		"int ccmc::GeneralFileReader::getVariableIntAtIndex(const std::string\n"
+		"&variable, long index) \n"
+		"" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_GeneralFileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::GeneralFileReader::getNumberOfGlobalAttributes() \n"
+		"" },
+  { "getNumberOfVariables", (PyCFunction) _wrap_GeneralFileReader_getNumberOfVariables, METH_VARARGS, (char*) "int ccmc::GeneralFileReader::getNumberOfVariables() " },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_GeneralFileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::GeneralFileReader::getNumberOfVariableAttributes() \n"
+		"" },
+  { "getNumberOfRecords", (PyCFunction) _wrap_GeneralFileReader_getNumberOfRecords, METH_VARARGS, (char*) "long ccmc::GeneralFileReader::getNumberOfRecords(long variable_id) " },
+  { "getVariableID", (PyCFunction) _wrap_GeneralFileReader_getVariableID, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::GeneralFileReader::getVariableID(const std::string &variable) \n"
+		"" },
+  { "getVariableName", (PyCFunction) _wrap_GeneralFileReader_getVariableName, METH_VARARGS, (char*) "\n"
+		"std::string ccmc::GeneralFileReader::getVariableName(long variable_id)\n"
+		"\n"
+		"" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_GeneralFileReader_getGlobalAttribute, METH_VARARGS, (char*) "\n"
+		"Attribute ccmc::GeneralFileReader::getGlobalAttribute(const\n"
+		"std::string &attribute) \n"
+		"" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_GeneralFileReader_getGlobalAttributeName, METH_VARARGS, (char*) "\n"
+		"std::string ccmc::GeneralFileReader::getGlobalAttributeName(long\n"
+		"attribute_id) \n"
+		"" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_GeneralFileReader_getVariableAttributeName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::GeneralFileReader::getVariableAttributeName(long attribute_id)\n"
+		"\n"
+		"" },
+  { "getVariableAttribute", (PyCFunction) _wrap_GeneralFileReader_getVariableAttribute, METH_VARARGS, (char*) "\n"
+		"Attribute ccmc::GeneralFileReader::getVariableAttribute(const\n"
+		"std::string &variable, const std::string &attribute) \n"
+		"" },
+  { "getVariableAttributeNames", (PyCFunction) _wrap_GeneralFileReader_getVariableAttributeNames, METH_VARARGS, (char*) "\n"
+		"std::vector<\n"
+		"std::string > ccmc::GeneralFileReader::getVariableAttributeNames() \n"
+		"" },
+  { "doesAttributeExist", (PyCFunction) _wrap_GeneralFileReader_doesAttributeExist, METH_VARARGS, (char*) "\n"
+		"bool ccmc::GeneralFileReader::doesAttributeExist(const std::string\n"
+		"&attribute) \n"
+		"" },
+  { "doesVariableExist", (PyCFunction) _wrap_GeneralFileReader_doesVariableExist, METH_VARARGS, (char*) "\n"
+		"bool ccmc::GeneralFileReader::doesVariableExist(const std::string\n"
+		"&variable) \n"
+		"" },
+  { "close", (PyCFunction) _wrap_GeneralFileReader_close, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::GeneralFileReader::close() \n"
+		"" },
+  { "getCurrentFilename", (PyCFunction) _wrap_GeneralFileReader_getCurrentFilename, METH_VARARGS, (char*) "const std::string & ccmc::GeneralFileReader::getCurrentFilename() " },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -33801,25 +34297,190 @@ SwigPyBuiltin__ccmc__CDFFileReader_richcompare(PyObject *self, PyObject *other, 
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__CDFFileReader_methods[] = {
-  { "getVariable", (PyCFunction) _wrap_CDFFileReader_getVariable, METH_VARARGS, (char*) "" },
-  { "getVariableAtIndex", (PyCFunction) _wrap_CDFFileReader_getVariableAtIndex, METH_VARARGS, (char*) "" },
-  { "getVariableInt", (PyCFunction) _wrap_CDFFileReader_getVariableInt, METH_VARARGS, (char*) "" },
-  { "getVariableIntAtIndex", (PyCFunction) _wrap_CDFFileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "" },
-  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_CDFFileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariables", (PyCFunction) _wrap_CDFFileReader_getNumberOfVariables, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_CDFFileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfRecords", (PyCFunction) _wrap_CDFFileReader_getNumberOfRecords, METH_VARARGS, (char*) "" },
-  { "getVariableID", (PyCFunction) _wrap_CDFFileReader_getVariableID, METH_VARARGS, (char*) "" },
-  { "getVariableName", (PyCFunction) _wrap_CDFFileReader_getVariableName, METH_VARARGS, (char*) "" },
-  { "getGlobalAttribute", (PyCFunction) _wrap_CDFFileReader_getGlobalAttribute, METH_VARARGS, (char*) "" },
-  { "getGlobalAttributeName", (PyCFunction) _wrap_CDFFileReader_getGlobalAttributeName, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeName", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeName, METH_VARARGS, (char*) "" },
-  { "getGlobalAttributeID", (PyCFunction) _wrap_CDFFileReader_getGlobalAttributeID, METH_VARARGS, (char*) "" },
-  { "getVariableAttribute", (PyCFunction) _wrap_CDFFileReader_getVariableAttribute, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeNames", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeNames, METH_VARARGS, (char*) "" },
-  { "doesAttributeExist", (PyCFunction) _wrap_CDFFileReader_doesAttributeExist, METH_VARARGS, (char*) "" },
-  { "doesVariableExist", (PyCFunction) _wrap_CDFFileReader_doesVariableExist, METH_VARARGS, (char*) "" },
-  { "getCurrentFilename", (PyCFunction) _wrap_CDFFileReader_getCurrentFilename, METH_VARARGS, (char*) "" },
+  { "getVariable", (PyCFunction) _wrap_CDFFileReader_getVariable, METH_VARARGS, (char*) "\n"
+		"std::vector<\n"
+		"float > * ccmc::CDFFileReader::getVariable(long variableID, long\n"
+		"startIndex, long count)\n"
+		"\n"
+		"Returns a pointer to a std::vector<float> containing the values of the\n"
+		"selected variable in the range specified by the startIndex and count\n"
+		"(the number of records to read) stored in the selected file. This\n"
+		"allocates a new std::vector<float> pointer. Make sure you delete the\n"
+		"contents when you done using it, or you will have a memory leak.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variableID:\n"
+		"\n"
+		"startIndex:\n"
+		"\n"
+		"count:\n"
+		"\n"
+		"std::vector<float> containing the values of the selected variable. \n"
+		"" },
+  { "getVariableAtIndex", (PyCFunction) _wrap_CDFFileReader_getVariableAtIndex, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::CDFFileReader::getVariableAtIndex(long variable_id, long index)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variableNum:\n"
+		"\n"
+		"index:  \n"
+		"" },
+  { "getVariableInt", (PyCFunction) _wrap_CDFFileReader_getVariableInt, METH_VARARGS, (char*) "\n"
+		"std::vector< int > * ccmc::CDFFileReader::getVariableInt(const\n"
+		"std::string &variable)\n"
+		"\n"
+		"This allocates a new std::vector<int> pointer. Make sure you delete\n"
+		"the contents when you done using it, or you will have a memory leak.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"vector<int> containing the integer values of the variable \n"
+		"" },
+  { "getVariableIntAtIndex", (PyCFunction) _wrap_CDFFileReader_getVariableIntAtIndex, METH_VARARGS, (char*) "\n"
+		"int ccmc::CDFFileReader::getVariableIntAtIndex(const std::string\n"
+		"&variable, long index)\n"
+		"\n"
+		"Returns a value in the flat array of the variable and index requested.\n"
+		"\n"
+		"Use this method on variables that have a type of int\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  The variable in the file\n"
+		"\n"
+		"index:  The index in the variable's array in the file\n"
+		"\n"
+		"int of the value in the array. \n"
+		"" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_CDFFileReader_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::CDFFileReader::getNumberOfGlobalAttributes()\n"
+		"\n"
+		"TODO Retrieves the number of global attributes in the selected file.\n"
+		"This is useful for iterating over all available global attributes. The\n"
+		"number of global attributes stored in the selected file. \n"
+		"" },
+  { "getNumberOfVariables", (PyCFunction) _wrap_CDFFileReader_getNumberOfVariables, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::CDFFileReader::getNumberOfVariables() \n"
+		"" },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_CDFFileReader_getNumberOfVariableAttributes, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::CDFFileReader::getNumberOfVariableAttributes()\n"
+		"\n"
+		"Gets the number of variable attributes. The number of variable\n"
+		"attributes in the opened file. \n"
+		"" },
+  { "getNumberOfRecords", (PyCFunction) _wrap_CDFFileReader_getNumberOfRecords, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::CDFFileReader::getNumberOfRecords(long variable_id)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  \n"
+		"" },
+  { "getVariableID", (PyCFunction) _wrap_CDFFileReader_getVariableID, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::CDFFileReader::getVariableID(const std::string &variable)\n"
+		"\n"
+		"Returns the variable ID as a long. Using the variable ID wherever\n"
+		"possible is significantly faster than the equivalent methods accepting\n"
+		"the variable string. Status of the file operation. \n"
+		"" },
+  { "getVariableName", (PyCFunction) _wrap_CDFFileReader_getVariableName, METH_VARARGS, (char*) "\n"
+		"std::string ccmc::CDFFileReader::getVariableName(long variable_id)\n"
+		"\n"
+		"Returns the string representation of the variable referred to by\n"
+		"variable_id String representation of the variable. \n"
+		"" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_CDFFileReader_getGlobalAttribute, METH_VARARGS, (char*) "\n"
+		"Attribute ccmc::CDFFileReader::getGlobalAttribute(const std::string\n"
+		"&attribute)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute:  \n"
+		"" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_CDFFileReader_getGlobalAttributeName, METH_VARARGS, (char*) "\n"
+		"std::string ccmc::CDFFileReader::getGlobalAttributeName(long\n"
+		"attribute_id)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute_id:  \n"
+		"" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeName, METH_VARARGS, (char*) "\n"
+		"std::string ccmc::CDFFileReader::getVariableAttributeName(long\n"
+		"attribute_id)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute_id:\n"
+		"\n"
+		"String representing the name of the attribute specified by\n"
+		"attribute_id \n"
+		"" },
+  { "getGlobalAttributeID", (PyCFunction) _wrap_CDFFileReader_getGlobalAttributeID, METH_VARARGS, (char*) "\n"
+		"long ccmc::CDFFileReader::getGlobalAttributeID(const std::string\n"
+		"&attribute)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute:  \n"
+		"" },
+  { "getVariableAttribute", (PyCFunction) _wrap_CDFFileReader_getVariableAttribute, METH_VARARGS, (char*) "\n"
+		"Attribute ccmc::CDFFileReader::getVariableAttribute(const std::string\n"
+		"&variable, const std::string &attribute)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"vattribute:  \n"
+		"" },
+  { "getVariableAttributeNames", (PyCFunction) _wrap_CDFFileReader_getVariableAttributeNames, METH_VARARGS, (char*) "\n"
+		"std::vector< std::string >\n"
+		"ccmc::CDFFileReader::getVariableAttributeNames() \n"
+		"" },
+  { "doesAttributeExist", (PyCFunction) _wrap_CDFFileReader_doesAttributeExist, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"ccmc::CDFFileReader::doesAttributeExist(long attribute)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute:  \n"
+		"" },
+  { "doesVariableExist", (PyCFunction) _wrap_CDFFileReader_doesVariableExist, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"ccmc::CDFFileReader::doesVariableExist(long variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getCurrentFilename", (PyCFunction) _wrap_CDFFileReader_getCurrentFilename, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::string & ccmc::CDFFileReader::getCurrentFilename()\n"
+		"\n"
+		"Returns the current filename. The current filename. \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -34211,39 +34872,252 @@ SwigPyBuiltin__ccmc__Kameleon_richcompare(PyObject *self, PyObject *other, int o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Kameleon_methods[] = {
-  { "close", (PyCFunction) _wrap_Kameleon_close, METH_VARARGS, (char*) "" },
-  { "createNewInterpolator", (PyCFunction) _wrap_Kameleon_createNewInterpolator, METH_VARARGS, (char*) "" },
-  { "doesAttributeExist", (PyCFunction) _wrap_Kameleon_doesAttributeExist, METH_VARARGS, (char*) "" },
-  { "doesVariableExist", (PyCFunction) _wrap_Kameleon_doesVariableExist, METH_VARARGS, (char*) "" },
-  { "getConversionFactorToSI", (PyCFunction) _wrap_Kameleon_getConversionFactorToSI, METH_VARARGS, (char*) "" },
-  { "getCurrentFilename", (PyCFunction) _wrap_Kameleon_getCurrentFilename, METH_VARARGS, (char*) "" },
-  { "getCurrentTime", (PyCFunction) _wrap_Kameleon_getCurrentTime, METH_VARARGS, (char*) "" },
-  { "getGlobalAttribute", (PyCFunction) _wrap_Kameleon_getGlobalAttribute, METH_VARARGS, (char*) "" },
-  { "getGlobalAttributeName", (PyCFunction) _wrap_Kameleon_getGlobalAttributeName, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_Kameleon_getLoadedVariables, METH_VARARGS, (char*) "" },
-  { "getMissingValue", (PyCFunction) _wrap_Kameleon_getMissingValue, METH_VARARGS, (char*) "" },
-  { "getModelName", (PyCFunction) _wrap_Kameleon_getModelName, METH_VARARGS, (char*) "" },
-  { "getNativeUnit", (PyCFunction) _wrap_Kameleon_getNativeUnit, METH_VARARGS, (char*) "" },
-  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfVariableAttributes, METH_VARARGS, (char*) "" },
-  { "getNumberOfVariables", (PyCFunction) _wrap_Kameleon_getNumberOfVariables, METH_VARARGS, (char*) "" },
-  { "getSIUnit", (PyCFunction) _wrap_Kameleon_getSIUnit, METH_VARARGS, (char*) "" },
-  { "getVariable", (PyCFunction) _wrap_Kameleon_getVariable, METH_VARARGS, (char*) "" },
-  { "getVariableAttribute", (PyCFunction) _wrap_Kameleon_getVariableAttribute, METH_VARARGS, (char*) "" },
-  { "getVariableAttributeName", (PyCFunction) _wrap_Kameleon_getVariableAttributeName, METH_VARARGS, (char*) "" },
-  { "getVariableFromMap", (PyCFunction) _wrap_Kameleon_getVariableFromMap, METH_VARARGS, (char*) "" },
-  { "getVariableID", (PyCFunction) _wrap_Kameleon_getVariableID, METH_VARARGS, (char*) "" },
-  { "getVariableInt", (PyCFunction) _wrap_Kameleon_getVariableInt, METH_VARARGS, (char*) "" },
-  { "getVariableIntFromMap", (PyCFunction) _wrap_Kameleon_getVariableIntFromMap, METH_VARARGS, (char*) "" },
-  { "getVariableName", (PyCFunction) _wrap_Kameleon_getVariableName, METH_VARARGS, (char*) "" },
-  { "getVisUnit", (PyCFunction) _wrap_Kameleon_getVisUnit, METH_VARARGS, (char*) "" },
-  { "loadVariable", (PyCFunction) _wrap_Kameleon_loadVariable, METH_VARARGS, (char*) "" },
-  { "loadVectorVariable", (PyCFunction) _wrap_Kameleon_loadVectorVariable, METH_VARARGS, (char*) "" },
-  { "open", (PyCFunction) _wrap_Kameleon_open, METH_VARARGS, (char*) "" },
-  { "setMissingValue", (PyCFunction) _wrap_Kameleon_setMissingValue, METH_VARARGS, (char*) "" },
-  { "unloadVariable", (PyCFunction) _wrap_Kameleon_unloadVariable, METH_VARARGS, (char*) "" },
-  { "unloadVectorVariable", (PyCFunction) _wrap_Kameleon_unloadVectorVariable, METH_VARARGS, (char*) "" },
-  { "getProgress", (PyCFunction) _wrap_Kameleon_getProgress, METH_VARARGS, (char*) "" },
+  { "close", (PyCFunction) _wrap_Kameleon_close, METH_VARARGS, (char*) "\n"
+		"long Kameleon::close()\n"
+		"\n"
+		"Closes the currently opened file. \n"
+		"" },
+  { "createNewInterpolator", (PyCFunction) _wrap_Kameleon_createNewInterpolator, METH_VARARGS, (char*) "\n"
+		"Interpolator * Kameleon::createNewInterpolator()\n"
+		"\n"
+		"Returns a new interpolater that maintains state information\n"
+		"independent of other interpolators. This can be used to parallelize\n"
+		"the interpolations. A new interpolator. \n"
+		"" },
+  { "doesAttributeExist", (PyCFunction) _wrap_Kameleon_doesAttributeExist, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"Kameleon::doesAttributeExist(const std::string &attribute)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute:  \n"
+		"" },
+  { "doesVariableExist", (PyCFunction) _wrap_Kameleon_doesVariableExist, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"Kameleon::doesVariableExist(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getConversionFactorToSI", (PyCFunction) _wrap_Kameleon_getConversionFactorToSI, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"Kameleon::getConversionFactorToSI(const std::string &variable)\n"
+		"\n"
+		"Currently not implemented.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getCurrentFilename", (PyCFunction) _wrap_Kameleon_getCurrentFilename, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::string & Kameleon::getCurrentFilename() \n"
+		"" },
+  { "getCurrentTime", (PyCFunction) _wrap_Kameleon_getCurrentTime, METH_VARARGS, (char*) "\n"
+		"Time\n"
+		"Kameleon::getCurrentTime()\n"
+		"\n"
+		"Calculates the current time based on the start time and the elapsed\n"
+		"time. Formatted string of the current time. This is currently\n"
+		"different for different models. If the current time cannot be\n"
+		"calculated, \"TIME_UNAVAILABLE\" is returned. \n"
+		"" },
+  { "getGlobalAttribute", (PyCFunction) _wrap_Kameleon_getGlobalAttribute, METH_VARARGS, (char*) "\n"
+		"Attribute\n"
+		"Kameleon::getGlobalAttribute(const std::string &attribute)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute:  \n"
+		"" },
+  { "getGlobalAttributeName", (PyCFunction) _wrap_Kameleon_getGlobalAttributeName, METH_VARARGS, (char*) "\n"
+		"std::string Kameleon::getGlobalAttributeName(long attribute_id)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"attribute_id:  \n"
+		"" },
+  { "getLoadedVariables", (PyCFunction) _wrap_Kameleon_getLoadedVariables, METH_VARARGS, (char*) "std::vector< std::string > Kameleon::getLoadedVariables() " },
+  { "getMissingValue", (PyCFunction) _wrap_Kameleon_getMissingValue, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"Kameleon::getMissingValue() \n"
+		"" },
+  { "getModelName", (PyCFunction) _wrap_Kameleon_getModelName, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::string & Kameleon::getModelName()\n"
+		"\n"
+		"Returns the model name of the opened file. The model name. \n"
+		"" },
+  { "getNativeUnit", (PyCFunction) _wrap_Kameleon_getNativeUnit, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"Kameleon::getNativeUnit(const std::string &variable)\n"
+		"\n"
+		"Returns the units of the variable specified. The units may differ from\n"
+		"the units in the original data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"String representation of the units \n"
+		"" },
+  { "getNumberOfGlobalAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfGlobalAttributes, METH_VARARGS, (char*) "int Kameleon::getNumberOfGlobalAttributes() " },
+  { "getNumberOfVariableAttributes", (PyCFunction) _wrap_Kameleon_getNumberOfVariableAttributes, METH_VARARGS, (char*) "int Kameleon::getNumberOfVariableAttributes() " },
+  { "getNumberOfVariables", (PyCFunction) _wrap_Kameleon_getNumberOfVariables, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"Kameleon::getNumberOfVariables() \n"
+		"" },
+  { "getSIUnit", (PyCFunction) _wrap_Kameleon_getSIUnit, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"Kameleon::getSIUnit(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getVariable", (PyCFunction) _wrap_Kameleon_getVariable, METH_VARARGS, (char*) "\n"
+		"std::vector<\n"
+		"float > * Kameleon::getVariable(const std::string &variable) \n"
+		"" },
+  { "getVariableAttribute", (PyCFunction) _wrap_Kameleon_getVariableAttribute, METH_VARARGS, (char*) "\n"
+		"Attribute Kameleon::getVariableAttribute(const std::string &variable,\n"
+		"const std::string &attribute)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"attribute:  \n"
+		"" },
+  { "getVariableAttributeName", (PyCFunction) _wrap_Kameleon_getVariableAttributeName, METH_VARARGS, (char*) "std::string Kameleon::getVariableAttributeName(long attribute_id) " },
+  { "getVariableFromMap", (PyCFunction) _wrap_Kameleon_getVariableFromMap, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< float > *const Kameleon::getVariableFromMap(const\n"
+		"std::string &variable)\n"
+		"\n"
+		"Returns a pointer to the variable data stored in a map. This method\n"
+		"works for variables of type float. This cannot and should not be\n"
+		"modified or deleted. Use loadVariable and unloadVariable to manange\n"
+		"the map.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getVariableID", (PyCFunction) _wrap_Kameleon_getVariableID, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"Kameleon::getVariableID(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getVariableInt", (PyCFunction) _wrap_Kameleon_getVariableInt, METH_VARARGS, (char*) "\n"
+		"std::vector<\n"
+		"int > * Kameleon::getVariableInt(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getVariableIntFromMap", (PyCFunction) _wrap_Kameleon_getVariableIntFromMap, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< int > *const Kameleon::getVariableIntFromMap(const\n"
+		"std::string &variable)\n"
+		"\n"
+		"Returns a pointer to the variable data stored in a map. This method\n"
+		"works for variables of type int. This cannot and should not be\n"
+		"modified or deleted. Use loadVariable and unloadVariable to manange\n"
+		"the map.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getVariableName", (PyCFunction) _wrap_Kameleon_getVariableName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"Kameleon::getVariableName(long variable_id)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  \n"
+		"" },
+  { "getVisUnit", (PyCFunction) _wrap_Kameleon_getVisUnit, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"Kameleon::getVisUnit(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "loadVariable", (PyCFunction) _wrap_Kameleon_loadVariable, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"Kameleon::loadVariable(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "loadVectorVariable", (PyCFunction) _wrap_Kameleon_loadVectorVariable, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"Kameleon::loadVectorVariable(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "open", (PyCFunction) _wrap_Kameleon_open, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"Kameleon::open(const std::string &filename)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  \n"
+		"" },
+  { "setMissingValue", (PyCFunction) _wrap_Kameleon_setMissingValue, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"Kameleon::setMissingValue(float missingValue) \n"
+		"" },
+  { "unloadVariable", (PyCFunction) _wrap_Kameleon_unloadVariable, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"Kameleon::unloadVariable(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "unloadVectorVariable", (PyCFunction) _wrap_Kameleon_unloadVectorVariable, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"Kameleon::unloadVectorVariable(const std::string &variable)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getProgress", (PyCFunction) _wrap_Kameleon_getProgress, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"Kameleon::getProgress() \n"
+		"" },
   { "_cxform", (PyCFunction) _wrap_Kameleon__cxform, METH_STATIC|METH_VARARGS, "" },
   { "_cxRound", (PyCFunction) _wrap_Kameleon__cxRound, METH_STATIC|METH_VARARGS, "" },
   { "_date2es", (PyCFunction) _wrap_Kameleon__date2es, METH_STATIC|METH_VARARGS, "" },
@@ -34439,9 +35313,25 @@ SwigPyBuiltin__ccmc__Interpolator_richcompare(PyObject *self, PyObject *other, i
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Interpolator_methods[] = {
-  { "interpolate", (PyCFunction) _wrap_Interpolator_interpolate, METH_VARARGS, (char*) "" },
-  { "getConversionFactor", (PyCFunction) _wrap_Interpolator_getConversionFactor, METH_VARARGS, (char*) "" },
-  { "getModelName", (PyCFunction) _wrap_Interpolator_getModelName, METH_VARARGS, (char*) "" },
+  { "interpolate", (PyCFunction) _wrap_Interpolator_interpolate, METH_VARARGS, (char*) "\n"
+		"virtual float\n"
+		"ccmc::Interpolator::interpolate(const long &variable_id, const float\n"
+		"&c0, const float &c1, const float &c2, float &dc0, float &dc1, float\n"
+		"&dc2)=0 \n"
+		"" },
+  { "getConversionFactor", (PyCFunction) _wrap_Interpolator_getConversionFactor, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Interpolator::getConversionFactor(const long &variable_id)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  \n"
+		"" },
+  { "getModelName", (PyCFunction) _wrap_Interpolator_getModelName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Interpolator::getModelName() \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -34633,7 +35523,35 @@ SwigPyBuiltin__ccmc__KameleonInterpolator_richcompare(PyObject *self, PyObject *
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__KameleonInterpolator_methods[] = {
-  { "interpolate", (PyCFunction) _wrap_KameleonInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { "interpolate", (PyCFunction) _wrap_KameleonInterpolator_interpolate, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::KameleonInterpolator::interpolate(const long &variable_id, const\n"
+		"float &c0, const float &c1, const float &c2, float &dc0, float &dc1,\n"
+		"float &dc2)\n"
+		"\n"
+		"A variable_id won't work well, since derived variables can be\n"
+		"requested, which do not exist in the data.\n"
+		"\n"
+		"OpenGGCM and BATSRUS: c0,c1,c2 maps to x,y,z, respectively. ENLIL and\n"
+		"MAS: c0,c1,c2 maps to r,theta(latitude), phi(longitude), respectively\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"c0:\n"
+		"\n"
+		"c1:\n"
+		"\n"
+		"c2:\n"
+		"\n"
+		"dc0:\n"
+		"\n"
+		"dc1:\n"
+		"\n"
+		"dc2:  \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -34825,23 +35743,252 @@ SwigPyBuiltin__ccmc__Tracer_richcompare(PyObject *self, PyObject *other, int op)
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Tracer_methods[] = {
-  { "setInnerBoundary", (PyCFunction) _wrap_Tracer_setInnerBoundary, METH_VARARGS, (char*) "" },
-  { "setMaxIterations", (PyCFunction) _wrap_Tracer_setMaxIterations, METH_VARARGS, (char*) "" },
-  { "setDn", (PyCFunction) _wrap_Tracer_setDn, METH_VARARGS, (char*) "" },
-  { "setTilt", (PyCFunction) _wrap_Tracer_setTilt, METH_VARARGS, (char*) "" },
-  { "setMissing", (PyCFunction) _wrap_Tracer_setMissing, METH_VARARGS, (char*) "" },
-  { "setMaxArcLength", (PyCFunction) _wrap_Tracer_setMaxArcLength, METH_VARARGS, (char*) "" },
-  { "bidirectionalTrace", (PyCFunction) _wrap_Tracer_bidirectionalTrace, METH_VARARGS, (char*) "" },
-  { "bidirectionalTraceWithDipole", (PyCFunction) _wrap_Tracer_bidirectionalTraceWithDipole, METH_VARARGS, (char*) "" },
-  { "unidirectionalTrace", (PyCFunction) _wrap_Tracer_unidirectionalTrace, METH_VARARGS, (char*) "" },
-  { "unidirectionalTraceWithDipole", (PyCFunction) _wrap_Tracer_unidirectionalTraceWithDipole, METH_VARARGS, (char*) "" },
-  { "findLastClosed", (PyCFunction) _wrap_Tracer_findLastClosed, METH_VARARGS, (char*) "" },
-  { "getLastClosedFieldlines", (PyCFunction) _wrap_Tracer_getLastClosedFieldlines, METH_VARARGS, (char*) "" },
-  { "isClosed", (PyCFunction) _wrap_Tracer_isClosed, METH_VARARGS, (char*) "" },
-  { "setUseMaxArcLength", (PyCFunction) _wrap_Tracer_setUseMaxArcLength, METH_VARARGS, (char*) "" },
-  { "getVector", (PyCFunction) _wrap_Tracer_getVector, METH_VARARGS, (char*) "" },
-  { "setRegionOfInterest", (PyCFunction) _wrap_Tracer_setRegionOfInterest, METH_VARARGS, (char*) "" },
-  { "setUseRegionOfInterest", (PyCFunction) _wrap_Tracer_setUseRegionOfInterest, METH_VARARGS, (char*) "" },
+  { "setInnerBoundary", (PyCFunction) _wrap_Tracer_setInnerBoundary, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setInnerBoundary(float r_end)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"r_end:  \n"
+		"" },
+  { "setMaxIterations", (PyCFunction) _wrap_Tracer_setMaxIterations, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setMaxIterations(int stepMax)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"stepMax:  \n"
+		"" },
+  { "setDn", (PyCFunction) _wrap_Tracer_setDn, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setDn(float dn)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"dn:  \n"
+		"" },
+  { "setTilt", (PyCFunction) _wrap_Tracer_setTilt, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setTilt(float tilt)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"tilt:  \n"
+		"" },
+  { "setMissing", (PyCFunction) _wrap_Tracer_setMissing, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setMissing(float missing)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"missing:  \n"
+		"" },
+  { "setMaxArcLength", (PyCFunction) _wrap_Tracer_setMaxArcLength, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setMaxArcLength(float maxArcLength)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"maxArcLength:  \n"
+		"" },
+  { "bidirectionalTrace", (PyCFunction) _wrap_Tracer_bidirectionalTrace, METH_VARARGS, (char*) "\n"
+		"Fieldline\n"
+		"ccmc::Tracer::bidirectionalTrace(const std::string &variable, const\n"
+		"float &startComponent1, const float &startComponent2, const float\n"
+		"&startComponent3)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"startComponent1:\n"
+		"\n"
+		"startComponent2:\n"
+		"\n"
+		"startComponent3:  \n"
+		"" },
+  { "bidirectionalTraceWithDipole", (PyCFunction) _wrap_Tracer_bidirectionalTraceWithDipole, METH_VARARGS, (char*) "\n"
+		"Fieldline ccmc::Tracer::bidirectionalTraceWithDipole(const std::string\n"
+		"&variable, const float &startComponent1, const float &startComponent2,\n"
+		"const float &startComponent3)\n"
+		"\n"
+		"Opens a CCMC generated CDF file and initializes the model name\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  The filename of the cdf file to open. Closes the opened CDF\n"
+		"file Loads the variable, including all components of the variable,\n"
+		"into memory. For example, if variable is \"bx\", three variables will\n"
+		"be loaded: \"bx\", \"by\", and \"bz\"\n"
+		"\n"
+		"variable:  TODO: finish documentation\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"startComponent1:\n"
+		"\n"
+		"startComponent2:\n"
+		"\n"
+		"startComponent3:  \n"
+		"" },
+  { "unidirectionalTrace", (PyCFunction) _wrap_Tracer_unidirectionalTrace, METH_VARARGS, (char*) "\n"
+		"Fieldline\n"
+		"ccmc::Tracer::unidirectionalTrace(const std::string &variable, const\n"
+		"float &startComponent1, const float &startComponent2, const float\n"
+		"&startComponent3, const Direction &dir=FOWARD)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"startComponent1:\n"
+		"\n"
+		"startComponent2:\n"
+		"\n"
+		"startComponent3:\n"
+		"\n"
+		"dir:  \n"
+		"" },
+  { "unidirectionalTraceWithDipole", (PyCFunction) _wrap_Tracer_unidirectionalTraceWithDipole, METH_VARARGS, (char*) "\n"
+		"Fieldline ccmc::Tracer::unidirectionalTraceWithDipole(const\n"
+		"std::string &variable, const float &startComponent1, const float\n"
+		"&startComponent2, const float &startComponent3, const Direction\n"
+		"&dir=FOWARD)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"startComponent1:\n"
+		"\n"
+		"startComponent2:\n"
+		"\n"
+		"startComponent3:\n"
+		"\n"
+		"dir:  \n"
+		"" },
+  { "findLastClosed", (PyCFunction) _wrap_Tracer_findLastClosed, METH_VARARGS, (char*) "\n"
+		"Fieldline\n"
+		"ccmc::Tracer::findLastClosed(Point3f position, int stepMax)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"position:\n"
+		"\n"
+		"stepMax:  \n"
+		"" },
+  { "getLastClosedFieldlines", (PyCFunction) _wrap_Tracer_getLastClosedFieldlines, METH_VARARGS, (char*) "\n"
+		"vector<\n"
+		"Fieldline > ccmc::Tracer::getLastClosedFieldlines(int\n"
+		"numberOfFieldlines, int stepMax, int\n"
+		"numberOfPointsPerReducedFieldline)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"numberOfFieldlines:\n"
+		"\n"
+		"stepMax:\n"
+		"\n"
+		"numberOfPointsPerReducedFieldline:\n"
+		"\n"
+		"add the first point all the time\n"
+		"\n"
+		"always add the last point too, since i was reduced by one \n"
+		"" },
+  { "isClosed", (PyCFunction) _wrap_Tracer_isClosed, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"ccmc::Tracer::isClosed(Fieldline &fieldline)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"fieldline:  \n"
+		"" },
+  { "setUseMaxArcLength", (PyCFunction) _wrap_Tracer_setUseMaxArcLength, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setUseMaxArcLength(bool useMaxArcLength)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"useMaxArcLength:  \n"
+		"" },
+  { "getVector", (PyCFunction) _wrap_Tracer_getVector, METH_VARARGS, (char*) "\n"
+		"Point3f\n"
+		"ccmc::Tracer::getVector(const std::string &variable, const Point3f\n"
+		"&position, float &dComponent1, float &dComponent2, float &dComponent3,\n"
+		"const Interpolator *interpolator)\n"
+		"\n"
+		"check to see if iterations are greater than or equal to max I should\n"
+		"have changed the name but it would have been too long TODO: finish\n"
+		"documentation TODO: return missing value if variable not found TODO:\n"
+		"use a map instead of an if/else statement to check for the variable\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"position:\n"
+		"\n"
+		"dComponent1:\n"
+		"\n"
+		"dComponent2:\n"
+		"\n"
+		"dComponent3:\n"
+		"\n"
+		"interpolator:  \n"
+		"" },
+  { "setRegionOfInterest", (PyCFunction) _wrap_Tracer_setRegionOfInterest, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setRegionOfInterest(Point3f min, Point3f max)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"min:\n"
+		"\n"
+		"max:  \n"
+		"" },
+  { "setUseRegionOfInterest", (PyCFunction) _wrap_Tracer_setUseRegionOfInterest, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Tracer::setUseRegionOfInterest(bool useROI)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"useROI:  \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -35009,7 +36156,25 @@ static PyHeapTypeObject SwigPyBuiltin__ccmc__Tracer_type = {
 SWIGINTERN SwigPyClientData SwigPyBuiltin__ccmc__Tracer_clientdata = {0, 0, 0, 0, 0, 0, (PyTypeObject *)&SwigPyBuiltin__ccmc__Tracer_type};
 
 SWIGPY_DESTRUCTOR_CLOSURE(_wrap_delete_Fieldline)
+static SwigPyGetSet Fieldline_maxcount_getset = { _wrap_Fieldline_maxcount_get, _wrap_Fieldline_maxcount_set };
+static SwigPyGetSet Fieldline_mincount_getset = { _wrap_Fieldline_mincount_get, _wrap_Fieldline_mincount_set };
+static SwigPyGetSet Fieldline_maxima_getset = { _wrap_Fieldline_maxima_get, _wrap_Fieldline_maxima_set };
+static SwigPyGetSet Fieldline_minima_getset = { _wrap_Fieldline_minima_get, _wrap_Fieldline_minima_set };
+static SwigPyGetSet Fieldline_GlobMaxIndex_getset = { _wrap_Fieldline_GlobMaxIndex_get, _wrap_Fieldline_GlobMaxIndex_set };
+static SwigPyGetSet Fieldline_GlobMinIndex_getset = { _wrap_Fieldline_GlobMinIndex_get, _wrap_Fieldline_GlobMinIndex_set };
 SWIGINTERN PyGetSetDef SwigPyBuiltin__ccmc__Fieldline_getset[] = {
+    { (char*) "maxcount", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Fieldline.maxcount", (void*) &Fieldline_maxcount_getset }
+,
+    { (char*) "mincount", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Fieldline.mincount", (void*) &Fieldline_mincount_getset }
+,
+    { (char*) "maxima", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Fieldline.maxima", (void*) &Fieldline_maxima_getset }
+,
+    { (char*) "minima", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Fieldline.minima", (void*) &Fieldline_minima_getset }
+,
+    { (char*) "GlobMaxIndex", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Fieldline.GlobMaxIndex", (void*) &Fieldline_GlobMaxIndex_getset }
+,
+    { (char*) "GlobMinIndex", (getter) SwigPyBuiltin_GetterClosure, (setter) SwigPyBuiltin_SetterClosure, (char*)"ccmc::Fieldline.GlobMinIndex", (void*) &Fieldline_GlobMinIndex_getset }
+,
     {NULL, NULL, NULL, NULL, NULL} /* Sentinel */
 };
 
@@ -35033,28 +36198,164 @@ SwigPyBuiltin__ccmc__Fieldline_richcompare(PyObject *self, PyObject *other, int 
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Fieldline_methods[] = {
-  { "insertPointData", (PyCFunction) _wrap_Fieldline_insertPointData, METH_VARARGS, (char*) "" },
-  { "removePoint", (PyCFunction) _wrap_Fieldline_removePoint, METH_VARARGS, (char*) "" },
-  { "reverseOrder", (PyCFunction) _wrap_Fieldline_reverseOrder, METH_VARARGS, (char*) "" },
-  { "reverseOrderInPlace", (PyCFunction) _wrap_Fieldline_reverseOrderInPlace, METH_VARARGS, (char*) "" },
-  { "getPositions", (PyCFunction) _wrap_Fieldline_getPositions, METH_VARARGS, (char*) "" },
-  { "getData", (PyCFunction) _wrap_Fieldline_getData, METH_VARARGS, (char*) "" },
-  { "size", (PyCFunction) _wrap_Fieldline_size, METH_VARARGS, (char*) "" },
-  { "getPosition", (PyCFunction) _wrap_Fieldline_getPosition, METH_VARARGS, (char*) "" },
-  { "getStartPoint", (PyCFunction) _wrap_Fieldline_getStartPoint, METH_VARARGS, (char*) "" },
-  { "reserve", (PyCFunction) _wrap_Fieldline_reserve, METH_VARARGS, (char*) "" },
-  { "setStartPoint", (PyCFunction) _wrap_Fieldline_setStartPoint, METH_VARARGS, (char*) "" },
-  { "setVariable", (PyCFunction) _wrap_Fieldline_setVariable, METH_VARARGS, (char*) "" },
-  { "getVariable", (PyCFunction) _wrap_Fieldline_getVariable, METH_VARARGS, (char*) "" },
-  { "getDs", (PyCFunction) _wrap_Fieldline_getDs, METH_VARARGS, (char*) "" },
-  { "getElements", (PyCFunction) _wrap_Fieldline_getElements, METH_VARARGS, (char*) "" },
-  { "getElement", (PyCFunction) _wrap_Fieldline_getElement, METH_VARARGS, (char*) "" },
-  { "integrate", (PyCFunction) _wrap_Fieldline_integrate, METH_VARARGS, (char*) "" },
-  { "measure", (PyCFunction) _wrap_Fieldline_measure, METH_VARARGS, (char*) "" },
-  { "getLength", (PyCFunction) _wrap_Fieldline_getLength, METH_VARARGS, (char*) "" },
-  { "getIntegral", (PyCFunction) _wrap_Fieldline_getIntegral, METH_VARARGS, (char*) "" },
-  { "interpolate", (PyCFunction) _wrap_Fieldline_interpolate, METH_VARARGS, (char*) "" },
-  { "getNearest", (PyCFunction) _wrap_Fieldline_getNearest, METH_VARARGS, (char*) "" },
+  { "insertPointData", (PyCFunction) _wrap_Fieldline_insertPointData, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Fieldline::insertPointData(const Point3f &p, const float &d)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"p:\n"
+		"\n"
+		"d:  \n"
+		"" },
+  { "removePoint", (PyCFunction) _wrap_Fieldline_removePoint, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Fieldline::removePoint(int index)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"index:  \n"
+		"" },
+  { "reverseOrder", (PyCFunction) _wrap_Fieldline_reverseOrder, METH_VARARGS, (char*) "\n"
+		"Fieldline\n"
+		"ccmc::Fieldline::reverseOrder()\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "reverseOrderInPlace", (PyCFunction) _wrap_Fieldline_reverseOrderInPlace, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Fieldline::reverseOrderInPlace()\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "getPositions", (PyCFunction) _wrap_Fieldline_getPositions, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< Point3f > & ccmc::Fieldline::getPositions()\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "getData", (PyCFunction) _wrap_Fieldline_getData, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Fieldline::getData(int i)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"i:  \n"
+		"" },
+  { "size", (PyCFunction) _wrap_Fieldline_size, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::Fieldline::size()\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "getPosition", (PyCFunction) _wrap_Fieldline_getPosition, METH_VARARGS, (char*) "\n"
+		"const Point3f &\n"
+		"ccmc::Fieldline::getPosition(int i)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"i:  \n"
+		"" },
+  { "getStartPoint", (PyCFunction) _wrap_Fieldline_getStartPoint, METH_VARARGS, (char*) "\n"
+		"Point3f\n"
+		"ccmc::Fieldline::getStartPoint()\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "reserve", (PyCFunction) _wrap_Fieldline_reserve, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Fieldline::reserve(int size)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"size:  \n"
+		"" },
+  { "setStartPoint", (PyCFunction) _wrap_Fieldline_setStartPoint, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Fieldline::setStartPoint(Point3f p)\n"
+		"\n"
+		"TODO: finish documentation\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"startPoint:  \n"
+		"" },
+  { "setVariable", (PyCFunction) _wrap_Fieldline_setVariable, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Fieldline::setVariable(std::string variable) \n"
+		"" },
+  { "getVariable", (PyCFunction) _wrap_Fieldline_getVariable, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::string & ccmc::Fieldline::getVariable() \n"
+		"" },
+  { "getDs", (PyCFunction) _wrap_Fieldline_getDs, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > & ccmc::Fieldline::getDs()\n"
+		"\n"
+		"Calculate the forward difference elements for a field line with\n"
+		"ordered positions. Output has length fieldline.size()-1 TODO: Add\n"
+		"backward and higher-order differencing \n"
+		"" },
+  { "getElements", (PyCFunction) _wrap_Fieldline_getElements, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< Point3f > & ccmc::Fieldline::getElements() \n"
+		"" },
+  { "getElement", (PyCFunction) _wrap_Fieldline_getElement, METH_VARARGS, (char*) "\n"
+		"const Point3f &\n"
+		"ccmc::Fieldline::getElement(int i) \n"
+		"" },
+  { "integrate", (PyCFunction) _wrap_Fieldline_integrate, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > & ccmc::Fieldline::integrate()\n"
+		"\n"
+		"Calculate the integral of ds*values over the length of the field line\n"
+		"\n"
+		"TODO: Change integration so that it multiplies the element lengths by\n"
+		"the average of the data on either side of the element \n"
+		"" },
+  { "derivative", (PyCFunction) _wrap_Fieldline_derivative, METH_VARARGS, (char*) "" },
+  { "measure", (PyCFunction) _wrap_Fieldline_measure, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > & ccmc::Fieldline::measure()\n"
+		"\n"
+		"Measure the length of the field line up to point i \n"
+		"" },
+  { "getLength", (PyCFunction) _wrap_Fieldline_getLength, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Fieldline::getLength(int i)\n"
+		"\n"
+		"Get the length up to position i \n"
+		"" },
+  { "getIntegral", (PyCFunction) _wrap_Fieldline_getIntegral, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Fieldline::getIntegral(int i)\n"
+		"\n"
+		"Get the integral up to position i \n"
+		"" },
+  { "interpolate", (PyCFunction) _wrap_Fieldline_interpolate, METH_VARARGS, (char*) "\n"
+		"Fieldline\n"
+		"ccmc::Fieldline::interpolate(int option, int Npoints) \n"
+		"" },
+  { "getNearest", (PyCFunction) _wrap_Fieldline_getNearest, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< int > & ccmc::Fieldline::getNearest() \n"
+		"" },
+  { "getTlocal", (PyCFunction) _wrap_Fieldline_getTlocal, METH_VARARGS, (char*) "" },
+  { "minmax", (PyCFunction) _wrap_Fieldline_minmax, METH_VARARGS, (char*) "" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -35255,16 +36556,49 @@ SwigPyBuiltin__ccmc__Point3f_richcompare(PyObject *self, PyObject *other, int op
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Point3f_methods[] = {
-  { "normalize", (PyCFunction) _wrap_Point3f_normalize, METH_VARARGS, (char*) "" },
-  { "toString", (PyCFunction) _wrap_Point3f_toString, METH_VARARGS, (char*) "" },
-  { "magnitude", (PyCFunction) _wrap_Point3f_magnitude, METH_VARARGS, (char*) "" },
-  { "distance", (PyCFunction) _wrap_Point3f_distance, METH_VARARGS, (char*) "" },
+  { "normalize", (PyCFunction) _wrap_Point3f_normalize, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Point3f::normalize()\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "toString", (PyCFunction) _wrap_Point3f_toString, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Point3f::toString() const\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "magnitude", (PyCFunction) _wrap_Point3f_magnitude, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Point3f::magnitude()\n"
+		"\n"
+		"Computes the magnitude of the cartesian vector \n"
+		"" },
+  { "distance", (PyCFunction) _wrap_Point3f_distance, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Point3f::distance(const Point3f &p) const\n"
+		"\n"
+		"compute the distance between this point, and Point p TODO: finish\n"
+		"documentation \n"
+		"" },
   { "__add__", (PyCFunction) _wrap_Point3f___add__, METH_VARARGS, (char*) "" },
   { "__sub__", (PyCFunction) _wrap_Point3f___sub__, METH_VARARGS, (char*) "" },
   { "__mul__", (PyCFunction) _wrap_Point3f___mul__, METH_VARARGS, (char*) "" },
-  { "setCoordinates", (PyCFunction) _wrap_Point3f_setCoordinates, METH_VARARGS, (char*) "" },
-  { "getCoordinates", (PyCFunction) _wrap_Point3f_getCoordinates, METH_VARARGS, (char*) "" },
-  { "getCartesian", (PyCFunction) _wrap_Point3f_getCartesian, METH_VARARGS, (char*) "" },
+  { "setCoordinates", (PyCFunction) _wrap_Point3f_setCoordinates, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Point3f::setCoordinates(Coordinates c)\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "getCoordinates", (PyCFunction) _wrap_Point3f_getCoordinates, METH_VARARGS, (char*) "\n"
+		"Point3f::Coordinates ccmc::Point3f::getCoordinates()\n"
+		"\n"
+		"TODO: finish documentation \n"
+		"" },
+  { "getCartesian", (PyCFunction) _wrap_Point3f_getCartesian, METH_VARARGS, (char*) "\n"
+		"Point3f\n"
+		"ccmc::Point3f::getCartesian() \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -35456,14 +36790,67 @@ SwigPyBuiltin__ccmc__Attribute_richcompare(PyObject *self, PyObject *other, int 
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Attribute_methods[] = {
-  { "getAttributeName", (PyCFunction) _wrap_Attribute_getAttributeName, METH_VARARGS, (char*) "" },
-  { "setAttributeName", (PyCFunction) _wrap_Attribute_setAttributeName, METH_VARARGS, (char*) "" },
-  { "setAttributeValue", (PyCFunction) _wrap_Attribute_setAttributeValue, METH_VARARGS, (char*) "" },
-  { "getAttributeType", (PyCFunction) _wrap_Attribute_getAttributeType, METH_VARARGS, (char*) "" },
-  { "getAttributeFloat", (PyCFunction) _wrap_Attribute_getAttributeFloat, METH_VARARGS, (char*) "" },
-  { "getAttributeString", (PyCFunction) _wrap_Attribute_getAttributeString, METH_VARARGS, (char*) "" },
-  { "getAttributeInt", (PyCFunction) _wrap_Attribute_getAttributeInt, METH_VARARGS, (char*) "" },
-  { "toString", (PyCFunction) _wrap_Attribute_toString, METH_VARARGS, (char*) "" },
+  { "getAttributeName", (PyCFunction) _wrap_Attribute_getAttributeName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Attribute::getAttributeName()\n"
+		"\n"
+		"Returns the attribute's name as a std::string object. The attribute's\n"
+		"name \n"
+		"" },
+  { "setAttributeName", (PyCFunction) _wrap_Attribute_setAttributeName, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Attribute::setAttributeName(std::string attributeName)\n"
+		"\n"
+		"Sets the attribute name\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"name:  The attribute name requested. \n"
+		"" },
+  { "setAttributeValue", (PyCFunction) _wrap_Attribute_setAttributeValue, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Attribute::setAttributeValue(float &value)\n"
+		"\n"
+		"Copies the contents of value and stores them.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"value:  the new attribute value \n"
+		"" },
+  { "getAttributeType", (PyCFunction) _wrap_Attribute_getAttributeType, METH_VARARGS, (char*) "\n"
+		"Attribute::AttributeType ccmc::Attribute::getAttributeType()\n"
+		"\n"
+		"AttributeType of the Attribute object \n"
+		"" },
+  { "getAttributeFloat", (PyCFunction) _wrap_Attribute_getAttributeFloat, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Attribute::getAttributeFloat()\n"
+		"\n"
+		"Returns the attribute value as a float, if applicable. The float value\n"
+		"of the attribute. The value returned will be 0.f if the AttributeType\n"
+		"of the Attribute object is not Attribute::FLOAT \n"
+		"" },
+  { "getAttributeString", (PyCFunction) _wrap_Attribute_getAttributeString, METH_VARARGS, (char*) "\n"
+		"std::string ccmc::Attribute::getAttributeString()\n"
+		"\n"
+		"Returns the string representation of the attribute, if applicable. The\n"
+		"string value of the attribute. This value will be an empty string if\n"
+		"the AttributeType of the Attribute object is not Attribute::STRING \n"
+		"" },
+  { "getAttributeInt", (PyCFunction) _wrap_Attribute_getAttributeInt, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::Attribute::getAttributeInt()\n"
+		"\n"
+		"Returns the attribute value as an int, if applicable. The int value of\n"
+		"the attribute. The value returned will be 0 if the AttributeType of\n"
+		"the Attribute object is not Attribute::FLOAT \n"
+		"" },
+  { "toString", (PyCFunction) _wrap_Attribute_toString, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Attribute::toString() const \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -35655,26 +37042,269 @@ SwigPyBuiltin__ccmc__Model_richcompare(PyObject *self, PyObject *other, int op) 
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Model_methods[] = {
-  { "open", (PyCFunction) _wrap_Model_open, METH_VARARGS, (char*) "" },
-  { "setModelName", (PyCFunction) _wrap_Model_setModelName, METH_VARARGS, (char*) "" },
-  { "getModelName", (PyCFunction) _wrap_Model_getModelName, METH_VARARGS, (char*) "" },
-  { "loadVariable", (PyCFunction) _wrap_Model_loadVariable, METH_VARARGS, (char*) "" },
-  { "unloadVariable", (PyCFunction) _wrap_Model_unloadVariable, METH_VARARGS, (char*) "" },
-  { "loadVariableInt", (PyCFunction) _wrap_Model_loadVariableInt, METH_VARARGS, (char*) "" },
-  { "getVariableFromMapRW", (PyCFunction) _wrap_Model_getVariableFromMapRW, METH_VARARGS, (char*) "" },
-  { "getIntVariableFromMapRW", (PyCFunction) _wrap_Model_getIntVariableFromMapRW, METH_VARARGS, (char*) "" },
-  { "getVariableFromMap", (PyCFunction) _wrap_Model_getVariableFromMap, METH_VARARGS, (char*) "" },
-  { "getIntVariableFromMap", (PyCFunction) _wrap_Model_getIntVariableFromMap, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_Model_getLoadedVariables, METH_VARARGS, (char*) "" },
-  { "setMissingValue", (PyCFunction) _wrap_Model_setMissingValue, METH_VARARGS, (char*) "" },
-  { "getMissingValue", (PyCFunction) _wrap_Model_getMissingValue, METH_VARARGS, (char*) "" },
-  { "getConversionFactorToSI", (PyCFunction) _wrap_Model_getConversionFactorToSI, METH_VARARGS, (char*) "" },
-  { "getNativeUnit", (PyCFunction) _wrap_Model_getNativeUnit, METH_VARARGS, (char*) "" },
-  { "getSIUnit", (PyCFunction) _wrap_Model_getSIUnit, METH_VARARGS, (char*) "" },
-  { "getProgress", (PyCFunction) _wrap_Model_getProgress, METH_VARARGS, (char*) "" },
-  { "getBusyStatus", (PyCFunction) _wrap_Model_getBusyStatus, METH_VARARGS, (char*) "" },
-  { "close", (PyCFunction) _wrap_Model_close, METH_VARARGS, (char*) "" },
-  { "createNewInterpolator", (PyCFunction) _wrap_Model_createNewInterpolator, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_Model_open, METH_VARARGS, (char*) "\n"
+		"virtual long\n"
+		"ccmc::Model::open(const std::string &filename)=0\n"
+		"\n"
+		"Opens a file.\n"
+		"\n"
+		"Opens a file and performs any necessary initialization required to\n"
+		"work with the data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  \n"
+		"" },
+  { "setModelName", (PyCFunction) _wrap_Model_setModelName, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Model::setModelName(std::string modelName)\n"
+		"\n"
+		"Sets the model name to modelName.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"modelName:  \n"
+		"" },
+  { "getModelName", (PyCFunction) _wrap_Model_getModelName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Model::getModelName()\n"
+		"\n"
+		"Returns the modelName of the currently selected file. \n"
+		"" },
+  { "loadVariable", (PyCFunction) _wrap_Model_loadVariable, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::Model::loadVariable(const std::string &variable)\n"
+		"\n"
+		"Load a variable into memory.\n"
+		"\n"
+		"Use this method when the variable to load is of type float\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  Variable to load into memory.\n"
+		"\n"
+		"status of the operation \n"
+		"" },
+  { "unloadVariable", (PyCFunction) _wrap_Model_unloadVariable, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::Model::unloadVariable(const std::string &variable)\n"
+		"\n"
+		"Unload a variable from memory. This will return FileReader::OK if the\n"
+		"variable is removed from memory, and\n"
+		"FileReader::VARIABLE_NOT_IN_MEMORY if the variable was not already in\n"
+		"memory.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  Variable to unload from memory.\n"
+		"\n"
+		"status of the operation \n"
+		"" },
+  { "loadVariableInt", (PyCFunction) _wrap_Model_loadVariableInt, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::Model::loadVariableInt(const std::string &variable)\n"
+		"\n"
+		"Loads a variable into memory.\n"
+		"\n"
+		"Use this method when the variable to load is of type int\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:\n"
+		"\n"
+		"status of the operation \n"
+		"" },
+  { "getVariableFromMapRW", (PyCFunction) _wrap_Model_getVariableFromMapRW, METH_VARARGS, (char*) "\n"
+		"std::vector< float > * ccmc::Model::getVariableFromMapRW(long\n"
+		"variable_id)\n"
+		"\n"
+		"Returns a pointer to the entry in the variableDataByID map containing\n"
+		"the variable data.\n"
+		"\n"
+		"This pointer cannot be modified.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  Variable id of the variable to fetch from memory. This\n"
+		"assumes the variable has already been loaded into memory. If the\n"
+		"variable has not been loaded, the pointer will be NULL. Request the\n"
+		"variable id by using FileReader::getVariableID(const std::string&\n"
+		"variable)\n"
+		"\n"
+		"std::vector<float>* of the requested variable. Note that the pointer\n"
+		"points to an entry in a map. The memory pointed to by the pointer will\n"
+		"automatically be freed when the file is closed, or the Model object is\n"
+		"deleted. \n"
+		"" },
+  { "getIntVariableFromMapRW", (PyCFunction) _wrap_Model_getIntVariableFromMapRW, METH_VARARGS, (char*) "\n"
+		"std::vector< int > * ccmc::Model::getIntVariableFromMapRW(long\n"
+		"variable_id)\n"
+		"\n"
+		"Returns a pointer to the entry in the variableDataIntByID map\n"
+		"containing the variable data.\n"
+		"\n"
+		"This pointer cannot be modified.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  Variable id of the variable to fetch from memory. This\n"
+		"assumes the variable has already been loaded into memory. If the\n"
+		"variable has not been loaded, the pointer will be NULL. Request the\n"
+		"variable id by using FileReader::getVariableID(const std::string&\n"
+		"variable)\n"
+		"\n"
+		"std::vector<int>* of the requested variable. Note that the pointer\n"
+		"points to an entry in a map. The memory pointed to by the pointer will\n"
+		"automatically be freed when the file is closed, or the Model object is\n"
+		"deleted. \n"
+		"" },
+  { "getVariableFromMap", (PyCFunction) _wrap_Model_getVariableFromMap, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< float > *const ccmc::Model::getVariableFromMap(long\n"
+		"variable_id)\n"
+		"\n"
+		"Returns a const pointer to the entry in the variableDataByID map\n"
+		"containing the variable data.\n"
+		"\n"
+		"This pointer cannot be modified.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  Variable id of the variable to fetch from memory. This\n"
+		"assumes the variable has already been loaded into memory. If the\n"
+		"variable has not been loaded, the pointer will be NULL. Request the\n"
+		"variable id by using FileReader::getVariableID(const std::string&\n"
+		"variable)\n"
+		"\n"
+		"std::vector<float>* of the requested variable. Note that the pointer\n"
+		"points to an entry in a map and should not and cannot be deleted. The\n"
+		"memory pointed to by the pointer will automatically be freed when the\n"
+		"file is closed, or the Model object is deleted. \n"
+		"" },
+  { "getIntVariableFromMap", (PyCFunction) _wrap_Model_getIntVariableFromMap, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< int > *const ccmc::Model::getIntVariableFromMap(long\n"
+		"variable_id)\n"
+		"\n"
+		"Returns a const pointer to the entry in the variableDataIntByID map\n"
+		"containing the variable data.\n"
+		"\n"
+		"This pointer cannot be modified.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  Variable id of the variable to fetch from memory. This\n"
+		"assumes the variable has already been loaded into memory. If the\n"
+		"variable has not been loaded, the pointer will be NULL. Request the\n"
+		"variable id by using FileReader::getVariableID(const std::string&\n"
+		"variable)\n"
+		"\n"
+		"std::vector<int>* of the requested variable. Note that the pointer\n"
+		"points to an entry in a map and should not and cannot be deleted. The\n"
+		"memory pointed to by the pointer will automatically be freed when the\n"
+		"file is closed, or the Model object is deleted. \n"
+		"" },
+  { "getLoadedVariables", (PyCFunction) _wrap_Model_getLoadedVariables, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< std::string > ccmc::Model::getLoadedVariables()\n"
+		"\n"
+		"Returns the list of variables that have been loaded into memory, using\n"
+		"the loadVariable or loadVectorVariable methods. \n"
+		"" },
+  { "setMissingValue", (PyCFunction) _wrap_Model_setMissingValue, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Model::setMissingValue(float missingValue)\n"
+		"\n"
+		"Sets the missing value to use when no valid data exists.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"missingValue:  \n"
+		"" },
+  { "getMissingValue", (PyCFunction) _wrap_Model_getMissingValue, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Model::getMissingValue()\n"
+		"\n"
+		"Returns the missing value that will be returned when no valid data\n"
+		"exists.\n"
+		"\n"
+		"This value can be used to check whether an interpolated value is a\n"
+		"missing value or not.\n"
+		"\n"
+		"Missing value \n"
+		"" },
+  { "getConversionFactorToSI", (PyCFunction) _wrap_Model_getConversionFactorToSI, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::Model::getConversionFactorToSI(const std::string &variable)\n"
+		"\n"
+		"Returns the conversion factor needed to convert the interpolated value\n"
+		"to SI units.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  Variable to request the conversion factor for.\n"
+		"\n"
+		"Conversion factor to convert the specified variable to SI units \n"
+		"" },
+  { "getNativeUnit", (PyCFunction) _wrap_Model_getNativeUnit, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Model::getNativeUnit(const std::string &variable)\n"
+		"\n"
+		"Fetches the native units of the variable as stored in the file.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  Variable to request units for.\n"
+		"\n"
+		"The native units of the specified variable, as stored in the file. \n"
+		"" },
+  { "getSIUnit", (PyCFunction) _wrap_Model_getSIUnit, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Model::getSIUnit(const std::string &variable)\n"
+		"\n"
+		"Returns the SI units of the specified variable.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable:  \n"
+		"" },
+  { "getProgress", (PyCFunction) _wrap_Model_getProgress, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::Model::getProgress() \n"
+		"" },
+  { "getBusyStatus", (PyCFunction) _wrap_Model_getBusyStatus, METH_VARARGS, (char*) "\n"
+		"int\n"
+		"ccmc::Model::getBusyStatus() \n"
+		"" },
+  { "close", (PyCFunction) _wrap_Model_close, METH_VARARGS, (char*) "\n"
+		"long ccmc::Model::close()\n"
+		"\n"
+		"Closes the currently selected file. \n"
+		"" },
+  { "createNewInterpolator", (PyCFunction) _wrap_Model_createNewInterpolator, METH_VARARGS, (char*) "\n"
+		"virtual\n"
+		"Interpolator* ccmc::Model::createNewInterpolator()=0\n"
+		"\n"
+		"Returns an Interpolator object for the currently opened file.\n"
+		"\n"
+		"This returns an Interpolator object that contains all the necessary\n"
+		"local variables required to interpolate independent of any other\n"
+		"Interpolator object. The pointer must be deleted from the calling\n"
+		"program. A pointer to an Interpolator object. \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -35866,15 +37496,61 @@ SwigPyBuiltin__ccmc__OpenGGCM_richcompare(PyObject *self, PyObject *other, int o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__OpenGGCM_methods[] = {
-  { "open", (PyCFunction) _wrap_OpenGGCM_open, METH_VARARGS, (char*) "" },
-  { "createNewInterpolator", (PyCFunction) _wrap_OpenGGCM_createNewInterpolator, METH_VARARGS, (char*) "" },
-  { "getXGrid", (PyCFunction) _wrap_OpenGGCM_getXGrid, METH_VARARGS, (char*) "" },
-  { "getYGrid", (PyCFunction) _wrap_OpenGGCM_getYGrid, METH_VARARGS, (char*) "" },
-  { "getZGrid", (PyCFunction) _wrap_OpenGGCM_getZGrid, METH_VARARGS, (char*) "" },
-  { "getXGridName", (PyCFunction) _wrap_OpenGGCM_getXGridName, METH_VARARGS, (char*) "" },
-  { "getYGridName", (PyCFunction) _wrap_OpenGGCM_getYGridName, METH_VARARGS, (char*) "" },
-  { "getZGridName", (PyCFunction) _wrap_OpenGGCM_getZGridName, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_OpenGGCM_getLoadedVariables, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_OpenGGCM_open, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::OpenGGCM::open(const std::string &filename)\n"
+		"\n"
+		"Opens a file.\n"
+		"\n"
+		"Opens a file and performs any necessary initialization required to\n"
+		"work with the data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  \n"
+		"" },
+  { "createNewInterpolator", (PyCFunction) _wrap_OpenGGCM_createNewInterpolator, METH_VARARGS, (char*) "\n"
+		"Interpolator * ccmc::OpenGGCM::createNewInterpolator()\n"
+		"\n"
+		"Returns an Interpolator object for the currently opened file.\n"
+		"\n"
+		"This returns an Interpolator object that contains all the necessary\n"
+		"local variables required to interpolate independent of any other\n"
+		"Interpolator object. The pointer must be deleted from the calling\n"
+		"program. A pointer to an Interpolator object. \n"
+		"" },
+  { "getXGrid", (PyCFunction) _wrap_OpenGGCM_getXGrid, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > *const ccmc::OpenGGCM::getXGrid(long variable) \n"
+		"" },
+  { "getYGrid", (PyCFunction) _wrap_OpenGGCM_getYGrid, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > *const ccmc::OpenGGCM::getYGrid(long variable) \n"
+		"" },
+  { "getZGrid", (PyCFunction) _wrap_OpenGGCM_getZGrid, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > *const ccmc::OpenGGCM::getZGrid(long variable) \n"
+		"" },
+  { "getXGridName", (PyCFunction) _wrap_OpenGGCM_getXGridName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::OpenGGCM::getXGridName(long variable_id) \n"
+		"" },
+  { "getYGridName", (PyCFunction) _wrap_OpenGGCM_getYGridName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::OpenGGCM::getYGridName(long variable_id) \n"
+		"" },
+  { "getZGridName", (PyCFunction) _wrap_OpenGGCM_getZGridName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::OpenGGCM::getZGridName(long variable_id) \n"
+		"" },
+  { "getLoadedVariables", (PyCFunction) _wrap_OpenGGCM_getLoadedVariables, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< std::string > ccmc::OpenGGCM::getLoadedVariables()\n"
+		"\n"
+		"Returns the list of variables that have been loaded into memory, using\n"
+		"the loadVariable or loadVectorVariable methods. \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -36066,9 +37742,37 @@ SwigPyBuiltin__ccmc__BATSRUS_richcompare(PyObject *self, PyObject *other, int op
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__BATSRUS_methods[] = {
-  { "open", (PyCFunction) _wrap_BATSRUS_open, METH_VARARGS, (char*) "" },
-  { "createNewInterpolator", (PyCFunction) _wrap_BATSRUS_createNewInterpolator, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_BATSRUS_getLoadedVariables, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_BATSRUS_open, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::BATSRUS::open(const std::string &filename)\n"
+		"\n"
+		"Opens a file.\n"
+		"\n"
+		"Opens a file and performs any necessary initialization required to\n"
+		"work with the data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  \n"
+		"" },
+  { "createNewInterpolator", (PyCFunction) _wrap_BATSRUS_createNewInterpolator, METH_VARARGS, (char*) "\n"
+		"Interpolator * ccmc::BATSRUS::createNewInterpolator()\n"
+		"\n"
+		"Returns an Interpolator object for the currently opened file.\n"
+		"\n"
+		"This returns an Interpolator object that contains all the necessary\n"
+		"local variables required to interpolate independent of any other\n"
+		"Interpolator object. The pointer must be deleted from the calling\n"
+		"program. A pointer to an Interpolator object. \n"
+		"" },
+  { "getLoadedVariables", (PyCFunction) _wrap_BATSRUS_getLoadedVariables, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< std::string > ccmc::BATSRUS::getLoadedVariables()\n"
+		"\n"
+		"Returns the list of variables that have been loaded into memory, using\n"
+		"the loadVariable or loadVectorVariable methods. \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -36260,11 +37964,45 @@ SwigPyBuiltin__ccmc__ENLIL_richcompare(PyObject *self, PyObject *other, int op) 
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__ENLIL_methods[] = {
-  { "open", (PyCFunction) _wrap_ENLIL_open, METH_VARARGS, (char*) "" },
-  { "createNewInterpolator", (PyCFunction) _wrap_ENLIL_createNewInterpolator, METH_VARARGS, (char*) "" },
-  { "getChangeSignFlag", (PyCFunction) _wrap_ENLIL_getChangeSignFlag, METH_VARARGS, (char*) "" },
-  { "getChangeSignFlagByID", (PyCFunction) _wrap_ENLIL_getChangeSignFlagByID, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_ENLIL_getLoadedVariables, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_ENLIL_open, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::ENLIL::open(const std::string &filename)\n"
+		"\n"
+		"Opens a file.\n"
+		"\n"
+		"Opens a file and performs any necessary initialization required to\n"
+		"work with the data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  \n"
+		"" },
+  { "createNewInterpolator", (PyCFunction) _wrap_ENLIL_createNewInterpolator, METH_VARARGS, (char*) "\n"
+		"Interpolator * ccmc::ENLIL::createNewInterpolator()\n"
+		"\n"
+		"Returns an Interpolator object for the currently opened file.\n"
+		"\n"
+		"This returns an Interpolator object that contains all the necessary\n"
+		"local variables required to interpolate independent of any other\n"
+		"Interpolator object. The pointer must be deleted from the calling\n"
+		"program. A pointer to an Interpolator object. \n"
+		"" },
+  { "getChangeSignFlag", (PyCFunction) _wrap_ENLIL_getChangeSignFlag, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"ccmc::ENLIL::getChangeSignFlag(std::string variable) \n"
+		"" },
+  { "getChangeSignFlagByID", (PyCFunction) _wrap_ENLIL_getChangeSignFlagByID, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"ccmc::ENLIL::getChangeSignFlagByID(long variable_id) \n"
+		"" },
+  { "getLoadedVariables", (PyCFunction) _wrap_ENLIL_getLoadedVariables, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< std::string > ccmc::ENLIL::getLoadedVariables()\n"
+		"\n"
+		"Returns the list of variables that have been loaded into memory, using\n"
+		"the loadVariable or loadVectorVariable methods. \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -36456,17 +38194,71 @@ SwigPyBuiltin__ccmc__MAS_richcompare(PyObject *self, PyObject *other, int op) {
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__MAS_methods[] = {
-  { "open", (PyCFunction) _wrap_MAS_open, METH_VARARGS, (char*) "" },
-  { "createNewInterpolator", (PyCFunction) _wrap_MAS_createNewInterpolator, METH_VARARGS, (char*) "" },
-  { "getRPosGrid", (PyCFunction) _wrap_MAS_getRPosGrid, METH_VARARGS, (char*) "" },
-  { "getRPosGridName", (PyCFunction) _wrap_MAS_getRPosGridName, METH_VARARGS, (char*) "" },
-  { "getLatPosGrid", (PyCFunction) _wrap_MAS_getLatPosGrid, METH_VARARGS, (char*) "" },
-  { "getLatPosGridName", (PyCFunction) _wrap_MAS_getLatPosGridName, METH_VARARGS, (char*) "" },
-  { "getLonPosGrid", (PyCFunction) _wrap_MAS_getLonPosGrid, METH_VARARGS, (char*) "" },
-  { "getlonPosGrid", (PyCFunction) _wrap_MAS_getlonPosGrid, METH_VARARGS, (char*) "" },
-  { "getLonPosGridName", (PyCFunction) _wrap_MAS_getLonPosGridName, METH_VARARGS, (char*) "" },
-  { "getChangeSignFlag", (PyCFunction) _wrap_MAS_getChangeSignFlag, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_MAS_getLoadedVariables, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_MAS_open, METH_VARARGS, (char*) "\n"
+		"long ccmc::MAS::open(const\n"
+		"std::string &filename)\n"
+		"\n"
+		"Opens a file.\n"
+		"\n"
+		"Opens a file and performs any necessary initialization required to\n"
+		"work with the data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  \n"
+		"" },
+  { "createNewInterpolator", (PyCFunction) _wrap_MAS_createNewInterpolator, METH_VARARGS, (char*) "\n"
+		"Interpolator\n"
+		"* ccmc::MAS::createNewInterpolator()\n"
+		"\n"
+		"Returns an Interpolator object for the currently opened file.\n"
+		"\n"
+		"This returns an Interpolator object that contains all the necessary\n"
+		"local variables required to interpolate independent of any other\n"
+		"Interpolator object. The pointer must be deleted from the calling\n"
+		"program. A pointer to an Interpolator object. \n"
+		"" },
+  { "getRPosGrid", (PyCFunction) _wrap_MAS_getRPosGrid, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > *const ccmc::MAS::getRPosGrid(long variable_id) \n"
+		"" },
+  { "getRPosGridName", (PyCFunction) _wrap_MAS_getRPosGridName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::MAS::getRPosGridName(long variable) \n"
+		"" },
+  { "getLatPosGrid", (PyCFunction) _wrap_MAS_getLatPosGrid, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > *const ccmc::MAS::getLatPosGrid(long variable_id) \n"
+		"" },
+  { "getLatPosGridName", (PyCFunction) _wrap_MAS_getLatPosGridName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::MAS::getLatPosGridName(long variable_id) \n"
+		"" },
+  { "getLonPosGrid", (PyCFunction) _wrap_MAS_getLonPosGrid, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > *const ccmc::MAS::getLonPosGrid(long variable_id) \n"
+		"" },
+  { "getlonPosGrid", (PyCFunction) _wrap_MAS_getlonPosGrid, METH_VARARGS, (char*) "\n"
+		"const std::vector<\n"
+		"float > *const ccmc::MAS::getlonPosGrid(const std::string &variable)\n"
+		"\n"
+		"" },
+  { "getLonPosGridName", (PyCFunction) _wrap_MAS_getLonPosGridName, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::MAS::getLonPosGridName(long variable_id) \n"
+		"" },
+  { "getChangeSignFlag", (PyCFunction) _wrap_MAS_getChangeSignFlag, METH_VARARGS, (char*) "\n"
+		"bool\n"
+		"ccmc::MAS::getChangeSignFlag(long variable_id) \n"
+		"" },
+  { "getLoadedVariables", (PyCFunction) _wrap_MAS_getLoadedVariables, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< std::string > ccmc::MAS::getLoadedVariables()\n"
+		"\n"
+		"Returns the list of variables that have been loaded into memory, using\n"
+		"the loadVariable or loadVectorVariable methods. \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -36658,9 +38450,37 @@ SwigPyBuiltin__ccmc__SWMFIono_richcompare(PyObject *self, PyObject *other, int o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__SWMFIono_methods[] = {
-  { "open", (PyCFunction) _wrap_SWMFIono_open, METH_VARARGS, (char*) "" },
-  { "createNewInterpolator", (PyCFunction) _wrap_SWMFIono_createNewInterpolator, METH_VARARGS, (char*) "" },
-  { "getLoadedVariables", (PyCFunction) _wrap_SWMFIono_getLoadedVariables, METH_VARARGS, (char*) "" },
+  { "open", (PyCFunction) _wrap_SWMFIono_open, METH_VARARGS, (char*) "\n"
+		"long\n"
+		"ccmc::SWMFIono::open(const std::string &filename)\n"
+		"\n"
+		"Opens a file.\n"
+		"\n"
+		"Opens a file and performs any necessary initialization required to\n"
+		"work with the data.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"filename:  \n"
+		"" },
+  { "createNewInterpolator", (PyCFunction) _wrap_SWMFIono_createNewInterpolator, METH_VARARGS, (char*) "\n"
+		"Interpolator * ccmc::SWMFIono::createNewInterpolator()\n"
+		"\n"
+		"Returns an Interpolator object for the currently opened file.\n"
+		"\n"
+		"This returns an Interpolator object that contains all the necessary\n"
+		"local variables required to interpolate independent of any other\n"
+		"Interpolator object. The pointer must be deleted from the calling\n"
+		"program. A pointer to an Interpolator object. \n"
+		"" },
+  { "getLoadedVariables", (PyCFunction) _wrap_SWMFIono_getLoadedVariables, METH_VARARGS, (char*) "\n"
+		"const\n"
+		"std::vector< std::string > ccmc::SWMFIono::getLoadedVariables()\n"
+		"\n"
+		"Returns the list of variables that have been loaded into memory, using\n"
+		"the loadVariable or loadVectorVariable methods. \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -36852,7 +38672,37 @@ SwigPyBuiltin__ccmc__BATSRUSInterpolator_richcompare(PyObject *self, PyObject *o
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__BATSRUSInterpolator_methods[] = {
-  { "interpolate", (PyCFunction) _wrap_BATSRUSInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { "interpolate", (PyCFunction) _wrap_BATSRUSInterpolator_interpolate, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::BATSRUSInterpolator::interpolate(const long &variable_id, const\n"
+		"float &c0, const float &c1, const float &c2, float &dc0, float &dc1,\n"
+		"float &dc2)\n"
+		"\n"
+		"Interpolation method. Note that using the variable ID is significantly\n"
+		"faster than using the variable string.\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  A long representing the variable ID.\n"
+		"\n"
+		"c0:  X component of the position\n"
+		"\n"
+		"c1:  Y component of the position\n"
+		"\n"
+		"c2:  Z component of the position\n"
+		"\n"
+		"dc0:  Reference to a variable to store the delta for component 0\n"
+		"\n"
+		"dc1:  Reference to a variable to store the delta for component 1\n"
+		"\n"
+		"dc2:  Reference to a variable to store the delta for component 2\n"
+		"\n"
+		"The interpolated value at position (c0,c1,c2) with deltas\n"
+		"(dc0,dc1,dc2)\n"
+		"\n"
+		"end of if new position loop \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -37044,7 +38894,41 @@ SwigPyBuiltin__ccmc__ENLILInterpolator_richcompare(PyObject *self, PyObject *oth
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__ENLILInterpolator_methods[] = {
-  { "interpolate", (PyCFunction) _wrap_ENLILInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { "interpolate", (PyCFunction) _wrap_ENLILInterpolator_interpolate, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::ENLILInterpolator::interpolate(const long &variableID, const\n"
+		"float &r, const float &lat, const float &lon, float &dr, float &dlat,\n"
+		"float &dlon)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variableID:\n"
+		"\n"
+		"r:\n"
+		"\n"
+		"lat:\n"
+		"\n"
+		"lon:\n"
+		"\n"
+		"dr:\n"
+		"\n"
+		"dlat:\n"
+		"\n"
+		"dlon:\n"
+		"\n"
+		"convert from latitude -60 to 60 to radians ...\n"
+		"\n"
+		"convert from latitude -60 to 60 to radians ...\n"
+		"\n"
+		"convert from latitude -60...60 to 30...150 range in degress and then\n"
+		"to radians...\n"
+		"\n"
+		"convert degrees ( 0 - 360 longitude ) to radiadns\n"
+		"\n"
+		"correct for longitude angles less than 0 or having a magnitude greater\n"
+		"than 360.f \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -37236,7 +39120,41 @@ SwigPyBuiltin__ccmc__MASInterpolator_richcompare(PyObject *self, PyObject *other
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__MASInterpolator_methods[] = {
-  { "interpolate", (PyCFunction) _wrap_MASInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { "interpolate", (PyCFunction) _wrap_MASInterpolator_interpolate, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::MASInterpolator::interpolate(const long &variable_id, const\n"
+		"float &r, const float &lat, const float &lon, float &dr, float &dlat,\n"
+		"float &dlon)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variableID:\n"
+		"\n"
+		"r:\n"
+		"\n"
+		"lat:\n"
+		"\n"
+		"lon:\n"
+		"\n"
+		"dr:\n"
+		"\n"
+		"dlat:\n"
+		"\n"
+		"dlon:\n"
+		"\n"
+		"convert from latitude -60 to 60 to radians ...\n"
+		"\n"
+		"convert from latitude -60 to 60 to radians ...\n"
+		"\n"
+		"convert from latitude -60...60 to 30...150 range in degress and then\n"
+		"to radians...\n"
+		"\n"
+		"convert degrees ( 0 - 360 longitude ) to radiadns\n"
+		"\n"
+		"correct for longitude angles less than 0 or having a magnitude greater\n"
+		"than 360.f \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -37428,8 +39346,41 @@ SwigPyBuiltin__ccmc__OpenGGCMInterpolator_richcompare(PyObject *self, PyObject *
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__OpenGGCMInterpolator_methods[] = {
-  { "interpolate", (PyCFunction) _wrap_OpenGGCMInterpolator_interpolate, METH_VARARGS, (char*) "" },
-  { "getConversionFactor", (PyCFunction) _wrap_OpenGGCMInterpolator_getConversionFactor, METH_VARARGS, (char*) "" },
+  { "interpolate", (PyCFunction) _wrap_OpenGGCMInterpolator_interpolate, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::OpenGGCMInterpolator::interpolate(const long &variable_id, const\n"
+		"float &c0, const float &c1, const float &c2, float &dc0, float &dc1,\n"
+		"float &dc2)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:\n"
+		"\n"
+		"c0:\n"
+		"\n"
+		"c1:\n"
+		"\n"
+		"c2:\n"
+		"\n"
+		"dc0:  Reference to a variable to store the delta for component 0\n"
+		"\n"
+		"dc1:  Reference to a variable to store the delta for component 1\n"
+		"\n"
+		"dc2:  Reference to a variable to store the delta for component 2\n"
+		"\n"
+		"The interpolated value at position (c0,c1,c2) with deltas\n"
+		"(dc0,dc1,dc2) \n"
+		"" },
+  { "getConversionFactor", (PyCFunction) _wrap_OpenGGCMInterpolator_getConversionFactor, METH_VARARGS, (char*) "\n"
+		"float ccmc::OpenGGCMInterpolator::getConversionFactor(const long\n"
+		"&variable_id)\n"
+		"\n"
+		"Parameters:\n"
+		"-----------\n"
+		"\n"
+		"variable_id:  \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -37621,7 +39572,12 @@ SwigPyBuiltin__ccmc__SWMFIonoInterpolator_richcompare(PyObject *self, PyObject *
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__SWMFIonoInterpolator_methods[] = {
-  { "interpolate", (PyCFunction) _wrap_SWMFIonoInterpolator_interpolate, METH_VARARGS, (char*) "" },
+  { "interpolate", (PyCFunction) _wrap_SWMFIonoInterpolator_interpolate, METH_VARARGS, (char*) "\n"
+		"float\n"
+		"ccmc::SWMFIonoInterpolator::interpolate(const long &variable_id, const\n"
+		"float &r, const float &lat, const float &lon, float &dr, float &dlat,\n"
+		"float &dlon) \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
@@ -37813,23 +39769,74 @@ SwigPyBuiltin__ccmc__Time_richcompare(PyObject *self, PyObject *other, int op) {
 }
 
 SWIGINTERN PyMethodDef SwigPyBuiltin__ccmc__Time_methods[] = {
-  { "getDay", (PyCFunction) _wrap_Time_getDay, METH_VARARGS, (char*) "" },
-  { "setDay", (PyCFunction) _wrap_Time_setDay, METH_VARARGS, (char*) "" },
-  { "setEpoch", (PyCFunction) _wrap_Time_setEpoch, METH_VARARGS, (char*) "" },
-  { "getHour", (PyCFunction) _wrap_Time_getHour, METH_VARARGS, (char*) "" },
-  { "setHour", (PyCFunction) _wrap_Time_setHour, METH_VARARGS, (char*) "" },
-  { "getMilliseconds", (PyCFunction) _wrap_Time_getMilliseconds, METH_VARARGS, (char*) "" },
-  { "setMilliseconds", (PyCFunction) _wrap_Time_setMilliseconds, METH_VARARGS, (char*) "" },
-  { "getMinute", (PyCFunction) _wrap_Time_getMinute, METH_VARARGS, (char*) "" },
-  { "setMinute", (PyCFunction) _wrap_Time_setMinute, METH_VARARGS, (char*) "" },
-  { "getMonth", (PyCFunction) _wrap_Time_getMonth, METH_VARARGS, (char*) "" },
-  { "setMonth", (PyCFunction) _wrap_Time_setMonth, METH_VARARGS, (char*) "" },
-  { "getSeconds", (PyCFunction) _wrap_Time_getSeconds, METH_VARARGS, (char*) "" },
-  { "setSeconds", (PyCFunction) _wrap_Time_setSeconds, METH_VARARGS, (char*) "" },
-  { "getYear", (PyCFunction) _wrap_Time_getYear, METH_VARARGS, (char*) "" },
-  { "setYear", (PyCFunction) _wrap_Time_setYear, METH_VARARGS, (char*) "" },
-  { "toString", (PyCFunction) _wrap_Time_toString, METH_VARARGS, (char*) "" },
-  { "getEpoch", (PyCFunction) _wrap_Time_getEpoch, METH_VARARGS, (char*) "" },
+  { "getDay", (PyCFunction) _wrap_Time_getDay, METH_VARARGS, (char*) "\n"
+		"short ccmc::Time::getDay()\n"
+		"const \n"
+		"" },
+  { "setDay", (PyCFunction) _wrap_Time_setDay, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setDay(short day) \n"
+		"" },
+  { "setEpoch", (PyCFunction) _wrap_Time_setEpoch, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setEpoch(double epoch) \n"
+		"" },
+  { "getHour", (PyCFunction) _wrap_Time_getHour, METH_VARARGS, (char*) "\n"
+		"short\n"
+		"ccmc::Time::getHour() const \n"
+		"" },
+  { "setHour", (PyCFunction) _wrap_Time_setHour, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setHour(short hour) \n"
+		"" },
+  { "getMilliseconds", (PyCFunction) _wrap_Time_getMilliseconds, METH_VARARGS, (char*) "\n"
+		"short\n"
+		"ccmc::Time::getMilliseconds() const \n"
+		"" },
+  { "setMilliseconds", (PyCFunction) _wrap_Time_setMilliseconds, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setMilliseconds(short milliseconds) \n"
+		"" },
+  { "getMinute", (PyCFunction) _wrap_Time_getMinute, METH_VARARGS, (char*) "\n"
+		"short\n"
+		"ccmc::Time::getMinute() const \n"
+		"" },
+  { "setMinute", (PyCFunction) _wrap_Time_setMinute, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setMinute(short minute) \n"
+		"" },
+  { "getMonth", (PyCFunction) _wrap_Time_getMonth, METH_VARARGS, (char*) "\n"
+		"short\n"
+		"ccmc::Time::getMonth() const \n"
+		"" },
+  { "setMonth", (PyCFunction) _wrap_Time_setMonth, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setMonth(short month) \n"
+		"" },
+  { "getSeconds", (PyCFunction) _wrap_Time_getSeconds, METH_VARARGS, (char*) "\n"
+		"short\n"
+		"ccmc::Time::getSeconds() const \n"
+		"" },
+  { "setSeconds", (PyCFunction) _wrap_Time_setSeconds, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setSeconds(double seconds) \n"
+		"" },
+  { "getYear", (PyCFunction) _wrap_Time_getYear, METH_VARARGS, (char*) "\n"
+		"short\n"
+		"ccmc::Time::getYear() const \n"
+		"" },
+  { "setYear", (PyCFunction) _wrap_Time_setYear, METH_VARARGS, (char*) "\n"
+		"void\n"
+		"ccmc::Time::setYear(short year) \n"
+		"" },
+  { "toString", (PyCFunction) _wrap_Time_toString, METH_VARARGS, (char*) "\n"
+		"std::string\n"
+		"ccmc::Time::toString() const \n"
+		"" },
+  { "getEpoch", (PyCFunction) _wrap_Time_getEpoch, METH_VARARGS, (char*) "\n"
+		"double\n"
+		"ccmc::Time::getEpoch() const \n"
+		"" },
   { NULL, NULL, 0, NULL } /* Sentinel */
 };
 
