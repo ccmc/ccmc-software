@@ -115,6 +115,10 @@ public class Fieldline {
     return new vector_float(CCMCJNI.Fieldline_integrate(swigCPtr, this), false);
   }
 
+  public vector_float derivative() {
+    return new vector_float(CCMCJNI.Fieldline_derivative(swigCPtr, this), false);
+  }
+
   public vector_float measure() {
     return new vector_float(CCMCJNI.Fieldline_measure(swigCPtr, this), false);
   }
@@ -133,6 +137,64 @@ public class Fieldline {
 
   public vector_int getNearest() {
     return new vector_int(CCMCJNI.Fieldline_getNearest(swigCPtr, this), false);
+  }
+
+  public vector_float getTlocal() {
+    return new vector_float(CCMCJNI.Fieldline_getTlocal(swigCPtr, this), false);
+  }
+
+  public void minmax() {
+    CCMCJNI.Fieldline_minmax(swigCPtr, this);
+  }
+
+  public void setMincount(int value) {
+    CCMCJNI.Fieldline_mincount_set(swigCPtr, this, value);
+  }
+
+  public int getMincount() {
+    return CCMCJNI.Fieldline_mincount_get(swigCPtr, this);
+  }
+
+  public void setMaxcount(int value) {
+    CCMCJNI.Fieldline_maxcount_set(swigCPtr, this, value);
+  }
+
+  public int getMaxcount() {
+    return CCMCJNI.Fieldline_maxcount_get(swigCPtr, this);
+  }
+
+  public void setMinima(vector_int value) {
+    CCMCJNI.Fieldline_minima_set(swigCPtr, this, vector_int.getCPtr(value), value);
+  }
+
+  public vector_int getMinima() {
+    long cPtr = CCMCJNI.Fieldline_minima_get(swigCPtr, this);
+    return (cPtr == 0) ? null : new vector_int(cPtr, false);
+  }
+
+  public void setMaxima(vector_int value) {
+    CCMCJNI.Fieldline_maxima_set(swigCPtr, this, vector_int.getCPtr(value), value);
+  }
+
+  public vector_int getMaxima() {
+    long cPtr = CCMCJNI.Fieldline_maxima_get(swigCPtr, this);
+    return (cPtr == 0) ? null : new vector_int(cPtr, false);
+  }
+
+  public void setGlobMinIndex(int value) {
+    CCMCJNI.Fieldline_GlobMinIndex_set(swigCPtr, this, value);
+  }
+
+  public int getGlobMinIndex() {
+    return CCMCJNI.Fieldline_GlobMinIndex_get(swigCPtr, this);
+  }
+
+  public void setGlobMaxIndex(int value) {
+    CCMCJNI.Fieldline_GlobMaxIndex_set(swigCPtr, this, value);
+  }
+
+  public int getGlobMaxIndex() {
+    return CCMCJNI.Fieldline_GlobMaxIndex_get(swigCPtr, this);
   }
 
 }

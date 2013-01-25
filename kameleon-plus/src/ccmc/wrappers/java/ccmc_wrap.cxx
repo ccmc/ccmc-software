@@ -4683,6 +4683,21 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1integrate(JN
 }
 
 
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1derivative(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< float > *) &(arg1)->derivative();
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
 SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1measure(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
   jlong jresult = 0 ;
   ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
@@ -4762,6 +4777,202 @@ SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getNearest(J
   arg1 = *(ccmc::Fieldline **)&jarg1; 
   result = (std::vector< int > *) &(arg1)->getNearest();
   *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1getTlocal(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< float > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< float > *) &(arg1)->getTlocal();
+  *(std::vector< float > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1minmax(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  (arg1)->minmax();
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1mincount_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->mincount = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1mincount_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (int) ((arg1)->mincount);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1maxcount_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->maxcount = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1maxcount_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (int) ((arg1)->maxcount);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1minima_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< int > *arg2 = (std::vector< int > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = *(std::vector< int > **)&jarg2; 
+  if (arg1) (arg1)->minima = *arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1minima_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< int > *)& ((arg1)->minima);
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1maxima_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jlong jarg2, jobject jarg2_) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< int > *arg2 = (std::vector< int > *) 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  (void)jarg2_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = *(std::vector< int > **)&jarg2; 
+  if (arg1) (arg1)->maxima = *arg2;
+}
+
+
+SWIGEXPORT jlong JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1maxima_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jlong jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  std::vector< int > *result = 0 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (std::vector< int > *)& ((arg1)->maxima);
+  *(std::vector< int > **)&jresult = result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1GlobMinIndex_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->GlobMinIndex = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1GlobMinIndex_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (int) ((arg1)->GlobMinIndex);
+  jresult = (jint)result; 
+  return jresult;
+}
+
+
+SWIGEXPORT void JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1GlobMaxIndex_1set(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_, jint jarg2) {
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int arg2 ;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  arg2 = (int)jarg2; 
+  if (arg1) (arg1)->GlobMaxIndex = arg2;
+}
+
+
+SWIGEXPORT jint JNICALL Java_gov_nasa_gsfc_ccmc_CCMCJNI_Fieldline_1GlobMaxIndex_1get(JNIEnv *jenv, jclass jcls, jlong jarg1, jobject jarg1_) {
+  jint jresult = 0 ;
+  ccmc::Fieldline *arg1 = (ccmc::Fieldline *) 0 ;
+  int result;
+  
+  (void)jenv;
+  (void)jcls;
+  (void)jarg1_;
+  arg1 = *(ccmc::Fieldline **)&jarg1; 
+  result = (int) ((arg1)->GlobMaxIndex);
+  jresult = (jint)result; 
   return jresult;
 }
 
