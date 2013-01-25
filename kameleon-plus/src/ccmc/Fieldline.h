@@ -41,11 +41,20 @@ namespace ccmc
 			const std::vector< Point3f >& getElements(); // requires elements
 			const Point3f& getElement(int i); // requires elements
 			const std::vector< float>& integrate();// requires elementsMagnitudes, values
+			const std::vector< float>& derivative();// requires elementsMagnitudes, values
 			const std::vector< float>& measure(); // requires elementsMagnitudes
 			float getLength(int i); // requires length
 			float getIntegral(int i); // requires integral
 			Fieldline interpolate(int option, int Npoints); // requires positions, length, integral
 			const std::vector< int >& getNearest();
+			const std::vector< float>& getTlocal();
+			void minmax();
+            int mincount; // created by minmax()
+            int maxcount; // created by minmax()
+            std::vector < int> minima; //created by minmax()
+            std::vector < int> maxima; //created by minmax()
+			int GlobMinIndex; // see minmax
+			int GlobMaxIndex;
 
 
 		private:
@@ -57,8 +66,11 @@ namespace ccmc
 			std::vector < Point3f > elements; // created by getDs()
 			std::vector < float> elementsMagnitudes; // created by getDs()
 			std::vector < float> integral; // created by integrate()
+			std::vector < float> dds; // created by derivative()
 			std::vector < float> length; // created by measure()
 			std::vector < int> nearest; // created by interpolate
+			std::vector < float> tlocal; // created by interpolate
+
 	};
 }
 
