@@ -32,7 +32,7 @@ namespace ccmc
 	/**
 	 * @copydoc Model::open()
 	 */
-	long OpenGGCM::open(const std::string& filename)
+	long LFM::open(const std::string& filename)
 	{
 		this->setBusyStatus(Model::BUSY);
 		long status;
@@ -52,7 +52,7 @@ namespace ccmc
 		return status;
 	}
 
-	const std::vector<std::string> OpenGGCM::getLoadedVariables()
+	const std::vector<std::string> LFM::getLoadedVariables()
 	{
 		std::vector<std::string> requiredVariables;
 		requiredVariables.push_back(ccmc::strings::variables::x_bx_);

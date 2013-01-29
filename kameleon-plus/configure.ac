@@ -101,7 +101,6 @@ AC_ARG_ENABLE([hdf5],
 	AC_HELP_STRING([--enable-hdf5],
 				[Build HDF5 support]),
 				[if test "$enableval" = "yes"; then
-					AC_SUBST([PYTHON_WRAPPER],['hdf5'])
 					ENABLE_HDF5=true
 				 fi
 				],)

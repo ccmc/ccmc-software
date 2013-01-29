@@ -469,6 +469,7 @@ namespace ccmc
 			//std::cout << "finished reading " << variable << std::endl;
 			//std::cout << "size of variable: " << variableData.size() << std::endl;
 			//std::cout << "dimSizes[0]: " << dimSizes[0] << std::endl;
+			return variableData;
 
 	}
 
@@ -668,6 +669,17 @@ namespace ccmc
 		return current_attribute;*/
 		return Attribute();
 	}
+
+	/**
+		 * @param attribute
+		 * @return
+		 */
+		long HDF5FileReader::getGlobalAttributeID(const std::string& attribute)
+		{
+			//long attrNum = CDFgetAttrNum(current_file_id, (char *) attribute.c_str());
+			long attrNum = 0;
+			return attrNum;
+		}
 
 	/**
 	 * @param variable

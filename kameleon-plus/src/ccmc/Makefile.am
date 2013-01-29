@@ -55,6 +55,10 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						FileReader.h \
 						Interpolator.cpp \
 						Interpolator.h \
+						LFM.h\
+						LFM.cpp\
+						LFMInterpolator.h\
+						LFMInterpolator.cpp\
 						Magnetogram.h \
 						Magnetogram.cpp \
 						MagnetogramInterpolator.h \
@@ -106,5 +110,5 @@ pkgincludedir = $(includedir)/ccmc
 pkginclude_HEADERS = Tracer.h Fieldline.h Point3f.h Attribute.h FileReader.h \
 					 Kameleon.h Interpolator.h KameleonInterpolator.h Constants.h cxform.h\
 		 			 Model.h Point.h BATSRUS.h OpenGGCM.h MAS.h ENLIL.h CTIP.h \
-		 			 Adapt3D.h Adapt3DInterpolator.h MathHelper.h \
+		 			 Adapt3D.h Adapt3DInterpolator.h MathHelper.h LFM.h \
 		 			 TimeInterpolator.h

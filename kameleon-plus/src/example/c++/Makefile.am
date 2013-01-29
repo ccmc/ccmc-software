@@ -1,6 +1,6 @@
 bin_PROGRAMS = kameleon coord_test open_ggcm adapt3d \
 				magnetogram  enlil tracer integrator mas \
-				cdfreader swmf_iono	time_interp			
+				cdfreader swmf_iono lfm	time_interp			
 # h5reader
 				
 kameleon_SOURCES = kameleon_prog.cpp
@@ -22,6 +22,10 @@ enlil_CPPFLAGS = -I@srcdir@/../..
 magnetogram_SOURCES = magnetogram_test.cpp
 magnetogram_LDADD = @builddir@/../../ccmc/libkameleon_plus.la
 magnetogram_CPPFLAGS = -I@srcdir@/../..
+
+lfm_SOURCES = lfm_test.cpp
+lfm_LDADD = @builddir@/../../ccmc/libkameleon_plus.la
+lfm_CPPFLAGS = -I@srcdir@/../..
 
 tracer_SOURCES = tracer_prog.cpp
 tracer_CPPFLAGS = -I@srcdir@/../..
