@@ -7,11 +7,11 @@ import time
 import CCMC as ccmc
 
 def main(argv):
-    filename = argv[1]
-    variable = argv[2]
-    c0 = float(argv[3])
-    c1 = float(argv[4])
-    c2 = float(argv[5])
+    filename = argv[0]
+    variable = argv[1]
+    c0 = float(argv[2])
+    c1 = float(argv[3])
+    c2 = float(argv[4])
     
     print 'Hello from integrator! This is the python version of integrator in example/c++/'        
     print 'Input file is "', filename
@@ -42,10 +42,12 @@ def main(argv):
      
     kameleon.close()
     
-    elengths = f2.getDs()
-    length = f2.measure()
     print 'total points: ', f2.size()
     print 'points in f1:', f1.size()
+ 
+    elengths = f2.getDs()
+    length = f2.measure()
+
     
     for i in range(f2.size()):
         if ((i % 100 == 0 )|(i==f2.size()-1)):
@@ -69,8 +71,8 @@ def main(argv):
         if (i == f3.size()-1):
             print f3.getData()[i], "]"
         else: print f2.getData()[nearest+1], "]"
-                   
-
+        
+                
     print 'goodbye'
     
 if __name__ =="__main__":
