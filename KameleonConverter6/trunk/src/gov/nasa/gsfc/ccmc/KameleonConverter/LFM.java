@@ -134,26 +134,6 @@ public class LFM extends Model
                     } catch (Exception ex) {System.out.println(ex);}
                     if ((data != null) && data.getClass().isArray())
                     {
-                    	
-                    	// MY ADDED STUFF/PRINTOUT
-                        int rank = sds.getRank();   // number of dimension of the dataset
-                        System.out.println("sds.getRank(): "+rank);
-                        long[] dims = sds.getDims(); // the dimension sizes of the dataset
-                        long[] selected = sds.getSelectedDims(); // the selected size of the dataet
-                        long[] start = sds.getStartDims(); // the off set of the selection
-                        long[] stride = sds.getStride(); // the stride of the dataset
-                        int[]  selectedIndex = sds.getSelectedIndex(); // the selected dimensions for display
-                        selectedIndex[0] = 2;
-                        selectedIndex[1] = 1;
-                        selectedIndex[2] = 0;
-                        
-                        // reset the selection arrays
-                        for (int i = 0; i < rank; i++) {
-                            start[i] = 0;
-                            selected[i] = dims[i];
-                            stride[i] = 1;
-                        }
-                    	
                         // setting tempV.dt
                         if(sds.getDatatype().getDatatypeDescription() == "8-bit character"){
                         	tempV.dt = "string";
@@ -174,9 +154,10 @@ public class LFM extends Model
                         tempV.dimSizes = BB;
                         //tempV.numElem  = Prod;
                         System.out.println("dimSizes: "+tempV.dimSizes);
-                        //if(rank == 3){
-                        //	selected[2] = BB[2];
-                        //}
+                        long[] selected = sds.getSelectedDims(); // the selected size of the dataet
+                        if(tempV.numDim == 3){
+                        	selected[2] = BB[2];
+                        }
                         tempV.dataValues = sds.getData();
                         tempV.numElem = Array.getLength(tempV.dataValues);
                         System.out.println("numElem: "+tempV.numElem);
