@@ -84,12 +84,14 @@ int main (int argc, char * argv[])
 	tracer.setMaxIterations(20000);
 	//tracer.setInnerBoundary(2.5f);
 	tracer.setDn(.2f);
+	std::cout << ".2f = "<< .2f << "\n";
 
 
 	clock_t start, finish;
 	start = clock();
+	cout << "Initializing field line";
 	Fieldline f1;
-
+	cout << "Before bidirectional trace";
 	f1 = tracer.bidirectionalTrace(variable,c0,c1,c2);
 
 	finish = clock();
@@ -157,6 +159,7 @@ int main (int argc, char * argv[])
 					cout << std::endl;
 		}
 
+		std::cout << "finished" << std::endl;
 
 	return 0;
 }
