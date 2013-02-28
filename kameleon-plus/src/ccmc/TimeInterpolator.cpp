@@ -12,6 +12,7 @@
 #include "Utils.h"
 #include "Kameleon.h"
 #include "CCMCTime.h"
+#include "string.h"
 #include <algorithm>
 #include <boost/functional/hash.hpp>
 

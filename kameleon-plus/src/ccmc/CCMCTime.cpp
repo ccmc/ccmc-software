@@ -1,5 +1,6 @@
 #include "CCMCTime.h"
 #include "cdf.h"
+#include "string.h"
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
 

@@ -25,6 +25,15 @@ namespace ccmc
 		previous_x = missingValue;
 		previous_y = missingValue;
 		previous_z = missingValue;
+		previous_ix = missingValue;
+		previous_iy = missingValue;
+		previous_iz = missingValue;
+		previousConversionFactor = missingValue;
+		previousVariableID = missingValue;
+		x_array = NULL;
+		y_array = NULL;
+		z_array = NULL;
+
 		this->busyStatus = Model::OK;
 
 	}
