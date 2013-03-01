@@ -67,7 +67,7 @@
 </attribute>
 
 <attribute>
-	<name>is_vector_component</name>
+	<name>is_vector</name>
 	<description>int value that identifies if variable is a vector component (1) or scalar variable (0)</description>
     <datatype>int</datatype>
 </attribute>

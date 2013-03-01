@@ -33,6 +33,10 @@
         <KameleonName>uz</KameleonName>
     </variable>
     <variable>
+    	<OriginalName>c_</OriginalName>
+    	<KameleonName>V_th</KameleonName>
+    </variable>
+    <variable>
         <OriginalName>bx_</OriginalName>
         <KameleonName>bx</KameleonName>
     </variable>
@@ -68,8 +72,26 @@
     	<OriginalName>ek_</OriginalName>
     	<KameleonName>ez</KameleonName>
     </variable>
+ 
+ <!-- LOCAL ATTRIBUTES    
+    <attribute>
+    	<name>ni</name>
+    	<dataType>Integer</dataType>
+    </attribute>
+    <attribute>
+    	<name>nj</name>
+    	<dataType>Integer</dataType>
+    </attribute>
+    <attribute>
+    	<name>nk</name>
+    	<dataType>Integer</dataType>
+    </attribute>
+    <attribute>
+    	<name>units</name>
+    	<dataType>String</dataType>
+    </attribute>-->
 
-
+<!-- GLOBAL (KAMELEON) ATTRIBUTES -->
 	<attribute>
 		<name>README</name>
 		<description>General description of the model, CDF contents, and HOWTO usage</description>
@@ -124,75 +146,4 @@
 		<dataType>String</dataType>
 		<value>SM</value>
 	</attribute>
-<!-- EXRA RUN INFORMATION -->
-<!--	<attribute>
-		<name>old run name</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>old run info</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>old go namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>old rings namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>old swind namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>old const namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>old ion namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>new run name</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>new run info</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>new go namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>new rings namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>new swind namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>new const namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>new ion namelist</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>solar_wind_file</name>
-		<dataType>Float</dataType>
-	</attribute>
-	<attribute>
-		<name>run params</name>
-		<dataType>String</dataType>
-	</attribute>
-	<attribute>
-		<name>variable list</name>
-		<dataType>String</dataType>
-	</attribute>-->
-<!-- END EXRA RUN INFORMATION -->
-
 </Model>

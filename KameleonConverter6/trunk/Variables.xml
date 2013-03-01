@@ -2721,6 +2721,23 @@
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
+	
+	<Variable>
+		<category>velocity</category>
+		<name>V_th</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000.0</valid_min>
+		<valid_max>1000000.0</valid_max>
+		<units>cm/s</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>Plasma Thermal Velocity
+		</description>
+		<is_vector>false</is_vector>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
 
 	<Variable>
 		<category>current</category>
