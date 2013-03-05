@@ -10,7 +10,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -25,7 +25,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -40,7 +40,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -55,7 +55,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -70,7 +70,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -85,7 +85,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -100,7 +100,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -115,7 +115,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -130,7 +130,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -145,7 +145,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -160,7 +160,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -175,7 +175,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -190,7 +190,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -205,7 +205,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -220,7 +220,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -235,7 +235,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -250,7 +250,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -265,7 +265,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -280,7 +280,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -295,7 +295,7 @@
 		<grid_system>?</grid_system>
 		<mask>?</mask>
 		<description>?</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>?</position_grid_system>
 		<data_grid_system>?</data_grid_system>
 	</Variable>
@@ -313,7 +313,7 @@
 			1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km
 			( Astron - Unit for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -328,7 +328,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Longitude</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -346,7 +346,7 @@
 			1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km
 			( Astron - Unit for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -364,7 +364,7 @@
 			1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km
 			( Astron - Unit for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -382,7 +382,7 @@
 			1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km
 			( Astron - Unit for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -400,7 +400,7 @@
 			1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km
 			( Astron - Unit for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -418,7 +418,7 @@
 			1 R_E = 6371 km ( Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km
 			( Astron - Unit for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -433,7 +433,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle phi in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -448,7 +448,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>electric potential</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -463,7 +463,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Average energy</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -478,7 +478,7 @@
 		<grid_system>grid_system_2</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle phi in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -494,7 +494,7 @@
 		<grid_system>grid_system_3</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle phi in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -510,7 +510,7 @@
 		<grid_system>grid_system_4</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle phi in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -526,7 +526,7 @@
 		<grid_system>grid_system_5</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle phi in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -542,7 +542,7 @@
 		<grid_system>grid_system_6</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle phi in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -558,7 +558,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle theta in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -574,7 +574,7 @@
 		<grid_system>grid_system_2</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle theta in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -590,7 +590,7 @@
 		<grid_system>grid_system_3</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle theta in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -606,7 +606,7 @@
 		<grid_system>grid_system_4</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle theta in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -622,7 +622,7 @@
 		<grid_system>grid_system_5</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle theta in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -638,7 +638,7 @@
 		<grid_system>grid_system_6</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>angle theta in spherical coordinates</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -657,7 +657,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -676,7 +676,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -695,7 +695,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -714,7 +714,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -733,7 +733,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -752,7 +752,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -771,7 +771,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -790,7 +790,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -809,7 +809,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -828,7 +828,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -847,7 +847,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -866,7 +866,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -885,7 +885,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -904,7 +904,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -923,7 +923,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -942,7 +942,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -961,7 +961,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -980,7 +980,7 @@
 			Earth ), 1 R_S = 696000 km ( Sun ), 1 AU = 1.5e8 km ( Astron - Unit
 			for Heliosphere )
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -996,7 +996,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Height above ground.</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1014,7 +1014,7 @@
 		<description>X Coordinate for BX1. BX1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1032,7 +1032,7 @@
 		<description>X Coordinate for BY1. BY1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1050,7 +1050,7 @@
 		<description>X Coordinate for BZ1. BZ1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1068,7 +1068,7 @@
 		<description>Y Coordinate for BX1. BX1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1086,7 +1086,7 @@
 		<description>Y Coordinate for BY1. BY1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1104,7 +1104,7 @@
 		<description>Y Coordinate for BZ1. BZ1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1122,7 +1122,7 @@
 		<description>Z Coordinate for BX1. BX1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1140,7 +1140,7 @@
 		<description>Z Coordinate for BY1. BY1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1158,7 +1158,7 @@
 		<description>Z Coordinate for BZ1. BZ1 is defined on a staggered grid
 			different from X,Y,Z for the other variables
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1174,7 +1174,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Carrington Longitude</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1190,7 +1190,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Carrington Sine Latitude</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1206,7 +1206,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>****** PROTOTYPE****** Longitude</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1222,7 +1222,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>****** PROTOTYPE****** Latitude</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1241,7 +1241,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1260,7 +1260,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1279,7 +1279,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1298,7 +1298,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1317,7 +1317,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -1336,7 +1336,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1355,7 +1355,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1374,7 +1374,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1393,7 +1393,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1412,7 +1412,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -1431,7 +1431,7 @@
 			nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1450,7 +1450,7 @@
 			nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1469,7 +1469,7 @@
 			nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1488,7 +1488,7 @@
 			nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1507,7 +1507,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -1527,7 +1527,7 @@
 			anti-reconnection feature of advection. This value is essentially
 			calculated bphi multiplying the sign of bp * br.
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1547,7 +1547,7 @@
 			to the anti-reconnection feature of advection. This value is
 			essentially calculated by multiplying the sign of bp * bphi.
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1567,7 +1567,7 @@
 			flipped due to the anti-reconnection feature of advection. This value
 			is essentially calculated by multiplying the sign of bp * btheta.
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1587,7 +1587,7 @@
 			flipped due to the anti-reconnection feature of advection. This value
 			is essentially calculated by multiplying the sign of bp * btheta.
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1606,7 +1606,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1625,7 +1625,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1644,7 +1644,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1663,7 +1663,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -1682,7 +1682,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1701,7 +1701,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1720,7 +1720,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1739,7 +1739,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1758,7 +1758,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -1777,7 +1777,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1796,7 +1796,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1815,7 +1815,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1834,7 +1834,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1853,7 +1853,7 @@
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -1872,7 +1872,7 @@
 			60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is
 			not exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1891,7 +1891,7 @@
 			60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is
 			not exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1910,7 +1910,7 @@
 			60000 nT, Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is
 			not exceeded in Solar/Heliospheric/Earth context
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1927,7 +1927,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>B Defined on staggered grid [ x_bx, y_bx, z_bx ]
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -1944,7 +1944,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>B Defined on staggered grid [ x_by, y_by, z_by ]
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -1961,7 +1961,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>B Defined on staggered grid [ x_bz, y_bz, z_bz ]
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -1977,7 +1977,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Magnetic Field Polarity</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -1993,7 +1993,7 @@
 		<grid_system>grid_system_2</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Magnetic Field Polarity</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2009,7 +2009,7 @@
 		<grid_system>grid_system_3</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Magnetic Field Polarity</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2025,7 +2025,7 @@
 		<grid_system>grid_system_4</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Magnetic Field Polarity</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -2041,7 +2041,7 @@
 		<grid_system>grid_system_5</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Magnetic Field Polarity</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -2058,7 +2058,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>****** PROTOTYPE****** Line Of Sight Magnetic Field...
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2075,7 +2075,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>****** PROTOTYPE****** Transversal Magnetic Field...
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2091,7 +2091,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>****** PROTOTYPE****** </description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>****** PROTOTYPE****** </position_grid_system>
 		<data_grid_system>****** PROTOTYPE****** </data_grid_system>
 	</Variable>
@@ -2107,7 +2107,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Net Magnetic Flux</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2123,7 +2123,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Total Magnetic Flux</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2140,7 +2140,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>r velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2157,7 +2157,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>r velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2174,7 +2174,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>r velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2191,7 +2191,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>r velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -2208,7 +2208,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>r velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -2225,7 +2225,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>phi velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2242,7 +2242,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>phi velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2259,7 +2259,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>phi velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2276,7 +2276,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>phi velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -2293,7 +2293,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>phi velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -2310,7 +2310,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>theta velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2327,7 +2327,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>theta velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2344,7 +2344,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>theta velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2361,7 +2361,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>theta velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -2378,7 +2378,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>theta velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -2395,7 +2395,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>X Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2412,7 +2412,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>X Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2429,7 +2429,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>X Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2446,7 +2446,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>X Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -2463,7 +2463,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>X Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -2480,7 +2480,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Y Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2497,7 +2497,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Y Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2514,7 +2514,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Y Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2531,7 +2531,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Y Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -2548,7 +2548,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Y Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -2565,7 +2565,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Z Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2582,7 +2582,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Z Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2599,7 +2599,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Z Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2616,7 +2616,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Z Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -2633,7 +2633,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Z Velocity Component, Speed of Light is the Maximum
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -2650,7 +2650,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Neutral Velocity - latitudinal / meridian component
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2667,7 +2667,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Neutral Velocity - longitudinal / zonal component
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2683,7 +2683,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Neutral Velocity - vertical direction</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2700,7 +2700,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Plasma Velocity - latitudinal / meridian component
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2717,7 +2717,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Plasma Velocity - longitudinal / zonal component
 		</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2734,7 +2734,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Plasma Thermal Velocity
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2750,7 +2750,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Radial current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2766,7 +2766,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>phi current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2782,7 +2782,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>theta current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2798,7 +2798,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>X Current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2814,7 +2814,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Y Current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2830,7 +2830,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Z Current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2846,7 +2846,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>energy flux</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2862,7 +2862,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>X Current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2878,7 +2878,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Y Current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2894,7 +2894,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Z Current Component</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2910,7 +2910,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>resistivity</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2928,7 +2928,7 @@
 		<description>atomic mass density, limit may bee exceeded in dense
 			atmosphere; solar corona 2e8
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -2946,7 +2946,7 @@
 		<description>atomic mass density, limit may bee exceeded in dense
 			atmosphere; solar corona 2e8
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -2964,7 +2964,7 @@
 		<description>atomic mass density, limit may bee exceeded in dense
 			atmosphere; solar corona 2e8
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -2982,7 +2982,7 @@
 		<description>atomic mass density, limit may bee exceeded in dense
 			atmosphere; solar corona 2e8
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -3000,7 +3000,7 @@
 		<description>atomic mass density, limit may bee exceeded in dense
 			atmosphere; solar corona 2e8
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -3016,7 +3016,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Cloud Mass Density</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3032,7 +3032,7 @@
 		<grid_system>grid_system_2</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Cloud Mass Density</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -3048,7 +3048,7 @@
 		<grid_system>grid_system_3</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Cloud Mass Density</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -3064,7 +3064,7 @@
 		<grid_system>grid_system_4</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Cloud Mass Density</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -3080,7 +3080,7 @@
 		<grid_system>grid_system_5</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Cloud Mass Density</description>
-		<is_vector>true</is_vector>
+		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -3097,7 +3097,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>pressure, limit may be exceeded in dense atmosphere
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3114,7 +3114,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>energy, limit may be exceeded in dense atmosphere
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3130,7 +3130,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Number of Electrons</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3146,7 +3146,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Number Density of Oxygen Ions</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3162,7 +3162,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Number Density of Molecular Oxygen</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3178,7 +3178,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Number Density of Molecular Nitrogen</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3194,7 +3194,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Neutral Temperature</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3210,7 +3210,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Temperature</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3226,7 +3226,7 @@
 		<grid_system>grid_system_2</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Temperature</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_2</position_grid_system>
 		<data_grid_system>grid_system_2</data_grid_system>
 	</Variable>
@@ -3242,7 +3242,7 @@
 		<grid_system>grid_system_3</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Temperature</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -3258,7 +3258,7 @@
 		<grid_system>grid_system_4</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Temperature</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -3274,7 +3274,7 @@
 		<grid_system>grid_system_5</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Temperature</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -3290,7 +3290,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Mean Molecular Mass</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3306,7 +3306,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Pedersen Conductivity</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3322,7 +3322,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Hall Conductivity</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3340,7 +3340,7 @@
 		<description>BATSRUS Adaptive Mesh Refinement Level - the number of
 			levels typically less than 10, can be greater than 20
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3359,7 +3359,7 @@
 			Number of elements stored in CDF equal to number of parents at amr
 			level 0
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3377,7 +3377,7 @@
 		<description>Smallest X position value included in current block,
 			limits same as X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3395,7 +3395,7 @@
 		<description>Largest X position value included in current block,
 			limits same as X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3413,7 +3413,7 @@
 		<description>Smallest Y position value included in current block,
 			limits same as X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3431,7 +3431,7 @@
 		<description>Largest Y position value included in current block,
 			limits same as X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3449,7 +3449,7 @@
 		<description>Smallest Z position value included in current block,
 			limits same as X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3467,7 +3467,7 @@
 		<description>Largest Z position value included in current block,
 			limits same as X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3485,7 +3485,7 @@
 		<description>Center position value X for current block, limits same as
 			X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3503,7 +3503,7 @@
 		<description>Center position value Y for current block, limits same as
 			X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3521,7 +3521,7 @@
 		<description>Center position value Z for current block, limits same as
 			X,Y,Z
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3539,7 +3539,7 @@
 		<description>Parent Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3557,7 +3557,7 @@
 		<description>Number of children blocks created from current block, 0
 			or 8 children per block by design of BATSRUS grid
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3575,7 +3575,7 @@
 		<description>Child 1 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3593,7 +3593,7 @@
 		<description>Child 2 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3611,7 +3611,7 @@
 		<description>Child 3 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3629,7 +3629,7 @@
 		<description>Child 4 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3647,7 +3647,7 @@
 		<description>Child 5 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3665,7 +3665,7 @@
 		<description>Child 6 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3683,7 +3683,7 @@
 		<description>Child 7 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3701,7 +3701,7 @@
 		<description>Child 8 Block ID for current block, -1 would be
 			invalid/empty - arrays prefilled with -1
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>N/A</position_grid_system>
 		<data_grid_system>N/A</data_grid_system>
 	</Variable>
@@ -3717,7 +3717,7 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Weight Values</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
@@ -3734,7 +3734,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Physical Time Variable for time variant data
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -3751,7 +3751,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Physical Time Variable for time variant data
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -3768,7 +3768,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Physical Time Variable for time variant data
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -3785,7 +3785,7 @@
 		<mask>FLOAT_MASK</mask>
 		<description>Physical Time Variable for time variant data
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -3801,7 +3801,7 @@
 		<grid_system>grid_system_3</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Time StepVariable for time variant data</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -3817,7 +3817,7 @@
 		<grid_system>grid_system_4</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Time Step Variable for time variant data</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -3833,7 +3833,7 @@
 		<grid_system>grid_system_5</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Time Step Variable for time variant data</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -3849,7 +3849,7 @@
 		<grid_system>grid_system_6</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Time Step Variable for time variant data</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
@@ -3866,7 +3866,7 @@
 		<mask>INT_MASK</mask>
 		<description>Numerical Step Number Variable for time variant data
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_3</position_grid_system>
 		<data_grid_system>grid_system_3</data_grid_system>
 	</Variable>
@@ -3883,7 +3883,7 @@
 		<mask>INT_MASK</mask>
 		<description>Numerical Step Number Variable for time variant data
 		</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_4</position_grid_system>
 		<data_grid_system>grid_system_4</data_grid_system>
 	</Variable>
@@ -3899,7 +3899,7 @@
 		<grid_system>grid_system_5</grid_system>
 		<mask>INT_MASK</mask>
 		<description>Numerical Step Number for time variant data</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_5</position_grid_system>
 		<data_grid_system>grid_system_5</data_grid_system>
 	</Variable>
@@ -3915,7 +3915,7 @@
 		<grid_system>grid_system_6</grid_system>
 		<mask>INT_MASK</mask>
 		<description>Numerical Step Number for time variant data</description>
-		<is_vector>false</is_vector>
+		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_6</position_grid_system>
 		<data_grid_system>grid_system_6</data_grid_system>
 	</Variable>
