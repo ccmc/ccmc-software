@@ -67,7 +67,7 @@ public class VariableXMLParser {
 		try {
 
 			String[] tags ={"category","name","dataType","classification","valid_min","valid_max",
-					"units","grid_system","mask","description","is_vector","position_grid_system",
+					"units","grid_system","mask","description","is_vector_components","position_grid_system",
 					"data_grid_system","actual_min","actual_max"};
 
 			File file = new File(f);
