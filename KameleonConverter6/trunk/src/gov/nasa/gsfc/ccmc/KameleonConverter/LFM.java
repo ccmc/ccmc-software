@@ -160,6 +160,11 @@ public class LFM extends Model
                         }
                         tempV.dataValues = sds.getData();
                         tempV.numElem = Array.getLength(tempV.dataValues);
+                        if (tempV.dt == "float") {
+                        	this.minmaxCalculator(tempV, (float[])tempV.dataValues);
+                        	logger.debug("Actual Min: "+tempV.getAttributeObject("actual_min").value);
+                        	logger.debug("Actual Max: "+tempV.getAttributeObject("actual_max").value);
+                        }
                         System.out.println("numElem: "+tempV.numElem);
                         
                         this.addVariableObject(tempV);
