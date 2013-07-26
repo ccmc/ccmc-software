@@ -24,6 +24,14 @@ namespace ccmc
 		float missingValue = this->modelReader->getMissingValue();
 		float b_y, b_z, v_y, v_z, e_x;
 
+		if (modelReader->doesVariableExist(ex_))
+		{
+//			std::cout<<"ex exists, calling interpolateSimple"<<std::endl;
+			e_x = interpolateSimple(ex_, positionComponent1, positionComponent2, positionComponent3, dComponent1,
+					dComponent2, dComponent3);
+			return e_x;
+		}
+
 		if (modelName == mas_)
 		{
 			b_y = interpolate("btheta", positionComponent1, positionComponent2, positionComponent3, dComponent1,
@@ -48,6 +56,7 @@ namespace ccmc
 
 		} else
 		{
+//			std::cout<<"using ex = vy*bz - vz*by" << std::endl;
 			b_y = interpolate(by_, positionComponent1, positionComponent2, positionComponent3, dComponent1,
 					dComponent2, dComponent3);
 			if (b_y == missingValue)
@@ -108,6 +117,15 @@ namespace ccmc
 		float missingValue = this->modelReader->getMissingValue();
 
 		float b_x, b_z, v_x, v_z, e_y;
+
+		if (modelReader->doesVariableExist(ey_))
+		{
+			e_y = interpolateSimple(ey_, positionComponent1, positionComponent2, positionComponent3, dComponent1,
+					dComponent2, dComponent3);
+			return e_y;
+		}
+
+
 		if (modelName == mas_)
 		{
 			b_x = interpolate("br", positionComponent1, positionComponent2, positionComponent3, dComponent1,
@@ -177,6 +195,14 @@ namespace ccmc
 		float missingValue = this->modelReader->getMissingValue();
 
 		float b_x, b_y, v_x, v_y, e_z;
+
+		if (modelReader->doesVariableExist(ez_))
+		{
+			e_z = interpolateSimple(ez_, positionComponent1, positionComponent2, positionComponent3, dComponent1,
+					dComponent2, dComponent3);
+			return e_z;
+		}
+
 		if (modelName == mas_)
 		{
 			b_x = interpolate("br", positionComponent1, positionComponent2, positionComponent3, dComponent1,
