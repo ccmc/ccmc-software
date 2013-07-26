@@ -193,6 +193,7 @@ namespace ccmc
 			static const std::string mas_ = "mas";
 			static const std::string enlil_ = "enlil";
 			static const std::string adapt3d_ = "ADAPT3D";
+			static const std::string lfm_ = "LFM";
 		}
 
 		namespace attributes
