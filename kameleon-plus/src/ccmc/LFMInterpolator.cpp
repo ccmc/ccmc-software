@@ -4,15 +4,22 @@
  *  Created on: Dec 4, 2012
  *      Author: Brian Curtis
  */
-
 #include "LFMInterpolator.h"
 #include "LFM.h"
 #include "Utils.h"
 #include "StringConstants.h"
+#include "time.h"
+#include "math.h"
+#include <fstream>
+#include "Point3f.h"
+#include "Vector.h"
+#include "Point.h"
+#include "Polyhedron.h"
+#include "boost/ptr_container/ptr_vector.hpp"
+
 
 namespace ccmc
 {
-
 	/**
 	 * Constructor
 	 * @param modelReader
@@ -21,35 +28,42 @@ namespace ccmc
 	{
 		// TODO Auto-generated constructor stub
 		this->modelReader = modelReader;
-		conversionFactors["x"] = -1.0f;
-		conversionFactors["y"] = -1.0f;
-		conversionFactors["bx"] = -1.0f;
-		conversionFactors["by"] = -1.0f;
-		conversionFactors["bx1"] = -1.0f;
-		conversionFactors["by1"] = -1.0f;
-		conversionFactors["ux"] = -1.0f;
-		conversionFactors["uy"] = -1.0f;
+		conversionFactors["x"] = 1.0f;
+		conversionFactors["y"] = 1.0f;
+		conversionFactors["bx"] = 1.0e-4; // from [gauss] to [T]
+		conversionFactors["by"] = 1.0e-4;
+		conversionFactors["bz"] = 1.0e-4;
+		conversionFactors["bx1"] = 1.0f;
+		conversionFactors["by1"] = 1.0f;
+		conversionFactors["ux"] = 1.0f/(1.0e2);// from [cm/s] to [m/s]
+		conversionFactors["uy"] = 1.0f/(1.0e2);
+		conversionFactors["uz"] = 1.0f/(1.0e2);
 		conversionFactors["jx"] = -1.0f;
 		conversionFactors["jy"] = -1.0f;
+		conversionFactors["rho"] = 1.0f; //[grams/cc] assuming protons (mass of proton is 1.672622e-24grams)
+		conversionFactors["p"] = 1.0f; //already in [Pa]
+		conversionFactors["ex"] = -1.0f; // [T*m/s] or [v/m]
+		conversionFactors["ey"] = -1.0f; //should this be +1 or -1? If E=-VxB, it should be -1
+		conversionFactors["ez"] = -1.0f;
 
-		conversionFactorsByID[modelReader->getVariableID("x")] = -1.0f;
-		conversionFactorsByID[modelReader->getVariableID("y")] = -1.0f;
-		conversionFactorsByID[modelReader->getVariableID("bx")] = -1.0f;
-		conversionFactorsByID[modelReader->getVariableID("by")] = -1.0f;
-		conversionFactorsByID[modelReader->getVariableID("bx1")] = -1.0f;
-		conversionFactorsByID[modelReader->getVariableID("by1")] = -1.0f;
-		conversionFactorsByID[modelReader->getVariableID("ux")] = -1.0f;
-		conversionFactorsByID[modelReader->getVariableID("uy")] = -1.0f;
+		conversionFactorsByID[modelReader->getVariableID("x")] = 1.0f;
+		conversionFactorsByID[modelReader->getVariableID("y")] = 1.0f;
+		conversionFactorsByID[modelReader->getVariableID("bx")] = 1.0e-4; // from [gauss] to [T]
+		conversionFactorsByID[modelReader->getVariableID("by")] = 1.0e-4;
+		conversionFactorsByID[modelReader->getVariableID("bz")] = 1.0e-4;
+		conversionFactorsByID[modelReader->getVariableID("bx1")] = 1.0f;
+		conversionFactorsByID[modelReader->getVariableID("by1")] = 1.0f;
+		conversionFactorsByID[modelReader->getVariableID("ux")] = 1.0f/(1.0e2); //from [cm/s] to [m/s]
+		conversionFactorsByID[modelReader->getVariableID("uy")] = 1.0f/(1.0e2);
+		conversionFactorsByID[modelReader->getVariableID("uz")] = 1.0f/(1.0e2);
 		conversionFactorsByID[modelReader->getVariableID("jx")] = -1.0f;
 		conversionFactorsByID[modelReader->getVariableID("jy")] = -1.0f;
+		conversionFactorsByID[modelReader->getVariableID("rho")] = 1.0f; // [grams/cc]
+		conversionFactorsByID[modelReader->getVariableID("p")] = 1.0f;
+		conversionFactorsByID[modelReader->getVariableID("ex")] = -1.0f; // [T*m/s] or [v/m]
+		conversionFactorsByID[modelReader->getVariableID("ey")] = -1.0f;
+		conversionFactorsByID[modelReader->getVariableID("ez")] = -1.0f;
 
-		/*for (int i = 0; i < variableDataX.length; i++)
-		 {
-		 variableDataX[i] = -variableDataX[i];
-
-		 variableDataY[i] = -variableDataY[i];
-
-		 }*/
 		float missingValue = this->modelReader->getMissingValue();
 
 		previousVariable = "NULL";
@@ -67,7 +81,59 @@ namespace ccmc
 		y_array = NULL;
 		z_array = NULL;
 
-	}
+#ifdef NANOFLANN_HPP_
+
+		//These are pointers to grid corners (need to convert to cell centered to match up with data)
+		x_array = ((LFM*) this->modelReader)->getLFMVariable("x");
+		y_array = ((LFM*) this->modelReader)->getLFMVariable("y");
+		z_array = ((LFM*) this->modelReader)->getLFMVariable("z");
+
+		((LFM*)this->modelReader)->getResolution(nip1,njp1,nkp1);
+
+		ni = nip1-1;
+		nj = njp1-1;
+		nk = nkp1-1;
+
+//		std::cout<<"setting cell centers \n";
+		setCellCenters(x_array,y_array,z_array);
+
+      //Use this to visualize grid structure in openDX
+		IPoly<float> outerBoundary(ni-1,this);
+		outerBoundary.saveAsDXObject("/tmp/outerBoundary.dx");
+		IPoly<float> innerBoundary(0,this);
+		innerBoundary.saveAsDXObject("/tmp/innerBoundary.dx");
+//		AxisPolyhedron<float> axispoly(ni/2,false,this);
+//		axispoly.saveAsDXObject("/tmp/axisPoly.dx");
+//		GridPolyhedron<float> gridpoly(ni/2,nj/2,nk/2,this);
+//		gridpoly.saveAsDXObject("/tmp/gridpoly.dx");
+
+		clock_t telapsed;
+		std::cout<<"Setting polyhedral cells\n";
+		telapsed = clock();
+		setPolyhedralCells();
+		telapsed = clock() - telapsed;
+		printf ("It took %f seconds to initialize search cells.\n",((float)telapsed)/CLOCKS_PER_SEC);
+
+		telapsed = clock();
+		lfmtree.build();
+		telapsed = clock() - telapsed;
+		printf ("It took %f seconds to build kd-tree index.\n",((float)telapsed)/CLOCKS_PER_SEC);
+
+		searchPoly = NULL;
+		errorsPoly = NULL;
+
+		interpolationTime = 0;
+		creationTime = 0;
+		destructionTime = 0;
+		kdtreeTime = 0;
+		getCellTime = 0;
+		interpolationNumber = 0;
+#endif
+
+	};
+
+
+
 
 	/**
 	 * @param variable_id
@@ -78,7 +144,7 @@ namespace ccmc
 	 */
 	float LFMInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2)
 	{
-
+		std::cout<<"Calling LFM interpolator with variable id";
 		float dc0, dc1, dc2;
 		return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
 
@@ -94,9 +160,10 @@ namespace ccmc
 	float LFMInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2)
 	{
-
+		std::cout<<"LFM interpolator called with variable string "<< variable <<endl;
 		float dc0, dc1, dc2;
 		long variable_id = modelReader->getVariableID(variable);
+//		std::cout<<"Calling LFM interpolate with variable_id "<<variable_id<<endl;
 		return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
 
 	}
@@ -115,8 +182,9 @@ namespace ccmc
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
 		//Point<float> point;
-
+//		std:: cout <<"LFM interpolator called with variable "<< variable<<", id=";
 		long variable_id = modelReader->getVariableID(variable);
+//		std:: cout<<variable_id<<endl;
 		return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
 
 	}
@@ -134,280 +202,102 @@ namespace ccmc
 	float LFMInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
 	{
-		//Point<float> point;
 
-
-		//get cell containing point
-		//getCell(variable, c0,c1,c2);
-		//interpolate within cube at position c0,c1,c2
-
-		//Point<float> point;
-
-		//Cell3D<float, float> cell = getCell(variable, -c0,-c1,c2);
-
-		/*float m_x = (point.c0() - positions[0].c0())/dx;
-		 float m_y = (point.c1() - positions[0].c1())/dy;
-		 float m_z = (point.c2() - positions[0].c2())/dz;
-		 //System.out.println("m_x: " + m_x + " m_y: " + m_y + " m_z: " + m_z);
-
-		 float vc1 = (1-m_x)*vectors[0].c0() + m_x*vectors[1].c0();
-		 float vc2 = (1-m_x)*vectors[4].c0() + m_x*vectors[5].c0();
-		 float vc3 = (1-m_x)*vectors[2].c0() + m_x*vectors[3].c0();
-		 float vc4 = (1-m_x)*vectors[6].c0() + m_x*vectors[7].c0();
-		 float vc5 = (1-m_z)*vc1+m_z*vc3;
-		 float vc6 = (1-m_z)*vc2+m_z*vc4;
-		 float xc = (1-m_y)*vc5 + m_y*vc6;
-
-		 vc1 = (1-m_x)*vectors[0].c1() + m_x*vectors[1].c1();
-		 vc2 = (1-m_x)*vectors[4].c1() + m_x*vectors[5].c1();
-		 vc3 = (1-m_x)*vectors[2].c1() + m_x*vectors[3].c1();
-		 vc4 = (1-m_x)*vectors[6].c1() + m_x*vectors[7].c1();
-		 vc5 = (1-m_z)*vc1+m_z*vc3;
-		 vc6 = (1-m_z)*vc2+m_z*vc4;
-		 float yc = (1-m_y)*vc5 + m_y*vc6;
-
-		 vc1 = (1-m_x)*vectors[0].c2() + m_x*vectors[1].c2();
-		 vc2 = (1-m_x)*vectors[4].c2() + m_x*vectors[5].c2();
-		 vc3 = (1-m_x)*vectors[2].c2() + m_x*vectors[3].c2();
-		 vc4 = (1-m_x)*vectors[6].c2() + m_x*vectors[7].c2();
-		 vc5 = (1-m_z)*vc1+m_z*vc3;
-		 vc6 = (1-m_z)*vc2+m_z*vc4;
-		 float zc = (1-m_y)*vc5 + m_y*vc6;
+		/*
+		 * If the point is the same as the last point, use previous searchPoly
+		 * Else, see if the point is in the previous searchCell
+		 * If searchPoly==NULL, this is the first time through, so getCell
 		 */
 
-		//c0 = -c0;
-		//c1 = -c1;
-		//Point<float> p(c0,c1,c2);
-		//flip c0 and c1;
-		float flipped_c0 = -c0;
-		float flipped_c1 = -c1;
-		float missingValue = this->modelReader->getMissingValue();
+		float Re_cm = 6.378e8; //Radius of earth in cm
+		Vector<float> point(c0,c1,c2); //point = point*Re_cm;
 
-		int ix, iy, iz;
-		if (previous_x == c0 && previous_y == c1 && previous_z == c2)
-		{
-			if (previousValue == missingValue)
-				return missingValue;
-			ix = previous_ix;
-			iy = previous_iy;
-			iz = previous_iz;
-		} else
-		{
-			//first, find the cell
-			x_array = ((LFM*)this->modelReader)->getXGrid(variable_id);
-			y_array = ((LFM*)this->modelReader)->getYGrid(variable_id);
-			z_array = ((LFM*)this->modelReader)->getZGrid(variable_id);
-			ix = Utils<float>::binary_search(*x_array, 0, (*x_array).size() - 1, flipped_c0);
-			iy = Utils<float>::binary_search(*y_array, 0, (*y_array).size() - 1, flipped_c1);
-			iz = Utils<float>::binary_search(*z_array, 0, (*z_array).size() - 1, c2);
+		clock_t startDestruction, endDestruction;
 
-			if (ix < 0 || iy < 0 || iz < 0)
-				return missingValue;
-
+		if (searchPoly==NULL){ //this is the first time through, find cell
+			std::cout<<"search poly was null, performing initial search"<<endl;
+			searchPoly = getCell(point);
+			std::cout<<"after initial search, assigning first interpolation poly"<<endl;
+			interpolationPolysMap[searchPoly->currentPolyhedron] = searchPoly;
+			interpolationPolys.merge(searchPoly);
+			std::cout<<"first poly assigned. Isinside?"<<searchPoly->isInside<<endl;
+		}
+		else if (previous_x==c0 && previous_y==c1 && previous_z==c2){
+			//do nothing - lambdas for previous search poly will be used
+		}
+		else {
+			searchPoly->setBarycentricCoordinates(point); //check the current cell
+			interpolationNumber ++;
+			if (!searchPoly->isInside){
+				searchPoly = getCell(point);
+				if (interpolationPolysMap.find(searchPoly->currentPolyhedron) == interpolationPolysMap.end()){
+					interpolationPolysMap[searchPoly->currentPolyhedron] = searchPoly;
+					interpolationPolys.merge(searchPoly);
+				}
+			}
 		}
 
-		float ix_value = (*x_array)[ix];
-		float ixp1_value = (*x_array)[ix + 1];
-		float iy_value = (*y_array)[iy];
-		float iyp1_value = (*y_array)[iy + 1];
-		float iz_value = (*z_array)[iz];
-		float izp1_value = (*z_array)[iz + 1];
 
-		/*Point<float> positions[8] = {
-		 Point<float>(ix_value, iy_value, iz_value),
-		 Point<float>(ixp1_value, iy_value, iz_value),
-		 Point<float>(ix_value, iy_value, izp1_value),
-		 Point<float>(ixp1_value, iy_value, izp1_value),
-		 Point<float>(ix_value, iyp1_value, iz_value),
-		 Point<float>(ixp1_value, iyp1_value, iz_value),
-		 Point<float>(ix_value, iyp1_value, izp1_value),
-		 Point<float>(ixp1_value, iyp1_value, izp1_value)
-		 };*/
+		Vector<float> dc = searchPoly->getMinDistanceToCentroid();
 
-		/*dc0 = cell.getPositions()[1].c0() - cell.getPositions()[0].c0();
-		 dc1 = cell.getPositions()[4].c1() - cell.getPositions()[0].c1();
-		 dc2 = cell.getPositions()[2].c2() - cell.getPositions()[0].c2();
-		 */
-		dc0 = ixp1_value - ix_value;
-		dc1 = iyp1_value - iy_value;
-		dc2 = izp1_value - iz_value;
+		int polyType = searchPoly->getType();
+		if (polyType==0){
+			dc0 = dc.length(); //return to caller
+		}
+		else if (polyType==1){ //axis cell 2*pi*radius/nk where pi=atan(1)*4
+			dc0 = 16*16*atan(1.f)*dc.length()/searchPoly->positions.size(); // 8*atan(1)*radius/#positions
+		}
+		else{ // inner boundary sqrt(4pi*r^2/#positions)
+			dc0 = 4*pow(16*atan(1.f)*(pow(dc.length(),2.f)/searchPoly->positions.size()),.5f);
+		}
 
-		int nx = (*x_array).size();
-		int ny = (*y_array).size();
-		int nz = (*z_array).size();
-		int NV_blk = (ny) * (nx);
-		//ix + iy*nx + iz*NV_blk
-		int i = iz;
-		int j = iy;
-		int k = ix;
-		int jp1 = j + 1;
-		int kp1 = k + 1;
-		int ip1 = i + 1;
-		int itNV_blk = i * NV_blk;
-		int ip1tNV_blk = ip1 * NV_blk;
-		int i0 = k + (j) * (nx) + itNV_blk;
-		int i1 = (kp1) + (j) * (nx) + itNV_blk;
-		int i2 = k + (j) * (nx) + ip1tNV_blk;
-		int i3 = (kp1) + (j) * (nx) + ip1tNV_blk;
-		int i4 = k + (jp1) * (nx) + itNV_blk;
-		int i5 = (kp1) + (jp1) * (nx) + itNV_blk;
-		int i6 = k + (jp1) * (nx) + ip1tNV_blk;
-		int i7 = (kp1) + (jp1) * (nx) + ip1tNV_blk;
+		dc1 = dc0;
+		dc2 = dc0;
+
+		if (!searchPoly->isInside){ //reached outer bounday
+			return this->modelReader->getMissingValue();
+		}
+
+		float xc=0;
+		int globalIndex;
+		float lambda;
+		int polyI, polyJ, polyK;
+
 
 		const std::vector<float> * vData = modelReader->getVariableFromMap(variable_id);
-
-
-//		for (int i = 0; i < vData->size(); i++)
-//			std::cout << (*vData)[i] << std::endl;
-		float data[8];
-		if (vData == NULL)
-		{
-			data[0] = modelReader->getVariableAtIndex(variable_id,i0);
-			data[1] = modelReader->getVariableAtIndex(variable_id,i1);
-			data[2] = modelReader->getVariableAtIndex(variable_id,i2);
-			data[3] = modelReader->getVariableAtIndex(variable_id,i3);
-			data[4] = modelReader->getVariableAtIndex(variable_id,i4);
-			data[5] = modelReader->getVariableAtIndex(variable_id,i5);
-			data[6] = modelReader->getVariableAtIndex(variable_id,i6);
-			data[7] = modelReader->getVariableAtIndex(variable_id,i7);
-		} else
-		{
-			data[0] = (*vData)[i0];
-			data[1] = (*vData)[i1];
-			data[2] = (*vData)[i2];
-			data[3] = (*vData)[i3];
-			data[4] = (*vData)[i4];
-			data[5] = (*vData)[i5];
-			data[6] = (*vData)[i6];
-			data[7] = (*vData)[i7];
+		/* Variables data is stored in vectors size nip1,njp1,nkp1, but only
+		 * the first ni*nj*nk values are meaningful (https://wiki.ucar.edu/display/LTR/Output)
+		 */
+		for (int i = 0; i < searchPoly->lambda.size(); i++){
+			globalIndex = searchPoly->globalVertex[i]; //index into LFM cell centers
+			getIndices(globalIndex, polyI,polyJ,polyK,ni,nj); //indices of LFM cell center
+			globalIndex = getIndex(polyI,polyJ,polyK,ni+1,nj+1); //index into LFM cell corners (LFM data arrays are all size ni+1,nj+1,nk+1)
+			lambda = searchPoly->lambda[i];
+			if (vData == NULL){
+				xc += (modelReader->getVariableAtIndex(variable_id,globalIndex)) * lambda;
+			}
+			else{
+				xc += ((*vData)[globalIndex]) * lambda;
+			}
 		}
-
-		float m_x = (flipped_c0 - ix_value) / dc0;
-		float m_y = (flipped_c1 - iy_value) / dc1;
-		float m_z = (c2 - iz_value) / dc2;
-		//std::cout << "m_x: " <<  m_x << " m_y: " << m_y << " m_z: " << m_z << std::endl;
-
-		float vc1 = (1.f - m_x) * data[0] + m_x * data[1];
-		float vc2 = (1.f - m_x) * data[4] + m_x * data[5];
-		float vc3 = (1.f - m_x) * data[2] + m_x * data[3];
-		float vc4 = (1.f - m_x) * data[6] + m_x * data[7];
-		float vc5 = (1.f - m_z) * vc1 + m_z * vc3;
-		float vc6 = (1.f - m_z) * vc2 + m_z * vc4;
-		float xc = (1.f - m_y) * vc5 + m_y * vc6;
-		//return cell.interpolateData(-c0,-c1,c2) * getConversionFactor(variable);
 
 		if (previousVariableID != variable_id)
 		{
 			previousVariableID = variable_id;
 			previousVariable = modelReader->getVariableName(variable_id);
 			previousConversionFactor = getConversionFactor(variable_id);
-			//std::cout << "different " << std::endl;
-
 		}
-		previous_ix = ix;
-		previous_iy = iy;
-		previous_iz = iz;
+
 		previous_x = c0;
 		previous_y = c1;
 		previous_z = c2;
 
-		//float value = xc*previousConversionFactor;
 		previousValue = xc;
+
 		return xc * previousConversionFactor ;
 
+
 	}
-
-	/**
-	 * Creates the cell with the necessary values to interpolate the correct value at
-	 * position (c0,c1,c2).
-	 @verbatim
-	 6_____7
-	 /|    /|
-	 4_|___5 |
-	 | |   | |
-	 | 2 - - 3
-	 |/    |/
-	 0 - - 1
-	 @endverbatim
-	 * @param variable
-	 * @param c0
-	 * @param c1
-	 * @param c2
-	 * @return The cell values necessary for inteprolating the value at position (c0,c1,c2).
-	 */
-	/*Cell3D<float, float> OpenGGCMInterpolator::getCell(std::string& variable, float c0, float c1, float c2)
-	 {
-	 Cell3D<float, float> cell;
-
-
-
-	 //first, find the cell
-	 int ix = binary_search(*x_array, 0, (*x_array).size()-1, c0);
-	 int iy = binary_search(*y_array, 0, (*y_array).size()-1, c1);
-	 int iz = binary_search(*z_array, 0, (*z_array).size()-1, c2);
-
-
-	 float ix_value = (*x_array)[ix];
-	 float ixp1_value = (*x_array)[ix+1];
-	 float iy_value = (*y_array)[iy];
-	 float iyp1_value = (*y_array)[iy+1];
-	 float iz_value = (*z_array)[iz];
-	 float izp1_value = (*z_array)[iz+1];
-
-	 Point<float> positions[8] = {
-	 Point<float>(ix_value, iy_value, iz_value),
-	 Point<float>(ixp1_value, iy_value, iz_value),
-	 Point<float>(ix_value, iy_value, izp1_value),
-	 Point<float>(ixp1_value, iy_value, izp1_value),
-	 Point<float>(ix_value, iyp1_value, iz_value),
-	 Point<float>(ixp1_value, iyp1_value, iz_value),
-	 Point<float>(ix_value, iyp1_value, izp1_value),
-	 Point<float>(ixp1_value, iyp1_value, izp1_value)
-	 };
-
-
-
-
-	 cell.setPositions(positions);
-
-	 int nx = (*x_array).size();
-	 int ny = (*y_array).size();
-	 int nz = (*z_array).size();
-	 int NV_blk = (ny) * (nx);
-	 //ix + iy*nx + iz*NV_blk
-	 int i = iz;
-	 int j = iy;
-	 int k = ix;
-	 int jp1 = j+1;
-	 int kp1 = k+1;
-	 int ip1 = i+1;
-	 int itNV_blk = i*NV_blk;
-	 int ip1tNV_blk = ip1*NV_blk;
-	 int i0 = k + (j) * (nx) + itNV_blk;
-	 int i1 = (kp1) + (j) * (nx) + itNV_blk;
-	 int i2 = k + (j) * (nx) + ip1tNV_blk;
-	 int i3 = (kp1) + (j) * (nx) + ip1tNV_blk;
-	 int i4 = k + (jp1) * (nx) + itNV_blk;
-	 int i5 = (kp1) + (jp1) * (nx) + itNV_blk;
-	 int i6 = k + (jp1) * (nx) + ip1tNV_blk;
-	 int i7 = (kp1) + (jp1) * (nx) + ip1tNV_blk;
-
-	 std::vector<float> * vData = variableData[variable];
-	 float data[9] = {
-	 (*vData)[i0],
-	 (*vData)[i1],
-	 (*vData)[i2],
-	 (*vData)[i3],
-	 (*vData)[i4],
-	 (*vData)[i5],
-	 (*vData)[i6],
-	 (*vData)[i7]
-
-	 };
-	 cell.setData(data);
-
-	 return cell;
-	 }*/
 
 	/**
 	 * @param variable
@@ -437,12 +327,418 @@ namespace ccmc
 		return conversionFactor;
 	}
 
+	void LFMInterpolator::setCellCenters(const std::vector<float> * x_array, const std::vector<float>* y_array,
+						const std::vector<float>* z_array)
+	{
+		int i,j,k, l = 0;
+		size_t N = ni*nj*nk; //number of cells. No k-wrapping needed.
+		cell_centers.pts.resize(N);
+
+		float Re_cm = 6.3675e8; //radius of earth in cm
+		//calculate cell centers
+		float norm = 1.f/Re_cm; //normalization constant for cell positions
+		for (k=0;k<nk;k++){
+			for (j=0;j<nj;j++){
+				for (i=0;i<ni;i++){
+					cell_centers.pts[l].x = ((*x_array)[ijk1(i,j,k)]+(*x_array)[ijk1(i+1,j,k)] +
+					          (*x_array)[ijk1(i,j+1,k)]+(*x_array)[ijk1(i+1,j+1,k)]+(*x_array)[ijk1(i,j,k+1)] +
+					          (*x_array)[ijk1(i+1,j,k+1)]+(*x_array)[ijk1(i,j+1,k+1)]+(*x_array)[ijk1(i+1,j+1,k+1)]) *
+					          0.125*norm;
+					cell_centers.pts[l].y = ((*y_array)[ijk1(i,j,k)]+(*y_array)[ijk1(i+1,j,k)] +
+					          (*y_array)[ijk1(i,j+1,k)]+(*y_array)[ijk1(i+1,j+1,k)]+(*y_array)[ijk1(i,j,k+1)] +
+					          (*y_array)[ijk1(i+1,j,k+1)]+(*y_array)[ijk1(i,j+1,k+1)]+(*y_array)[ijk1(i+1,j+1,k+1)]) *
+					          0.125*norm;
+					cell_centers.pts[l].z = ((*z_array)[ijk1(i,j,k)]+(*z_array)[ijk1(i+1,j,k)] +
+					          (*z_array)[ijk1(i,j+1,k)]+(*z_array)[ijk1(i+1,j+1,k)]+(*z_array)[ijk1(i,j,k+1)] +
+					          (*z_array)[ijk1(i+1,j,k+1)]+(*z_array)[ijk1(i,j+1,k+1)]+(*z_array)[ijk1(i+1,j+1,k+1)]) *
+					          0.125*norm;
+					l++;
+				}
+			}
+		}
+		return;
+
+	}
+
+	/*
+	 * This function creates and stores the polyhedra used for interpolation.
+	 * Each polyhedron has vertices set by LFM cell centers.
+	 * In total, there are (ni-1)*(nj-1)*nk hexahedra (6 faces),
+	 * 				2*(ni-1) axis cells having nk+2 faces,
+	 * 				1 inner boundary cell having (nj-1)*nk + 2 faces
+	 * This function also calculates polyhedral cell centers, which are put
+	 * in a point cloud and used for kd-tree searches
+	 *
+	 */
+	void LFMInterpolator::setPolyhedralCells()
+	{
+		//the first nk*(nj-1)*(ni-1) hexahedral cells
+		for (int k = 0; k < nk; k++){
+			for (int j = 0; j < nj-1; j++){
+				for (int i = 0; i < ni-1; i++){
+					polyhedra.push_back(new GridPolyhedron<float>::GridPolyhedron(i,j,k,this));
+				}
+			}
+		}
+
+		//day side axis polyhedra
+		for (int i = 0; i < ni-1; i++){
+			polyhedra.push_back( new AxisPolyhedron<float>::AxisPolyhedron(i,true,this));
+		}
+		//night side axis polyhedra
+		for (int i = 0; i < ni-1; i++){
+			polyhedra.push_back(new AxisPolyhedron<float>::AxisPolyhedron(i,false,this));
+		}
+
+		//inner boundary polyhedron
+		polyhedra.push_back(new IPoly<float>::IPoly(0,this));
+
+		innerBoundaryRadius = polyhedra[polyhedra.size()-1].maxDistanceToCentroid().length();
+
+		/*
+		 * Create helper nodes - a point cloud representing polyhedral centers.
+		 * These are used for kd-tree searches
+		 */
+
+		helper_nodes.pts.resize(polyhedra.size());
+		Vector<float> centroid;
+		for (int i = 0; i<polyhedra.size();i++){
+			centroid = polyhedra[i].centroid();
+			helper_nodes.pts[i].x = centroid.c0();
+			helper_nodes.pts[i].y = centroid.c1();
+			helper_nodes.pts[i].z = centroid.c2();
+		}
+
+		lfmtree.cloud = helper_nodes;
+
+		return;
+	}
+
+	void LFMInterpolator::getIndices(const int index, int& i, int& j, int& k, const int ii, const int jj)
+	{
+		int temp = 0;
+		i = index%ii;
+		temp = (index-i)/ii;
+		j = temp%jj;
+		k = (temp-j)/jj;
+		return;
+	}
+	int LFMInterpolator::getIndex(const int i,const int j, const int k, const int ii, const int jj)
+	{
+		return i+ii*(j+jj*k);
+	}
+
+
 	/**
 	 * Destructor
 	 */
 	LFMInterpolator::~LFMInterpolator()
 	{
+		float total = 0; float elapsed_time = 0;
+		std::cout<<"destructing LFMInterpolator"<<endl;
 		// TODO Auto-generated destructor stub
+		elapsed_time = ((float) getCellTime)/CLOCKS_PER_SEC; total += elapsed_time;
+		std::cout<<"getCell time ="<<getCellTime<<" or "<< elapsed_time<<" seconds"<<endl;
+		elapsed_time = ((float) creationTime)/CLOCKS_PER_SEC; total += elapsed_time;
+		std::cout<<"creation time ="<<creationTime<<" or "<< elapsed_time<<" seconds"<<endl;
+		elapsed_time = ((float) Polyhedron<float>::stage1);
+		std::cout<<"setBarycentricCordinates,stage1 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
+		elapsed_time = ((float) Polyhedron<float>::stage2);
+		std::cout<<"setBarycentricCordinates,stage2 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
+		elapsed_time = ((float) Polyhedron<float>::stage3);
+		std::cout<<"setBarycentricCordinates,stage3 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
+		elapsed_time = ((float) Polyhedron<float>::interpolationTime)/CLOCKS_PER_SEC; total += elapsed_time;
+		std::cout<<"interpolation Time="<<elapsed_time<<endl;
+		elapsed_time = ((float) destructionTime)/CLOCKS_PER_SEC; total += elapsed_time;
+		std::cout<<"destruction Time="<<elapsed_time<<endl;
+		std::cout<<"total time = "<< total<<endl;
+		std::cout<<"Interpolations performed:"<<Polyhedron<float>::interpolations<<endl;
+
+		if (searchPoly != NULL){
+			delete searchPoly;
+		}
+
+		if (errorsPoly != NULL){
+			delete errorsPoly;
+		}
+		interpolationPolys.saveAsDXObject("/tmp/interpolationPolys.dx");
+
 	}
+
+	Polyhedron<float>* LFMInterpolator::createNextPolyhedron(Polyhedron<float>* poly)
+	{
+
+		int face = poly->closestFace;
+		int cellIndex = poly->currentPolyhedron;
+		int polyI, polyJ, polyK;
+		bool day;
+
+		if (poly->thetaMax <= float(atan(1)*2) ){
+//			std::cout<<"still inside polyhedron\n";
+			return poly;
+		}
+
+		Polyhedron<float>* pNewPoly = poly;
+
+		if (poly->getType() == 0){	// hexahedron: create adjacent polyhedron
+			getIndices(cellIndex, polyI, polyJ, polyK, ni-1,nj-1);
+
+
+			/*Check which face it is closest to
+			  and return the index of the polyhedron on the opposite side
+			  faces in order { i=0,i=1, j=0, j=1, k = 0, k=1}*/
+
+
+
+			if (face==0){
+				if (polyI==0){
+//					std::cout<<"entering inner boundary\n";
+					pNewPoly = new IPoly<float>::IPoly(polyI,this);
+				}
+				else {
+					polyI --;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+			}
+			else if (face==1){
+				if (polyI==ni-2){
+//					std::cout<<"exiting outer boundary\n";
+				}
+				else {
+					polyI++;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+			}
+			else if (face==2){
+				if (polyJ==0){ //day side axis
+					day = true;
+//					std::cout<<"entering day side axis\n";
+					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+				}
+				else{
+					polyJ--;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+			}
+			else if (face==3){
+				if (polyJ==nj-2){ //night side axis
+					day = false;
+//					std::cout<<"entering night side axis\n";
+					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+				}
+				else{
+					polyJ++;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+			}
+			else if (face==4){
+				if (polyK == 0){ //wrap backward
+					polyK = nk-1;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+				else{
+					polyK--;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+			}
+			else if (face==5){
+				if (polyK == nk-1){ //wrap forward
+					polyK = 0;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+				else{
+					polyK++;
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+				}
+			}
+			else{
+				return poly;
+			}
+		}
+
+
+		else if (poly->getType() == 1){ //axis cell: create adjacent polyhedron
+			// find polyI and determine if day or night side
+			polyI = cellIndex - (ni-1)*(nj-1)*nk;
+			polyJ = (nj-1)*(polyI/(ni-1)); //sets polyJ = nj-1 for night side, polyJ = 0 for day
+			day = polyJ==0;
+			polyI = polyI%(ni-1);
+
+
+			if (face < nk){ //azimuthal face
+				if (day){
+//					std::cout<<"exiting day side axis\n";
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,face,this);
+					}
+				else{
+//					std::cout<<"exiting night side axis\n";
+					polyJ--; //create poly at (i,nj-2,face)
+					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,face,this);
+				}
+			}
+			else if (face == nk){ //earth-facing face
+				if (polyI == 0){ //inner boundary
+//					std::cout<<"entering inner boundary\n";
+					pNewPoly = new IPoly<float>::IPoly(polyI,this);
+				}
+				else{
+					polyI--;
+					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+				}
+			}
+			else if (face == nk+1){
+				if (polyI == ni-2){//outer boundary
+//					std::cout<<"exiting outer boundary\n";
+				}
+				else{
+					polyI++;
+					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+				}
+			}
+		}
+		else if (poly->getType() == 2){ //boundary polygon
+			polyI = 0;
+			if (face < nk*(nj-1)){ //next cell is hexahedron
+//				std::cout<<"exiting inner boundary through hexahedron"<<endl;
+				polyJ = face%(nj-1);
+				polyK = face/(nj-1);
+				pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+			}
+			else { //day or night side axis
+//				std::cout<<"exiting inner boundary through axis"<<endl;
+				day = face==nk*(nj-1);
+				pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+			}
+		}
+		else { //type not supported
+			return poly;
+		}
+
+		return pNewPoly;
+
+	}
+
+
+	/*
+	 * Return a pointer to a new cell containing the point.
+	 */
+	Polyhedron<float>* LFMInterpolator::getCell(Vector<float> point){
+		/*
+		 * A "search cell" is one whose corners are the lfm cell centers and whose center is
+		 * the centroid of the search cell corners.
+		 * The idea is to use a kd-tree to find the nearest cell center,
+		 * then use Spherical Barycentric Coordinates to tell whether we are inside the cell or, if not,
+		 * move to the cell oposite the closest face.
+		 */
+
+		clock_t tgetCellStart,tgetCellEnd;
+		clock_t startCreation,endCreation;
+		clock_t startDestruction,endDestruction;
+		tgetCellStart = clock();
+
+
+		float Re_cm = 6.378e8;
+		typedef float num_t;
+		num_t query_pt[3] = {point.c0(), point.c1(), point.c2()}; // c0,c1 do not need to be flipped...
+		const int num_results = 1; //changed from const size_t num_results = 1;
+		std::vector<size_t> ret_index(num_results); //changed from size_t ret_index;
+		std::vector<num_t> out_dist_sqr(num_results); //changed from num_t out_dist_sqr;
+		nanoflann::KNNResultSet<num_t> resultSet(num_results);
+		resultSet.init(&ret_index[0], &out_dist_sqr[0]);
+
+
+		typedef std::pair<size_t, num_t> KDResultPair;
+		typedef std::vector< KDResultPair  > KDResults;
+
+		KDResults ret_matches;
+
+		lfmtree.nearest(query_pt, resultSet);
+
+		int polyI,polyJ,polyK;
+		int closestHelper = ret_index[0];
+		typedef float num_p;
+		Polyhedron<num_p>* pStartPoly;
+		Polyhedron<num_p>* pLastPoly;
+		Polyhedron<num_p>* pCurrentPoly;
+		Polyhedron<num_p>* pNextPoly;
+		Polyhedron<num_p>* pTestPoly;
+
+		pTestPoly = &(polyhedra[closestHelper]);
+//		startCreation = clock();
+
+		/*
+		 * Construct cell around the closest helper node
+		 */
+//		if (closestHelper < (ni-1)*(nj-1)*nk){ //hexahedral cell
+//			getIndices(ret_index[0], polyI,polyJ,polyK,ni-1,nj-1); //i,j,k is the lowest corner of the surrounding cell
+//			pStartPoly = new GridPolyhedron<num_p>::GridPolyhedron(polyI,polyJ,polyK, this);
+//		}
+//		else if(closestHelper < (ni-1)*(nj-1)*nk + 2*(ni-1)) //Axis cell
+//		{
+//			polyI = closestHelper - (ni-1)*(nj-1)*nk;
+//			polyJ = (nj-1)*(polyI/(ni-1));
+//			bool day = polyJ==0;
+//			polyI = polyI%(ni-1);
+//			pStartPoly = new AxisPolyhedron<num_p>::AxisPolyhedron(polyI,day,this);
+//		}
+//		else{ //closest helper is at x=y=z=0
+//			pStartPoly = new IPoly<num_p>::IPoly(0, this);
+//		}
+//		endCreation = clock();
+//		creationTime += endCreation-startCreation;
+
+		Polyhedron<float> startPoly = *pTestPoly;
+
+		pCurrentPoly = pTestPoly;
+		bool inside = false;
+		int loopIndex = 0;
+		int maxTries = 20;
+		while (!inside){
+			pCurrentPoly->setBarycentricCoordinates(point);
+			inside = pCurrentPoly->isInside;
+			if(inside){
+				break;
+			}
+			if (loopIndex > maxTries-3){
+				int face = pCurrentPoly->closestFace;
+				float eps = std::numeric_limits<float>::epsilon();
+				float piOver2 = Polyhedron<float>::piOver2;
+				std::cerr<<"loop index: "<<loopIndex
+						<< " goal point: "
+						<< point.toString()
+						<< " Polyhedron#:"<< pCurrentPoly->currentPolyhedron
+						<<"\nclosest face#: "<< pCurrentPoly->closestFace
+						<<"\ncentroid of startPoly:"
+						<<(startPoly.centroid()).toString()
+						<<"\ncentroid of nearest poly: "<< (pCurrentPoly->centroid()).toString()
+						<<"\nface centroid:"<<(pCurrentPoly->faceCentroid(pCurrentPoly->closestFace)).toString()<<"\n"
+						<<"nearest poly tan(thetaMax):"
+						<<tan(pCurrentPoly->thetaMax);
+				std::cerr<<"tan(theta):\n";
+				for (int j = pCurrentPoly->faces[face]; j < pCurrentPoly->faces[face+1]; j++){
+					std::cerr<< tan(pCurrentPoly->theta[j]) <<"\n";
+				}
+			}
+			if (loopIndex == maxTries){
+				break;
+			}
+
+			pLastPoly = pCurrentPoly;
+			pNextPoly = &polyhedra[pCurrentPoly->neighbors[pCurrentPoly->closestFace]];
+			if (pNextPoly == pLastPoly){ //exited boundary
+//				std::cerr<<"exited boundary"<<endl;
+				break;
+			}
+			pCurrentPoly = pNextPoly;
+			loopIndex++;
+		}
+
+		tgetCellEnd = clock();
+		getCellTime += tgetCellEnd-tgetCellStart;
+
+		return pCurrentPoly;
+
+	}
+
 
 }

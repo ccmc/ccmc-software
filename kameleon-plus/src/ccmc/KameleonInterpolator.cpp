@@ -239,8 +239,26 @@ namespace ccmc
 			conversionFactorsToVis["by"] = 2.205 * gauss2Tesla * 1.e9;
 			conversionFactorsToVis["bz"] = 2.205 * gauss2Tesla * 1.e9;
 
-		} else
+		} else if (modelName == "LFM")
 		{
+			/* See LFMInterpolator for native units
+			 */
+			conversionFactorsToVis["p"] = 1e9; //[Pa] to [nPa]
+			conversionFactorsToVis["rho"] = 1.0/(1.672622e-24);//[grams/cc] to [amu/cc]
+			conversionFactorsToVis["e"] = 1000; // [V/m] to [mV/m]
+			conversionFactorsToVis["ex"] = 1000;
+			conversionFactorsToVis["ey"] = 1000;
+			conversionFactorsToVis["ez"] = 1000;
+			conversionFactorsToVis["b"] = 1e9; //[T] to [nT]
+			conversionFactorsToVis["bx"] = 1e9;
+			conversionFactorsToVis["by"] = 1e9;
+			conversionFactorsToVis["bz"] = 1e9;
+			conversionFactorsToVis["u"] = 1.0f/(1.0e3); //[m/s] to [km/s]
+			conversionFactorsToVis["ux"] = 1.0f/(1.0e3);
+			conversionFactorsToVis["uy"] = 1.0f/(1.0e3);
+			conversionFactorsToVis["uz"] = 1.0f/(1.0e3);
+
+		} else {
 			conversionFactorsToVis["p"] = 1.e-3;
 			conversionFactorsToVis["t"] = 1.e-12 / ccmc::constants::Boltzmann;
 			conversionFactorsToVis["s"] = 1.e-4;

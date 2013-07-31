@@ -12,6 +12,9 @@
 #include "LFMInterpolator.h"
 #include "StringConstants.h"
 #include "GeneralFileReader.h"
+#include <iostream>
+#include <nanoflann.hpp>
+#include "math.h"
 
 namespace ccmc
 {
@@ -45,57 +48,191 @@ namespace ccmc
 	{
 		this->setBusyStatus(Model::BUSY);
 		long status;
+		std::cout << "calling GeneralFileReader open function"<<endl;
 		status = GeneralFileReader::open(filename);
+		std::cout <<"File opened, loading x,y,z,V_th,rho"<<endl;
 		this->progress = 20;
 		loadVariable(ccmc::strings::variables::x_);
+		x_array = this->variableData["x"];
 		this->progress = 40;
 		loadVariable(ccmc::strings::variables::y_);
+		y_array = this->variableData["y"];
 		this->progress = 60;
 		loadVariable(ccmc::strings::variables::z_);
+		z_array = this->variableData["z"];
+
+		setResolution();
+
 		this->progress = 80;
+		loadVariable("V_th"); //needed for calculating pressure
+		this->progress = 85;
+		loadVariable("rho");
+		this->progress = 90;
+
+//		loadPressure(); //moved to KameleonInterpolator_compute_p so we don't have to store an extra array
+		loadEfield();
+
+
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
 		this->progress = 100;
-//		cout << "testing open in OpenGGCM class" << endl;
 		this->setBusyStatus(Model::OK);
 		return status;
 	}
 
-	const std::vector<std::string> LFM::getLoadedVariables()
+	/*
+	 * assumes requested variable is already loaded
+	 */
+	std::vector<float>* LFM::getLFMVariable(const std::string& variable)
 	{
-		std::vector<std::string> requiredVariables;
-		requiredVariables.push_back(ccmc::strings::variables::x_bx_);
-		requiredVariables.push_back(ccmc::strings::variables::x_by_);
-		requiredVariables.push_back(ccmc::strings::variables::x_bz_);
-		requiredVariables.push_back(ccmc::strings::variables::y_bx_);
-		requiredVariables.push_back(ccmc::strings::variables::y_by_);
-		requiredVariables.push_back(ccmc::strings::variables::y_bz_);
-		requiredVariables.push_back(ccmc::strings::variables::z_bx_);
-		requiredVariables.push_back(ccmc::strings::variables::z_by_);
-		requiredVariables.push_back(ccmc::strings::variables::z_bz_);
+		return this->variableData[variable];
+	}
 
-		std::vector<std::string> variablesLoaded = Model::getLoadedVariables();
+	/*
+	 * Compute electric field from edge components stored in hdf file
+	 * HDF file stores edge components of electric field (ei,ej,ek) but labels them incorrectly as (ex,ey,ez)
+	 *
+	 * Note: these results might be off by a negative sign: check that E = -v x B
+	 */
+	void LFM::loadEfield(){
+		std::cout<<"calculating electric field from edge components"<<endl;
 
-		for (int i = 0; i < requiredVariables.size(); i++)
-		{
-			int size = variablesLoaded.size();
-			for (int j = 0; j < size; j++)
-			{
-				if (variablesLoaded[j] == requiredVariables[i])
-				{
-					variablesLoaded.erase(variablesLoaded.begin() + j);
-					j = size;
+		loadVariable("ei");
+		loadVariable("ej");
+		loadVariable("ek");
+
+		std::vector<float> * pDensity = getLFMVariable("rho");//this->variableData["rho"]; //already loaded
+		std::vector<float> * pEx = new std::vector<float>(pDensity->size());
+		std::vector<float> * pEy = new std::vector<float>(pDensity->size());
+		std::vector<float> * pEz = new std::vector<float>(pDensity->size());
+
+		std::vector<float> *pEi = getLFMVariable("ei");// [cm/s * gauss]*[cm] E dot dl
+		std::vector<float> *pEj = getLFMVariable("ej");
+		std::vector<float> *pEk = getLFMVariable("ek");
+
+		std::vector<float> *px = getLFMVariable("x"); // [cm]
+		std::vector<float> *py = getLFMVariable("y");
+		std::vector<float> *pz = getLFMVariable("z");
+
+		float ei_average, ej_average, ek_average;
+		float di_x, dj_x, dk_x;
+		float di_y, dj_y, dk_y;
+		float di_z, dj_z, dk_z;
+
+		Vector<float> cx, cy, cz, et;
+		float determinant;
+		float conversion = 1.0e-6; // from [gauss * cm/s] to [T*m/s] or [v/m]
+
+		for (int k = 0; k<nk; k++){
+			for (int j = 0; j<nj; j++){
+				for (int i = 0; i < ni; i++){
+					ei_average = averageFace(pEi, 0, i,j,k, ni,njp1); //fixed i
+					ej_average = averageFace(pEj, 1, i,j,k, nip1,nj); //fixed j
+					ek_average = averageFace(pEk, 2, i,j,k, nip1,njp1); //fixed k
+
+					//components of vector between i, i+1 faces
+					di_x = averageFace(px, 0, i+1,j,k, nip1,njp1) - averageFace(px, 0, i,j,k, nip1,njp1);// units: [cm]
+					di_y = averageFace(py, 0, i+1,j,k, nip1,njp1) - averageFace(py, 0, i,j,k, nip1,njp1);
+					di_z = averageFace(pz, 0, i+1,j,k, nip1,njp1) - averageFace(pz, 0, i,j,k, nip1,njp1);
+
+					//components of vector between j, j+1 faces
+					dj_x = averageFace(px, 1, i,j+1,k, nip1,njp1) - averageFace(px, 1, i,j,k, nip1,njp1);
+					dj_y = averageFace(py, 1, i,j+1,k, nip1,njp1) - averageFace(py, 1, i,j,k, nip1,njp1);
+					dj_z = averageFace(pz, 1, i,j+1,k, nip1,njp1) - averageFace(pz, 1, i,j,k, nip1,njp1);
+
+					//components of vector between k, k+1 faces
+					dk_x = averageFace(px, 2, i,j,k+1, nip1,njp1) - averageFace(px, 2, i,j,k, nip1,njp1);
+					dk_y = averageFace(py, 2, i,j,k+1, nip1,njp1) - averageFace(py, 2, i,j,k, nip1,njp1);
+					dk_z = averageFace(pz, 2, i,j,k+1, nip1,njp1) - averageFace(pz, 2, i,j,k, nip1,njp1);
+
+					cx.setComponents(di_x,dj_x,dk_x); // [cm]
+					cy.setComponents(di_y,dj_y,dk_y);
+					cz.setComponents(di_z,dj_z,dk_z);
+
+					et.setComponents(ei_average,ej_average,ek_average); // [cm/s * gauss * cm]
+
+					determinant = 1.0f/(Vector<float>::triple(cx,cy,cz)); //[cm^-3]
+
+					/* triple(et,cy,cz) * determinant = [(cm/s)*gauss*cm * cm^2 * cm^-3] = [(cm/s)*gauss]
+					 * we multiply by conversion factor to put result in mks: [T*m/s] or [v/m]
+					 */
+					(*pEx)[getIndex(i,j,k,nip1,njp1)] = (Vector<float>::triple(et,cy,cz))*determinant*conversion;
+					(*pEy)[getIndex(i,j,k,nip1,njp1)] = (Vector<float>::triple(cx,et,cz))*determinant*conversion;
+					(*pEz)[getIndex(i,j,k,nip1,njp1)] = (Vector<float>::triple(cx,cy,et))*determinant*conversion;
+
+					// volume = Vector<float>::triple(cx,cy,cz) //[cm^3]
 				}
 			}
 		}
-		return variablesLoaded;
+
+		addFloatVariableToMap("ex",pEx);
+		addFloatVariableToMap("ey",pEy);
+		addFloatVariableToMap("ez",pEz);
+
+		return;
 	}
 
-	/**
-	 * @copydoc Model::createNewInterpolator()
+	/*
+	 * Average requested variable for a face, holding face_index constant (holding i,j,or k constant)
 	 */
+	float LFM::averageFace(const std::vector<float> * variable, int face_index, const int i, const int j, const int k, const int ii, const int jj){
+		/*
+		 * face_index = 0: hold i constant
+		 * face_index = 1: hold j constant
+		 * face_index = 2: hold k constant
+		 */
+
+		float average = 0;
+		if (face_index == 0){
+			for (int m = 0; m < 2; m++){
+				for (int n = 0; n < 2; n++){
+					average += (*variable)[getIndex(i,j+m,k+n,ii,jj)];
+				}
+			}
+		}
+		else if (face_index == 1){
+			for (int m = 0; m < 2; m++){
+				for (int n = 0; n < 2; n++){
+					average += (*variable)[getIndex(i+m,j,k+n,ii,jj)];
+				}
+			}
+		}
+		else{
+			for (int m = 0; m < 2; m++){
+				for (int n = 0; n < 2; n++){
+					average += (*variable)[getIndex(i+m,j+n,k,ii,jj)];
+				}
+			}
+		}
+
+		average /= 4;
+
+		return average;
+	}
+
+	void LFM::loadPressure(){
+		/*populate pressure array
+		 * (no need to store an extra array and add variable to map)
+		 */
+		std::vector<float> * pSoundSpeed = this->variableData["V_th"];
+		std::vector<float> * pDensity = this->variableData["rho"];
+		std::vector<float> * pPressure = new std::vector<float>(pSoundSpeed->size());
+		float soundSpeed, density, pressure;
+		float amu = 1.66053892e-24; // grams per amu
+
+		for (int i = 0; i < pPressure->size(); i++){
+			soundSpeed = (*pSoundSpeed)[i]; //[cm/s]
+			density = (*pDensity)[i]; //[gm/cc]
+			pressure = .1*(3.0/5)*density*pow(soundSpeed,2); // [nPa]
+			(*pPressure)[i] = pressure;
+		}
+		addFloatVariableToMap("p",pPressure);
+
+	}
+
 	Interpolator * LFM::createNewInterpolator()
 	{
+		std::cout <<"creating new LFM interpolator\n";
 		Interpolator * interpolator = new LFMInterpolator(this);
 
 		return interpolator;
@@ -106,7 +243,7 @@ namespace ccmc
 	 */
 	void LFM::initializeConversionFactorsToSI()
 	{
-//		std::cout << "OpenGGCM::initializeConversionFactorsToSI()" << std::endl;
+//		std::cout << "LFM::initializeConversionFactorsToSI()" << std::endl;
 		conversionFactorsToSI["bx1"] = 1e-9f;
 		conversionFactorsToSI["by1"] = 1e-9f;
 		conversionFactorsToSI["bz1"] = 1e-9f;
@@ -144,161 +281,61 @@ namespace ccmc
 		variableSIUnits["jz"] = "A/m^2";
 		variableSIUnits["rho"] = "m^-3";
 		variableSIUnits["p"] = "Pa";
+		variableSIUnits["ex"] = "v/m";
+		variableSIUnits["ey"] = "v/m";
+		variableSIUnits["ez"] = "v/m";
 	}
 
-	void LFM::initializeMaps()
+	void LFM::setResolution()
 	{
-		//Staggared grid
-		xGrid["bx1"] = ccmc::strings::variables::x_bx_;
-		xGrid["by1"] = ccmc::strings::variables::x_by_;
-		xGrid["bz1"] = ccmc::strings::variables::x_bz_;
-
-		yGrid["bx1"] = ccmc::strings::variables::y_bx_;
-		yGrid["by1"] = ccmc::strings::variables::y_by_;
-		yGrid["bz1"] = ccmc::strings::variables::y_bz_;
-
-		zGrid["bx1"] = ccmc::strings::variables::z_bx_;
-		zGrid["by1"] = ccmc::strings::variables::z_by_;
-		zGrid["bz1"] = ccmc::strings::variables::z_bz_;
-
-		xGridByID[this->getVariableID("bx1")] = ccmc::strings::variables::x_bx_;
-		xGridByID[this->getVariableID("by1")] = ccmc::strings::variables::x_by_;
-		xGridByID[this->getVariableID("bz1")] = ccmc::strings::variables::x_bz_;
-
-		yGridByID[this->getVariableID("bx1")] = ccmc::strings::variables::y_bx_;
-		yGridByID[this->getVariableID("by1")] = ccmc::strings::variables::y_by_;
-		yGridByID[this->getVariableID("bz1")] = ccmc::strings::variables::y_bz_;
-
-		zGridByID[this->getVariableID("bx1")] = ccmc::strings::variables::z_bx_;
-		zGridByID[this->getVariableID("by1")] = ccmc::strings::variables::z_by_;
-		zGridByID[this->getVariableID("bz1")] = ccmc::strings::variables::z_bz_;
-
-	}
-
-	std::string LFM::getXGridName(const std::string& variable)
-	{
-		boost::unordered_map<std::string, std::string>::iterator iter = this->xGrid.find(variable);
-		if (iter != xGrid.end())
-		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return (*iter).second;
+		std::vector<float>* x_array = this->variableData["x"];
+		std::vector<float>* y_array = this->variableData["y"];
+		//The hdf file stores positions of LFM grid corners (size ni+1 x nj+1 x nk+1)
+		float maxx = 0;
+		int ncorners = (*x_array).size();
+		for (size_t i = 0; i < ncorners; i++){
+			if ((*x_array)[i] > maxx){
+				maxx = (*x_array)[i];
+			}
+			else {
+				nip1 = i;
+//				std::cout<< "nip1 scan: nip1="<< nip1 << "\n";
+				break;
+			}
 		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return ccmc::strings::variables::x_;
+		float maxphi = -1;
+		float phi = 0;
+		for (size_t j = 0; j< ncorners; j=j+nip1){
+			phi = atan2((*y_array)[j],(*x_array)[j]);
+			if	(phi > maxphi) {
+				maxphi = phi;
+			}
+			else{
+				njp1 = j/nip1;
+//				std::cout<< "njp1 scan: njp1 ="<< njp1 << "\n";
+				break;
+			}
 		}
+		nkp1 = ncorners/(nip1*njp1);
+
+		ni = nip1-1;
+		nj = njp1-1;
+		nk = nkp1-1;
+
 	}
 
-
-	std::string LFM::getXGridName(long variable)
-	{
-		boost::unordered_map<long, std::string>::iterator iter = this->xGridByID.find(variable);
-		if (iter != xGridByID.end())
+	void LFM::getResolution(int & nip1, int & njp1, int & nkp1)
 		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return (*iter).second;
+		nip1 = this->nip1;
+		njp1 = this->njp1;
+		nkp1 = this->nkp1;
+		return;
 		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return ccmc::strings::variables::x_;
-		}
-	}
 
-	std::string LFM::getYGridName(const std::string& variable)
+	int LFM::getIndex(const int i,const int j, const int k, const int ii, const int jj)
 	{
-		boost::unordered_map<std::string, std::string>::iterator iter = this->yGrid.find(variable);
-		if (iter != yGrid.end())
-		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return (*iter).second;
-		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return ccmc::strings::variables::y_;
-		}
+		return i+ii*(j+jj*k);
 	}
-
-
-	std::string LFM::getYGridName(long variable)
-	{
-		boost::unordered_map<long, std::string>::iterator iter = this->yGridByID.find(variable);
-		if (iter != yGridByID.end())
-		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return (*iter).second;
-		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return ccmc::strings::variables::y_;
-		}
-	}
-
-	std::string LFM::getZGridName(const std::string& variable)
-	{
-		boost::unordered_map<std::string, std::string>::iterator iter = this->zGrid.find(variable);
-		if (iter != zGrid.end())
-		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return (*iter).second;
-		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return ccmc::strings::variables::z_;
-		}
-	}
-
-
-	std::string LFM::getZGridName(long variable)
-	{
-		boost::unordered_map<long, std::string>::iterator iter = this->zGridByID.find(variable);
-		if (iter != zGridByID.end())
-		{
-			//std::cerr << "grid: " << (*iter).second << std::endl;
-			return (*iter).second;
-		}
-		else
-		{
-			//std::cerr << "grid: " << ccmc::strings::variables::theta_ << std::endl;
-			return ccmc::strings::variables::z_;
-		}
-	}
-
-
-	const std::vector<float>* const LFM::getXGrid(const std::string& variable)
-	{
-		return this->getVariableFromMap(getXGridName(variable));
-	}
-
-	const std::vector<float>* const LFM::getXGrid(long variable)
-	{
-		return this->getVariableFromMap(getXGridName(variable));
-	}
-
-	const std::vector<float>* const LFM::getYGrid(const std::string& variable)
-	{
-		return this->getVariableFromMap(getYGridName(variable));
-	}
-
-	const std::vector<float>* const LFM::getYGrid(long variable)
-	{
-		return this->getVariableFromMap(getYGridName(variable));
-	}
-
-	const std::vector<float>* const LFM::getZGrid(const std::string& variable)
-	{
-		return this->getVariableFromMap(getZGridName(variable));
-	}
-
-	const std::vector<float>* const LFM::getZGrid(long variable)
-	{
-		return this->getVariableFromMap(getZGridName(variable));
-	}
-
 	/**
 	 *
 	 */
