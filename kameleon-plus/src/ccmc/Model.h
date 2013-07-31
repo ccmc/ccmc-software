@@ -53,6 +53,8 @@ namespace ccmc
 			const std::vector<float>* const getVariableFromMap(const std::string& variable);
 			const std::vector<int>* const getIntVariableFromMap(const std::string& variable);
 
+			void addFloatVariableToMap(const std::string& variable, std::vector<float>* variableData);
+
 			const std::vector<float>* const getVariableFromMap(long variable_id);
 			const std::vector<int>* const getIntVariableFromMap(long variable_id);
 
@@ -117,6 +119,7 @@ namespace ccmc
 			float missingValue;
 			int busyStatus;
 			int progress;
+			int variablesAdded;
 
 	};
 }

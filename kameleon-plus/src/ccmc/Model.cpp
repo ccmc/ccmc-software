@@ -21,6 +21,7 @@ namespace ccmc
 	{
 		missingValue = ccmc::defaults::missingValue;
 		units_ = "units";
+		variablesAdded = 0;
 	}
 
 	/**
@@ -122,7 +123,7 @@ namespace ccmc
 		//first check if the variable exists in the file!!
 		if (!this->doesVariableExist(variable))
 		{
-			std::cerr << variable << " does not exist" << std::endl;
+			std::cerr <<"Problem: "<< variable << " does not exist" << std::endl;
 			return FileReader::VARIABLE_DOES_NOT_EXIST;
 		}
 		std::vector<float> * data = getVariable(variable);
@@ -482,4 +483,19 @@ namespace ccmc
 	{
 		return this->progress;
 	}
+
+	/*
+	 * Add variable to map
+	 */
+	void Model::addFloatVariableToMap(const std::string& variable, std::vector<float>* varData){
+		int numberOfVariables = getNumberOfVariables(); //number of variables in data file
+		long newVariableId = numberOfVariables + variablesAdded; //ID#s start at 0, variablesAdded initially 0
+		std::cout<<"adding variable "<<variable<<" to map with id "<< newVariableId << std::endl;
+		variableData[variable]=varData;
+		variableDataByID[newVariableId]=varData;
+		fileReader->addVariableName(variable,newVariableId);
+		variablesAdded ++;
+		return;
+	}
+
 }
