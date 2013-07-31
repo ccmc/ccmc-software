@@ -30,6 +30,7 @@ namespace ccmc
 
 		initializeComponentNamesMap();
 
+		interpolator = kameleon->createNewInterpolator();
 
 		step_max = 2000;
 		useMaxArcLength = false;
@@ -216,6 +217,7 @@ namespace ccmc
 	 */
 	Tracer::~Tracer()
 	{
+		delete interpolator; //A.Pembroke added June 2013
 		//cout << "Tracer object destroyed" << endl;
 
 	}
@@ -282,12 +284,13 @@ namespace ccmc
 	{
 		std::string model_name = kameleon->getModelName();
 
-		Interpolator * interpolator = kameleon->createNewInterpolator();
+//		Interpolator * interpolator = kameleon->createNewInterpolator();
 		Fieldline f1;
 		if (model_name == ccmc::strings::models::open_ggcm_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::batsrus_ ||
-				model_name == ccmc::strings::models::adapt3d_)
+				model_name == ccmc::strings::models::adapt3d_ ||
+				model_name == ccmc::strings::models::lfm_)
 		{
 			f1 = cartesianTraceWithDipole(variable, startComponent1, startComponent2, startComponent3, interpolator,
 					FOWARD);
@@ -303,7 +306,8 @@ namespace ccmc
 		if (model_name == ccmc::strings::models::open_ggcm_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::batsrus_ ||
-				model_name == ccmc::strings::models::adapt3d_)
+				model_name == ccmc::strings::models::adapt3d_ ||
+				model_name == ccmc::strings::models::lfm_)
 		{
 
 			f2 = cartesianTraceWithDipole(variable, startComponent1, startComponent2, startComponent3, interpolator,
@@ -322,7 +326,7 @@ namespace ccmc
 			f.insertPointData(f1Positions[i], f1Data[i]);
 		}
 		f.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
-		delete interpolator;
+//		delete interpolator; //A.Pembroke removed
 		return f;
 
 	}
@@ -339,24 +343,24 @@ namespace ccmc
 	{
 		Fieldline f1(this->step_max*2);
 		std::string model_name = kameleon->getModelName();
-		Interpolator * interpolator = kameleon->createNewInterpolator();
-//		cout << "model_name: '" << model_name << "'" << endl;
+//		Interpolator * interpolator = kameleon->createNewInterpolator(); A. Pembroke removed
 		if (model_name == ccmc::strings::models::open_ggcm_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::batsrus_ ||
-				model_name == ccmc::strings::models::adapt3d_)
+				model_name == ccmc::strings::models::adapt3d_ ||
+				model_name == ccmc::strings::models::lfm_)
 		{
 			f1 = cartesianTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, FOWARD);
 		} else
 		{
-			//derived.loadVariable(variable);
-//			std::cerr << "calling spherical trace" << std::endl;
+//			derived.loadVariable(variable);
+			std::cerr << "calling spherical trace" << std::endl;
 			f1 = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, FOWARD);
 		}
 //		std::cerr << "after the first trace" << std::endl;
 		if (f1.size() == 0)
 		{
-			delete interpolator;
+//			delete interpolator; A. Pembroke removed
 			return f1;
 		}
 		f1.removePoint(0);
@@ -366,7 +370,8 @@ namespace ccmc
 		if (model_name == ccmc::strings::models::open_ggcm_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::batsrus_ ||
-				model_name == ccmc::strings::models::adapt3d_)
+				model_name == ccmc::strings::models::adapt3d_ ||
+				model_name == ccmc::strings::models::lfm_ )
 		{
 			f2 = cartesianTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, REVERSE);
 		} else
@@ -375,7 +380,7 @@ namespace ccmc
 		}
 		if (f2.size() == 0)
 		{
-			delete interpolator;
+//			delete interpolator; A. Pembroke removed
 			return f1;
 		}
 
@@ -389,7 +394,7 @@ namespace ccmc
 		}
 		f2.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
 
-		delete interpolator;
+//		delete interpolator;  A. Pembroke removed
 		return f2;
 	}
 
@@ -407,11 +412,12 @@ namespace ccmc
 		Fieldline f;
 		std::string model_name = kameleon->getModelName();
 		//model_name = derived.getGlobalAttributeString("model_name");
-		Interpolator * interpolator = kameleon->createNewInterpolator();
+//		Interpolator * interpolator = kameleon->createNewInterpolator(); //A. Pembroke removed
 		if (model_name == ccmc::strings::models::open_ggcm_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::batsrus_ ||
-				model_name == ccmc::strings::models::adapt3d_)
+				model_name == ccmc::strings::models::adapt3d_ ||
+				model_name == ccmc::strings::models::lfm_ )
 		{
 			f = cartesianTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, dir);
 		} else
@@ -419,7 +425,7 @@ namespace ccmc
 			f = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, dir);
 		}
 		f.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
-		delete interpolator;
+//		delete interpolator; A. Pembroke removed
 		return f;
 	}
 
@@ -437,21 +443,21 @@ namespace ccmc
 		Fieldline f;
 		std::string model_name = kameleon->getModelName();
 		//model_name = derived.getGlobalAttributeString("model_name");
-		Interpolator * interpolator = kameleon->createNewInterpolator();
+//		Interpolator * interpolator = kameleon->createNewInterpolator(); // A. Pembroke removed
 		if (model_name == ccmc::strings::models::open_ggcm_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::batsrus_ ||
-				model_name == ccmc::strings::models::adapt3d_)
+				model_name == ccmc::strings::models::adapt3d_ ||
+				model_name == ccmc::strings::models::lfm_ )
 		{
-			f
-					= cartesianTraceWithDipole(variable, startComponent1, startComponent2, startComponent3,
+			f = cartesianTraceWithDipole(variable, startComponent1, startComponent2, startComponent3,
 							interpolator, dir);
 		} else
 		{
 			f = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, dir);
 		}
 		f.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
-		delete interpolator;
+//		delete interpolator; A. Pembroke removed
 		return f;
 	}
 
@@ -701,6 +707,7 @@ namespace ccmc
 
 				} else
 				{
+//					std::cout<<"Retrieving actual_min and actual_max from file \n";
 					min.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 					min.component2 = (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
 					min.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_min_)).getAttributeFloat();
@@ -708,6 +715,7 @@ namespace ccmc
 					max.component1 = (kameleon->getVariableAttribute(ccmc::strings::variables::x_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 					max.component2 = (kameleon->getVariableAttribute(ccmc::strings::variables::y_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
 					max.component3 = (kameleon->getVariableAttribute(ccmc::strings::variables::z_, ccmc::strings::attributes::actual_max_)).getAttributeFloat();
+//					std::cout<<"min"<<min<<" max"<<max<<endl;
 				}
 
 			}
@@ -795,8 +803,11 @@ namespace ccmc
 
 		if (vectorValue.component1 == missing ||
 			vectorValue.component2 == missing ||
-			vectorValue.component3 == missing)
+			vectorValue.component3 == missing){
+			std::cout<<"Fieldline returning empty\n";
 			return fieldline; //empty
+		}
+
 		//start.addVariableData(variable, vectorValue.magnitude());
 
 		Point3f start = Point3f(startComponent1, startComponent2, startComponent3);
@@ -854,7 +865,7 @@ namespace ccmc
 				dComponent2 = min_block_size;
 				dComponent3 = min_block_size;
 			}
-			dComponent1 *= magValue / (fabs(vectorValue.component1) + eps * (fabs(vectorValue.component1) < eps));
+			dComponent1 *= magValue / (fabs(vectorValue.component1) + eps * (fabs(vectorValue.component1) < eps)); // ds = [dx*B/Bx, dy*B/By, dz*B/Bz]
 			dComponent2 *= magValue / (fabs(vectorValue.component2) + eps * (fabs(vectorValue.component2) < eps));
 			dComponent3 *= magValue / (fabs(vectorValue.component3) + eps * (fabs(vectorValue.component3) < eps));
 
@@ -1472,7 +1483,8 @@ namespace ccmc
 		if (model_name == ccmc::strings::models::batsrus_ ||
 				model_name == ccmc::strings::models::ucla_ggcm_ ||
 				model_name == ccmc::strings::models::open_ggcm_ ||
-				model_name == ccmc::strings::models::adapt3d_)
+				model_name == ccmc::strings::models::adapt3d_ ||
+				model_name == ccmc::strings::models::lfm_)
 		{
 			if (sqrt(p.component1 * p.component1 + p.component2 * p.component2 + p.component3 * p.component3) >= r_end)
 			{
@@ -1498,7 +1510,14 @@ namespace ccmc
 		{
 			if (p.component1 >= r_end && p.component1 <= max.component1 && p.component2 >= min.component2 && p.component2 <= max.component2)
 				validRegion = true;
-		} else if (p.component1 >= min.component1 && p.component2 >= min.component2 && p.component3 >= min.component3
+		}else if (model_name == ccmc::strings::models::lfm_)
+		{
+			if (!(kameleon->getMissingValue() == interpolator->interpolate("bx", p.component1, p.component2, p.component3))){
+				validRegion = true;
+			}
+
+
+		}else if (p.component1 >= min.component1 && p.component2 >= min.component2 && p.component3 >= min.component3
 
 				&& p.component1 <= max.component1 && p.component2 <= max.component2 && p.component3 <= max.component3)
 			validRegion = true;

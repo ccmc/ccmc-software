@@ -57,6 +57,7 @@ namespace ccmc
 					float& dComponent2, float& dComponent3, const Interpolator * interpolator);
 			void setRegionOfInterest(Point3f min, Point3f max);
 			void setUseRegionOfInterest(bool useROI);
+			Interpolator * interpolator;
 			//void close();
 
 		private:
