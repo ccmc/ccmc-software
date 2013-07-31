@@ -17,6 +17,10 @@ namespace ccmc
 		//cout << "Fieldline object created" << endl;
 		//positions.reserve(10000);
 		//values.reserve(10000);
+        mincount = 0;
+        maxcount = 0;
+		GlobMinIndex = 0;
+		GlobMaxIndex = 0;
 	}
 
 	/**
@@ -26,6 +30,10 @@ namespace ccmc
 	{
 		positions.reserve(initialSize);
 		values.reserve(initialSize);
+        mincount = 0;
+        maxcount = 0;
+		GlobMinIndex = 0;
+		GlobMaxIndex = 0;
 	}
 
 	/**
@@ -184,6 +192,19 @@ namespace ccmc
 
 	}
 
+	/**
+	 * Calculate the derivative of d values/ ds over the length of the field line
+	*/
+	const std::vector<float>& Fieldline::derivative()
+	{
+		int size = this->positions.size();
+		for (int i = 0; i< size-1; i++)
+		{
+		dds.push_back((values[i+1]-values[i])/elementsMagnitudes[i]);
+		}
+		return dds;
+	}
+
 
 	/**
 	 * Calculate the integral of ds*values over the length of the field line
@@ -197,8 +218,8 @@ namespace ccmc
 		for (int i = 0; i < size-1; i++)
 		{
 			/**
-			 * TODO: Change integration so that it multiplies the element
-			 * lengths by the average of the data on either side of the element
+			 * Integration uses trapezoidal rule: multiplies the element
+			 * lengths by the average of the data on either side of the segment
 			 */
 		integral.push_back(elementsMagnitudes[i]*(values[i]+values[i+1])/2+integral[i]);
 		}
@@ -243,59 +264,111 @@ namespace ccmc
 
 	Fieldline Fieldline::interpolate(int option, int Npoints)
 	{
-		// Use i = 1 for fixed distance interpolation
-		// Use i = 2 for integral-weighted interpolation
+		// Field line will be interpolated to fixed number given by Npoints
+		/*
+		 * If Npoints = 3, then the first and third interpolated points (and corresponding
+		 *  data) will be set equal to the first and last points of the original field line,
+		 *  and the second point will correspond to the "half-way" mark along the field line as
+		 *  determined by the following weighting scheme
+		 *  	option=1: interpolate to fixed arc length
+		 *  	option=2: interpolate to fixed integral
+		 *  	option=3: interpolate to fixed index space
+		 */
 
 		Fieldline interpolated;
 		int size = this->positions.size();
 		float n = 1; //initialize index for interpolated fieldline
 		interpolated.insertPointData(positions[0], values[0]);
 		interpolated.nearest.push_back(0);
+		interpolated.tlocal.push_back(0);
+		std::cout<<"interpolation option = "<< option<<"\n";
 
-		if (option == 1)
+
+		//First get the length of the field line. Total length should be the default.
+		/*
+		 * TODO: Create an optional (public?) length variable. This would allow for
+		 * custom maxlength, useful for open fields.
+		 *
+		 *                   ts=totalLength/(Npoints-1)
+		 * |0 -------------------------|ts---------------------------Length|
+		 * |P0----P1----P2--...---a----|tlocal---b------...------------Pend|
+		 * |0-----t1----t2--...---ta------------tb------...------------tend|
+		 *
+		 */
+		float totalLength = 0;
+		if(option==1)
 		{
-			//First get the length of the field line. Total length should be the default.
-			/*
-			 * TODO: Create an optional (public?) length variable. This would allow for
-			 * custom maxlength, useful for open fields.
-			 *
-			 *                   ts=totalLength/(Npoints-1)
-			 * |0 -------------------------|ts---------------------------Length|
-			 * |P0----P1----P2--...---a----|tlocal---b------...------------Pend|
-			 * |0-----t1----t2--...---ta------------tb------...------------tend|
-			 *
-			 */
-
-			float totalLength = this->length[size-1];
-
-			for  (int j = 0; j < size; j++)
-			{
-				float tb = length[j]/totalLength;
-				float ts = n/(Npoints-1);
-				if (tb > ts)
-				{
-					float ta = length[j-1]/totalLength;
-					float dt = tb-ta;
-					float tlocal = (ts-ta)/dt;
-
-					float value = values[j-1]*(1-tlocal)+values[j]*(tlocal);
-					Point3f point = getPositions()[j-1]*(1-tlocal)+getPositions()[j]*tlocal;
-					interpolated.insertPointData(point, value);
-					interpolated.nearest.push_back(j-1);
-					n = n+1.0;
-				}
-			}
-
+			totalLength = this->length[size-1];
+			std::cout<<"opt=1; total length = "<< totalLength << "\n"<<std::endl;
+		}
+		else if(option==2)
+		{
+			totalLength = this->integral[size-1];
+			std::cout<<"opt=2; integral tot: "<< totalLength << "\n"<<std::endl;
+		}
+		else if(option==3)
+		{
+			totalLength = size-1;
+			std::cout<<"opt=3; points in original: "<< totalLength <<"\n" << std::endl;
 		}
 		else
 		{
-			/*
-			 * TODO: Handle case for integral weighting
-			 */
+			std::cout<<"interpolation option not supported!";
 		}
 
+		float ta = 0; // initialize ta,tb
+		float tb = 0;
+		int flinedex = 0;
+		float ts = 0;
+		while(n < Npoints-1)
+		{
+            ts = n/(Npoints-1); // ts in [0, 1.0)
+
+			if (option == 1)
+			{
+				ta = length[flinedex]/totalLength;
+                tb = length[flinedex+1]/totalLength;
+			}
+			else if (option == 2)
+			{
+                ta = integral[flinedex]/totalLength;
+                tb = integral[flinedex+1]/totalLength;
+			}
+			else if (option == 3)
+			{
+                ta = flinedex;
+				ta = ta/totalLength;
+                tb = flinedex+1;
+				tb = tb/totalLength;
+			}
+			else
+			{
+				std::cout<<"interpolation option not supported";
+			}
+
+			if ((ts > ta)&&(ts <= tb)) // interpolating parameter between current and next points of original field line
+			{
+             float dt = tb-ta; // get size of parametric field line step
+             float tloc = (ts-ta)/dt; // get local interpolation step (0,1)
+             // linear interpolation
+             float value = values[flinedex]*(1-tloc)+values[flinedex+1]*(tloc); //interpolate data
+             Point3f point = getPositions()[flinedex]*(1-tloc)+getPositions()[flinedex+1]*tloc; //interpolate positions
+             interpolated.insertPointData(point, value);
+             interpolated.nearest.push_back(flinedex); //save closest point
+             interpolated.tlocal.push_back(tloc); //save tlocal
+             n = n+1.0;
+				// std::cout<<"ta, tb, ts "<<ta<<", "<<tb<<" "<<ts<<" n = "<<n<<"\n";
+			}
+			else
+			{
+             flinedex++; //interpolant not between current and next points of original field line, increment
+			}
+		} // End loop
+
+		// Insert end positions, data, index, interpolating parameter
 		interpolated.insertPointData(positions[size-1], values[size-1]);
 		interpolated.nearest.push_back(size-1);
+		interpolated.tlocal.push_back(1.0);
 		return interpolated;
 	}
 
@@ -319,6 +392,76 @@ namespace ccmc
 
 	}
 
+	const std::vector<float>& Fieldline::getTlocal()
+	{
+		return tlocal;
+
+	}
+	// const std::vector<int >& minmax();
+
+	void Fieldline::minmax()
+	{
+        bool minimum = true;
+        bool maximum = true;
+		float globmin = 0;
+		float globmax = 0;
+ 		int size = this->positions.size();
+
+		// first check properties of 0 endpoint
+		if (values[0] >= values[1])
+		{
+			maxima.push_back(0);
+			maxcount ++;
+			std::cout << "max encountered at 0 point\n";
+			globmax = values[0];
+		}
+		if (values[0] <= values[1])
+		{
+			minima.push_back(0);
+			mincount ++;
+			std::cout << "min encountered at 0 point\n";
+			globmin = values[0];
+		}
+
+		for (int i = 1; i < size-1; i++) // interior domain of fieldline
+		{
+            if ((values[i] < values[i-1])&&(values[i] < values[i+1])) // i is a local minimum
+               {
+                 mincount ++;
+                 minima.push_back(i); // store index
+                 if (values[i] < globmin)
+                 {
+                	 GlobMinIndex = mincount-1;
+                 }
+                }
+            if ((values[i] > values[i-1])&&(values[i] > values[i+1])) // i is a local maximum
+               {
+                 maxcount ++;
+                 maxima.push_back(i);
+                 if (values[i] > globmax)
+                 {
+                    GlobMaxIndex = maxcount-1;
+                 }
+
+               }
+		}
+		// ToDO: Need to check endpoint for global max/min?
+		// check properties of last endpoint
+                if (values[size-1] >= values[size-2])
+                {
+                        maxima.push_back(size-1);
+                        maxcount ++;
+                        std::cout <<"max encountered at last point\n";
+                }
+                if (values[size-1] <= values[size-2])
+                {
+                        minima.push_back(size-1);
+                        mincount ++;
+                        std::cout<<"min encountered at last point\n";
+                }
+
+
+	}
 
 
 }

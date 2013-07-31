@@ -107,7 +107,7 @@ namespace ccmc
 			} else
 			{
 				status = OPEN_ERROR;
-				std::cerr << "Error opening \"" << filename << "\"." << std::endl;
+				std::cerr << "Error opening hdf \"" << filename << "\". Not an hdf file?" << std::endl;
 			}
 
 		}
@@ -147,11 +147,11 @@ namespace ccmc
 
 		if (this->doesVariableExist(variable))
 		{
-			std::cout << "reading " << variable << std::endl;
+			//std::cout << "reading " << variable << std::endl;
 			//get variable number
 			long variableNum = this->getVariableID(variable);
 
-			std::cout << "variableNum for " << variable << ": " << variableNum << std::endl;
+			//std::cout << "variableNum for " << variable << ": " << variableNum << std::endl;
 			//get dim sizes
 
 			H5::Group group = this->current_file->openGroup("Variables");
@@ -163,7 +163,7 @@ namespace ccmc
 			hsize_t offset[1] = {0};
 			int ndims = dataspace.getSimpleExtentDims(count, NULL);
 
-			std::cout << "count[0]: " << count[0] << std::endl;
+			//std::cout << "count[0]: " << count[0] << std::endl;
 			float * buffer = new float[count[0]];
 
 
@@ -174,7 +174,7 @@ namespace ccmc
 			memspace.selectHyperslab(H5S_SELECT_SET, count, offset);
 
 			dataset->read(buffer, H5::PredType::NATIVE_FLOAT, memspace, dataspace);
-			std::cout << "after read" << std::endl;
+			//std::cout << "after read" << std::endl;
 
 			//add data to vector type, and delete original array
 			variableData->reserve(count[0]);
@@ -182,7 +182,7 @@ namespace ccmc
 			{
 				variableData->push_back(buffer[i]);
 			}
-			std::cout << "after adding to variableData vector" << std::endl;
+			//std::cout << "after adding to variableData vector" << std::endl;
 
 			delete[] buffer;
 			delete dataset;
@@ -379,7 +379,7 @@ namespace ccmc
 		float value = std::numeric_limits<float>::min();
 		if (this->doesVariableExist(variable))
 		{
-			//std::cout << "reading " << variable << std::endl;
+			std::cout << "reading " << variable << std::endl;
 			//get variable number
 			long variableNum = this->getVariableID(variable);
 
@@ -580,11 +580,15 @@ namespace ccmc
 	Attribute HDF5FileReader::getGlobalAttribute(long i)
 	{
 
-		//std::cerr << "entered " << BOOST_CURRENT_FUNCTION << " i = " << (int)i << std::endl;
+		std::cerr << "entered " << BOOST_CURRENT_FUNCTION << " i = " << (int)i << std::endl;
 		H5::Group group = this->current_file->openGroup("/");
-		H5::Attribute h5attribute = group.openAttribute((int)i);
+		std::cout<< "group assigned\n";
+		H5::Attribute h5attribute = group.openAttribute((unsigned int)i);
+		std::cout<< "attribute opened\n";
 		H5::DataType dataType = h5attribute.getDataType();
+		std::cout<< "dataType retrieved\n";
 		Attribute attribute;
+		std::cout << "checking dataType"<<std::endl;
 		if (dataType.getClass() == H5T_STRING)
 		{
 			std::string attributeValue = "NULL";
@@ -648,26 +652,71 @@ namespace ccmc
 		if (iter != gAttributes.end())
 			return (*iter).second;
 
-
-		//std::cout << "after search in getGlobalAttribute(const std::string& attribute" << std::endl;
-/*
-		//std::cout << "attribute: " << attribute;
+//		std::cout << "after search in getGlobalAttribute(const std::string& attribute)" << std::endl;
+//		std::cout << "attribute: " << attribute << std::endl;
 		H5::Group group = this->current_file->openGroup("/");
 		H5::Attribute h5attribute = group.openAttribute(attribute);
-		//long attrNum = h5attribute.getId();
-		//cout << "attrNum after attribute: " << attrNum << endl;
+		long attrNum = h5attribute.getId();
+		H5::DataType dataType = h5attribute.getDataType();
+//		std::cout << "attrNum after attribute: " << attrNum << std::endl;
 		Attribute current_attribute;
 		if (attrNum < 0)
 		{
-			//std::cout << "attrNum: " << attrNum << " returned for " << attribute << std::endl;
+			std::cout << "attrNum: " << attrNum << " returned for " << attribute << std::endl;
 		}
 		else
 		{
-			std::cout << "attribute: " << attribute << " attribute number: " << attrNum << std::endl;
-			//current_attribute = getGlobalAttribute(attrNum);
+//			std::cout << "attribute: " << attribute << " attribute number: " << attrNum << std::endl;
+//			std::cout << "attempting to get attribute without using attribute number\n";
+			if (dataType.getClass() == H5T_STRING)
+			{
+				std::string attributeValue = "NULL";
+				h5attribute.read(dataType, attributeValue);
+
+				std::string attributeName = "";
+				attributeName = h5attribute.getName();
+
+
+				current_attribute.setAttributeName(attributeName);
+				//std::cout << "name: '" << attributeName << "' string attributeBuffer: '" << attributeValue << "'"<< std::endl;
+				current_attribute.setAttributeValue(attributeValue);
+				gAttributeByID[(int)attrNum] = current_attribute;
+				gAttributes[current_attribute.getAttributeName()] = current_attribute;
+				//return attribute;
+			} else if (dataType.getClass() == H5T_INTEGER)
+			{
+				//int attributeValue = 0.f;
+				int attributeBuffer;// = new int[1];
+
+				h5attribute.read(dataType, &attributeBuffer);
+				std::string attributeName = "";
+				attributeName = h5attribute.getName();
+				current_attribute.setAttributeName(attributeName);
+				//std::cout << "int attributeBuffer: '" << attributeBuffer << "'"<< std::endl;
+				current_attribute.setAttributeValue(attributeBuffer);
+				gAttributeByID[(int)attrNum] = current_attribute;
+				gAttributes[current_attribute.getAttributeName()] = current_attribute;
+				//return attribute;
+			} else if (dataType.getClass() == H5T_FLOAT)//CDF_FLOAT
+			{
+				//int attributeValue = 0.f;
+				float attributeValue;// = new int[1];
+
+				h5attribute.read(dataType, &attributeValue);
+				std::string attributeName = "";
+				attributeName = h5attribute.getName();
+				current_attribute.setAttributeName(attributeName);
+				//std::cout << "float attributeBuffer: '" << attributeValue << "'"<< std::endl;
+
+				current_attribute.setAttributeValue(attributeValue);
+				gAttributeByID[(int)attrNum] = current_attribute;
+				gAttributes[current_attribute.getAttributeName()] = current_attribute;
+				//return attribute;
+			}
+
 		}//gAttributes[attribute] = current_attribute;
-		return current_attribute;*/
-		return Attribute();
+		return current_attribute;
+//		return Attribute();
 	}
 
 	/**
@@ -691,6 +740,7 @@ namespace ccmc
 
 
 		//first, check the vAttributes map
+//		std::cout<<"Checking variable attributes map\n";
 		boost::unordered_map<std::string, boost::unordered_map< std::string, Attribute> >::iterator iter =
 				vAttributes.find(variable);
 		if (iter != vAttributes.end())
@@ -701,14 +751,20 @@ namespace ccmc
 				return (*iter2).second;
 			}
 		}
+	//	std::cout<<"Attribute not loaded, opening Variables group\n";
 
 		H5::Group group = this->current_file->openGroup("Variables");
+	//	std::cout<<"Group opened. Creating memory for H5::DataSet\n";
 		H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
-		H5::Attribute h5attribute = group.openAttribute(vattribute);
+	//	std::cout<<"creating h5attribute for variable\n";
+		H5::Attribute h5attribute = dataset->openAttribute(vattribute); //changed from group.openAttribute(vattribute);
+	//	std::cout<<"attribute opened, obtaining data type\n";
 		H5::DataType dataType = h5attribute.getDataType();
 		Attribute attribute;
+	//	std::cerr<<"Retrieving Variable attribute info:"<<std::endl;
 		if (dataType.getClass() == H5T_STRING)
 		{
+//			std::cout<<"String type variable attribute\n";
 			std::string attributeValue = "NULL";
 			h5attribute.read(dataType, &attributeValue);
 
@@ -720,8 +776,9 @@ namespace ccmc
 			//std::cout << "attributeBuffer: " << attributeBuffer << endl;
 			attribute.setAttributeValue(attributeValue);
 			//return attribute;
-		} else if (dataType.getClass() == H5T_FLOAT)
+		} else if (dataType.getClass() == H5T_INTEGER) //shouldn't this be H5T_INT or something?
 		{
+//			std::cout<<"Int type variable attribute\n";
 			//int attributeValue = 0.f;
 			int attributeBuffer;// = new int[1];
 
@@ -733,6 +790,7 @@ namespace ccmc
 			//return attribute;
 		} else if (dataType.getClass() == H5T_FLOAT)//CDF_FLOAT
 		{
+//			std::cout<<"Float type variable attribute\n";
 			//int attributeValue = 0.f;
 			float attributeValue;// = new int[1];
 
@@ -912,8 +970,7 @@ namespace ccmc
 		{
 			std::string variableName = this->variableGroup->getObjnameByIdx(i);
 			variableIDs[variableName] = i;
-			//std::cout << "variable[" << i << "]: " << variableName << std::endl;
-
+//			std::cout << "variable[" << i << "]: " << variableName << std::endl;
 		}
 	}
 

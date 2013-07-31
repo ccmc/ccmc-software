@@ -99,7 +99,10 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						SWMFIono.h \
 						SWMFIono.cpp \
 						SWMFIonoInterpolator.h \
-						SWMFIonoInterpolator.cpp
+						SWMFIonoInterpolator.cpp \
+						Polyhedron.h \
+						nanoflann.hpp
+						
 											
 						
 libkameleon_plus_la_LDFLAGS = -release @RELEASE@
@@ -111,4 +114,4 @@ pkginclude_HEADERS = Tracer.h Fieldline.h Point3f.h Attribute.h FileReader.h \
 					 Kameleon.h Interpolator.h KameleonInterpolator.h Constants.h cxform.h\
 		 			 Model.h Point.h BATSRUS.h OpenGGCM.h MAS.h ENLIL.h CTIP.h \
 		 			 Adapt3D.h Adapt3DInterpolator.h MathHelper.h LFM.h \
-		 			 TimeInterpolator.h
+		 			 TimeInterpolator.h nanoflann.hpp kdtree.h Polyhedron.h

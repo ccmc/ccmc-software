@@ -60,6 +60,7 @@ namespace ccmc
 			virtual std::vector<std::string> getVariableAttributeNames() = 0;
 			virtual bool doesAttributeExist(const std::string& attribute) = 0;
 			virtual bool doesVariableExist(const std::string& variable) = 0;
+			void addVariableName(const std::string& variable, long id); //addVariableAttributes
 			long close();
 			virtual const std::string& getCurrentFilename() = 0;
 			virtual void initializeVariableIDs() = 0;

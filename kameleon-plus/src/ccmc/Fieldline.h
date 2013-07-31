@@ -62,7 +62,6 @@ namespace ccmc
 			std::vector < float > values;
 			Point3f startPoint;
 			std::string variable;
-			// A. Pembroke added below (Fall 2010)
 			std::vector < Point3f > elements; // created by getDs()
 			std::vector < float> elementsMagnitudes; // created by getDs()
 			std::vector < float> integral; // created by integrate()

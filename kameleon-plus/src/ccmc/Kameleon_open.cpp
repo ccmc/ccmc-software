@@ -6,6 +6,7 @@
 #include "MAS.h"
 #include "Adapt3D.h"
 #include "SWMFIono.h"
+#include "LFM.h"
 #include "CDFFileReader.h"
 #include <string>
 #include <boost/algorithm/string.hpp>
@@ -27,11 +28,12 @@ namespace ccmc
 
 		if (status == FileReader::OK)
 		{
+//			std::cout<<"File reader was succesful. Does model_name attribute exist?"<<std::endl;
 			if (generalFileReader.doesAttributeExist("model_name"))
 			{
-
+//				std::cout << "model_name attribute does exist... loading model_name"<<std::endl;
 				this->modelName = (generalFileReader.getGlobalAttribute("model_name")).getAttributeString();
-				std::cout << "Model name: '" << modelName << "'" << std::endl;
+				std::cout << "Kameleon::open() Model name: '" << modelName << "'" << std::endl;
 
 				generalFileReader.close();
 				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
@@ -57,6 +59,10 @@ namespace ccmc
 				} else if (modelName == "swmf")
 				{
 					model = new SWMFIono();
+				} else if (modelName == "LFM")
+				{
+					//sdt::cout <<"created LFM object" << std::endl;
+					model = new LFM();
 				} else //unknown model
 				{
 
@@ -81,7 +87,7 @@ namespace ccmc
 				model->setModelName(modelName);
 				status = model->open(filename);
 
-	//std::cout << "initializing extra information" << std::endl;
+//				std::cout << "initializing extra information" << std::endl;
 				//current_cdf_id = get_current_CDFid();
 				if (status == FileReader::OK)
 				{

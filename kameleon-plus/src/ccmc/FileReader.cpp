@@ -117,6 +117,11 @@ namespace ccmc
 
 	}
 
+	void FileReader::addVariableName(const std::string& variable, long id){
+		variableIDs[variable] = id;
+		variableNames[id] = variable;
+		return;
+	}
 
 
 	/**
