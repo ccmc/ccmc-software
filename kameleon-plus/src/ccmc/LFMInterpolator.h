@@ -11,8 +11,8 @@
 #include "Interpolator.h"
 #include "Model.h"
 #include "nanoflann.hpp"
+#include "pointcloud.h"
 #include "time.h"
-#include "kdtree.h"
 #define ijk1(i,j,k) ((i)+nip1*((j)+njp1*(k))) // cell corner index
 #define ijkc(i,j,k) ((i)+ni*((j)+nj*(k))) //cell center index
 #include "Polyhedron.h"
@@ -100,6 +100,8 @@ namespace ccmc
 			boost::unordered_map<int, Polyhedron<float>* > interpolationPolysMap;
 
 	};
+
+
 
 	/*
 	 * Classes for LFM polyhedra.

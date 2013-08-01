@@ -98,10 +98,10 @@ namespace ccmc
 		setCellCenters(x_array,y_array,z_array);
 
       //Use this to visualize grid structure in openDX
-		IPoly<float> outerBoundary(ni-1,this);
-		outerBoundary.saveAsDXObject("/tmp/outerBoundary.dx");
-		IPoly<float> innerBoundary(0,this);
-		innerBoundary.saveAsDXObject("/tmp/innerBoundary.dx");
+//		IPoly<float> outerBoundary(ni-1,this);
+//		outerBoundary.saveAsDXObject("/tmp/outerBoundary.dx");
+//		IPoly<float> innerBoundary(0,this);
+//		innerBoundary.saveAsDXObject("/tmp/innerBoundary.dx");
 //		AxisPolyhedron<float> axispoly(ni/2,false,this);
 //		axispoly.saveAsDXObject("/tmp/axisPoly.dx");
 //		GridPolyhedron<float> gridpoly(ni/2,nj/2,nk/2,this);
@@ -219,7 +219,7 @@ namespace ccmc
 			searchPoly = getCell(point);
 			std::cout<<"after initial search, assigning first interpolation poly"<<endl;
 			interpolationPolysMap[searchPoly->currentPolyhedron] = searchPoly;
-			interpolationPolys.merge(searchPoly);
+//			interpolationPolys.merge(searchPoly); //uncomment here and below to keep track of search polys
 			std::cout<<"first poly assigned. Isinside?"<<searchPoly->isInside<<endl;
 		}
 		else if (previous_x==c0 && previous_y==c1 && previous_z==c2){
@@ -232,7 +232,7 @@ namespace ccmc
 				searchPoly = getCell(point);
 				if (interpolationPolysMap.find(searchPoly->currentPolyhedron) == interpolationPolysMap.end()){
 					interpolationPolysMap[searchPoly->currentPolyhedron] = searchPoly;
-					interpolationPolys.merge(searchPoly);
+//					interpolationPolys.merge(searchPoly); //uncomment here and above to keep track of search polys
 				}
 			}
 		}
@@ -461,7 +461,7 @@ namespace ccmc
 		if (errorsPoly != NULL){
 			delete errorsPoly;
 		}
-		interpolationPolys.saveAsDXObject("/tmp/interpolationPolys.dx");
+//		interpolationPolys.saveAsDXObject("/tmp/interpolationPolys.dx");
 
 	}
 
