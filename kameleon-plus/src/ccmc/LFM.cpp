@@ -69,7 +69,12 @@ namespace ccmc
 		loadVariable("rho");
 		this->progress = 90;
 
-//		loadPressure(); //moved to KameleonInterpolator_compute_p so we don't have to store an extra array
+		/*
+		 * Is it more accurate to compuate pressure now or use KameleonInterpolator_compute_p?
+		 * If the user doesn't use a kameleon object, they still need to access pressure,
+		 * so weight as well compute it now.
+		 */
+		loadPressure();
 		loadEfield();
 
 

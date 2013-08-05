@@ -144,7 +144,7 @@ namespace ccmc
 	 */
 	float LFMInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2)
 	{
-		std::cout<<"Calling LFM interpolator with variable id";
+//		std::cout<<"Calling LFM interpolator with variable id";
 		float dc0, dc1, dc2;
 		return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
 
@@ -160,7 +160,7 @@ namespace ccmc
 	float LFMInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2)
 	{
-		std::cout<<"LFM interpolator called with variable string "<< variable <<endl;
+//		std::cout<<"LFM interpolator called with variable string "<< variable <<endl;
 		float dc0, dc1, dc2;
 		long variable_id = modelReader->getVariableID(variable);
 //		std::cout<<"Calling LFM interpolate with variable_id "<<variable_id<<endl;
@@ -215,12 +215,12 @@ namespace ccmc
 		clock_t startDestruction, endDestruction;
 
 		if (searchPoly==NULL){ //this is the first time through, find cell
-			std::cout<<"search poly was null, performing initial search"<<endl;
+//			std::cout<<"search poly was null, performing initial search"<<endl;
 			searchPoly = getCell(point);
-			std::cout<<"after initial search, assigning first interpolation poly"<<endl;
+//			std::cout<<"after initial search, assigning first interpolation poly"<<endl;
 			interpolationPolysMap[searchPoly->currentPolyhedron] = searchPoly;
 //			interpolationPolys.merge(searchPoly); //uncomment here and below to keep track of search polys
-			std::cout<<"first poly assigned. Isinside?"<<searchPoly->isInside<<endl;
+//			std::cout<<"first poly assigned. Isinside?"<<searchPoly->isInside<<endl;
 		}
 		else if (previous_x==c0 && previous_y==c1 && previous_z==c2){
 			//do nothing - lambdas for previous search poly will be used
@@ -437,21 +437,22 @@ namespace ccmc
 		float total = 0; float elapsed_time = 0;
 		std::cout<<"destructing LFMInterpolator"<<endl;
 		// TODO Auto-generated destructor stub
-		elapsed_time = ((float) getCellTime)/CLOCKS_PER_SEC; total += elapsed_time;
-		std::cout<<"getCell time ="<<getCellTime<<" or "<< elapsed_time<<" seconds"<<endl;
-		elapsed_time = ((float) creationTime)/CLOCKS_PER_SEC; total += elapsed_time;
-		std::cout<<"creation time ="<<creationTime<<" or "<< elapsed_time<<" seconds"<<endl;
-		elapsed_time = ((float) Polyhedron<float>::stage1);
-		std::cout<<"setBarycentricCordinates,stage1 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
-		elapsed_time = ((float) Polyhedron<float>::stage2);
-		std::cout<<"setBarycentricCordinates,stage2 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
-		elapsed_time = ((float) Polyhedron<float>::stage3);
-		std::cout<<"setBarycentricCordinates,stage3 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
-		elapsed_time = ((float) Polyhedron<float>::interpolationTime)/CLOCKS_PER_SEC; total += elapsed_time;
+//		elapsed_time = ((float) getCellTime)/CLOCKS_PER_SEC; total += elapsed_time;
+//		std::cout<<"getCell time ="<<getCellTime<<" or "<< elapsed_time<<" seconds"<<endl;
+//		elapsed_time = ((float) creationTime)/CLOCKS_PER_SEC; total += elapsed_time;
+//		std::cout<<"creation time ="<<creationTime<<" or "<< elapsed_time<<" seconds"<<endl;
+//		elapsed_time = ((float) Polyhedron<float>::stage1);
+//		std::cout<<"setBarycentricCordinates,stage1 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
+//		elapsed_time = ((float) Polyhedron<float>::stage2);
+//		std::cout<<"setBarycentricCordinates,stage2 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
+//		elapsed_time = ((float) Polyhedron<float>::stage3);
+//		std::cout<<"setBarycentricCordinates,stage3 time:"<<elapsed_time/CLOCKS_PER_SEC<<endl;
+
+//		elapsed_time = ((float) destructionTime)/CLOCKS_PER_SEC; total += elapsed_time;
+//		std::cout<<"destruction Time="<<elapsed_time<<endl;
+
+		elapsed_time = ((float) Polyhedron<float>::interpolationTime)/CLOCKS_PER_SEC;
 		std::cout<<"interpolation Time="<<elapsed_time<<endl;
-		elapsed_time = ((float) destructionTime)/CLOCKS_PER_SEC; total += elapsed_time;
-		std::cout<<"destruction Time="<<elapsed_time<<endl;
-		std::cout<<"total time = "<< total<<endl;
 		std::cout<<"Interpolations performed:"<<Polyhedron<float>::interpolations<<endl;
 
 		if (searchPoly != NULL){
