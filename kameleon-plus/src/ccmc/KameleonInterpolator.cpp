@@ -195,6 +195,20 @@ namespace ccmc
 			conversionFactorsToVis["ephi"] = 1.e-3;
 			conversionFactorsToVis["etheta"] = 1.e-3;
 
+ 			conversionFactorsToVis["br-back"] = 1.e9;
+ 			conversionFactorsToVis["bphi-back"] = 1.e9;
+ 			conversionFactorsToVis["btheta-back"] = 1.e9;
+ 			conversionFactorsToVis["b1r-back"] = 1.e9;
+ 			conversionFactorsToVis["b1phi-back"] = 1.e9;
+ 			conversionFactorsToVis["b1theta-back"] = 1.e9;
+ 			conversionFactorsToVis["ur-back"] = 1.e-3;
+ 			conversionFactorsToVis["uphi-back"] = 1.e-3;
+ 			conversionFactorsToVis["utheta-back"] = 1.e-3;
+			conversionFactorsToVis["nback"] = 1.e-6 * ccmc::constants::Avogadro;
+ 			conversionFactorsToVis["rho-back"] = 1.e3;
+ 			conversionFactorsToVis["er-back"] = 1.e-3;
+ 			conversionFactorsToVis["ephi-back"] = 1.e-3;
+ 			conversionFactorsToVis["etheta-back"] = 1.e-3;
 			//blah
 		} else if (modelName == "mas")
 		{
