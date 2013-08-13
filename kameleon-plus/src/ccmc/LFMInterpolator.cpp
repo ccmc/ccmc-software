@@ -1,8 +1,8 @@
 /*
  * LFMInterpolator.cpp
  *
- *  Created on: Dec 4, 2012
- *      Author: Brian Curtis
+ *  Created on: Aug 5, 2013
+ *      Author: Asher Pembroke
  */
 #include "LFMInterpolator.h"
 #include "LFM.h"
@@ -455,13 +455,13 @@ namespace ccmc
 		std::cout<<"interpolation Time="<<elapsed_time<<endl;
 		std::cout<<"Interpolations performed:"<<Polyhedron<float>::interpolations<<endl;
 
-		if (searchPoly != NULL){
-			delete searchPoly;
-		}
-
-		if (errorsPoly != NULL){
-			delete errorsPoly;
-		}
+//		if (searchPoly != NULL){
+//			delete searchPoly;
+//		}
+//
+//		if (errorsPoly != NULL){
+//			delete errorsPoly;
+//		}
 //		interpolationPolys.saveAsDXObject("/tmp/interpolationPolys.dx");
 
 	}
@@ -621,7 +621,7 @@ namespace ccmc
 
 
 	/*
-	 * Return a pointer to a new cell containing the point.
+	 * Return a pointer to the cell containing the point.
 	 */
 	Polyhedron<float>* LFMInterpolator::getCell(Vector<float> point){
 		/*
