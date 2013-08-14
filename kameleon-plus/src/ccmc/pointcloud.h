@@ -26,8 +26,7 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *************************************************************************/
 
-#include <nanoflann.hpp>
-
+#include <ccmc/nanoflann.hpp>
 #include <cstdlib>
 #include <iostream>
 
@@ -83,27 +82,32 @@ class NanoKdTree
 	typedef std::vector< KDResultPair  > KDResults;
 	public:
 
-	PointCloud<num_t> cloud;
+		PointCloud<num_t> cloud;
 
-	// construct a kd-tree index:
-	typedef KDTreeSingleIndexAdaptor<L2_Simple_Adaptor<num_t, PointCloud<num_t> > ,PointCloud<num_t>,
-		3 /* dim */
-		> my_kd_tree;
+		// construct a kd-tree index:
+		typedef KDTreeSingleIndexAdaptor<L2_Simple_Adaptor<num_t, PointCloud<num_t> > ,PointCloud<num_t>,
+			3 /* dim */
+			> my_kd_tree;
 
-	my_kd_tree * tree;
+		my_kd_tree * tree;
 
-	void build()
-	{
-			// construct a kd-tree index:
-			printf("NanoKdTree::building kd tree index\n");
-			tree = new my_kd_tree(3 /*dim*/, cloud, KDTreeSingleIndexAdaptorParams(10 /* max leaf */) );
-			tree->buildIndex();
-	}
+		void build()
+		{
+				// construct a kd-tree index:
+				printf("NanoKdTree::building kd tree index\n");
+				tree = new my_kd_tree(3 /*dim*/, cloud, KDTreeSingleIndexAdaptorParams(10 /* max leaf */) );
+				tree->buildIndex();
+		}
 
-	void nearest(const num_t * query_point, KNNResultSet<num_t> & resultSet)
-	{
-		tree->findNeighbors(resultSet, &query_point[0], nanoflann::SearchParams());
+		void nearest(const num_t * query_point, KNNResultSet<num_t> & resultSet)
+		{
+			tree->findNeighbors(resultSet, &query_point[0], nanoflann::SearchParams());
 
-	}
+		}
+
+		~NanoKdTree()
+		{
+			delete tree;
+		}
 
 };
