@@ -29,6 +29,6 @@ then run the configure script:
 then compile (use -j8 flag to speed up the compiling process if multiple cores are available):
 	make -j8
 
-see src/examples/ for example executables
+see kameleon-plus/src/example/ for example programs
 
 	
