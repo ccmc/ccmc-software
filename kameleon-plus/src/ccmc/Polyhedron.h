@@ -13,7 +13,7 @@
 #include <sstream>
 #include <cmath>
 #include "Point.h"
-#include "vector.h"
+#include "Vector.h"
 #include "time.h"
 namespace ccmc
 

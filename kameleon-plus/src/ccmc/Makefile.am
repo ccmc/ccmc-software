@@ -101,6 +101,7 @@ libkameleon_plus_la_SOURCES = Attribute.h \
 						SWMFIonoInterpolator.h \
 						SWMFIonoInterpolator.cpp \
 						Polyhedron.h \
+						pointcloud.h \
 						nanoflann.hpp
 						
 											
