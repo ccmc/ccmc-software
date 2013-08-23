@@ -10,7 +10,6 @@
 
 #include "Interpolator.h"
 #include "Model.h"
-#include "nanoflann.hpp"
 #include "pointcloud.h"
 #include "time.h"
 #define ijk1(i,j,k) ((i)+nip1*((j)+njp1*(k))) // cell corner index
