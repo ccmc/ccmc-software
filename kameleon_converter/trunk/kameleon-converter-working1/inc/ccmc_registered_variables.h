@@ -1664,6 +1664,32 @@
 #define    CCMC_VARIABLE_NAME_UX_POSITION_GRID_SYSTEM        "grid_system_1"
 #define    CCMC_VARIABLE_NAME_UX_DATA_GRID_SYSTEM            "grid_system_1"
 
+#define CCMC_VARIABLE_NAME_IONOUX                            "ionoux"
+#define CCMC_VARIABLE_NAME_IONOUX_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_IONOUX_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_IONOUX_VALID_MIN                -300000.00
+#define    CCMC_VARIABLE_NAME_IONOUX_VALID_MAX                300000.00
+#define    CCMC_VARIABLE_NAME_IONOUX_UNITS                    "km/s"
+#define    CCMC_VARIABLE_NAME_IONOUX_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_IONOUX_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_IONOUX_DESCRIPTION                "X Velocity Component, Speed of Light is the Maximun"
+#define    CCMC_VARIABLE_NAME_IONOUX_IS_VECTOR                1
+#define    CCMC_VARIABLE_NAME_IONOUX_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_IONOUX_DATA_GRID_SYSTEM            "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_SWUX                            "swux"
+#define CCMC_VARIABLE_NAME_SWUX_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_SWUX_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_SWUX_VALID_MIN                -300000.00
+#define    CCMC_VARIABLE_NAME_SWUX_VALID_MAX                300000.00
+#define    CCMC_VARIABLE_NAME_SWUX_UNITS                    "km/s"
+#define    CCMC_VARIABLE_NAME_SWUX_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_SWUX_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_SWUX_DESCRIPTION                "X Velocity Component, Speed of Light is the Maximun"
+#define    CCMC_VARIABLE_NAME_SWUX_IS_VECTOR                1
+#define    CCMC_VARIABLE_NAME_SWUX_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_SWUX_DATA_GRID_SYSTEM            "grid_system_1"
+
 #define CCMC_VARIABLE_NAME_UX_1                        "ux_1"
 #define CCMC_VARIABLE_NAME_UX_1_DATA_TYPE                "float"
 #define CCMC_VARIABLE_NAME_UX_1_CLASSIFICATION            "data"
@@ -1729,6 +1755,32 @@
 #define    CCMC_VARIABLE_NAME_UY_POSITION_GRID_SYSTEM        "grid_system_1"
 #define    CCMC_VARIABLE_NAME_UY_DATA_GRID_SYSTEM            "grid_system_1"
 
+#define CCMC_VARIABLE_NAME_IONOUY                            "ionouy"
+#define CCMC_VARIABLE_NAME_IONOUY_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_IONOUY_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_IONOUY_VALID_MIN                -300000.00
+#define    CCMC_VARIABLE_NAME_IONOUY_VALID_MAX                300000.00
+#define    CCMC_VARIABLE_NAME_IONOUY_UNITS                    "km/s"
+#define    CCMC_VARIABLE_NAME_IONOUY_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_IONOUY_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_IONOUY_DESCRIPTION                "Y Velocity Component, Speed of Light is the Maximun"
+#define    CCMC_VARIABLE_NAME_IONOUY_IS_VECTOR                1
+#define    CCMC_VARIABLE_NAME_IONOUY_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_IONOUY_DATA_GRID_SYSTEM            "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_SWUY                            "swuy"
+#define CCMC_VARIABLE_NAME_SWUY_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_SWUY_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_SWUY_VALID_MIN                -300000.00
+#define    CCMC_VARIABLE_NAME_SWUY_VALID_MAX                300000.00
+#define    CCMC_VARIABLE_NAME_SWUY_UNITS                    "km/s"
+#define    CCMC_VARIABLE_NAME_SWUY_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_SWUY_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_SWUY_DESCRIPTION                "Y Velocity Component, Speed of Light is the Maximun"
+#define    CCMC_VARIABLE_NAME_SWUY_IS_VECTOR                1
+#define    CCMC_VARIABLE_NAME_SWUY_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_SWUY_DATA_GRID_SYSTEM            "grid_system_1"
+
 #define CCMC_VARIABLE_NAME_UY_1                        "uy_1"
 #define CCMC_VARIABLE_NAME_UY_1_DATA_TYPE                "float"
 #define CCMC_VARIABLE_NAME_UY_1_CLASSIFICATION            "data"
@@ -1793,6 +1845,45 @@
 #define    CCMC_VARIABLE_NAME_UZ_IS_VECTOR                1
 #define    CCMC_VARIABLE_NAME_UZ_POSITION_GRID_SYSTEM        "grid_system_1"
 #define    CCMC_VARIABLE_NAME_UZ_DATA_GRID_SYSTEM            "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_UZ                            "uz"
+#define CCMC_VARIABLE_NAME_UZ_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_UZ_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_UZ_VALID_MIN                -300000.00
+#define    CCMC_VARIABLE_NAME_UZ_VALID_MAX                300000.00
+#define    CCMC_VARIABLE_NAME_UZ_UNITS                    "km/s"
+#define    CCMC_VARIABLE_NAME_UZ_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_UZ_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_UZ_DESCRIPTION                "Z Velocity Component, Speed of Light is the Maximun"
+#define    CCMC_VARIABLE_NAME_UZ_IS_VECTOR                1
+#define    CCMC_VARIABLE_NAME_UZ_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_UZ_DATA_GRID_SYSTEM            "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_IONOUZ                            "ionouz"
+#define CCMC_VARIABLE_NAME_IONOUZ_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_IONOUZ_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_IONOUZ_VALID_MIN                -300000.00
+#define    CCMC_VARIABLE_NAME_IONOUZ_VALID_MAX                300000.00
+#define    CCMC_VARIABLE_NAME_IONOUZ_UNITS                    "km/s"
+#define    CCMC_VARIABLE_NAME_IONOUZ_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_IONOUZ_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_IONOUZ_DESCRIPTION                "Z Velocity Component, Speed of Light is the Maximun"
+#define    CCMC_VARIABLE_NAME_IONOUZ_IS_VECTOR                1
+#define    CCMC_VARIABLE_NAME_IONOUZ_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_IONOUZ_DATA_GRID_SYSTEM            "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_SWUZ                            "swuz"
+#define CCMC_VARIABLE_NAME_SWUZ_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_SWUZ_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_SWUZ_VALID_MIN                -300000.00
+#define    CCMC_VARIABLE_NAME_SWUZ_VALID_MAX                300000.00
+#define    CCMC_VARIABLE_NAME_SWUZ_UNITS                    "km/s"
+#define    CCMC_VARIABLE_NAME_SWUZ_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_SWUZ_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_SWUZ_DESCRIPTION                "Z Velocity Component, Speed of Light is the Maximun"
+#define    CCMC_VARIABLE_NAME_SWUZ_IS_VECTOR                1
+#define    CCMC_VARIABLE_NAME_SWUZ_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_SWUZ_DATA_GRID_SYSTEM            "grid_system_1"
 
 #define CCMC_VARIABLE_NAME_UZ_1                        "uz_1"
 #define CCMC_VARIABLE_NAME_UZ_1_DATA_TYPE                "float"
@@ -2022,10 +2113,36 @@
 #define    CCMC_VARIABLE_NAME_RHO_UNITS                    "amu/cm^3"
 #define    CCMC_VARIABLE_NAME_RHO_GRID_SYSTEM            "grid_system_1"
 #define CCMC_VARIABLE_NAME_RHO_MASK                    FLOAT_MASK
-#define    CCMC_VARIABLE_NAME_RHO_DESCRIPTION            "atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8"
+#define    CCMC_VARIABLE_NAME_RHO_DESCRIPTION            "atomic mass density, limit may be exceeded in dense atmosphere; solar corona 2e8"
 #define    CCMC_VARIABLE_NAME_RHO_IS_VECTOR                0
 #define    CCMC_VARIABLE_NAME_RHO_POSITION_GRID_SYSTEM    "grid_system_1"
 #define    CCMC_VARIABLE_NAME_RHO_DATA_GRID_SYSTEM        "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_SWRHO                        "swrho"
+#define CCMC_VARIABLE_NAME_SWRHO_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_SWRHO_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_SWRHO_VALID_MIN                0.0
+#define    CCMC_VARIABLE_NAME_SWRHO_VALID_MAX                1000000000000.0
+#define    CCMC_VARIABLE_NAME_SWRHO_UNITS                    "amu/cm^3"
+#define    CCMC_VARIABLE_NAME_SWRHO_GRID_SYSTEM            "grid_system_1"
+#define CCMC_VARIABLE_NAME_SWRHO_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_SWRHO_DESCRIPTION            "atomic mass density (solar wind origin), limit may be exceeded in dense atmosphere; solar corona 2e8"
+#define    CCMC_VARIABLE_NAME_SWRHO_IS_VECTOR                0
+#define    CCMC_VARIABLE_NAME_SWRHO_POSITION_GRID_SYSTEM    "grid_system_1"
+#define    CCMC_VARIABLE_NAME_SWRHO_DATA_GRID_SYSTEM        "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_IONORHO                        "ionorho"
+#define CCMC_VARIABLE_NAME_IONORHO_DATA_TYPE                "float"
+#define    CCMC_VARIABLE_NAME_IONORHO_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_IONORHO_VALID_MIN                0.0
+#define    CCMC_VARIABLE_NAME_IONORHO_VALID_MAX                1000000000000.0
+#define    CCMC_VARIABLE_NAME_IONORHO_UNITS                    "amu/cm^3"
+#define    CCMC_VARIABLE_NAME_IONORHO_GRID_SYSTEM            "grid_system_1"
+#define CCMC_VARIABLE_NAME_IONORHO_MASK                    FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_IONORHO_DESCRIPTION            "atomic mass density (ionospheric origin), limit may be exceeded in dense atmosphere; solar corona 2e8"
+#define    CCMC_VARIABLE_NAME_IONORHO_IS_VECTOR                0
+#define    CCMC_VARIABLE_NAME_IONORHO_POSITION_GRID_SYSTEM    "grid_system_1"
+#define    CCMC_VARIABLE_NAME_IONORHO_DATA_GRID_SYSTEM        "grid_system_1"
 
 #define    CCMC_VARIABLE_NAME_RHO_1                        "rho_1"
 #define    CCMC_VARIABLE_NAME_RHO_1_DATA_TYPE            "float"
@@ -2035,7 +2152,7 @@
 #define    CCMC_VARIABLE_NAME_RHO_1_UNITS                "amu/cm^3"
 #define    CCMC_VARIABLE_NAME_RHO_1_GRID_SYSTEM            "grid_system_2"
 #define    CCMC_VARIABLE_NAME_RHO_1_MASK                    FLOAT_MASK
-#define    CCMC_VARIABLE_NAME_RHO_1_DESCRIPTION            "atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8"
+#define    CCMC_VARIABLE_NAME_RHO_1_DESCRIPTION            "atomic mass density, limit may be exceeded in dense atmosphere; solar corona 2e8"
 #define    CCMC_VARIABLE_NAME_RHO_1_IS_VECTOR            0
 #define    CCMC_VARIABLE_NAME_RHO_1_POSITION_GRID_SYSTEM    "grid_system_2"
 #define    CCMC_VARIABLE_NAME_RHO_1_DATA_GRID_SYSTEM        "grid_system_2"
@@ -2048,7 +2165,7 @@
 #define    CCMC_VARIABLE_NAME_RHO_2_UNITS                "amu/cm^3"
 #define    CCMC_VARIABLE_NAME_RHO_2_GRID_SYSTEM            "grid_system_3"
 #define    CCMC_VARIABLE_NAME_RHO_2_MASK                    FLOAT_MASK
-#define    CCMC_VARIABLE_NAME_RHO_2_DESCRIPTION            "atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8"
+#define    CCMC_VARIABLE_NAME_RHO_2_DESCRIPTION            "atomic mass density, limit may be exceeded in dense atmosphere; solar corona 2e8"
 #define    CCMC_VARIABLE_NAME_RHO_2_IS_VECTOR            0
 #define    CCMC_VARIABLE_NAME_RHO_2_POSITION_GRID_SYSTEM    "grid_system_3"
 #define    CCMC_VARIABLE_NAME_RHO_2_DATA_GRID_SYSTEM        "grid_system_3"
@@ -2061,7 +2178,7 @@
 #define    CCMC_VARIABLE_NAME_RHO_3_UNITS                "amu/cm^3"
 #define    CCMC_VARIABLE_NAME_RHO_3_GRID_SYSTEM            "grid_system_4"
 #define    CCMC_VARIABLE_NAME_RHO_3_MASK                    FLOAT_MASK
-#define    CCMC_VARIABLE_NAME_RHO_3_DESCRIPTION            "atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8"
+#define    CCMC_VARIABLE_NAME_RHO_3_DESCRIPTION            "atomic mass density, limit may be exceeded in dense atmosphere; solar corona 2e8"
 #define    CCMC_VARIABLE_NAME_RHO_3_IS_VECTOR            0
 #define    CCMC_VARIABLE_NAME_RHO_3_POSITION_GRID_SYSTEM    "grid_system_4"
 #define    CCMC_VARIABLE_NAME_RHO_3_DATA_GRID_SYSTEM        "grid_system_4"
@@ -2074,7 +2191,7 @@
 #define    CCMC_VARIABLE_NAME_RHO_4_UNITS                "amu/cm^3"
 #define    CCMC_VARIABLE_NAME_RHO_4_GRID_SYSTEM            "grid_system_5"
 #define    CCMC_VARIABLE_NAME_RHO_4_MASK                    FLOAT_MASK
-#define    CCMC_VARIABLE_NAME_RHO_4_DESCRIPTION            "atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8"
+#define    CCMC_VARIABLE_NAME_RHO_4_DESCRIPTION            "atomic mass density, limit may be exceeded in dense atmosphere; solar corona 2e8"
 #define    CCMC_VARIABLE_NAME_RHO_4_IS_VECTOR            0
 #define    CCMC_VARIABLE_NAME_RHO_4_POSITION_GRID_SYSTEM    "grid_system_5"
 #define    CCMC_VARIABLE_NAME_RHO_4_DATA_GRID_SYSTEM        "grid_system_5"
@@ -2156,6 +2273,32 @@
 #define    CCMC_VARIABLE_NAME_P_IS_VECTOR                0
 #define    CCMC_VARIABLE_NAME_P_POSITION_GRID_SYSTEM        "grid_system_1"
 #define    CCMC_VARIABLE_NAME_P_DATA_GRID_SYSTEM            "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_IONOP                            "ionop"
+#define CCMC_VARIABLE_NAME_IONOP_DATA_TYPE                    "float"
+#define    CCMC_VARIABLE_NAME_IONOP_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_IONOP_VALID_MIN                0.0
+#define    CCMC_VARIABLE_NAME_IONOP_VALID_MAX                1000000000000.0
+#define    CCMC_VARIABLE_NAME_IONOP_UNITS                    "nPa"
+#define    CCMC_VARIABLE_NAME_IONOP_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_IONOP_MASK                        FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_IONOP_DESCRIPTION                "pressure, limit may be exceeded in dense atmosphere"
+#define    CCMC_VARIABLE_NAME_IONOP_IS_VECTOR                0
+#define    CCMC_VARIABLE_NAME_IONOP_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_IONOP_DATA_GRID_SYSTEM            "grid_system_1"
+
+#define CCMC_VARIABLE_NAME_SWP                            "swp"
+#define CCMC_VARIABLE_NAME_SWP_DATA_TYPE                    "float"
+#define    CCMC_VARIABLE_NAME_SWP_CLASSIFICATION            "data"
+#define    CCMC_VARIABLE_NAME_SWP_VALID_MIN                0.0
+#define    CCMC_VARIABLE_NAME_SWP_VALID_MAX                1000000000000.0
+#define    CCMC_VARIABLE_NAME_SWP_UNITS                    "nPa"
+#define    CCMC_VARIABLE_NAME_SWP_GRID_SYSTEM                "grid_system_1"
+#define CCMC_VARIABLE_NAME_SWP_MASK                        FLOAT_MASK
+#define    CCMC_VARIABLE_NAME_SWP_DESCRIPTION                "pressure, limit may be exceeded in dense atmosphere"
+#define    CCMC_VARIABLE_NAME_SWP_IS_VECTOR                0
+#define    CCMC_VARIABLE_NAME_SWP_POSITION_GRID_SYSTEM        "grid_system_1"
+#define    CCMC_VARIABLE_NAME_SWP_DATA_GRID_SYSTEM            "grid_system_1"
 
 #define CCMC_VARIABLE_NAME_E                            "e"
 #define CCMC_VARIABLE_NAME_E_DATA_TYPE                    "float"
@@ -2802,8 +2945,8 @@
 
 /******************************* BUILD Model Specific Arrays to export using defined ccmc registered variables *******************/
 
-#define NUMBER_REGISTERED_BATSRUS_VARIABLES                    40
-#define NUMBER_REGISTERED_ORIGINAL_FLOAT_BATSRUS_VARIABLES         18
+#define NUMBER_REGISTERED_BATSRUS_VARIABLES                    50   /* was 40 up to 'status' */
+#define NUMBER_REGISTERED_ORIGINAL_FLOAT_BATSRUS_VARIABLES         28 /* was 18 up to 'status' */
 #define NUMBER_REGISTERED_GRID_INT_BATSRUS_VARIABLES             10
 #define NUMBER_REGISTERED_GRID_INT_BATSRUS_VARIABLES_2             1
 #define NUMBER_REGISTERED_GRID_FLOAT_BATSRUS_VARIABLES             11
@@ -3338,7 +3481,137 @@ struct registered_batsrus_variables
       CCMC_VARIABLE_NAME_STATUS_DESCRIPTION,
       CCMC_VARIABLE_NAME_STATUS_IS_VECTOR,
       CCMC_VARIABLE_NAME_STATUS_POSITION_GRID_SYSTEM,
-      CCMC_VARIABLE_NAME_STATUS_DATA_GRID_SYSTEM
+      CCMC_VARIABLE_NAME_STATUS_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_SWRHO,
+      CCMC_VARIABLE_NAME_SWRHO_DATA_TYPE,
+      CCMC_VARIABLE_NAME_SWRHO_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_SWRHO_VALID_MIN,
+      CCMC_VARIABLE_NAME_SWRHO_VALID_MAX,
+      CCMC_VARIABLE_NAME_SWRHO_UNITS,
+      CCMC_VARIABLE_NAME_SWRHO_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWRHO_MASK,
+      CCMC_VARIABLE_NAME_SWRHO_DESCRIPTION,
+      CCMC_VARIABLE_NAME_SWRHO_IS_VECTOR,
+      CCMC_VARIABLE_NAME_SWRHO_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWRHO_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_SWUX,
+      CCMC_VARIABLE_NAME_SWUX_DATA_TYPE,
+      CCMC_VARIABLE_NAME_SWUX_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_SWUX_VALID_MIN,
+      CCMC_VARIABLE_NAME_SWUX_VALID_MAX,
+      CCMC_VARIABLE_NAME_SWUX_UNITS,
+      CCMC_VARIABLE_NAME_SWUX_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWUX_MASK,
+      CCMC_VARIABLE_NAME_SWUX_DESCRIPTION,
+      CCMC_VARIABLE_NAME_SWUX_IS_VECTOR,
+      CCMC_VARIABLE_NAME_SWUX_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWUX_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_SWUY,
+      CCMC_VARIABLE_NAME_SWUY_DATA_TYPE,
+      CCMC_VARIABLE_NAME_SWUY_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_SWUY_VALID_MIN,
+      CCMC_VARIABLE_NAME_SWUY_VALID_MAX,
+      CCMC_VARIABLE_NAME_SWUY_UNITS,
+      CCMC_VARIABLE_NAME_SWUY_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWUY_MASK,
+      CCMC_VARIABLE_NAME_SWUY_DESCRIPTION,
+      CCMC_VARIABLE_NAME_SWUY_IS_VECTOR,
+      CCMC_VARIABLE_NAME_SWUY_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWUY_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_SWUZ,
+      CCMC_VARIABLE_NAME_SWUZ_DATA_TYPE,
+      CCMC_VARIABLE_NAME_SWUZ_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_SWUZ_VALID_MIN,
+      CCMC_VARIABLE_NAME_SWUZ_VALID_MAX,
+      CCMC_VARIABLE_NAME_SWUZ_UNITS,
+      CCMC_VARIABLE_NAME_SWUZ_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWUZ_MASK,
+      CCMC_VARIABLE_NAME_SWUZ_DESCRIPTION,
+      CCMC_VARIABLE_NAME_SWUZ_IS_VECTOR,
+      CCMC_VARIABLE_NAME_SWUZ_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWUZ_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_SWP,
+      CCMC_VARIABLE_NAME_SWP_DATA_TYPE,
+      CCMC_VARIABLE_NAME_SWP_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_SWP_VALID_MIN,
+      CCMC_VARIABLE_NAME_SWP_VALID_MAX,
+      CCMC_VARIABLE_NAME_SWP_UNITS,
+      CCMC_VARIABLE_NAME_SWP_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWP_MASK,
+      CCMC_VARIABLE_NAME_SWP_DESCRIPTION,
+      CCMC_VARIABLE_NAME_SWP_IS_VECTOR,
+      CCMC_VARIABLE_NAME_SWP_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_SWP_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_IONORHO,
+      CCMC_VARIABLE_NAME_IONORHO_DATA_TYPE,
+      CCMC_VARIABLE_NAME_IONORHO_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_IONORHO_VALID_MIN,
+      CCMC_VARIABLE_NAME_IONORHO_VALID_MAX,
+      CCMC_VARIABLE_NAME_IONORHO_UNITS,
+      CCMC_VARIABLE_NAME_IONORHO_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONORHO_MASK,
+      CCMC_VARIABLE_NAME_IONORHO_DESCRIPTION,
+      CCMC_VARIABLE_NAME_IONORHO_IS_VECTOR,
+      CCMC_VARIABLE_NAME_IONORHO_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONORHO_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_IONOUX,
+      CCMC_VARIABLE_NAME_IONOUX_DATA_TYPE,
+      CCMC_VARIABLE_NAME_IONOUX_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_IONOUX_VALID_MIN,
+      CCMC_VARIABLE_NAME_IONOUX_VALID_MAX,
+      CCMC_VARIABLE_NAME_IONOUX_UNITS,
+      CCMC_VARIABLE_NAME_IONOUX_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOUX_MASK,
+      CCMC_VARIABLE_NAME_IONOUX_DESCRIPTION,
+      CCMC_VARIABLE_NAME_IONOUX_IS_VECTOR,
+      CCMC_VARIABLE_NAME_IONOUX_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOUX_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_IONOUY,
+      CCMC_VARIABLE_NAME_IONOUY_DATA_TYPE,
+      CCMC_VARIABLE_NAME_IONOUY_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_IONOUY_VALID_MIN,
+      CCMC_VARIABLE_NAME_IONOUY_VALID_MAX,
+      CCMC_VARIABLE_NAME_IONOUY_UNITS,
+      CCMC_VARIABLE_NAME_IONOUY_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOUY_MASK,
+      CCMC_VARIABLE_NAME_IONOUY_DESCRIPTION,
+      CCMC_VARIABLE_NAME_IONOUY_IS_VECTOR,
+      CCMC_VARIABLE_NAME_IONOUY_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOUY_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_IONOUZ,
+      CCMC_VARIABLE_NAME_IONOUZ_DATA_TYPE,
+      CCMC_VARIABLE_NAME_IONOUZ_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_IONOUZ_VALID_MIN,
+      CCMC_VARIABLE_NAME_IONOUZ_VALID_MAX,
+      CCMC_VARIABLE_NAME_IONOUZ_UNITS,
+      CCMC_VARIABLE_NAME_IONOUZ_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOUZ_MASK,
+      CCMC_VARIABLE_NAME_IONOUZ_DESCRIPTION,
+      CCMC_VARIABLE_NAME_IONOUZ_IS_VECTOR,
+      CCMC_VARIABLE_NAME_IONOUZ_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOUZ_DATA_GRID_SYSTEM,
+
+      CCMC_VARIABLE_NAME_IONOP,
+      CCMC_VARIABLE_NAME_IONOP_DATA_TYPE,
+      CCMC_VARIABLE_NAME_IONOP_CLASSIFICATION,
+      CCMC_VARIABLE_NAME_IONOP_VALID_MIN,
+      CCMC_VARIABLE_NAME_IONOP_VALID_MAX,
+      CCMC_VARIABLE_NAME_IONOP_UNITS,
+      CCMC_VARIABLE_NAME_IONOP_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOP_MASK,
+      CCMC_VARIABLE_NAME_IONOP_DESCRIPTION,
+      CCMC_VARIABLE_NAME_IONOP_IS_VECTOR,
+      CCMC_VARIABLE_NAME_IONOP_POSITION_GRID_SYSTEM,
+      CCMC_VARIABLE_NAME_IONOP_DATA_GRID_SYSTEM
 };
 
 /***************************************************************** UCLA_GGCM ***********************************************/
