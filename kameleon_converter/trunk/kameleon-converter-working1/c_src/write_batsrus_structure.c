@@ -1161,39 +1161,105 @@ int write_batsrus_structure(
          baselined_ccmc_variable_structure_list);
          
          
-         if( optional_status_variable_present )
-         {
-         
-         
    /*** Adding status variable ***/
-   
-   stat = update_ccmc_variable_attribute_value(
-         "status",
-         "variable_size",
-         &number_of_cells,
-         baselined_ccmc_variable_structure_list);
-
-   stat = update_ccmc_variable_value(
-         "status",
-         number_of_cells,
-         status_arrayPtr,
-         baselined_ccmc_variable_structure_list);
-
-   stat = update_ccmc_variable_attribute_value(
-         "status",
-         "actual_min",
-         &status_actual_min,
-         baselined_ccmc_variable_structure_list);
-
-   stat = update_ccmc_variable_attribute_value(
-         "status",
-         "actual_max",
-         &status_actual_max,
-         baselined_ccmc_variable_structure_list);
+   if( optional_status_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("status","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("status",number_of_cells,status_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("status","actual_min",&status_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("status","actual_max",&status_actual_max,baselined_ccmc_variable_structure_list);  
+     }
          
-         }
-         
-         
+  /*** Adding solar wind fluid variables ***/
+	 /* swux */
+   if( optional_swux_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("swux","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("swux",number_of_cells,swux_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swux","actual_min",&swux_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swux","actual_max",&swux_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* swuy */
+   if( optional_swuy_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("swuy","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("swuy",number_of_cells,swuy_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swuy","actual_min",&swuy_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swuy","actual_max",&swuy_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* swuz */
+   if( optional_swuz_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("swuz","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("swuz",number_of_cells,swuz_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swuz","actual_min",&swuz_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swuz","actual_max",&swuz_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* swrho */
+   if( optional_swrho_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("swrho","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("swrho",number_of_cells,swrho_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swrho","actual_min",&swrho_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swrho","actual_max",&swrho_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* swp */
+   if( optional_swp_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("swp","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("swp",number_of_cells,swp_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swp","actual_min",&swp_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("swp","actual_max",&swp_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* ionoux */
+   if( optional_ionoux_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("ionoux","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("ionoux",number_of_cells,ionoux_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionoux","actual_min",&ionoux_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionoux","actual_max",&ionoux_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* ionouy */
+   if( optional_ionouy_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("ionouy","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("ionouy",number_of_cells,ionouy_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionouy","actual_min",&ionouy_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionouy","actual_max",&ionouy_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* ionouy */
+   if( optional_ionouy_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("ionouy","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("ionouy",number_of_cells,ionouy_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionouy","actual_min",&ionouy_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionouy","actual_max",&ionouy_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* ionouz */
+   if( optional_ionouz_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("ionouz","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("ionouz",number_of_cells,ionouz_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionouz","actual_min",&ionouz_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionouz","actual_max",&ionouz_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* ionorho */
+   if( optional_ionorho_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("ionorho","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("ionorho",number_of_cells,ionorho_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionorho","actual_min",&ionorho_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionorho","actual_max",&ionorho_actual_max,baselined_ccmc_variable_structure_list);
+     }
+	 /* ionop */
+   if( optional_ionop_variable_present )
+     {
+       stat = update_ccmc_variable_attribute_value("ionop","variable_size",&number_of_cells,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_value("ionop",number_of_cells,ionop_arrayPtr,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionop","actual_min",&ionop_actual_min,baselined_ccmc_variable_structure_list);
+       stat = update_ccmc_variable_attribute_value("ionop","actual_max",&ionop_actual_max,baselined_ccmc_variable_structure_list);
+     }
+
 
    /**************** now write grid description variables *********************/
 
@@ -1473,13 +1539,26 @@ int write_batsrus_structure(
    free(ux_arrayPtr);
    free(uy_arrayPtr);
    free(uz_arrayPtr);
+   free(p_arrayPtr);
+
+   free(swrho_arrayPtr);
+   free(swux_arrayPtr);
+   free(swuy_arrayPtr);
+   free(swuz_arrayPtr);
+   free(swp_arrayPtr);
+
+   free(ionorho_arrayPtr);
+   free(ionoux_arrayPtr);
+   free(ionouy_arrayPtr);
+   free(ionouz_arrayPtr);
+   free(ionop_arrayPtr);
+
    free(bx_arrayPtr);
    free(by_arrayPtr);
    free(bz_arrayPtr);
    free(b1x_arrayPtr);
    free(b1y_arrayPtr);
    free(b1z_arrayPtr);
-   free(p_arrayPtr);
    free(e_arrayPtr);
    free(jx_arrayPtr);
    free(jy_arrayPtr);
