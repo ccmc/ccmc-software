@@ -1316,6 +1316,11 @@ int read_record_5( verbose_flag)
 	    record_size,
 	    input_filePtr);
 
+    /* case fold variable string  - I have seen a file with mixed case names - Lutz Rastaetter 2013/09/05 */
+    for(i = 0; i < record_size; i++){
+      variable_name_string[i]=tolower(variable_name_string[i]);
+    }
+
     if (DEBUG_FLAG)
 	printf(
 		"DEBUG\tnumber_of_elements ( bytes read from last fread ) = %d\n",
@@ -1764,6 +1769,18 @@ int read_record_7( verbose_flag)
     tmp_strarr.len = 0;
     tmp_strarr.sarr = NULL;
 
+    optional_status_variable_present = 0;
+    optional_ionop_variable_present = 0;
+    optional_ionorho_variable_present = 0;
+    optional_ionoux_variable_present = 0;
+    optional_ionouy_variable_present = 0;
+    optional_ionouz_variable_present = 0;
+    optional_swp_variable_present = 0;
+    optional_swrho_variable_present = 0;
+    optional_swux_variable_present = 0;
+    optional_swuy_variable_present = 0;
+    optional_swuz_variable_present = 0;
+
     /* get array of variable names to correctly distribute data */
     strsplit(variable_name_string, &tmp_strarr, " ");
 
@@ -1865,15 +1882,6 @@ int read_record_7( verbose_flag)
 	    == NULL)
 	{
 	printf("MALLOC for jz array FAILED\n");
-	exit(EXIT_FAILURE);
-	}
-
-    /* NEW STATUS VARIABLE setup */
-
-    if ((status_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
-	    == NULL)
-	{
-	printf("MALLOC for status array FAILED\n");
 	exit(EXIT_FAILURE);
 	}
 
@@ -2071,25 +2079,203 @@ int read_record_7( verbose_flag)
 		    tmp_double);
 	    }
 
+
+	if (strcmp(tmp_strarr.sarr[i], "swp") == 0)
+	    {
+	      optional_swp_variable_present = 1;
+	      if ((swp_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swp array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swp_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swux") == 0)
+	    {
+	      optional_swux_variable_present = 1;
+	      if ((swux_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swux array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swux_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swuy") == 0)
+	    {
+	      optional_swuy_variable_present = 1;
+	      if ((swuy_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swuy array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swuy_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swuz") == 0)
+	    {
+	      optional_swuz_variable_present = 1;
+	      if ((swuz_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swuz array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swuz_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swrho") == 0)
+	    {
+	      optional_swrho_variable_present = 1;
+	      if ((swrho_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swrho array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swrho_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "ionop") == 0)
+	    {
+	      optional_ionop_variable_present = 1;
+	      if ((ionop_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionop array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionop_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionoux") == 0)
+	    {
+	      optional_ionoux_variable_present = 1;
+	      if ((ionoux_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionoux array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionoux_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionouy") == 0)
+	    {
+	      optional_ionouy_variable_present = 1;
+	      if ((ionouy_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionouy array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionouy_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionouz") == 0)
+	    {
+	      optional_ionouz_variable_present = 1;
+	      if ((ionouz_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionouz array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionouz_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionorho") == 0)
+	    {
+	      optional_ionorho_variable_present = 1;
+	      if ((ionorho_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionorho array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionorho_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+
+
 	/******************** get all status variables ****************************/
 
 	if (strcmp(tmp_strarr.sarr[i], "status") == 0)
 	    {
+	      if ((status_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for status array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
 	    read_failed_flag += read_batsrus_variable(
 		    input_filePtr,
 		    status_arrayPtr,
 		    flip_endian,
 		    is_double,
 		    tmp_double);
-
 	    optional_status_variable_present = 1;
 	    }
-	else
-	    {
-	    optional_status_variable_present = 0;
-	    }
-
 	}
+
 
     if (is_double)
 	{
@@ -2102,7 +2288,19 @@ int read_record_7( verbose_flag)
 	{
 	if (verbose_flag)
 	    {
-	    printf("READ Record 7 SUCCESSFUL\n");
+	      fprintf(stderr,"Status: %i \nIonoP: %i IonoRHo: %i IonoU: %i %i %i\nSWRho: %i SWP: %i SWU: %i %i %i\n",optional_status_variable_present,
+		     optional_ionop_variable_present,
+		     optional_ionorho_variable_present,
+		     optional_ionoux_variable_present,
+		     optional_ionouy_variable_present,
+		     optional_ionouz_variable_present,
+		     optional_swp_variable_present,
+		     optional_swrho_variable_present,
+		     optional_swux_variable_present,
+		     optional_swuy_variable_present,
+		     optional_swuz_variable_present);
+	      fflush(NULL);
+	      printf("READ Record 7 SUCCESSFUL\n");
 	    }
 	return 1;
 	}
