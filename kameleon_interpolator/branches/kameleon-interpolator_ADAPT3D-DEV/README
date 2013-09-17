@@ -1,0 +1,1530 @@
+________________________________________________________________________________
+
+KAMELEON access/interpolation library version 5.0.1                   08.19.2008
+
+Copyright © 1999-2008 United States Government as represented by Administrator
+for The National Aeronautics and Space Administration. All Rights Reserved
+
+NASA Goddard Space Flight Center
+Community Coordinated Modeling Center
+http://ccmc.gsfc.nasa.gov
+
+Government Agency Original Software Designation: GSC-15511-1
+Government Agency Original Software Title: "Kameleon Software Suite -
+Access/Interpolation Library"
+_______________________________________________________________________________
+
+TECHNICAL CONTACT:
+
+Marlo Maddox
+NASA Goddard Space Flight Center
+Science Data Processing Branch
+Phone: 301.286.5202
+email: Marlo.Maddox@nasa.gov, kameleon_support@listserv.gsfc.nasa.gov
+
+________________________________________________________________________________
+
+LEGAL STUFF
+
+Copyright © 1999-2007 United States Government as represented by Administrator
+for The National Aeronautics and Space Administration. All Rights Reserved
+
+For Specific Licensing and Software Usage Agreements  Info, Contact:
+
+Melissa Jackson SGT/NASA                ||  Ms. Dale L. Hithon Clarke
+Innovative Partnerships Program Office  /\  Innovative Partnership Program Office
+Phone: 301-286-7958                     OR  Phone: (301)286-2691
+Fax:  301-286-0301 Fax                  \/  Fax:  (301)286-0301
+Email: Melissa.S.Jackson@nasa.gov       ||  Email: Dale.L.Hithon@nasa.gov
+http://ipp.gsfc.nasa.gov                ||  http://ipp.gsfc.nasa.gov
+________________________________________________________________________________
+
+This README file contains four major sections:
+
+Section I     Summary
+Section II    Installation Instructions
+Section III   Usage Instructions
+Section IV    Updates
+
+
+********************************************************************************
+*                                                                              *
+*                Section I    Summary/Installation Instructions                *
+*                                                                              *
+********************************************************************************
+
+DESCRIPTION:
+
+The ccmc KAMELEON access/interpolation library consists of routines that provide
+access to space weather model data that has been converted to a standard format
+using the ccmc KAMELEON conversion software.  The ccmc KAMELEON
+access/interpolation library routines can be compiled into static .a and shared
+.so formats and linked with any c supported programming language.
+
+kameleon-interpolator-v*-*.*/
+.
+|-- bin
+|-- examples
+|-- fortran_interface
+|-- idl_interface
+|-- inc
+|-- lib
+`-- src
+
+--------------------------------------------------------------------------------
+
+SUPPORTED MODELS:
+
+Magnetosphere:
+
+1.      batsrus:    BATS-R-US, the Block-Adaptive-Tree-Solarwind-Roe-
+                    Upwind-Scheme, was developed by the Computational
+                    Magnetohydrodynamics (MHD) Group at the University
+                    of Michigan, now Center for Space Environment
+                    Modeling (CSEM)
+
+1b.                 batsrus component of Space Weather Modeling Framework (SWMF)
+
+2.      ucla_ggcm:  The UCLA/NOAA Geospace General Circulation Model (GGCM)
+        open_ggcm:  was originally developed as a magnetohydrodynamic ( MHD )
+                    model of Earth's magnetosphere at UCLA in the early 1990's
+                    by J.Raeder.
+
+Ionosphere:
+
+3.      ctip:       The coupled thermosphere-ionosphere-plasmasphere (CTIP)
+                    model consists of three distinct components:
+                        * A global thermosphere model;
+                        * A high latitude ionosphere model;
+                        * A mid and low-latitude ionosphere/plasmasphere model.
+
+                    Authors/Developers: Dr. Timothy Fuller-Rowell et al NOAA SEC
+
+Heliosphere:
+
+4.      enlil:      ENLIL is a time-dependent 3D MHD model of the heliosphere.
+                    It solves for plasma mass, momentum and energy density, and
+                    magnetic field, using a Flux-Corrected-Transport (FCT)
+                    algorithm.
+
+                    Model Authors/Developers: D. Odstrcil - University of
+                    Boulder, Colorado
+
+Solar:
+
+5.      mas         MHD Model of Solar Corona. Model domain: 1 - 30 solar radii.
+
+                    Model Authors/Developers: J. Linker, Z. Mikic, R. Lionello,
+                    P. Riley Science Applications International Corporation
+                    (SAIC) San Diego, California
+
+--------------------------------------------------------------------------------
+
+SUPPORTED SCIENCE DATA FORMATS
+
+The ccmc KAMELEON converter will currently convert any supported Model to the
+following Science Data Formats:
+
+1.    cdf:          Common Data Format distribution Versions 2.7.1, 3.0, 3.1,3.2
+					etc...depending on your CDF version. CDF is provided by
+                    National Space Science Data Center ( NSSDC )
+                    http://nssdc.gsfc.nasa.gov Currently known as the
+                    Space Physics Data Facility - http://spdf.gsfc.nasa.gov/
+                    Direct Link -> http://cdf.gsfc.nasa.gov/
+
+--------------------------------------------------------------------------------
+
+REQUIREMENTS:
+
+1)  standardized model output produced by the ccmc KAMELEON conversion software
+    ( see supported models list above )
+
+2)  CDF 3.2, 3.1, 3.0 or 2.7 is required to compile the interpolation libraries
+    ( 3.2.1 is recommended as it is backwards compatible ) CDF is provided by
+    National Space Science Data Center ( NSSDC ) http://nssdc.gsfc.nasa.gov
+    Currently known as the Space Physics Data Facility:
+    http://spdf.gsfc.nasa.gov/
+    Direct Link -> http://cdf.gsfc.nasa.gov/
+
+    Specific CDF products required:
+
+    i)  libcdf.a - static CDF library, produced from CDF installation
+
+    ii) cdf.h - cdf header file
+
+    NOTE:  you can specify the locations of both libcdf.a file and the cdf
+    include directory by modifying the LIB_CDF and CDF_INC variables ie:
+
+    make CDF_INC=/Applications/cdf31-dist/include/ \
+         LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a
+
+3)  libg2c or libgfortran - if using g77 to compile the fortran example programs
+    that allow users to call c from fortran, the libg2c.so library must be
+    available.  Find your local copy of libg2c.so and adjust the FORTRAN_LIB or
+    EXTRA_LIB_PATHS macros in the Makefile to account for the location of your
+    local libg2c.so library directory i.e.
+
+        FORTRAN_LIB=-L/usr/local/lib/x86_64
+
+    ...this can be specified during the make command along with the cdf
+    specifications:
+
+    make CDF_INC=/Applications/cdf31-dist/include/ \
+        LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a \
+        FORTRAN_LIB=-L/usr/local/lib/x86_64
+
+    NOTE1: if you use gfortran, the libgfortran.so library may be required
+        in place of libg2c.so
+
+    NOTE2: If you are compiling the kameleon library with g77, gfortran, pgf90,
+        etc., be sure to compile and link your driver programs using the same
+        compiler.
+
+4)  IDL Include file: export.h ( an sym link to include/idl_export.h ) - must be
+    available to build the idl2kameleon interface. Find your local copy and
+    adjust the  IDL_INC_DIR macro to point to the directory containing export.h
+    or export.h ie.
+
+    IDL_INC_DIR = /Applications/itt/idl64/external
+
+    ...this can be specified during the make command along with the cdf and
+    other specifications:
+
+    make CDF_INC=/Applications/cdf31-dist/include/ \
+            LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a \
+            IDL_INC_DIR=/Applications/itt/idl64/external
+
+--------------------------------------------------------------------------------
+
+ADDITIONAL NOTES: The Kameleon distribution's Makefile assumes that all of
+the external dependencies are pre-installed.  To inform the Kameleon Makefile
+of the location of the dependencies, set the cooresponding variables during
+invocation of the make command.
+
+VARIABLE       DESCRIPTION         EXAMPLE
+
+LIB_CDF        libcdf.a            LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a
+
+CDF_INC        cdf.h inc directory CDF_INC=/Applications/cdf31-dist/include
+
+IDL_INC        export.h            IDL_INC=/Applications/itt/idl64/external
+
+FORTRAN_LIB    extra fortran lib   FORTRAN_LIB=-L/usr/local/lib/x86_64
+
+CC             C - Compiler        CC=gcc
+
+F77            FORTRAN Compiler    F77=gfortran
+
+...you can always print out the Makefile help using:
+
+    make help
+
+--------------------------------------------------------------------------------
+
+- Tested on:
+    -Sun Solaris
+    -Mac OS X
+    -Linux - Fedora ( 32 & 64 bit )
+    -Cygwin - ( Testing )
+
+-------------------------------- MAC OS X NOTE: --------------------------------
+
+MAC OS X does not support the The Executable and Linkable Format (ELF) which is
+a common standard in computing for executables and object code.  Instead,
+Mac OS X uses the Mach-O shared libraries that have the file type MH_DYLIB and
+the .dylib (dynamic library) suffix that can be linked to with static linker
+flags. MAC OSX also supports the MH_BUNDLE ( .bundle ) type as well.
+The idl2kameleon interface uses the MH_BUNDLE file type but the regular kameleon
+interface does not yet support either shared libraries or loadable modules for
+MAC.
+
+...In short, for now you can only build the static library ( libkameleon.a ) on
+Mac OS X.
+
+-------------------------------- MAC OS X NOTE: --------------------------------
+
+
+********************************************************************************
+*                                                                              *
+*                Section II    INSTALLATION Instructions                       *
+*                                                                              *
+********************************************************************************
+
+CCMC KAMELEON Access/Interpolation Library
+
+If CDF ( 2.7, 3.0, or 3.1 ) is already installed on your system:
+
+1)      Set your specific c & fortran compilers in the Makefile
+
+        CC    = gcc
+        F77   = gfortran
+
+        OR during invocation of the make command ie.
+
+        make CC=gcc F77=gfortran
+
+2)      Make sure the LIB_CDF and CDF_INC variables in the Makefile point to
+        your local installation of the libcdf.a static library and the cdf.h
+        incliude directory respectivley.
+
+        OR simply set the variables during invocation of make ie.
+
+        make LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a
+            CDF_INC=/Applications/cdf31-dist/include
+
+
+FULL EXAMPLE:
+
+make CC=gcc F77=gfortran LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a
+    CDF_INC=/Applications/cdf31-dist/include
+    IDL_INC=/Applications/itt/idl64/external
+    FORTRAN_LIB=-L/usr/local/lib/x86_64
+
+TO SPECIFY A SPECIFIC TARGET, include any relevant macro/variable definitions as
+outlined above, then add any of the following to the command
+
+type
+
+    'first'                   Default make. Performs OS test and Compiler Flag
+                            configuration and then builds libraries and
+                            examples
+
+    'all-static'              to build the libkameleon.a static library,
+                            idl2kameleon interface, and all examples
+
+    'all-shared'              to build the libkameleon.so, shared library,
+                            idl2kameleon interface, and all examples
+
+    'libkameleon.so'          for shared library only
+
+    'libkameleon.a'           for static library only
+
+    'idl2kameleon'            for the idl to kameleon interface only
+
+    'all-examples'            to build all examples programs
+
+    'c-examples-static'       to build c example programs using libinterp.a
+
+    'fortran-examples-static' to build fortran example programs using
+                            libinterp.so
+
+For example:
+
+    make CC=gcc F77=gfortran LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a
+        CDF_INC=/Applications/cdf31-dist/include fortran-examples-static
+
+HELP:
+
+  you can always print out the Makefile help using:
+
+  make help
+
+--------------------------------------------------------------------------------
+
+To install CDF:
+
+CDF is provided by National Space Science Data Center ( NSSDC )
+http://nssdc.gsfc.nasa.gov Currently known as the Space Physics Data Facility -
+http://spdf.gsfc.nasa.gov/. Direct Link -> http://cdf.gsfc.nasa.gov/
+
+CDF installation
+
+For an in depth look into CDF, read the CDF  Users Guide ( cdf30ug.pdf ) and/or
+the  Fortran/ C Reference Manuals ( cdf30crm.pdf & cdf30frm.pdf ) located in the
+included cdf distribution.
+
+Summary of how to install CDF version 3.0
+
+The cdf30-dist-all.tar.gz file contains the CDF distribution.
+
+1.  Copy the cdf30-dist-all.tar.gz file to the location were you would like to
+    build the CDF installation.
+
+        cp cdf30-dist-all.tar.gz /user_specified_path
+
+2.  Uncompress the distribution
+
+        gzip -d cdf30-dist-all.tar.gz
+
+3.  "Un-Tar" the tar file
+
+        tar -x -v -f cdf30-dist-all.tar
+
+4.  cd into the newly created cdf30-dist directory
+
+        cd cdf30-dist
+
+5.  determine what make variables need to be set for your particular platform.
+    There are seven make variables that can be set. Two of the make variables
+    are required.
+
+        OS          REQUIRED.  The operating system being used.
+        ENV         REQUIRED.  The environment begin used (eg. C compiler).
+        SHARED      Optional.  Should the shareable CDF library be built?
+        CURSES      Optional.  Should Curses-based toolkit programs be built?
+        FORTRAN     Optional.  Should the Fortran interface be tested?
+        IDL         Optional.  Should CDF's IDL interface be built?
+
+        IDLINCLUDE  May be required if CDF's IDL interface is built.
+
+To see all of the options enter:
+
+    make all.help
+
+6.  compile the distribution
+
+    base example for linux os with gnu environment
+
+        make OS=linux ENV=gnu all
+
+    example2: for linux os with gnu environment with IDL & Fortran option
+
+        make OS=linux ENV=gnu FORTRAN=yes IDL=yes
+            IDLINCLUDE=/opt/local/rsi/idl_5.3/external all
+
+    NOTE: all keyword at end of command line
+
+7.  test the compilation
+
+        make test
+
+8.  install the distribution
+
+        make INSTALLDIR=/your_install_dir install
+
+  NOTE: install keyword at end of command line
+
+We are mainly interested in the libcdf.a static library for use with the
+Kameleon Library.  Additional steps are optional.
+
+9.  ( optional ) set your environment variables for quick access to the cdf
+    tools
+
+    cd into the directory in which the cdf distribution was installed. ie.
+
+        your_install_dir
+
+    cd into the bin directory
+
+    read the definitions.* file for your particular shell ie. definitions.C
+    for C-shell and tcsh
+
+        set the CDF_BASE variable to the correct directory in which cdf is
+        installed
+
+    follow the instructions to run the script ie. source
+    <path>/bin/definitions.C or
+
+    add the command(s) manually to your particular shell i.e. .cshrc
+
+10. ( optional ) read a cdf file using cdfexport or cdfedit
+
+    cdfexport <path>/cdf_file_name_no_extension
+
+        ie. cdfexport <path>/3d__ful_1_20000101_01000_0175.out
+
+11. ( optional ) Another useful tool is skeletontable.  It creates a text file
+    that describes the structure of the cdf file
+
+        skeletontable <path>/name_of_your_cdf_file_of_interest.out.cdf
+
+    this command will create a file name_of_your_cdf_file_of_interest.out.skt
+    from the name_of_your_cdf_file_of_interest.out.cdf. You can then open the
+    .skt file with any text editor to browse the contents.  Note that the suffix
+    .skt will be appended to output file.
+
+--------------------------------------------------------------------------------
+
+********************************************************************************
+*                                                                              *
+*                      Section III    Usage Instructions                       *
+*                                                                              *
+********************************************************************************
+
+** The KAMELEON interpolation library has ***( 17 )*** main c routines that are
+currently available.  The main library of routines are written in C, but most
+of the functionality provided by these C routines can be acquired by using the
+FORTRAN interface that is also included within this library. The original C
+routines can be called directly from FORTRAN but the FORTRAN interface is
+provided as a convenience for users to get up and running quickly.  The FORTRAN
+interface is essentially a set of wrappers to the original C routines with the
+addition of FORTRAN to C string conversion functionality along with argument and
+memory management functions.
+
+** The idl2kameleon library.  The idl 2 kameleon interface routines are compiled
+into their own shared library and linked into idl through a technique called
+LINKIMAGE.  The resulting routines appear and behave like native idl routines.
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+                                C Interface
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+
+1.  The open_cdf routine
+
+    void open_cdf( char *cdf_name, int number_of_arguments, ... ) - the open_cdf
+    function is called for each cdf file that data is to be extracted from and
+    has two required arguments followed by the optional variable name arguments
+    that will be read into main memory.
+
+        cdf_name -  character string that references the path/filename of the
+                    cdf file that contains data to be interpolated NOTE:
+                    strlen( cdf_name ) < CDF_PATHNAME_LEN as defined in cdf.h
+                    - for CDF2.7 = 128, for CDF 3.0 = 512
+
+        number_of_arguments - the number of variables n to be read into main
+                              memory.  Should be O if no variables are to be
+                              stored.
+
+        optional argument 1..n - n character strings ( as specified above ),
+                                 that reference the model variables you would
+                                 like to read into main memory
+
+Example 1: will read bx, by, bz into main memory - NOTE: the entire data set
+will be read
+
+        open_cdf( cdf_name, 3, "bx", "by", "bz" );
+
+NOTE: New functionality added to open_cdf. See Updates Section open_cdf 10/2006
+
+Example 2: no variables will be read into main memory - should be used for most
+applications were calls to interpolator will be <
+several hundred thousand.
+
+        open_cdf( cdf_name, 0);
+
+--------------------------------------------------------------------------------
+
+2 - 5    THE interpolation routines:
+
+float   interpolate_batsrus_cdf( char *variable_name, float x, float y, float z,
+                                int main_mem_flag, int opt_arg_flag,  ... )
+
+float   interpolate_ucla_ggcm_cdf( char *variable_name, float x, float y,
+                                float z, int main_mem_flag, int opt_arg_flag,
+                                ... )
+
+float   interpolate_ctip_cdf( char *variable_name, float x, float y, float z,
+                            int main_mem_flag, int opt_arg_flag,  ... )
+
+float   interpolate_enlil_cdf( char *variable_name, float x, float y, float z,
+                            int main_mem_flag, int opt_arg_flag,  ... )
+
+The interpolation functions have six required arguments and return the
+interpolated value of the variable specified at the given position.
+
+        variable_name - name of variable to be interpolated
+
+        x,y,z - position at which variable will be interpolated
+
+        main_mem_flag - 0 | 1 for on or off.  Should correspond to how the cdf
+                        file was opened with open_cdf.  This flag instructs the
+                        interpolator to get the data values stored in main
+                        memory instead of from the disk.
+
+        opt_arg_flag - 0 | 1 for on or off.  If set to 1, function will expect
+                       4 additional arguments:
+
+            optional argument 1 - missing return value to return if block index
+                                  is not found ( x,y,z coordinate is off the
+                                  sim grid )
+
+            optional argument 2 - address of the delta_x variable that will be
+                                  set inside function
+
+            optional argument 3 - address of the delta_y variable that will be
+                                  set inside function
+
+            optional argument 4 - address of the delta_z variable that will be
+                                  set inside function
+
+        NOTE: delta as in the original delta between center of grid cells
+
+Example:
+                                                main memory flag ----v
+        interp_value1 = interpolate_batsrus_cdf( variable1, n, Y, Z, 0, 0 );
+        interp_value2 = interpolate_batsrus_cdf( variable2, n, Y, Z, 0, 0 );
+        interp_value3 = interpolate_batsrus_cdf( variable3, n, Y, Z, 0, 0 );
+                                                optional argument flag -^
+
+--------------------------------------------------------------------------------
+
+6.  The get_units routine
+
+        char * get_units( char *variable_name ) - takes a single variable name
+        as an argument and returns a pointer to the string of units for that
+        variable.
+
+Example:
+
+        char *variable_name = "bx";
+        char *units;
+        ...
+        units = get_units( variable_name );
+
+--------------------------------------------------------------------------------
+
+7.  The close_cdf routine
+
+        void close_cdf( void ) - gracefully closes the current/open cdf file and
+        also cleans up internal memory.
+
+Example:
+
+        close_cdf();
+
+--------------------------------------------------------------------------------
+
+8.  The gattribute_char_get routine
+
+        char * gattribute_char_get( char *global_attribute_name ) - extract a
+        global attribute string value from the current cdf file
+
+Example:
+
+        char *start_time_string
+        ...
+        start_time_string = gattribute_char_get( "start_time" );
+
+--------------------------------------------------------------------------------
+
+9.  The gattribute_float_get routine
+
+        float gattribute_float_get( char *global_attribute_name ) - extract a
+        global attribute floating point value from the current cdf file
+
+Example:
+
+        float elapsed_time;
+        ...
+        elapsed_time = gattribute_float_get( "elapsed_time_in_seconds" );
+
+--------------------------------------------------------------------------------
+
+10. The init_time routine generates a tree structure containing time a file name
+    information for a specified set of model output files.  Subsequent calls to
+    the time_interpolate routine with a specified target time, make use of the
+    tree structure stored file-time info to find files with times <= & >= target
+    time.
+
+        init_time( char *directory_path_string, double &start_time,
+                    double &end_time )
+
+            directory_path_string - full path of the directory containing the
+                                    ccmc standardized model output files
+
+            &start_time - address of variable declared within driver code but
+                          set inside init_time function.  Value represents the
+                          initial start_time of the simulation ie. time for
+                          first time step/output file.
+
+            &end_time - address of variable declared within driver code but set
+                        inside init_time function.  Value represents the
+                        end_time of the simulation ie. time for last time
+                        step/output file
+
+NOTE:  The format of the time variables are cdf epoch time which is the number
+of milliseconds since January 01, 0000.  For example, a batsrus cdf file with
+the name:
+
+    3d__ful_1_20000101_020000_0142.out.cdf
+
+    has a date and time of the form
+
+    yyyymmdd_HHMMSS_msec
+    20000101_020000_0142
+    January 01, 2000 @ 02:00:00
+
+so for this particular date & time, the corresponding cdf epoch time would be
+
+    63113911200143.000000 milliseconds
+
+Once you have the start_time & end_time values set by the init_time function,
+you can call the time_interpolate routine using any time within that range.  To
+increment the start time by 30 minutes you would add 1800000.0 milliseconds to
+the start_time variable value.
+
+NOTE:  You have to take Leap Years into consideration when calculating time.
+Since the average number of days in a year is technically 365.2425, this is the
+best number to use instead of just 365.  Using 365 will introduce an error of 1
+day every four years were 365.2425 will only introduce an error of one day every
+3,236 years.
+
+--------------------------------------------------------------------------------
+
+11. The time_interpolate routine is used to interpolate data at specified point
+    for a given time
+
+    time_interpolate( char *variable_name,  double target_time, float x,
+                      float y, float z )
+
+        variable_name - name of variable to be interpolated
+
+        target_time - must be greater than or equal to start_time and less than
+                      or equal to the end_time ( CDF_EPOCH FORMAT ).
+
+                      NOTE: start_time & end_time values are set automatically
+                      with init_time() routine
+
+        x,y,z - positions for which a value will be interpolated
+
+
+--------------------------------------------------------------------------------
+
+12. The gattribute_get routine returns a pointer to the specified global
+    attribute value that was requested.  Returns NULL if attribute does not
+    exist.
+
+        gattribute_get( char *global_attribute_name )
+
+            global_attribute_name - name of the global attribute for which a
+                                    pointer to its value will be returned
+
+NOTE:  The gattribute_get routine performs the same functions as the more
+specialized get_units, gattribute_char_get, & gattribute_float_get routines,
+in that they all extract a specified attribute value from the standardized model
+output file.  The gattribute_get differs in that it is not type specific and
+does not return the actual attribute value as the other three do.  Instead the
+gattribute_get returns a pointer to the attribute value that was extracted.
+
+Example:
+
+    char *char_attribute_valuePtr;
+    int *int_attribute_valuePtr;
+    float *float_attribute_valuePtr;
+
+    ...
+
+    char_attribute_valuePtr = gattribute_get( "README" );
+    float_attribute_valuePtr = gattribute_get( "elapsed_time_in_seconds" );
+    int_attribute_valuePtr = gattribute_get( "grid_system_count" );
+
+    ...
+
+    printf("The value of the README attribute = %s\n",char_attribute_valuePtr );
+
+    printf("The value of the elapsed_time_in_seconds attribute = %f\n",
+            *float_attribute_valuePtr );
+
+    printf("The value of the grid_system_count attribute = %d\n",
+            *int_attribute_valuePtr );
+
+***NOTE:  Don't forget to dereference your int & float attribute value pointers.
+
+--------------------------------------------------------------------------------
+
+13. The vattribute_get routine returns a pointer to the specified variable
+    attribute value that was requested.
+
+        vattribute_get( char *variable_name, char *variable_attribute_name )
+
+        variable_name - name of variable for which a corresponding attribute
+                        value is being requested
+
+        variable_attribute_name - name of the variable attribute for which a
+                                  pointer to its value will be returned
+
+Example:
+
+    char *char_attribute_valuePtr;
+    float *float_attribute_valuePtr;
+
+    ...
+
+    char_attribute_valuePtr = vattribute_get( "x", "description" );
+    float_attribute_valuePtr = vattribute_get( "rho", "actual_min" );
+
+    ...
+
+    printf("The value of the description variable attribute for x = %s\n",
+            char_attribute_valuePtr );
+
+    printf("The value of the actual_min variable attribute rho = %f\n",
+            *float_attribute_valuePtr );
+
+
+***NOTE:  Don't forget to dereference your int & float attribute value pointers.
+
+--------------------------------------------------------------------------------
+
+14. The var_get routine returns a pointer to an array of variable values for the
+    specified variable that was requested.
+
+    var_get(char *cdf_name, char *variable_name , int *array_size);
+
+        cdf_name - name of file for which a corresponding variable value array
+                   is being requested
+
+        variable_name - name of variable for which an array of values are being
+                        requested
+
+        array_size - user defined integer variable that will be set inside the
+                     var_get() function.  The variable will represent the size
+                     of the variable array that was read.
+
+Example:
+
+    char *cdf_name = "/your_path/your_filename.cdf";
+    char *variable_name = "rho";
+    float *var_arrayPtr;
+    int array_size;
+
+    ...
+
+    var_arrayPtr = var_get( cdf_name, variable_name , &array_size);
+
+    ...
+
+    for( i=0;i<array_size;i++)
+    {
+        printf("%s[%d] = %f\n", variable_name, i, var_arrayPtr[i] );
+    }
+
+--------------------------------------------------------------------------------
+
+15. The is_var_in_memory routine returns either 0 or 1 signifying whether a
+    variable is loaded into main memory or not..
+
+        is_var_in_memory(char *variable_name);
+
+--------------------------------------------------------------------------------
+
+16. The var_exists routine returns either 0 or 1 signifying whether a variable
+    exists in the currently open file
+
+        var_exists( char *variable_name )
+
+--------------------------------------------------------------------------------
+
+17. The attribute_exists routine returns either 0 or 1 signifying whether a
+    attribute exists in the currently open file
+
+        attribute_exists( char *variable_name )
+
+--------------------------------------------------------------------------------
+
+An example of how the library routines would be defined in a c program:
+
+extern void  open_cdf( char *, int, ... );
+extern float interpolate_batsrus_cdf( char *, float, float, float, int, int,
+                                    ... );
+extern float interpolate_ucla_ggcm_cdf( char *, float, float, float, int, int,
+                                        ... );
+extern void  close_cdf( void );
+extern char  * get_units( char * );
+extern char  * gattribute_char_get( char * );
+extern float gattribute_float_get( char *);
+extern long  init_time( char *, double *, double * );
+extern float time_interpolate( char *, double, float, float, float );
+extern void  * gattribute_get( char *);
+extern void  * vattribute_get( char *, char *);
+extern void  * var_get( char *, char *, int * );
+extern int   is_var_in_memory( char *);
+extern int   var_exists( char *);
+extern int   attribute_exists( char *);
+
+...OR you could just include the kameleon.h header file in you code which
+defines all of the available routines:
+
+    #include "kameleon.h"
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+                                FORTRAN Interface
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+
+The fortran interface is provided to make calling c from fortran more user
+friendly.  You may notice that the function declarations here have an underscore
+appended to the the funnction name.  This is because the fortran compiler
+appends an undersore to the c function and thus we need to add this so the
+symbols match. When calling one of these routines from fortran, NO underscore is
+needed as it is automatically added by the fortran compiler.  Some compilers
+such as GNU FORTRAN ( g77 / gfortran ) actually append two underscores to the
+fuction name. This can sometimes be countered with an option such as
+-fno-second-underscore. This distribution will automatically build the sample
+fortran driver programs with the appropriate fortran flags if possible.  If your
+specific fortran compiler is not accounted for in this distribution, you may be
+able to circumvent the "double underscore' issue by simply adding an underscore
+to the function call in your fortran program.
+
+--------------------------------------------------------------------------------
+
+
+1. The f2c_open_cdf routine
+
+    long f2c_open_cdf_( char *cdf_name ) - the f2c_open_cdf function is called
+                                        for each cdf file that data is to be
+                                            extracted from and has one required
+                                           argument.
+
+        cdf_name - character string that references the path/filename of the cdf
+                file that contains data to be interpolated
+
+    NOTE 1: strlen( cdf_name ) < CDF_PATHNAME_LEN as defined in cdf.h - for
+            CDF2.7 = 128, for CDF 3.0 = 512
+
+
+    NOTE 2: Main Memory Option is NOT currently available through the FORTRAN
+            interface.
+
+Example 1:
+
+    char*150 cdf_name
+
+    cdf_name='my_data_file.cdf '
+
+    NOTE: blank space --------^-------- terminates the string
+
+    f2c_open_cdf( cdf_name )
+
+--------------------------------------------------------------------------------
+
+2 - 5 THE interpolation routines:
+
+    float f2c_interp_bats_cdf_( double *x, double *y, double *z,
+                                double *variable_return_value,
+                                char *variable_name )
+
+    float f2c_interp_open_ggcm_cdf_( double *x, double *y, double *z,
+                                    double *variable_return_value,
+                                    char *variable_name )
+
+    float f2c_interp_ctip_cdf_( double *x, double *y, double *z,
+                                double *variable_return_value,
+                                char *variable_name )
+
+    float f2c_interp_enlil_cdf_( double *x, double *y, double *z,
+                                 double *variable_return_value,
+                                 char *variable_name )
+
+The interpolation functions have five required arguments. The fourth argument,
+( variable_return_value) is set to the interpolated value for the variable
+specified at the given position.
+
+  x,y,z - position at which variable will be interpolated
+
+  variable_return_value - variable declared in calling fortran program.  The
+                          variable address is then passed to the C routine which
+                          updates the value by writing directly to memory.  When
+                          the f2c_interp_*_cdf routine returns control, the
+                          calculated value will be available to the calling
+                          function
+
+  variable_name - name of variable to be interpolated
+
+
+  NOTE:    Main Memory Option is currently NOT available through this interface.
+
+
+Example:
+
+    integer return_status
+    real*8 X,Y,Z, variable_value_2_be_set
+    char*150 variable_name
+
+    variable_name='my_variable_name '
+
+    NOTE: blank space -------------^
+
+    return_status = f2c_interp_bats_cdf( X, Y, Z, variable_value_2_be_set,
+                                         variable_name );
+
+    NOTE: variable_value_2_be_set will now contain the interpolated data value
+    for specified variable and position
+
+--------------------------------------------------------------------------------
+
+6. The f2c_close_cdf routine
+
+    void f2c_close_cdf_( void ) - gracefully closes the current/open cdf file
+                                  and also cleans up internal memory.
+
+Example:
+
+  f2c_close_cdf_();
+
+--------------------------------------------------------------------------------
+
+7. The f2c_gattribute_char_get routine
+
+Extract a global attribute string value from the current cdf file and then
+allocate and set the string value in the memory location passed by calling
+program.  Returns the string length of the global attribute string value.
+
+    long f2c_gattribute_char_get_( char *global_attribute_name,
+                                   char *global_attribute_value )
+
+Example:
+
+  char*250 global_attribute_string_value
+  char*150 global_attribute_name
+  integer string_length
+
+  global_attribute_name='start_time '
+
+  NOTE: blank space ---------------^
+
+  string_length = f2c_gattribute_char_get( global_attribute_name,
+                                           global_attribute_string_value );
+
+--------------------------------------------------------------------------------
+
+8. The f2c_gattribute_float_get routine
+
+Extract a global attribute floating point value from the current cdf file
+
+long f2c_gattribute_float_get_( char *global_attribute_name,
+                                float *global_attribute_value )
+
+Example:
+
+  real*4 global_attribute_float_value
+  char*150 global_attribute_name
+  integer return_status
+
+  global_attribute_name='elapsed_time_in_seconds '
+
+  NOTE: blank space ----------------------------^
+
+  return_status = f2c_gattribute_float_get( global_attribute_name,
+                                            global_attribute_float_value );
+
+--------------------------------------------------------------------------------
+
+9. The f2c_gattribute_int_get routine
+
+Extract a global attribute integer value from the current cdf file
+
+long f2c_gattribute_int_get_( char *global_attribute_name,
+                              float *global_attribute_value )
+
+Example:
+
+  integer global_attribute_int_value
+  char*150 global_attribute_name
+  integer return_status
+
+  global_attribute_name='grid_system_count '
+
+  NOTE: blank space ----------------------^
+
+  return_status = f2c_gattribute_int_get( global_attribute_name,
+                                          global_attribute_int_value );
+
+--------------------------------------------------------------------------------
+
+10. The f2c_init_time routine
+
+Generates a tree structure containing time a file name information for a
+specified set of model output files.  Subsequent calls to the time_interpolate
+routine with a specified target time, make use of the tree structure stored
+file-time info to find files with times <= & >= target time.
+
+int f2c_init_time_( char *directory_path_string,
+                    double *start_time, double *end_time )
+
+  directory_path_string - full path of the directory containing the ccmc
+                          standardized model output files
+
+  start_time -  address of variable declared within driver code but set inside
+                init_time function.  Value represents the initial start_time of
+                the simulation ie. time for first time step/output file.
+
+  end_time - address of variable declared within driver code but set inside
+             init_time function.  Value represents the end_time of the
+             simulation ie. time for last time step/output file
+
+NOTE:  The format of the time variables are cdf epoch time which is the number
+of milliseconds since January 01, 0000.  For example, a batsrus cdf file with
+the name:
+
+  3d__ful_1_20000101_020000_0142.out.cdf
+
+has a date and time of the form
+
+    yyyymmdd_HHMMSS_msec
+    20000101_020000_0142
+    January 01, 2000 @ 02:00:00
+
+so for this particular date & time, the corresponding cdf epoch time would be
+
+    63113911200143.000000 milliseconds
+
+Once you have the start_time & end_time values set by the init_time function,
+you can call the time_interpolate routine using any time within that range.  To
+increment the start time by 30 minutes you would add 1800000.0 milliseconds to
+the start_time variable value.
+
+NOTE:  You have to take Leap Years into consideration when calculating time.
+Since the average number of days in a year is technically 365.2425, this is the
+best number to use instead of just 365.  Using 365 will introduce an error of 1
+day every four years were 365.2425 will only introduce an error of one day every
+3,236 years.
+
+--------------------------------------------------------------------------------
+
+11. The f2c_time_interpolate routine
+
+Used to interpolate data at a specified point for a given time
+
+long f2c_time_interpolate_( double *target_time, double *x, double *y,
+                            double *z, char *variable_name,
+                            double *variable_value )
+
+  target_time - must be greater than or equal to start_time and less than or
+                equal to the end_time ( CDF_EPOCH FORMAT ).
+
+NOTE: start_time & end_time values are set with f2c_init_time() routine
+
+  x,y,z - positions for which a value will be interpolated
+
+  variable_name - name of variable to be interpolated
+
+  variable_value -  variable declared in calling fortran program.  The variable
+                    address is then passed to the C routine which updates the
+                    value by writing directly to memory.  When
+                    f2c_time_interpolate routine returns control, the calculated
+                    value will be available
+
+--------------------------------------------------------------------------------
+
+12. The f2c_vattribute_char_get routine
+
+Extract a variable attribute string value from the current cdf file and set
+value in memory location passed by calling program.  Return string length of
+variable attribute string value.
+
+long f2c_vattribute_char_get_( char *variable_name,
+                               char *variable_attribute_name,
+                               char *variable_attribute_value )
+
+Example:
+
+  char*150 variable_name
+  char*150 variable_attribute_string_value
+  char*150 variable_attribute_name
+  integer string_length
+
+  variable_attribute_name='description '
+
+  NOTE: blank space ------------------^
+
+  string_length = f2c_vattribute_char_get(  variable_name,
+                                            variable_attribute_name,
+                                            variable_attribute_string_value );
+
+--------------------------------------------------------------------------------
+
+13. The f2c_vattribute_float_get routine
+
+Extract a variable attribute floating point value from the current cdf file
+
+long f2c_vattribute_float_get_( char *variable_name,
+                                char *variable_attribute_name,
+                                float *variable_attribute_float_value )
+
+Example:
+
+  char*150 variable_name
+  real*4 variable_attribute_float_value
+  char*150 variable_attribute_name
+  integer return_status
+
+  variable_attribute_name='mask '
+
+  NOTE: blank space -----------^
+
+  return_status = f2c_vattribute_float_get( variable_name,
+                                            variable_attribute_name,
+                                            variable_attribute_float_value );
+
+--------------------------------------------------------------------------------
+
+14. The f2c_vattribute_int_get routine
+
+Extract a variable attribute integer value from the current cdf file
+
+long f2c_vattribute_int_get_( char *variable_name,
+                              char *variable_attribute_name,
+                              float *variable_attribute_int_value )
+
+Example:
+
+  char*150 variable_name
+  integer variable_attribute_int_value
+  char*150 variable_attribute_name
+  integer return_status
+
+  variable_attribute_name='is_vector_component '
+
+  NOTE: blank space --------------------------^
+
+  return_status = f2c_vattribute_int_get(   variable_name,
+                                            variable_attribute_name,
+                                            variable_attribute_int_value );
+
+--------------------------------------------------------------------------------
+
+An example of how the library routines would be defined in a FORTRAN program:
+
+external f2c_open_cdf, f2c_close_cdf
+external f2c_interp_open_ggcm_cdf, f2c_interp_bats_cdf
+external f2c_init_time, f2c_time_interpolate
+integer  f2c_gattribute_char_get
+external f2c_gattribute_char_get
+external f2c_gattribute_int_get
+external f2c_gattribute_float_get
+external f2c_vattribute_char_get
+integer f2c_vattribute_char_get
+external f2c_vattribute_float_get
+external f2c_vattribute_int_get
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+                          FORTRAN Interface Caveats
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+1.  The Underscore issue.  The FORTRAN callable C routines are defined with
+    one ie. f2c_open_cdf_()
+
+    You may have noticed that the function declarations here have an underscore
+    appended to the the funnction name.  This is because the fortran compiler
+    appends an undersore to the c function and thus we need to add this so the
+    symbols match. When calling one of these routines from fortran, NO
+    underscore is needed as it is automatically added by the fortran compiler.
+    Some compilers such as GNU FORTRAN ( g77 / gfortran ) actually append two
+    underscores to the fuction name. This can sometimes be countered with an
+    option such as -fno-second-underscore. This distribution will automatically
+    build the sample fortran driver programs with the appropriate fortran flags
+    if possible.  If your specific fortran compiler is not accounted for in this
+    distribution, you may be able to circumvent the "double underscore' issue by
+    simply adding an underscore to the function call in your fortran program.
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+                                    BUGS
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+
+KNOWN BUGS ( GENERAL ):
+
+1.  The CDF full path and file name cannot exceed 128 characters if using
+    CDF2.7.  This is a restriction of CDF 2.7.  Filenames longer that 128
+    characters will be truncated and result in a CDF file not found or similar
+    error.
+
+    Use CDF3.0 which has CDF_PATHNAME_LEN = 512 vs 128.  NOTE:  Path and file
+    name lengths >= 512 will still be a problem unless you manually adjust the
+    CDF_PATHNAME_LEN macro in cdf.h
+
+2.  Int vs Long issue with 64 bit systems.  Paying more attention to functions
+    expecting long arguments as ints and longs are different sizes on
+    64 bit machines.
+
+3.  The 4D example programs give nan values sometimes for the last time and
+    position.
+
+    ... also, time interpolation may not be available for all model data...
+
+NOTABLES:
+
+1.  libg2c.so - g77 may need -lg2c flag.  Your compiler may not. The
+    location/existence of this file seems to differ as well from system to
+    system.
+
+    The Requirements section above goes into detail on how to adreess this
+    with the FORTRAN_LIB Makefile variable
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+                                IDL Interface
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+IDL Interface
+
+To use the available idl interface routines, they must be loaded into idl
+through LINKIMAGE.
+
+for MAC OSX systems the idl interface library is called:
+
+  idl2kameleon.bundle
+
+for NON-MAC OSX systems the idl interface library is called:
+
+  idl2kameleon.so
+
+--------------------------------------------------------------------------------
+
+Loading a routine in idl:
+
+From the command line enter:
+
+LINKIMAGE, 'idl2c_var_get', 'idl2kameleon.so', 1, 'idl2c_var_get'
+
+...this loads the idl2c_var_get routine into idl's internal system routine
+table.  The loaded function will now behave like an internal idl
+function/routine.
+
+--------------------------------------------------------------------------------
+
+Calling an idl2kameleon interface routine:
+
+Continuing from the example above, to call idl2c_var_get:
+
+my_idl_array = idl2c_var_get(
+            "/Volumes/external_hd_hfs_storage 1/CTIP_CDF/3d_ctip_n005.dat.cdf",
+            "H")
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+                            IDL Interface Modules
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+1. idl2c_var_get
+
+Returns an array of type IDL_VPTR.  The array contains all of the values for a
+specific variable.  The routine expects two arguments:
+
+IDL_VPTR idl2c_var_get( int argc, IDL_VPTR argv[] )
+
+  (1)full path and file name of data file (2) variable_name
+
+
+example:
+
+my_idl_array = idl2c_var_get(
+            "/Volumes/external_hd_hfs_storage 1/CTIP_CDF/3d_ctip_n005.dat.cdf",
+            "H")
+
+...this will return all of the H values in an array for the file
+3d_ctip_n005.dat.cdf
+
+--------------------------------------------------------------------------------
+
+2. idl2c_vattribute_get
+
+Returns an value of type IDL_VPTR.  The value will be the variable attribute for
+a specified file, variable name, and variable attribute name.  The routine
+expects three arguments:
+
+IDL_VPTR idl2c_vattribute_get( int argc, IDL_VPTR argv[] )
+
+  (1) full path and file name of data file
+  (2) variable name
+  (3) variable attribute name
+
+example:
+
+my_var_attr_value = idl2c_gattribute_get(
+            "/Volumes/external_hd_hfs_storage 1/CTIP_CDF/3d_ctip_n005.dat.cdf",
+            "N_e",
+            "units" )
+
+...this will return the units variable attribute for the variable N_e from the
+file 3d_ctip_n005.dat.cdf
+
+--------------------------------------------------------------------------------
+
+3. idl2c_gattribute_get
+
+Returns an value of type IDL_VPTR.  The value will be the variable attribute for
+a specified file, variable name, and variable attribute name.  The routine
+expects two arguments:
+
+IDL_VPTR idl2c_gattribute_get( int argc, IDL_VPTR argv[] )
+
+  (1) full path and file name of data file
+  (2) global attribute name
+
+example:
+
+my_global_attr_value = idl2c_gattribute_get(
+            "/Volumes/external_hd_hfs_storage 1/CTIP_CDF/3d_ctip_n005.dat.cdf",
+            "README")
+
+...this will return the README global attribute from the file
+3d_ctip_n005.dat.cdf
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+                        Sample Driver Programs & Examples
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+
+The kameleon-interpolator software comes with several sample programs as well as
+compile examples. The examples/ directory contains the source code for the
+sample programs.  These sample programs have very simple command line argument
+parsing schemes ie. ARGV & ARGC.  Please take note of the expected
+arguments outlined below as there currently is NO input validation for the dummy
+drivers except for argument counting verification.
+
+--------------------------------------------------------------------------------
+
+attr_get_test.c - takes a cdf file name as the lone command line argument and
+                  extracts several hard coded attributes from the file
+
+--------------------------------------------------------------------------------
+
+var_get_example.c - takes a cdf file name and variable name and extracts all of
+                    the values for the specified variable and stores them in an
+                    array.  The example program print every 10th value of the
+                    array from 0 to n
+
+--------------------------------------------------------------------------------
+
+NOTE: The interp* example programs have the following naming convention:
+
+Field 1  Field 2            Field 3                     Field 4
+<interp>_<short model name>_<memory option( mem/no_mem)>[_delta].c
+
+where     Field 3 specifies if the main memory option is used - mem or no_mem
+and       Field 4, if present specifies if the spatial grid resolution
+          ( delta ) return option was used
+
+interp_bats_no_mem_delta.c - takes cdf_file_name, variable_name, x1_pos, y1_pos,
+                             z1_pos, sample_factor, x2_pos as arguments and
+                             interpolates values in range x1_pos - x2_pos
+interp_bats_no_mem.c
+interp_bats_mem.c
+interp_bats_mem_delta.c
+
+interp_ucla_mem.c
+interp_ucla_mem_delta.c
+interp_ucla_no_mem.c
+interp_ucla_no_mem_delta.c
+
+interp_ctip_mem.c
+interp_ctip_mem_delta.c
+interp_ctip_no_mem.c
+interp_ctip_no_mem_delta.c
+
+interp_enlil_mem.c
+interp_enlil_mem_delta.c
+interp_enlil_no_mem.c
+interp_enlil_no_mem_delta.c
+
+interp_mas_mem.c
+interp_mas_mem_delta.c
+interp_mas_no_mem.c
+interp_mas_no_mem_delta.c
+
+basic_ucla_ggcm_interp_example.c - takes cdf_file_name, x_pos, y_pos, z_pos as
+                                   arguments and ingests entire data set and
+                                   then interpolates every variable values at
+                                   given point three times reading data set into
+                                   memory each time to exercise/test mem option
+basic_bats_interp_example.c
+
+time_interp_example.c - takes full_path_for_data_set, variable_name, x_pos,
+                        y_pos, z_pos, time_step_in_milliseconds and interpolates
+                        data for specified variable at the specified position
+                        for every time in simulation where time = start_time,
+                        time <= end_time,
+                        time = start_time + time_step_in_milliseconds
+
+FORTRAN EXAMPLES
+
+f2c_4D_interpolation.f - FORTRAN version of time_interp_example.c
+
+f2c_attribute_get_example.f - FORTRAN version of attr_get_test.c
+
+f2c_interp_batsrus.f - FORTRAN version of interp_*_no_mem.c
+f2c_interp_open_ggcm.f
+
+--------------------------------------------------------------------------------
+
+NOTE: The compile_examples.txt file illustrates how to compile the sample
+    programs.
+
+--------------------------------------------------------------------------------
+
+********************************************************************************
+*                                                                              *
+*                             Section IV    Updates                            *
+*                                                                              *
+********************************************************************************
+
+NOTE: For Detailed Version Tracking, see the ChangeLog file that acompanies this
+distribution.
+
+                    .
+                    .
+                    .
+
+10.2006 open_cdf -  modifications to the way the software handles requests to
+                    store variables into main memory for interpolation. The
+                    original design of the interpolation interface was based on
+                    the idea that users would open one file at a time and know
+                    what variables they wanted in main memory at the outset.
+                    The original interface stored variable values that were
+                    specified during the open command and cleaned up the memory
+                    during close.  The library was not designed to handle
+                    multiple open calls for the purpose of loading new/more
+                    variables into memory. The modified version addresses this
+                    by using a dynamic linked list structure to store the actual
+                    variable names that have been read into main memory. The
+                    library now is able to handle multiple and redundant open
+                    calls as it will not reload or clobber already stored
+                    variables.  The software also keeps track of the actual file
+                    whose  contents are stored in memory.  Since the open call
+                    performs a host of preliminary processing on an individual
+                    file the first time it is encountered, there is no need to
+                    re initialize the same file on subsequent open calls.
+                    Keeping track of the current file allows the open function
+                    to skip initialization if possible and just load the
+                    specified data into memory.
+
+                    .
+                    .
+                    .
+
+v4.3.0+             For versions 4.3.0 and beyond, the examples c programs will
+                    use the kameleon.h header file.  This means there will no
+                    longer be extern declarations in the example programs.  They
+                    will also need to be compiled with -I./inc or the specific
+                    location of the kameleon.h file.
+
+--------------------------------------------------------------------------------
+
+Please provide feedback in the form of questions, comments, suggestions,
+bug-reports, experiences, etc...
+
+CONTACT:
+
+kameleon_support@listserv.gsfc.nasa.gov
+
+Marlo Maddox
+NASA / Goddard Space Flight Center
+Community Coordinated Modeling Center / Space Weather Laboratory Code 674
+Information Systems Division/Science Data Management Analysis Branch Code 587
+Greenbelt, MD 20771
+Building 21 Rm. 214
+Phone:  301.286.5202
+email:  Marlo.M.Maddox@nasa.gov
+
+--------------------------------------------------------------------------------
+
