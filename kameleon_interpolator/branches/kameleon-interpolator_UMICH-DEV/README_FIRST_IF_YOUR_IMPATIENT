@@ -1,0 +1,25 @@
+For quick compile options type:
+
+ 	make help
+
+ ...which gives you:
+
+
+*********************************** HELP ***********************************
+
+You can set several Makefile variables during invocation of make...
+
+Required?     Description         Variable        Example
+--------     -----------------   ------------    ---------------------------------------------
+  YES         CDF Library         LIB_CDF         LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a
+  YES         CDF Include Files   CDF_INC         CDF_INC=/Applications/cdf31-dist/include/
+  NO          C Compiler          CC              CC=gcc
+  NO          FORTRAN Compiler    F77             F77=gfortran
+  NO          FORTRAN Libraries   FORTRAN_LIB     FORTRAN_LIB=-L/usr/local/lib/x86_64
+  NO          IDL Include Files   IDL_INC_DIR     IDL_INC_DIR=/Applications/itt/idl64/external
+----------------------------------------------------------------------------------------------
+Example:
+
+  make CC=gcc F77=gfortran CDF_INC=/Applications/cdf31-dist/include/ LIB_CDF=/Applications/cdf31-dist/lib/libcdf.a IDL_INC_DIR=/Applications/itt/idl64/external
+
+*********************************** HELP ***********************************
