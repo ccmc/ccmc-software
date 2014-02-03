@@ -1,9 +1,0 @@
-<map id="NanoKdTree&lt; num_t &gt;" name="NanoKdTree&lt; num_t &gt;">
-<area shape="rect" id="node2" href="$classnanoflann_1_1_k_d_tree_single_index_adaptor.html" title="nanoflann::KDTreeSingleIndex\lAdaptor\&lt; Distance, DatasetAdaptor,\l DIM, IndexType \&gt;" alt="" coords="893,208,1157,264"/>
-<area shape="rect" id="node4" href="$structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_node.html" title="nanoflann::KDTreeSingleIndex\lAdaptor\&lt; Distance, DatasetAdaptor,\l DIM, IndexType \&gt;::Node" alt="" coords="485,109,749,165"/>
-<area shape="rect" id="node6" href="$structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_interval.html" title="nanoflann::KDTreeSingleIndex\lAdaptor\&lt; Distance, DatasetAdaptor,\l DIM, IndexType \&gt;::Interval" alt="" coords="107,175,371,231"/>
-<area shape="rect" id="node7" href="$structnanoflann_1_1_k_d_tree_single_index_adaptor_params.html" title="nanoflann::KDTreeSingleIndex\lAdaptorParams" alt="" coords="507,241,727,282"/>
-<area shape="rect" id="node8" href="$classnanoflann_1_1_pooled_allocator.html" title="nanoflann::PooledAllocator" alt="" coords="518,307,717,333"/>
-<area shape="rect" id="node9" href="$struct_point_cloud.html" title="PointCloud\&lt; num_t \&gt;" alt="" coords="945,311,1105,337"/>
-<area shape="rect" id="node11" href="$struct_point_cloud_1_1_point.html" title="PointCloud\&lt; T \&gt;::Point" alt="" coords="152,365,325,392"/>
-</map>
