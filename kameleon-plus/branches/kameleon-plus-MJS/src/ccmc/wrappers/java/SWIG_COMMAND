@@ -1,0 +1,1 @@
+/usr/local/bin/swig -outcurrentdir -java -c++ -I../../.. -package gov.nasa.gsfc.ccmc -I/Applications/cdf34_1-dist/include/ ../ccmc.i
