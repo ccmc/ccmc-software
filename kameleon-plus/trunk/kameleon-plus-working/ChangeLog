@@ -1,3 +1,10 @@
+1014 April 8 Asher Pembroke
+-------------
+kameleon-plus-6.0.0
+- New CMake out-of-source build system (see README)
+- Supports kameleon-java converted LFM files in CDF or HDF5 format
+
+
 2012 Oct 11   David Berrios
 -------------
   kameleon-plus-0.3.15
@@ -283,4 +290,3 @@
    
    
 
-   
