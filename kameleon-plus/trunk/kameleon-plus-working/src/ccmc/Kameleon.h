@@ -144,6 +144,8 @@ namespace ccmc
 			static long _date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
 			static double _gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
 
+			Model * model;
+
 		private:
 
 			boost::unordered_map<std::string, std::string> variableNativeUnits;
@@ -160,7 +162,6 @@ namespace ccmc
 			boost::unordered_map<std::string, std::vector<long> > listOfRequiredVariablesForVectorsByID;
 
 
-			Model * model;
 			void clearMaps();
 			void initializeUnits();
 			void initializeSIUnits();
