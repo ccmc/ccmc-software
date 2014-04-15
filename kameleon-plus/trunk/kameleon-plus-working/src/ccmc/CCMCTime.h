@@ -14,6 +14,7 @@ namespace ccmc
 			Time(const std::string& epochString);
 			Time(double epoch);
 			Time();
+			~Time();
 
 			short getDay() const;
 			void setDay(short day);

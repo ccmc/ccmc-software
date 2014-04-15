@@ -6,7 +6,7 @@
 #include "Tracer.h"
 #include "Point3f.h"
 #include <boost/lexical_cast.hpp>
-#include <StringConstants.h>
+#include "StringConstants.h"
 //#define DEBUG_TRACER
 #define DEPRECATED_WARNING
 
@@ -31,6 +31,35 @@ namespace ccmc
 		initializeComponentNamesMap();
 
 		interpolator = kameleon->createNewInterpolator();
+		interpolatorAllocated = true;
+
+		step_max = 2000;
+		useMaxArcLength = false;
+		useROI = false;
+		//std::cout << "created Tracer object" << std::endl;
+		if (kameleon->getModelName() == ccmc::strings::models::enlil_ ||
+				kameleon->getModelName() == ccmc::strings::models::mas_)
+		{
+			r_end = 1.f;
+		} else
+			r_end = 3.0f;
+
+#ifdef DEBUG_TRACER
+		cerr << "After setting box dimensions" << endl;
+#endif
+	}
+
+	Tracer::Tracer(Kameleon * kameleon, Interpolator * interpolator)
+	{
+		//	cout << "Tracer object created" << endl;
+		this->kameleon = kameleon;
+		missing = kameleon->getMissingValue();
+		dn = .2f;
+
+		initializeComponentNamesMap();
+
+		this->interpolator = interpolator;
+		interpolatorAllocated = false; //caller will be responsible for deallocation
 
 		step_max = 2000;
 		useMaxArcLength = false;
@@ -217,9 +246,11 @@ namespace ccmc
 	 */
 	Tracer::~Tracer()
 	{
-		delete interpolator; //A.Pembroke added June 2013
+		if (interpolatorAllocated)
+		{
+			delete interpolator;
+		}
 		//cout << "Tracer object destroyed" << endl;
-
 	}
 
 	/**
@@ -326,7 +357,7 @@ namespace ccmc
 			f.insertPointData(f1Positions[i], f1Data[i]);
 		}
 		f.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
-//		delete interpolator; //A.Pembroke removed
+		f.setStartIndex(f2.size()-1);
 		return f;
 
 	}
@@ -360,7 +391,6 @@ namespace ccmc
 //		std::cerr << "after the first trace" << std::endl;
 		if (f1.size() == 0)
 		{
-//			delete interpolator; A. Pembroke removed
 			return f1;
 		}
 		f1.removePoint(0);
@@ -380,9 +410,10 @@ namespace ccmc
 		}
 		if (f2.size() == 0)
 		{
-//			delete interpolator; A. Pembroke removed
 			return f1;
 		}
+		int startIndex;
+		startIndex = f2.size();
 
 		//Fieldline f;
 		f2.reverseOrderInPlace();
@@ -393,8 +424,7 @@ namespace ccmc
 			f2.insertPointData(f1Positions[i], f1Data[i]);
 		}
 		f2.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
-
-//		delete interpolator;  A. Pembroke removed
+		f2.setStartIndex(startIndex);
 		return f2;
 	}
 
@@ -425,7 +455,7 @@ namespace ccmc
 			f = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, dir);
 		}
 		f.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
-//		delete interpolator; A. Pembroke removed
+		f.setStartIndex(0);
 		return f;
 	}
 
@@ -457,7 +487,7 @@ namespace ccmc
 			f = sphericalTrace(variable, startComponent1, startComponent2, startComponent3, interpolator, dir);
 		}
 		f.setStartPoint(Point3f(startComponent1, startComponent2, startComponent3));
-//		delete interpolator; A. Pembroke removed
+		f.setStartIndex(0);
 		return f;
 	}
 
@@ -963,22 +993,6 @@ namespace ccmc
 		return dt;
 	}
 
-	/**
-	 * TODO: finish documentation
-	 */
-	Point3f Fieldline::getStartPoint()
-	{
-		return startPoint;
-	}
-
-	/**
-	 * TODO: finish documentation
-	 * @param startPoint
-	 */
-	void Fieldline::setStartPoint(Point3f startPoint)
-	{
-		this->startPoint = startPoint;
-	}
 
 	/**
 	 * TODO: finish documentation
@@ -1728,6 +1742,7 @@ namespace ccmc
 			/** always add the last point too, since i was reduced by one*/
 			interpolatedFieldline.insertPointData(positions[positions.size() - 1], data[data.size() - 1]);
 			interpolatedFieldline.setStartPoint(currentFieldline.getStartPoint());
+			interpolatedFieldline.setStartIndex(currentFieldline.getStartIndex());
 			fieldlines.push_back(interpolatedFieldline);
 		}
 		return fieldlines;

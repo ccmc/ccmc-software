@@ -13,7 +13,7 @@
 #include "StringConstants.h"
 #include "GeneralFileReader.h"
 #include <iostream>
-#include <nanoflann.hpp>
+#include "nanoflann.hpp"
 #include "math.h"
 
 namespace ccmc
@@ -107,7 +107,7 @@ namespace ccmc
 		loadVariable("ek");
 
 		std::vector<float> * pDensity = getLFMVariable("rho");//this->variableData["rho"]; //already loaded
-		std::vector<float> * pEx = new std::vector<float>(pDensity->size());
+		std::vector<float> * pEx = new std::vector<float>(pDensity->size()); //ni*nj*nk
 		std::vector<float> * pEy = new std::vector<float>(pDensity->size());
 		std::vector<float> * pEz = new std::vector<float>(pDensity->size());
 
@@ -131,9 +131,9 @@ namespace ccmc
 		for (int k = 0; k<nk; k++){
 			for (int j = 0; j<nj; j++){
 				for (int i = 0; i < ni; i++){
-					ei_average = averageFace(pEi, 0, i,j,k, ni,njp1); //fixed i
-					ej_average = averageFace(pEj, 1, i,j,k, nip1,nj); //fixed j
-					ek_average = averageFace(pEk, 2, i,j,k, nip1,njp1); //fixed k
+					ei_average = averageFace(pEi, 0, i,j,k, nip1,njp1); //fixed i (nip1,njp1) from ni,njp1
+					ej_average = averageFace(pEj, 1, i,j,k, nip1,njp1); //fixed j (nip1,njp1) from nip1,nj
+					ek_average = averageFace(pEk, 2, i,j,k, nip1,njp1); //fixed k (nip1,njp1) from nip1,njp1
 
 					//components of vector between i, i+1 faces
 					di_x = averageFace(px, 0, i+1,j,k, nip1,njp1) - averageFace(px, 0, i,j,k, nip1,njp1);// units: [cm]
@@ -164,7 +164,7 @@ namespace ccmc
 					(*pEx)[getIndex(i,j,k,nip1,njp1)] = (Vector<float>::triple(et,cy,cz))*determinant*conversion;
 					(*pEy)[getIndex(i,j,k,nip1,njp1)] = (Vector<float>::triple(cx,et,cz))*determinant*conversion;
 					(*pEz)[getIndex(i,j,k,nip1,njp1)] = (Vector<float>::triple(cx,cy,et))*determinant*conversion;
-
+					// (i,j,k,nip1,njp1) data arrays indexed by lfm corners
 					// volume = Vector<float>::triple(cx,cy,cz) //[cm^3]
 				}
 			}

@@ -4,9 +4,9 @@
  *  Created on: July 12, 2011
  *      Author: David Berrios
  */
-#include "config.h"
-
-#ifdef HAVE_LIBHDF5_CPP
+// #include "config.h"
+#include "Kameleon-plus-Config.h" //controlled by CMakeLists.txt
+#ifdef HAVE_HDF5 
 #include "HDF5FileReader.h"
 #include <string>
 #include <vector>
@@ -1072,4 +1072,4 @@ namespace ccmc
 			close();
 	}
 }
-#endif /* #ifdef HAVE_LIBHDF5_CPP */
+#endif /* HAVE_HDF5 */
