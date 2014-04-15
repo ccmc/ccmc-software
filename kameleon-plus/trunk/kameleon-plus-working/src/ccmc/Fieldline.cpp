@@ -21,6 +21,7 @@ namespace ccmc
         maxcount = 0;
 		GlobMinIndex = 0;
 		GlobMaxIndex = 0;
+		startIndex = 0;
 	}
 
 	/**
@@ -34,6 +35,7 @@ namespace ccmc
         maxcount = 0;
 		GlobMinIndex = 0;
 		GlobMaxIndex = 0;
+		startIndex = 0;
 	}
 
 	/**
@@ -53,6 +55,11 @@ namespace ccmc
 	{
 		positions.push_back(p);
 		values.push_back(d);
+	}
+
+	void Fieldline::insertVectorData(const Point3f& vector) //vectorValue must match positions
+	{
+		vectorValues.push_back(vector);
 	}
 
 	/**
@@ -160,8 +167,44 @@ namespace ccmc
 	 */
 	void Fieldline::removePoint(int index)
 	{
-		positions.erase(positions.begin() + index);
-		values.erase(values.begin() + index);
+		if (index < positions.size()){
+			positions.erase(positions.begin() + index);
+		}
+		if (index < values.size()){
+			values.erase(values.begin() + index);
+		}
+		if (index < vectorValues.size()){
+			vectorValues.erase(vectorValues.begin() + index);
+		}
+
+		if (index < length.size()){ //arc length will be unmodified
+			length.erase(length.begin()+index);
+		}
+
+		/*
+			p0    p1   p2   p3            p0       p1   p2                 p0   p1   p2 
+			 |----|----|----|     -p1 =>  |---------|----|   -p0|-p3 => ---|----|----|--- 
+			   e0   e1   e2                   e0      e1                   e0   e1   e2 
+		*/
+		if (elements.size() > 0){ 
+			if ((index > 0)&&(index < elements.size())){
+				elements[index-1] = elements[index-1]+elements[index];
+				elementsMagnitudes[index-1] = elements[index-1].magnitude();
+				elements.erase(elements.begin() + index);
+				elementsMagnitudes.erase(elementsMagnitudes.begin() + index);
+			}
+			else{
+				if (index == elements.size()){ 
+					elements.pop_back();
+					elementsMagnitudes.pop_back();
+				}
+				if (index == 0){
+					elements.erase(elements.begin());
+					elementsMagnitudes.erase(elementsMagnitudes.begin());
+				}
+			}
+		}
+		
 	}
 	const std::vector<Point3f>& Fieldline::getElements()
 	{
@@ -212,6 +255,10 @@ namespace ccmc
 	const std::vector<float>& Fieldline::integrate()
 	{
 		int size = this->positions.size();
+		if (elements.size() == 0)
+		{
+			getDs();
+		}
 		// length.push_back(0);
 		integral.push_back(0);
 		// First get the curve elements ds
@@ -224,6 +271,39 @@ namespace ccmc
 		integral.push_back(elementsMagnitudes[i]*(values[i]+values[i+1])/2+integral[i]);
 		}
 		return integral;
+
+	}
+	/**
+	 * Calculate the integral of (vector) dot dl over the length of the field line
+	 */
+	const std::vector<float>& Fieldline::integrateVector()
+	{
+//		std::cout<<"entered integrateVector()\n";
+		float integrand = 0.0;
+		vectorIntegral.push_back(integrand);
+		if (elements.size() == 0)
+		{
+			getDs();
+		}
+
+		if ((elements.size() != 0) && (vectorValues.size() == elements.size()+1))
+		{
+//			std::cout<<"integrating vectors along fieldline. Number of elements:"<<elements.size()<<"\n";
+			for (int i = 0; i < elements.size(); i++)
+			{
+				Point3f vAverage = (vectorValues[i] + vectorValues[i+1])*.5;
+				integrand += elements[i].component1 * vAverage.component1 +
+						elements[i].component2 * vAverage.component2 +
+						elements[i].component3 * vAverage.component3;
+				vectorIntegral.push_back(integrand);
+			}
+//			std::cout<<"done with vector integration.\n";
+		}
+		else{
+			std::cout<<"vectors and elements don't match; elements must be 1 less than vectors\n" 
+			<< "size of elements:" << elements.size() << "vectors:"<< vectorValues.size() << std::endl;
+		}
+		return vectorIntegral;
 
 	}
 
@@ -241,24 +321,30 @@ namespace ccmc
 	 * Measure the length of the field line up to point i
 	 */
 	const std::vector<float>& Fieldline::measure()
+	{
+		int size = this->positions.size();
+		if (elements.size() == 0)
 		{
-			int size = this->positions.size();
-			// length.push_back(0);
-			length.push_back(0);
-			// First get the curve elements ds
-			for (int i = 0; i < size-1; i++)
-			{
-			length.push_back(elementsMagnitudes[i]+length[i]);
-			}
-			return length;
-
+			getDs(); //sets elementsMagnitudes
 		}
+		length.push_back(0);
+		for (int i = 0; i < size-1; i++)
+		{
+		length.push_back(elementsMagnitudes[i]+length[i]);
+		}
+		return length;
+
+	}
 	/**
 	 * Get the length up to position i
 	 *
 	 */
 	float Fieldline::getLength(int i)
 	{
+		if (length.size() == 0)
+		{
+			measure();
+		}
 		return length[i];
 	}
 
@@ -398,6 +484,33 @@ namespace ccmc
 
 	}
 	// const std::vector<int >& minmax();
+
+
+	void Fieldline::setStartIndex(int startIndex)
+	{
+		this->startIndex = startIndex;
+	}
+	int Fieldline::getStartIndex()
+	{
+		return startIndex;
+	}
+
+	/**
+	 * TODO: finish documentation
+	 */
+	Point3f Fieldline::getStartPoint()
+	{
+		return startPoint;
+	}
+
+	/**
+	 * TODO: finish documentation
+	 * @param startPoint
+	 */
+	void Fieldline::setStartPoint(Point3f startPoint)
+	{
+		this->startPoint = startPoint;
+	}
 
 	void Fieldline::minmax()
 	{

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: Java Bindings for the Kameleon Plus library 
+Implementation-Version: 0.1.18
+Specification-Vendor: Community Coordinated Modeling Center
+Implementation-URL: http://ccmc.gsfc.nasa.gov/
+Implementation-Vendor: Community Coordinated Modeling Center
+Trusted-Library: true
+Implementation-Vendor-Id: gov.nasa.gsfc.ccmc

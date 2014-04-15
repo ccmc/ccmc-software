@@ -56,6 +56,7 @@ namespace ccmc
 			std::sort(timesteps.begin(), timesteps.end());
 			//std::reverse(timesteps.begin(), timesteps.end());
 			this->current_kameleon_files[time] = kameleon;
+			this->current_kameleon_interpolators[time] = kameleon->createNewInterpolator();
 		}
 		std::cout << "array: " << std::endl;
 		for (int i = 0; i < this->timesteps.size(); i++)
@@ -68,12 +69,13 @@ namespace ccmc
 	void TimeInterpolator::removeTimestep(const Time& time)
 	{
 		this->current_kameleon_files.erase(time);
+		this->current_kameleon_interpolators.erase(time);
 	}
 
 	std::vector<Time> TimeInterpolator::getTimesteps()
 	{
-		std::vector<Time> timesteps;
-		return timesteps;
+		// std::vector<Time> timesteps;
+		return this->timesteps;
 	}
 
 	/**
@@ -130,7 +132,7 @@ namespace ccmc
 		std::cout << "timesteps: " << TimeInterpolator::toString(timesteps[0]) << ": " << timesteps[0].getEpoch();
 		std::cout << " " << TimeInterpolator::toString(timesteps[1]) << ": " << timesteps[1].getEpoch() << std::endl;
 		int index = Utils<Time>::binary_search(this->timesteps, 0, this->timesteps.size(), time);
-std::cout << "manageMemory. index: " << index << std::endl;
+		std::cout << "manageMemory. index: " << index << std::endl;
 		//found the timestep(s)
 		if (index >-1)
 		{
@@ -222,25 +224,105 @@ std::cout << "manageMemory. index: " << index << std::endl;
 			}
 		}
 
+	Kameleon * TimeInterpolator::getKameleon(const Time& time)
+	{
+		int index = Utils<Time>::binary_search(this->timesteps, 0, this->timesteps.size(), time);
+		if (index > -1) //time within range; if t in [t0, t1], then t = t0, t1, or t > t0
+		{
+			std::cout <<"Time for Kameleon object is within range of available timesteps"<<std::endl;
+			if (current_kameleon_files.find(this->timesteps[index]) != this->current_kameleon_files.end())
+			{
+				std::cout<<"returning kameleon object for time: "<< timesteps[index].toString()<<std::endl;
+				return this->current_kameleon_files[timesteps[index]];	
+			} else //set the interpolator
+			{
+				std::cout<<"No kameleon object available, returning NULL"<<std::endl;
+				return NULL;
+			}
+		} else
+		{
+			std::cout << "Time for requested kameleon object is out of range of loaded timesteps, returning NULL." << std::endl;
+			return NULL;
+		}
 
+	}
+
+
+	Interpolator * TimeInterpolator::getInterpolator(const Time& time)
+	{
+		int index = Utils<Time>::binary_search(this->timesteps, 0, this->timesteps.size(), time);
+		Interpolator * a;
+		if (index > -1) //time within range; if t in [t0, t1], then t = t0, t1, or t > t0
+		{
+			std::cout <<"Time for interpolator is within range of available timesteps"<<std::endl;
+			//check that interpolator is loaded
+			if (current_kameleon_interpolators.find(this->timesteps[index]) != this->current_kameleon_interpolators.end())
+			{
+				std::cout<<"Interpolator already loaded" <<std::endl;
+				a = this->current_kameleon_interpolators[timesteps[index]];	
+			} else //set the interpolator
+			{
+				std::cout<<"Interpolator not loaded, creating new one and adding to map"<<std::endl;
+				a = this->current_kameleon_files[timesteps[index]]->createNewInterpolator();
+				this-> current_kameleon_interpolators[timesteps[index]] = a;
+			}
+			std::cout<<"returning interpolator for time: "<< timesteps[index].toString()<<std::endl;
+			return a;
+		} else
+		{
+			std::cout << "Time for requested interpolator is out of range of loaded timesteps, returning NULL." << std::endl;
+			return NULL;
+		}
+	}
 
 	float TimeInterpolator::interpolate(const Time& time, const std::string& variable, const float& c0, const float& c1, const float& c2)
 	{
 		int index = Utils<Time>::binary_search(this->timesteps, 0, this->timesteps.size(), time);
-		if (index > -1)
+		Interpolator * a;
+		if (index > -1) //time is within range of loaded timesteps
 		{
+			//replace with call to getInterpolator
+
 			if (time == this->timesteps[index])
 			{
-				Interpolator * a = this->current_kameleon_files[time]->createNewInterpolator();
+				//check that interpolator is loaded
+				if (current_kameleon_interpolators.find(this->timesteps[index]) != this->current_kameleon_interpolators.end())
+				{
+					a = this->current_kameleon_interpolators[time];	
+				} else //set the interpolator
+				{
+					a = this->current_kameleon_files[time]->createNewInterpolator();
+					this-> current_kameleon_interpolators[time] = a;
+				}
+				
 				float value = a->interpolate(variable, c0, c1, c2);
-				delete a;
+				// delete a; //when to delete this? prolly not here
 				return value;
-			} else
+			} else 
 			{
+				Interpolator * b;
 				Time atime = this->timesteps[index];
-				Time btime = this->timesteps[index+1];
-				Interpolator * a = this->current_kameleon_files[atime]->createNewInterpolator();
-				Interpolator * b = this->current_kameleon_files[btime]->createNewInterpolator();
+				Time btime = this->timesteps[index+1]; 
+				//Need to check if interpolators for atime and btime are loaded
+				if (current_kameleon_interpolators.find(atime) != this->current_kameleon_interpolators.end())
+				{
+					a = this->current_kameleon_interpolators[atime];
+				} else //store the interpolator
+				{
+					a = this->current_kameleon_files[atime]->createNewInterpolator();
+					this-> current_kameleon_interpolators[atime] = a;
+				}
+				if (current_kameleon_interpolators.find(btime) != this->current_kameleon_interpolators.end())
+				{
+					b = this->current_kameleon_interpolators[btime];
+				} else //store the interpolator
+				{
+					b = this->current_kameleon_files[btime]->createNewInterpolator();
+					this-> current_kameleon_interpolators[btime] = b;
+				}
+
+				// Interpolator * a = this->current_kameleon_files[atime]->createNewInterpolator(); //not deallocated!
+				// Interpolator * b = this->current_kameleon_files[btime]->createNewInterpolator();
 				double duration = btime-atime;
 				double deltatime = (time - atime);
 
@@ -250,7 +332,7 @@ std::cout << "manageMemory. index: " << index << std::endl;
 
 				float deltaValue = bvalue - avalue;
 				float value = avalue + deltaValue * r;
-				std::cout << "inside. interpolated value: " << value << std::endl;
+				// std::cout << "inside. interpolated value: " << value << std::endl;
 				return value;
 			}
 		} else
@@ -261,29 +343,59 @@ std::cout << "manageMemory. index: " << index << std::endl;
 	float TimeInterpolator::interpolate(const Time& time, int variable, const float& c0, const float& c1, const float& c2)
 	{
 		int index = Utils<Time>::binary_search(this->timesteps, 0, this->timesteps.size(), time);
+		Interpolator * a;
 		if (index > -1)
 		{
 			if (time == this->timesteps[index])
 			{
-				Interpolator * a = this->current_kameleon_files[time]->createNewInterpolator();
+				//check that interpolator is loaded
+				if (current_kameleon_interpolators.find(this->timesteps[index]) != this->current_kameleon_interpolators.end())
+				{
+					a = this->current_kameleon_interpolators[time];	
+				} else //set the interpolator
+				{
+					a = this->current_kameleon_files[time]->createNewInterpolator();
+					this-> current_kameleon_interpolators[time] = a;
+				}
+
 				float value = a->interpolate(variable, c0, c1, c2);
-				delete a;
 				return value;
+
 			} else
 			{
+				Interpolator * b;
 				Time atime = this->timesteps[index];
-				Time btime = this->timesteps[index+1];
-				Interpolator * a = this->current_kameleon_files[atime]->createNewInterpolator();
-				Interpolator * b = this->current_kameleon_files[btime]->createNewInterpolator();
+				Time btime = this->timesteps[index+1]; 
+				//Need to check if interpolators for atime and btime are loaded
+				if (current_kameleon_interpolators.find(atime) != this->current_kameleon_interpolators.end())
+				{
+					a = this->current_kameleon_interpolators[atime];
+				} else //store the interpolator
+				{
+					a = this->current_kameleon_files[atime]->createNewInterpolator();
+					this-> current_kameleon_interpolators[atime] = a;
+				}
+				if (current_kameleon_interpolators.find(btime) != this->current_kameleon_interpolators.end())
+				{
+					b = this->current_kameleon_interpolators[btime];
+				} else //store the interpolator
+				{
+					b = this->current_kameleon_files[btime]->createNewInterpolator();
+					this-> current_kameleon_interpolators[btime] = b;
+				}
+
+				// Interpolator * a = this->current_kameleon_files[atime]->createNewInterpolator(); //wasn't deallocated!
+				// Interpolator * b = this->current_kameleon_files[btime]->createNewInterpolator();
 				double duration = btime-atime;
 				double deltatime = (time - atime);
 
 				double r = deltatime / duration;
 				float avalue = a->interpolate(variable, c0, c1, c2);
 				float bvalue = b->interpolate(variable, c0, c1, c2);
+
 				float deltaValue = bvalue - avalue;
 				float value = avalue + deltaValue * r;
-				std::cout << "inside. interpolated value: " << value << std::endl;
+				// std::cout << "inside. interpolated value: " << value << std::endl;
 				return value;
 			}
 		} else
@@ -292,14 +404,13 @@ std::cout << "manageMemory. index: " << index << std::endl;
 	}
 
 
-
 	void TimeInterpolator::clearAll()
 	{
 
 		this->timesteps_map.clear();
 		this->timesteps.clear();
 		this->current_kameleon_files.clear();
-
+		this->current_kameleon_interpolators.clear();
 
 	}
 
@@ -322,7 +433,7 @@ std::cout << "manageMemory. index: " << index << std::endl;
 
 	Time TimeInterpolator::parseTime(const std::string& timeString)
 	{
-std::cout << "timeString inside parseTime: " << timeString << std::endl;
+		std::cout << "timeString inside parseTime: " << timeString << std::endl;
 		std::cout << "before declaring string" << std::endl;
 		char timeString_c_str[EPOCH3_STRING_LEN+1];
 		std::cout << "before string copy" << std::endl;
@@ -365,6 +476,7 @@ std::cout << "timeString inside parseTime: " << timeString << std::endl;
 		}
 		this->timesteps.clear();
 		this->current_kameleon_files.clear();
+		this->current_kameleon_interpolators.clear();
 	}
 
 
