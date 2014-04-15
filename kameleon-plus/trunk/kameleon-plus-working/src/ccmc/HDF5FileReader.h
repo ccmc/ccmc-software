@@ -4,10 +4,10 @@
  *  Created on: July 12, 2011
  *      Author: David Berrios
  */
-#ifndef HDFFILEREADER_H_
-#define HDFFILEREADER_H_
-#include "config.h"
-#ifdef HAVE_LIBHDF5_CPP
+// #ifndef HDFFILEREADER_H_
+// #define HDFFILEREADER_H_
+#include "Kameleon-plus-Config.h"// #include "config.h"
+#ifdef HAVE_HDF5 
 #include <string>
 #include <vector>
 #include <iostream>
@@ -17,12 +17,8 @@
 #include "FileReader.h"
 
 
-
-
-
 namespace ccmc
 {
-
 
 	/**
 	 * @class FileReader FileReader.h ccmc/FileReader.h
@@ -81,5 +77,5 @@ namespace ccmc
 
 	};
 }
-#endif /* HAVE_LIBHDF5_CPP */
-#endif /* HDFFILEREADER_H_ */
+#endif /* HAVE_HDF5 */
+// #endif /* HDFFILEREADER_H_ */

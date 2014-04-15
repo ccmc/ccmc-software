@@ -97,7 +97,7 @@ namespace ccmc
 		if (current_file_id != NULL)
 		{
 			status = CDFcloseCDF(current_file_id);
-			//delete current_file_id; //CDF deletes it?
+//			delete current_file_id; //CDF deletes it?
 			current_file_id = NULL;
 		}
 

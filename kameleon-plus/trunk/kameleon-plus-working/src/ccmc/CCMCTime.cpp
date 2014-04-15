@@ -20,6 +20,10 @@ namespace ccmc
 		//getEpoch();//update epoch values;
 		updateEpoch();
 	}
+	Time::~Time()
+	{
+		//destructor for Time object
+	}
 
 	Time::Time(const std::string& timeString)
 	{
@@ -53,7 +57,7 @@ namespace ccmc
 	void Time::updateEpoch()
 	{
 		epoch = computeEPOCH(year, month, day, hour, minute, seconds, milliseconds);
-		std::cout << "epoch: " << epoch << std::endl;
+		// std::cout << "epoch: " << epoch << std::endl;
 	}
 
 	std::string Time::toString() const
@@ -108,7 +112,7 @@ namespace ccmc
 			return true;
 		else
 		{
-			std::cout << "time1: " << time1.toString() << " time2: " << time2.toString() << std::endl;
+			// std::cout << "time1: " << time1.toString() << " time2: " << time2.toString() << std::endl;
 			return false;
 		}
 	}

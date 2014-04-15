@@ -5,8 +5,8 @@
  *      Author: Brian Curtis
  */
 
-#ifndef LFM_H_
-#define LFM_H_
+// #ifndef LFM_H_
+// #define LFM_H_
 #include <string>
 #include "Cell3D.h"
 #include "Model.h"
@@ -66,4 +66,4 @@ namespace ccmc
 	};
 
 }
-#endif /* LFM_H_ */
+// #endif /* LFM_H_ */

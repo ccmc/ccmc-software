@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include "Kameleon.h"
+#include "Interpolator.h"
 #include "Point3f.h"
 #include "Fieldline.h"
 #include <boost/unordered_map.hpp>
@@ -31,6 +32,7 @@ namespace ccmc
 		public:
 			enum Direction {FOWARD, REVERSE};
 			Tracer(Kameleon * kameleon);
+			Tracer(Kameleon * kameleon, Interpolator * interpolator);
 			~Tracer();
 			//void open(char * filename);
 			//void loadVariable(char * variable);
@@ -96,6 +98,7 @@ namespace ccmc
 			Kameleon * kameleon;
 			boost::unordered_map<std::string, std::vector<std::string> > componentNamesMap;
 			void initializeComponentNamesMap();
+			bool interpolatorAllocated;
 
 
 

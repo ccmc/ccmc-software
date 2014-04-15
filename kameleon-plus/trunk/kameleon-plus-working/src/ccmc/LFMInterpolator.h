@@ -48,10 +48,11 @@ namespace ccmc
 			static int getIndex(const int i,const int j, const int k, const int ii, const int jj);
 			Polyhedron<float>* createNextPolyhedron(Polyhedron<float>* poly);
 			Polyhedron<float>* getCell(Vector<float> point);
+			Polyhedron<float> getInterpolationPolys();
 
 			int ni,nj,nk,nip1,njp1,nkp1;
-			PointCloud<float> cell_centers; //size ni,nj,nk
-			PointCloud<float> helper_nodes; //size ni-1,nj-1,nk (+axis later)
+			PointCloud<float> cell_centers; //size ni,nj,nk - nonstatic: only used once for polyhedra
+			PointCloud<float> helper_nodes; //size ni-1,nj-1,nk (+axis later) - nonstatic: copied to lfmtree.cloud
 
 			clock_t interpolationTime;
 			clock_t creationTime;
@@ -69,11 +70,11 @@ namespace ccmc
 			boost::unordered_map<long, float> conversionFactorsByID;
 
 
-			const std::vector<float> * x_array; //cell corners
+			const std::vector<float> * x_array; //lfm cell corners - nonstatic: used for setting cell centers
 			const std::vector<float> * y_array;
 			const std::vector<float> * z_array;
 
-			const std::vector<float> * cx; //cell centers
+			const std::vector<float> * cx; // unused cell centers
 			const std::vector<float> * cy;
 			const std::vector<float> * cz;
 			std::string previousVariable;
@@ -82,22 +83,19 @@ namespace ccmc
 			float previous_x;
 			float previous_y;
 			float previous_z;
-			int previous_ix;
-			int previous_iy;
-			int previous_iz;
 			float previousValue;
 
 			// Create a custom data set class;
 			typedef float num_t; //set data type here (float,int, etc)
-			NanoKdTree<num_t> lfmtree;
+			static bool initializeKDTreePolyhedra;
+			static NanoKdTree<num_t> lfmtree; //made static. only need one tree
 			Polyhedron<float> interpolationPolys;
 			Polyhedron<float>* searchPoly;
 			Polyhedron<float>* errorsPoly;
-			boost::ptr_vector<Polyhedron<float> > polyhedra;
+			static boost::ptr_vector<Polyhedron<float> > polyhedra; //made static. only need one set loaded
 			typedef boost::ptr_vector<Polyhedron<float> > ptr_vec;
-			ptr_vec::iterator poly_iter;
+			ptr_vec::iterator poly_iter; //unused
 			boost::unordered_map<int, Polyhedron<float>* > interpolationPolysMap;
-
 	};
 
 

@@ -41,6 +41,7 @@ namespace ccmc
 			virtual float getConversionFactor(const long& variable_id);
 			std::string getModelName();
 			virtual ~Interpolator();
+			void setModelReader(Model * reader);
 
 		protected:
 			Model * modelReader;

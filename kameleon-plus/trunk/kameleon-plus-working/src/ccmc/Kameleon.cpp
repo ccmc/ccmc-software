@@ -173,7 +173,7 @@ namespace ccmc
 		boost::unordered_map<std::string, std::string>::iterator iter = variableAliases.find(variable_str);
 		if (iter != variableAliases.end())
 			variable_str = variableAliases[variable_str];
-		cout << "variable_str: " << variable_str << endl;
+		// cout << "variable_str: " << variable_str << endl;
 
 		//units were never fetched before
 		//first, attempt fetch from Kameleon's map for derived variables.
@@ -421,7 +421,7 @@ namespace ccmc
 		bool success = true;
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
-//			std::cout << "loading " << requiredVariables[i] << std::endl;
+			std::cout << "Kameleon::loadVariable:loading " << requiredVariables[i] << std::endl;
 			if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
 			{
 				return false;

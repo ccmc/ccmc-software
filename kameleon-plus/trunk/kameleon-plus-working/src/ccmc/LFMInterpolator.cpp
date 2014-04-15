@@ -20,6 +20,10 @@
 
 namespace ccmc
 {
+	bool LFMInterpolator::initializeKDTreePolyhedra = true;
+	NanoKdTree<float> LFMInterpolator::lfmtree; //how do I initialize??
+	boost::ptr_vector<Polyhedron<float> > LFMInterpolator::polyhedra;
+
 	/**
 	 * Constructor
 	 * @param modelReader
@@ -73,51 +77,37 @@ namespace ccmc
 		previous_x = missingValue;
 		previous_y = missingValue;
 		previous_z = missingValue;
-		previous_ix = 0;
-		previous_iy = 0;
-		previous_iz = 0;
 
-		x_array = NULL;
-		y_array = NULL;
-		z_array = NULL;
-
-#ifdef NANOFLANN_HPP_
-
-		//These are pointers to grid corners (need to convert to cell centered to match up with data)
-		x_array = ((LFM*) this->modelReader)->getLFMVariable("x");
-		y_array = ((LFM*) this->modelReader)->getLFMVariable("y");
-		z_array = ((LFM*) this->modelReader)->getLFMVariable("z");
-
-		((LFM*)this->modelReader)->getResolution(nip1,njp1,nkp1);
-
+		((LFM*)this->modelReader)->getResolution(nip1,njp1,nkp1); //put this inside initialize?
 		ni = nip1-1;
 		nj = njp1-1;
 		nk = nkp1-1;
 
-//		std::cout<<"setting cell centers \n";
-		setCellCenters(x_array,y_array,z_array);
+		if (LFMInterpolator::initializeKDTreePolyhedra){
+			x_array = NULL;
+			y_array = NULL;
+			z_array = NULL;
 
-      //Use this to visualize grid structure in openDX
-//		IPoly<float> outerBoundary(ni-1,this);
-//		outerBoundary.saveAsDXObject("/tmp/outerBoundary.dx");
-//		IPoly<float> innerBoundary(0,this);
-//		innerBoundary.saveAsDXObject("/tmp/innerBoundary.dx");
-//		AxisPolyhedron<float> axispoly(ni/2,false,this);
-//		axispoly.saveAsDXObject("/tmp/axisPoly.dx");
-//		GridPolyhedron<float> gridpoly(ni/2,nj/2,nk/2,this);
-//		gridpoly.saveAsDXObject("/tmp/gridpoly.dx");
+			//These are pointers to grid corners (need to convert to cell centered to match up with data)
+			x_array = ((LFM*) this->modelReader)->getLFMVariable("x");
+			y_array = ((LFM*) this->modelReader)->getLFMVariable("y");
+			z_array = ((LFM*) this->modelReader)->getLFMVariable("z");
+			setCellCenters(x_array,y_array,z_array);
+	
 
-		clock_t telapsed;
-		std::cout<<"Setting polyhedral cells\n";
-		telapsed = clock();
-		setPolyhedralCells();
-		telapsed = clock() - telapsed;
-		printf ("It took %f seconds to initialize search cells.\n",((float)telapsed)/CLOCKS_PER_SEC);
+			clock_t telapsed;
+			std::cout<<"Setting polyhedral cells\n";
+			telapsed = clock();
+			setPolyhedralCells(); // populates polyhedra container
+			telapsed = clock() - telapsed;
+			printf ("It took %f seconds to initialize search cells.\n",((float)telapsed)/CLOCKS_PER_SEC);
 
-		telapsed = clock();
-		lfmtree.build();
-		telapsed = clock() - telapsed;
-		printf ("It took %f seconds to build kd-tree index.\n",((float)telapsed)/CLOCKS_PER_SEC);
+			telapsed = clock();
+			LFMInterpolator::lfmtree.build(); // initialization
+			telapsed = clock() - telapsed;
+			printf ("It took %f seconds to build kd-tree index.\n",((float)telapsed)/CLOCKS_PER_SEC);
+			LFMInterpolator::initializeKDTreePolyhedra = false; 
+		};
 
 		searchPoly = NULL;
 		errorsPoly = NULL;
@@ -128,7 +118,6 @@ namespace ccmc
 		kdtreeTime = 0;
 		getCellTime = 0;
 		interpolationNumber = 0;
-#endif
 
 	};
 
@@ -219,7 +208,6 @@ namespace ccmc
 			searchPoly = getCell(point);
 //			std::cout<<"after initial search, assigning first interpolation poly"<<endl;
 			interpolationPolysMap[searchPoly->currentPolyhedron] = searchPoly;
-//			interpolationPolys.merge(searchPoly); //uncomment here and below to keep track of search polys
 //			std::cout<<"first poly assigned. Isinside?"<<searchPoly->isInside<<endl;
 		}
 		else if (previous_x==c0 && previous_y==c1 && previous_z==c2){
@@ -232,7 +220,6 @@ namespace ccmc
 				searchPoly = getCell(point);
 				if (interpolationPolysMap.find(searchPoly->currentPolyhedron) == interpolationPolysMap.end()){
 					interpolationPolysMap[searchPoly->currentPolyhedron] = searchPoly;
-//					interpolationPolys.merge(searchPoly); //uncomment here and above to keep track of search polys
 				}
 			}
 		}
@@ -409,7 +396,7 @@ namespace ccmc
 			helper_nodes.pts[i].z = centroid.c2();
 		}
 
-		lfmtree.cloud = helper_nodes;
+		LFMInterpolator::lfmtree.cloud = helper_nodes; //initialization: copy helper nodes created by polyhedra
 
 		return;
 	}
@@ -638,7 +625,7 @@ namespace ccmc
 		tgetCellStart = clock();
 
 
-		float Re_cm = 6.378e8;
+		float Re_cm = 6.378e8; //unused
 		typedef float num_t;
 		num_t query_pt[3] = {point.c0(), point.c1(), point.c2()}; // c0,c1 do not need to be flipped...
 		const int num_results = 1; //changed from const size_t num_results = 1;
@@ -653,7 +640,7 @@ namespace ccmc
 
 		KDResults ret_matches;
 
-		lfmtree.nearest(query_pt, resultSet);
+		LFMInterpolator::lfmtree.nearest(query_pt, resultSet);
 
 		int polyI,polyJ,polyK;
 		int closestHelper = ret_index[0];
@@ -739,6 +726,16 @@ namespace ccmc
 
 		return pCurrentPoly;
 
+	}
+
+	Polyhedron<float> LFMInterpolator::getInterpolationPolys(){
+		//Construct a single polyhedron out of all the polys used in interpolation
+		Polyhedron<float> mergedPoly;
+		for(boost::unordered_map<int, Polyhedron<float>* >::iterator iter = interpolationPolysMap.begin(); iter != interpolationPolysMap.end(); iter++){
+			mergedPoly.merge(iter->second);
+		}
+
+		return mergedPoly;
 	}
 
 

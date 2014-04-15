@@ -7,14 +7,7 @@
 %include "typemaps.i"
 
 
-
-%rename(interpolate_dc) *::interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2,
-					float& dc0, float& dc1, float& dc2);
-%rename(interpolate_dc) *::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2, float& dc0,
-					float& dc1, float& dc2);
-%apply float *OUTPUT {float& dc0, float& dc1, float& dc2};
-
-
+%rename(Tracer_interpolator) ccmc::Tracer::Tracer(Kameleon * kameleon, Interpolator * interpolator);
 
 %{
 #include <ccmc/FileReader.h>

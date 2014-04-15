@@ -43,6 +43,14 @@ namespace ccmc
 		return this->modelReader->getModelName();
 	}
 
+	/*
+	 * Sets the model reader for the interpolator. This allows the user to use the same
+	 * interpolator on different input, since interpolator initialization can be expensive
+	 */
+	void Interpolator::setModelReader(Model * reader)
+	{
+		this->modelReader = reader;
+	}
 	/**
 	 * Destructor
 	 */
