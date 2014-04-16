@@ -3,7 +3,7 @@
 %include "std_vector.i"
 %include "cpointer.i"
 %import "ccmc/cdf.h"
-%include "../doc/xml/kameleonswigdocs.i"
+/* %include "../doc/xml/kameleonswigdocs.i" */
 %include "typemaps.i"
 
 

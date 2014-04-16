@@ -75,7 +75,7 @@ int main (int argc, char * argv[])
 	float px,py,pz;
 	float dx,dy,dz;
 
-	if ((argc == 6)){
+	if (argc == 6){
 
 		string variable = argv[2];
 		px = boost::lexical_cast<float>(argv[3]);
@@ -90,7 +90,7 @@ int main (int argc, char * argv[])
 		std::cout<<"resolution at query point: "<<dx<<", "<<dy<<", "<<dz<<endl;
 	}
 
-	if ((argc == 4)){
+	if (argc == 4){
 
 		string positionsFile = argv[2];
 		std::cout<<"Reading positions from file "<<positionsFile<<endl;
