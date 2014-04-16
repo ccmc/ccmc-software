@@ -3,17 +3,17 @@
 }
 
 
-Namespace for the Community Coordinated Modeling Center code.  
+Namespace containing C\-C\-M\-C created and maintained code.  
 
 
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespaceccmc_1_1constants}{constants}
+namespace \hyperlink{namespaceccmc_1_1constants}{constants}
 \item 
-\hyperlink{namespaceccmc_1_1defaults}{defaults}
+namespace \hyperlink{namespaceccmc_1_1defaults}{defaults}
 \item 
-\hyperlink{namespaceccmc_1_1strings}{strings}
+namespace \hyperlink{namespaceccmc_1_1strings}{strings}
 \end{DoxyCompactItemize}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
@@ -48,6 +48,10 @@ class \hyperlink{classccmc_1_1_general_file_reader}{General\-File\-Reader}
 \item 
 class \hyperlink{classccmc_1_1_interpolator}{Interpolator}
 \begin{DoxyCompactList}\small\item\em T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_interpolator}{Interpolator} class. \end{DoxyCompactList}\item 
+struct \hyperlink{structccmc_1_1_position}{Position}
+\item 
+class \hyperlink{classccmc_1_1_kameleon}{Kameleon}
+\begin{DoxyCompactList}\small\item\em T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_kameleon}{Kameleon} class. \end{DoxyCompactList}\item 
 class \hyperlink{classccmc_1_1_kameleon_interpolator}{Kameleon\-Interpolator}
 \begin{DoxyCompactList}\small\item\em T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_kameleon_interpolator}{Kameleon\-Interpolator} class. \end{DoxyCompactList}\item 
 class \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M}
@@ -121,6 +125,12 @@ long \hyperlink{namespaceccmc_a2bcda52133fe790c98ff1e09e0d8feef}{date2es} (int y
 \item 
 long \hyperlink{namespaceccmc_acbeec2fb0bdcdbe669f213d20cb5d3ac}{cx\-Round} (double doub)
 \item 
+double \hyperlink{namespaceccmc_a17625a00cb5c6d62f957839dcfabf7dd}{parse\-E\-P\-O\-C\-H3} (char ep\-String\mbox{[}\hyperlink{_kameleon_8h_a6f9c7e3353c7eb6333adaa96be43edab}{E\-P\-O\-C\-H3\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-L\-E\-N}+1\mbox{]})
+\item 
+void \hyperlink{namespaceccmc_a07dfb0ccd6e3ff58181ad54f151e1c3a}{encode\-E\-P\-O\-C\-H3} (double epoch, char ep\-String\mbox{[}\hyperlink{_kameleon_8h_a6f9c7e3353c7eb6333adaa96be43edab}{E\-P\-O\-C\-H3\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-L\-E\-N}+1\mbox{]})
+\item 
+void \hyperlink{namespaceccmc_a865f02361d01e00b2280b3b729bf6a34}{E\-P\-O\-C\-Hbreakdown} (double epoch, long $\ast$year, long $\ast$month, long $\ast$day, long $\ast$hour, long $\ast$minute, long $\ast$second, long $\ast$msec)
+\item 
 std\-::ostream \& \hyperlink{namespaceccmc_a447a43508de96a63d12aae7c85aaa06b}{operator$<$$<$} (std\-::ostream \&out, const \hyperlink{classccmc_1_1_point3f}{Point3f} \&point)
 \item 
 std\-::size\-\_\-t \hyperlink{namespaceccmc_a12a62484d27726b55814a116018d6434}{hash\-\_\-value} (\hyperlink{classccmc_1_1_time}{Time} const \&time)
@@ -128,7 +138,9 @@ std\-::size\-\_\-t \hyperlink{namespaceccmc_a12a62484d27726b55814a116018d6434}{h
 
 
 \subsection{Detailed Description}
-Namespace for the Community Coordinated Modeling Center code. Full documentation for the ccmc namespace 
+Namespace containing C\-C\-M\-C created and maintained code. Namespace for the Community Coordinated Modeling Center code.
+
+Full documentation for the ccmc namespace 
 
 \subsection{Function Documentation}
 \hypertarget{namespaceccmc_a89959a8566a58d1e6c000d742304be1b}{\index{ccmc@{ccmc}!cxform@{cxform}}
@@ -163,8 +175,7 @@ Namespace for the Community Coordinated Modeling Center code. Full documentation
 )}}\label{namespaceccmc_a2bcda52133fe790c98ff1e09e0d8feef}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -173,6 +184,28 @@ Here is the call graph for this function\-:
 \end{figure}
 
 
+\hypertarget{namespaceccmc_a07dfb0ccd6e3ff58181ad54f151e1c3a}{\index{ccmc@{ccmc}!encode\-E\-P\-O\-C\-H3@{encode\-E\-P\-O\-C\-H3}}
+\index{encode\-E\-P\-O\-C\-H3@{encode\-E\-P\-O\-C\-H3}!ccmc@{ccmc}}
+\subsubsection[{encode\-E\-P\-O\-C\-H3}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::encode\-E\-P\-O\-C\-H3 (
+\begin{DoxyParamCaption}
+\item[{double}]{epoch, }
+\item[{char}]{ep\-String\mbox{[}\-E\-P\-O\-C\-H3\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-L\-E\-N+1\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{namespaceccmc_a07dfb0ccd6e3ff58181ad54f151e1c3a}
+\hypertarget{namespaceccmc_a865f02361d01e00b2280b3b729bf6a34}{\index{ccmc@{ccmc}!E\-P\-O\-C\-Hbreakdown@{E\-P\-O\-C\-Hbreakdown}}
+\index{E\-P\-O\-C\-Hbreakdown@{E\-P\-O\-C\-Hbreakdown}!ccmc@{ccmc}}
+\subsubsection[{E\-P\-O\-C\-Hbreakdown}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-E\-P\-O\-C\-Hbreakdown (
+\begin{DoxyParamCaption}
+\item[{double}]{epoch, }
+\item[{long $\ast$}]{year, }
+\item[{long $\ast$}]{month, }
+\item[{long $\ast$}]{day, }
+\item[{long $\ast$}]{hour, }
+\item[{long $\ast$}]{minute, }
+\item[{long $\ast$}]{second, }
+\item[{long $\ast$}]{msec}
+\end{DoxyParamCaption}
+)}}\label{namespaceccmc_a865f02361d01e00b2280b3b729bf6a34}
 \hypertarget{namespaceccmc_ae9b36fc97f95279e8815455b796fb78f}{\index{ccmc@{ccmc}!gregorian\-\_\-calendar\-\_\-to\-\_\-jd@{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}}
 \index{gregorian\-\_\-calendar\-\_\-to\-\_\-jd@{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}!ccmc@{ccmc}}
 \subsubsection[{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}]{\setlength{\rightskip}{0pt plus 5cm}double ccmc\-::gregorian\-\_\-calendar\-\_\-to\-\_\-jd (
@@ -194,8 +227,7 @@ Here is the call graph for this function\-:
 )\hspace{0.3cm}{\ttfamily [inline]}}}\label{namespaceccmc_a12a62484d27726b55814a116018d6434}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -214,8 +246,7 @@ Here is the call graph for this function\-:
 )}}\label{namespaceccmc_a56b029527268b2a7dc0152296e790311}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -234,8 +265,7 @@ Here is the call graph for this function\-:
 )}}\label{namespaceccmc_ab38851472be407f010420ed9af48f30b}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -264,8 +294,7 @@ Here is the call graph for this function\-:
 \end{DoxyReturn}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -284,8 +313,7 @@ Here is the call graph for this function\-:
 )}}\label{namespaceccmc_ae583b649601da0108ffe024b315cc131}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -304,8 +332,7 @@ Here is the call graph for this function\-:
 )}}\label{namespaceccmc_ad811f4e9ac8644fea4054b81aabbb072}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -344,8 +371,7 @@ Here is the call graph for this function\-:
 )}}\label{namespaceccmc_aa8187280256650785ed2835b7ee12574}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -362,3 +388,10 @@ Here is the call graph for this function\-:
 \item[{const Time \&}]{time2}
 \end{DoxyParamCaption}
 )}}\label{namespaceccmc_a9d79baffce54b78a54946d6a76743c0b}
+\hypertarget{namespaceccmc_a17625a00cb5c6d62f957839dcfabf7dd}{\index{ccmc@{ccmc}!parse\-E\-P\-O\-C\-H3@{parse\-E\-P\-O\-C\-H3}}
+\index{parse\-E\-P\-O\-C\-H3@{parse\-E\-P\-O\-C\-H3}!ccmc@{ccmc}}
+\subsubsection[{parse\-E\-P\-O\-C\-H3}]{\setlength{\rightskip}{0pt plus 5cm}double ccmc\-::parse\-E\-P\-O\-C\-H3 (
+\begin{DoxyParamCaption}
+\item[{char}]{ep\-String\mbox{[}\-E\-P\-O\-C\-H3\-\_\-\-S\-T\-R\-I\-N\-G\-\_\-\-L\-E\-N+1\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{namespaceccmc_a17625a00cb5c6d62f957839dcfabf7dd}

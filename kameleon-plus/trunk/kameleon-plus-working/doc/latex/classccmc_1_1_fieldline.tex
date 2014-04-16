@@ -12,7 +12,7 @@ Collaboration diagram for ccmc\-:\-:Fieldline\-:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=186pt]{classccmc_1_1_fieldline__coll__graph}
+\includegraphics[width=182pt]{classccmc_1_1_fieldline__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -25,6 +25,8 @@ Collaboration diagram for ccmc\-:\-:Fieldline\-:
 \hyperlink{classccmc_1_1_fieldline_a08964ce404b1cfd462c5d2038d7c1e9e}{$\sim$\-Fieldline} ()
 \item 
 void \hyperlink{classccmc_1_1_fieldline_a88a8fc4c0ad61639b9138f8dd57bf8e0}{insert\-Point\-Data} (const \hyperlink{classccmc_1_1_point3f}{Point3f} \&p, const float \&d)
+\item 
+void \hyperlink{classccmc_1_1_fieldline_aef1ecd67ed544173a6c1d702b8fbad92}{insert\-Vector\-Data} (const \hyperlink{classccmc_1_1_point3f}{Point3f} \&vector)
 \item 
 void \hyperlink{classccmc_1_1_fieldline_a23509bcd88a0a7605c35afaafa58c5c9}{remove\-Point} (int index)
 \item 
@@ -44,9 +46,13 @@ float \hyperlink{classccmc_1_1_fieldline_afe04791c767345b742c4da719709ddf0}{get\
 \item 
 \hyperlink{classccmc_1_1_point3f}{Point3f} \hyperlink{classccmc_1_1_fieldline_aa693457613225094763e0bc33fe5d730}{get\-Start\-Point} ()
 \item 
+int \hyperlink{classccmc_1_1_fieldline_ab629c0bb298a816b2a6af5a95d9e288e}{get\-Start\-Index} ()
+\item 
 void \hyperlink{classccmc_1_1_fieldline_a7a4edd677b1e1542166ac0aad783087e}{reserve} (int \hyperlink{classccmc_1_1_fieldline_abc4b63ac9b72acd2e6f26b51f659500c}{size})
 \item 
 void \hyperlink{classccmc_1_1_fieldline_a1bbfa14097ea4e6cb854b68a603eb891}{set\-Start\-Point} (\hyperlink{classccmc_1_1_point3f}{Point3f} p)
+\item 
+void \hyperlink{classccmc_1_1_fieldline_ab979de578ae2e0a40907d0c90f273f0c}{set\-Start\-Index} (int index)
 \item 
 void \hyperlink{classccmc_1_1_fieldline_a9fa22375c1276932380a259952f966ca}{set\-Variable} (std\-::string variable)
 \item 
@@ -59,6 +65,8 @@ const std\-::vector$<$ \hyperlink{classccmc_1_1_point3f}{Point3f} $>$ \& \hyperl
 const \hyperlink{classccmc_1_1_point3f}{Point3f} \& \hyperlink{classccmc_1_1_fieldline_a0ef624f19c2f6268c1539fe8a5246ffb}{get\-Element} (int i)
 \item 
 const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_ae0923bc16ca3181c3d3a7c46c5cad55a}{integrate} ()
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069}{integrate\-Vector} ()
 \item 
 const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_a360a20c0b4e4f39d11545ca22a06199a}{derivative} ()
 \item 
@@ -176,8 +184,7 @@ T\-O\-D\-O\-: finish documentation
 )}}\label{classccmc_1_1_fieldline_af89e2d72b06b4e7157d3f7e5ac1b4928}
 Calculate the forward difference elements for a field line with ordered positions. Output has length fieldline.\-size()-\/1 T\-O\-D\-O\-: Add backward and higher-\/order differencing 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -214,7 +221,19 @@ Get the integral up to position i \hypertarget{classccmc_1_1_fieldline_a15e1c452
 \item[{int}]{i}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_fieldline_a15e1c45287ad52604fc681c40b02c3c2}
-Get the length up to position i \hypertarget{classccmc_1_1_fieldline_a69dbf2cdbb0bd332e07d605545094441}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Nearest@{get\-Nearest}}
+Get the length up to position i 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a15e1c45287ad52604fc681c40b02c3c2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a69dbf2cdbb0bd332e07d605545094441}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Nearest@{get\-Nearest}}
 \index{get\-Nearest@{get\-Nearest}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
 \subsubsection[{get\-Nearest}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ int $>$ \& ccmc\-::\-Fieldline\-::get\-Nearest (
 \begin{DoxyParamCaption}
@@ -246,6 +265,13 @@ T\-O\-D\-O\-: finish documentation
 T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
 
 \end{DoxyReturn}
+\hypertarget{classccmc_1_1_fieldline_ab629c0bb298a816b2a6af5a95d9e288e}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Start\-Index@{get\-Start\-Index}}
+\index{get\-Start\-Index@{get\-Start\-Index}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Fieldline\-::get\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_ab629c0bb298a816b2a6af5a95d9e288e}
 \hypertarget{classccmc_1_1_fieldline_aa693457613225094763e0bc33fe5d730}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Start\-Point@{get\-Start\-Point}}
 \index{get\-Start\-Point@{get\-Start\-Point}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
 \subsubsection[{get\-Start\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point3f} ccmc\-::\-Fieldline\-::get\-Start\-Point (
@@ -253,7 +279,7 @@ T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_fieldline_aa693457613225094763e0bc33fe5d730}
-\hypertarget{classccmc_1_1_fieldline_aab3aa25ca4f65e88eeecfb4b1376e3b5}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Tlocal@{get\-Tlocal}}
+T\-O\-D\-O\-: finish documentation \hypertarget{classccmc_1_1_fieldline_aab3aa25ca4f65e88eeecfb4b1376e3b5}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Tlocal@{get\-Tlocal}}
 \index{get\-Tlocal@{get\-Tlocal}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
 \subsubsection[{get\-Tlocal}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::get\-Tlocal (
 \begin{DoxyParamCaption}
@@ -282,6 +308,13 @@ T\-O\-D\-O\-: finish documentation
 {\em d} & \\
 \hline
 \end{DoxyParams}
+\hypertarget{classccmc_1_1_fieldline_aef1ecd67ed544173a6c1d702b8fbad92}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!insert\-Vector\-Data@{insert\-Vector\-Data}}
+\index{insert\-Vector\-Data@{insert\-Vector\-Data}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{insert\-Vector\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::insert\-Vector\-Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point3f} \&}]{vector}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_aef1ecd67ed544173a6c1d702b8fbad92}
 \hypertarget{classccmc_1_1_fieldline_ae0923bc16ca3181c3d3a7c46c5cad55a}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!integrate@{integrate}}
 \index{integrate@{integrate}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
 \subsubsection[{integrate}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::integrate (
@@ -301,6 +334,25 @@ Here is the call graph for this function\-:
 \end{figure}
 
 
+\hypertarget{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!integrate\-Vector@{integrate\-Vector}}
+\index{integrate\-Vector@{integrate\-Vector}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{integrate\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::integrate\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069}
+Calculate the integral of (vector) dot dl over the length of the field line 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classccmc_1_1_fieldline_a3c641db4971a6cbcce5ef3fb0bc3e01d}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!interpolate@{interpolate}}
 \index{interpolate@{interpolate}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
 \subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Fieldline\-::interpolate (
@@ -311,8 +363,7 @@ Here is the call graph for this function\-:
 )}}\label{classccmc_1_1_fieldline_a3c641db4971a6cbcce5ef3fb0bc3e01d}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -395,8 +446,7 @@ T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
 \end{DoxyReturn}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -417,8 +467,7 @@ T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
 \end{DoxyReturn}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -427,13 +476,25 @@ Here is the call graph for this function\-:
 \end{figure}
 
 
+\hypertarget{classccmc_1_1_fieldline_ab979de578ae2e0a40907d0c90f273f0c}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!set\-Start\-Index@{set\-Start\-Index}}
+\index{set\-Start\-Index@{set\-Start\-Index}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{set\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::set\-Start\-Index (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_ab979de578ae2e0a40907d0c90f273f0c}
 \hypertarget{classccmc_1_1_fieldline_a1bbfa14097ea4e6cb854b68a603eb891}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!set\-Start\-Point@{set\-Start\-Point}}
 \index{set\-Start\-Point@{set\-Start\-Point}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
 \subsubsection[{set\-Start\-Point}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::set\-Start\-Point (
 \begin{DoxyParamCaption}
-\item[{{\bf Point3f}}]{p}
+\item[{{\bf Point3f}}]{start\-Point}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_fieldline_a1bbfa14097ea4e6cb854b68a603eb891}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em start\-Point} & \\
+\hline
+\end{DoxyParams}
 \hypertarget{classccmc_1_1_fieldline_a9fa22375c1276932380a259952f966ca}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!set\-Variable@{set\-Variable}}
 \index{set\-Variable@{set\-Variable}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
 \subsubsection[{set\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::set\-Variable (
@@ -476,5 +537,5 @@ T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/\-Users/mswindell/development/\-C++/kameleon\-\_\-plus/src/ccmc/\hyperlink{_fieldline_8h}{Fieldline.\-h}\item 
-/\-Users/mswindell/development/\-C++/kameleon\-\_\-plus/src/ccmc/\hyperlink{_fieldline_8cpp}{Fieldline.\-cpp}\end{DoxyCompactItemize}
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_fieldline_8h}{Fieldline.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_fieldline_8cpp}{Fieldline.\-cpp}\end{DoxyCompactItemize}

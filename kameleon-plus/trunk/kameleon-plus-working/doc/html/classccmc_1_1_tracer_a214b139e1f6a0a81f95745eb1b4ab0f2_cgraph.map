@@ -1,0 +1,6 @@
+<map id="ccmc::Tracer::findLastClosed" name="ccmc::Tracer::findLastClosed">
+<area shape="rect" id="node2" href="$classccmc_1_1_point3f.html#aeaf24d6f3cdcaba79fb7d499a639b7e2" title="ccmc::Point3f::normalize" alt="" coords="259,31,437,57"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_point3f.html#a3e277799d6824b4546a90ff91eadcbf4" title="ccmc::Point3f::distance" alt="" coords="263,81,433,108"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_point3f.html#a71f9cc868f43146c8bf62eb877b0ce02" title="ccmc::Point3f::magnitude" alt="" coords="486,5,671,32"/>
+<area shape="rect" id="node4" href="$group__metric__grp.html#gaf15608f8914516f8d949a8c053d55021" title="nanoflann::abs" alt="" coords="521,56,637,83"/>
+</map>

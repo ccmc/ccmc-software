@@ -22,8 +22,7 @@ Inheritance diagram for ccmc\-:\-:Interpolator\-:
 \end{figure}
 
 
-Collaboration diagram for ccmc\-:\-:Interpolator\-:
-\nopagebreak
+Collaboration diagram for ccmc\-:\-:Interpolator\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -50,6 +49,8 @@ virtual float \hyperlink{classccmc_1_1_interpolator_ab5d482c6e07c9fe00d01061b414
 std\-::string \hyperlink{classccmc_1_1_interpolator_ad35acb724fffeea5794a0c6e2a10f7a9}{get\-Model\-Name} ()
 \item 
 virtual \hyperlink{classccmc_1_1_interpolator_a6f36d0af2bd233263435f5864713be4c}{$\sim$\-Interpolator} ()
+\item 
+void \hyperlink{classccmc_1_1_interpolator_a8fb97723e88936e5878e64ac97f6b193}{set\-Model\-Reader} (\hyperlink{classccmc_1_1_model}{Model} $\ast$reader)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -161,7 +162,7 @@ Implemented in \hyperlink{classccmc_1_1_kameleon_interpolator_af1b8a5dcd9ab7a022
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_interpolator_ae02453da5a1a8f472f33b2058424ddb6}
 
 
-Implemented in \hyperlink{classccmc_1_1_kameleon_interpolator_ac0f406b8da511a973a1d86409eb389d6}{ccmc\-::\-Kameleon\-Interpolator}, \hyperlink{classccmc_1_1_l_f_m_interpolator_ab895be1e681fc9af63d9ae8916660077}{ccmc\-::\-L\-F\-M\-Interpolator}, \hyperlink{classccmc_1_1_adapt3_d_interpolator_ab9a45aa8feb07a6d55e45da3d202060c}{ccmc\-::\-Adapt3\-D\-Interpolator}, \hyperlink{classccmc_1_1_e_n_l_i_l_interpolator_ac786bd26509226558bc5c1147aef830b}{ccmc\-::\-E\-N\-L\-I\-L\-Interpolator}, \hyperlink{classccmc_1_1_magnetogram_interpolator_a4786d2da7816ec47d59a3dadc7ffb589}{ccmc\-::\-Magnetogram\-Interpolator}, \hyperlink{classccmc_1_1_m_a_s_interpolator_ad3031df0390ce4e955c40560ee3f6752}{ccmc\-::\-M\-A\-S\-Interpolator}, \hyperlink{classccmc_1_1_open_g_g_c_m_interpolator_a7a0efca7f1d0be57e3b2c9fe949ba6b7}{ccmc\-::\-Open\-G\-G\-C\-M\-Interpolator}, \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ab5e4f01a95ee9b9d1a58868806d8fa42}{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}, and \hyperlink{classccmc_1_1_s_w_m_f_iono_interpolator_a0fd873946791fa5f9557006d7fb38a22}{ccmc\-::\-S\-W\-M\-F\-Iono\-Interpolator}.
+Implemented in \hyperlink{classccmc_1_1_kameleon_interpolator_ac0f406b8da511a973a1d86409eb389d6}{ccmc\-::\-Kameleon\-Interpolator}, \hyperlink{classccmc_1_1_l_f_m_interpolator_ab895be1e681fc9af63d9ae8916660077}{ccmc\-::\-L\-F\-M\-Interpolator}, \hyperlink{classccmc_1_1_adapt3_d_interpolator_ab9a45aa8feb07a6d55e45da3d202060c}{ccmc\-::\-Adapt3\-D\-Interpolator}, \hyperlink{classccmc_1_1_e_n_l_i_l_interpolator_ac786bd26509226558bc5c1147aef830b}{ccmc\-::\-E\-N\-L\-I\-L\-Interpolator}, \hyperlink{classccmc_1_1_open_g_g_c_m_interpolator_a7a0efca7f1d0be57e3b2c9fe949ba6b7}{ccmc\-::\-Open\-G\-G\-C\-M\-Interpolator}, \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ab5e4f01a95ee9b9d1a58868806d8fa42}{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}, \hyperlink{classccmc_1_1_magnetogram_interpolator_a4786d2da7816ec47d59a3dadc7ffb589}{ccmc\-::\-Magnetogram\-Interpolator}, \hyperlink{classccmc_1_1_m_a_s_interpolator_ad3031df0390ce4e955c40560ee3f6752}{ccmc\-::\-M\-A\-S\-Interpolator}, and \hyperlink{classccmc_1_1_s_w_m_f_iono_interpolator_a0fd873946791fa5f9557006d7fb38a22}{ccmc\-::\-S\-W\-M\-F\-Iono\-Interpolator}.
 
 \hypertarget{classccmc_1_1_interpolator_a6bfe1b4075f03704b893bb96e1675a3b}{\index{ccmc\-::\-Interpolator@{ccmc\-::\-Interpolator}!interpolate@{interpolate}}
 \index{interpolate@{interpolate}!ccmc::Interpolator@{ccmc\-::\-Interpolator}}
@@ -194,6 +195,13 @@ Implemented in \hyperlink{classccmc_1_1_kameleon_interpolator_ab20ef65c8a089ce4c
 
 Implemented in \hyperlink{classccmc_1_1_kameleon_interpolator_a510590ccb55b491c9105a9c5db91cd42}{ccmc\-::\-Kameleon\-Interpolator}, \hyperlink{classccmc_1_1_l_f_m_interpolator_aafa40bcb1aae6e232bc9b883cc8df160}{ccmc\-::\-L\-F\-M\-Interpolator}, \hyperlink{classccmc_1_1_adapt3_d_interpolator_a62f9740d20678b993f2871c6505f7df3}{ccmc\-::\-Adapt3\-D\-Interpolator}, \hyperlink{classccmc_1_1_e_n_l_i_l_interpolator_a92508c6305deec651299b7e70ee3c531}{ccmc\-::\-E\-N\-L\-I\-L\-Interpolator}, \hyperlink{classccmc_1_1_open_g_g_c_m_interpolator_ad7edc3f7862deda978513f923fc30c33}{ccmc\-::\-Open\-G\-G\-C\-M\-Interpolator}, \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a8bb4e9b10064a516192c771462673b09}{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}, \hyperlink{classccmc_1_1_magnetogram_interpolator_a9a36d83f432f40ab4813428f9b5cd9b3}{ccmc\-::\-Magnetogram\-Interpolator}, \hyperlink{classccmc_1_1_m_a_s_interpolator_ab4015bfd559e1eac116ef1772be91b03}{ccmc\-::\-M\-A\-S\-Interpolator}, and \hyperlink{classccmc_1_1_s_w_m_f_iono_interpolator_a38a298ba550c771204914182d0404eba}{ccmc\-::\-S\-W\-M\-F\-Iono\-Interpolator}.
 
+\hypertarget{classccmc_1_1_interpolator_a8fb97723e88936e5878e64ac97f6b193}{\index{ccmc\-::\-Interpolator@{ccmc\-::\-Interpolator}!set\-Model\-Reader@{set\-Model\-Reader}}
+\index{set\-Model\-Reader@{set\-Model\-Reader}!ccmc::Interpolator@{ccmc\-::\-Interpolator}}
+\subsubsection[{set\-Model\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Interpolator\-::set\-Model\-Reader (
+\begin{DoxyParamCaption}
+\item[{{\bf Model} $\ast$}]{reader}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_interpolator_a8fb97723e88936e5878e64ac97f6b193}
 
 
 \subsection{Member Data Documentation}
@@ -207,5 +215,5 @@ Implemented in \hyperlink{classccmc_1_1_kameleon_interpolator_a510590ccb55b491c9
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/\-Users/mswindell/development/\-C++/kameleon\-\_\-plus/src/ccmc/\hyperlink{_interpolator_8h}{Interpolator.\-h}\item 
-/\-Users/mswindell/development/\-C++/kameleon\-\_\-plus/src/ccmc/\hyperlink{_interpolator_8cpp}{Interpolator.\-cpp}\end{DoxyCompactItemize}
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_interpolator_8h}{Interpolator.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_interpolator_8cpp}{Interpolator.\-cpp}\end{DoxyCompactItemize}
