@@ -8,10 +8,9 @@ Requirements:
 	boost 1.54.0
 
 Build:
-	cd /path/to/kameleon-plus
-	mkdir build
-	cd build
-	cmake .. 
+	mkdir ~/Kameleon-plus-build
+	cd ~/Kameleon-plus-build
+	cmake /path/to/kameleon-plus
 	make -j8 (-j8 speeds up compilation time):
 
 	The above commands will put build files into a fresh directory kameleon/build
