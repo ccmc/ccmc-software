@@ -6,8 +6,7 @@
  *
  *  This program illustrates some simple ways of using the LFM interpolator.
  *  Note: The initialization phase is somewhat long - it sets up millions of polyhedral cells,
- *  then primes all of them for interpolation. The time spent actually interpolating is printed
- *  whenever the LFMInterpolator is destroyed.
+ *  then primes all of them for interpolation. 
  *
  */
 

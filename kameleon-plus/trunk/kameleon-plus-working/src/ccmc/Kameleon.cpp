@@ -39,7 +39,11 @@ namespace ccmc
 	extern "C" double gregorian_calendar_to_jd(int y, int m, int d, int h, int mi, int s);
 	extern "C" long date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss);
 	extern "C" long cxRound(double doub);
-
+	boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
+	boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
+	boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
+	boost::unordered_map<int, ccmc::GeneralFileReader *> generalFileReaderObjects;
+	boost::unordered_map<int, ccmc::TimeInterpolator *> timeInterpolatorObjects;
 
 	/**
 	 * Default constructor
@@ -421,7 +425,7 @@ namespace ccmc
 		bool success = true;
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
-			std::cout << "Kameleon::loadVariable:loading " << requiredVariables[i] << std::endl;
+			// std::cout << "Kameleon::loadVariable:loading " << requiredVariables[i] << std::endl;
 			if (model->loadVariable(requiredVariables[i]) != FileReader::OK)
 			{
 				return false;

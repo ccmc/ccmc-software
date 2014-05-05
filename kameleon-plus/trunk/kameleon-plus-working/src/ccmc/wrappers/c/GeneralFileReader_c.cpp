@@ -41,6 +41,7 @@ long GeneralFileReader_open(int id, const char * filename)
 	{
 		return (*iter).second->open(filename);
 	} else
+	std::cout <<"Could not find file reader object!" << std::endl; 
 		return -1L;
 }
 

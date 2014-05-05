@@ -4,6 +4,7 @@
  *  Created on: Mar 16, 2010
  *      Author: dberrios
  */
+#include <stdbool.h> 
 
 #ifndef GENERALFILEREADER_C_H_
 #define GENERALFILEREADER_C_H_

@@ -94,7 +94,7 @@ class NanoKdTree
 		void build()
 		{
 				// construct a kd-tree index:
-				printf("NanoKdTree::building kd tree index\n");
+				// printf("NanoKdTree::building kd tree index\n");
 				tree = new my_kd_tree(3 /*dim*/, cloud, KDTreeSingleIndexAdaptorParams(10 /* max leaf */) );
 				tree->buildIndex();
 		}

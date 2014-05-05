@@ -14,6 +14,7 @@ message(STATUS "Kameleon_plus_version " ${KAMELEON_PLUS_VERSION})
 set(KAMELEON_BASE_DIR "${PROJECT_SOURCE_DIR}")
 set(KAMELEON_SRC_DIR "${KAMELEON_BASE_DIR}/src")
 set(KAMELEON_EXT_DIR "${KAMELEON_BASE_DIR}/ext")
+set(KAMELEON_LIB_DIR "${KAMELEON_BASE_DIR}/lib")
 
 # add path to external libraries
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KAMELEON_EXT_DIR})
@@ -24,6 +25,7 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME ON) 
 find_package(Boost 1.54.0)
 # find_package(Boost 1.54.0  REQUIRED COMPONENTS thread )
+message(STATUS "BOOST_ROOT=" ${BOOST_ROOT})
 
 # HDF5
 option(HDF5_USE_STATIC_LIBRARIES "Use HDF5 static libraries" ON)
@@ -51,8 +53,8 @@ set(CDF_USE_STATIC_LIBS ON)
 find_package(CDF REQUIRED)
 
 configure_file (
-	${PROJECT_SOURCE_DIR}/Kameleon-plus-Config.h.in
-	${PROJECT_BINARY_DIR}/Kameleon-plus-Config.h
+	${PROJECT_SOURCE_DIR}/kameleon-plus-Config.h.in
+	${PROJECT_BINARY_DIR}/kameleon-plus-Config.h
 )
 
 
@@ -61,8 +63,14 @@ set(CCMC_ROOT_DIR "${KAMELEON_SRC_DIR}/ccmc")
 add_subdirectory(${CCMC_ROOT_DIR})
 
 
-# C++ examples
-set(KAMELEON_EXAMPLES_DIR "${PROJECT_SOURCE_DIR}/examples")
-set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example/c++")
-add_subdirectory(${EXAMPLES_ROOT_DIR})
+set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/examples")
+set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example")
+
+add_subdirectory(${EXAMPLES_ROOT_DIR}/c++)
+add_subdirectory(${EXAMPLES_ROOT_DIR}/c)
+add_subdirectory(${EXAMPLES_ROOT_DIR}/fortran)
+add_subdirectory(${EXAMPLES_ROOT_DIR}/python)
+
+
+
 

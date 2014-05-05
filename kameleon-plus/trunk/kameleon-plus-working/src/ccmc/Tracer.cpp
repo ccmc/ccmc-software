@@ -2028,6 +2028,7 @@ namespace ccmc
 	 */
 	void Tracer::setMaxIterations(int stepMax)
 	{
+		std::cout << "setting step max"<< std::endl;
 		this->step_max = stepMax;
 	}
 

@@ -13,8 +13,8 @@ Build:
 	cmake /path/to/kameleon-plus
 	make -j8 (-j8 speeds up compilation time):
 
-	The above commands will put build files into a fresh directory kameleon/build
-	and place the following example c++ excuteables in kameleon/examples:
+	The above commands will put build files into a fresh directory ~/kameleon-plus-build
+	and place the following example c++ excuteables in /path/to/kameleon-plus/bin/examples/c++:
 		adapt3d_test  coordinate_transformation_test  IMFTest
 		kameleon_prog  magnetogram_test	open_ggcm_test	time_interp
 		CDFReader  enlil_test  integrator_prog  lfm_test
@@ -24,7 +24,8 @@ Install the CCMC python module:
 	make install
 
 Test c++ example:
-	./kameleon-plus/examples/kameleon_prog /path/to/ccmc-converted/file.cdf bz -30 0 0
+	cd path/to/kameleon-plus/examples/
+	./kameleon_prog /path/to/ccmc-converted/file.cdf bz -30 0 0
 
 Test python:
 	#1/usr/bin/python

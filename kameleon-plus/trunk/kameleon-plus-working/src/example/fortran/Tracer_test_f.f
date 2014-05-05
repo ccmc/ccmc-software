@@ -21,28 +21,33 @@ c      real*8 interpolated_value
       real x_array(1000)
       real y_array(1000)
       real z_array(1000)
+      character*100 c0,c1,c2
+      real rc0, rc1, rc2
+      integer argc
 
 c      character*50 var_to_read
 
 c     --- set your actual path name here ---
+      argc = iargc()
+      if (argc.ne.5) then
+        print *,"tracer_compat_f <filename> variable c0 c1 c2"
+        print *,"    Adapt3D, OpenGGCM, BATSRUS, LFM: x y z"
+        print *,"    ENLIL, MAS: r theta(latitude) phi(longitude)"
+        print *,"    SWMF Iono: 0 theta(latitude) phi(MLT)"
+       call exit(1)
+      endif
 
       call getarg(1, cdf_file_path)
       call getarg(2, variable)
-c      cdf_file_path='/Users/dberrios/Desktop/test.cdf'//CHAR(0)
-c      trim(filename)
-      s_length=len(cdf_file_path)
-      write(*,*) 's_length for cdf_file_path: ',s_length
-c      cdf_file_path(s_length:s_length)=CHAR(0)
+      call getarg(3, c0)
+      call getarg(4, c1)
+      call getarg(5, c2)
 
-c      s_length=len(variable)
-c      write(*,*) 's_length for variable: ',s_length
-c      variable(s_length:s_length)=CHAR(0)
+      read(c0,*) rc0
+      read(c1,*) rc1
+      read(c2,*) rc2
 
       write(*,*) 'Processing file: ', cdf_file_path
-c      write(*,*) 'Note:  The above referenced file name is
-c     1hard coded in the examples/f2c_interp_batsrus.f file.
-c     2either create this file/link or modify the cdf_file_path
-c     3variable '
 
 c     Open the cdf file
 
@@ -54,16 +59,20 @@ c     Open the cdf file
       call f_kameleon_create_c_string(cdf_file_path, cdf_file_path_c)
       call f_kameleon_create_c_string(variable, variable_c)
       call f_kameleon_create(kid)
-      call f_Kameleon_open(kid,cdf_file_path_c,status)
-      call f_Kameleon_load_vector_variable(kid,variable_c)
-      call f_Tracer_create(tid,kid)
+      call f_kameleon_open(kid,cdf_file_path_c,status)
+      call f_kameleon_load_vector_variable(kid,variable_c)
+      call f_tracer_create(tid,kid)
+
+      print *, 'c0: ', rc0, ' c1: ', rc1, ' c2: ', rc2
+      print *, 'passing variables:', 'tid: ', tid, 'variable ', variable
 
 c     make sure the step size used is appropriate and the target arrays have 2 times
 c     the step_max so the arrays have enough for two directions.
-      call f_Tracer_bidirectionaltrace(tid,variable,-10.,0.,0.,500,.2,
-     1actual_steps,x_array,y_array,z_array)
+      call f_Tracer_bidirectionaltrace(tid,variable,rc0,rc1,rc2,5000, 
+     &       .2, actual_steps,x_array,y_array,z_array)
+      write(*,*) 'finished tracing'
       write(*,*) 'actual_steps: ',actual_steps
-      call f_Tracer_delete(tid);
-      call f_Kameleon_close(kid)
-      call f_Kameleon_delete(kid)
+      call f_tracer_delete(tid);
+      call f_kameleon_close(kid) 
+      call f_kameleon_delete(kid, status)
       end

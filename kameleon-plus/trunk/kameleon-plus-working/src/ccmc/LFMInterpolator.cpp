@@ -96,16 +96,16 @@ namespace ccmc
 	
 
 			clock_t telapsed;
-			std::cout<<"Setting polyhedral cells\n";
+			// std::cout<<"Setting polyhedral cells\n";
 			telapsed = clock();
 			setPolyhedralCells(); // populates polyhedra container
 			telapsed = clock() - telapsed;
-			printf ("It took %f seconds to initialize search cells.\n",((float)telapsed)/CLOCKS_PER_SEC);
+			// printf ("It took %f seconds to initialize search cells.\n",((float)telapsed)/CLOCKS_PER_SEC);
 
 			telapsed = clock();
 			LFMInterpolator::lfmtree.build(); // initialization
 			telapsed = clock() - telapsed;
-			printf ("It took %f seconds to build kd-tree index.\n",((float)telapsed)/CLOCKS_PER_SEC);
+			// printf ("It took %f seconds to build kd-tree index.\n",((float)telapsed)/CLOCKS_PER_SEC);
 			LFMInterpolator::initializeKDTreePolyhedra = false; 
 		};
 
@@ -422,7 +422,7 @@ namespace ccmc
 	LFMInterpolator::~LFMInterpolator()
 	{
 		float total = 0; float elapsed_time = 0;
-		std::cout<<"destructing LFMInterpolator"<<endl;
+		// std::cout<<"destructing LFMInterpolator"<<endl;
 		// TODO Auto-generated destructor stub
 //		elapsed_time = ((float) getCellTime)/CLOCKS_PER_SEC; total += elapsed_time;
 //		std::cout<<"getCell time ="<<getCellTime<<" or "<< elapsed_time<<" seconds"<<endl;
@@ -439,8 +439,8 @@ namespace ccmc
 //		std::cout<<"destruction Time="<<elapsed_time<<endl;
 
 		elapsed_time = ((float) Polyhedron<float>::interpolationTime)/CLOCKS_PER_SEC;
-		std::cout<<"interpolation Time="<<elapsed_time<<endl;
-		std::cout<<"Interpolations performed:"<<Polyhedron<float>::interpolations<<endl;
+		// std::cout<<"interpolation Time="<<elapsed_time<<endl;
+		// std::cout<<"Interpolations performed:"<<Polyhedron<float>::interpolations<<endl;
 
 //		if (searchPoly != NULL){
 //			delete searchPoly;

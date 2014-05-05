@@ -490,7 +490,7 @@ namespace ccmc
 	void Model::addFloatVariableToMap(const std::string& variable, std::vector<float>* varData){
 		int numberOfVariables = getNumberOfVariables(); //number of variables in data file
 		long newVariableId = numberOfVariables + variablesAdded; //ID#s start at 0, variablesAdded initially 0
-		std::cout<<"adding variable "<<variable<<" to map with id "<< newVariableId << std::endl;
+		// std::cout<<"adding variable "<<variable<<" to map with id "<< newVariableId << std::endl;
 		variableData[variable]=varData;
 		variableDataByID[newVariableId]=varData;
 		fileReader->addVariableName(variable,newVariableId);

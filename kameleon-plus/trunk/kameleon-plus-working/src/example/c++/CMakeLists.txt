@@ -4,7 +4,7 @@ if (NOT KAMELEON_EXAMPLES_DIR)
     set(KAMELEON_EXAMPLES_DIR ${PROJECT_SOURCE_DIR})
 endif ()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${KAMELEON_EXAMPLES_DIR}")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${EXAMPLES_BIN_DIR}/c++")
 
 add_executable(adapt3d_test adapt3d_test.cpp)
 add_executable(CDFReader CDFReader.cpp)

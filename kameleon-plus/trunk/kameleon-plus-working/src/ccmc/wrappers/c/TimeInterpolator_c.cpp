@@ -43,7 +43,7 @@ int TimeInterp_addTimestep(int tid, const char * filename)
 		std::cerr << "this should never happen!" << std::endl;
 
 	}
-//	std::cout << "new size of kameleonObjects: " << ccmc::kameleonObjects.size() << std::endl;
+//	std::cout << "new size of kameleonObjects: " << kameleonObjects.size() << std::endl;
 	return status;
 }
 

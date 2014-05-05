@@ -1,4 +1,7 @@
 # core kameleon library (kameleon-plus/src/ccmc)
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc) 
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc)
+
 if (NOT CCMC_ROOT_DIR)
     set(CCMC_ROOT_DIR ${PROJECT_SOURCE_DIR})
 endif ()
@@ -17,6 +20,9 @@ set(ALL_SOURCE ${CCMC_SOURCE})
 set(ALL_HEADER ${CCMC_HEADER})
 
 add_library(ccmc ${ALL_SOURCE} ${ALL_HEADER})
+
+get_property(ccmc_lib_loc TARGET ccmc PROPERTY LOCATION)
+message (STATUS "ccmc library location = " ${ccmc_lib_loc})
 
 # Boost
 if(Boost_FOUND)
@@ -48,6 +54,8 @@ endif(BUILD_HDF5)
 
 # Wrappers
 set(WRAPPERS_ROOT_DIR "${CCMC_ROOT_DIR}/wrappers")
+add_subdirectory(${WRAPPERS_ROOT_DIR}/c)
+add_subdirectory(${WRAPPERS_ROOT_DIR}/fortran)
 add_subdirectory(${WRAPPERS_ROOT_DIR}/python)
 add_subdirectory(${WRAPPERS_ROOT_DIR}/java)
 

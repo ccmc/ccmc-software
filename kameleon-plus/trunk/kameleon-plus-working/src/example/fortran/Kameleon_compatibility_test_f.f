@@ -71,7 +71,7 @@ c      variable='ep '
       print *,'created interpolator'
       call f_kameleon_get_variable_id(kid,variable, vid);
 
-      do i=1,9000000
+      do i=1,100
       call f_kameleon_interpolate_by_id(iid, vid, rc0, rc1, rc2,
      &d0, d1, d2, interpolated_value)
       enddo

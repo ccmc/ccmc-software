@@ -100,8 +100,6 @@ namespace ccmc
 			void initializeComponentNamesMap();
 			bool interpolatorAllocated;
 
-
-
 	};
 }
 

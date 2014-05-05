@@ -83,7 +83,7 @@ typedef ccmc::Polyhedron<T> Polyhedron<T>;
 
 %template(point_float) ccmc::Point<float>;
 %template(vector_point_float) vector<ccmc::Point<float> >;
-%template(polyhedron_float) ccmc::Polyhedron<float>;
+/* %template(polyhedron_float) ccmc::Polyhedron<float>; */
 
 %template(eucl_vector_float) ccmc::Vector<float>;
 %template(vector_eucl_vector_float) vector<ccmc::Vector<float> >;

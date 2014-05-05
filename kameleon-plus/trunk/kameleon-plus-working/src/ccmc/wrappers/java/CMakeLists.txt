@@ -4,6 +4,8 @@
 # kameleon_plus-native-macosx-universal-0.3.15.jar	
 # kameleon_plus-wrapper-0.3.15.jar	
 
+SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/java) 
+SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/java)
 
 
 FIND_PACKAGE(SWIG REQUIRED)
@@ -41,6 +43,8 @@ INCLUDE_DIRECTORIES(${JNI_INCLUDE_DIRS})
 # message(STATUS "wrappers/java/ Include JNI: " ${JNI_INCLUDE_DIRS})
 message(STATUS "CMAKE_CURRENT_SOURCE_DIR: " ${CMAKE_CURRENT_SOURCE_DIR})
 
+#SWIG
+SET(CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR})
 SET_SOURCE_FILES_PROPERTIES(../ccmcJava.i PROPERTIES CPLUSPLUS ON)
 SET(CMAKE_SWIG_FLAGS -Wall -package gov.nasa.gsfc.ccmc)
 
@@ -63,14 +67,15 @@ SWIG_LINK_LIBRARIES(kameleon_plus-wrapper-java-${KAMELEON_PLUS_VERSION} ccmc)
 # generate kameleon_plus-wrapper-java.jar (doesn't include manifest..)
 set(CMAKE_JAVA_TARGET_OUTPUT_NAME kameleon_plus-wrapper-java)
 set(CMAKE_JAVA_TARGET_VERSION ${KAMELEON_PLUS_VERSION})
-add_jar(kameleon_plus_jni ${CMAKE_CURRENT_SOURCE_DIR}/*.java) # * wildcard may not work on windows 
+add_jar(kameleon_plus_jni ${CMAKE_SWIG_OUTDIR}/*.java) # * wildcard may not work on windows 
 get_property(_WRAPPED_CLASSES TARGET kameleon_plus_jni PROPERTY CLASSDIR)
 
 
 add_dependencies(kameleon_plus_jni kameleon_plus-wrapper-java-${KAMELEON_PLUS_VERSION})
 
 add_custom_command(TARGET kameleon_plus_jni POST_BUILD
-			COMMAND jar cvfm kameleon_plus-native-${CMAKE_SYSTEM_NAME}-${KAMELEON_PLUS_VERSION}.jar ${CMAKE_CURRENT_SOURCE_DIR}/manifest-native.mf ${java_wrapped_mod_name})
+			COMMAND jar cvfm kameleon_plus-native-${CMAKE_SYSTEM_NAME}-${KAMELEON_PLUS_VERSION}.jar ${CMAKE_CURRENT_SOURCE_DIR}/manifest-native.mf ${java_wrapped_mod_name}
+			COMMAND cp kameleon_plus-native-${CMAKE_SYSTEM_NAME}-${KAMELEON_PLUS_VERSION}.jar ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
 			# COMMAND jar cvfm kameleon_plus-wrapper-${KAMELEON_PLUS_VERSION}.jar ${CMAKE_CURRENT_SOURCE_DIR}/manifest.mf -C ${_WRAPPED_CLASSES} .
 
 

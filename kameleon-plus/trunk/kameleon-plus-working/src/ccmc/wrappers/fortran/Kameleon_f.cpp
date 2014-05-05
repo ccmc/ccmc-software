@@ -6,15 +6,25 @@
  */
 #include "Kameleon_f.h"
 #include <ccmc/wrappers/c/Kameleon_c.h>
+#include <ccmc/Kameleon.h>
 #include <string>
 #include <string.h>
 #include <iostream>
 
+using namespace ccmc;
+// extern _C_ boost::unordered_map<int, ccmc::Kameleon *> ccmc::kameleonObjects;
+
 void f_kameleon_create_(int * id)
 {
-//	std::cout << "calling C create function" << std::endl;
+	// std::cout << "calling C create function" << std::endl;
+	// std::cout << "kameleonObjects address: "<< &ccmc::kameleonObjects << std::endl;
+
 	*id = Kameleon_create();
-//	std::cout << "after C create function" << std::endl;
+	// std::cout << "after C create function, id = " << *id << std::endl;
+	// std::cout << "kameleonObjects address: "<< &ccmc::kameleonObjects << std::endl;
+	// std::cout << "kameleonObjects address: "<< &kameleonObjects << std::endl;
+	// std::cout << "f_kameleon_create_ number of kameleon objects: " << ccmc::kameleonObjects.size() << std::endl;
+
 }
 
 void f_interpolator_create_(int * kid, int * id)
@@ -31,6 +41,7 @@ void f_interpolator_delete_(int * id)
 
 void f_kameleon_open_(int * id, const char * filename, int * status)
 {
+	// std::cout << "f_kameleon_open_ number of kameleon objects: " << kameleonObjects.size() << std::endl;
 
 	std::string filename_str = filename;
 	//get string length
@@ -38,7 +49,7 @@ void f_kameleon_open_(int * id, const char * filename, int * status)
 	char filename_corrected[length+1];
 
 	strcpy(filename_corrected, filename_str.c_str());
-	//std::cout << "string length: " << length << std::endl;
+	// std::cout << "string length: " << length << std::endl;
 	for (int i = 0; i< length; i++)
 	{
 		if (filename_corrected[i] == ' ')
@@ -153,6 +164,8 @@ void f_kameleon_unload_variable_(int *id, const char * variable)
  */
 void f_kameleon_load_vector_variable_(int *id, const char * variable)
 {
+	// std::cout << "f_kameleon_load_vector_variable_ number of kameleon objects: " << kameleonObjects.size() << std::endl;
+
 	std::string variable_str = variable;
 	int length = variable_str.size();
 	char variable_corrected[length+1];

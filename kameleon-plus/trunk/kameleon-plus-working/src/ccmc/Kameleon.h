@@ -22,7 +22,7 @@
  * - CTIP
  * - ADAPT3D
  *
- * Java, C, and Fortran compatible interfaces are provided through the use of the wrapper headers and code (ccmc/wrappers/*).
+ * Java, C, and Fortran compatible interfaces are provided through the use of the wrapper headers and code (ccmc/wrappers/).
  *
  * @section Purpose
  * The purpose of this library is to provide easy access and interpolation methods
@@ -193,11 +193,11 @@ namespace ccmc
 
 
 	};
-	static boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
-	static boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
-	static boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
-	static boost::unordered_map<int, ccmc::GeneralFileReader *> generalFileReaderObjects;
-	static boost::unordered_map<int, ccmc::TimeInterpolator *> timeInterpolatorObjects;
+	extern boost::unordered_map<int, ccmc::Kameleon *> kameleonObjects;
+	extern boost::unordered_map<int, ccmc::Tracer *> tracerObjects;
+	extern boost::unordered_map<int, ccmc::Interpolator *> interpolatorObjects;
+	extern boost::unordered_map<int, ccmc::GeneralFileReader *> generalFileReaderObjects;
+	extern boost::unordered_map<int, ccmc::TimeInterpolator *> timeInterpolatorObjects;
 
 }
 

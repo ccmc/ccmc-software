@@ -50,7 +50,7 @@ namespace ccmc
 		long status;
 		std::cout << "calling GeneralFileReader open function"<<endl;
 		status = GeneralFileReader::open(filename);
-		std::cout <<"File opened, loading x,y,z,V_th,rho"<<endl;
+		// std::cout <<"File opened, loading x,y,z,V_th,rho"<<endl;
 		this->progress = 20;
 		loadVariable(ccmc::strings::variables::x_);
 		x_array = this->variableData["x"];
@@ -100,7 +100,7 @@ namespace ccmc
 	 * Note: these results might be off by a negative sign: check that E = -v x B
 	 */
 	void LFM::loadEfield(){
-		std::cout<<"calculating electric field from edge components"<<endl;
+		// std::cout<<"calculating electric field from edge components"<<endl;
 
 		loadVariable("ei");
 		loadVariable("ej");
@@ -237,7 +237,7 @@ namespace ccmc
 
 	Interpolator * LFM::createNewInterpolator()
 	{
-		std::cout <<"creating new LFM interpolator\n";
+		// std::cout <<"creating new LFM interpolator\n";
 		Interpolator * interpolator = new LFMInterpolator(this);
 
 		return interpolator;
