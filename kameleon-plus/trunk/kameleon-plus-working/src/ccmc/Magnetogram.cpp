@@ -36,6 +36,7 @@ namespace ccmc
 		loadVariable(lon_string);
 		initializeSIUnits();
 		initializeConversionFactorsToSI();
+        return status;
 	}
 
 	/**

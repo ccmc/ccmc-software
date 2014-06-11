@@ -499,7 +499,8 @@ namespace ccmc
 		int			ielem,kelem, inode;
 		int         i_s,j_s,k_s,i,j,k,indx_start,indx_end;
 		int         indx1,ifound,just_found,jelem;
-		float       x,y,z,shapex[nnode];
+		float       x,y,z;
+        //float* shapex = new float[nnode];
 		int			next_element, next_element0, iselect;
 
 		int        in0,in1,in2,in3,iteration;

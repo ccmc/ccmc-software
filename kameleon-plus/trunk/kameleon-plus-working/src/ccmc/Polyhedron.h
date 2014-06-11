@@ -604,7 +604,7 @@ namespace ccmc
 				<< "component \"edges\" \"edge list\" \n"
 				<< "component \"loops\" \"loop list\"\n"
 				<< "component \"faces\" \"face list\"\n"
-//				<< "component \"data\"  \"data\" \n"
+/*				<< "component \"data\"  \"data\" \n" */
 				<< "end\n";
 
 		file.close();

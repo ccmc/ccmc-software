@@ -566,7 +566,7 @@ namespace ccmc
 		if (dataType == CDF_CHAR)
 		{
 			std::string attributeValue = "NULL";
-			char attributeBuffer[numElements+1];
+			char* attributeBuffer = new char[numElements+1];
 			CDFgetAttrgEntry(current_file_id, attrNum, 0, attributeBuffer);
 			//std::cout << "attrNum: " << attrNum << " i: " << i << " numElements: " << numElements << std::endl;
 			//modelName[numElements] = '\0';
@@ -577,6 +577,7 @@ namespace ccmc
 				attributeValue = attributeBuffer;
 				attributeValue = attributeValue.substr(0, numElements); //only use valid parts of char string
 			}
+            delete attributeBuffer;
 
 			char attributeNameBuffer[512];
 

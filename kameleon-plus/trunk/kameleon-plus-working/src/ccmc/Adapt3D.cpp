@@ -197,8 +197,8 @@ namespace ccmc
 
 		for (int i = 0; i < requiredVariables.size(); i++)
 		{
-			int size = variablesLoaded.size();
-			for (int j = 0; j < size; j++)
+			size_t size = variablesLoaded.size();
+			for (size_t j = 0; j < size; j++)
 			{
 				if (variablesLoaded[j] == requiredVariables[i])
 				{
@@ -308,15 +308,15 @@ namespace ccmc
 		float ylo,yhi;
 		float zlo,zhi;
 		float xmean,ymean,zmean;
-		float side_l_1,side_l_2,side_l_3;
-		float side_l_4,side_l_5,side_l_6;
-		float max_element_length,max_length_sqrd;
+		//float side_l_1,side_l_2,side_l_3;
+		//float side_l_4,side_l_5,side_l_6;
+		float /*max_element_length,*/max_length_sqrd;
 		float max_length_sqrd_old;
 		float dxyz[3];
 		float dxyz_min;
-		float arr2[2];
+		//float arr2[2];
 		float arr4[4];
-		float arr7[7];
+		//float arr7[7];
 		long   len;
 		double const PI=4.*atan(1.);
 
@@ -357,12 +357,12 @@ namespace ccmc
 //		printf("Allocation of elem_index_struct complete \n");
 
 
-		this->smartSearchValues.xl_gr=1.e30;
-		this->smartSearchValues.xr_gr=-1.e30;
-		this->smartSearchValues.yl_gr=1.e30;
-		this->smartSearchValues.yr_gr=-1.e30;
-		this->smartSearchValues.zl_gr=1.e30;
-		this->smartSearchValues.zr_gr=-1.e30;
+		this->smartSearchValues.xl_gr=1.e30f;
+		this->smartSearchValues.xr_gr=-1.e30f;
+		this->smartSearchValues.yl_gr=1.e30f;
+		this->smartSearchValues.yr_gr=-1.e30f;
+		this->smartSearchValues.zl_gr=1.e30f;
+		this->smartSearchValues.zr_gr=-1.e30f;
 
 	#ifdef CARTESIAN_S_GRID
 	      xl_sg=1.e30;
@@ -374,11 +374,11 @@ namespace ccmc
 	#endif /* CARTESIAN_S_GRID */
 
 	#ifdef SPHERICAL_S_GRID
-	      this->smartSearchValues.xl_sg=1.e30;
+	      this->smartSearchValues.xl_sg=1.e30f;
 	      this->smartSearchValues.xr_sg=0.;
-	      this->smartSearchValues.yl_sg=PI;
+	      this->smartSearchValues.yl_sg=float(PI);
 	      this->smartSearchValues.yr_sg=0.;
-	      this->smartSearchValues.zl_sg=2.*PI;
+	      this->smartSearchValues.zl_sg=float(2.*PI);
 	      this->smartSearchValues.zr_sg=0.;
 	#endif /* SPHERICAL_S_GRID */
 
@@ -591,7 +591,7 @@ namespace ccmc
 		}
 #endif
 
-		/* Step 3 - place starting and ending indeces of element list into each structured cell */
+		/* Step 3 - place starting and ending indices of element list into each structured cell */
 
 		/* Create start and end pointers for each grid cell's section of the
 		index to the element list */
@@ -609,7 +609,7 @@ namespace ccmc
 		for (int k=0; k<nz_sg; k++ ) {
 		for (int j=0; j<ny_sg; j++ ) {
 		for (int i=0; i<nx_sg; i++ ) {
-			this->smartSearchValues.end_index[k][j][i] = std::max((float)(this->smartSearchValues.start_index[k][j][i]),(float)(this->smartSearchValues.end_index[k][j][i]));
+			this->smartSearchValues.end_index[k][j][i] = std::max(/*(float)*/(this->smartSearchValues.start_index[k][j][i]),/*(float)*/(this->smartSearchValues.end_index[k][j][i]));
 		}}}
 
 
@@ -687,8 +687,8 @@ namespace ccmc
 		      for (int k=0; k<nz_sg; k++ ) {
 		      for (int j=0; j<ny_sg; j++ ) {
 		      for (int i=0; i<nx_sg; i++ ) {
-		    	  this->smartSearchValues.end_index_nodes[k][j][i] = std::max((float)this->smartSearchValues.start_index_nodes[k][j][i],
-		    			  (float)this->smartSearchValues.end_index_nodes[k][j][i]);
+		    	  this->smartSearchValues.end_index_nodes[k][j][i] = std::max(/*(float)*/this->smartSearchValues.start_index_nodes[k][j][i],
+		    			  /*(float)*/this->smartSearchValues.end_index_nodes[k][j][i]);
 		      }}}
 
 		#ifdef DEBUG
@@ -717,8 +717,8 @@ namespace ccmc
 		      }
 
 
-		delete(elem_index_struct);
-		delete(node_index_struct);
+		delete[] elem_index_struct;
+		delete[] node_index_struct;
 
 		/*     end subroutine setup_search_unstructured_grid */
 		return false;
@@ -737,7 +737,7 @@ namespace ccmc
 		*/
 
 
-	   int ip,ie,inode,nstor,ielem,istor;
+	   int ip,/*ie,*/inode,nstor,ielem,istor;
 	   int nnodes, ipoin;
 
 		/*----------------------------------------------------------------
@@ -878,7 +878,7 @@ namespace ccmc
 
 	/* initialize facing_elements=0 */
 	      int nnodes = nelem*nnode;     /* number of element/node couples */
-	      int size = this->smartSearchValues.facing_elements->size();
+	      size_t size = this->smartSearchValues.facing_elements->size();
 	      for (int i=0;i<nnodes;i++) {
 	        (*this->smartSearchValues.facing_elements)[i]=0;
 	      }

@@ -392,7 +392,7 @@ namespace ccmc
 			model = NULL;
 		}
 
-
+        return 0l;
 	}
 
 	/**

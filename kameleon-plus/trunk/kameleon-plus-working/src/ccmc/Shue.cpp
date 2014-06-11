@@ -6,6 +6,7 @@
  */
 
 #include "Shue.h"
+#include <algorithm>
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -441,8 +442,8 @@ void IMF::interpolate(time_t targetTime, float xPosition, float& radius, bool& i
 	float sw_n = newdataline.n;
 	float sw_dp = newdataline.d_p;
 
-	time_t minTime = max(transitTime, imfdata[0].epoch);
-	time_t tt = min(minTime, imfdata[imfdata.size()-1].epoch);
+	time_t minTime = std::max(transitTime, imfdata[0].epoch);
+	time_t tt = std::min(minTime, imfdata[imfdata.size()-1].epoch);
 
 	index = bSearchTime(tt, 0, imfdata.size()-2);
 	IMFdata newdataline2;

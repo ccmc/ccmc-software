@@ -17,6 +17,18 @@ using namespace std;
 
 namespace ccmc
 {
+	// A.Pembroke added these to avoid compiler linker errors
+	const long FileReader::OK;
+	const long FileReader::OPEN_ERROR;
+	const long FileReader::FILE_DOES_NOT_EXIST;
+	const long FileReader::VARIABLE_DOES_NOT_EXIST;
+	const long FileReader::ATTRIBUTE_DOES_NOT_EXIST;
+	const long FileReader::LOAD_FAILED;
+	const long FileReader::UNABLE_TO_ALLOCATE_MEMORY;
+	const long FileReader::VARIABLE_NOT_IN_MEMORY;
+	const long FileReader::MODEL_NOT_SUPPORTED;
+	const long FileReader::NOT_A_VALID_KAMELEON_FILE;
+
 	/**
 	 * Default constructor. Does nothing.
 	 */
@@ -34,6 +46,12 @@ namespace ccmc
 	long FileReader::open(const std::string& filename, bool readonly)
 	{
 		return openFile(filename, readonly);
+	}
+
+	void FileReader::setCurrentFilename(const std::string& filename)
+	{
+		std::cout << "setting current_filename to " << filename << std::endl;
+		this->current_filename = filename;
 	}
 
 	/**

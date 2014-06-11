@@ -363,22 +363,22 @@ namespace ccmc
 		for (int k = 0; k < nk; k++){
 			for (int j = 0; j < nj-1; j++){
 				for (int i = 0; i < ni-1; i++){
-					polyhedra.push_back(new GridPolyhedron<float>::GridPolyhedron(i,j,k,this));
+                    polyhedra.push_back(new GridPolyhedron<float>(i, j, k, this));
 				}
 			}
 		}
 
 		//day side axis polyhedra
 		for (int i = 0; i < ni-1; i++){
-			polyhedra.push_back( new AxisPolyhedron<float>::AxisPolyhedron(i,true,this));
+            polyhedra.push_back(new AxisPolyhedron<float>(i, true, this));
 		}
 		//night side axis polyhedra
 		for (int i = 0; i < ni-1; i++){
-			polyhedra.push_back(new AxisPolyhedron<float>::AxisPolyhedron(i,false,this));
+            polyhedra.push_back(new AxisPolyhedron<float>(i, false, this));
 		}
 
 		//inner boundary polyhedron
-		polyhedra.push_back(new IPoly<float>::IPoly(0,this));
+        polyhedra.push_back(new IPoly<float>(0, this));
 
 		innerBoundaryRadius = polyhedra[polyhedra.size()-1].maxDistanceToCentroid().length();
 
@@ -481,11 +481,11 @@ namespace ccmc
 			if (face==0){
 				if (polyI==0){
 //					std::cout<<"entering inner boundary\n";
-					pNewPoly = new IPoly<float>::IPoly(polyI,this);
+                    pNewPoly = new IPoly<float>(polyI, this);
 				}
 				else {
 					polyI --;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 			}
 			else if (face==1){
@@ -494,49 +494,49 @@ namespace ccmc
 				}
 				else {
 					polyI++;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 			}
 			else if (face==2){
 				if (polyJ==0){ //day side axis
 					day = true;
 //					std::cout<<"entering day side axis\n";
-					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+                    pNewPoly = new AxisPolyhedron<float>(polyI, day, this);
 				}
 				else{
 					polyJ--;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 			}
 			else if (face==3){
 				if (polyJ==nj-2){ //night side axis
 					day = false;
 //					std::cout<<"entering night side axis\n";
-					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+                    pNewPoly = new AxisPolyhedron<float>(polyI, day, this);
 				}
 				else{
 					polyJ++;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 			}
 			else if (face==4){
 				if (polyK == 0){ //wrap backward
 					polyK = nk-1;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 				else{
 					polyK--;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 			}
 			else if (face==5){
 				if (polyK == nk-1){ //wrap forward
 					polyK = 0;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 				else{
 					polyK++;
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 				}
 			}
 			else{
@@ -556,22 +556,22 @@ namespace ccmc
 			if (face < nk){ //azimuthal face
 				if (day){
 //					std::cout<<"exiting day side axis\n";
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,face,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, face, this);
 					}
 				else{
 //					std::cout<<"exiting night side axis\n";
 					polyJ--; //create poly at (i,nj-2,face)
-					pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,face,this);
+                    pNewPoly = new GridPolyhedron<float>(polyI, polyJ, face, this);
 				}
 			}
 			else if (face == nk){ //earth-facing face
 				if (polyI == 0){ //inner boundary
 //					std::cout<<"entering inner boundary\n";
-					pNewPoly = new IPoly<float>::IPoly(polyI,this);
+                    pNewPoly = new IPoly<float>(polyI, this);
 				}
 				else{
 					polyI--;
-					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+                    pNewPoly = new AxisPolyhedron<float>(polyI, day, this);
 				}
 			}
 			else if (face == nk+1){
@@ -580,7 +580,7 @@ namespace ccmc
 				}
 				else{
 					polyI++;
-					pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+                    pNewPoly = new AxisPolyhedron<float>(polyI, day, this);
 				}
 			}
 		}
@@ -590,12 +590,12 @@ namespace ccmc
 //				std::cout<<"exiting inner boundary through hexahedron"<<endl;
 				polyJ = face%(nj-1);
 				polyK = face/(nj-1);
-				pNewPoly = new GridPolyhedron<float>::GridPolyhedron(polyI,polyJ,polyK,this);
+                pNewPoly = new GridPolyhedron<float>(polyI, polyJ, polyK, this);
 			}
 			else { //day or night side axis
 //				std::cout<<"exiting inner boundary through axis"<<endl;
 				day = face==nk*(nj-1);
-				pNewPoly = new AxisPolyhedron<float>::AxisPolyhedron(polyI,day,this);
+                pNewPoly = new AxisPolyhedron<float>(polyI, day, this);
 			}
 		}
 		else { //type not supported

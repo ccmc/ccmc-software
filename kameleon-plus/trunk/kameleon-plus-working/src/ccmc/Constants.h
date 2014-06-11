@@ -20,11 +20,11 @@ namespace ccmc
 	{
 		static float Boltzmann = 1.3806503e-23f;
 		static float Avogadro = 6.0221415e23f;
-		static float Pi = 3.14159265;
-		static float AU_in_meters = 1.49598e11;
-		static float Meters_to_AU = 6.68458134e-12;
-		static float RadiansToDegrees = 57.2957795;
-		static float DegreesToRadians = 0.0174532925;
+		static float Pi = 3.14159265f;
+		static float AU_in_meters = 1.49598e11f;
+		static float Meters_to_AU = 6.68458134e-12f;
+		static float RadiansToDegrees = 57.2957795f;
+		static float DegreesToRadians = 0.0174532925f;
 
 	}
 
