@@ -1,0 +1,17 @@
+<map id="vec_Qe" name="vec_Qe">
+<area shape="rect" id="node3" href="$cxform-manual_8c.html#a380fc5b86f178fed6314b59950502db0" title="mag_lat" alt="" coords="149,107,224,133"/>
+<area shape="rect" id="node11" href="$cxform-manual_8c.html#ab66b822e2469cf8046effefcf1851cd5" title="mag_lon" alt="" coords="322,157,398,184"/>
+<area shape="rect" id="node20" href="$cxform-manual_8c.html#a84c6ff0c06e5c7ad41c4d8d9487bda2b" title="mat_T2" alt="" coords="151,303,223,329"/>
+<area shape="rect" id="node28" href="$cxform-manual_8c.html#a1f4ce7c90920f310bb7543dd01ce4f98" title="mat_times_mat" alt="" coords="299,208,421,235"/>
+<area shape="rect" id="node30" href="$cxform-manual_8c.html#a98c3af0a095c65f0b7dcdab5266f25c8" title="mat_T1" alt="" coords="151,353,223,380"/>
+<area shape="rect" id="node36" href="$cxform-manual_8c.html#a77c8e33324183648e2a9e4f77a422242" title="mat_transpose" alt="" coords="127,404,247,431"/>
+<area shape="rect" id="node39" href="$cxform-manual_8c.html#a54a60b4e36dd4c95a7c129884bac2d9c" title="mat_times_vec" alt="" coords="125,455,248,481"/>
+<area shape="rect" id="node5" href="$cxform-manual_8c.html#ab95751a5e6ceadc3cab497212741477f" title="calcG01" alt="" coords="323,5,397,32"/>
+<area shape="rect" id="node7" href="$cxform-manual_8c.html#a77f0e08722c1a87fd774bb9425a7f7b9" title="calcG11" alt="" coords="473,69,548,96"/>
+<area shape="rect" id="node9" href="$cxform-manual_8c.html#a42194228f3217123ff26c5a3b53ad89f" title="calcH11" alt="" coords="473,145,548,172"/>
+<area shape="rect" id="node13" href="$cxform-manual_8c.html#a995057a97d4e066b28f7c6335a58006d" title="lambda0" alt="" coords="473,259,549,285"/>
+<area shape="rect" id="node15" href="$cxform-manual_8c.html#ae23b51b4b534071c5a477dd97ce39186" title="T0" alt="" coords="598,309,637,336"/>
+<area shape="rect" id="node22" href="$cxform-manual_8c.html#a90a202672c17d19497833c2589286cd8" title="hapgood_matrix" alt="" coords="297,360,423,387"/>
+<area shape="rect" id="node25" href="$cxform-manual_8c.html#a437aa2f848d339070f878e0deecd5dbf" title="epsilon" alt="" coords="477,309,544,336"/>
+<area shape="rect" id="node33" href="$cxform-manual_8c.html#ab97ee97a7a20980cfa40d7c28c30f847" title="H" alt="" coords="341,461,379,488"/>
+</map>

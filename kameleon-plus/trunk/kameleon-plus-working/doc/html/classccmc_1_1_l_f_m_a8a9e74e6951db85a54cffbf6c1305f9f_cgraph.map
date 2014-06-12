@@ -1,0 +1,25 @@
+<map id="ccmc::LFM::open" name="ccmc::LFM::open">
+<area shape="rect" id="node2" href="$classccmc_1_1_model.html#ad4afaf8f5cb1b8bb73034658145b4934" title="ccmc::Model::setBusyStatus" alt="" coords="192,8,395,35"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_general_file_reader.html#a4996a8e305a2e1f9f25228d127bb55bf" title="ccmc::GeneralFileReader\l::open" alt="" coords="203,59,383,101"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_model.html#a3f579f03a4cd21237705c268d1a5d3e9" title="Load a variable into memory." alt="" coords="465,123,655,149"/>
+<area shape="rect" id="node14" href="$classccmc_1_1_l_f_m.html#a3b30357fb47547a19b480a824aae19ef" title="ccmc::LFM::setResolution" alt="" coords="202,283,385,309"/>
+<area shape="rect" id="node15" href="$classccmc_1_1_l_f_m.html#a50299b9da81da02df430d0079d8deaf5" title="ccmc::LFM::loadPressure" alt="" coords="203,181,383,208"/>
+<area shape="rect" id="node17" href="$classccmc_1_1_l_f_m.html#a3159c537415c5da69c86ed5bc8791019" title="ccmc::LFM::loadEfield" alt="" coords="214,232,373,259"/>
+<area shape="rect" id="node23" href="$classccmc_1_1_l_f_m.html#ab82dc1add65cfa4c40bff916129c4a41" title="Initializes the variableSIUnits map. " alt="" coords="197,333,390,360"/>
+<area shape="rect" id="node24" href="$classccmc_1_1_l_f_m.html#a575ca8f71a149babc45fe840fbf66daf" title="Initializes the conversionFactorsToSI map. " alt="" coords="184,385,403,426"/>
+<area shape="rect" id="node4" href="$classccmc_1_1_general_file_reader.html#a4d56da3556557ae38485abdcdeacc90e" title="ccmc::GeneralFileReader\l::close" alt="" coords="470,57,650,98"/>
+<area shape="rect" id="node6" href="$classccmc_1_1_file_reader.html#aa7a02a3f99c09861a5e7c00e98b81be2" title="ccmc::FileReader::open" alt="" coords="475,5,645,32"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_file_reader.html#a036ac2d85ad32a98b81c9e6ebf0ef133" title="ccmc::FileReader::close" alt="" coords="723,32,893,59"/>
+<area shape="rect" id="node8" href="$classccmc_1_1_general_file_reader.html#a7752dcc4d653d0d325cbe5ce1b9a7ebe" title="ccmc::GeneralFileReader\l::doesVariableExist" alt="" coords="718,83,898,125"/>
+<area shape="rect" id="node10" href="$classccmc_1_1_general_file_reader.html#a15db2e13a3cc71bf0fea4ea46725c22a" title="ccmc::GeneralFileReader\l::getVariable" alt="" coords="718,149,898,190"/>
+<area shape="rect" id="node12" href="$classccmc_1_1_general_file_reader.html#a6cc488b707602f3b4438408826d3df02" title="ccmc::GeneralFileReader\l::getVariableID" alt="" coords="718,214,898,255"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_file_reader.html#ab8893f7d2b0f62041c37a788affe6b36" title="ccmc::FileReader::doesVariable\lExist" alt="" coords="948,83,1169,125"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_file_reader.html#a3703180de2d7d38c1ccf115d5279d4d0" title="ccmc::FileReader::getVariable" alt="" coords="953,156,1164,183"/>
+<area shape="rect" id="node13" href="$classccmc_1_1_file_reader.html#a937185c6d323262f7c3f3c4d39b59e37" title="ccmc::FileReader::getVariableID" alt="" coords="947,221,1171,248"/>
+<area shape="rect" id="node16" href="$classccmc_1_1_model.html#aff1ba4d83008b75f65a3f0a30013b895" title="ccmc::Model::addFloatVariable\lToMap" alt="" coords="451,174,669,215"/>
+<area shape="rect" id="node18" href="$classccmc_1_1_l_f_m.html#a72536081ec39b9f9620b49e4a4ac58d5" title="ccmc::LFM::getLFMVariable" alt="" coords="463,341,657,368"/>
+<area shape="rect" id="node19" href="$classccmc_1_1_l_f_m.html#a950345d5557b42e68ebd8e8d8b4a4a44" title="ccmc::LFM::averageFace" alt="" coords="471,392,649,419"/>
+<area shape="rect" id="node20" href="$classccmc_1_1_l_f_m.html#ace1eb0153ce938756984444bba34a7cb" title="ccmc::LFM::getIndex" alt="" coords="732,417,884,444"/>
+<area shape="rect" id="node21" href="$classccmc_1_1_point.html#aa715484b0a52bffc43cd2d0e30bda80d" title="ccmc::Point::setComponents" alt="" coords="457,240,663,267"/>
+<area shape="rect" id="node22" href="$classccmc_1_1_vector.html#ab6c35b31d15e8619a0b81ac55966065e" title="ccmc::Vector::triple" alt="" coords="487,291,633,317"/>
+</map>

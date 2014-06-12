@@ -1,0 +1,7 @@
+<map id="nanoflann::KDTreeEigenMatrixAdaptor&lt; MatrixType, DIM, Distance, IndexType &gt;" name="nanoflann::KDTreeEigenMatrixAdaptor&lt; MatrixType, DIM, Distance, IndexType &gt;">
+<area shape="rect" id="node2" href="$classnanoflann_1_1_k_d_tree_single_index_adaptor.html" title="nanoflann::KDTreeSingleIndex\lAdaptor\&lt; Distance, DatasetAdaptor,\l DIM, IndexType \&gt;" alt="" coords="781,175,1040,231"/>
+<area shape="rect" id="node4" href="$structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_node.html" title="nanoflann::KDTreeSingleIndex\lAdaptor\&lt; Distance, DatasetAdaptor,\l DIM, IndexType \&gt;::Node" alt="" coords="379,109,637,165"/>
+<area shape="rect" id="node6" href="$structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_interval.html" title="nanoflann::KDTreeSingleIndex\lAdaptor\&lt; Distance, DatasetAdaptor,\l DIM, IndexType \&gt;::Interval" alt="" coords="5,175,264,231"/>
+<area shape="rect" id="node7" href="$structnanoflann_1_1_k_d_tree_single_index_adaptor_params.html" title="nanoflann::KDTreeSingleIndex\lAdaptorParams" alt="" coords="402,241,614,282"/>
+<area shape="rect" id="node8" href="$classnanoflann_1_1_pooled_allocator.html" title="nanoflann::PooledAllocator" alt="" coords="412,307,604,333"/>
+</map>

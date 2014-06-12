@@ -1,0 +1,5 @@
+<map id="ccmc::KameleonInterpolator::interpolate" name="ccmc::KameleonInterpolator::interpolate">
+<area shape="rect" id="node3" href="$classccmc_1_1_model.html#aaf909e4165fadb7e6676b49b24df5395" title="Returns the missing value that will be returned when no valid data exists." alt="" coords="264,5,488,32"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_general_file_reader.html#a24a28efa48973345d705d9e379cacc12" title="ccmc::GeneralFileReader\l::getVariableName" alt="" coords="283,57,469,98"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_file_reader.html#af688dd7824a25f91404e5f586d1ebe86" title="ccmc::FileReader::getVariableName" alt="" coords="536,64,795,91"/>
+</map>

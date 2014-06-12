@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Thu Jun 09 16:18:45 EDT 2011 -->
+
+
+<Type name ="Variable">
+
+<attribute>
+	<name>category</name>
+	<description>NA</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>name</name>
+	<description>The Kameleon Name of the variable.</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>dataType</name>
+	<description>The data type of the variable's data.</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>classification</name>
+	<description>NA</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>valid_min</name>
+	<description>Smallest valid value for a particular variable. If actual value is less than this valid_min, then the actual value is physically impossible and/or was generated in error. This is in type String so that you can see the valid_min along with its corresponding units, in order to doubtlessly understand the boundary.</description>
+    <datatype>float</datatype>
+</attribute>
+
+
+<attribute>
+	<name>valid_max</name>
+	<description>Largest valid value for a particular variable. If actual value is greater than this valid_max, then the actual value is physically impossible and/or generated in error. This is in type String so that you can see the valid_max along with its corresponding units, in order to doubtlessly understand the boundary.</description>
+    <datatype>float</datatype>
+</attribute>
+
+<attribute>
+	<name>units</name>
+	<description>the particular units of measurement for a variable</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>grid_system</name>
+	<description>grid system in which a variable is on</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>mask</name>
+	<description>the mask value</description>
+    <datatype>float</datatype>
+</attribute>
+
+<attribute>
+	<name>description</name>
+	<description>a description of the variable</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>is_vector_components</name>
+	<description>int value that identifies if variable is a vector component (1) or scalar variable (0)</description>
+    <datatype>int</datatype>
+</attribute>
+
+
+<attribute>
+	<name>position_grid_system</name>
+	<description>Grid system in which position values are defined if different from actual data grid</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+	<name>data_grid_system</name>
+	<description>Grid system in which the data is defined</description>
+    <datatype>String</datatype>
+</attribute>
+
+<attribute>
+        <name>actual_min</name>
+        <description>Smallest value in the data for a particular variable.</description>
+        <datatype>float</datatype>
+</attribute>
+
+<attribute>
+   <name>actual_max</name>
+   <description>Largest value in the data for a particular variable.</description>
+   <datatype>float</datatype>
+</attribute>
+
+</Type>
+
+
+

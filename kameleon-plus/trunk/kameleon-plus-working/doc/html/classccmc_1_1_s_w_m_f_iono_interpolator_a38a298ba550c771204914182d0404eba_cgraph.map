@@ -1,0 +1,5 @@
+<map id="ccmc::SWMFIonoInterpolator::interpolate" name="ccmc::SWMFIonoInterpolator::interpolate">
+<area shape="rect" id="node3" href="$classccmc_1_1_utils.html#af696585b8c87542bbe8df61cf21e9152" title="ccmc::Utils::binary\l_search" alt="" coords="309,5,459,46"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_model.html#aaf909e4165fadb7e6676b49b24df5395" title="Returns the missing value that will be returned when no valid data exists." alt="" coords="272,71,496,97"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_model.html#a6c18b6296eaf1455866c860aeba694ee" title="Returns a const pointer to the entry in the variableData map containing the variable data..." alt="" coords="287,122,481,163"/>
+</map>

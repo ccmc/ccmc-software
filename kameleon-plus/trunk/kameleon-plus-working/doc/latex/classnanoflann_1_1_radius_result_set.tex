@@ -1,0 +1,158 @@
+\hypertarget{classnanoflann_1_1_radius_result_set}{\section{nanoflann\-:\-:Radius\-Result\-Set$<$ Distance\-Type, Index\-Type $>$ Class Template Reference}
+\label{classnanoflann_1_1_radius_result_set}\index{nanoflann\-::\-Radius\-Result\-Set$<$ Distance\-Type, Index\-Type $>$@{nanoflann\-::\-Radius\-Result\-Set$<$ Distance\-Type, Index\-Type $>$}}
+}
+
+
+{\ttfamily \#include $<$nanoflann.\-hpp$>$}
+
+
+
+Collaboration diagram for nanoflann\-:\-:Radius\-Result\-Set$<$ Distance\-Type, Index\-Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classnanoflann_1_1_radius_result_set__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnanoflann_1_1_radius_result_set_a6266e067f0d07d09e82abf03e86f5499}{Radius\-Result\-Set} (Distance\-Type radius\-\_\-, std\-::vector$<$ std\-::pair$<$ Index\-Type, Distance\-Type $>$ $>$ \&indices\-\_\-dists)
+\item 
+\hyperlink{classnanoflann_1_1_radius_result_set_ae2f2b93fdb56158103d449feaedd447e}{$\sim$\-Radius\-Result\-Set} ()
+\item 
+void \hyperlink{classnanoflann_1_1_radius_result_set_a13a01f6272c4bd514685492437043ff0}{init} ()
+\item 
+void \hyperlink{classnanoflann_1_1_radius_result_set_a7f59f3258109dd732548af586aff90a9}{clear} ()
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_radius_result_set_ac004b45b09d53150d46d6f837060b1c1}{size} () const 
+\item 
+bool \hyperlink{classnanoflann_1_1_radius_result_set_a4363b215fe1cf27bd2d0a16015086f34}{full} () const 
+\item 
+void \hyperlink{classnanoflann_1_1_radius_result_set_a1f07f76ae2870d752155376846c05023}{add\-Point} (Distance\-Type dist, Index\-Type index)
+\item 
+Distance\-Type \hyperlink{classnanoflann_1_1_radius_result_set_ae1978e17100321887e1cf7ef1de9621a}{worst\-Dist} () const 
+\item 
+void \hyperlink{classnanoflann_1_1_radius_result_set_ab9a7db08f60af2a5febe1f1a31d39208}{set\-\_\-radius\-\_\-and\-\_\-clear} (const Distance\-Type r)
+\item 
+std\-::pair$<$ Index\-Type, \\*
+Distance\-Type $>$ \hyperlink{classnanoflann_1_1_radius_result_set_a35072d6fe672b6c717a20630a422bce1}{worst\-\_\-item} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const Distance\-Type \hyperlink{classnanoflann_1_1_radius_result_set_a427684c7ff35ce0bf50075a5cc062d42}{radius}
+\item 
+std\-::vector$<$ std\-::pair\\*
+$<$ Index\-Type, Distance\-Type $>$ $>$ \& \hyperlink{classnanoflann_1_1_radius_result_set_a88e8929d22445f82691a4d87969d4b99}{m\-\_\-indices\-\_\-dists}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$class nanoflann\-::\-Radius\-Result\-Set$<$ Distance\-Type, Index\-Type $>$}
+
+A result-\/set class used when performing a radius based search. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnanoflann_1_1_radius_result_set_a6266e067f0d07d09e82abf03e86f5499}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!Radius\-Result\-Set@{Radius\-Result\-Set}}
+\index{Radius\-Result\-Set@{Radius\-Result\-Set}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{Radius\-Result\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::{\bf Radius\-Result\-Set} (
+\begin{DoxyParamCaption}
+\item[{Distance\-Type}]{radius\-\_\-, }
+\item[{std\-::vector$<$ std\-::pair$<$ Index\-Type, Distance\-Type $>$ $>$ \&}]{indices\-\_\-dists}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_a6266e067f0d07d09e82abf03e86f5499}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnanoflann_1_1_radius_result_set_a6266e067f0d07d09e82abf03e86f5499_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classnanoflann_1_1_radius_result_set_ae2f2b93fdb56158103d449feaedd447e}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!$\sim$\-Radius\-Result\-Set@{$\sim$\-Radius\-Result\-Set}}
+\index{$\sim$\-Radius\-Result\-Set@{$\sim$\-Radius\-Result\-Set}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{$\sim$\-Radius\-Result\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::$\sim${\bf Radius\-Result\-Set} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_ae2f2b93fdb56158103d449feaedd447e}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classnanoflann_1_1_radius_result_set_a1f07f76ae2870d752155376846c05023}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!add\-Point@{add\-Point}}
+\index{add\-Point@{add\-Point}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{add\-Point}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ void {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::add\-Point (
+\begin{DoxyParamCaption}
+\item[{Distance\-Type}]{dist, }
+\item[{Index\-Type}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_a1f07f76ae2870d752155376846c05023}
+\hypertarget{classnanoflann_1_1_radius_result_set_a7f59f3258109dd732548af586aff90a9}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!clear@{clear}}
+\index{clear@{clear}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ void {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_a7f59f3258109dd732548af586aff90a9}
+\hypertarget{classnanoflann_1_1_radius_result_set_a4363b215fe1cf27bd2d0a16015086f34}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!full@{full}}
+\index{full@{full}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ bool {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_a4363b215fe1cf27bd2d0a16015086f34}
+\hypertarget{classnanoflann_1_1_radius_result_set_a13a01f6272c4bd514685492437043ff0}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!init@{init}}
+\index{init@{init}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ void {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_a13a01f6272c4bd514685492437043ff0}
+\hypertarget{classnanoflann_1_1_radius_result_set_ab9a7db08f60af2a5febe1f1a31d39208}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!set\-\_\-radius\-\_\-and\-\_\-clear@{set\-\_\-radius\-\_\-and\-\_\-clear}}
+\index{set\-\_\-radius\-\_\-and\-\_\-clear@{set\-\_\-radius\-\_\-and\-\_\-clear}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{set\-\_\-radius\-\_\-and\-\_\-clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ void {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::set\-\_\-radius\-\_\-and\-\_\-clear (
+\begin{DoxyParamCaption}
+\item[{const Distance\-Type}]{r}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_ab9a7db08f60af2a5febe1f1a31d39208}
+Clears the result set and adjusts the search radius. \hypertarget{classnanoflann_1_1_radius_result_set_ac004b45b09d53150d46d6f837060b1c1}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!size@{size}}
+\index{size@{size}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_ac004b45b09d53150d46d6f837060b1c1}
+\hypertarget{classnanoflann_1_1_radius_result_set_a35072d6fe672b6c717a20630a422bce1}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!worst\-\_\-item@{worst\-\_\-item}}
+\index{worst\-\_\-item@{worst\-\_\-item}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{worst\-\_\-item}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ std\-::pair$<$Index\-Type,Distance\-Type$>$ {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::worst\-\_\-item (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_a35072d6fe672b6c717a20630a422bce1}
+Find the worst result (furtherest neighbor) without copying or sorting Pre-\/conditions\-: \hyperlink{classnanoflann_1_1_radius_result_set_ac004b45b09d53150d46d6f837060b1c1}{size()} $>$ 0 \hypertarget{classnanoflann_1_1_radius_result_set_ae1978e17100321887e1cf7ef1de9621a}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!worst\-Dist@{worst\-Dist}}
+\index{worst\-Dist@{worst\-Dist}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{worst\-Dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ Distance\-Type {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::worst\-Dist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_radius_result_set_ae1978e17100321887e1cf7ef1de9621a}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classnanoflann_1_1_radius_result_set_a88e8929d22445f82691a4d87969d4b99}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!m\-\_\-indices\-\_\-dists@{m\-\_\-indices\-\_\-dists}}
+\index{m\-\_\-indices\-\_\-dists@{m\-\_\-indices\-\_\-dists}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{m\-\_\-indices\-\_\-dists}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ std\-::vector$<$std\-::pair$<$Index\-Type,Distance\-Type$>$ $>$\& {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::m\-\_\-indices\-\_\-dists}}\label{classnanoflann_1_1_radius_result_set_a88e8929d22445f82691a4d87969d4b99}
+\hypertarget{classnanoflann_1_1_radius_result_set_a427684c7ff35ce0bf50075a5cc062d42}{\index{nanoflann\-::\-Radius\-Result\-Set@{nanoflann\-::\-Radius\-Result\-Set}!radius@{radius}}
+\index{radius@{radius}!nanoflann::RadiusResultSet@{nanoflann\-::\-Radius\-Result\-Set}}
+\subsubsection[{radius}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t$>$ const Distance\-Type {\bf nanoflann\-::\-Radius\-Result\-Set}$<$ Distance\-Type, Index\-Type $>$\-::radius}}\label{classnanoflann_1_1_radius_result_set_a427684c7ff35ce0bf50075a5cc062d42}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{nanoflann_8hpp}{nanoflann.\-hpp}\end{DoxyCompactItemize}

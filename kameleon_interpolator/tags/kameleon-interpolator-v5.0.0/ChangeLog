@@ -1,0 +1,234 @@
+05/16/2005    ccmc-interpolater-v3-4.2
+
+              adding conversion from native GSE_JR to output GSE
+
+06/08/2005    ccmc-interpolater-v3-4.3
+
+              polished README etc
+              added generic gattribute_get and vatribute_get independent of
+              attribute data type
+
+06/17/2005    ccmc-interpolater-v4-0.0
+
+              adding fortran interface to all routines
+
+10/03/2005
+10/26/2005    ccmc-interpolator-v4-0.1
+
+              consolidating changes and bug fixes resulting from deployment
+              versions along with fortran and ctip changes for latest
+              development version this version was based on the distribution
+              version:
+
+               /Users/mmaddox/mac_workbench/DEPLOYMENT_CCMC_SOFTWARE_DIST/ \
+               ccmc-software-dist-0.0.4/ccmc-interpolator-package-0.1/ \
+               ccmc-interpolater-v3-4.4
+
+               ...with updates from the workbench version
+               ccmc-interpolater-v4-0.0
+
+11/18/2005     ccmc-interpolator-v4-0.2
+
+               contains first almost working ctip prototype.  return values are
+               in range but need further testing. Continue with 4.1.0+
+
+12/05          ccmc-interpolator-v4-1.0
+
+               Fixes for 64 bit architectures, primarily cdf int-long issues
+
+02/24/06       ccmc-interpolator-v4-1.1
+
+               allocate_default() routine added to get_batsrus_cdf_info to fix
+               free bug.
+
+04/24/06       ccmc-interpolator-v4-1.2
+
+               Adding tracking mechanism to determine if a new file has been
+               opened.  If so, the interpolator needs to relocate position in
+               new file even if the actual position hasn't changed.  This is
+               because the interpolator remembers the last position used and if
+               it is the same, it reuses the previous block search info.
+               However, with AMR, if a new file is ingested the previous block
+               information is invalid.
+
+06/08/06       ccmc-interpolator-v4-1.3
+
+               created allocate_default_b() & c for OpenGGCM and Ctip
+               ( see v4-1.1 )
+
+               NOTE: CTIP needs to be finished - there is no close for CTIP and
+               the allocate_defaults_c() is empty - DONE: on 7.20.2006
+
+07/18/2006     soon to be 4-1.4
+
+               adding checks for attribute get routines, the ones that return
+               pointers will return NULL if the attribute is not found
+
+07.26.2006     Working Version - adding ENLIL interpolation functionality.
+               Also added -fPIC option when compiling all c source code, this
+               alleviated the need to have _2 duplicates and also fixes Davids
+               compile problem
+
+09.05.06       added examples and fotran modules for ctip and enlil.
+
+09.08.06       Adding -e type check to open cdf to verify file existence before
+               passing to cdfopen routine adding argc check to see if correct
+               number of arguments where passed.
+
+09.11.06       f2c_ attribute get routines now check for the existence of the
+               attribute before any processing.  If not found, NULL pointers
+               are set and 0 is returned.
+
+09.12.06       kameleon-interpolator-v4.1.4
+
+               ...all of the above...
+
+               -----------------------------------------------------------------
+
+10.--.06       kameleon-interpolator-v4.2.0
+
+               - added idl_interface routines: idl2c_vattribute_get.c,
+               idl2c_gattribute_get.c, idl2c_var_get.c.  IDL routines are
+               compiled
+
+               into shared libraris and made into IDL routines with LINKIMAGE
+
+                - added var_get.c routine to standard c interface - given file
+                and variable name, routine returns pointer to array and set the
+                users specified 3 argument to the size of the array.
+
+                -updated all source code headers ( except for the examples
+                programs - I need to do this soon )
+
+                - created var_get_example.c and driver program
+
+                - modifications to the way the software handles requests to
+                store variables into main memory for interpolation.
+                The original design of the interpolation interface was based on
+                the idea that users would open one file at a time and know what
+                variables they wanted in main memory at the outset.  The
+                original interface stored variable values that were specified
+                during the open command and cleaned up the memory during close.
+                The library was not designed to handle multiple open calls for
+                the purpose of loading new/more variables into memory. The
+                modified version addresses this by uses a dynamic linked list
+                structure to store the actual variable names that have been read
+                into main memory. The library now is able to handle multiple and
+                redundant open calls as it will not reload or clobber already
+                stored variables.  The software also keeps track of the actual
+                file whose  contents are stored in memory. Since the open call
+                performs a host of preliminary processing on an individual file
+                the first time it is encountered, there is no need to
+                re-initialize the same file on subsequent open calls.  Keeping
+                track of the current file allows the open function to skip
+                initialization if possible and just load the specified data into
+                memory.
+
+10.13.06        kameleon-interpolator-v4.2.1
+
+                - bug fix introduced in previous version - static declaration of
+                un-initialized variables in cdf_interface_variables.h
+
+10.25.06        kameleon-interpolator-v4.2.2
+
+                - bug fix introduced in previous version - changed CDFid
+                variable id to current_file_id cdf_interface_variables.h during
+                v4.2.1 fix and needed to update the idl interface routines that
+                were still referencing id vs current_file_id
+
+10.30.06        working - soon to be 4.2.3
+
+                - adding var_exists() routine to working
+
+11.09.2006      Small BUG Fixes and Patches for versions after v4.1.4.
+                Namely v4.2.0 - v4.2.3.  The 4.2 sets where operational sets
+                and have undergone an extensive series of tests and fixes to
+                acheive a target baseline version which was 4.2.3.
+
+11.09.06        kameleon-interpolator-v4.2.3
+
+                - BUG FIX - load_enlil_cdf_variable_into_main_memory block had
+                if where there should have been an else if by b1x
+
+11.09.06        soon to be v4.3
+
+                - new attribute_exists() function added
+                - new kameleon.h header added
+                - example programs no longer define each lib routine
+                individually with extern - instead the use kameleon.h
+
+                v4.3.0+
+
+                For versions 4.3.0 and beyond, the examples c programs will
+                use the kameleon.h header file.  This means there will no
+                longer be extern declarations in the example programs.  They
+                will also need to be compiled with -I./inc or the specific
+                location of the kameleon.h file.
+
+11.15.06       BUG FIX - in open_cdf.c - changed model_name char * variable back
+               to static...
+
+11.29.06       BUG FIX - var_get.c did an automatic open and close, changed to
+               open/close only if CONFIRM_, CDF_ACCESS_  != CDF_OK
+
+01.31.07       Added double support to gattrubute_get()
+
+               ...there is also magnetogram synthesis "hidden" functionality in
+               there now
+
+02.20.07       Adding MAS
+
+02.22.07       kameleon-interpolator-v4.3.0_beta-3
+
+               - deployed the working version with new interpolate_enlil_cdf_2
+               that allows floating point arguments
+
+08.07          kameleon-interpolater-v4.3.0_beta-4
+
+               - new make functionality with improved README documentation
+
+08.29.07       kameleon-interpolater-v4.4.0
+
+               Polished make functionality - new user friendly/comprehensive
+               build
+
+11.19.07       kameleon-interpolater-v4.4.1
+
+               Polished README
+
+02.29.08       kameleon-interpolater-v4.4.2
+
+               Added MAS Close Functionality
+
+               Fixed if-else logic error that caused
+               "couldn't load variable message" when variable was successfully
+               loaded
+
+               Changed open logic as the open_cdf call was being made even when
+               file was already open
+
+04.09.08       kameleon-interpolater-v4.4.3
+
+			   Fixed open with mem after open without mem for Batsrus
+
+
+               kameleon-interpolater-v4.4.3-beta ----\
+               kameleon-interpolater-v4.4.4-beta      \---> Combination Of bug
+               fixes for example programs and open/close functionality with main
+               memory options
+
+07.28.08       working1 version to be v4.5.0
+
+               Full code "beautification" complete with attention paid to
+               properly format headers and code.
+
+               Added eta to open_ggcm/ucla_ggcm
+
+07.29.08       working1 version to be v4.5.1
+
+               Adding new r,phi, theta, name support for enlil.
+
+               Fixing ENLIL interpolation api to accept new r, p, t names
+
+12.10.08	   v5.0.0 - A fresh start with Legal Stuff, License.txt file and a
+			   live download link

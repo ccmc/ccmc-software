@@ -1,0 +1,7 @@
+<map id="ccmc::Polyhedron::setBarycentricCoordinates" name="ccmc::Polyhedron::setBarycentricCoordinates">
+<area shape="rect" id="node2" href="$classccmc_1_1_vector.html#a554c29dfc55fb81cd10ce6b0ea657dbf" title="ccmc::Vector::cross" alt="" coords="289,56,437,83"/>
+<area shape="rect" id="node6" href="$classccmc_1_1_vector.html#a1ea3da7704529abf9d706c578d771b8b" title="ccmc::Vector::angle" alt="" coords="288,107,437,133"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_point.html#af305f62b5b3830dfb9659ba05fa8730b" title="ccmc::Point::c1" alt="" coords="486,5,605,32"/>
+<area shape="rect" id="node4" href="$classccmc_1_1_point.html#aca8161451d99e44ad32f735265273db6" title="ccmc::Point::c2" alt="" coords="486,56,605,83"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_point.html#a89fbc3792873bbc1b35d205fc0b56112" title="ccmc::Point::c0" alt="" coords="486,107,605,133"/>
+</map>

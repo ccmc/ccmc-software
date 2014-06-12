@@ -1,0 +1,17 @@
+<map id="main" name="main">
+<area shape="rect" id="node3" href="$classccmc_1_1_kameleon.html#ace633091252d6094098626ee6c295c61" title="ccmc::Kameleon::open" alt="" coords="131,168,306,195"/>
+<area shape="rect" id="node26" href="$classccmc_1_1_kameleon.html#aab904337fec75f487e3082bc8eaec9f3" title="ccmc::Kameleon::loadVariable" alt="" coords="107,219,330,245"/>
+<area shape="rect" id="node28" href="$classccmc_1_1_kameleon.html#a59797b1c1c5c224436d8fb25b9c665b4" title="ccmc::Kameleon::createNew\lInterpolator" alt="" coords="111,270,326,311"/>
+<area shape="rect" id="node30" href="$classccmc_1_1_interpolator.html#ad5c1dd3693f83d75a2335b7c28cd649d" title="Interpolates the variable specified at position (c0,c1,c2)." alt="" coords="145,335,292,377"/>
+<area shape="rect" id="node32" href="$classccmc_1_1_kameleon.html#a165e1d86285b532793e62536854ad3d8" title="ccmc::Kameleon::close" alt="" coords="130,401,307,428"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_general_file_reader.html#a4996a8e305a2e1f9f25228d127bb55bf" title="ccmc::GeneralFileReader\l::open" alt="" coords="394,63,579,105"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_general_file_reader.html#a4d56da3556557ae38485abdcdeacc90e" title="ccmc::GeneralFileReader\l::close" alt="" coords="670,5,855,46"/>
+<area shape="rect" id="node13" href="$classccmc_1_1_general_file_reader.html#a2038ca818d84aec04ecf2b6fdd8710ce" title="ccmc::GeneralFileReader\l::doesAttributeExist" alt="" coords="394,129,579,170"/>
+<area shape="rect" id="node17" href="$classccmc_1_1_general_file_reader.html#a45b01633354be559eed7cc6c854573c1" title="ccmc::GeneralFileReader\l::getGlobalAttribute" alt="" coords="394,194,579,235"/>
+<area shape="rect" id="node22" href="$classccmc_1_1_model.html#a292717921c5bd7604901fb82c49275cf" title="Sets the model name to modelName." alt="" coords="379,260,594,287"/>
+<area shape="rect" id="node24" href="$classccmc_1_1_model.html#a3c64dc635c2c1a2fe2f8efa2a3666282" title="Opens a file." alt="" coords="411,311,562,337"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_file_reader.html#aa7a02a3f99c09861a5e7c00e98b81be2" title="ccmc::FileReader::open" alt="" coords="673,71,853,97"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_file_reader.html#a036ac2d85ad32a98b81c9e6ebf0ef133" title="ccmc::FileReader::close" alt="" coords="931,12,1114,39"/>
+<area shape="rect" id="node15" href="$classccmc_1_1_file_reader.html#ac27cfdd9ceabe3af0f14b18fbebcafa5" title="ccmc::FileReader::doesAttribute\lExist" alt="" coords="643,129,882,170"/>
+<area shape="rect" id="node19" href="$classccmc_1_1_file_reader.html#a11885da1a8d6775a7d2764494474d067" title="ccmc::FileReader::getGlobal\lAttribute" alt="" coords="658,194,867,235"/>
+</map>

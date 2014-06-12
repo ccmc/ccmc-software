@@ -1,0 +1,10 @@
+<map id="ccmc::Tracer::bidirectionalTraceWithDipole" name="ccmc::Tracer::bidirectionalTraceWithDipole">
+<area shape="rect" id="node2" href="$classccmc_1_1_fieldline.html#a23509bcd88a0a7605c35afaafa58c5c9" title="ccmc::Fieldline::removePoint" alt="" coords="243,5,447,32"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_fieldline.html#a07884d34cad97f14b6810cf23ee003c0" title="ccmc::Fieldline::reverse\lOrder" alt="" coords="260,158,431,199"/>
+<area shape="rect" id="node4" href="$classccmc_1_1_fieldline.html#af87fd7cd8f79631a255f64d40665fccf" title="ccmc::Fieldline::getData" alt="" coords="521,71,695,97"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_fieldline.html#a0d82bca39360b88914fc312dcb441fb8" title="ccmc::Fieldline::getPositions" alt="" coords="507,151,709,177"/>
+<area shape="rect" id="node6" href="$classccmc_1_1_fieldline.html#abc4b63ac9b72acd2e6f26b51f659500c" title="ccmc::Fieldline::size" alt="" coords="534,213,682,240"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_fieldline.html#a88a8fc4c0ad61639b9138f8dd57bf8e0" title="ccmc::Fieldline::insertPointData" alt="" coords="497,264,719,291"/>
+<area shape="rect" id="node8" href="$classccmc_1_1_fieldline.html#a1bbfa14097ea4e6cb854b68a603eb891" title="ccmc::Fieldline::setStart\lPoint" alt="" coords="258,326,433,367"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_fieldline.html#ab979de578ae2e0a40907d0c90f273f0c" title="ccmc::Fieldline::setStart\lIndex" alt="" coords="258,391,433,433"/>
+</map>

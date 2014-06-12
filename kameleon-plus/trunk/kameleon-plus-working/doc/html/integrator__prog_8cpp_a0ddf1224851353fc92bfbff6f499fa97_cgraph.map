@@ -1,0 +1,33 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$classccmc_1_1_kameleon.html#ace633091252d6094098626ee6c295c61" title="ccmc::Kameleon::open" alt="" coords="141,147,309,173"/>
+<area shape="rect" id="node13" href="$classccmc_1_1_kameleon.html#adeadf4c0fba486395e4bc2e73efa8002" title="ccmc::Kameleon::loadVector\lVariable" alt="" coords="123,198,328,239"/>
+<area shape="rect" id="node14" href="$classccmc_1_1_tracer.html#aecadbaf86210183e93561cfd994e5cb3" title="ccmc::Tracer::setMaxIterations" alt="" coords="116,264,335,291"/>
+<area shape="rect" id="node15" href="$classccmc_1_1_tracer.html#a8b67d175f78a67e8f9119a9b105bfb8b" title="ccmc::Tracer::setInnerBoundary" alt="" coords="113,315,338,341"/>
+<area shape="rect" id="node16" href="$classccmc_1_1_tracer.html#ab487539d33afad7fb6642d4bd3ccc555" title="ccmc::Tracer::setDn" alt="" coords="150,365,301,392"/>
+<area shape="rect" id="node17" href="$classccmc_1_1_tracer.html#a47783816bdcacaa27f0c4535bba42c1f" title="ccmc::Tracer::bidirectional\lTrace" alt="" coords="131,634,320,675"/>
+<area shape="rect" id="node18" href="$classccmc_1_1_fieldline.html#abc4b63ac9b72acd2e6f26b51f659500c" title="ccmc::Fieldline::size" alt="" coords="701,517,849,544"/>
+<area shape="rect" id="node23" href="$classccmc_1_1_fieldline.html#a88a8fc4c0ad61639b9138f8dd57bf8e0" title="ccmc::Fieldline::insertPointData" alt="" coords="390,968,613,995"/>
+<area shape="rect" id="node26" href="$classccmc_1_1_fieldline.html#a9f1b0541029d59589902e1ffe2ef75c5" title="ccmc::Fieldline::getPosition" alt="" coords="128,751,323,777"/>
+<area shape="rect" id="node27" href="$classccmc_1_1_interpolator.html#ad5c1dd3693f83d75a2335b7c28cd649d" title="Interpolates the variable specified at position (c0,c1,c2)." alt="" coords="156,802,295,843"/>
+<area shape="rect" id="node28" href="$classccmc_1_1_fieldline.html#aef1ecd67ed544173a6c1d702b8fbad92" title="ccmc::Fieldline::insertVectorData" alt="" coords="109,868,341,895"/>
+<area shape="rect" id="node29" href="$classccmc_1_1_fieldline.html#af89e2d72b06b4e7157d3f7e5ac1b4928" title="ccmc::Fieldline::getDs" alt="" coords="421,517,582,544"/>
+<area shape="rect" id="node30" href="$classccmc_1_1_fieldline.html#ae0923bc16ca3181c3d3a7c46c5cad55a" title="ccmc::Fieldline::integrate" alt="" coords="135,467,316,493"/>
+<area shape="rect" id="node31" href="$classccmc_1_1_fieldline.html#a27b68c12e493ddd49036010cb5bc8069" title="ccmc::Fieldline::integrate\lVector" alt="" coords="135,569,316,610"/>
+<area shape="rect" id="node32" href="$classccmc_1_1_kameleon.html#a165e1d86285b532793e62536854ad3d8" title="ccmc::Kameleon::close" alt="" coords="141,919,310,945"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_general_file_reader.html#a4996a8e305a2e1f9f25228d127bb55bf" title="ccmc::GeneralFileReader\l::open" alt="" coords="411,5,591,46"/>
+<area shape="rect" id="node4" href="$classccmc_1_1_general_file_reader.html#a4d56da3556557ae38485abdcdeacc90e" title="ccmc::GeneralFileReader\l::close" alt="" coords="685,110,865,151"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_general_file_reader.html#a2038ca818d84aec04ecf2b6fdd8710ce" title="ccmc::GeneralFileReader\l::doesAttributeExist" alt="" coords="411,223,591,265"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_general_file_reader.html#a45b01633354be559eed7cc6c854573c1" title="ccmc::GeneralFileReader\l::getGlobalAttribute" alt="" coords="411,289,591,330"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_model.html#a292717921c5bd7604901fb82c49275cf" title="Sets the model name to modelName." alt="" coords="398,71,605,97"/>
+<area shape="rect" id="node12" href="$classccmc_1_1_model.html#a3c64dc635c2c1a2fe2f8efa2a3666282" title="Opens a file." alt="" coords="430,121,573,148"/>
+<area shape="rect" id="node6" href="$classccmc_1_1_file_reader.html#aa7a02a3f99c09861a5e7c00e98b81be2" title="ccmc::FileReader::open" alt="" coords="689,12,860,39"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_file_reader.html#a036ac2d85ad32a98b81c9e6ebf0ef133" title="ccmc::FileReader::close" alt="" coords="936,117,1107,144"/>
+<area shape="rect" id="node8" href="$classccmc_1_1_file_reader.html#ac27cfdd9ceabe3af0f14b18fbebcafa5" title="ccmc::FileReader::doesAttribute\lExist" alt="" coords="662,223,887,265"/>
+<area shape="rect" id="node10" href="$classccmc_1_1_file_reader.html#a11885da1a8d6775a7d2764494474d067" title="ccmc::FileReader::getGlobal\lAttribute" alt="" coords="675,289,874,330"/>
+<area shape="rect" id="node19" href="$classccmc_1_1_fieldline.html#a23509bcd88a0a7605c35afaafa58c5c9" title="ccmc::Fieldline::removePoint" alt="" coords="399,619,603,645"/>
+<area shape="rect" id="node20" href="$classccmc_1_1_fieldline.html#a700a5c623e608f3cbc89455bc4e63b83" title="ccmc::Fieldline::reverse\lOrderInPlace" alt="" coords="416,801,587,842"/>
+<area shape="rect" id="node21" href="$classccmc_1_1_fieldline.html#af87fd7cd8f79631a255f64d40665fccf" title="ccmc::Fieldline::getData" alt="" coords="687,888,862,915"/>
+<area shape="rect" id="node22" href="$classccmc_1_1_fieldline.html#a0d82bca39360b88914fc312dcb441fb8" title="ccmc::Fieldline::getPositions" alt="" coords="674,808,875,835"/>
+<area shape="rect" id="node24" href="$classccmc_1_1_fieldline.html#a1bbfa14097ea4e6cb854b68a603eb891" title="ccmc::Fieldline::setStart\lPoint" alt="" coords="414,670,589,711"/>
+<area shape="rect" id="node25" href="$classccmc_1_1_fieldline.html#ab979de578ae2e0a40907d0c90f273f0c" title="ccmc::Fieldline::setStart\lIndex" alt="" coords="414,735,589,777"/>
+</map>

@@ -1,0 +1,541 @@
+\hypertarget{classccmc_1_1_fieldline}{\section{ccmc\-:\-:Fieldline Class Reference}
+\label{classccmc_1_1_fieldline}\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}}
+}
+
+
+{\ttfamily \#include $<$ccmc/\-Fieldline.\-h$>$}
+
+
+
+Collaboration diagram for ccmc\-:\-:Fieldline\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=182pt]{classccmc_1_1_fieldline__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_fieldline_a10b0290c13c4170e468860dc2143fc20}{Fieldline} ()
+\item 
+\hyperlink{classccmc_1_1_fieldline_a981328dcb0f92191940ef86d76946457}{Fieldline} (int initial\-Size)
+\item 
+\hyperlink{classccmc_1_1_fieldline_a08964ce404b1cfd462c5d2038d7c1e9e}{$\sim$\-Fieldline} ()
+\item 
+void \hyperlink{classccmc_1_1_fieldline_a88a8fc4c0ad61639b9138f8dd57bf8e0}{insert\-Point\-Data} (const \hyperlink{classccmc_1_1_point3f}{Point3f} \&p, const float \&d)
+\item 
+void \hyperlink{classccmc_1_1_fieldline_aef1ecd67ed544173a6c1d702b8fbad92}{insert\-Vector\-Data} (const \hyperlink{classccmc_1_1_point3f}{Point3f} \&vector)
+\item 
+void \hyperlink{classccmc_1_1_fieldline_a23509bcd88a0a7605c35afaafa58c5c9}{remove\-Point} (int index)
+\item 
+\hyperlink{classccmc_1_1_fieldline}{Fieldline} \hyperlink{classccmc_1_1_fieldline_a07884d34cad97f14b6810cf23ee003c0}{reverse\-Order} ()
+\item 
+void \hyperlink{classccmc_1_1_fieldline_a700a5c623e608f3cbc89455bc4e63b83}{reverse\-Order\-In\-Place} ()
+\item 
+const std\-::vector$<$ \hyperlink{classccmc_1_1_point3f}{Point3f} $>$ \& \hyperlink{classccmc_1_1_fieldline_a0d82bca39360b88914fc312dcb441fb8}{get\-Positions} ()
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_af87fd7cd8f79631a255f64d40665fccf}{get\-Data} ()
+\item 
+int \hyperlink{classccmc_1_1_fieldline_abc4b63ac9b72acd2e6f26b51f659500c}{size} ()
+\item 
+const \hyperlink{classccmc_1_1_point3f}{Point3f} \& \hyperlink{classccmc_1_1_fieldline_a9f1b0541029d59589902e1ffe2ef75c5}{get\-Position} (int i)
+\item 
+float \hyperlink{classccmc_1_1_fieldline_afe04791c767345b742c4da719709ddf0}{get\-Data} (int i)
+\item 
+\hyperlink{classccmc_1_1_point3f}{Point3f} \hyperlink{classccmc_1_1_fieldline_aa693457613225094763e0bc33fe5d730}{get\-Start\-Point} ()
+\item 
+int \hyperlink{classccmc_1_1_fieldline_ab629c0bb298a816b2a6af5a95d9e288e}{get\-Start\-Index} ()
+\item 
+void \hyperlink{classccmc_1_1_fieldline_a7a4edd677b1e1542166ac0aad783087e}{reserve} (int \hyperlink{classccmc_1_1_fieldline_abc4b63ac9b72acd2e6f26b51f659500c}{size})
+\item 
+void \hyperlink{classccmc_1_1_fieldline_a1bbfa14097ea4e6cb854b68a603eb891}{set\-Start\-Point} (\hyperlink{classccmc_1_1_point3f}{Point3f} p)
+\item 
+void \hyperlink{classccmc_1_1_fieldline_ab979de578ae2e0a40907d0c90f273f0c}{set\-Start\-Index} (int index)
+\item 
+void \hyperlink{classccmc_1_1_fieldline_a9fa22375c1276932380a259952f966ca}{set\-Variable} (std\-::string variable)
+\item 
+const std\-::string \& \hyperlink{classccmc_1_1_fieldline_a9403dca3b1c98f35f9e9bb5cc340bd3a}{get\-Variable} ()
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_af89e2d72b06b4e7157d3f7e5ac1b4928}{get\-Ds} ()
+\item 
+const std\-::vector$<$ \hyperlink{classccmc_1_1_point3f}{Point3f} $>$ \& \hyperlink{classccmc_1_1_fieldline_ad238f0bd5cda88ec64bbd7fa951cee87}{get\-Elements} ()
+\item 
+const \hyperlink{classccmc_1_1_point3f}{Point3f} \& \hyperlink{classccmc_1_1_fieldline_a0ef624f19c2f6268c1539fe8a5246ffb}{get\-Element} (int i)
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_ae0923bc16ca3181c3d3a7c46c5cad55a}{integrate} ()
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069}{integrate\-Vector} ()
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_a360a20c0b4e4f39d11545ca22a06199a}{derivative} ()
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_a39cd6708e840c29c4e85b445fb14e017}{measure} ()
+\item 
+float \hyperlink{classccmc_1_1_fieldline_a15e1c45287ad52604fc681c40b02c3c2}{get\-Length} (int i)
+\item 
+float \hyperlink{classccmc_1_1_fieldline_afd11cbe0d7332baaa2f659e909e9206b}{get\-Integral} (int i)
+\item 
+\hyperlink{classccmc_1_1_fieldline}{Fieldline} \hyperlink{classccmc_1_1_fieldline_a3c641db4971a6cbcce5ef3fb0bc3e01d}{interpolate} (int option, int Npoints)
+\item 
+const std\-::vector$<$ int $>$ \& \hyperlink{classccmc_1_1_fieldline_a69dbf2cdbb0bd332e07d605545094441}{get\-Nearest} ()
+\item 
+const std\-::vector$<$ float $>$ \& \hyperlink{classccmc_1_1_fieldline_aab3aa25ca4f65e88eeecfb4b1376e3b5}{get\-Tlocal} ()
+\item 
+void \hyperlink{classccmc_1_1_fieldline_a53d2fbcbc58652b7573315ed4f3f6850}{minmax} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classccmc_1_1_fieldline_a2f909b007d4886fa23a7e7281c946274}{mincount}
+\item 
+int \hyperlink{classccmc_1_1_fieldline_a0d3ae25b1357cec44c7207eb8ecc670d}{maxcount}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{classccmc_1_1_fieldline_ae2e528d518e0342ecf3ec1241a5eeac0}{minima}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{classccmc_1_1_fieldline_afa83761b48fc8782b6bd74a3109881b1}{maxima}
+\item 
+int \hyperlink{classccmc_1_1_fieldline_a99172cf16d46b155773983b2bfd043dd}{Glob\-Min\-Index}
+\item 
+int \hyperlink{classccmc_1_1_fieldline_ab4a42e2d2703418d4d0913ea279e89c1}{Glob\-Max\-Index}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_fieldline_a10b0290c13c4170e468860dc2143fc20}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!Fieldline@{Fieldline}}
+\index{Fieldline@{Fieldline}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{Fieldline}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Fieldline\-::\-Fieldline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a10b0290c13c4170e468860dc2143fc20}
+T\-O\-D\-O\-: finish documentation \hypertarget{classccmc_1_1_fieldline_a981328dcb0f92191940ef86d76946457}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!Fieldline@{Fieldline}}
+\index{Fieldline@{Fieldline}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{Fieldline}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Fieldline\-::\-Fieldline (
+\begin{DoxyParamCaption}
+\item[{int}]{initial\-Size}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a981328dcb0f92191940ef86d76946457}
+
+\begin{DoxyParams}{Parameters}
+{\em initial\-Size} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_fieldline_a08964ce404b1cfd462c5d2038d7c1e9e}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!$\sim$\-Fieldline@{$\sim$\-Fieldline}}
+\index{$\sim$\-Fieldline@{$\sim$\-Fieldline}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{$\sim$\-Fieldline}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Fieldline\-::$\sim$\-Fieldline (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a08964ce404b1cfd462c5d2038d7c1e9e}
+T\-O\-D\-O\-: finish documentation 
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_fieldline_a360a20c0b4e4f39d11545ca22a06199a}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!derivative@{derivative}}
+\index{derivative@{derivative}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{derivative}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::derivative (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a360a20c0b4e4f39d11545ca22a06199a}
+Calculate the derivative of d values/ ds over the length of the field line 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a360a20c0b4e4f39d11545ca22a06199a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_af87fd7cd8f79631a255f64d40665fccf}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_af87fd7cd8f79631a255f64d40665fccf}
+T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classccmc_1_1_fieldline_afe04791c767345b742c4da719709ddf0}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-Fieldline\-::get\-Data (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_afe04791c767345b742c4da719709ddf0}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classccmc_1_1_fieldline_af89e2d72b06b4e7157d3f7e5ac1b4928}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Ds@{get\-Ds}}
+\index{get\-Ds@{get\-Ds}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Ds}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::get\-Ds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_af89e2d72b06b4e7157d3f7e5ac1b4928}
+Calculate the forward difference elements for a field line with ordered positions. Output has length fieldline.\-size()-\/1 T\-O\-D\-O\-: Add backward and higher-\/order differencing 
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_af89e2d72b06b4e7157d3f7e5ac1b4928_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a0ef624f19c2f6268c1539fe8a5246ffb}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Element@{get\-Element}}
+\index{get\-Element@{get\-Element}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Element}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point3f} \& ccmc\-::\-Fieldline\-::get\-Element (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a0ef624f19c2f6268c1539fe8a5246ffb}
+\hypertarget{classccmc_1_1_fieldline_ad238f0bd5cda88ec64bbd7fa951cee87}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Elements@{get\-Elements}}
+\index{get\-Elements@{get\-Elements}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Elements}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ {\bf Point3f} $>$ \& ccmc\-::\-Fieldline\-::get\-Elements (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_ad238f0bd5cda88ec64bbd7fa951cee87}
+\hypertarget{classccmc_1_1_fieldline_afd11cbe0d7332baaa2f659e909e9206b}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Integral@{get\-Integral}}
+\index{get\-Integral@{get\-Integral}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Integral}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-Fieldline\-::get\-Integral (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_afd11cbe0d7332baaa2f659e909e9206b}
+Get the integral up to position i \hypertarget{classccmc_1_1_fieldline_a15e1c45287ad52604fc681c40b02c3c2}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Length@{get\-Length}}
+\index{get\-Length@{get\-Length}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Length}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-Fieldline\-::get\-Length (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a15e1c45287ad52604fc681c40b02c3c2}
+Get the length up to position i 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a15e1c45287ad52604fc681c40b02c3c2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a69dbf2cdbb0bd332e07d605545094441}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Nearest@{get\-Nearest}}
+\index{get\-Nearest@{get\-Nearest}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Nearest}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ int $>$ \& ccmc\-::\-Fieldline\-::get\-Nearest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a69dbf2cdbb0bd332e07d605545094441}
+\hypertarget{classccmc_1_1_fieldline_a9f1b0541029d59589902e1ffe2ef75c5}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Point3f} \& ccmc\-::\-Fieldline\-::get\-Position (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a9f1b0541029d59589902e1ffe2ef75c5}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classccmc_1_1_fieldline_a0d82bca39360b88914fc312dcb441fb8}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Positions@{get\-Positions}}
+\index{get\-Positions@{get\-Positions}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Positions}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ {\bf Point3f} $>$ \& ccmc\-::\-Fieldline\-::get\-Positions (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a0d82bca39360b88914fc312dcb441fb8}
+T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classccmc_1_1_fieldline_ab629c0bb298a816b2a6af5a95d9e288e}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Start\-Index@{get\-Start\-Index}}
+\index{get\-Start\-Index@{get\-Start\-Index}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Fieldline\-::get\-Start\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_ab629c0bb298a816b2a6af5a95d9e288e}
+\hypertarget{classccmc_1_1_fieldline_aa693457613225094763e0bc33fe5d730}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Start\-Point@{get\-Start\-Point}}
+\index{get\-Start\-Point@{get\-Start\-Point}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Start\-Point}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point3f} ccmc\-::\-Fieldline\-::get\-Start\-Point (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_aa693457613225094763e0bc33fe5d730}
+T\-O\-D\-O\-: finish documentation \hypertarget{classccmc_1_1_fieldline_aab3aa25ca4f65e88eeecfb4b1376e3b5}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Tlocal@{get\-Tlocal}}
+\index{get\-Tlocal@{get\-Tlocal}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Tlocal}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::get\-Tlocal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_aab3aa25ca4f65e88eeecfb4b1376e3b5}
+\hypertarget{classccmc_1_1_fieldline_a9403dca3b1c98f35f9e9bb5cc340bd3a}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!get\-Variable@{get\-Variable}}
+\index{get\-Variable@{get\-Variable}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{get\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::string \& ccmc\-::\-Fieldline\-::get\-Variable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a9403dca3b1c98f35f9e9bb5cc340bd3a}
+\hypertarget{classccmc_1_1_fieldline_a88a8fc4c0ad61639b9138f8dd57bf8e0}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!insert\-Point\-Data@{insert\-Point\-Data}}
+\index{insert\-Point\-Data@{insert\-Point\-Data}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{insert\-Point\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::insert\-Point\-Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point3f} \&}]{p, }
+\item[{const float \&}]{d}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a88a8fc4c0ad61639b9138f8dd57bf8e0}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em p} & \\
+\hline
+{\em d} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_fieldline_aef1ecd67ed544173a6c1d702b8fbad92}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!insert\-Vector\-Data@{insert\-Vector\-Data}}
+\index{insert\-Vector\-Data@{insert\-Vector\-Data}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{insert\-Vector\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::insert\-Vector\-Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Point3f} \&}]{vector}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_aef1ecd67ed544173a6c1d702b8fbad92}
+\hypertarget{classccmc_1_1_fieldline_ae0923bc16ca3181c3d3a7c46c5cad55a}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!integrate@{integrate}}
+\index{integrate@{integrate}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{integrate}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::integrate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_ae0923bc16ca3181c3d3a7c46c5cad55a}
+Calculate the integral of ds$\ast$values over the length of the field line Integration uses trapezoidal rule\-: multiplies the element lengths by the average of the data on either side of the segment
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_ae0923bc16ca3181c3d3a7c46c5cad55a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!integrate\-Vector@{integrate\-Vector}}
+\index{integrate\-Vector@{integrate\-Vector}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{integrate\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::integrate\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069}
+Calculate the integral of (vector) dot dl over the length of the field line 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a27b68c12e493ddd49036010cb5bc8069_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a3c641db4971a6cbcce5ef3fb0bc3e01d}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Fieldline\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{int}]{option, }
+\item[{int}]{Npoints}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a3c641db4971a6cbcce5ef3fb0bc3e01d}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a3c641db4971a6cbcce5ef3fb0bc3e01d_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a39cd6708e840c29c4e85b445fb14e017}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!measure@{measure}}
+\index{measure@{measure}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{measure}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ \& ccmc\-::\-Fieldline\-::measure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a39cd6708e840c29c4e85b445fb14e017}
+Measure the length of the field line up to point i 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a39cd6708e840c29c4e85b445fb14e017_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a53d2fbcbc58652b7573315ed4f3f6850}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!minmax@{minmax}}
+\index{minmax@{minmax}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{minmax}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::minmax (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a53d2fbcbc58652b7573315ed4f3f6850}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a53d2fbcbc58652b7573315ed4f3f6850_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a23509bcd88a0a7605c35afaafa58c5c9}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!remove\-Point@{remove\-Point}}
+\index{remove\-Point@{remove\-Point}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{remove\-Point}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::remove\-Point (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a23509bcd88a0a7605c35afaafa58c5c9}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_fieldline_a7a4edd677b1e1542166ac0aad783087e}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!reserve@{reserve}}
+\index{reserve@{reserve}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{reserve}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::reserve (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a7a4edd677b1e1542166ac0aad783087e}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_fieldline_a07884d34cad97f14b6810cf23ee003c0}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!reverse\-Order@{reverse\-Order}}
+\index{reverse\-Order@{reverse\-Order}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{reverse\-Order}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Fieldline\-::reverse\-Order (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a07884d34cad97f14b6810cf23ee003c0}
+T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a07884d34cad97f14b6810cf23ee003c0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_a700a5c623e608f3cbc89455bc4e63b83}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!reverse\-Order\-In\-Place@{reverse\-Order\-In\-Place}}
+\index{reverse\-Order\-In\-Place@{reverse\-Order\-In\-Place}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{reverse\-Order\-In\-Place}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::reverse\-Order\-In\-Place (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a700a5c623e608f3cbc89455bc4e63b83}
+T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_fieldline_a700a5c623e608f3cbc89455bc4e63b83_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_fieldline_ab979de578ae2e0a40907d0c90f273f0c}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!set\-Start\-Index@{set\-Start\-Index}}
+\index{set\-Start\-Index@{set\-Start\-Index}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{set\-Start\-Index}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::set\-Start\-Index (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_ab979de578ae2e0a40907d0c90f273f0c}
+\hypertarget{classccmc_1_1_fieldline_a1bbfa14097ea4e6cb854b68a603eb891}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!set\-Start\-Point@{set\-Start\-Point}}
+\index{set\-Start\-Point@{set\-Start\-Point}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{set\-Start\-Point}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::set\-Start\-Point (
+\begin{DoxyParamCaption}
+\item[{{\bf Point3f}}]{start\-Point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a1bbfa14097ea4e6cb854b68a603eb891}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em start\-Point} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_fieldline_a9fa22375c1276932380a259952f966ca}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!set\-Variable@{set\-Variable}}
+\index{set\-Variable@{set\-Variable}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{set\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Fieldline\-::set\-Variable (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_a9fa22375c1276932380a259952f966ca}
+\hypertarget{classccmc_1_1_fieldline_abc4b63ac9b72acd2e6f26b51f659500c}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!size@{size}}
+\index{size@{size}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Fieldline\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_fieldline_abc4b63ac9b72acd2e6f26b51f659500c}
+T\-O\-D\-O\-: finish documentation \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classccmc_1_1_fieldline_ab4a42e2d2703418d4d0913ea279e89c1}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!Glob\-Max\-Index@{Glob\-Max\-Index}}
+\index{Glob\-Max\-Index@{Glob\-Max\-Index}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{Glob\-Max\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Fieldline\-::\-Glob\-Max\-Index}}\label{classccmc_1_1_fieldline_ab4a42e2d2703418d4d0913ea279e89c1}
+\hypertarget{classccmc_1_1_fieldline_a99172cf16d46b155773983b2bfd043dd}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!Glob\-Min\-Index@{Glob\-Min\-Index}}
+\index{Glob\-Min\-Index@{Glob\-Min\-Index}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{Glob\-Min\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Fieldline\-::\-Glob\-Min\-Index}}\label{classccmc_1_1_fieldline_a99172cf16d46b155773983b2bfd043dd}
+\hypertarget{classccmc_1_1_fieldline_a0d3ae25b1357cec44c7207eb8ecc670d}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!maxcount@{maxcount}}
+\index{maxcount@{maxcount}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{maxcount}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Fieldline\-::maxcount}}\label{classccmc_1_1_fieldline_a0d3ae25b1357cec44c7207eb8ecc670d}
+\hypertarget{classccmc_1_1_fieldline_afa83761b48fc8782b6bd74a3109881b1}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!maxima@{maxima}}
+\index{maxima@{maxima}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{maxima}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ int$>$ ccmc\-::\-Fieldline\-::maxima}}\label{classccmc_1_1_fieldline_afa83761b48fc8782b6bd74a3109881b1}
+\hypertarget{classccmc_1_1_fieldline_a2f909b007d4886fa23a7e7281c946274}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!mincount@{mincount}}
+\index{mincount@{mincount}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{mincount}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Fieldline\-::mincount}}\label{classccmc_1_1_fieldline_a2f909b007d4886fa23a7e7281c946274}
+\hypertarget{classccmc_1_1_fieldline_ae2e528d518e0342ecf3ec1241a5eeac0}{\index{ccmc\-::\-Fieldline@{ccmc\-::\-Fieldline}!minima@{minima}}
+\index{minima@{minima}!ccmc::Fieldline@{ccmc\-::\-Fieldline}}
+\subsubsection[{minima}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ int$>$ ccmc\-::\-Fieldline\-::minima}}\label{classccmc_1_1_fieldline_ae2e528d518e0342ecf3ec1241a5eeac0}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_fieldline_8h}{Fieldline.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_fieldline_8cpp}{Fieldline.\-cpp}\end{DoxyCompactItemize}

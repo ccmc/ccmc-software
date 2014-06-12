@@ -1,0 +1,21 @@
+<map id="ccmc::BATSRUS::open" name="ccmc::BATSRUS::open">
+<area shape="rect" id="node3" href="$classccmc_1_1_model.html#ad4afaf8f5cb1b8bb73034658145b4934" title="ccmc::Model::setBusyStatus" alt="" coords="231,41,446,68"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_general_file_reader.html#a4996a8e305a2e1f9f25228d127bb55bf" title="ccmc::GeneralFileReader\l::open" alt="" coords="246,93,431,134"/>
+<area shape="rect" id="node13" href="$classccmc_1_1_model.html#a3f579f03a4cd21237705c268d1a5d3e9" title="Load a variable into memory." alt="" coords="239,245,438,272"/>
+<area shape="rect" id="node27" href="$classccmc_1_1_model.html#a05c373d53a6bdb5b3f9663e129fb35c1" title="Loads a variable into memory." alt="" coords="230,195,447,221"/>
+<area shape="rect" id="node35" href="$classccmc_1_1_general_file_reader.html#a2151d69434928082138128fb3ebd3282" title="ccmc::GeneralFileReader\l::initializeVariableNames" alt="" coords="246,297,431,338"/>
+<area shape="rect" id="node39" href="$classccmc_1_1_b_a_t_s_r_u_s.html#a86dddd02ea3db46068f482d59f77df86" title="Initializes the conversionFactorsToSI map. " alt="" coords="241,362,436,403"/>
+<area shape="rect" id="node41" href="$classccmc_1_1_b_a_t_s_r_u_s.html#ab86a0088002795bbf4b60fd89576604e" title="Initializes the variableSIUnits map. " alt="" coords="241,427,436,469"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_general_file_reader.html#a4d56da3556557ae38485abdcdeacc90e" title="ccmc::GeneralFileReader\l::close" alt="" coords="503,57,689,98"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_file_reader.html#aa7a02a3f99c09861a5e7c00e98b81be2" title="ccmc::FileReader::open" alt="" coords="506,5,686,32"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_file_reader.html#a036ac2d85ad32a98b81c9e6ebf0ef133" title="ccmc::FileReader::close" alt="" coords="774,64,957,91"/>
+<area shape="rect" id="node15" href="$classccmc_1_1_general_file_reader.html#a7752dcc4d653d0d325cbe5ce1b9a7ebe" title="ccmc::GeneralFileReader\l::doesVariableExist" alt="" coords="503,187,689,229"/>
+<area shape="rect" id="node19" href="$classccmc_1_1_general_file_reader.html#a15db2e13a3cc71bf0fea4ea46725c22a" title="ccmc::GeneralFileReader\l::getVariable" alt="" coords="503,318,689,359"/>
+<area shape="rect" id="node23" href="$classccmc_1_1_general_file_reader.html#a6cc488b707602f3b4438408826d3df02" title="ccmc::GeneralFileReader\l::getVariableID" alt="" coords="503,253,689,294"/>
+<area shape="rect" id="node17" href="$classccmc_1_1_file_reader.html#ab8893f7d2b0f62041c37a788affe6b36" title="ccmc::FileReader::doesVariable\lExist" alt="" coords="750,187,981,229"/>
+<area shape="rect" id="node21" href="$classccmc_1_1_file_reader.html#a3703180de2d7d38c1ccf115d5279d4d0" title="ccmc::FileReader::getVariable" alt="" coords="754,325,977,352"/>
+<area shape="rect" id="node25" href="$classccmc_1_1_file_reader.html#a937185c6d323262f7c3f3c4d39b59e37" title="ccmc::FileReader::getVariableID" alt="" coords="747,260,983,287"/>
+<area shape="rect" id="node30" href="$classccmc_1_1_general_file_reader.html#a9715fb0dcb4c322dcff51749ba1dcf70" title="ccmc::GeneralFileReader\l::getVariableInt" alt="" coords="503,122,689,163"/>
+<area shape="rect" id="node32" href="$classccmc_1_1_file_reader.html#ab8f4f917ca18681189e3ac8001282c34" title="ccmc::FileReader::getVariableInt" alt="" coords="745,129,986,156"/>
+<area shape="rect" id="node37" href="$classccmc_1_1_file_reader.html#a3517b66817277210916f6e5aa3db21a8" title="ccmc::FileReader::initialize\lVariableNames" alt="" coords="496,383,696,425"/>
+</map>

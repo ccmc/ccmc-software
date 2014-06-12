@@ -1,0 +1,20 @@
+<map id="gsm_twixt_sm" name="gsm_twixt_sm">
+<area shape="rect" id="node3" href="$cxform-manual_8c.html#a6a21c6d7c236c5643d401407d7fa8a26" title="simple_rotation" alt="" coords="288,56,411,83"/>
+<area shape="rect" id="node9" href="$cxform-manual_8c.html#aca10bea08cb0c11d8d45e4b48efe7582" title="mat_T4" alt="" coords="168,157,240,184"/>
+<area shape="rect" id="node5" href="$cxform-manual_8c.html#a77c8e33324183648e2a9e4f77a422242" title="mat_transpose" alt="" coords="460,5,580,32"/>
+<area shape="rect" id="node7" href="$cxform-manual_8c.html#a54a60b4e36dd4c95a7c129884bac2d9c" title="mat_times_vec" alt="" coords="459,56,581,83"/>
+<area shape="rect" id="node11" href="$cxform-manual_8c.html#a522caf9f987d9c69985928f7fb7a8742" title="vec_Qe" alt="" coords="313,157,385,184"/>
+<area shape="rect" id="node32" href="$cxform-manual_8c.html#a90a202672c17d19497833c2589286cd8" title="hapgood_matrix" alt="" coords="630,461,757,488"/>
+<area shape="rect" id="node13" href="$cxform-manual_8c.html#a380fc5b86f178fed6314b59950502db0" title="mag_lat" alt="" coords="483,107,557,133"/>
+<area shape="rect" id="node21" href="$cxform-manual_8c.html#ab66b822e2469cf8046effefcf1851cd5" title="mag_lon" alt="" coords="655,157,731,184"/>
+<area shape="rect" id="node30" href="$cxform-manual_8c.html#a84c6ff0c06e5c7ad41c4d8d9487bda2b" title="mat_T2" alt="" coords="484,259,556,285"/>
+<area shape="rect" id="node38" href="$cxform-manual_8c.html#a1f4ce7c90920f310bb7543dd01ce4f98" title="mat_times_mat" alt="" coords="632,208,755,235"/>
+<area shape="rect" id="node40" href="$cxform-manual_8c.html#a98c3af0a095c65f0b7dcdab5266f25c8" title="mat_T1" alt="" coords="484,372,556,399"/>
+<area shape="rect" id="node15" href="$cxform-manual_8c.html#ab95751a5e6ceadc3cab497212741477f" title="calcG01" alt="" coords="656,56,731,83"/>
+<area shape="rect" id="node17" href="$cxform-manual_8c.html#a77f0e08722c1a87fd774bb9425a7f7b9" title="calcG11" alt="" coords="807,132,881,159"/>
+<area shape="rect" id="node19" href="$cxform-manual_8c.html#a42194228f3217123ff26c5a3b53ad89f" title="calcH11" alt="" coords="807,31,881,57"/>
+<area shape="rect" id="node23" href="$cxform-manual_8c.html#a995057a97d4e066b28f7c6335a58006d" title="lambda0" alt="" coords="806,259,882,285"/>
+<area shape="rect" id="node25" href="$cxform-manual_8c.html#ae23b51b4b534071c5a477dd97ce39186" title="T0" alt="" coords="931,309,970,336"/>
+<area shape="rect" id="node35" href="$cxform-manual_8c.html#a437aa2f848d339070f878e0deecd5dbf" title="epsilon" alt="" coords="811,309,877,336"/>
+<area shape="rect" id="node43" href="$cxform-manual_8c.html#ab97ee97a7a20980cfa40d7c28c30f847" title="H" alt="" coords="674,360,713,387"/>
+</map>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Thu Jun 09 14:00:41 EDT 2011 -->
+
+<Model name ="OPEN_GGCM">
+
+<!--there are just guesses. get an expert to do the mapping.-->
+
+	<variable>
+        <OriginalName>bx</OriginalName>
+        <KameleonName>bx</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>by</OriginalName>
+        <KameleonName>by</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>bz</OriginalName>
+        <KameleonName>bz</KameleonName>
+    </variable>
+       <variable>
+        <OriginalName>vx</OriginalName>
+        <KameleonName>ux</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy</OriginalName>
+        <KameleonName>uy</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz</OriginalName>
+        <KameleonName>uz</KameleonName>
+    </variable>  
+    <variable>
+        <OriginalName>rr</OriginalName>
+        <KameleonName>rho</KameleonName>
+    </variable>  
+    <variable>
+        <OriginalName>pp</OriginalName>
+        <KameleonName>p</KameleonName>
+    </variable>  
+    <variable>
+        <OriginalName>resis</OriginalName>
+        <KameleonName>eta</KameleonName>
+    </variable>    
+    <variable>
+        <OriginalName>gridx_bx</OriginalName>
+        <KameleonName>x_bx</KameleonName>
+    </variable>    
+    <variable>
+        <OriginalName>gridx_by</OriginalName>
+        <KameleonName>x_by</KameleonName>
+    </variable>    
+    <variable>
+        <OriginalName>gridx_bz</OriginalName>
+        <KameleonName>x_bz</KameleonName>
+    </variable>
+	<variable>
+        <OriginalName>gridy_bx</OriginalName>
+        <KameleonName>y_bx</KameleonName>
+    </variable>    
+    <variable>
+        <OriginalName>gridy_by</OriginalName>
+        <KameleonName>y_by</KameleonName>
+    </variable>    
+    <variable>
+        <OriginalName>gridy_bz</OriginalName>
+        <KameleonName>y_bz</KameleonName>
+    </variable>    
+
+	<variable>
+        <OriginalName>xjx</OriginalName>
+        <KameleonName>jx</KameleonName>
+    </variable>    
+    <variable>
+        <OriginalName>xjy</OriginalName>
+        <KameleonName>jy</KameleonName>
+    </variable>    
+    <variable>
+        <OriginalName>xjz</OriginalName>
+        <KameleonName>jz</KameleonName>
+    </variable>    
+
+
+
+
+
+<attribute>
+	<name>README</name>
+	<description>General description of the model, CDF contents, and HOWTO usage</description>
+	<dataType>String</dataType>
+	<value>[details needed]</value>
+</attribute>
+
+
+
+<attribute>
+	<name>model_type</name>
+	<description>Name of the registered model used to produce data (e.g. Global Magnetosphere)</description>
+	<dataType>String</dataType>
+	<value>?</value>
+</attribute>
+
+
+<attribute>
+	<name>grid_system_count</name>
+	<description>The number n denoting how many grid systems are used and/or described in the current file. NOTE: If n>1 the additional grid attributes will be defined in a model specific attributes file.</description>
+	<dataType>String</dataType>
+	<value>?</value>
+</attribute>
+
+<attribute>
+	<name>model_name</name>
+	<description>Name of the registered model that produced the data</description>
+	<dataType>String</dataType>
+	<value>open_ggcm</value>
+</attribute>
+
+<attribute>
+	<name>output_type</name>
+	<description>Define the type of output that is contained in the file (e.g. Global Magnetosphere model with Ionosphere output)</description>
+	<dataType>String</dataType>
+	<value>?</value>
+</attribute>
+
+<attribute>
+	<name>grid_system_1</name>
+	<description>Outline how a particular grid system is defined by showing coordinates used (e.g. [X,Y,Z] where X,Y,Z are position variables defined in current file)</description>
+	<dataType>String</dataType>
+	<value>?</value>
+</attribute>
+
+
+<attribute>
+	<name>grid_1_type</name>
+	<description>Keywords identifying all grids used in current model output. Grid types will be registered in external coordinate transformation package. (e.g. grid_1_type=GSM)</description>
+	<dataType>String</dataType>
+	<value>?</value>
+</attribute>
+
+<attribute>
+	<name>run_type</name>
+	<description>Signifies either an event or modeled run</description>
+	<dataType>String</dataType>
+	<value>?</value>
+</attribute>
+
+
+<attribute>
+	<name>standard_grid_target</name>
+	<description>Defines a standard target grid and coordinate system to which the current model's output can be interpolated using Kameleon Access/Interpolation Library or a coupled coordinate transformation package</description>
+	<dataType>String</dataType>
+	<value>?</value>
+</attribute>
+
+                
+                <attribute>
+                                   <name>r_body</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>r_currents</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_time</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>elapsed_time_in_seconds</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_update</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_tilt</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_tilt_y</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+
+
+
+<!--
+                              <attribute>
+                                   <name>grid_system_2_number_of_dimensions</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_2_dimension_1_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_2_dimension_2_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_2_dimension_3_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_2</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_3_number_of_dimensions</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_3_dimension_1_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_3_dimension_2_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_3_dimension_3_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_3</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_4_number_of_dimensions</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_4_dimension_1_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_4_dimension_2_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_4_dimension_3_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_system_4</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_2_type</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_3_type</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>grid_4_type</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              
+                              
+                              -->
+                              
+                              
+                              
+                              	</Model>

@@ -1,0 +1,13 @@
+<map id="ccmc::Tracer::getLastClosedFieldlines" name="ccmc::Tracer::getLastClosedFieldlines">
+<area shape="rect" id="node2" href="$classccmc_1_1_fieldline.html#abc4b63ac9b72acd2e6f26b51f659500c" title="ccmc::Fieldline::size" alt="" coords="294,5,442,32"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_fieldline.html#a0d82bca39360b88914fc312dcb441fb8" title="ccmc::Fieldline::getPositions" alt="" coords="267,56,469,83"/>
+<area shape="rect" id="node4" href="$classccmc_1_1_fieldline.html#af87fd7cd8f79631a255f64d40665fccf" title="ccmc::Fieldline::getData" alt="" coords="281,107,455,133"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_fieldline.html#a88a8fc4c0ad61639b9138f8dd57bf8e0" title="ccmc::Fieldline::insertPointData" alt="" coords="257,157,479,184"/>
+<area shape="rect" id="node6" href="$classccmc_1_1_point3f.html#a71f9cc868f43146c8bf62eb877b0ce02" title="ccmc::Point3f::magnitude" alt="" coords="529,208,714,235"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_point3f.html#aeaf24d6f3cdcaba79fb7d499a639b7e2" title="ccmc::Point3f::normalize" alt="" coords="279,259,457,285"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_fieldline.html#a1bbfa14097ea4e6cb854b68a603eb891" title="ccmc::Fieldline::setStart\lPoint" alt="" coords="281,310,455,351"/>
+<area shape="rect" id="node10" href="$classccmc_1_1_fieldline.html#aa693457613225094763e0bc33fe5d730" title="ccmc::Fieldline::getStart\lPoint" alt="" coords="280,375,456,417"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_fieldline.html#ab979de578ae2e0a40907d0c90f273f0c" title="ccmc::Fieldline::setStart\lIndex" alt="" coords="281,441,455,482"/>
+<area shape="rect" id="node12" href="$classccmc_1_1_fieldline.html#ab629c0bb298a816b2a6af5a95d9e288e" title="ccmc::Fieldline::getStart\lIndex" alt="" coords="280,506,456,547"/>
+<area shape="rect" id="node8" href="$group__metric__grp.html#gaf15608f8914516f8d949a8c053d55021" title="nanoflann::abs" alt="" coords="563,259,679,285"/>
+</map>

@@ -1,0 +1,5 @@
+// The configured options and settings for Kameleon-plus, obtained from CMakeLists.txt
+
+#define Kameleon_plus_VERSION_MAJOR @Kameleon_VERSION_MAJOR@
+
+#define Kameleon_plus_VERSION_MINOR @Kameleon_VERSION_MINOR@

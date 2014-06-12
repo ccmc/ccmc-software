@@ -1,0 +1,37 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$classccmc_1_1_time_interpolator.html#a0d265523f630f65ba2f905cda85a66eb" title="ccmc::TimeInterpolator\l::parseTime" alt="" coords="110,226,279,267"/>
+<area shape="rect" id="node12" href="$classccmc_1_1_time_interpolator.html#ab14064752057b303dce510fd9b44caf2" title="ccmc::TimeInterpolator\l::toString" alt="" coords="362,462,531,503"/>
+<area shape="rect" id="node16" href="$classccmc_1_1_time_interpolator.html#aaa61a9153116b891697833dfa46d16c9" title="ccmc::TimeInterpolator\l::addTimestep" alt="" coords="110,829,279,870"/>
+<area shape="rect" id="node33" href="$classccmc_1_1_time_interpolator.html#a8fd3680bc1579890ea62c41145d5422f" title="ccmc::TimeInterpolator\l::manageMemory" alt="" coords="110,543,279,585"/>
+<area shape="rect" id="node35" href="$classccmc_1_1_time_interpolator.html#ab80987872d9d6d58c49d30a86e499e86" title="ccmc::TimeInterpolator\l::interpolate" alt="" coords="110,630,279,671"/>
+<area shape="rect" id="node3" href="$namespaceccmc.html#a17625a00cb5c6d62f957839dcfabf7dd" title="ccmc::parseEPOCH3" alt="" coords="370,309,523,336"/>
+<area shape="rect" id="node4" href="$namespaceccmc.html#a865f02361d01e00b2280b3b729bf6a34" title="ccmc::EPOCHbreakdown" alt="" coords="357,360,536,387"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_time.html#af68b4db15a5e3607defb66dd50f05ca2" title="ccmc::Time::setYear" alt="" coords="371,411,522,437"/>
+<area shape="rect" id="node6" href="$classccmc_1_1_time.html#aaff31e00f68086966ed627ad3ffdfe5f" title="ccmc::Time::setMonth" alt="" coords="365,5,528,32"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_time.html#aa9de7a701b5c9ecbf2b79aadf60cf754" title="ccmc::Time::setDay" alt="" coords="373,56,521,83"/>
+<area shape="rect" id="node8" href="$classccmc_1_1_time.html#afe8e5bc96dcbecc80a2ace52a08f4724" title="ccmc::Time::setHour" alt="" coords="369,107,524,133"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_time.html#a14044e974d54b1a10870bf0d4a14ce52" title="ccmc::Time::setMinute" alt="" coords="363,157,530,184"/>
+<area shape="rect" id="node10" href="$classccmc_1_1_time.html#a897c061a139d2fee347cfc4c546e4e6f" title="ccmc::Time::setSeconds" alt="" coords="357,208,536,235"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_time.html#a660c43e3c4881d97011a625eecfaee1a" title="ccmc::Time::setMilliseconds" alt="" coords="347,259,546,285"/>
+<area shape="rect" id="node13" href="$classccmc_1_1_time.html#a7e94b1cb0a765b26e1fa9998df29b1e5" title="ccmc::Time::toString" alt="" coords="640,503,795,529"/>
+<area shape="rect" id="node14" href="$classccmc_1_1_time.html#a6a4b3fefd6030ad186787dfc2a02bde7" title="ccmc::Time::getEpoch" alt="" coords="636,553,799,580"/>
+<area shape="rect" id="node15" href="$namespaceccmc.html#a07dfb0ccd6e3ff58181ad54f151e1c3a" title="ccmc::encodeEPOCH3" alt="" coords="635,452,799,479"/>
+<area shape="rect" id="node17" href="$classccmc_1_1_kameleon.html#ace633091252d6094098626ee6c295c61" title="ccmc::Kameleon::open" alt="" coords="363,779,531,805"/>
+<area shape="rect" id="node28" href="$classccmc_1_1_kameleon.html#aec2617c0095baf398baa3d7b34f1b22d" title="ccmc::Kameleon::getCurrentTime" alt="" coords="329,895,565,921"/>
+<area shape="rect" id="node32" href="$classccmc_1_1_kameleon.html#a59797b1c1c5c224436d8fb25b9c665b4" title="ccmc::Kameleon::createNew\lInterpolator" alt="" coords="345,946,549,987"/>
+<area shape="rect" id="node18" href="$classccmc_1_1_general_file_reader.html#a4996a8e305a2e1f9f25228d127bb55bf" title="ccmc::GeneralFileReader\l::open" alt="" coords="627,706,807,747"/>
+<area shape="rect" id="node19" href="$classccmc_1_1_general_file_reader.html#a4d56da3556557ae38485abdcdeacc90e" title="ccmc::GeneralFileReader\l::close" alt="" coords="893,647,1073,689"/>
+<area shape="rect" id="node22" href="$classccmc_1_1_general_file_reader.html#a2038ca818d84aec04ecf2b6fdd8710ce" title="ccmc::GeneralFileReader\l::doesAttributeExist" alt="" coords="627,771,807,813"/>
+<area shape="rect" id="node24" href="$classccmc_1_1_general_file_reader.html#a45b01633354be559eed7cc6c854573c1" title="ccmc::GeneralFileReader\l::getGlobalAttribute" alt="" coords="627,837,807,878"/>
+<area shape="rect" id="node26" href="$classccmc_1_1_model.html#a292717921c5bd7604901fb82c49275cf" title="Sets the model name to modelName." alt="" coords="614,903,821,929"/>
+<area shape="rect" id="node27" href="$classccmc_1_1_model.html#a3c64dc635c2c1a2fe2f8efa2a3666282" title="Opens a file." alt="" coords="646,604,789,631"/>
+<area shape="rect" id="node21" href="$classccmc_1_1_file_reader.html#aa7a02a3f99c09861a5e7c00e98b81be2" title="ccmc::FileReader::open" alt="" coords="897,713,1068,740"/>
+<area shape="rect" id="node20" href="$classccmc_1_1_file_reader.html#a036ac2d85ad32a98b81c9e6ebf0ef133" title="ccmc::FileReader::close" alt="" coords="1144,655,1315,681"/>
+<area shape="rect" id="node23" href="$classccmc_1_1_file_reader.html#ac27cfdd9ceabe3af0f14b18fbebcafa5" title="ccmc::FileReader::doesAttribute\lExist" alt="" coords="870,771,1095,813"/>
+<area shape="rect" id="node25" href="$classccmc_1_1_file_reader.html#a11885da1a8d6775a7d2764494474d067" title="ccmc::FileReader::getGlobal\lAttribute" alt="" coords="883,837,1082,878"/>
+<area shape="rect" id="node29" href="$_i_m_f_test_8cpp.html#a6d8856de274d2d38669ae0763484ffa1" title="parseTime" alt="" coords="673,1020,762,1047"/>
+<area shape="rect" id="node31" href="$classccmc_1_1_attribute.html#ad1f07128784fe7f0416edc4a813ab1b6" title="ccmc::Attribute::getAttribute\lString" alt="" coords="615,954,820,995"/>
+<area shape="rect" id="node30" href="$_i_m_f_test_8cpp.html#ae53bd3caff925423191ac104d1bd7276" title="parseInt" alt="" coords="945,1020,1020,1047"/>
+<area shape="rect" id="node34" href="$classccmc_1_1_utils.html#af696585b8c87542bbe8df61cf21e9152" title="ccmc::Utils::binary\l_search" alt="" coords="377,630,516,671"/>
+<area shape="rect" id="node36" href="$classccmc_1_1_interpolator.html#ad5c1dd3693f83d75a2335b7c28cd649d" title="Interpolates the variable specified at position (c0,c1,c2)." alt="" coords="377,695,516,737"/>
+</map>

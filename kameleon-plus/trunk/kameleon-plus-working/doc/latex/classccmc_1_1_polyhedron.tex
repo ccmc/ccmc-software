@@ -1,0 +1,411 @@
+\hypertarget{classccmc_1_1_polyhedron}{\section{ccmc\-:\-:Polyhedron$<$ T $>$ Class Template Reference}
+\label{classccmc_1_1_polyhedron}\index{ccmc\-::\-Polyhedron$<$ T $>$@{ccmc\-::\-Polyhedron$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$Polyhedron.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:Polyhedron$<$ T $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_polyhedron__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:Polyhedron$<$ T $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_polyhedron__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_polyhedron_addb2fac41e80420f07ea9b3164cd11af}{Polyhedron} ()
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_aa3d13c560359c24af71e2c5b1b159148}{set\-Positions} (std\-::vector$<$ \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ $>$ const \&pos)
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_a54003232c80e3137ecb2e4732e00d3a4}{set\-Loops\-Faces} (std\-::vector$<$ int $>$ const \&loop, std\-::vector$<$ int $>$ const \&face)
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_aac7c881c60c5ee50ec85c5ac6e6c02f6}{set\-Neighbors} (std\-::vector$<$ int $>$ const \&neighbor)
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_a6395204653dddbd1148023ce3c04b647}{centroid} ()
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_a587cce21871193ccfba1a7fadc2eb86b}{face\-Centroid} (int face)
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255}{set\-Barycentric\-Coordinates} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38}{set\-Floater\-Coordinates} (int face, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_af312e09c40b05c1bd376f94e3966103a}{set\-Linear\-Interpolants} (int v1, int v2, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_a3d1633e9643f81644e3e0df64f4195ca}{save\-As\-D\-X\-Object} (string filename)
+\item 
+virtual \hyperlink{classccmc_1_1_polyhedron_a0d70cc8f2c26b2fcc6589b66f00e3ab1}{$\sim$\-Polyhedron} ()
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_a2c7464ff7c021b3b7aafaf3739217110}{get\-Face\-Vector\-Error} ()
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_a140b9776d318b32baeb43f807f8b6791}{set\-Current\-Polyhedron} (int a)
+\item 
+virtual \hyperlink{classccmc_1_1_polyhedron}{Polyhedron}$<$ T $>$ $\ast$ \hyperlink{classccmc_1_1_polyhedron_a3a3d6e72e95b7e7829149f3fa59f57f6}{get\-Next\-Polyhedron} ()
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_ac7c3d855a8df0072cc23c88a42f8bd78}{max\-Distance\-To\-Centroid} ()
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_ac6c4696d8599d39da7dca7ecb6008ba7}{min\-Distance\-To\-Centroid} ()
+\item 
+int \hyperlink{classccmc_1_1_polyhedron_afd4793a541b3638e10ad230b9edc101c}{get\-Closest\-Face} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_ab68fb11d2cbbd0a9bc81ce4c4a7279b1}{get\-Min\-Distance\-To\-Centroid} ()
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_a4630616f4eb7d32a53e1a23a332db78c}{test\-Linearity} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
+\item 
+bool \hyperlink{classccmc_1_1_polyhedron_ab49d000c95f4e79132727103524ca45b}{is\-Point\-Inside} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
+\item 
+virtual int \hyperlink{classccmc_1_1_polyhedron_abef63d69bf96e4bacb000546631a048e}{get\-Type} ()
+\item 
+void \hyperlink{classccmc_1_1_polyhedron_a01b4863ead9a3136aec465067132afcc}{merge} (\hyperlink{classccmc_1_1_polyhedron}{Polyhedron}$<$ T $>$ const $\ast$const p)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{classccmc_1_1_polyhedron_a4d7f2eaadb816292d2f8fa169f15599e}{theta\-Max}
+\item 
+T \hyperlink{classccmc_1_1_polyhedron_a6f7b5d5e06047d56e6ec6c01ce992041}{theta\-Min}
+\item 
+std\-::vector$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}{lambda}
+\item 
+std\-::vector$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_ac590d3e84e9c6d413b6054de49ac3245}{theta}
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_afd77b1f8d574323a5b4e1b694890b7dc}{minimum\-Distance\-To\-Centroid}
+\item 
+std\-::vector$<$ \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ $>$ \hyperlink{classccmc_1_1_polyhedron_a41195440d2192a6118e2990f09183179}{positions}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{classccmc_1_1_polyhedron_aa16a2a05fcbafa0c99fc6b5de21672cc}{global\-Vertex}
+\item 
+int \hyperlink{classccmc_1_1_polyhedron_a50889e065612d1cd397cd7942349bb7b}{closest\-Face}
+\item 
+int \hyperlink{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}{current\-Polyhedron}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{classccmc_1_1_polyhedron_a275e8b1b13a16013da6bd125e203fd2c}{loops}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{classccmc_1_1_polyhedron_a85b5d967346fc1fd362b22bd0359cc4e}{faces}
+\item 
+bool \hyperlink{classccmc_1_1_polyhedron_a54e8c54feeac70b1bd3c1eaf4c237058}{is\-Inside}
+\item 
+std\-::vector$<$ int $>$ \hyperlink{classccmc_1_1_polyhedron_aa5b2b229e4e08b8ff1c03ff78fcb6a3b}{neighbors}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static clock\-\_\-t \hyperlink{classccmc_1_1_polyhedron_a436708606125ba1059465516aeb2b401}{interpolation\-Time} = 0
+\item 
+static clock\-\_\-t \hyperlink{classccmc_1_1_polyhedron_aacd29b2b3045dbbc36ef47db91054d48}{stage1} = 0
+\item 
+static clock\-\_\-t \hyperlink{classccmc_1_1_polyhedron_adb2d70dc6f7af2654dd668bb3940caac}{stage2} = 0
+\item 
+static clock\-\_\-t \hyperlink{classccmc_1_1_polyhedron_a47a9b8072039bf50deb15bffb7827012}{stage3} = 0
+\item 
+static int \hyperlink{classccmc_1_1_polyhedron_a98484d47a61f7fb916e45a4d4c381d08}{interpolations} = 0
+\item 
+static T \hyperlink{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{pi\-Over2} = T(atan(1)$\ast$2)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_polyhedron_addb2fac41e80420f07ea9b3164cd11af}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!Polyhedron@{Polyhedron}}
+\index{Polyhedron@{Polyhedron}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::{\bf Polyhedron} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_addb2fac41e80420f07ea9b3164cd11af}
+\hypertarget{classccmc_1_1_polyhedron_a0d70cc8f2c26b2fcc6589b66f00e3ab1}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!$\sim$\-Polyhedron@{$\sim$\-Polyhedron}}
+\index{$\sim$\-Polyhedron@{$\sim$\-Polyhedron}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{$\sim$\-Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::$\sim${\bf Polyhedron} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_polyhedron_a0d70cc8f2c26b2fcc6589b66f00e3ab1}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_polyhedron_a6395204653dddbd1148023ce3c04b647}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!centroid@{centroid}}
+\index{centroid@{centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::centroid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a6395204653dddbd1148023ce3c04b647}
+\hypertarget{classccmc_1_1_polyhedron_a587cce21871193ccfba1a7fadc2eb86b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!face\-Centroid@{face\-Centroid}}
+\index{face\-Centroid@{face\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{face\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::face\-Centroid (
+\begin{DoxyParamCaption}
+\item[{int}]{face}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a587cce21871193ccfba1a7fadc2eb86b}
+\hypertarget{classccmc_1_1_polyhedron_afd4793a541b3638e10ad230b9edc101c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Closest\-Face@{get\-Closest\-Face}}
+\index{get\-Closest\-Face@{get\-Closest\-Face}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{get\-Closest\-Face}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Closest\-Face (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ const \&}]{point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_afd4793a541b3638e10ad230b9edc101c}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_polyhedron_afd4793a541b3638e10ad230b9edc101c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_polyhedron_a2c7464ff7c021b3b7aafaf3739217110}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Face\-Vector\-Error@{get\-Face\-Vector\-Error}}
+\index{get\-Face\-Vector\-Error@{get\-Face\-Vector\-Error}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{get\-Face\-Vector\-Error}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Face\-Vector\-Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a2c7464ff7c021b3b7aafaf3739217110}
+\hypertarget{classccmc_1_1_polyhedron_ab68fb11d2cbbd0a9bc81ce4c4a7279b1}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Min\-Distance\-To\-Centroid@{get\-Min\-Distance\-To\-Centroid}}
+\index{get\-Min\-Distance\-To\-Centroid@{get\-Min\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{get\-Min\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Min\-Distance\-To\-Centroid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_ab68fb11d2cbbd0a9bc81ce4c4a7279b1}
+\hypertarget{classccmc_1_1_polyhedron_a3a3d6e72e95b7e7829149f3fa59f57f6}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Next\-Polyhedron@{get\-Next\-Polyhedron}}
+\index{get\-Next\-Polyhedron@{get\-Next\-Polyhedron}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{get\-Next\-Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Polyhedron}$<$ T $>$ $\ast$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Next\-Polyhedron (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_polyhedron_a3a3d6e72e95b7e7829149f3fa59f57f6}
+\hypertarget{classccmc_1_1_polyhedron_abef63d69bf96e4bacb000546631a048e}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_polyhedron_abef63d69bf96e4bacb000546631a048e}
+
+
+Reimplemented in \hyperlink{classccmc_1_1_i_poly_ae85ea134331eb4dcff87babc1287e304}{ccmc\-::\-I\-Poly$<$ T $>$}, \hyperlink{classccmc_1_1_j_poly_a86a004ccd9c5811170b37b729f61e883}{ccmc\-::\-J\-Poly$<$ T $>$}, \hyperlink{classccmc_1_1_axis_polyhedron_a03d10924c8c45085ba984bb7d669bcce}{ccmc\-::\-Axis\-Polyhedron$<$ T $>$}, and \hyperlink{classccmc_1_1_grid_polyhedron_af9346d18b3c0f78108ee45a0188e3f57}{ccmc\-::\-Grid\-Polyhedron$<$ T $>$}.
+
+\hypertarget{classccmc_1_1_polyhedron_ab49d000c95f4e79132727103524ca45b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!is\-Point\-Inside@{is\-Point\-Inside}}
+\index{is\-Point\-Inside@{is\-Point\-Inside}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{is\-Point\-Inside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::is\-Point\-Inside (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ const \&}]{point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_ab49d000c95f4e79132727103524ca45b}
+\hypertarget{classccmc_1_1_polyhedron_ac7c3d855a8df0072cc23c88a42f8bd78}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!max\-Distance\-To\-Centroid@{max\-Distance\-To\-Centroid}}
+\index{max\-Distance\-To\-Centroid@{max\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{max\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::max\-Distance\-To\-Centroid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_ac7c3d855a8df0072cc23c88a42f8bd78}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_polyhedron_ac7c3d855a8df0072cc23c88a42f8bd78_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_polyhedron_a01b4863ead9a3136aec465067132afcc}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!merge@{merge}}
+\index{merge@{merge}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{merge}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::merge (
+\begin{DoxyParamCaption}
+\item[{{\bf Polyhedron}$<$ T $>$ const $\ast$const}]{p}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a01b4863ead9a3136aec465067132afcc}
+\hypertarget{classccmc_1_1_polyhedron_ac6c4696d8599d39da7dca7ecb6008ba7}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!min\-Distance\-To\-Centroid@{min\-Distance\-To\-Centroid}}
+\index{min\-Distance\-To\-Centroid@{min\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{min\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::min\-Distance\-To\-Centroid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_ac6c4696d8599d39da7dca7ecb6008ba7}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_polyhedron_ac6c4696d8599d39da7dca7ecb6008ba7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_polyhedron_a3d1633e9643f81644e3e0df64f4195ca}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!save\-As\-D\-X\-Object@{save\-As\-D\-X\-Object}}
+\index{save\-As\-D\-X\-Object@{save\-As\-D\-X\-Object}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{save\-As\-D\-X\-Object}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::save\-As\-D\-X\-Object (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a3d1633e9643f81644e3e0df64f4195ca}
+\hypertarget{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Barycentric\-Coordinates@{set\-Barycentric\-Coordinates}}
+\index{set\-Barycentric\-Coordinates@{set\-Barycentric\-Coordinates}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{set\-Barycentric\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Barycentric\-Coordinates (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ const \&}]{point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_polyhedron_a140b9776d318b32baeb43f807f8b6791}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Current\-Polyhedron@{set\-Current\-Polyhedron}}
+\index{set\-Current\-Polyhedron@{set\-Current\-Polyhedron}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{set\-Current\-Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Current\-Polyhedron (
+\begin{DoxyParamCaption}
+\item[{int}]{a}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a140b9776d318b32baeb43f807f8b6791}
+\hypertarget{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Floater\-Coordinates@{set\-Floater\-Coordinates}}
+\index{set\-Floater\-Coordinates@{set\-Floater\-Coordinates}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{set\-Floater\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Floater\-Coordinates (
+\begin{DoxyParamCaption}
+\item[{int}]{face, }
+\item[{{\bf Vector}$<$ T $>$ const \&}]{point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_polyhedron_af312e09c40b05c1bd376f94e3966103a}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Linear\-Interpolants@{set\-Linear\-Interpolants}}
+\index{set\-Linear\-Interpolants@{set\-Linear\-Interpolants}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{set\-Linear\-Interpolants}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Linear\-Interpolants (
+\begin{DoxyParamCaption}
+\item[{int}]{v1, }
+\item[{int}]{v2, }
+\item[{{\bf Vector}$<$ T $>$ const \&}]{point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_af312e09c40b05c1bd376f94e3966103a}
+\hypertarget{classccmc_1_1_polyhedron_a54003232c80e3137ecb2e4732e00d3a4}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Loops\-Faces@{set\-Loops\-Faces}}
+\index{set\-Loops\-Faces@{set\-Loops\-Faces}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{set\-Loops\-Faces}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Loops\-Faces (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ const \&}]{loop, }
+\item[{std\-::vector$<$ int $>$ const \&}]{face}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a54003232c80e3137ecb2e4732e00d3a4}
+\hypertarget{classccmc_1_1_polyhedron_aac7c881c60c5ee50ec85c5ac6e6c02f6}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Neighbors@{set\-Neighbors}}
+\index{set\-Neighbors@{set\-Neighbors}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{set\-Neighbors}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Neighbors (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ int $>$ const \&}]{neighbor}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_aac7c881c60c5ee50ec85c5ac6e6c02f6}
+\hypertarget{classccmc_1_1_polyhedron_aa3d13c560359c24af71e2c5b1b159148}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Positions@{set\-Positions}}
+\index{set\-Positions@{set\-Positions}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{set\-Positions}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Positions (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf Vector}$<$ T $>$ $>$ const \&}]{pos}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_aa3d13c560359c24af71e2c5b1b159148}
+\hypertarget{classccmc_1_1_polyhedron_a4630616f4eb7d32a53e1a23a332db78c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!test\-Linearity@{test\-Linearity}}
+\index{test\-Linearity@{test\-Linearity}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{test\-Linearity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::test\-Linearity (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ const \&}]{point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_polyhedron_a4630616f4eb7d32a53e1a23a332db78c}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classccmc_1_1_polyhedron_a50889e065612d1cd397cd7942349bb7b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!closest\-Face@{closest\-Face}}
+\index{closest\-Face@{closest\-Face}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{closest\-Face}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::closest\-Face}}\label{classccmc_1_1_polyhedron_a50889e065612d1cd397cd7942349bb7b}
+\hypertarget{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!current\-Polyhedron@{current\-Polyhedron}}
+\index{current\-Polyhedron@{current\-Polyhedron}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{current\-Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::current\-Polyhedron}}\label{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}
+\hypertarget{classccmc_1_1_polyhedron_a85b5d967346fc1fd362b22bd0359cc4e}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!faces@{faces}}
+\index{faces@{faces}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{faces}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::faces}}\label{classccmc_1_1_polyhedron_a85b5d967346fc1fd362b22bd0359cc4e}
+\hypertarget{classccmc_1_1_polyhedron_aa16a2a05fcbafa0c99fc6b5de21672cc}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!global\-Vertex@{global\-Vertex}}
+\index{global\-Vertex@{global\-Vertex}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{global\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::global\-Vertex}}\label{classccmc_1_1_polyhedron_aa16a2a05fcbafa0c99fc6b5de21672cc}
+\hypertarget{classccmc_1_1_polyhedron_a98484d47a61f7fb916e45a4d4c381d08}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!interpolations@{interpolations}}
+\index{interpolations@{interpolations}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{interpolations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::interpolations = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_a98484d47a61f7fb916e45a4d4c381d08}
+\hypertarget{classccmc_1_1_polyhedron_a436708606125ba1059465516aeb2b401}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!interpolation\-Time@{interpolation\-Time}}
+\index{interpolation\-Time@{interpolation\-Time}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{interpolation\-Time}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ clock\-\_\-t {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::interpolation\-Time = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_a436708606125ba1059465516aeb2b401}
+\hypertarget{classccmc_1_1_polyhedron_a54e8c54feeac70b1bd3c1eaf4c237058}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!is\-Inside@{is\-Inside}}
+\index{is\-Inside@{is\-Inside}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{is\-Inside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::is\-Inside}}\label{classccmc_1_1_polyhedron_a54e8c54feeac70b1bd3c1eaf4c237058}
+\hypertarget{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!lambda@{lambda}}
+\index{lambda@{lambda}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{lambda}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$T$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::lambda}}\label{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}
+\hypertarget{classccmc_1_1_polyhedron_a275e8b1b13a16013da6bd125e203fd2c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!loops@{loops}}
+\index{loops@{loops}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{loops}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::loops}}\label{classccmc_1_1_polyhedron_a275e8b1b13a16013da6bd125e203fd2c}
+\hypertarget{classccmc_1_1_polyhedron_afd77b1f8d574323a5b4e1b694890b7dc}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!minimum\-Distance\-To\-Centroid@{minimum\-Distance\-To\-Centroid}}
+\index{minimum\-Distance\-To\-Centroid@{minimum\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{minimum\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$T$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::minimum\-Distance\-To\-Centroid}}\label{classccmc_1_1_polyhedron_afd77b1f8d574323a5b4e1b694890b7dc}
+\hypertarget{classccmc_1_1_polyhedron_aa5b2b229e4e08b8ff1c03ff78fcb6a3b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!neighbors@{neighbors}}
+\index{neighbors@{neighbors}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{neighbors}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::neighbors}}\label{classccmc_1_1_polyhedron_aa5b2b229e4e08b8ff1c03ff78fcb6a3b}
+\hypertarget{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!pi\-Over2@{pi\-Over2}}
+\index{pi\-Over2@{pi\-Over2}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{pi\-Over2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::pi\-Over2 = T(atan(1)$\ast$2)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}
+\hypertarget{classccmc_1_1_polyhedron_a41195440d2192a6118e2990f09183179}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!positions@{positions}}
+\index{positions@{positions}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{positions}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<${\bf Vector}$<$T$>$ $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::positions}}\label{classccmc_1_1_polyhedron_a41195440d2192a6118e2990f09183179}
+\hypertarget{classccmc_1_1_polyhedron_aacd29b2b3045dbbc36ef47db91054d48}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!stage1@{stage1}}
+\index{stage1@{stage1}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{stage1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ clock\-\_\-t {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::stage1 = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_aacd29b2b3045dbbc36ef47db91054d48}
+\hypertarget{classccmc_1_1_polyhedron_adb2d70dc6f7af2654dd668bb3940caac}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!stage2@{stage2}}
+\index{stage2@{stage2}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{stage2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ clock\-\_\-t {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::stage2 = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_adb2d70dc6f7af2654dd668bb3940caac}
+\hypertarget{classccmc_1_1_polyhedron_a47a9b8072039bf50deb15bffb7827012}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!stage3@{stage3}}
+\index{stage3@{stage3}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{stage3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ clock\-\_\-t {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::stage3 = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_a47a9b8072039bf50deb15bffb7827012}
+\hypertarget{classccmc_1_1_polyhedron_ac590d3e84e9c6d413b6054de49ac3245}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!theta@{theta}}
+\index{theta@{theta}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{theta}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$T$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::theta}}\label{classccmc_1_1_polyhedron_ac590d3e84e9c6d413b6054de49ac3245}
+\hypertarget{classccmc_1_1_polyhedron_a4d7f2eaadb816292d2f8fa169f15599e}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!theta\-Max@{theta\-Max}}
+\index{theta\-Max@{theta\-Max}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{theta\-Max}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::theta\-Max}}\label{classccmc_1_1_polyhedron_a4d7f2eaadb816292d2f8fa169f15599e}
+\hypertarget{classccmc_1_1_polyhedron_a6f7b5d5e06047d56e6ec6c01ce992041}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!theta\-Min@{theta\-Min}}
+\index{theta\-Min@{theta\-Min}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
+\subsubsection[{theta\-Min}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::theta\-Min}}\label{classccmc_1_1_polyhedron_a6f7b5d5e06047d56e6ec6c01ce992041}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_polyhedron_8h}{Polyhedron.\-h}\end{DoxyCompactItemize}

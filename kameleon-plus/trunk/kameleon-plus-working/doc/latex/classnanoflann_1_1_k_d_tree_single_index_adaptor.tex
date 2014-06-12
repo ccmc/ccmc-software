@@ -1,0 +1,394 @@
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor}{\section{nanoflann\-:\-:K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$ Class Template Reference}
+\label{classnanoflann_1_1_k_d_tree_single_index_adaptor}\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$}}
+}
+
+
+{\ttfamily \#include $<$nanoflann.\-hpp$>$}
+
+
+
+Collaboration diagram for nanoflann\-:\-:K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnanoflann_1_1_k_d_tree_single_index_adaptor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct}{Branch\-Struct}
+\item 
+struct \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_interval}{Interval}
+\item 
+struct \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_node}{Node}
+\end{DoxyCompactItemize}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef Distance\-::\-Element\-Type \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a21652a3919382d558291f80cefad8770}{Element\-Type}
+\item 
+typedef Distance\-::\-Distance\-Type \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a501d7ba6b8597ef4d290507d9c9fbd48}{K\-D\-Tree\-Single\-Index\-Adaptor} (const int dimensionality, const Dataset\-Adaptor \&input\-Data, const \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_params}{K\-D\-Tree\-Single\-Index\-Adaptor\-Params} \&params=\hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_params}{K\-D\-Tree\-Single\-Index\-Adaptor\-Params}())
+\item 
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b472824808608446cd8f8244c3fede9}{$\sim$\-K\-D\-Tree\-Single\-Index\-Adaptor} ()
+\item 
+void \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae31b0904cbd1c50d322fea80e296ae8a}{build\-Index} ()
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a197f7417c238e35ad36738c450696155}{size} () const 
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_af93772b8cacb6c0da28e28f21c7ed9c3}{veclen} () const 
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a6fd07e3902905741346ef9ca825d42b0}{used\-Memory} () const 
+\item 
+void \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1eb35794561693abf42b745f30a7339a}{save\-Index} (F\-I\-L\-E $\ast$stream)
+\item 
+void \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ada392af155fafc392ad21dbd82931fec}{load\-Index} (F\-I\-L\-E $\ast$stream)
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Query methods}\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename R\-E\-S\-U\-L\-T\-S\-E\-T $>$ }\\void \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b73cef78437060cec2629810608d63e}{find\-Neighbors} (R\-E\-S\-U\-L\-T\-S\-E\-T \&result, const \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a21652a3919382d558291f80cefad8770}{Element\-Type} $\ast$vec, const \hyperlink{structnanoflann_1_1_search_params}{Search\-Params} \&search\-Params) const 
+\item 
+void \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_acf404828507288cf6302ced33bdc45bb}{knn\-Search} (const \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a21652a3919382d558291f80cefad8770}{Element\-Type} $\ast$query\-\_\-point, const size\-\_\-t num\-\_\-closest, Index\-Type $\ast$out\-\_\-indices, \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type} $\ast$out\-\_\-distances\-\_\-sq, const int n\-Checks\-\_\-\-I\-G\-N\-O\-R\-E\-D=10) const 
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_afcaab7169b54103fcb37c6ad02ec44f7}{radius\-Search} (const \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a21652a3919382d558291f80cefad8770}{Element\-Type} $\ast$query\-\_\-point, const \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type} radius, std\-::vector$<$ std\-::pair$<$ Index\-Type, \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type} $>$ $>$ \&Indices\-Dists, const \hyperlink{structnanoflann_1_1_search_params}{Search\-Params} \&search\-Params) const 
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Distance \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a264f86796d4cae73878b594155e9a807}{distance}
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_node}{Node} $\ast$ \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a790d9a422739532c647e87e0f334b3c5}{Node\-Ptr}
+\item 
+typedef std\-::vector$<$ \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_interval}{Interval} $>$ \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a4ba3fe322e4ded9cb1530476c971be24}{Bounding\-Box}
+\item 
+typedef \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct}{Branch\-Struct}$<$ \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a790d9a422739532c647e87e0f334b3c5}{Node\-Ptr}, \\*
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type} $>$ \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_adda19fa01ea32ec1df0e9c3e8f7aecc8}{Branch\-St}
+\item 
+typedef \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_adda19fa01ea32ec1df0e9c3e8f7aecc8}{Branch\-St} $\ast$ \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae84d5d1db0245a55ae3cb7f727f3ea79}{Branch}
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::vector$<$ Index\-Type $>$ \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a6d870be761aaf13d1a9b318d4d448469}{vind}
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a8432e2663bddef7a96f034dc10e40727}{m\-\_\-leaf\-\_\-max\-\_\-size}
+\item 
+const Dataset\-Adaptor \& \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ac08149f85032de7a730ba92ebc1f9782}{dataset}
+\begin{DoxyCompactList}\small\item\em The source of our data. \end{DoxyCompactList}\item 
+const \\*
+\hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_params}{K\-D\-Tree\-Single\-Index\-Adaptor\-Params} \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a053e2ff7d92476c2201ee4093ade23aa}{index\-\_\-params}
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae3fb51b45d175da41f23e881fffc40da}{m\-\_\-size}
+\item 
+int \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b818d32a7f9c58bee114a25e3539969}{dim}
+\begin{DoxyCompactList}\small\item\em Dimensionality of each data point. \end{DoxyCompactList}\item 
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a790d9a422739532c647e87e0f334b3c5}{Node\-Ptr} \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1dd45d22dddb21bdd30695ac5e443364}{root\-\_\-node}
+\item 
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a4ba3fe322e4ded9cb1530476c971be24}{Bounding\-Box} \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a691ddd52bbdb882177cc21d1162df05b}{root\-\_\-bbox}
+\item 
+\hyperlink{classnanoflann_1_1_pooled_allocator}{Pooled\-Allocator} \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae8ccbdf98502c57ccc4206de59ed28e1}{pool}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Distance, class Dataset\-Adaptor, int D\-I\-M = -\/1, typename Index\-Type = size\-\_\-t$>$class nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$}
+
+kd-\/tree index
+
+Contains the k-\/d trees and other information for indexing a set of points for nearest-\/neighbor matching.
+
+The class \char`\"{}\-Dataset\-Adaptor\char`\"{} must provide the following interface (can be non-\/virtual, inlined methods)\-:
+
+
+\begin{DoxyCode}
+\textcolor{comment}{// Must return the number of data points}
+\textcolor{keyword}{inline} \textcolor{keywordtype}{size\_t} kdtree\_get\_point\_count()\textcolor{keyword}{ const }\{ ... \}
+
+\textcolor{comment}{// Must return the Euclidean (L2) distance between the vector "p1[0:size-1]" and the data point with index
+       "idx\_p2" stored in the class:}
+\textcolor{keyword}{inline} \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{DistanceType} kdtree\_distance(\textcolor{keyword}{const} T *p1, \textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} idx\_p2,\textcolor{keywordtype}{size\_t} 
+      \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a197f7417c238e35ad36738c450696155}{size})\textcolor{keyword}{ const }\{ ... \}
+
+\textcolor{comment}{// Must return the dim'th component of the idx'th point in the class:}
+\textcolor{keyword}{inline} T kdtree\_get\_pt(\textcolor{keyword}{const} \textcolor{keywordtype}{size\_t} idx, \textcolor{keywordtype}{int} \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b818d32a7f9c58bee114a25e3539969}{dim})\textcolor{keyword}{ const }\{ ... \}
+
+\textcolor{comment}{// Optional bounding-box computation: return false to default to a standard bbox computation loop.}
+\textcolor{comment}{//   Return true if the BBOX was already computed by the class and returned in "bb" so it can be avoided to
+       redo it again.}
+\textcolor{comment}{//   Look at bb.size() to find out the expected dimensionality (e.g. 2 or 3 for point clouds)}
+\textcolor{keyword}{template} <\textcolor{keyword}{class} BBOX>
+\textcolor{keywordtype}{bool} kdtree\_get\_bbox(BBOX &bb)\textcolor{keyword}{ const}
+\textcolor{keyword}{}\{
+   bb[0].low = ...; bb[0].high = ...;  \textcolor{comment}{// 0th dimension limits}
+   bb[1].low = ...; bb[1].high = ...;  \textcolor{comment}{// 1st dimension limits}
+   ...
+   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+\}
+\end{DoxyCode}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Index\-Type} & Will be typically size\-\_\-t or int \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a4ba3fe322e4ded9cb1530476c971be24}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!Bounding\-Box@{Bounding\-Box}}
+\index{Bounding\-Box@{Bounding\-Box}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{Bounding\-Box}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ typedef std\-::vector$<${\bf Interval}$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Bounding\-Box}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a4ba3fe322e4ded9cb1530476c971be24}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae84d5d1db0245a55ae3cb7f727f3ea79}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!Branch@{Branch}}
+\index{Branch@{Branch}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{Branch}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ typedef {\bf Branch\-St}$\ast$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Branch}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae84d5d1db0245a55ae3cb7f727f3ea79}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_adda19fa01ea32ec1df0e9c3e8f7aecc8}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!Branch\-St@{Branch\-St}}
+\index{Branch\-St@{Branch\-St}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{Branch\-St}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ typedef {\bf Branch\-Struct}$<${\bf Node\-Ptr}, {\bf Distance\-Type}$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Branch\-St}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_adda19fa01ea32ec1df0e9c3e8f7aecc8}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!Distance\-Type@{Distance\-Type}}
+\index{Distance\-Type@{Distance\-Type}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{Distance\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ typedef Distance\-::\-Distance\-Type {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Distance\-Type}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a21652a3919382d558291f80cefad8770}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!Element\-Type@{Element\-Type}}
+\index{Element\-Type@{Element\-Type}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{Element\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ typedef Distance\-::\-Element\-Type {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Element\-Type}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a21652a3919382d558291f80cefad8770}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a790d9a422739532c647e87e0f334b3c5}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!Node\-Ptr@{Node\-Ptr}}
+\index{Node\-Ptr@{Node\-Ptr}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{Node\-Ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ typedef {\bf Node}$\ast$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Node\-Ptr}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a790d9a422739532c647e87e0f334b3c5}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a501d7ba6b8597ef4d290507d9c9fbd48}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!K\-D\-Tree\-Single\-Index\-Adaptor@{K\-D\-Tree\-Single\-Index\-Adaptor}}
+\index{K\-D\-Tree\-Single\-Index\-Adaptor@{K\-D\-Tree\-Single\-Index\-Adaptor}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{K\-D\-Tree\-Single\-Index\-Adaptor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf K\-D\-Tree\-Single\-Index\-Adaptor} (
+\begin{DoxyParamCaption}
+\item[{const int}]{dimensionality, }
+\item[{const Dataset\-Adaptor \&}]{input\-Data, }
+\item[{const {\bf K\-D\-Tree\-Single\-Index\-Adaptor\-Params} \&}]{params = {\ttfamily {\bf K\-D\-Tree\-Single\-Index\-Adaptor\-Params}()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a501d7ba6b8597ef4d290507d9c9fbd48}
+K\-D\-Tree constructor
+
+Params\-: input\-Data = dataset with the input features params = parameters passed to the kdtree algorithm (see \href{http://code.google.com/p/nanoflann/}{\tt http\-://code.\-google.\-com/p/nanoflann/} for help choosing the parameters) \hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b472824808608446cd8f8244c3fede9}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!$\sim$\-K\-D\-Tree\-Single\-Index\-Adaptor@{$\sim$\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\index{$\sim$\-K\-D\-Tree\-Single\-Index\-Adaptor@{$\sim$\-K\-D\-Tree\-Single\-Index\-Adaptor}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{$\sim$\-K\-D\-Tree\-Single\-Index\-Adaptor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::$\sim${\bf K\-D\-Tree\-Single\-Index\-Adaptor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b472824808608446cd8f8244c3fede9}
+Standard destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae31b0904cbd1c50d322fea80e296ae8a}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!build\-Index@{build\-Index}}
+\index{build\-Index@{build\-Index}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{build\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ void {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::build\-Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae31b0904cbd1c50d322fea80e296ae8a}
+Builds the index \hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b73cef78437060cec2629810608d63e}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!find\-Neighbors@{find\-Neighbors}}
+\index{find\-Neighbors@{find\-Neighbors}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{find\-Neighbors}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ template$<$typename R\-E\-S\-U\-L\-T\-S\-E\-T $>$ void {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::find\-Neighbors (
+\begin{DoxyParamCaption}
+\item[{R\-E\-S\-U\-L\-T\-S\-E\-T \&}]{result, }
+\item[{const {\bf Element\-Type} $\ast$}]{vec, }
+\item[{const {\bf Search\-Params} \&}]{search\-Params}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b73cef78437060cec2629810608d63e}
+Find set of nearest neighbors to vec\mbox{[}0\-:dim-\/1\mbox{]}. Their indices are stored inside the result object.
+
+Params\-: result = the result object in which the indices of the nearest-\/neighbors are stored vec = the vector for which to search the nearest neighbors
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em R\-E\-S\-U\-L\-T\-S\-E\-T} & Should be any Result\-Set$<$\-Distance\-Type$>$ \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_acf404828507288cf6302ced33bdc45bb}{knn\-Search}, \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_afcaab7169b54103fcb37c6ad02ec44f7}{radius\-Search} 
+\end{DoxySeeAlso}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_acf404828507288cf6302ced33bdc45bb}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!knn\-Search@{knn\-Search}}
+\index{knn\-Search@{knn\-Search}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{knn\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ void {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::knn\-Search (
+\begin{DoxyParamCaption}
+\item[{const {\bf Element\-Type} $\ast$}]{query\-\_\-point, }
+\item[{const size\-\_\-t}]{num\-\_\-closest, }
+\item[{Index\-Type $\ast$}]{out\-\_\-indices, }
+\item[{{\bf Distance\-Type} $\ast$}]{out\-\_\-distances\-\_\-sq, }
+\item[{const int}]{n\-Checks\-\_\-\-I\-G\-N\-O\-R\-E\-D = {\ttfamily 10}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_acf404828507288cf6302ced33bdc45bb}
+Find the \char`\"{}num\-\_\-closest\char`\"{} nearest neighbors to the {\itshape query\-\_\-point}\mbox{[}0\-:dim-\/1\mbox{]}. Their indices are stored inside the result object. \begin{DoxySeeAlso}{See Also}
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_afcaab7169b54103fcb37c6ad02ec44f7}{radius\-Search}, \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b73cef78437060cec2629810608d63e}{find\-Neighbors} 
+\end{DoxySeeAlso}
+\begin{DoxyNote}{Note}
+n\-Checks\-\_\-\-I\-G\-N\-O\-R\-E\-D is ignored but kept for compatibility with the original F\-L\-A\-N\-N interface. 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnanoflann_1_1_k_d_tree_single_index_adaptor_acf404828507288cf6302ced33bdc45bb_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_ada392af155fafc392ad21dbd82931fec}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!load\-Index@{load\-Index}}
+\index{load\-Index@{load\-Index}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{load\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ void {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::load\-Index (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_ada392af155fafc392ad21dbd82931fec}
+Loads a previous index from a binary file. I\-M\-P\-O\-R\-T\-A\-N\-T N\-O\-T\-E\-: The set of data points is N\-O\-T stored in the file, so the index object must be constructed associated to the same source of data points used while building the index. See the example\-: examples/saveload\-\_\-example.\-cpp \begin{DoxySeeAlso}{See Also}
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ada392af155fafc392ad21dbd82931fec}{load\-Index} 
+\end{DoxySeeAlso}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnanoflann_1_1_k_d_tree_single_index_adaptor_ada392af155fafc392ad21dbd82931fec_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_afcaab7169b54103fcb37c6ad02ec44f7}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!radius\-Search@{radius\-Search}}
+\index{radius\-Search@{radius\-Search}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{radius\-Search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::radius\-Search (
+\begin{DoxyParamCaption}
+\item[{const {\bf Element\-Type} $\ast$}]{query\-\_\-point, }
+\item[{const {\bf Distance\-Type}}]{radius, }
+\item[{std\-::vector$<$ std\-::pair$<$ Index\-Type, {\bf Distance\-Type} $>$ $>$ \&}]{Indices\-Dists, }
+\item[{const {\bf Search\-Params} \&}]{search\-Params}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_afcaab7169b54103fcb37c6ad02ec44f7}
+Find all the neighbors to {\itshape query\-\_\-point}\mbox{[}0\-:dim-\/1\mbox{]} within a maximum radius. The output is given as a vector of pairs, of which the first element is a point index and the second the corresponding distance. Previous contents of {\itshape Indices\-Dists} are cleared.
+
+If search\-Params.\-sorted==true, the output list is sorted by ascending distances.
+
+For a better performance, it is advisable to do a .reserve() on the vector if you have any wild guess about the number of expected matches.
+
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_acf404828507288cf6302ced33bdc45bb}{knn\-Search}, \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b73cef78437060cec2629810608d63e}{find\-Neighbors} 
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+The number of points within the given radius (i.\-e. indices.\-size() or dists.\-size() ) 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnanoflann_1_1_k_d_tree_single_index_adaptor_afcaab7169b54103fcb37c6ad02ec44f7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1eb35794561693abf42b745f30a7339a}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!save\-Index@{save\-Index}}
+\index{save\-Index@{save\-Index}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{save\-Index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ void {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::save\-Index (
+\begin{DoxyParamCaption}
+\item[{F\-I\-L\-E $\ast$}]{stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1eb35794561693abf42b745f30a7339a}
+Stores the index in a binary file. I\-M\-P\-O\-R\-T\-A\-N\-T N\-O\-T\-E\-: The set of data points is N\-O\-T stored in the file, so when loading the index object it must be constructed associated to the same source of data points used while building it. See the example\-: examples/saveload\-\_\-example.\-cpp \begin{DoxySeeAlso}{See Also}
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_ada392af155fafc392ad21dbd82931fec}{load\-Index} 
+\end{DoxySeeAlso}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1eb35794561693abf42b745f30a7339a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a197f7417c238e35ad36738c450696155}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!size@{size}}
+\index{size@{size}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a197f7417c238e35ad36738c450696155}
+Returns size of index. \hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a6fd07e3902905741346ef9ca825d42b0}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!used\-Memory@{used\-Memory}}
+\index{used\-Memory@{used\-Memory}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{used\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::used\-Memory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a6fd07e3902905741346ef9ca825d42b0}
+Computes the inde memory usage Returns\-: memory used by the index \hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_af93772b8cacb6c0da28e28f21c7ed9c3}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!veclen@{veclen}}
+\index{veclen@{veclen}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{veclen}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::veclen (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_af93772b8cacb6c0da28e28f21c7ed9c3}
+Returns the length of an index feature. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_ac08149f85032de7a730ba92ebc1f9782}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!dataset@{dataset}}
+\index{dataset@{dataset}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ const Dataset\-Adaptor\& {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::dataset\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_ac08149f85032de7a730ba92ebc1f9782}
+
+
+The source of our data. 
+
+The dataset used by this index \hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b818d32a7f9c58bee114a25e3539969}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!dim@{dim}}
+\index{dim@{dim}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{dim}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ int {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::dim\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1b818d32a7f9c58bee114a25e3539969}
+
+
+Dimensionality of each data point. 
+
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a264f86796d4cae73878b594155e9a807}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!distance@{distance}}
+\index{distance@{distance}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ Distance {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::distance}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a264f86796d4cae73878b594155e9a807}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a053e2ff7d92476c2201ee4093ade23aa}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!index\-\_\-params@{index\-\_\-params}}
+\index{index\-\_\-params@{index\-\_\-params}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{index\-\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ const {\bf K\-D\-Tree\-Single\-Index\-Adaptor\-Params} {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::index\-\_\-params\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a053e2ff7d92476c2201ee4093ade23aa}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a8432e2663bddef7a96f034dc10e40727}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!m\-\_\-leaf\-\_\-max\-\_\-size@{m\-\_\-leaf\-\_\-max\-\_\-size}}
+\index{m\-\_\-leaf\-\_\-max\-\_\-size@{m\-\_\-leaf\-\_\-max\-\_\-size}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{m\-\_\-leaf\-\_\-max\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::m\-\_\-leaf\-\_\-max\-\_\-size\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a8432e2663bddef7a96f034dc10e40727}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae3fb51b45d175da41f23e881fffc40da}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!m\-\_\-size@{m\-\_\-size}}
+\index{m\-\_\-size@{m\-\_\-size}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{m\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::m\-\_\-size\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae3fb51b45d175da41f23e881fffc40da}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae8ccbdf98502c57ccc4206de59ed28e1}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!pool@{pool}}
+\index{pool@{pool}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{pool}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ {\bf Pooled\-Allocator} {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::pool\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_ae8ccbdf98502c57ccc4206de59ed28e1}
+Pooled memory allocator.
+
+Using a pooled memory allocator is more efficient than allocating memory directly when there is a large number small of memory allocations. \hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a691ddd52bbdb882177cc21d1162df05b}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!root\-\_\-bbox@{root\-\_\-bbox}}
+\index{root\-\_\-bbox@{root\-\_\-bbox}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{root\-\_\-bbox}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ {\bf Bounding\-Box} {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::root\-\_\-bbox\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a691ddd52bbdb882177cc21d1162df05b}
+\hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1dd45d22dddb21bdd30695ac5e443364}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!root\-\_\-node@{root\-\_\-node}}
+\index{root\-\_\-node@{root\-\_\-node}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{root\-\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ {\bf Node\-Ptr} {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::root\-\_\-node\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a1dd45d22dddb21bdd30695ac5e443364}
+Array of k-\/d trees used to find neighbours. \hypertarget{classnanoflann_1_1_k_d_tree_single_index_adaptor_a6d870be761aaf13d1a9b318d4d448469}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}!vind@{vind}}
+\index{vind@{vind}!nanoflann::KDTreeSingleIndexAdaptor@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}}
+\subsubsection[{vind}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ std\-::vector$<$Index\-Type$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::vind\hspace{0.3cm}{\ttfamily [protected]}}}\label{classnanoflann_1_1_k_d_tree_single_index_adaptor_a6d870be761aaf13d1a9b318d4d448469}
+Array of indices to vectors in the dataset. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{nanoflann_8hpp}{nanoflann.\-hpp}\end{DoxyCompactItemize}

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Thu Jun 09 13:58:44 EDT 2011 -->
+
+<Model name ="BATSRUS">
+		
+                              <attribute>
+                                   <name>elapsed_time_in_seconds</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>number_of_dimensions</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_g</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_c</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_th</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_P1</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_P2</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_P3</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_R</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_NX</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_NY</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>special_parameter_NZ</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>x_dimension_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>y_dimension_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>z_dimension_size</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>current_iteration_step</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>global_x_min</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>global_x_max</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>global_y_min</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>global_y_max</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>global_z_min</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>global_z_max</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>max_amr_level</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>number_of_cells</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>number_of_blocks</name>
+                                   <dataType> int </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>smallest_cell_size</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>r_body</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>r_currents</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>b_dipole</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_time</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_update</name>
+                                   <dataType> String </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_tilt</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+                              <attribute>
+                                   <name>dipole_tilt_y</name>
+                                   <dataType> float </dataType> 
+                              </attribute>
+		
+	</Model>

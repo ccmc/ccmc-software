@@ -1,0 +1,83 @@
+\hypertarget{struct_point_cloud}{\section{Point\-Cloud$<$ T $>$ Struct Template Reference}
+\label{struct_point_cloud}\index{Point\-Cloud$<$ T $>$@{Point\-Cloud$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$pointcloud.\-h$>$}
+
+
+
+Collaboration diagram for Point\-Cloud$<$ T $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{struct_point_cloud__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_point_cloud_1_1_point}{Point}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t \hyperlink{struct_point_cloud_ad42c3e3433189cf208b3fb022833311e}{kdtree\-\_\-get\-\_\-point\-\_\-count} () const 
+\item 
+T \hyperlink{struct_point_cloud_aac37c2ee10973779c95bb348607a6580}{kdtree\-\_\-distance} (const T $\ast$p1, const size\-\_\-t idx\-\_\-p2, size\-\_\-t size) const 
+\item 
+T \hyperlink{struct_point_cloud_a058d08d08d1f1014807f7dc34c94f940}{kdtree\-\_\-get\-\_\-pt} (const size\-\_\-t idx, int dim) const 
+\item 
+{\footnotesize template$<$class B\-B\-O\-X $>$ }\\bool \hyperlink{struct_point_cloud_a2893ba0826a85d81cd51503796879417}{kdtree\-\_\-get\-\_\-bbox} (B\-B\-O\-X \&bb) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::vector$<$ \hyperlink{struct_point_cloud_1_1_point}{Point} $>$ \hyperlink{struct_point_cloud_a32dd1acf311134fb9582be30cdc7e07f}{pts}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_point_cloud_aac37c2ee10973779c95bb348607a6580}{\index{Point\-Cloud@{Point\-Cloud}!kdtree\-\_\-distance@{kdtree\-\_\-distance}}
+\index{kdtree\-\_\-distance@{kdtree\-\_\-distance}!PointCloud@{Point\-Cloud}}
+\subsubsection[{kdtree\-\_\-distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T {\bf Point\-Cloud}$<$ T $>$\-::kdtree\-\_\-distance (
+\begin{DoxyParamCaption}
+\item[{const T $\ast$}]{p1, }
+\item[{const size\-\_\-t}]{idx\-\_\-p2, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_point_cloud_aac37c2ee10973779c95bb348607a6580}
+\hypertarget{struct_point_cloud_a2893ba0826a85d81cd51503796879417}{\index{Point\-Cloud@{Point\-Cloud}!kdtree\-\_\-get\-\_\-bbox@{kdtree\-\_\-get\-\_\-bbox}}
+\index{kdtree\-\_\-get\-\_\-bbox@{kdtree\-\_\-get\-\_\-bbox}!PointCloud@{Point\-Cloud}}
+\subsubsection[{kdtree\-\_\-get\-\_\-bbox}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ template$<$class B\-B\-O\-X $>$ bool {\bf Point\-Cloud}$<$ T $>$\-::kdtree\-\_\-get\-\_\-bbox (
+\begin{DoxyParamCaption}
+\item[{B\-B\-O\-X \&}]{bb}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_point_cloud_a2893ba0826a85d81cd51503796879417}
+\hypertarget{struct_point_cloud_ad42c3e3433189cf208b3fb022833311e}{\index{Point\-Cloud@{Point\-Cloud}!kdtree\-\_\-get\-\_\-point\-\_\-count@{kdtree\-\_\-get\-\_\-point\-\_\-count}}
+\index{kdtree\-\_\-get\-\_\-point\-\_\-count@{kdtree\-\_\-get\-\_\-point\-\_\-count}!PointCloud@{Point\-Cloud}}
+\subsubsection[{kdtree\-\_\-get\-\_\-point\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ size\-\_\-t {\bf Point\-Cloud}$<$ T $>$\-::kdtree\-\_\-get\-\_\-point\-\_\-count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_point_cloud_ad42c3e3433189cf208b3fb022833311e}
+\hypertarget{struct_point_cloud_a058d08d08d1f1014807f7dc34c94f940}{\index{Point\-Cloud@{Point\-Cloud}!kdtree\-\_\-get\-\_\-pt@{kdtree\-\_\-get\-\_\-pt}}
+\index{kdtree\-\_\-get\-\_\-pt@{kdtree\-\_\-get\-\_\-pt}!PointCloud@{Point\-Cloud}}
+\subsubsection[{kdtree\-\_\-get\-\_\-pt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T {\bf Point\-Cloud}$<$ T $>$\-::kdtree\-\_\-get\-\_\-pt (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{idx, }
+\item[{int}]{dim}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{struct_point_cloud_a058d08d08d1f1014807f7dc34c94f940}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{struct_point_cloud_a32dd1acf311134fb9582be30cdc7e07f}{\index{Point\-Cloud@{Point\-Cloud}!pts@{pts}}
+\index{pts@{pts}!PointCloud@{Point\-Cloud}}
+\subsubsection[{pts}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ std\-::vector$<${\bf Point}$>$ {\bf Point\-Cloud}$<$ T $>$\-::pts}}\label{struct_point_cloud_a32dd1acf311134fb9582be30cdc7e07f}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{pointcloud_8h}{pointcloud.\-h}\end{DoxyCompactItemize}

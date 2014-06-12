@@ -1,0 +1,522 @@
+\hypertarget{classccmc_1_1_l_f_m_interpolator}{\section{ccmc\-:\-:L\-F\-M\-Interpolator Class Reference}
+\label{classccmc_1_1_l_f_m_interpolator}\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+}
+
+
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} class.  
+
+
+
+
+{\ttfamily \#include $<$ccmc/\-L\-F\-M\-Interpolator.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:L\-F\-M\-Interpolator\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classccmc_1_1_l_f_m_interpolator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:L\-F\-M\-Interpolator\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_l_f_m_interpolator_a04218c8ff9c0a3703cd3d9cc870dfd4a}{L\-F\-M\-Interpolator} (\hyperlink{classccmc_1_1_model}{Model} $\ast$model\-Reader)
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_interpolator_a1d6356a51024075b873e7966abd418f0}{interpolate} (const std\-::string \&variable, const float \&c0, const float \&c1, const float \&c2)
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_interpolator_ab895be1e681fc9af63d9ae8916660077}{interpolate} (const std\-::string \&variable, const float \&c0, const float \&c1, const float \&c2, float \&dc0, float \&dc1, float \&dc2)
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_interpolator_a022c2cc8c060c912bc9e07d9b05804d9}{interpolate} (const long \&variable\-\_\-id, const float \&c0, const float \&c1, const float \&c2)
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_interpolator_aafa40bcb1aae6e232bc9b883cc8df160}{interpolate} (const long \&variable\-\_\-id, const float \&c0, const float \&c1, const float \&c2, float \&dc0, float \&dc1, float \&dc2)
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_interpolator_aeb1ac07b468b3b046ddd4150f9a38426}{get\-Conversion\-Factor} (const std\-::string \&)
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_interpolator_a4b5c75b22aefefbc7a68d8398776f3bc}{get\-Conversion\-Factor} (const long \&variable\-\_\-id)
+\item 
+virtual \hyperlink{classccmc_1_1_l_f_m_interpolator_a77c25b31fb9fa25752a7337cbfde0a77}{$\sim$\-L\-F\-M\-Interpolator} ()
+\item 
+void \hyperlink{classccmc_1_1_l_f_m_interpolator_a7cc7863edac1024b645e199058ad0d80}{set\-Cell\-Centers} (const std\-::vector$<$ float $>$ $\ast$x\-\_\-array, const std\-::vector$<$ float $>$ $\ast$y\-\_\-array, const std\-::vector$<$ float $>$ $\ast$z\-\_\-array)
+\item 
+void \hyperlink{classccmc_1_1_l_f_m_interpolator_a74c1ba35f8eaece3f44393538c23300d}{set\-Polyhedral\-Cells} ()
+\item 
+\hyperlink{classccmc_1_1_polyhedron}{Polyhedron}$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_l_f_m_interpolator_afbbebbeee5068e425c2deede2a30ebfc}{create\-Next\-Polyhedron} (\hyperlink{classccmc_1_1_polyhedron}{Polyhedron}$<$ float $>$ $\ast$poly)
+\item 
+\hyperlink{classccmc_1_1_polyhedron}{Polyhedron}$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_l_f_m_interpolator_a872043562f23728bbf389cfafb004a6f}{get\-Cell} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ float $>$ point)
+\item 
+\hyperlink{classccmc_1_1_polyhedron}{Polyhedron}$<$ float $>$ \hyperlink{classccmc_1_1_l_f_m_interpolator_a79926d3a8332d055bd60eb006f943f0a}{get\-Interpolation\-Polys} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{classccmc_1_1_l_f_m_interpolator_aebe68b339853a7036313e7f83ce5cc0b}{get\-Indices} (const int index, int \&i, int \&j, int \&k, const int ii, const int jj)
+\item 
+static int \hyperlink{classccmc_1_1_l_f_m_interpolator_a98168d119f050e925ad98a4cbec2c360}{get\-Index} (const int i, const int j, const int k, const int ii, const int jj)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classccmc_1_1_l_f_m_interpolator_ad1fdf3218bc64b9dd40a1fdf4166d331}{ni}
+\item 
+int \hyperlink{classccmc_1_1_l_f_m_interpolator_a5513238abd218dbdd6f42dd851647693}{nj}
+\item 
+int \hyperlink{classccmc_1_1_l_f_m_interpolator_a5bd5a51d1dc53c2b9b0612ef1b1ab16f}{nk}
+\item 
+int \hyperlink{classccmc_1_1_l_f_m_interpolator_a74b3697313c8b9f3d4524256bd3f50d2}{nip1}
+\item 
+int \hyperlink{classccmc_1_1_l_f_m_interpolator_a34f165669a90b3ad8a4c559c959f11d8}{njp1}
+\item 
+int \hyperlink{classccmc_1_1_l_f_m_interpolator_a4f205cc413dcbb003175d4ac88d353c4}{nkp1}
+\item 
+\hyperlink{struct_point_cloud}{Point\-Cloud}$<$ float $>$ \hyperlink{classccmc_1_1_l_f_m_interpolator_a1765ca6f750c97c3592ef885ef04e029}{cell\-\_\-centers}
+\item 
+\hyperlink{struct_point_cloud}{Point\-Cloud}$<$ float $>$ \hyperlink{classccmc_1_1_l_f_m_interpolator_a7738b918ba62723afa8bc49e5400979b}{helper\-\_\-nodes}
+\item 
+clock\-\_\-t \hyperlink{classccmc_1_1_l_f_m_interpolator_acca12555fdadb1e0970e4bd16351e524}{interpolation\-Time}
+\item 
+clock\-\_\-t \hyperlink{classccmc_1_1_l_f_m_interpolator_aa885a2e4ded490e33fbc610310f066d8}{creation\-Time}
+\item 
+clock\-\_\-t \hyperlink{classccmc_1_1_l_f_m_interpolator_a8c53a39101dcc800176cac6aba5ea6bb}{destruction\-Time}
+\item 
+clock\-\_\-t \hyperlink{classccmc_1_1_l_f_m_interpolator_a403c1241a9e427df78da10b2499fc46f}{kdtree\-Time}
+\item 
+clock\-\_\-t \hyperlink{classccmc_1_1_l_f_m_interpolator_ac1bf4dd18c18f18347c21673be51ad5d}{get\-Cell\-Time}
+\item 
+int \hyperlink{classccmc_1_1_l_f_m_interpolator_a4c7b4e25409db6b63c655d2313fa3560}{interpolation\-Number}
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_interpolator_a4d3fbbf77c796fd53e1e8198dff71b0d}{inner\-Boundary\-Radius}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} class. 
+
+T\-O\-D\-O\-: Full description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a04218c8ff9c0a3703cd3d9cc870dfd4a}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!L\-F\-M\-Interpolator@{L\-F\-M\-Interpolator}}
+\index{L\-F\-M\-Interpolator@{L\-F\-M\-Interpolator}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{L\-F\-M\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-L\-F\-M\-Interpolator\-::\-L\-F\-M\-Interpolator (
+\begin{DoxyParamCaption}
+\item[{{\bf Model} $\ast$}]{model\-Reader}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_interpolator_a04218c8ff9c0a3703cd3d9cc870dfd4a}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em model\-Reader} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_a04218c8ff9c0a3703cd3d9cc870dfd4a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a77c25b31fb9fa25752a7337cbfde0a77}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!$\sim$\-L\-F\-M\-Interpolator@{$\sim$\-L\-F\-M\-Interpolator}}
+\index{$\sim$\-L\-F\-M\-Interpolator@{$\sim$\-L\-F\-M\-Interpolator}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{$\sim$\-L\-F\-M\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-L\-F\-M\-Interpolator\-::$\sim$\-L\-F\-M\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_interpolator_a77c25b31fb9fa25752a7337cbfde0a77}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_afbbebbeee5068e425c2deede2a30ebfc}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!create\-Next\-Polyhedron@{create\-Next\-Polyhedron}}
+\index{create\-Next\-Polyhedron@{create\-Next\-Polyhedron}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{create\-Next\-Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Polyhedron}$<$ float $>$ $\ast$ ccmc\-::\-L\-F\-M\-Interpolator\-::create\-Next\-Polyhedron (
+\begin{DoxyParamCaption}
+\item[{{\bf Polyhedron}$<$ float $>$ $\ast$}]{poly}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_interpolator_afbbebbeee5068e425c2deede2a30ebfc}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_afbbebbeee5068e425c2deede2a30ebfc_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a872043562f23728bbf389cfafb004a6f}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!get\-Cell@{get\-Cell}}
+\index{get\-Cell@{get\-Cell}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{get\-Cell}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Polyhedron}$<$ float $>$ $\ast$ ccmc\-::\-L\-F\-M\-Interpolator\-::get\-Cell (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ float $>$}]{point}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_interpolator_a872043562f23728bbf389cfafb004a6f}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_a872043562f23728bbf389cfafb004a6f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_aeb1ac07b468b3b046ddd4150f9a38426}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!get\-Conversion\-Factor@{get\-Conversion\-Factor}}
+\index{get\-Conversion\-Factor@{get\-Conversion\-Factor}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{get\-Conversion\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::get\-Conversion\-Factor (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_interpolator_aeb1ac07b468b3b046ddd4150f9a38426}
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classccmc_1_1_interpolator_aa34cdc52236e6f143032340907dfa403}{ccmc\-::\-Interpolator}.
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a4b5c75b22aefefbc7a68d8398776f3bc}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!get\-Conversion\-Factor@{get\-Conversion\-Factor}}
+\index{get\-Conversion\-Factor@{get\-Conversion\-Factor}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{get\-Conversion\-Factor}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::get\-Conversion\-Factor (
+\begin{DoxyParamCaption}
+\item[{const long \&}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_interpolator_a4b5c75b22aefefbc7a68d8398776f3bc}
+
+\begin{DoxyParams}{Parameters}
+{\em variable\-\_\-id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classccmc_1_1_interpolator_ab5d482c6e07c9fe00d01061b414ebd66}{ccmc\-::\-Interpolator}.
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a98168d119f050e925ad98a4cbec2c360}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!get\-Index@{get\-Index}}
+\index{get\-Index@{get\-Index}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{get\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::get\-Index (
+\begin{DoxyParamCaption}
+\item[{const int}]{i, }
+\item[{const int}]{j, }
+\item[{const int}]{k, }
+\item[{const int}]{ii, }
+\item[{const int}]{jj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_l_f_m_interpolator_a98168d119f050e925ad98a4cbec2c360}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_aebe68b339853a7036313e7f83ce5cc0b}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!get\-Indices@{get\-Indices}}
+\index{get\-Indices@{get\-Indices}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{get\-Indices}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-Interpolator\-::get\-Indices (
+\begin{DoxyParamCaption}
+\item[{const int}]{index, }
+\item[{int \&}]{i, }
+\item[{int \&}]{j, }
+\item[{int \&}]{k, }
+\item[{const int}]{ii, }
+\item[{const int}]{jj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_l_f_m_interpolator_aebe68b339853a7036313e7f83ce5cc0b}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a79926d3a8332d055bd60eb006f943f0a}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!get\-Interpolation\-Polys@{get\-Interpolation\-Polys}}
+\index{get\-Interpolation\-Polys@{get\-Interpolation\-Polys}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{get\-Interpolation\-Polys}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Polyhedron}$<$ float $>$ ccmc\-::\-L\-F\-M\-Interpolator\-::get\-Interpolation\-Polys (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_interpolator_a79926d3a8332d055bd60eb006f943f0a}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_a79926d3a8332d055bd60eb006f943f0a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a1d6356a51024075b873e7966abd418f0}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_interpolator_a1d6356a51024075b873e7966abd418f0}
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em c0} & \\
+\hline
+{\em c1} & \\
+\hline
+{\em c2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_interpolator_ad5c1dd3693f83d75a2335b7c28cd649d}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_a1d6356a51024075b873e7966abd418f0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_ab895be1e681fc9af63d9ae8916660077}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2, }
+\item[{float \&}]{dc0, }
+\item[{float \&}]{dc1, }
+\item[{float \&}]{dc2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_interpolator_ab895be1e681fc9af63d9ae8916660077}
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em c0} & \\
+\hline
+{\em c1} & \\
+\hline
+{\em c2} & \\
+\hline
+{\em dc0} & Reference to a variable to store the delta for component 0 \\
+\hline
+{\em dc1} & Reference to a variable to store the delta for component 1 \\
+\hline
+{\em dc2} & Reference to a variable to store the delta for component 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The interpolated value at position (c0,c1,c2) with deltas (dc0,dc1,dc2) 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_interpolator_ae02453da5a1a8f472f33b2058424ddb6}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_ab895be1e681fc9af63d9ae8916660077_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a022c2cc8c060c912bc9e07d9b05804d9}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const long \&}]{variable\-\_\-id, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_interpolator_a022c2cc8c060c912bc9e07d9b05804d9}
+
+\begin{DoxyParams}{Parameters}
+{\em variable\-\_\-id} & \\
+\hline
+{\em c0} & \\
+\hline
+{\em c1} & \\
+\hline
+{\em c2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_interpolator_a6bfe1b4075f03704b893bb96e1675a3b}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_a022c2cc8c060c912bc9e07d9b05804d9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_aafa40bcb1aae6e232bc9b883cc8df160}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const long \&}]{variable\-\_\-id, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2, }
+\item[{float \&}]{dc0, }
+\item[{float \&}]{dc1, }
+\item[{float \&}]{dc2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_interpolator_aafa40bcb1aae6e232bc9b883cc8df160}
+
+\begin{DoxyParams}{Parameters}
+{\em variable\-\_\-id} & \\
+\hline
+{\em c0} & \\
+\hline
+{\em c1} & \\
+\hline
+{\em c2} & \\
+\hline
+{\em dc0} & Reference to a variable to store the delta for component 0 \\
+\hline
+{\em dc1} & Reference to a variable to store the delta for component 1 \\
+\hline
+{\em dc2} & Reference to a variable to store the delta for component 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The interpolated value at position (c0,c1,c2) with deltas (dc0,dc1,dc2) 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_interpolator_aa6b272bd53630020d92938ec1e5cfad9}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_interpolator_aafa40bcb1aae6e232bc9b883cc8df160_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a7cc7863edac1024b645e199058ad0d80}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!set\-Cell\-Centers@{set\-Cell\-Centers}}
+\index{set\-Cell\-Centers@{set\-Cell\-Centers}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{set\-Cell\-Centers}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-Interpolator\-::set\-Cell\-Centers (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ float $>$ $\ast$}]{x\-\_\-array, }
+\item[{const std\-::vector$<$ float $>$ $\ast$}]{y\-\_\-array, }
+\item[{const std\-::vector$<$ float $>$ $\ast$}]{z\-\_\-array}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_interpolator_a7cc7863edac1024b645e199058ad0d80}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a74c1ba35f8eaece3f44393538c23300d}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!set\-Polyhedral\-Cells@{set\-Polyhedral\-Cells}}
+\index{set\-Polyhedral\-Cells@{set\-Polyhedral\-Cells}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{set\-Polyhedral\-Cells}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-Interpolator\-::set\-Polyhedral\-Cells (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_interpolator_a74c1ba35f8eaece3f44393538c23300d}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classccmc_1_1_l_f_m_interpolator_a74c1ba35f8eaece3f44393538c23300d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a1765ca6f750c97c3592ef885ef04e029}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!cell\-\_\-centers@{cell\-\_\-centers}}
+\index{cell\-\_\-centers@{cell\-\_\-centers}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{cell\-\_\-centers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Cloud}$<$float$>$ ccmc\-::\-L\-F\-M\-Interpolator\-::cell\-\_\-centers}}\label{classccmc_1_1_l_f_m_interpolator_a1765ca6f750c97c3592ef885ef04e029}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_aa885a2e4ded490e33fbc610310f066d8}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!creation\-Time@{creation\-Time}}
+\index{creation\-Time@{creation\-Time}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{creation\-Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\-\_\-t ccmc\-::\-L\-F\-M\-Interpolator\-::creation\-Time}}\label{classccmc_1_1_l_f_m_interpolator_aa885a2e4ded490e33fbc610310f066d8}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a8c53a39101dcc800176cac6aba5ea6bb}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!destruction\-Time@{destruction\-Time}}
+\index{destruction\-Time@{destruction\-Time}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{destruction\-Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\-\_\-t ccmc\-::\-L\-F\-M\-Interpolator\-::destruction\-Time}}\label{classccmc_1_1_l_f_m_interpolator_a8c53a39101dcc800176cac6aba5ea6bb}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_ac1bf4dd18c18f18347c21673be51ad5d}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!get\-Cell\-Time@{get\-Cell\-Time}}
+\index{get\-Cell\-Time@{get\-Cell\-Time}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{get\-Cell\-Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\-\_\-t ccmc\-::\-L\-F\-M\-Interpolator\-::get\-Cell\-Time}}\label{classccmc_1_1_l_f_m_interpolator_ac1bf4dd18c18f18347c21673be51ad5d}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a7738b918ba62723afa8bc49e5400979b}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!helper\-\_\-nodes@{helper\-\_\-nodes}}
+\index{helper\-\_\-nodes@{helper\-\_\-nodes}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{helper\-\_\-nodes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Cloud}$<$float$>$ ccmc\-::\-L\-F\-M\-Interpolator\-::helper\-\_\-nodes}}\label{classccmc_1_1_l_f_m_interpolator_a7738b918ba62723afa8bc49e5400979b}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a4d3fbbf77c796fd53e1e8198dff71b0d}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!inner\-Boundary\-Radius@{inner\-Boundary\-Radius}}
+\index{inner\-Boundary\-Radius@{inner\-Boundary\-Radius}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{inner\-Boundary\-Radius}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::inner\-Boundary\-Radius}}\label{classccmc_1_1_l_f_m_interpolator_a4d3fbbf77c796fd53e1e8198dff71b0d}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a4c7b4e25409db6b63c655d2313fa3560}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!interpolation\-Number@{interpolation\-Number}}
+\index{interpolation\-Number@{interpolation\-Number}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{interpolation\-Number}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::interpolation\-Number}}\label{classccmc_1_1_l_f_m_interpolator_a4c7b4e25409db6b63c655d2313fa3560}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_acca12555fdadb1e0970e4bd16351e524}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!interpolation\-Time@{interpolation\-Time}}
+\index{interpolation\-Time@{interpolation\-Time}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{interpolation\-Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\-\_\-t ccmc\-::\-L\-F\-M\-Interpolator\-::interpolation\-Time}}\label{classccmc_1_1_l_f_m_interpolator_acca12555fdadb1e0970e4bd16351e524}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a403c1241a9e427df78da10b2499fc46f}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!kdtree\-Time@{kdtree\-Time}}
+\index{kdtree\-Time@{kdtree\-Time}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{kdtree\-Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\-\_\-t ccmc\-::\-L\-F\-M\-Interpolator\-::kdtree\-Time}}\label{classccmc_1_1_l_f_m_interpolator_a403c1241a9e427df78da10b2499fc46f}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_ad1fdf3218bc64b9dd40a1fdf4166d331}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!ni@{ni}}
+\index{ni@{ni}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{ni}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::ni}}\label{classccmc_1_1_l_f_m_interpolator_ad1fdf3218bc64b9dd40a1fdf4166d331}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a74b3697313c8b9f3d4524256bd3f50d2}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!nip1@{nip1}}
+\index{nip1@{nip1}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{nip1}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::nip1}}\label{classccmc_1_1_l_f_m_interpolator_a74b3697313c8b9f3d4524256bd3f50d2}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a5513238abd218dbdd6f42dd851647693}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!nj@{nj}}
+\index{nj@{nj}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{nj}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::nj}}\label{classccmc_1_1_l_f_m_interpolator_a5513238abd218dbdd6f42dd851647693}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a34f165669a90b3ad8a4c559c959f11d8}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!njp1@{njp1}}
+\index{njp1@{njp1}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{njp1}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::njp1}}\label{classccmc_1_1_l_f_m_interpolator_a34f165669a90b3ad8a4c559c959f11d8}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a5bd5a51d1dc53c2b9b0612ef1b1ab16f}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!nk@{nk}}
+\index{nk@{nk}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{nk}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::nk}}\label{classccmc_1_1_l_f_m_interpolator_a5bd5a51d1dc53c2b9b0612ef1b1ab16f}
+\hypertarget{classccmc_1_1_l_f_m_interpolator_a4f205cc413dcbb003175d4ac88d353c4}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!nkp1@{nkp1}}
+\index{nkp1@{nkp1}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
+\subsubsection[{nkp1}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-Interpolator\-::nkp1}}\label{classccmc_1_1_l_f_m_interpolator_a4f205cc413dcbb003175d4ac88d353c4}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_l_f_m_interpolator_8h}{L\-F\-M\-Interpolator.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_l_f_m_interpolator_8cpp}{L\-F\-M\-Interpolator.\-cpp}\end{DoxyCompactItemize}

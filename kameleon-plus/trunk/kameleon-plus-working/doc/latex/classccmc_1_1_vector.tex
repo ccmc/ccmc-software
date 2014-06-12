@@ -1,0 +1,366 @@
+\hypertarget{classccmc_1_1_vector}{\section{ccmc\-:\-:Vector$<$ T $>$ Class Template Reference}
+\label{classccmc_1_1_vector}\index{ccmc\-::\-Vector$<$ T $>$@{ccmc\-::\-Vector$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$Vector.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:Vector$<$ T $>$\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classccmc_1_1_vector__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:Vector$<$ T $>$\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{classccmc_1_1_vector__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_vector_af4225e7206c28bacb630cb396c64be26}{Vector} ()
+\item 
+\hyperlink{classccmc_1_1_vector_a02455eac25051ae838ad4e95e7216714}{Vector} (T \hyperlink{classccmc_1_1_point_a89fbc3792873bbc1b35d205fc0b56112}{c0}, T \hyperlink{classccmc_1_1_point_af305f62b5b3830dfb9659ba05fa8730b}{c1}, T \hyperlink{classccmc_1_1_point_aca8161451d99e44ad32f735265273db6}{c2})
+\item 
+T \hyperlink{classccmc_1_1_vector_a9e0862cc9c8815c93f956ccc9e23fd2f}{length} ()
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_ac5a7a3e1ffd4cc9882cb0ce128b930dc}{operator+} (const \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&v) const 
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_acb0072a220f2406fda8e11110e5510a8}{operator-\/} (const \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&v) const 
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_a2491906184df8122fcda96007bac5115}{operator$\ast$} (const T \&value) const 
+\item 
+\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_a6d9500d4acc11e7d0aa2933627019682}{operator/} (const T \&value) const 
+\item 
+void \hyperlink{classccmc_1_1_vector_ad0d3a9cad19ad25cf13172cececeaab7}{operator+=} (const \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&v)
+\item 
+void \hyperlink{classccmc_1_1_vector_a87cc4b013e4f5ba0c7d493f665872c5b}{operator-\/=} (const \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&v)
+\item 
+void \hyperlink{classccmc_1_1_vector_a77f6a462e3ee95966ea46b6166becd2e}{operator$\ast$=} (const T \&value)
+\item 
+void \hyperlink{classccmc_1_1_vector_a4931c0a54c45345ce78500fe9dd07979}{operator/=} (const T \&value)
+\item 
+void \hyperlink{classccmc_1_1_vector_a636dc16795ca8a91b93a7aa54c483f0f}{norm} ()
+\item 
+virtual \hyperlink{classccmc_1_1_vector_a4ebb935d3f42494678f37eda85a06c1a}{$\sim$\-Vector} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static T \hyperlink{classccmc_1_1_vector_a9f03423f6c4bc0ccecc1fff2f7ca79a2}{dot} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&b)
+\item 
+static T \hyperlink{classccmc_1_1_vector_a6071878bac8259f1794aa9109ae9431b}{dot} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ $\ast$a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ $\ast$b)
+\item 
+static \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_a554c29dfc55fb81cd10ce6b0ea657dbf}{cross} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&b)
+\item 
+static \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_a6fe725fff4788809995acb4f76cc40b8}{cross} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ $\ast$a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ $\ast$b)
+\item 
+static void \hyperlink{classccmc_1_1_vector_a89486dfb64a4c179b2d889d1a1289adf}{cross} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&c, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&b)
+\item 
+static T \hyperlink{classccmc_1_1_vector_ab6c35b31d15e8619a0b81ac55966065e}{triple} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&b, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&c)
+\item 
+static \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_a247adba279968167b897541ce67b656f}{norm} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&a)
+\item 
+static \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_a48b52a0776852fd9fd55d197304da1f8}{norm} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ $\ast$a)
+\item 
+static T \hyperlink{classccmc_1_1_vector_a1ea3da7704529abf9d706c578d771b8b}{angle} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&b)
+\item 
+static void \hyperlink{classccmc_1_1_vector_a3f25371b0e6a858385069f414778e235}{angle} (T \&angle, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&a, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \&b)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_vector_a5c7540edf3dc29eef60ec9379c12a79b}{dummy} = \hyperlink{classccmc_1_1_vector}{Vector}(0,0,0)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_vector_af4225e7206c28bacb630cb396c64be26}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::{\bf Vector} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_af4225e7206c28bacb630cb396c64be26}
+\hypertarget{classccmc_1_1_vector_a02455eac25051ae838ad4e95e7216714}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!Vector@{Vector}}
+\index{Vector@{Vector}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::{\bf Vector} (
+\begin{DoxyParamCaption}
+\item[{T}]{c0, }
+\item[{T}]{c1, }
+\item[{T}]{c2}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_a02455eac25051ae838ad4e95e7216714}
+\hypertarget{classccmc_1_1_vector_a4ebb935d3f42494678f37eda85a06c1a}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!$\sim$\-Vector@{$\sim$\-Vector}}
+\index{$\sim$\-Vector@{$\sim$\-Vector}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{$\sim$\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::$\sim${\bf Vector} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_vector_a4ebb935d3f42494678f37eda85a06c1a}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_vector_a1ea3da7704529abf9d706c578d771b8b}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!angle@{angle}}
+\index{angle@{angle}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Vector}$<$ T $>$\-::angle (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ \&}]{a, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a1ea3da7704529abf9d706c578d771b8b}
+\hypertarget{classccmc_1_1_vector_a3f25371b0e6a858385069f414778e235}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!angle@{angle}}
+\index{angle@{angle}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{angle}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Vector}$<$ T $>$\-::angle (
+\begin{DoxyParamCaption}
+\item[{T \&}]{angle, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{a, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a3f25371b0e6a858385069f414778e235}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_vector_a3f25371b0e6a858385069f414778e235_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a554c29dfc55fb81cd10ce6b0ea657dbf}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!cross@{cross}}
+\index{cross@{cross}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{cross}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::cross (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ \&}]{a, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a554c29dfc55fb81cd10ce6b0ea657dbf}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classccmc_1_1_vector_a554c29dfc55fb81cd10ce6b0ea657dbf_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a6fe725fff4788809995acb4f76cc40b8}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!cross@{cross}}
+\index{cross@{cross}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{cross}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::cross (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ $\ast$}]{a, }
+\item[{{\bf Vector}$<$ T $>$ $\ast$}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a6fe725fff4788809995acb4f76cc40b8}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classccmc_1_1_vector_a6fe725fff4788809995acb4f76cc40b8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a89486dfb64a4c179b2d889d1a1289adf}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!cross@{cross}}
+\index{cross@{cross}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{cross}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Vector}$<$ T $>$\-::cross (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ \&}]{c, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{a, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a89486dfb64a4c179b2d889d1a1289adf}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{classccmc_1_1_vector_a89486dfb64a4c179b2d889d1a1289adf_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a9f03423f6c4bc0ccecc1fff2f7ca79a2}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!dot@{dot}}
+\index{dot@{dot}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{dot}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Vector}$<$ T $>$\-::dot (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ \&}]{a, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a9f03423f6c4bc0ccecc1fff2f7ca79a2}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{classccmc_1_1_vector_a9f03423f6c4bc0ccecc1fff2f7ca79a2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a6071878bac8259f1794aa9109ae9431b}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!dot@{dot}}
+\index{dot@{dot}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{dot}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Vector}$<$ T $>$\-::dot (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ $\ast$}]{a, }
+\item[{{\bf Vector}$<$ T $>$ $\ast$}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a6071878bac8259f1794aa9109ae9431b}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{classccmc_1_1_vector_a6071878bac8259f1794aa9109ae9431b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a9e0862cc9c8815c93f956ccc9e23fd2f}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!length@{length}}
+\index{length@{length}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T {\bf ccmc\-::\-Vector}$<$ T $>$\-::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_a9e0862cc9c8815c93f956ccc9e23fd2f}
+\hypertarget{classccmc_1_1_vector_a247adba279968167b897541ce67b656f}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!norm@{norm}}
+\index{norm@{norm}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{norm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::norm (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ \&}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a247adba279968167b897541ce67b656f}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classccmc_1_1_vector_a247adba279968167b897541ce67b656f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a48b52a0776852fd9fd55d197304da1f8}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!norm@{norm}}
+\index{norm@{norm}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{norm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::norm (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ $\ast$}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a48b52a0776852fd9fd55d197304da1f8}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classccmc_1_1_vector_a48b52a0776852fd9fd55d197304da1f8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_vector_a636dc16795ca8a91b93a7aa54c483f0f}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!norm@{norm}}
+\index{norm@{norm}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{norm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Vector}$<$ T $>$\-::norm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_a636dc16795ca8a91b93a7aa54c483f0f}
+\hypertarget{classccmc_1_1_vector_a2491906184df8122fcda96007bac5115}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{value}
+\end{DoxyParamCaption}
+) const}}\label{classccmc_1_1_vector_a2491906184df8122fcda96007bac5115}
+\hypertarget{classccmc_1_1_vector_a77f6a462e3ee95966ea46b6166becd2e}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator$\ast$= (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{value}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_a77f6a462e3ee95966ea46b6166becd2e}
+\hypertarget{classccmc_1_1_vector_ac5a7a3e1ffd4cc9882cb0ce128b930dc}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator+@{operator+}}
+\index{operator+@{operator+}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector}$<$ T $>$ \&}]{v}
+\end{DoxyParamCaption}
+) const}}\label{classccmc_1_1_vector_ac5a7a3e1ffd4cc9882cb0ce128b930dc}
+\hypertarget{classccmc_1_1_vector_ad0d3a9cad19ad25cf13172cececeaab7}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator+= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector}$<$ T $>$ \&}]{v}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_ad0d3a9cad19ad25cf13172cececeaab7}
+\hypertarget{classccmc_1_1_vector_acb0072a220f2406fda8e11110e5510a8}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector}$<$ T $>$ \&}]{v}
+\end{DoxyParamCaption}
+) const}}\label{classccmc_1_1_vector_acb0072a220f2406fda8e11110e5510a8}
+\hypertarget{classccmc_1_1_vector_a87cc4b013e4f5ba0c7d493f665872c5b}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator-\/= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vector}$<$ T $>$ \&}]{v}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_a87cc4b013e4f5ba0c7d493f665872c5b}
+\hypertarget{classccmc_1_1_vector_a6d9500d4acc11e7d0aa2933627019682}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator/@{operator/}}
+\index{operator/@{operator/}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator/}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator/ (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{value}
+\end{DoxyParamCaption}
+) const}}\label{classccmc_1_1_vector_a6d9500d4acc11e7d0aa2933627019682}
+\hypertarget{classccmc_1_1_vector_a4931c0a54c45345ce78500fe9dd07979}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{operator/=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Vector}$<$ T $>$\-::operator/= (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{value}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_vector_a4931c0a54c45345ce78500fe9dd07979}
+\hypertarget{classccmc_1_1_vector_ab6c35b31d15e8619a0b81ac55966065e}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!triple@{triple}}
+\index{triple@{triple}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{triple}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Vector}$<$ T $>$\-::triple (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector}$<$ T $>$ \&}]{a, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{b, }
+\item[{{\bf Vector}$<$ T $>$ \&}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_ab6c35b31d15e8619a0b81ac55966065e}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classccmc_1_1_vector_a5c7540edf3dc29eef60ec9379c12a79b}{\index{ccmc\-::\-Vector@{ccmc\-::\-Vector}!dummy@{dummy}}
+\index{dummy@{dummy}!ccmc::Vector@{ccmc\-::\-Vector}}
+\subsubsection[{dummy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Vector}$<$ T $>$\-::dummy = {\bf Vector}(0,0,0)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_vector_a5c7540edf3dc29eef60ec9379c12a79b}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_vector_8h}{Vector.\-h}\end{DoxyCompactItemize}

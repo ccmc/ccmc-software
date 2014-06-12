@@ -1,0 +1,213 @@
+\hypertarget{classccmc_1_1_math}{\section{ccmc\-:\-:Math Class Reference}
+\label{classccmc_1_1_math}\index{ccmc\-::\-Math@{ccmc\-::\-Math}}
+}
+
+
+{\ttfamily \#include $<$Math\-Helper.\-h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classccmc_1_1_math_ab05a171a6b685f2b1c07901ef9c2ded9}{iminloc1d} (int $\ast$array, long n, int $\ast$mask)
+\item 
+static int \hyperlink{classccmc_1_1_math_a92070fd808203a0fe81dc53089708521}{imaxloc1d} (int $\ast$array, long n, int $\ast$mask)
+\item 
+static int \hyperlink{classccmc_1_1_math_a40a880e67cc22db10e68ba72474fb8e6}{fminloc1d} (float $\ast$array, long n, int $\ast$mask)
+\item 
+static int \hyperlink{classccmc_1_1_math_a9dee687c24c895f0ccea2d9371766b0a}{fmaxloc1d} (float $\ast$array, long n, int $\ast$mask)
+\item 
+static int \hyperlink{classccmc_1_1_math_ae62fdb20482a7a06adf6afaaedd55876}{dminloc1d} (double $\ast$array, long n, int $\ast$mask)
+\item 
+static int \hyperlink{classccmc_1_1_math_a0467fc7d7fdc551adcb57cb59c041135}{dmaxloc1d} (double $\ast$array, long n, int $\ast$mask)
+\item 
+static int \hyperlink{classccmc_1_1_math_a0b155bfddb31df0c9229c1bff16e2671}{ifindmin} (int $\ast$array, long n)
+\item 
+static int \hyperlink{classccmc_1_1_math_a14ff2930312ff21a36b5f15e7cfd7e75}{ifindmax} (int $\ast$array, long n)
+\item 
+static long \hyperlink{classccmc_1_1_math_a9adf861936ca718bd1748f95a287c2af}{lfindmin} (long $\ast$array, long n)
+\item 
+static long \hyperlink{classccmc_1_1_math_a24a0bbd318312d720b3546174df855ec}{lfindmax} (long $\ast$array, long n)
+\item 
+static float \hyperlink{classccmc_1_1_math_a482d6e6c8176f58b2c7fb60ab3a16d07}{ffindmin} (float $\ast$array, long n)
+\item 
+static float \hyperlink{classccmc_1_1_math_a5a12d1730df47b78869f2644b6e5a77c}{ffindmax} (float $\ast$array, long n)
+\item 
+static double \hyperlink{classccmc_1_1_math_a0154b227d4807d14592bd9b25e5ef8a6}{dfindmin} (double $\ast$array, long n)
+\item 
+static double \hyperlink{classccmc_1_1_math_a1e104becd2c3ff4f0c85d67027c6e91e}{dfindmax} (double $\ast$array, long n)
+\item 
+static void \hyperlink{classccmc_1_1_math_ac3cd982a1ab801265dcdefdcf01daa51}{convert\-\_\-xyz\-\_\-to\-\_\-rthetaphi} (const float \&x, const float \&y, const float \&z, float $\ast$r, float $\ast$t, float $\ast$p)
+\item 
+static void \hyperlink{classccmc_1_1_math_a52432f47a5e4cf6e76c06ff98cc971e1}{convert\-\_\-rthetaphi\-\_\-to\-\_\-xyz} (const float \&r, const float \&t, const float \&p, float $\ast$x, float $\ast$y, float $\ast$z)
+\item 
+static int \hyperlink{classccmc_1_1_math_ab946dbbca55a3cb04182b17b7597cc06}{sign} (int v)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_math_a52432f47a5e4cf6e76c06ff98cc971e1}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!convert\-\_\-rthetaphi\-\_\-to\-\_\-xyz@{convert\-\_\-rthetaphi\-\_\-to\-\_\-xyz}}
+\index{convert\-\_\-rthetaphi\-\_\-to\-\_\-xyz@{convert\-\_\-rthetaphi\-\_\-to\-\_\-xyz}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{convert\-\_\-rthetaphi\-\_\-to\-\_\-xyz}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Math\-::convert\-\_\-rthetaphi\-\_\-to\-\_\-xyz (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{r, }
+\item[{const float \&}]{t, }
+\item[{const float \&}]{p, }
+\item[{float $\ast$}]{x, }
+\item[{float $\ast$}]{y, }
+\item[{float $\ast$}]{z}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a52432f47a5e4cf6e76c06ff98cc971e1}
+\hypertarget{classccmc_1_1_math_ac3cd982a1ab801265dcdefdcf01daa51}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!convert\-\_\-xyz\-\_\-to\-\_\-rthetaphi@{convert\-\_\-xyz\-\_\-to\-\_\-rthetaphi}}
+\index{convert\-\_\-xyz\-\_\-to\-\_\-rthetaphi@{convert\-\_\-xyz\-\_\-to\-\_\-rthetaphi}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{convert\-\_\-xyz\-\_\-to\-\_\-rthetaphi}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Math\-::convert\-\_\-xyz\-\_\-to\-\_\-rthetaphi (
+\begin{DoxyParamCaption}
+\item[{const float \&}]{x, }
+\item[{const float \&}]{y, }
+\item[{const float \&}]{z, }
+\item[{float $\ast$}]{r, }
+\item[{float $\ast$}]{t, }
+\item[{float $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_ac3cd982a1ab801265dcdefdcf01daa51}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classccmc_1_1_math_ac3cd982a1ab801265dcdefdcf01daa51_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_math_a1e104becd2c3ff4f0c85d67027c6e91e}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!dfindmax@{dfindmax}}
+\index{dfindmax@{dfindmax}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{dfindmax}]{\setlength{\rightskip}{0pt plus 5cm}double ccmc\-::\-Math\-::dfindmax (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a1e104becd2c3ff4f0c85d67027c6e91e}
+\hypertarget{classccmc_1_1_math_a0154b227d4807d14592bd9b25e5ef8a6}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!dfindmin@{dfindmin}}
+\index{dfindmin@{dfindmin}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{dfindmin}]{\setlength{\rightskip}{0pt plus 5cm}double ccmc\-::\-Math\-::dfindmin (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a0154b227d4807d14592bd9b25e5ef8a6}
+\hypertarget{classccmc_1_1_math_a0467fc7d7fdc551adcb57cb59c041135}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!dmaxloc1d@{dmaxloc1d}}
+\index{dmaxloc1d@{dmaxloc1d}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{dmaxloc1d}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::dmaxloc1d (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{array, }
+\item[{long}]{n, }
+\item[{int $\ast$}]{mask}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a0467fc7d7fdc551adcb57cb59c041135}
+\hypertarget{classccmc_1_1_math_ae62fdb20482a7a06adf6afaaedd55876}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!dminloc1d@{dminloc1d}}
+\index{dminloc1d@{dminloc1d}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{dminloc1d}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::dminloc1d (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{array, }
+\item[{long}]{n, }
+\item[{int $\ast$}]{mask}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_ae62fdb20482a7a06adf6afaaedd55876}
+\hypertarget{classccmc_1_1_math_a5a12d1730df47b78869f2644b6e5a77c}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!ffindmax@{ffindmax}}
+\index{ffindmax@{ffindmax}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{ffindmax}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-Math\-::ffindmax (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a5a12d1730df47b78869f2644b6e5a77c}
+\hypertarget{classccmc_1_1_math_a482d6e6c8176f58b2c7fb60ab3a16d07}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!ffindmin@{ffindmin}}
+\index{ffindmin@{ffindmin}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{ffindmin}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-Math\-::ffindmin (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a482d6e6c8176f58b2c7fb60ab3a16d07}
+\hypertarget{classccmc_1_1_math_a9dee687c24c895f0ccea2d9371766b0a}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!fmaxloc1d@{fmaxloc1d}}
+\index{fmaxloc1d@{fmaxloc1d}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{fmaxloc1d}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::fmaxloc1d (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{array, }
+\item[{long}]{n, }
+\item[{int $\ast$}]{mask}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a9dee687c24c895f0ccea2d9371766b0a}
+\hypertarget{classccmc_1_1_math_a40a880e67cc22db10e68ba72474fb8e6}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!fminloc1d@{fminloc1d}}
+\index{fminloc1d@{fminloc1d}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{fminloc1d}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::fminloc1d (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{array, }
+\item[{long}]{n, }
+\item[{int $\ast$}]{mask}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a40a880e67cc22db10e68ba72474fb8e6}
+\hypertarget{classccmc_1_1_math_a14ff2930312ff21a36b5f15e7cfd7e75}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!ifindmax@{ifindmax}}
+\index{ifindmax@{ifindmax}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{ifindmax}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::ifindmax (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a14ff2930312ff21a36b5f15e7cfd7e75}
+\hypertarget{classccmc_1_1_math_a0b155bfddb31df0c9229c1bff16e2671}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!ifindmin@{ifindmin}}
+\index{ifindmin@{ifindmin}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{ifindmin}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::ifindmin (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a0b155bfddb31df0c9229c1bff16e2671}
+\hypertarget{classccmc_1_1_math_a92070fd808203a0fe81dc53089708521}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!imaxloc1d@{imaxloc1d}}
+\index{imaxloc1d@{imaxloc1d}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{imaxloc1d}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::imaxloc1d (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{array, }
+\item[{long}]{n, }
+\item[{int $\ast$}]{mask}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a92070fd808203a0fe81dc53089708521}
+\hypertarget{classccmc_1_1_math_ab05a171a6b685f2b1c07901ef9c2ded9}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!iminloc1d@{iminloc1d}}
+\index{iminloc1d@{iminloc1d}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{iminloc1d}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::iminloc1d (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{array, }
+\item[{long}]{n, }
+\item[{int $\ast$}]{mask}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_ab05a171a6b685f2b1c07901ef9c2ded9}
+\hypertarget{classccmc_1_1_math_a24a0bbd318312d720b3546174df855ec}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!lfindmax@{lfindmax}}
+\index{lfindmax@{lfindmax}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{lfindmax}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-Math\-::lfindmax (
+\begin{DoxyParamCaption}
+\item[{long $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a24a0bbd318312d720b3546174df855ec}
+\hypertarget{classccmc_1_1_math_a9adf861936ca718bd1748f95a287c2af}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!lfindmin@{lfindmin}}
+\index{lfindmin@{lfindmin}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{lfindmin}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-Math\-::lfindmin (
+\begin{DoxyParamCaption}
+\item[{long $\ast$}]{array, }
+\item[{long}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_a9adf861936ca718bd1748f95a287c2af}
+\hypertarget{classccmc_1_1_math_ab946dbbca55a3cb04182b17b7597cc06}{\index{ccmc\-::\-Math@{ccmc\-::\-Math}!sign@{sign}}
+\index{sign@{sign}!ccmc::Math@{ccmc\-::\-Math}}
+\subsubsection[{sign}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-Math\-::sign (
+\begin{DoxyParamCaption}
+\item[{int}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_math_ab946dbbca55a3cb04182b17b7597cc06}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_math_helper_8h}{Math\-Helper.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_math_helper_8cpp}{Math\-Helper.\-cpp}\end{DoxyCompactItemize}

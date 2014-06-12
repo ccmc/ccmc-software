@@ -1,0 +1,177 @@
+\hypertarget{classccmc_1_1_s_w_m_f_iono}{\section{ccmc\-:\-:S\-W\-M\-F\-Iono Class Reference}
+\label{classccmc_1_1_s_w_m_f_iono}\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+}
+
+
+{\ttfamily \#include $<$S\-W\-M\-F\-Iono.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:S\-W\-M\-F\-Iono\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classccmc_1_1_s_w_m_f_iono__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:S\-W\-M\-F\-Iono\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_s_w_m_f_iono__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_s_w_m_f_iono_a2af98741608e42f05e0a5c1b9e8bb412}{S\-W\-M\-F\-Iono} ()
+\item 
+long \hyperlink{classccmc_1_1_s_w_m_f_iono_ad9e939763ca7026d551925d83c9f1425}{open} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Opens a file. \end{DoxyCompactList}\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_s_w_m_f_iono_a53d2bdb34290a7c9da48982f7262762c}{create\-New\-Interpolator} ()
+\begin{DoxyCompactList}\small\item\em Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  \end{DoxyCompactList}\item 
+const std\-::vector$<$ std\-::string $>$ \hyperlink{classccmc_1_1_s_w_m_f_iono_aa36f1447a732be36bf98722e8e22caee}{get\-Loaded\-Variables} ()
+\begin{DoxyCompactList}\small\item\em Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. \end{DoxyCompactList}\item 
+virtual \hyperlink{classccmc_1_1_s_w_m_f_iono_abfae78a79ffb7e59eb8cba61dda20b7c}{$\sim$\-S\-W\-M\-F\-Iono} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classccmc_1_1_s_w_m_f_iono_a19279179873a44a59bf71651d5aadd27}{initialize\-Conversion\-Factors\-To\-S\-I} ()
+\begin{DoxyCompactList}\small\item\em Initializes the conversion\-Factors\-To\-S\-I map.  \end{DoxyCompactList}\item 
+void \hyperlink{classccmc_1_1_s_w_m_f_iono_a20417d2b847bc12764ec3112d7166590}{initialize\-S\-I\-Units} ()
+\begin{DoxyCompactList}\small\item\em Initializes the variable\-S\-I\-Units map.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_s_w_m_f_iono_a2af98741608e42f05e0a5c1b9e8bb412}{\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}!S\-W\-M\-F\-Iono@{S\-W\-M\-F\-Iono}}
+\index{S\-W\-M\-F\-Iono@{S\-W\-M\-F\-Iono}!ccmc::SWMFIono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+\subsubsection[{S\-W\-M\-F\-Iono}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-S\-W\-M\-F\-Iono\-::\-S\-W\-M\-F\-Iono (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_s_w_m_f_iono_a2af98741608e42f05e0a5c1b9e8bb412}
+\hypertarget{classccmc_1_1_s_w_m_f_iono_abfae78a79ffb7e59eb8cba61dda20b7c}{\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}!$\sim$\-S\-W\-M\-F\-Iono@{$\sim$\-S\-W\-M\-F\-Iono}}
+\index{$\sim$\-S\-W\-M\-F\-Iono@{$\sim$\-S\-W\-M\-F\-Iono}!ccmc::SWMFIono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+\subsubsection[{$\sim$\-S\-W\-M\-F\-Iono}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-S\-W\-M\-F\-Iono\-::$\sim$\-S\-W\-M\-F\-Iono (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_s_w_m_f_iono_abfae78a79ffb7e59eb8cba61dda20b7c}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_s_w_m_f_iono_a53d2bdb34290a7c9da48982f7262762c}{\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}!create\-New\-Interpolator@{create\-New\-Interpolator}}
+\index{create\-New\-Interpolator@{create\-New\-Interpolator}!ccmc::SWMFIono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+\subsubsection[{create\-New\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator} $\ast$ ccmc\-::\-S\-W\-M\-F\-Iono\-::create\-New\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_s_w_m_f_iono_a53d2bdb34290a7c9da48982f7262762c}
+
+
+Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  
+
+This returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object that contains all the necessary local variables required to interpolate independent of any other \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. The pointer must be deleted from the calling program. \begin{DoxyReturn}{Returns}
+A pointer to an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. 
+\end{DoxyReturn}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a0dd491507c14502c27aa61b020fca8cc}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_s_w_m_f_iono_aa36f1447a732be36bf98722e8e22caee}{\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}!get\-Loaded\-Variables@{get\-Loaded\-Variables}}
+\index{get\-Loaded\-Variables@{get\-Loaded\-Variables}!ccmc::SWMFIono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+\subsubsection[{get\-Loaded\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ std\-::string $>$ ccmc\-::\-S\-W\-M\-F\-Iono\-::get\-Loaded\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_s_w_m_f_iono_aa36f1447a732be36bf98722e8e22caee}
+
+
+Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. 
+
+
+
+Reimplemented from \hyperlink{classccmc_1_1_model_ac49a0eec99d25e9ed08ffff959e4ecdc}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_s_w_m_f_iono_aa36f1447a732be36bf98722e8e22caee_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_s_w_m_f_iono_a19279179873a44a59bf71651d5aadd27}{\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}!initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}}
+\index{initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}!ccmc::SWMFIono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+\subsubsection[{initialize\-Conversion\-Factors\-To\-S\-I}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-S\-W\-M\-F\-Iono\-::initialize\-Conversion\-Factors\-To\-S\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_s_w_m_f_iono_a19279179873a44a59bf71651d5aadd27}
+
+
+Initializes the conversion\-Factors\-To\-S\-I map.  
+
+These factors are used to convert interpolated values to S\-I units.  
+
+Implements \hyperlink{classccmc_1_1_model_a6f04326691fba448e2cfb7c7ab90a45a}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_s_w_m_f_iono_a20417d2b847bc12764ec3112d7166590}{\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}!initialize\-S\-I\-Units@{initialize\-S\-I\-Units}}
+\index{initialize\-S\-I\-Units@{initialize\-S\-I\-Units}!ccmc::SWMFIono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+\subsubsection[{initialize\-S\-I\-Units}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-S\-W\-M\-F\-Iono\-::initialize\-S\-I\-Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_s_w_m_f_iono_a20417d2b847bc12764ec3112d7166590}
+
+
+Initializes the variable\-S\-I\-Units map.  
+
+
+
+Implements \hyperlink{classccmc_1_1_model_a68d31e8d8cce59269c994de25d048178}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_s_w_m_f_iono_ad9e939763ca7026d551925d83c9f1425}{\index{ccmc\-::\-S\-W\-M\-F\-Iono@{ccmc\-::\-S\-W\-M\-F\-Iono}!open@{open}}
+\index{open@{open}!ccmc::SWMFIono@{ccmc\-::\-S\-W\-M\-F\-Iono}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-S\-W\-M\-F\-Iono\-::open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_s_w_m_f_iono_ad9e939763ca7026d551925d83c9f1425}
+
+
+Opens a file. 
+
+Opens a file and performs any necessary initialization required to work with the data. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classccmc_1_1_model_a3c64dc635c2c1a2fe2f8efa2a3666282}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_s_w_m_f_iono_ad9e939763ca7026d551925d83c9f1425_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_s_w_m_f_iono_8h}{S\-W\-M\-F\-Iono.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_s_w_m_f_iono_8cpp}{S\-W\-M\-F\-Iono.\-cpp}\end{DoxyCompactItemize}

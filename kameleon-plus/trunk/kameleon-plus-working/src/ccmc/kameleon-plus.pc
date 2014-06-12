@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: derived
+Description: Library to enhance the CCMC's Kameleon library.
+Requires: kameleon cdf
+Version: 1.0.0
+Libs: -L${libdir} -lderived
+Cflags: -I${includedir}/derived -I${libdir}/derived/include

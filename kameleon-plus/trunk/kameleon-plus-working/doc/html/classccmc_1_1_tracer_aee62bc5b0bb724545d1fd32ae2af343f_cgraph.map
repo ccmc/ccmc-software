@@ -1,0 +1,5 @@
+<map id="ccmc::Tracer::isClosed" name="ccmc::Tracer::isClosed">
+<area shape="rect" id="node3" href="$classccmc_1_1_fieldline.html#abc4b63ac9b72acd2e6f26b51f659500c" title="ccmc::Fieldline::size" alt="" coords="254,5,413,32"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_fieldline.html#a9f1b0541029d59589902e1ffe2ef75c5" title="ccmc::Fieldline::getPosition" alt="" coords="230,56,437,83"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_point3f.html#a71f9cc868f43146c8bf62eb877b0ce02" title="ccmc::Point3f::magnitude" alt="" coords="236,107,431,133"/>
+</map>

@@ -1,0 +1,196 @@
+\hypertarget{classccmc_1_1_adapt3_d}{\section{ccmc\-:\-:Adapt3\-D Class Reference}
+\label{classccmc_1_1_adapt3_d}\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}}
+}
+
+
+T\-O\-D\-O\-: brief description of \hyperlink{classccmc_1_1_adapt3_d}{Adapt3\-D} class.  
+
+
+
+
+{\ttfamily \#include $<$Adapt3\-D.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:Adapt3\-D\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classccmc_1_1_adapt3_d__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:Adapt3\-D\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_adapt3_d__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_adapt3_d_aa3927c68c63cde9e4006c0f8687116cb}{Adapt3\-D} ()
+\item 
+long \hyperlink{classccmc_1_1_adapt3_d_a02a5f2b5ba26cacd93f7c41c68c4b24a}{open} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Opens a file.  \end{DoxyCompactList}\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_adapt3_d_a4a82029cb4669a788c7ffa555fa4c20f}{create\-New\-Interpolator} ()
+\begin{DoxyCompactList}\small\item\em Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  \end{DoxyCompactList}\item 
+\hyperlink{structccmc_1_1_smart_grid_search_values}{Smart\-Grid\-Search\-Values} $\ast$ \hyperlink{classccmc_1_1_adapt3_d_aba33c6663d647dc3d00e9007c909a7ed}{get\-Smart\-Grid\-Search\-Values} ()
+\item 
+const std\-::vector$<$ std\-::string $>$ \hyperlink{classccmc_1_1_adapt3_d_a0e69d88334151e8ac9b2cbb7dc546e64}{get\-Loaded\-Variables} ()
+\begin{DoxyCompactList}\small\item\em Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. \end{DoxyCompactList}\item 
+virtual \hyperlink{classccmc_1_1_adapt3_d_ac27c4556b1091bf63e5931ecadb37462}{$\sim$\-Adapt3\-D} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classccmc_1_1_adapt3_d_aa4f0803514d069d146fdf58691b82d7a}{initialize\-Conversion\-Factors\-To\-S\-I} ()
+\begin{DoxyCompactList}\small\item\em Initializes the conversion\-Factors\-To\-S\-I map.  \end{DoxyCompactList}\item 
+void \hyperlink{classccmc_1_1_adapt3_d_a00d25fcceb69cc274df1c5e671f620e5}{initialize\-S\-I\-Units} ()
+\begin{DoxyCompactList}\small\item\em Initializes the variable\-S\-I\-Units map.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: brief description of \hyperlink{classccmc_1_1_adapt3_d}{Adapt3\-D} class. 
+
+T\-O\-D\-O\-: full description of \hyperlink{classccmc_1_1_adapt3_d}{Adapt3\-D} class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_adapt3_d_aa3927c68c63cde9e4006c0f8687116cb}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!Adapt3\-D@{Adapt3\-D}}
+\index{Adapt3\-D@{Adapt3\-D}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{Adapt3\-D}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Adapt3\-D\-::\-Adapt3\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_adapt3_d_aa3927c68c63cde9e4006c0f8687116cb}
+Default constructor \hypertarget{classccmc_1_1_adapt3_d_ac27c4556b1091bf63e5931ecadb37462}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!$\sim$\-Adapt3\-D@{$\sim$\-Adapt3\-D}}
+\index{$\sim$\-Adapt3\-D@{$\sim$\-Adapt3\-D}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{$\sim$\-Adapt3\-D}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Adapt3\-D\-::$\sim$\-Adapt3\-D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_adapt3_d_ac27c4556b1091bf63e5931ecadb37462}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_adapt3_d_a4a82029cb4669a788c7ffa555fa4c20f}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!create\-New\-Interpolator@{create\-New\-Interpolator}}
+\index{create\-New\-Interpolator@{create\-New\-Interpolator}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{create\-New\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator} $\ast$ ccmc\-::\-Adapt3\-D\-::create\-New\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_adapt3_d_a4a82029cb4669a788c7ffa555fa4c20f}
+
+
+Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  
+
+This returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object that contains all the necessary local variables required to interpolate independent of any other \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. The pointer must be deleted from the calling program. \begin{DoxyReturn}{Returns}
+A pointer to an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. 
+\end{DoxyReturn}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a0dd491507c14502c27aa61b020fca8cc}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_adapt3_d_a0e69d88334151e8ac9b2cbb7dc546e64}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!get\-Loaded\-Variables@{get\-Loaded\-Variables}}
+\index{get\-Loaded\-Variables@{get\-Loaded\-Variables}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{get\-Loaded\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ std\-::string $>$ ccmc\-::\-Adapt3\-D\-::get\-Loaded\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_adapt3_d_a0e69d88334151e8ac9b2cbb7dc546e64}
+
+
+Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. 
+
+
+
+Reimplemented from \hyperlink{classccmc_1_1_model_ac49a0eec99d25e9ed08ffff959e4ecdc}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_adapt3_d_a0e69d88334151e8ac9b2cbb7dc546e64_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_adapt3_d_aba33c6663d647dc3d00e9007c909a7ed}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!get\-Smart\-Grid\-Search\-Values@{get\-Smart\-Grid\-Search\-Values}}
+\index{get\-Smart\-Grid\-Search\-Values@{get\-Smart\-Grid\-Search\-Values}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{get\-Smart\-Grid\-Search\-Values}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Smart\-Grid\-Search\-Values} $\ast$ ccmc\-::\-Adapt3\-D\-::get\-Smart\-Grid\-Search\-Values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_adapt3_d_aba33c6663d647dc3d00e9007c909a7ed}
+\hypertarget{classccmc_1_1_adapt3_d_aa4f0803514d069d146fdf58691b82d7a}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}}
+\index{initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{initialize\-Conversion\-Factors\-To\-S\-I}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Adapt3\-D\-::initialize\-Conversion\-Factors\-To\-S\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_adapt3_d_aa4f0803514d069d146fdf58691b82d7a}
+
+
+Initializes the conversion\-Factors\-To\-S\-I map.  
+
+These factors are used to convert interpolated values to S\-I units.  T\-O\-D\-O\-: fix these conversion factors
+
+Implements \hyperlink{classccmc_1_1_model_a6f04326691fba448e2cfb7c7ab90a45a}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_adapt3_d_a00d25fcceb69cc274df1c5e671f620e5}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!initialize\-S\-I\-Units@{initialize\-S\-I\-Units}}
+\index{initialize\-S\-I\-Units@{initialize\-S\-I\-Units}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{initialize\-S\-I\-Units}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Adapt3\-D\-::initialize\-S\-I\-Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_adapt3_d_a00d25fcceb69cc274df1c5e671f620e5}
+
+
+Initializes the variable\-S\-I\-Units map.  
+
+
+
+Implements \hyperlink{classccmc_1_1_model_a68d31e8d8cce59269c994de25d048178}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_adapt3_d_a02a5f2b5ba26cacd93f7c41c68c4b24a}{\index{ccmc\-::\-Adapt3\-D@{ccmc\-::\-Adapt3\-D}!open@{open}}
+\index{open@{open}!ccmc::Adapt3D@{ccmc\-::\-Adapt3\-D}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-Adapt3\-D\-::open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_adapt3_d_a02a5f2b5ba26cacd93f7c41c68c4b24a}
+
+
+Opens a file.  
+
+Opens a file and performs any necessary initialization required to work with the data. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a3c64dc635c2c1a2fe2f8efa2a3666282}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_adapt3_d_a02a5f2b5ba26cacd93f7c41c68c4b24a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_adapt3_d_8h}{Adapt3\-D.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_adapt3_d_8cpp}{Adapt3\-D.\-cpp}\end{DoxyCompactItemize}

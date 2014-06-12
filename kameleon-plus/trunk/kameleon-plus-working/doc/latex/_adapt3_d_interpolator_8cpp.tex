@@ -1,0 +1,48 @@
+\hypertarget{_adapt3_d_interpolator_8cpp}{\section{/\-Users/apembrok/\-Documents/workspaces/workspace.bak2/workspace.backup/kameleon-\/plus/src/ccmc/\-Adapt3\-D\-Interpolator.cpp File Reference}
+\label{_adapt3_d_interpolator_8cpp}\index{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\-Adapt3\-D\-Interpolator.\-cpp@{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\-Adapt3\-D\-Interpolator.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}Adapt3\-D\-Interpolator.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Adapt3\-D.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}String\-Constants.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Math\-Helper.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+Include dependency graph for Adapt3\-D\-Interpolator.\-cpp\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_adapt3_d_interpolator_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceccmc}{ccmc}
+\begin{DoxyCompactList}\small\item\em Namespace containing C\-C\-M\-C created and maintained code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_adapt3_d_interpolator_8cpp_aa4f02ed5ead097d60cf505642d4e51e8}{M\-I\-N\-\_\-\-R\-A\-N\-G\-E}~-\/1e9
+\item 
+\#define \hyperlink{_adapt3_d_interpolator_8cpp_ab06d3e8dbb4b7ee5c62d9cf3df4aa3e3}{M\-A\-X\-\_\-\-R\-A\-N\-G\-E}~+1e9
+\item 
+\#define \hyperlink{_adapt3_d_interpolator_8cpp_af7d2ba3ba4b328f05ed704eaeac7fd7c}{N\-N\-O\-D\-E\-\_\-\-A\-D\-A\-P\-T3\-D}~4
+\item 
+\#define \hyperlink{_adapt3_d_interpolator_8cpp_a2bb3400628ff8adfea57a772b30d52bf}{L\-I\-N\-E\-A\-R\-\_\-\-I\-N\-T\-E\-R\-P\-O\-L}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_adapt3_d_interpolator_8cpp_a2bb3400628ff8adfea57a772b30d52bf}{\index{Adapt3\-D\-Interpolator.\-cpp@{Adapt3\-D\-Interpolator.\-cpp}!L\-I\-N\-E\-A\-R\-\_\-\-I\-N\-T\-E\-R\-P\-O\-L@{L\-I\-N\-E\-A\-R\-\_\-\-I\-N\-T\-E\-R\-P\-O\-L}}
+\index{L\-I\-N\-E\-A\-R\-\_\-\-I\-N\-T\-E\-R\-P\-O\-L@{L\-I\-N\-E\-A\-R\-\_\-\-I\-N\-T\-E\-R\-P\-O\-L}!Adapt3DInterpolator.cpp@{Adapt3\-D\-Interpolator.\-cpp}}
+\subsubsection[{L\-I\-N\-E\-A\-R\-\_\-\-I\-N\-T\-E\-R\-P\-O\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\-I\-N\-E\-A\-R\-\_\-\-I\-N\-T\-E\-R\-P\-O\-L}}\label{_adapt3_d_interpolator_8cpp_a2bb3400628ff8adfea57a772b30d52bf}
+\hypertarget{_adapt3_d_interpolator_8cpp_ab06d3e8dbb4b7ee5c62d9cf3df4aa3e3}{\index{Adapt3\-D\-Interpolator.\-cpp@{Adapt3\-D\-Interpolator.\-cpp}!M\-A\-X\-\_\-\-R\-A\-N\-G\-E@{M\-A\-X\-\_\-\-R\-A\-N\-G\-E}}
+\index{M\-A\-X\-\_\-\-R\-A\-N\-G\-E@{M\-A\-X\-\_\-\-R\-A\-N\-G\-E}!Adapt3DInterpolator.cpp@{Adapt3\-D\-Interpolator.\-cpp}}
+\subsubsection[{M\-A\-X\-\_\-\-R\-A\-N\-G\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-R\-A\-N\-G\-E~+1e9}}\label{_adapt3_d_interpolator_8cpp_ab06d3e8dbb4b7ee5c62d9cf3df4aa3e3}
+\hypertarget{_adapt3_d_interpolator_8cpp_aa4f02ed5ead097d60cf505642d4e51e8}{\index{Adapt3\-D\-Interpolator.\-cpp@{Adapt3\-D\-Interpolator.\-cpp}!M\-I\-N\-\_\-\-R\-A\-N\-G\-E@{M\-I\-N\-\_\-\-R\-A\-N\-G\-E}}
+\index{M\-I\-N\-\_\-\-R\-A\-N\-G\-E@{M\-I\-N\-\_\-\-R\-A\-N\-G\-E}!Adapt3DInterpolator.cpp@{Adapt3\-D\-Interpolator.\-cpp}}
+\subsubsection[{M\-I\-N\-\_\-\-R\-A\-N\-G\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-I\-N\-\_\-\-R\-A\-N\-G\-E~-\/1e9}}\label{_adapt3_d_interpolator_8cpp_aa4f02ed5ead097d60cf505642d4e51e8}
+\hypertarget{_adapt3_d_interpolator_8cpp_af7d2ba3ba4b328f05ed704eaeac7fd7c}{\index{Adapt3\-D\-Interpolator.\-cpp@{Adapt3\-D\-Interpolator.\-cpp}!N\-N\-O\-D\-E\-\_\-\-A\-D\-A\-P\-T3\-D@{N\-N\-O\-D\-E\-\_\-\-A\-D\-A\-P\-T3\-D}}
+\index{N\-N\-O\-D\-E\-\_\-\-A\-D\-A\-P\-T3\-D@{N\-N\-O\-D\-E\-\_\-\-A\-D\-A\-P\-T3\-D}!Adapt3DInterpolator.cpp@{Adapt3\-D\-Interpolator.\-cpp}}
+\subsubsection[{N\-N\-O\-D\-E\-\_\-\-A\-D\-A\-P\-T3\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-N\-O\-D\-E\-\_\-\-A\-D\-A\-P\-T3\-D~4}}\label{_adapt3_d_interpolator_8cpp_af7d2ba3ba4b328f05ed704eaeac7fd7c}

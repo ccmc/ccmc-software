@@ -1,0 +1,707 @@
+\hypertarget{classccmc_1_1_general_file_reader}{\section{ccmc\-:\-:General\-File\-Reader Class Reference}
+\label{classccmc_1_1_general_file_reader}\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}}
+}
+
+
+{\ttfamily \#include $<$General\-File\-Reader.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:General\-File\-Reader\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:General\-File\-Reader\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{classccmc_1_1_general_file_reader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_general_file_reader_a617946630c27444852aba7e4b63a7083}{General\-File\-Reader} ()
+\item 
+long \hyperlink{classccmc_1_1_general_file_reader_a4996a8e305a2e1f9f25228d127bb55bf}{open} (const std\-::string \&filename)
+\item 
+std\-::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_general_file_reader_a15db2e13a3cc71bf0fea4ea46725c22a}{get\-Variable} (const std\-::string \&variable)
+\item 
+std\-::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_general_file_reader_af665752bc662aa649922a4f30a402237}{get\-Variable} (long variable\-I\-D)
+\item 
+std\-::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_general_file_reader_aeff376239d655e3783354189f4f3d66d}{get\-Variable} (const std\-::string \&variable, long start\-Index, long count)
+\item 
+std\-::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_general_file_reader_a28a9e659f4708f24cd3208e1e5c72e7c}{get\-Variable} (long variable\-I\-D, long start\-Index, long count)
+\item 
+float \hyperlink{classccmc_1_1_general_file_reader_a61068a06575870558c7939f66b562848}{get\-Variable\-At\-Index} (const std\-::string \&variable, long index)
+\item 
+float \hyperlink{classccmc_1_1_general_file_reader_a19fa7bdf7fa3398daa7760bd045ae462}{get\-Variable\-At\-Index} (long variable\-\_\-id, long index)
+\item 
+std\-::vector$<$ int $>$ $\ast$ \hyperlink{classccmc_1_1_general_file_reader_a9715fb0dcb4c322dcff51749ba1dcf70}{get\-Variable\-Int} (const std\-::string \&variable)
+\item 
+int \hyperlink{classccmc_1_1_general_file_reader_a14473611318b2de4f43a3a5f52ad5bf1}{get\-Variable\-Int\-At\-Index} (const std\-::string \&variable, long index)
+\item 
+int \hyperlink{classccmc_1_1_general_file_reader_a4d5b8ad6260f905b37f802ee03779914}{get\-Number\-Of\-Global\-Attributes} ()
+\item 
+int \hyperlink{classccmc_1_1_general_file_reader_a7230506f5c5b62d33ef63864ef93a75c}{get\-Number\-Of\-Variables} ()
+\item 
+int \hyperlink{classccmc_1_1_general_file_reader_a26826f6d17d297b4d4891c91ecf255af}{get\-Number\-Of\-Variable\-Attributes} ()
+\item 
+long \hyperlink{classccmc_1_1_general_file_reader_abd0a8c94efea9fc7f9ac3b1c1d5fe9d2}{get\-Number\-Of\-Records} (const std\-::string \&variable)
+\item 
+long \hyperlink{classccmc_1_1_general_file_reader_af720e4662deb1be6209cb5d2c2e9ff20}{get\-Number\-Of\-Records} (long variable\-\_\-id)
+\item 
+long \hyperlink{classccmc_1_1_general_file_reader_a6cc488b707602f3b4438408826d3df02}{get\-Variable\-I\-D} (const std\-::string \&variable)
+\item 
+std\-::string \hyperlink{classccmc_1_1_general_file_reader_a24a28efa48973345d705d9e379cacc12}{get\-Variable\-Name} (long variable\-\_\-id)
+\item 
+\hyperlink{classccmc_1_1_attribute}{Attribute} \hyperlink{classccmc_1_1_general_file_reader_a45b01633354be559eed7cc6c854573c1}{get\-Global\-Attribute} (long i)
+\item 
+std\-::string \hyperlink{classccmc_1_1_general_file_reader_ab7fd42f992e99ec28860e49cd8396126}{get\-Global\-Attribute\-Name} (long attribute\-\_\-id)
+\item 
+std\-::string \hyperlink{classccmc_1_1_general_file_reader_a37342bc8999fdda1ee4ad52a62af650c}{get\-Variable\-Attribute\-Name} (long attribute\-\_\-id)
+\item 
+\hyperlink{classccmc_1_1_attribute}{Attribute} \hyperlink{classccmc_1_1_general_file_reader_abd1d4ce80397965b7d4ddbc9435c0bdd}{get\-Global\-Attribute} (const std\-::string \&attribute)
+\item 
+\hyperlink{classccmc_1_1_attribute}{Attribute} \hyperlink{classccmc_1_1_general_file_reader_a8a683e97f0affa385344a0da5b7afd1a}{get\-Variable\-Attribute} (const std\-::string \&variable, const std\-::string \&attribute)
+\item 
+std\-::vector$<$ std\-::string $>$ \hyperlink{classccmc_1_1_general_file_reader_a6e3e6cdd1bab8ee979c0f13276291331}{get\-Variable\-Attribute\-Names} ()
+\item 
+bool \hyperlink{classccmc_1_1_general_file_reader_a2038ca818d84aec04ecf2b6fdd8710ce}{does\-Attribute\-Exist} (const std\-::string \&attribute)
+\item 
+bool \hyperlink{classccmc_1_1_general_file_reader_a7752dcc4d653d0d325cbe5ce1b9a7ebe}{does\-Variable\-Exist} (const std\-::string \&variable)
+\item 
+long \hyperlink{classccmc_1_1_general_file_reader_a4d56da3556557ae38485abdcdeacc90e}{close} ()
+\item 
+const std\-::string \& \hyperlink{classccmc_1_1_general_file_reader_aa18066d5c371290ddee53de8e24e04a7}{get\-Current\-Filename} ()
+\item 
+\hyperlink{classccmc_1_1_general_file_reader_a7f1fe93414b533d8149b2c62d4d0b49d}{$\sim$\-General\-File\-Reader} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classccmc_1_1_general_file_reader_a05e47e8ca0c282555e0eeb2f60f45075}{initialize\-Global\-Attributes} ()
+\item 
+void \hyperlink{classccmc_1_1_general_file_reader_a0d851978d821e4525d2f0c759b7a1f3b}{initialize\-Variable\-Attributes} ()
+\item 
+void \hyperlink{classccmc_1_1_general_file_reader_a9ed129fc4488e899b3260640d47a8d88}{initialize\-Variable\-I\-Ds} ()
+\item 
+void \hyperlink{classccmc_1_1_general_file_reader_a2151d69434928082138128fb3ebd3282}{initialize\-Variable\-Names} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::string \hyperlink{classccmc_1_1_general_file_reader_a5ccab7d8bd4672ee5d6210288d5f41bd}{current\-\_\-filename}
+\item 
+boost\-::unordered\-\_\-map\\*
+$<$ std\-::string, long $>$ \hyperlink{classccmc_1_1_general_file_reader_a70d799a29940fa982885ce8c0963942d}{variable\-I\-Ds}
+\item 
+boost\-::unordered\-\_\-map$<$ long, \\*
+std\-::string $>$ \hyperlink{classccmc_1_1_general_file_reader_aa3a4c9091feaec12035bcc981299de47}{variable\-Names}
+\item 
+boost\-::unordered\-\_\-map\\*
+$<$ std\-::string, \hyperlink{classccmc_1_1_attribute}{Attribute} $>$ \hyperlink{classccmc_1_1_general_file_reader_ae5d6c9e0cebe12ce9564b99f1175f319}{g\-Attributes}
+\item 
+boost\-::unordered\-\_\-map$<$ long, \\*
+\hyperlink{classccmc_1_1_attribute}{Attribute} $>$ \hyperlink{classccmc_1_1_general_file_reader_a395e6335be8a0c569489a9635f6b9252}{g\-Attribute\-By\-I\-D}
+\item 
+boost\-::unordered\-\_\-map\\*
+$<$ std\-::string, \\*
+boost\-::unordered\-\_\-map\\*
+$<$ std\-::string, \hyperlink{classccmc_1_1_attribute}{Attribute} $>$ $>$ \hyperlink{classccmc_1_1_general_file_reader_a806b25ba22db767f9f61ae578634ef08}{v\-Attributes}
+\item 
+\hyperlink{classccmc_1_1_file_reader}{File\-Reader} $\ast$ \hyperlink{classccmc_1_1_general_file_reader_a255d7c592bd3908186af70794f05c0ea}{file\-Reader}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_general_file_reader_a617946630c27444852aba7e4b63a7083}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!General\-File\-Reader@{General\-File\-Reader}}
+\index{General\-File\-Reader@{General\-File\-Reader}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{General\-File\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-General\-File\-Reader\-::\-General\-File\-Reader (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a617946630c27444852aba7e4b63a7083}
+\hypertarget{classccmc_1_1_general_file_reader_a7f1fe93414b533d8149b2c62d4d0b49d}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!$\sim$\-General\-File\-Reader@{$\sim$\-General\-File\-Reader}}
+\index{$\sim$\-General\-File\-Reader@{$\sim$\-General\-File\-Reader}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{$\sim$\-General\-File\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-General\-File\-Reader\-::$\sim$\-General\-File\-Reader (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a7f1fe93414b533d8149b2c62d4d0b49d}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a7f1fe93414b533d8149b2c62d4d0b49d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_general_file_reader_a4d56da3556557ae38485abdcdeacc90e}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!close@{close}}
+\index{close@{close}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{close}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-General\-File\-Reader\-::close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a4d56da3556557ae38485abdcdeacc90e}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a4d56da3556557ae38485abdcdeacc90e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a2038ca818d84aec04ecf2b6fdd8710ce}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!does\-Attribute\-Exist@{does\-Attribute\-Exist}}
+\index{does\-Attribute\-Exist@{does\-Attribute\-Exist}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{does\-Attribute\-Exist}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc\-::\-General\-File\-Reader\-::does\-Attribute\-Exist (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{attribute}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a2038ca818d84aec04ecf2b6fdd8710ce}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a2038ca818d84aec04ecf2b6fdd8710ce_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a7752dcc4d653d0d325cbe5ce1b9a7ebe}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!does\-Variable\-Exist@{does\-Variable\-Exist}}
+\index{does\-Variable\-Exist@{does\-Variable\-Exist}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{does\-Variable\-Exist}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc\-::\-General\-File\-Reader\-::does\-Variable\-Exist (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a7752dcc4d653d0d325cbe5ce1b9a7ebe}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a7752dcc4d653d0d325cbe5ce1b9a7ebe_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_aa18066d5c371290ddee53de8e24e04a7}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Current\-Filename@{get\-Current\-Filename}}
+\index{get\-Current\-Filename@{get\-Current\-Filename}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Current\-Filename}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::string \& ccmc\-::\-General\-File\-Reader\-::get\-Current\-Filename (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_aa18066d5c371290ddee53de8e24e04a7}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_aa18066d5c371290ddee53de8e24e04a7_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a45b01633354be559eed7cc6c854573c1}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Global\-Attribute@{get\-Global\-Attribute}}
+\index{get\-Global\-Attribute@{get\-Global\-Attribute}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Global\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attribute} ccmc\-::\-General\-File\-Reader\-::get\-Global\-Attribute (
+\begin{DoxyParamCaption}
+\item[{long}]{i}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a45b01633354be559eed7cc6c854573c1}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a45b01633354be559eed7cc6c854573c1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_abd1d4ce80397965b7d4ddbc9435c0bdd}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Global\-Attribute@{get\-Global\-Attribute}}
+\index{get\-Global\-Attribute@{get\-Global\-Attribute}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Global\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attribute} ccmc\-::\-General\-File\-Reader\-::get\-Global\-Attribute (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{attribute}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_abd1d4ce80397965b7d4ddbc9435c0bdd}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_abd1d4ce80397965b7d4ddbc9435c0bdd_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_ab7fd42f992e99ec28860e49cd8396126}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Global\-Attribute\-Name@{get\-Global\-Attribute\-Name}}
+\index{get\-Global\-Attribute\-Name@{get\-Global\-Attribute\-Name}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Global\-Attribute\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-General\-File\-Reader\-::get\-Global\-Attribute\-Name (
+\begin{DoxyParamCaption}
+\item[{long}]{attribute\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_ab7fd42f992e99ec28860e49cd8396126}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_ab7fd42f992e99ec28860e49cd8396126_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a4d5b8ad6260f905b37f802ee03779914}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Number\-Of\-Global\-Attributes@{get\-Number\-Of\-Global\-Attributes}}
+\index{get\-Number\-Of\-Global\-Attributes@{get\-Number\-Of\-Global\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Number\-Of\-Global\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-General\-File\-Reader\-::get\-Number\-Of\-Global\-Attributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a4d5b8ad6260f905b37f802ee03779914}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a4d5b8ad6260f905b37f802ee03779914_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_abd0a8c94efea9fc7f9ac3b1c1d5fe9d2}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Number\-Of\-Records@{get\-Number\-Of\-Records}}
+\index{get\-Number\-Of\-Records@{get\-Number\-Of\-Records}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Number\-Of\-Records}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-General\-File\-Reader\-::get\-Number\-Of\-Records (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_abd0a8c94efea9fc7f9ac3b1c1d5fe9d2}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_abd0a8c94efea9fc7f9ac3b1c1d5fe9d2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_af720e4662deb1be6209cb5d2c2e9ff20}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Number\-Of\-Records@{get\-Number\-Of\-Records}}
+\index{get\-Number\-Of\-Records@{get\-Number\-Of\-Records}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Number\-Of\-Records}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-General\-File\-Reader\-::get\-Number\-Of\-Records (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_af720e4662deb1be6209cb5d2c2e9ff20}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_af720e4662deb1be6209cb5d2c2e9ff20_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a26826f6d17d297b4d4891c91ecf255af}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Number\-Of\-Variable\-Attributes@{get\-Number\-Of\-Variable\-Attributes}}
+\index{get\-Number\-Of\-Variable\-Attributes@{get\-Number\-Of\-Variable\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Number\-Of\-Variable\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-General\-File\-Reader\-::get\-Number\-Of\-Variable\-Attributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a26826f6d17d297b4d4891c91ecf255af}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a26826f6d17d297b4d4891c91ecf255af_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a7230506f5c5b62d33ef63864ef93a75c}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Number\-Of\-Variables@{get\-Number\-Of\-Variables}}
+\index{get\-Number\-Of\-Variables@{get\-Number\-Of\-Variables}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Number\-Of\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-General\-File\-Reader\-::get\-Number\-Of\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a7230506f5c5b62d33ef63864ef93a75c}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a7230506f5c5b62d33ef63864ef93a75c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a15db2e13a3cc71bf0fea4ea46725c22a}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable@{get\-Variable}}
+\index{get\-Variable@{get\-Variable}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ float $>$ $\ast$ ccmc\-::\-General\-File\-Reader\-::get\-Variable (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a15db2e13a3cc71bf0fea4ea46725c22a}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a15db2e13a3cc71bf0fea4ea46725c22a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_af665752bc662aa649922a4f30a402237}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable@{get\-Variable}}
+\index{get\-Variable@{get\-Variable}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ float $>$ $\ast$ ccmc\-::\-General\-File\-Reader\-::get\-Variable (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-I\-D}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_af665752bc662aa649922a4f30a402237}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_af665752bc662aa649922a4f30a402237_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_aeff376239d655e3783354189f4f3d66d}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable@{get\-Variable}}
+\index{get\-Variable@{get\-Variable}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ float $>$ $\ast$ ccmc\-::\-General\-File\-Reader\-::get\-Variable (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{long}]{start\-Index, }
+\item[{long}]{count}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_aeff376239d655e3783354189f4f3d66d}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_aeff376239d655e3783354189f4f3d66d_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a28a9e659f4708f24cd3208e1e5c72e7c}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable@{get\-Variable}}
+\index{get\-Variable@{get\-Variable}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ float $>$ $\ast$ ccmc\-::\-General\-File\-Reader\-::get\-Variable (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-I\-D, }
+\item[{long}]{start\-Index, }
+\item[{long}]{count}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a28a9e659f4708f24cd3208e1e5c72e7c}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a28a9e659f4708f24cd3208e1e5c72e7c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a61068a06575870558c7939f66b562848}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-At\-Index@{get\-Variable\-At\-Index}}
+\index{get\-Variable\-At\-Index@{get\-Variable\-At\-Index}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-At\-Index}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-General\-File\-Reader\-::get\-Variable\-At\-Index (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{long}]{index}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a61068a06575870558c7939f66b562848}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a61068a06575870558c7939f66b562848_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a19fa7bdf7fa3398daa7760bd045ae462}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-At\-Index@{get\-Variable\-At\-Index}}
+\index{get\-Variable\-At\-Index@{get\-Variable\-At\-Index}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-At\-Index}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-General\-File\-Reader\-::get\-Variable\-At\-Index (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id, }
+\item[{long}]{index}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a19fa7bdf7fa3398daa7760bd045ae462}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a19fa7bdf7fa3398daa7760bd045ae462_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a8a683e97f0affa385344a0da5b7afd1a}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-Attribute@{get\-Variable\-Attribute}}
+\index{get\-Variable\-Attribute@{get\-Variable\-Attribute}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-Attribute}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Attribute} ccmc\-::\-General\-File\-Reader\-::get\-Variable\-Attribute (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const std\-::string \&}]{attribute}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a8a683e97f0affa385344a0da5b7afd1a}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a8a683e97f0affa385344a0da5b7afd1a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a37342bc8999fdda1ee4ad52a62af650c}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-Attribute\-Name@{get\-Variable\-Attribute\-Name}}
+\index{get\-Variable\-Attribute\-Name@{get\-Variable\-Attribute\-Name}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-Attribute\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-General\-File\-Reader\-::get\-Variable\-Attribute\-Name (
+\begin{DoxyParamCaption}
+\item[{long}]{attribute\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a37342bc8999fdda1ee4ad52a62af650c}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a37342bc8999fdda1ee4ad52a62af650c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a6e3e6cdd1bab8ee979c0f13276291331}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-Attribute\-Names@{get\-Variable\-Attribute\-Names}}
+\index{get\-Variable\-Attribute\-Names@{get\-Variable\-Attribute\-Names}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-Attribute\-Names}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::string $>$ ccmc\-::\-General\-File\-Reader\-::get\-Variable\-Attribute\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a6e3e6cdd1bab8ee979c0f13276291331}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a6e3e6cdd1bab8ee979c0f13276291331_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a6cc488b707602f3b4438408826d3df02}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-I\-D@{get\-Variable\-I\-D}}
+\index{get\-Variable\-I\-D@{get\-Variable\-I\-D}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-General\-File\-Reader\-::get\-Variable\-I\-D (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a6cc488b707602f3b4438408826d3df02}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a6cc488b707602f3b4438408826d3df02_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a9715fb0dcb4c322dcff51749ba1dcf70}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-Int@{get\-Variable\-Int}}
+\index{get\-Variable\-Int@{get\-Variable\-Int}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-Int}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ int $>$ $\ast$ ccmc\-::\-General\-File\-Reader\-::get\-Variable\-Int (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a9715fb0dcb4c322dcff51749ba1dcf70}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a9715fb0dcb4c322dcff51749ba1dcf70_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a14473611318b2de4f43a3a5f52ad5bf1}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-Int\-At\-Index@{get\-Variable\-Int\-At\-Index}}
+\index{get\-Variable\-Int\-At\-Index@{get\-Variable\-Int\-At\-Index}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-Int\-At\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-General\-File\-Reader\-::get\-Variable\-Int\-At\-Index (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{long}]{index}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a14473611318b2de4f43a3a5f52ad5bf1}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a14473611318b2de4f43a3a5f52ad5bf1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a24a28efa48973345d705d9e379cacc12}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!get\-Variable\-Name@{get\-Variable\-Name}}
+\index{get\-Variable\-Name@{get\-Variable\-Name}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{get\-Variable\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-General\-File\-Reader\-::get\-Variable\-Name (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a24a28efa48973345d705d9e379cacc12}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a24a28efa48973345d705d9e379cacc12_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a05e47e8ca0c282555e0eeb2f60f45075}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!initialize\-Global\-Attributes@{initialize\-Global\-Attributes}}
+\index{initialize\-Global\-Attributes@{initialize\-Global\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{initialize\-Global\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-General\-File\-Reader\-::initialize\-Global\-Attributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a05e47e8ca0c282555e0eeb2f60f45075}
+\hypertarget{classccmc_1_1_general_file_reader_a0d851978d821e4525d2f0c759b7a1f3b}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!initialize\-Variable\-Attributes@{initialize\-Variable\-Attributes}}
+\index{initialize\-Variable\-Attributes@{initialize\-Variable\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{initialize\-Variable\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-General\-File\-Reader\-::initialize\-Variable\-Attributes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a0d851978d821e4525d2f0c759b7a1f3b}
+\hypertarget{classccmc_1_1_general_file_reader_a9ed129fc4488e899b3260640d47a8d88}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!initialize\-Variable\-I\-Ds@{initialize\-Variable\-I\-Ds}}
+\index{initialize\-Variable\-I\-Ds@{initialize\-Variable\-I\-Ds}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{initialize\-Variable\-I\-Ds}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-General\-File\-Reader\-::initialize\-Variable\-I\-Ds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a9ed129fc4488e899b3260640d47a8d88}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a9ed129fc4488e899b3260640d47a8d88_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a2151d69434928082138128fb3ebd3282}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!initialize\-Variable\-Names@{initialize\-Variable\-Names}}
+\index{initialize\-Variable\-Names@{initialize\-Variable\-Names}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{initialize\-Variable\-Names}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-General\-File\-Reader\-::initialize\-Variable\-Names (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a2151d69434928082138128fb3ebd3282}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a2151d69434928082138128fb3ebd3282_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_general_file_reader_a4996a8e305a2e1f9f25228d127bb55bf}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!open@{open}}
+\index{open@{open}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-General\-File\-Reader\-::open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_general_file_reader_a4996a8e305a2e1f9f25228d127bb55bf}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_general_file_reader_a4996a8e305a2e1f9f25228d127bb55bf_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classccmc_1_1_general_file_reader_a5ccab7d8bd4672ee5d6210288d5f41bd}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!current\-\_\-filename@{current\-\_\-filename}}
+\index{current\-\_\-filename@{current\-\_\-filename}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{current\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-General\-File\-Reader\-::current\-\_\-filename\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a5ccab7d8bd4672ee5d6210288d5f41bd}
+\hypertarget{classccmc_1_1_general_file_reader_a255d7c592bd3908186af70794f05c0ea}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!file\-Reader@{file\-Reader}}
+\index{file\-Reader@{file\-Reader}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{file\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-Reader}$\ast$ ccmc\-::\-General\-File\-Reader\-::file\-Reader\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a255d7c592bd3908186af70794f05c0ea}
+\hypertarget{classccmc_1_1_general_file_reader_a395e6335be8a0c569489a9635f6b9252}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!g\-Attribute\-By\-I\-D@{g\-Attribute\-By\-I\-D}}
+\index{g\-Attribute\-By\-I\-D@{g\-Attribute\-By\-I\-D}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{g\-Attribute\-By\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$long, {\bf Attribute}$>$ ccmc\-::\-General\-File\-Reader\-::g\-Attribute\-By\-I\-D\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a395e6335be8a0c569489a9635f6b9252}
+\hypertarget{classccmc_1_1_general_file_reader_ae5d6c9e0cebe12ce9564b99f1175f319}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!g\-Attributes@{g\-Attributes}}
+\index{g\-Attributes@{g\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{g\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$std\-::string, {\bf Attribute}$>$ ccmc\-::\-General\-File\-Reader\-::g\-Attributes\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_ae5d6c9e0cebe12ce9564b99f1175f319}
+\hypertarget{classccmc_1_1_general_file_reader_a70d799a29940fa982885ce8c0963942d}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!variable\-I\-Ds@{variable\-I\-Ds}}
+\index{variable\-I\-Ds@{variable\-I\-Ds}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{variable\-I\-Ds}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$std\-::string, long$>$ ccmc\-::\-General\-File\-Reader\-::variable\-I\-Ds\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a70d799a29940fa982885ce8c0963942d}
+\hypertarget{classccmc_1_1_general_file_reader_aa3a4c9091feaec12035bcc981299de47}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!variable\-Names@{variable\-Names}}
+\index{variable\-Names@{variable\-Names}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{variable\-Names}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$long, std\-::string$>$ ccmc\-::\-General\-File\-Reader\-::variable\-Names\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_aa3a4c9091feaec12035bcc981299de47}
+\hypertarget{classccmc_1_1_general_file_reader_a806b25ba22db767f9f61ae578634ef08}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!v\-Attributes@{v\-Attributes}}
+\index{v\-Attributes@{v\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
+\subsubsection[{v\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$std\-::string, boost\-::unordered\-\_\-map$<$std\-::string, {\bf Attribute}$>$ $>$ ccmc\-::\-General\-File\-Reader\-::v\-Attributes\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a806b25ba22db767f9f61ae578634ef08}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_general_file_reader_8h}{General\-File\-Reader.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_general_file_reader_8cpp}{General\-File\-Reader.\-cpp}\end{DoxyCompactItemize}

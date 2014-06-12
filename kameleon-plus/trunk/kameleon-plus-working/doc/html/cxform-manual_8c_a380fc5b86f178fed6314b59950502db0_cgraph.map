@@ -1,0 +1,8 @@
+<map id="mag_lat" name="mag_lat">
+<area shape="rect" id="node3" href="$cxform-manual_8c.html#ab95751a5e6ceadc3cab497212741477f" title="calcG01" alt="" coords="129,5,204,32"/>
+<area shape="rect" id="node5" href="$cxform-manual_8c.html#a77f0e08722c1a87fd774bb9425a7f7b9" title="calcG11" alt="" coords="255,56,329,83"/>
+<area shape="rect" id="node7" href="$cxform-manual_8c.html#a42194228f3217123ff26c5a3b53ad89f" title="calcH11" alt="" coords="255,157,329,184"/>
+<area shape="rect" id="node9" href="$cxform-manual_8c.html#ab66b822e2469cf8046effefcf1851cd5" title="mag_lon" alt="" coords="129,107,205,133"/>
+<area shape="rect" id="node11" href="$cxform-manual_8c.html#a995057a97d4e066b28f7c6335a58006d" title="lambda0" alt="" coords="254,107,330,133"/>
+<area shape="rect" id="node13" href="$cxform-manual_8c.html#ae23b51b4b534071c5a477dd97ce39186" title="T0" alt="" coords="379,107,418,133"/>
+</map>

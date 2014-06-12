@@ -1,0 +1,828 @@
+\hypertarget{cxform-manual_8c}{\section{/\-Users/apembrok/\-Documents/workspaces/workspace.bak2/workspace.backup/kameleon-\/plus/src/ccmc/cxform-\/manual.c File Reference}
+\label{cxform-manual_8c}\index{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/cxform-\/manual.\-c@{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/cxform-\/manual.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stddef.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}cxform.\-h\char`\"{}}\\*
+Include dependency graph for cxform-\/manual.c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{cxform-manual_8c_a207fd5507206d307cd63f95374fcd00d}{X}~0
+\item 
+\#define \hyperlink{cxform-manual_8c_a798e4073d613ca5ba9618e1b3253df14}{Y}~1
+\item 
+\#define \hyperlink{cxform-manual_8c_a51591cf51bdd6c1f6015532422e7770e}{Z}~2
+\item 
+\#define \hyperlink{cxform-manual_8c_ae71449b1cc6e6250b91f539153a7a0d3}{M\-\_\-\-P\-I}~3.\-14159265358979323846
+\item 
+\#define \hyperlink{cxform-manual_8c_a958e4508ed28ee5cc04249144312c15f}{M\-\_\-\-P\-I\-\_\-2}~1.\-57079632679489661923
+\item 
+\#define \hyperlink{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S}~(\hyperlink{cxform-manual_8c_ae71449b1cc6e6250b91f539153a7a0d3}{M\-\_\-\-P\-I} / 180.\-0)
+\item 
+\#define \hyperlink{cxform-manual_8c_a5b541253554905891d06cf62dbec1a41}{R\-A\-D\-I\-A\-N\-S\-\_\-\-T\-O\-\_\-\-D\-E\-G\-R\-E\-E\-S}~(180.\-0 / \hyperlink{cxform-manual_8c_ae71449b1cc6e6250b91f539153a7a0d3}{M\-\_\-\-P\-I})
+\item 
+\#define \hyperlink{cxform-manual_8c_ad0827f80a4727ba1e433b37a59b61571}{sind}(x)~sin((x) $\ast$ \hyperlink{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})
+\item 
+\#define \hyperlink{cxform-manual_8c_a1625c90afe10ff713ffaa43a64e137ad}{cosd}(x)~cos((x) $\ast$ \hyperlink{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})
+\item 
+\#define \hyperlink{cxform-manual_8c_a01a862be86e92b083de9bff9c0326769}{tand}(x)~tan((x) $\ast$ \hyperlink{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})
+\item 
+\#define \hyperlink{cxform-manual_8c_a1492dbdecdda75e08ac55191da444983}{atand}(z)~(atan(z) / \hyperlink{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})
+\item 
+\#define \hyperlink{cxform-manual_8c_aebf13cae9acb57875f4671864f5efeda}{atan2d}(y, z)~(atan2(y,z) / \hyperlink{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})
+\item 
+\#define \hyperlink{cxform-manual_8c_abdf8c3704a0d990a87e48f1a763d405f}{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-C\-E\-N\-T\-U\-R\-Y}~(86400 $\ast$ 365.\-25 $\ast$ 100)
+\item 
+\#define \hyperlink{cxform-manual_8c_a73ea55604473e02996222de081a76e7f}{N\-U\-M\-\_\-\-I\-G\-R\-F\-\_\-\-Y\-E\-A\-R\-S\-\_\-\-D\-E\-F\-I\-N\-E\-D}~24
+\item 
+\#define \hyperlink{cxform-manual_8c_a78e3086280b9a0d341f415a8aef06c55}{D\-U\-M\-P\-\_\-\-M\-A\-T}~\{ int i,j; for (i=0;i$<$3;i++) \{ for (j=0;j$<$3;j++) printf(\char`\"{}\%15lf \char`\"{}, mat\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}); printf(\char`\"{}\textbackslash{}n\char`\"{}); \}\}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{cxform-manual_8c_a1f4ce7c90920f310bb7543dd01ce4f98}{mat\-\_\-times\-\_\-mat} (\hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m1, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m2, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m\-\_\-out)
+\item 
+void \hyperlink{cxform-manual_8c_a54a60b4e36dd4c95a7c129884bac2d9c}{mat\-\_\-times\-\_\-vec} (\hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m1, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v1, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out)
+\item 
+void \hyperlink{cxform-manual_8c_a77c8e33324183648e2a9e4f77a422242}{mat\-\_\-transpose} (\hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m\-\_\-in, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m\-\_\-out)
+\item 
+void \hyperlink{cxform-manual_8c_a90a202672c17d19497833c2589286cd8}{hapgood\-\_\-matrix} (const double theta, int axis, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+double \hyperlink{cxform-manual_8c_ab97ee97a7a20980cfa40d7c28c30f847}{H} (const double et)
+\item 
+double \hyperlink{cxform-manual_8c_a972516f5baf3efcb440379386ebe7d16}{M\-J\-D} (const double et)
+\item 
+double \hyperlink{cxform-manual_8c_ae23b51b4b534071c5a477dd97ce39186}{T0} (const double et)
+\item 
+double \hyperlink{cxform-manual_8c_a995057a97d4e066b28f7c6335a58006d}{lambda0} (const double et)
+\item 
+double \hyperlink{cxform-manual_8c_a437aa2f848d339070f878e0deecd5dbf}{epsilon} (const double et)
+\item 
+double \hyperlink{cxform-manual_8c_ab95751a5e6ceadc3cab497212741477f}{calc\-G01} (double frac\-Year\-Index, double frac\-Year)
+\item 
+double \hyperlink{cxform-manual_8c_a77f0e08722c1a87fd774bb9425a7f7b9}{calc\-G11} (double frac\-Year\-Index, double frac\-Year)
+\item 
+double \hyperlink{cxform-manual_8c_a42194228f3217123ff26c5a3b53ad89f}{calc\-H11} (double frac\-Year\-Index, double frac\-Year)
+\item 
+double \hyperlink{cxform-manual_8c_ab66b822e2469cf8046effefcf1851cd5}{mag\-\_\-lon} (double et)
+\item 
+double \hyperlink{cxform-manual_8c_a380fc5b86f178fed6314b59950502db0}{mag\-\_\-lat} (double et)
+\item 
+void \hyperlink{cxform-manual_8c_ae0edc19e9ac91fd407df9d5939ed7cbc}{mat\-\_\-\-P} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_a98c3af0a095c65f0b7dcdab5266f25c8}{mat\-\_\-\-T1} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_a84c6ff0c06e5c7ad41c4d8d9487bda2b}{mat\-\_\-\-T2} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_a522caf9f987d9c69985928f7fb7a8742}{vec\-\_\-\-Qe} (double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} Qe)
+\item 
+void \hyperlink{cxform-manual_8c_acbaa169f9742954d6de645bc8aae0d20}{mat\-\_\-\-T3} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_aca10bea08cb0c11d8d45e4b48efe7582}{mat\-\_\-\-T4} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_a2e103e2894e1477eb617d2406d3fe7a2}{mat\-\_\-\-T5} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_aa313856959777af854d098b3aad74dd1}{mat\-\_\-\-T6} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_ab4055dbc0aecc2717083821822523421}{mat\-\_\-\-S1} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+void \hyperlink{cxform-manual_8c_a107b24e1f7a19f0d1777285ce21ed46a}{mat\-\_\-\-S2} (const double et, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} mat)
+\item 
+int \hyperlink{cxform-manual_8c_a6a21c6d7c236c5643d401407d7fa8a26}{simple\-\_\-rotation} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d, void($\ast$m)())
+\item 
+int \hyperlink{cxform-manual_8c_a604de2be5fe016b9e3be4c286a74020a}{j2000\-\_\-twixt\-\_\-gei} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a63ca86b4c2420723fbbb96f5bf23c2c3}{gei\-\_\-twixt\-\_\-geo} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a79a7f09f30d6d6cc75689024da0a194c}{geo\-\_\-twixt\-\_\-mag} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_ad3314bc7a5202191ee16723984217756}{gei\-\_\-twixt\-\_\-gse} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a89186ab1db627f3f9be016e931c5029a}{gse\-\_\-twixt\-\_\-gsm} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a1ce2a1afdc8b125c005a7a711377d0d2}{gsm\-\_\-twixt\-\_\-sm} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a93d806df9cc3ace3eb999aabc0b200b7}{gse\-\_\-twixt\-\_\-rtn} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a448aadcdd0174393cbc77012b33584ca}{gse\-\_\-twixt\-\_\-gseq} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a968a6f43d870317c644d1e6dcc2ea66c}{gse\-\_\-twixt\-\_\-hee} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_ab2f71cd8ff48427b63d28a87e18ebd09}{hae\-\_\-twixt\-\_\-hee} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+int \hyperlink{cxform-manual_8c_a461e86e4d41f0ac1578a75a35a346015}{hae\-\_\-twixt\-\_\-heeq} (const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction})
+\item 
+double \hyperlink{cxform-manual_8c_ab38449ac3ff3227ac30316a0155732ea}{gregorian\-\_\-calendar\-\_\-to\-\_\-jd} (int y, int m, int d, int h, int mi, int s)
+\item 
+long \hyperlink{cxform-manual_8c_a294c5778cf62becb5a42d27920344c6f}{cx\-Round} (double doub)
+\item 
+long \hyperlink{cxform-manual_8c_a5e51ba4e5ece049ac34832063e2c9a34}{date2es} (int yyyy, int mm, int dd, int hh, int mm2, int ss)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{cxform-manual_8c_aebf13cae9acb57875f4671864f5efeda}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!atan2d@{atan2d}}
+\index{atan2d@{atan2d}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{atan2d}]{\setlength{\rightskip}{0pt plus 5cm}\#define atan2d(
+\begin{DoxyParamCaption}
+\item[{}]{y, }
+\item[{}]{z}
+\end{DoxyParamCaption}
+)~(atan2(y,z) / {\bf D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})}}\label{cxform-manual_8c_aebf13cae9acb57875f4671864f5efeda}
+\hypertarget{cxform-manual_8c_a1492dbdecdda75e08ac55191da444983}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!atand@{atand}}
+\index{atand@{atand}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{atand}]{\setlength{\rightskip}{0pt plus 5cm}\#define atand(
+\begin{DoxyParamCaption}
+\item[{}]{z}
+\end{DoxyParamCaption}
+)~(atan(z) / {\bf D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})}}\label{cxform-manual_8c_a1492dbdecdda75e08ac55191da444983}
+\hypertarget{cxform-manual_8c_a1625c90afe10ff713ffaa43a64e137ad}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!cosd@{cosd}}
+\index{cosd@{cosd}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{cosd}]{\setlength{\rightskip}{0pt plus 5cm}\#define cosd(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~cos((x) $\ast$ {\bf D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})}}\label{cxform-manual_8c_a1625c90afe10ff713ffaa43a64e137ad}
+\hypertarget{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S@{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S}}
+\index{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S@{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S~({\bf M\-\_\-\-P\-I} / 180.\-0)}}\label{cxform-manual_8c_a7bf0b4b8b3cf2f13f25573b3e151ed88}
+\hypertarget{cxform-manual_8c_a78e3086280b9a0d341f415a8aef06c55}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!D\-U\-M\-P\-\_\-\-M\-A\-T@{D\-U\-M\-P\-\_\-\-M\-A\-T}}
+\index{D\-U\-M\-P\-\_\-\-M\-A\-T@{D\-U\-M\-P\-\_\-\-M\-A\-T}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{D\-U\-M\-P\-\_\-\-M\-A\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-U\-M\-P\-\_\-\-M\-A\-T~\{ int i,j; for (i=0;i$<$3;i++) \{ for (j=0;j$<$3;j++) printf(\char`\"{}\%15lf \char`\"{}, mat\mbox{[}i\mbox{]}\mbox{[}j\mbox{]}); printf(\char`\"{}\textbackslash{}n\char`\"{}); \}\}}}\label{cxform-manual_8c_a78e3086280b9a0d341f415a8aef06c55}
+\hypertarget{cxform-manual_8c_ae71449b1cc6e6250b91f539153a7a0d3}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!M\-\_\-\-P\-I@{M\-\_\-\-P\-I}}
+\index{M\-\_\-\-P\-I@{M\-\_\-\-P\-I}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{M\-\_\-\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-\_\-\-P\-I~3.\-14159265358979323846}}\label{cxform-manual_8c_ae71449b1cc6e6250b91f539153a7a0d3}
+\hypertarget{cxform-manual_8c_a958e4508ed28ee5cc04249144312c15f}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!M\-\_\-\-P\-I\-\_\-2@{M\-\_\-\-P\-I\-\_\-2}}
+\index{M\-\_\-\-P\-I\-\_\-2@{M\-\_\-\-P\-I\-\_\-2}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{M\-\_\-\-P\-I\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-\_\-\-P\-I\-\_\-2~1.\-57079632679489661923}}\label{cxform-manual_8c_a958e4508ed28ee5cc04249144312c15f}
+\hypertarget{cxform-manual_8c_a73ea55604473e02996222de081a76e7f}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!N\-U\-M\-\_\-\-I\-G\-R\-F\-\_\-\-Y\-E\-A\-R\-S\-\_\-\-D\-E\-F\-I\-N\-E\-D@{N\-U\-M\-\_\-\-I\-G\-R\-F\-\_\-\-Y\-E\-A\-R\-S\-\_\-\-D\-E\-F\-I\-N\-E\-D}}
+\index{N\-U\-M\-\_\-\-I\-G\-R\-F\-\_\-\-Y\-E\-A\-R\-S\-\_\-\-D\-E\-F\-I\-N\-E\-D@{N\-U\-M\-\_\-\-I\-G\-R\-F\-\_\-\-Y\-E\-A\-R\-S\-\_\-\-D\-E\-F\-I\-N\-E\-D}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{N\-U\-M\-\_\-\-I\-G\-R\-F\-\_\-\-Y\-E\-A\-R\-S\-\_\-\-D\-E\-F\-I\-N\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-U\-M\-\_\-\-I\-G\-R\-F\-\_\-\-Y\-E\-A\-R\-S\-\_\-\-D\-E\-F\-I\-N\-E\-D~24}}\label{cxform-manual_8c_a73ea55604473e02996222de081a76e7f}
+\hypertarget{cxform-manual_8c_a5b541253554905891d06cf62dbec1a41}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!R\-A\-D\-I\-A\-N\-S\-\_\-\-T\-O\-\_\-\-D\-E\-G\-R\-E\-E\-S@{R\-A\-D\-I\-A\-N\-S\-\_\-\-T\-O\-\_\-\-D\-E\-G\-R\-E\-E\-S}}
+\index{R\-A\-D\-I\-A\-N\-S\-\_\-\-T\-O\-\_\-\-D\-E\-G\-R\-E\-E\-S@{R\-A\-D\-I\-A\-N\-S\-\_\-\-T\-O\-\_\-\-D\-E\-G\-R\-E\-E\-S}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{R\-A\-D\-I\-A\-N\-S\-\_\-\-T\-O\-\_\-\-D\-E\-G\-R\-E\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\-A\-D\-I\-A\-N\-S\-\_\-\-T\-O\-\_\-\-D\-E\-G\-R\-E\-E\-S~(180.\-0 / {\bf M\-\_\-\-P\-I})}}\label{cxform-manual_8c_a5b541253554905891d06cf62dbec1a41}
+\hypertarget{cxform-manual_8c_abdf8c3704a0d990a87e48f1a763d405f}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-C\-E\-N\-T\-U\-R\-Y@{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-C\-E\-N\-T\-U\-R\-Y}}
+\index{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-C\-E\-N\-T\-U\-R\-Y@{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-C\-E\-N\-T\-U\-R\-Y}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-C\-E\-N\-T\-U\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\-E\-C\-O\-N\-D\-S\-\_\-\-P\-E\-R\-\_\-\-C\-E\-N\-T\-U\-R\-Y~(86400 $\ast$ 365.\-25 $\ast$ 100)}}\label{cxform-manual_8c_abdf8c3704a0d990a87e48f1a763d405f}
+\hypertarget{cxform-manual_8c_ad0827f80a4727ba1e433b37a59b61571}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!sind@{sind}}
+\index{sind@{sind}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{sind}]{\setlength{\rightskip}{0pt plus 5cm}\#define sind(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~sin((x) $\ast$ {\bf D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})}}\label{cxform-manual_8c_ad0827f80a4727ba1e433b37a59b61571}
+\hypertarget{cxform-manual_8c_a01a862be86e92b083de9bff9c0326769}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!tand@{tand}}
+\index{tand@{tand}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{tand}]{\setlength{\rightskip}{0pt plus 5cm}\#define tand(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~tan((x) $\ast$ {\bf D\-E\-G\-R\-E\-E\-S\-\_\-\-T\-O\-\_\-\-R\-A\-D\-I\-A\-N\-S})}}\label{cxform-manual_8c_a01a862be86e92b083de9bff9c0326769}
+\hypertarget{cxform-manual_8c_a207fd5507206d307cd63f95374fcd00d}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!X@{X}}
+\index{X@{X}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{X}]{\setlength{\rightskip}{0pt plus 5cm}\#define X~0}}\label{cxform-manual_8c_a207fd5507206d307cd63f95374fcd00d}
+\hypertarget{cxform-manual_8c_a798e4073d613ca5ba9618e1b3253df14}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!Y@{Y}}
+\index{Y@{Y}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define Y~1}}\label{cxform-manual_8c_a798e4073d613ca5ba9618e1b3253df14}
+\hypertarget{cxform-manual_8c_a51591cf51bdd6c1f6015532422e7770e}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!Z@{Z}}
+\index{Z@{Z}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{Z}]{\setlength{\rightskip}{0pt plus 5cm}\#define Z~2}}\label{cxform-manual_8c_a51591cf51bdd6c1f6015532422e7770e}
+
+
+\subsection{Function Documentation}
+\hypertarget{cxform-manual_8c_ab95751a5e6ceadc3cab497212741477f}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!calc\-G01@{calc\-G01}}
+\index{calc\-G01@{calc\-G01}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{calc\-G01}]{\setlength{\rightskip}{0pt plus 5cm}double calc\-G01 (
+\begin{DoxyParamCaption}
+\item[{double}]{frac\-Year\-Index, }
+\item[{double}]{frac\-Year}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ab95751a5e6ceadc3cab497212741477f}
+\hypertarget{cxform-manual_8c_a77f0e08722c1a87fd774bb9425a7f7b9}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!calc\-G11@{calc\-G11}}
+\index{calc\-G11@{calc\-G11}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{calc\-G11}]{\setlength{\rightskip}{0pt plus 5cm}double calc\-G11 (
+\begin{DoxyParamCaption}
+\item[{double}]{frac\-Year\-Index, }
+\item[{double}]{frac\-Year}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a77f0e08722c1a87fd774bb9425a7f7b9}
+\hypertarget{cxform-manual_8c_a42194228f3217123ff26c5a3b53ad89f}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!calc\-H11@{calc\-H11}}
+\index{calc\-H11@{calc\-H11}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{calc\-H11}]{\setlength{\rightskip}{0pt plus 5cm}double calc\-H11 (
+\begin{DoxyParamCaption}
+\item[{double}]{frac\-Year\-Index, }
+\item[{double}]{frac\-Year}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a42194228f3217123ff26c5a3b53ad89f}
+\hypertarget{cxform-manual_8c_a294c5778cf62becb5a42d27920344c6f}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!cx\-Round@{cx\-Round}}
+\index{cx\-Round@{cx\-Round}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{cx\-Round}]{\setlength{\rightskip}{0pt plus 5cm}long cx\-Round (
+\begin{DoxyParamCaption}
+\item[{double}]{doub}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a294c5778cf62becb5a42d27920344c6f}
+\hypertarget{cxform-manual_8c_a5e51ba4e5ece049ac34832063e2c9a34}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!date2es@{date2es}}
+\index{date2es@{date2es}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{date2es}]{\setlength{\rightskip}{0pt plus 5cm}long date2es (
+\begin{DoxyParamCaption}
+\item[{int}]{yyyy, }
+\item[{int}]{mm, }
+\item[{int}]{dd, }
+\item[{int}]{hh, }
+\item[{int}]{mm2, }
+\item[{int}]{ss}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a5e51ba4e5ece049ac34832063e2c9a34}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{cxform-manual_8c_a5e51ba4e5ece049ac34832063e2c9a34_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a437aa2f848d339070f878e0deecd5dbf}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!epsilon@{epsilon}}
+\index{epsilon@{epsilon}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{epsilon}]{\setlength{\rightskip}{0pt plus 5cm}double epsilon (
+\begin{DoxyParamCaption}
+\item[{const double}]{et}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a437aa2f848d339070f878e0deecd5dbf}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{cxform-manual_8c_a437aa2f848d339070f878e0deecd5dbf_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a63ca86b4c2420723fbbb96f5bf23c2c3}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gei\-\_\-twixt\-\_\-geo@{gei\-\_\-twixt\-\_\-geo}}
+\index{gei\-\_\-twixt\-\_\-geo@{gei\-\_\-twixt\-\_\-geo}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gei\-\_\-twixt\-\_\-geo}]{\setlength{\rightskip}{0pt plus 5cm}int gei\-\_\-twixt\-\_\-geo (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a63ca86b4c2420723fbbb96f5bf23c2c3}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a63ca86b4c2420723fbbb96f5bf23c2c3_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_ad3314bc7a5202191ee16723984217756}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gei\-\_\-twixt\-\_\-gse@{gei\-\_\-twixt\-\_\-gse}}
+\index{gei\-\_\-twixt\-\_\-gse@{gei\-\_\-twixt\-\_\-gse}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gei\-\_\-twixt\-\_\-gse}]{\setlength{\rightskip}{0pt plus 5cm}int gei\-\_\-twixt\-\_\-gse (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ad3314bc7a5202191ee16723984217756}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_ad3314bc7a5202191ee16723984217756_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a79a7f09f30d6d6cc75689024da0a194c}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!geo\-\_\-twixt\-\_\-mag@{geo\-\_\-twixt\-\_\-mag}}
+\index{geo\-\_\-twixt\-\_\-mag@{geo\-\_\-twixt\-\_\-mag}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{geo\-\_\-twixt\-\_\-mag}]{\setlength{\rightskip}{0pt plus 5cm}int geo\-\_\-twixt\-\_\-mag (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a79a7f09f30d6d6cc75689024da0a194c}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a79a7f09f30d6d6cc75689024da0a194c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_ab38449ac3ff3227ac30316a0155732ea}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gregorian\-\_\-calendar\-\_\-to\-\_\-jd@{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}}
+\index{gregorian\-\_\-calendar\-\_\-to\-\_\-jd@{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}]{\setlength{\rightskip}{0pt plus 5cm}double gregorian\-\_\-calendar\-\_\-to\-\_\-jd (
+\begin{DoxyParamCaption}
+\item[{int}]{y, }
+\item[{int}]{m, }
+\item[{int}]{d, }
+\item[{int}]{h, }
+\item[{int}]{mi, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ab38449ac3ff3227ac30316a0155732ea}
+\hypertarget{cxform-manual_8c_a448aadcdd0174393cbc77012b33584ca}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gse\-\_\-twixt\-\_\-gseq@{gse\-\_\-twixt\-\_\-gseq}}
+\index{gse\-\_\-twixt\-\_\-gseq@{gse\-\_\-twixt\-\_\-gseq}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-gseq}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-gseq (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a448aadcdd0174393cbc77012b33584ca}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a448aadcdd0174393cbc77012b33584ca_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a89186ab1db627f3f9be016e931c5029a}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gse\-\_\-twixt\-\_\-gsm@{gse\-\_\-twixt\-\_\-gsm}}
+\index{gse\-\_\-twixt\-\_\-gsm@{gse\-\_\-twixt\-\_\-gsm}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-gsm}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-gsm (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a89186ab1db627f3f9be016e931c5029a}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a89186ab1db627f3f9be016e931c5029a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a968a6f43d870317c644d1e6dcc2ea66c}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gse\-\_\-twixt\-\_\-hee@{gse\-\_\-twixt\-\_\-hee}}
+\index{gse\-\_\-twixt\-\_\-hee@{gse\-\_\-twixt\-\_\-hee}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-hee}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-hee (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a968a6f43d870317c644d1e6dcc2ea66c}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a968a6f43d870317c644d1e6dcc2ea66c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a93d806df9cc3ace3eb999aabc0b200b7}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gse\-\_\-twixt\-\_\-rtn@{gse\-\_\-twixt\-\_\-rtn}}
+\index{gse\-\_\-twixt\-\_\-rtn@{gse\-\_\-twixt\-\_\-rtn}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-rtn}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-rtn (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a93d806df9cc3ace3eb999aabc0b200b7}
+\hypertarget{cxform-manual_8c_a1ce2a1afdc8b125c005a7a711377d0d2}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!gsm\-\_\-twixt\-\_\-sm@{gsm\-\_\-twixt\-\_\-sm}}
+\index{gsm\-\_\-twixt\-\_\-sm@{gsm\-\_\-twixt\-\_\-sm}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{gsm\-\_\-twixt\-\_\-sm}]{\setlength{\rightskip}{0pt plus 5cm}int gsm\-\_\-twixt\-\_\-sm (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a1ce2a1afdc8b125c005a7a711377d0d2}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a1ce2a1afdc8b125c005a7a711377d0d2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_ab97ee97a7a20980cfa40d7c28c30f847}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!H@{H}}
+\index{H@{H}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{H}]{\setlength{\rightskip}{0pt plus 5cm}double H (
+\begin{DoxyParamCaption}
+\item[{const double}]{et}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ab97ee97a7a20980cfa40d7c28c30f847}
+\hypertarget{cxform-manual_8c_ab2f71cd8ff48427b63d28a87e18ebd09}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!hae\-\_\-twixt\-\_\-hee@{hae\-\_\-twixt\-\_\-hee}}
+\index{hae\-\_\-twixt\-\_\-hee@{hae\-\_\-twixt\-\_\-hee}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{hae\-\_\-twixt\-\_\-hee}]{\setlength{\rightskip}{0pt plus 5cm}int hae\-\_\-twixt\-\_\-hee (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ab2f71cd8ff48427b63d28a87e18ebd09}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_ab2f71cd8ff48427b63d28a87e18ebd09_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a461e86e4d41f0ac1578a75a35a346015}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!hae\-\_\-twixt\-\_\-heeq@{hae\-\_\-twixt\-\_\-heeq}}
+\index{hae\-\_\-twixt\-\_\-heeq@{hae\-\_\-twixt\-\_\-heeq}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{hae\-\_\-twixt\-\_\-heeq}]{\setlength{\rightskip}{0pt plus 5cm}int hae\-\_\-twixt\-\_\-heeq (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a461e86e4d41f0ac1578a75a35a346015}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a461e86e4d41f0ac1578a75a35a346015_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a90a202672c17d19497833c2589286cd8}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!hapgood\-\_\-matrix@{hapgood\-\_\-matrix}}
+\index{hapgood\-\_\-matrix@{hapgood\-\_\-matrix}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{hapgood\-\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}void hapgood\-\_\-matrix (
+\begin{DoxyParamCaption}
+\item[{const double}]{theta, }
+\item[{int}]{axis, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a90a202672c17d19497833c2589286cd8}
+\hypertarget{cxform-manual_8c_a604de2be5fe016b9e3be4c286a74020a}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!j2000\-\_\-twixt\-\_\-gei@{j2000\-\_\-twixt\-\_\-gei}}
+\index{j2000\-\_\-twixt\-\_\-gei@{j2000\-\_\-twixt\-\_\-gei}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{j2000\-\_\-twixt\-\_\-gei}]{\setlength{\rightskip}{0pt plus 5cm}int j2000\-\_\-twixt\-\_\-gei (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{direction}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a604de2be5fe016b9e3be4c286a74020a}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a604de2be5fe016b9e3be4c286a74020a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a995057a97d4e066b28f7c6335a58006d}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!lambda0@{lambda0}}
+\index{lambda0@{lambda0}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{lambda0}]{\setlength{\rightskip}{0pt plus 5cm}double lambda0 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a995057a97d4e066b28f7c6335a58006d}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{cxform-manual_8c_a995057a97d4e066b28f7c6335a58006d_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a380fc5b86f178fed6314b59950502db0}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mag\-\_\-lat@{mag\-\_\-lat}}
+\index{mag\-\_\-lat@{mag\-\_\-lat}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mag\-\_\-lat}]{\setlength{\rightskip}{0pt plus 5cm}double mag\-\_\-lat (
+\begin{DoxyParamCaption}
+\item[{double}]{et}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a380fc5b86f178fed6314b59950502db0}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a380fc5b86f178fed6314b59950502db0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_ab66b822e2469cf8046effefcf1851cd5}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mag\-\_\-lon@{mag\-\_\-lon}}
+\index{mag\-\_\-lon@{mag\-\_\-lon}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mag\-\_\-lon}]{\setlength{\rightskip}{0pt plus 5cm}double mag\-\_\-lon (
+\begin{DoxyParamCaption}
+\item[{double}]{et}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ab66b822e2469cf8046effefcf1851cd5}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{cxform-manual_8c_ab66b822e2469cf8046effefcf1851cd5_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_ae0edc19e9ac91fd407df9d5939ed7cbc}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-P@{mat\-\_\-\-P}}
+\index{mat\-\_\-\-P@{mat\-\_\-\-P}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ae0edc19e9ac91fd407df9d5939ed7cbc}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{cxform-manual_8c_ae0edc19e9ac91fd407df9d5939ed7cbc_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_ab4055dbc0aecc2717083821822523421}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-S1@{mat\-\_\-\-S1}}
+\index{mat\-\_\-\-S1@{mat\-\_\-\-S1}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-S1}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-S1 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ab4055dbc0aecc2717083821822523421}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{cxform-manual_8c_ab4055dbc0aecc2717083821822523421_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a107b24e1f7a19f0d1777285ce21ed46a}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-S2@{mat\-\_\-\-S2}}
+\index{mat\-\_\-\-S2@{mat\-\_\-\-S2}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-S2}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-S2 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a107b24e1f7a19f0d1777285ce21ed46a}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{cxform-manual_8c_a107b24e1f7a19f0d1777285ce21ed46a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a98c3af0a095c65f0b7dcdab5266f25c8}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-T1@{mat\-\_\-\-T1}}
+\index{mat\-\_\-\-T1@{mat\-\_\-\-T1}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-T1}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-T1 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a98c3af0a095c65f0b7dcdab5266f25c8}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{cxform-manual_8c_a98c3af0a095c65f0b7dcdab5266f25c8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a84c6ff0c06e5c7ad41c4d8d9487bda2b}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-T2@{mat\-\_\-\-T2}}
+\index{mat\-\_\-\-T2@{mat\-\_\-\-T2}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-T2}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-T2 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a84c6ff0c06e5c7ad41c4d8d9487bda2b}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{cxform-manual_8c_a84c6ff0c06e5c7ad41c4d8d9487bda2b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_acbaa169f9742954d6de645bc8aae0d20}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-T3@{mat\-\_\-\-T3}}
+\index{mat\-\_\-\-T3@{mat\-\_\-\-T3}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-T3}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-T3 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_acbaa169f9742954d6de645bc8aae0d20}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_acbaa169f9742954d6de645bc8aae0d20_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_aca10bea08cb0c11d8d45e4b48efe7582}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-T4@{mat\-\_\-\-T4}}
+\index{mat\-\_\-\-T4@{mat\-\_\-\-T4}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-T4}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-T4 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_aca10bea08cb0c11d8d45e4b48efe7582}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_aca10bea08cb0c11d8d45e4b48efe7582_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a2e103e2894e1477eb617d2406d3fe7a2}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-T5@{mat\-\_\-\-T5}}
+\index{mat\-\_\-\-T5@{mat\-\_\-\-T5}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-T5}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-T5 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a2e103e2894e1477eb617d2406d3fe7a2}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a2e103e2894e1477eb617d2406d3fe7a2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_aa313856959777af854d098b3aad74dd1}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-\-T6@{mat\-\_\-\-T6}}
+\index{mat\-\_\-\-T6@{mat\-\_\-\-T6}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-\-T6}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-\-T6 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Mat}}]{mat}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_aa313856959777af854d098b3aad74dd1}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_aa313856959777af854d098b3aad74dd1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_a1f4ce7c90920f310bb7543dd01ce4f98}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-times\-\_\-mat@{mat\-\_\-times\-\_\-mat}}
+\index{mat\-\_\-times\-\_\-mat@{mat\-\_\-times\-\_\-mat}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-times\-\_\-mat}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-times\-\_\-mat (
+\begin{DoxyParamCaption}
+\item[{{\bf Mat}}]{m1, }
+\item[{{\bf Mat}}]{m2, }
+\item[{{\bf Mat}}]{m\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a1f4ce7c90920f310bb7543dd01ce4f98}
+\hypertarget{cxform-manual_8c_a54a60b4e36dd4c95a7c129884bac2d9c}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-times\-\_\-vec@{mat\-\_\-times\-\_\-vec}}
+\index{mat\-\_\-times\-\_\-vec@{mat\-\_\-times\-\_\-vec}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-times\-\_\-vec}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-times\-\_\-vec (
+\begin{DoxyParamCaption}
+\item[{{\bf Mat}}]{m1, }
+\item[{{\bf Vec}}]{v1, }
+\item[{{\bf Vec}}]{v\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a54a60b4e36dd4c95a7c129884bac2d9c}
+\hypertarget{cxform-manual_8c_a77c8e33324183648e2a9e4f77a422242}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!mat\-\_\-transpose@{mat\-\_\-transpose}}
+\index{mat\-\_\-transpose@{mat\-\_\-transpose}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{mat\-\_\-transpose}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-transpose (
+\begin{DoxyParamCaption}
+\item[{{\bf Mat}}]{m\-\_\-in, }
+\item[{{\bf Mat}}]{m\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a77c8e33324183648e2a9e4f77a422242}
+\hypertarget{cxform-manual_8c_a972516f5baf3efcb440379386ebe7d16}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!M\-J\-D@{M\-J\-D}}
+\index{M\-J\-D@{M\-J\-D}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{M\-J\-D}]{\setlength{\rightskip}{0pt plus 5cm}double M\-J\-D (
+\begin{DoxyParamCaption}
+\item[{const double}]{et}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a972516f5baf3efcb440379386ebe7d16}
+\hypertarget{cxform-manual_8c_a6a21c6d7c236c5643d401407d7fa8a26}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!simple\-\_\-rotation@{simple\-\_\-rotation}}
+\index{simple\-\_\-rotation@{simple\-\_\-rotation}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{simple\-\_\-rotation}]{\setlength{\rightskip}{0pt plus 5cm}int simple\-\_\-rotation (
+\begin{DoxyParamCaption}
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out, }
+\item[{{\bf Direction}}]{d, }
+\item[{void($\ast$)()}]{m}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a6a21c6d7c236c5643d401407d7fa8a26}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{cxform-manual_8c_a6a21c6d7c236c5643d401407d7fa8a26_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-manual_8c_ae23b51b4b534071c5a477dd97ce39186}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!T0@{T0}}
+\index{T0@{T0}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{T0}]{\setlength{\rightskip}{0pt plus 5cm}double T0 (
+\begin{DoxyParamCaption}
+\item[{const double}]{et}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_ae23b51b4b534071c5a477dd97ce39186}
+\hypertarget{cxform-manual_8c_a522caf9f987d9c69985928f7fb7a8742}{\index{cxform-\/manual.\-c@{cxform-\/manual.\-c}!vec\-\_\-\-Qe@{vec\-\_\-\-Qe}}
+\index{vec\-\_\-\-Qe@{vec\-\_\-\-Qe}!cxform-manual.c@{cxform-\/manual.\-c}}
+\subsubsection[{vec\-\_\-\-Qe}]{\setlength{\rightskip}{0pt plus 5cm}void vec\-\_\-\-Qe (
+\begin{DoxyParamCaption}
+\item[{double}]{et, }
+\item[{{\bf Vec}}]{Qe}
+\end{DoxyParamCaption}
+)}}\label{cxform-manual_8c_a522caf9f987d9c69985928f7fb7a8742}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-manual_8c_a522caf9f987d9c69985928f7fb7a8742_cgraph}
+\end{center}
+\end{figure}
+
+

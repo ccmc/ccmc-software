@@ -1,0 +1,267 @@
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_interpolator}{\section{ccmc\-:\-:B\-A\-T\-S\-R\-U\-S\-Interpolator Class Reference}
+\label{classccmc_1_1_b_a_t_s_r_u_s_interpolator}\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+}
+
+
+T\-O\-D\-O\-: brief description of \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator}{B\-A\-T\-S\-R\-U\-S\-Interpolator} class.  
+
+
+
+
+{\ttfamily \#include $<$B\-A\-T\-S\-R\-U\-S\-Interpolator.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:B\-A\-T\-S\-R\-U\-S\-Interpolator\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classccmc_1_1_b_a_t_s_r_u_s_interpolator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:B\-A\-T\-S\-R\-U\-S\-Interpolator\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_interpolator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a13070c4466906bd409bb948bc378b64c}{B\-A\-T\-S\-R\-U\-S\-Interpolator} (\hyperlink{classccmc_1_1_model}{Model} $\ast$\hyperlink{classccmc_1_1_interpolator_afee5bb61e5d5a0a7b9152c6f74378c4a}{model\-Reader})
+\item 
+float \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a9a9a185e83767d1bfc9b1bb584cd250f}{interpolate} (const std\-::string \&, const float \&c0, const float \&c1, const float \&c2)
+\item 
+float \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ab5e4f01a95ee9b9d1a58868806d8fa42}{interpolate} (const std\-::string \&, const float \&c0, const float \&c1, const float \&c2, float \&dc0, float \&dc1, float \&dc2)
+\item 
+float \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ae6577b5c388106e6d26f1c890a30cba8}{interpolate} (const long \&variable\-\_\-id, const float \&c0, const float \&c1, const float \&c2)
+\item 
+float \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a8bb4e9b10064a516192c771462673b09}{interpolate} (const long \&variable\-\_\-id, const float \&c0, const float \&c1, const float \&c2, float \&dc0, float \&dc1, float \&dc2)
+\item 
+virtual \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a5c188e0bf30c66f3aadc34d1c2711937}{$\sim$\-B\-A\-T\-S\-R\-U\-S\-Interpolator} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: brief description of \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator}{B\-A\-T\-S\-R\-U\-S\-Interpolator} class. 
+
+T\-O\-D\-O\-: full description of \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator}{B\-A\-T\-S\-R\-U\-S\-Interpolator} class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a13070c4466906bd409bb948bc378b64c}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}!B\-A\-T\-S\-R\-U\-S\-Interpolator@{B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\index{B\-A\-T\-S\-R\-U\-S\-Interpolator@{B\-A\-T\-S\-R\-U\-S\-Interpolator}!ccmc::BATSRUSInterpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\subsubsection[{B\-A\-T\-S\-R\-U\-S\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator (
+\begin{DoxyParamCaption}
+\item[{{\bf Model} $\ast$}]{model\-Reader}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a13070c4466906bd409bb948bc378b64c}
+
+\begin{DoxyParams}{Parameters}
+{\em model\-Reader} & Pointer to the \hyperlink{classccmc_1_1_model}{Model} object containing the appropriate variable maps. \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_interpolator}{B\-A\-T\-S\-R\-U\-S\-Interpolator} should be returned by a \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_a3cbd68c8c3fb850c3b10cb314c0a21b3}{B\-A\-T\-S\-R\-U\-S\-::create\-New\-Interpolator()} call. \\
+\hline
+\end{DoxyParams}
+They are stored as floats. Need to fetch them, and convert to int 
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a13070c4466906bd409bb948bc378b64c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a5c188e0bf30c66f3aadc34d1c2711937}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}!$\sim$\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{$\sim$\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\index{$\sim$\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{$\sim$\-B\-A\-T\-S\-R\-U\-S\-Interpolator}!ccmc::BATSRUSInterpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\subsubsection[{$\sim$\-B\-A\-T\-S\-R\-U\-S\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator\-::$\sim$\-B\-A\-T\-S\-R\-U\-S\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a5c188e0bf30c66f3aadc34d1c2711937}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a9a9a185e83767d1bfc9b1bb584cd250f}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::BATSRUSInterpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a9a9a185e83767d1bfc9b1bb584cd250f}
+
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em c0} & X component of the position \\
+\hline
+{\em c1} & Y component of the position \\
+\hline
+{\em c2} & Z component of the position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_interpolator_ad5c1dd3693f83d75a2335b7c28cd649d}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a9a9a185e83767d1bfc9b1bb584cd250f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ab5e4f01a95ee9b9d1a58868806d8fa42}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::BATSRUSInterpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2, }
+\item[{float \&}]{dc0, }
+\item[{float \&}]{dc1, }
+\item[{float \&}]{dc2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ab5e4f01a95ee9b9d1a58868806d8fa42}
+Interpolation method. Note that using the variable I\-D is significantly faster than using the variable string. 
+\begin{DoxyParams}{Parameters}
+{\em variable} & The input variable. \\
+\hline
+{\em c0} & X component of the position \\
+\hline
+{\em c1} & Y component of the position \\
+\hline
+{\em c2} & Z component of the position \\
+\hline
+{\em dc0} & Reference to a variable to store the delta for component 0 \\
+\hline
+{\em dc1} & Reference to a variable to store the delta for component 1 \\
+\hline
+{\em dc2} & Reference to a variable to store the delta for component 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The interpolated value at position (c0,c1,c2) with deltas (dc0,dc1,dc2) 
+\end{DoxyReturn}
+end of if new position loop 
+
+Implements \hyperlink{classccmc_1_1_interpolator_ae02453da5a1a8f472f33b2058424ddb6}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ab5e4f01a95ee9b9d1a58868806d8fa42_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ae6577b5c388106e6d26f1c890a30cba8}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::BATSRUSInterpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const long \&}]{variable\-\_\-id, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ae6577b5c388106e6d26f1c890a30cba8}
+
+\begin{DoxyParams}{Parameters}
+{\em variable\-\_\-id} & \\
+\hline
+{\em c0} & X component of the position \\
+\hline
+{\em c1} & Y component of the position \\
+\hline
+{\em c2} & Z component of the position \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_interpolator_a6bfe1b4075f03704b893bb96e1675a3b}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_interpolator_ae6577b5c388106e6d26f1c890a30cba8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a8bb4e9b10064a516192c771462673b09}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::BATSRUSInterpolator@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const long \&}]{variable\-\_\-id, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2, }
+\item[{float \&}]{dc0, }
+\item[{float \&}]{dc1, }
+\item[{float \&}]{dc2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a8bb4e9b10064a516192c771462673b09}
+Interpolation method. Note that using the variable I\-D is significantly faster than using the variable string. 
+\begin{DoxyParams}{Parameters}
+{\em variable\-\_\-id} & A long representing the variable I\-D. \\
+\hline
+{\em c0} & X component of the position \\
+\hline
+{\em c1} & Y component of the position \\
+\hline
+{\em c2} & Z component of the position \\
+\hline
+{\em dc0} & Reference to a variable to store the delta for component 0 \\
+\hline
+{\em dc1} & Reference to a variable to store the delta for component 1 \\
+\hline
+{\em dc2} & Reference to a variable to store the delta for component 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The interpolated value at position (c0,c1,c2) with deltas (dc0,dc1,dc2) 
+\end{DoxyReturn}
+end of if new position loop 
+
+Implements \hyperlink{classccmc_1_1_interpolator_aa6b272bd53630020d92938ec1e5cfad9}{ccmc\-::\-Interpolator}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_interpolator_a8bb4e9b10064a516192c771462673b09_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_b_a_t_s_r_u_s_interpolator_8h}{B\-A\-T\-S\-R\-U\-S\-Interpolator.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_b_a_t_s_r_u_s_interpolator_8cpp}{B\-A\-T\-S\-R\-U\-S\-Interpolator.\-cpp}\end{DoxyCompactItemize}

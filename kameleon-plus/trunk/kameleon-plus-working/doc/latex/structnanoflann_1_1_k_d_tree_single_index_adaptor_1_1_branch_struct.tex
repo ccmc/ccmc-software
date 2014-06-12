@@ -1,0 +1,80 @@
+\hypertarget{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct}{\section{nanoflann\-:\-:K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-:\-:Branch\-Struct$<$ T, Distance\-Type $>$ Struct Template Reference}
+\label{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct}\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::\-Branch\-Struct$<$ T, Distance\-Type $>$@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::\-Branch\-Struct$<$ T, Distance\-Type $>$}}
+}
+
+
+{\ttfamily \#include $<$nanoflann.\-hpp$>$}
+
+
+
+Collaboration diagram for nanoflann\-:\-:K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-:\-:Branch\-Struct$<$ T, Distance\-Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aba3ba55815d287de14df42bf37098ea8}{Branch\-Struct} ()
+\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aac7996f8b84dabea451fce1460ca65fa}{Branch\-Struct} (const T \&a\-Node, \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type} dist)
+\item 
+bool \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_a884cd16e926687b28daf3ce6ad520665}{operator$<$} (const \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct}{Branch\-Struct}$<$ T, \hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type} $>$ \&rhs) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_a86bcc74bb89be6b93db206feb8a3aad7}{node}
+\item 
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor_addc764e7c19cc85c89b3903338e5a910}{Distance\-Type} \hyperlink{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aa62cca16bd04ba7fd2ef25b3d3e8a6fa}{mindist}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Distance, class Dataset\-Adaptor, int D\-I\-M = -\/1, typename Index\-Type = size\-\_\-t$>$template$<$typename T, typename Distance\-Type$>$struct nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::\-Branch\-Struct$<$ T, Distance\-Type $>$}
+
+This record represents a branch point when finding neighbors in the tree. It contains a record of the minimum distance to the query point, as well as the node at which the search resumes. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aba3ba55815d287de14df42bf37098ea8}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}!Branch\-Struct@{Branch\-Struct}}
+\index{Branch\-Struct@{Branch\-Struct}!nanoflann::KDTreeSingleIndexAdaptor::BranchStruct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}}
+\subsubsection[{Branch\-Struct}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ template$<$typename T , typename Distance\-Type $>$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Branch\-Struct}$<$ T, {\bf Distance\-Type} $>$\-::{\bf Branch\-Struct} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aba3ba55815d287de14df42bf37098ea8}
+\hypertarget{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aac7996f8b84dabea451fce1460ca65fa}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}!Branch\-Struct@{Branch\-Struct}}
+\index{Branch\-Struct@{Branch\-Struct}!nanoflann::KDTreeSingleIndexAdaptor::BranchStruct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}}
+\subsubsection[{Branch\-Struct}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ template$<$typename T , typename Distance\-Type $>$ {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Branch\-Struct}$<$ T, {\bf Distance\-Type} $>$\-::{\bf Branch\-Struct} (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{a\-Node, }
+\item[{{\bf Distance\-Type}}]{dist}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aac7996f8b84dabea451fce1460ca65fa}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_a884cd16e926687b28daf3ce6ad520665}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!nanoflann::KDTreeSingleIndexAdaptor::BranchStruct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ template$<$typename T , typename Distance\-Type $>$ bool {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Branch\-Struct}$<$ T, {\bf Distance\-Type} $>$\-::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Branch\-Struct}$<$ T, {\bf Distance\-Type} $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_a884cd16e926687b28daf3ce6ad520665}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aa62cca16bd04ba7fd2ef25b3d3e8a6fa}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}!mindist@{mindist}}
+\index{mindist@{mindist}!nanoflann::KDTreeSingleIndexAdaptor::BranchStruct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}}
+\subsubsection[{mindist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ template$<$typename T , typename Distance\-Type $>$ {\bf Distance\-Type} {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Branch\-Struct}$<$ T, {\bf Distance\-Type} $>$\-::mindist}}\label{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_aa62cca16bd04ba7fd2ef25b3d3e8a6fa}
+\hypertarget{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_a86bcc74bb89be6b93db206feb8a3aad7}{\index{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}!node@{node}}
+\index{node@{node}!nanoflann::KDTreeSingleIndexAdaptor::BranchStruct@{nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor\-::\-Branch\-Struct}}
+\subsubsection[{node}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance , class Dataset\-Adaptor , int D\-I\-M = -\/1, typename Index\-Type  = size\-\_\-t$>$ template$<$typename T , typename Distance\-Type $>$ T {\bf nanoflann\-::\-K\-D\-Tree\-Single\-Index\-Adaptor}$<$ Distance, Dataset\-Adaptor, D\-I\-M, Index\-Type $>$\-::{\bf Branch\-Struct}$<$ T, {\bf Distance\-Type} $>$\-::node}}\label{structnanoflann_1_1_k_d_tree_single_index_adaptor_1_1_branch_struct_a86bcc74bb89be6b93db206feb8a3aad7}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{nanoflann_8hpp}{nanoflann.\-hpp}\end{DoxyCompactItemize}

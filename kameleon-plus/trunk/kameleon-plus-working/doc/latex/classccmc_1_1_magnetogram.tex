@@ -1,0 +1,157 @@
+\hypertarget{classccmc_1_1_magnetogram}{\section{ccmc\-:\-:Magnetogram Class Reference}
+\label{classccmc_1_1_magnetogram}\index{ccmc\-::\-Magnetogram@{ccmc\-::\-Magnetogram}}
+}
+
+
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_magnetogram}{Magnetogram} class.  
+
+
+
+
+{\ttfamily \#include $<$ccmc/\-Magnetogram.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:Magnetogram\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classccmc_1_1_magnetogram__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:Magnetogram\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_magnetogram__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_magnetogram_af35bd68bafd421803fa79807b9c641f3}{Magnetogram} ()
+\item 
+long \hyperlink{classccmc_1_1_magnetogram_af940dde096c046974a46bf4c12f300fa}{open} (const std\-::string \&filename)
+\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_magnetogram_aebea202039a3bf9d21236402db7261f6}{create\-New\-Interpolator} ()
+\begin{DoxyCompactList}\small\item\em Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  \end{DoxyCompactList}\item 
+virtual \hyperlink{classccmc_1_1_magnetogram_afeec893d32919b028608874a8c2d26e3}{$\sim$\-Magnetogram} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classccmc_1_1_magnetogram_a45db1cbd5d18715de4da31e78590b681}{initialize\-Conversion\-Factors\-To\-S\-I} ()
+\begin{DoxyCompactList}\small\item\em Initializes the conversion\-Factors\-To\-S\-I map.  \end{DoxyCompactList}\item 
+void \hyperlink{classccmc_1_1_magnetogram_aad6ea4de4693abb550ea316408fb644d}{initialize\-S\-I\-Units} ()
+\begin{DoxyCompactList}\small\item\em Initializes the variable\-S\-I\-Units map.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_magnetogram}{Magnetogram} class. 
+
+T\-O\-D\-O\-: Full description of \hyperlink{classccmc_1_1_magnetogram}{Magnetogram} class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_magnetogram_af35bd68bafd421803fa79807b9c641f3}{\index{ccmc\-::\-Magnetogram@{ccmc\-::\-Magnetogram}!Magnetogram@{Magnetogram}}
+\index{Magnetogram@{Magnetogram}!ccmc::Magnetogram@{ccmc\-::\-Magnetogram}}
+\subsubsection[{Magnetogram}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Magnetogram\-::\-Magnetogram (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_magnetogram_af35bd68bafd421803fa79807b9c641f3}
+\hypertarget{classccmc_1_1_magnetogram_afeec893d32919b028608874a8c2d26e3}{\index{ccmc\-::\-Magnetogram@{ccmc\-::\-Magnetogram}!$\sim$\-Magnetogram@{$\sim$\-Magnetogram}}
+\index{$\sim$\-Magnetogram@{$\sim$\-Magnetogram}!ccmc::Magnetogram@{ccmc\-::\-Magnetogram}}
+\subsubsection[{$\sim$\-Magnetogram}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Magnetogram\-::$\sim$\-Magnetogram (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_magnetogram_afeec893d32919b028608874a8c2d26e3}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_magnetogram_aebea202039a3bf9d21236402db7261f6}{\index{ccmc\-::\-Magnetogram@{ccmc\-::\-Magnetogram}!create\-New\-Interpolator@{create\-New\-Interpolator}}
+\index{create\-New\-Interpolator@{create\-New\-Interpolator}!ccmc::Magnetogram@{ccmc\-::\-Magnetogram}}
+\subsubsection[{create\-New\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator} $\ast$ ccmc\-::\-Magnetogram\-::create\-New\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_magnetogram_aebea202039a3bf9d21236402db7261f6}
+
+
+Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  
+
+This returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object that contains all the necessary local variables required to interpolate independent of any other \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. The pointer must be deleted from the calling program. \begin{DoxyReturn}{Returns}
+A pointer to an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. 
+\end{DoxyReturn}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a0dd491507c14502c27aa61b020fca8cc}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_magnetogram_a45db1cbd5d18715de4da31e78590b681}{\index{ccmc\-::\-Magnetogram@{ccmc\-::\-Magnetogram}!initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}}
+\index{initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}!ccmc::Magnetogram@{ccmc\-::\-Magnetogram}}
+\subsubsection[{initialize\-Conversion\-Factors\-To\-S\-I}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Magnetogram\-::initialize\-Conversion\-Factors\-To\-S\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_magnetogram_a45db1cbd5d18715de4da31e78590b681}
+
+
+Initializes the conversion\-Factors\-To\-S\-I map.  
+
+These factors are used to convert interpolated values to S\-I units.  
+
+Implements \hyperlink{classccmc_1_1_model_a6f04326691fba448e2cfb7c7ab90a45a}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_magnetogram_aad6ea4de4693abb550ea316408fb644d}{\index{ccmc\-::\-Magnetogram@{ccmc\-::\-Magnetogram}!initialize\-S\-I\-Units@{initialize\-S\-I\-Units}}
+\index{initialize\-S\-I\-Units@{initialize\-S\-I\-Units}!ccmc::Magnetogram@{ccmc\-::\-Magnetogram}}
+\subsubsection[{initialize\-S\-I\-Units}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Magnetogram\-::initialize\-S\-I\-Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_magnetogram_aad6ea4de4693abb550ea316408fb644d}
+
+
+Initializes the variable\-S\-I\-Units map.  
+
+
+
+Implements \hyperlink{classccmc_1_1_model_a68d31e8d8cce59269c994de25d048178}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_magnetogram_af940dde096c046974a46bf4c12f300fa}{\index{ccmc\-::\-Magnetogram@{ccmc\-::\-Magnetogram}!open@{open}}
+\index{open@{open}!ccmc::Magnetogram@{ccmc\-::\-Magnetogram}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-Magnetogram\-::open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_magnetogram_af940dde096c046974a46bf4c12f300fa}
+Opens a file. 
+
+Opens a file and performs any necessary initialization required to work with the data. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a3c64dc635c2c1a2fe2f8efa2a3666282}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_magnetogram_af940dde096c046974a46bf4c12f300fa_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_magnetogram_8h}{Magnetogram.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_magnetogram_8cpp}{Magnetogram.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,72 @@
+\hypertarget{_l_f_m_interpolator_8h}{\section{/\-Users/apembrok/\-Documents/workspaces/workspace.bak2/workspace.backup/kameleon-\/plus/src/ccmc/\-L\-F\-M\-Interpolator.h File Reference}
+\label{_l_f_m_interpolator_8h}\index{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\-L\-F\-M\-Interpolator.\-h@{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\-L\-F\-M\-Interpolator.\-h}}
+}
+{\ttfamily \#include \char`\"{}Interpolator.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Model.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pointcloud.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}time.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Polyhedron.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}boost/ptr\-\_\-container/ptr\-\_\-vector.\-hpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}boost/unordered\-\_\-map.\-hpp\char`\"{}}\\*
+Include dependency graph for L\-F\-M\-Interpolator.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_l_f_m_interpolator_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_l_f_m_interpolator_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classccmc_1_1_l_f_m_interpolator}{ccmc\-::\-L\-F\-M\-Interpolator}
+\begin{DoxyCompactList}\small\item\em T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} class. \end{DoxyCompactList}\item 
+class \hyperlink{classccmc_1_1_grid_polyhedron}{ccmc\-::\-Grid\-Polyhedron$<$ T $>$}
+\item 
+class \hyperlink{classccmc_1_1_axis_polyhedron}{ccmc\-::\-Axis\-Polyhedron$<$ T $>$}
+\item 
+class \hyperlink{classccmc_1_1_j_poly}{ccmc\-::\-J\-Poly$<$ T $>$}
+\item 
+class \hyperlink{classccmc_1_1_i_poly}{ccmc\-::\-I\-Poly$<$ T $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespaceccmc}{ccmc}
+\begin{DoxyCompactList}\small\item\em Namespace containing C\-C\-M\-C created and maintained code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_l_f_m_interpolator_8h_a5edd26bb86e44eaf30d58aa081460726}{ijk1}(i, j, k)~((i)+nip1$\ast$((j)+njp1$\ast$(k)))
+\item 
+\#define \hyperlink{_l_f_m_interpolator_8h_a21574d0d6abb72a37b9c7cfede05d08a}{ijkc}(i, j, k)~((i)+ni$\ast$((j)+nj$\ast$(k)))
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_l_f_m_interpolator_8h_a5edd26bb86e44eaf30d58aa081460726}{\index{L\-F\-M\-Interpolator.\-h@{L\-F\-M\-Interpolator.\-h}!ijk1@{ijk1}}
+\index{ijk1@{ijk1}!LFMInterpolator.h@{L\-F\-M\-Interpolator.\-h}}
+\subsubsection[{ijk1}]{\setlength{\rightskip}{0pt plus 5cm}\#define ijk1(
+\begin{DoxyParamCaption}
+\item[{}]{i, }
+\item[{}]{j, }
+\item[{}]{k}
+\end{DoxyParamCaption}
+)~((i)+nip1$\ast$((j)+njp1$\ast$(k)))}}\label{_l_f_m_interpolator_8h_a5edd26bb86e44eaf30d58aa081460726}
+\hypertarget{_l_f_m_interpolator_8h_a21574d0d6abb72a37b9c7cfede05d08a}{\index{L\-F\-M\-Interpolator.\-h@{L\-F\-M\-Interpolator.\-h}!ijkc@{ijkc}}
+\index{ijkc@{ijkc}!LFMInterpolator.h@{L\-F\-M\-Interpolator.\-h}}
+\subsubsection[{ijkc}]{\setlength{\rightskip}{0pt plus 5cm}\#define ijkc(
+\begin{DoxyParamCaption}
+\item[{}]{i, }
+\item[{}]{j, }
+\item[{}]{k}
+\end{DoxyParamCaption}
+)~((i)+ni$\ast$((j)+nj$\ast$(k)))}}\label{_l_f_m_interpolator_8h_a21574d0d6abb72a37b9c7cfede05d08a}

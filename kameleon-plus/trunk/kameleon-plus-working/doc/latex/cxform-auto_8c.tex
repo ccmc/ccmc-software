@@ -1,0 +1,363 @@
+\hypertarget{cxform-auto_8c}{\section{/\-Users/apembrok/\-Documents/workspaces/workspace.bak2/workspace.backup/kameleon-\/plus/src/ccmc/cxform-\/auto.c File Reference}
+\label{cxform-auto_8c}\index{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/cxform-\/auto.\-c@{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/cxform-\/auto.\-c}}
+}
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}cxform.\-h\char`\"{}}\\*
+Include dependency graph for cxform-\/auto.c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{cxform-auto_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68}{systems} \{ \\*
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6ce26a62afab55d7606ad4e92428b30c}{U\-N\-K\-N\-O\-W\-N}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a5562c2361967f037c4f5a7e851d580ab}{J2000}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a58e71826592cdfad697966b0b5741646}{G\-E\-I}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68ad40e92917e11c905957442cfd93b1202}{G\-E\-O}, 
+\\*
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6d8798212a8b63e06fcf82ad1eb959aa}{M\-A\-G}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a1a76b98d4bcc2923d0e7916396d8ceca}{G\-S\-E}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a40df0cfce19f71cb9166eaf9c60b79a9}{G\-S\-M}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68aa65db4fc8f5048ed5dc1711cc9904dfa}{S\-M}, 
+\\*
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68accfc628db969a648d087c62f41a53330}{R\-T\-N}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6cb25d0fcc18ba1633266a5206b8aa97}{G\-S\-E\-Q}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68ab816bcbd6b1fc327fdacd1483f8b69ec}{H\-E\-E}, 
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a4c914d216f207a991be56d2ae35d91da}{H\-A\-E}, 
+\\*
+\hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a2116e24ae16a66f289a7c961eab7db9d}{H\-E\-E\-Q}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68}{systems} \hyperlink{cxform-auto_8c_a012d35f7ea11a0f0222169d16ea3bc84}{system\-\_\-number} (const char $\ast$system)
+\item 
+int \hyperlink{cxform-auto_8c_a8774a579caafb80faabce534a7052620}{j2000\-\_\-twixt\-\_\-gei} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_a9c1513e0a4762c58ad7e11c72cb9a106}{gei\-\_\-twixt\-\_\-geo} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_a3ce2e4558c6651077ba34f56557548d8}{gei\-\_\-twixt\-\_\-gse} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_a2a7fb894341c699bda0fb01a1e4539bc}{geo\-\_\-twixt\-\_\-mag} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_ab2f0f70e429233defeb89d3499e363fd}{gse\-\_\-twixt\-\_\-gsm} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_a969f1a4914028a037e262140afa267fb}{gse\-\_\-twixt\-\_\-rtn} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_a89e7993494058b6615c27adcb6328778}{gse\-\_\-twixt\-\_\-gseq} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_a348c8879eb7b149e6519c12224d7008f}{gse\-\_\-twixt\-\_\-hee} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_a1eac07a5ce3dd913ae79c948c6e1f742}{gsm\-\_\-twixt\-\_\-sm} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_ae3d21e043d5713af6c78d600ba1f0fe0}{hae\-\_\-twixt\-\_\-hee} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+int \hyperlink{cxform-auto_8c_ab2bce0f457d0f40436e3d1f05e7d1d86}{hae\-\_\-twixt\-\_\-heeq} (double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} out, \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction} d)
+\item 
+char $\ast$ \hyperlink{cxform-auto_8c_abd49290e1247b54973b115f094ed9b53}{cxform\-\_\-err} (void)
+\item 
+int \hyperlink{cxform-auto_8c_a9dc415e9f0dae2a4719af4f6c26a9e76}{cxform} (const char $\ast$from, const char $\ast$to, const double t, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!systems@{systems}}
+\index{systems@{systems}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{systems}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf systems}}}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{U\-N\-K\-N\-O\-W\-N@{U\-N\-K\-N\-O\-W\-N}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!U\-N\-K\-N\-O\-W\-N@{U\-N\-K\-N\-O\-W\-N}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6ce26a62afab55d7606ad4e92428b30c}{U\-N\-K\-N\-O\-W\-N}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6ce26a62afab55d7606ad4e92428b30c}
+}]\index{J2000@{J2000}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!J2000@{J2000}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a5562c2361967f037c4f5a7e851d580ab}{J2000}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a5562c2361967f037c4f5a7e851d580ab}
+}]\index{G\-E\-I@{G\-E\-I}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!G\-E\-I@{G\-E\-I}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a58e71826592cdfad697966b0b5741646}{G\-E\-I}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a58e71826592cdfad697966b0b5741646}
+}]\index{G\-E\-O@{G\-E\-O}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!G\-E\-O@{G\-E\-O}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68ad40e92917e11c905957442cfd93b1202}{G\-E\-O}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68ad40e92917e11c905957442cfd93b1202}
+}]\index{M\-A\-G@{M\-A\-G}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!M\-A\-G@{M\-A\-G}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6d8798212a8b63e06fcf82ad1eb959aa}{M\-A\-G}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6d8798212a8b63e06fcf82ad1eb959aa}
+}]\index{G\-S\-E@{G\-S\-E}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!G\-S\-E@{G\-S\-E}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a1a76b98d4bcc2923d0e7916396d8ceca}{G\-S\-E}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a1a76b98d4bcc2923d0e7916396d8ceca}
+}]\index{G\-S\-M@{G\-S\-M}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!G\-S\-M@{G\-S\-M}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a40df0cfce19f71cb9166eaf9c60b79a9}{G\-S\-M}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a40df0cfce19f71cb9166eaf9c60b79a9}
+}]\index{S\-M@{S\-M}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!S\-M@{S\-M}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68aa65db4fc8f5048ed5dc1711cc9904dfa}{S\-M}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68aa65db4fc8f5048ed5dc1711cc9904dfa}
+}]\index{R\-T\-N@{R\-T\-N}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!R\-T\-N@{R\-T\-N}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68accfc628db969a648d087c62f41a53330}{R\-T\-N}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68accfc628db969a648d087c62f41a53330}
+}]\index{G\-S\-E\-Q@{G\-S\-E\-Q}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!G\-S\-E\-Q@{G\-S\-E\-Q}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6cb25d0fcc18ba1633266a5206b8aa97}{G\-S\-E\-Q}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a6cb25d0fcc18ba1633266a5206b8aa97}
+}]\index{H\-E\-E@{H\-E\-E}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!H\-E\-E@{H\-E\-E}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68ab816bcbd6b1fc327fdacd1483f8b69ec}{H\-E\-E}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68ab816bcbd6b1fc327fdacd1483f8b69ec}
+}]\index{H\-A\-E@{H\-A\-E}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!H\-A\-E@{H\-A\-E}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a4c914d216f207a991be56d2ae35d91da}{H\-A\-E}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a4c914d216f207a991be56d2ae35d91da}
+}]\index{H\-E\-E\-Q@{H\-E\-E\-Q}!cxform-\/auto.\-c@{cxform-\/auto.\-c}}\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!H\-E\-E\-Q@{H\-E\-E\-Q}}\item[{\em 
+\hypertarget{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a2116e24ae16a66f289a7c961eab7db9d}{H\-E\-E\-Q}\label{cxform-auto_8c_a1599191ec0940b188211c16525fc1b68a2116e24ae16a66f289a7c961eab7db9d}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{cxform-auto_8c_a9dc415e9f0dae2a4719af4f6c26a9e76}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!cxform@{cxform}}
+\index{cxform@{cxform}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{cxform}]{\setlength{\rightskip}{0pt plus 5cm}int cxform (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{from, }
+\item[{const char $\ast$}]{to, }
+\item[{const double}]{t, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a9dc415e9f0dae2a4719af4f6c26a9e76}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{cxform-auto_8c_a9dc415e9f0dae2a4719af4f6c26a9e76_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_abd49290e1247b54973b115f094ed9b53}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!cxform\-\_\-err@{cxform\-\_\-err}}
+\index{cxform\-\_\-err@{cxform\-\_\-err}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{cxform\-\_\-err}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cxform\-\_\-err (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_abd49290e1247b54973b115f094ed9b53}
+\hypertarget{cxform-auto_8c_a9c1513e0a4762c58ad7e11c72cb9a106}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!gei\-\_\-twixt\-\_\-geo@{gei\-\_\-twixt\-\_\-geo}}
+\index{gei\-\_\-twixt\-\_\-geo@{gei\-\_\-twixt\-\_\-geo}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{gei\-\_\-twixt\-\_\-geo}]{\setlength{\rightskip}{0pt plus 5cm}int gei\-\_\-twixt\-\_\-geo (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a9c1513e0a4762c58ad7e11c72cb9a106}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_a9c1513e0a4762c58ad7e11c72cb9a106_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_a3ce2e4558c6651077ba34f56557548d8}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!gei\-\_\-twixt\-\_\-gse@{gei\-\_\-twixt\-\_\-gse}}
+\index{gei\-\_\-twixt\-\_\-gse@{gei\-\_\-twixt\-\_\-gse}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{gei\-\_\-twixt\-\_\-gse}]{\setlength{\rightskip}{0pt plus 5cm}int gei\-\_\-twixt\-\_\-gse (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a3ce2e4558c6651077ba34f56557548d8}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_a3ce2e4558c6651077ba34f56557548d8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_a2a7fb894341c699bda0fb01a1e4539bc}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!geo\-\_\-twixt\-\_\-mag@{geo\-\_\-twixt\-\_\-mag}}
+\index{geo\-\_\-twixt\-\_\-mag@{geo\-\_\-twixt\-\_\-mag}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{geo\-\_\-twixt\-\_\-mag}]{\setlength{\rightskip}{0pt plus 5cm}int geo\-\_\-twixt\-\_\-mag (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a2a7fb894341c699bda0fb01a1e4539bc}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_a2a7fb894341c699bda0fb01a1e4539bc_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_a89e7993494058b6615c27adcb6328778}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!gse\-\_\-twixt\-\_\-gseq@{gse\-\_\-twixt\-\_\-gseq}}
+\index{gse\-\_\-twixt\-\_\-gseq@{gse\-\_\-twixt\-\_\-gseq}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-gseq}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-gseq (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a89e7993494058b6615c27adcb6328778}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_a89e7993494058b6615c27adcb6328778_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_ab2f0f70e429233defeb89d3499e363fd}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!gse\-\_\-twixt\-\_\-gsm@{gse\-\_\-twixt\-\_\-gsm}}
+\index{gse\-\_\-twixt\-\_\-gsm@{gse\-\_\-twixt\-\_\-gsm}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-gsm}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-gsm (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_ab2f0f70e429233defeb89d3499e363fd}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_ab2f0f70e429233defeb89d3499e363fd_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_a348c8879eb7b149e6519c12224d7008f}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!gse\-\_\-twixt\-\_\-hee@{gse\-\_\-twixt\-\_\-hee}}
+\index{gse\-\_\-twixt\-\_\-hee@{gse\-\_\-twixt\-\_\-hee}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-hee}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-hee (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a348c8879eb7b149e6519c12224d7008f}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_a348c8879eb7b149e6519c12224d7008f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_a969f1a4914028a037e262140afa267fb}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!gse\-\_\-twixt\-\_\-rtn@{gse\-\_\-twixt\-\_\-rtn}}
+\index{gse\-\_\-twixt\-\_\-rtn@{gse\-\_\-twixt\-\_\-rtn}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{gse\-\_\-twixt\-\_\-rtn}]{\setlength{\rightskip}{0pt plus 5cm}int gse\-\_\-twixt\-\_\-rtn (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a969f1a4914028a037e262140afa267fb}
+\hypertarget{cxform-auto_8c_a1eac07a5ce3dd913ae79c948c6e1f742}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!gsm\-\_\-twixt\-\_\-sm@{gsm\-\_\-twixt\-\_\-sm}}
+\index{gsm\-\_\-twixt\-\_\-sm@{gsm\-\_\-twixt\-\_\-sm}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{gsm\-\_\-twixt\-\_\-sm}]{\setlength{\rightskip}{0pt plus 5cm}int gsm\-\_\-twixt\-\_\-sm (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a1eac07a5ce3dd913ae79c948c6e1f742}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_a1eac07a5ce3dd913ae79c948c6e1f742_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_ae3d21e043d5713af6c78d600ba1f0fe0}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!hae\-\_\-twixt\-\_\-hee@{hae\-\_\-twixt\-\_\-hee}}
+\index{hae\-\_\-twixt\-\_\-hee@{hae\-\_\-twixt\-\_\-hee}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{hae\-\_\-twixt\-\_\-hee}]{\setlength{\rightskip}{0pt plus 5cm}int hae\-\_\-twixt\-\_\-hee (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_ae3d21e043d5713af6c78d600ba1f0fe0}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_ae3d21e043d5713af6c78d600ba1f0fe0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_ab2bce0f457d0f40436e3d1f05e7d1d86}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!hae\-\_\-twixt\-\_\-heeq@{hae\-\_\-twixt\-\_\-heeq}}
+\index{hae\-\_\-twixt\-\_\-heeq@{hae\-\_\-twixt\-\_\-heeq}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{hae\-\_\-twixt\-\_\-heeq}]{\setlength{\rightskip}{0pt plus 5cm}int hae\-\_\-twixt\-\_\-heeq (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_ab2bce0f457d0f40436e3d1f05e7d1d86}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_ab2bce0f457d0f40436e3d1f05e7d1d86_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_a8774a579caafb80faabce534a7052620}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!j2000\-\_\-twixt\-\_\-gei@{j2000\-\_\-twixt\-\_\-gei}}
+\index{j2000\-\_\-twixt\-\_\-gei@{j2000\-\_\-twixt\-\_\-gei}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{j2000\-\_\-twixt\-\_\-gei}]{\setlength{\rightskip}{0pt plus 5cm}int j2000\-\_\-twixt\-\_\-gei (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{{\bf Vec}}]{in, }
+\item[{{\bf Vec}}]{out, }
+\item[{{\bf Direction}}]{d}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a8774a579caafb80faabce534a7052620}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform-auto_8c_a8774a579caafb80faabce534a7052620_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform-auto_8c_a012d35f7ea11a0f0222169d16ea3bc84}{\index{cxform-\/auto.\-c@{cxform-\/auto.\-c}!system\-\_\-number@{system\-\_\-number}}
+\index{system\-\_\-number@{system\-\_\-number}!cxform-auto.c@{cxform-\/auto.\-c}}
+\subsubsection[{system\-\_\-number}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf systems} system\-\_\-number (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{system}
+\end{DoxyParamCaption}
+)}}\label{cxform-auto_8c_a012d35f7ea11a0f0222169d16ea3bc84}

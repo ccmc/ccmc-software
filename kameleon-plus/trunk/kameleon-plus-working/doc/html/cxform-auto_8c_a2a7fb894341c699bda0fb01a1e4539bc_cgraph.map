@@ -1,0 +1,15 @@
+<map id="geo_twixt_mag" name="geo_twixt_mag">
+<area shape="rect" id="node3" href="$cxform-manual_8c.html#a6a21c6d7c236c5643d401407d7fa8a26" title="simple_rotation" alt="" coords="176,56,299,83"/>
+<area shape="rect" id="node9" href="$cxform-manual_8c.html#a2e103e2894e1477eb617d2406d3fe7a2" title="mat_T5" alt="" coords="201,157,273,184"/>
+<area shape="rect" id="node5" href="$cxform-manual_8c.html#a77c8e33324183648e2a9e4f77a422242" title="mat_transpose" alt="" coords="351,5,471,32"/>
+<area shape="rect" id="node7" href="$cxform-manual_8c.html#a54a60b4e36dd4c95a7c129884bac2d9c" title="mat_times_vec" alt="" coords="349,56,472,83"/>
+<area shape="rect" id="node11" href="$cxform-manual_8c.html#a90a202672c17d19497833c2589286cd8" title="hapgood_matrix" alt="" coords="347,208,474,235"/>
+<area shape="rect" id="node13" href="$cxform-manual_8c.html#a380fc5b86f178fed6314b59950502db0" title="mag_lat" alt="" coords="373,259,448,285"/>
+<area shape="rect" id="node21" href="$cxform-manual_8c.html#ab66b822e2469cf8046effefcf1851cd5" title="mag_lon" alt="" coords="523,157,599,184"/>
+<area shape="rect" id="node30" href="$cxform-manual_8c.html#a1f4ce7c90920f310bb7543dd01ce4f98" title="mat_times_mat" alt="" coords="349,157,472,184"/>
+<area shape="rect" id="node15" href="$cxform-manual_8c.html#ab95751a5e6ceadc3cab497212741477f" title="calcG01" alt="" coords="524,259,599,285"/>
+<area shape="rect" id="node17" href="$cxform-manual_8c.html#a77f0e08722c1a87fd774bb9425a7f7b9" title="calcG11" alt="" coords="649,284,724,311"/>
+<area shape="rect" id="node19" href="$cxform-manual_8c.html#a42194228f3217123ff26c5a3b53ad89f" title="calcH11" alt="" coords="649,208,724,235"/>
+<area shape="rect" id="node23" href="$cxform-manual_8c.html#a995057a97d4e066b28f7c6335a58006d" title="lambda0" alt="" coords="649,157,725,184"/>
+<area shape="rect" id="node25" href="$cxform-manual_8c.html#ae23b51b4b534071c5a477dd97ce39186" title="T0" alt="" coords="774,157,813,184"/>
+</map>

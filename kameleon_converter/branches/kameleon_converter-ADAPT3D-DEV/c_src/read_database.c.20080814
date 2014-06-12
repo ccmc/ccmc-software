@@ -1,0 +1,536 @@
+/*******************************************************************************
+ *                                                                             *
+ *    NAME:          read_database.c                                           *
+ *                                                                             *
+ *    VERSION:       3.2                                                       *
+ *                                                                             *
+ *    AUTHOR:        Marlo M. H. Maddox                                        *
+ *                   NASA-GSFC-AETD-ISD-ADMA(587)                              *
+ *                   Marlo.Maddox@nasa.gov                                     *
+ *                   (301) 286 - 5202                                          *
+ *                                                                             *
+ *    PURPOSE:       Read the DatabaseInfo file to extract global attribute    *
+ *                   values to be included in the standardized output file     *
+ *                                                                             *
+ *    INPUTS:        *                                                         *
+ *                                                                             *
+ *    OUTPUTS:       *                                                         *
+ *                                                                             *
+ *    FUNCTIONS:     *                                                         *
+ *                                                                             *
+ *    VARIABLES:     *                                                         *
+ *                                                                             *
+ *                                                                             *
+ *    MODIFICATION                                                             *
+ *    HISTORY:                                                                 *
+ *                                                                             *
+ *    09.01.2004     Marlo Maddox                                              *
+ *                   Initial Code Development                                  *
+ *                                                                             *
+ *    09.13.2004     Marlo Maddox                                              *
+ *                   Changed set_attribute_value function to parse start/end/  *
+ *                   dipole time line differently since it has data seperated  *
+ *                   by a space yyyy/mm/dd hh:mm, when other entries can be    *
+ *                   parse up to first white space.  Currently seconds are not *
+ *                   included in Database                                      *
+ *                                                                             *
+ *    02.07.2005     Marlo Maddox                                              *
+ *                   Added filter flag to trigger date formating only if entry *
+ *                   is verified in DatabaseInfo file.  Some Database file     *
+ *                   didn't have dipole_time entries which caused code to die..*
+ *                                                                             *
+ *                   Added open_ggcm_init_time extraction & processing         *
+ *                                                                             *
+ *    06.06.2006     Maddox, Marlo                                             *
+ *                   Adding  NX,NY,NZ special parameters for batsrus model.    *
+ *                   Latest version of SWMF-BATS .out files do not contain     *
+ *                   these important values so lets see if the DatabaseInfo    *
+ *                   File contains them before we use the defaults             *
+ *                                                                             *
+ *    06.12.2006     Maddox, Marlo                                             *
+ *                   Adding  P1,P2,P3 special parameters for batsrus model.    *
+ *                   Latest version of SWMF-BATS .out files do not contain     *
+ *                   these important values so lets see if the DatabaseInfo    *
+ *                   File contains them before we use the defaults             *
+ *                                                                             *
+ *    ??????????     Maddox, Marlo                                             *
+ *                   added check to make sure date_formatter was not being     *
+ *                   called with empty string/pointers                         *
+ *                                                                             *
+ *    07.24.2008     Maddox, Marlo                                             *
+ *                   Added EXIT_FAILURE & EXIT_SUCCESS to qualifying           *
+ *                   return and exit calls                                     *
+ *                                                                             *
+ ******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "read_database.h"
+
+#define MAX_LINE_LEN    500
+
+#define DEBUG_FLAG 1
+
+/******* define database entry names to search for in DatabaseInfo file *******/
+
+char *run_number_entry = "run_number";
+char *last_name_entry = "last_name";
+char *request_date_entry = "request_date";
+char *start_time_entry = "start_time";
+char *end_time_entry = "end_time";
+char *r_body_entry = "r_body";
+char *r_currents_entry = "r_currents";
+char *b_dipole_entry = "b_dipole";
+char *dipole_update_entry = "dipole_update";
+char *dipole_time_entry = "dipole_time";
+char *open_ggcm_init_time_entry = "open_ggcm_init_time";
+char *dipole_tilt_entry = "dipole_tilt";
+char *dipole_tilt_y_entry = "dipole_tilt_y";
+char *run_type_entry = "run_type";
+char *cs_output_entry = "cs_output";
+char *batsrus_special_parameter_NX_entry = "batsrus_special_parameter_NX";
+char *batsrus_special_parameter_NY_entry = "batsrus_special_parameter_NY";
+char *batsrus_special_parameter_NZ_entry = "batsrus_special_parameter_NZ";
+char *batsrus_special_parameter_P1_entry = "batsrus_special_parameter_P1";
+char *batsrus_special_parameter_P2_entry = "batsrus_special_parameter_P2";
+char *batsrus_special_parameter_P3_entry = "batsrus_special_parameter_P3";
+
+int read_database(int verbose_flag, char *database_file)
+{
+
+   extern void date_formatter(char *, char *, char [], int);
+   int set_attribute_value(char *, char *, char *, int);
+
+   FILE *database_file_ptr;
+
+   int return_status;
+
+   char current_line[MAX_LINE_LEN];
+   int max_line_len= MAX_LINE_LEN;
+
+   int string_len = 0;
+
+   /*** flags that are set if entry exists in DatabaseInfo File - triggers
+    * additional processing that will break if values don't exist ***/
+
+   int request_date_entry_exists = 0;
+   int start_time_entry_exists = 0;
+   int end_time_entry_exists = 0;
+   int dipole_time_entry_exists = 0;
+   int open_ggcm_init_time_entry_exists = 0;
+
+   /* the NX,NY,NZ special parameter variables are defined in read_database.h
+    * and shared with read_database.c & read_batsrus.c to determine if the
+    * values are available from the DatabaseInfo file if they are not in the
+    * .out file ***/
+
+   batsrus_special_parameter_NX_exists_in_databaseinfo = 0;
+   batsrus_special_parameter_NY_exists_in_databaseinfo = 0;
+   batsrus_special_parameter_NZ_exists_in_databaseinfo = 0;
+
+   if ( (database_file_ptr = fopen(database_file, "r") ) == NULL)
+   {
+      printf("ERROR Opening File \n");
+      perror(database_file);
+      /* should return control if open was unsucessful */
+      return EXIT_FAILURE;
+   }
+
+   /* database_file was opened successfully */
+
+   if (verbose_flag)
+   {
+      printf("\nreading DatabaseInfo file:\t%s \n\n", database_file);
+   }
+
+   /* read each line of DatabaseInfo file - extract*/
+
+   while (fgets(current_line, max_line_len, database_file_ptr) != NULL)
+   {
+
+      if ( DEBUG_FLAG)
+      {
+         printf("DEBUG\tcurrent line %s\n", current_line);
+      }
+
+      if (strstr(current_line, run_number_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               run_number_entry,
+               run_registration_number,
+               verbose_flag);
+      }
+      if (strstr(current_line, last_name_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               last_name_entry,
+               generated_by,
+               verbose_flag);
+      }
+      if (strstr(current_line, request_date_entry) != NULL)
+      {
+         request_date_entry_exists = 1;
+         return_status = set_attribute_value(
+               current_line,
+               request_date_entry,
+               request_date,
+               verbose_flag);
+      }
+      if (strstr(current_line, start_time_entry) != NULL)
+      {
+         start_time_entry_exists = 1;
+         return_status = set_attribute_value(
+               current_line,
+               start_time_entry,
+               start_time,
+               verbose_flag);
+      }
+      if (strstr(current_line, end_time_entry) != NULL)
+      {
+         end_time_entry_exists = 1;
+         return_status = set_attribute_value(
+               current_line,
+               end_time_entry,
+               end_time,
+               verbose_flag);
+      }
+      if (strstr(current_line, r_body_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               r_body_entry,
+               r_body,
+               verbose_flag);
+      }
+      if (strstr(current_line, r_currents_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               r_currents_entry,
+               r_currents,
+               verbose_flag);
+      }
+      if (strstr(current_line, b_dipole_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               b_dipole_entry,
+               b_dipole,
+               verbose_flag);
+      }
+      if (strstr(current_line, dipole_update_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               dipole_update_entry,
+               dipole_update,
+               verbose_flag);
+      }
+      if (strstr(current_line, dipole_time_entry) != NULL)
+      {
+         dipole_time_entry_exists = 1;
+         return_status = set_attribute_value(
+               current_line,
+               dipole_time_entry,
+               dipole_time,
+               verbose_flag);
+      }
+      if (strstr(current_line, open_ggcm_init_time_entry) != NULL)
+      {
+         open_ggcm_init_time_entry_exists = 1;
+         return_status = set_attribute_value(
+               current_line,
+               open_ggcm_init_time_entry,
+               open_ggcm_init_time,
+               verbose_flag);
+      }
+      if (strstr(current_line, dipole_tilt_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               dipole_tilt_entry,
+               dipole_tilt,
+               verbose_flag);
+      }
+      if (strstr(current_line, dipole_tilt_y_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               dipole_tilt_y_entry,
+               dipole_tilt_y,
+               verbose_flag);
+      }
+      if (strstr(current_line, run_type_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               run_type_entry,
+               run_type,
+               verbose_flag);
+      }
+      if (strstr(current_line, cs_output_entry) != NULL)
+      {
+         return_status = set_attribute_value(
+               current_line,
+               cs_output_entry,
+               cs_output,
+               verbose_flag);
+      }
+      if (strstr(current_line, batsrus_special_parameter_NX_entry) !=NULL)
+      {
+         batsrus_special_parameter_NX_exists_in_databaseinfo = 1;
+         return_status = set_attribute_value(
+               current_line,
+               batsrus_special_parameter_NX_entry,
+               batsrus_special_parameter_NX,
+               verbose_flag);
+      }
+      if (strstr(current_line, batsrus_special_parameter_NY_entry) !=NULL)
+      {
+         batsrus_special_parameter_NY_exists_in_databaseinfo = 1;
+         return_status = set_attribute_value(
+               current_line,
+               batsrus_special_parameter_NY_entry,
+               batsrus_special_parameter_NY,
+               verbose_flag);
+      }
+      if (strstr(current_line, batsrus_special_parameter_NZ_entry) !=NULL)
+      {
+         batsrus_special_parameter_NZ_exists_in_databaseinfo = 1;
+         return_status = set_attribute_value(
+               current_line,
+               batsrus_special_parameter_NZ_entry,
+               batsrus_special_parameter_NZ,
+               verbose_flag);
+      }
+      if (strstr(current_line, batsrus_special_parameter_P1_entry) !=NULL)
+      {
+         batsrus_special_parameter_P1_exists_in_databaseinfo = 1;
+         return_status = set_attribute_value(
+               current_line,
+               batsrus_special_parameter_P1_entry,
+               batsrus_special_parameter_P1,
+               verbose_flag);
+      }
+      if (strstr(current_line, batsrus_special_parameter_P2_entry) !=NULL)
+      {
+         batsrus_special_parameter_P2_exists_in_databaseinfo = 1;
+         return_status = set_attribute_value(
+               current_line,
+               batsrus_special_parameter_P2_entry,
+               batsrus_special_parameter_P2,
+               verbose_flag);
+      }
+      if (strstr(current_line, batsrus_special_parameter_P3_entry) !=NULL)
+      {
+         batsrus_special_parameter_P3_exists_in_databaseinfo = 1;
+         return_status = set_attribute_value(
+               current_line,
+               batsrus_special_parameter_P3_entry,
+               batsrus_special_parameter_P3,
+               verbose_flag);
+      }
+
+   }
+
+   fclose(database_file_ptr);
+
+   if ( DEBUG_FLAG)
+      printf("DEBUG:\tfinished reading %s\n", database_file);
+
+   /*
+    printf("DEBUG\t %s - %s\n", run_number_entry, run_registration_number );
+    printf("DEBUG\t %s - %s\n", last_name_entry, generated_by );
+    printf("DEBUG\t %s - %s\n", request_date_entry, request_date );
+    printf("DEBUG\t %s - %s\n", start_time_entry, start_time );
+    printf("DEBUG\t %s - %s\n", end_time_entry, end_time );
+    printf("DEBUG\t %s - %s\n",  r_body_entry, r_body );
+    printf("DEBUG\t %s - %s\n", r_currents_entry, r_currents );
+    printf("DEBUG\t %s - %s\n", b_dipole_entry, b_dipole );
+    printf("DEBUG\t %s - %s\n", dipole_update_entry, dipole_update );
+    printf("DEBUG\t %s - %s\n", dipole_time_entry, dipole_time );
+    printf("DEBUG\t %s - %s\n", open_ggcm_init_time_entry, open_ggcm_init_time );
+    printf("DEBUG\t %s - %s\n", dipole_tilt_entry, dipole_tilt );
+    printf("DEBUG\t %s - %s\n", dipole_tilt_y_entry, dipole_tilt_y );
+    printf("DEBUG\t %s - %s\n", run_type_entry, run_type );
+    printf("DEBUG\t %s - %s\n", cs_output_entry, cs_output );
+    */
+
+   /*do not call date_formatter unless valid data has been extracted from
+    * DatabaseInfo file ******/
+
+   /* NEED to ADD ADDITIONAL FILTERING ie. 1vs2 digit month & day entries etc... */
+
+   /*printf("WTF:%s\tstrlen start_time_entry = %d\n", __FILE__, strlen( start_time_entry ) );*/
+
+   if (start_time_entry_exists && strlen(start_time) > 1)
+   {
+      date_formatter(
+            start_time,
+            start_time_entry,
+            start_time_cdf_epoch3,
+            verbose_flag);
+      if (verbose_flag)
+      {
+         printf("formated start_time:\t%s\n", start_time_cdf_epoch3);
+      }
+   }
+
+   if (end_time_entry_exists && strlen(end_time) > 1)
+   {
+      date_formatter(
+            end_time,
+            end_time_entry,
+            end_time_cdf_epoch3,
+            verbose_flag);
+      if (verbose_flag)
+      {
+         printf("formated end_time:\t%s\n", end_time_cdf_epoch3);
+      }
+   }
+
+   if (request_date_entry_exists && strlen(request_date) > 1)
+   {
+      date_formatter(
+            request_date,
+            request_date_entry,
+            request_date_cdf_epoch3,
+            verbose_flag);
+      if (verbose_flag)
+      {
+         printf("formated request_date:\t%s\n", request_date_cdf_epoch3);
+      }
+   }
+
+   if (dipole_time_entry_exists && strlen(dipole_time) > 1)
+   {
+      date_formatter(
+            dipole_time,
+            dipole_time_entry,
+            dipole_time_cdf_epoch3,
+            verbose_flag);
+      if (verbose_flag)
+      {
+         printf("formated dipole_time:\t%s\n", dipole_time_cdf_epoch3);
+      }
+   }
+
+   if (open_ggcm_init_time_entry_exists && strlen(open_ggcm_init_time) > 1)
+   {
+      date_formatter(
+            open_ggcm_init_time,
+            open_ggcm_init_time_entry,
+            open_ggcm_init_time_epoch3,
+            verbose_flag);
+      if (verbose_flag)
+      {
+         printf(
+               "formated open_ggcm_init_time:\t%s\n",
+               open_ggcm_init_time_epoch3);
+      }
+   }
+
+   return EXIT_SUCCESS;
+
+}
+
+int set_attribute_value(
+      char *current_line,
+      char *entry,
+      char *entry_value_array,
+      int verbose_flag)
+{
+   int string_len;
+   char temp_buffer[250];
+   char temp_buffer2[250];
+   char *pound = "#";
+   char *space = " ";
+
+   char *tmpPtr;
+
+   /****************************************************************************
+    the current_line may contain the desired sub string but may not actually be
+    equal to the entry of interest...
+    ie. dipole_tilt will be found in both lines containing dipole_tilt &
+    dipole_tilt_y.  Make sure strlen of line entry
+    is equal to entry
+    ***************************************************************************/
+
+   /* gets location of the begining of entry in current_line */
+   tmpPtr = strstr(current_line, entry);
+   if (verbose_flag)
+   {
+      printf(
+            "\nprocessing line from DatabaseInfo file: %sextracted entry key: %s",
+            current_line,
+            tmpPtr);
+   }
+   strcpy(temp_buffer2, tmpPtr); /* make a copy of entry extracted from line */
+   temp_buffer2[ strlen( temp_buffer2 ) - 1 ] = '\0'; /* remove newline character from string */
+
+   if ( DEBUG_FLAG)
+   {
+      printf("DEBUG\ttemp_buffer2 = ->%s<-\n", temp_buffer2);
+   }
+
+   if (strcmp(temp_buffer2, entry) )
+   {
+      if (verbose_flag)
+      {
+         printf(
+               "%s encountered while searching for %s.  NOT exact match..."
+               "ignoring\n",
+               temp_buffer2,
+               entry);
+      }
+      return EXIT_FAILURE;
+   }
+
+   /* proceed after entry has been validated as a unique entry and not a sub
+    * string */
+
+
+   /* gets the length of current line up to the # sighn */
+   string_len = strcspn(current_line, pound);
+
+   /* since temp_buffer has a static length, terminate string explicitly at the
+    * pound sign */
+
+   temp_buffer[string_len] = '\0';
+
+
+   /* copies current line up to pound sign into temp_buffer */
+   strncpy(temp_buffer, current_line, string_len);
+
+   /* gets the length of temp_buffer up to first white space */
+   string_len = strcspn(temp_buffer, space);
+
+   /****** since the start/end/dipole time entries have a space and yet more
+    * characters after the space ie 1979/07/16 02:00, add 6 to string_len if
+    * entry = start/end time                        */
+
+   if ( !strcmp(entry, start_time_entry) || !strcmp(entry, end_time_entry)
+         || !strcmp(entry, dipole_time_entry) )
+   {
+      string_len = string_len + 6;
+   }
+
+   /* also terminate string at first white space */
+
+   temp_buffer[string_len] = '\0';
+
+
+   /* copies temp_buffer up to white space into entry_value_array */
+   strncpy(entry_value_array, temp_buffer, string_len);
+
+   if (verbose_flag)
+   {
+      printf("setting entry_attribute:\t%-25s -->%s<--\n", entry, entry_value_array);
+   }
+
+   return EXIT_SUCCESS;
+
+}

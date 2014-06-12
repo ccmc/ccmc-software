@@ -1,0 +1,379 @@
+\hypertarget{classccmc_1_1_m_a_s}{\section{ccmc\-:\-:M\-A\-S Class Reference}
+\label{classccmc_1_1_m_a_s}\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}}
+}
+
+
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_m_a_s}{M\-A\-S} class.  
+
+
+
+
+{\ttfamily \#include $<$ccmc/\-M\-A\-S.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:M\-A\-S\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classccmc_1_1_m_a_s__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:M\-A\-S\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_m_a_s_ad78fa3f4aa33338fae7ec8b3b94a7cc7}{M\-A\-S} ()
+\item 
+long \hyperlink{classccmc_1_1_m_a_s_a054e168c8a692b724471c0c3c775dc25}{open} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Opens a file.  \end{DoxyCompactList}\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_m_a_s_a31c49cc43cb52378c439be07a81c98b8}{create\-New\-Interpolator} ()
+\begin{DoxyCompactList}\small\item\em Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  \end{DoxyCompactList}\item 
+const std\-::vector$<$ float $>$ $\ast$const \hyperlink{classccmc_1_1_m_a_s_a122e13f77f5d100999b221f4e99969d5}{get\-R\-Pos\-Grid} (const std\-::string \&variable)
+\item 
+const std\-::vector$<$ float $>$ $\ast$const \hyperlink{classccmc_1_1_m_a_s_a4afe56f686e16528530b7b39d88965da}{get\-R\-Pos\-Grid} (long variable\-\_\-id)
+\item 
+std\-::string \hyperlink{classccmc_1_1_m_a_s_a12b2234a64300d51e5a7561a6233f7da}{get\-R\-Pos\-Grid\-Name} (const std\-::string \&variable)
+\item 
+std\-::string \hyperlink{classccmc_1_1_m_a_s_a2602b76e9b24ade052cb12831c79b871}{get\-R\-Pos\-Grid\-Name} (long variable)
+\item 
+const std\-::vector$<$ float $>$ $\ast$const \hyperlink{classccmc_1_1_m_a_s_a224892d7220189b0d6086bf3ab87759b}{get\-Lat\-Pos\-Grid} (const std\-::string \&variable)
+\item 
+const std\-::vector$<$ float $>$ $\ast$const \hyperlink{classccmc_1_1_m_a_s_a27e7abd169eb2d87d3f4f9dfe6396791}{get\-Lat\-Pos\-Grid} (long variable\-\_\-id)
+\item 
+std\-::string \hyperlink{classccmc_1_1_m_a_s_a10aaea12d1d40a1e53ca063027622f35}{get\-Lat\-Pos\-Grid\-Name} (const std\-::string \&variable)
+\item 
+std\-::string \hyperlink{classccmc_1_1_m_a_s_a2001608a37a8dfc35b4981d0397be7f0}{get\-Lat\-Pos\-Grid\-Name} (long variable\-\_\-id)
+\item 
+const std\-::vector$<$ float $>$ $\ast$const \hyperlink{classccmc_1_1_m_a_s_a1162c5d869616eb5085525a520897dfe}{get\-Lon\-Pos\-Grid} (long variable\-\_\-id)
+\item 
+const std\-::vector$<$ float $>$ $\ast$const \hyperlink{classccmc_1_1_m_a_s_aa463b73b90175dd3a4067807a5794613}{getlon\-Pos\-Grid} (const std\-::string \&variable)
+\item 
+std\-::string \hyperlink{classccmc_1_1_m_a_s_a00aa9361fb3997403ca55311f95689d2}{get\-Lon\-Pos\-Grid\-Name} (const std\-::string \&variable)
+\item 
+std\-::string \hyperlink{classccmc_1_1_m_a_s_aeaba6800251f922352e98865deba9a23}{get\-Lon\-Pos\-Grid\-Name} (long variable\-\_\-id)
+\item 
+bool \hyperlink{classccmc_1_1_m_a_s_a33a19b98d4e265ecbdb8eb1f0870017b}{get\-Change\-Sign\-Flag} (std\-::string variable)
+\item 
+bool \hyperlink{classccmc_1_1_m_a_s_a39e6ce2453ed357f6233a45ee470a02f}{get\-Change\-Sign\-Flag} (long variable\-\_\-id)
+\item 
+const std\-::vector$<$ std\-::string $>$ \hyperlink{classccmc_1_1_m_a_s_afee47f580c257809729f39f77f26229b}{get\-Loaded\-Variables} ()
+\begin{DoxyCompactList}\small\item\em Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. \end{DoxyCompactList}\item 
+virtual \hyperlink{classccmc_1_1_m_a_s_a92b3216af9c4e6d456d1826ed0b17801}{$\sim$\-M\-A\-S} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classccmc_1_1_m_a_s_abb1b32fcba0ca5bc7eabae7d2042e3ce}{initialize\-Conversion\-Factors\-To\-S\-I} ()
+\begin{DoxyCompactList}\small\item\em Initializes the conversion\-Factors\-To\-S\-I map.  \end{DoxyCompactList}\item 
+void \hyperlink{classccmc_1_1_m_a_s_a9b6c97641c9cdcacc71e706c82f0ef3d}{initialize\-S\-I\-Units} ()
+\begin{DoxyCompactList}\small\item\em Initializes the variable\-S\-I\-Units map.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_m_a_s}{M\-A\-S} class. 
+
+T\-O\-D\-O\-: Full description of \hyperlink{classccmc_1_1_m_a_s}{M\-A\-S} class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_m_a_s_ad78fa3f4aa33338fae7ec8b3b94a7cc7}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!M\-A\-S@{M\-A\-S}}
+\index{M\-A\-S@{M\-A\-S}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{M\-A\-S}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-M\-A\-S\-::\-M\-A\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_ad78fa3f4aa33338fae7ec8b3b94a7cc7}
+\hypertarget{classccmc_1_1_m_a_s_a92b3216af9c4e6d456d1826ed0b17801}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!$\sim$\-M\-A\-S@{$\sim$\-M\-A\-S}}
+\index{$\sim$\-M\-A\-S@{$\sim$\-M\-A\-S}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{$\sim$\-M\-A\-S}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-M\-A\-S\-::$\sim$\-M\-A\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_m_a_s_a92b3216af9c4e6d456d1826ed0b17801}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_m_a_s_a31c49cc43cb52378c439be07a81c98b8}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!create\-New\-Interpolator@{create\-New\-Interpolator}}
+\index{create\-New\-Interpolator@{create\-New\-Interpolator}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{create\-New\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator} $\ast$ ccmc\-::\-M\-A\-S\-::create\-New\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_m_a_s_a31c49cc43cb52378c439be07a81c98b8}
+
+
+Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  
+
+This returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object that contains all the necessary local variables required to interpolate independent of any other \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. The pointer must be deleted from the calling program. \begin{DoxyReturn}{Returns}
+A pointer to an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. 
+\end{DoxyReturn}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a0dd491507c14502c27aa61b020fca8cc}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_m_a_s_a33a19b98d4e265ecbdb8eb1f0870017b}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Change\-Sign\-Flag@{get\-Change\-Sign\-Flag}}
+\index{get\-Change\-Sign\-Flag@{get\-Change\-Sign\-Flag}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Change\-Sign\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc\-::\-M\-A\-S\-::get\-Change\-Sign\-Flag (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a33a19b98d4e265ecbdb8eb1f0870017b}
+\hypertarget{classccmc_1_1_m_a_s_a39e6ce2453ed357f6233a45ee470a02f}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Change\-Sign\-Flag@{get\-Change\-Sign\-Flag}}
+\index{get\-Change\-Sign\-Flag@{get\-Change\-Sign\-Flag}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Change\-Sign\-Flag}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc\-::\-M\-A\-S\-::get\-Change\-Sign\-Flag (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a39e6ce2453ed357f6233a45ee470a02f}
+\hypertarget{classccmc_1_1_m_a_s_a224892d7220189b0d6086bf3ab87759b}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Lat\-Pos\-Grid@{get\-Lat\-Pos\-Grid}}
+\index{get\-Lat\-Pos\-Grid@{get\-Lat\-Pos\-Grid}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Lat\-Pos\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ $\ast$const ccmc\-::\-M\-A\-S\-::get\-Lat\-Pos\-Grid (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a224892d7220189b0d6086bf3ab87759b}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_a224892d7220189b0d6086bf3ab87759b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_m_a_s_a27e7abd169eb2d87d3f4f9dfe6396791}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Lat\-Pos\-Grid@{get\-Lat\-Pos\-Grid}}
+\index{get\-Lat\-Pos\-Grid@{get\-Lat\-Pos\-Grid}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Lat\-Pos\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ $\ast$const ccmc\-::\-M\-A\-S\-::get\-Lat\-Pos\-Grid (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a27e7abd169eb2d87d3f4f9dfe6396791}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_a27e7abd169eb2d87d3f4f9dfe6396791_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_m_a_s_a10aaea12d1d40a1e53ca063027622f35}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Lat\-Pos\-Grid\-Name@{get\-Lat\-Pos\-Grid\-Name}}
+\index{get\-Lat\-Pos\-Grid\-Name@{get\-Lat\-Pos\-Grid\-Name}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Lat\-Pos\-Grid\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-M\-A\-S\-::get\-Lat\-Pos\-Grid\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a10aaea12d1d40a1e53ca063027622f35}
+\hypertarget{classccmc_1_1_m_a_s_a2001608a37a8dfc35b4981d0397be7f0}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Lat\-Pos\-Grid\-Name@{get\-Lat\-Pos\-Grid\-Name}}
+\index{get\-Lat\-Pos\-Grid\-Name@{get\-Lat\-Pos\-Grid\-Name}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Lat\-Pos\-Grid\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-M\-A\-S\-::get\-Lat\-Pos\-Grid\-Name (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a2001608a37a8dfc35b4981d0397be7f0}
+\hypertarget{classccmc_1_1_m_a_s_afee47f580c257809729f39f77f26229b}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Loaded\-Variables@{get\-Loaded\-Variables}}
+\index{get\-Loaded\-Variables@{get\-Loaded\-Variables}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Loaded\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ std\-::string $>$ ccmc\-::\-M\-A\-S\-::get\-Loaded\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_m_a_s_afee47f580c257809729f39f77f26229b}
+
+
+Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. 
+
+
+
+Reimplemented from \hyperlink{classccmc_1_1_model_ac49a0eec99d25e9ed08ffff959e4ecdc}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_afee47f580c257809729f39f77f26229b_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_m_a_s_a1162c5d869616eb5085525a520897dfe}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Lon\-Pos\-Grid@{get\-Lon\-Pos\-Grid}}
+\index{get\-Lon\-Pos\-Grid@{get\-Lon\-Pos\-Grid}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Lon\-Pos\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ $\ast$const ccmc\-::\-M\-A\-S\-::get\-Lon\-Pos\-Grid (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a1162c5d869616eb5085525a520897dfe}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_a1162c5d869616eb5085525a520897dfe_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_m_a_s_aa463b73b90175dd3a4067807a5794613}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!getlon\-Pos\-Grid@{getlon\-Pos\-Grid}}
+\index{getlon\-Pos\-Grid@{getlon\-Pos\-Grid}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{getlon\-Pos\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ $\ast$const ccmc\-::\-M\-A\-S\-::getlon\-Pos\-Grid (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_aa463b73b90175dd3a4067807a5794613}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_aa463b73b90175dd3a4067807a5794613_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_m_a_s_a00aa9361fb3997403ca55311f95689d2}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Lon\-Pos\-Grid\-Name@{get\-Lon\-Pos\-Grid\-Name}}
+\index{get\-Lon\-Pos\-Grid\-Name@{get\-Lon\-Pos\-Grid\-Name}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Lon\-Pos\-Grid\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-M\-A\-S\-::get\-Lon\-Pos\-Grid\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a00aa9361fb3997403ca55311f95689d2}
+\hypertarget{classccmc_1_1_m_a_s_aeaba6800251f922352e98865deba9a23}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-Lon\-Pos\-Grid\-Name@{get\-Lon\-Pos\-Grid\-Name}}
+\index{get\-Lon\-Pos\-Grid\-Name@{get\-Lon\-Pos\-Grid\-Name}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-Lon\-Pos\-Grid\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-M\-A\-S\-::get\-Lon\-Pos\-Grid\-Name (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_aeaba6800251f922352e98865deba9a23}
+\hypertarget{classccmc_1_1_m_a_s_a122e13f77f5d100999b221f4e99969d5}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-R\-Pos\-Grid@{get\-R\-Pos\-Grid}}
+\index{get\-R\-Pos\-Grid@{get\-R\-Pos\-Grid}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-R\-Pos\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ $\ast$const ccmc\-::\-M\-A\-S\-::get\-R\-Pos\-Grid (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a122e13f77f5d100999b221f4e99969d5}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_a122e13f77f5d100999b221f4e99969d5_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_m_a_s_a4afe56f686e16528530b7b39d88965da}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-R\-Pos\-Grid@{get\-R\-Pos\-Grid}}
+\index{get\-R\-Pos\-Grid@{get\-R\-Pos\-Grid}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-R\-Pos\-Grid}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ float $>$ $\ast$const ccmc\-::\-M\-A\-S\-::get\-R\-Pos\-Grid (
+\begin{DoxyParamCaption}
+\item[{long}]{variable\-\_\-id}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a4afe56f686e16528530b7b39d88965da}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_a4afe56f686e16528530b7b39d88965da_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_m_a_s_a12b2234a64300d51e5a7561a6233f7da}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-R\-Pos\-Grid\-Name@{get\-R\-Pos\-Grid\-Name}}
+\index{get\-R\-Pos\-Grid\-Name@{get\-R\-Pos\-Grid\-Name}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-R\-Pos\-Grid\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-M\-A\-S\-::get\-R\-Pos\-Grid\-Name (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a12b2234a64300d51e5a7561a6233f7da}
+\hypertarget{classccmc_1_1_m_a_s_a2602b76e9b24ade052cb12831c79b871}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!get\-R\-Pos\-Grid\-Name@{get\-R\-Pos\-Grid\-Name}}
+\index{get\-R\-Pos\-Grid\-Name@{get\-R\-Pos\-Grid\-Name}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{get\-R\-Pos\-Grid\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-M\-A\-S\-::get\-R\-Pos\-Grid\-Name (
+\begin{DoxyParamCaption}
+\item[{long}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_m_a_s_a2602b76e9b24ade052cb12831c79b871}
+\hypertarget{classccmc_1_1_m_a_s_abb1b32fcba0ca5bc7eabae7d2042e3ce}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}}
+\index{initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{initialize\-Conversion\-Factors\-To\-S\-I}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-M\-A\-S\-::initialize\-Conversion\-Factors\-To\-S\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_m_a_s_abb1b32fcba0ca5bc7eabae7d2042e3ce}
+
+
+Initializes the conversion\-Factors\-To\-S\-I map.  
+
+These factors are used to convert interpolated values to S\-I units.  
+
+Implements \hyperlink{classccmc_1_1_model_a6f04326691fba448e2cfb7c7ab90a45a}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_m_a_s_a9b6c97641c9cdcacc71e706c82f0ef3d}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!initialize\-S\-I\-Units@{initialize\-S\-I\-Units}}
+\index{initialize\-S\-I\-Units@{initialize\-S\-I\-Units}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{initialize\-S\-I\-Units}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-M\-A\-S\-::initialize\-S\-I\-Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_m_a_s_a9b6c97641c9cdcacc71e706c82f0ef3d}
+
+
+Initializes the variable\-S\-I\-Units map.  
+
+
+
+Implements \hyperlink{classccmc_1_1_model_a68d31e8d8cce59269c994de25d048178}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_m_a_s_a054e168c8a692b724471c0c3c775dc25}{\index{ccmc\-::\-M\-A\-S@{ccmc\-::\-M\-A\-S}!open@{open}}
+\index{open@{open}!ccmc::MAS@{ccmc\-::\-M\-A\-S}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-M\-A\-S\-::open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_m_a_s_a054e168c8a692b724471c0c3c775dc25}
+
+
+Opens a file.  
+
+Opens a file and performs any necessary initialization required to work with the data. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a3c64dc635c2c1a2fe2f8efa2a3666282}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_m_a_s_a054e168c8a692b724471c0c3c775dc25_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_m_a_s_8h}{M\-A\-S.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_m_a_s_8cpp}{M\-A\-S.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,292 @@
+1014 April 8 Asher Pembroke
+-------------
+kameleon-plus-6.0.0
+- New CMake out-of-source build system (see README)
+- Supports kameleon-java converted LFM files in CDF or HDF5 format
+
+
+2012 Oct 11   David Berrios
+-------------
+  kameleon-plus-0.3.15
+  - Fortran wrapper updates for the Time Interpolator
+  - Fixed binary search boundary case
+  
+2012 Oct 10   David Berrios
+-------------
+  kameleon-plus-0.3.13
+  - Updated time interpolator. No longer unloads required variables when calling manageMemory
+  
+2012 Oct 09   David Berrios
+-------------
+  kameleon-plus-0.3.12
+  - Updated time interpolator
+  
+2012 Oct 03   David Berrios
+-------------
+  kameleon-plus-0.3.11
+  - Initial version of time interpolator
+  
+2012 Aug 21   David Berrios
+-------------
+  kameleon-plus-0.3.10
+  - Whoops! Fixed the BATSRUS Interpolator for derived variables.
+  
+2012 Aug 16   David Berrios
+-------------
+  kameleon-plus-0.3.9
+  - Added support for bx1, by1, and bz1 to the OpenGGCM Interpolator
+  - Fixed fieldline tracer for bx1,by1,bz1 and b_1 for OpenGGCM
+  - Force the fieldline tracer to return when a missing value is found
+  - Bug fixes in the Tracer.
+  
+2012 Aug 14   David Berrios
+-------------
+  kameleon-plus-0.3.8
+  - Added a setInnerBoundary function for the C wrappers for the Tracer library
+  - Renamed the Kameleon-Tracer.h and Kameleon-Tracer.cpp files to 
+    Tracer.h and Tracer.cpp, respectively
+  - Code cleanup
+  
+2012 Aug 01   David Berrios
+-------------
+  kameleon-plus-0.3.7
+  - Added C wrapper for setting the Tracer objects inner boundary
+  
+2012 Aug 01   David Berrios
+-------------
+  kameleon-plus-0.3.6
+  - Fixed the Tracer C wrapper code
+  - Fixed a spelling mistake in the Tracer header file.
+
+2012 Jul 06   David Berrios
+-------------
+  kameleon-plus-0.3.5
+  - Fixed memory leak in GeneralFileReader
+  
+2012 Jul 05   David Berrios
+-------------
+  kameleon-plus-0.3.4
+  - Updated IGRF coefficients to 11th generation - CXFORM code
+  
+2012 Jun 13   David Berrios
+-------------
+  kameleon-plus-0.3.3
+  - Updated Fortran example code
+  - Fixed a very serious memory leak in the SWMFIonoInterpolator code
+  
+2012 Jun 07   David Berrios
+-------------
+  kameleon-plus-0.3.2
+  - Updated Fortran example code and fixed string parameters
+  
+2012 May 30   David Berrios
+-------------
+  kameleon-plus-0.3.1
+  - Fixed fortran wrappers and c wrappers
+  
+2012 May 25   David Berrios
+-------------
+  kameleon-plus-0.3.0
+  - Added support for the Ionospheric output of SWMF
+  
+2012 Feb 07   David Berrios
+-------------
+  kameleon-plus-0.2.1
+  - Added code to keep track of progress during open call.
+  
+2012 Feb 06   David Berrios
+-------------
+  kameleon-plus-0.2.0
+  - Removed debugging output.
+  - Modified logic for missing values.
+  
+2012 Feb 01   David Berrios
+-------------
+  kameleon-plus-0.1.31
+  - Finally fixed Adapt3D code.
+  
+2012 Jan 26   David Berrios
+-------------
+  kameleon-plus-0.1.30
+  - Removed debugging output
+  - Updated configure script to disable HDF5 support by default. Regenerate SWIG wrappers if you enable HDF5.
+  
+2012 Jan 24   David Berrios
+-------------
+  kameleon-plus-0.1.29
+  - Updated Adapt3D code.
+  
+2011 Sep 21   David Berrios
+-------------
+  kameleon-plus-0.1.26
+  - Updated the Adapt3D code to support the new file format (removal of unkno).
+  - Updated CDFFileReader to handle floats stored as doubles in CDF file. Still just casts them to floats, but doesn't seg fault.
+  
+2011 Sep 15   David Berrios
+-------------
+  kameleon-plus-0.1.25
+  - Updated configure and automake files.
+  
+2011 Sep 14   David Berrios
+-------------
+  kameleon-plus-0.1.24
+  - Updated HDF5FileReader class. Seems to work.
+  
+2011 Sep 02   David Berrios
+-------------
+  kameleon-plus-0.1.23
+  - Added HDF5FileReader class. Does not work yet.
+  
+2011 Jul 25   David Berrios
+-------------
+  kameleon-plus-0.1.22
+  - Abstracted out the FileReader class. Refactored CDF specific stuff into CDFFileReader class.
+  
+2011 Jul 07   David Berrios
+-------------
+  kameleon-plus-0.1.21
+  - Attempt at fixing non-deterministic behavior
+  
+2011 Jul 06   David Berrios
+-------------
+  kameleon-plus-0.1.20
+  - Code cleanup - Changed method names
+    
+2011 Jun 14   David Berrios
+-------------
+  kameleon-plus-0.1.19
+  - Fixed an issue with the MAS interpolator. The logic for checking the previous position and resuing the previous
+    indices was incorrect.
+  
+2011 Jun 09   David Berrios
+-------------
+  kameleon-plus-0.1.16
+  - Added phi1 grid to MAS reader and interpolator
+  - Fixed memory leaks in spherical tracer
+  - Added getVariableFromMap and getVariableIntFromMap methods
+
+2011 Jun 08   David Berrios
+-------------
+  kameleon-plus-0.1.15
+  - Testing the removal of the polarity fix for enlil. May not be needed anymore.
+  
+2011 Jun 02   David Berrios
+-------------
+  kameleon-plus-0.1.14
+  - Correctly apply a conversion factor to the interpolated value prior to returning
+
+2011 May 23   David Berrios
+-------------
+  kameleon-plus-0.1.13
+  - Check the distance from the last inserted position and stop if value is greater than 1 unit.
+  
+2011 May 19   David Berrios
+-------------
+  kameleon-plus-0.1.12
+  - Properly flip the sign of the theta vector component values for ENLIL data
+  - Bug fixes for the spherical tracer
+  
+2011 May 17   David Berrios
+-------------
+  kameleon-plus-0.1.11
+  - Fixed ENLIL interpolation. Theta and Phi were switched.
+  
+2011 May 12   David Berrios
+-------------
+  kameleon-plus-0.1.10
+  - Added MAS
+  - Fixed logic when deleting latitudes in spherical tracer
+  - Removed ENLIL's support for x,y,z coordinate names. This was too confusing!
+  
+2011 Jan 06   David Berrios
+-------------
+  kameleon-plus-0.1.6
+  - Fixed interpolation for Adapt3d
+    
+2010 Nov 19   David Berrios
+-------------
+  kameleon-plus-0.1.5
+  - Added extra error checking when opening files
+  - Modified the ENLIL code to work with component names using the traditional spherical coordinate
+    names (r,phi,theta) or the older cartesian names (x,y,z)
+
+2010 Nov 04   David Berrios
+-------------
+  kameleon-plus-0.1.4
+  - Added Adapt3D support
+  - Added error checking for model file variables and attributes. Still not complete.
+
+2010 Oct 29   David Berrios
+-------------
+  kameleon-plus-0.1.3
+  - Updated version.  Not sure when these were added, but it now has a fieldline tracer, and initial support for enlil
+  - Added the wrapper code for multiple languages
+
+2009 Sep 10   David Berrios
+-------------
+  kameleon-interpolator-0.1.0
+  - renamed the distribution to 0.1.0, since the interpolator isn't complete yet
+  - modified OpenGGCMInterpolator to handle cases that caused crashes (array index out of bounds)
+
+2009 Jul 17   David Berrios
+-------------
+  kameleon-interpolator-1.0.0
+  - Rewrote the Kameleon interpolator.  
+  - Integrated the derived library into the Kameleon interpolator
+  - Optimized the code - now 3-5 times faster
+  
+2009 Jun 02   David Berrios
+-------------
+   derived-1.0.0
+   - Modified the interfaces a little bit.  Added FileReader class.  Started process of
+     extracting information out of CDF files to interpolate on more than one file at a time.
+   - Added CDFlib(SELECT_,CDF_,current_cdf_id, NULL_); before all calls to kameleon. 
+     Kameleon uses the internal CDF interface, and some functions assume a CDF file is selected. This
+     ensures that the correct CDF file is selected.
+   - added -arch x86_64 and -arch ppc64 to CPPFLAGS when using the --enable-universal option
+
+2008 Sep 02   David Berrios
+-------------
+   derived-0.7.3
+   - Added a radius of 0 to the start of the calculated magnetopause
+   
+2008 Aug 19   David Berrios
+-------------
+   derived-0.7.2
+   - Added methods to calculate the magnetopause using the Shue model
+   
+2008 Aug 15   David Berrios
+-------------
+   derived-0.7.1
+   - Added the Shue model
+   
+2008 Aug 07   David Berrios
+-------------
+   derived-0.7.0
+   - Fixed compute_exbz to interpolate correct variables
+
+2008 Aug 06   David Berrios
+-------------
+   derived-0.6.9
+   - Added b1 and components to the listOfRequiredVariablesForVectors map.  This fixed the slow tracing performance of b1
+
+2008 Jul 29   David Berrios
+-------------
+   derived-0.6.8
+   - Added a check for "open_ggcm" in Derived::interpolateSimple .  The previous behavior was undefined.
+   - Added eta*j and eta*j2
+   
+2008 Jul 18   David Berrios
+-------------
+   derived-0.6.7
+   - Modified calculation methods to return missing if any of the required variables are missing.
+   - Converted input string to interpolator to lower case.  
+
+2008 May 12   David Berrios
+-------------
+   derived-0.6.6
+   - Reorganized derived.cpp into separate files, one for each computation method
+   - Added more documentation
+   
+   
+

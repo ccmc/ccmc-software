@@ -1,0 +1,540 @@
+\hypertarget{classccmc_1_1_tracer}{\section{ccmc\-:\-:Tracer Class Reference}
+\label{classccmc_1_1_tracer}\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}}
+}
+
+
+T\-O\-D\-O\-: Brief description.  
+
+
+
+
+{\ttfamily \#include $<$Tracer.\-h$>$}
+
+
+
+Collaboration diagram for ccmc\-:\-:Tracer\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2}{Direction} \{ \hyperlink{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2a133381f1178a2affb0f1c79a67b45e52}{F\-O\-W\-A\-R\-D}, 
+\hyperlink{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2af2f8ce1e1224ce9d334d5260fa8a8526}{R\-E\-V\-E\-R\-S\-E}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_tracer_a16f3484aa70343874800adfce15b7d48}{Tracer} (\hyperlink{classccmc_1_1_kameleon}{Kameleon} $\ast$kameleon)
+\item 
+\hyperlink{classccmc_1_1_tracer_a6cd137b845ca56ef9a50bbb8e76ad231}{Tracer} (\hyperlink{classccmc_1_1_kameleon}{Kameleon} $\ast$kameleon, \hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$\hyperlink{classccmc_1_1_tracer_ae7a4953e9ca43eb93535b869864f6062}{interpolator})
+\item 
+\hyperlink{classccmc_1_1_tracer_ac9c1fdded6293841a58a3f672b775577}{$\sim$\-Tracer} ()
+\item 
+void \hyperlink{classccmc_1_1_tracer_a8b67d175f78a67e8f9119a9b105bfb8b}{set\-Inner\-Boundary} (float r\-\_\-end)
+\item 
+void \hyperlink{classccmc_1_1_tracer_aecadbaf86210183e93561cfd994e5cb3}{set\-Max\-Iterations} (int step\-Max)
+\item 
+void \hyperlink{classccmc_1_1_tracer_ab487539d33afad7fb6642d4bd3ccc555}{set\-Dn} (float dn)
+\item 
+void \hyperlink{classccmc_1_1_tracer_aa729fd6391a148f9bad170a652ec6d7d}{set\-Tilt} (float tilt)
+\item 
+void \hyperlink{classccmc_1_1_tracer_a2b4ada2551d3d6db929f6f4b59fe6cb0}{set\-Missing} (float missing)
+\item 
+void \hyperlink{classccmc_1_1_tracer_a22c8cf8a9c801e38f7bd4fe8cc224f1c}{set\-Max\-Arc\-Length} (float max\-Arc\-Length)
+\item 
+\hyperlink{classccmc_1_1_fieldline}{Fieldline} \hyperlink{classccmc_1_1_tracer_a47783816bdcacaa27f0c4535bba42c1f}{bidirectional\-Trace} (const std\-::string \&variable, const float \&start\-Component1, const float \&start\-Component2, const float \&start\-Component3)
+\item 
+\hyperlink{classccmc_1_1_fieldline}{Fieldline} \hyperlink{classccmc_1_1_tracer_a15158cc5fe5eb9a0372d85b9d81d798d}{bidirectional\-Trace\-With\-Dipole} (const std\-::string \&variable, const float \&start\-Component1, const float \&start\-Component2, const float \&start\-Component3)
+\item 
+\hyperlink{classccmc_1_1_fieldline}{Fieldline} \hyperlink{classccmc_1_1_tracer_a3166d314066e3c83e935e01b37554e63}{unidirectional\-Trace} (const std\-::string \&variable, const float \&start\-Component1, const float \&start\-Component2, const float \&start\-Component3, const \hyperlink{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2}{Direction} \&dir=\hyperlink{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2a133381f1178a2affb0f1c79a67b45e52}{F\-O\-W\-A\-R\-D})
+\item 
+\hyperlink{classccmc_1_1_fieldline}{Fieldline} \hyperlink{classccmc_1_1_tracer_a5f271069b9f92eafb9db48893ef19128}{unidirectional\-Trace\-With\-Dipole} (const std\-::string \&variable, const float \&start\-Component1, const float \&start\-Component2, const float \&start\-Component3, const \hyperlink{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2}{Direction} \&dir=\hyperlink{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2a133381f1178a2affb0f1c79a67b45e52}{F\-O\-W\-A\-R\-D})
+\item 
+\hyperlink{classccmc_1_1_fieldline}{Fieldline} \hyperlink{classccmc_1_1_tracer_a214b139e1f6a0a81f95745eb1b4ab0f2}{find\-Last\-Closed} (\hyperlink{classccmc_1_1_point3f}{Point3f} position, int step\-Max)
+\item 
+std\-::vector$<$ \hyperlink{classccmc_1_1_fieldline}{Fieldline} $>$ \hyperlink{classccmc_1_1_tracer_af8ed24a1334dbaa0cfbb024ef11ad8cb}{get\-Last\-Closed\-Fieldlines} (int number\-Of\-Fieldlines, int step\-Max, int number\-Of\-Points\-Per\-Reduced\-Fieldline)
+\item 
+bool \hyperlink{classccmc_1_1_tracer_aee62bc5b0bb724545d1fd32ae2af343f}{is\-Closed} (\hyperlink{classccmc_1_1_fieldline}{Fieldline} \&fieldline)
+\item 
+void \hyperlink{classccmc_1_1_tracer_aec22644edb73716c0be90a8aad3f9bdb}{set\-Use\-Max\-Arc\-Length} (bool use\-Max\-Arc\-Length)
+\item 
+\hyperlink{classccmc_1_1_point3f}{Point3f} \hyperlink{classccmc_1_1_tracer_a533ed52b1386402f83225c2fd81b8c40}{get\-Vector} (const std\-::string \&variable, const \hyperlink{classccmc_1_1_point3f}{Point3f} \&position, float \&d\-Component1, float \&d\-Component2, float \&d\-Component3, const \hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$\hyperlink{classccmc_1_1_tracer_ae7a4953e9ca43eb93535b869864f6062}{interpolator})
+\item 
+void \hyperlink{classccmc_1_1_tracer_a1978e6bc32b29821fcd8d673182da7c9}{set\-Region\-Of\-Interest} (\hyperlink{classccmc_1_1_point3f}{Point3f} min, \hyperlink{classccmc_1_1_point3f}{Point3f} max)
+\item 
+void \hyperlink{classccmc_1_1_tracer_adeeddca01155c69abfdd85711e049568}{set\-Use\-Region\-Of\-Interest} (bool use\-R\-O\-I)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_tracer_ae7a4953e9ca43eb93535b869864f6062}{interpolator}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: Brief description. 
+
+Full Description of \hyperlink{classccmc_1_1_tracer}{Tracer} class 
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!Direction@{Direction}}
+\index{Direction@{Direction}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{Direction}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf ccmc\-::\-Tracer\-::\-Direction}}}\label{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{F\-O\-W\-A\-R\-D@{F\-O\-W\-A\-R\-D}!ccmc\-::\-Tracer@{ccmc\-::\-Tracer}}\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!F\-O\-W\-A\-R\-D@{F\-O\-W\-A\-R\-D}}\item[{\em 
+\hypertarget{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2a133381f1178a2affb0f1c79a67b45e52}{F\-O\-W\-A\-R\-D}\label{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2a133381f1178a2affb0f1c79a67b45e52}
+}]\index{R\-E\-V\-E\-R\-S\-E@{R\-E\-V\-E\-R\-S\-E}!ccmc\-::\-Tracer@{ccmc\-::\-Tracer}}\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!R\-E\-V\-E\-R\-S\-E@{R\-E\-V\-E\-R\-S\-E}}\item[{\em 
+\hypertarget{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2af2f8ce1e1224ce9d334d5260fa8a8526}{R\-E\-V\-E\-R\-S\-E}\label{classccmc_1_1_tracer_a2c914b28e2e205cb1a7c01f2941fcae2af2f8ce1e1224ce9d334d5260fa8a8526}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_tracer_a16f3484aa70343874800adfce15b7d48}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!Tracer@{Tracer}}
+\index{Tracer@{Tracer}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{Tracer}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Tracer\-::\-Tracer (
+\begin{DoxyParamCaption}
+\item[{{\bf Kameleon} $\ast$}]{kameleon}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a16f3484aa70343874800adfce15b7d48}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em kameleon} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_a16f3484aa70343874800adfce15b7d48_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_a6cd137b845ca56ef9a50bbb8e76ad231}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!Tracer@{Tracer}}
+\index{Tracer@{Tracer}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{Tracer}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Tracer\-::\-Tracer (
+\begin{DoxyParamCaption}
+\item[{{\bf Kameleon} $\ast$}]{kameleon, }
+\item[{{\bf Interpolator} $\ast$}]{interpolator}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a6cd137b845ca56ef9a50bbb8e76ad231}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_a6cd137b845ca56ef9a50bbb8e76ad231_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_ac9c1fdded6293841a58a3f672b775577}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!$\sim$\-Tracer@{$\sim$\-Tracer}}
+\index{$\sim$\-Tracer@{$\sim$\-Tracer}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{$\sim$\-Tracer}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Tracer\-::$\sim$\-Tracer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_ac9c1fdded6293841a58a3f672b775577}
+T\-O\-D\-O\-: finish documentation 
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_tracer_a47783816bdcacaa27f0c4535bba42c1f}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!bidirectional\-Trace@{bidirectional\-Trace}}
+\index{bidirectional\-Trace@{bidirectional\-Trace}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{bidirectional\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Tracer\-::bidirectional\-Trace (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{start\-Component1, }
+\item[{const float \&}]{start\-Component2, }
+\item[{const float \&}]{start\-Component3}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a47783816bdcacaa27f0c4535bba42c1f}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em start\-Component1} & \\
+\hline
+{\em start\-Component2} & \\
+\hline
+{\em start\-Component3} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_a47783816bdcacaa27f0c4535bba42c1f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_a15158cc5fe5eb9a0372d85b9d81d798d}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!bidirectional\-Trace\-With\-Dipole@{bidirectional\-Trace\-With\-Dipole}}
+\index{bidirectional\-Trace\-With\-Dipole@{bidirectional\-Trace\-With\-Dipole}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{bidirectional\-Trace\-With\-Dipole}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Tracer\-::bidirectional\-Trace\-With\-Dipole (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{start\-Component1, }
+\item[{const float \&}]{start\-Component2, }
+\item[{const float \&}]{start\-Component3}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a15158cc5fe5eb9a0372d85b9d81d798d}
+Opens a C\-C\-M\-C generated C\-D\-F file and initializes the model name 
+\begin{DoxyParams}{Parameters}
+{\em filename} & The filename of the cdf file to open. Closes the opened C\-D\-F file Loads the variable, including all components of the variable, into memory. For example, if variable is \char`\"{}bx\char`\"{}, three variables will be loaded\-: \char`\"{}bx\char`\"{}, \char`\"{}by\char`\"{}, and \char`\"{}bz\char`\"{} \\
+\hline
+{\em variable} & T\-O\-D\-O\-: finish documentation \\
+\hline
+{\em variable} & \\
+\hline
+{\em start\-Component1} & \\
+\hline
+{\em start\-Component2} & \\
+\hline
+{\em start\-Component3} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_a15158cc5fe5eb9a0372d85b9d81d798d_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_a214b139e1f6a0a81f95745eb1b4ab0f2}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!find\-Last\-Closed@{find\-Last\-Closed}}
+\index{find\-Last\-Closed@{find\-Last\-Closed}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{find\-Last\-Closed}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Tracer\-::find\-Last\-Closed (
+\begin{DoxyParamCaption}
+\item[{{\bf Point3f}}]{position, }
+\item[{int}]{step\-Max}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a214b139e1f6a0a81f95745eb1b4ab0f2}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em position} & \\
+\hline
+{\em step\-Max} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_a214b139e1f6a0a81f95745eb1b4ab0f2_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_af8ed24a1334dbaa0cfbb024ef11ad8cb}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!get\-Last\-Closed\-Fieldlines@{get\-Last\-Closed\-Fieldlines}}
+\index{get\-Last\-Closed\-Fieldlines@{get\-Last\-Closed\-Fieldlines}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{get\-Last\-Closed\-Fieldlines}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Fieldline} $>$ ccmc\-::\-Tracer\-::get\-Last\-Closed\-Fieldlines (
+\begin{DoxyParamCaption}
+\item[{int}]{number\-Of\-Fieldlines, }
+\item[{int}]{step\-Max, }
+\item[{int}]{number\-Of\-Points\-Per\-Reduced\-Fieldline}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_af8ed24a1334dbaa0cfbb024ef11ad8cb}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em number\-Of\-Fieldlines} & \\
+\hline
+{\em step\-Max} & \\
+\hline
+{\em number\-Of\-Points\-Per\-Reduced\-Fieldline} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+add the first point all the time
+
+always add the last point too, since i was reduced by one 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_af8ed24a1334dbaa0cfbb024ef11ad8cb_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_a533ed52b1386402f83225c2fd81b8c40}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!get\-Vector@{get\-Vector}}
+\index{get\-Vector@{get\-Vector}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{get\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point3f} ccmc\-::\-Tracer\-::get\-Vector (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const {\bf Point3f} \&}]{position, }
+\item[{float \&}]{d\-Component1, }
+\item[{float \&}]{d\-Component2, }
+\item[{float \&}]{d\-Component3, }
+\item[{const {\bf Interpolator} $\ast$}]{interpolator}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a533ed52b1386402f83225c2fd81b8c40}
+check to see if iterations are greater than or equal to max I should have changed the name but it would have been too long T\-O\-D\-O\-: finish documentation T\-O\-D\-O\-: return missing value if variable not found T\-O\-D\-O\-: use a map instead of an if/else statement to check for the variable 
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em position} & \\
+\hline
+{\em d\-Component1} & \\
+\hline
+{\em d\-Component2} & \\
+\hline
+{\em d\-Component3} & \\
+\hline
+{\em interpolator} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{classccmc_1_1_tracer_aee62bc5b0bb724545d1fd32ae2af343f}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!is\-Closed@{is\-Closed}}
+\index{is\-Closed@{is\-Closed}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{is\-Closed}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc\-::\-Tracer\-::is\-Closed (
+\begin{DoxyParamCaption}
+\item[{{\bf Fieldline} \&}]{fieldline}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_aee62bc5b0bb724545d1fd32ae2af343f}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em fieldline} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_aee62bc5b0bb724545d1fd32ae2af343f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_ab487539d33afad7fb6642d4bd3ccc555}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Dn@{set\-Dn}}
+\index{set\-Dn@{set\-Dn}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Dn}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Dn (
+\begin{DoxyParamCaption}
+\item[{float}]{dn}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_ab487539d33afad7fb6642d4bd3ccc555}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em dn} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_a8b67d175f78a67e8f9119a9b105bfb8b}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Inner\-Boundary@{set\-Inner\-Boundary}}
+\index{set\-Inner\-Boundary@{set\-Inner\-Boundary}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Inner\-Boundary}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Inner\-Boundary (
+\begin{DoxyParamCaption}
+\item[{float}]{r\-\_\-end}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a8b67d175f78a67e8f9119a9b105bfb8b}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em r\-\_\-end} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_a22c8cf8a9c801e38f7bd4fe8cc224f1c}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Max\-Arc\-Length@{set\-Max\-Arc\-Length}}
+\index{set\-Max\-Arc\-Length@{set\-Max\-Arc\-Length}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Max\-Arc\-Length}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Max\-Arc\-Length (
+\begin{DoxyParamCaption}
+\item[{float}]{max\-Arc\-Length}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a22c8cf8a9c801e38f7bd4fe8cc224f1c}
+
+\begin{DoxyParams}{Parameters}
+{\em max\-Arc\-Length} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_aecadbaf86210183e93561cfd994e5cb3}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Max\-Iterations@{set\-Max\-Iterations}}
+\index{set\-Max\-Iterations@{set\-Max\-Iterations}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Max\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Max\-Iterations (
+\begin{DoxyParamCaption}
+\item[{int}]{step\-Max}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_aecadbaf86210183e93561cfd994e5cb3}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em step\-Max} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_a2b4ada2551d3d6db929f6f4b59fe6cb0}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Missing@{set\-Missing}}
+\index{set\-Missing@{set\-Missing}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Missing}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Missing (
+\begin{DoxyParamCaption}
+\item[{float}]{missing}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a2b4ada2551d3d6db929f6f4b59fe6cb0}
+
+\begin{DoxyParams}{Parameters}
+{\em missing} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_a1978e6bc32b29821fcd8d673182da7c9}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Region\-Of\-Interest@{set\-Region\-Of\-Interest}}
+\index{set\-Region\-Of\-Interest@{set\-Region\-Of\-Interest}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Region\-Of\-Interest}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Region\-Of\-Interest (
+\begin{DoxyParamCaption}
+\item[{{\bf Point3f}}]{min, }
+\item[{{\bf Point3f}}]{max}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a1978e6bc32b29821fcd8d673182da7c9}
+
+\begin{DoxyParams}{Parameters}
+{\em min} & \\
+\hline
+{\em max} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_aa729fd6391a148f9bad170a652ec6d7d}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Tilt@{set\-Tilt}}
+\index{set\-Tilt@{set\-Tilt}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Tilt}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Tilt (
+\begin{DoxyParamCaption}
+\item[{float}]{tilt}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_aa729fd6391a148f9bad170a652ec6d7d}
+
+\begin{DoxyParams}{Parameters}
+{\em tilt} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_aec22644edb73716c0be90a8aad3f9bdb}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Use\-Max\-Arc\-Length@{set\-Use\-Max\-Arc\-Length}}
+\index{set\-Use\-Max\-Arc\-Length@{set\-Use\-Max\-Arc\-Length}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Use\-Max\-Arc\-Length}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Use\-Max\-Arc\-Length (
+\begin{DoxyParamCaption}
+\item[{bool}]{use\-Max\-Arc\-Length}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_aec22644edb73716c0be90a8aad3f9bdb}
+
+\begin{DoxyParams}{Parameters}
+{\em use\-Max\-Arc\-Length} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_adeeddca01155c69abfdd85711e049568}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!set\-Use\-Region\-Of\-Interest@{set\-Use\-Region\-Of\-Interest}}
+\index{set\-Use\-Region\-Of\-Interest@{set\-Use\-Region\-Of\-Interest}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{set\-Use\-Region\-Of\-Interest}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Tracer\-::set\-Use\-Region\-Of\-Interest (
+\begin{DoxyParamCaption}
+\item[{bool}]{use\-R\-O\-I}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_adeeddca01155c69abfdd85711e049568}
+
+\begin{DoxyParams}{Parameters}
+{\em use\-R\-O\-I} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classccmc_1_1_tracer_a3166d314066e3c83e935e01b37554e63}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!unidirectional\-Trace@{unidirectional\-Trace}}
+\index{unidirectional\-Trace@{unidirectional\-Trace}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{unidirectional\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Tracer\-::unidirectional\-Trace (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{start\-Component1, }
+\item[{const float \&}]{start\-Component2, }
+\item[{const float \&}]{start\-Component3, }
+\item[{const {\bf Direction} \&}]{dir = {\ttfamily {\bf F\-O\-W\-A\-R\-D}}}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a3166d314066e3c83e935e01b37554e63}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em start\-Component1} & \\
+\hline
+{\em start\-Component2} & \\
+\hline
+{\em start\-Component3} & \\
+\hline
+{\em dir} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_a3166d314066e3c83e935e01b37554e63_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_tracer_a5f271069b9f92eafb9db48893ef19128}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!unidirectional\-Trace\-With\-Dipole@{unidirectional\-Trace\-With\-Dipole}}
+\index{unidirectional\-Trace\-With\-Dipole@{unidirectional\-Trace\-With\-Dipole}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{unidirectional\-Trace\-With\-Dipole}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Fieldline} ccmc\-::\-Tracer\-::unidirectional\-Trace\-With\-Dipole (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{start\-Component1, }
+\item[{const float \&}]{start\-Component2, }
+\item[{const float \&}]{start\-Component3, }
+\item[{const {\bf Direction} \&}]{dir = {\ttfamily {\bf F\-O\-W\-A\-R\-D}}}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_tracer_a5f271069b9f92eafb9db48893ef19128}
+T\-O\-D\-O\-: finish documentation 
+\begin{DoxyParams}{Parameters}
+{\em variable} & \\
+\hline
+{\em start\-Component1} & \\
+\hline
+{\em start\-Component2} & \\
+\hline
+{\em start\-Component3} & \\
+\hline
+{\em dir} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_tracer_a5f271069b9f92eafb9db48893ef19128_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classccmc_1_1_tracer_ae7a4953e9ca43eb93535b869864f6062}{\index{ccmc\-::\-Tracer@{ccmc\-::\-Tracer}!interpolator@{interpolator}}
+\index{interpolator@{interpolator}!ccmc::Tracer@{ccmc\-::\-Tracer}}
+\subsubsection[{interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator}$\ast$ ccmc\-::\-Tracer\-::interpolator}}\label{classccmc_1_1_tracer_ae7a4953e9ca43eb93535b869864f6062}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_tracer_8h}{Tracer.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_tracer_8cpp}{Tracer.\-cpp}\end{DoxyCompactItemize}

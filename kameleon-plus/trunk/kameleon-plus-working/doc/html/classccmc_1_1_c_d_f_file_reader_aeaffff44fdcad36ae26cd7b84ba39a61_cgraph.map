@@ -1,0 +1,7 @@
+<map id="ccmc::CDFFileReader::getGlobalAttribute" name="ccmc::CDFFileReader::getGlobalAttribute">
+<area shape="rect" id="node3" href="$classccmc_1_1_c_d_f_file_reader.html#a79af95b7733b9f75fcb492a599751b3b" title="ccmc::CDFFileReader\l::getGlobalAttributeID" alt="" coords="216,5,384,46"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_c_d_f_file_reader.html#af7d28ab77cd25e50fcf0c1a55908331a" title="ccmc::CDFFileReader\l::getGlobalAttribute" alt="" coords="219,70,381,111"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_attribute.html#a26894d09527f45cf5f43b799cbce6db1" title="ccmc::Attribute::setAttributeName" alt="" coords="433,19,689,45"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_attribute.html#a8430f2e0b3fe3792e39132785ed87874" title="ccmc::Attribute::setAttribute\lValue" alt="" coords="451,70,671,111"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_attribute.html#a4c1cb6f974a0c9fcd301e5e1b522f01b" title="ccmc::Attribute::getAttributeName" alt="" coords="433,136,690,163"/>
+</map>

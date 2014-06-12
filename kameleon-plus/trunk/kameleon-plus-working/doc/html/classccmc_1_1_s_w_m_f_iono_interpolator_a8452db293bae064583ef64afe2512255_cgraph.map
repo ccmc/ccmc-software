@@ -1,0 +1,5 @@
+<map id="ccmc::SWMFIonoInterpolator::interpolate" name="ccmc::SWMFIonoInterpolator::interpolate">
+<area shape="rect" id="node3" href="$classccmc_1_1_s_w_m_f_iono_interpolator.html#a31727a6f4419370e5aabc9a859f360ae" title="Interpolates the variable specified at position (c0,c1,c2)." alt="" coords="273,5,490,46"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_general_file_reader.html#a6cc488b707602f3b4438408826d3df02" title="ccmc::GeneralFileReader\l::getVariableID" alt="" coords="539,5,725,46"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_file_reader.html#a937185c6d323262f7c3f3c4d39b59e37" title="ccmc::FileReader::getVariableID" alt="" coords="774,12,1010,39"/>
+</map>

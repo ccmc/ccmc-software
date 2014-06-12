@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Tue Jun 14 18:08:12 EDT 2011 -->
+
+<MSFCattrs>
+
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis1</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis2</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis3</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>naxis_size</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>date</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>telescope</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>instrument</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>observation_site</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>sun_angle</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>carrington_rotation</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="grid size variables">
+      <name>number_of_elements</name>
+      <datatype>long</datatype>
+</Variable>
+
+
+
+<Variable type="object" specification="data storage">
+      <name>longitude</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>latitude</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>theta</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>phi</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>theta_rad</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>phi_rad</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>theta_deg</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>phi_deg</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>b_l</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>b_t</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="data storage">
+      <name>raz</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>longitude_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>longitude_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>latitude_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>latitude_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>b_l_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>b_l_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>b_t_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>b_t_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>raz_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>raz_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+
+
+
+
+
+</MSFCattrs>

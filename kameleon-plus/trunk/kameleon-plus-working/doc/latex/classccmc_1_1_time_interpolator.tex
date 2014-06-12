@@ -1,0 +1,275 @@
+\hypertarget{classccmc_1_1_time_interpolator}{\section{ccmc\-:\-:Time\-Interpolator Class Reference}
+\label{classccmc_1_1_time_interpolator}\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}}
+}
+
+
+{\ttfamily \#include $<$Time\-Interpolator.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_time_interpolator_a1c970e027859e2a0bb415e99427ae995}{Time\-Interpolator} ()
+\item 
+virtual \hyperlink{classccmc_1_1_time_interpolator_ade7807cb2a4e0916bd9014aca1bd0da6}{$\sim$\-Time\-Interpolator} ()
+\item 
+void \hyperlink{classccmc_1_1_time_interpolator_aaa61a9153116b891697833dfa46d16c9}{add\-Timestep} (const std\-::string \&filename)
+\item 
+void \hyperlink{classccmc_1_1_time_interpolator_ab8a45909a67aa7a59cca6aad8370f7f4}{remove\-Timestep} (const \hyperlink{classccmc_1_1_time}{Time} \&time)
+\item 
+std\-::vector$<$ \hyperlink{classccmc_1_1_time}{Time} $>$ \hyperlink{classccmc_1_1_time_interpolator_abaed778bc6352cb106dc0a1789a66ae7}{get\-Timesteps} ()
+\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_time_interpolator_a08c60c2162e8e4462c95566169678a13}{get\-Interpolator} (const \hyperlink{classccmc_1_1_time}{Time} \&time)
+\item 
+\hyperlink{classccmc_1_1_kameleon}{Kameleon} $\ast$ \hyperlink{classccmc_1_1_time_interpolator_a4464180e9cf07bdf490cc40a59102f81}{get\-Kameleon} (const \hyperlink{classccmc_1_1_time}{Time} \&time)
+\item 
+bool \hyperlink{classccmc_1_1_time_interpolator_a8fd3680bc1579890ea62c41145d5422f}{manage\-Memory} (const \hyperlink{classccmc_1_1_time}{Time} \&time, const std\-::vector$<$ std\-::string $>$ \&variable)
+\item 
+bool \hyperlink{classccmc_1_1_time_interpolator_a004a7a3560ca12234a43a481e6b56d07}{manage\-Memory} (const \hyperlink{classccmc_1_1_time}{Time} \&time, const char $\ast$variable\mbox{[}$\,$\mbox{]}, int num\-Vars)
+\item 
+void \hyperlink{classccmc_1_1_time_interpolator_ab1063eb20024f1f3e9923b1cff0a4060}{close\-And\-Cleanup\-Memory} ()
+\item 
+float \hyperlink{classccmc_1_1_time_interpolator_ab80987872d9d6d58c49d30a86e499e86}{interpolate} (const \hyperlink{classccmc_1_1_time}{Time} \&time, const std\-::string \&variable, const float \&c0, const float \&c1, const float \&c2)
+\item 
+float \hyperlink{classccmc_1_1_time_interpolator_ac8a3ca21476a05edf2ea427369266505}{interpolate} (const \hyperlink{classccmc_1_1_time}{Time} \&time, int variable, const float \&c0, const float \&c1, const float \&c2)
+\item 
+void \hyperlink{classccmc_1_1_time_interpolator_a6295ebae47e50a0d80fd646a294d4ccd}{clear\-All} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classccmc_1_1_time}{Time} \hyperlink{classccmc_1_1_time_interpolator_a0d265523f630f65ba2f905cda85a66eb}{parse\-Time} (const std\-::string \&time\-String)
+\item 
+static std\-::string \hyperlink{classccmc_1_1_time_interpolator_ab14064752057b303dce510fd9b44caf2}{to\-String} (const \hyperlink{classccmc_1_1_time}{Time} \&time)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_time_interpolator_a1c970e027859e2a0bb415e99427ae995}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!Time\-Interpolator@{Time\-Interpolator}}
+\index{Time\-Interpolator@{Time\-Interpolator}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{Time\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Time\-Interpolator\-::\-Time\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_a1c970e027859e2a0bb415e99427ae995}
+\hypertarget{classccmc_1_1_time_interpolator_ade7807cb2a4e0916bd9014aca1bd0da6}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!$\sim$\-Time\-Interpolator@{$\sim$\-Time\-Interpolator}}
+\index{$\sim$\-Time\-Interpolator@{$\sim$\-Time\-Interpolator}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{$\sim$\-Time\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-Time\-Interpolator\-::$\sim$\-Time\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_time_interpolator_ade7807cb2a4e0916bd9014aca1bd0da6}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_time_interpolator_aaa61a9153116b891697833dfa46d16c9}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!add\-Timestep@{add\-Timestep}}
+\index{add\-Timestep@{add\-Timestep}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{add\-Timestep}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Time\-Interpolator\-::add\-Timestep (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_aaa61a9153116b891697833dfa46d16c9}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_time_interpolator_aaa61a9153116b891697833dfa46d16c9_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_a6295ebae47e50a0d80fd646a294d4ccd}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!clear\-All@{clear\-All}}
+\index{clear\-All@{clear\-All}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{clear\-All}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Time\-Interpolator\-::clear\-All (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_a6295ebae47e50a0d80fd646a294d4ccd}
+\hypertarget{classccmc_1_1_time_interpolator_ab1063eb20024f1f3e9923b1cff0a4060}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!close\-And\-Cleanup\-Memory@{close\-And\-Cleanup\-Memory}}
+\index{close\-And\-Cleanup\-Memory@{close\-And\-Cleanup\-Memory}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{close\-And\-Cleanup\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Time\-Interpolator\-::close\-And\-Cleanup\-Memory (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_ab1063eb20024f1f3e9923b1cff0a4060}
+\hypertarget{classccmc_1_1_time_interpolator_a08c60c2162e8e4462c95566169678a13}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!get\-Interpolator@{get\-Interpolator}}
+\index{get\-Interpolator@{get\-Interpolator}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{get\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator} $\ast$ ccmc\-::\-Time\-Interpolator\-::get\-Interpolator (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_a08c60c2162e8e4462c95566169678a13}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classccmc_1_1_time_interpolator_a08c60c2162e8e4462c95566169678a13_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_a4464180e9cf07bdf490cc40a59102f81}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!get\-Kameleon@{get\-Kameleon}}
+\index{get\-Kameleon@{get\-Kameleon}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{get\-Kameleon}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Kameleon} $\ast$ ccmc\-::\-Time\-Interpolator\-::get\-Kameleon (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_a4464180e9cf07bdf490cc40a59102f81}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classccmc_1_1_time_interpolator_a4464180e9cf07bdf490cc40a59102f81_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_abaed778bc6352cb106dc0a1789a66ae7}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!get\-Timesteps@{get\-Timesteps}}
+\index{get\-Timesteps@{get\-Timesteps}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{get\-Timesteps}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ {\bf Time} $>$ ccmc\-::\-Time\-Interpolator\-::get\-Timesteps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_abaed778bc6352cb106dc0a1789a66ae7}
+\hypertarget{classccmc_1_1_time_interpolator_ab80987872d9d6d58c49d30a86e499e86}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-Time\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time, }
+\item[{const std\-::string \&}]{variable, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_ab80987872d9d6d58c49d30a86e499e86}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classccmc_1_1_time_interpolator_ab80987872d9d6d58c49d30a86e499e86_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_ac8a3ca21476a05edf2ea427369266505}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!interpolate@{interpolate}}
+\index{interpolate@{interpolate}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{interpolate}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-Time\-Interpolator\-::interpolate (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time, }
+\item[{int}]{variable, }
+\item[{const float \&}]{c0, }
+\item[{const float \&}]{c1, }
+\item[{const float \&}]{c2}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_ac8a3ca21476a05edf2ea427369266505}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classccmc_1_1_time_interpolator_ac8a3ca21476a05edf2ea427369266505_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_a8fd3680bc1579890ea62c41145d5422f}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!manage\-Memory@{manage\-Memory}}
+\index{manage\-Memory@{manage\-Memory}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{manage\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc\-::\-Time\-Interpolator\-::manage\-Memory (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time, }
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{variables}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_a8fd3680bc1579890ea62c41145d5422f}
+Manages the memory and the opened files based on the time and variable specified. 
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_time_interpolator_a8fd3680bc1579890ea62c41145d5422f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_a004a7a3560ca12234a43a481e6b56d07}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!manage\-Memory@{manage\-Memory}}
+\index{manage\-Memory@{manage\-Memory}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{manage\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}bool ccmc\-::\-Time\-Interpolator\-::manage\-Memory (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time, }
+\item[{const char $\ast$}]{variables\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{num\-Vars}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_a004a7a3560ca12234a43a481e6b56d07}
+Manages the memory and the opened files based on the time and variable specified. 
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_time_interpolator_a004a7a3560ca12234a43a481e6b56d07_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_a0d265523f630f65ba2f905cda85a66eb}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!parse\-Time@{parse\-Time}}
+\index{parse\-Time@{parse\-Time}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{parse\-Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Time} ccmc\-::\-Time\-Interpolator\-::parse\-Time (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{time\-String}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_time_interpolator_a0d265523f630f65ba2f905cda85a66eb}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_time_interpolator_a0d265523f630f65ba2f905cda85a66eb_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_time_interpolator_ab8a45909a67aa7a59cca6aad8370f7f4}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!remove\-Timestep@{remove\-Timestep}}
+\index{remove\-Timestep@{remove\-Timestep}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{remove\-Timestep}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-Time\-Interpolator\-::remove\-Timestep (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_time_interpolator_ab8a45909a67aa7a59cca6aad8370f7f4}
+\hypertarget{classccmc_1_1_time_interpolator_ab14064752057b303dce510fd9b44caf2}{\index{ccmc\-::\-Time\-Interpolator@{ccmc\-::\-Time\-Interpolator}!to\-String@{to\-String}}
+\index{to\-String@{to\-String}!ccmc::TimeInterpolator@{ccmc\-::\-Time\-Interpolator}}
+\subsubsection[{to\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string ccmc\-::\-Time\-Interpolator\-::to\-String (
+\begin{DoxyParamCaption}
+\item[{const {\bf Time} \&}]{time}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_time_interpolator_ab14064752057b303dce510fd9b44caf2}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_time_interpolator_ab14064752057b303dce510fd9b44caf2_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_time_interpolator_8h}{Time\-Interpolator.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_time_interpolator_8cpp}{Time\-Interpolator.\-cpp}\end{DoxyCompactItemize}

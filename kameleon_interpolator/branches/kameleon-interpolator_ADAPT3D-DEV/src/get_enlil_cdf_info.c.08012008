@@ -1,0 +1,936 @@
+/*******************************************************************************
+ *                                                                             *
+ *       NAME:          get_enlil_cdf_info.c                                   *
+ *                                                                             *
+ *       VERSION:       1.0                                                    *
+ *                                                                             *
+ *       AUTHOR:        Marlo M. H. Maddox                                     *
+ *                      NASA-GSFC-AETD-ISD-ADMA(587)-CCMC                      *
+ *                      Marlo.Maddox@nasa.gov                                  *
+ *                      (301) 286 - 5202                                       *
+ *                                                                             *
+ *       PURPOSE:       Extracts all relevant information for identifying      *
+ *                      variables etc from the enlil cdf file.  This routine is*
+ *                      called by the open_cdf call Variable numbers are       *
+ *                      extracted along with actual position values. If an     *
+ *                      interpolate call is issued, the code will already have *
+ *                      information in memory to make data access faster.      *
+ *                                                                             *
+ *       INPUTS:                                                               *
+ *                                                                             *
+ *       OUTPUTS:                                                              *
+ *                                                                             *
+ *       FUNCTIONS:                                                            *
+ *                                                                             *
+ *       VARIABLES:                                                            *
+ *                                                                             *
+ *                                                                             *
+ *       MODIFICATION                                                          *
+ *       HISTORY:                                                              *
+ *                                                                             *
+ *       08.01.2006     Maddox, Marlo                                          *
+ *                      Initial development started                            *
+ *                                                                             *
+ *       08.29.2006     Maddox, Marlo                                          *
+ *                      Added b1x,b1y,b1z                                      *
+ *                                                                             *
+ *       10.04.2006     Maddox, Marlo                                          *
+ *                      Changed function type for load_*_cdf_variable_into_main*
+ *                      from void to int                                       *
+ *                                                                             *
+ *                      also checking return status from reserve_mem_and_set   *
+ *                      function...returning wit error if var not found        *
+ *                                                                             *
+ *       11.09.2006     Maddox, Marlo                                          *
+ *                      BUG FIX - load_enlil_cdf_variable_into_main_memory block
+ *                      had if where there should have been an else if by b1x  *
+ ******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <math.h>
+#include <stdarg.h>
+#include "cdf_interface_variables.h"
+#include "enlil_cdf_interface_variables.h"
+#include "cdf.h"
+
+#define DEBUG_FLAG 0
+
+void get_enlil_cdf_info(
+      int main_memory_flag)
+{
+
+   void allocate_defaults_d(
+         void);
+
+   CDFstatus status;
+
+   long recordStart = 0;
+   long recordCount = 1;
+   long recordInterval = 1;
+   long counts[1] =
+   { 0 };
+   long intervals[1] =
+   { 1 };
+   long indices[1];
+
+   int i;
+
+   counts[0] = 1; /* set values */
+   intervals[0] = 1;
+
+   allocate_defaults_d();
+
+   /**** get all of the cdf attribute/variable numbers that will be needed ****/
+
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, x_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, x_name, &x_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, y_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, y_name, &y_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, z_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, z_name, &z_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, T_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, T_name, &T_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, bx_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, bx_name, &bx_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, by_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, by_name, &by_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, bz_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, bz_name, &bz_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, b1x_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, b1x_name, &b1x_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, b1y_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, b1y_name, &b1y_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, b1z_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, b1z_name, &b1z_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, ux_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, ux_name, &ux_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, uy_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, uy_name, &uy_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, uz_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, uz_name, &uz_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, rho_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, rho_name, &rho_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, dp_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, dp_name, &dp_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, zVAR_EXISTENCE_, bp_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, zVAR_NUMBER_, bp_name, &bp_cdf_varNum, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+
+   /***  NOTE THESE ARE ATTRIBUTES SO USE CONFRIM ATTR_EXISTENCE... ***/
+
+   if (CDFlib( CONFIRM_, ATTR_EXISTENCE_, NX_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, ATTR_NUMBER_, NX_name, &NX_cdf_num, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, ATTR_EXISTENCE_, NY_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, ATTR_NUMBER_, NY_name, &NY_cdf_num, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   if (CDFlib( CONFIRM_, ATTR_EXISTENCE_, NZ_name, NULL_) == CDF_OK)
+   {
+      status = CDFlib( GET_, ATTR_NUMBER_, NZ_name, &NZ_cdf_num, NULL_);
+      if (status != CDF_OK)
+         StatusHandler(status);
+   }
+   /*
+    printf("%s  DEBUG\t finished getting cdf nums\n", __FILE__ );
+    */
+
+   /***************** use cdf_varNums to get actual scalar values *************/
+
+   /********* get value for NX **********/
+   status = CDFlib(
+   SELECT_, ATTR_, NX_cdf_num,
+   SELECT_, gENTRY_, 0,
+   GET_, gENTRY_DATA_, &NX,
+   NULL_);
+   if (status != CDF_OK)
+      StatusHandler(status);
+
+   /********* get value for NY **********/
+   status = CDFlib(
+   SELECT_, ATTR_, NY_cdf_num,
+   SELECT_, gENTRY_, 0,
+   GET_, gENTRY_DATA_, &NY,
+   NULL_);
+   if (status != CDF_OK)
+      StatusHandler(status);
+
+   /********* get value for NZ **********/
+   status = CDFlib(
+   SELECT_, ATTR_, NZ_cdf_num,
+   SELECT_, gENTRY_, 0,
+   GET_, gENTRY_DATA_, &NZ,
+   NULL_);
+   if (status != CDF_OK)
+      StatusHandler(status);
+
+   /*convert original float N* to int n* */
+   /* bats NX was float but ucla,ctip,enlil are int no conversion needed fix latter*/
+
+   nx = NX;
+   ny = NY;
+   nz = NZ;
+
+   /*
+    printf("DEBUG\tINFO from get_enlil_cdf_info\n");
+    printf("DEBUG\tNX=%d & nx=%d\n", NX, nx );
+    printf("DEBUG\tNY=%d & ny=%d\n", NY, ny );
+    printf("DEBUG\tNZ=%d & nz=%d\n", NZ, nz );
+
+    printf("DEBUG\t main_memory_flag = %d\n", main_memory_flag);
+    */
+
+   /********************* allocate space for unique x, y, & z positions *******/
+   if ( (x_pos = ( float * ) calloc(
+         nx,
+         sizeof(float)) ) == NULL)
+   {
+      printf("\ncalloc failed for x_pos buffer!\n");
+      exit( EXIT_FAILURE);
+   }
+   if ( (y_pos = ( float * ) calloc(
+         ny,
+         sizeof(float)) ) == NULL)
+   {
+      printf("\ncalloc failed for y_pos buffer!\n");
+      exit( EXIT_FAILURE);
+   }
+   if ( (z_pos = ( float * ) calloc(
+         nz,
+         sizeof(float)) ) == NULL)
+   {
+      printf("\ncalloc failed for z_pos buffer!\n");
+      exit( EXIT_FAILURE);
+   }
+
+   /*
+    printf("DEBUG\tspace allocated for variables...\n");
+    */
+
+   /***************************** get unique x,y,z values *********************/
+
+   counts[0] = nx;
+   indices[0] = 0;
+   intervals[0] = 1;
+
+   status = CDFlib(
+   SELECT_, zVAR_, x_cdf_varNum,
+   SELECT_, zVAR_RECNUMBER_, recordStart,
+   SELECT_, zVAR_RECCOUNT_, recordCount,
+   SELECT_, zVAR_RECINTERVAL_, recordInterval,
+   SELECT_, zVAR_DIMINDICES_, indices,
+   SELECT_, zVAR_DIMCOUNTS_, counts,
+   SELECT_, zVAR_DIMINTERVALS_, intervals,
+   GET_, zVAR_HYPERDATA_, x_pos,
+   NULL_);
+   if (status != CDF_OK)
+      StatusHandler(status);
+
+   counts[0] = ny;
+
+   status = CDFlib(
+   SELECT_, zVAR_, y_cdf_varNum,
+   SELECT_, zVAR_RECNUMBER_, recordStart,
+   SELECT_, zVAR_RECCOUNT_, recordCount,
+   SELECT_, zVAR_RECINTERVAL_, recordInterval,
+   SELECT_, zVAR_DIMINDICES_, indices,
+   SELECT_, zVAR_DIMCOUNTS_, counts,
+   SELECT_, zVAR_DIMINTERVALS_, intervals,
+   GET_, zVAR_HYPERDATA_, y_pos,
+   NULL_);
+   if (status != CDF_OK)
+      StatusHandler(status);
+
+   counts[0] = nz;
+
+   status = CDFlib(
+   SELECT_, zVAR_, z_cdf_varNum,
+   SELECT_, zVAR_RECNUMBER_, recordStart,
+   SELECT_, zVAR_RECCOUNT_, recordCount,
+   SELECT_, zVAR_RECINTERVAL_, recordInterval,
+   SELECT_, zVAR_DIMINDICES_, indices,
+   SELECT_, zVAR_DIMCOUNTS_, counts,
+   SELECT_, zVAR_DIMINTERVALS_, intervals,
+   GET_, zVAR_HYPERDATA_, z_pos,
+   NULL_);
+   if (status != CDF_OK)
+      StatusHandler(status);
+
+   /****** more debug repoting ******/
+   /** print first few values for position variables **/
+
+   /*
+    for( i = 0; i < 30; i++ )
+    {
+    printf( "INDEX-------------- %d\nx_pos[%d] = %f\ny_pos[%d] = %f\nz_pos[%d] = %f\n", i, i, x_pos[i], i, y_pos[i], i, z_pos[i] );
+    }
+    */
+
+   return;
+
+}
+
+int load_enlil_cdf_variable_into_main_memory(
+      char *variable_to_read)
+{
+
+   CDFstatus status;
+
+   long recordStart = 0;
+   long recordCount = 1;
+   long recordInterval = 1;
+   long counts[1] =
+   { 0 };
+   long intervals[1] =
+   { 1 };
+   long indices[1];
+
+   long variable_cdf_number;
+
+   int enlil_reserve_mem_and_set_cdf_num(
+         char *);
+
+   /*printf("%s  DEBUG\tinside load\n", __FILE__ );*/
+
+   variable_cdf_number = enlil_reserve_mem_and_set_cdf_num(variable_to_read);
+
+   if ( DEBUG_FLAG)
+      printf(
+            "DEBUG:\t%s\tvariable_to_read = %s",
+__FILE__      , variable_to_read );
+
+      if( variable_cdf_number == -1 )
+      {  printf("ERROR:\tcould not find cdf variable number for -->%s<--\n", variable_to_read ); return EXIT_FAILURE; /*exit( EXIT_FAILURE );*/}
+
+      if( DEBUG_FLAG ) printf("DEBUG:\t%s\tvariable_to_read = %s\tvariable_number = %ld\n", __FILE__, variable_to_read, variable_cdf_number );
+
+      /*printf("DEBUG\tback from reserve mem with cdf_varNum %d for variable %s \n", variable_cdf_number, variable_to_read ); */
+
+      counts[0] = nx * ny * nz;
+      indices[0] = 0;
+      intervals[0] = 1;
+
+      if( DEBUG_FLAG ) printf("strcmp( %s, %s ) = %d\n", variable_to_read, bx_name, strcmp( variable_to_read, bx_name ) );
+
+      if ( ! strcmp( variable_to_read, bx_name ) )
+      {
+
+         if( DEBUG_FLAG ) printf("strcmp( %s, %s ) = %d\n", variable_to_read, bx_name, strcmp( variable_to_read, bx_name ) );
+
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, bx,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, by_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, by,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, bz_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, bz,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, b1x_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, b1x,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, b1y_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, b1y,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, b1z_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, b1z,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, ux_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, ux,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, uy_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, uy,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, uz_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, uz,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, rho_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, rho,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, T_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, T,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, dp_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, dp,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else if ( ! strcmp( variable_to_read, bp_name ) )
+      {
+         status = CDFlib (
+         SELECT_, zVAR_, variable_cdf_number,
+         SELECT_, zVAR_RECNUMBER_, recordStart,
+         SELECT_, zVAR_RECCOUNT_, recordCount,
+         SELECT_, zVAR_RECINTERVAL_, recordInterval,
+         SELECT_, zVAR_DIMINDICES_, indices,
+         SELECT_, zVAR_DIMCOUNTS_, counts,
+         SELECT_, zVAR_DIMINTERVALS_, intervals,
+         GET_, zVAR_HYPERDATA_, bp,
+         NULL_
+         );
+         if(status != CDF_OK) StatusHandler (status);
+      }
+      else
+      {
+         /* INSERT ERROR HANDLER HERE */
+         printf("couldn't find %s variable to load...\n", variable_to_read );
+         return EXIT_FAILURE;
+      }
+
+      /*printf("DEBUG\tfinished hyper read returning\n");*/
+
+      return EXIT_SUCCESS;
+
+   }
+
+int enlil_reserve_mem_and_set_cdf_num(
+      char *variable_number_to_get)
+{
+   int buffer_size = nx * ny * nz;
+
+   /*printf("DEBUG\tinside resrve mem\n");*/
+
+   /* return cdf variable Number for given variable */
+
+   if ( !strcmp(
+         variable_number_to_get,
+         bx_name) )
+   {
+      if ( (bx = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               bx_name);
+         exit( EXIT_FAILURE);
+      }
+      return bx_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         by_name) )
+   {
+      if ( (by = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               by_name);
+         exit( EXIT_FAILURE);
+      }
+      return by_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         bz_name) )
+   {
+      if ( (bz = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               bz_name);
+         exit( EXIT_FAILURE);
+      }
+      return bz_cdf_varNum;
+   }
+   if ( !strcmp(
+         variable_number_to_get,
+         b1x_name) )
+   {
+      if ( (b1x = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               b1x_name);
+         exit( EXIT_FAILURE);
+      }
+      return b1x_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         b1y_name) )
+   {
+      if ( (b1y = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               b1y_name);
+         exit( EXIT_FAILURE);
+      }
+      return b1y_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         b1z_name) )
+   {
+      if ( (b1z = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               b1z_name);
+         exit( EXIT_FAILURE);
+      }
+      return b1z_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         ux_name) )
+   {
+      if ( (ux = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               ux_name);
+         exit( EXIT_FAILURE);
+      }
+      return ux_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         uy_name) )
+   {
+      if ( (uy = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               uy_name);
+         exit( EXIT_FAILURE);
+      }
+      return uy_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         uz_name) )
+   {
+      if ( (uz = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               uz_name);
+         exit( EXIT_FAILURE);
+      }
+      return uz_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         rho_name) )
+   {
+      if ( (rho = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               rho_name);
+         exit( EXIT_FAILURE);
+      }
+      return rho_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         dp_name) )
+   {
+      if ( (dp = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               dp_name);
+         exit( EXIT_FAILURE);
+      }
+      return dp_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         bp_name) )
+   {
+      if ( (bp = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               bp_name);
+         exit( EXIT_FAILURE);
+      }
+      return bp_cdf_varNum;
+   }
+   else if ( !strcmp(
+         variable_number_to_get,
+         T_name) )
+   {
+      if ( (T = ( float * ) calloc(
+            buffer_size,
+            sizeof(float)) ) == NULL)
+      {
+         printf(
+               "\ncalloc failed for %s buffer!\n",
+               T_name);
+         exit( EXIT_FAILURE);
+      }
+      return T_cdf_varNum;
+   }
+   else
+   {
+      return -1;
+   }
+   /*else { printf("ERROR:\tcould not find cdf variable number for %s\n", variable ); return 0; }*/
+
+}
+
+void allocate_defaults_d(
+      void)
+{
+   /************ we need to allocate space for all varoiables even when no main mem option is set
+    * this allows the all inclusing close to work properly as it tries to free all variables.  We only need
+    * to hold a enough space for a single value ******/
+
+   if ( (bx = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            bx_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (by = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            by_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (bz = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            bz_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (b1x = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            b1x_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (b1y = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            b1y_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (b1z = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            b1z_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (ux = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            ux_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (uy = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            uy_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (uz = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            uz_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (rho = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            rho_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (dp = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            dp_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (bp = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            bp_name);
+      exit( EXIT_FAILURE);
+   }
+   if ( (T = ( float * ) calloc(
+         1,
+         sizeof(float)) ) == NULL)
+   {
+      printf(
+            "\nallocate_defaults_d calloc failed for %s buffer!\n",
+            T_name);
+      exit( EXIT_FAILURE);
+   }
+
+   return;
+}
+

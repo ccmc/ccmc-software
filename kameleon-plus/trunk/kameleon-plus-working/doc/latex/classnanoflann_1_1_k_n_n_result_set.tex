@@ -1,0 +1,77 @@
+\hypertarget{classnanoflann_1_1_k_n_n_result_set}{\section{nanoflann\-:\-:K\-N\-N\-Result\-Set$<$ Distance\-Type, Index\-Type, Count\-Type $>$ Class Template Reference}
+\label{classnanoflann_1_1_k_n_n_result_set}\index{nanoflann\-::\-K\-N\-N\-Result\-Set$<$ Distance\-Type, Index\-Type, Count\-Type $>$@{nanoflann\-::\-K\-N\-N\-Result\-Set$<$ Distance\-Type, Index\-Type, Count\-Type $>$}}
+}
+
+
+{\ttfamily \#include $<$nanoflann.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnanoflann_1_1_k_n_n_result_set_aa6696a234675a151e367a473b9845286}{K\-N\-N\-Result\-Set} (Count\-Type capacity\-\_\-)
+\item 
+void \hyperlink{classnanoflann_1_1_k_n_n_result_set_a3e472126b7b71e3d0ab5c41995801f4d}{init} (Index\-Type $\ast$indices\-\_\-, Distance\-Type $\ast$dists\-\_\-)
+\item 
+Count\-Type \hyperlink{classnanoflann_1_1_k_n_n_result_set_a898f4cea82346d58c00aeb5981fecdd8}{size} () const 
+\item 
+bool \hyperlink{classnanoflann_1_1_k_n_n_result_set_af3e2dfe50472001d0b4dd372cecd74d7}{full} () const 
+\item 
+void \hyperlink{classnanoflann_1_1_k_n_n_result_set_a617bfcdec87d7d1fa28a0674c5a433df}{add\-Point} (Distance\-Type dist, Index\-Type index)
+\item 
+Distance\-Type \hyperlink{classnanoflann_1_1_k_n_n_result_set_aa29099bc2a68a9cf162796da072a2e50}{worst\-Dist} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnanoflann_1_1_k_n_n_result_set_aa6696a234675a151e367a473b9845286}{\index{nanoflann\-::\-K\-N\-N\-Result\-Set@{nanoflann\-::\-K\-N\-N\-Result\-Set}!K\-N\-N\-Result\-Set@{K\-N\-N\-Result\-Set}}
+\index{K\-N\-N\-Result\-Set@{K\-N\-N\-Result\-Set}!nanoflann::KNNResultSet@{nanoflann\-::\-K\-N\-N\-Result\-Set}}
+\subsubsection[{K\-N\-N\-Result\-Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t, typename Count\-Type = size\-\_\-t$>$ {\bf nanoflann\-::\-K\-N\-N\-Result\-Set}$<$ Distance\-Type, Index\-Type, Count\-Type $>$\-::{\bf K\-N\-N\-Result\-Set} (
+\begin{DoxyParamCaption}
+\item[{Count\-Type}]{capacity\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_n_n_result_set_aa6696a234675a151e367a473b9845286}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classnanoflann_1_1_k_n_n_result_set_a617bfcdec87d7d1fa28a0674c5a433df}{\index{nanoflann\-::\-K\-N\-N\-Result\-Set@{nanoflann\-::\-K\-N\-N\-Result\-Set}!add\-Point@{add\-Point}}
+\index{add\-Point@{add\-Point}!nanoflann::KNNResultSet@{nanoflann\-::\-K\-N\-N\-Result\-Set}}
+\subsubsection[{add\-Point}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t, typename Count\-Type = size\-\_\-t$>$ void {\bf nanoflann\-::\-K\-N\-N\-Result\-Set}$<$ Distance\-Type, Index\-Type, Count\-Type $>$\-::add\-Point (
+\begin{DoxyParamCaption}
+\item[{Distance\-Type}]{dist, }
+\item[{Index\-Type}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_n_n_result_set_a617bfcdec87d7d1fa28a0674c5a433df}
+\hypertarget{classnanoflann_1_1_k_n_n_result_set_af3e2dfe50472001d0b4dd372cecd74d7}{\index{nanoflann\-::\-K\-N\-N\-Result\-Set@{nanoflann\-::\-K\-N\-N\-Result\-Set}!full@{full}}
+\index{full@{full}!nanoflann::KNNResultSet@{nanoflann\-::\-K\-N\-N\-Result\-Set}}
+\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t, typename Count\-Type = size\-\_\-t$>$ bool {\bf nanoflann\-::\-K\-N\-N\-Result\-Set}$<$ Distance\-Type, Index\-Type, Count\-Type $>$\-::full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_n_n_result_set_af3e2dfe50472001d0b4dd372cecd74d7}
+\hypertarget{classnanoflann_1_1_k_n_n_result_set_a3e472126b7b71e3d0ab5c41995801f4d}{\index{nanoflann\-::\-K\-N\-N\-Result\-Set@{nanoflann\-::\-K\-N\-N\-Result\-Set}!init@{init}}
+\index{init@{init}!nanoflann::KNNResultSet@{nanoflann\-::\-K\-N\-N\-Result\-Set}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t, typename Count\-Type = size\-\_\-t$>$ void {\bf nanoflann\-::\-K\-N\-N\-Result\-Set}$<$ Distance\-Type, Index\-Type, Count\-Type $>$\-::init (
+\begin{DoxyParamCaption}
+\item[{Index\-Type $\ast$}]{indices\-\_\-, }
+\item[{Distance\-Type $\ast$}]{dists\-\_\-}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_n_n_result_set_a3e472126b7b71e3d0ab5c41995801f4d}
+\hypertarget{classnanoflann_1_1_k_n_n_result_set_a898f4cea82346d58c00aeb5981fecdd8}{\index{nanoflann\-::\-K\-N\-N\-Result\-Set@{nanoflann\-::\-K\-N\-N\-Result\-Set}!size@{size}}
+\index{size@{size}!nanoflann::KNNResultSet@{nanoflann\-::\-K\-N\-N\-Result\-Set}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t, typename Count\-Type = size\-\_\-t$>$ Count\-Type {\bf nanoflann\-::\-K\-N\-N\-Result\-Set}$<$ Distance\-Type, Index\-Type, Count\-Type $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_n_n_result_set_a898f4cea82346d58c00aeb5981fecdd8}
+\hypertarget{classnanoflann_1_1_k_n_n_result_set_aa29099bc2a68a9cf162796da072a2e50}{\index{nanoflann\-::\-K\-N\-N\-Result\-Set@{nanoflann\-::\-K\-N\-N\-Result\-Set}!worst\-Dist@{worst\-Dist}}
+\index{worst\-Dist@{worst\-Dist}!nanoflann::KNNResultSet@{nanoflann\-::\-K\-N\-N\-Result\-Set}}
+\subsubsection[{worst\-Dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Distance\-Type, typename Index\-Type = size\-\_\-t, typename Count\-Type = size\-\_\-t$>$ Distance\-Type {\bf nanoflann\-::\-K\-N\-N\-Result\-Set}$<$ Distance\-Type, Index\-Type, Count\-Type $>$\-::worst\-Dist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_k_n_n_result_set_aa29099bc2a68a9cf162796da072a2e50}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{nanoflann_8hpp}{nanoflann.\-hpp}\end{DoxyCompactItemize}

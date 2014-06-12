@@ -1,0 +1,162 @@
+\hypertarget{cxform_8h}{\section{/\-Users/apembrok/\-Documents/workspaces/workspace.bak2/workspace.backup/kameleon-\/plus/src/ccmc/cxform.h File Reference}
+\label{cxform_8h}\index{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/cxform.\-h@{/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/cxform.\-h}}
+}
+This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{cxform_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef double \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} \mbox{[}3\mbox{]}
+\item 
+typedef double \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
+\item 
+typedef enum \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction} \hyperlink{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{Direction}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{direction} \{ \hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098aa26736999186daf8146f809e863712a1}{F\-O\-R\-W\-A\-R\-D}, 
+\hyperlink{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098ac921ff2cfc571c1d19b0485d7f6926ee}{B\-A\-C\-K}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{cxform_8h_a7235e5f73870bb02d903c702b2d4a132}{cxform} (const char $\ast$from, const char $\ast$to, const double et, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-in, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out)
+\item 
+char $\ast$ \hyperlink{cxform_8h_abd49290e1247b54973b115f094ed9b53}{cxform\-\_\-err} (void)
+\item 
+double \hyperlink{cxform_8h_ab38449ac3ff3227ac30316a0155732ea}{gregorian\-\_\-calendar\-\_\-to\-\_\-jd} (int y, int m, int d, int h, int mi, int s)
+\item 
+long \hyperlink{cxform_8h_a294c5778cf62becb5a42d27920344c6f}{cx\-Round} (double doub)
+\item 
+long \hyperlink{cxform_8h_a5e51ba4e5ece049ac34832063e2c9a34}{date2es} (int yyyy, int mm, int dd, int hh, int mm2, int ss)
+\item 
+void \hyperlink{cxform_8h_a77c8e33324183648e2a9e4f77a422242}{mat\-\_\-transpose} (\hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m\-\_\-in, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m\-\_\-out)
+\item 
+void \hyperlink{cxform_8h_a1f4ce7c90920f310bb7543dd01ce4f98}{mat\-\_\-times\-\_\-mat} (\hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m1, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m2, \hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m\-\_\-out)
+\item 
+void \hyperlink{cxform_8h_a54a60b4e36dd4c95a7c129884bac2d9c}{mat\-\_\-times\-\_\-vec} (\hyperlink{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{Mat} m1, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v1, \hyperlink{cxform_8h_ae351b761259db318a538251033f3cb27}{Vec} v\-\_\-out)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}{\index{cxform.\-h@{cxform.\-h}!Direction@{Direction}}
+\index{Direction@{Direction}!cxform.h@{cxform.\-h}}
+\subsubsection[{Direction}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf direction} {\bf Direction}}}\label{cxform_8h_abc151ba67b4c70f0e8dc3fe894264aa1}
+\hypertarget{cxform_8h_a89c340f4673cd75af597763b492a8fa1}{\index{cxform.\-h@{cxform.\-h}!Mat@{Mat}}
+\index{Mat@{Mat}!cxform.h@{cxform.\-h}}
+\subsubsection[{Mat}]{\setlength{\rightskip}{0pt plus 5cm}typedef double Mat\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}}}\label{cxform_8h_a89c340f4673cd75af597763b492a8fa1}
+\hypertarget{cxform_8h_ae351b761259db318a538251033f3cb27}{\index{cxform.\-h@{cxform.\-h}!Vec@{Vec}}
+\index{Vec@{Vec}!cxform.h@{cxform.\-h}}
+\subsubsection[{Vec}]{\setlength{\rightskip}{0pt plus 5cm}typedef double Vec\mbox{[}3\mbox{]}}}\label{cxform_8h_ae351b761259db318a538251033f3cb27}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}{\index{cxform.\-h@{cxform.\-h}!direction@{direction}}
+\index{direction@{direction}!cxform.h@{cxform.\-h}}
+\subsubsection[{direction}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf direction}}}\label{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{F\-O\-R\-W\-A\-R\-D@{F\-O\-R\-W\-A\-R\-D}!cxform.\-h@{cxform.\-h}}\index{cxform.\-h@{cxform.\-h}!F\-O\-R\-W\-A\-R\-D@{F\-O\-R\-W\-A\-R\-D}}\item[{\em 
+\hypertarget{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098aa26736999186daf8146f809e863712a1}{F\-O\-R\-W\-A\-R\-D}\label{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098aa26736999186daf8146f809e863712a1}
+}]\index{B\-A\-C\-K@{B\-A\-C\-K}!cxform.\-h@{cxform.\-h}}\index{cxform.\-h@{cxform.\-h}!B\-A\-C\-K@{B\-A\-C\-K}}\item[{\em 
+\hypertarget{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098ac921ff2cfc571c1d19b0485d7f6926ee}{B\-A\-C\-K}\label{cxform_8h_a99f26e6ee9fcd62f75203b5402df8098ac921ff2cfc571c1d19b0485d7f6926ee}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{cxform_8h_a7235e5f73870bb02d903c702b2d4a132}{\index{cxform.\-h@{cxform.\-h}!cxform@{cxform}}
+\index{cxform@{cxform}!cxform.h@{cxform.\-h}}
+\subsubsection[{cxform}]{\setlength{\rightskip}{0pt plus 5cm}int cxform (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{from, }
+\item[{const char $\ast$}]{to, }
+\item[{const double}]{et, }
+\item[{{\bf Vec}}]{v\-\_\-in, }
+\item[{{\bf Vec}}]{v\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_a7235e5f73870bb02d903c702b2d4a132}
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=260pt]{cxform_8h_a7235e5f73870bb02d903c702b2d4a132_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{cxform_8h_abd49290e1247b54973b115f094ed9b53}{\index{cxform.\-h@{cxform.\-h}!cxform\-\_\-err@{cxform\-\_\-err}}
+\index{cxform\-\_\-err@{cxform\-\_\-err}!cxform.h@{cxform.\-h}}
+\subsubsection[{cxform\-\_\-err}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ cxform\-\_\-err (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_abd49290e1247b54973b115f094ed9b53}
+\hypertarget{cxform_8h_a294c5778cf62becb5a42d27920344c6f}{\index{cxform.\-h@{cxform.\-h}!cx\-Round@{cx\-Round}}
+\index{cx\-Round@{cx\-Round}!cxform.h@{cxform.\-h}}
+\subsubsection[{cx\-Round}]{\setlength{\rightskip}{0pt plus 5cm}long cx\-Round (
+\begin{DoxyParamCaption}
+\item[{double}]{doub}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_a294c5778cf62becb5a42d27920344c6f}
+\hypertarget{cxform_8h_a5e51ba4e5ece049ac34832063e2c9a34}{\index{cxform.\-h@{cxform.\-h}!date2es@{date2es}}
+\index{date2es@{date2es}!cxform.h@{cxform.\-h}}
+\subsubsection[{date2es}]{\setlength{\rightskip}{0pt plus 5cm}long date2es (
+\begin{DoxyParamCaption}
+\item[{int}]{yyyy, }
+\item[{int}]{mm, }
+\item[{int}]{dd, }
+\item[{int}]{hh, }
+\item[{int}]{mm2, }
+\item[{int}]{ss}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_a5e51ba4e5ece049ac34832063e2c9a34}
+\hypertarget{cxform_8h_ab38449ac3ff3227ac30316a0155732ea}{\index{cxform.\-h@{cxform.\-h}!gregorian\-\_\-calendar\-\_\-to\-\_\-jd@{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}}
+\index{gregorian\-\_\-calendar\-\_\-to\-\_\-jd@{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}!cxform.h@{cxform.\-h}}
+\subsubsection[{gregorian\-\_\-calendar\-\_\-to\-\_\-jd}]{\setlength{\rightskip}{0pt plus 5cm}double gregorian\-\_\-calendar\-\_\-to\-\_\-jd (
+\begin{DoxyParamCaption}
+\item[{int}]{y, }
+\item[{int}]{m, }
+\item[{int}]{d, }
+\item[{int}]{h, }
+\item[{int}]{mi, }
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_ab38449ac3ff3227ac30316a0155732ea}
+\hypertarget{cxform_8h_a1f4ce7c90920f310bb7543dd01ce4f98}{\index{cxform.\-h@{cxform.\-h}!mat\-\_\-times\-\_\-mat@{mat\-\_\-times\-\_\-mat}}
+\index{mat\-\_\-times\-\_\-mat@{mat\-\_\-times\-\_\-mat}!cxform.h@{cxform.\-h}}
+\subsubsection[{mat\-\_\-times\-\_\-mat}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-times\-\_\-mat (
+\begin{DoxyParamCaption}
+\item[{{\bf Mat}}]{m1, }
+\item[{{\bf Mat}}]{m2, }
+\item[{{\bf Mat}}]{m\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_a1f4ce7c90920f310bb7543dd01ce4f98}
+\hypertarget{cxform_8h_a54a60b4e36dd4c95a7c129884bac2d9c}{\index{cxform.\-h@{cxform.\-h}!mat\-\_\-times\-\_\-vec@{mat\-\_\-times\-\_\-vec}}
+\index{mat\-\_\-times\-\_\-vec@{mat\-\_\-times\-\_\-vec}!cxform.h@{cxform.\-h}}
+\subsubsection[{mat\-\_\-times\-\_\-vec}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-times\-\_\-vec (
+\begin{DoxyParamCaption}
+\item[{{\bf Mat}}]{m1, }
+\item[{{\bf Vec}}]{v1, }
+\item[{{\bf Vec}}]{v\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_a54a60b4e36dd4c95a7c129884bac2d9c}
+\hypertarget{cxform_8h_a77c8e33324183648e2a9e4f77a422242}{\index{cxform.\-h@{cxform.\-h}!mat\-\_\-transpose@{mat\-\_\-transpose}}
+\index{mat\-\_\-transpose@{mat\-\_\-transpose}!cxform.h@{cxform.\-h}}
+\subsubsection[{mat\-\_\-transpose}]{\setlength{\rightskip}{0pt plus 5cm}void mat\-\_\-transpose (
+\begin{DoxyParamCaption}
+\item[{{\bf Mat}}]{m\-\_\-in, }
+\item[{{\bf Mat}}]{m\-\_\-out}
+\end{DoxyParamCaption}
+)}}\label{cxform_8h_a77c8e33324183648e2a9e4f77a422242}

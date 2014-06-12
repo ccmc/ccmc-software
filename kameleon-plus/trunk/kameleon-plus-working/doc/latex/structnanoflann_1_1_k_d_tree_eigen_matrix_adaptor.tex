@@ -1,0 +1,234 @@
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor}{\section{nanoflann\-:\-:K\-D\-Tree\-Eigen\-Matrix\-Adaptor$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$ Struct Template Reference}
+\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor}\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$}}
+}
+
+
+{\ttfamily \#include $<$nanoflann.\-hpp$>$}
+
+
+
+Collaboration diagram for nanoflann\-:\-:K\-D\-Tree\-Eigen\-Matrix\-Adaptor$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \\*
+\hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor}{K\-D\-Tree\-Eigen\-Matrix\-Adaptor}\\*
+$<$ Matrix\-Type, D\-I\-M, Distance $>$ \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a4c0c1ed66c119195d5d35f5a87bf54c5}{self\-\_\-t}
+\item 
+typedef Matrix\-Type\-::\-Scalar \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{num\-\_\-t}
+\item 
+typedef Distance\-::template \\*
+traits$<$ \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{num\-\_\-t}, \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a4c0c1ed66c119195d5d35f5a87bf54c5}{self\-\_\-t} $>$\\*
+\-::distance\-\_\-t \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a77aec885161810b958097f7725fc407e}{metric\-\_\-t}
+\item 
+typedef \\*
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor}{K\-D\-Tree\-Single\-Index\-Adaptor}\\*
+$<$ \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a77aec885161810b958097f7725fc407e}{metric\-\_\-t}, \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a4c0c1ed66c119195d5d35f5a87bf54c5}{self\-\_\-t}, D\-I\-M, \\*
+Index\-Type $>$ \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_abe94a08556e96937c80f8e13ba668b6b}{index\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a759c2f83af5ae8a3446f450b41b31a58}{K\-D\-Tree\-Eigen\-Matrix\-Adaptor} (const int dimensionality, const Matrix\-Type \&mat, const int leaf\-\_\-max\-\_\-size=10)
+\begin{DoxyCompactList}\small\item\em The kd-\/tree index for the user to call its methods as usual with any other F\-L\-A\-N\-N index. \end{DoxyCompactList}\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a9f5156a35b8f3eb56b7e15ab2853ef3f}{$\sim$\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor} ()
+\item 
+void \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a65ad5a444a16a474351e39b7775accaa}{query} (const \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{num\-\_\-t} $\ast$query\-\_\-point, const size\-\_\-t num\-\_\-closest, Index\-Type $\ast$out\-\_\-indices, \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{num\-\_\-t} $\ast$out\-\_\-distances\-\_\-sq, const int n\-Checks\-\_\-\-I\-G\-N\-O\-R\-E\-D=10) const 
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Interface expected by K\-D\-Tree\-Single\-Index\-Adaptor}\par
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a4c0c1ed66c119195d5d35f5a87bf54c5}{self\-\_\-t} \& \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_ac5cf0acb494d2dc8b73344cca064dea5}{derived} () const 
+\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a4c0c1ed66c119195d5d35f5a87bf54c5}{self\-\_\-t} \& \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a43e60e048c63828962b2bb1ab05bee48}{derived} ()
+\item 
+size\-\_\-t \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a6e62f48b067b34f659a39bc3042964e8}{kdtree\-\_\-get\-\_\-point\-\_\-count} () const 
+\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{num\-\_\-t} \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_affa6f8572c281a4ee986372fc232c855}{kdtree\-\_\-distance} (const \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{num\-\_\-t} $\ast$p1, const size\-\_\-t idx\-\_\-p2, size\-\_\-t size) const 
+\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{num\-\_\-t} \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_ab5aa1b4ec362b8818c4c66f5a86fe340}{kdtree\-\_\-get\-\_\-pt} (const size\-\_\-t idx, int dim) const 
+\item 
+{\footnotesize template$<$class B\-B\-O\-X $>$ }\\bool \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a0ac158cf53c71f120173cb975fe79139}{kdtree\-\_\-get\-\_\-bbox} (B\-B\-O\-X \&bb) const 
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_abe94a08556e96937c80f8e13ba668b6b}{index\-\_\-t} $\ast$ \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a171c13d72cca6020775ae1d15ea2f935}{index}
+\item 
+const Matrix\-Type \& \hyperlink{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a003a066551cff2038b11efc66633d0f8}{m\-\_\-data\-\_\-matrix}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Matrix\-Type, int D\-I\-M = -\/1, class Distance = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type = size\-\_\-t$>$struct nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$}
+
+A simple K\-D-\/tree adaptor for working with data directly stored in an Eigen Matrix, without duplicating the data storage. Each row in the matrix represents a point in the state space.
+
+Example of usage\-: 
+\begin{DoxyCode}
+Eigen::Matrix<num\_t,Dynamic,Dynamic>  mat;
+\textcolor{comment}{// Fill out "mat"...}
+
+\textcolor{keyword}{typedef} KDTreeEigenMatrixAdaptor< Eigen::Matrix<num\_t,Dynamic,Dynamic> >  my\_kd\_tree\_t;
+\textcolor{keyword}{const} \textcolor{keywordtype}{int} max\_leaf = 10;
+my\_kd\_tree\_t   mat\_index(dimdim, mat, max\_leaf );
+mat\_index.index->buildIndex();
+mat\_index.index->...
+\end{DoxyCode}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em D\-I\-M} & If set to $>$0, it specifies a compile-\/time fixed dimensionality for the points in the data set, allowing more compiler optimizations. \\
+\hline
+{\em Distance} & The distance metric to use\-: \hyperlink{structnanoflann_1_1metric___l1}{nanoflann\-::metric\-\_\-\-L1}, \hyperlink{structnanoflann_1_1metric___l2}{nanoflann\-::metric\-\_\-\-L2}, \hyperlink{structnanoflann_1_1metric___l2___simple}{nanoflann\-::metric\-\_\-\-L2\-\_\-\-Simple}, etc. \\
+\hline
+{\em Index\-Type} & The type for indices in the K\-D-\/tree index (typically, size\-\_\-t of int) \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_abe94a08556e96937c80f8e13ba668b6b}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!index\-\_\-t@{index\-\_\-t}}
+\index{index\-\_\-t@{index\-\_\-t}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{index\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ typedef {\bf K\-D\-Tree\-Single\-Index\-Adaptor}$<$ {\bf metric\-\_\-t},{\bf self\-\_\-t},D\-I\-M,Index\-Type$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::{\bf index\-\_\-t}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_abe94a08556e96937c80f8e13ba668b6b}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a77aec885161810b958097f7725fc407e}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!metric\-\_\-t@{metric\-\_\-t}}
+\index{metric\-\_\-t@{metric\-\_\-t}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{metric\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ typedef Distance\-::template traits$<${\bf num\-\_\-t},{\bf self\-\_\-t}$>$\-::distance\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::{\bf metric\-\_\-t}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a77aec885161810b958097f7725fc407e}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!num\-\_\-t@{num\-\_\-t}}
+\index{num\-\_\-t@{num\-\_\-t}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{num\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ typedef Matrix\-Type\-::\-Scalar {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::{\bf num\-\_\-t}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a5198c559d4134cbb14767e10d6945748}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a4c0c1ed66c119195d5d35f5a87bf54c5}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!self\-\_\-t@{self\-\_\-t}}
+\index{self\-\_\-t@{self\-\_\-t}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{self\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ typedef {\bf K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$Matrix\-Type,D\-I\-M,Distance$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::{\bf self\-\_\-t}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a4c0c1ed66c119195d5d35f5a87bf54c5}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a759c2f83af5ae8a3446f450b41b31a58}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\index{K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{K\-D\-Tree\-Eigen\-Matrix\-Adaptor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::{\bf K\-D\-Tree\-Eigen\-Matrix\-Adaptor} (
+\begin{DoxyParamCaption}
+\item[{const int}]{dimensionality, }
+\item[{const Matrix\-Type \&}]{mat, }
+\item[{const int}]{leaf\-\_\-max\-\_\-size = {\ttfamily 10}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a759c2f83af5ae8a3446f450b41b31a58}
+
+
+The kd-\/tree index for the user to call its methods as usual with any other F\-L\-A\-N\-N index. 
+
+Constructor\-: takes a const ref to the matrix object with the data points \hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a9f5156a35b8f3eb56b7e15ab2853ef3f}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!$\sim$\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{$\sim$\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\index{$\sim$\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{$\sim$\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{$\sim$\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::$\sim${\bf K\-D\-Tree\-Eigen\-Matrix\-Adaptor} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a9f5156a35b8f3eb56b7e15ab2853ef3f}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_ac5cf0acb494d2dc8b73344cca064dea5}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!derived@{derived}}
+\index{derived@{derived}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{derived}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ const {\bf self\-\_\-t}\& {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::derived (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_ac5cf0acb494d2dc8b73344cca064dea5}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a43e60e048c63828962b2bb1ab05bee48}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!derived@{derived}}
+\index{derived@{derived}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{derived}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ {\bf self\-\_\-t}\& {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::derived (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a43e60e048c63828962b2bb1ab05bee48}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_affa6f8572c281a4ee986372fc232c855}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!kdtree\-\_\-distance@{kdtree\-\_\-distance}}
+\index{kdtree\-\_\-distance@{kdtree\-\_\-distance}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{kdtree\-\_\-distance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ {\bf num\-\_\-t} {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::kdtree\-\_\-distance (
+\begin{DoxyParamCaption}
+\item[{const {\bf num\-\_\-t} $\ast$}]{p1, }
+\item[{const size\-\_\-t}]{idx\-\_\-p2, }
+\item[{size\-\_\-t}]{size}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_affa6f8572c281a4ee986372fc232c855}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_affa6f8572c281a4ee986372fc232c855_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a0ac158cf53c71f120173cb975fe79139}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!kdtree\-\_\-get\-\_\-bbox@{kdtree\-\_\-get\-\_\-bbox}}
+\index{kdtree\-\_\-get\-\_\-bbox@{kdtree\-\_\-get\-\_\-bbox}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{kdtree\-\_\-get\-\_\-bbox}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ template$<$class B\-B\-O\-X $>$ bool {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::kdtree\-\_\-get\-\_\-bbox (
+\begin{DoxyParamCaption}
+\item[{B\-B\-O\-X \&}]{bb}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a0ac158cf53c71f120173cb975fe79139}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a6e62f48b067b34f659a39bc3042964e8}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!kdtree\-\_\-get\-\_\-point\-\_\-count@{kdtree\-\_\-get\-\_\-point\-\_\-count}}
+\index{kdtree\-\_\-get\-\_\-point\-\_\-count@{kdtree\-\_\-get\-\_\-point\-\_\-count}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{kdtree\-\_\-get\-\_\-point\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ size\-\_\-t {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::kdtree\-\_\-get\-\_\-point\-\_\-count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a6e62f48b067b34f659a39bc3042964e8}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_ab5aa1b4ec362b8818c4c66f5a86fe340}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!kdtree\-\_\-get\-\_\-pt@{kdtree\-\_\-get\-\_\-pt}}
+\index{kdtree\-\_\-get\-\_\-pt@{kdtree\-\_\-get\-\_\-pt}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{kdtree\-\_\-get\-\_\-pt}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ {\bf num\-\_\-t} {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::kdtree\-\_\-get\-\_\-pt (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{idx, }
+\item[{int}]{dim}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_ab5aa1b4ec362b8818c4c66f5a86fe340}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a65ad5a444a16a474351e39b7775accaa}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!query@{query}}
+\index{query@{query}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{query}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ void {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::query (
+\begin{DoxyParamCaption}
+\item[{const {\bf num\-\_\-t} $\ast$}]{query\-\_\-point, }
+\item[{const size\-\_\-t}]{num\-\_\-closest, }
+\item[{Index\-Type $\ast$}]{out\-\_\-indices, }
+\item[{{\bf num\-\_\-t} $\ast$}]{out\-\_\-distances\-\_\-sq, }
+\item[{const int}]{n\-Checks\-\_\-\-I\-G\-N\-O\-R\-E\-D = {\ttfamily 10}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a65ad5a444a16a474351e39b7775accaa}
+Query for the {\itshape num\-\_\-closest} closest points to a given point (entered as query\-\_\-point\mbox{[}0\-:dim-\/1\mbox{]}). Note that this is a short-\/cut method for index-\/$>$find\-Neighbors(). The user can also call index-\/$>$... methods as desired. \begin{DoxyNote}{Note}
+n\-Checks\-\_\-\-I\-G\-N\-O\-R\-E\-D is ignored but kept for compatibility with the original F\-L\-A\-N\-N interface. 
+\end{DoxyNote}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a65ad5a444a16a474351e39b7775accaa_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a171c13d72cca6020775ae1d15ea2f935}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!index@{index}}
+\index{index@{index}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ {\bf index\-\_\-t}$\ast$ {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::index}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a171c13d72cca6020775ae1d15ea2f935}
+\hypertarget{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a003a066551cff2038b11efc66633d0f8}{\index{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}!m\-\_\-data\-\_\-matrix@{m\-\_\-data\-\_\-matrix}}
+\index{m\-\_\-data\-\_\-matrix@{m\-\_\-data\-\_\-matrix}!nanoflann::KDTreeEigenMatrixAdaptor@{nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}}
+\subsubsection[{m\-\_\-data\-\_\-matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Matrix\-Type , int D\-I\-M = -\/1, class Distance  = nanoflann\-::metric\-\_\-\-L2, typename Index\-Type  = size\-\_\-t$>$ const Matrix\-Type\& {\bf nanoflann\-::\-K\-D\-Tree\-Eigen\-Matrix\-Adaptor}$<$ Matrix\-Type, D\-I\-M, Distance, Index\-Type $>$\-::m\-\_\-data\-\_\-matrix}}\label{structnanoflann_1_1_k_d_tree_eigen_matrix_adaptor_a003a066551cff2038b11efc66633d0f8}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{nanoflann_8hpp}{nanoflann.\-hpp}\end{DoxyCompactItemize}

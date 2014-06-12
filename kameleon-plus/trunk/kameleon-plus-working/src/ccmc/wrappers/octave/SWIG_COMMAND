@@ -1,0 +1,1 @@
+/usr/local/bin/swig -outcurrentdir -octave -c++ -I../../.. -I/Applications/cdf34_1-dist/include/ -I/opt/local/include/ ../ccmc.i

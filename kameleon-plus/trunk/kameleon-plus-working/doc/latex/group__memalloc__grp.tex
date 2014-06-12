@@ -1,0 +1,55 @@
+\hypertarget{group__memalloc__grp}{\section{Memory allocation}
+\label{group__memalloc__grp}\index{Memory allocation@{Memory allocation}}
+}
+Collaboration diagram for Memory allocation\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{group__memalloc__grp}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classnanoflann_1_1_pooled_allocator}{nanoflann\-::\-Pooled\-Allocator}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \hyperlink{group__memalloc__grp_ga477667da2a8edb1d65f5a7eebaffc1eb}{nanoflann\-::allocate} (size\-\_\-t count=1)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const size\-\_\-t \hyperlink{group__memalloc__grp_ga40956ef8f797399b4f478df9fc1566f4}{nanoflann\-::\-W\-O\-R\-D\-S\-I\-Z\-E} =16
+\item 
+const size\-\_\-t \hyperlink{group__memalloc__grp_gaf4df087b6f47e514f6062f7ada2d19d7}{nanoflann\-::\-B\-L\-O\-C\-K\-S\-I\-Z\-E} =8192
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__memalloc__grp_ga477667da2a8edb1d65f5a7eebaffc1eb}{\index{Memory allocation@{Memory allocation}!allocate@{allocate}}
+\index{allocate@{allocate}!Memory allocation@{Memory allocation}}
+\subsubsection[{allocate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T$\ast$ nanoflann\-::allocate (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{count = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{group__memalloc__grp_ga477667da2a8edb1d65f5a7eebaffc1eb}
+Allocates (using C's malloc) a generic type T.
+
+Params\-: count = number of instances to allocate. Returns\-: pointer (of type T$\ast$) to memory buffer 
+
+\subsection{Variable Documentation}
+\hypertarget{group__memalloc__grp_gaf4df087b6f47e514f6062f7ada2d19d7}{\index{Memory allocation@{Memory allocation}!B\-L\-O\-C\-K\-S\-I\-Z\-E@{B\-L\-O\-C\-K\-S\-I\-Z\-E}}
+\index{B\-L\-O\-C\-K\-S\-I\-Z\-E@{B\-L\-O\-C\-K\-S\-I\-Z\-E}!Memory allocation@{Memory allocation}}
+\subsubsection[{B\-L\-O\-C\-K\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}const size\-\_\-t nanoflann\-::\-B\-L\-O\-C\-K\-S\-I\-Z\-E =8192}}\label{group__memalloc__grp_gaf4df087b6f47e514f6062f7ada2d19d7}
+\hypertarget{group__memalloc__grp_ga40956ef8f797399b4f478df9fc1566f4}{\index{Memory allocation@{Memory allocation}!W\-O\-R\-D\-S\-I\-Z\-E@{W\-O\-R\-D\-S\-I\-Z\-E}}
+\index{W\-O\-R\-D\-S\-I\-Z\-E@{W\-O\-R\-D\-S\-I\-Z\-E}!Memory allocation@{Memory allocation}}
+\subsubsection[{W\-O\-R\-D\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}const size\-\_\-t nanoflann\-::\-W\-O\-R\-D\-S\-I\-Z\-E =16}}\label{group__memalloc__grp_ga40956ef8f797399b4f478df9fc1566f4}
+Pooled storage allocator
+
+The following routines allow for the efficient allocation of storage in small chunks from a specified pool. Rather than allowing each structure to be freed individually, an entire pool of storage is freed at once. This method has two advantages over just using malloc() and free(). First, it is far more efficient for allocating small objects, as there is no overhead for remembering all the information needed to free each object or consolidating fragmented memory. Second, the decision about how long to keep an object is made at the time of allocation, and there is no need to track down all the objects to free them. 

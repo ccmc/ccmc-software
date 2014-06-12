@@ -1,0 +1,276 @@
+\hypertarget{classccmc_1_1_l_f_m}{\section{ccmc\-:\-:L\-F\-M Class Reference}
+\label{classccmc_1_1_l_f_m}\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}}
+}
+
+
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} class.  
+
+
+
+
+{\ttfamily \#include $<$ccmc/\-L\-F\-M.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:L\-F\-M\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classccmc_1_1_l_f_m__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:L\-F\-M\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_l_f_m_a9fb6554dddcf4bb70bbb19622130cf69}{L\-F\-M} ()
+\item 
+long \hyperlink{classccmc_1_1_l_f_m_a8a9e74e6951db85a54cffbf6c1305f9f}{open} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Opens a file.  \end{DoxyCompactList}\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_l_f_m_a6cda025f32e66de186e723f7d16e8639}{create\-New\-Interpolator} ()
+\begin{DoxyCompactList}\small\item\em Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file. \end{DoxyCompactList}\item 
+void \hyperlink{classccmc_1_1_l_f_m_a3b30357fb47547a19b480a824aae19ef}{set\-Resolution} ()
+\item 
+void \hyperlink{classccmc_1_1_l_f_m_ae4a27c5fc9f52300575eb495beaeda9c}{get\-Resolution} (int \&nip1, int \&njp1, int \&nkp1)
+\item 
+void \hyperlink{classccmc_1_1_l_f_m_a50299b9da81da02df430d0079d8deaf5}{load\-Pressure} ()
+\item 
+void \hyperlink{classccmc_1_1_l_f_m_a3159c537415c5da69c86ed5bc8791019}{load\-Efield} ()
+\item 
+float \hyperlink{classccmc_1_1_l_f_m_a950345d5557b42e68ebd8e8d8b4a4a44}{average\-Face} (const std\-::vector$<$ float $>$ $\ast$variable, int face\-\_\-index, const int i, const int j, const int k, const int ii, const int jj)
+\item 
+virtual \hyperlink{classccmc_1_1_l_f_m_ab7867c983e99e38e19e120dcbf38420c}{$\sim$\-L\-F\-M} ()
+\item 
+std\-::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_l_f_m_a72536081ec39b9f9620b49e4a4ac58d5}{get\-L\-F\-M\-Variable} (const std\-::string \&variable)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{classccmc_1_1_l_f_m_ace1eb0153ce938756984444bba34a7cb}{get\-Index} (const int i, const int j, const int k, const int ii, const int jj)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classccmc_1_1_l_f_m_a575ca8f71a149babc45fe840fbf66daf}{initialize\-Conversion\-Factors\-To\-S\-I} ()
+\begin{DoxyCompactList}\small\item\em Initializes the conversion\-Factors\-To\-S\-I map.  \end{DoxyCompactList}\item 
+void \hyperlink{classccmc_1_1_l_f_m_ab82dc1add65cfa4c40bff916129c4a41}{initialize\-S\-I\-Units} ()
+\begin{DoxyCompactList}\small\item\em Initializes the variable\-S\-I\-Units map.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} class. 
+
+T\-O\-D\-O\-: Full description of \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_l_f_m_a9fb6554dddcf4bb70bbb19622130cf69}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!L\-F\-M@{L\-F\-M}}
+\index{L\-F\-M@{L\-F\-M}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{L\-F\-M}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-L\-F\-M\-::\-L\-F\-M (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_a9fb6554dddcf4bb70bbb19622130cf69}
+Default constructor \hypertarget{classccmc_1_1_l_f_m_ab7867c983e99e38e19e120dcbf38420c}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!$\sim$\-L\-F\-M@{$\sim$\-L\-F\-M}}
+\index{$\sim$\-L\-F\-M@{$\sim$\-L\-F\-M}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{$\sim$\-L\-F\-M}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-L\-F\-M\-::$\sim$\-L\-F\-M (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_ab7867c983e99e38e19e120dcbf38420c}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_l_f_m_a950345d5557b42e68ebd8e8d8b4a4a44}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!average\-Face@{average\-Face}}
+\index{average\-Face@{average\-Face}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{average\-Face}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-::average\-Face (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ float $>$ $\ast$}]{variable, }
+\item[{int}]{face\-\_\-index, }
+\item[{const int}]{i, }
+\item[{const int}]{j, }
+\item[{const int}]{k, }
+\item[{const int}]{ii, }
+\item[{const int}]{jj}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_a950345d5557b42e68ebd8e8d8b4a4a44}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_a950345d5557b42e68ebd8e8d8b4a4a44_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_a6cda025f32e66de186e723f7d16e8639}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!create\-New\-Interpolator@{create\-New\-Interpolator}}
+\index{create\-New\-Interpolator@{create\-New\-Interpolator}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{create\-New\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator} $\ast$ ccmc\-::\-L\-F\-M\-::create\-New\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_a6cda025f32e66de186e723f7d16e8639}
+
+
+Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file. 
+
+This returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object that contains all the necessary local variables required to interpolate independent of any other \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. The pointer must be deleted from the calling program. \begin{DoxyReturn}{Returns}
+A pointer to an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classccmc_1_1_model_a0dd491507c14502c27aa61b020fca8cc}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_l_f_m_ace1eb0153ce938756984444bba34a7cb}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!get\-Index@{get\-Index}}
+\index{get\-Index@{get\-Index}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{get\-Index}]{\setlength{\rightskip}{0pt plus 5cm}int ccmc\-::\-L\-F\-M\-::get\-Index (
+\begin{DoxyParamCaption}
+\item[{const int}]{i, }
+\item[{const int}]{j, }
+\item[{const int}]{k, }
+\item[{const int}]{ii, }
+\item[{const int}]{jj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_l_f_m_ace1eb0153ce938756984444bba34a7cb}
+\hypertarget{classccmc_1_1_l_f_m_a72536081ec39b9f9620b49e4a4ac58d5}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!get\-L\-F\-M\-Variable@{get\-L\-F\-M\-Variable}}
+\index{get\-L\-F\-M\-Variable@{get\-L\-F\-M\-Variable}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{get\-L\-F\-M\-Variable}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ float $>$ $\ast$ ccmc\-::\-L\-F\-M\-::get\-L\-F\-M\-Variable (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{variable}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_a72536081ec39b9f9620b49e4a4ac58d5}
+\hypertarget{classccmc_1_1_l_f_m_ae4a27c5fc9f52300575eb495beaeda9c}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!get\-Resolution@{get\-Resolution}}
+\index{get\-Resolution@{get\-Resolution}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{get\-Resolution}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-::get\-Resolution (
+\begin{DoxyParamCaption}
+\item[{int \&}]{nip1, }
+\item[{int \&}]{njp1, }
+\item[{int \&}]{nkp1}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_ae4a27c5fc9f52300575eb495beaeda9c}
+\hypertarget{classccmc_1_1_l_f_m_a575ca8f71a149babc45fe840fbf66daf}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}}
+\index{initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{initialize\-Conversion\-Factors\-To\-S\-I}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-::initialize\-Conversion\-Factors\-To\-S\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_a575ca8f71a149babc45fe840fbf66daf}
+
+
+Initializes the conversion\-Factors\-To\-S\-I map.  
+
+These factors are used to convert interpolated values to S\-I units.  
+
+Implements \hyperlink{classccmc_1_1_model_a6f04326691fba448e2cfb7c7ab90a45a}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_l_f_m_ab82dc1add65cfa4c40bff916129c4a41}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!initialize\-S\-I\-Units@{initialize\-S\-I\-Units}}
+\index{initialize\-S\-I\-Units@{initialize\-S\-I\-Units}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{initialize\-S\-I\-Units}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-::initialize\-S\-I\-Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_ab82dc1add65cfa4c40bff916129c4a41}
+
+
+Initializes the variable\-S\-I\-Units map.  
+
+
+
+Implements \hyperlink{classccmc_1_1_model_a68d31e8d8cce59269c994de25d048178}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_l_f_m_a3159c537415c5da69c86ed5bc8791019}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!load\-Efield@{load\-Efield}}
+\index{load\-Efield@{load\-Efield}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{load\-Efield}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-::load\-Efield (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_a3159c537415c5da69c86ed5bc8791019}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_a3159c537415c5da69c86ed5bc8791019_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_a50299b9da81da02df430d0079d8deaf5}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!load\-Pressure@{load\-Pressure}}
+\index{load\-Pressure@{load\-Pressure}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{load\-Pressure}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-::load\-Pressure (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_a50299b9da81da02df430d0079d8deaf5}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_a50299b9da81da02df430d0079d8deaf5_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_a8a9e74e6951db85a54cffbf6c1305f9f}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!open@{open}}
+\index{open@{open}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-L\-F\-M\-::open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_l_f_m_a8a9e74e6951db85a54cffbf6c1305f9f}
+
+
+Opens a file.  
+
+Opens a file and performs any necessary initialization required to work with the data. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a3c64dc635c2c1a2fe2f8efa2a3666282}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_l_f_m_a8a9e74e6951db85a54cffbf6c1305f9f_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_l_f_m_a3b30357fb47547a19b480a824aae19ef}{\index{ccmc\-::\-L\-F\-M@{ccmc\-::\-L\-F\-M}!set\-Resolution@{set\-Resolution}}
+\index{set\-Resolution@{set\-Resolution}!ccmc::LFM@{ccmc\-::\-L\-F\-M}}
+\subsubsection[{set\-Resolution}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-L\-F\-M\-::set\-Resolution (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_l_f_m_a3b30357fb47547a19b480a824aae19ef}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_l_f_m_8h}{L\-F\-M.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_l_f_m_8cpp}{L\-F\-M.\-cpp}\end{DoxyCompactItemize}

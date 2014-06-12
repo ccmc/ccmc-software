@@ -1,0 +1,27 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$classccmc_1_1_l_f_m.html#a8a9e74e6951db85a54cffbf6c1305f9f" title="Opens a file. " alt="" coords="126,240,255,267"/>
+<area shape="rect" id="node8" href="$classccmc_1_1_model.html#a3f579f03a4cd21237705c268d1a5d3e9" title="Load a variable into memory." alt="" coords="601,537,791,564"/>
+<area shape="rect" id="node26" href="$classccmc_1_1_l_f_m_interpolator.html#a1d6356a51024075b873e7966abd418f0" title="ccmc::LFMInterpolator\l::interpolate" alt="" coords="109,590,272,631"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_model.html#ad4afaf8f5cb1b8bb73034658145b4934" title="ccmc::Model::setBusyStatus" alt="" coords="328,123,531,149"/>
+<area shape="rect" id="node4" href="$classccmc_1_1_general_file_reader.html#a4996a8e305a2e1f9f25228d127bb55bf" title="ccmc::GeneralFileReader\l::open" alt="" coords="339,174,519,215"/>
+<area shape="rect" id="node15" href="$classccmc_1_1_l_f_m.html#a3b30357fb47547a19b480a824aae19ef" title="ccmc::LFM::setResolution" alt="" coords="338,291,521,317"/>
+<area shape="rect" id="node16" href="$classccmc_1_1_l_f_m.html#a50299b9da81da02df430d0079d8deaf5" title="ccmc::LFM::loadPressure" alt="" coords="339,240,519,267"/>
+<area shape="rect" id="node18" href="$classccmc_1_1_l_f_m.html#a3159c537415c5da69c86ed5bc8791019" title="ccmc::LFM::loadEfield" alt="" coords="350,371,509,397"/>
+<area shape="rect" id="node24" href="$classccmc_1_1_l_f_m.html#ab82dc1add65cfa4c40bff916129c4a41" title="Initializes the variableSIUnits map. " alt="" coords="333,5,526,32"/>
+<area shape="rect" id="node25" href="$classccmc_1_1_l_f_m.html#a575ca8f71a149babc45fe840fbf66daf" title="Initializes the conversionFactorsToSI map. " alt="" coords="320,57,539,98"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_general_file_reader.html#a4d56da3556557ae38485abdcdeacc90e" title="ccmc::GeneralFileReader\l::close" alt="" coords="606,101,786,142"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_file_reader.html#aa7a02a3f99c09861a5e7c00e98b81be2" title="ccmc::FileReader::open" alt="" coords="611,167,781,193"/>
+<area shape="rect" id="node6" href="$classccmc_1_1_file_reader.html#a036ac2d85ad32a98b81c9e6ebf0ef133" title="ccmc::FileReader::close" alt="" coords="859,108,1029,135"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_general_file_reader.html#a7752dcc4d653d0d325cbe5ce1b9a7ebe" title="ccmc::GeneralFileReader\l::doesVariableExist" alt="" coords="854,463,1034,505"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_general_file_reader.html#a15db2e13a3cc71bf0fea4ea46725c22a" title="ccmc::GeneralFileReader\l::getVariable" alt="" coords="854,529,1034,570"/>
+<area shape="rect" id="node13" href="$classccmc_1_1_general_file_reader.html#a6cc488b707602f3b4438408826d3df02" title="ccmc::GeneralFileReader\l::getVariableID" alt="" coords="854,594,1034,635"/>
+<area shape="rect" id="node10" href="$classccmc_1_1_file_reader.html#ab8893f7d2b0f62041c37a788affe6b36" title="ccmc::FileReader::doesVariable\lExist" alt="" coords="1084,463,1305,505"/>
+<area shape="rect" id="node12" href="$classccmc_1_1_file_reader.html#a3703180de2d7d38c1ccf115d5279d4d0" title="ccmc::FileReader::getVariable" alt="" coords="1089,536,1300,563"/>
+<area shape="rect" id="node14" href="$classccmc_1_1_file_reader.html#a937185c6d323262f7c3f3c4d39b59e37" title="ccmc::FileReader::getVariableID" alt="" coords="1083,601,1307,628"/>
+<area shape="rect" id="node17" href="$classccmc_1_1_model.html#aff1ba4d83008b75f65a3f0a30013b895" title="ccmc::Model::addFloatVariable\lToMap" alt="" coords="587,218,805,259"/>
+<area shape="rect" id="node19" href="$classccmc_1_1_l_f_m.html#a72536081ec39b9f9620b49e4a4ac58d5" title="ccmc::LFM::getLFMVariable" alt="" coords="599,487,793,513"/>
+<area shape="rect" id="node20" href="$classccmc_1_1_l_f_m.html#a950345d5557b42e68ebd8e8d8b4a4a44" title="ccmc::LFM::averageFace" alt="" coords="607,284,785,311"/>
+<area shape="rect" id="node21" href="$classccmc_1_1_l_f_m.html#ace1eb0153ce938756984444bba34a7cb" title="ccmc::LFM::getIndex" alt="" coords="868,309,1020,336"/>
+<area shape="rect" id="node22" href="$classccmc_1_1_point.html#aa715484b0a52bffc43cd2d0e30bda80d" title="ccmc::Point::setComponents" alt="" coords="593,385,799,412"/>
+<area shape="rect" id="node23" href="$classccmc_1_1_vector.html#ab6c35b31d15e8619a0b81ac55966065e" title="ccmc::Vector::triple" alt="" coords="623,436,769,463"/>
+</map>

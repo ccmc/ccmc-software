@@ -1,0 +1,87 @@
+\hypertarget{classnanoflann_1_1_pooled_allocator}{\section{nanoflann\-:\-:Pooled\-Allocator Class Reference}
+\label{classnanoflann_1_1_pooled_allocator}\index{nanoflann\-::\-Pooled\-Allocator@{nanoflann\-::\-Pooled\-Allocator}}
+}
+
+
+{\ttfamily \#include $<$nanoflann.\-hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnanoflann_1_1_pooled_allocator_a1a67809090b71951fae104dfe8196f6c}{Pooled\-Allocator} (const size\-\_\-t blocksize=\hyperlink{group__memalloc__grp_gaf4df087b6f47e514f6062f7ada2d19d7}{B\-L\-O\-C\-K\-S\-I\-Z\-E})
+\item 
+\hyperlink{classnanoflann_1_1_pooled_allocator_a39c53213bc49d0f08fb8e4b0adc25b5e}{$\sim$\-Pooled\-Allocator} ()
+\item 
+void $\ast$ \hyperlink{classnanoflann_1_1_pooled_allocator_ae6a1cfa103b81762ab700224f1c9d801}{malloc} (const size\-\_\-t req\-\_\-size)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \hyperlink{classnanoflann_1_1_pooled_allocator_a389b1614fd2b6fa641c009e698db8b44}{allocate} (const size\-\_\-t count=1)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_pooled_allocator_a4152d7a1d043d57aad464f11117d6e90}{used\-Memory}
+\item 
+size\-\_\-t \hyperlink{classnanoflann_1_1_pooled_allocator_aeb073342f83393f414888292d165738d}{wasted\-Memory}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnanoflann_1_1_pooled_allocator_a1a67809090b71951fae104dfe8196f6c}{\index{nanoflann\-::\-Pooled\-Allocator@{nanoflann\-::\-Pooled\-Allocator}!Pooled\-Allocator@{Pooled\-Allocator}}
+\index{Pooled\-Allocator@{Pooled\-Allocator}!nanoflann::PooledAllocator@{nanoflann\-::\-Pooled\-Allocator}}
+\subsubsection[{Pooled\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}nanoflann\-::\-Pooled\-Allocator\-::\-Pooled\-Allocator (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{blocksize = {\ttfamily {\bf B\-L\-O\-C\-K\-S\-I\-Z\-E}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_pooled_allocator_a1a67809090b71951fae104dfe8196f6c}
+Default constructor. Initializes a new pool. \hypertarget{classnanoflann_1_1_pooled_allocator_a39c53213bc49d0f08fb8e4b0adc25b5e}{\index{nanoflann\-::\-Pooled\-Allocator@{nanoflann\-::\-Pooled\-Allocator}!$\sim$\-Pooled\-Allocator@{$\sim$\-Pooled\-Allocator}}
+\index{$\sim$\-Pooled\-Allocator@{$\sim$\-Pooled\-Allocator}!nanoflann::PooledAllocator@{nanoflann\-::\-Pooled\-Allocator}}
+\subsubsection[{$\sim$\-Pooled\-Allocator}]{\setlength{\rightskip}{0pt plus 5cm}nanoflann\-::\-Pooled\-Allocator\-::$\sim$\-Pooled\-Allocator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_pooled_allocator_a39c53213bc49d0f08fb8e4b0adc25b5e}
+Destructor. Frees all the memory allocated in this pool. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classnanoflann_1_1_pooled_allocator_a389b1614fd2b6fa641c009e698db8b44}{\index{nanoflann\-::\-Pooled\-Allocator@{nanoflann\-::\-Pooled\-Allocator}!allocate@{allocate}}
+\index{allocate@{allocate}!nanoflann::PooledAllocator@{nanoflann\-::\-Pooled\-Allocator}}
+\subsubsection[{allocate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T$\ast$ nanoflann\-::\-Pooled\-Allocator\-::allocate (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{count = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_pooled_allocator_a389b1614fd2b6fa641c009e698db8b44}
+Allocates (using this pool) a generic type T.
+
+Params\-: count = number of instances to allocate. Returns\-: pointer (of type T$\ast$) to memory buffer \hypertarget{classnanoflann_1_1_pooled_allocator_ae6a1cfa103b81762ab700224f1c9d801}{\index{nanoflann\-::\-Pooled\-Allocator@{nanoflann\-::\-Pooled\-Allocator}!malloc@{malloc}}
+\index{malloc@{malloc}!nanoflann::PooledAllocator@{nanoflann\-::\-Pooled\-Allocator}}
+\subsubsection[{malloc}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ nanoflann\-::\-Pooled\-Allocator\-::malloc (
+\begin{DoxyParamCaption}
+\item[{const size\-\_\-t}]{req\-\_\-size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classnanoflann_1_1_pooled_allocator_ae6a1cfa103b81762ab700224f1c9d801}
+Returns a pointer to a piece of new memory of the given size in bytes allocated from the pool. 
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classnanoflann_1_1_pooled_allocator_ae6a1cfa103b81762ab700224f1c9d801_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classnanoflann_1_1_pooled_allocator_a4152d7a1d043d57aad464f11117d6e90}{\index{nanoflann\-::\-Pooled\-Allocator@{nanoflann\-::\-Pooled\-Allocator}!used\-Memory@{used\-Memory}}
+\index{used\-Memory@{used\-Memory}!nanoflann::PooledAllocator@{nanoflann\-::\-Pooled\-Allocator}}
+\subsubsection[{used\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t nanoflann\-::\-Pooled\-Allocator\-::used\-Memory}}\label{classnanoflann_1_1_pooled_allocator_a4152d7a1d043d57aad464f11117d6e90}
+\hypertarget{classnanoflann_1_1_pooled_allocator_aeb073342f83393f414888292d165738d}{\index{nanoflann\-::\-Pooled\-Allocator@{nanoflann\-::\-Pooled\-Allocator}!wasted\-Memory@{wasted\-Memory}}
+\index{wasted\-Memory@{wasted\-Memory}!nanoflann::PooledAllocator@{nanoflann\-::\-Pooled\-Allocator}}
+\subsubsection[{wasted\-Memory}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t nanoflann\-::\-Pooled\-Allocator\-::wasted\-Memory}}\label{classnanoflann_1_1_pooled_allocator_aeb073342f83393f414888292d165738d}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{nanoflann_8hpp}{nanoflann.\-hpp}\end{DoxyCompactItemize}

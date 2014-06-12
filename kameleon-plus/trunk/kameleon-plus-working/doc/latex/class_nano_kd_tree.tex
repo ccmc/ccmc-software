@@ -1,0 +1,90 @@
+\hypertarget{class_nano_kd_tree}{\section{Nano\-Kd\-Tree$<$ num\-\_\-t $>$ Class Template Reference}
+\label{class_nano_kd_tree}\index{Nano\-Kd\-Tree$<$ num\-\_\-t $>$@{Nano\-Kd\-Tree$<$ num\-\_\-t $>$}}
+}
+
+
+{\ttfamily \#include $<$pointcloud.\-h$>$}
+
+
+
+Collaboration diagram for Nano\-Kd\-Tree$<$ num\-\_\-t $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_nano_kd_tree__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \\*
+\hyperlink{classnanoflann_1_1_k_d_tree_single_index_adaptor}{K\-D\-Tree\-Single\-Index\-Adaptor}\\*
+$<$ \hyperlink{structnanoflann_1_1_l2___simple___adaptor}{L2\-\_\-\-Simple\-\_\-\-Adaptor}$<$ num\-\_\-t, \\*
+\hyperlink{struct_point_cloud}{Point\-Cloud}$<$ num\-\_\-t $>$\\*
+ $>$,\hyperlink{struct_point_cloud}{Point\-Cloud}$<$ num\-\_\-t $>$, 3 $>$ \hyperlink{class_nano_kd_tree_a31489b03f921330be3b4895011e18eb7}{my\-\_\-kd\-\_\-tree}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_nano_kd_tree_a1f6e888c847903c0a0d965f3bef5bef2}{build} ()
+\item 
+void \hyperlink{class_nano_kd_tree_adeb9a7b244da0ee8987ab98fdb775609}{nearest} (const num\-\_\-t $\ast$query\-\_\-point, \hyperlink{classnanoflann_1_1_k_n_n_result_set}{K\-N\-N\-Result\-Set}$<$ num\-\_\-t $>$ \&result\-Set)
+\item 
+\hyperlink{class_nano_kd_tree_a524914051c4b2927846dbf078e0a3859}{$\sim$\-Nano\-Kd\-Tree} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_point_cloud}{Point\-Cloud}$<$ num\-\_\-t $>$ \hyperlink{class_nano_kd_tree_aa5267762f2efaefca76d9b6359a0def2}{cloud}
+\item 
+\hyperlink{class_nano_kd_tree_a31489b03f921330be3b4895011e18eb7}{my\-\_\-kd\-\_\-tree} $\ast$ \hyperlink{class_nano_kd_tree_ab8fe30a3570eeac3e578599dfc26e2fe}{tree}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{class_nano_kd_tree_a31489b03f921330be3b4895011e18eb7}{\index{Nano\-Kd\-Tree@{Nano\-Kd\-Tree}!my\-\_\-kd\-\_\-tree@{my\-\_\-kd\-\_\-tree}}
+\index{my\-\_\-kd\-\_\-tree@{my\-\_\-kd\-\_\-tree}!NanoKdTree@{Nano\-Kd\-Tree}}
+\subsubsection[{my\-\_\-kd\-\_\-tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class num\-\_\-t $>$ typedef {\bf K\-D\-Tree\-Single\-Index\-Adaptor}$<${\bf L2\-\_\-\-Simple\-\_\-\-Adaptor}$<$num\-\_\-t, {\bf Point\-Cloud}$<$num\-\_\-t$>$ $>$ ,{\bf Point\-Cloud}$<$num\-\_\-t$>$, 3 $>$ {\bf Nano\-Kd\-Tree}$<$ num\-\_\-t $>$\-::{\bf my\-\_\-kd\-\_\-tree}}}\label{class_nano_kd_tree_a31489b03f921330be3b4895011e18eb7}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_nano_kd_tree_a524914051c4b2927846dbf078e0a3859}{\index{Nano\-Kd\-Tree@{Nano\-Kd\-Tree}!$\sim$\-Nano\-Kd\-Tree@{$\sim$\-Nano\-Kd\-Tree}}
+\index{$\sim$\-Nano\-Kd\-Tree@{$\sim$\-Nano\-Kd\-Tree}!NanoKdTree@{Nano\-Kd\-Tree}}
+\subsubsection[{$\sim$\-Nano\-Kd\-Tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class num\-\_\-t $>$ {\bf Nano\-Kd\-Tree}$<$ num\-\_\-t $>$\-::$\sim${\bf Nano\-Kd\-Tree} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_nano_kd_tree_a524914051c4b2927846dbf078e0a3859}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_nano_kd_tree_a1f6e888c847903c0a0d965f3bef5bef2}{\index{Nano\-Kd\-Tree@{Nano\-Kd\-Tree}!build@{build}}
+\index{build@{build}!NanoKdTree@{Nano\-Kd\-Tree}}
+\subsubsection[{build}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class num\-\_\-t $>$ void {\bf Nano\-Kd\-Tree}$<$ num\-\_\-t $>$\-::build (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_nano_kd_tree_a1f6e888c847903c0a0d965f3bef5bef2}
+\hypertarget{class_nano_kd_tree_adeb9a7b244da0ee8987ab98fdb775609}{\index{Nano\-Kd\-Tree@{Nano\-Kd\-Tree}!nearest@{nearest}}
+\index{nearest@{nearest}!NanoKdTree@{Nano\-Kd\-Tree}}
+\subsubsection[{nearest}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class num\-\_\-t $>$ void {\bf Nano\-Kd\-Tree}$<$ num\-\_\-t $>$\-::nearest (
+\begin{DoxyParamCaption}
+\item[{const num\-\_\-t $\ast$}]{query\-\_\-point, }
+\item[{{\bf K\-N\-N\-Result\-Set}$<$ num\-\_\-t $>$ \&}]{result\-Set}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_nano_kd_tree_adeb9a7b244da0ee8987ab98fdb775609}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_nano_kd_tree_aa5267762f2efaefca76d9b6359a0def2}{\index{Nano\-Kd\-Tree@{Nano\-Kd\-Tree}!cloud@{cloud}}
+\index{cloud@{cloud}!NanoKdTree@{Nano\-Kd\-Tree}}
+\subsubsection[{cloud}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class num\-\_\-t $>$ {\bf Point\-Cloud}$<$num\-\_\-t$>$ {\bf Nano\-Kd\-Tree}$<$ num\-\_\-t $>$\-::cloud}}\label{class_nano_kd_tree_aa5267762f2efaefca76d9b6359a0def2}
+\hypertarget{class_nano_kd_tree_ab8fe30a3570eeac3e578599dfc26e2fe}{\index{Nano\-Kd\-Tree@{Nano\-Kd\-Tree}!tree@{tree}}
+\index{tree@{tree}!NanoKdTree@{Nano\-Kd\-Tree}}
+\subsubsection[{tree}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class num\-\_\-t $>$ {\bf my\-\_\-kd\-\_\-tree}$\ast$ {\bf Nano\-Kd\-Tree}$<$ num\-\_\-t $>$\-::tree}}\label{class_nano_kd_tree_ab8fe30a3570eeac3e578599dfc26e2fe}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{pointcloud_8h}{pointcloud.\-h}\end{DoxyCompactItemize}

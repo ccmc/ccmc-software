@@ -1,0 +1,76 @@
+Kameleon-plus 1.0.0
+
+
+Requirements: 
+	cmake 2.8
+	hdf5 (LFM support - optional)
+	cdf3.5 http://cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf35_0_2/
+	boost 1.54.0
+
+Build:
+	mkdir ~/Kameleon-plus-build
+	cd ~/Kameleon-plus-build
+	cmake /path/to/kameleon-plus
+	make -j8 (-j8 speeds up compilation time):
+
+	The above commands will put build files into a fresh directory ~/kameleon-plus-build
+	and place the following example c++ excuteables in /path/to/kameleon-plus/bin/examples/c++:
+		adapt3d_test  coordinate_transformation_test  IMFTest
+		kameleon_prog  magnetogram_test	open_ggcm_test	time_interp
+		CDFReader  enlil_test  integrator_prog  lfm_test
+		mas_test  swmf_iono_test	tracer_prog
+
+Install the CCMC python module:
+	make install
+
+Test c++ example:
+	cd path/to/kameleon-plus/examples/
+	./kameleon_prog /path/to/ccmc-converted/file.cdf bz -30 0 0
+
+Test python:
+	#1/usr/bin/python
+	import CCMC
+	kameleon = CCMC.Kameleon()
+	kameleon.open("/path/to/ccmc-converted/file.cdf")
+	kameleon.loadVariable("bz")
+	interpolator = kameleon.createNewInterpolator()
+	bz = interpolator.interpolate("bz",25,0,0)
+	print "bz:", bz
+	kameleon.close()
+	
+	Installation instructions for mac users:
+
+**********Defunct Instructions for automake (Mac OSX)***********
+
+Requirements:
+	automake
+	autoconf
+	svn
+	cdf 3.4.1
+	hdf5 (required for LFM support)
+	boost 1.52.0
+
+To obtain the required packages on a mac using macports (first install macports, then use macports to install wget):
+	sudo port install autoconf
+	wget sourceforge.net/projects/boost/files/boost/1.52.0/boost_1_52_0.tar.gz
+		--unpack and move boost_1_52_0 to Applications
+	wget cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf34_1/macosX/cdf34_1-setup_universal_binary.tar.gz
+		--unpack and install
+	sudo port install hdf5-18
+
+
+download the repository to a convenient directory:
+	svn checkout http://ccmc-software.googlecode.com/svn/kameleon-plus
+	
+within kameleon-plus directory, create a configure file from configure.ac (requires autoconf and automake):
+	autoreconf -fi
+
+then run the configure script:
+	./configure --with-cdf=/Applications/cdf34_1-dist/lib --with-boost-includes=/Applications/boost_1_52_0 --enable-hdf5 --with-hdf5=/opt/local/lib --with-hdf5-includes=/opt/local/include
+
+then compile (use -j8 flag to speed up the compiling process if multiple cores are available):
+	make -j8
+
+see src/examples/ for example executables
+
+	

@@ -1,0 +1,8 @@
+<map id="ccmc::CDFFileReader::openFile" name="ccmc::CDFFileReader::openFile">
+<area shape="rect" id="node3" href="$classccmc_1_1_file_reader.html#a036ac2d85ad32a98b81c9e6ebf0ef133" title="ccmc::FileReader::close" alt="" coords="225,5,407,32"/>
+<area shape="rect" id="node5" href="$classccmc_1_1_file_reader.html#a38580b9175bb58240630ed1c98147209" title="ccmc::FileReader::initialize\lGlobalAttributes" alt="" coords="216,57,416,98"/>
+<area shape="rect" id="node7" href="$classccmc_1_1_file_reader.html#a9a5bc837ba6c1ccba7543fe934b9879b" title="ccmc::FileReader::initialize\lVariableAttributes" alt="" coords="216,122,416,163"/>
+<area shape="rect" id="node11" href="$classccmc_1_1_c_d_f_file_reader.html#a20efd34232f8348d44291b589a94d56a" title="ccmc::CDFFileReader\l::initializeVariableIDs" alt="" coords="235,187,397,229"/>
+<area shape="rect" id="node13" href="$classccmc_1_1_c_d_f_file_reader.html#ab9c343c409df6b079c270e9598ac0fd0" title="ccmc::CDFFileReader\l::initializeVariableNames" alt="" coords="225,253,407,294"/>
+<area shape="rect" id="node9" href="$classccmc_1_1_attribute.html#ad1f07128784fe7f0416edc4a813ab1b6" title="ccmc::Attribute::getAttribute\lString" alt="" coords="464,122,685,163"/>
+</map>

@@ -1,0 +1,104 @@
+\hypertarget{structnanoflann_1_1_l1___adaptor}{\section{nanoflann\-:\-:L1\-\_\-\-Adaptor$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$ Struct Template Reference}
+\label{structnanoflann_1_1_l1___adaptor}\index{nanoflann\-::\-L1\-\_\-\-Adaptor$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$@{nanoflann\-::\-L1\-\_\-\-Adaptor$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$}}
+}
+
+
+{\ttfamily \#include $<$nanoflann.\-hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef T \hyperlink{structnanoflann_1_1_l1___adaptor_a25cd87fbe8767f9d0db4ddf93f82c9a2}{Element\-Type}
+\item 
+typedef \-\_\-\-Distance\-Type \hyperlink{structnanoflann_1_1_l1___adaptor_a18f9a7c38fd2525b5797b2ae627c3957}{Distance\-Type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structnanoflann_1_1_l1___adaptor_abfbcf686d88f0aef5df3a104586f0612}{L1\-\_\-\-Adaptor} (const Data\-Source \&\-\_\-data\-\_\-source)
+\item 
+\hyperlink{structnanoflann_1_1_l1___adaptor_a18f9a7c38fd2525b5797b2ae627c3957}{Distance\-Type} \hyperlink{structnanoflann_1_1_l1___adaptor_a84e509cc50ad2bb6bc3fbe9f073ea4e3}{operator()} (const T $\ast$a, const size\-\_\-t b\-\_\-idx, size\-\_\-t size, \hyperlink{structnanoflann_1_1_l1___adaptor_a18f9a7c38fd2525b5797b2ae627c3957}{Distance\-Type} worst\-\_\-dist=-\/1) const 
+\item 
+{\footnotesize template$<$typename U , typename V $>$ }\\\hyperlink{structnanoflann_1_1_l1___adaptor_a18f9a7c38fd2525b5797b2ae627c3957}{Distance\-Type} \hyperlink{structnanoflann_1_1_l1___adaptor_af43d8c14ff76c2de3519d891b83bd3e5}{accum\-\_\-dist} (const U a, const V b, int dim) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const Data\-Source \& \hyperlink{structnanoflann_1_1_l1___adaptor_af5ffa8683071c1452a4619cce0a6f707}{data\-\_\-source}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T, class Data\-Source, typename \-\_\-\-Distance\-Type = T$>$struct nanoflann\-::\-L1\-\_\-\-Adaptor$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$}
+
+Manhattan distance functor (generic version, optimized for high-\/dimensionality data sets). Corresponding distance traits\-: \hyperlink{structnanoflann_1_1metric___l1}{nanoflann\-::metric\-\_\-\-L1} 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & Type of the elements (e.\-g. double, float, uint8\-\_\-t) \\
+\hline
+{\em Distance\-Type} & Type of distance variables (must be signed) (e.\-g. float, double, int64\-\_\-t) \\
+\hline
+\end{DoxyTemplParams}
+
+
+\subsection{Member Typedef Documentation}
+\hypertarget{structnanoflann_1_1_l1___adaptor_a18f9a7c38fd2525b5797b2ae627c3957}{\index{nanoflann\-::\-L1\-\_\-\-Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}!Distance\-Type@{Distance\-Type}}
+\index{Distance\-Type@{Distance\-Type}!nanoflann::L1_Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}}
+\subsubsection[{Distance\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Data\-Source , typename \-\_\-\-Distance\-Type  = T$>$ typedef \-\_\-\-Distance\-Type {\bf nanoflann\-::\-L1\-\_\-\-Adaptor}$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$\-::{\bf Distance\-Type}}}\label{structnanoflann_1_1_l1___adaptor_a18f9a7c38fd2525b5797b2ae627c3957}
+\hypertarget{structnanoflann_1_1_l1___adaptor_a25cd87fbe8767f9d0db4ddf93f82c9a2}{\index{nanoflann\-::\-L1\-\_\-\-Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}!Element\-Type@{Element\-Type}}
+\index{Element\-Type@{Element\-Type}!nanoflann::L1_Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}}
+\subsubsection[{Element\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Data\-Source , typename \-\_\-\-Distance\-Type  = T$>$ typedef T {\bf nanoflann\-::\-L1\-\_\-\-Adaptor}$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$\-::{\bf Element\-Type}}}\label{structnanoflann_1_1_l1___adaptor_a25cd87fbe8767f9d0db4ddf93f82c9a2}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structnanoflann_1_1_l1___adaptor_abfbcf686d88f0aef5df3a104586f0612}{\index{nanoflann\-::\-L1\-\_\-\-Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}!L1\-\_\-\-Adaptor@{L1\-\_\-\-Adaptor}}
+\index{L1\-\_\-\-Adaptor@{L1\-\_\-\-Adaptor}!nanoflann::L1_Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}}
+\subsubsection[{L1\-\_\-\-Adaptor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Data\-Source , typename \-\_\-\-Distance\-Type  = T$>$ {\bf nanoflann\-::\-L1\-\_\-\-Adaptor}$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$\-::{\bf L1\-\_\-\-Adaptor} (
+\begin{DoxyParamCaption}
+\item[{const Data\-Source \&}]{\-\_\-data\-\_\-source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_l1___adaptor_abfbcf686d88f0aef5df3a104586f0612}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structnanoflann_1_1_l1___adaptor_af43d8c14ff76c2de3519d891b83bd3e5}{\index{nanoflann\-::\-L1\-\_\-\-Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}!accum\-\_\-dist@{accum\-\_\-dist}}
+\index{accum\-\_\-dist@{accum\-\_\-dist}!nanoflann::L1_Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}}
+\subsubsection[{accum\-\_\-dist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Data\-Source , typename \-\_\-\-Distance\-Type  = T$>$ template$<$typename U , typename V $>$ {\bf Distance\-Type} {\bf nanoflann\-::\-L1\-\_\-\-Adaptor}$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$\-::accum\-\_\-dist (
+\begin{DoxyParamCaption}
+\item[{const U}]{a, }
+\item[{const V}]{b, }
+\item[{int}]{dim}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_l1___adaptor_af43d8c14ff76c2de3519d891b83bd3e5}
+\hypertarget{structnanoflann_1_1_l1___adaptor_a84e509cc50ad2bb6bc3fbe9f073ea4e3}{\index{nanoflann\-::\-L1\-\_\-\-Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}!operator()@{operator()}}
+\index{operator()@{operator()}!nanoflann::L1_Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Data\-Source , typename \-\_\-\-Distance\-Type  = T$>$ {\bf Distance\-Type} {\bf nanoflann\-::\-L1\-\_\-\-Adaptor}$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$\-::operator() (
+\begin{DoxyParamCaption}
+\item[{const T $\ast$}]{a, }
+\item[{const size\-\_\-t}]{b\-\_\-idx, }
+\item[{size\-\_\-t}]{size, }
+\item[{{\bf Distance\-Type}}]{worst\-\_\-dist = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{structnanoflann_1_1_l1___adaptor_a84e509cc50ad2bb6bc3fbe9f073ea4e3}
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structnanoflann_1_1_l1___adaptor_a84e509cc50ad2bb6bc3fbe9f073ea4e3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structnanoflann_1_1_l1___adaptor_af5ffa8683071c1452a4619cce0a6f707}{\index{nanoflann\-::\-L1\-\_\-\-Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}!data\-\_\-source@{data\-\_\-source}}
+\index{data\-\_\-source@{data\-\_\-source}!nanoflann::L1_Adaptor@{nanoflann\-::\-L1\-\_\-\-Adaptor}}
+\subsubsection[{data\-\_\-source}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class Data\-Source , typename \-\_\-\-Distance\-Type  = T$>$ const Data\-Source\& {\bf nanoflann\-::\-L1\-\_\-\-Adaptor}$<$ T, Data\-Source, \-\_\-\-Distance\-Type $>$\-::data\-\_\-source}}\label{structnanoflann_1_1_l1___adaptor_af5ffa8683071c1452a4619cce0a6f707}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{nanoflann_8hpp}{nanoflann.\-hpp}\end{DoxyCompactItemize}

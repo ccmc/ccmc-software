@@ -1,0 +1,205 @@
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s}{\section{ccmc\-:\-:B\-A\-T\-S\-R\-U\-S Class Reference}
+\label{classccmc_1_1_b_a_t_s_r_u_s}\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+}
+
+
+T\-O\-D\-O\-: brief description of \hyperlink{classccmc_1_1_b_a_t_s_r_u_s}{B\-A\-T\-S\-R\-U\-S} class.  
+
+
+
+
+{\ttfamily \#include $<$ccmc/\-B\-A\-T\-S\-R\-U\-S.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:B\-A\-T\-S\-R\-U\-S\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classccmc_1_1_b_a_t_s_r_u_s__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ccmc\-:\-:B\-A\-T\-S\-R\-U\-S\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classccmc_1_1_b_a_t_s_r_u_s_a687bb4cafb036eb5149d5d52be52037d}{B\-A\-T\-S\-R\-U\-S} ()
+\item 
+long \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_a9acf9929698159533b7a50734665dd1a}{open} (const std\-::string \&filename)
+\begin{DoxyCompactList}\small\item\em Opens a file.  \end{DoxyCompactList}\item 
+\hyperlink{classccmc_1_1_interpolator}{Interpolator} $\ast$ \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_a3cbd68c8c3fb850c3b10cb314c0a21b3}{create\-New\-Interpolator} ()
+\begin{DoxyCompactList}\small\item\em Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  \end{DoxyCompactList}\item 
+const std\-::vector$<$ std\-::string $>$ \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_a6886de3c29f43d4cb927cea05d43e50d}{get\-Loaded\-Variables} ()
+\begin{DoxyCompactList}\small\item\em Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. \end{DoxyCompactList}\item 
+virtual \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_a087125c4f1ee6883206fd63bf8fb1528}{$\sim$\-B\-A\-T\-S\-R\-U\-S} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_a86dddd02ea3db46068f482d59f77df86}{initialize\-Conversion\-Factors\-To\-S\-I} ()
+\begin{DoxyCompactList}\small\item\em Initializes the conversion\-Factors\-To\-S\-I map.  \end{DoxyCompactList}\item 
+void \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_ab86a0088002795bbf4b60fd89576604e}{initialize\-S\-I\-Units} ()
+\begin{DoxyCompactList}\small\item\em Initializes the variable\-S\-I\-Units map.  \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\int \hyperlink{classccmc_1_1_b_a_t_s_r_u_s_ae33f5d913530545859c1b8b43200c237}{binary\-\_\-search} (const std\-::vector$<$ T $>$ \&vec, unsigned int start, unsigned int end, const T \&key)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+T\-O\-D\-O\-: brief description of \hyperlink{classccmc_1_1_b_a_t_s_r_u_s}{B\-A\-T\-S\-R\-U\-S} class. 
+
+T\-O\-D\-O\-: full description of \hyperlink{classccmc_1_1_b_a_t_s_r_u_s}{B\-A\-T\-S\-R\-U\-S} class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_a687bb4cafb036eb5149d5d52be52037d}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!B\-A\-T\-S\-R\-U\-S@{B\-A\-T\-S\-R\-U\-S}}
+\index{B\-A\-T\-S\-R\-U\-S@{B\-A\-T\-S\-R\-U\-S}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{B\-A\-T\-S\-R\-U\-S}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-::\-B\-A\-T\-S\-R\-U\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_b_a_t_s_r_u_s_a687bb4cafb036eb5149d5d52be52037d}
+Default constructor \hypertarget{classccmc_1_1_b_a_t_s_r_u_s_a087125c4f1ee6883206fd63bf8fb1528}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!$\sim$\-B\-A\-T\-S\-R\-U\-S@{$\sim$\-B\-A\-T\-S\-R\-U\-S}}
+\index{$\sim$\-B\-A\-T\-S\-R\-U\-S@{$\sim$\-B\-A\-T\-S\-R\-U\-S}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{$\sim$\-B\-A\-T\-S\-R\-U\-S}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-::$\sim$\-B\-A\-T\-S\-R\-U\-S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_a087125c4f1ee6883206fd63bf8fb1528}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_a3cbd68c8c3fb850c3b10cb314c0a21b3}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!create\-New\-Interpolator@{create\-New\-Interpolator}}
+\index{create\-New\-Interpolator@{create\-New\-Interpolator}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{create\-New\-Interpolator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Interpolator} $\ast$ ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-::create\-New\-Interpolator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_a3cbd68c8c3fb850c3b10cb314c0a21b3}
+
+
+Returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object for the currently opened file.  
+
+This returns an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object that contains all the necessary local variables required to interpolate independent of any other \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. The pointer must be deleted from the calling program. \begin{DoxyReturn}{Returns}
+A pointer to an \hyperlink{classccmc_1_1_interpolator}{Interpolator} object. 
+\end{DoxyReturn}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a0dd491507c14502c27aa61b020fca8cc}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_a6886de3c29f43d4cb927cea05d43e50d}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!get\-Loaded\-Variables@{get\-Loaded\-Variables}}
+\index{get\-Loaded\-Variables@{get\-Loaded\-Variables}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{get\-Loaded\-Variables}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ std\-::string $>$ ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-::get\-Loaded\-Variables (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_a6886de3c29f43d4cb927cea05d43e50d}
+
+
+Returns the list of variables that have been loaded into memory, using the load\-Variable or load\-Vector\-Variable methods. 
+
+
+
+Reimplemented from \hyperlink{classccmc_1_1_model_ac49a0eec99d25e9ed08ffff959e4ecdc}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_a6886de3c29f43d4cb927cea05d43e50d_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_a86dddd02ea3db46068f482d59f77df86}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}}
+\index{initialize\-Conversion\-Factors\-To\-S\-I@{initialize\-Conversion\-Factors\-To\-S\-I}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{initialize\-Conversion\-Factors\-To\-S\-I}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-::initialize\-Conversion\-Factors\-To\-S\-I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_a86dddd02ea3db46068f482d59f77df86}
+
+
+Initializes the conversion\-Factors\-To\-S\-I map.  
+
+These factors are used to convert interpolated values to S\-I units.  T\-O\-D\-O\-: fix these conversion factors
+
+Implements \hyperlink{classccmc_1_1_model_a6f04326691fba448e2cfb7c7ab90a45a}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_ab86a0088002795bbf4b60fd89576604e}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!initialize\-S\-I\-Units@{initialize\-S\-I\-Units}}
+\index{initialize\-S\-I\-Units@{initialize\-S\-I\-Units}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{initialize\-S\-I\-Units}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-::initialize\-S\-I\-Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_ab86a0088002795bbf4b60fd89576604e}
+
+
+Initializes the variable\-S\-I\-Units map.  
+
+
+
+Implements \hyperlink{classccmc_1_1_model_a68d31e8d8cce59269c994de25d048178}{ccmc\-::\-Model}.
+
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_a9acf9929698159533b7a50734665dd1a}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!open@{open}}
+\index{open@{open}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{open}]{\setlength{\rightskip}{0pt plus 5cm}long ccmc\-::\-B\-A\-T\-S\-R\-U\-S\-::open (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_a9acf9929698159533b7a50734665dd1a}
+
+
+Opens a file.  
+
+Opens a file and performs any necessary initialization required to work with the data. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & \\
+\hline
+\end{DoxyParams}
+ 
+
+Implements \hyperlink{classccmc_1_1_model_a3c64dc635c2c1a2fe2f8efa2a3666282}{ccmc\-::\-Model}.
+
+
+
+Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classccmc_1_1_b_a_t_s_r_u_s_a9acf9929698159533b7a50734665dd1a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classccmc_1_1_b_a_t_s_r_u_s_ae33f5d913530545859c1b8b43200c237}{\index{ccmc\-::\-B\-A\-T\-S\-R\-U\-S@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}!binary\-\_\-search@{binary\-\_\-search}}
+\index{binary\-\_\-search@{binary\-\_\-search}!ccmc::BATSRUS@{ccmc\-::\-B\-A\-T\-S\-R\-U\-S}}
+\subsubsection[{binary\-\_\-search}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ int binary\-\_\-search (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{vec, }
+\item[{unsigned int}]{start, }
+\item[{unsigned int}]{end, }
+\item[{const T \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classccmc_1_1_b_a_t_s_r_u_s_ae33f5d913530545859c1b8b43200c237}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_b_a_t_s_r_u_s_8h}{B\-A\-T\-S\-R\-U\-S.\-h}\item 
+/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_b_a_t_s_r_u_s_8cpp}{B\-A\-T\-S\-R\-U\-S.\-cpp}\end{DoxyCompactItemize}

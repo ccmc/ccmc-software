@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Tue Jun 14 18:19:54 EDT 2011 -->
+
+<BatsrusAttrs>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>smallest_cell_size</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>max_amr_level</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>global_x_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>global_x_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>global_y_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>global_y_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>global_z_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>global_z_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_x_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_x_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_y_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_y_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_z_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_z_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_x_center</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_y_center</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_z_center</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_amr_levels</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>block_at_amr_level</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>number_of_blocks_at_amr_level</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>number_of_parent_blocks_at_amr_level</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>parent_id</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_count</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_1</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_2</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_3</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_4</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_5</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_6</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_7</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>child_id_8</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="Grid Description Variables">
+      <name>number_of_blocks</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>x_position_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>x_position_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>y_position_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>y_position_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>z_position_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>z_position_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>rho_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>rho_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>ux_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>ux_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>uy_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>uy_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>uz_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>uz_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>bx_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>bx_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>by_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>by_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>bz_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>bz_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>b1x_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>b1x_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>b1y_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>b1y_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>b1z_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>b1z_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>p_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>p_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>e_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>e_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>jx_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>jx_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>jy_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>jy_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>jz_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max variables">
+      <name>jz_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 1">
+      <name>unit_string</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="">
+      <name>byte_value</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="">
+      <name>byte_value_2</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="">
+      <name>flip_endian</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="">
+      <name>is_double</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="">
+      <name>dtmp</name>
+      <datatype>double</datatype>
+</Variable>
+
+<Variable type="object" specification="">
+      <name>tmp_double</name>
+      <datatype>double</datatype>
+</Variable>
+
+<Variable type="object" specification="record 2">
+      <name>current_iteration_step</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="record 2">
+      <name>elapsed_time_seconds</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 2">
+      <name>number_dimensions</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="record 2">
+      <name>number_special_parameters</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="record 2">
+      <name>number_plot_variables</name>
+      <datatype>int</datatype>
+</Variable>
+
+
+<Variable type="object" specification="record 3">
+      <name>x_dimension_size</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="record 3">
+      <name>y_dimension_size</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="record 3">
+      <name>z_dimension_size</name>
+      <datatype>int</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_g</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_c</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_th</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_P1</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_P2</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_P3</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_R</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_NX</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_NY</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 4">
+      <name>special_parameter_NZ</name>
+      <datatype>float</datatype>
+</Variable>
+
+
+
+<Variable type="object" specification="record 5">
+      <name>variable_name_string</name>
+      <datatype>char</datatype>
+</Variable>
+
+<Variable type="object" specification="record 5">
+      <name>number_of_cells</name>
+      <datatype>int</datatype>
+</Variable>
+
+
+
+<Variable type="object" specification="record 6">
+      <name>x_position_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 6">
+      <name>y_position_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 6">
+      <name>z_position_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+
+
+
+<Variable type="object" specification="record 7">
+      <name>rho_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>ux_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>uy_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>uz_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>bx_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>by_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>bz_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>b1x_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>b1y_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>b1z_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>p_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>e_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>jx_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>jy_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="object" specification="record 7">
+      <name>jz_arrayPtr</name>
+      <datatype>float</datatype>
+</Variable>
+
+</BatsrusAttrs>

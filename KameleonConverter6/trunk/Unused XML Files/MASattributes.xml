@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New document created with EditiX at Tue Jun 14 17:35:37 EDT 2011 -->
+
+
+//Only did last 2 sections
+
+<MASattrs>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>r_plus1_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>r_plus1_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>phi_plus1_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>phi_plus1_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>theta_plus1_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>theta_plus1_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>r_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>r_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>phi_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>phi_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>theta_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>theta_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>t_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>t_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>p_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>p_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>rho_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>rho_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>vr_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>vp_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>vt_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>jr_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>jp_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>jt_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>br_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>bp_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>bt_actual_min</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>vr_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>vp_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>vt_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>jr_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>jp_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>jt_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>br_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>bp_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="actual min/max values">
+      <name>bt_actual_max</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>t</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>p</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>rho</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>vr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>vp</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>vt</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>jr</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>jp</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>jt</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>br</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>bp</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>bt</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>dim0</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>dim1</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>dim2</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>dim0_plus1</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>dim1_plus1</name>
+      <datatype>float</datatype>
+</Variable>
+
+<Variable type="attribute" specification="data storage">
+      <name>dim2_plus1</name>
+      <datatype>float</datatype>
+</Variable>
+
+
+
+
+</MASattrs>
