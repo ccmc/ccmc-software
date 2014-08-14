@@ -5,6 +5,34 @@
 
 <Model name="LFM">
     <variable>
+        <OriginalName>avgBx</OriginalName>
+        <KameleonName>avgBx</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>avgBy</OriginalName>
+        <KameleonName>avgBy</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>avgBz</OriginalName>
+        <KameleonName>avgBz</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>avgEi</OriginalName>
+        <KameleonName>avgEi</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>avgEj</OriginalName>
+        <KameleonName>avgEj</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>avgEk</OriginalName>
+        <KameleonName>avgEk</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>solar_wind_file</OriginalName>
+        <KameleonName>solar_wind_file</KameleonName>
+    </variable>
+    <variable>
         <OriginalName>X_grid</OriginalName>
         <KameleonName>x</KameleonName>
     </variable>
@@ -50,15 +78,15 @@
     </variable>
     <variable>
     	<OriginalName>bi_</OriginalName>
-    	<KameleonName>b1x</KameleonName>
+    	<KameleonName>bi</KameleonName>
     </variable>
     <variable>
     	<OriginalName>bj_</OriginalName>
-    	<KameleonName>b1y</KameleonName>
+    	<KameleonName>bj</KameleonName>
     </variable>
     <variable>
     	<OriginalName>bk_</OriginalName>
-    	<KameleonName>b1z</KameleonName>
+    	<KameleonName>bk</KameleonName>
     </variable>
     <variable>
     	<OriginalName>ei_</OriginalName>
@@ -96,7 +124,7 @@
 		<name>README</name>
 		<description>General description of the model, CDF contents, and HOWTO usage</description>
 		<dataType>String</dataType>
-		<value>Describe the LFM here </value>
+		<value>Lyon Fedder Mobarry Global MHD model </value>
 	</attribute>
 	<attribute>
 		<name>model_type</name>
