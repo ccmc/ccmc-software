@@ -120,6 +120,7 @@ public class CDFWriter extends Writer {
 			cdf.setFormat(CDFConstants.SINGLE_FILE);
 
 			//creating the Global Attributes
+			logger.info("creating Global Attributes");
 			for(int i=0; i<m.getGlobAttrsSize(); i++)
 			{
 				if(CommandLineInterface.verboseFlag)
@@ -157,7 +158,7 @@ public class CDFWriter extends Writer {
 			//Creating Variable Attribute CONTAINERS and storing them in an array to be used momentarily (NO VALUES YET, JUST NAMES)
 			//creating the gsfc.nssdc.cdf.Attribute objects with VARIABLE scope (only the CCMC ones)
 			//based on the CCMC variable attributes of this model's first recorded variable
-
+			logger.info("Creating Variable Attribute objects with VARIABLE scope (CCMC only)");
 			for(int i=0; i<m.getVariableObject(0).getCCMCAttributeNames().length; i++){
 				try {
 					variableCDFattrs[i]=Attribute.create(cdf,m.getVariableObject(0).getCCMCAttributeNames()[i], CDFConstants.VARIABLE_SCOPE);
@@ -169,6 +170,7 @@ public class CDFWriter extends Writer {
 			//Creating Variable Attribute containers and storing them in an array to be used momentarily (no values yet, just names)
 			//creating the gsfc.nssdc.cdf.Attribute objects with VARIABLE scope (only the Model-Specific ones)
 			//based on the CCMC variable attributes of this model's first recorded variable
+			logger.info("Creating Variable Attribute objects with VARIABLE scope (Model-Specific only)");
 			for(int i=0, j=0; i<m.getVariableObject(0).msaal.size(); i++, j++){
 				try {
 					variableCDFattrs[j+m.getVariableObject(0).getCCMCAttributeNames().length]=Attribute.create(cdf,m.getVariableObject(0).msaal.get(i).name, CDFConstants.VARIABLE_SCOPE);
@@ -186,6 +188,7 @@ public class CDFWriter extends Writer {
 			long cdfconstant = CDFConstants.CDF_CHAR;
 
 			//Creating the gsfc.nssdc.cdf.Variable objects
+			logger.info("Creating the gsfc.nssdc.cdf.Variable objects");
 			for(int i=0; i<m.getNumVariables(); i++){
 				gov.nasa.gsfc.ccmc.KameleonConverter.Variable var = m.getVariableObject(i);
 				
@@ -204,12 +207,12 @@ public class CDFWriter extends Writer {
 				else if (var.dt.equalsIgnoreCase("int"))
 					varDataType=CDFConstants.CDF_INT4;
 				else{
-					logger.error("***ERROR***Unsupported Data Type for Variable. \nEXITING...");
+					logger.error("***ERROR***Unsupported Data Type " + var.dt + " for Variable " + var.originalName + " \nEXITING...");
 					System.exit(0);
 				}
 				
 				try{
-				logger.info(var.KameleonName);
+				logger.info("exporting kameleon variable:" + var.KameleonName);
 				CDFvariables[i]=gsfc.nssdc.cdf.Variable.create(cdf, var.KameleonName, varDataType, 1, 1, new long [] {var.numElem}, CDFConstants.VARY, new long [] {CDFConstants.VARY});
 				}
 				catch (CDFException c){
