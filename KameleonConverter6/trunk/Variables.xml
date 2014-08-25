@@ -1594,6 +1594,23 @@
 
 	<Variable>
 		<category>magnetic field vector components on x,y,z</category>
+		<name>avgBx</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>nT</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>Average magnetic field component in GSM.
+		</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>magnetic field vector components on x,y,z</category>
 		<name>bx_1</name>
 		<dataType>float</dataType>
 		<classification>data</classification>
@@ -1689,6 +1706,23 @@
 
 	<Variable>
 		<category>magnetic field vector components on x,y,z</category>
+		<name>avgBy</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>nT</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>Average magnetic field component in GSM.
+		</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>magnetic field vector components on x,y,z</category>
 		<name>by_1</name>
 		<dataType>float</dataType>
 		<classification>data</classification>
@@ -1776,6 +1810,23 @@
 		<description>Z Magnetic Field Component, Earth field up to 60000 nT,
 			Solar field up to 3500 G in sunspots ( 3.5e8 nT ), 1 T is not
 			exceeded in Solar/Heliospheric/Earth context
+		</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>magnetic field vector components on x,y,z</category>
+		<name>avgBz</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>nT</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>Average magnetic field component in GSM.
 		</description>
 		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
@@ -2114,6 +2165,54 @@
 
 	<Variable>
 		<category>magnetic field scalar</category>
+		<name>bi</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>Gauss-cm^2</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>Magnetic Flux through i face</description>
+		<is_vector_components>false</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>magnetic field scalar</category>
+		<name>bj</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>Gauss-cm^2</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>Magnetic Flux through j face</description>
+		<is_vector_components>false</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>magnetic field scalar</category>
+		<name>bk</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>Gauss-cm^2</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>Magnetic Flux through k face</description>
+		<is_vector_components>false</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>magnetic field scalar</category>
 		<name>total_flux</name>
 		<dataType>float</dataType>
 		<classification>data</classification>
@@ -2123,6 +2222,22 @@
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
 		<description>Total Magnetic Flux</description>
+		<is_vector_components>false</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>solar wind data</category>
+		<name>solar_wind_file</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>min, #/cc, km/s, km/s, km/s, km/s, nT, nT, nT, nT, degrees</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description>UT(i), Njp, Vjx, Vjy, Vjz, Cs, BjX, BjY, BjZ, BjT, Zangle</description>
 		<is_vector_components>false</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
@@ -2861,7 +2976,7 @@
 		<units>mV/m</units>
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
-		<description>X Current Component</description>
+		<description>X Electric Field Component</description>
 		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
@@ -2877,7 +2992,7 @@
 		<units>mV/m</units>
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
-		<description>Y Current Component</description>
+		<description>Y Electric Field Component</description>
 		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
@@ -2893,11 +3008,108 @@
 		<units>mV/m</units>
 		<grid_system>grid_system_1</grid_system>
 		<mask>FLOAT_MASK</mask>
-		<description>Z Current Component</description>
+		<description>Z Electric Field Component</description>
 		<is_vector_components>true</is_vector_components>
 		<position_grid_system>grid_system_1</position_grid_system>
 		<data_grid_system>grid_system_1</data_grid_system>
 	</Variable>
+
+	<Variable>
+		<category>edge electric field</category>
+		<name>ei</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>gauss*cm^2/s</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description> Grid Edge Component along i</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>edge electric field</category>
+		<name>ej</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>gauss*cm^2/s</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description> Grid Edge Component along j</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>edge electric field</category>
+		<name>ek</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>gauss*cm^2/s</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description> Grid Edge Component along k</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>average edge electric field</category>
+		<name>avgEi</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>gauss*cm^2/s</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description> Averaged grid Edge Component along i</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>average edge electric field</category>
+		<name>avgEj</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>gauss*cm^2/s</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description> Averaged grid Edge Component along j</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
+	<Variable>
+		<category>average edge electric field</category>
+		<name>avgEk</name>
+		<dataType>float</dataType>
+		<classification>data</classification>
+		<valid_min>-1000000000.0</valid_min>
+		<valid_max>1000000000.0</valid_max>
+		<units>gauss*cm^2/s</units>
+		<grid_system>grid_system_1</grid_system>
+		<mask>FLOAT_MASK</mask>
+		<description> Averaged grid Edge Component along k</description>
+		<is_vector_components>true</is_vector_components>
+		<position_grid_system>grid_system_1</position_grid_system>
+		<data_grid_system>grid_system_1</data_grid_system>
+	</Variable>
+
 
 	<Variable>
 		<category>resistivity</category>

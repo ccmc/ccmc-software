@@ -53,6 +53,7 @@ public class VariableXMLParser {
 	VariableXMLParser(String f ){
 
 		axmlp = new AttributeXMLParser("VariableCCMCAttributeNames.xml");
+		logger.debug("After AttributeXMLParser(\"VariableCCMCAttributeNames.xml\"), attempting to read "+f);
 		read(f);
 	}
 
@@ -91,6 +92,7 @@ public class VariableXMLParser {
 
 			//loop executes once for each distinct variable in the xml file
 			for (int s = 0; s < nodeVarLst.getLength(); s++) {
+				logger.debug("s="+s);
 
 				KAttribute[] atts = new KAttribute[tags.length-4];
 				Node fstNode = nodeVarLst.item(s);
@@ -99,7 +101,7 @@ public class VariableXMLParser {
 
 					fstElmnt = (Element) fstNode; 
 					//int num =s+1;
-
+					logger.debug("tags.length ="+tags.length);
 					//this loops through all of the attributes of each distinct variable
 					for (int i=0; i<tags.length; i++){
 
@@ -129,7 +131,11 @@ public class VariableXMLParser {
 							}
 							else
 							{//if the value for is_vector == false
+								logger.debug("i="+i+" tags[i]="+tags[i]); //prints tags[i]=is_vector
+								logger.debug("axmlp.name2attr.get(tags[i]).description="+axmlp.name2attr.get(tags[i]));
+								//get(tags[i]) returns null. program fails when trying to assign a value
 								axmlp.name2attr.get(tags[i]).value = (0);
+								logger.debug("line above breaks");
 								atts[i-4]=axmlp.name2attr.get(tags[i]);
 							}
 						}else if (i>3)
