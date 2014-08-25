@@ -2036,9 +2036,9 @@ namespace ccmc
 	 * TODO: finish documentation
 	 * @param r_end
 	 */
-	void Tracer::setInnerBoundary(float r_end)
+	void Tracer::setInnerBoundary(float innerBoundary)
 	{
-		this->r_end = r_end;
+		this->r_end = innerBoundary;
 	}
 
 	/**
