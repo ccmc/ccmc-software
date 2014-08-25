@@ -47,8 +47,8 @@ namespace ccmc
 		float missingValue = this->modelReader->getMissingValue();
 
 		float interp_value = missingValue;//model->getMissingValue();
-		int flag1 = 0;
-		int flag2 = 1;
+//		int flag1 = 0;
+//		int flag2 = 1;
 
 
 		interp_value = interpolator->interpolate(variable, positionComponent1, positionComponent2, positionComponent3,
@@ -97,8 +97,8 @@ namespace ccmc
 		float missingValue = this->modelReader->getMissingValue();
 
 		float interp_value = missingValue;//model->getMissingValue();
-		int flag1 = 0;
-		int flag2 = 1;
+//		int flag1 = 0;
+//		int flag2 = 1;
 
 
 

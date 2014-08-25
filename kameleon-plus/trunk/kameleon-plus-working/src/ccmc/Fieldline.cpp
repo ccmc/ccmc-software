@@ -514,8 +514,8 @@ namespace ccmc
 
 	void Fieldline::minmax()
 	{
-        bool minimum = true;
-        bool maximum = true;
+//        bool minimum = true;
+//        bool maximum = true;
 		float globmin = 0;
 		float globmax = 0;
  		int size = this->positions.size();

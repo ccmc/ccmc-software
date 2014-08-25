@@ -58,7 +58,7 @@ namespace ccmc
 			float previous_c1;
 			float previous_c2;
 			int last_node_found;
-			int clear_cache;
+//			int clear_cache;
 			//const std::vector<float> * unkno;
 
 			/* support routines */

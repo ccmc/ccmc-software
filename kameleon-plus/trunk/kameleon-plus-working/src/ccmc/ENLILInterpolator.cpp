@@ -94,7 +94,7 @@ namespace ccmc
 	{
 
 		float missingValue = this->modelReader->getMissingValue();
-		int change_sign_flag = 0;
+//		int change_sign_flag = 0;
 
 
 		//Convert radius to meters

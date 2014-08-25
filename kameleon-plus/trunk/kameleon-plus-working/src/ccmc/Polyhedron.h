@@ -407,7 +407,7 @@ namespace ccmc
 			return;
 		}
 
-		T alphaMinus;
+//		T alphaMinus;
 		T weight, weightSum = 0;
 
 		for (int i = faces[face]; i<faces[face+1]; i++){

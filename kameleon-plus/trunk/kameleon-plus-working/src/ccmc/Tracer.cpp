@@ -561,7 +561,7 @@ namespace ccmc
 				dir);
 		Point3f lastPoint;
 		Point3f newPoint;
-		float dpdn = dn * dn;
+//		float dpdn = dn * dn;
 		if (fieldline.size() == 0)
 		{
 			lastPoint.component1 = startComponent1;
@@ -1012,9 +1012,9 @@ namespace ccmc
 		kameleon->loadVariable("r");
 		kameleon->loadVariable("theta");
 		kameleon->loadVariable("phi");
-		const std::vector<float> * r_data = kameleon->getVariableFromMap("r");
+//		const std::vector<float> * r_data = kameleon->getVariableFromMap("r");
 		const std::vector<float> * lat_data = kameleon->getVariableFromMap("theta");
-		const std::vector<float> * lon_data = kameleon->getVariableFromMap("phi");
+//		const std::vector<float> * lon_data = kameleon->getVariableFromMap("phi");
 
 
 
@@ -1084,7 +1084,7 @@ namespace ccmc
 		float min_distance = 1.e-5;
 		if (model_name == ccmc::strings::models::enlil_)
 			min_block_size = 1.e-4;
-		float max_latitude_change = 3.f;
+//		float max_latitude_change = 3.f;
 //#define DEBUG_SPHTRACER
 
 		//#define DEBUG_SPHTRACER
@@ -1213,7 +1213,8 @@ namespace ccmc
 			//std::cerr << "Inside while loop" << std::endl;
 			Point3f addition(Point3f::SPHERICAL);
 			//float bp = ((Interpolator *) (interpolator))->interpolate(ccmc::strings::variables::bp_, previous.component1, previous.component2, previous.component3);
-			float magValue, dt, rsinth, rlocal;
+			float magValue, rsinth, rlocal;
+            float dt = 0.f;
 			usePolarity = false;
 			if (usePolarity && ((vectorValue.component1 > 0) != polarity))
 			{
@@ -1937,7 +1938,7 @@ namespace ccmc
 			 vectorComponentName1 = &jx_;
 			 vectorComponentName2 = &jy_;
 			 vectorComponentName3 = &jz_;
-			 } /*else if (variable == "v" || variable == "u" || variable == "ux" || variable == "uy"
+			 } else if (variable == "v" || variable == "u" || variable == "ux" || variable == "uy"
 			 || variable == "uz")
 			 {
 			 vectorComponentName1 = "ux";

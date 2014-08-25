@@ -149,7 +149,7 @@ namespace ccmc
 			(*buffer)[i] = coord_modified->at(i);
 		}
 		this->progress = 50;
-		float tempc = 0;
+//		float tempc = 0;
 		for ( int i=0; i<npoin; i++) {
 //			(*coord_modified)[i]=(*buffer)[i*3];
 //			(*coord_modified)[i+npoin]=(*buffer)[i*3+1];
@@ -878,7 +878,7 @@ namespace ccmc
 
 	/* initialize facing_elements=0 */
 	      int nnodes = nelem*nnode;     /* number of element/node couples */
-	      size_t size = this->smartSearchValues.facing_elements->size();
+//	      size_t size = this->smartSearchValues.facing_elements->size();
 	      for (int i=0;i<nnodes;i++) {
 	        (*this->smartSearchValues.facing_elements)[i]=0;
 	      }

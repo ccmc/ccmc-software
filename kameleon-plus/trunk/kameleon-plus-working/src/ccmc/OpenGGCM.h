@@ -56,18 +56,18 @@ namespace ccmc
 //			int nx;
 //			int ny;
 //			int nz;
-			std::vector<float> * x_array;
-			std::vector<float> * y_array;
-			std::vector<float> * z_array;
+//			std::vector<float> * x_array;
+//			std::vector<float> * y_array;
+//			std::vector<float> * z_array;
 			std::string previousVariable;
-			long previousVariableID;
-			float previousConversionFactor;
+//			long previousVariableID;
+//			float previousConversionFactor;
 			float previous_x;
 			float previous_y;
 			float previous_z;
-			int previous_ix;
-			int previous_iy;
-			int previous_iz;
+//			int previous_ix;
+//			int previous_iy;
+//			int previous_iz;
 
 			void initializeMaps();
 

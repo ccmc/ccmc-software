@@ -57,7 +57,7 @@ namespace ccmc
 
 		//std::cout << "finished reading nx, ny, nz" << std::endl;
 		/********* get value for number_of_blocks **********/
-		int number_of_blocks = (modelReader->getGlobalAttribute(strings::attributes::number_of_blocks_)).getAttributeInt();
+//		int number_of_blocks = (modelReader->getGlobalAttribute(strings::attributes::number_of_blocks_)).getAttributeInt();
 
 		global_x_max = (modelReader->getGlobalAttribute(strings::attributes::global_x_max_)).getAttributeFloat();
 		global_y_max = (modelReader->getGlobalAttribute(strings::attributes::global_y_max_)).getAttributeFloat();
@@ -117,7 +117,7 @@ namespace ccmc
 		bool main_memory_flag = true;
 		if (this->modelReader->getVariableFromMap(variable_id) == NULL)
 			main_memory_flag = false;
-		long status;
+//		long status;
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
 		int ic, new_blk[8], valid;
@@ -129,7 +129,7 @@ namespace ccmc
 		/**********************************************************************************************/
 
 		//	counts[0] = 0; /*reset values after once through */
-		int intervals[] = { 1 };
+//		int intervals[] = { 1 };
 
 		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
 
@@ -349,7 +349,7 @@ namespace ccmc
 		for (ic = 0; ic < 8; ic++)
 		{
 
-			float temp_space;
+//			float temp_space;
 
 			/********* NOTE to SELF:  Put variable name in an array or something next time, but since this works.... ***********/
 
@@ -503,7 +503,7 @@ namespace ccmc
 			main_memory_flag = false;
 
 
-		long status;
+//		long status;
 
 		/********* interpolate_amr_data variables for new interpolation routine/upgrade *******/
 
@@ -512,7 +512,7 @@ namespace ccmc
 
 		float XMIN, XMAX, YMIN, YMAX, ZMIN, ZMAX;
 
-		int intervals[] = { 1 };
+//		int intervals[] = { 1 };
 
 		/* for field line tracing,etc..., select appropriate variable number ie. bx_cdfNum|by_cdfNum|bz_cdfNum based on *variable_string */
 
@@ -733,7 +733,7 @@ namespace ccmc
 		for (ic = 0; ic < 8; ic++)
 		{
 
-			float temp_space;
+//			float temp_space;
 
 			/********* NOTE to SELF:  Put variable name in an array or something next time, but since this works.... ***********/
 
@@ -942,7 +942,7 @@ namespace ccmc
 	 */
 	int BATSRUSInterpolator::climb_octree(int root, float x, float y, float z)
 	{
-		long recordStart = 0;
+//		long recordStart = 0;
 		long indices[1];
 
 		int ix, iy, iz;

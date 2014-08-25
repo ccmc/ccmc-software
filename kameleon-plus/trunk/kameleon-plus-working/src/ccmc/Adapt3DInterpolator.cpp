@@ -136,8 +136,8 @@ namespace ccmc
 
 
 
-		int     array_size;
-		int     istatus;
+		//int     array_size;
+		//int     istatus;
 		int     ielem;
 
 		//char variable_name0[] = "intmat";
@@ -282,32 +282,34 @@ namespace ccmc
 	int Adapt3DInterpolator::smartSearch(const float& c0, const float& c1, const float& c2)
 	{
 //#define DEBUGS
-		int lfound, mask[NNODE_ADAPT3D], try_grid_search;
+        //int lfound, mask[NNODE_ADAPT3D], try_grid_search;
 
-		int  i,j,k,ielem,inode,jnode ;
-		int  ifound, jelem, kelem;
-		int  node_order[NNODE_ADAPT3D];
-		int  i_node, j_node, k_node, k_node_hi;
-		int  next_node, i_order;
+		//int  i,j,k,ielem,inode,jnode ;
+        int ifound;
+		//int  ifound, jelem, kelem;
+        int kelem = 0;
+		//int  node_order[NNODE_ADAPT3D];
+		//int  i_node, j_node, k_node, k_node_hi;
+		//int  next_node, i_order;
 
 		int  nelems_checked;
-		int  clear_cache;
+//		int  clear_cache;
 
 		float  shapex[NNODE_ADAPT3D];
-		float  radius;
+//		float  radius;
 
-		float  distance[NNODE_ADAPT3D];
+//		float  distance[NNODE_ADAPT3D];
 
-		float size_of_last_element;
+//		float size_of_last_element;
 
 #ifdef DELAUNEY_SEARCH
        int   iteration, iteration_max;
        int   next_element, next_element0;
        int   in0,in1,in2,in3,iselect;
        int   jnext,jk,jrand;
-       int   i_s,j_s,k_s;
+//       int   i_s,j_s,k_s;
        float x_last_element,y_last_element,z_last_element,distance0;
-       float x,y,z,r,t,p;
+//       float x,y,z,r,t,p;
 #endif
 
 //std::cout << "smart search" << std::endl;
@@ -496,19 +498,22 @@ namespace ccmc
 
 		//std::cout << "entered findElement" << std::endl;
 
-		int			ielem,kelem, inode;
+//		int			ielem,kelem, inode;
+        int         kelem = 0;
 		int         i_s,j_s,k_s,i,j,k,indx_start,indx_end;
-		int         indx1,ifound,just_found,jelem;
+//		int         indx1,ifound,just_found,jelem;
 		float       x,y,z;
         //float* shapex = new float[nnode];
-		int			next_element, next_element0, iselect;
+//		int			next_element, next_element0, iselect;
+        int         iselect;
 
-		int        in0,in1,in2,in3,iteration;
+        int         in0, in1;
+//		int        in0,in1,in2,in3,iteration;
 		int        delta_i;
 		float      x_last_element,y_last_element,z_last_element;
-		float      distance;
-		float      ddx,ddy,ddz,ss,xx,yy,zz,radius;
-		int        new_del,i_new,j_new,k_new;
+//		float      distance;
+//		float      ddx,ddy,ddz,ss,xx,yy,zz,radius;
+//		int        new_del,i_new,j_new,k_new;
 		float      r, t, p;
 		float      distance0,size_of_last_element;
 
@@ -517,9 +522,9 @@ namespace ccmc
 		int      k_min,k_max;
 		int      j0,k0;
 
-		kelem=-1;
-		ielem=-1;
-		ifound=-1;
+//		kelem=-1;
+//		ielem=-1;
+//		ifound=-1;
 		if ( point_within_grid(c0, c1, c2) == 1)
 		{
 
@@ -1160,7 +1165,7 @@ namespace ccmc
 
 
            int ipa,ipb,ipc,ipd;
-           int iv;
+//           int iv;
            float x1,y1,z1;
            float x2,y2,z2;
            float x3,y3,z3;

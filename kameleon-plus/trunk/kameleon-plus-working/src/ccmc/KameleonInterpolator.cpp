@@ -34,7 +34,7 @@ namespace ccmc
 	float KameleonInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2)
 	{
-		float interp_value;
+//		float interp_value;
 		float dc0, dc1, dc2;
 
 		return interpolate(variable, c0, c1, c2, dc0, dc1, dc2);
@@ -155,8 +155,8 @@ namespace ccmc
 	 */
 	void KameleonInterpolator::initializeConversionFactorsToVis()
 	{
-		float avogadrosNumber = 6.0221415e23;
-		float boltzmannConstant = 1.3806503e-23;
+//		float avogadrosNumber = 6.0221415e23;
+//		float boltzmannConstant = 1.3806503e-23;
 		float gauss2Tesla = 1.e-4;
 		float mu_0 = 8.854e-12;
 		float l_0 = 6.96e8;
