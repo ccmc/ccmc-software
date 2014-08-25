@@ -234,7 +234,7 @@ namespace ccmc
 
 		int nx = (*x_array).size();
 		int ny = (*y_array).size();
-		int nz = (*z_array).size();
+//		int nz = (*z_array).size();
 		int NV_blk = (ny) * (nx);
 		//ix + iy*nx + iz*NV_blk
 		int i = iz;

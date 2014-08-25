@@ -74,9 +74,9 @@ namespace ccmc
 			const std::vector<float> * y_array;
 			const std::vector<float> * z_array;
 
-			const std::vector<float> * cx; // unused cell centers
-			const std::vector<float> * cy;
-			const std::vector<float> * cz;
+//			const std::vector<float> * cx; // unused cell centers
+//			const std::vector<float> * cy;
+//			const std::vector<float> * cz;
 			std::string previousVariable;
 			long previousVariableID;
 			float previousConversionFactor;

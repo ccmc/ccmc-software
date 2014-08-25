@@ -262,7 +262,8 @@ namespace ccmc
 
 		/*int ix, iy, iz;*/
 		//int NV_blk = local_nx * local_ny, iz1=-1;
-		int NV_blk = nlon * nlat, ilon1 = -1;
+//		int NV_blk = nlon * nlat;
+        int ilon1 = -1;
 
 		/* int first_cell_in_block = found_block_index * nx * ny * nz; */
 

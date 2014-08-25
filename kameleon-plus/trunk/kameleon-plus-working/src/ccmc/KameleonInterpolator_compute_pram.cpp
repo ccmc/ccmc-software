@@ -21,7 +21,8 @@ namespace ccmc
 	{
 		//	std::cout << "KameleonInterpolator::compute_pram" << std::endl;
 		//float n_to_rho = 1.672e-27;
-		float n, v0, v1, v2, p_factor, interp_value;
+//		float n, v0, v1, v2, p_factor, interp_value;
+        float n, v0, v1, v2, interp_value;
 		n = interpolate(n_, c0, c1, c2, dc0, dc1, dc2);
 		//std::cout << "after interpolating n" << std::endl;
 		std::string component0, component1, component2;

@@ -36,7 +36,7 @@ namespace ccmc
 			int nx;
 			int ny;
 			int nz;
-			int old_block;
+//			int old_block;
 			int callCount;
 			float old_x;
 			float old_y;

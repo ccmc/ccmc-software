@@ -198,10 +198,10 @@ namespace ccmc
 		 * If searchPoly==NULL, this is the first time through, so getCell
 		 */
 
-		float Re_cm = 6.378e8; //Radius of earth in cm
+//		float Re_cm = 6.378e8; //Radius of earth in cm
 		Vector<float> point(c0,c1,c2); //point = point*Re_cm;
 
-		clock_t startDestruction, endDestruction;
+//		clock_t startDestruction, endDestruction;
 
 		if (searchPoly==NULL){ //this is the first time through, find cell
 //			std::cout<<"search poly was null, performing initial search"<<endl;
@@ -421,7 +421,8 @@ namespace ccmc
 	 */
 	LFMInterpolator::~LFMInterpolator()
 	{
-		float total = 0; float elapsed_time = 0;
+        float elapsed_time;
+//		float total = 0; float elapsed_time = 0;
 		// std::cout<<"destructing LFMInterpolator"<<endl;
 		// TODO Auto-generated destructor stub
 //		elapsed_time = ((float) getCellTime)/CLOCKS_PER_SEC; total += elapsed_time;
@@ -620,12 +621,12 @@ namespace ccmc
 		 */
 
 		clock_t tgetCellStart,tgetCellEnd;
-		clock_t startCreation,endCreation;
-		clock_t startDestruction,endDestruction;
+//		clock_t startCreation,endCreation;
+//		clock_t startDestruction,endDestruction;
 		tgetCellStart = clock();
 
 
-		float Re_cm = 6.378e8; //unused
+//		float Re_cm = 6.378e8; //unused
 		typedef float num_t;
 		num_t query_pt[3] = {point.c0(), point.c1(), point.c2()}; // c0,c1 do not need to be flipped...
 		const int num_results = 1; //changed from const size_t num_results = 1;
@@ -642,10 +643,10 @@ namespace ccmc
 
 		LFMInterpolator::lfmtree.nearest(query_pt, resultSet);
 
-		int polyI,polyJ,polyK;
+//		int polyI,polyJ,polyK;
 		int closestHelper = ret_index[0];
 		typedef float num_p;
-		Polyhedron<num_p>* pStartPoly;
+//		Polyhedron<num_p>* pStartPoly;
 		Polyhedron<num_p>* pLastPoly;
 		Polyhedron<num_p>* pCurrentPoly;
 		Polyhedron<num_p>* pNextPoly;
@@ -689,8 +690,8 @@ namespace ccmc
 			}
 			if (loopIndex > maxTries-3){
 				int face = pCurrentPoly->closestFace;
-				float eps = std::numeric_limits<float>::epsilon();
-				float piOver2 = Polyhedron<float>::piOver2;
+//				float eps = std::numeric_limits<float>::epsilon();
+//				float piOver2 = Polyhedron<float>::piOver2;
 				std::cerr<<"loop index: "<<loopIndex
 						<< " goal point: "
 						<< point.toString()

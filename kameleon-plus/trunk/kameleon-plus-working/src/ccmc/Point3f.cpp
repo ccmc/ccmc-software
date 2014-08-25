@@ -155,7 +155,7 @@ namespace ccmc
 			float cartesianComponent2 = component1 * sinTheta1 * std::sin(ccmc::constants::DegreesToRadians * component3);
 			float cartesianComponent3 = component1 * std::cos(ccmc::constants::DegreesToRadians * (90.f - component2));
 
-			float sinTheta2 = std::sin(ccmc::constants::DegreesToRadians*(90.f-p.component2));
+//			float sinTheta2 = std::sin(ccmc::constants::DegreesToRadians*(90.f-p.component2));
 			float pCartesianComponent1 = p.component1 * sinTheta1 * std::cos(ccmc::constants::DegreesToRadians * p.component3);
 			float pCartesianComponent2 = p.component1 * sinTheta1 * std::sin(ccmc::constants::DegreesToRadians * p.component3);
 			float pCartesianComponent3 = p.component1 * std::cos(ccmc::constants::DegreesToRadians * (90.f - p.component2));

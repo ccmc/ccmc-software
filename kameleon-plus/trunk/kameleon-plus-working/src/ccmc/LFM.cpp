@@ -223,7 +223,7 @@ namespace ccmc
 		std::vector<float> * pDensity = this->variableData["rho"];
 		std::vector<float> * pPressure = new std::vector<float>(pSoundSpeed->size());
 		float soundSpeed, density, pressure;
-		float amu = 1.66053892e-24; // grams per amu
+//		float amu = 1.66053892e-24; // grams per amu
 
 		for (int i = 0; i < pPressure->size(); i++){
 			soundSpeed = (*pSoundSpeed)[i]; //[cm/s]

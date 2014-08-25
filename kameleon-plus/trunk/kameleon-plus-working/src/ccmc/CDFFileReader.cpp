@@ -93,7 +93,7 @@ namespace ccmc
 	 */
 	long CDFFileReader::closeFile()
 	{
-		long status;
+		long status = -1;
 		if (current_file_id != NULL)
 		{
 			status = CDFcloseCDF(current_file_id);
@@ -486,12 +486,12 @@ namespace ccmc
 		//long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 
 		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
+//		long recCount = 1L;
+//		long recInterval = 1L;
 		long dimIndices[] = { index };
-		long dimIntervals[] = { 1 };
+//		long dimIntervals[] = { 1 };
 
-		long count[1] = {1};
+//		long count[1] = {1};
 		//get dim sizes
 		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
 		float buffer[1];
@@ -520,12 +520,12 @@ namespace ccmc
 		long variableNum = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 
 		long recStart = 0L;
-		long recCount = 1L;
-		long recInterval = 1L;
+//		long recCount = 1L;
+//		long recInterval = 1L;
 		long dimIndices[] = { index };
-		long dimIntervals[] = { 1 };
+//		long dimIntervals[] = { 1 };
 
-		long dimSizes[1] = {1};
+//		long dimSizes[1] = {1};
 		//get dim sizes
 		//CDFgetzVarDimSizes(current_file_id, variableNum, dimSizes);
 		int * buffer = new int[1];
@@ -706,7 +706,7 @@ namespace ccmc
 		long variableNumber = CDFgetVarNum(current_file_id, (char *) variable.c_str());
 		long attributeNumber = CDFgetAttrNum(current_file_id, (char *) vattribute.c_str());
 		long dataType;
-		CDFstatus status = CDFgetAttrzEntryDataType(current_file_id, attributeNumber, variableNumber, &dataType);
+		CDFgetAttrzEntryDataType(current_file_id, attributeNumber, variableNumber, &dataType);
 		Attribute attribute;
 		//	std::cout << "CDFFileReader::getVariableAttribute - datatype: " << dataType << " CDF_CHAR: " << CDF_CHAR << std::endl;
 		if (dataType == CDF_CHAR)
@@ -728,7 +728,7 @@ namespace ccmc
 		{
 
 			int value;
-			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
+			CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
 			//std::cout << "I: attributeValue (" << vattribute << "): " << value << std::endl;
 
 			attribute.setAttributeName(vattribute);
@@ -738,7 +738,7 @@ namespace ccmc
 		} else if (dataType == CDF_FLOAT) //CDF_FLOAT
 		{
 			float value;
-			long status = CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
+			CDFgetAttrzEntry(current_file_id, attributeNumber, variableNumber, &value);
 			//std::cout << "F: attributeValue (" << vattribute << "): " << value << std::endl;
 
 			attribute.setAttributeName(vattribute);
@@ -790,7 +790,7 @@ namespace ccmc
 	 */
 	bool CDFFileReader::doesAttributeExist(long attribute)
 	{
-		bool exists = false;
+//		bool exists = false;
 		/*CDFstatus status = CDFconfirmAttrExistence(current_file_id, (char*) attribute.c_str());
 		if (status == CDF_OK)
 			exists = true;
