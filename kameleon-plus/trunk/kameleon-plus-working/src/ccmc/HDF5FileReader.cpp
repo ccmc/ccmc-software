@@ -5,7 +5,7 @@
  *      Author: David Berrios
  */
 // #include "config.h"
-#include "Kameleon-plus-Config.h" //controlled by CMakeLists.txt
+#include "kameleon-plus-Config.h" //controlled by CMakeLists.txt
 #ifdef HAVE_HDF5 
 #include "HDF5FileReader.h"
 #include <string>

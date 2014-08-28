@@ -6,7 +6,7 @@
  */
 // #ifndef HDFFILEREADER_H_
 // #define HDFFILEREADER_H_
-#include "Kameleon-plus-Config.h"// #include "config.h"
+#include "kameleon-plus-Config.h"// #include "config.h"
 #ifdef HAVE_HDF5 
 #include <string>
 #include <vector>
