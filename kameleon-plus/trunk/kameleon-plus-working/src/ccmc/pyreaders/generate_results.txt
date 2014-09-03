@@ -1,0 +1,936 @@
+hello from python wrapper generator! wrapping files:
+	../FileReader.h
+	../Attribute.h
+removing  /var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpWdNDnT.xml
+/var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpWdNDnT.xml exists, removing...
+removing  /var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpChKzKU.xml
+/var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpChKzKU.xml exists, removing...
+setting call policies...
+header full path /Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/pyreaders/../../FileReader.h
+class_t: 'FileReader'
+    location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:37
+    artificial: '1'     
+    demangled: ccmc::FileReader
+    mangled: N4ccmc10FileReaderE
+    alias: FileReader
+    ignore: False
+    readme: 
+        warning W1031: `Py++` will generate class wrapper - user asked to expose non - public member function "initializeGlobalAttributes"
+        warning W1031: `Py++` will generate class wrapper - user asked to expose non - public member function "initializeVariableAttributes"
+    class type: 'class' 
+    size: 136           
+    align: 4            
+    public:             
+    constructor_t: 'FileReader'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:37
+        artificial: '1'     
+        demangled: ccmc::FileReader::FileReader(ccmc::FileReader const&)
+        mangled: _ZN4ccmc10Fi
+        alias: FileReader
+        ignore: False
+        is extern: False
+        return type: None
+        arguments type: ::ccmc::FileReader const & arg0
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        explicit: False
+        copy constructor: True
+        call policies: None
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    constructor_t: 'FileReader'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:41
+        artificial: 'False' 
+        demangled: ccmc::FileReader::FileReader()
+        mangled: _ZN4ccmc10Fi
+        alias: FileReader
+        ignore: False
+        is extern: 1
+        return type: None
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        explicit: True
+        copy constructor: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    destructor_t: '~FileReader'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:75
+        artificial: 'False' 
+        demangled: ccmc::FileReader::~FileReader()
+        mangled: _ZN4ccmc10Fi
+        alias: ~FileReader
+        ignore: False
+        call policies: None
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'addVariableName'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:68
+        artificial: 'False' 
+        demangled: ccmc::FileReader::addVariableName(std::string const&, long)
+        mangled: _ZN4ccmc10FileReader15addVariableNameERKSsl
+        alias: addVariableName
+        ignore: False
+        is extern: 1
+        return type: void
+        arguments type: ::std::string const & variable, long int id
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'close'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:69
+        artificial: 'False' 
+        demangled: ccmc::FileReader::close()
+        mangled: _ZN4ccmc10FileReader5closeEv
+        alias: close
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'closeFile'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:73
+        artificial: 'False' 
+        demangled: ccmc::FileReader::closeFile()
+        mangled: _ZN4ccmc10FileReader9closeFileEv
+        alias: closeFile
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'doesAttributeExist'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:66
+        artificial: 'False' 
+        demangled: ccmc::FileReader::doesAttributeExist(std::string const&)
+        mangled: _ZN4ccmc10FileReader18doesAttributeExistERKSs
+        alias: doesAttributeExist
+        ignore: False
+        is extern: 1
+        return type: bool
+        arguments type: ::std::string const & attribute
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'doesVariableExist'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:67
+        artificial: 'False' 
+        demangled: ccmc::FileReader::doesVariableExist(std::string const&)
+        mangled: _ZN4ccmc10FileReader17doesVariableExistERKSs
+        alias: doesVariableExist
+        ignore: False
+        is extern: 1
+        return type: bool
+        arguments type: ::std::string const & variable
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getCurrentFilename'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:70
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getCurrentFilename()
+        mangled: _ZN4ccmc10FileReader18getCurrentFilenameEv
+        alias: getCurrentFilename
+        ignore: False
+        readme: 
+            warning W1049: This method could not be overriden in Python - method returns reference to local variable!
+        is extern: 1
+        return type: ::std::string const &
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: return_value_policy< copy_const_reference >
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getGlobalAttribute'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:59
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getGlobalAttribute(long)
+        mangled: _ZN4ccmc10FileReader18getGlobalAttributeEl
+        alias: getGlobalAttribute
+        ignore: False
+        is extern: 1
+        return type: ::ccmc::Attribute
+        arguments type: long int i
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getGlobalAttribute'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:62
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getGlobalAttribute(std::string const&)
+        mangled: _ZN4ccmc10FileReader18getGlobalAttributeERKSs
+        alias: getGlobalAttribute
+        ignore: False
+        is extern: 1
+        return type: ::ccmc::Attribute
+        arguments type: ::std::string const & attribute
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getGlobalAttributeID'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:63
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getGlobalAttributeID(std::string const&)
+        mangled: _ZN4ccmc10FileReader20getGlobalAttributeIDERKSs
+        alias: getGlobalAttributeID
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: ::std::string const & attribute
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getGlobalAttributeName'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:60
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getGlobalAttributeName(long)
+        mangled: _ZN4ccmc10FileReader22getGlobalAttributeNameEl
+        alias: getGlobalAttributeName
+        ignore: False
+        is extern: 1
+        return type: ::std::string
+        arguments type: long int attribute_id
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getNumberOfGlobalAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:52
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getNumberOfGlobalAttributes()
+        mangled: _ZN4ccmc10FileReader27getNumberOfGlobalAttributesEv
+        alias: getNumberOfGlobalAttributes
+        ignore: False
+        is extern: 1
+        return type: int
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getNumberOfRecords'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:55
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getNumberOfRecords(std::string const&)
+        mangled: _ZN4ccmc10FileReader18getNumberOfRecordsERKSs
+        alias: getNumberOfRecords
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: ::std::string const & variable
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getNumberOfRecords'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:56
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getNumberOfRecords(long)
+        mangled: _ZN4ccmc10FileReader18getNumberOfRecordsEl
+        alias: getNumberOfRecords
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: long int variable_id
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getNumberOfVariableAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:54
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getNumberOfVariableAttributes()
+        mangled: _ZN4ccmc10FileReader29getNumberOfVariableAttributesEv
+        alias: getNumberOfVariableAttributes
+        ignore: False
+        is extern: 1
+        return type: int
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getNumberOfVariables'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:53
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getNumberOfVariables()
+        mangled: _ZN4ccmc10FileReader20getNumberOfVariablesEv
+        alias: getNumberOfVariables
+        ignore: False
+        is extern: 1
+        return type: int
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariable'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:44
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariable(std::string const&)
+        mangled: _ZN4ccmc10FileReader11getVariableERKSs
+        alias: getVariable
+        ignore: False
+        is extern: 1
+        return type: ::std::vector<float,std::allocator<float> > *
+        arguments type: ::std::string const & variable
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: return_value_policy< manage_new_object >
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariable'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:45
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariable(long)
+        mangled: _ZN4ccmc10FileReader11getVariableEl
+        alias: getVariable
+        ignore: False
+        is extern: 1
+        return type: ::std::vector<float,std::allocator<float> > *
+        arguments type: long int variableID
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: return_value_policy< manage_new_object >
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariable'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:46
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariable(std::string const&, long, long)
+        mangled: _ZN4ccmc10FileReader11getVariableERKSsll
+        alias: getVariable
+        ignore: False
+        is extern: 1
+        return type: ::std::vector<float,std::allocator<float> > *
+        arguments type: ::std::string const & variable, long int startIndex, long int count
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: return_value_policy< manage_new_object >
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariable'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:47
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariable(long, long, long)
+        mangled: _ZN4ccmc10FileReader11getVariableElll
+        alias: getVariable
+        ignore: False
+        is extern: 1
+        return type: ::std::vector<float,std::allocator<float> > *
+        arguments type: long int variableID, long int startIndex, long int count
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: return_value_policy< manage_new_object >
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableAtIndex'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:48
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableAtIndex(std::string const&, long)
+        mangled: _ZN4ccmc10FileReader18getVariableAtIndexERKSsl
+        alias: getVariableAtIndex
+        ignore: False
+        is extern: 1
+        return type: float
+        arguments type: ::std::string const & variable, long int index
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableAtIndex'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:49
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableAtIndex(long, long)
+        mangled: _ZN4ccmc10FileReader18getVariableAtIndexEll
+        alias: getVariableAtIndex
+        ignore: False
+        is extern: 1
+        return type: float
+        arguments type: long int variable_id, long int index
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableAttribute'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:64
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableAttribute(std::string const&, std::string const&)
+        mangled: _ZN4ccmc10FileReader20getVariableAttributeERKSsS2_
+        alias: getVariableAttribute
+        ignore: False
+        is extern: 1
+        return type: ::ccmc::Attribute
+        arguments type: ::std::string const & variable, ::std::string const & attribute
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableAttributeName'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:61
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableAttributeName(long)
+        mangled: _ZN4ccmc10FileReader24getVariableAttributeNameEl
+        alias: getVariableAttributeName
+        ignore: False
+        is extern: 1
+        return type: ::std::string
+        arguments type: long int attribute_id
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableAttributeNames'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:65
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableAttributeNames()
+        mangled: _ZN4ccmc10FileReader25getVariableAttributeNamesEv
+        alias: getVariableAttributeNames
+        ignore: False
+        is extern: 1
+        return type: ::std::vector<std::basic_string<char, std::char_traits<char>, std::allocator<char> >,std::allocator<std::basic_string<char, std::char_traits<char>, std::allocator<char> > > >
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableID'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:57
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableID(std::string const&)
+        mangled: _ZN4ccmc10FileReader13getVariableIDERKSs
+        alias: getVariableID
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: ::std::string const & variable
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableInt'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:50
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableInt(std::string const&)
+        mangled: _ZN4ccmc10FileReader14getVariableIntERKSs
+        alias: getVariableInt
+        ignore: False
+        is extern: 1
+        return type: ::std::vector<int,std::allocator<int> > *
+        arguments type: ::std::string const & variable
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: return_value_policy< manage_new_object >
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableIntAtIndex'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:51
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableIntAtIndex(std::string const&, long)
+        mangled: _ZN4ccmc10FileReader21getVariableIntAtIndexERKSsl
+        alias: getVariableIntAtIndex
+        ignore: False
+        is extern: 1
+        return type: int
+        arguments type: ::std::string const & variable, long int index
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'getVariableName'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:58
+        artificial: 'False' 
+        demangled: ccmc::FileReader::getVariableName(long)
+        mangled: _ZN4ccmc10FileReader15getVariableNameEl
+        alias: getVariableName
+        ignore: False
+        is extern: 1
+        return type: ::std::string
+        arguments type: long int variable_id
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'initializeVariableIDs'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:71
+        artificial: 'False' 
+        demangled: ccmc::FileReader::initializeVariableIDs()
+        mangled: _ZN4ccmc10FileReader21initializeVariableIDsEv
+        alias: initializeVariableIDs
+        ignore: False
+        is extern: 1
+        return type: void
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'initializeVariableNames'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:72
+        artificial: 'False' 
+        demangled: ccmc::FileReader::initializeVariableNames()
+        mangled: _ZN4ccmc10FileReader23initializeVariableNamesEv
+        alias: initializeVariableNames
+        ignore: False
+        is extern: 1
+        return type: void
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'open'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:42
+        artificial: 'False' 
+        demangled: ccmc::FileReader::open(std::string const&, bool)
+        mangled: _ZN4ccmc10FileReader4openERKSsb
+        alias: open
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: ::std::string const & filename, bool readonly
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_function_t: 'openFile'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:74
+        artificial: 'False' 
+        demangled: ccmc::FileReader::openFile(std::string const&, bool)
+        mangled: _ZN4ccmc10FileReader8openFileERKSsb
+        alias: openFile
+        ignore: False
+        is extern: 1
+        return type: long int
+        arguments type: ::std::string const & filename, bool readonly
+        calling convention: __thiscall__
+        virtual: pure virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    member_operator_t: 'operator='
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:37
+        artificial: '1'     
+        demangled: ccmc::FileReader::operator=(ccmc::FileReader const&)
+        mangled: _ZN4ccmc10FileReaderaSERKS0_
+        alias: assign
+        ignore: False
+        is extern: False
+        return type: ::ccmc::FileReader &
+        arguments type: ::ccmc::FileReader const & arg0
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        call policies: return_self< >
+        use keywords: True
+        use signature: True
+        use default arguments: True
+    variable_t: 'ATTRIBUTE_DOES_NOT_EXIST'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:81
+        artificial: 'False' 
+        demangled: ccmc::FileReader::ATTRIBUTE_DOES_NOT_EXIST
+        mangled: _ZN4ccmc10FileReader24ATTRIBUTE_DOES_NOT_EXISTE
+        alias: ATTRIBUTE_DOES_NOT_EXIST
+        ignore: False
+        type: long int const
+        value: -0x00000000000000004l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'FILE_DOES_NOT_EXIST'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:79
+        artificial: 'False' 
+        demangled: ccmc::FileReader::FILE_DOES_NOT_EXIST
+        mangled: _ZN4ccmc10FileReader19FILE_DOES_NOT_EXISTE
+        alias: FILE_DOES_NOT_EXIST
+        ignore: False
+        type: long int const
+        value: -0x00000000000000002l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'LOAD_FAILED'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:82
+        artificial: 'False' 
+        demangled: ccmc::FileReader::LOAD_FAILED
+        mangled: _ZN4ccmc10FileReader11LOAD_FAILEDE
+        alias: LOAD_FAILED
+        ignore: False
+        type: long int const
+        value: -0x00000000000000005l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'MODEL_NOT_SUPPORTED'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:85
+        artificial: 'False' 
+        demangled: ccmc::FileReader::MODEL_NOT_SUPPORTED
+        mangled: _ZN4ccmc10FileReader19MODEL_NOT_SUPPORTEDE
+        alias: MODEL_NOT_SUPPORTED
+        ignore: False
+        type: long int const
+        value: -0x00000000000000008l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'NOT_A_VALID_KAMELEON_FILE'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:86
+        artificial: 'False' 
+        demangled: ccmc::FileReader::NOT_A_VALID_KAMELEON_FILE
+        mangled: _ZN4ccmc10FileReader25NOT_A_VALID_KAMELEON_FILEE
+        alias: NOT_A_VALID_KAMELEON_FILE
+        ignore: False
+        type: long int const
+        value: -0x00000000000000009l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'OK'    
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:77
+        artificial: 'False' 
+        demangled: ccmc::FileReader::OK
+        mangled: _ZN4ccmc10FileReader2OKE
+        alias: OK
+        ignore: False
+        type: long int const
+        value: 0l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'OPEN_ERROR'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:78
+        artificial: 'False' 
+        demangled: ccmc::FileReader::OPEN_ERROR
+        mangled: _ZN4ccmc10FileReader10OPEN_ERRORE
+        alias: OPEN_ERROR
+        ignore: False
+        type: long int const
+        value: -0x00000000000000001l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'UNABLE_TO_ALLOCATE_MEMORY'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:83
+        artificial: 'False' 
+        demangled: ccmc::FileReader::UNABLE_TO_ALLOCATE_MEMORY
+        mangled: _ZN4ccmc10FileReader25UNABLE_TO_ALLOCATE_MEMORYE
+        alias: UNABLE_TO_ALLOCATE_MEMORY
+        ignore: False
+        type: long int const
+        value: -0x00000000000000006l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'VARIABLE_DOES_NOT_EXIST'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:80
+        artificial: 'False' 
+        demangled: ccmc::FileReader::VARIABLE_DOES_NOT_EXIST
+        mangled: _ZN4ccmc10FileReader23VARIABLE_DOES_NOT_EXISTE
+        alias: VARIABLE_DOES_NOT_EXIST
+        ignore: False
+        type: long int const
+        value: -0x00000000000000003l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    variable_t: 'VARIABLE_NOT_IN_MEMORY'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:84
+        artificial: 'False' 
+        demangled: ccmc::FileReader::VARIABLE_NOT_IN_MEMORY
+        mangled: _ZN4ccmc10FileReader22VARIABLE_NOT_IN_MEMORYE
+        alias: VARIABLE_NOT_IN_MEMORY
+        ignore: False
+        type: long int const
+        value: -0x00000000000000007l
+        size: 0             
+        align: 0            
+        offset: 0
+
+    protected:          
+    member_function_t: 'initializeGlobalAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:99
+        artificial: 'False' 
+        demangled: ccmc::FileReader::initializeGlobalAttributes()
+        mangled: _ZN4ccmc10FileReader26initializeGlobalAttributesEv
+        alias: initializeGlobalAttributes
+        ignore: False
+        is extern: 1
+        return type: void
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    member_function_t: 'initializeVariableAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:100
+        artificial: 'False' 
+        demangled: ccmc::FileReader::initializeVariableAttributes()
+        mangled: _ZN4ccmc10FileReader28initializeVariableAttributesEv
+        alias: initializeVariableAttributes
+        ignore: False
+        is extern: 1
+        return type: void
+        arguments type: 
+        calling convention: __thiscall__
+        virtual: not virtual
+        is const: False
+        is static: False
+        call policies: default_call_policies
+        use keywords: False
+        use signature: True
+        use default arguments: True
+    variable_t: 'current_filename'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:89
+        artificial: 'False' 
+        alias: current_filename
+        ignore: False
+        type: ::std::string
+        value: None
+        size: 4             
+        align: 4            
+        offset: 4
+
+    variable_t: 'gAttributeByID'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:97
+        artificial: 'False' 
+        alias: gAttributeByID
+        ignore: False
+        type: ::boost::unordered::unordered_map<long, ccmc::Attribute, boost::hash<long>, std::equal_to<long>, std::allocator<std::pair<long const, ccmc::Attribute> > >
+        value: None
+        size: 24            
+        align: 4            
+        offset: 88
+
+    variable_t: 'gAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:96
+        artificial: 'False' 
+        alias: gAttributes
+        ignore: False
+        type: ::boost::unordered::unordered_map<std::string, ccmc::Attribute, boost::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<std::string const, ccmc::Attribute> > >
+        value: None
+        size: 24            
+        align: 4            
+        offset: 64
+
+    variable_t: 'numGAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:90
+        artificial: 'False' 
+        alias: numGAttributes
+        ignore: False
+        type: int
+        value: None
+        size: 4             
+        align: 4            
+        offset: 8
+
+    variable_t: 'numVAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:91
+        artificial: 'False' 
+        alias: numVAttributes
+        ignore: False
+        type: int
+        value: None
+        size: 4             
+        align: 4            
+        offset: 12
+
+    variable_t: 'vAttributes'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:98
+        artificial: 'False' 
+        alias: vAttributes
+        ignore: False
+        type: ::boost::unordered::unordered_map<std::string, boost::unordered::unordered_map<std::string, ccmc::Attribute, boost::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<std::string const, ccmc::Attribute> > >, boost::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<std::string const, boost::unordered::unordered_map<std::string, ccmc::Attribute, boost::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<std::string const, ccmc::Attribute> > > > > >
+        value: None
+        size: 24            
+        align: 4            
+        offset: 112
+
+    variable_t: 'variableIDs'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:94
+        artificial: 'False' 
+        alias: variableIDs
+        ignore: False
+        type: ::boost::unordered::unordered_map<std::string, long, boost::hash<std::string>, std::equal_to<std::string>, std::allocator<std::pair<std::string const, long> > >
+        value: None
+        size: 24            
+        align: 4            
+        offset: 16
+
+    variable_t: 'variableNames'
+        location: [/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/FileReader.h]:95
+        artificial: 'False' 
+        alias: variableNames
+        ignore: False
+        type: ::boost::unordered::unordered_map<long, std::string, boost::hash<long>, std::equal_to<long>, std::allocator<std::pair<long const, std::string> > >
+        value: None
+        size: 24            
+        align: 4            
+        offset: 40
+
+    private:            
+    expose using scope: False
+    redefine operators: False
+    held type: None
+    use noncopyable: True
+    class wrapper alias: FileReader_wrapper
+creating module code creator with module_name  pyReader
+built code_creator
+writing module...
+writing module... /Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/pyreaders/generated/pyReader.cpp
+done

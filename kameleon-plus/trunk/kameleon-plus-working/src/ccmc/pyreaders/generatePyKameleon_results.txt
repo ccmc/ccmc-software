@@ -1,0 +1,16 @@
+Wrapping the following class files:
+	../FileReader.h
+	../Attribute.h
+gccxml source file: ../FileReader.h
+removing  /var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpKmLMKe.xml
+/var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpKmLMKe.xml exists, removing...
+gccxml source file: ../Attribute.h
+removing  /var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpJTFkfi.xml
+/var/folders/zc/m0xg3f0x2nb1g18p4dsycb18dpk3tg/T/tmpJTFkfi.xml exists, removing...
+setting call policies...
+header full path /Users/apembrok/Work/workspace/ccmc-software/src/ccmc/pyreaders/../../FileReader.h
+creating module code creator with module_name  pyKameleon
+built code_creator
+writing module...
+writing module... /Users/apembrok/Work/workspace/ccmc-software/src/ccmc/pyreaders/generated/pyKameleon.cpp
+done
