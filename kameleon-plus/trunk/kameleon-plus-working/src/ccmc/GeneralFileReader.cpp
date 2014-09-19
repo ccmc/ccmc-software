@@ -5,7 +5,7 @@
  *      Author: David Berrios
  */
 // #include "config.h"
-#include "Kameleon-plus-Config.h"
+#include "kameleon-plus-Config.h"
 #include "FileReader.h"
 #include "CDFFileReader.h"
 #include "HDF5FileReader.h"
@@ -53,7 +53,7 @@ namespace ccmc
 			// std::cout << "Checking if the file is an HDF5 file" << std::endl;
 			delete fileReader;
 
-			this->fileReader = new HDF5FileReader::HDF5FileReader();
+			this->fileReader = new HDF5FileReader();
 
 			long status = fileReader->open(filename);
 			// std::cerr << "opened HDF5 file. status: " << status << std::endl;
