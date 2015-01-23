@@ -396,7 +396,7 @@ namespace ccmc
 	}
 
 	/**
-	 * Returns a new interpolater that maintains state information independent of other interpolators. This can be used to
+	 * Returns a new KameleonInterpolator that maintains state information independent of other interpolators. This can be used to
 	 * parallelize the interpolations.
 	 * @return A new interpolator.
 	 */

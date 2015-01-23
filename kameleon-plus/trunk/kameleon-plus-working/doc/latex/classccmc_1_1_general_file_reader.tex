@@ -3,12 +3,16 @@
 }
 
 
-{\ttfamily \#include $<$General\-File\-Reader.\-h$>$}
+The \hyperlink{classccmc_1_1_general_file_reader}{General\-File\-Reader} class is a factory class for creating file readers in a model-\/agnostic fashion.  
 
 
 
-Inheritance diagram for ccmc\-:\-:General\-File\-Reader\-:
-\nopagebreak
+
+{\ttfamily \#include $<$ccmc/\-General\-File\-Reader.\-h$>$}
+
+
+
+Inheritance diagram for ccmc\-:\-:General\-File\-Reader\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,7 +25,7 @@ Collaboration diagram for ccmc\-:\-:General\-File\-Reader\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=324pt]{classccmc_1_1_general_file_reader__coll__graph}
+\includegraphics[width=282pt]{classccmc_1_1_general_file_reader__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -30,7 +34,7 @@ Collaboration diagram for ccmc\-:\-:General\-File\-Reader\-:\nopagebreak
 \hyperlink{classccmc_1_1_general_file_reader_a617946630c27444852aba7e4b63a7083}{General\-File\-Reader} ()
 \item 
 long \hyperlink{classccmc_1_1_general_file_reader_a4996a8e305a2e1f9f25228d127bb55bf}{open} (const std\-::string \&filename)
-\item 
+\begin{DoxyCompactList}\small\item\em Attempts to open using \hyperlink{classccmc_1_1_c_d_f_file_reader}{C\-D\-F\-File\-Reader}, falls back to \hyperlink{classccmc_1_1_h_d_f5_file_reader}{H\-D\-F5\-File\-Reader} (if H\-A\-V\-E\-\_\-\-H\-D\-F5 is defined) \end{DoxyCompactList}\item 
 std\-::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_general_file_reader_a15db2e13a3cc71bf0fea4ea46725c22a}{get\-Variable} (const std\-::string \&variable)
 \item 
 std\-::vector$<$ float $>$ $\ast$ \hyperlink{classccmc_1_1_general_file_reader_af665752bc662aa649922a4f30a402237}{get\-Variable} (long variable\-I\-D)
@@ -120,6 +124,11 @@ $<$ std\-::string, \hyperlink{classccmc_1_1_attribute}{Attribute} $>$ $>$ \hyper
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+The \hyperlink{classccmc_1_1_general_file_reader}{General\-File\-Reader} class is a factory class for creating file readers in a model-\/agnostic fashion. 
+
+\hyperlink{classccmc_1_1_general_file_reader}{General\-File\-Reader} is not a subclass of \hyperlink{classccmc_1_1_file_reader}{File\-Reader}, but instead creates an instance of \hyperlink{classccmc_1_1_file_reader}{File\-Reader} (\hyperlink{classccmc_1_1_c_d_f_file_reader}{C\-D\-F\-File\-Reader},\hyperlink{classccmc_1_1_h_d_f5_file_reader}{H\-D\-F5\-File\-Reader}, or other) and calls its functions. Warning\-: \hyperlink{classccmc_1_1_file_reader}{File\-Reader}'s protected maps are repeated here, so it is possible to fill the maps variable\-I\-Ds, variable\-Names, g\-Attributes, g\-Attribute\-By\-I\-D, and v\-Attributes of \hyperlink{classccmc_1_1_general_file_reader}{General\-File\-Reader} independently from those of the \hyperlink{classccmc_1_1_file_reader}{File\-Reader} class. Try to work with the \hyperlink{classccmc_1_1_file_reader}{File\-Reader} maps wherever possible to avoid confusion. 
+
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classccmc_1_1_general_file_reader_a617946630c27444852aba7e4b63a7083}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!General\-File\-Reader@{General\-File\-Reader}}
 \index{General\-File\-Reader@{General\-File\-Reader}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
@@ -128,7 +137,7 @@ $<$ std\-::string, \hyperlink{classccmc_1_1_attribute}{Attribute} $>$ $>$ \hyper
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_general_file_reader_a617946630c27444852aba7e4b63a7083}
-\hypertarget{classccmc_1_1_general_file_reader_a7f1fe93414b533d8149b2c62d4d0b49d}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!$\sim$\-General\-File\-Reader@{$\sim$\-General\-File\-Reader}}
+sets file\-Reader pointer to N\-U\-L\-L \hypertarget{classccmc_1_1_general_file_reader_a7f1fe93414b533d8149b2c62d4d0b49d}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!$\sim$\-General\-File\-Reader@{$\sim$\-General\-File\-Reader}}
 \index{$\sim$\-General\-File\-Reader@{$\sim$\-General\-File\-Reader}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
 \subsubsection[{$\sim$\-General\-File\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}ccmc\-::\-General\-File\-Reader\-::$\sim$\-General\-File\-Reader (
 \begin{DoxyParamCaption}
@@ -628,7 +637,7 @@ Here is the call graph for this function\-:\nopagebreak
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a9ed129fc4488e899b3260640d47a8d88}
-
+calls file\-Reader's \hyperlink{classccmc_1_1_general_file_reader_a9ed129fc4488e899b3260640d47a8d88}{initialize\-Variable\-I\-Ds()} 
 
 Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
@@ -646,7 +655,7 @@ Here is the call graph for this function\-:\nopagebreak
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a2151d69434928082138128fb3ebd3282}
-
+calls file\-Reader's \hyperlink{classccmc_1_1_general_file_reader_a2151d69434928082138128fb3ebd3282}{initialize\-Variable\-Names()} 
 
 Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
@@ -664,6 +673,18 @@ Here is the call graph for this function\-:\nopagebreak
 \item[{const std\-::string \&}]{filename}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_general_file_reader_a4996a8e305a2e1f9f25228d127bb55bf}
+
+
+Attempts to open using \hyperlink{classccmc_1_1_c_d_f_file_reader}{C\-D\-F\-File\-Reader}, falls back to \hyperlink{classccmc_1_1_h_d_f5_file_reader}{H\-D\-F5\-File\-Reader} (if H\-A\-V\-E\-\_\-\-H\-D\-F5 is defined) 
+
+T\-O\-D\-O\-: Add support for embedded python \hyperlink{classccmc_1_1_file_reader}{File\-Reader} as third option. 
+\begin{DoxyParams}{Parameters}
+{\em filename} & Name of the file to be read. Note\-: no extension checking is done at this time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status 
+\end{DoxyReturn}
 
 
 Here is the call graph for this function\-:\nopagebreak
@@ -684,24 +705,24 @@ Here is the call graph for this function\-:\nopagebreak
 \hypertarget{classccmc_1_1_general_file_reader_a255d7c592bd3908186af70794f05c0ea}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!file\-Reader@{file\-Reader}}
 \index{file\-Reader@{file\-Reader}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
 \subsubsection[{file\-Reader}]{\setlength{\rightskip}{0pt plus 5cm}{\bf File\-Reader}$\ast$ ccmc\-::\-General\-File\-Reader\-::file\-Reader\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a255d7c592bd3908186af70794f05c0ea}
-\hypertarget{classccmc_1_1_general_file_reader_a395e6335be8a0c569489a9635f6b9252}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!g\-Attribute\-By\-I\-D@{g\-Attribute\-By\-I\-D}}
+polymorphic pointer to \hyperlink{classccmc_1_1_file_reader}{File\-Reader}. It will point to either a \hyperlink{classccmc_1_1_c_d_f_file_reader}{C\-D\-F\-File\-Reader} or \hyperlink{classccmc_1_1_h_d_f5_file_reader}{H\-D\-F5\-File\-Reader} instance. \hypertarget{classccmc_1_1_general_file_reader_a395e6335be8a0c569489a9635f6b9252}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!g\-Attribute\-By\-I\-D@{g\-Attribute\-By\-I\-D}}
 \index{g\-Attribute\-By\-I\-D@{g\-Attribute\-By\-I\-D}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
 \subsubsection[{g\-Attribute\-By\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$long, {\bf Attribute}$>$ ccmc\-::\-General\-File\-Reader\-::g\-Attribute\-By\-I\-D\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a395e6335be8a0c569489a9635f6b9252}
-\hypertarget{classccmc_1_1_general_file_reader_ae5d6c9e0cebe12ce9564b99f1175f319}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!g\-Attributes@{g\-Attributes}}
+global attributes by I\-D \hypertarget{classccmc_1_1_general_file_reader_ae5d6c9e0cebe12ce9564b99f1175f319}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!g\-Attributes@{g\-Attributes}}
 \index{g\-Attributes@{g\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
 \subsubsection[{g\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$std\-::string, {\bf Attribute}$>$ ccmc\-::\-General\-File\-Reader\-::g\-Attributes\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_ae5d6c9e0cebe12ce9564b99f1175f319}
-\hypertarget{classccmc_1_1_general_file_reader_a70d799a29940fa982885ce8c0963942d}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!variable\-I\-Ds@{variable\-I\-Ds}}
+global attributes by name \hypertarget{classccmc_1_1_general_file_reader_a70d799a29940fa982885ce8c0963942d}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!variable\-I\-Ds@{variable\-I\-Ds}}
 \index{variable\-I\-Ds@{variable\-I\-Ds}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
 \subsubsection[{variable\-I\-Ds}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$std\-::string, long$>$ ccmc\-::\-General\-File\-Reader\-::variable\-I\-Ds\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a70d799a29940fa982885ce8c0963942d}
-\hypertarget{classccmc_1_1_general_file_reader_aa3a4c9091feaec12035bcc981299de47}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!variable\-Names@{variable\-Names}}
+variable srtring to id map \hypertarget{classccmc_1_1_general_file_reader_aa3a4c9091feaec12035bcc981299de47}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!variable\-Names@{variable\-Names}}
 \index{variable\-Names@{variable\-Names}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
 \subsubsection[{variable\-Names}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$long, std\-::string$>$ ccmc\-::\-General\-File\-Reader\-::variable\-Names\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_aa3a4c9091feaec12035bcc981299de47}
-\hypertarget{classccmc_1_1_general_file_reader_a806b25ba22db767f9f61ae578634ef08}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!v\-Attributes@{v\-Attributes}}
+variable\-I\-D to string name \hypertarget{classccmc_1_1_general_file_reader_a806b25ba22db767f9f61ae578634ef08}{\index{ccmc\-::\-General\-File\-Reader@{ccmc\-::\-General\-File\-Reader}!v\-Attributes@{v\-Attributes}}
 \index{v\-Attributes@{v\-Attributes}!ccmc::GeneralFileReader@{ccmc\-::\-General\-File\-Reader}}
 \subsubsection[{v\-Attributes}]{\setlength{\rightskip}{0pt plus 5cm}boost\-::unordered\-\_\-map$<$std\-::string, boost\-::unordered\-\_\-map$<$std\-::string, {\bf Attribute}$>$ $>$ ccmc\-::\-General\-File\-Reader\-::v\-Attributes\hspace{0.3cm}{\ttfamily [protected]}}}\label{classccmc_1_1_general_file_reader_a806b25ba22db767f9f61ae578634ef08}
-
+variable attributes map 
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_general_file_reader_8h}{General\-File\-Reader.\-h}\item 
-/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_general_file_reader_8cpp}{General\-File\-Reader.\-cpp}\end{DoxyCompactItemize}
+/\-Users/apembrok/git/ccmc-\/software/kameleon-\/plus/trunk/kameleon-\/plus-\/working/src/ccmc/\hyperlink{_general_file_reader_8h}{General\-File\-Reader.\-h}\item 
+/\-Users/apembrok/git/ccmc-\/software/kameleon-\/plus/trunk/kameleon-\/plus-\/working/src/ccmc/\hyperlink{_general_file_reader_8cpp}{General\-File\-Reader.\-cpp}\end{DoxyCompactItemize}

@@ -21,10 +21,11 @@ namespace ccmc
 {
 
 	/**
-	 * @class FileReader FileReader.h ccmc/FileReader.h
-	 * @brief TODO: Brief description of FileReader class
+	 * @class HDF5FileReader HDF5FileReader.h ccmc/HDF5FileReader.h
+	 * @brief The HDF5FileReader allows opening and accessing Kameleon-converted HDF5 files.
 	 *
-	 * TODO: Full description of FileReader class
+	 * HDF5FileReader implements the pure virtual functions of the FileReader class. 
+	 * Note: This reader should only be compiled if HDF5 is installed (HAVE_HDF5 is defined).
 	 */
 
 	class HDF5FileReader : public FileReader

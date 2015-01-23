@@ -22,9 +22,13 @@ namespace ccmc
 {
 	/**
 	 * @class LFMInterpolator LFMInterpolator.h ccmc/LFMInterpolator.h
-	 * @brief TODO: Brief description of LFMInterpolator class
+	 * @brief LFM interpolator class, combining kd-tree with spherical barycentric coordinates.
 	 *
-	 * TODO: Full description of LFMInterpolator class
+	 * The LFMInterpolator makes use of the nanoflann library's kd-tree implementation \link NanoKdTree \endlink for fast
+	 * lookup of LFM positions. Once the nearest cell center is found, interpolation is performed
+	 * using spherical barycentric coordinates via the \link Polyhedron \endlink class.
+	 *
+	 * TODO: Move kd-tree initialization to LFM object instantiation.
 	 */
 
 	class LFMInterpolator: public Interpolator
@@ -51,8 +55,8 @@ namespace ccmc
 			Polyhedron<float> getInterpolationPolys();
 
 			int ni,nj,nk,nip1,njp1,nkp1;
-			PointCloud<float> cell_centers; //size ni,nj,nk - nonstatic: only used once for polyhedra
-			PointCloud<float> helper_nodes; //size ni-1,nj-1,nk (+axis later) - nonstatic: copied to lfmtree.cloud
+			PointCloud<float> cell_centers; /*!< size ni,nj,nk - nonstatic: only used once for polyhedra */ 
+			PointCloud<float> helper_nodes; /*!< size ni-1,nj-1,nk (+axis later) - nonstatic: copied to lfmtree.cloud */
 
 			clock_t interpolationTime;
 			clock_t creationTime;
@@ -92,7 +96,7 @@ namespace ccmc
 			Polyhedron<float> interpolationPolys;
 			Polyhedron<float>* searchPoly;
 			Polyhedron<float>* errorsPoly;
-			static boost::ptr_vector<Polyhedron<float> > polyhedra; //made static. only need one set loaded
+			static boost::ptr_vector<Polyhedron<float> > polyhedra; /*!< Stores all polyhedra used for interpolation. made static. only need one set loaded */
 			typedef boost::ptr_vector<Polyhedron<float> > ptr_vec;
 			ptr_vec::iterator poly_iter; //unused
 			boost::unordered_map<int, Polyhedron<float>* > interpolationPolysMap;

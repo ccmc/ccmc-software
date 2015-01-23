@@ -19,9 +19,9 @@ namespace ccmc
 {
 	/**
 	 * @class Adapt3DInterpolator
-	 * @brief TODO: brief description of BATSRUSInterpolator class
+	 * @brief TODO: brief description of Adapt3DInterpolator class
 	 *
-	 * TODO: full description of BATSRUSInterpolator class
+	 * TODO: full description of Adapt3DInterpolator class
 	 */
 	class Adapt3DInterpolator: public Interpolator
 	{

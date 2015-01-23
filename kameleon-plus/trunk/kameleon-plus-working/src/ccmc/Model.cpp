@@ -107,6 +107,7 @@ namespace ccmc
 	/**
 	 * @brief Load a variable into memory.
 	 *
+	 * Checks to see if this variable is loaded, and if not, checks that it exists in the file.
 	 * Use this method when the variable to load is of type float
 	 *
 	 * @param variable Variable to load into memory.
@@ -173,6 +174,7 @@ namespace ccmc
 	/**
 	 * @brief Loads a variable into memory.
 	 *
+	 * Checks to see if this variable is loaded, and if not, checks that it exists in the file
 	 * Use this method when the variable to load is of type int
 	 *
 	 * @param variable

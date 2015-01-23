@@ -14,13 +14,15 @@
 #include <cmath>
 #include "Point.h"
 #include "Vector.h"
+#include <vector>
 #include "time.h"
 namespace ccmc
 
 {
 	using namespace std;
 
-	/*
+	/** @brief Class to perform interpolations on arbitrary convex polyedra with planar faces.
+	 *
 	 * Polyhedron is a class that can represent any arbitary polyhedron where
 	 * the faces are planar. Each face can have any number of vertices.
 	 * This class also implements Spherical Barycentric Coordinates, which may be used
@@ -55,18 +57,18 @@ namespace ccmc
 			void merge(Polyhedron<T> const * const p);
 
 			T thetaMax, thetaMin;
-			std::vector<T> lambda;
+			std::vector<T> lambda; /*!< barycentric weights associated with each vertex, determined by setBarycentricCoordinates. Each weight is in [0,1] */
 			std::vector<T> theta;
 			Vector<T> minimumDistanceToCentroid;
 
-			std::vector<Vector<T> > positions;
-			std::vector<int> globalVertex;
-			int closestFace;
-			int currentPolyhedron;
-			std::vector<int> loops;
-			std::vector<int> faces;
-			bool isInside;
-			std::vector<int> neighbors; //must match faces
+			std::vector<Vector<T> > positions; /*!< 3D positions of polyhedron's vertices */
+			std::vector<int> globalVertex; /*!< global index of polyhedron's vertices */
+			int closestFace; /*!< index of face closest to the last interpolation query point */
+			int currentPolyhedron; /*!< global index of this polyhedron */
+			std::vector<int> loops; /*!< each loop defines a face of polyhedron. loops must index into positions, with face normals determined by right-hand-rule. */
+			std::vector<int> faces; /*!< faces must index into the start of each loop in loops, except the last face element will be the index of the last loop element */
+			bool isInside; /*!< true if the last interpolation was inside the polyhedron */
+			std::vector<int> neighbors; /*!< global index of neighboring polyhedra, matching faces. */
 			static clock_t interpolationTime, stage1, stage2, stage3;
 			static int interpolations;
 			static T piOver2;
@@ -81,7 +83,7 @@ namespace ccmc
 			static Vector<T> vZero;
 
 
-			//The following variables are used by setBarycentricCoordinates
+			/// The following variables are used by setBarycentricCoordinates
 			int vertex, vertexMinus, vertexPlus;
 			Vector<T> u1xu2;
 			T u1u2Angle;
@@ -91,7 +93,7 @@ namespace ccmc
 	};
 
 	template<class T>
-	Vector<T> Polyhedron<T>::vZero = Vector<T>(0,0,0); //used for zeroing vectors
+	Vector<T> Polyhedron<T>::vZero = Vector<T>(0,0,0); ///used for zeroing vectors
 
 	template<class T>
 	T Polyhedron<T>::piOver2 = T(atan(1)*2);
@@ -111,6 +113,10 @@ namespace ccmc
 	template<class T>
 	clock_t Polyhedron<T>::stage3 = 0;
 
+	/**
+	* Constructor initializes interpolation variables.
+	*/
+
 	template<class T>
 	Polyhedron<T>::Polyhedron()
 	{
@@ -128,6 +134,10 @@ namespace ccmc
 
 	}
 
+	/**
+	* Sets positions as a set of vectors.
+	*/
+
 	template<class T>
 	void Polyhedron<T>::setPositions(std::vector<Vector<T> > const &pos)
 	{
@@ -139,11 +149,13 @@ namespace ccmc
 		distanceNorms.resize(positions.size());
 
 	}
-
+	/** 
+	* initializes \link loops \endlink and \link faces \endlink of polyhedron
+	*/
 	template<class T>
 	void Polyhedron<T>::setLoopsFaces(std::vector<int> const &loop, std::vector<int> const &face)
 	{
-		/*
+		/**
 		 * Loops must index into positions, following the right-hand rule
 		 * Faces must index into the start of each loop in loops
 		 */
@@ -156,8 +168,8 @@ namespace ccmc
 		facevectors.resize(faces.size()-1);
 		theta.resize(loops.size());
 
-		for (int i=0;i<faces.size()-1;i++){ //for each of the 6 faces of a cube
-			for (int j = faces[i];j<faces[i+1];j++){ //cycle through indices of face vertices
+		for (int i=0;i<faces.size()-1;i++){ /// for each of the 6 faces of a cube
+			for (int j = faces[i];j<faces[i+1];j++){ /// cycle through indices of face vertices
 				plus[j] = this->nextVertex(j,i);
 				minus[j] = this->previousVertex(j,i);
 			}
@@ -170,10 +182,9 @@ namespace ccmc
 		return;
 	}
 
-	/*
-	 * Sets indices into neighboring cells
-	 * Ideally, the number of neighbors should match the number of faces
-	 * If a face has no neighbor, set it's neighbor value to currentPolyhedron;
+	/**
+	 * initializes \link neighbors \endlink cell indexes.
+	 * If a face has no neighbor, set its neighbor value to \link currentPolyhedron \endlink;
 	 */
 	template<class T>
 	void Polyhedron<T>::setNeighbors(std::vector<int> const &neighbor)
@@ -182,7 +193,9 @@ namespace ccmc
 		return;
 	}
 
-
+	/** 
+	* Calculate this polyhedron's centroid (average of positions).
+	*/
 	template<class T>
 	Vector<T> Polyhedron<T>::centroid()
 	{
@@ -192,9 +205,14 @@ namespace ccmc
 			average = average+positions[i];
 		}
 		average = average/T(positions.size());
-//		std::cout<<"Centroid: "<< average.toString()<<"\n";
 		return average;
 	}
+
+	/**
+	 * Calculates face centroid as average of face vertices
+	 * @param face which face to average
+	 * @return face's centroid.
+	 */
 
 	template<class T>
 	Vector<T> Polyhedron<T>::faceCentroid(int face)
@@ -209,6 +227,16 @@ namespace ccmc
 		return average;
 	}
 
+	/**
+	 * @brief Given a starting point, calculates Spherical Barycentric Coordinates, such that
+	 * every position is given a weight in [0,1]. The weights are stored in \link lambda \endlink.
+	 * 
+	 * If the point is outside the polyhedron, the weights will be set to zero. The weights will be linearly precise:
+	 * The sum of each weight times the corresponding position yields the original point. point = SUM_i(lambda_i x position[i])
+	 *
+	 * See Langer et. al, Spherical Barycentric Coordinates, 2006 Eurographics Symposium on Geometry
+	 * @param point 3D position for which to calculate barycentric weights.
+	 */
 
 	template<class T>
 	void Polyhedron<T>::setBarycentricCoordinates(Vector<T> const &point)
@@ -216,15 +244,9 @@ namespace ccmc
 
 		clock_t start,end, t0,t1,t2;
 		start = clock(); t0 = start; interpolations++;
-		/* Given point, calculates Spherical Barycentric Coordinates, such that
-		 * every position is given a weight in [0,1]. The weights (lambdas) will be linearly precise:
-		 * Sum_i lambda_i position[i] = point
-		 *
-		 * See Langer et. al, Spherical Barycentric Coordinates, 2006 Eurographics Symposium on Geometry
-		 */
 
 
-		// reset lambda, lambdatemp in case this method was previously called
+		/// reset lambda, lambdatemp in case this method was previously called
 		for (int i = 0; i < lambda.size(); i++){
 			lambda[i]=0;
 			lambdatemp[i]= 0;
@@ -236,7 +258,7 @@ namespace ccmc
 		}
 
 
-		/*
+		/**
 		 * Set distance vectors to point
 		 *  if |vi-x|==0, return lambda_i=1, lambda_(j!=i)=0
 		 *  else, store normalized distance vectors U_i
@@ -254,12 +276,12 @@ namespace ccmc
 			}
 			distanceNorms[i] = distances[i];
 			distanceNorms[i].norm();
-//			distanceNorms[i] = Vector<T>::norm(distances[i]);
+
 		}
 
 		closestFace = 0;
 
-		//Assign face vectors F_face such that sum_faces F_face = 0
+		/// Assign face vectors F_face such that sum_faces F_face = 0
 		int vertex, vertexMinus, vertexPlus;
 		for (int i = 0; i < faces.size()-1; i++){
 			for (int j = faces[i]; j < faces[i+1]; j++){
@@ -285,8 +307,8 @@ namespace ccmc
 
 		thetaMax = T(0);
 		thetaMin = T(7);
-		T thetaFace; //average of face angles
-		//set angles theta_i between F_face and U_i
+		T thetaFace; /// average of face angles
+		/// set angles theta_i between F_face and U_i
 		for (int i = 0; i < facevectors.size();i++){
 			thetaFace = 0;
 			for (int j = faces[i]; j < faces[i+1]; j++){
@@ -298,38 +320,38 @@ namespace ccmc
 			if (thetaFace < thetaMin){
 				thetaMin = thetaFace;
 			}
-			if (thetaFace > thetaMax){ //want thetaMax to be the largest angle
+			if (thetaFace > thetaMax){ /// want thetaMax to be the largest angle
 				thetaMax = thetaFace;
 				closestFace = i;
 			}
 		}
 
-		// Use theta_i to check if point is inside/outside polyhedron
+		/// Use theta_i to check if point is inside/outside polyhedron
 		const T infinity = numeric_limits<T>::infinity();
 
-		// true if theta > pi/2 or theta < pi/2
-		if (!(-infinity < tan(thetaMax) && infinity > tan(thetaMax))){ //point is in same plane as the cell face
+		/// true if theta > pi/2 or theta < pi/2
+		if (!(-infinity < tan(thetaMax) && infinity > tan(thetaMax))){ ///point is in same plane as the cell face
 			setFloaterCoordinates(closestFace,point);
 			this->isInside = true;
 			end = clock(); interpolationTime += end-start;
 			return;
 		}
 
-		if (tan(thetaMax) < T(0)){ // theta > pi/2, point is outside polyhedron
+		if (tan(thetaMax) < T(0)){ /// theta > pi/2, point is outside polyhedron
 			this->isInside = false;
 			end = clock(); interpolationTime += end-start;
-			return; //lambdas stay at 0
+			return; /// lambdas stay at 0
 		}
 
 		t2 = clock();
 		stage2 += t2-t1;
 
-		//Else point is inside the polyhedron, update lambdas
+		/// Else point is inside the polyhedron, update lambdas
 		this->isInside = true;
 
 		T alpha, alphaMinus, tangentSum;
 		T sum=T(0);
-//		Vector<T> ufxu0, ufxu1, ufxu2, uf;
+
 
 		for (int i = 0; i < facevectors.size();i++){
 			uf = facevectors[i];
@@ -360,7 +382,7 @@ namespace ccmc
 
 		}
 
-		/*
+		/**
 		 * Normalize weights
 		 */
 		sum = T(0);
@@ -374,18 +396,20 @@ namespace ccmc
 
 		end = clock();
 		stage3 += end - t2;
-		interpolationTime += end-start; //interpolationTime = stage1+stage2+stage3
+		interpolationTime += end-start; /// interpolationTime = stage1+stage2+stage3
 		return;
 
 	}
 
+	/**
+	* If the point lies on the boundary, spherical barycentric coordinates approach Floater coordinates (citation needed), which are implemented here.
+	*/
 	template<class T>
 	void Polyhedron<T>::setFloaterCoordinates(int face, Vector<T> const &point){
 
-		/*
+		/**
 		 * distances should have nonzero length, else this method shouldn't be called
 		 */
-//		std::cout<<point.toString()<<" point on plane of face"<<std::endl;
 
 		int vertex, vertexMinus, vertexPlus;
 		std::vector<T> alpha;
@@ -407,7 +431,7 @@ namespace ccmc
 			return;
 		}
 
-//		T alphaMinus;
+///		T alphaMinus;
 		T weight, weightSum = 0;
 
 		for (int i = faces[face]; i<faces[face+1]; i++){
@@ -428,9 +452,13 @@ namespace ccmc
 		return;
 	}
 
+	/**
+	* If the point lies on an edge, spherical barycentric coordinates and Floater coordinates approach linear interpolation between the vertices that define the edge.
+	*/
+
 	template<class T>
 	void Polyhedron<T>::setLinearInterpolants(int v1, int v2, Vector<T> const &point){
-		/*
+		/**
 		 * Linearly interpolate between vertex 1 and vertex 2
 		 */
 //		std::cout<<"point on edge"<<endl;
@@ -446,12 +474,13 @@ namespace ccmc
 		return;
 	}
 
+	/**
+	 * Find closest face by comparing distances to face centroids
+	 */
+
 	template<class T>
 	int Polyhedron<T>::getClosestFace(Vector<T> const &point)
 	{
-		/*
-		 * Find closest face by comparing dot products of (point - centroid) and (face centers - centroid)
-		 */
 		int face=0;
 		T maxFaceLength = T(0);
 		T faceLength;
@@ -484,10 +513,12 @@ namespace ccmc
 		return faces[face] + (i-faces[face] + length - 1)%length;
 	}
 
+	/** 
+	 * Check that face vectors sum to zero according to Stoke's theorem 
+	 */
 	template<class T>
 	Vector<T> Polyhedron<T>::getFaceVectorError()
 	{
-		//Check that face vectors sum to zero from Stoke's theorem
 		Vector<T> facesum(0,0,0);
 		for (int i = 0; i < facevectors.size();i++){
 			facesum = facesum + facevectors[i];
@@ -496,6 +527,10 @@ namespace ccmc
 		return facesum;
 	}
 
+
+	/** 
+	* Calculates maximum distance from vertices to centroid
+	 */
 	template<class T>
 	Vector<T> Polyhedron<T>::maxDistanceToCentroid()
 	{
@@ -514,6 +549,9 @@ namespace ccmc
 		return result;
 	}
 
+	/** 
+	* Calculates minimum distance from vertices to centroid
+	 */
 	template<class T>
 	Vector<T> Polyhedron<T>::minDistanceToCentroid()
 	{
@@ -543,6 +581,9 @@ namespace ccmc
 
 	}
 
+	/** 
+	* Test the property that the sum of the vertices times their weights recovers the interpolation point. 
+	*/
 	template<class T>
 	Vector<T> Polyhedron<T>::testLinearity( Vector<T> const &point)
 	{
@@ -554,11 +595,13 @@ namespace ccmc
 		return result;
 
 	}
-
+	/**
+	* Save as a human-readable Open-DX data object
+	*/
 	template<class T>
 	void Polyhedron<T>::saveAsDXObject(string filename)
 	{
-		/*
+		/**
 		 * Save as human-readable open-dx object
 		 */
 
@@ -604,24 +647,33 @@ namespace ccmc
 				<< "component \"edges\" \"edge list\" \n"
 				<< "component \"loops\" \"loop list\"\n"
 				<< "component \"faces\" \"face list\"\n"
-/*				<< "component \"data\"  \"data\" \n" */
+				// << "component \"data\"  \"data\" \n" 
 				<< "end\n";
 
 		file.close();
 	}
 
+	/**
+	* Sets \link currentPolyhedron \endlink
+	*/ 
 	template <class T>
 	void Polyhedron<T>::setCurrentPolyhedron(int a)
 	{
 		currentPolyhedron = a;
 	}
 
+	/**
+	* Points to the next polyhedron. This prototype just returns a pointer to itself. 
+	*/
 	template<class T>
 	Polyhedron<T>* Polyhedron<T>::getNextPolyhedron()
 	{
 		return this;
 	}
 
+	/**
+	* Checks if a new point is inside this polyhedron. Stores the result in \link isInside \endlink. 
+	*/
 	template<class T>
 	bool Polyhedron<T>::isPointInside( Vector<T> const &point)
 	{
@@ -630,16 +682,23 @@ namespace ccmc
 		return this->isInside;
 	}
 
+	/**
+	* Returns the type of Polyhedron this is. This prototype just returns 0.
+	*/
 	template <class T>
 	int Polyhedron<T>::getType()
 	{
 		return 0;
 	}
 
+	/**
+	* Merges this polyhedron with another. Use this to create a group of polyhedra to render as a single object using saveAsDXObject. 
+	*/
+
 	template<class T>
 	void Polyhedron<T>::merge(Polyhedron<T> const * const p)
 	{
-		/*
+		/**
 		 * Merge this polyhedron with input p
 		 */
 
@@ -668,4 +727,4 @@ namespace ccmc
 }
 
 
-#endif /* POLYHEDRON_H_ */
+#endif /** POLYHEDRON_H_ */

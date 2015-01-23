@@ -13,6 +13,7 @@ set(CMAKE_Fortran_FLAGS "-lstdc++ -v")
 
 add_executable(generalfilereader_compat_f GeneralFileReader_compatibility_test_f.f)
 add_executable(kameleon_compat_f Kameleon_compatibility_test_f.f)
+add_executable(time_series_test Time_Series_test.f)
 add_executable(timeinterp_compat_f timeinterp_compatibility_test_f.f)
 add_executable(tracer_compat_f Tracer_test_f.f)
 
@@ -40,6 +41,7 @@ message(STATUS "c++/ Include CDF: " ${CDF_INCLUDES})
 # link ccmc ccmc_wrapper_c ccmc_wrapper_fortran
 target_link_libraries(generalfilereader_compat_f ccmc_wrapper_fortran)
 target_link_libraries(kameleon_compat_f ccmc_wrapper_fortran)
+target_link_libraries(time_series_test ccmc_wrapper_fortran)
 target_link_libraries(timeinterp_compat_f ccmc_wrapper_fortran)
 target_link_libraries(tracer_compat_f ccmc_wrapper_fortran)
 

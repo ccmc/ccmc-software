@@ -26,7 +26,7 @@ namespace ccmc
 
 	/**
 	 * Constructor
-	 * @param modelReader
+	 * @param modelReader pointer to LFM model object
 	 */
 	LFMInterpolator::LFMInterpolator(Model * modelReader)
 	{
@@ -122,10 +122,8 @@ namespace ccmc
 	};
 
 
-
-
 	/**
-	 * @param variable_id
+	 * @param variable_id 
 	 * @param c0
 	 * @param c1
 	 * @param c2
@@ -347,12 +345,12 @@ namespace ccmc
 
 	}
 
-	/*
+	/**
 	 * This function creates and stores the polyhedra used for interpolation.
 	 * Each polyhedron has vertices set by LFM cell centers.
 	 * In total, there are (ni-1)*(nj-1)*nk hexahedra (6 faces),
 	 * 				2*(ni-1) axis cells having nk+2 faces,
-	 * 				1 inner boundary cell having (nj-1)*nk + 2 faces
+	 * 				1 inner boundary cell having (nj-1)*nk + 2 faces.
 	 * This function also calculates polyhedral cell centers, which are put
 	 * in a point cloud and used for kd-tree searches
 	 *
@@ -608,8 +606,8 @@ namespace ccmc
 	}
 
 
-	/*
-	 * Return a pointer to the cell containing the point.
+	/**
+	 * Return a pointer to the cell containing the query point.
 	 */
 	Polyhedron<float>* LFMInterpolator::getCell(Vector<float> point){
 		/*
@@ -729,8 +727,10 @@ namespace ccmc
 
 	}
 
+	/**
+	* Constructs a single polyhedron out of all the polys used in interpolation
+	*/
 	Polyhedron<float> LFMInterpolator::getInterpolationPolys(){
-		//Construct a single polyhedron out of all the polys used in interpolation
 		Polyhedron<float> mergedPoly;
 		for(boost::unordered_map<int, Polyhedron<float>* >::iterator iter = interpolationPolysMap.begin(); iter != interpolationPolysMap.end(); iter++){
 			mergedPoly.merge(iter->second);

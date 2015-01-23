@@ -20,8 +20,8 @@ namespace ccmc
 
 	class Kameleon;
 
-	/*
-	 *
+	/**
+	 * The TimeInterpolator collects multiple Kameleon objects and permits time interpolation between them.
 	 */
 	class TimeInterpolator
 	{

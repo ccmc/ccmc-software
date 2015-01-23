@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3"/>
-<title>Kameleon-Plus: /Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/Adapt3DInterpolator.h Source File</title>
+<title>Kameleon-Plus: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/Adapt3DInterpolator.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Kameleon-Plus
-   &#160;<span id="projectnumber">0.3.2</span>
+   &#160;<span id="projectnumber">6.0.0</span>
    </div>
   </td>
  </tr>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_c03964d542b97cb59c89fb62e0669a36.html">src</a></li><li class="navelem"><a class="el" href="dir_0028590f62a72d48ce0cb01f44cf4818.html">ccmc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_c7a1247825b8999da59a38977c6d2b6a.html">src</a></li><li class="navelem"><a class="el" href="dir_23fced33753fba558ffb61d3917cbac1.html">ccmc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,10 +71,10 @@
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>ccmc</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classccmc_1_1_adapt3_d_interpolator.html">   26</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classccmc_1_1_adapt3_d_interpolator.html" title="TODO: brief description of BATSRUSInterpolator class.">Adapt3DInterpolator</a>: <span class="keyword">public</span> <a class="code" href="classccmc_1_1_interpolator.html" title="TODO: Brief description of Interpolator class.">Interpolator</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="code" href="classccmc_1_1_adapt3_d_interpolator.html">   26</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classccmc_1_1_adapt3_d_interpolator.html" title="TODO: brief description of Adapt3DInterpolator class.">Adapt3DInterpolator</a>: <span class="keyword">public</span> <a class="code" href="classccmc_1_1_interpolator.html" title="TODO: Brief description of Interpolator class.">Interpolator</a></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="classccmc_1_1_adapt3_d_interpolator.html#a79b9d9e9cbfc04e72d34c0853d916514">Adapt3DInterpolator</a>(<a class="code" href="classccmc_1_1_model.html" title="TODO: Brief description of Model class.">Model</a> * <a class="code" href="classccmc_1_1_interpolator.html#afee5bb61e5d5a0a7b9152c6f74378c4a">modelReader</a>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="classccmc_1_1_adapt3_d_interpolator.html#a79b9d9e9cbfc04e72d34c0853d916514">Adapt3DInterpolator</a>(<a class="code" href="classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter...">Model</a> * <a class="code" href="classccmc_1_1_interpolator.html#afee5bb61e5d5a0a7b9152c6f74378c4a">modelReader</a>);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordtype">float</span> <a class="code" href="classccmc_1_1_adapt3_d_interpolator.html#aecaa97aad175a8696d8351607a08158c">interpolate</a>(<span class="keyword">const</span> std::string&amp;, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; c0, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; c1, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; c2);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            <span class="keywordtype">float</span> <a class="code" href="classccmc_1_1_adapt3_d_interpolator.html#aecaa97aad175a8696d8351607a08158c">interpolate</a>(<span class="keyword">const</span> std::string&amp;, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; c0, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; c1, <span class="keyword">const</span> <span class="keywordtype">float</span>&amp; c2, <span class="keywordtype">float</span>&amp; dc0,</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                    <span class="keywordtype">float</span>&amp; dc1, <span class="keywordtype">float</span>&amp; dc2);</div>
@@ -106,7 +106,7 @@
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordtype">float</span> previous_c1;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordtype">float</span> previous_c2;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordtype">int</span> last_node_found;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordtype">int</span> clear_cache;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">//          int clear_cache;</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="comment">//const std::vector&lt;float&gt; * unkno;</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">/* support routines */</span></div>
@@ -127,7 +127,7 @@
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 18:34:46 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 4 2014 16:08:50 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3
 </small></address>

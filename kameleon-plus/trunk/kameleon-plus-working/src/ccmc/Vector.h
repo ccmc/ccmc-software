@@ -15,8 +15,8 @@
 
 namespace ccmc
 {
-	/*
-	 *
+	/**
+	 * Inherits from Point class
 	 */
 	template<class T>
 	class Vector: public Point<T>

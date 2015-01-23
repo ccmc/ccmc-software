@@ -7,7 +7,7 @@ and a graph of the variable as a function of arc length.
 import numpy as np
 import sys, getopt
 import time
-import CCMC as ccmc
+from CCMC import _CCMC as ccmc
 
 def main(argv):
     if (len(argv) == 5):
@@ -35,13 +35,16 @@ def main(argv):
         finish = time.clock()    
         elapsed = finish - start
         print 'Bidirectional trace completed. Elapsed time: ', elapsed, 'seconds.'
+
+
+
         interpolator = kameleon.createNewInterpolator()
 
         if module_exists("matplotlib"):
             import matplotlib.pyplot as plt
             from mpl_toolkits.mplot3d import axes3d
             fig = plt.figure()
-            ax = fig.gca(projection='3d')
+            ax = fig.add_subplot(111, projection='3d')
 
             npts = fieldline1.size()
             x = np.zeros(npts); y = np.zeros(npts); z = np.zeros(npts)
@@ -53,6 +56,16 @@ def main(argv):
                 data[i] = interpolator.interpolate(variable, x[i], y[i], z[i])
                 arcLength[i] = fieldline1.getLength(i)
 
+            def plotExtrema(extrema, color = 'r', marker = 'o'):
+            #plot min and max values along fieldline
+                for i in range(extrema.size()):
+                    p  = fieldline1.getPosition(extrema[i])
+                    ax.scatter(p.component1, p.component2, p.component3, c = color, marker  = marker)
+
+            fieldline1.minmax()
+            plotExtrema(fieldline1.minima)
+            plotExtrema(fieldline1.maxima, 'b', '^')
+
             ax.plot(x, y, z, label='Magnetic field line')
             ax.legend()
 
@@ -60,6 +73,9 @@ def main(argv):
             plt.plot(arcLength, data, label='parametric data')
             plt.xlabel('arc length [' + kameleon.getVisUnit('x') + ']')
             plt.ylabel(variable + ' [' + kameleon.getVisUnit(variable) + ']')
+
+
+
             plt.show()
 
         else:

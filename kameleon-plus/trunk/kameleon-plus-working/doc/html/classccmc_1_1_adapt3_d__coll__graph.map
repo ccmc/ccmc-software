@@ -1,7 +1,7 @@
 <map id="ccmc::Adapt3D" name="ccmc::Adapt3D">
-<area shape="rect" id="node2" href="$classccmc_1_1_model.html" title="TODO: Brief description of Model class." alt="" coords="15,371,121,397"/>
-<area shape="rect" id="node4" href="$classccmc_1_1_general_file_reader.html" title="ccmc::GeneralFileReader" alt="" coords="66,293,251,320"/>
-<area shape="rect" id="node6" href="$classccmc_1_1_file_reader.html" title="TODO: Brief description of FileReader class." alt="" coords="263,189,399,216"/>
-<area shape="rect" id="node8" title="STL class." alt="" coords="77,99,168,125"/>
-<area shape="rect" id="node10" title="STL class." alt="" coords="51,6,193,47"/>
+<area shape="rect" id="node2" href="$classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="11,385,103,413"/>
+<area shape="rect" id="node3" href="$classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="57,305,215,333"/>
+<area shape="rect" id="node4" href="$classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="224,195,339,223"/>
+<area shape="rect" id="node5" title="STL class." alt="" coords="68,102,143,130"/>
+<area shape="rect" id="node6" title="STL class." alt="" coords="47,6,163,50"/>
 </map>

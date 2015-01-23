@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Kameleon-Plus
-   &#160;<span id="projectnumber">0.3.2</span>
+   &#160;<span id="projectnumber">6.0.0</span>
    </div>
   </td>
  </tr>
@@ -145,6 +145,7 @@
 <li>closeFile()
 : <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a3eedaa5cdd71af7b4bf668ff3c9928ce">ccmc::CDFFileReader</a>
 , <a class="el" href="classccmc_1_1_file_reader.html#aa9b2ff7591f3d3f40ceb0007acbbe3ca">ccmc::FileReader</a>
+, <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a67f6c64b42842dac85a2d63825d28be8">ccmc::HDF5FileReader</a>
 </li>
 <li>closestFace
 : <a class="el" href="classccmc_1_1_polyhedron.html#a50889e065612d1cd397cd7942349bb7b">ccmc::Polyhedron&lt; T &gt;</a>
@@ -177,17 +178,17 @@
 : <a class="el" href="classccmc_1_1_point3f.html#a41ca3743444f541586ededdd77c9762b">ccmc::Point3f</a>
 </li>
 <li>createNewInterpolator()
-: <a class="el" href="classccmc_1_1_b_a_t_s_r_u_s.html#a3cbd68c8c3fb850c3b10cb314c0a21b3">ccmc::BATSRUS</a>
-, <a class="el" href="classccmc_1_1_e_n_l_i_l.html#a861fdf6c5b4f73d0e0b4cfc66f55598b">ccmc::ENLIL</a>
-, <a class="el" href="classccmc_1_1_l_f_m.html#a6cda025f32e66de186e723f7d16e8639">ccmc::LFM</a>
-, <a class="el" href="classccmc_1_1_adapt3_d.html#a4a82029cb4669a788c7ffa555fa4c20f">ccmc::Adapt3D</a>
-, <a class="el" href="classccmc_1_1_kameleon.html#a59797b1c1c5c224436d8fb25b9c665b4">ccmc::Kameleon</a>
-, <a class="el" href="classccmc_1_1_c_t_i_p.html#a1efb34250bf5ef2eebac5ef68fe446f9">ccmc::CTIP</a>
-, <a class="el" href="classccmc_1_1_magnetogram.html#aebea202039a3bf9d21236402db7261f6">ccmc::Magnetogram</a>
-, <a class="el" href="classccmc_1_1_model.html#a0dd491507c14502c27aa61b020fca8cc">ccmc::Model</a>
-, <a class="el" href="classccmc_1_1_s_w_m_f_iono.html#a53d2bdb34290a7c9da48982f7262762c">ccmc::SWMFIono</a>
+: <a class="el" href="classccmc_1_1_adapt3_d.html#a4a82029cb4669a788c7ffa555fa4c20f">ccmc::Adapt3D</a>
 , <a class="el" href="classccmc_1_1_open_g_g_c_m.html#acb2b4bd259e7dbe3d0cce0f3261408fc">ccmc::OpenGGCM</a>
 , <a class="el" href="classccmc_1_1_m_a_s.html#a31c49cc43cb52378c439be07a81c98b8">ccmc::MAS</a>
+, <a class="el" href="classccmc_1_1_magnetogram.html#aebea202039a3bf9d21236402db7261f6">ccmc::Magnetogram</a>
+, <a class="el" href="classccmc_1_1_b_a_t_s_r_u_s.html#a3cbd68c8c3fb850c3b10cb314c0a21b3">ccmc::BATSRUS</a>
+, <a class="el" href="classccmc_1_1_e_n_l_i_l.html#a861fdf6c5b4f73d0e0b4cfc66f55598b">ccmc::ENLIL</a>
+, <a class="el" href="classccmc_1_1_kameleon.html#a59797b1c1c5c224436d8fb25b9c665b4">ccmc::Kameleon</a>
+, <a class="el" href="classccmc_1_1_l_f_m.html#a6cda025f32e66de186e723f7d16e8639">ccmc::LFM</a>
+, <a class="el" href="classccmc_1_1_c_t_i_p.html#a1efb34250bf5ef2eebac5ef68fe446f9">ccmc::CTIP</a>
+, <a class="el" href="classccmc_1_1_model.html#a0dd491507c14502c27aa61b020fca8cc">ccmc::Model</a>
+, <a class="el" href="classccmc_1_1_s_w_m_f_iono.html#a53d2bdb34290a7c9da48982f7262762c">ccmc::SWMFIono</a>
 </li>
 <li>createNextPolyhedron()
 : <a class="el" href="classccmc_1_1_l_f_m_interpolator.html#afbbebbeee5068e425c2deede2a30ebfc">ccmc::LFMInterpolator</a>
@@ -201,8 +202,12 @@
 <li>CTIP()
 : <a class="el" href="classccmc_1_1_c_t_i_p.html#ad443922ade80ec2a2c170976299006c6">ccmc::CTIP</a>
 </li>
+<li>current_file
+: <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#aeee4da6197287cede72ac14784ff2d8f">ccmc::HDF5FileReader</a>
+</li>
 <li>current_filename
-: <a class="el" href="classccmc_1_1_file_reader.html#a2afb0635bf14f222991efc4d63e5f17a">ccmc::FileReader</a>
+: <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a5da3b247b15096662a5c13d1ba5c7834">ccmc::HDF5FileReader</a>
+, <a class="el" href="classccmc_1_1_file_reader.html#a2afb0635bf14f222991efc4d63e5f17a">ccmc::FileReader</a>
 , <a class="el" href="classccmc_1_1_general_file_reader.html#a5ccab7d8bd4672ee5d6210288d5f41bd">ccmc::GeneralFileReader</a>
 </li>
 <li>currentPolyhedron
@@ -212,7 +217,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 18:34:48 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 4 2014 16:08:53 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3
 </small></address>

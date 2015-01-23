@@ -752,7 +752,6 @@ namespace ccmc
 	}
 
 	/**
-	 * TODO
 	 * Retrieves the number of global attributes in the selected file.  This is useful for iterating over all
 	 * available global attributes.
 	 * @return The number of global attributes stored in the selected file.

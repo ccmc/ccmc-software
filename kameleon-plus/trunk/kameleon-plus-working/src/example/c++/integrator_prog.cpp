@@ -1,3 +1,9 @@
+/**
+* Author: Asher Pembroke
+* Contact: apembroke@gmail.com
+*/
+
+
 #include <iostream>
 #include <iomanip>
 #include <sstream>

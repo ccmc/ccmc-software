@@ -3,7 +3,7 @@
 }
 
 
-T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_file_reader}{File\-Reader} class.  
+\hyperlink{classccmc_1_1_file_reader}{File\-Reader} class is a pure virtual class for opening and accessing model variables.  
 
 
 
@@ -16,7 +16,7 @@ Inheritance diagram for ccmc\-:\-:File\-Reader\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=202pt]{classccmc_1_1_file_reader__inherit__graph}
+\includegraphics[width=314pt]{classccmc_1_1_file_reader__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -89,6 +89,8 @@ long \hyperlink{classccmc_1_1_file_reader_a036ac2d85ad32a98b81c9e6ebf0ef133}{clo
 \item 
 virtual const std\-::string \& \hyperlink{classccmc_1_1_file_reader_a9f266e85464a71985e6c922ba508aa9e}{get\-Current\-Filename} ()=0
 \item 
+void \hyperlink{classccmc_1_1_file_reader_a61bb22d073119ba58b52a43c3d086fc8}{set\-Current\-Filename} (const std\-::string \&filename)
+\item 
 virtual void \hyperlink{classccmc_1_1_file_reader_a2663bad21fc69c24f555b27d1cc2b8c8}{initialize\-Variable\-I\-Ds} ()=0
 \item 
 virtual void \hyperlink{classccmc_1_1_file_reader_a3517b66817277210916f6e5aa3db21a8}{initialize\-Variable\-Names} ()=0
@@ -158,9 +160,9 @@ $<$ std\-::string, \hyperlink{classccmc_1_1_attribute}{Attribute} $>$ $>$ \hyper
 
 
 \subsection{Detailed Description}
-T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_file_reader}{File\-Reader} class. 
+\hyperlink{classccmc_1_1_file_reader}{File\-Reader} class is a pure virtual class for opening and accessing model variables. 
 
-T\-O\-D\-O\-: Full description of \hyperlink{classccmc_1_1_file_reader}{File\-Reader} class 
+All file readers are responsible for implementing the pure virtual functions listed here. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classccmc_1_1_file_reader_a8d7df2b31965866393a4225e0955fcac}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!File\-Reader@{File\-Reader}}
@@ -207,7 +209,7 @@ Status of close operation.
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_aa9b2ff7591f3d3f40ceb0007acbbe3ca}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a3eedaa5cdd71af7b4bf668ff3c9928ce}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a3eedaa5cdd71af7b4bf668ff3c9928ce}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a67f6c64b42842dac85a2d63825d28be8}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ac27cfdd9ceabe3af0f14b18fbebcafa5}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!does\-Attribute\-Exist@{does\-Attribute\-Exist}}
 \index{does\-Attribute\-Exist@{does\-Attribute\-Exist}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -218,7 +220,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a3eedaa5cdd71af7b4bf66
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ac27cfdd9ceabe3af0f14b18fbebcafa5}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a2a13faebed9123459d75413e1388d6fa}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a2a13faebed9123459d75413e1388d6fa}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_ac421d19d5c59697a0117dfa763d77de0}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ab8893f7d2b0f62041c37a788affe6b36}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!does\-Variable\-Exist@{does\-Variable\-Exist}}
 \index{does\-Variable\-Exist@{does\-Variable\-Exist}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -229,7 +231,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a2a13faebed9123459d754
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ab8893f7d2b0f62041c37a788affe6b36}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6211014aebd161eb08dcddf7d249743a}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6211014aebd161eb08dcddf7d249743a}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_ad2753042d297a408ad4c1128a9e2939d}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a9f266e85464a71985e6c922ba508aa9e}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Current\-Filename@{get\-Current\-Filename}}
 \index{get\-Current\-Filename@{get\-Current\-Filename}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -240,7 +242,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6211014aebd161eb08dcd
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a9f266e85464a71985e6c922ba508aa9e}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ab8274e8003b7700b2b860aef29a2cd6f}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ab8274e8003b7700b2b860aef29a2cd6f}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_ae19127c20fa9b5ec6cebfeea3578476f}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a11885da1a8d6775a7d2764494474d067}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Global\-Attribute@{get\-Global\-Attribute}}
 \index{get\-Global\-Attribute@{get\-Global\-Attribute}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -251,7 +253,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ab8274e8003b7700b2b860
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a11885da1a8d6775a7d2764494474d067}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_af7d28ab77cd25e50fcf0c1a55908331a}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_af7d28ab77cd25e50fcf0c1a55908331a}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_ae58b480499186a84535f616687e75a7c}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ac8c307cb70a6a99892e2538761867998}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Global\-Attribute@{get\-Global\-Attribute}}
 \index{get\-Global\-Attribute@{get\-Global\-Attribute}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -262,7 +264,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_af7d28ab77cd25e50fcf0c
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ac8c307cb70a6a99892e2538761867998}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aeaffff44fdcad36ae26cd7b84ba39a61}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aeaffff44fdcad36ae26cd7b84ba39a61}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_abc4eb472a8eb35aeb133e3b54f239de0}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a4106475980a5537be0fa0658b6071345}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Global\-Attribute\-I\-D@{get\-Global\-Attribute\-I\-D}}
 \index{get\-Global\-Attribute\-I\-D@{get\-Global\-Attribute\-I\-D}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -273,7 +275,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aeaffff44fdcad36ae26cd
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a4106475980a5537be0fa0658b6071345}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a79af95b7733b9f75fcb492a599751b3b}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a79af95b7733b9f75fcb492a599751b3b}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a0142a1ecf0ccb3c3415fab551daaf551}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a7a4fc5909fce20cb6a40d0a1af56e9a1}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Global\-Attribute\-Name@{get\-Global\-Attribute\-Name}}
 \index{get\-Global\-Attribute\-Name@{get\-Global\-Attribute\-Name}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -284,7 +286,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a79af95b7733b9f75fcb49
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a7a4fc5909fce20cb6a40d0a1af56e9a1}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6e6e6be5271219f6a2a45c94c89630f7}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6e6e6be5271219f6a2a45c94c89630f7}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_adfa3cf1ea14b0e05eb03915851c561c4}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a006779f8e665219a7de5214f4d12f80f}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Number\-Of\-Global\-Attributes@{get\-Number\-Of\-Global\-Attributes}}
 \index{get\-Number\-Of\-Global\-Attributes@{get\-Number\-Of\-Global\-Attributes}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -295,7 +297,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6e6e6be5271219f6a2a45
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a006779f8e665219a7de5214f4d12f80f}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a881308df42ee5d273cb7364152f6970d}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a881308df42ee5d273cb7364152f6970d}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a45bedc5f59d3c0c56778463f82c1a48e}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a6bed5da48bfcdf635a2f6cc71a1d5ca3}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Number\-Of\-Records@{get\-Number\-Of\-Records}}
 \index{get\-Number\-Of\-Records@{get\-Number\-Of\-Records}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -306,7 +308,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a881308df42ee5d273cb73
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a6bed5da48bfcdf635a2f6cc71a1d5ca3}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_adc8d27cd794641171674307330ebdc66}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_adc8d27cd794641171674307330ebdc66}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_af54630ca885c698be2ffbefac7b236e2}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a34a7240022397c1ee0efb71751ded69c}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Number\-Of\-Records@{get\-Number\-Of\-Records}}
 \index{get\-Number\-Of\-Records@{get\-Number\-Of\-Records}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -317,7 +319,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_adc8d27cd7946411716743
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a34a7240022397c1ee0efb71751ded69c}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a97f59c4e9020eb48fa460ba74b9d2535}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a97f59c4e9020eb48fa460ba74b9d2535}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_af1c8021e432d165c10d754f0a067d7f0}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ad5c3584515c7f2896b49af21b2b15890}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Number\-Of\-Variable\-Attributes@{get\-Number\-Of\-Variable\-Attributes}}
 \index{get\-Number\-Of\-Variable\-Attributes@{get\-Number\-Of\-Variable\-Attributes}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -328,7 +330,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a97f59c4e9020eb48fa460
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ad5c3584515c7f2896b49af21b2b15890}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aeafab3428b6ca81a9142faee44b3069f}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aeafab3428b6ca81a9142faee44b3069f}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_abf30f40a7f95a65c9c5fbfb638a0b3e6}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_adf9f77e1e774cd1873648cde6ba0e479}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Number\-Of\-Variables@{get\-Number\-Of\-Variables}}
 \index{get\-Number\-Of\-Variables@{get\-Number\-Of\-Variables}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -339,7 +341,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aeafab3428b6ca81a9142f
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_adf9f77e1e774cd1873648cde6ba0e479}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ae463cfe808dec21748a908b080c8bf81}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ae463cfe808dec21748a908b080c8bf81}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a038ff97710e89d57bccbc5ad9509d277}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a3703180de2d7d38c1ccf115d5279d4d0}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable@{get\-Variable}}
 \index{get\-Variable@{get\-Variable}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -350,7 +352,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ae463cfe808dec21748a90
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a3703180de2d7d38c1ccf115d5279d4d0}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a0d642e05bc1692134212eee14e792eab}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a0d642e05bc1692134212eee14e792eab}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a69e8ed3754fb9627d21cb5556b2e1223}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a47fafa0e59e4d5f379a48b3d0b1add6e}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable@{get\-Variable}}
 \index{get\-Variable@{get\-Variable}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -361,7 +363,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a0d642e05bc1692134212e
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a47fafa0e59e4d5f379a48b3d0b1add6e}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a96d9e7b832f3d689217af4d54898d5c0}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a96d9e7b832f3d689217af4d54898d5c0}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a52e50180779e1b743d2a4766b9fc842b}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ac8e5796569d9e7df92d6f06edf4d1d79}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable@{get\-Variable}}
 \index{get\-Variable@{get\-Variable}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -374,7 +376,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a96d9e7b832f3d689217af
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ac8e5796569d9e7df92d6f06edf4d1d79}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a24ad5f1aafad6362f98e500a9cff6412}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a24ad5f1aafad6362f98e500a9cff6412}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a7ee5a24334d0056b2350a1505f38b095}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a6c127caf47837d72fa46cf5f079399dd}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable@{get\-Variable}}
 \index{get\-Variable@{get\-Variable}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -387,7 +389,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a24ad5f1aafad6362f98e5
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a6c127caf47837d72fa46cf5f079399dd}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ae969f1d20235ebeb533b6d90c5497b28}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ae969f1d20235ebeb533b6d90c5497b28}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_abb117e460234e1c06b44bcbaaf52108e}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_afb0680751b96215f3ba350b290b62f35}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-At\-Index@{get\-Variable\-At\-Index}}
 \index{get\-Variable\-At\-Index@{get\-Variable\-At\-Index}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -399,7 +401,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ae969f1d20235ebeb533b6
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_afb0680751b96215f3ba350b290b62f35}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aaf8553b84f638e02c44d6a453ce089bc}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aaf8553b84f638e02c44d6a453ce089bc}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a544b306f0f39ab05b921a6016f164d03}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_acfe13750b7afba1cb59925e6073f1731}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-At\-Index@{get\-Variable\-At\-Index}}
 \index{get\-Variable\-At\-Index@{get\-Variable\-At\-Index}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -411,7 +413,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_aaf8553b84f638e02c44d6
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_acfe13750b7afba1cb59925e6073f1731}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a93d6c7e3c8587812ed8ead92f2596049}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a93d6c7e3c8587812ed8ead92f2596049}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_aaa4d2db7154044d63f62f497e99b6b49}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ada8128e0f00555a8911be5e95ec18b6e}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-Attribute@{get\-Variable\-Attribute}}
 \index{get\-Variable\-Attribute@{get\-Variable\-Attribute}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -423,7 +425,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a93d6c7e3c8587812ed8ea
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ada8128e0f00555a8911be5e95ec18b6e}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ad90a8f0f842e2dd8091c5883add375a6}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ad90a8f0f842e2dd8091c5883add375a6}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a30acff0de40e77d8e6ee15bbdf68942c}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ab901c44fdd1d8f7d4fac85f0747750ee}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-Attribute\-Name@{get\-Variable\-Attribute\-Name}}
 \index{get\-Variable\-Attribute\-Name@{get\-Variable\-Attribute\-Name}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -434,7 +436,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ad90a8f0f842e2dd8091c5
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ab901c44fdd1d8f7d4fac85f0747750ee}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_adc190bdf05f4d01b465a0ff314431ebb}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_adc190bdf05f4d01b465a0ff314431ebb}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_aa53c82e359a5af886ae96ebdf801cf89}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a6f11a946eac2b10674e948a3c3785966}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-Attribute\-Names@{get\-Variable\-Attribute\-Names}}
 \index{get\-Variable\-Attribute\-Names@{get\-Variable\-Attribute\-Names}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -445,7 +447,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_adc190bdf05f4d01b465a0
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a6f11a946eac2b10674e948a3c3785966}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a52a904328cc0cb1ca7625c9469ca11ca}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a52a904328cc0cb1ca7625c9469ca11ca}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a5e97e629beec751e0da373f5a1e4c6d9}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a937185c6d323262f7c3f3c4d39b59e37}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-I\-D@{get\-Variable\-I\-D}}
 \index{get\-Variable\-I\-D@{get\-Variable\-I\-D}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -459,7 +461,7 @@ Status of the file operation.
 \end{DoxyReturn}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a7c6c138eb96e5562e3a17b1691208129}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a7c6c138eb96e5562e3a17b1691208129}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a1172c9abfe37a6e0bd9556a841457740}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_ab8f4f917ca18681189e3ac8001282c34}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-Int@{get\-Variable\-Int}}
 \index{get\-Variable\-Int@{get\-Variable\-Int}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -470,7 +472,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a7c6c138eb96e5562e3a17
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ab8f4f917ca18681189e3ac8001282c34}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a4f46a67b2469c2fb5a963e2d00fe1424}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a4f46a67b2469c2fb5a963e2d00fe1424}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a3946081d5b79e78300ac8cbe04446a80}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a1ef9e0b43e1a3f051ceea507f00598f5}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-Int\-At\-Index@{get\-Variable\-Int\-At\-Index}}
 \index{get\-Variable\-Int\-At\-Index@{get\-Variable\-Int\-At\-Index}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -482,7 +484,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a4f46a67b2469c2fb5a963
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a1ef9e0b43e1a3f051ceea507f00598f5}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6a1da27717bbac69ef9eb9eaeb06f677}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6a1da27717bbac69ef9eb9eaeb06f677}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a216a98563f5a62fc12ea414552f65b55}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_af688dd7824a25f91404e5f586d1ebe86}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!get\-Variable\-Name@{get\-Variable\-Name}}
 \index{get\-Variable\-Name@{get\-Variable\-Name}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -493,7 +495,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a6a1da27717bbac69ef9eb
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_af688dd7824a25f91404e5f586d1ebe86}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a98ab0f21eb5bad8b9fc095d8c1347e24}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a98ab0f21eb5bad8b9fc095d8c1347e24}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_add8a20386da8a7188a5a67a35cbb94eb}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a38580b9175bb58240630ed1c98147209}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!initialize\-Global\-Attributes@{initialize\-Global\-Attributes}}
 \index{initialize\-Global\-Attributes@{initialize\-Global\-Attributes}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -529,7 +531,7 @@ Here is the call graph for this function\-:\nopagebreak
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a2663bad21fc69c24f555b27d1cc2b8c8}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a20efd34232f8348d44291b589a94d56a}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a20efd34232f8348d44291b589a94d56a}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_ab0255720c8996540dcffbdc7a7a8f76c}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_a3517b66817277210916f6e5aa3db21a8}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!initialize\-Variable\-Names@{initialize\-Variable\-Names}}
 \index{initialize\-Variable\-Names@{initialize\-Variable\-Names}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -540,7 +542,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a20efd34232f8348d44291
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_a3517b66817277210916f6e5aa3db21a8}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ab9c343c409df6b079c270e9598ac0fd0}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ab9c343c409df6b079c270e9598ac0fd0}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_ad38b7dce075a9bafbd48d10e25a92261}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
 \hypertarget{classccmc_1_1_file_reader_aa7a02a3f99c09861a5e7c00e98b81be2}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!open@{open}}
 \index{open@{open}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -556,7 +558,7 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_ab9c343c409df6b079c270
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The C\-D\-F status of the open call. C\-D\-F\-\_\-\-O\-K is the standard successful status. 
+The status of the open call. O\-K is the standard successful status. 
 \end{DoxyReturn}
 \hypertarget{classccmc_1_1_file_reader_ae4346cb5cf1c4861135d3f293d3da320}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!open\-File@{open\-File}}
 \index{open\-File@{open\-File}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
@@ -568,8 +570,15 @@ The C\-D\-F status of the open call. C\-D\-F\-\_\-\-O\-K is the standard success
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classccmc_1_1_file_reader_ae4346cb5cf1c4861135d3f293d3da320}
 
 
-Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a040e6e9a2c9f8e4aae6673fdc4a92cdb}{ccmc\-::\-C\-D\-F\-File\-Reader}.
+Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a040e6e9a2c9f8e4aae6673fdc4a92cdb}{ccmc\-::\-C\-D\-F\-File\-Reader}, and \hyperlink{classccmc_1_1_h_d_f5_file_reader_a802539a4e21bf2b355658a7be3a5b307}{ccmc\-::\-H\-D\-F5\-File\-Reader}.
 
+\hypertarget{classccmc_1_1_file_reader_a61bb22d073119ba58b52a43c3d086fc8}{\index{ccmc\-::\-File\-Reader@{ccmc\-::\-File\-Reader}!set\-Current\-Filename@{set\-Current\-Filename}}
+\index{set\-Current\-Filename@{set\-Current\-Filename}!ccmc::FileReader@{ccmc\-::\-File\-Reader}}
+\subsubsection[{set\-Current\-Filename}]{\setlength{\rightskip}{0pt plus 5cm}void ccmc\-::\-File\-Reader\-::set\-Current\-Filename (
+\begin{DoxyParamCaption}
+\item[{const std\-::string \&}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classccmc_1_1_file_reader_a61bb22d073119ba58b52a43c3d086fc8}
 
 
 \subsection{Member Data Documentation}
@@ -631,5 +640,5 @@ Implemented in \hyperlink{classccmc_1_1_c_d_f_file_reader_a040e6e9a2c9f8e4aae667
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_file_reader_8h}{File\-Reader.\-h}\item 
-/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_file_reader_8cpp}{File\-Reader.\-cpp}\end{DoxyCompactItemize}
+/\-Users/apembrok/git/ccmc-\/software/kameleon-\/plus/trunk/kameleon-\/plus-\/working/src/ccmc/\hyperlink{_file_reader_8h}{File\-Reader.\-h}\item 
+/\-Users/apembrok/git/ccmc-\/software/kameleon-\/plus/trunk/kameleon-\/plus-\/working/src/ccmc/\hyperlink{_file_reader_8cpp}{File\-Reader.\-cpp}\end{DoxyCompactItemize}

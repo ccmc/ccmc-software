@@ -3,12 +3,16 @@
 }
 
 
+Class to perform interpolations on arbitrary convex polyedra with planar faces.  
+
+
+
+
 {\ttfamily \#include $<$Polyhedron.\-h$>$}
 
 
 
-Inheritance diagram for ccmc\-:\-:Polyhedron$<$ T $>$\-:
-\nopagebreak
+Inheritance diagram for ccmc\-:\-:Polyhedron$<$ T $>$\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +21,7 @@ Inheritance diagram for ccmc\-:\-:Polyhedron$<$ T $>$\-:
 \end{figure}
 
 
-Collaboration diagram for ccmc\-:\-:Polyhedron$<$ T $>$\-:
-\nopagebreak
+Collaboration diagram for ccmc\-:\-:Polyhedron$<$ T $>$\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,7 +44,7 @@ void \hyperlink{classccmc_1_1_polyhedron_aac7c881c60c5ee50ec85c5ac6e6c02f6}{set\
 \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ \hyperlink{classccmc_1_1_polyhedron_a587cce21871193ccfba1a7fadc2eb86b}{face\-Centroid} (int face)
 \item 
 void \hyperlink{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255}{set\-Barycentric\-Coordinates} (\hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
-\item 
+\begin{DoxyCompactList}\small\item\em Given a starting point, calculates Spherical Barycentric Coordinates, such that every position is given a weight in \mbox{[}0,1\mbox{]}. The weights are stored in \hyperlink{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}{lambda}. \end{DoxyCompactList}\item 
 void \hyperlink{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38}{set\-Floater\-Coordinates} (int face, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
 \item 
 void \hyperlink{classccmc_1_1_polyhedron_af312e09c40b05c1bd376f94e3966103a}{set\-Linear\-Interpolants} (int v1, int v2, \hyperlink{classccmc_1_1_vector}{Vector}$<$ T $>$ const \&point)
@@ -115,8 +118,15 @@ static clock\-\_\-t \hyperlink{classccmc_1_1_polyhedron_a47a9b8072039bf50deb15bf
 static int \hyperlink{classccmc_1_1_polyhedron_a98484d47a61f7fb916e45a4d4c381d08}{interpolations} = 0
 \item 
 static T \hyperlink{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{pi\-Over2} = T(atan(1)$\ast$2)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em used for zeroing vectors \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$class ccmc\-::\-Polyhedron$<$ T $>$}
+
+Class to perform interpolations on arbitrary convex polyedra with planar faces. 
+
+\hyperlink{classccmc_1_1_polyhedron}{Polyhedron} is a class that can represent any arbitary polyhedron where the faces are planar. Each face can have any number of vertices. This class also implements Spherical Barycentric Coordinates, which may be used for linear interpolation for points inside or on the polyhedron's boundary. Points outside the polyhedron are given zero weight. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classccmc_1_1_polyhedron_addb2fac41e80420f07ea9b3164cd11af}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!Polyhedron@{Polyhedron}}
@@ -126,7 +136,7 @@ static T \hyperlink{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_addb2fac41e80420f07ea9b3164cd11af}
-\hypertarget{classccmc_1_1_polyhedron_a0d70cc8f2c26b2fcc6589b66f00e3ab1}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!$\sim$\-Polyhedron@{$\sim$\-Polyhedron}}
+Constructor initializes interpolation variables. \hypertarget{classccmc_1_1_polyhedron_a0d70cc8f2c26b2fcc6589b66f00e3ab1}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!$\sim$\-Polyhedron@{$\sim$\-Polyhedron}}
 \index{$\sim$\-Polyhedron@{$\sim$\-Polyhedron}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{$\sim$\-Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::$\sim${\bf Polyhedron} (
 \begin{DoxyParamCaption}
@@ -143,13 +153,21 @@ static T \hyperlink{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a6395204653dddbd1148023ce3c04b647}
-\hypertarget{classccmc_1_1_polyhedron_a587cce21871193ccfba1a7fadc2eb86b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!face\-Centroid@{face\-Centroid}}
+Calculate this polyhedron's centroid (average of positions). \hypertarget{classccmc_1_1_polyhedron_a587cce21871193ccfba1a7fadc2eb86b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!face\-Centroid@{face\-Centroid}}
 \index{face\-Centroid@{face\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{face\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::face\-Centroid (
 \begin{DoxyParamCaption}
 \item[{int}]{face}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a587cce21871193ccfba1a7fadc2eb86b}
+Calculates face centroid as average of face vertices 
+\begin{DoxyParams}{Parameters}
+{\em face} & which face to average \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+face's centroid. 
+\end{DoxyReturn}
 \hypertarget{classccmc_1_1_polyhedron_afd4793a541b3638e10ad230b9edc101c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Closest\-Face@{get\-Closest\-Face}}
 \index{get\-Closest\-Face@{get\-Closest\-Face}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{get\-Closest\-Face}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Closest\-Face (
@@ -157,10 +175,9 @@ static T \hyperlink{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{
 \item[{{\bf Vector}$<$ T $>$ const \&}]{point}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_afd4793a541b3638e10ad230b9edc101c}
+Find closest face by comparing distances to face centroids 
 
-
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -176,7 +193,7 @@ Here is the call graph for this function\-:
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a2c7464ff7c021b3b7aafaf3739217110}
-\hypertarget{classccmc_1_1_polyhedron_ab68fb11d2cbbd0a9bc81ce4c4a7279b1}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Min\-Distance\-To\-Centroid@{get\-Min\-Distance\-To\-Centroid}}
+Check that face vectors sum to zero according to Stoke's theorem \hypertarget{classccmc_1_1_polyhedron_ab68fb11d2cbbd0a9bc81ce4c4a7279b1}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Min\-Distance\-To\-Centroid@{get\-Min\-Distance\-To\-Centroid}}
 \index{get\-Min\-Distance\-To\-Centroid@{get\-Min\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{get\-Min\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Min\-Distance\-To\-Centroid (
 \begin{DoxyParamCaption}
@@ -190,14 +207,14 @@ Here is the call graph for this function\-:
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_polyhedron_a3a3d6e72e95b7e7829149f3fa59f57f6}
-\hypertarget{classccmc_1_1_polyhedron_abef63d69bf96e4bacb000546631a048e}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Type@{get\-Type}}
+Points to the next polyhedron. This prototype just returns a pointer to itself. \hypertarget{classccmc_1_1_polyhedron_abef63d69bf96e4bacb000546631a048e}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!get\-Type@{get\-Type}}
 \index{get\-Type@{get\-Type}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::get\-Type (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classccmc_1_1_polyhedron_abef63d69bf96e4bacb000546631a048e}
-
+Returns the type of \hyperlink{classccmc_1_1_polyhedron}{Polyhedron} this is. This prototype just returns 0. 
 
 Reimplemented in \hyperlink{classccmc_1_1_i_poly_ae85ea134331eb4dcff87babc1287e304}{ccmc\-::\-I\-Poly$<$ T $>$}, \hyperlink{classccmc_1_1_j_poly_a86a004ccd9c5811170b37b729f61e883}{ccmc\-::\-J\-Poly$<$ T $>$}, \hyperlink{classccmc_1_1_axis_polyhedron_a03d10924c8c45085ba984bb7d669bcce}{ccmc\-::\-Axis\-Polyhedron$<$ T $>$}, and \hyperlink{classccmc_1_1_grid_polyhedron_af9346d18b3c0f78108ee45a0188e3f57}{ccmc\-::\-Grid\-Polyhedron$<$ T $>$}.
 
@@ -208,17 +225,16 @@ Reimplemented in \hyperlink{classccmc_1_1_i_poly_ae85ea134331eb4dcff87babc1287e3
 \item[{{\bf Vector}$<$ T $>$ const \&}]{point}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_ab49d000c95f4e79132727103524ca45b}
-\hypertarget{classccmc_1_1_polyhedron_ac7c3d855a8df0072cc23c88a42f8bd78}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!max\-Distance\-To\-Centroid@{max\-Distance\-To\-Centroid}}
+Checks if a new point is inside this polyhedron. Stores the result in \hyperlink{classccmc_1_1_polyhedron_a54e8c54feeac70b1bd3c1eaf4c237058}{is\-Inside}. \hypertarget{classccmc_1_1_polyhedron_ac7c3d855a8df0072cc23c88a42f8bd78}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!max\-Distance\-To\-Centroid@{max\-Distance\-To\-Centroid}}
 \index{max\-Distance\-To\-Centroid@{max\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{max\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::max\-Distance\-To\-Centroid (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_ac7c3d855a8df0072cc23c88a42f8bd78}
+Calculates maximum distance from vertices to centroid 
 
-
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -234,17 +250,16 @@ Here is the call graph for this function\-:
 \item[{{\bf Polyhedron}$<$ T $>$ const $\ast$const}]{p}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a01b4863ead9a3136aec465067132afcc}
-\hypertarget{classccmc_1_1_polyhedron_ac6c4696d8599d39da7dca7ecb6008ba7}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!min\-Distance\-To\-Centroid@{min\-Distance\-To\-Centroid}}
+Merges this polyhedron with another. Use this to create a group of polyhedra to render as a single object using save\-As\-D\-X\-Object. Merge this polyhedron with input p\hypertarget{classccmc_1_1_polyhedron_ac6c4696d8599d39da7dca7ecb6008ba7}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!min\-Distance\-To\-Centroid@{min\-Distance\-To\-Centroid}}
 \index{min\-Distance\-To\-Centroid@{min\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{min\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::min\-Distance\-To\-Centroid (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_ac6c4696d8599d39da7dca7ecb6008ba7}
+Calculates minimum distance from vertices to centroid 
 
-
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -260,7 +275,7 @@ Here is the call graph for this function\-:
 \item[{string}]{filename}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a3d1633e9643f81644e3e0df64f4195ca}
-\hypertarget{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Barycentric\-Coordinates@{set\-Barycentric\-Coordinates}}
+Save as a human-\/readable Open-\/\-D\-X data object Save as human-\/readable open-\/dx object\hypertarget{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Barycentric\-Coordinates@{set\-Barycentric\-Coordinates}}
 \index{set\-Barycentric\-Coordinates@{set\-Barycentric\-Coordinates}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{set\-Barycentric\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Barycentric\-Coordinates (
 \begin{DoxyParamCaption}
@@ -269,8 +284,44 @@ Here is the call graph for this function\-:
 )}}\label{classccmc_1_1_polyhedron_ab0619f44fb68fae79dc86498164a5255}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Given a starting point, calculates Spherical Barycentric Coordinates, such that every position is given a weight in \mbox{[}0,1\mbox{]}. The weights are stored in \hyperlink{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}{lambda}. 
+
+If the point is outside the polyhedron, the weights will be set to zero. The weights will be linearly precise\-: The sum of each weight times the corresponding position yields the original point. point = S\-U\-M\-\_\-i(lambda\-\_\-i x position\mbox{[}i\mbox{]})
+
+See Langer et. al, Spherical Barycentric Coordinates, 2006 Eurographics Symposium on Geometry 
+\begin{DoxyParams}{Parameters}
+{\em point} & 3\-D position for which to calculate barycentric weights. \\
+\hline
+\end{DoxyParams}
+reset lambda, lambdatemp in case this method was previously called
+
+Set distance vectors to point if $|$vi-\/x$|$==0, return lambda\-\_\-i=1, lambda\-\_\-(j!=i)=0 else, store normalized distance vectors U\-\_\-i
+
+Assign face vectors F\-\_\-face such that sum\-\_\-faces F\-\_\-face = 0
+
+average of face angles
+
+set angles theta\-\_\-i between F\-\_\-face and U\-\_\-i
+
+want theta\-Max to be the largest angle
+
+Use theta\-\_\-i to check if point is inside/outside polyhedron
+
+true if theta $>$ pi/2 or theta $<$ pi/2
+
+point is in same plane as the cell face
+
+theta $>$ pi/2, point is outside polyhedron
+
+lambdas stay at 0
+
+Else point is inside the polyhedron, update lambdas
+
+Normalize weights
+
+interpolation\-Time = stage1+stage2+stage3 
+
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -286,7 +337,7 @@ Here is the call graph for this function\-:
 \item[{int}]{a}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a140b9776d318b32baeb43f807f8b6791}
-\hypertarget{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Floater\-Coordinates@{set\-Floater\-Coordinates}}
+Sets \hyperlink{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}{current\-Polyhedron} \hypertarget{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Floater\-Coordinates@{set\-Floater\-Coordinates}}
 \index{set\-Floater\-Coordinates@{set\-Floater\-Coordinates}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{set\-Floater\-Coordinates}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Floater\-Coordinates (
 \begin{DoxyParamCaption}
@@ -294,10 +345,11 @@ Here is the call graph for this function\-:
 \item[{{\bf Vector}$<$ T $>$ const \&}]{point}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a32c4243a5f5dd6993d17f60e3deeda38}
+If the point lies on the boundary, spherical barycentric coordinates approach Floater coordinates (citation needed), which are implemented here. distances should have nonzero length, else this method shouldn't be called
 
+T alpha\-Minus; 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -315,7 +367,7 @@ Here is the call graph for this function\-:
 \item[{{\bf Vector}$<$ T $>$ const \&}]{point}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_af312e09c40b05c1bd376f94e3966103a}
-\hypertarget{classccmc_1_1_polyhedron_a54003232c80e3137ecb2e4732e00d3a4}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Loops\-Faces@{set\-Loops\-Faces}}
+If the point lies on an edge, spherical barycentric coordinates and Floater coordinates approach linear interpolation between the vertices that define the edge. Linearly interpolate between vertex 1 and vertex 2\hypertarget{classccmc_1_1_polyhedron_a54003232c80e3137ecb2e4732e00d3a4}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Loops\-Faces@{set\-Loops\-Faces}}
 \index{set\-Loops\-Faces@{set\-Loops\-Faces}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{set\-Loops\-Faces}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Loops\-Faces (
 \begin{DoxyParamCaption}
@@ -323,43 +375,47 @@ Here is the call graph for this function\-:
 \item[{std\-::vector$<$ int $>$ const \&}]{face}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a54003232c80e3137ecb2e4732e00d3a4}
-\hypertarget{classccmc_1_1_polyhedron_aac7c881c60c5ee50ec85c5ac6e6c02f6}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Neighbors@{set\-Neighbors}}
+initializes \hyperlink{classccmc_1_1_polyhedron_a275e8b1b13a16013da6bd125e203fd2c}{loops} and \hyperlink{classccmc_1_1_polyhedron_a85b5d967346fc1fd362b22bd0359cc4e}{faces} of polyhedron Loops must index into positions, following the right-\/hand rule Faces must index into the start of each loop in loops
+
+for each of the 6 faces of a cube
+
+cycle through indices of face vertices \hypertarget{classccmc_1_1_polyhedron_aac7c881c60c5ee50ec85c5ac6e6c02f6}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Neighbors@{set\-Neighbors}}
 \index{set\-Neighbors@{set\-Neighbors}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{set\-Neighbors}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Neighbors (
 \begin{DoxyParamCaption}
 \item[{std\-::vector$<$ int $>$ const \&}]{neighbor}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_aac7c881c60c5ee50ec85c5ac6e6c02f6}
-\hypertarget{classccmc_1_1_polyhedron_aa3d13c560359c24af71e2c5b1b159148}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Positions@{set\-Positions}}
+initializes \hyperlink{classccmc_1_1_polyhedron_aa5b2b229e4e08b8ff1c03ff78fcb6a3b}{neighbors} cell indexes. If a face has no neighbor, set its neighbor value to \hyperlink{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}{current\-Polyhedron}; \hypertarget{classccmc_1_1_polyhedron_aa3d13c560359c24af71e2c5b1b159148}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!set\-Positions@{set\-Positions}}
 \index{set\-Positions@{set\-Positions}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{set\-Positions}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::set\-Positions (
 \begin{DoxyParamCaption}
 \item[{std\-::vector$<$ {\bf Vector}$<$ T $>$ $>$ const \&}]{pos}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_aa3d13c560359c24af71e2c5b1b159148}
-\hypertarget{classccmc_1_1_polyhedron_a4630616f4eb7d32a53e1a23a332db78c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!test\-Linearity@{test\-Linearity}}
+Sets positions as a set of vectors. \hypertarget{classccmc_1_1_polyhedron_a4630616f4eb7d32a53e1a23a332db78c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!test\-Linearity@{test\-Linearity}}
 \index{test\-Linearity@{test\-Linearity}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{test\-Linearity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$ T $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::test\-Linearity (
 \begin{DoxyParamCaption}
 \item[{{\bf Vector}$<$ T $>$ const \&}]{point}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_polyhedron_a4630616f4eb7d32a53e1a23a332db78c}
-
+Test the property that the sum of the vertices times their weights recovers the interpolation point. 
 
 \subsection{Member Data Documentation}
 \hypertarget{classccmc_1_1_polyhedron_a50889e065612d1cd397cd7942349bb7b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!closest\-Face@{closest\-Face}}
 \index{closest\-Face@{closest\-Face}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{closest\-Face}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::closest\-Face}}\label{classccmc_1_1_polyhedron_a50889e065612d1cd397cd7942349bb7b}
-\hypertarget{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!current\-Polyhedron@{current\-Polyhedron}}
+index of face closest to the last interpolation query point \hypertarget{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!current\-Polyhedron@{current\-Polyhedron}}
 \index{current\-Polyhedron@{current\-Polyhedron}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{current\-Polyhedron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::current\-Polyhedron}}\label{classccmc_1_1_polyhedron_af684c14a5bfee6f3e29cdd1879da8aba}
-\hypertarget{classccmc_1_1_polyhedron_a85b5d967346fc1fd362b22bd0359cc4e}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!faces@{faces}}
+global index of this polyhedron \hypertarget{classccmc_1_1_polyhedron_a85b5d967346fc1fd362b22bd0359cc4e}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!faces@{faces}}
 \index{faces@{faces}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{faces}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::faces}}\label{classccmc_1_1_polyhedron_a85b5d967346fc1fd362b22bd0359cc4e}
-\hypertarget{classccmc_1_1_polyhedron_aa16a2a05fcbafa0c99fc6b5de21672cc}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!global\-Vertex@{global\-Vertex}}
+faces must index into the start of each loop in loops, except the last face element will be the index of the last loop element \hypertarget{classccmc_1_1_polyhedron_aa16a2a05fcbafa0c99fc6b5de21672cc}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!global\-Vertex@{global\-Vertex}}
 \index{global\-Vertex@{global\-Vertex}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{global\-Vertex}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::global\-Vertex}}\label{classccmc_1_1_polyhedron_aa16a2a05fcbafa0c99fc6b5de21672cc}
-\hypertarget{classccmc_1_1_polyhedron_a98484d47a61f7fb916e45a4d4c381d08}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!interpolations@{interpolations}}
+global index of polyhedron's vertices \hypertarget{classccmc_1_1_polyhedron_a98484d47a61f7fb916e45a4d4c381d08}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!interpolations@{interpolations}}
 \index{interpolations@{interpolations}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{interpolations}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::interpolations = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_a98484d47a61f7fb916e45a4d4c381d08}
 \hypertarget{classccmc_1_1_polyhedron_a436708606125ba1059465516aeb2b401}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!interpolation\-Time@{interpolation\-Time}}
@@ -368,25 +424,29 @@ Here is the call graph for this function\-:
 \hypertarget{classccmc_1_1_polyhedron_a54e8c54feeac70b1bd3c1eaf4c237058}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!is\-Inside@{is\-Inside}}
 \index{is\-Inside@{is\-Inside}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{is\-Inside}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::is\-Inside}}\label{classccmc_1_1_polyhedron_a54e8c54feeac70b1bd3c1eaf4c237058}
-\hypertarget{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!lambda@{lambda}}
+true if the last interpolation was inside the polyhedron \hypertarget{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!lambda@{lambda}}
 \index{lambda@{lambda}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{lambda}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$T$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::lambda}}\label{classccmc_1_1_polyhedron_ae398caeb579041f8da9261484deb4eed}
-\hypertarget{classccmc_1_1_polyhedron_a275e8b1b13a16013da6bd125e203fd2c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!loops@{loops}}
+barycentric weights associated with each vertex, determined by set\-Barycentric\-Coordinates. Each weight is in \mbox{[}0,1\mbox{]} \hypertarget{classccmc_1_1_polyhedron_a275e8b1b13a16013da6bd125e203fd2c}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!loops@{loops}}
 \index{loops@{loops}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{loops}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::loops}}\label{classccmc_1_1_polyhedron_a275e8b1b13a16013da6bd125e203fd2c}
-\hypertarget{classccmc_1_1_polyhedron_afd77b1f8d574323a5b4e1b694890b7dc}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!minimum\-Distance\-To\-Centroid@{minimum\-Distance\-To\-Centroid}}
+each loop defines a face of polyhedron. loops must index into positions, with face normals determined by right-\/hand-\/rule. \hypertarget{classccmc_1_1_polyhedron_afd77b1f8d574323a5b4e1b694890b7dc}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!minimum\-Distance\-To\-Centroid@{minimum\-Distance\-To\-Centroid}}
 \index{minimum\-Distance\-To\-Centroid@{minimum\-Distance\-To\-Centroid}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{minimum\-Distance\-To\-Centroid}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vector}$<$T$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::minimum\-Distance\-To\-Centroid}}\label{classccmc_1_1_polyhedron_afd77b1f8d574323a5b4e1b694890b7dc}
 \hypertarget{classccmc_1_1_polyhedron_aa5b2b229e4e08b8ff1c03ff78fcb6a3b}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!neighbors@{neighbors}}
 \index{neighbors@{neighbors}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{neighbors}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<$int$>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::neighbors}}\label{classccmc_1_1_polyhedron_aa5b2b229e4e08b8ff1c03ff78fcb6a3b}
-\hypertarget{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!pi\-Over2@{pi\-Over2}}
+global index of neighboring polyhedra, matching faces. \hypertarget{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!pi\-Over2@{pi\-Over2}}
 \index{pi\-Over2@{pi\-Over2}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{pi\-Over2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::pi\-Over2 = T(atan(1)$\ast$2)\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_a30dd6a2116a1aaad90753c8c0309eda6}
+
+
+used for zeroing vectors 
+
 \hypertarget{classccmc_1_1_polyhedron_a41195440d2192a6118e2990f09183179}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!positions@{positions}}
 \index{positions@{positions}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{positions}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ std\-::vector$<${\bf Vector}$<$T$>$ $>$ {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::positions}}\label{classccmc_1_1_polyhedron_a41195440d2192a6118e2990f09183179}
-\hypertarget{classccmc_1_1_polyhedron_aacd29b2b3045dbbc36ef47db91054d48}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!stage1@{stage1}}
+3\-D positions of polyhedron's vertices \hypertarget{classccmc_1_1_polyhedron_aacd29b2b3045dbbc36ef47db91054d48}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!stage1@{stage1}}
 \index{stage1@{stage1}!ccmc::Polyhedron@{ccmc\-::\-Polyhedron}}
 \subsubsection[{stage1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ clock\-\_\-t {\bf ccmc\-::\-Polyhedron}$<$ T $>$\-::stage1 = 0\hspace{0.3cm}{\ttfamily [static]}}}\label{classccmc_1_1_polyhedron_aacd29b2b3045dbbc36ef47db91054d48}
 \hypertarget{classccmc_1_1_polyhedron_adb2d70dc6f7af2654dd668bb3940caac}{\index{ccmc\-::\-Polyhedron@{ccmc\-::\-Polyhedron}!stage2@{stage2}}
@@ -408,4 +468,4 @@ Here is the call graph for this function\-:
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_polyhedron_8h}{Polyhedron.\-h}\end{DoxyCompactItemize}
+/\-Users/apembrok/git/ccmc-\/software/kameleon-\/plus/trunk/kameleon-\/plus-\/working/src/ccmc/\hyperlink{_polyhedron_8h}{Polyhedron.\-h}\end{DoxyCompactItemize}

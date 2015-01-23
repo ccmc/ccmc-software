@@ -19,6 +19,7 @@
  * - Ionospheric component of SWMF
  * - ENLIL
  * - MAS
+ * - LFM
  * - CTIP
  * - ADAPT3D
  *
@@ -96,9 +97,9 @@ namespace ccmc
 
 	/**
 	 * @class Kameleon Kameleon.h ccmc/Kameleon.h
-	 * @brief TODO: Brief description of Kameleon class
+	 * @brief The Kameleon class provides access to space weather models and data products in a model-independent fashion.
 	 *
-	 * TODO: Full description of Kameleon class
+	 * The Kameleon class determines which model reader and interpolator to use. It also manages derived variables and unit conversions.
 	 */
 	class Kameleon
 	{

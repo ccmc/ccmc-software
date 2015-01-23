@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3"/>
-<title>Kameleon-Plus: /Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/Tracer.h Source File</title>
+<title>Kameleon-Plus: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/Tracer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Kameleon-Plus
-   &#160;<span id="projectnumber">0.3.2</span>
+   &#160;<span id="projectnumber">6.0.0</span>
    </div>
   </td>
  </tr>
@@ -44,7 +44,7 @@
   </div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_c03964d542b97cb59c89fb62e0669a36.html">src</a></li><li class="navelem"><a class="el" href="dir_0028590f62a72d48ce0cb01f44cf4818.html">ccmc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_c7a1247825b8999da59a38977c6d2b6a.html">src</a></li><li class="navelem"><a class="el" href="dir_23fced33753fba558ffb61d3917cbac1.html">ccmc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -73,8 +73,8 @@
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="classccmc_1_1_tracer.html#a2c914b28e2e205cb1a7c01f2941fcae2af2f8ce1e1224ce9d334d5260fa8a8526">   33</a></span>&#160;            <span class="keyword">enum</span> <a class="code" href="classccmc_1_1_tracer.html#a2c914b28e2e205cb1a7c01f2941fcae2">Direction</a> {<a class="code" href="classccmc_1_1_tracer.html#a2c914b28e2e205cb1a7c01f2941fcae2a133381f1178a2affb0f1c79a67b45e52">FOWARD</a>, <a class="code" href="classccmc_1_1_tracer.html#a2c914b28e2e205cb1a7c01f2941fcae2af2f8ce1e1224ce9d334d5260fa8a8526">REVERSE</a>};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="classccmc_1_1_tracer.html#a16f3484aa70343874800adfce15b7d48">Tracer</a>(<a class="code" href="classccmc_1_1_kameleon.html" title="TODO: Brief description of Kameleon class.">Kameleon</a> * kameleon);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="classccmc_1_1_tracer.html#a16f3484aa70343874800adfce15b7d48">Tracer</a>(<a class="code" href="classccmc_1_1_kameleon.html" title="TODO: Brief description of Kameleon class.">Kameleon</a> * kameleon, <a class="code" href="classccmc_1_1_interpolator.html" title="TODO: Brief description of Interpolator class.">Interpolator</a> * <a class="code" href="classccmc_1_1_tracer.html#ae7a4953e9ca43eb93535b869864f6062">interpolator</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="classccmc_1_1_tracer.html#a16f3484aa70343874800adfce15b7d48">Tracer</a>(<a class="code" href="classccmc_1_1_kameleon.html" title="The Kameleon class provides access to space weather models and data products in a model-independent f...">Kameleon</a> * kameleon);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="classccmc_1_1_tracer.html#a16f3484aa70343874800adfce15b7d48">Tracer</a>(<a class="code" href="classccmc_1_1_kameleon.html" title="The Kameleon class provides access to space weather models and data products in a model-independent f...">Kameleon</a> * kameleon, <a class="code" href="classccmc_1_1_interpolator.html" title="TODO: Brief description of Interpolator class.">Interpolator</a> * <a class="code" href="classccmc_1_1_tracer.html#ae7a4953e9ca43eb93535b869864f6062">interpolator</a>);</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="classccmc_1_1_tracer.html#ac9c1fdded6293841a58a3f672b775577">~Tracer</a>();</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <span class="comment">//void open(char * filename);</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="comment">//void loadVariable(char * variable);</span></div>
@@ -137,22 +137,20 @@
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordtype">bool</span> isValidPoint(<span class="keyword">const</span> <a class="code" href="classccmc_1_1_point3f.html">Point3f</a>&amp; position, <span class="keyword">const</span> <a class="code" href="classccmc_1_1_point3f.html">Point3f</a>&amp; min, <span class="keyword">const</span> <a class="code" href="classccmc_1_1_point3f.html">Point3f</a>&amp; max);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordtype">bool</span> isValidIteration(<span class="keywordtype">int</span> iterations, <span class="keywordtype">int</span> max);</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">float</span> calculateDT(<span class="keywordtype">float</span>&amp; dComponent1, <span class="keywordtype">float</span>&amp; dComponent2, <span class="keywordtype">float</span>&amp; dComponent3, <span class="keywordtype">float</span>&amp; dn);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <a class="code" href="classccmc_1_1_kameleon.html" title="TODO: Brief description of Kameleon class.">Kameleon</a> * kameleon;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <a class="code" href="classccmc_1_1_kameleon.html" title="The Kameleon class provides access to space weather models and data products in a model-independent f...">Kameleon</a> * kameleon;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            boost::unordered_map&lt;std::string, std::vector&lt;std::string&gt; &gt; componentNamesMap;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordtype">void</span> initializeComponentNamesMap();</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordtype">bool</span> interpolatorAllocated;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    };</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">//#endif//__cplusplus</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif//CCMC_TRACER_H</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    };</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//#endif//__cplusplus</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif//CCMC_TRACER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 18:34:46 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 4 2014 16:08:51 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3
 </small></address>

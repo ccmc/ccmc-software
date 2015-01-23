@@ -68,7 +68,7 @@ c     Open the cdf file
 
 c     make sure the step size used is appropriate and the target arrays have 2 times
 c     the step_max so the arrays have enough for two directions.
-      call f_Tracer_bidirectionaltrace(tid,variable,rc0,rc1,rc2,5000, 
+      call f_Tracer_bidirectionaltrace(tid,variable,rc0,rc1,rc2,10000, 
      &       .2, actual_steps,x_array,y_array,z_array)
       write(*,*) 'finished tracing'
       write(*,*) 'actual_steps: ',actual_steps

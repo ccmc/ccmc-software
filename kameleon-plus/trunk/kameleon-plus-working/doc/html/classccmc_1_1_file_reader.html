@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Kameleon-Plus
-   &#160;<span id="projectnumber">0.3.2</span>
+   &#160;<span id="projectnumber">6.0.0</span>
    </div>
   </td>
  </tr>
@@ -60,7 +60,7 @@
 </div><!--header-->
 <div class="contents">
 
-<p>TODO: Brief description of <a class="el" href="classccmc_1_1_file_reader.html" title="TODO: Brief description of FileReader class.">FileReader</a> class.  
+<p><a class="el" href="classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables.">FileReader</a> class is a pure virtual class for opening and accessing model variables.  
  <a href="classccmc_1_1_file_reader.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_file_reader_8h_source.html">ccmc/FileReader.h</a>&gt;</code></p>
@@ -69,7 +69,7 @@ Inheritance diagram for ccmc::FileReader:</div>
 <div class="dyncontent">
 <div class="center"><img src="classccmc_1_1_file_reader__inherit__graph.png" border="0" usemap="#ccmc_1_1_file_reader_inherit__map" alt="Inheritance graph"/></div>
 <map name="ccmc_1_1_file_reader_inherit__map" id="ccmc_1_1_file_reader_inherit__map">
-<area shape="rect" id="node3" href="classccmc_1_1_c_d_f_file_reader.html" title="ccmc::CDFFileReader" alt="" coords="5,80,168,107"/></map>
+<area shape="rect" id="node2" href="classccmc_1_1_c_d_f_file_reader.html" title="CDFFileReader allows for opening and accessing Kameleon&#45;converted CDF files." alt="" coords="4,83,144,111"/><area shape="rect" id="node3" href="classccmc_1_1_h_d_f5_file_reader.html" title="The HDF5FileReader allows opening and accessing Kameleon&#45;converted HDF5 files." alt="" coords="170,83,317,111"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for ccmc::FileReader:</div>
@@ -139,6 +139,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a036ac2d85ad32a98b81c9e6ebf0ef133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f266e85464a71985e6c922ba508aa9e"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classccmc_1_1_file_reader.html#a9f266e85464a71985e6c922ba508aa9e">getCurrentFilename</a> ()=0</td></tr>
 <tr class="separator:a9f266e85464a71985e6c922ba508aa9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61bb22d073119ba58b52a43c3d086fc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classccmc_1_1_file_reader.html#a61bb22d073119ba58b52a43c3d086fc8">setCurrentFilename</a> (const std::string &amp;filename)</td></tr>
+<tr class="separator:a61bb22d073119ba58b52a43c3d086fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2663bad21fc69c24f555b27d1cc2b8c8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classccmc_1_1_file_reader.html#a2663bad21fc69c24f555b27d1cc2b8c8">initializeVariableIDs</a> ()=0</td></tr>
 <tr class="separator:a2663bad21fc69c24f555b27d1cc2b8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3517b66817277210916f6e5aa3db21a8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classccmc_1_1_file_reader.html#a3517b66817277210916f6e5aa3db21a8">initializeVariableNames</a> ()=0</td></tr>
@@ -207,8 +209,8 @@ boost::unordered_map<br class="typebreak"/>
 <tr class="separator:a1eb038b0d8cb945df2b02c4cb63d0aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>TODO: Brief description of <a class="el" href="classccmc_1_1_file_reader.html" title="TODO: Brief description of FileReader class.">FileReader</a> class. </p>
-<p>TODO: Full description of <a class="el" href="classccmc_1_1_file_reader.html" title="TODO: Brief description of FileReader class.">FileReader</a> class </p>
+<div class="textblock"><p><a class="el" href="classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables.">FileReader</a> class is a pure virtual class for opening and accessing model variables. </p>
+<p>All file readers are responsible for implementing the pure virtual functions listed here. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8d7df2b31965866393a4225e0955fcac"></a>
 <div class="memitem">
@@ -315,7 +317,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a3eedaa5cdd71af7b4bf668ff3c9928ce">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a3eedaa5cdd71af7b4bf668ff3c9928ce">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a67f6c64b42842dac85a2d63825d28be8">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -341,7 +343,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a2a13faebed9123459d75413e1388d6fa">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a2a13faebed9123459d75413e1388d6fa">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#ac421d19d5c59697a0117dfa763d77de0">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -367,7 +369,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a6211014aebd161eb08dcddf7d249743a">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a6211014aebd161eb08dcddf7d249743a">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#ad2753042d297a408ad4c1128a9e2939d">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -392,7 +394,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ab8274e8003b7700b2b860aef29a2cd6f">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ab8274e8003b7700b2b860aef29a2cd6f">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#ae19127c20fa9b5ec6cebfeea3578476f">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -418,7 +420,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#af7d28ab77cd25e50fcf0c1a55908331a">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#af7d28ab77cd25e50fcf0c1a55908331a">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#ae58b480499186a84535f616687e75a7c">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -444,7 +446,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#aeaffff44fdcad36ae26cd7b84ba39a61">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#aeaffff44fdcad36ae26cd7b84ba39a61">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#abc4eb472a8eb35aeb133e3b54f239de0">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -470,7 +472,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a79af95b7733b9f75fcb492a599751b3b">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a79af95b7733b9f75fcb492a599751b3b">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a0142a1ecf0ccb3c3415fab551daaf551">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -496,7 +498,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a6e6e6be5271219f6a2a45c94c89630f7">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a6e6e6be5271219f6a2a45c94c89630f7">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#adfa3cf1ea14b0e05eb03915851c561c4">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -521,7 +523,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a881308df42ee5d273cb7364152f6970d">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a881308df42ee5d273cb7364152f6970d">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a45bedc5f59d3c0c56778463f82c1a48e">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -547,7 +549,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#adc8d27cd794641171674307330ebdc66">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#adc8d27cd794641171674307330ebdc66">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#af54630ca885c698be2ffbefac7b236e2">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -573,7 +575,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a97f59c4e9020eb48fa460ba74b9d2535">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a97f59c4e9020eb48fa460ba74b9d2535">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#af1c8021e432d165c10d754f0a067d7f0">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -598,7 +600,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#aeafab3428b6ca81a9142faee44b3069f">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#aeafab3428b6ca81a9142faee44b3069f">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#abf30f40a7f95a65c9c5fbfb638a0b3e6">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -623,7 +625,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ae463cfe808dec21748a908b080c8bf81">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ae463cfe808dec21748a908b080c8bf81">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a038ff97710e89d57bccbc5ad9509d277">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -649,7 +651,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a0d642e05bc1692134212eee14e792eab">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a0d642e05bc1692134212eee14e792eab">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a69e8ed3754fb9627d21cb5556b2e1223">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -675,7 +677,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a96d9e7b832f3d689217af4d54898d5c0">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a96d9e7b832f3d689217af4d54898d5c0">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a52e50180779e1b743d2a4766b9fc842b">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -717,7 +719,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a24ad5f1aafad6362f98e500a9cff6412">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a24ad5f1aafad6362f98e500a9cff6412">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a7ee5a24334d0056b2350a1505f38b095">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -759,7 +761,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ae969f1d20235ebeb533b6d90c5497b28">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ae969f1d20235ebeb533b6d90c5497b28">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#abb117e460234e1c06b44bcbaaf52108e">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -795,7 +797,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#aaf8553b84f638e02c44d6a453ce089bc">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#aaf8553b84f638e02c44d6a453ce089bc">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a544b306f0f39ab05b921a6016f164d03">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -831,7 +833,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a93d6c7e3c8587812ed8ead92f2596049">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a93d6c7e3c8587812ed8ead92f2596049">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#aaa4d2db7154044d63f62f497e99b6b49">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -867,7 +869,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ad90a8f0f842e2dd8091c5883add375a6">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ad90a8f0f842e2dd8091c5883add375a6">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a30acff0de40e77d8e6ee15bbdf68942c">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -893,7 +895,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#adc190bdf05f4d01b465a0ff314431ebb">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#adc190bdf05f4d01b465a0ff314431ebb">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#aa53c82e359a5af886ae96ebdf801cf89">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -918,7 +920,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a52a904328cc0cb1ca7625c9469ca11ca">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a52a904328cc0cb1ca7625c9469ca11ca">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a5e97e629beec751e0da373f5a1e4c6d9">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -946,7 +948,7 @@ boost::unordered_map<br class="typebreak"/>
 <p>Returns the variable ID as a long. Using the variable ID wherever possible is significantly faster than the equivalent methods accepting the variable string. </p>
 <dl class="section return"><dt>Returns</dt><dd>Status of the file operation. </dd></dl>
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a7c6c138eb96e5562e3a17b1691208129">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a7c6c138eb96e5562e3a17b1691208129">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a1172c9abfe37a6e0bd9556a841457740">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -972,7 +974,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a4f46a67b2469c2fb5a963e2d00fe1424">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a4f46a67b2469c2fb5a963e2d00fe1424">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a3946081d5b79e78300ac8cbe04446a80">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1010,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a6a1da27717bbac69ef9eb9eaeb06f677">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a6a1da27717bbac69ef9eb9eaeb06f677">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a216a98563f5a62fc12ea414552f65b55">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -1034,7 +1036,7 @@ boost::unordered_map<br class="typebreak"/>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a98ab0f21eb5bad8b9fc095d8c1347e24">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a98ab0f21eb5bad8b9fc095d8c1347e24">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#add8a20386da8a7188a5a67a35cbb94eb">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1117,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a20efd34232f8348d44291b589a94d56a">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a20efd34232f8348d44291b589a94d56a">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#ab0255720c8996540dcffbdc7a7a8f76c">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -1140,7 +1142,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ab9c343c409df6b079c270e9598ac0fd0">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#ab9c343c409df6b079c270e9598ac0fd0">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#ad38b7dce075a9bafbd48d10e25a92261">ccmc::HDF5FileReader</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1175,7 @@ Here is the call graph for this function:</div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The CDF status of the open call. CDF_OK is the standard successful status. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The status of the open call. OK is the standard successful status. </dd></dl>
 
 </div>
 </div>
@@ -1209,7 +1211,23 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a040e6e9a2c9f8e4aae6673fdc4a92cdb">ccmc::CDFFileReader</a>.</p>
+<p>Implemented in <a class="el" href="classccmc_1_1_c_d_f_file_reader.html#a040e6e9a2c9f8e4aae6673fdc4a92cdb">ccmc::CDFFileReader</a>, and <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html#a802539a4e21bf2b355658a7be3a5b307">ccmc::HDF5FileReader</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a61bb22d073119ba58b52a43c3d086fc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ccmc::FileReader::setCurrentFilename </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1575,13 +1593,13 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/<a class="el" href="_file_reader_8h_source.html">FileReader.h</a></li>
-<li>/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/<a class="el" href="_file_reader_8cpp.html">FileReader.cpp</a></li>
+<li>/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/<a class="el" href="_file_reader_8h_source.html">FileReader.h</a></li>
+<li>/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/<a class="el" href="_file_reader_8cpp.html">FileReader.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 18:34:47 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 4 2014 16:08:52 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3
 </small></address>

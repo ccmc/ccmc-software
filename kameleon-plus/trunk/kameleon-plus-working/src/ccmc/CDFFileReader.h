@@ -24,10 +24,10 @@ namespace ccmc
 
 
 	/**
-	 * @class FileReader FileReader.h ccmc/FileReader.h
-	 * @brief TODO: Brief description of FileReader class
+	 * @class CDFFileReader CDFFileReader.h ccmc/CDFFileReader.h
+	 * @brief CDFFileReader allows for opening and accessing Kameleon-converted CDF files
 	 *
-	 * TODO: Full description of FileReader class
+	 * CDFFileReader inherits from the pure virtual FileReader class
 	 */
 
 	class CDFFileReader : public FileReader

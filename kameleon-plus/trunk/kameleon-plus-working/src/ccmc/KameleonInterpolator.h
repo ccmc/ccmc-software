@@ -15,9 +15,9 @@ namespace ccmc
 {
 	/**
 	 * @class KameleonInterpolator KameleonInterpolator.h ccmc/KameleonInterpolator.h
-	 * @brief TODO: Brief description of KameleonInterpolator class
+	 * @brief Provides interpolation to derived variables for models accessed via the Kameleon class.
 	 *
-	 * TODO: Full description of KameleonInterpolator class
+	 * The KameleonInterpolator class inherits from the Interpolator, but computes model-dependent derived variables. Currently these are all hand-coded.
 	 */
 	class KameleonInterpolator: public Interpolator
 	{

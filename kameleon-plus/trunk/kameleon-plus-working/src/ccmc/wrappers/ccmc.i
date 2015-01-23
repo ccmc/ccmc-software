@@ -32,6 +32,7 @@
 #include <ccmc/BATSRUS.h>
 #include <ccmc/ENLIL.h>
 #include <ccmc/MAS.h>
+#include <ccmc/LFM.h>
 #include <ccmc/OpenGGCM.h>
 #include <ccmc/SWMFIono.h>
 #include <ccmc/BATSRUSInterpolator.h>
@@ -67,6 +68,7 @@ using namespace ccmc;
 %include <ccmc/BATSRUS.h>
 %include <ccmc/ENLIL.h>
 %include <ccmc/MAS.h>
+%include <ccmc/LFM.h>
 %include <ccmc/OpenGGCM.h>
 %include <ccmc/SWMFIono.h>
 %include <ccmc/BATSRUSInterpolator.h>

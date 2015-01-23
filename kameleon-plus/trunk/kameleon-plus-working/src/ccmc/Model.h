@@ -20,9 +20,9 @@ namespace ccmc
 	class Interpolator;
 	/**
 	 * @class Model Model.h ccmc/Model.h
-	 * @brief TODO: Brief description of Model class
+	 * @brief The Model class inherits from GeneralFileReader and manages memory for stored variables used in interpolation. 
 	 *
-	 * TODO: Full description of Model class
+	 * All Kameleon models must inherit from the Model class.
 	 */
 	class Model: public GeneralFileReader
 	{

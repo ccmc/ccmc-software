@@ -60,6 +60,10 @@ namespace nanoflann
 
 	/** @addtogroup result_sets_grp Result set classes
 	  *  @{ */
+
+	/**
+	 * The KNNResultSet is a container for storing the results of a KD-tree query.
+	 */
 	template <typename DistanceType, typename IndexType = size_t, typename CountType = size_t>
 	class KNNResultSet
 	{

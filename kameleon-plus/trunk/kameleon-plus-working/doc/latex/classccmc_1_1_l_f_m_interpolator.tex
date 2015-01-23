@@ -3,7 +3,7 @@
 }
 
 
-T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} class.  
+\hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} interpolator class, combining kd-\/tree with spherical barycentric coordinates.  
 
 
 
@@ -12,8 +12,7 @@ T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{
 
 
 
-Inheritance diagram for ccmc\-:\-:L\-F\-M\-Interpolator\-:
-\nopagebreak
+Inheritance diagram for ccmc\-:\-:L\-F\-M\-Interpolator\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -22,8 +21,7 @@ Inheritance diagram for ccmc\-:\-:L\-F\-M\-Interpolator\-:
 \end{figure}
 
 
-Collaboration diagram for ccmc\-:\-:L\-F\-M\-Interpolator\-:
-\nopagebreak
+Collaboration diagram for ccmc\-:\-:L\-F\-M\-Interpolator\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -103,9 +101,11 @@ float \hyperlink{classccmc_1_1_l_f_m_interpolator_a4d3fbbf77c796fd53e1e8198dff71
 
 
 \subsection{Detailed Description}
-T\-O\-D\-O\-: Brief description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} class. 
+\hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} interpolator class, combining kd-\/tree with spherical barycentric coordinates. 
 
-T\-O\-D\-O\-: Full description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} class 
+The \hyperlink{classccmc_1_1_l_f_m_interpolator}{L\-F\-M\-Interpolator} makes use of the nanoflann library's kd-\/tree implementation \hyperlink{class_nano_kd_tree}{Nano\-Kd\-Tree} for fast lookup of \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} positions. Once the nearest cell center is found, interpolation is performed using spherical barycentric coordinates via the \hyperlink{classccmc_1_1_polyhedron}{Polyhedron} class.
+
+T\-O\-D\-O\-: Move kd-\/tree initialization to \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} object instantiation. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classccmc_1_1_l_f_m_interpolator_a04218c8ff9c0a3703cd3d9cc870dfd4a}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!L\-F\-M\-Interpolator@{L\-F\-M\-Interpolator}}
@@ -117,13 +117,12 @@ T\-O\-D\-O\-: Full description of \hyperlink{classccmc_1_1_l_f_m_interpolator}{L
 )}}\label{classccmc_1_1_l_f_m_interpolator_a04218c8ff9c0a3703cd3d9cc870dfd4a}
 Constructor 
 \begin{DoxyParams}{Parameters}
-{\em model\-Reader} & \\
+{\em model\-Reader} & pointer to \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} model object \\
 \hline
 \end{DoxyParams}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -151,8 +150,7 @@ Destructor
 )}}\label{classccmc_1_1_l_f_m_interpolator_afbbebbeee5068e425c2deede2a30ebfc}
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -168,10 +166,9 @@ Here is the call graph for this function\-:
 \item[{{\bf Vector}$<$ float $>$}]{point}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_l_f_m_interpolator_a872043562f23728bbf389cfafb004a6f}
+Return a pointer to the cell containing the query point. 
 
-
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -248,10 +245,9 @@ Reimplemented from \hyperlink{classccmc_1_1_interpolator_ab5d482c6e07c9fe00d0106
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_l_f_m_interpolator_a79926d3a8332d055bd60eb006f943f0a}
+Constructs a single polyhedron out of all the polys used in interpolation 
 
-
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -290,8 +286,7 @@ Implements \hyperlink{classccmc_1_1_interpolator_ad5c1dd3693f83d75a2335b7c28cd64
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -339,8 +334,7 @@ Implements \hyperlink{classccmc_1_1_interpolator_ae02453da5a1a8f472f33b2058424dd
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -379,8 +373,7 @@ Implements \hyperlink{classccmc_1_1_interpolator_a6bfe1b4075f03704b893bb96e1675a
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -428,8 +421,7 @@ Implements \hyperlink{classccmc_1_1_interpolator_aa6b272bd53630020d92938ec1e5cfa
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -454,10 +446,9 @@ Here is the call graph for this function\-:
 {}
 \end{DoxyParamCaption}
 )}}\label{classccmc_1_1_l_f_m_interpolator_a74c1ba35f8eaece3f44393538c23300d}
+This function creates and stores the polyhedra used for interpolation. Each polyhedron has vertices set by \hyperlink{classccmc_1_1_l_f_m}{L\-F\-M} cell centers. In total, there are (ni-\/1)$\ast$(nj-\/1)$\ast$nk hexahedra (6 faces), 2$\ast$(ni-\/1) axis cells having nk+2 faces, 1 inner boundary cell having (nj-\/1)$\ast$nk + 2 faces. This function also calculates polyhedral cell centers, which are put in a point cloud and used for kd-\/tree searches 
 
-
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -472,7 +463,7 @@ Here is the call graph for this function\-:
 \hypertarget{classccmc_1_1_l_f_m_interpolator_a1765ca6f750c97c3592ef885ef04e029}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!cell\-\_\-centers@{cell\-\_\-centers}}
 \index{cell\-\_\-centers@{cell\-\_\-centers}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
 \subsubsection[{cell\-\_\-centers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Cloud}$<$float$>$ ccmc\-::\-L\-F\-M\-Interpolator\-::cell\-\_\-centers}}\label{classccmc_1_1_l_f_m_interpolator_a1765ca6f750c97c3592ef885ef04e029}
-\hypertarget{classccmc_1_1_l_f_m_interpolator_aa885a2e4ded490e33fbc610310f066d8}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!creation\-Time@{creation\-Time}}
+size ni,nj,nk -\/ nonstatic\-: only used once for polyhedra \hypertarget{classccmc_1_1_l_f_m_interpolator_aa885a2e4ded490e33fbc610310f066d8}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!creation\-Time@{creation\-Time}}
 \index{creation\-Time@{creation\-Time}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
 \subsubsection[{creation\-Time}]{\setlength{\rightskip}{0pt plus 5cm}clock\-\_\-t ccmc\-::\-L\-F\-M\-Interpolator\-::creation\-Time}}\label{classccmc_1_1_l_f_m_interpolator_aa885a2e4ded490e33fbc610310f066d8}
 \hypertarget{classccmc_1_1_l_f_m_interpolator_a8c53a39101dcc800176cac6aba5ea6bb}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!destruction\-Time@{destruction\-Time}}
@@ -484,7 +475,7 @@ Here is the call graph for this function\-:
 \hypertarget{classccmc_1_1_l_f_m_interpolator_a7738b918ba62723afa8bc49e5400979b}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!helper\-\_\-nodes@{helper\-\_\-nodes}}
 \index{helper\-\_\-nodes@{helper\-\_\-nodes}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
 \subsubsection[{helper\-\_\-nodes}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Point\-Cloud}$<$float$>$ ccmc\-::\-L\-F\-M\-Interpolator\-::helper\-\_\-nodes}}\label{classccmc_1_1_l_f_m_interpolator_a7738b918ba62723afa8bc49e5400979b}
-\hypertarget{classccmc_1_1_l_f_m_interpolator_a4d3fbbf77c796fd53e1e8198dff71b0d}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!inner\-Boundary\-Radius@{inner\-Boundary\-Radius}}
+size ni-\/1,nj-\/1,nk (+axis later) -\/ nonstatic\-: copied to lfmtree.\-cloud \hypertarget{classccmc_1_1_l_f_m_interpolator_a4d3fbbf77c796fd53e1e8198dff71b0d}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!inner\-Boundary\-Radius@{inner\-Boundary\-Radius}}
 \index{inner\-Boundary\-Radius@{inner\-Boundary\-Radius}!ccmc::LFMInterpolator@{ccmc\-::\-L\-F\-M\-Interpolator}}
 \subsubsection[{inner\-Boundary\-Radius}]{\setlength{\rightskip}{0pt plus 5cm}float ccmc\-::\-L\-F\-M\-Interpolator\-::inner\-Boundary\-Radius}}\label{classccmc_1_1_l_f_m_interpolator_a4d3fbbf77c796fd53e1e8198dff71b0d}
 \hypertarget{classccmc_1_1_l_f_m_interpolator_a4c7b4e25409db6b63c655d2313fa3560}{\index{ccmc\-::\-L\-F\-M\-Interpolator@{ccmc\-::\-L\-F\-M\-Interpolator}!interpolation\-Number@{interpolation\-Number}}
@@ -518,5 +509,5 @@ Here is the call graph for this function\-:
 
 The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_l_f_m_interpolator_8h}{L\-F\-M\-Interpolator.\-h}\item 
-/\-Users/apembrok/\-Documents/workspaces/workspace.\-bak2/workspace.\-backup/kameleon-\/plus/src/ccmc/\hyperlink{_l_f_m_interpolator_8cpp}{L\-F\-M\-Interpolator.\-cpp}\end{DoxyCompactItemize}
+/\-Users/apembrok/git/ccmc-\/software/kameleon-\/plus/trunk/kameleon-\/plus-\/working/src/ccmc/\hyperlink{_l_f_m_interpolator_8h}{L\-F\-M\-Interpolator.\-h}\item 
+/\-Users/apembrok/git/ccmc-\/software/kameleon-\/plus/trunk/kameleon-\/plus-\/working/src/ccmc/\hyperlink{_l_f_m_interpolator_8cpp}{L\-F\-M\-Interpolator.\-cpp}\end{DoxyCompactItemize}

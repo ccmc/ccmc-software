@@ -29,9 +29,10 @@ namespace ccmc
 
 	/**
 	 * @class FileReader FileReader.h ccmc/FileReader.h
-	 * @brief TODO: Brief description of FileReader class
 	 *
-	 * TODO: Full description of FileReader class
+	 * @brief FileReader class is a pure virtual class for opening and accessing model variables
+	 *
+	 * All file readers are responsible for implementing the pure virtual functions listed here.
 	 */
 	class FileReader
 	{

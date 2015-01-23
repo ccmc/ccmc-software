@@ -17,9 +17,10 @@ namespace ccmc
 {
 	/**
 	 * @class LFM LFM.h ccmc/LFM.h
-	 * @brief TODO: Brief description of LFM class
+	 * @brief Interface to the Lyon Fedder Mobarry MHD model. 
 	 *
-	 * TODO: Full description of LFM class
+	 * The LFM class gives access to LFM model results which 
+	 * have been converted into kameleon-compatible cdf or hdf-5 format.
 	 */
 	class LFM: public Model
 	{
@@ -47,7 +48,7 @@ namespace ccmc
 //			int nx;
 //			int ny;
 //			int nz;
-			int nip1,njp1,nkp1,ni,nj,nk;
+			int nip1,njp1,nkp1,ni,nj,nk; /**< Resolution of LFM grid */
 
 			std::string previousVariable;
 			long previousVariableID;

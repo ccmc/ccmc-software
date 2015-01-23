@@ -48,11 +48,17 @@ namespace ccmc
 	{
 		this->setBusyStatus(Model::BUSY);
 		long status;
+		long variable_status;
+
 		std::cout << "calling GeneralFileReader open function"<<endl;
 		status = GeneralFileReader::open(filename);
 		// std::cout <<"File opened, loading x,y,z,V_th,rho"<<endl;
 		this->progress = 20;
-		loadVariable(ccmc::strings::variables::x_);
+		variable_status = loadVariable(ccmc::strings::variables::x_); //FileReader::VARIABLE_DOES_NOT_EXIST
+		if (variable_status == FileReader::VARIABLE_DOES_NOT_EXIST){
+			std::cout << "\tERROR: file does not contain LFM corners!\n";
+			variable_status = loadVariable("X_");
+		}
 		x_array = this->variableData["x"];
 		this->progress = 40;
 		loadVariable(ccmc::strings::variables::y_);
@@ -72,7 +78,7 @@ namespace ccmc
 		/*
 		 * Is it more accurate to compuate pressure now or use KameleonInterpolator_compute_p?
 		 * If the user doesn't use a kameleon object, they still need to access pressure,
-		 * so weight as well compute it now.
+		 * so we might as well compute it now.
 		 */
 		loadPressure();
 		loadEfield();
@@ -85,7 +91,7 @@ namespace ccmc
 		return status;
 	}
 
-	/*
+	/**
 	 * assumes requested variable is already loaded
 	 */
 	std::vector<float>* LFM::getLFMVariable(const std::string& variable)
@@ -93,10 +99,10 @@ namespace ccmc
 		return this->variableData[variable];
 	}
 
-	/*
-	 * Compute electric field from edge components stored in hdf file
-	 * HDF file stores edge components of electric field (ei,ej,ek) but labels them incorrectly as (ex,ey,ez)
-	 *
+	/**
+	 * @brief Compute electric field from edge components stored in hdf file
+	 * 
+	 * LFM stores edge components of electric field (ei,ej,ek), which are converted into cell-centered vectors.
 	 * Note: these results might be off by a negative sign: check that E = -v x B
 	 */
 	void LFM::loadEfield(){
@@ -177,8 +183,9 @@ namespace ccmc
 		return;
 	}
 
-	/*
-	 * Average requested variable for a face, holding face_index constant (holding i,j,or k constant)
+	/**
+	 * @brief Averages requested variable for a face, holding face_index constant (holding i,j,or k constant)
+	 * 
 	 */
 	float LFM::averageFace(const std::vector<float> * variable, int face_index, const int i, const int j, const int k, const int ii, const int jj){
 		/*
@@ -215,8 +222,14 @@ namespace ccmc
 		return average;
 	}
 
+	/**
+	 * @brief populate pressure array
+	 *
+	 * calculates pressure from sound speed and density:
+	 *
+	 */
 	void LFM::loadPressure(){
-		/*populate pressure array
+		/*
 		 * (no need to store an extra array and add variable to map)
 		 */
 		std::vector<float> * pSoundSpeed = this->variableData["V_th"];
@@ -228,13 +241,20 @@ namespace ccmc
 		for (int i = 0; i < pPressure->size(); i++){
 			soundSpeed = (*pSoundSpeed)[i]; //[cm/s]
 			density = (*pDensity)[i]; //[gm/cc]
-			pressure = .1*(3.0/5)*density*pow(soundSpeed,2); // [nPa]
+			pressure = .1*(3.0/5)*density*pow(soundSpeed,2); // [Pa]
 			(*pPressure)[i] = pressure;
 		}
 		addFloatVariableToMap("p",pPressure);
 
 	}
 
+	/**
+	* @brief creates a new LFM interpolator by storing positions in a kd-tree
+	*
+	* Note: the kd-tree generation can take some time, so re-use the resulting interpolator whenever possible
+	*
+	* @return an LFMInterpolator object
+	*/
 	Interpolator * LFM::createNewInterpolator()
 	{
 		// std::cout <<"creating new LFM interpolator\n";
@@ -291,6 +311,10 @@ namespace ccmc
 		variableSIUnits["ez"] = "v/m";
 	}
 
+	/**
+	 * @brief determines the model resolution by scannining positions along fastest varying index 
+	 */
+
 	void LFM::setResolution()
 	{
 		std::vector<float>* x_array = this->variableData["x"];
@@ -326,6 +350,8 @@ namespace ccmc
 		ni = nip1-1;
 		nj = njp1-1;
 		nk = nkp1-1;
+
+		std::cout<< "LFM resolution (ni,nj,nk): "<< ni <<", "<< nj<< ", "<< nk<< std::endl;
 
 	}
 

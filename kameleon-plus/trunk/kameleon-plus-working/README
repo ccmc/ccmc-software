@@ -1,4 +1,4 @@
-Kameleon-plus 1.0.0
+Kameleon-plus 6.0.0
 
 
 Requirements: 
@@ -37,40 +37,3 @@ Test python:
 	bz = interpolator.interpolate("bz",25,0,0)
 	print "bz:", bz
 	kameleon.close()
-	
-	Installation instructions for mac users:
-
-**********Defunct Instructions for automake (Mac OSX)***********
-
-Requirements:
-	automake
-	autoconf
-	svn
-	cdf 3.4.1
-	hdf5 (required for LFM support)
-	boost 1.52.0
-
-To obtain the required packages on a mac using macports (first install macports, then use macports to install wget):
-	sudo port install autoconf
-	wget sourceforge.net/projects/boost/files/boost/1.52.0/boost_1_52_0.tar.gz
-		--unpack and move boost_1_52_0 to Applications
-	wget cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf34_1/macosX/cdf34_1-setup_universal_binary.tar.gz
-		--unpack and install
-	sudo port install hdf5-18
-
-
-download the repository to a convenient directory:
-	svn checkout http://ccmc-software.googlecode.com/svn/kameleon-plus
-	
-within kameleon-plus directory, create a configure file from configure.ac (requires autoconf and automake):
-	autoreconf -fi
-
-then run the configure script:
-	./configure --with-cdf=/Applications/cdf34_1-dist/lib --with-boost-includes=/Applications/boost_1_52_0 --enable-hdf5 --with-hdf5=/opt/local/lib --with-hdf5-includes=/opt/local/include
-
-then compile (use -j8 flag to speed up the compiling process if multiple cores are available):
-	make -j8
-
-see src/examples/ for example executables
-
-	

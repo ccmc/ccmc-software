@@ -20,11 +20,22 @@
 
 namespace ccmc
 {
+	/**
+	 * sets fileReader pointer to NULL
+	 */
 
 	GeneralFileReader::GeneralFileReader()
 	{
 		this->fileReader = NULL;
 	}
+
+	/**
+	 * @brief Attempts to open using CDFFileReader, falls back to HDF5FileReader (if HAVE_HDF5 is defined)
+	 * 
+	 * TODO: Add support for embedded python FileReader as third option.
+	 * @param filename Name of the file to be read. Note: no extension checking is done at this time.
+	 * @return status
+	 */ 
 
 	long GeneralFileReader::open(const std::string& filename)
 	{
@@ -206,11 +217,17 @@ namespace ccmc
 			close();
 	}
 
+	/**
+	* calls fileReader's initializeVariableIDs()
+	*/
 	void GeneralFileReader::initializeVariableIDs()
 	{
 		fileReader->initializeVariableIDs();
 	}
 
+	/**
+	* calls fileReader's initializeVariableNames()
+	*/
 	void GeneralFileReader::initializeVariableNames()
 	{
 		fileReader->initializeVariableNames();

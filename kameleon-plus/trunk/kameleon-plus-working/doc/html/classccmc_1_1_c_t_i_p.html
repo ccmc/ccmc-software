@@ -18,7 +18,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Kameleon-Plus
-   &#160;<span id="projectnumber">0.3.2</span>
+   &#160;<span id="projectnumber">6.0.0</span>
    </div>
   </td>
  </tr>
@@ -67,14 +67,14 @@ Inheritance diagram for ccmc::CTIP:</div>
 <div class="dyncontent">
 <div class="center"><img src="classccmc_1_1_c_t_i_p__inherit__graph.png" border="0" usemap="#ccmc_1_1_c_t_i_p_inherit__map" alt="Inheritance graph"/></div>
 <map name="ccmc_1_1_c_t_i_p_inherit__map" id="ccmc_1_1_c_t_i_p_inherit__map">
-<area shape="rect" id="node2" href="classccmc_1_1_model.html" title="TODO: Brief description of Model class." alt="" coords="44,80,151,107"/><area shape="rect" id="node4" href="classccmc_1_1_general_file_reader.html" title="ccmc::GeneralFileReader" alt="" coords="5,5,189,32"/></map>
+<area shape="rect" id="node2" href="classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="38,83,129,111"/><area shape="rect" id="node3" href="classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="5,6,163,34"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for ccmc::CTIP:</div>
 <div class="dyncontent">
 <div class="center"><img src="classccmc_1_1_c_t_i_p__coll__graph.png" border="0" usemap="#ccmc_1_1_c_t_i_p_coll__map" alt="Collaboration graph"/></div>
 <map name="ccmc_1_1_c_t_i_p_coll__map" id="ccmc_1_1_c_t_i_p_coll__map">
-<area shape="rect" id="node2" href="classccmc_1_1_model.html" title="TODO: Brief description of Model class." alt="" coords="5,371,112,397"/><area shape="rect" id="node4" href="classccmc_1_1_general_file_reader.html" title="ccmc::GeneralFileReader" alt="" coords="57,293,241,320"/><area shape="rect" id="node6" href="classccmc_1_1_file_reader.html" title="TODO: Brief description of FileReader class." alt="" coords="253,189,389,216"/><area shape="rect" id="node8" title="STL class." alt="" coords="67,99,159,125"/><area shape="rect" id="node10" title="STL class." alt="" coords="42,6,184,47"/></map>
+<area shape="rect" id="node2" href="classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="5,385,96,413"/><area shape="rect" id="node3" href="classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="51,305,208,333"/><area shape="rect" id="node4" href="classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="217,195,332,223"/><area shape="rect" id="node5" title="STL class." alt="" coords="61,102,136,130"/><area shape="rect" id="node6" title="STL class." alt="" coords="41,6,156,50"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -165,6 +165,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a617946630c27444852aba7e4b63a7083 inherit pub_methods_classccmc_1_1_general_file_reader"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classccmc_1_1_general_file_reader.html#a617946630c27444852aba7e4b63a7083">GeneralFileReader</a> ()</td></tr>
 <tr class="separator:a617946630c27444852aba7e4b63a7083 inherit pub_methods_classccmc_1_1_general_file_reader"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4996a8e305a2e1f9f25228d127bb55bf inherit pub_methods_classccmc_1_1_general_file_reader"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classccmc_1_1_general_file_reader.html#a4996a8e305a2e1f9f25228d127bb55bf">open</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a4996a8e305a2e1f9f25228d127bb55bf inherit pub_methods_classccmc_1_1_general_file_reader"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to open using <a class="el" href="classccmc_1_1_c_d_f_file_reader.html" title="CDFFileReader allows for opening and accessing Kameleon-converted CDF files.">CDFFileReader</a>, falls back to <a class="el" href="classccmc_1_1_h_d_f5_file_reader.html" title="The HDF5FileReader allows opening and accessing Kameleon-converted HDF5 files.">HDF5FileReader</a> (if HAVE_HDF5 is defined)  <a href="#a4996a8e305a2e1f9f25228d127bb55bf"></a><br/></td></tr>
 <tr class="separator:a4996a8e305a2e1f9f25228d127bb55bf inherit pub_methods_classccmc_1_1_general_file_reader"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15db2e13a3cc71bf0fea4ea46725c22a inherit pub_methods_classccmc_1_1_general_file_reader"><td class="memItemLeft" align="right" valign="top">std::vector&lt; float &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classccmc_1_1_general_file_reader.html#a15db2e13a3cc71bf0fea4ea46725c22a">getVariable</a> (const std::string &amp;variable)</td></tr>
 <tr class="separator:a15db2e13a3cc71bf0fea4ea46725c22a inherit pub_methods_classccmc_1_1_general_file_reader"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -461,13 +462,13 @@ std::vector&lt; int &gt; * &gt;&#160;</td><td class="memItemRight" valign="botto
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/<a class="el" href="_c_t_i_p_8h_source.html">CTIP.h</a></li>
-<li>/Users/apembrok/Documents/workspaces/workspace.bak2/workspace.backup/kameleon-plus/src/ccmc/<a class="el" href="_c_t_i_p_8cpp.html">CTIP.cpp</a></li>
+<li>/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/<a class="el" href="_c_t_i_p_8h_source.html">CTIP.h</a></li>
+<li>/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/<a class="el" href="_c_t_i_p_8cpp.html">CTIP.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 18:34:47 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Nov 4 2014 16:08:52 for Kameleon-Plus by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3
 </small></address>

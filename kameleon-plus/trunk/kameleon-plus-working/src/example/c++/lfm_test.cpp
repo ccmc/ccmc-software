@@ -50,10 +50,10 @@ int main (int argc, char * argv[])
 
 	string filename = argv[1];
 
-	cout<<"Creating LFM object... ";
+	cout<<"Creating LFM object... "<<std::endl;
 	LFM * lfm = new LFM;
 
-	cout<<"Opening LFM.\n";
+	cout<<"Opening LFM.\n"<<std::endl;
 	lfm->open(filename);
 
 	/*
@@ -67,7 +67,7 @@ int main (int argc, char * argv[])
 	lfm->loadVariable("uy");
 	lfm->loadVariable("uz");
 
-	cout<<"initializing interpolator (takes a few seconds)... ";
+	cout<<"initializing interpolator (takes a few seconds)... "<< std::endl;
 	LFMInterpolator interpolator(lfm);
 	cout<<"done.\n";
 
@@ -81,7 +81,7 @@ int main (int argc, char * argv[])
 		py = boost::lexical_cast<float>(argv[4]);
 		pz = boost::lexical_cast<float>(argv[5]);
 
-		cout<<"Interpolating variable "<< variable <<" at ("<< px <<","<<py<<","<<pz<<")...\n";
+		cout<<"Interpolating variable "<< variable <<" at ("<< px <<","<<py<<","<<pz<<")...\n"<<std::endl;
 
 		float variableOut = interpolator.interpolate(variable,px,py,pz, dx,dy,dz);
 

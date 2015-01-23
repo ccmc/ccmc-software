@@ -70,8 +70,9 @@ c      variable='ep '
       call f_interpolator_create(kid, iid)
       print *,'created interpolator'
       call f_kameleon_get_variable_id(kid,variable, vid);
-
-      do i=1,100
+      
+c     speed test
+      do i=1,100 
       call f_kameleon_interpolate_by_id(iid, vid, rc0, rc1, rc2,
      &d0, d1, d2, interpolated_value)
       enddo

@@ -24,10 +24,13 @@ namespace ccmc
 
 
 	/**
-	 * @class FileReader FileReader.h ccmc/FileReader.h
-	 * @brief TODO: Brief description of FileReader class
-	 *
-	 * TODO: Full description of FileReader class
+	 * @class GeneralFileReader GeneralFileReader.h ccmc/GeneralFileReader.h
+	 * @brief The GeneralFileReader class is a factory class for creating file readers in a model-agnostic fashion.
+	 * 
+	 * GeneralFileReader is not a subclass of FileReader, but instead creates an instance of FileReader (CDFFileReader,HDF5FileReader, or other) and calls its functions. 
+	 * Warning: FileReader's protected maps are repeated here, so it is possible to fill the maps variableIDs, variableNames, 
+	 * gAttributes, gAttributeByID, and vAttributes of GeneralFileReader independently from those of the FileReader class. 
+	 * Try to work with the FileReader maps wherever possible to avoid confusion. 
 	 */
 	class GeneralFileReader
 	{
@@ -67,19 +70,19 @@ namespace ccmc
 			~GeneralFileReader();
 
 		protected:
-			std::string current_filename;
+			std::string current_filename; 
 
-			boost::unordered_map<std::string, long> variableIDs;
-			boost::unordered_map<long, std::string> variableNames;
-			boost::unordered_map<std::string, Attribute> gAttributes;
-			boost::unordered_map<long, Attribute> gAttributeByID;
-			boost::unordered_map<std::string, boost::unordered_map<std::string, Attribute> > vAttributes;
-			void initializeGlobalAttributes();
-			void initializeVariableAttributes();
-			void initializeVariableIDs();
-			void initializeVariableNames();
+			boost::unordered_map<std::string, long> variableIDs; /*!< variable srtring to id map */
+			boost::unordered_map<long, std::string> variableNames; /*!< variableID to string name */
+			boost::unordered_map<std::string, Attribute> gAttributes; /*!< global attributes by name */
+			boost::unordered_map<long, Attribute> gAttributeByID; /*!< global attributes by ID */
+			boost::unordered_map<std::string, boost::unordered_map<std::string, Attribute> > vAttributes; /*!< variable attributes map */
+			void initializeGlobalAttributes(); //no defintion, see FileReader
+			void initializeVariableAttributes(); //no definition, see FileReader
+			void initializeVariableIDs(); 
+			void initializeVariableNames(); 
 
-			FileReader * fileReader;
+			FileReader * fileReader; /*!< polymorphic pointer to FileReader. It will point to either a CDFFileReader or HDF5FileReader instance. */
 
 	};
 }
