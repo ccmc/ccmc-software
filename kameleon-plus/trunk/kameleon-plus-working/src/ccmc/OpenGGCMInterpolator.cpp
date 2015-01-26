@@ -184,6 +184,7 @@ namespace ccmc
 		float missingValue = this->modelReader->getMissingValue();
 
 		int ix, iy, iz;
+
 		if (previous_x == c0 && previous_y == c1 && previous_z == c2)
 		{
 			if (previousValue == missingValue)
@@ -200,11 +201,17 @@ namespace ccmc
 			ix = Utils<float>::binary_search(*x_array, 0, (*x_array).size() - 1, flipped_c0);
 			iy = Utils<float>::binary_search(*y_array, 0, (*y_array).size() - 1, flipped_c1);
 			iz = Utils<float>::binary_search(*z_array, 0, (*z_array).size() - 1, c2);
-
-			if (ix < 0 || iy < 0 || iz < 0)
-				return missingValue;
-
 		}
+
+		int nx = (*x_array).size();
+		int ny = (*y_array).size();
+		int nz = (*z_array).size();
+		
+		if (ix < 0 || iy < 0 || iz < 0)
+		  return missingValue;
+		
+		if (ix > (nx-1) || iy > (ny-1) || iz > (nz-1))
+		  return missingValue;
 
 		float ix_value = (*x_array)[ix];
 		float ixp1_value = (*x_array)[ix + 1];
@@ -232,9 +239,6 @@ namespace ccmc
 		dc1 = iyp1_value - iy_value;
 		dc2 = izp1_value - iz_value;
 
-		int nx = (*x_array).size();
-		int ny = (*y_array).size();
-//		int nz = (*z_array).size();
 		int NV_blk = (ny) * (nx);
 		//ix + iy*nx + iz*NV_blk
 		int i = iz;
@@ -253,6 +257,10 @@ namespace ccmc
 		int i5 = (kp1) + (jp1) * (nx) + itNV_blk;
 		int i6 = k + (jp1) * (nx) + ip1tNV_blk;
 		int i7 = (kp1) + (jp1) * (nx) + ip1tNV_blk;
+
+		if (i7 > (nx*ny*nz-1) )
+		  return missingValue;
+
 
 		const std::vector<float> * vData = modelReader->getVariableFromMap(variable_id);
 		float data[8];
