@@ -1,7 +1,0 @@
-<map id="ccmc::OpenGGCM" name="ccmc::OpenGGCM">
-<area shape="rect" id="node2" href="$classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="22,385,113,413"/>
-<area shape="rect" id="node3" href="$classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="68,305,225,333"/>
-<area shape="rect" id="node4" href="$classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="234,195,349,223"/>
-<area shape="rect" id="node5" title="STL class." alt="" coords="79,102,153,130"/>
-<area shape="rect" id="node6" title="STL class." alt="" coords="58,6,173,50"/>
-</map>

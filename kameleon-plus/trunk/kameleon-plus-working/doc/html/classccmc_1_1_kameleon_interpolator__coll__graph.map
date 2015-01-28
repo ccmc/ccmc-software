@@ -1,8 +1,0 @@
-<map id="ccmc::KameleonInterpolator" name="ccmc::KameleonInterpolator">
-<area shape="rect" id="node2" href="$classccmc_1_1_interpolator.html" title="TODO: Brief description of Interpolator class." alt="" coords="32,478,151,506"/>
-<area shape="rect" id="node3" href="$classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="114,385,205,413"/>
-<area shape="rect" id="node4" href="$classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="197,305,355,333"/>
-<area shape="rect" id="node5" href="$classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="364,195,479,223"/>
-<area shape="rect" id="node6" title="STL class." alt="" coords="165,102,240,130"/>
-<area shape="rect" id="node7" title="STL class." alt="" coords="145,6,260,50"/>
-</map>

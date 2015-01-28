@@ -1,0 +1,12 @@
+#!/usr/bin/env python
+from setuptools import setup, find_packages
+# from distutils.core import setup, Extension
+
+setup(name='CCMC',
+      version='@Kameleon_VERSION_MAJOR@.@Kameleon_VERSION_MINOR@',
+      description='CCMC python module',
+      author='Asher Pembroke',
+      author_email='asher.d.pembroke@nasa.gov',
+      url='http://ccmc.gsfc.nasa.gov/',
+      data_files = [('CCMC', ['CCMC/_CCMC.so', 'CCMC/CCMC.py'])],
+      )

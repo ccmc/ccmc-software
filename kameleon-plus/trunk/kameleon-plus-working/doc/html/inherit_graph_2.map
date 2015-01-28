@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="6,31,122,59"/>
-<area shape="rect" id="node2" href="$classccmc_1_1_c_d_f_file_reader.html" title="CDFFileReader allows for opening and accessing Kameleon&#45;converted CDF files." alt="" coords="175,5,316,33"/>
-<area shape="rect" id="node3" href="$classccmc_1_1_h_d_f5_file_reader.html" title="The HDF5FileReader allows opening and accessing Kameleon&#45;converted HDF5 files." alt="" coords="171,57,320,85"/>
-</map>

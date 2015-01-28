@@ -1,0 +1,60 @@
+Included in this directory are CDF files containing the ionospheric component 
+of SWMF for the 2006 December event and the example fortran test code to 
+access and interpolate the data. The CDF files each contain one timestep.
+
+The example fortran code can be compiled by extracting fortran_test.tar.gz and 
+modifying the Makefile to select the appropriate configure options for your 
+operating system. The compilation has been tested on Linux and OSX.
+
+1. Edit Makefile  
+   CDF_OPTIONS and KAMELEON_PLUS_CONFIGURE must be defined to the correct 
+   variables for the operating system  
+   F77, CC, and CXX must point to the system fortran, c, and c++ compilers
+   NJOBS should be set to the number of cores on the system. If this is left 
+   blank, an infinite number of parallel jobs are used during compilation.
+2. make all
+
+If your compiler does not support the -Ofast option, replace it with -O3 -ffast
+-math or -O3 or your preferred compiler optimizations (replace all instances)
+
+The example fortran program, fortran_test, opens a CDF file and interpolates 
+the selected variable (such as 'ep' [electric potential]) onto a 181x181 grid 
+to standard output. The default missing value is -1.09951163E+12
+
+./fortran_test CCMC_CCMC_052312_1.swmf.i_e20061213-000500-000.cdf ep
+Model name: 'swmf'
+ done opening file
+loading ep
+ done loading variable ep                                                                                                  
+ created interpolator
+  lat:    90.0000000      mlt:    12.0000000      interpolated value:   -1.09951163E+12
+  lat:    89.0000000      mlt:    12.0000000      interpolated value:   -6.34560013    
+  lat:    88.0000000      mlt:    12.0000000      interpolated value:   -6.66540003    
+  lat:    87.0000000      mlt:    12.0000000      interpolated value:   -6.97889996   
+...
+  lat:   -87.0000000      mlt:    12.0000000      interpolated value:  -0.790960014    
+  lat:   -88.0000000      mlt:    12.0000000      interpolated value:  -0.625360012    
+  lat:   -89.0000000      mlt:    12.0000000      interpolated value:  -0.470510006    
+  lat:   -90.0000000      mlt:    12.0000000      interpolated value:   -1.09951163E+12
+
+NOTE: the SWMF ionospheric electrodynamics files do not have values at the poles.
+
+main.f and kameleon_f.f show how to use the time interpolator using a 
+directory of timestep files. 
+In this example, the directory path and prefix of all files is hardcoded in 
+kameleon_f.f, so this
+must be updated to reflect the actual location of the CDF files.
+
+ file_path='/path/to/your/test_files_directory'
+
+You must also choose an interpolation time to be within the range of time 
+steps to be loaded; set the following variables in main.f:
+
+         itime(1)= 2001      ! year
+         itime(2)= 08        ! month
+         itime(3)= 29        ! day
+         itime(4)= 04         ! hour
+         itime(5)= 0        ! min
+         itime(6)= 0        ! sec
+
+If you have questions, please contact MARSHALL SWINDELL (marshall.j.swindell@nasa.gov).	

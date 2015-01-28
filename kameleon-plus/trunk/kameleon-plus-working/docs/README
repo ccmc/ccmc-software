@@ -1,0 +1,27 @@
+This directory is used to manage building documentation for the Kameleon project.
+
+Requirements:
+	sphinx: http://sphinx-doc.org/index.html
+	doxygen: http://doxygen.org/
+	breathe: https://breathe.readthedocs.org/en/latest/quickstart.html
+
+I created the configuration file conf.py by running sphinx-quickstart. This also generated 
+the Makefile which we invoke below.
+To generate documentation, run:
+	make html
+To generate the manual, run:
+	make latex
+
+
+For now, the above commands have to be rerun whenever the documentation changes.
+Sphinx will invoke breathe, which reads the xml documentation created by Doxygen in ../doc/
+
+Eventually, this will all be automated through cmake...
+
+cmake and doxygen:
+https://majewsky.wordpress.com/2010/08/14/tip-of-the-day-cmake-and-doxygen/
+
+cmake and sphinx:
+http://ericscottbarr.com/blog/2012/03/sphinx-and-cmake-beautiful-documentation-for-c-projects/
+
+

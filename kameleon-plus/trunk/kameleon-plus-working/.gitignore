@@ -1,0 +1,10 @@
+# ignore generated files
+
+/doc/html/*
+/doc/xml/*
+/doc/latex/*
+/bin/
+/build/
+/docs/build
+/docs/download
+/lib

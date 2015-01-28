@@ -1,7 +1,0 @@
-<map id="ccmc::BATSRUS" name="ccmc::BATSRUS">
-<area shape="rect" id="node2" href="$classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="17,385,108,413"/>
-<area shape="rect" id="node3" href="$classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="63,305,220,333"/>
-<area shape="rect" id="node4" href="$classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="229,195,344,223"/>
-<area shape="rect" id="node5" title="STL class." alt="" coords="73,102,148,130"/>
-<area shape="rect" id="node6" title="STL class." alt="" coords="53,6,168,50"/>
-</map>

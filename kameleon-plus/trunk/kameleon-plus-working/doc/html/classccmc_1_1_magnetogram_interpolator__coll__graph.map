@@ -1,8 +1,0 @@
-<map id="ccmc::MagnetogramInterpolator" name="ccmc::MagnetogramInterpolator">
-<area shape="rect" id="node2" href="$classccmc_1_1_interpolator.html" title="TODO: Brief description of Interpolator class." alt="" coords="41,478,160,506"/>
-<area shape="rect" id="node3" href="$classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="123,385,215,413"/>
-<area shape="rect" id="node4" href="$classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="207,305,364,333"/>
-<area shape="rect" id="node5" href="$classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="373,195,488,223"/>
-<area shape="rect" id="node6" title="STL class." alt="" coords="175,102,249,130"/>
-<area shape="rect" id="node7" title="STL class." alt="" coords="154,6,269,50"/>
-</map>

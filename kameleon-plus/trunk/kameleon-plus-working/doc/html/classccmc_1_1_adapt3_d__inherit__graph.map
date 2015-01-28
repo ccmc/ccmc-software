@@ -1,4 +1,0 @@
-<map id="ccmc::Adapt3D" name="ccmc::Adapt3D">
-<area shape="rect" id="node2" href="$classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="38,83,129,111"/>
-<area shape="rect" id="node3" href="$classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="5,6,163,34"/>
-</map>

@@ -37,7 +37,8 @@ extensions = [
     'breathe',
 ]
 
-breathe_projects = { "Kameleon-plus": '/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/doc/xml/'}
+# breathe_projects = { "Kameleon-plus": '/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/doc/xml/'}
+breathe_projects = { "Kameleon-plus": '../../doc/xml/'}
 
 breathe_default_project = "Kameleon-plus"
 

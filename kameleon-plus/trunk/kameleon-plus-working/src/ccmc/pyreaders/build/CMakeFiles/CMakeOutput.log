@@ -1,0 +1,192 @@
+The system is: Darwin - 12.5.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/clang 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/3.0.1/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/clang++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is AppleClang, found in "/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/3.0.1/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec354226172/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec354226172.dir/build.make CMakeFiles/cmTryCompileExec354226172.dir/build
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_progress_report /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec354226172.dir/testCCompiler.c.o
+/usr/bin/clang    -o CMakeFiles/cmTryCompileExec354226172.dir/testCCompiler.c.o   -c /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec354226172
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec354226172.dir/link.txt --verbose=1
+/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec354226172.dir/testCCompiler.c.o  -o cmTryCompileExec354226172  
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2594079409/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2594079409.dir/build.make CMakeFiles/cmTryCompileExec2594079409.dir/build
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_progress_report /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o
+/usr/bin/clang    -o CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.0.1/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec2594079409
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2594079409.dir/link.txt --verbose=1
+/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2594079409   
+Apple LLVM version 5.1 (clang-503.0.40) (based on LLVM 3.4svn)
+Target: x86_64-apple-darwin12.5.0
+Thread model: posix
+ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec2594079409 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o -lSystem /usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-236.4
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 armv6m armv7m armv7em
+Library search paths:
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec2594079409/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec2594079409.dir/build.make CMakeFiles/cmTryCompileExec2594079409.dir/build]
+  ignore line: [/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_progress_report /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/clang    -o CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.0.1/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec2594079409]
+  ignore line: [/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2594079409.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/clang    -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec2594079409   ]
+  ignore line: [Apple LLVM version 5.1 (clang-503.0.40) (based on LLVM 3.4svn)]
+  ignore line: [Target: x86_64-apple-darwin12.5.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec2594079409 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o -lSystem /usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.8.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec2594079409] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec2594079409.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a] ==> lib [/usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a] ==> [/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1419555814/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1419555814.dir/build.make CMakeFiles/cmTryCompileExec1419555814.dir/build
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_progress_report /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1419555814.dir/testCXXCompiler.cxx.o
+/usr/bin/clang++     -o CMakeFiles/cmTryCompileExec1419555814.dir/testCXXCompiler.cxx.o -c /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec1419555814
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1419555814.dir/link.txt --verbose=1
+/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTryCompileExec1419555814.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec1419555814  
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTryCompileExec32026146/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec32026146.dir/build.make CMakeFiles/cmTryCompileExec32026146.dir/build
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_progress_report /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/clang++     -o CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.0.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec32026146
+/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec32026146.dir/link.txt --verbose=1
+/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec32026146   
+Apple LLVM version 5.1 (clang-503.0.40) (based on LLVM 3.4svn)
+Target: x86_64-apple-darwin12.5.0
+Thread model: posix
+ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec32026146 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lSystem /usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-236.4
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 armv6m armv7m armv7em
+Library search paths:
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec32026146/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec32026146.dir/build.make CMakeFiles/cmTryCompileExec32026146.dir/build]
+  ignore line: [/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_progress_report /Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/clang++     -o CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.0.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec32026146]
+  ignore line: [/usr/local/Cellar/cmake/3.0.1/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec32026146.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/clang++     -Wl,-search_paths_first -Wl,-headerpad_max_install_names -v -Wl,-v CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec32026146   ]
+  ignore line: [Apple LLVM version 5.1 (clang-503.0.40) (based on LLVM 3.4svn)]
+  ignore line: [Target: x86_64-apple-darwin12.5.0]
+  ignore line: [Thread model: posix]
+  link line: [ "/usr/bin/ld" -demangle -dynamic -arch x86_64 -macosx_version_min 10.8.0 -o cmTryCompileExec32026146 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lSystem /usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.8.0] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec32026146] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec32026146.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lSystem] ==> lib [System]
+    arg [/usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a] ==> lib [/usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/usr/bin/../lib/clang/5.1/lib/darwin/libclang_rt.osx.a] ==> [/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [stdc++;/usr/lib/clang/5.1/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+

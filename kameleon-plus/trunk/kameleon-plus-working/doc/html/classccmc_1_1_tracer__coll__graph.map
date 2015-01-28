@@ -1,8 +1,0 @@
-<map id="ccmc::Tracer" name="ccmc::Tracer">
-<area shape="rect" id="node2" href="$classccmc_1_1_interpolator.html" title="TODO: Brief description of Interpolator class." alt="" coords="4,478,123,506"/>
-<area shape="rect" id="node3" href="$classccmc_1_1_model.html" title="The Model class inherits from GeneralFileReader and manages memory for stored variables used in inter..." alt="" coords="86,385,177,413"/>
-<area shape="rect" id="node4" href="$classccmc_1_1_general_file_reader.html" title="The GeneralFileReader class is a factory class for creating file readers in a model&#45;agnostic fashion..." alt="" coords="169,305,327,333"/>
-<area shape="rect" id="node5" href="$classccmc_1_1_file_reader.html" title="FileReader class is a pure virtual class for opening and accessing model variables." alt="" coords="336,195,451,223"/>
-<area shape="rect" id="node6" title="STL class." alt="" coords="137,102,212,130"/>
-<area shape="rect" id="node7" title="STL class." alt="" coords="117,6,232,50"/>
-</map>

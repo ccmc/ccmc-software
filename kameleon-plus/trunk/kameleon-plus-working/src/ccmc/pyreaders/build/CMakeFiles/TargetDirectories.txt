@@ -1,0 +1,2 @@
+/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/pyKameleon.dir
+/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/CMakeFiles/testDerived.dir
