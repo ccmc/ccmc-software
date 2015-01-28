@@ -1,21 +1,13 @@
 # PYTHON wrapper
-
+set(msg_prefix "src/ccmc/wrappers/python> ")
+message(STATUS ${msg_prefix} "building python wrappers")
 #Output directories
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/python/CCMC) 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/python)
 SET(CMAKE_SWIG_OUTDIR ${KAMELEON_LIB_DIR}/ccmc/python/CCMC)
 
 
-FIND_PACKAGE(PythonLibs REQUIRED)
-FIND_PACKAGE(PythonInterp REQUIRED)
-IF(NOT PYTHONLIBS_FOUND OR NOT PYTHON_EXECUTABLE)
-    MESSAGE(SEND_ERROR "You need Python to build Python binding")
-ELSE()
-	MESSAGE(STATUS "wrappers/python PythonLibs: " ${PYTHON_LIBRARIES})
-ENDIF(NOT PYTHONLIBS_FOUND OR NOT PYTHON_EXECUTABLE)
-
-FIND_PACKAGE(SWIG REQUIRED)
-message(STATUS "wrappers/python SWIG_USE_FILE: " ${SWIG_USE_FILE})
+message(STATUS ${msg_prefix} "SWIG_USE_FILE: " ${SWIG_USE_FILE})
 INCLUDE(${SWIG_USE_FILE})
 SET(CMAKE_SWIG_FLAGS "")
 
@@ -31,16 +23,16 @@ INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})
 if(BUILD_HDF5)
 	include_directories(${HDF5_INCLUDE_DIR})
 	add_definitions(-DHAVE_HDF5)
-	message(STATUS "wrappers/python/ Include HDF5: " ${HDF5_INCLUDE_DIR})
+	message(STATUS ${msg_prefix} "Include HDF5: " ${HDF5_INCLUDE_DIR})
 endif(BUILD_HDF5)
 
 # Boost
 include_directories(${Boost_INCLUDE_DIRS})                                                                                          
-message(STATUS "wrappers/python/ Include boost directories: " ${Boost_INCLUDE_DIRS})
+message(STATUS ${msg_prefix} "Include boost directories: " ${Boost_INCLUDE_DIRS})
 
 # CDF
 include_directories(${CDF_INCLUDES})
-message(STATUS "wrappers/python/ Include CDF: " ${CDF_INCLUDES})
+message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
 
 
 # ############# SWIG_ADD_MODULE ########

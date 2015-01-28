@@ -1,4 +1,6 @@
 # c wrapper library
+set(msg_prefix "src/ccmc/wrappers/c> ")
+message(STATUS ${msg_prefix} "building c wrappers")
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/c) 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/c)
 file(GLOB CCMC_WRAPPER_C_SOURCES

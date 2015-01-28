@@ -1,3 +1,5 @@
+set(msg_prefix "src/ccmc/wrappers/java> ")
+message(STATUS ${msg_prefix} "building java wrappers")
 # java wrappers (kameleon-plus/src/ccmc/wrappers/java)
 # JAVA wrappers - the goal is to mimic Makefile to produce the following
 # libkameleon_plus-wrapper-java.jnilib
@@ -7,15 +9,10 @@
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/java) 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/java)
 
-
-FIND_PACKAGE(SWIG REQUIRED)
-FIND_PACKAGE(Java REQUIRED)
-FIND_PACKAGE(JNI REQUIRED)
-
 include(UseJava) #enables add_java
 include(UseSWIG) #enables SWIG_ADD_MODULE and SWIG_LINK_LIBRARIES
 
-message(STATUS "wrappers/java/ SWIG_USE_FILE: " ${SWIG_USE_FILE})
+message(STATUS ${msg_prefix} "SWIG_USE_FILE: " ${SWIG_USE_FILE})
 INCLUDE(${SWIG_USE_FILE})
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
@@ -27,20 +24,20 @@ INCLUDE_DIRECTORIES(${KAMELEON_SRC_DIR})
 if(BUILD_HDF5)
 	include_directories(${HDF5_INCLUDE_DIR})
 	add_definitions(-DHAVE_HDF5)
-	# message(STATUS "wrappers/java/ Include HDF5: " ${HDF5_INCLUDE_DIR})
+	# message(STATUS ${msg_prefix} "Include HDF5: " ${HDF5_INCLUDE_DIR})
 endif(BUILD_HDF5)
 
 # Boost
 include_directories(${Boost_INCLUDE_DIRS})                                                                                          
-# message(STATUS "wrappers/java/ Include boost directories: " ${Boost_INCLUDE_DIRS})
+# message(STATUS ${msg_prefix} "Include boost directories: " ${Boost_INCLUDE_DIRS})
 
 # CDF
 include_directories(${CDF_INCLUDES})
-# message(STATUS "wrappers/java/ Include CDF: " ${CDF_INCLUDES})
+# message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
 
 # JNI
 INCLUDE_DIRECTORIES(${JNI_INCLUDE_DIRS})
-# message(STATUS "wrappers/java/ Include JNI: " ${JNI_INCLUDE_DIRS})
+# message(STATUS ${msg_prefix} "Include JNI: " ${JNI_INCLUDE_DIRS})
 
 #SWIG
 SET(CMAKE_SWIG_OUTDIR ${CMAKE_CURRENT_BINARY_DIR})
@@ -50,7 +47,7 @@ SET(CMAKE_SWIG_FLAGS -Wall -package gov.nasa.gsfc.ccmc)
 #create libkameleon_plus-wrapper-java-1.0.0.jnilib on mac
 SWIG_ADD_MODULE(kameleon_plus-wrapper-java-${KAMELEON_PLUS_VERSION} java ../ccmcJava.i) 
 get_property(java_wrapped_mod_name TARGET kameleon_plus-wrapper-java-${KAMELEON_PLUS_VERSION} PROPERTY LOCATION)
-message (STATUS "wrappers/java/ kameleon_plus-wrapper-java location will be = ${java_wrapped_mod_name}")
+message (STATUS ${msg_prefix} "kameleon_plus-wrapper-java location will be = ${java_wrapped_mod_name}")
 # link ccmc library
 SWIG_LINK_LIBRARIES(kameleon_plus-wrapper-java-${KAMELEON_PLUS_VERSION} ccmc) 
 
@@ -73,6 +70,7 @@ add_custom_command(OUTPUT _GeneratedJavaSources
 # 	COMMAND ${CMAKE_COMMAND} -P "message(warning 'generated java sources:'${_GeneratedJavaSources})"
 # 	)
 
+# Since POST_BUILD won't work, have to list source files explicitly
 set(_GeneratedJavaSources
 	${CMAKE_CURRENT_BINARY_DIR}/Attribute.java
 	${CMAKE_CURRENT_BINARY_DIR}/BATSRUS.java

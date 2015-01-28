@@ -37,7 +37,6 @@ extensions = [
     'breathe',
 ]
 
-# breathe_projects = { "Kameleon-plus": '/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/doc/xml/'}
 breathe_projects = { "Kameleon-plus": '../../doc/xml/'}
 
 breathe_default_project = "Kameleon-plus"
@@ -53,6 +52,8 @@ source_suffix = '.rst'
 
 # The master toctree document.
 master_doc = 'index'
+
+logo = '../../ext/CCMC-logo-small.png'
 
 # General information about the project.
 project = u'Kameleon-plus'
@@ -132,7 +133,7 @@ html_theme_options = {
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+# html_logo = '../../ext/CCMC-logo-small.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -217,7 +218,7 @@ latex_documents = [
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-#latex_logo = None
+# latex_logo = '../../ext/CCMC-logo-small.png'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.

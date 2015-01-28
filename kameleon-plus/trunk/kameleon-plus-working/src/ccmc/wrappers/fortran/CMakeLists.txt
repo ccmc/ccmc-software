@@ -1,4 +1,6 @@
 # fortran wrapper library
+set(msg_prefix "src/ccmc/wrappers/fortran> ")
+message(STATUS ${msg_prefix} "building fortran wrappers")
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/fortran) 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/fortran)
 

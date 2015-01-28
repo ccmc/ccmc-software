@@ -20,11 +20,8 @@ Requirements
 * `cmake <http://www.cmake.org/>`_ - minimum 2.8
 * `cdf <http://cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf35_0_2/>`_ - 3.5
 * `boost <http://www.boost.org/>`_ - 1.54.0
-
-
-Optional
-* `hdf5 <http://www.hdfgroup.org/HDF5/release/obtain5.html>`_ (for LFM support - optional)
-* SWIG
+* `hdf5 <http://www.hdfgroup.org/HDF5/release/obtain5.html>`_ (optional)
+* `SWIG <http://www.swig.org/>`_ minimum version 3.0.0 (optional - for python and java wrapper support)
 
 Example files
 * <links to example files>
@@ -33,7 +30,7 @@ Build
 -----
 .. highlight:: console
 
-To minimize clutter, Kameleon-plus now uses an out-of-source system-dependent build structure.
+To minimize clutter, Kameleon-plus now uses an out-of-source system-independent build structure.
 To build the library and example executables, make a fresh build directory::
 
     mkdir ~/Kameleon-plus-build
@@ -49,7 +46,6 @@ The last line compiles the ccmc libraries and executables that make use of them.
 
 Executables
 ...........
-The above compilation places example programs in /path/to/Kameleon-plus-source/src/example/<language>.
 The table below shows all executables created by the build process and a brief description of their function.
 
 Note: The executable paths will be /path/to/Kameleon-plus-source/bin/examples/<language>.
@@ -112,10 +108,10 @@ Note: The executable paths will be /path/to/Kameleon-plus-source/bin/examples/<l
 Libraries
 .........
 
-The build will also generate the following platform-dependent libraries (Mac build shown here):
+The build will also generate the following platform-dependent libraries (names corresponding to a Mac build shown here). The example programs automatically link to these. The library paths will begin with /path/to/Kameleon-plus-source/lib
 
 +------------------------+--------------------------------------------+-----------------------------------------------------------------------------+
-|      lib/<..>          |     library                                |   Description                                                               |
+|  library path          |        library name                        |   Description                                                               |
 +========================+============================================+=============================================================================+
 |      ccmc/             |     libccmc.a                              |   main ccmc library containing model readers, interpolators, and tools      |
 +------------------------+--------------------------------------------+-----------------------------------------------------------------------------+
@@ -129,6 +125,28 @@ The build will also generate the following platform-dependent libraries (Mac bui
 +------------------------+--------------------------------------------+-----------------------------------------------------------------------------+
 |      ccmc/python/CCMC  | CCMC.py, _CCMC.so                          |python module - "make install" will install to system's python libraries     |
 +------------------------+--------------------------------------------+-----------------------------------------------------------------------------+
+
+
+Build Flags
+...........
+
+To control the build process, the following flags may be invoked when running cmake from your build directory::
+
+    cmake -D<flag_1>=ON -D<flag_2>=OFF -D<flag_3> /path/to/Kameleon-plus-source
+
++------------------+--------+--------------------------------------------------------------------------+
+|    <flag>        | default|   Description                                                            |
++------------------+--------+--------------------------------------------------------------------------+
+| BUILD_SHARED_LIBS|   ON   | build shared ccmc library  (libccmc.dylib, libccmc.so, or ccmc.dll)      |
++------------------+--------+--------------------------------------------------------------------------+
+| BUILD_STATIC_LIBS|   ON   | build static ccmc library  (libccmc_static.a)                            | 
++------------------+--------+--------------------------------------------------------------------------+
+| USE_STATIC_LIBS  |   OFF  | link against the static version of any required libraries when building  |
++------------------+--------+--------------------------------------------------------------------------+
+| BUILD_HDF5       |   ON   |  Build with HDF5 library - (will ignore if HDF5 is not found)            |
++------------------+--------+--------------------------------------------------------------------------+                     
+
+These flags will be saved in your build directory in the file CMakeCache.txt. If you edit this file, the new values will be used next time you run cmake. See :ref:`trouble_shooting` for potential conflicts between these flags.
 
 
 Install
@@ -209,9 +227,12 @@ Example python program::
 
 Much of Kameleon's functionality is illustrated in several examples accross multiple languages. See :ref:`Full_Examples` to get started. 
 
+.. _trouble_shooting:
+
 Trouble-shooting
 ----------------
 Depending on the platform, you may run into issues during the configuration or build process. In almost all cases, you will need to rebuild from a fresh build directory (or at least delete the CMakeCache.txt in your current one). 
+
 
 CMake Error: Libraries not found
 ................................
@@ -223,7 +244,7 @@ Build Error: -fPIC errors
 .........................
 This error can occur when linking. This is due to the static libraries not being compiled with the -fPIC flag. You can either rebuild using::
 
-    cmake -DBUILD_SHARED_LIBS=ON /path/to/Kameleon-plus-source
+    cmake -DBUILD_STATIC_LIBS=OFF /path/to/Kameleon-plus-source
 
 or manually set the -fPIC flags::
 
@@ -233,8 +254,9 @@ or manually set the -fPIC flags::
 Build Error: duplicate symbols related to zlib
 ..............................................
 This appears to be due to conflicts between the static HDF5 and CDF libraries both using zlib.
-As a work-around, use the flag -DHDF5_USE_STATIC_LIBRARIES=OFF
+As a work-around, turn off the HDF5 static library::
 
+    cmake -DHDF5_USE_STATIC_LIBRARIES=OFF /path/to/kameleon/source
 
 .. _python_module_segFaults:
 

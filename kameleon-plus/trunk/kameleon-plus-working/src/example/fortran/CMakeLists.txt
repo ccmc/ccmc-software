@@ -1,4 +1,6 @@
-# fortran examples (kameleon-plus/src/examples/fortran)
+# fortran examples (kameleon-plus/src/example/fortran)
+set(msg_prefix "src/example/fortran> ")
+message(STATUS ${msg_prefix} "building FORTRAN examples")
 enable_language (Fortran)
 
 if (NOT KAMELEON_EXAMPLES_DIR)
@@ -26,16 +28,16 @@ include_directories(${KAMELEON_SRC_DIR}/ccmc/wrappers/fortran)
 if(BUILD_HDF5)
 	include_directories(${HDF5_INCLUDE_DIR})
 	add_definitions(-DHAVE_HDF5)
-	message(STATUS "c++/ Include HDF5: " ${HDF5_INCLUDE_DIR})
+	message(STATUS ${msg_prefix} "Include HDF5: " ${HDF5_INCLUDE_DIR})
 endif(BUILD_HDF5)
 
 # Boost
 include_directories(${Boost_INCLUDE_DIRS})                                                                                          
-message(STATUS "c++/ Include boost directories: " ${Boost_INCLUDE_DIRS})
+message(STATUS ${msg_prefix} "Include boost directories: " ${Boost_INCLUDE_DIRS})
 
 # CDF
 include_directories(${CDF_INCLUDES})
-message(STATUS "c++/ Include CDF: " ${CDF_INCLUDES})
+message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
 
 
 # link ccmc ccmc_wrapper_c ccmc_wrapper_fortran
