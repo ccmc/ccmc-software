@@ -5,7 +5,7 @@ project (Kameleon)
 
 #Set version number
 set(Kameleon_VERSION_MAJOR "6")
-set(Kameleon_VERSION_MINOR "0.0")
+set(Kameleon_VERSION_MINOR "0.0.1")
 set(KAMELEON_PLUS_VERSION ${Kameleon_VERSION_MAJOR}.${Kameleon_VERSION_MINOR})
 
 set(msg_prefix "./> ")
