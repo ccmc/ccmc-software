@@ -97,3 +97,8 @@ Also, I copied and edited ipython so it points to python2.7 above
 # FileReader.closeFile                      FileReader.getVariableAttributeName       
 # FileReader.current_filename               FileReader.getVariableAttributeNames   
 
+
+============== Tests ===================
+Test the python embedded reader by running
+	python testReader.py
+

@@ -19,6 +19,7 @@ class customPyFileReader(testReader.pyFileReader):
 	def openFile(self, filename, readonly = True):
 		print 'custom open by exPyFileReader'
 		self.current_filename = filename
+		# self.setCurrentFilename(filename) # alternatively
 		
 		print 'data file:', filename, 'readonly:', readonly
 		self.variables['sound_speed'] = readVariableFromFile(filename, 'sound_speed')
