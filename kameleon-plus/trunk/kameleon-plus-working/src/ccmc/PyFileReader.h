@@ -1,41 +1,32 @@
 /*
- * FileReader.h
+ * PyFileReader.h
  *
- *  Created on: Apr 22, 2009
- *      Author: David Berrios
+ *  Created on: March 5, 2015
+ *      Author: Asher Pembroke
  */
-
-#ifndef GENERALFILEREADER_H_
-#define GENERALFILEREADER_H_
-#include <string>
+#ifdef PYFILEREADER_
+#include <boost/python.hpp>
+#include <FileReader.h>
 #include <vector>
-#include <iostream>
+#include <string>
 #include "Attribute.h"
-#include "FileReader.h"
-#include <boost/unordered_map.hpp>
-#include "cdf.h"
-
-
-
-
 
 
 namespace ccmc
 {
 
-
 	/**
-	 * @class FileReader FileReader.h ccmc/FileReader.h
-	 * @brief TODO: Brief description of FileReader class
+	 * @class PyFileReader
+	 * @brief Wraps the embedded python reader functions
 	 *
 	 * TODO: Full description of FileReader class
 	 */
-	class GeneralFileReader
+	class PyFileReader
 	{
 
 		public:
 
-			GeneralFileReader();
+			PyFileReader();
 			long open(const std::string& filename);
 
 			std::vector<float>* getVariable(const std::string& variable);
@@ -65,7 +56,7 @@ namespace ccmc
 			//long closeFile();
 			//long openFile(const std::string& filename);
 			const std::string& getCurrentFilename();
-			~GeneralFileReader();
+			~PyFileReader();
 
 		protected:
 			std::string current_filename;
@@ -84,5 +75,4 @@ namespace ccmc
 
 	};
 }
-
-#endif /* GENERALFILEREADER_H_ */
+#endif

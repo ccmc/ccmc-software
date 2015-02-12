@@ -20,10 +20,26 @@ if __name__ == '__main__':
 	# !WARNING! IF you used cmake on mac, the default compiler is Clang, not gcc!!
 	# Solution: recompile gccxml using the gcc compiler (instead of clang):
 	# (~/gccxml-build)$ cmake -DCMAKE_C_COMPILER=llvm-gcc-4.2 -DCMAKE_CXX_COMPILER=llvm-g++-4.2 /path/to/gccxml
-	mb = module_builder.module_builder_t( files=files
-	                                      , gccxml_path='/Users/apembrok/git/gccxml-build/bin' )
+	mb = module_builder.module_builder_t( files=files,
+	                                      gccxml_path='/Users/apembrok/git/gccxml-build/bin',
+	                                      include_paths = ['/opt/local/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7',] )
 
 	print 'setting call policies...'
+
+	# # call policies for GeneralFileReader class
+	# generalfilereader = mb.class_("GeneralFileReader")
+	# mb.print_declarations(generalfilereader)
+
+ # 	getVariable_functions = generalfilereader.member_functions(name = 'getVariable')
+
+ # 	for getVariable in getVariable_functions:
+ # 		getVariable.call_policies = call_policies.return_value_policy(call_policies.manage_new_object)
+
+ # 	getVariableInt = generalfilereader.member_function('getVariableInt')
+ # 	getVariableInt.call_policies = call_policies.return_value_policy(call_policies.manage_new_object)
+ # 	generalfilereader.include()
+
+
 	attribute = mb.class_("Attribute")
 	attribute.include()
 	

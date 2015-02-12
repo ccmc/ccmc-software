@@ -21,14 +21,15 @@ IF (${Boost_FOUND})
 	INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../)
 
-	set(Boost_USE_STATIC_LIBS OFF) #was set to OFF
-	set(Boost_USE_MULTITHREADED ON)
-	set(Boost_USE_STATIC_RUNTIME OFF)
+	# set(Boost_USE_STATIC_LIBS OFF) #was set to OFF
+	# set(Boost_USE_MULTITHREADED ON)
+	# set(Boost_USE_STATIC_RUNTIME OFF)
 
 	message(STATUS "Boost_LIBRARIES:" ${Boost_LIBRARIES})
 	message(STATUS "Boost includes:" ${Boost_INCLUDE_DIRS})
 	message(STATUS "Python Libraries:" ${PYTHON_LIBRARIES})
-	message(STATUS "Python includes:" ${PYTHON_INCLUDE_PATH})
+	message(STATUS "ccmc/embedding: Python include dirs:" ${PYTHON_INCLUDE_DIRS})
+	message(STATUS "ccmc/embedding: Python include path:" ${PYTHON_INCLUDE_PATH})
 	message(STATUS "Python interpreter:" ${PYTHON_EXECUTABLE})
 
 
@@ -42,7 +43,9 @@ IF (${Boost_FOUND})
 	add_library(pyKameleon SHARED ../Attribute.h 
 								../Attribute.cpp 
 								../FileReader.h 
-								../FileReader.cpp 
+								../FileReader.cpp
+								# ../GeneralFileReader.h
+								# ../GeneralFileReader.cpp 
 								generated/pyKameleon.cpp)
 	# set_target_properties( pyKameleon PROPERTIES IMPORT_SUFFIX ".so")
 
@@ -50,17 +53,12 @@ IF (${Boost_FOUND})
 	target_link_libraries(pyKameleon ${Boost_LIBRARIES}  ${PYTHON_LIBRARIES})
 
 
-	add_executable(testDerived testDerivedpy.cpp ../Attribute.h 
-								../Attribute.cpp 
-								../FileReader.h 
-								../FileReader.cpp 
-								generated/pyKameleon.cpp)
-
-	target_link_libraries(testDerived ${Boost_LIBRARIES}  ${PYTHON_LIBRARIES}) 
 	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}../)
+	INCLUDE_DIRECTORIES("/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/build")
 
-
+	add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
 
 ELSE()
 

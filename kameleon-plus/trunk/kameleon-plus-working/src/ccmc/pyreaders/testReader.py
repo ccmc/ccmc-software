@@ -3,7 +3,7 @@ import unittest
 import sys, os
 sys.path.append('build')
 sys.path.append('.')
-sys.path.append('../')
+# sys.path.append('../')
 import pyKameleon
 from Attribute import Attribute
 # import random #only used for testing
@@ -75,22 +75,28 @@ class pyFileReader(pyKameleon.FileReader):
 
 		This initializer calls the base class initializer.
 		The variables dictionary is initialized here and is expected to be populated by the subclassing reader.
-		"""
+		""" 
 		super(pyFileReader, self).__init__()
 		self.variables = {} #created in subclass
 		self.variableIDs = {} #maps from variable string names to long ids
 		self.variableNames = {} #maps from long ids to string names
 		self.globalAttributes = {} #maps from attribute names or ids to global attribute objects
-		self.variableAttributes = {} #maps from variable attribute names or ids to dictionaries of variable attributes
-
+		self.variableAttributes = {} #maps from variable str names to dictionaries of variable attributes
+		self.variableAttributeNames = {} #maps from attribute IDs to name
+		self.variableAttributeIDs = {} #maps from attribute names to IDs
 
 	def openFile(self, filename, readonly = True):
-		""" Opens file, sets filename. To be overriden in subclass"""
-		# print 'opening', filename, 'now'
-		# print datapath + ' --> ' + filename
-		self.current_filename = filename #invokes setCurrentFilename
+		""" Dummy method to be overriden in subclass.
+			Method should open open file and set current_filename. 
+			If open fails, please return self.OPEN_ERROR or self.FILE_DOES_NOT_EXIST"""
+
+		self.current_filename = filename #automatically invokes setCurrentFilename in c++
 
 		return pyKameleon.FileReader.OK
+
+
+	def getCurrentFilename(self):
+		return self.current_filename
 
 	def closeFile(self):
 		"""Closes an open file """
@@ -99,78 +105,133 @@ class pyFileReader(pyKameleon.FileReader):
 		return pyKameleon.FileReader.OK
 
 	def initializeVariableIDs(self):
-		"""viriableIds maps from variable string names to numbers"""
+		"""viriableIds maps from variable string names to numbers. This assumes variables has already been populated.
+			If variable names exists, nothing happens"""
 		# print '\tinitializing variableIds map!'
+		if len(self.variableNames) == 0:
+			print 'initializing variable names from variables dict'
+			i = 0
+			for key in self.variables.keys():
+				# self.variables[long(i)] = self.variables[key] #removed redundant id key. Let's avoid copies and only query on names
+				self.variableIDs[key] = long(i)
+				self.variableNames[long(i)] = str(key)
+				self.variableAttributes[key] = {} #initializes attribute dictionaries
+				i += 1
+
+
+	def initializeVariableAttributeIDs(self):
+		"""assign variable attribute ids. Note, only run this after all variablesNames are loaded!"""
 		i = 0
-		for key in self.variables.keys():
-			self.variables[long(i)] = self.variables[key]
-			self.variableIDs[key] = long(i)
-			self.variableNames[long(i)] = str(key)
-			self.variableAttributes[key] = {} #initializes attribute dictionaries
-			i += 1
+		for key in self.variableAttributes[self.variableNames[0]]:
+			self.variableAttributeIDs[key] = long(i)
+			self.variableAttributeNames[long(i)] = key
+			i+=1
+		pass
+
+	def addVariableName(self, variable_name, variable_id, default = []):
+		# see if variable_name and variable_id exist in variables keys
+		if self.variables.has_key(variable_name):
+			pass
+		else: # initialize variables with new key
+			self.variables[variable_name] = default
+
+		if self.variableAttributes.has_key(variable_name): #in name only
+			pass
+		else:
+			self.variableAttributes[variable_name] = {}
+
+		# see if variable_name and variable_id exist in variableNames and variableIDs maps
+		if self.variableNames.has_key(long(variable_id)):
+			old_variable_name = self.variableNames[long(variable_id)]
+			if old_variable_name != variable_name:
+				raise NameError('variable name \'' + str(variable_name) \
+					+ '\' conflicts with ' + old_variable_name +' found in map')
+			else: 
+				pass 
+		elif self.variableIDs.has_key(variable_name):
+			old_id = self.variableIDs[variable_name]
+			if old_id != variable_id:
+				raise NameError('variable id \'' + str(variable_id) \
+					+ '\' conflicts with ' + str(old_id) + ' found in map' )
+			else:
+				pass
+		else:
+			self.variableNames[long(variable_id)] = variable_name
+			self.variableIDs[variable_name] = long(variable_id)
+
+		
 
 	def getNumberOfVariables(self):
 		return len(self.variableNames.keys())
 
 	def getVariableID(self, variable_name):
 		"""takes a variable string and returns a long integer"""
-		return self.variableIDs[variable_name]
+		if self.doesVariableExist(variable_name):
+			return self.variableIDs[variable_name]
+		else:
+			raise NameError('variable +\'' + variable_name + '\' does not exist!')
 
 	def doesVariableExist(self,variable):
-		return self.variables.has_key(variable)
+		if type(variable) == str:
+			return self.variables.has_key(variable)
+		else:
+			if self.variableNames.has_key(long(variable)):
+				return self.variables.has_key(self.variableNames[variable])
+			else:
+				return False
 
 
 	def getVariableName(self,variable_id):
-		"""takes a variable id and returns a variable string name"""
-		return self.variableNames[variable_id]
+		"""takes a variable id and returns a variable string name. 
+		if the input is a str it returns the str."""
+		if self.doesVariableExist(variable_id):
+			if type(variable_id) == str:
+				return variable_id
+			else:
+				return self.variableNames[variable_id]
+		else:
+			raise NameError('variableID +\'' + str(variable_id) + '\' does not exist!')
 
 	def getNumberOfRecords(self, variable):
 		"""returns length of the flattened variable array"""
-		return len(self.variables[variable])
+		var_name = self.getVariableName(variable)
+		return len(self.variables[var_name])
 
 	def getVariableInt(self, variable):
-		if self.doesVariableExist(variable):
-			return self.variables[variable]
-		else:
-			return self.pyKameleon.FileReader.VARIABLE_DOES_NOT_EXIST
+		return self.variables[self.getVariableName(variable)]
 
 
 	def getVariableIntAtIndex(self, variable, index):
-		if self.doesVariableExist(variable):
-			return self.variables[variable][index]
-		else: 
-			return pyKameleon.FileReader.VARIABLE_DOES_NOT_EXIST
+		var_name = self.getVariableName(variable)
+		return self.variables[var_name][index]
 
 
 	def getVariable(self, variable, startIndex = None, count = None):
-		if self.doesVariableExist(variable):
-			return self.variables[variable]
-		else:
-			return pyKameleon.FileReader.VARIABLE_DOES_NOT_EXIST
+		var_name = self.getVariableName(variable)
+		return self.variables[var_name]
 
 
 	def getVariableAtIndex(self, variable, index):
-		if self.doesVariableExist(variable):
-			return self.variables[variable][index]
-		else:
-			return pyKameleon.FileReader.VARIABLE_DOES_NOT_EXIST
+		var_name = self.getVariableName(variable)
+		return self.variables[var_name][index]
 
 	def getGlobalAttribute(self, attribute):
 		"""Return a global attribute defined in the reader's config file"""
 		if self.globalAttributes.has_key(attribute):
 			return self.globalAttributes[attribute]
 		else:
-			return pyKameleon.FileReader.ATTRIBUTE_DOES_NOT_EXIST
+			raise NameError('Attribute \'' + attribute + '\' does not exist')
 
 	def getGlobalAttributeName(self, attribute):
 		if self.doesAttributeExist(attribute):
 			return self.globalAttributes[attribute].getAttributeName()
 		else:
-			return pyKameleon.FileReader.ATTRIBUTE_DOES_NOT_EXIST
+			raise NameError('Attribute \'' + attribute + '\' does not exist')
 
-	def doesAttributeExist(self, attribute):
+	def doesAttributeExist(self, attribute_name):
 		"""checks if global attribute exists"""
-		return self.globalAttributes.has_key(attribute)
+		# print '\tchecking if ', attribute_name, 'exists:', self.globalAttributes.has_key(attribute_name)
+		return self.globalAttributes.has_key(attribute_name)
 
 	def initializeGlobalAttributeIDs(self):
 		"""assign attribute ids. Note, only run this after all attribute names are loaded!"""
@@ -179,6 +240,7 @@ class pyFileReader(pyKameleon.FileReader):
 		for key, value in self.globalAttributes.items():
 			self.globalAttributes[long(i)] = value
 			i += 1
+
 
 	def getNumberOfGlobalAttributes(self):
 		return self.numGAttributes
@@ -189,9 +251,30 @@ class pyFileReader(pyKameleon.FileReader):
 			if self.variableAttributes[variable].has_key(attribute):
 				return self.variableAttributes[variable][attribute]
 			else:
-				return pyKameleon.FileReader.ATTRIBUTE_DOES_NOT_EXIST
+				raise NameError('Attribute \'' + attribute + '\' does not exist')
 		else:
-			return pyKameleon.FileReader.VARIABLE_DOES_NOT_EXIST
+			raise NameError('Variable \'' + variable + '\' does not exist')
+
+	def getVariableAttributeID(self, attribute_name):
+		if self.variableAttributeIDs.has_key(attribute_name):
+			return self.variableAttributeIDs[attribute_name]
+		else:
+			raise NameError('variable attribute \''+str(attribute_name)+'\' does not exist')
+
+	def getVariableAttributeName(self, attribute_id):
+		"""Return name of specified attribute_id. Note: All variables share the same attribute names."""
+		if self.variableAttributeNames.has_key(attribute_id):
+			return self.variableAttributeNames[attribute_id]
+		else:
+			raise NameError('variable attribute id \''+str(attribute_id)+'\' does not exist')
+
+	def getVariableAttributeNames(self):
+		"""Return std::vector<string> of Attribute names"""
+		attr_names = pyKameleon.vectorString()
+		for attr_id, name in self.variableAttributeNames.items():
+			attr_names.append(name)
+		return attr_names
+
 
 	def getNumberOfVariableAttributes(self):
 		"""Assumes all variables have the same number of attributes! """
@@ -200,6 +283,14 @@ class pyFileReader(pyKameleon.FileReader):
 		return len(variable_attrs.keys())
 
 
+class Test_pyFileReader_is_subclass(unittest.TestCase):
+	def setUp(self):
+		print 'subclassing test:'
+		self.testReader = pyFileReader()
+
+	def test_pyFileReader_subclass(self):
+		print '\tchecking if pyFileReader is actually a subclass of ccmc::FileReader'
+		self.assertTrue(issubclass(self.testReader.__class__, pyKameleon.FileReader))
 
 class Test_pyFileReader_Global_Attributes(unittest.TestCase):
 	def setUp(self):
@@ -220,11 +311,12 @@ class Test_pyFileReader_Global_Attributes(unittest.TestCase):
 
 	def test_getGlobalAttributeName(self):
 		print '\tchecking retrieval of global attribute name'
-		self.assertEqual(self.testAttribute.getAttributeName(), 'model_name')
+		self.assertEqual(self.testReader.getGlobalAttributeName(0), 'model_name')
 
 	def test_getGlobalAttributeValue(self):
 		print '\tchecking retrieval of global attribute value'
-		self.assertEqual(self.testAttribute.getAttributeValue(), 'testModel')
+		glob_attr = self.testReader.getGlobalAttribute('model_name')
+		self.assertEqual(glob_attr.getAttributeValue(), 'testModel')
 
 	def test_getGlobalAttribute_by_id(self):
 		print '\tchecking global attribute retrieval by id'
@@ -243,16 +335,28 @@ class Test_pyFileReader_Variable_Attributes(unittest.TestCase):
 		self.testReader.variableAttributes['power']['amount'] = Attribute('value', 9001.)
 		self.testReader.variableAttributes['money']['units'] = Attribute('unit', 'pesos')
 		self.testReader.variableAttributes['money']['amount'] = Attribute('value', 'over 9000!!')
+		self.testReader.initializeVariableAttributeIDs()
 
 	def test_getVariableAttribute(self):
 		print '\tchecking that variable attributes can be retrieved'
 		self.assertEqual(self.testReader.getVariableAttribute('power','units'), self.unitsAttr)
-		self.assertEqual(self.testReader.getVariableAttribute('missing_variable','units'),pyKameleon.FileReader.VARIABLE_DOES_NOT_EXIST)
-		self.assertEqual(self.testReader.getVariableAttribute('power','missing_attr'),pyKameleon.FileReader.ATTRIBUTE_DOES_NOT_EXIST)
+		with self.assertRaises(NameError): self.testReader.getVariableAttribute('missing_variable','units')
+		with self.assertRaises(NameError): self.testReader.getVariableAttribute('power','missing_attr')
 
 	def test_getNumberOfVariableAttributes(self):
 		print '\tchecking that number of variable attributes is right'
 		self.assertEqual(self.testReader.getNumberOfVariableAttributes(), 2)
+
+	def test_getVariableAttributeName(self):
+		print '\tchecking that variable attribute names can be retrived by ID'
+		attr_id = self.testReader.getVariableAttributeID('units')
+		self.assertEqual(self.testReader.getVariableAttributeName(attr_id), 'units')
+		with self.assertRaises(NameError): self.testReader.getVariableAttributeName(3)
+
+	def test_getVariableAttributeNames(self):
+		print '\tchecking that variable attribute names return string vector'
+		self.assertEqual(self.testReader.getVariableAttributeNames()[0], 'units')
+		self.assertEqual(type(self.testReader.getVariableAttributeNames()), pyKameleon.vectorString)
 
 
 class Test_INPUT_OUTPUT(unittest.TestCase):
@@ -264,8 +368,10 @@ class Test_INPUT_OUTPUT(unittest.TestCase):
 	def test_open(self):
 		print '\tchecking that open() returns FileReader.OK'
 		self.assertEqual(self.testReader.open('SomeDataFile.dat'), pyKameleon.FileReader.OK)
-		self.assertEqual(self.testReader.current_filename, 'SomeDataFile.dat')
 
+	def test_getCurrentFilename(self):
+		print '\tchecking that current filename can be retrieved'
+		self.assertEqual(self.testReader.getCurrentFilename(), 'SomeDataFile.dat')
 
 	def test_closeFile(self):
 		print '\tcheck that closing file works'
@@ -275,7 +381,7 @@ class Test_pyFileReader_Variable_Methods(unittest.TestCase):
 	def setUp(self):
 		print 'Variable test:'
 		self.testReader = pyFileReader()
-		self.rho = fillRandom(count=30)
+		self.rho = fillRandom(type = 'float', count=30)
 		self.topology = fillRandom('int')
 		self.testReader.variables['rho'] = self.rho
 		self.testReader.variables['topology'] = self.topology
@@ -287,9 +393,18 @@ class Test_pyFileReader_Variable_Methods(unittest.TestCase):
 		variable_id = self.testReader.getVariableID('rho')
 		self.assertTrue(self.testReader.doesVariableExist(variable_id))
 
-	def test_variable_length(self):
+	def test_add_variable_name(self):
+		print '\tchecking that addVariableName works'
+		self.testReader.addVariableName('density', 5)
+		with self.assertRaises(NameError): self.testReader.addVariableName('density', 3)
+		self.assertTrue(self.testReader.doesVariableExist('density'))
+		self.assertTrue(self.testReader.doesVariableExist(5))
+
+	def test_getNumberOfRecords(self):
 		print '\tchecking variable length'
 		self.assertEqual(self.testReader.getNumberOfRecords('rho'), 30)
+		self.assertEqual(self.testReader.getNumberOfRecords(self.testReader.getVariableID('rho')), 30)
+		with self.assertRaises(NameError):self.testReader.getNumberOfRecords('missing')
 
 	def test_getNumberOfVariables(self):
 		print '\tchecking that number of variables is correct'
@@ -298,8 +413,10 @@ class Test_pyFileReader_Variable_Methods(unittest.TestCase):
 	def test_getVariable(self):
 		print '\tchecking that getVariable() returns the correct variable'
 		self.assertEqual(self.testReader.getVariable('rho'), self.rho)
-		self.assertEqual(self.testReader.getVariable('topology'), self.topology)
-		self.assertEqual(self.testReader.getVariable('missing'), self.testReader.VARIABLE_DOES_NOT_EXIST)
+		self.assertEqual(self.testReader.getVariableInt('topology'), self.topology)
+		self.assertEqual(type(self.testReader.getVariable('topology')), pyKameleon.vectorInt)
+		with self.assertRaises(NameError):self.testReader.getVariable('missing')
+
 
 
 	def test_getVariable_byID(self):
@@ -311,10 +428,12 @@ class Test_pyFileReader_Variable_Methods(unittest.TestCase):
 		print '\tchecking default getVariableID'
 		self.assertEqual(self.testReader.getVariableID('rho'), self.testReader.variableIDs['rho'])
 		self.assertEqual(type(self.testReader.getVariableID('rho')), long)
+		with self.assertRaises(NameError): self.testReader.getVariableID('missing')
 
 	def test_getVariableName(self):
 		print '\tchecking default getVariableName'
 		self.assertEqual(self.testReader.getVariableName(self.testReader.variableIDs['rho']), 'rho')
+		with self.assertRaises(NameError): self.testReader.getVariableName(5)
 	
 	def test_getVariableAtIndex(self):
 		print '\tchecking that getVariableAtIndex() returns the correct value'
@@ -325,7 +444,7 @@ class Test_pyFileReader_Variable_Methods(unittest.TestCase):
 		print '\tchecking that getVariableAtIndex() fails correctly'
 		with self.assertRaises(IndexError): self.testReader.getVariableAtIndex('rho', len(self.rho))
 		with self.assertRaises(IndexError):	self.testReader.getVariableIntAtIndex('topology',len(self.topology))
-		self.assertEqual(self.testReader.getVariableIntAtIndex('missing',0), pyKameleon.FileReader.VARIABLE_DOES_NOT_EXIST)
+		with self.assertRaises(NameError):	self.testReader.getVariableIntAtIndex('missing',len(self.topology))
 
 
 class Test_Factory_methods(unittest.TestCase):

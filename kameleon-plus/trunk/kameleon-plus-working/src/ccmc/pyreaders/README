@@ -1,4 +1,27 @@
+embedded python project
+Idea: extend kameleon functionality through python readers and interpolators
+We can write python classes that inherit from kameleon's classes, which kameleon treats like any other class.
+So far, I have implemented the python filereaders which GeneralFileReader understands.
+
+How Kameleon works:
+FileReader: pure virtual base class that is subclassed to expose file contents to kameleon
+GeneralFileReader: reads from a file in a file-agnostic way. chooses the appropriate FileReader subclass
+Model: GeneralFileReader subclass. Manages variable maps. pure virtual createNewInterpolator()
+Interpolator: pure virtual base class that is subclassed by each model's interpolator
+Kameleon: checks if model_name matches one of the known Models, which all have interpolators implemented
+ToDo:
+	expose Interpolator pure virtual class to python
+	expose Model pure virtual createNewInterpolator
+	add Kameleon check to look for embedded attribute, then load the python model
+	
+
+
 ===========Installation Instructions for embedded python readers===============
+Make sure you build with boost's shared libraries!
+
+cmake -DPYTHON_LIBRARY=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Python -DPYTHON_INCLUDE_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -DBOOST_ROOT=/opt/local -DBUILD_SHARED_LIBS=ON .. && make -j8
+
+
 Requirements for generating Kameleon wrappers:
 	pyplusplus
 	gccxml

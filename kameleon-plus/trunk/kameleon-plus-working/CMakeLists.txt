@@ -20,15 +20,17 @@ set(KAMELEON_LIB_DIR "${KAMELEON_BASE_DIR}/lib")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KAMELEON_EXT_DIR})
 
 # Boost
-set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)  
-set(Boost_USE_STATIC_RUNTIME ON) 
-find_package(Boost 1.54.0)
+set(Boost_USE_STATIC_RUNTIME OFF) 
+
+
+find_package(Boost 1.54.0 COMPONENTS python)
 # find_package(Boost 1.54.0  REQUIRED COMPONENTS thread )
 message(STATUS "BOOST_ROOT=" ${BOOST_ROOT})
 
 # HDF5
-option(HDF5_USE_STATIC_LIBRARIES "Use HDF5 static libraries" ON)
+option(HDF5_USE_STATIC_LIBRARIES "Use HDF5 static libraries" OFF)
 find_package(HDF5 REQUIRED COMPONENTS C CXX)
 
 #Desired functionality: If the HDF5 library is installed, build by default with HDF5
@@ -57,6 +59,8 @@ configure_file (
 	${PROJECT_BINARY_DIR}/kameleon-plus-Config.h
 )
 
+# pyreaders
+# add_subdirectory(${KAMELEON_SRC_DIR}/ccmc/pyreaders)
 
 # CCMC
 set(CCMC_ROOT_DIR "${KAMELEON_SRC_DIR}/ccmc")
@@ -65,7 +69,7 @@ add_subdirectory(${CCMC_ROOT_DIR})
 
 set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/examples")
 set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example")
-
+FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c++)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/fortran)

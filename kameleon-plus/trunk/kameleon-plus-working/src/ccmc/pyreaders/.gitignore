@@ -1,0 +1,4 @@
+*.pyc
+/build/*
+/../../../../../../KameleonConverter6/trunk/bin/*
+

@@ -19,6 +19,7 @@ namespace ccmc
 	 */
 	Model::Model()
 	{
+		std::cout << "model constructor called" << std::endl; 
 		missingValue = ccmc::defaults::missingValue;
 		units_ = "units";
 		variablesAdded = 0;
@@ -78,6 +79,7 @@ namespace ccmc
 		variableDataInt.clear();
 		variableDataByID.clear();
 		variableDataIntByID.clear();
+		std::cout << "Model calling  GeneralFileReader::close()"<<std::endl;
 
 		return GeneralFileReader::close();
 	}

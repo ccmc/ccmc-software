@@ -60,6 +60,7 @@ namespace ccmc
 	 */
 	long FileReader::close()
 	{
+		std::cout << "c++ close() calling closeFile()" << std::endl;
 		long status = closeFile();
 		current_filename = "";
 		variableIDs.clear();

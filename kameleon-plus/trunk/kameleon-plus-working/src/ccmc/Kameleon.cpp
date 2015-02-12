@@ -65,9 +65,11 @@ namespace ccmc
 	 */
 	Kameleon::~Kameleon()
 	{
+		std::cout << "Kameleon object self destructing" << std::endl;
 
 		if (model != NULL)
 		{
+			std::cout << "Kameleon object closing model" << std::endl;
 			model->close();
 			delete model;
 		}
@@ -385,6 +387,7 @@ namespace ccmc
 	 */
 	long Kameleon::close()
 	{
+		std::cout<< "Kameleon::close() calling model's close"<< std::endl;
 		if (model != NULL)
 		{
 			model->close();

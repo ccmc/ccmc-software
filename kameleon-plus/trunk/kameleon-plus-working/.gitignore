@@ -1,0 +1,5 @@
+#ignore the following files
+
+/doc/html
+/doc/latex
+/doc/xml

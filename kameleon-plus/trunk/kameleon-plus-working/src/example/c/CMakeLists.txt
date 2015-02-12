@@ -29,6 +29,9 @@ message(STATUS "c++/ Include boost directories: " ${Boost_INCLUDE_DIRS})
 include_directories(${CDF_INCLUDES})
 message(STATUS "c++/ Include CDF: " ${CDF_INCLUDES})
 
+# embedded python
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
+
 
 # link ccmc_wrapper_c
 target_link_libraries(kameleon_compat_test ccmc ccmc_wrapper_c)

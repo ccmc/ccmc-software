@@ -40,6 +40,9 @@ message(STATUS "c++/ Include boost directories: " ${Boost_INCLUDE_DIRS})
 include_directories(${CDF_INCLUDES})
 message(STATUS "c++/ Include CDF: " ${CDF_INCLUDES})
 
+# python embedding
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
+message(STATUS "c++/ Include python embedding directory: " ${PYTHON_INCLUDE_DIRS})
 
 # link ccmc
 target_link_libraries(adapt3d_test ccmc)

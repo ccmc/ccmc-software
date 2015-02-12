@@ -36,6 +36,8 @@ message(STATUS "c++/ Include boost directories: " ${Boost_INCLUDE_DIRS})
 include_directories(${CDF_INCLUDES})
 message(STATUS "c++/ Include CDF: " ${CDF_INCLUDES})
 
+# embedded python
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
 
 # link ccmc ccmc_wrapper_c ccmc_wrapper_fortran
 target_link_libraries(generalfilereader_compat_f ccmc_wrapper_fortran)

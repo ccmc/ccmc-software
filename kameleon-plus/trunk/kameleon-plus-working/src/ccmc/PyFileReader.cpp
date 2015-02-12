@@ -1,19 +1,17 @@
 /*
- * FileReader.cpp
+ * PyFileReader.cpp
  *
- *  Created on: Apr 22, 2009
- *      Author: David Berrios
+ *  Created on: March 5, 2015
+ *      Author: Asher Pembroke
  */
 // #include "config.h"
 #ifndef HAVE_PYTHON
 #define HAVE_PYTHON
 #endif /* HAVE_PYTHON */
-#include "Kameleon-plus-Config.h"
-#include "FileReader.h"
-#include "CDFFileReader.h"
-#include "HDF5FileReader.h"
-#include "GeneralFileReader.h"
+#ifdef PYFILEREADER_
 #include <boost/python.hpp>
+#include "Kameleon-plus-Config.h"
+#include "PyFileReader.h"
 #include <string>
 #include <vector>
 #include <deque>
@@ -26,12 +24,12 @@ using namespace boost::python;
 namespace ccmc
 {
 
-	GeneralFileReader::GeneralFileReader()
+	PyFileReader::PyFileReader()
 	{
 		this->fileReader = NULL;
 	}
 
-	long GeneralFileReader::open(const std::string& filename)
+	long PyFileReader::open(const std::string& filename)
 	{
 
 		//check the file
@@ -76,22 +74,22 @@ namespace ccmc
 		Py_Initialize();
 
 		try {
+			// start here
 
 			// put pyreader build path in Kameleon-plus-Config.h
 			PyRun_SimpleString("import os,sys\nsys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders')\n");
 			PyRun_SimpleString("sys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build')\n");
-			PyRun_SimpleString("import testReader\n");
-			PyRun_SimpleString("pyFileReader_new = testReader.pyFileReader()");
-
-	        object main_module(handle<>(borrowed(PyImport_AddModule("__main__"))));
-	        object main_dictionary = main_module.attr("__dict__");
-	        object py_reader_obj = main_dictionary["pyFileReader_new"];
-			
+			PyRun_SimpleString("import pyKameleon\n");
+			PyRun_SimpleString("print os.getcwd()\n");
+			std::cout <<"Importing testReader" << std::endl;
+		    object testReader_module = import("testReader");
+		    std::cout <<"retrieving pyReader object"<< std::endl;
+		    object py_reader_class = testReader_module.attr("pyFileReader");
+		    object py_reader_obj = py_reader_class();
 		    std::cout <<"Extracting and assigning ccmc::FileReader pointer from pyFileReader" << std::endl;
 		    this->fileReader = extract< ccmc::FileReader* >(py_reader_obj);
-		    std::cout <<"GeneralFileReader opening file" << filename << std::endl;
+		    std::cout <<"opening file"<< std::endl;
 		    status = fileReader->open(filename);
-
 		    if (status == FileReader::OK)
 		    {
 		    	std::cout <<"Successful read!"<< std::endl;
@@ -108,179 +106,170 @@ namespace ccmc
 
 
 
-	std::vector<float>* GeneralFileReader::getVariable(const std::string& variable)
+	std::vector<float>* PyFileReader::getVariable(const std::string& variable)
 	{
 		return fileReader->getVariable(variable);
 	}
 
-	std::vector<float>* GeneralFileReader::getVariable(long variable)
+	std::vector<float>* PyFileReader::getVariable(long variable)
 	{
 		return fileReader->getVariable(variable);
 	}
 
-	std::vector<float>* GeneralFileReader::getVariable(const std::string& variable, long startIndex, long count)
+	std::vector<float>* PyFileReader::getVariable(const std::string& variable, long startIndex, long count)
 	{
 		return fileReader->getVariable(variable, startIndex, count);
 	}
 
-	std::vector<float>* GeneralFileReader::getVariable(long variable, long startIndex, long count)
+	std::vector<float>* PyFileReader::getVariable(long variable, long startIndex, long count)
 	{
 		return fileReader->getVariable(variable, startIndex, count);
 	}
 
-	float GeneralFileReader::getVariableAtIndex(const std::string& variable, long index)
+	float PyFileReader::getVariableAtIndex(const std::string& variable, long index)
 	{
 		return fileReader->getVariableAtIndex(variable, index);
 	}
 
-	float GeneralFileReader::getVariableAtIndex(long variable_id, long index)
+	float PyFileReader::getVariableAtIndex(long variable_id, long index)
 	{
 		return fileReader->getVariableAtIndex(variable_id, index);
 	}
 
-	std::vector<int>* GeneralFileReader::getVariableInt(const std::string& variable)
+	std::vector<int>* PyFileReader::getVariableInt(const std::string& variable)
 	{
 		return fileReader->getVariableInt(variable);
 	}
 
-	int GeneralFileReader:: getVariableIntAtIndex(const std::string& variable, long index)
+	int PyFileReader:: getVariableIntAtIndex(const std::string& variable, long index)
 	{
 		return fileReader->getVariableIntAtIndex(variable, index);
 	}
 
-	int GeneralFileReader:: getNumberOfGlobalAttributes()
+	int PyFileReader:: getNumberOfGlobalAttributes()
 	{
 		return fileReader->getNumberOfGlobalAttributes();
 	}
 
-	int GeneralFileReader:: getNumberOfVariables()
+	int PyFileReader:: getNumberOfVariables()
 	{
 		return fileReader->getNumberOfVariables();
 	}
 
-	int GeneralFileReader:: getNumberOfVariableAttributes()
+	int PyFileReader:: getNumberOfVariableAttributes()
 	{
 		return fileReader->getNumberOfVariableAttributes();
 	}
 
-	long GeneralFileReader:: getNumberOfRecords(const std::string& variable)
+	long PyFileReader:: getNumberOfRecords(const std::string& variable)
 	{
 		return fileReader->getNumberOfRecords(variable);
 	}
 
-	long GeneralFileReader:: getNumberOfRecords(long variable_id)
+	long PyFileReader:: getNumberOfRecords(long variable_id)
 	{
 		return fileReader->getNumberOfRecords(variable_id);
 	}
 
-	long GeneralFileReader:: getVariableID(const std::string& variable)
+	long PyFileReader:: getVariableID(const std::string& variable)
 	{
 		return fileReader->getVariableID(variable);
 	}
 
-	std::string GeneralFileReader::getVariableName(long variable_id)
+	std::string PyFileReader::getVariableName(long variable_id)
 	{
 		return fileReader->getVariableName(variable_id);
 	}
 
-	Attribute GeneralFileReader::getGlobalAttribute(long i)
+	Attribute PyFileReader::getGlobalAttribute(long i)
 	{
 		return fileReader->getGlobalAttribute(i);
 	}
 
-	std::string GeneralFileReader::getGlobalAttributeName(long attribute_id)
+	std::string PyFileReader::getGlobalAttributeName(long attribute_id)
 	{
 		return fileReader->getGlobalAttributeName(attribute_id);
 	}
 
-	std::string GeneralFileReader::getVariableAttributeName(long attribute_id)
+	std::string PyFileReader::getVariableAttributeName(long attribute_id)
 	{
 		return fileReader->getVariableAttributeName(attribute_id);
 	}
 
-	Attribute GeneralFileReader::getGlobalAttribute(const std::string& attribute)
+	Attribute PyFileReader::getGlobalAttribute(const std::string& attribute)
 	{
 		return fileReader->getGlobalAttribute(attribute);
 	}
 
-	Attribute GeneralFileReader::getVariableAttribute(const std::string& variable, const std::string& attribute)
+	Attribute PyFileReader::getVariableAttribute(const std::string& variable, const std::string& attribute)
 	{
 		return fileReader->getVariableAttribute(variable, attribute);
 	}
 
-	std::vector<std::string> GeneralFileReader::getVariableAttributeNames()
+	std::vector<std::string> PyFileReader::getVariableAttributeNames()
 	{
 		return fileReader->getVariableAttributeNames();
 	}
 
-	bool GeneralFileReader::doesAttributeExist(const std::string& attribute)
+	bool PyFileReader::doesAttributeExist(const std::string& attribute)
 	{
+
+#ifdef HAVE_PYTHON
+		try{
+			std::cout <<" c++ seeing if attribute exists" << std::endl;
+			return fileReader->doesAttributeExist(attribute);
+			} catch (error_already_set) {
+			PyErr_Print();
+		}
+#endif HAVE_PYTHON
 
 		return fileReader->doesAttributeExist(attribute);
 		
 	}
 
-	bool GeneralFileReader::doesVariableExist(const std::string& variable)
+	bool PyFileReader::doesVariableExist(const std::string& variable)
 	{
 		return fileReader->doesVariableExist(variable);
 	}
 
-	long GeneralFileReader:: close()
+	long PyFileReader:: close()
 	{
-#ifdef HAVE_PYTHON
-		// ToDo: Find out what happens if multiple pyReaders are used
-		if (Py_IsInitialized())
-		{
-			std::cout << "GeneralFileReader:: close()" << std::endl;
-			long status = fileReader->close();
-			std::cout << "GeneralFileReader:: close() Closing Python interpreters" << std::endl;
-			Py_Finalize();
-			fileReader = NULL;
-			return status;
-		}
-		
-#endif /* HAVE_PYTHON */
-
-
 		long status = fileReader->close();
 		delete fileReader;
 		fileReader = NULL;
 		return status;
 	}
 
-	const std::string& GeneralFileReader::getCurrentFilename()
+	const std::string& PyFileReader::getCurrentFilename()
 	{
 		return fileReader->getCurrentFilename();
 	}
 
-	GeneralFileReader::~GeneralFileReader()
+	PyFileReader::~PyFileReader()
 	{
 		if (fileReader != NULL)
-			std::cout << "~GeneralFileReader() calling GeneralFileReader::close()" << std::endl;
 			close();
 
 #ifdef HAVE_PYTHON
 		// ToDo: Find out what happens if multiple pyReaders are used
 		if (Py_IsInitialized())
 		{
-			std::cout << "~GeneralFileReader() Closing Python interpreters" << std::endl;
+			std::cout << "Closing Python interpreters" << std::endl;
 			Py_Finalize();
 		}
 		
 #endif /* HAVE_PYTHON */
 	}
 
-	void GeneralFileReader::initializeVariableIDs()
+	void PyFileReader::initializeVariableIDs()
 	{
 		fileReader->initializeVariableIDs();
 	}
 
-	void GeneralFileReader::initializeVariableNames()
+	void PyFileReader::initializeVariableNames()
 	{
 		fileReader->initializeVariableNames();
 	}
 
-
-
-
 }
+#endif
