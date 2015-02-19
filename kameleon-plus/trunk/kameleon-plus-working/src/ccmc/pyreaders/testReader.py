@@ -109,7 +109,7 @@ class pyFileReader(pyKameleon.FileReader):
 			If variable names exists, nothing happens"""
 		# print '\tinitializing variableIds map!'
 		if len(self.variableNames) == 0:
-			print 'initializing variable names from variables dict'
+			# print 'initializing variable names from variables dict'
 			i = 0
 			for key in self.variables.keys():
 				# self.variables[long(i)] = self.variables[key] #removed redundant id key. Let's avoid copies and only query on names

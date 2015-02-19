@@ -11,6 +11,8 @@ import ConfigParser
 from scipy.io import FortranFile
 from fortranfile import FortranFile as FF
 import numpy as np
+from collections import defaultdict
+from operator import itemgetter, attrgetter
 
 
 """Creating reader for ARMS code. The idea is to treat ARMS like a batsrus file. We first need to understand what has to be in a batsrus file,
@@ -52,6 +54,9 @@ class readARMS(testReader.pyFileReader):
 		if (config_file != None):
 			self.Config = testReader.getConfig(config_file)
 
+		self.tree_data = {}
+		self.leaf_data = {}
+		self.roots = [] # sorted by R,T,P bounding box minima
 
 	def read_ARMS_header(self, header_filename):
 		"""Read gloabl attributes from file """
@@ -64,10 +69,10 @@ class readARMS(testReader.pyFileReader):
 
 		# get grid type
 		line = header_file.readline().split()
-		grid_type = line[0]
-		self.globalAttributes['grid_type'] = Attribute('grid_type', grid_type)
+		self.grid_type = line[0]
+		self.globalAttributes['grid_type'] = Attribute('grid_type', self.grid_type)
 
-		if grid_type == 'Spherical_Exponential':
+		if self.grid_type == 'Spherical_Exponential':
 			components = ['R', 'T', 'P']
 		else:
 			components = ['x', 'y', 'z'] # just guessing here...
@@ -118,111 +123,221 @@ class readARMS(testReader.pyFileReader):
 
 				for i in range(int(number_components)+1):
 					if i == int(number_components):
-						var_name = var_base_name + '_mag'
+						val, attr = header_file.readline().split()
+						self.globalAttributes[var_base_name+'_mag_min'] = Attribute(var_base_name+'_mag_min', float(val))
+
+						val, attr = header_file.readline().split()
+						self.globalAttributes[var_base_name+'_mag_max'] = Attribute(var_base_name+'_mag_max', float(val))
+
+						
 					else:
 						var_name = var_base_name + '_' + components[i]
 
-					self.addVariableName(var_name, var_num)
-					self.variableAttributes[var_name]['units'] = Attribute('units', units)
-					self.variableAttributes[var_name]['scale_factor'] = Attribute('scale_factor', float(scale_factor))
+						self.addVariableName(var_name, var_num)
+						self.variableAttributes[var_name]['units'] = Attribute('units', units)
+						self.variableAttributes[var_name]['scale_factor'] = Attribute('scale_factor', float(scale_factor))
 
-					# get min and max values (what are the valid_min valid_max values???)
-					val, attr = header_file.readline().split()
-					self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
+						# get min and max values (what are the valid_min valid_max values???)
+						val, attr = header_file.readline().split()
+						self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
 
-					val, attr = header_file.readline().split()
-					self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
+						val, attr = header_file.readline().split()
+						self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
 
-					var_num += 1
-
+						var_num += 1
 
 	def read_ARMS_data(self, filename):
 		"""Reads in the arms data files """
 
-		header_dtype = np.dtype('>i4')
-		f = FortranFile(filename, 'r', header_dtype = header_dtype)
-		
-		n_chars = f._read_size()[0]
-		print 'size:', n_chars
-		char_dtype = np.dtype('a'+str(n_chars))
+		f = file(filename)
+		s = f.read()
 
-		model_name = f.read_record(char_dtype)
-		print model_name
+		endian = '>'
+		offset = [0]
+		header_dtype = np.dtype(endian+'u4')
 
-		endian = '<'
-		# dt = np.dtype(endian+'a'+str(size))
-		ff = FF(filename, endian)
-		try:
-			model_name = ff.readRecord()
-		except IOError:
-			ff.close()
+		model_name_length = np.frombuffer(s, dtype=header_dtype, offset = offset[0], count=1)[0]
+		if model_name_length > 100:
+			print 'header length too long, switching endian'
 			endian = '>'
-			ff = FF(filename, endian)
-			model_name = ff.readRecord()
+			header_dtype = np.dtype(endian+'u4')
+			model_name_length = np.frombuffer(s, dtype=endian+'u4', offset = offset[0], count=1)[0]
 
-		print 'file endian: ', endian
-		print 'model name is:', model_name
+
+		def read_record(s, dtype, count=1, offset=None):
+			"""offset is a mutable list"""
+			# print 'input offset', offset[0]
+			if offset == None:
+				offset = [0]
+			else:
+				# print 'rec length:', np.frombuffer(s, dtype = header_dtype, count =1, offset =offset[0])[0], 'bytes'
+				offset[0] += header_dtype.itemsize #record header
+				result = np.frombuffer(s, dtype=dtype, count=count, offset=offset[0])
+				offset[0] += result.itemsize*count + header_dtype.itemsize #footer
+			return result
 
 		#set model name
+		model_name = read_record(s,'S'+str(model_name_length), offset=offset)[0]
 		self.globalAttributes['model_name'] = Attribute('model_name', model_name)
 
-		# print 'header length:', f._header_length
-		# #try to read sim_time using numpy
-		# # dt = np.dtype([int, long])
-           
-		# # time = np.fromfile(f,dtype=dt)
 
-		# #set model simultation time
-		# time = f.readReals()[0]
-		# self.globalAttributes['sim_time'] = Attribute('sim_time', float(time))
+		#set model time
+		model_time = read_record(s, endian+'f1', offset = offset)[0]
+		self.globalAttributes['sim_time'] = Attribute('sim_time', float(model_time))
 
-		# num_total_blocks, num_leaf_blocks, new_grid_flag = f.readInts()
-		# self.globalAttributes['num_total_blocks'] = Attribute('num_total_blocks', int(num_total_blocks))
-		# self.globalAttributes['num_leaf_blocks'] = Attribute('num_leaf_blocks', int(num_leaf_blocks))
-		# self.globalAttributes['new_grid_flag'] = Attribute('new_grid_flag', int(new_grid_flag))
+		# get number of total blocks, leaf blocks, and new_grid_flag
+		
+		num_total_blocks, num_leaf_blocks, new_grid_flag = read_record(s, endian+'i4', 3, offset = offset)
+		print 'offset:', offset
+		print 'total blocks, leaf blocks, new grid:', num_total_blocks, num_leaf_blocks, new_grid_flag
+
+		self.globalAttributes['num_total_blocks'] = Attribute('num_total_blocks', int(num_total_blocks))
+		self.globalAttributes['num_leaf_blocks'] = Attribute('num_leaf_blocks', int(num_leaf_blocks))
+		self.globalAttributes['new_grid_flag'] = Attribute('new_grid_flag', int(new_grid_flag))
+
+		ni = self.getGlobalAttribute('RBlockSize').getAttributeValue()
+		nj = self.getGlobalAttribute('TBlockSize').getAttributeValue()
+		nk = self.getGlobalAttribute('PBlockSize').getAttributeValue()
+		print 'number total blocks!', num_total_blocks
+		ancestors = 0
+		print 'dimensions', ni,nj,nk
+		print 'points per leaf:', ni*nj*nk
+
+		def create_block_datatype():
+			dtype_list = []
+			dtype_list.append(('tree_header', endian+'i4'))
+			dtype_list.append(('block_loc', endian +'2i4'))
+			dtype_list.append(('block_type', endian +'i4'))
+			dtype_list.append(('parent_loc', endian +'2i4'))
+			dtype_list.append(('child_loc', endian +'2,8i4'))
+			dtype_list.append(('tree_footer', endian+'i4'))
+			dtype_list.append(('bndbox_header', endian+'i4'))
+			dtype_list.append(('bndbox', endian+'6f4'))
+			dtype_list.append(('bndbox_footer', endian+'i4'))
+			return np.dtype(dtype_list)
+
+		block_dtype = create_block_datatype()
+
+		# variable_names = ['Mass_density','Velocity_R','Velocity_T','Velocity_P','Magnetic_Field_R','Magnetic_Field_T','Magnetic_Field_P']
+
+		def create_variable_datatype(self):
+			"""creates a custom datatype to view variable data"""
+			# note: this assumes order of variables in header matches data file, s.t. variableNames was initialized in the proper order.
+			variable_names = self.variableNames.values()
+			dtype_list = [('header', endian+'i4')]
+			for var_name in variable_names: dtype_list.append((var_name, endian + 'f4'))
+			dtype_list.append(('footer', endian+'i4'))
+			return np.dtype(dtype_list)
+		
+		variable_datatype = create_variable_datatype(self)
+		
+
+		for block_number in range(num_total_blocks): #num_total_blocks
+			block_data = np.frombuffer(s, dtype = block_dtype, count=1, offset = offset[0])
+			offset[0] += block_dtype.itemsize
+
+			block_key = tuple(block_data['block_loc'].flatten())
+
+			block_type = block_data['block_type']
+			parent_key = tuple(block_data['parent_loc'].flatten())
+			child_key = tuple(block_data['child_loc'].flatten())
+			bndbox = list(block_data['bndbox'][0].flatten())
+
+			if self.grid_type == 'Spherical_Exponential':
+				bndbox[2:4] = bndbox[3],bndbox[2]
+			
+			
+			self.tree_data[block_key] = [block_type, parent_key, child_key, bndbox]
+
+			# 1 = leaf, 2 = parent, 3 = grand-parent, etc
+			if block_type == 1: 
+				self.leaf_data[block_key] = np.frombuffer(s, dtype=variable_datatype, count = ni*nj*nk, offset = offset[0])
+				offset[0] += variable_datatype.itemsize*ni*nj*nk
+			
+			if parent_key == (-1, -1):
+				self.roots.append((
+					block_key[0],
+					block_key[1],
+				 	bndbox[0],
+				 	bndbox[2],
+					bndbox[4])
+				)
 
 
-		# ni = self.getGlobalAttribute('RBlockSize').getAttributeValue()
-		# nj = self.getGlobalAttribute('TBlockSize').getAttributeValue()
-		# nk = self.getGlobalAttribute('PBlockSize').getAttributeValue()
-		# print 'number total blocks!', num_total_blocks
-		# ancestors = 0
-
-
-
-		# for block_number in range(num_total_blocks):
-		# 	line = f.readInts() #lbpe(2), type, prnt(2), child(2,8)
-		# 	f.readReals() # bndbox(2,3)
-		# 	leaf_type = line[2] # 1 = leaf, 2 = parent, 3 = grand-parent, etc
-		# 	# use seek offset to skip the data
-		# 	if leaf_type == 1:
-		# 		for i in range(ni):
-		# 			for j in range(nj):
-		# 				for k in range(nk):
-		# 					f.readReals() # vars(N)
-		# 	else:
-		# 		if leaf_type == 5:
-		# 			print '-',
-		# 		elif leaf_type == 4: 
-		# 			print 'G',
-		# 		elif leaf_type == 3: 
-		# 			print 'g',
-		# 		elif leaf_type == 2: 
-		# 			print '.',
-		# 		else:
-		# 			print '^',
-
-		# 		ancestors += 1
-		# 		if ancestors%70 == 0: print '\n',
-
-		# print '\n'
-		# print 'ancestors counted:', ancestors
 		f.close()
 
+		self.sort_roots()
+		self.set_root_resolution()
+
+	def sort_roots(self):
+		print 'number of roots:', len(self.roots)
+		self.roots.sort(key=itemgetter(4))
+		self.roots.sort(key=itemgetter(3))
+		self.roots.sort(key=itemgetter(2))
+
+	def set_root_resolution(self):
+		r, theta, phi = [self.roots[0][2]], [self.roots[0][3]], [self.roots[0][4]]
+		for k in range(1,len(self.roots)):
+			phi.append(self.roots[k][4])
+			if phi[k] < phi[k-1]:
+				phi.pop()
+				break
+
+		nk = len(phi)
+
+		for j in range(1,len(self.roots)/nk):
+			theta.append(self.roots[j*nk][3])
+			if theta[j] < theta[j-1]:
+				theta.pop()
+				break
+
+		nj = len(theta)
+		ni = len(self.roots)/(nj*nk)
+		print 'ni,nj,nk=', ni,nj,nk
+
+		for i in range(1,ni):
+			r.append(self.roots[i*nj*nk][2])	
+
+		self.root_coord = (r,theta,phi)	
+
+		print theta
+		print phi
+		# self.plot_root_coord()
+		r_mid = (r[2]+r[1])/2
+		theta_mid = (theta[1]+theta[0])/2
+		phi_mid = (phi[1]+phi[0])/2
+		mid_loc = self.find_point(np.array([r_mid,theta_mid,phi_mid]))
+		print 'cell is:', mid_loc, mid_loc[0]*nj*nk+mid_loc[1]*nk+mid_loc[2]
 
 
+	def plot_root_coord(self, index = 2):
+		from mpl_toolkits.mplot3d import axes3d
+		import matplotlib.pyplot as plt
+		import numpy as np
+		# 
+		r, theta, phi = self.root_coord
 
+		fig = plt.figure()
+		ax = fig.add_subplot(111, projection='3d')
 
+		if index == 2:
+			rr,pp = np.meshgrid(r,phi, sparse=True)
+			xx = rr*np.cos(pp)
+			yy = rr*np.sin(pp)
+			zz = 0*xx
+
+		ax.plot_wireframe(rr,pp,yy)
+
+		plt.show()
+
+	def find_point(self,point):
+		print point
+		r, theta, phi = self.root_coord
+		print theta
+		i = np.searchsorted(r,point[0])-1
+		j = np.searchsorted(theta,point[1])-1
+		k = np.searchsorted(phi,point[2])-1
+		return i,j,k
 
 
 	def openFile(self, filename, readonly = True):
@@ -248,25 +363,28 @@ class Test_ARMS_Attributes(unittest.TestCase):
 	def test_variables_created(self):
 		self.assertTrue(self.armsreader.doesVariableExist('Mass_Density'))
 		with self.assertRaises(NameError): self.armsreader.getVariable('missing_variable')
-		for key, variable_name in self.armsreader.variableNames.items():
-			print 'key:', key, 'variable name:', variable_name
+		# for key, variable_name in self.armsreader.variableNames.items():
+		# 	print 'key:', key, 'variable name:', variable_name
 
-			for attr_id, attr_name in self.armsreader.variableAttributeNames.items():
-				attr = self.armsreader.variableAttributes[variable_name][attr_name]
-				print '\t', attr_id, attr.getAttributeName(), attr.getAttributeValue(), attr.getAttributeType()
+		# 	for attr_id, attr_name in self.armsreader.variableAttributeNames.items():
+		# 		attr = self.armsreader.variableAttributes[variable_name][attr_name]
+		# 		print '\t', attr_id, attr.getAttributeName(), attr.getAttributeValue(), attr.getAttributeType()
 
+		# print self.armsreader.variableAttributes
 	# def test_attributes_loaded(self):
+		print '\n'
 		print '\tchecking that model_name attributes exist'
 		self.assertTrue(self.armsreader.doesAttributeExist('model_name'))
 		print '\tchecking that grid_type attributes exist'
 		self.assertTrue(self.armsreader.doesAttributeExist('grid_type'))
-		print '\tglobal attributes:'
-		for key, attr in self.armsreader.globalAttributes.items():
-			print '\t ', attr.getAttributeName(),':', attr.getAttributeValue(), attr.getAttributeType()
+		# print '\tglobal attributes:'
+		# for key, attr in self.armsreader.globalAttributes.items():
+		# 	print '\t ', attr.getAttributeName(),':', attr.getAttributeValue(), attr.getAttributeType()
 
 
 def main():
 	print "Performing tests for ARMS reader"
+
 	unittest.main()
 
 if __name__ == '__main__':
