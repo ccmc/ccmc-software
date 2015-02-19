@@ -10,10 +10,11 @@ You may download an archived version of the code here: :download:`Kameleon-plus-
 
 .. highlight::console
 
-Once downloaded, create a directory to store the source and unpack into it::
+Once downloaded, create a directory to store the source, unzip and unpack into it::
 
-    mkdir ~/Kameleon-plus-source
-    tar -xzf Kameleon-plus-6.0_source.tar.bz2 --directory ~/Kameleon-plus-source
+    mkdir Kameleon-plus-source
+    bunzip2 Kameleon-plus-6.0_source.tar.bz2
+    tar -xf Kameleon-plus-6.0_source.tar --directory Kameleon-plus-source
 
 Requirements
 ------------ 
