@@ -87,7 +87,7 @@ class pyFileReader(pyKameleon.FileReader):
 
 	def openFile(self, filename, readonly = True):
 		""" Dummy method to be overriden in subclass.
-			Method should open open file and set current_filename. 
+			Method should open file and set current_filename. 
 			If open fails, please return self.OPEN_ERROR or self.FILE_DOES_NOT_EXIST"""
 
 		self.current_filename = filename #automatically invokes setCurrentFilename in c++
@@ -417,8 +417,6 @@ class Test_pyFileReader_Variable_Methods(unittest.TestCase):
 		self.assertEqual(type(self.testReader.getVariable('topology')), pyKameleon.vectorInt)
 		with self.assertRaises(NameError):self.testReader.getVariable('missing')
 
-
-
 	def test_getVariable_byID(self):
 		print '\tchecking that getVariable() returns the correct variable if id given'
 		variable_id = self.testReader.getVariableID('rho')
@@ -463,11 +461,11 @@ class Test_Factory_methods(unittest.TestCase):
 		reader = factory.createPyReader()
 		self.assertIs(issubclass(reader.__class__, pyKameleon.FileReader), True)
 
-	def test_pyReader_Factory_with_RCM(self):
-		print '\tchecking RCM.ini functionality'
-		factory = FileReaderFactory('RCM.ini')
-		reader = factory.createPyReader()
-		self.assertIs(issubclass(reader.__class__, pyKameleon.FileReader), True)
+	# def test_pyReader_Factory_with_RCM(self):
+	# 	print '\tchecking RCM.ini functionality'
+	# 	factory = FileReaderFactory('RCM.ini')
+	# 	reader = factory.createPyReader()
+	# 	self.assertIs(issubclass(reader.__class__, pyKameleon.FileReader), True)
 
 
 
