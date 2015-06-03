@@ -21,6 +21,7 @@ add_executable(open_ggcm_test open_ggcm_test.cpp)
 add_executable(swmf_iono_test swmf_iono_test.cpp)
 add_executable(time_interp time_interp.cpp)
 add_executable(tracer_prog tracer_prog.cpp)
+add_executable(pyModel_prog pyModel_prog.cpp)
 
 # include ccmc
 include_directories(${KAMELEON_SRC_DIR}) 
@@ -60,4 +61,5 @@ target_link_libraries(open_ggcm_test ccmc)
 target_link_libraries(swmf_iono_test ccmc)
 target_link_libraries(time_interp ccmc)
 target_link_libraries(tracer_prog ccmc)
+target_link_libraries(pyModel_prog ccmc)
 

@@ -19,7 +19,7 @@ namespace ccmc
 	 */
 	Model::Model()
 	{
-		std::cout << "model constructor called" << std::endl; 
+		// std::cout << "model constructor called" << std::endl; 
 		missingValue = ccmc::defaults::missingValue;
 		units_ = "units";
 		variablesAdded = 0;

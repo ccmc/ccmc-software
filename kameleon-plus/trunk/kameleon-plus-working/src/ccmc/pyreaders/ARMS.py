@@ -18,39 +18,8 @@ import matplotlib.pyplot as plt
 import math
 
 
-
-"""Creating reader for ARMS code. The idea is to treat ARMS like a batsrus file. We first need to understand what has to be in a batsrus file,
-	which lets us read in the ARMS results and interpolate with the BATSRUS interpolator.
-
-	BATSRUS variables:
-		block_x_min_ (float)
-		block_x_max_
-		block_y_min_
-		block_y_max_
-		block_z_min_
-		block_z_max_	
-
-		block_child_count_ (variable int)
-		block_x_center (float)
-		block_y_center
-		block_z_center
-
-		block_child_id_1_ (variable integers)
-		block_child_id_2_
-		block_child_id_3_
-		block_child_id_4_
-		block_child_id_5_
-		block_child_id_6_
-		block_child_id_7_
-		block_child_id_8_
-
-		block_at_amr_level_ (variable int)
-
-
-	 """
-
+"""Reader for the Adaptively Refined MHD Solver (ARMS) """
 class readARMS(testReader.pyFileReader):
-	"""Reader for the Adaptively Refined MHD Solver (ARMS) """
 	_bbx_tuple = collections.namedtuple('boundingBox', 'r_min r_max theta_min theta_max phi_min phi_max')
 	_tree_data_tuple = collections.namedtuple('block_info','block_type parent_key child_key bbx')
 
@@ -58,8 +27,9 @@ class readARMS(testReader.pyFileReader):
 		# This line is required to call the base class constructor
 		testReader.pyFileReader.__init__(self)
 
-		if (config_file != None):
-			self.Config = testReader.getConfig(config_file)
+		if config_file != None:
+			self._config = testReader.getConfig(config_file)
+			self.set_file_names()
 
 		self.tree_data = {}
 		self.leaf_data = {}
@@ -69,6 +39,8 @@ class readARMS(testReader.pyFileReader):
 		self.missing_value = -256.*-256.*-256.*-256.*-256.
 		self.leaf_iterations = 0
 
+	def hello(self):
+		print 'why hello there!'
 
 	def read_ARMS_header(self, header_filename):
 		"""Read gloabl attributes from file """
@@ -77,7 +49,10 @@ class readARMS(testReader.pyFileReader):
 		# get time step
 		line = header_file.readline().split()
 		time = line[0]
-		self.globalAttributes['timestep_time'] = Attribute('timestep_time', '2000-01-01T'+time+'.000Z')
+
+		#can get date from config
+		date = str(testReader.get_config_value(self._config,'MetaData', 'Date'))
+		self.globalAttributes['timestep_time'] = Attribute('timestep_time', date+'T'+time+'.000Z')
 
 		# get grid type
 		line = header_file.readline().split()
@@ -161,17 +136,16 @@ class readARMS(testReader.pyFileReader):
 
 	def read_ARMS_data(self, filename):
 		"""Reads in the arms data files """
-
+		print 'read_arms_data', filename
 		f = file(filename)
 		s = f.read()
 
-		endian = '>'
+		endian = '<'
 		offset = [0]
 		header_dtype = np.dtype(endian+'u4')
 
 		model_name_length = np.frombuffer(s, dtype=header_dtype, offset = offset[0], count=1)[0]
-		if model_name_length > 100:
-			print 'header length too long, switching endian'
+		if model_name_length > 100: #header length too long, switch endian
 			endian = '>'
 			header_dtype = np.dtype(endian+'u4')
 			model_name_length = np.frombuffer(s, dtype=endian+'u4', offset = offset[0], count=1)[0]
@@ -190,8 +164,8 @@ class readARMS(testReader.pyFileReader):
 			return result
 
 		#set model name
-		model_name = read_record(s,'S'+str(model_name_length), offset=offset)[0]
-		self.globalAttributes['model_name'] = Attribute('model_name', model_name)
+		python_model_name = read_record(s,'S'+str(model_name_length), offset=offset)[0]
+		self.globalAttributes['python_model_name'] = Attribute('python_model_name', str(python_model_name))
 
 
 		#set model time
@@ -201,8 +175,8 @@ class readARMS(testReader.pyFileReader):
 		# get number of total blocks, leaf blocks, and new_grid_flag
 		
 		num_total_blocks, num_leaf_blocks, new_grid_flag = read_record(s, endian+'i4', 3, offset = offset)
-		print 'offset:', offset
-		print 'total blocks, leaf blocks, new grid:', num_total_blocks, num_leaf_blocks, new_grid_flag
+		
+		# print 'total blocks, leaf blocks, new grid:', num_total_blocks, num_leaf_blocks, new_grid_flag
 
 		self.globalAttributes['num_total_blocks'] = Attribute('num_total_blocks', int(num_total_blocks))
 		self.globalAttributes['num_leaf_blocks'] = Attribute('num_leaf_blocks', int(num_leaf_blocks))
@@ -212,6 +186,7 @@ class readARMS(testReader.pyFileReader):
 		nj = self.getGlobalAttribute('TBlockSize').getAttributeValue()
 		nk = self.getGlobalAttribute('PBlockSize').getAttributeValue()
 		self.leaf_resolution = (ni,nj,nk)
+
 
 		def create_block_datatype():
 			dtype_list = []
@@ -274,8 +249,13 @@ class readARMS(testReader.pyFileReader):
 		self.set_root_ranges()
 
 	def sort_roots(self):
-		print 'number of roots:', len(self.roots)
+		# print 'number of roots:', len(self.roots)
 		self.roots.sort(key= lambda x: itemgetter(0,2,4)(x[1]))
+
+	def _print_tree_info(self):
+		for key,attr in self.globalAttributes.items():
+			print key, attr.getAttributeValue()
+
 
 	def set_root_ranges(self):
 		def get_root_range(self, min_getter, max_getter, stride = 1):
@@ -511,7 +491,6 @@ class readARMS(testReader.pyFileReader):
 
 		"""
 		r, theta, phi = itemgetter(0), itemgetter(1), itemgetter(2)
-		get_bbx =itemgetter(3)
 		ni,nj,nk = self.leaf_resolution
 
 		leaf_key = self.find_leaf(point, self.last_key)
@@ -523,8 +502,14 @@ class readARMS(testReader.pyFileReader):
 				pass
 			else:
 				self.visited[leaf_key] = self.bbx_mid(bbx)
-				
-			var_data = self.leaf_data[leaf_key][variable].T
+			
+			try:	
+				var_data = self.leaf_data[leaf_key][variable].T
+			except ValueError:
+				print 'available variables:', 
+				for var in self.variableNames.values(): print var,
+				raise
+
 
 			""" 
 				0    1      2     3 ni = 4
@@ -605,12 +590,25 @@ class readARMS(testReader.pyFileReader):
 			print 'var_data shape:', var_data.shape
 		return var_out
 
-	def openFile(self, filename, readonly = True):
-		print 'opening binary ARMS file', filename
-		self.current_filename = filename
+
+	def set_file_names(self):
+		self.header_file_name = testReader.get_config_value(self._config, 'Files', 'HeaderFile')
+		self.data_file_name = testReader.get_config_value(self._config, 'Files', 'DataFile')
+
+	def closeFile(self):
+		self.header_file.close()
+		self.data_file.close()
+
+
+	def openFile(self, config_file, readonly = True):
+		if config_file != None:
+			self._config = testReader.getConfig(config_file)
+			self.set_file_names()
+
+		self.current_filename = self.data_file_name
 		# self.variables['eeta'] = read_binary_file("eeta")
-		self.read_ARMS_header('/Users/apembrok/Work/DeVore/ARMs/kameleon.0447339')
-		self.read_ARMS_data(filename)
+		self.read_ARMS_header(self.header_file_name)
+		self.read_ARMS_data(self.data_file_name)
 		self.initializeVariableIDs()
 		self.initializeVariableAttributeIDs()
 		variables = self.variableNames.values()
@@ -655,7 +653,7 @@ class readARMS(testReader.pyFileReader):
 
 	
 
-	def plot_leaf_slice(self,ax,leaf_key,variable,pnt = None, slice_obj=slice(1), cartesian = True,
+	def plot_leaf_slice(self,ax,leaf_key,variable, slice_obj=slice(1), cartesian = True,
 			**contourf_kwargs):
 		bbx = self.tree_data[leaf_key].bbx
 		ni,nj,nk = self.leaf_resolution
@@ -663,21 +661,24 @@ class readARMS(testReader.pyFileReader):
 										bbx.theta_min:bbx.theta_max:np.complex(nj),
 										bbx.r_min:bbx.r_max:np.complex(ni)
 										]
-		if pnt == None:
-			p_r,p_th,p_ph = self.visited[leaf_key]
-		else:
-			p_r,p_th,p_ph = pnt
 
 		if cartesian:
 			ppk,ppj,ppi = readARMS.ARMS_to_cartesian(ppi,ppj,ppk)
-			pk,pj,pi = readARMS.ARMS_to_cartesian(p_r,p_th,p_ph)
 
-		ax.contourf(readARMS.get_slice(ppk,slice_obj),
-					readARMS.get_slice(ppi,slice_obj), 
-					readARMS.get_slice(self.leaf_data[leaf_key][variable],slice_obj),
-						**contourf_kwargs)
 
-		ax.scatter(pk,pi,marker='o',c='w',s=5)
+		sliced = readARMS.get_slice(self.leaf_data[leaf_key][variable],slice_obj)
+		try:
+			ax.contourf(readARMS.get_slice(ppk,slice_obj),readARMS.get_slice(ppi,slice_obj), sliced,
+							**contourf_kwargs)
+		except TypeError:
+			print "Can't plot slice with shape", sliced.shape
+			raise
+
+
+	def plot_visited_leaf_midpoints(self, ax, components = 'xz',marker='o',c='w',s=5, **scatterargs):
+		for key,(mid_r,mid_th,mid_ph) in self.visited.items():
+			mid_x,mid_y,mid_z = readARMS.ARMS_to_cartesian(mid_r,mid_th,mid_ph)
+			ax.scatter(mid_x,mid_z,marker=marker,c=c,s=s,**scatterargs)
 
 	@staticmethod
 	def get_slice(array,slice_obj = slice(1)): 
@@ -759,7 +760,7 @@ class readARMS(testReader.pyFileReader):
 
 	"""Maps variables onto tuple containing points. Points can be a tuple of positions in the form (x,y,z) where
 		each coordinated is a list or a numpy array of arbitrary dimension"""
-	def map_Variables(self, points, variables = None, input_coordinates = 'ARMS'):
+	def map(self, points, variables = None, input_coordinates = 'ARMS'):
 		if input_coordinates != 'ARMS':
 			rr,th,pp = readARMS.cartesian_to_ARMS(*points)
 		else:
@@ -831,7 +832,7 @@ class Test_ARMS_Attributes(unittest.TestCase):
 		print 'Testing ARMS attributes'
 		self.armsreader = readARMS()
 		print 'ARMS reader initialized'
-		self.armsreader.open('/Users/apembrok/Work/DeVore/ARMs/F/flicks.0447339')
+		self.armsreader.open('ARMS.ini')
 		print 'File opened'
 
 	def test_variables_created(self):
@@ -843,63 +844,23 @@ class Test_ARMS_Attributes(unittest.TestCase):
 			var_max = self.armsreader.getVariableAttribute(variable_name,'actual_max').getAttributeValue()
 			print 'var min, max', variable_name, var_min, var_max
 
-		# 	for attr_id, attr_name in self.armsreader.variableAttributeNames.items():
-		# 		attr = self.armsreader.variableAttributes[variable_name][attr_name]
-		# 		print '\t', attr_id, attr.getAttributeName(), attr.getAttributeValue(), attr.getAttributeType()
+			for attr_id, attr_name in self.armsreader.variableAttributeNames.items():
+				attr = self.armsreader.variableAttributes[variable_name][attr_name]
+				print '\t', attr_id, attr.getAttributeName(), attr.getAttributeValue(), attr.getAttributeType()
 
-		# print self.armsreader.variableAttributes
 		print '\n'
-		print '\tchecking that model_name attributes exist'
+		print '\tchecking that model_name attributes exist:', 
 		self.assertTrue(self.armsreader.doesAttributeExist('model_name'))
-		print '\tchecking that grid_type attributes exist'
+		print self.armsreader.globalAttributes['model_name'].getAttributeValue()
+		print '\tchecking that grid_type attributes exists:',
 		self.assertTrue(self.armsreader.doesAttributeExist('grid_type'))
-		# print '\tglobal attributes:'
-		# for key, attr in self.armsreader.globalAttributes.items():
-		# 	print '\t ', attr.getAttributeName(),':', attr.getAttributeValue(), attr.getAttributeType()
+		print self.armsreader.globalAttributes['grid_type'].getAttributeValue()
 
-		"""ARMS uses log10 for r, theta in [-pi, pi], phi in [-pi to pi]"""
-
-
-		xx,zz = np.mgrid[1.003:1.1:50j,-.025:0.025:50j]
-		yy = np.zeros(xx.shape)
-
-		import time
-		t0 = time.clock()
-		variables = self.armsreader.map_Variables((xx,yy,zz), input_coordinates = 'Cartesian')
-		elapsed = time.clock()-t0
-		seconds_per_interpolation = elapsed/xx.size
-		print 'map time:', elapsed, 'seconds'
-		print 'seconds per interpolation:', seconds_per_interpolation
-
-		br_contours = np.linspace(-4.1,35.0,40)
-		bth_contours = np.linspace(-17,17,40)
-
-		# fig = plt.figure()
-		# ax = fig.add_subplot(221)
-
-		# ax.contourf(xx,zz,variables.Magnetic_Field_R, levels = br_contours)
-
-		# ax = fig.add_subplot(222)
-		# ax.contourf(xx,zz,variables.Magnetic_Field_T, levels = bth_contours)
+		print '\tglobal attributes:'
+		for key, attr in self.armsreader.globalAttributes.items():
+			print '\t ', attr.getAttributeName(),':', attr.getAttributeValue(), attr.getAttributeType()
 
 
-
-		# ax = fig.add_subplot(223)
-		# for leaf_key, (p_r,p_th,p_ph) in self.armsreader.visited.items():
-		# 	self.armsreader.plot_leaf_slice(ax, leaf_key, 'Magnetic_Field_R', levels = br_contours)
-			
-		# ax = fig.add_subplot(224)
-		# for leaf_key, (p_r,p_th,p_ph) in self.armsreader.visited.items():
-		# 	self.armsreader.plot_leaf_slice(ax, leaf_key, 'Magnetic_Field_T', levels = bth_contours)
-
-		# plt.show()
-
-
-		# plt.scatter(rr.ravel(),th.ravel()); plt.show()
-
-		# ax = self.armsreader.plotVariable(rr,th,phi,None)
-
-		# self.armsreader.plot_root_coord()
 		
 
 def main():

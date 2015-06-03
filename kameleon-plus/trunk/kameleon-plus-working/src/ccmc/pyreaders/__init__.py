@@ -8,4 +8,4 @@ for f in glob.glob(os.path.dirname(__file__)+"/*.py"):
 		if os.path.isfile(f):
 			__all__.append(os.path.basename(f)[:-3])
 
-print __all__
+# print __all__

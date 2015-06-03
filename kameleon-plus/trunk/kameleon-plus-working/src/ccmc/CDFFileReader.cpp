@@ -76,7 +76,7 @@ namespace ccmc
 			} else
 			{
 				status = OPEN_ERROR;
-				std::cerr << "Error opening \"" << filename << "\"." << std::endl;
+				// std::cerr << "Error opening \"" << filename << "\"." << std::endl;
 				current_file_id = NULL;
 			}
 

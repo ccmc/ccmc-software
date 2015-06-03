@@ -21,7 +21,6 @@
 #include <fstream>
 #include <queue>
 
-using namespace boost::python;
 
 namespace ccmc
 {
@@ -70,34 +69,56 @@ namespace ccmc
 #endif /* HAVE_HDF5 */
 
 #ifdef HAVE_PYTHON
-		std::cout << "Checking if the file can be read by a python embedded reader" << std::endl;
+		// std::cout << "Checking if the file can be read by a python embedded reader" << std::endl;
 		delete fileReader;
 		
 		Py_Initialize();
-
+		namespace bp = boost::python;
+		bp::object main = bp::import("__main__");
+		this->python_namespace = main.attr("__dict__");
 		try {
 
-			// put pyreader build path in Kameleon-plus-Config.h
-			PyRun_SimpleString("import os,sys\nsys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders')\n");
-			PyRun_SimpleString("sys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build')\n");
-			PyRun_SimpleString("import testReader\n");
-			PyRun_SimpleString("pyFileReader_new = testReader.pyFileReader()");
+			bp::exec(
+				"import os,sys\n"
+				// "print sys.executable\n"
+				"sys.path.append(\'/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/\')\n"
+				"sys.path.append(\'/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/\')\n"
+				"sys.path.append(\'/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/\')\n"
+				"from pyreaders import testReader\n"
+				,this->python_namespace
+			);
 
-	        object main_module(handle<>(borrowed(PyImport_AddModule("__main__"))));
-	        object main_dictionary = main_module.attr("__dict__");
-	        object py_reader_obj = main_dictionary["pyFileReader_new"];
+			std::string run_string("factory = testReader.FileReaderFactory(\'"); 
+			run_string+= filename; 
+			run_string+= "\')\n";
+
+			bp::exec(run_string.c_str(),this->python_namespace);
+			bp::exec("python_reader = factory.createPyReader()\n",this->python_namespace);
+
+			// put pyreader build path in Kameleon-plus-Config.h
+			// PyRun_SimpleString("import os,sys\nsys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders')\n");
+			// PyRun_SimpleString("sys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build')\n");
+
+			// PyRun_SimpleString("import testReader\n");
+			// PyRun_SimpleString("print testReader.__dict__.keys()\n");
+			// std::string run_string("factory = testReader.FileReaderFactory(\'"); run_string+= filename; run_string+= "\')\n";
+			// PyRun_SimpleString(run_string.c_str());
+			// PyRun_SimpleString("python_reader = factory.createPyReader()\n");
+
+
+		    bp::object file_reader_obj = this->python_namespace["python_reader"];
 			
-		    std::cout <<"Extracting and assigning ccmc::FileReader pointer from pyFileReader" << std::endl;
-		    this->fileReader = extract< ccmc::FileReader* >(py_reader_obj);
-		    std::cout <<"GeneralFileReader opening file" << filename << std::endl;
+		    // std::cout <<"Extracting and assigning ccmc::FileReader pointer" << std::endl;
+		    this->fileReader = bp::extract< ccmc::FileReader* >(file_reader_obj);
+		    // std::cout <<"GeneralFileReader opening file" << filename << std::endl;
 		    status = fileReader->open(filename);
 
 		    if (status == FileReader::OK)
 		    {
-		    	std::cout <<"Successful read!"<< std::endl;
+		    	// std::cout <<"Successful read!"<< std::endl;
 		    	return status;
 		    }
-		} catch (error_already_set) {
+		} catch (bp::error_already_set) {
 			PyErr_Print();
 		}
 

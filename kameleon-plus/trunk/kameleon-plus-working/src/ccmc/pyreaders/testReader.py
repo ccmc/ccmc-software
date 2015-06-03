@@ -14,37 +14,47 @@ import inspect
 class FileReaderFactory(object):
 	def __init__(self, config_file = None):
 		if config_file == None:
-			print '\tFileReaderFactory called without config file, building default test reader' 
+			# print '\tFileReaderFactory called without config file, building default test reader' 
 			Config = ConfigParser.ConfigParser()
 			Config.add_section('Reader')
 			Config.set('Reader','pyreadermodule','testReader')
 			Config.set('Reader','pyfilereaderclass','pyFileReader')
-			self.Config = Config
+			self._config = Config
 		else:
-			print '\tFileReaderFactory called with', config_file 
-			self.Config = getConfig(config_file)
+			# print '\tFileReaderFactory called with', config_file 
+			self._config = getConfig(config_file)
+
+
 
 	def createPyReader(self):
-		pyReader_module_name = ConfigSectionMap(self.Config,"Reader")['pyReaderModule'.lower()]
-		pyReader_class_name = ConfigSectionMap(self.Config, "Reader")['pyFileReaderClass'.lower()]
+		pyReader_module_name = get_config_value(self._config,'Reader','pyReaderModule')
+		pyReader_class_name = get_config_value(self._config, 'Reader','pyFileReaderClass')
 		if pyReader_module_name == "testReader":
 			# print "using base pyFileReader"
 			return pyFileReader()
 		else:
-			print "\tattempting to return subclass", pyReader_class_name
-			try: 
-				#TODO: check path/to/pyReader.py case, if so add path to pythonpath
+
+			#TODO: check path/to/pyReader.py case, if so add path to pythonpath
+			try:
 				pyReader_module = __import__(pyReader_module_name)
-				print "\timported", pyReader_module_name
-
-				#TODO: check that pyReader_class is a subclass of FileReader
-				pyReader = getattr(pyReader_module, pyReader_class_name)()
-				assert issubclass(pyReader.__class__, pyKameleon.FileReader)				
-				pyReader.Config = self.Config
-				return pyReader
-
 			except:
-				raise ImportError("could not import " + pyReader_module_name)
+				print '\tcreatePyReader could not import', pyReader_module_name
+				raise
+			try:
+				pyReader = getattr(pyReader_module, pyReader_class_name)() #an object
+			except:
+				print '\tcould not instantiate subclass'
+				raise
+			try:
+				assert issubclass(pyReader.__class__, pyKameleon.FileReader)
+			except:
+				print pyReader.__class__, "is not a subclass of pyKameleon.FileReader"
+				raise
+
+			pyReader._config = self._config
+			return pyReader
+
+
 
 
 class pyFileReader(pyKameleon.FileReader):
@@ -84,6 +94,7 @@ class pyFileReader(pyKameleon.FileReader):
 		self.variableAttributes = {} #maps from variable str names to dictionaries of variable attributes
 		self.variableAttributeNames = {} #maps from attribute IDs to name
 		self.variableAttributeIDs = {} #maps from attribute names to IDs
+		self.globalAttributes['model_name']  = Attribute('model_name', 'python_model')
 
 	def openFile(self, filename, readonly = True):
 		""" Dummy method to be overriden in subclass.
@@ -160,7 +171,6 @@ class pyFileReader(pyKameleon.FileReader):
 			self.variableIDs[variable_name] = long(variable_id)
 
 		
-
 	def getNumberOfVariables(self):
 		return len(self.variableNames.keys())
 
@@ -456,8 +466,8 @@ class Test_Factory_methods(unittest.TestCase):
 		self.assertEqual(reader.__class__,pyFileReader)
 
 	def test_pyReader_Facotory_with_custom(self):
-		print '\tchecking that FileReaderFactory returns custom pyFileReader subclass'
-		factory = FileReaderFactory('kameleon.ini')
+		print '\tchecking that FileReaderFactory can return custom pyFileReader subclass'
+		factory = FileReaderFactory('ARMS.ini')
 		reader = factory.createPyReader()
 		self.assertIs(issubclass(reader.__class__, pyKameleon.FileReader), True)
 
@@ -466,7 +476,6 @@ class Test_Factory_methods(unittest.TestCase):
 	# 	factory = FileReaderFactory('RCM.ini')
 	# 	reader = factory.createPyReader()
 	# 	self.assertIs(issubclass(reader.__class__, pyKameleon.FileReader), True)
-
 
 
  
@@ -489,7 +498,11 @@ def fillRandom(type = 'float', count = 30):
 
 def getConfig(config_file):
 	Config = ConfigParser.ConfigParser()
-	Config.read(config_file)
+	try:
+		Config.read(config_file)
+	except:
+		print 'could not read config file'
+		raise
 	Config.sections()
 	return Config
 
@@ -506,7 +519,8 @@ def ConfigSectionMap(Config, section):
             dict1[option] = None
     return dict1
 
-
+def get_config_value(config, section, name):
+	return ConfigSectionMap(config,section)[name.lower()]
 
 def itersubclasses(cls, _seen=None):
     """

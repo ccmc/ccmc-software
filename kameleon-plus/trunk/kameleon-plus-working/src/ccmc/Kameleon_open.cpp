@@ -63,8 +63,13 @@ namespace ccmc
 				{
 					//sdt::cout <<"created LFM object" << std::endl;
 					model = new LFM();
-				} else //unknown model
+				} else if (modelName == "python_model") //embedded model, ooo
 				{
+					// model = new PythonModel();
+					//std::cout <<"created PythonModel object"
+				} else
+				{	//unknown model
+				
 
 					if (model != NULL)
 						delete model;

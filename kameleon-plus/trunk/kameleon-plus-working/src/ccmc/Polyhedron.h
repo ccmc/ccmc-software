@@ -165,7 +165,7 @@ namespace ccmc
 
 		neighbors.resize(faces.size()-1);
 		for (int i=0;i<neighbors.size();i++){
-			neighbors[i]=NULL;
+			neighbors[i]=0;
 		}
 		return;
 	}

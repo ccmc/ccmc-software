@@ -50,7 +50,7 @@ namespace ccmc
 
 	void FileReader::setCurrentFilename(const std::string& filename)
 	{
-		std::cout << "c++ setting current_filename to " << filename << std::endl;
+		// std::cout << "c++ setting current_filename to " << filename << std::endl;
 		this->current_filename = filename;
 	}
 
