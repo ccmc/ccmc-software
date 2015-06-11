@@ -41,6 +41,9 @@ endif()
 # embedded python readers
 FIND_PACKAGE(PythonLibs 2.7 REQUIRED)
 FIND_PACKAGE(PythonInterp)
+if(PYTHONINTERP_FOUND)
+    message(STATUS "ccmc/ - Python Interpreter:" ${PYTHON_EXECUTABLE})
+endif()
 INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS} )
 target_link_libraries(ccmc  ${PYTHON_LIBRARIES})
 
@@ -65,6 +68,10 @@ if(BUILD_HDF5)
 endif(BUILD_HDF5)
 
 
+# Pyreaders
+if(${Boost_FOUND})
+    add_subdirectory(pyreaders)
+endif(${Boost_FOUND})
 
 # Wrappers
 set(WRAPPERS_ROOT_DIR "${CCMC_ROOT_DIR}/wrappers")

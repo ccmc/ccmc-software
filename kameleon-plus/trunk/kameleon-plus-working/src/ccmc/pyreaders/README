@@ -38,6 +38,11 @@ To compile existing wrappers:
 3) Then build the pyKameleon module:
 	make -j8
 
+Potential error on Mac OSX:
+	Undefined symbols for architecture x86_64:
+  	"boost::python::objects::function_object ...
+
+
 You may run into issues involving xcode 5.1, cmake, gccxml and py++
     The problem: py++ wrapper generator fails to run when gccxml is invoked
     It appears that including standard libraries is the culprit
@@ -56,7 +61,7 @@ Then you may be running a different version of python than what is linked agains
 This can happen if you used homebrew to install boost, in which case you'll need to rebuild boost from source to get it to pick-up the default python libs:
 		brew uninstall boost
 		brew update
-		brew install --with-c++11 --build-from-source boost (This takes a while... about 10.5 minutes)
+		brew install --with-c++11 --build-from-source boost (This takes a while... about 10.5 minutes) (--with-python too!?)
 
 (See this post http://brianfosterallen.com/devblog/blog/2013/06/13/Using-Homebrew-s-Python-with-boost-python-on-OSX/)
 

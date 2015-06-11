@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 PROJECT (boost_python_test_sub)
 
+# FIND_PACKAGE(PythonInterp)
 FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
-FIND_PACKAGE(PythonInterp)
+
 
 # INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 

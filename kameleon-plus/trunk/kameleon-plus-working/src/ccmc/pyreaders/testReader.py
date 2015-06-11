@@ -101,6 +101,7 @@ class pyFileReader(pyKameleon.FileReader):
 			Method should open file and set current_filename. 
 			If open fails, please return self.OPEN_ERROR or self.FILE_DOES_NOT_EXIST"""
 
+		print 'opening file'
 		self.current_filename = filename #automatically invokes setCurrentFilename in c++
 
 		return pyKameleon.FileReader.OK

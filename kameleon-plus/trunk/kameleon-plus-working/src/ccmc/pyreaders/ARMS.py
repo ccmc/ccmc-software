@@ -44,10 +44,10 @@ class readARMS(testReader.pyFileReader):
 
 	def read_ARMS_header(self, header_filename):
 		"""Read gloabl attributes from file """
-		header_file = open(header_filename, 'r')
+		self.header_file = open(header_filename, 'r')
 
 		# get time step
-		line = header_file.readline().split()
+		line = self.header_file.readline().split()
 		time = line[0]
 
 		#can get date from config
@@ -55,7 +55,7 @@ class readARMS(testReader.pyFileReader):
 		self.globalAttributes['timestep_time'] = Attribute('timestep_time', date+'T'+time+'.000Z')
 
 		# get grid type
-		line = header_file.readline().split()
+		line = self.header_file.readline().split()
 		self.grid_type = line[0]
 		self.globalAttributes['grid_type'] = Attribute('grid_type', self.grid_type)
 
@@ -66,7 +66,7 @@ class readARMS(testReader.pyFileReader):
 
 		# get Block sizes
 		for i in range(3):
-			dim_size, dim_name = header_file.readline().split()
+			dim_size, dim_name = self.header_file.readline().split()
 			self.globalAttributes[dim_name] = Attribute(dim_name, int(dim_size))
 
 
@@ -75,7 +75,7 @@ class readARMS(testReader.pyFileReader):
 		
 		line = ' '
 		while len(line) > 0:
-			line = header_file.readline().split()
+			line = self.header_file.readline().split()
 			if len(line) == 0:
 				break
 			else:
@@ -85,35 +85,35 @@ class readARMS(testReader.pyFileReader):
 				self.addVariableName(var_base_name, var_num)
 
 				# get variable units
-				val, attr = header_file.readline().split() 
+				val, attr = self.header_file.readline().split() 
 				self.variableAttributes[var_base_name]['units'] = Attribute('units', val)
 
 				# get variable scale factor
-				val, attr = header_file.readline().split()
+				val, attr = self.header_file.readline().split()
 				self.variableAttributes[var_base_name]['scale_factor'] = Attribute('scale_factor', float(val))
 
 				# get min and max values (what are the valid_min valid_max values???)
-				val, attr = header_file.readline().split()
+				val, attr = self.header_file.readline().split()
 				self.variableAttributes[var_base_name]['actual_min'] = Attribute('actual_min', float(val))
 
-				val, attr = header_file.readline().split()
+				val, attr = self.header_file.readline().split()
 				self.variableAttributes[var_base_name]['actual_max'] = Attribute('actual_max', float(val))
 
 				var_num += 1
 			else:
 				# get variable units
-				units, attr = header_file.readline().split() 
+				units, attr = self.header_file.readline().split() 
 
 				# get variable scale factor
-				scale_factor, attr = header_file.readline().split()
+				scale_factor, attr = self.header_file.readline().split()
 
 
 				for i in range(int(number_components)+1):
 					if i == int(number_components):
-						val, attr = header_file.readline().split()
+						val, attr = self.header_file.readline().split()
 						self.globalAttributes[var_base_name+'_mag_min'] = Attribute(var_base_name+'_mag_min', float(val))
 
-						val, attr = header_file.readline().split()
+						val, attr = self.header_file.readline().split()
 						self.globalAttributes[var_base_name+'_mag_max'] = Attribute(var_base_name+'_mag_max', float(val))
 
 						
@@ -125,10 +125,10 @@ class readARMS(testReader.pyFileReader):
 						self.variableAttributes[var_name]['scale_factor'] = Attribute('scale_factor', float(scale_factor))
 
 						# get min and max values (what are the valid_min valid_max values???)
-						val, attr = header_file.readline().split()
+						val, attr = self.header_file.readline().split()
 						self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
 
-						val, attr = header_file.readline().split()
+						val, attr = self.header_file.readline().split()
 						self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
 
 						var_num += 1
@@ -137,8 +137,8 @@ class readARMS(testReader.pyFileReader):
 	def read_ARMS_data(self, filename):
 		"""Reads in the arms data files """
 		print 'read_arms_data', filename
-		f = file(filename)
-		s = f.read()
+		self.data_file = file(filename)
+		s = self.data_file.read()
 
 		endian = '<'
 		offset = [0]
@@ -243,7 +243,7 @@ class readARMS(testReader.pyFileReader):
 				self.roots.append( (block_key,bndbox) )
 
 
-		f.close()
+		self.data_file.close()
 
 		self.sort_roots()
 		self.set_root_ranges()
@@ -596,17 +596,27 @@ class readARMS(testReader.pyFileReader):
 		self.data_file_name = testReader.get_config_value(self._config, 'Files', 'DataFile')
 
 	def closeFile(self):
-		self.header_file.close()
-		self.data_file.close()
+		print 'closing', self.header_file_name
+		if not self.header_file.closed:
+			self.header_file.close()
 
+		print 'closing', self.data_file_name
+		if not self.data_file.closed:
+			self.data_file.close()
+
+		return pyKameleon.FileReader.OK
 
 	def openFile(self, config_file, readonly = True):
+		print 'loading config file'
 		if config_file != None:
-			self._config = testReader.getConfig(config_file)
-			self.set_file_names()
+			try:
+				self._config = testReader.getConfig(config_file)
+				self.set_file_names()
+			except:
+				raise
 
+		print 'setting current filename'
 		self.current_filename = self.data_file_name
-		# self.variables['eeta'] = read_binary_file("eeta")
 		self.read_ARMS_header(self.header_file_name)
 		self.read_ARMS_data(self.data_file_name)
 		self.initializeVariableIDs()
@@ -834,6 +844,8 @@ class Test_ARMS_Attributes(unittest.TestCase):
 		print 'ARMS reader initialized'
 		self.armsreader.open('ARMS.ini')
 		print 'File opened'
+		self.armsreader.close()
+		print 'File closed'
 
 	def test_variables_created(self):
 		self.assertTrue(self.armsreader.doesVariableExist('Mass_Density'))

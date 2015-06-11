@@ -17,52 +17,45 @@ INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
 
 # Boost 
 FIND_PACKAGE(Boost 1.54.0 COMPONENTS python)
-IF (${Boost_FOUND})
-	INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
-	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../)
 
-	# set(Boost_USE_STATIC_LIBS OFF) #was set to OFF
-	# set(Boost_USE_MULTITHREADED ON)
-	# set(Boost_USE_STATIC_RUNTIME OFF)
+INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}/../)
 
-	message(STATUS "Boost_LIBRARIES:" ${Boost_LIBRARIES})
-	message(STATUS "Boost includes:" ${Boost_INCLUDE_DIRS})
-	message(STATUS "Python Libraries:" ${PYTHON_LIBRARIES})
-	message(STATUS "ccmc/embedding: Python include dirs:" ${PYTHON_INCLUDE_DIRS})
-	message(STATUS "ccmc/embedding: Python include path:" ${PYTHON_INCLUDE_PATH})
-	message(STATUS "Python interpreter:" ${PYTHON_EXECUTABLE})
+# set(Boost_USE_STATIC_LIBS OFF) #was set to OFF
+# set(Boost_USE_MULTITHREADED ON)
+# set(Boost_USE_STATIC_RUNTIME OFF)
 
-
-	set(CMAKE_SHARED_LIBRARY_PREFIX "")
-	set(CMAKE_SHARED_LIBRARY_SUFFIX ".so") #allows macs to import 
-	# add_library(Baz SHARED testVirtual.cpp ) #python module
-	# target_link_libraries(Baz ${Boost_LIBRARIES}  ${PYTHON_LIBRARIES})
+message(STATUS "Boost_LIBRARIES:" ${Boost_LIBRARIES})
+message(STATUS "Boost includes:" ${Boost_INCLUDE_DIRS})
+message(STATUS "Python Libraries:" ${PYTHON_LIBRARIES})
+message(STATUS "ccmc/embedding: Python include dirs:" ${PYTHON_INCLUDE_DIRS})
+message(STATUS "ccmc/embedding: Python include path:" ${PYTHON_INCLUDE_PATH})
+message(STATUS "Python interpreter:" ${PYTHON_EXECUTABLE})
 
 
-	# create the shared library for pyKameleon, to be imported by python modules
-	add_library(pyKameleon SHARED ../Attribute.h 
-								../Attribute.cpp 
-								../FileReader.h 
-								../FileReader.cpp
-								# ../GeneralFileReader.h
-								# ../GeneralFileReader.cpp 
-								generated/pyKameleon.cpp)
-	# set_target_properties( pyKameleon PROPERTIES IMPORT_SUFFIX ".so")
-
-	# not sure why I was linking to pyKameleon to Baz, uncommenting to see if it works
-	target_link_libraries(pyKameleon ${Boost_LIBRARIES}  ${PYTHON_LIBRARIES})
+set(CMAKE_SHARED_LIBRARY_PREFIX "")
+set(CMAKE_SHARED_LIBRARY_SUFFIX ".so") #allows macs to import 
 
 
-	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
-	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
-	INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}../)
-	INCLUDE_DIRECTORIES("/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/build")
+# create the shared library for pyKameleon, to be imported by python modules
+add_library(pyKameleon SHARED ../Attribute.h 
+							../Attribute.cpp 
+							../FileReader.h 
+							../FileReader.cpp 
+							generated/pyKameleon.cpp)
 
-	add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
+target_link_libraries(pyKameleon ${Boost_LIBRARIES}  ${PYTHON_LIBRARIES})
 
-ELSE()
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}../)
+INCLUDE_DIRECTORIES("/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/build")
 
-ENDIF(${Boost_FOUND})
+# add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
+
+
+
+
 
 
 

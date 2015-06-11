@@ -13,9 +13,10 @@
 #include <ccmc/PythonInterpolator.h>
 #include <ccmc/Interpolator.h>
 #include <string>
+#include <boost/python.hpp>
 
 using namespace std;
-
+namespace bp = boost::python;
 /**
  * enlil <inputfile> variable r theta(longitude) phi(latitude)
  */
@@ -34,14 +35,14 @@ int main (int argc, char * argv[])
 	float p_component3 = boost::lexical_cast<float>(argv[5]);
 
 
-	// std::cerr << "creating PythonModel instance" << std::endl;
+	std::cerr << "creating PythonModel instance" << std::endl;
 	ccmc::PythonModel pymodel;
 	pymodel.open(filename);
-	// std::cerr << "opened file?" << std::endl;
+	std::cerr << "opened file?" << std::endl;
 	
 	ccmc::Interpolator * interpolator = pymodel.createNewInterpolator();
 
-	// std::cerr << "created interpolator" << std::endl;
+	std::cerr << "created interpolator" << std::endl;
 
 	float value = interpolator->interpolate(variable, p_component1, p_component2, p_component3);
 
@@ -50,6 +51,10 @@ int main (int argc, char * argv[])
 	string units = pymodel.getNativeUnit(variable);
 
 	cout << "interpolated value: " << value << " " << units << endl;
-	// pymodel.close();
+
+
+	
+
+	cout << "Finished"<< endl;
 
 }

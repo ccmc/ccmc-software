@@ -13,7 +13,7 @@
 #include "CDFFileReader.h"
 #include "HDF5FileReader.h"
 #include "GeneralFileReader.h"
-#include <boost/python.hpp>
+#include <boost/python.hpp> //Todo:put ifdef here
 #include <string>
 #include <vector>
 #include <deque>
@@ -21,6 +21,7 @@
 #include <fstream>
 #include <queue>
 
+namespace bp = boost::python; //Todo:put ifdef here
 
 namespace ccmc
 {
@@ -69,18 +70,18 @@ namespace ccmc
 #endif /* HAVE_HDF5 */
 
 #ifdef HAVE_PYTHON
-		// std::cout << "Checking if the file can be read by a python embedded reader" << std::endl;
+		std::cout << "Checking if the file can be read by a python embedded reader" << std::endl;
 		delete fileReader;
 		
 		Py_Initialize();
-		namespace bp = boost::python;
+		
 		bp::object main = bp::import("__main__");
 		this->python_namespace = main.attr("__dict__");
 		try {
 
 			bp::exec(
 				"import os,sys\n"
-				// "print sys.executable\n"
+				"print sys.executable\n"
 				"sys.path.append(\'/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/\')\n"
 				"sys.path.append(\'/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build/\')\n"
 				"sys.path.append(\'/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/\')\n"
@@ -108,14 +109,15 @@ namespace ccmc
 
 		    bp::object file_reader_obj = this->python_namespace["python_reader"];
 			
-		    // std::cout <<"Extracting and assigning ccmc::FileReader pointer" << std::endl;
+		    std::cout <<"Extracting and assigning ccmc::FileReader pointer" << std::endl;
 		    this->fileReader = bp::extract< ccmc::FileReader* >(file_reader_obj);
-		    // std::cout <<"GeneralFileReader opening file" << filename << std::endl;
+		    std::cout <<"GeneralFileReader opening file" << filename << std::endl;
 		    status = fileReader->open(filename);
+		    std::cout <<"File opened" << std::endl;
 
 		    if (status == FileReader::OK)
 		    {
-		    	// std::cout <<"Successful read!"<< std::endl;
+		    	std::cout <<"Successful read!"<< std::endl;
 		    	return status;
 		    }
 		} catch (bp::error_already_set) {
@@ -253,9 +255,13 @@ namespace ccmc
 		if (Py_IsInitialized())
 		{
 			std::cout << "GeneralFileReader:: close()" << std::endl;
-			long status = fileReader->close();
-			std::cout << "GeneralFileReader:: close() Closing Python interpreters" << std::endl;
-			Py_Finalize();
+			long status; 
+			try{
+				status = fileReader->close();
+			} catch (bp::error_already_set) {
+				PyErr_Print();
+			}
+			
 			fileReader = NULL;
 			return status;
 		}
@@ -284,7 +290,7 @@ namespace ccmc
 		// ToDo: Find out what happens if multiple pyReaders are used
 		if (Py_IsInitialized())
 		{
-			std::cout << "~GeneralFileReader() Closing Python interpreters" << std::endl;
+			std::cout << "Python initialized. Finializing" << std::endl;
 			Py_Finalize();
 		}
 		
