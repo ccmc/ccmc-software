@@ -1,5 +1,6 @@
 # fortran examples (kameleon-plus/src/example/fortran)
-set(msg_prefix "src/example/fortran> ")
+set(msg_prefix " ")
+message("###########-fortran examples(src/example/fortran)-###########")
 message(STATUS ${msg_prefix} "building FORTRAN examples")
 enable_language (Fortran)
 
@@ -39,6 +40,8 @@ message(STATUS ${msg_prefix} "Include boost directories: " ${Boost_INCLUDE_DIRS}
 include_directories(${CDF_INCLUDES})
 message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
 
+# embedded python
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
 
 # link ccmc ccmc_wrapper_c ccmc_wrapper_fortran
 target_link_libraries(generalfilereader_compat_f ccmc_wrapper_fortran)

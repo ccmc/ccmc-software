@@ -40,10 +40,11 @@ int main (int argc, char * argv[])
 	if ((argc != 6) && (argc != 4))
 	{
 		cout << "You must use the following format to test LFM interpolation at a point in GSE coordinates:\n"
-				<<"\t ./lfm path/to/kameleon/converterd/LFMfile.h5 variable x y z \n"
-				<<"with variable set to: bx by bz ex ey ez ux uy uz rho p\n"
+				<<"\t ./lfm path/to/kameleon/converterd/LFMfile.h5 <variable> x y z \n"
+				<<"with <variable> set to: bx by bz ex ey ez ux uy uz rho p\n"
 				<<"or, to interpolate all available lfm variables onto a list of input (single spaced) positions, use\n"
-				<<"\t ./lfm path/to/kameleon/converterd/LFMfile.h5 path/to/positions.txt path/to/output/file.txt"
+				<<"\t ./lfm path/to/kameleon/converterd/LFMfile.h5 path/to/positions.txt path/to/output/file.txt\n"
+				<<"units will be: bx by bz[T] ex ey ez[V/m] ux uy uz [m/s] rho [g/cc] p [Pa]\n"
 				<< endl;
 		exit(1);
 	}
@@ -85,7 +86,7 @@ int main (int argc, char * argv[])
 
 		float variableOut = interpolator.interpolate(variable,px,py,pz, dx,dy,dz);
 
-		std::cout<<variable << "("<< px <<","<<py<<","<<pz<<")="<<variableOut<<endl;
+		std::cout<<variable << "("<< px <<","<<py<<","<<pz<<") = "<<variableOut<< " " << endl;
 		std::cout<<"resolution at query point: "<<dx<<", "<<dy<<", "<<dz<<endl;
 	}
 

@@ -8,8 +8,8 @@ set(Kameleon_VERSION_MAJOR "6")
 set(Kameleon_VERSION_MINOR "0.0.1")
 set(KAMELEON_PLUS_VERSION ${Kameleon_VERSION_MAJOR}.${Kameleon_VERSION_MINOR})
 
-set(msg_prefix "./> ")
-message(STATUS ${msg_prefix} "entered top level CMakeLists.txt file.")
+set(msg_prefix " ")
+message("############Top level CMakeLists.txt##########")
 message(STATUS ${msg_prefix} "Kameleon-plus " ${KAMELEON_PLUS_VERSION} " build for " ${CMAKE_SYSTEM})
 
 # Set Kameleon paths
@@ -17,6 +17,7 @@ set(KAMELEON_BASE_DIR "${PROJECT_SOURCE_DIR}")
 set(KAMELEON_SRC_DIR "${KAMELEON_BASE_DIR}/src")
 set(KAMELEON_EXT_DIR "${KAMELEON_BASE_DIR}/ext")
 set(KAMELEON_LIB_DIR "${KAMELEON_BASE_DIR}/lib")
+set(CCMC_DIR "${KAMELEON_SRC_DIR}/ccmc/")
 
 # Set whether to build shared or static
 option(BUILD_SHARED_LIBS "Build shared libraries" ON)
@@ -30,7 +31,9 @@ endif(BUILD_SHARED_LIBS)
 # add path to external libraries
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KAMELEON_EXT_DIR})
 
+
 ############Boost #############
+message("Getting BOOST....")
 # Boost shared or static?
 if(USE_STATIC_LIBS)
 	set(Boost_USE_STATIC_LIBS ON)
@@ -40,12 +43,13 @@ else()
 	# set(Boost_USE_STATIC_RUNTIME ON)
 endif(USE_STATIC_LIBS)
 
+
 set(Boost_USE_MULTITHREADED ON)  
 # find_package(Boost 1.54.0)
-find_package(Boost 1.54.0 COMPONENTS thread program_options filesystem system REQUIRED)
+find_package(Boost 1.54.0 COMPONENTS thread program_options filesystem system python REQUIRED)
 message(STATUS ${msg_prefix} "BOOST_ROOT=" ${BOOST_ROOT})
-message(STATUS ${msg_prefix} "Boost includes: " ${Boost_INCLUDE_DIRS})
-message(STATUS ${msg_prefix} "Boost library directory: " ${Boost_LIBRARY_DIR})   
+message(STATUS ${msg_prefix} "Boost includes: " ${BOOST_INCLUDEDIR})
+message(STATUS ${msg_prefix} "Boost library directory: " ${BOOST_LIBRARYDIR})   
 message(STATUS ${msg_prefix} "Link boost: " ${Boost_LIBRARIES})      
 
 ##################### HDF5 ##############
@@ -54,6 +58,11 @@ message(STATUS ${msg_prefix} "Link boost: " ${Boost_LIBRARIES})
 option(BUILD_HDF5 "Build with HDF5 library" ON)
 
 if(BUILD_HDF5)
+	message("Getting HDF5...")
+	# if(HDF5_ROOT) #needs to be passed to FindHDF5 as an environment variable
+	# 	set(ENV{HDF5_ROOT} ${HDF5_ROOT})
+	# endif(HDF5_ROOT)
+
 	# HDF5 shared or static?
 	if(USE_STATIC_LIBS)
 		set(HDF5_USE_STATIC_LIBRARIES ON)
@@ -66,6 +75,7 @@ if(BUILD_HDF5)
 	if(HDF5_FOUND)
 		message(STATUS ${msg_prefix} "HDF5 Found: will build Kameleon with HDF 5")
 		message(STATUS ${msg_prefix} "HDF_LIBRARY_DIRS:" ${HDF5_LIBRARY_DIRS})
+		message(STATUS ${msg_prefix} "HDF5 includes:" ${HDF5_INCLUDE_DIR})
 		message(STATUS ${msg_prefix} "HDF5_CXX_LIBRARIES:" ${HDF5_CXX_LIBRARIES})
 		add_definitions(-DHAVE_HDF5)
 	else()
@@ -73,11 +83,12 @@ if(BUILD_HDF5)
 		set(BUILD_HDF5 OFF)
 	endif(HDF5_FOUND)
 else()
-	message(STATUS ${msg_prefix} "Will not build Kameleon with HDF5 - CDF files only supported")
+	message(${msg_prefix} "Will NOT build Kameleon with HDF5.")
 endif(BUILD_HDF5)
 
 
 ##################### CDF ####################
+message("Getting CDF..")
 # CDF shared or static?
 if(USE_STATIC_LIBS)
 	message(STATUS ${msg_prefix} "retrieving static CDF libraries")
@@ -102,6 +113,7 @@ configure_file (
 	${PROJECT_BINARY_DIR}/kameleon-plus-Config.h
 )
 
+
 ######### Set up packaging environment #####
 file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc)
 file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc/c++)
@@ -117,15 +129,12 @@ file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc/c++)
 set(CCMC_ROOT_DIR "${KAMELEON_SRC_DIR}/ccmc")
 add_subdirectory(${CCMC_ROOT_DIR})
 
-
+message("############Top level CMakeLists.txt##########")
 set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/examples")
 set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example")
-
+FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c++)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/fortran)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/python)
-
-
-
 

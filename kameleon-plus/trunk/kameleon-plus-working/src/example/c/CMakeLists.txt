@@ -1,5 +1,6 @@
 # C examples (kameleon-plus/src/example/c)
-set(msg_prefix "src/example/c> ")
+set(msg_prefix " ")
+message("###########-c examples(src/example/c)-###########")
 message(STATUS ${msg_prefix} "building c examples")
 
 if (NOT KAMELEON_EXAMPLES_DIR)
@@ -30,6 +31,9 @@ message(STATUS ${msg_prefix} "Include boost directories: " ${Boost_INCLUDE_DIRS}
 # CDF
 include_directories(${CDF_INCLUDES})
 message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
+
+# embedded python
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
 
 
 # link ccmc_wrapper_c

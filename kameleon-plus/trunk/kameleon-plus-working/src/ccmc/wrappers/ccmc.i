@@ -45,6 +45,8 @@
 #include <ccmc/CCMCTime.h>
 #include <ccmc/Point.h>
 #include <ccmc/Vector.h>
+#include <ccmc/PythonModel.h>
+#include <ccmc/PythonInterpolator.h>
 using namespace std;
 using namespace ccmc;
 
@@ -81,6 +83,8 @@ using namespace ccmc;
 %include <ccmc/CCMCTime.h>
 %include <ccmc/Point.h>
 %include <ccmc/Vector.h>
+%include <ccmc/PythonModel.h>
+%include <ccmc/PythonInterpolator.h>
 
 using namespace ccmc;
 using namespace std;

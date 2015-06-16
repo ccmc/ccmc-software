@@ -1,5 +1,7 @@
 # core kameleon library (kameleon-plus/src/ccmc)
-set(msg_prefix "src/ccmc> ")
+set(msg_prefix "src/ccmc>")
+message("############-ccmc library(" ${msg_prefix} ")-############")
+set(msg_prefix " ")
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc) 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc)
 
@@ -47,7 +49,11 @@ message (STATUS ${msg_prefix} "ccmc library location = " ${ccmc_lib_loc})
 
 ############ Boost #############
 if(Boost_FOUND)
-    include_directories(${Boost_INCLUDE_DIRS}) 
+    message(STATUS ${msg_prefix} "Include boost: " ${BOOST_INCLUDEDIR})    
+    message(STATUS ${msg_prefix} "Boost library directory: " ${BOOST_LIBRARYDIR})
+    message(STATUS ${msg_prefix} "Link boost: " ${Boost_LIBRARIES})    
+
+    include_directories(${BOOST_INCLUDEDIR}) 
 
     if(BUILD_SHARED_LIBS)
         target_link_libraries(ccmc ${Boost_LIBRARIES}) 
@@ -56,16 +62,11 @@ if(Boost_FOUND)
     if(BUILD_STATIC_LIBS)
         target_link_libraries(ccmc_static ${Boost_LIBRARIES})
     endif(BUILD_STATIC_LIBS)
-
-    message(STATUS ${msg_prefix} "Include boost: " ${Boost_INCLUDE_DIRS})    
-    message(STATUS ${msg_prefix} "Boost library directory: " ${Boost_LIBRARY_DIR})
-    message(STATUS ${msg_prefix} "Link boost: " ${Boost_LIBRARIES})    
 endif()
 
 
 ############## CDF #############
-include_directories(${CDF_INCLUDES})
-
+INCLUDE_DIRECTORIES(${CDF_INCLUDES})
 if(BUILD_SHARED_LIBS)
     target_link_libraries(ccmc ${CDF_LIB}) 
 endif(BUILD_SHARED_LIBS) 
@@ -76,15 +77,14 @@ endif(BUILD_STATIC_LIBS)
 
 message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
 message(STATUS ${msg_prefix} "link CDF: " ${CDF_LIB})
-# point to kameleon-plus-Config.h
-include_directories(${PROJECT_BINARY_DIR})
+
 
 ############## hdf5 #############
 if(BUILD_HDF5)
-	include_directories(${HDF5_INCLUDE_DIR})
+    INCLUDE_DIRECTORIES(${HDF5_INCLUDE_DIR})
     add_definitions(-DHAVE_HDF5)
-	message(STATUS ${msg_prefix} "Include HDF5: " ${HDF5_INCLUDE_DIR}) 
-	message(STATUS ${msg_prefix} "Link HDF5_LIBRARIES: " ${HDF5_LIBRARIES}) 
+    message(STATUS ${msg_prefix} "Include HDF5: " ${HDF5_INCLUDE_DIR}) 
+    message(STATUS ${msg_prefix} "Link HDF5_LIBRARIES: " ${HDF5_LIBRARIES}) 
 
     if(BUILD_SHARED_LIBS)
         target_link_libraries(ccmc ${HDF5_LIBRARIES}) 
@@ -94,6 +94,38 @@ if(BUILD_HDF5)
     endif(BUILD_STATIC_LIBS)
 
 endif(BUILD_HDF5)
+
+
+############# python ############
+FIND_PACKAGE(PythonInterp 2.7)
+FIND_PACKAGE(PythonLibs 2.7 REQUIRED)
+if(PYTHONINTERP_FOUND)
+    message(STATUS ${msg_prefix} "Python Interpreter:" ${PYTHON_EXECUTABLE})
+    add_definitions(-DHAVE_PYTHON) # preprocessor to insert python interpreter calls
+endif()
+
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS} )
+target_link_libraries(ccmc  ${PYTHON_LIBRARIES})
+
+############## embedded python #######
+if(Boost_PYTHON_LIBRARY_RELEASE)
+    message("boost.python library found, creating embedded readers..")   
+    add_subdirectory(pyreaders)
+
+    # make sure pyKameleon gets built when ccmc library is built
+    if(BUILD_SHARED_LIBS)
+        target_link_libraries(ccmc pyKameleon) 
+    endif(BUILD_SHARED_LIBS)    
+
+    if(BUILD_STATIC_LIBS)
+        target_link_libraries(ccmc_static pyKameleon)
+    endif(BUILD_STATIC_LIBS)    
+endif(Boost_PYTHON_LIBRARY_RELEASE)
+
+
+# point to kameleon-plus-Config.h
+INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})
+
 
 ############ installer ############
 #install the library 
@@ -119,6 +151,8 @@ endif(BUILD_STATIC_LIBS)
 #     " COMPONENT libraries)
 
 ############# Wrappers ############ 
+
+# Wrappers
 set(WRAPPERS_ROOT_DIR "${CCMC_ROOT_DIR}/wrappers")
 
 add_subdirectory(${WRAPPERS_ROOT_DIR}/c)

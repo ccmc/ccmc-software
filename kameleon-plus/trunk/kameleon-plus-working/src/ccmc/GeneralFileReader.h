@@ -14,6 +14,8 @@
 #include "FileReader.h"
 #include <boost/unordered_map.hpp>
 #include "cdf.h"
+#include <boost/python.hpp>
+
 
 
 
@@ -68,6 +70,8 @@ namespace ccmc
 			//long openFile(const std::string& filename);
 			const std::string& getCurrentFilename();
 			~GeneralFileReader();
+			boost::python::object python_namespace; //can execute python commands on this object
+
 
 		protected:
 			std::string current_filename; 

@@ -1,5 +1,6 @@
 # C++ examples (kameleon-plus/src/examples/c++)
-set(msg_prefix "src/example/c++> ")
+set(msg_prefix " ")
+message("###########-c++ examples(src/example/c++)-###########")
 message(STATUS ${msg_prefix} "building c++ examples")
 if (NOT KAMELEON_EXAMPLES_DIR)
     set(KAMELEON_EXAMPLES_DIR ${PROJECT_SOURCE_DIR})
@@ -22,6 +23,7 @@ add_executable(open_ggcm_test open_ggcm_test.cpp)
 add_executable(swmf_iono_test swmf_iono_test.cpp)
 add_executable(time_interp time_interp.cpp)
 add_executable(tracer_prog tracer_prog.cpp)
+add_executable(pyModel_prog pyModel_prog.cpp)
 
 
 
@@ -36,13 +38,16 @@ if(BUILD_HDF5)
 endif(BUILD_HDF5)
 
 # Boost
-include_directories(${Boost_INCLUDE_DIRS})                                                                                          
-message(STATUS ${msg_prefix} "Include boost directories: " ${Boost_INCLUDE_DIRS})
+include_directories(${BOOST_INCLUDEDIR})                                                                                          
+message(STATUS ${msg_prefix} "Include boost directories: " ${BOOST_INCLUDEDIR})
 
 # CDF
 include_directories(${CDF_INCLUDES})
 message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
 
+# python embedding
+INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_DIRS})
+message(STATUS "Include python embedding directory: " ${PYTHON_INCLUDE_DIRS})
 
 # link ccmc
 target_link_libraries(adapt3d_test ccmc)
@@ -60,6 +65,7 @@ target_link_libraries(open_ggcm_test ccmc)
 target_link_libraries(swmf_iono_test ccmc)
 target_link_libraries(time_interp ccmc)
 target_link_libraries(tracer_prog ccmc)
+target_link_libraries(pyModel_prog ccmc)
 
 set_target_properties(	kameleon_prog 
 						adapt3d_test 

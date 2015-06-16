@@ -1,0 +1,132 @@
+embedded python project
+Idea: extend kameleon functionality through python readers and interpolators
+We can write python classes that inherit from kameleon's classes, which kameleon treats like any other class.
+So far, I have implemented the python filereaders which GeneralFileReader understands.
+
+How Kameleon works:
+FileReader: pure virtual base class that is subclassed to expose file contents to kameleon
+GeneralFileReader: reads from a file in a file-agnostic way. chooses the appropriate FileReader subclass
+Model: GeneralFileReader subclass. Manages variable maps. pure virtual createNewInterpolator()
+Interpolator: pure virtual base class that is subclassed by each model's interpolator
+Kameleon: checks if model_name matches one of the known Models, which all have interpolators implemented
+ToDo:
+	expose Interpolator pure virtual class to python
+	expose Model pure virtual createNewInterpolator
+	add Kameleon check to look for embedded attribute, then load the python model
+	
+
+
+===========Installation Instructions for embedded python readers===============
+Make sure you build with boost's shared libraries!
+
+cmake -DPYTHON_LIBRARY=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Python -DPYTHON_INCLUDE_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -DBOOST_ROOT=/opt/local -DBUILD_SHARED_LIBS=ON .. && make -j8
+
+
+Requirements for generating Kameleon wrappers:
+	pyplusplus
+	gccxml
+
+Requirements for creating Kameleon plug-ins:
+	boost.python
+
+To generate wrapper code:
+1) from src/ccmc/pyreaders directory, run:
+	 python generatePyKameleon.py
+
+To compile existing wrappers:
+2) mkdir build && cd build && cmake ..
+3) Then build the pyKameleon module:
+	make -j8
+
+Potential error on Mac OSX:
+	Undefined symbols for architecture x86_64:
+  	"boost::python::objects::function_object ...
+
+
+You may run into issues involving xcode 5.1, cmake, gccxml and py++
+    The problem: py++ wrapper generator fails to run when gccxml is invoked
+    It appears that including standard libraries is the culprit
+The solution: recompile gccxml from gccxml-build using the gcc compiler (instead of clang):
+/opt/local/bin/cmake -DCMAKE_C_COMPILER=llvm-gcc-4.2 -DCMAKE_CXX_COMPILER=llvm-g++-4.2 ../gccxml
+Then point to the path to gccxml in the py++ build:
+mb = module_builder.module_builder_t( files=files
+                                          , gccxml_path='/Users/apembrok/git/gccxml-build/bin' )
+
+If you get the following error when importing the built pyKameleon:
+
+	Fatal Python error: PyThreadState_Get: no current thread
+	Abort trap: 6
+
+Then you may be running a different version of python than what is linked against from the boost.python libraries.
+This can happen if you used homebrew to install boost, in which case you'll need to rebuild boost from source to get it to pick-up the default python libs:
+		brew uninstall boost
+		brew update
+		brew install --with-c++11 --build-from-source boost (This takes a while... about 10.5 minutes) (--with-python too!?)
+
+(See this post http://brianfosterallen.com/devblog/blog/2013/06/13/Using-Homebrew-s-Python-with-boost-python-on-OSX/)
+
+The following is a work-around I used, but it doesn't link against the default python libraries:
+	1) run otool -L pyKameleon.so
+	2) there should be a boost library and a python library: libboost_python-mt.dylib and /path/to/linked/Python
+	3) run otool -L on libboost_python-mt.dylib. If its python lib does not match, make a fresh build directory and run cmake again with the following flags matching the python library with the one linked from the boost library:
+	
+		cmake -DPYTHON_LIBRARY=/path/to/boost/linked/python/lib/Python 
+		-DPYTHON_INCLUDE_DIR=/path/to/boost/linked/python/include/python2.7 
+		-DBOOST_ROOT=/path/to/boost/root ..
+
+	example: on my machine, boost was installed with homebrew, which meant I had to link with the following flags
+
+		cmake -DPYTHON_LIBRARY=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/Python -DPYTHON_INCLUDE_DIR=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7 -DBOOST_ROOT=/opt/local .. 
+
+Now make sure you run the same version of python as the one used by the linked libraries. In my case:
+	/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7
+Also, I copied and edited ipython so it points to python2.7 above
+	/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/ipython 
+	>>> import pyKameleon
+
+
+ PYTHON_LIBRARY             - path to the python library
+ PYTHON_INCLUDE_DIR         - path to where Python.h is found
+ /opt/local/bin/cmake -DCMAKE_C_COMPILER=llvm-gcc-4.2 -DCMAKE_CXX_COMPILER=llvm-g++-4.2 -DPYTHON_LIBRARY=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib ..
+
+==================== Goals ======================
+# The goal is to write a simple reader that utilizes kameleon objects
+# that will be exposed by boost::python. The author of the reader should
+# only need to implement their reader in python
+
+
+===================== Methodology ===============
+# The first thing to be wrapped is a Model
+# A Model is a subclass of GeneralFileReader
+# The GeneralFileReader implementation creates new HDF5 or CDF objects,
+# which are both subclasses of FileReader, which is an abstract base class
+
+#Pure virtual functions can be overided in python: 
+#	https://wiki.python.org/moin/boost.python/OverridableVirtualFunctions
+#Then, we embed python in c++
+# 	http://thejosephturner.com/blog/post/embedding-python-in-c-applications-with-boostpython-part-1/
+#The third answer from here is what we need:
+# 	http://stackoverflow.com/questions/9040669/how-can-i-implement-a-c-class-in-python-to-be-called-by-c
+#Boost documentation http://www.boost.org/doc/libs/1_55_0/libs/python/doc/v2/wrapper.html
+
+# Functions and variabls to expose:
+# FileReader.ATTRIBUTE_DOES_NOT_EXIST       FileReader.doesAttributeExist             FileReader.getVariableID
+# FileReader.FILE_DOES_NOT_EXIST            FileReader.doesVariableExist              FileReader.getVariableInt
+# FileReader.LOAD_FAILED                    FileReader.getGlobalAttribute             FileReader.getVariableIntAtIndex
+# FileReader.MODEL_NOT_SUPPORTED            FileReader.getGlobalAttributeID           FileReader.getVariableName
+# FileReader.NOT_A_VALID_KAMELEON_FILE      FileReader.getGlobalAttributeName         FileReader.initializeGlobalAttributes
+# FileReader.OK                             FileReader.getNumberOfGlobalAttributes    FileReader.initializeVariableAttributes
+# FileReader.OPEN_ERROR                     FileReader.getNumberOfRecords             FileReader.initializeVariableIDs
+# FileReader.UNABLE_TO_ALLOCATE_MEMORY      FileReader.getNumberOfVariableAttributes  FileReader.initializeVariableNames
+# FileReader.VARIABLE_DOES_NOT_EXIST        FileReader.getNumberOfVariables           FileReader.mro
+# FileReader.VARIABLE_NOT_IN_MEMORY         FileReader.getVariable                    FileReader.open
+# FileReader.addVariableName                FileReader.getVariableAtIndex             FileReader.openFile
+# FileReader.close                          FileReader.getVariableAttribute           FileReader.setCurrentFilename
+# FileReader.closeFile                      FileReader.getVariableAttributeName       
+# FileReader.current_filename               FileReader.getVariableAttributeNames   
+
+
+============== Tests ===================
+Test the python embedded reader by running
+	python testReader.py
+

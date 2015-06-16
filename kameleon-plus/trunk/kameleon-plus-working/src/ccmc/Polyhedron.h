@@ -177,7 +177,7 @@ namespace ccmc
 
 		neighbors.resize(faces.size()-1);
 		for (int i=0;i<neighbors.size();i++){
-			neighbors[i]=NULL;
+			neighbors[i]=0;
 		}
 		return;
 	}
@@ -431,7 +431,9 @@ namespace ccmc
 			return;
 		}
 
+
 ///		T alphaMinus;
+
 		T weight, weightSum = 0;
 
 		for (int i = faces[face]; i<faces[face+1]; i++){

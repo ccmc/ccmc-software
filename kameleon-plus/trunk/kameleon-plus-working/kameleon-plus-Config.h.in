@@ -3,3 +3,5 @@
 #define Kameleon_plus_VERSION_MAJOR @Kameleon_VERSION_MAJOR@
 
 #define Kameleon_plus_VERSION_MINOR @Kameleon_VERSION_MINOR@
+
+#define CCMC_DIR "@CCMC_DIR@"

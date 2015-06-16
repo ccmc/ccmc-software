@@ -12,7 +12,8 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
-
+#include <boost/python.hpp>
+ 
 using namespace std;
 
 namespace ccmc
@@ -45,12 +46,24 @@ namespace ccmc
 	 */
 	long FileReader::open(const std::string& filename, bool readonly)
 	{
+#ifdef HAVE_PYTHON
+		// std::cout << "c++ open() calling openFile()" << std::endl;
+		namespace bp = boost::python;
+		try {
+			return openFile(filename, readonly);
+		} catch (bp::error_already_set) {
+			PyErr_Print();
+			return FileReader::OPEN_ERROR;
+		}
+#else 
 		return openFile(filename, readonly);
+#endif /* HAVE_PYTHON */
+		
 	}
 
 	void FileReader::setCurrentFilename(const std::string& filename)
 	{
-		std::cout << "setting current_filename to " << filename << std::endl;
+		// std::cout << "c++ setting current_filename to " << filename << std::endl;
 		this->current_filename = filename;
 	}
 
@@ -60,6 +73,7 @@ namespace ccmc
 	 */
 	long FileReader::close()
 	{
+		// std::cout << "c++ close() calling closeFile()" << std::endl;
 		long status = closeFile();
 		current_filename = "";
 		variableIDs.clear();

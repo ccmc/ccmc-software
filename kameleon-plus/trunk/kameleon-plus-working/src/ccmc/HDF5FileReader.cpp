@@ -107,7 +107,7 @@ namespace ccmc
 			} else
 			{
 				status = OPEN_ERROR;
-				std::cerr << "Error opening hdf \"" << filename << "\". Not an hdf file?" << std::endl;
+				// std::cerr << "Error opening hdf \"" << filename << "\". Not an hdf file?" << std::endl;
 			}
 
 		}

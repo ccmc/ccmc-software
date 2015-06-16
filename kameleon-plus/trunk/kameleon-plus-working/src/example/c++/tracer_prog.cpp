@@ -44,59 +44,6 @@ int main (int argc, char * argv[])
 	c0 = boost::lexical_cast<float>(argv[3]);
 	c1 = boost::lexical_cast<float>(argv[4]);
 	c2 = boost::lexical_cast<float>(argv[5]);
-//	boost::program_options::options_description desc("Fieldline tracer example program.");
-//	desc.add_options()("help", "produce help message")
-//			          ("input-file", boost::program_options::value<std::string>(&filename), "input file")
-//					  ("variable", boost::program_options::value<std::string>(&variable), "Variable to trace")
-//					  ("c0", boost::program_options::value<float>(&c0), "First position component")
-//					  ("c1", boost::program_options::value<float>(&c1), "Second position component")
-//					  ("c2", boost::program_options::value<float>(&c2), "Third position component")
-//					  ("additional-variables", boost::program_options::value<std::string>(&additional),
-//							  "Additional variables to interpolate at each position of the returned fieldline")
-//					  ("seeds", boost::program_options::value<std::string>(&seedfile), "seed positions file");
-//
-//	boost::program_options::positional_options_description p;
-//	p.add("input-file", -1);
-//
-//	boost::program_options::variables_map vm;
-//	boost::program_options::store(
-//			boost::program_options::command_line_parser(argc, argv).options(desc).positional(p).run(),
-//			vm);
-//	boost::program_options::notify(vm);
-//
-//	if (vm.count("help"))
-//	{
-//		std::cout << desc << std::endl;
-//		exit(0);
-//	}
-//
-//	bool useSeedPosition = false;
-//	bool useSeedFile = false;
-//	if (vm.count("c0") && vm.count("c1") && vm.count("c2"))
-//	{
-//		useSeedPosition = true;
-//	} else if (vm.count("seeds"))
-//	{
-//		useSeedFile = true;
-//	} else
-//	{
-//
-//		std::cout << "Error: must specify either a seed position with c0, c1, and c2 or a seed positions file with seeds\n" << std::endl;
-//		std::cout << desc << std::endl;
-//
-//		exit(0);
-//	}
-//
-//	if (vm.count("input-file"))
-//	{
-//		std::cout << "Input file: " << filename << std::endl;
-//	} else
-//	{
-//		std::cout << "Input file was not set." << std::endl;
-//		std::cout << desc << std::endl;
-//		exit(1);
-//	}
-//
 
 
 	Kameleon kameleon;

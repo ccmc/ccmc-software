@@ -1,4 +1,5 @@
-set(msg_prefix "src/ccmc/wrappers/java> ")
+set(msg_prefix " ")
+message("###########-Java wrappers(src/ccmc/wrappers/java)-###########")
 message(STATUS ${msg_prefix} "building java wrappers")
 # java wrappers (kameleon-plus/src/ccmc/wrappers/java)
 # JAVA wrappers - the goal is to mimic Makefile to produce the following

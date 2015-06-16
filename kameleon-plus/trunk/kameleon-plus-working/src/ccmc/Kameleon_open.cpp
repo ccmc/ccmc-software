@@ -22,16 +22,16 @@ namespace ccmc
 		//need to store filename
 		//need to intialize relevant information
 
-//std::cout << "Kameleon::open(" << filename << ")" << std::endl;
+		std::cout << "Kameleon::open(" << filename << ")" << std::endl;
 		GeneralFileReader generalFileReader;
 		long status = generalFileReader.open(filename);
 
 		if (status == FileReader::OK)
 		{
-//			std::cout<<"File reader was succesful. Does model_name attribute exist?"<<std::endl;
+			std::cout<<"File reader was succesful. Does model_name attribute exist?"<<std::endl;
 			if (generalFileReader.doesAttributeExist("model_name"))
 			{
-//				std::cout << "model_name attribute does exist... loading model_name"<<std::endl;
+				std::cout << "model_name attribute exists... loading model_name"<<std::endl;
 				this->modelName = (generalFileReader.getGlobalAttribute("model_name")).getAttributeString();
 				std::cout << "Kameleon::open() Model name: '" << modelName << "'" << std::endl;
 
@@ -63,21 +63,28 @@ namespace ccmc
 				{
 					//sdt::cout <<"created LFM object" << std::endl;
 					model = new LFM();
-				} else //unknown model
+				} else if (modelName == "python_model") //embedded model, ooo
 				{
+					// model = new PythonModel();
+					//std::cout <<"created PythonModel object"
+				} else
+				{	//unknown model
+				
 
 					if (model != NULL)
 						delete model;
 					model = NULL;
+					std::cerr << "not a MODEL_NOT_SUPPORTED " << std::endl;
 					status = FileReader::MODEL_NOT_SUPPORTED;
 
 				}
 			} else
 			{
+				std::cout << "model_name attribute does not exist!" << std::endl;
 				if (model != NULL)
 					delete model;
 				model = NULL;
-				std::cerr << "not a valid kameleon file" << std::endl;
+				std::cout <<  filename << " was not a valid kameleon file" << std::endl;
 				status = FileReader::NOT_A_VALID_KAMELEON_FILE;
 			}
 
@@ -87,8 +94,6 @@ namespace ccmc
 				model->setModelName(modelName);
 				status = model->open(filename);
 
-//				std::cout << "initializing extra information" << std::endl;
-				//current_cdf_id = get_current_CDFid();
 				if (status == FileReader::OK)
 				{
 					initializeExtraInformation();
@@ -99,6 +104,7 @@ namespace ccmc
 
 			}
 		}
+		std::cout<< "kameleon open returning with status:" << status << std::endl;
 		return status;
 
 	}

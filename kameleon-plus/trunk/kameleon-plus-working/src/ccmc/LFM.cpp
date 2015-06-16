@@ -2,7 +2,7 @@
  * LFM.cpp
  *
  *  Created on: Dec 4, 2012
- *      Author: Brian Curtis
+ *      Author: Asher Pembroke, Brian Curtis
  */
 
 #include "LFM.h"
@@ -50,7 +50,7 @@ namespace ccmc
 		long status;
 		long variable_status;
 
-		std::cout << "calling GeneralFileReader open function"<<endl;
+		// std::cout << "calling GeneralFileReader open function"<<endl;
 		status = GeneralFileReader::open(filename);
 		// std::cout <<"File opened, loading x,y,z,V_th,rho"<<endl;
 		this->progress = 20;

@@ -316,3 +316,13 @@ For a custom fortran program, the process is the same except for the link line::
     make -j8
 
 Your custom programs should now appear in Kameleon-plus-source/bin/examples/<language>
+
+IDE support
+-----------
+When running cmake from your build directory, use the -G flag, e.g.::
+
+    -G "Sublime Text 2 - Unix Makefiles"
+    -G "Xcode"
+
+Run cmake -help for a list of project generators (eclipse, ninja, etc.)
+
