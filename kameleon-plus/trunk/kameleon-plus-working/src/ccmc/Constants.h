@@ -32,6 +32,11 @@ namespace ccmc
 	{
 		static float missingValue = -256.*-256.*-256.*-256.*-256.;
 	}
+
+	namespace pyglobals
+	{
+		extern bool PYTHON_IS_INITIALIZED;
+	}
 }
 
 

@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 PROJECT (boost_python_test)
 set(msg_prefix " ")
-message("############-pyKameleon(src/ccmc/pyreader)-############")
+message("")
+message("=========== pyKameleon(src/ccmc/pyreader) ===========")
 
 message("setting up python...")
 FIND_PACKAGE(PythonInterp)

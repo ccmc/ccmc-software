@@ -1,6 +1,7 @@
 # PYTHON wrapper
 set(msg_prefix " ")
-message("###########-python wrappers(src/ccmc/wrappers/python)-###########")
+message("")
+message("=========== python wrappers(src/ccmc/wrappers/python) ===========")
 message(${msg_prefix} "setting up python wrappers..")
 #Output directories
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/python/CCMC) 

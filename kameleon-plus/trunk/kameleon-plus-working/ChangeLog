@@ -1,3 +1,22 @@
+2015 June 29 Asher Pembroke
+--------------
+kameleon-plus-6.1.0
+- New embedded python tool
+- New support for embedded ARMS reader/interpolator: users may create custom python readers for their models
+- Example scripts:
+  custom ARMS_test.py (tests and visualizes ARMS reading/interpolating)
+  pyModel_test.py (tests embedded reader)
+
+Todo:
+  - Make python readers/interpolators compatable with Kameleon objects
+
+Bugs:
+  - cmake may pick up incompatiable python libraries if you installed with homebrew:
+    either specify library, header, and interpreter paths directly or use his version of cmake:
+      brew install nikolausdemmel/devel/cmake
+  - Python examples may segfault on exit due to PyInitialize/Finalize
+    http://stackoverflow.com/questions/14843408/python-c-embedded-segmentation-fault
+
 2015 Jan 29 Asher Pembroke
 --------------
 kameleon-plus-6.0.1

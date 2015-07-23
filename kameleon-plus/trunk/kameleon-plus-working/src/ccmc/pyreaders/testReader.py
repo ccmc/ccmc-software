@@ -44,7 +44,7 @@ class FileReaderFactory(object):
 			try:
 				pyReader = getattr(pyReader_module, pyReader_class_name)() #an object
 			except:
-				print '\tcould not instantiate subclass'
+				print '\tcould not instantiate subclass', pyReader_class_name, 'from', pyReader_module_name, ':', pyReader_module
 				raise
 			try:
 				assert issubclass(pyReader.__class__, pyKameleon.FileReader)

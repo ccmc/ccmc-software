@@ -1,6 +1,7 @@
 # collect python files and copy to bin
 set(msg_prefix " ")
-message("###########-python examples(src/example/python)-###########")
+message("")
+message("=========== python examples(src/example/python) ===========")
 message(STATUS ${msg_prefix} "building python examples")
 file(GLOB PYTHON_EXAMPLES "${CMAKE_CURRENT_SOURCE_DIR}/*.py" )
 message(STATUS ${msg_prefix} "Python example files: " ${PYTHON_EXAMPLES} )

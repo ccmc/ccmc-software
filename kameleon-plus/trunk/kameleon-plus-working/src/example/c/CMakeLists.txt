@@ -1,6 +1,7 @@
 # C examples (kameleon-plus/src/example/c)
 set(msg_prefix " ")
-message("###########-c examples(src/example/c)-###########")
+message("")
+message("=========== c examples(src/example/c) ===========")
 message(STATUS ${msg_prefix} "building c examples")
 
 if (NOT KAMELEON_EXAMPLES_DIR)

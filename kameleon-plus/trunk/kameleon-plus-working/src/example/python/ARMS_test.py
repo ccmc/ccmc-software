@@ -16,6 +16,7 @@ def main(argv):
 		"need numpy to use ARMS"
 
 	filename = sys.argv[1]
+	print filename
 	armsreader = readARMS(filename)
 	print 'ARMS reader initialized'
 	armsreader.open(filename)

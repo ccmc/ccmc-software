@@ -286,6 +286,16 @@ This will print /path/to/system/python/library/Python
 3. Reinstall
 
 
+Building with Homebrew
+----------------------
+You may have problems getting cmake to recognize homebrew's python. If so, consider tapping Nikolaus Demmel's cmake, which patches FindPythonLibs::
+
+    brew install nikolausdemmel/devel/cmake
+
+His trick is to first find the python interpreter, then call distutils within python to find the corresponding headers and libs.
+
+
+
 Building Programs with Kameleon-Plus
 ------------------------------------
 You can use CMake to build on top of the Kameleon libraries.

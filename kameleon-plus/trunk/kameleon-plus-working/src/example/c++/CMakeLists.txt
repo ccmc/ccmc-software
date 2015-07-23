@@ -1,6 +1,7 @@
 # C++ examples (kameleon-plus/src/examples/c++)
 set(msg_prefix " ")
-message("###########-c++ examples(src/example/c++)-###########")
+message("")
+message("========== c++ examples(src/example/c++) ==========")
 message(STATUS ${msg_prefix} "building c++ examples")
 if (NOT KAMELEON_EXAMPLES_DIR)
     set(KAMELEON_EXAMPLES_DIR ${PROJECT_SOURCE_DIR})

@@ -2,6 +2,7 @@
 
 cmake_minimum_required (VERSION 2.8) 
 project (Kameleon)
+cmake_policy(SET CMP0026 OLD)
 
 #Set version number
 set(Kameleon_VERSION_MAJOR "6")
@@ -9,7 +10,8 @@ set(Kameleon_VERSION_MINOR "0.0.1")
 set(KAMELEON_PLUS_VERSION ${Kameleon_VERSION_MAJOR}.${Kameleon_VERSION_MINOR})
 
 set(msg_prefix " ")
-message("############Top level CMakeLists.txt##########")
+message("")
+message("============= Top level CMakeLists.txt ==============")
 message(STATUS ${msg_prefix} "Kameleon-plus " ${KAMELEON_PLUS_VERSION} " build for " ${CMAKE_SYSTEM})
 
 # Set Kameleon paths
@@ -32,7 +34,7 @@ endif(BUILD_SHARED_LIBS)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KAMELEON_EXT_DIR})
 
 
-############Boost #############
+#=============Boost =============
 message("Getting BOOST....")
 # Boost shared or static?
 if(USE_STATIC_LIBS)
@@ -52,7 +54,7 @@ message(STATUS ${msg_prefix} "Boost includes: " ${BOOST_INCLUDEDIR})
 message(STATUS ${msg_prefix} "Boost library directory: " ${BOOST_LIBRARYDIR})   
 message(STATUS ${msg_prefix} "Link boost: " ${Boost_LIBRARIES})      
 
-##################### HDF5 ##############
+#============= HDF5 ==============
 #Desired functionality: If the HDF5 library is installed, build by default with HDF5
 #Optionally, turn off buildling HDF5 even if it is installed
 option(BUILD_HDF5 "Build with HDF5 library" ON)
@@ -87,7 +89,7 @@ else()
 endif(BUILD_HDF5)
 
 
-##################### CDF ####################
+#============= CDF ==============
 message("Getting CDF..")
 # CDF shared or static?
 if(USE_STATIC_LIBS)
@@ -106,7 +108,7 @@ message(STATUS ${msg_prefix} "Include CDF: " ${CDF_INCLUDES})
 message(STATUS ${msg_prefix} "link CDF: " ${CDF_LIB})
 message(STATUS ${msg_prefix} "CDF Path:" ${CDF_PATH}/lib)
 
-######### Set Config variables #############
+#============ Set Config variables =============
 # This code generates kameleon-plus-Config.h using kameleon-plus-Config.h.in as a template, with variable values supplied by this CMakeLists file.
 configure_file (
 	${PROJECT_SOURCE_DIR}/kameleon-plus-Config.h.in
@@ -114,7 +116,7 @@ configure_file (
 )
 
 
-######### Set up packaging environment #####
+#============ Set up packaging environment ==========
 file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc)
 file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc/c++)
 # file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/package_with_dependencies)
@@ -124,12 +126,13 @@ file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc/c++)
 # file(MAKE_DIRECTORY ${PACKAGE_LOC}/lib)
 # file(MAKE_DIRECTORY ${PACKAGE_LOC}/inc)
 
-######### Run other CMakeLists.txt files in subdirectories #####
+#============ Run other CMakeLists.txt files in subdirectories ==========
 # CCMC
 set(CCMC_ROOT_DIR "${KAMELEON_SRC_DIR}/ccmc")
 add_subdirectory(${CCMC_ROOT_DIR})
 
-message("############Top level CMakeLists.txt##########")
+message("")
+message("============ Top level CMakeLists.txt ============")
 set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/examples")
 set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example")
 FIND_PACKAGE( PythonLibs 2.7 REQUIRED)

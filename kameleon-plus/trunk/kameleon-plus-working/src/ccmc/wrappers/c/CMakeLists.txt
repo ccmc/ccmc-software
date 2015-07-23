@@ -1,6 +1,7 @@
 # c wrapper library
 set(msg_prefix "")
-message("###########-c wrappers(src/ccmc/wrappers/c)-###########")
+message("")
+message("=========== c wrappers(src/ccmc/wrappers/c) ===========")
 message(STATUS ${msg_prefix} "initializing c wrappers")
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/c) 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/c)

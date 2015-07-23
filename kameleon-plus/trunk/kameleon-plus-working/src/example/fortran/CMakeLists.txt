@@ -1,6 +1,7 @@
 # fortran examples (kameleon-plus/src/example/fortran)
 set(msg_prefix " ")
-message("###########-fortran examples(src/example/fortran)-###########")
+message("")
+message("========== fortran examples(src/example/fortran) ==========")
 message(STATUS ${msg_prefix} "building FORTRAN examples")
 enable_language (Fortran)
 

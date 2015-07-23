@@ -1,6 +1,7 @@
 # core kameleon library (kameleon-plus/src/ccmc)
 set(msg_prefix "src/ccmc>")
-message("############-ccmc library(" ${msg_prefix} ")-############")
+message(" ")
+message("============ ccmc library(" ${msg_prefix} ") ==============")
 set(msg_prefix " ")
 SET(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc) 
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc)
@@ -43,8 +44,9 @@ endif(BUILD_STATIC_LIBS)
 set_target_properties(ccmc PROPERTIES SOVERSION ${Kameleon_VERSION_MAJOR}.${Kameleon_VERSION_MINOR})
 #set the install_name of the lib relative to the executables 
 
+#let the user know where the ccmc library will end up
 get_property(ccmc_lib_loc TARGET ccmc PROPERTY LOCATION)
-message (STATUS ${msg_prefix} "ccmc library location = " ${ccmc_lib_loc})
+message (STATUS ${msg_prefix} "ccmc library output location = " ${ccmc_lib_loc})
 
 
 ############ Boost #############
@@ -97,8 +99,9 @@ endif(BUILD_HDF5)
 
 
 ############# python ############
+message(STATUS ${msg_prefix} "cmake framework path: " ${CMAKE_FRAMEWORK_PATH})
 FIND_PACKAGE(PythonInterp 2.7)
-FIND_PACKAGE(PythonLibs 2.7 REQUIRED)
+FIND_PACKAGE(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}" REQUIRED)
 if(PYTHONINTERP_FOUND)
     message(STATUS ${msg_prefix} "Python Interpreter:" ${PYTHON_EXECUTABLE})
     add_definitions(-DHAVE_PYTHON) # preprocessor to insert python interpreter calls
@@ -155,8 +158,6 @@ endif(BUILD_STATIC_LIBS)
 # Wrappers
 set(WRAPPERS_ROOT_DIR "${CCMC_ROOT_DIR}/wrappers")
 
-add_subdirectory(${WRAPPERS_ROOT_DIR}/c)
-add_subdirectory(${WRAPPERS_ROOT_DIR}/fortran)
 
 FIND_PACKAGE(SWIG)
 if(SWIG_FOUND)
@@ -181,4 +182,6 @@ if(SWIG_FOUND)
     ENDIF(JAVA_FOUND AND JNI_FOUND)
 endif(SWIG_FOUND)
 
+add_subdirectory(${WRAPPERS_ROOT_DIR}/c)
+add_subdirectory(${WRAPPERS_ROOT_DIR}/fortran)
 

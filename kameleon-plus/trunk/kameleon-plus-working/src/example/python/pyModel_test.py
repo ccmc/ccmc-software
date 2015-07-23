@@ -16,21 +16,11 @@ def main(argv):
 
 
 	    interpolator = pyModel.createNewInterpolator()
-	    result = interpolator.interoplate(variable,c0, c1, c2)
+	    result = interpolator.interpolate(variable,c0, c1, c2)
 	    print result
-	    # kameleon = ccmc.Kameleon()
-	    # kameleon.open(filename)
-	    # kameleon.loadVariable(variable)
-
-	    # interpolator = kameleon.createNewInterpolator()
-	    # var = interpolator.interpolate(variable,c0, c1, c2)
-
-	    # print variable, var
-
-	    # kameleon.close()
 	else:
 		print argv
-		print 'Usage: <filename> <variable> x, y, z \n python pyModel_test Mass_Density 1.1 0 0' 
+		print 'Usage: <filename> <variable> x, y, z \n python pyModel_test /path/to/config/file.ini Mass_Density 1.1 0 0' 
 
 if __name__ == '__main__':
     main(sys.argv[1:])

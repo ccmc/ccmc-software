@@ -7,7 +7,7 @@
 // #include "config.h"
 
 #include "kameleon-plus-Config.h"
-
+#include "Constants.h"
 #include "FileReader.h"
 #include "CDFFileReader.h"
 #include "HDF5FileReader.h"
@@ -25,6 +25,10 @@ namespace bp = boost::python; //Todo:put ifdef here
 
 namespace ccmc
 {
+	namespace pyglobals{
+		bool PYTHON_IS_INITIALIZED = false;
+	}
+
 	/**
 	 * sets fileReader pointer to NULL
 	 */
@@ -86,7 +90,13 @@ namespace ccmc
 		// std::cout <<"deleted filereader"<< std::endl;
 		// std::cout <<"ccmc directory:"<< CCMC_DIR << std::endl;
 
-		Py_Initialize();
+		if (ccmc::pyglobals::PYTHON_IS_INITIALIZED != true)
+			{
+				std::cout <<"python initializing.." << std::endl;
+				Py_Initialize();
+				ccmc::pyglobals::PYTHON_IS_INITIALIZED = true;
+			}
+		
 		
 		bp::object main = bp::import("__main__");
 		this->python_namespace = main.attr("__dict__");
@@ -305,12 +315,16 @@ namespace ccmc
 			close();
 
 #ifdef HAVE_PYTHON
-		// ToDo: Find out what happens if multiple pyReaders are used
-		if (Py_IsInitialized())
-		{
-			// std::cout << "Python initialized. Finializing" << std::endl;
-			Py_Finalize();
-		}
+		// ToDo: Find out what happens if multiple pyReaders are used..
+		// if (ccmc::pyglobals::PYTHON_IS_INITIALIZED == true)
+		// 	{
+		// 		if (Py_IsInitialized())
+		// 		{
+		// 			std::cout << "python finalizing..." << std::endl;
+		// 			Py_Finalize();
+		// 			ccmc::pyglobals::PYTHON_IS_INITIALIZED = false;
+		// 		}
+		// 	}
 		
 #endif /* HAVE_PYTHON */
 	}

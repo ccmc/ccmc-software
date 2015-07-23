@@ -11,7 +11,10 @@ from pyplusplus.module_builder import call_policies
 from pyplusplus import function_transformers as FT
 
 if __name__ == '__main__':
-	files = ['../FileReader.h', '../Attribute.h']
+	files = ['../FileReader.h', 
+			'../Attribute.h', 
+			'../Interpolator.h',
+			]
 	print 'Wrapping the following class files:'
 	for file_i in files:
 		print '\t', file_i
@@ -21,7 +24,8 @@ if __name__ == '__main__':
 	# Solution: recompile gccxml using the gcc compiler (instead of clang):
 	# (~/gccxml-build)$ cmake -DCMAKE_C_COMPILER=llvm-gcc-4.2 -DCMAKE_CXX_COMPILER=llvm-g++-4.2 /path/to/gccxml
 	mb = module_builder.module_builder_t( files=files,
-	                                      gccxml_path='/Users/apembrok/git/gccxml-build/bin',
+										  gccxml_path='/opt/local/bin',
+	                                      # gccxml_path='/Users/apembrok/git/gccxml-build/bin',
 	                                      include_paths = ['/opt/local/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7',] )
 
 	print 'setting call policies...'
