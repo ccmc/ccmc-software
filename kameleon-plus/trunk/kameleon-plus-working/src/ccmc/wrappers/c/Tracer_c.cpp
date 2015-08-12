@@ -85,6 +85,11 @@ void Tracer_bidirectionalTrace(int id, const char * variable, const float* start
 
 }
 
+void Tracer_setInnerBoundary(int id, float innerBoundary){
+  ccmc::Tracer * tracer = tracerObjects[id];
+  tracer->setInnerBoundary(innerBoundary);
+}
+
 void Tracer_unidirectionalTrace(int id, const char * variable, const float * startComponent1, const float * startComponent2,
 		const float * startComponent3, const int * step_max, const float * dn, int * actual_steps, float * x_array, float * y_array, float * z_array)
 {
