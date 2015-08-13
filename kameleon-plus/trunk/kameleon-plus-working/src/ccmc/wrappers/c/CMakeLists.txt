@@ -16,13 +16,23 @@ set(CMAKE_CXX_FLAGS "-fPIC")
 set(ALL_SOURCE ${CCMC_WRAPPER_C_SOURCES})
 set(ALL_HEADER ${CCMC_WRAPPER_C_HEADER})
 
-add_library(ccmc_wrapper_c ${ALL_SOURCE} ${ALL_HEADER})
+if(BUILD_SHARED_LIBS)
+    message(STATUS ${msg_prefix} "will build SHARED ccmc_wrapper_c library")
+    add_library(ccmc_wrapper_c SHARED ${ALL_SOURCE} ${ALL_HEADER})
+endif(BUILD_SHARED_LIBS)
+
+if(BUILD_STATIC_LIBS)
+    message(STATUS ${msg_prefix} "will build STATIC ccmc_wrapper_c library")
+    add_library(ccmc_wrapper_c_static STATIC ${ALL_SOURCE} ${ALL_HEADER})
+endif(BUILD_STATIC_LIBS)
+
+
 
 # include ccmc
 include_directories(${KAMELEON_SRC_DIR})
 
 target_link_libraries(ccmc_wrapper_c ccmc)
 
-if(APPLE)
-    set_property(TARGET ccmc_wrapper_c PROPERTY MACOSX_RPATH TRUE)
-endif(APPLE)
+# if(APPLE)
+#     set_property(TARGET ccmc_wrapper_c PROPERTY MACOSX_RPATH TRUE)
+# endif(APPLE)

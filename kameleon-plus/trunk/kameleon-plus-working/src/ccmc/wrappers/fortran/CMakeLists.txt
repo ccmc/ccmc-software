@@ -23,6 +23,6 @@ include_directories(${KAMELEON_SRC_DIR})
 
 target_link_libraries(ccmc_wrapper_fortran ccmc_wrapper_c ccmc)
 
-if(APPLE)
-    set_property(TARGET ccmc_wrapper_fortran PROPERTY MACOSX_RPATH TRUE)
-endif(APPLE)
+# if(APPLE)
+#     set_property(TARGET ccmc_wrapper_fortran PROPERTY MACOSX_RPATH TRUE)
+# endif(APPLE)
