@@ -6,6 +6,7 @@ Requirements:
 	hdf5 (LFM support - optional)
 	cdf3.5 http://cdaweb.gsfc.nasa.gov/pub/software/cdf/dist/cdf35_0_2/
 	boost 1.54.0
+	swig
 
 Build:
 	mkdir ~/Kameleon-plus-build
