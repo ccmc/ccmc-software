@@ -4,7 +4,7 @@ Quick Start
 ===========
 Download
 --------
-Kameleon-plus is hosted on google code: https://code.google.com/p/ccmc-software/
+Kameleon-plus is hosted on github: https://github.com/ccmc/ccmc-software
 
 You may download an archived version of the code here: :download:`Kameleon-plus-6.0_source <../download/Kameleon-plus-6.0_source.tar.bz2>`
 
@@ -23,9 +23,6 @@ Requirements
 * `boost <http://www.boost.org/>`_ - 1.54.0
 * `hdf5 <http://www.hdfgroup.org/HDF5/release/obtain5.html>`_ (optional)
 * `SWIG <http://www.swig.org/>`_ minimum version 3.0.0 (optional - for python and java wrapper support)
-
-Example files
-* <links to example files>
 
 Build
 -----
