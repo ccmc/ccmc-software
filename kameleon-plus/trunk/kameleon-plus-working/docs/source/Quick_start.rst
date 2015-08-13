@@ -145,6 +145,8 @@ To control the build process, the following flags may be invoked when running cm
 | USE_STATIC_LIBS  |   OFF  | link against the static version of any required libraries when building  |
 +------------------+--------+--------------------------------------------------------------------------+
 | BUILD_HDF5       |   ON   |  Build with HDF5 library - (will ignore if HDF5 is not found)            |
++------------------+--------+--------------------------------------------------------------------------+
+|CMAKE_MACOSX_RPATH|   OFF  | On Mac, build shared libs without @rpath                                 |
 +------------------+--------+--------------------------------------------------------------------------+                     
 
 These flags will be saved in your build directory in the file CMakeCache.txt. If you edit this file, the new values will be used next time you run cmake. See :ref:`trouble_shooting` for potential conflicts between these flags.
@@ -291,7 +293,18 @@ You may see this error if you installed swig with macports.
 
 Solution: install swig-python::
     
-    sudo port swig-python
+    sudo port install swig-python
+
+
+MacOS rpath issues after linking
+................................
+By default, cmake should build without rpath. Solution: make this behavior explicit by setting the cmake flag::
+
+    cmake -DCMAKE_MACOSX_RPATH=OFF
+
+See documentation for CMAKE_MACOSX_RPATH `here <http://www.cmake.org/cmake/help/v3.0/variable/CMAKE_MACOSX_RPATH.html>`_  and  more on rpath `here <http://www.cmake.org/Wiki/CMake_RPATH_handling>`_.
+
+
 
 Building with Homebrew
 ----------------------
