@@ -22,8 +22,9 @@ The suite now consists of:
   1. Original **Kameleon Converter** ( C )
   1. Generation 2 **KameleonJ/Kameleon6 Converter** ( JAVA )
   1. Original **Kameleon Interpolator** ( C )
-  1. Generation 2 **Kameleon+ Interpolator** ( C++ )
+  1. Generation 2 **Kameleon+ Interpolator** ( C++,Python)
 
+Go to the [main Kameleon-plus site](http://ccmc.gsfc.nasa.gov/downloads/kameleon_instructions/html/README.html) to get started with the Gen 2 interpolators.
 
 ### For Developers ###
 
