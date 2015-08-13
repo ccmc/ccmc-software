@@ -6,12 +6,11 @@ Kameleon is a software suite that is being developed at the CCMC to address the 
 
 In a nutshell, the Kameleon converter reads model output data and re-writes the data into a standard format.  The Kameleon access/interpolation library reads data already converted by Kameleon providing a high level interface to the data.
 
-Current Feature/Functionality Chart: https://docs.google.com/spreadsheet/ccc?key=0AnFF96hg0HaldHhPVk9tUmtzZFBVdWF5VGNOaUxta3c&usp=sharing#gid=0
+[Current Feature/Functionality Chart](https://docs.google.com/spreadsheet/ccc?key=0AnFF96hg0HaldHhPVk9tUmtzZFBVdWF5VGNOaUxta3c&usp=sharing#gid=0)
 
-CCMC Software Developers Google Group:
-https://groups.google.com/d/forum/ccmc-software
+[CCMC Software Developers Google Group](https://groups.google.com/d/forum/ccmc-software)
 
-CCMC Software Developers Google Group Mail List: ccmc-software@googlegroups.com
+[CCMC Software Developers Google Group Mail List](ccmc-software@googlegroups.com)
 
 ## Where To Start?  What Are All Of These Versions? ##
 
