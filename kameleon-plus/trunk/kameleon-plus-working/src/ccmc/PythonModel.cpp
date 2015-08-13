@@ -1,10 +1,3 @@
-/*
- * LFM.cpp
- *
- *  Created on: Dec 4, 2012
- *      Author: Brian Curtis
- */
-
 #include "PythonModel.h"
 #include "Point.h"
 #include "Vector.h"

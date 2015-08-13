@@ -285,6 +285,13 @@ This will print /path/to/system/python/library/Python
 
 3. Reinstall
 
+_CCMC module build error: cannot find python.swig, typemaps.i
+.............................................................
+You may see this error if you installed swig with macports. 
+
+Solution: install swig-python::
+    
+    sudo port swig-python
 
 Building with Homebrew
 ----------------------

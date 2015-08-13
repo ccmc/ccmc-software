@@ -26,9 +26,9 @@ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_STATIC_LIBS "Build static libraries" ON)
 option(USE_STATIC_LIBS "Use static libraries" OFF)
 
-if(BUILD_SHARED_LIBS)
-	set(CMAKE_MACOSX_RPATH 1) #Turning this off ensures that fixup_bundle finds the ccmc library correctly
-endif(BUILD_SHARED_LIBS)
+# if(BUILD_SHARED_LIBS)
+# 	set(CMAKE_MACOSX_RPATH 1) #Turning this off ensures that fixup_bundle finds the ccmc library correctly
+# endif(BUILD_SHARED_LIBS)
 
 # add path to external libraries
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KAMELEON_EXT_DIR})
