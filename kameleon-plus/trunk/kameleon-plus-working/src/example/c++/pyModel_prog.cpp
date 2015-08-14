@@ -41,14 +41,8 @@ int main (int argc, char * argv[])
 
 	if (pymodel.doesVariableExist(variable))
 	{
-		float value;
-		for (int i = 0; i < 100; i++)
-		{
-			p_component1 = 1.0+float(i)/100;
-			value = interpolator->interpolate(variable, p_component1, p_component2, p_component3);
-		}
 		
-		// float value = interpolator->interpolate(variable, p_component1, p_component2, p_component3);
+		float value = interpolator->interpolate(variable, p_component1, p_component2, p_component3);
 		string units = pymodel.getNativeUnit(variable);
 		cout << "interpolated value: " << value << " " << units << endl;
 	} else{

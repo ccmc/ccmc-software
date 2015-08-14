@@ -465,7 +465,7 @@ class readARMS(testReader.pyFileReader):
 		phi_mid = (bbx.phi_min + bbx.phi_max)/2
 		return r_mid,th_mid,phi_mid
 
-	def interpolate(self,variable, point):
+	def interpolate(self,variable, *point):
 		if type(variable) != str:
 			variable = self.variableNames[variable]
 			
@@ -552,7 +552,7 @@ class readARMS(testReader.pyFileReader):
 			return self.missing_value
 
 	"""Interpolate variable at position along with local resolution """
-	def interpolate_dc(self,variable,point):
+	def interpolate_dc(self,variable,*point):
 		val = self.interpolate(variable,point)
 		if self.last_key != -1:		
 			bbx = self.tree_data[self.last_key]
@@ -611,7 +611,7 @@ class readARMS(testReader.pyFileReader):
 		return pyKameleon.FileReader.OK
 
 	def openFile(self, config_file, readonly = True):
-		# print 'loading config file'
+		print 'loading config file'
 		if config_file != None:
 			try:
 				self._config = testReader.getConfig(config_file)
@@ -619,7 +619,7 @@ class readARMS(testReader.pyFileReader):
 			except:
 				raise
 
-		# print 'setting current filename'
+		print 'setting current filename'
 		self.current_filename = self.data_file_name
 		self.read_ARMS_header(self.header_file_name)
 		self.read_ARMS_data(self.data_file_name)

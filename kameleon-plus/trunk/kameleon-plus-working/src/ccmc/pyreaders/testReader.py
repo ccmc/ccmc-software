@@ -26,7 +26,6 @@ class FileReaderFactory(object):
 			self._config = getConfig(config_file)
 
 
-
 	def createPyReader(self):
 		pyReader_module_name = get_config_value(self._config,'Reader','pyReaderModule')
 		pyReader_class_name = get_config_value(self._config, 'Reader','pyFileReaderClass')
@@ -102,7 +101,7 @@ class pyFileReader(pyKameleon.FileReader):
 			Method should open file and set current_filename. 
 			If open fails, please return self.OPEN_ERROR or self.FILE_DOES_NOT_EXIST"""
 
-		print 'opening file'
+		print 'dummy method opening file'
 		self.current_filename = filename #automatically invokes setCurrentFilename in c++
 
 		return pyKameleon.FileReader.OK

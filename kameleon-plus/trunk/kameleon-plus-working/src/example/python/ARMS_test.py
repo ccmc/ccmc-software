@@ -19,11 +19,11 @@ def main(argv):
 	print filename
 	armsreader = readARMS(filename)
 	print 'ARMS reader initialized'
+	print armsreader.header_file_name
 	armsreader.open(filename)
 
-	# armsreader._print_tree_info()
+	armsreader._print_tree_info()
 
-	
 	xx,zz = np.mgrid[1.003:1.06:50j,-.0125:0.0125:50j]
 	yy = np.zeros(xx.shape)	
 

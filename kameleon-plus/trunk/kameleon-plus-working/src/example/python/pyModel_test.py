@@ -10,14 +10,14 @@ def main(argv):
 	    c1 = float(argv[3])
 	    c2 = float(argv[4])
 
-	    pyModel = ccmc.PythonModel()
+	    pyModel = ccmc.PythonModel() #config file
 
-	    pyModel.open(filename) #config file
-
+	    pyModel.open(filename) 
 
 	    interpolator = pyModel.createNewInterpolator()
 	    result = interpolator.interpolate(variable,c0, c1, c2)
-	    print result
+	    unit = pyModel.getNativeUnit(variable)
+	    print result, unit
 	else:
 		print argv
 		print 'Usage: <filename> <variable> x, y, z \n python pyModel_test /path/to/config/file.ini Mass_Density 1.1 0 0' 
