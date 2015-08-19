@@ -33,6 +33,7 @@ int main (int argc, char * argv[])
 	float p_component1 = boost::lexical_cast<float>(argv[3]);
 	float p_component2 = boost::lexical_cast<float>(argv[4]);
 	float p_component3 = boost::lexical_cast<float>(argv[5]);
+	float dc0, dc1, dc2;
 
 	ccmc::PythonModel pymodel;
 	pymodel.open(filename);
@@ -42,9 +43,10 @@ int main (int argc, char * argv[])
 	if (pymodel.doesVariableExist(variable))
 	{
 		
-		float value = interpolator->interpolate(variable, p_component1, p_component2, p_component3);
+		float value = interpolator->interpolate(variable, p_component1, p_component2, p_component3, dc0, dc1, dc2);
 		string units = pymodel.getNativeUnit(variable);
 		cout << "interpolated value: " << value << " " << units << endl;
+		cout << "resolution: " << dc0 << " "<< dc1 <<" " << dc2 << endl;
 	} else{
 		cout << variable << " does not exist!"<<endl;
 	}

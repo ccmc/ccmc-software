@@ -553,15 +553,18 @@ class readARMS(testReader.pyFileReader):
 
 	"""Interpolate variable at position along with local resolution """
 	def interpolate_dc(self,variable,*point):
-		val = self.interpolate(variable,point)
-		if self.last_key != -1:		
-			bbx = self.tree_data[self.last_key]
+		get_bbx =itemgetter(3)
+		val = self.interpolate(variable,*point)
+		if self.last_key != -1:
+			bbx = get_bbx(self.tree_data[self.last_key])
 			ni,nj,nk = self.leaf_resolution
-			dr = (bbx.r_max - bbx.r_min)/ni
+			dlogr = (bbx.r_max - bbx.r_min)/ni
+			dr = (pow(10,dlogr)-1)*point[0]
 			dth = (bbx.theta_max - bbx.theta_min)/nj
 			dphi = (bbx.phi_max - bbx.phi_min)/nk
 			return val, dr, dth, dphi 
 		else:
+			print 'last_key == -1, returning missing'
 			return self.missing_value, self.missing_value, self.missing_value, self.missing_value
 
 	def tri_linear(self,var_data,i0,i1,j0,j1,k0,k1,p):
@@ -646,11 +649,11 @@ class readARMS(testReader.pyFileReader):
 	"""Interpolates set of variables onto input positions"""
 	@staticmethod
 	@np.vectorize
-	def interpolate_variables(r, th, phi, func = lambda var,(r,th,phi): r**(-3)*(1+3*np.sin(th))**.5):
+	def interpolate_variables(r, th, phi, func = lambda var,r,th,phi: r**(-3)*(1+3*np.sin(th))**.5):
 		"""returns a named tuple of interpolated variables"""
 		results = []
 		for variable in readARMS.variables_tuple._fields:	
-			results.append(func(variable,(r,th,phi)))
+			results.append(func(variable,r,th,phi))
 		return readARMS.variables_tuple(*results)
 
 	def interpolate_bbx(self,var,point):

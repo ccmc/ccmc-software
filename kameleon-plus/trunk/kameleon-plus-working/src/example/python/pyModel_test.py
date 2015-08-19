@@ -1,5 +1,6 @@
 import sys
 from CCMC import _CCMC as ccmc
+# Warning: expect weird results if your python interpreter library doesn't match the python library used to build _CCMC.so
 
 def main(argv):
 	if (len(argv) == 5):
@@ -15,9 +16,13 @@ def main(argv):
 	    pyModel.open(filename) 
 
 	    interpolator = pyModel.createNewInterpolator()
-	    result = interpolator.interpolate(variable,c0, c1, c2)
+	    result, dc0, dc1, dc2 = interpolator.interpolate_dc(variable,c0, c1, c2)
 	    unit = pyModel.getNativeUnit(variable)
-	    print result, unit
+	    print variable,(c0,c1,c2),':\n\t', result, unit
+	    print 'resolution', dc0, dc1, dc2
+
+	    result = interpolator.interpolate(variable,c0,c1,c2)
+	    print 'result:', result, unit
 	else:
 		print argv
 		print 'Usage: <filename> <variable> x, y, z \n python pyModel_test /path/to/config/file.ini Mass_Density 1.1 0 0' 
