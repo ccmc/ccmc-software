@@ -1,9 +1,5 @@
 import sys, time
-sys.path.append('../../../lib/ccmc/')
-sys.path.append('../../ccmc/')
-sys.path.append('.')
-
-
+sys.path.append('@CCMC_DIR@')
 
 def main(argv):
 	if len(sys.argv) != 2:

@@ -7,7 +7,9 @@ and a graph of the variable as a function of arc length.
 import numpy as np
 import sys, getopt
 import time
-from CCMC import _CCMC as ccmc
+sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+import _CCMC as ccmc
+
 
 def main(argv):
     if (len(argv) == 5):
