@@ -79,7 +79,7 @@ namespace ccmc
 		variableDataInt.clear();
 		variableDataByID.clear();
 		variableDataIntByID.clear();
-		std::cout << "Model calling  GeneralFileReader::close()"<<std::endl;
+		// std::cout << "Model calling  GeneralFileReader::close()"<<std::endl;
 
 		return GeneralFileReader::close();
 	}

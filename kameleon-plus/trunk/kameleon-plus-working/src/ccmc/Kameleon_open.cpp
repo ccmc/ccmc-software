@@ -22,18 +22,18 @@ namespace ccmc
 		//need to store filename
 		//need to intialize relevant information
 
-		std::cout << "Kameleon::open(" << filename << ")" << std::endl;
+		// std::cout << "Kameleon::open(" << filename << ")" << std::endl;
 		GeneralFileReader generalFileReader;
 		long status = generalFileReader.open(filename);
 
 		if (status == FileReader::OK)
 		{
-			std::cout<<"File reader was succesful. Does model_name attribute exist?"<<std::endl;
+			// std::cout<<"File reader was succesful. Does model_name attribute exist?"<<std::endl;
 			if (generalFileReader.doesAttributeExist("model_name"))
 			{
-				std::cout << "model_name attribute exists... loading model_name"<<std::endl;
+				// std::cout << "model_name attribute exists... loading model_name"<<std::endl;
 				this->modelName = (generalFileReader.getGlobalAttribute("model_name")).getAttributeString();
-				std::cout << "Kameleon::open() Model name: '" << modelName << "'" << std::endl;
+				// std::cout << "Kameleon::open() Model name: '" << modelName << "'" << std::endl;
 
 				generalFileReader.close();
 				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
@@ -104,7 +104,7 @@ namespace ccmc
 
 			}
 		}
-		std::cout<< "kameleon open returning with status:" << status << std::endl;
+		// std::cout<< "kameleon open returning with status:" << status << std::endl;
 		return status;
 
 	}

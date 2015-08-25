@@ -65,11 +65,11 @@ namespace ccmc
 	 */
 	Kameleon::~Kameleon()
 	{
-		std::cout << "Kameleon object self destructing" << std::endl;
+		// std::cout << "Kameleon object self destructing" << std::endl;
 
 		if (model != NULL)
 		{
-			std::cout << "Kameleon object closing model" << std::endl;
+			// std::cout << "Kameleon object closing model" << std::endl;
 			model->close();
 			delete model;
 		}
@@ -150,7 +150,7 @@ namespace ccmc
 		boost::unordered_map<std::string, std::string>::iterator iter = variableAliases.find(variable_str);
 		if (iter != variableAliases.end())
 			variable_str = variableAliases[variable_str];
-		cout << "variable_str: " << variable_str << endl;
+		// cout << "variable_str: " << variable_str << endl;
 
 		//units were never fetched before
 		//first, attempt fetch from Kameleon's map for derived variables.
@@ -591,7 +591,7 @@ namespace ccmc
 			return (*iter).second;
 		else
 		{
-			std::cout << "Kameleon::getConversionFactorToSI(): " << std::endl;
+			// std::cout << "Kameleon::getConversionFactorToSI(): " << std::endl;
 			return model->getConversionFactorToSI(variable);
 		}
 	}

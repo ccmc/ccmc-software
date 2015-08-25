@@ -1,11 +1,11 @@
 # Notes #
 
-All python examples in src/example/python should be written with the following lines at the top:
+All python examples in src/example/python should include the following lines at the top:
 
 ```python
 import sys
 sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
-import CCMC as ccmc
+import _CCMC as ccmc
 ```
 
 This allows cmake to insert the user's path to the CCMC module (_CCMC.so).
