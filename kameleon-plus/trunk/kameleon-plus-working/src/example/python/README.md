@@ -33,14 +33,62 @@ To get information on a specific variable, type:
 ```console
 python grid.py /path/to/ccmc/output/file.cdf -vinfo variable-name
 ```
-where ```variable-name``` could be ```rho``` for density.
+where ```variable-name``` could be ```rho``` for density:
+```console
+rho [ amu/cm^3 ]
+	valid_min : 0.0
+	valid_max : 9.99999995904e+11
+	units : amu/cm^3
+	grid_system : grid_system_1
+	mask : -1.09951162778e+12
+	description : atomic mass density, limit may bee exceeded in dense atmosphere; solar corona 2e8
+	is_vector_component : 0
+	position_grid_system : grid_system_1
+	data_grid_system : grid_system_1
+	actual_min : 0.0992666035891
+	actual_max : 25.3303718567
+```
 
-## Choosing variables ##
+
+
+## Choosing variables for interpolation ##
 To set which variables are to be interpolated, use
 ```console
 python grid.py /path/to/ccmc/output/file.cdf --variables var1 var2 var3
 ```
 where you could use ```rho p bx by bz``` in place of ```var1 var2 var3```
+You will get an error if you try to choose a variable that does not exist.
+
+## Setting interpolation positions ##
+The positions will depend on the coordinate system of the underlying model. For magnetospheric runs, this usually means SM coordinates. **Unfortunately, knowing which coordinate system a model is in is not well documented!**
+
+There are three ways to set your interpolation positions:
+* Specifying a single position at command line
+* Specifying a rectilinear cartesian grid
+* Specifying an input file in columnar x,y,z format
+
+### Specifying a single position ###
+This is useful for verifying that you are in the right coordinate system and the results match what you would expect for your domain.
+```console
+python grid.py /path/to/ccmc/output/file.cdf --variables var1 var2 var3 -p -30 0 0
+```
+This returns the following table (actual values/variables depend on input):
+```console
+rho[amu/cm^3]        p[nPa]        bx[nT]        by[nT]        bz[nT]
+       0.121        0.060        8.351       -0.824       -0.655
+```
+Interpolating outside the bounds of the model will result in junk data, most likely a large negative value.
+You can also format the output of this using c-style syntax:
+
+```console
+python grid.py /path/to/ccmc/output/file.cdf --variables var1 var2 var3 -d '\t' -f "12.3f" -p -30 0 0 
+```
+Results in:
+```console
+rho[amu/cm^3]	       p[nPa]	       bx[nT]	       by[nT]	       bz[nT]
+       0.121	       0.060	       8.351	      -0.824	      -0.655
+```
+
 
 ## More Options ##
 Run the python code with -h or --help
