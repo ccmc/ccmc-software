@@ -3,6 +3,8 @@
 This program takes as input a kameleon-compatible cdf or hdf5 file, a variable, and a seed position.
 It then computes a fieldline and interpolates the variable onto it, plotting the resulting fieldline in 3d
 and a graph of the variable as a function of arc length.
+
+todo: python tracer -field v -inpupt_file filename -positions_file filename -output_file
 """
 import numpy as np
 import sys, getopt

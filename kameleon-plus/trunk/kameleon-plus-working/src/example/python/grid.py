@@ -4,6 +4,8 @@ sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
 import _CCMC as ccmc
 import numpy as np
 import collections
+import json
+import base64
 
 
 def main(argv):
@@ -17,6 +19,11 @@ def main(argv):
 	var_options.add_argument("-lvar", "--list-vars",action = 'store_true', help = 'list variables in the file (use -v to print all variable attributes)')
 	var_options.add_argument("-vinfo","--variable-info", metavar = 'var', type = str, help = 'print attributes for given variable')
 	var_options.add_argument("-vars", "--variables", type=str, nargs='+',metavar = ('var1','var2',), help='list of variables to be interpolated')
+
+	# positions file options
+	in_positions_options = parser.add_argument_group(title = 'input positions file options', description = 'File containing positions for interpolation')
+	in_positions_options.add_argument('-pfile', '--positions_file', type = str, metavar = '/path/to/input/positions.txt', 
+		help = 'file containing column positions x, y, z. Valid separators are \' \', <tab>, \',\' ')
 
 	# single point options
 	point_options = parser.add_argument_group(title = 'point options', description = 'interpolation options for a single point')
@@ -37,11 +44,12 @@ def main(argv):
 	#output options
 	output_options = parser.add_argument_group(title = 'ouput options', description = 'where to store results of interpolation')
 	output_options.add_argument("-o", "--output_file", type = str, metavar = 'path/to/output_file', help = 'output file name and location')
-	output_options.add_argument("-f", "--format", default = '12.3f', type = str, help = 'format of output variables')
-	output_options.add_argument("-d", "--delimiter", default = ' ', type = str, help = 'delimiter for output (default is \' \')')
+	output_options.add_argument("-f", "--format", default = '12.3f', type = str, metavar = '<flags><width><.precision><length>specifier', help = 'c-sytle format of output variables (e.g. 12.3f)')
+	output_options.add_argument("-d", "--delimiter", default = ' ', type = str, metavar = "\' \'", help = 'delimiter for ascii output (default is \' \')')
+	output_options.add_argument('-ff', '--file_format', default = 'txt', type = str, nargs = '+', metavar = ('fits', 'json'),
+		help = 'File format for output. default: \'txt\' for ASCII. Use \'fits\' for binary IDL fits file (requires astropy), or \'json\'')
 
 	args = parser.parse_args()
-
 	
 	kameleon = ccmc.Kameleon() 
 	kameleon.open(args.input_file)
@@ -151,10 +159,29 @@ def main(argv):
 				z_ = np.zeros(1) + args.z_intercept
 
 			x, y, z = np.meshgrid(x_,y_,z_, indexing = 'ij')
-			
-			if args.transform:
-				raise NotImplementedError('Grid transformations not implemented yet')
 
+		elif args.positions_file:
+			with open(args.positions_file, 'r') as f:
+				line0 = f.readline().strip()
+				splitter = ' '
+				if ',' in line0:
+					splitter = ','
+				elif '\t' in line0:
+					splitter = '\t'
+				positions = np.array(line0.split(splitter),dtype='float')
+				for line in f:
+					line = line.strip()
+					pnext = np.array(line.split(splitter), dtype='float')
+					positions = np.vstack((positions, pnext))
+
+			x = positions[:,0]
+			y = positions[:,1]
+			z = positions[:,2]
+
+		if args.transform:
+			raise NotImplementedError('Grid transformations not implemented yet')
+
+		if (args.positions_file != None) | (args.resolution != None):
 			results = interpolate_variables(interpolator, variables_tuple, x.ravel(), y.ravel(), z.ravel())
 			results = variables_tuple(*results)
 			if args.verbose:
@@ -164,15 +191,49 @@ def main(argv):
 						print '\t', var_name, var_array.shape
 			
 			if args.output_file:
-				if args.verbose: 
-					print 'writing ASCII to', args.output_file
-				with open(args.output_file, 'w') as f:
-					f.write(var_names)
-					f.write('\n')
-					for variables in zip(*results):
-						f.write(var_format.format(*variables))
+				if 'txt' in args.file_format:
+					if args.verbose: 
+						print 'writing ASCII to', args.output_file
+					with open(args.output_file, 'w') as f:
+						f.write(var_names)
 						f.write('\n')
-				f.close()
+						for variables in zip(*results):
+							f.write(var_format.format(*variables))
+							f.write('\n')
+					f.close()
+				if 'json' in args.file_format:
+					import json
+					if args.verbose:
+						print 'writing json to', args.output_file
+					
+					with open(args.output_file, 'w') as f:
+						json.dump(results._asdict(),f, cls = NumpyEncoder)
+					f.close()
+					if args.verbose > 1:
+						print json.dumps(results._asdict(), cls = NumpyEncoder, indent=4, separators=(',',': '))
+
+				if 'fits' in args.file_format:
+					from astropy.io import fits
+					if args.verbose: 
+						print 'writing to fits file (IDL)'
+					# generate header info
+					primary_header = fits.Header()
+					for i in range(kameleon.getNumberOfGlobalAttributes()):
+						attr_name = kameleon.getGlobalAttributeName(i)
+						attr = kameleon.getGlobalAttribute(attr_name)
+						primary_header[str(i)] = attr_name + ': ' + str(getAttributeValue(attr))
+
+					primary_hdu = fits.PrimaryHDU(header = primary_header)
+
+					# generate columns
+					columns = []
+					for var_name, var_array in results._asdict().items():
+						columns.append(fits.Column(name = var_name, format = 'E', array = var_array))
+					cols = fits.ColDefs(columns)
+					hdutable = fits.BinTableHDU.from_columns(cols)
+					
+					thdulist = fits.HDUList([primary_hdu,hdutable])
+					thdulist.writeto(args.output_file)
 			else:
 				print var_names
 				for variables in zip(*results):
@@ -197,6 +258,36 @@ def getAttributeValue(attribute):
 		return attribute.getAttributeFloat()
 	elif attribute.getAttributeType() == ccmc.Attribute.INT:
 		return attribute.getAttributeInt()
+
+class NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        """
+        if input object is a ndarray it will be converted into a dict holding dtype, shape and the data base64 encoded
+        """
+        if isinstance(obj, np.ndarray):
+            data_b64 = base64.b64encode(obj.data)
+            return dict(__ndarray__=data_b64,
+                        dtype=str(obj.dtype),
+                        shape=obj.shape)
+        # Let the base class default method raise the TypeError
+        return json.JSONEncoder(self, obj)
+
+
+def json_numpy_obj_hook(dct):
+    """
+    Decodes a previously encoded numpy ndarray
+    with proper shape and dtype
+    :param dct: (dict) json encoded ndarray
+    :return: (ndarray) if input was an encoded ndarray
+    """
+    if isinstance(dct, dict) and '__ndarray__' in dct:
+        data = base64.b64decode(dct['__ndarray__'])
+        return np.frombuffer(data, dct['dtype']).reshape(dct['shape'])
+    return dct
+
+expected = np.arange(100, dtype=np.float)
+dumped = json.dumps(expected, cls=NumpyEncoder)
+result = json.loads(dumped, object_hook=json_numpy_obj_hook)
 
 if __name__ == '__main__':
     main(sys.argv[1:])
