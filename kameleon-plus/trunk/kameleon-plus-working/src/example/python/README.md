@@ -49,8 +49,6 @@ rho [ amu/cm^3 ]
 	actual_max : 25.3303718567
 ```
 
-
-
 ## Choosing variables for interpolation ##
 To set which variables are to be interpolated, use
 ```console
@@ -88,6 +86,9 @@ Results in:
 rho[amu/cm^3]	       p[nPa]	       bx[nT]	       by[nT]	       bz[nT]
        0.121	       0.060	       8.351	      -0.824	      -0.655
 ```
+
+### Specifying a grid ###
+A grid may be generated in cartesian (or spherical?) coordinates. The grid resolution must be specified (ni,nj,nk). The resulting positions will be 'ij'.
 
 
 ## More Options ##
