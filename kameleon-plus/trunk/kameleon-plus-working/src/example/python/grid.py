@@ -19,11 +19,13 @@ def main(argv):
 	var_options.add_argument("-lvar", "--list-vars",action = 'store_true', help = 'list variables in the file (use -v to print all variable attributes)')
 	var_options.add_argument("-vinfo","--variable-info", metavar = 'var', type = str, help = 'print attributes for given variable')
 	var_options.add_argument("-vars", "--variables", type=str, nargs='+',metavar = ('var1','var2',), help='list of variables to be interpolated')
+	var_options.add_argument("-pout", "--positions_out_flag", type = bool, metavar = 'positions_output_flag', default = True,
+		help = 'pass interpolating positions to output')
 
 	# positions file options
 	in_positions_options = parser.add_argument_group(title = 'input positions file options', description = 'File containing positions for interpolation')
 	in_positions_options.add_argument('-pfile', '--positions_file', type = str, metavar = '/path/to/input/positions.txt', 
-		help = 'file containing column positions x, y, z. Valid separators are \' \', <tab>, \',\' ')
+		help = 'file containing column positions x, y, z. Optional separators: \' \' (default), <tab>, \',\' ')
 
 	# single point options
 	point_options = parser.add_argument_group(title = 'point options', description = 'interpolation options for a single point')
@@ -39,7 +41,11 @@ def main(argv):
 	grid_options.add_argument("-xint","--x-intercept", type = float, default= 0, nargs =1, metavar = 'xint', help = 'fixes x for line or plane (ignores x-range)' )
 	grid_options.add_argument("-yint","--y-intercept", type = float, default= 0, nargs =1, metavar = 'yint', help = 'fixes y for line or plane' )
 	grid_options.add_argument("-zint","--z-intercept", type = float, default= 0, nargs =1, metavar = 'zint', help = 'fixes z for line or plane' )
-	grid_options.add_argument("-t", "--transform", type = float, nargs = 3, help = 'transformation matrix to apply to grid before interpolating')
+	# grid_options.add_argument("-ind", "--indexing", type = str, default = 'ij', metavar= 'index_type', 
+		# help = 'sets indexing of grid to be row major (matrix-style ij) or column major (cartesian-style xy). \nOptions: \'ij\' (default) or \'xy\'')
+	grid_options.add_argument("-order", "--ordering", type = str, default = 'C', metavar = 'ordering',
+		help = 'sets ordering of output arrays. options: \'C\' (default - C-style row major) or \'F\' (FORTRAN-style column major)')
+	grid_options.add_argument("-t", "--transform", type = float, nargs = 3, help = 'transformation matrix to apply to grid before interpolating (not implemented yet)')
 
 	#output options
 	output_options = parser.add_argument_group(title = 'ouput options', description = 'where to store results of interpolation')
@@ -92,12 +98,16 @@ def main(argv):
 	
 	interpolator = kameleon.createNewInterpolator()
 
-	def get_variable_format():
-		ljust = len(('{0:'+args.format+'}').format(0))+1
+	def get_variable_format(positions_out_flag):
+		ljust = len(('{0:'+args.format+'}').format(0))
 		var_format = ''
 		var_names = ''
+		if positions_out_flag:
+			for i, pos_name in enumerate(['x','y','z']):
+				var_names += pos_name.rjust(ljust)+args.delimiter
+				var_format += '{' + str(i) + ':'+ args.format +'}' + args.delimiter
 		for i,varname in enumerate(args.variables):
-			var_format += '{' + str(i) + ':'+ args.format +'}' + args.delimiter*((i+1)!=len(args.variables))
+			var_format += '{' + str(i+3*positions_out_flag) + ':'+ args.format +'}' + args.delimiter*((i+1)!=len(args.variables))
 			unit = kameleon.getNativeUnit(varname)
 			var_names += ('{0}[{1}]'.format(varname, unit)).rjust(ljust)+args.delimiter*((i+1)!=len(args.variables))
 		return var_format, ljust, var_names
@@ -112,21 +122,28 @@ def main(argv):
 				print varname, 'does not exist!'
 				exit()
 
-		
-		variables_tuple = collections.namedtuple('Variables', args.variables)
-		var_format, ljust, var_names = get_variable_format()
+		if args.positions_out_flag:
+			variables_tuple = collections.namedtuple('Variables', ['x', 'y', 'z'] +args.variables)
+		else:
+			variables_tuple = collections.namedtuple('Variables', args.variables)
+
+		var_format, ljust, var_names = get_variable_format(args.positions_out_flag)
+
 		if args.point:
 			c0, c1, c2 = args.point
 			if args.verbose: 
 				print 'interpolating at {0}:'.format(args.point)
+
 			print var_names
 			result = []
+			if args.positions_out_flag:
+				result = result + args.point
 			for varname in args.variables:
 				result_, dc0, dc1, dc2 = interpolator.interpolate_dc(varname,c0, c1, c2)
 				result.append(result_)
+
 			print var_format.format(*result)
 			
-
 		if args.resolution:
 			if args.verbose: 
 				print 'requested output resolution:', args.resolution
@@ -158,6 +175,7 @@ def main(argv):
 			else:
 				z_ = np.zeros(1) + args.z_intercept
 
+			# x, y, z = np.meshgrid(x_,y_,z_, indexing = args.indexing)
 			x, y, z = np.meshgrid(x_,y_,z_, indexing = 'ij')
 
 		elif args.positions_file:
@@ -182,7 +200,9 @@ def main(argv):
 			raise NotImplementedError('Grid transformations not implemented yet')
 
 		if (args.positions_file != None) | (args.resolution != None):
-			results = interpolate_variables(interpolator, variables_tuple, x.ravel(), y.ravel(), z.ravel())
+			results = interpolate_variables(interpolator, variables_tuple, 
+				x.ravel(order = args.ordering), y.ravel(order = args.ordering), z.ravel(order = args.ordering), 
+				args.positions_out_flag)	
 			results = variables_tuple(*results)
 			if args.verbose:
 				print 'output resolution:', x.shape
@@ -243,11 +263,17 @@ def main(argv):
 
 			
 @np.vectorize
-def interpolate_variables(interpolator, variables_tuple, c0,c1,c2):
+def interpolate_variables(interpolator, variables_tuple, c0,c1,c2, positions_out_flag):
 	"""returns a named tuple of interpolated variables"""
 	results = []
-	for variable in variables_tuple._fields:	
-		results.append(interpolator.interpolate(variable,c0,c1,c2))
+	if positions_out_flag:
+		results = results + [c0,c1,c2]
+	for i, variable in enumerate(variables_tuple._fields):
+		if positions_out_flag:
+			if i > 2:	
+				results.append(interpolator.interpolate(variable,c0,c1,c2))
+		else:
+			results.append(interpolator.interpolate(variable,c0,c1,c2))
 	return variables_tuple(*results)
 
 
