@@ -193,9 +193,10 @@ The code will spit out a bunch of useful info:
 
 ```
 usage: grid.py [-h] [-v] [-ginfo] [-lvar] [-vinfo var] [-vars var1 [var2 ...]]
+               [-pout positions_output_flag]
                [-pfile /path/to/input/positions.txt] [-p px py pz]
                [-x xmin xmax] [-y ymin ymax] [-z zmin zmax] [-res nx [ny ...]]
-               [-xint xint] [-yint yint] [-zint zint]
+               [-xint xint] [-yint yint] [-zint zint] [-order ordering]
                [-t TRANSFORM TRANSFORM TRANSFORM] [-o path/to/output_file]
                [-f <flags><width><.precision><length>specifier] [-d ' ']
                [-ff fits [json ...]]
@@ -223,13 +224,15 @@ variable options:
                         print attributes for given variable
   -vars var1 [var2 ...], --variables var1 [var2 ...]
                         list of variables to be interpolated
+  -pout positions_output_flag, --positions_out_flag positions_output_flag
+                        pass interpolating positions to output
 
 input positions file options:
   File containing positions for interpolation
 
   -pfile /path/to/input/positions.txt, --positions_file /path/to/input/positions.txt
-                        file containing column positions x, y, z. Valid
-                        separators are ' ', <tab>, ','
+                        file containing column positions x, y, z. Optional
+                        separators: ' ' (default), <tab>, ','
 
 point options:
   interpolation options for a single point
@@ -254,9 +257,13 @@ grid options:
                         fixes y for line or plane
   -zint zint, --z-intercept zint
                         fixes z for line or plane
+  -order ordering, --ordering ordering
+                        sets ordering of output arrays. options: 'C' (default
+                        - C-style row major) or 'F' (FORTRAN-style column
+                        major)
   -t TRANSFORM TRANSFORM TRANSFORM, --transform TRANSFORM TRANSFORM TRANSFORM
                         transformation matrix to apply to grid before
-                        interpolating
+                        interpolating (not implemented yet)
 
 ouput options:
   where to store results of interpolation
