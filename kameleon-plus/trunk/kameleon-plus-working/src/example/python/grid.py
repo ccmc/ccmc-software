@@ -238,11 +238,19 @@ def main(argv):
 						print 'writing to fits file (IDL)'
 					# generate header info
 					primary_header = fits.Header()
-					for i in range(kameleon.getNumberOfGlobalAttributes()):
+					nglobal = kameleon.getNumberOfGlobalAttributes()
+					#global attributes
+					for i in range(nglobal):
 						attr_name = kameleon.getGlobalAttributeName(i)
 						attr = kameleon.getGlobalAttribute(attr_name)
 						primary_header[str(i)] = attr_name + ': ' + str(getAttributeValue(attr))
-
+					#variable attributes
+					for varname in args.variables:
+						for j in range(kameleon.getNumberOfVariableAttributes()):
+							attr_name = kameleon.getVariableAttributeName(nglobal+j)
+							attr = kameleon.getVariableAttribute(varname, attr_name)
+							primary_header[varname + str(j)] = attr_name + ': '	+ str(getAttributeValue(attr))		
+			
 					primary_hdu = fits.PrimaryHDU(header = primary_header)
 
 					# generate columns

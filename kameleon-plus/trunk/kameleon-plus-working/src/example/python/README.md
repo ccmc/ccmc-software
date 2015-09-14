@@ -27,8 +27,10 @@ This will yield all the global parameters: model name, run type, run time, etc.
 
 To list all variables in the file, type:
 ```console
-python grid.py /path/to/ccmc/output/file.cdf -lvar
+python grid.py /path/to/ccmc/output/file.cdf -lvar -v
 ```
+The -v verbose flag will also print variable metadata.
+
 To get information on a specific variable, type:
 ```console
 python grid.py /path/to/ccmc/output/file.cdf -vinfo variable-name
@@ -128,8 +130,59 @@ Returns:
      -50.000       10.000       10.000        0.243        0.003       11.774       -2.202        0.056
 ```
 
+### Output options ###
+In the above examples, results were printed to console by default. Alternatively, you may specify an output file in which to store the results:
+
+### Exporting to ASCII ###
+```console
+  python grid.py /path/to/ccmc/output/file.cdf -x -10 -50 -y -10 10 -z -10 10 -res 2 2 2 -vars rho p bx by bz -o /tmp/output_file.txt
+```
+By default, the results are stored as column ascii data using the same format and delimitters as above. 
+
+One may change the output file format using the -ff option:
+
+### Exporting to json ###
+```
+python grid.py /path/to/ccmc/output/file.cdf -p -30 0 0 -vars rho -o /tmp/results.json -ff json
+```
+### Exporting to fits (IDL) ###
+
+```
+python grid.py /path/to/ccmc/output/file.cdf -x -10 -50 -y -10 10 -z -10 10 -res 2 2 2 -o /tmp/fits_out -ff fits -vars rho p bx by bz
+```
+The results may be read into IDL. To print the global and variable metadata from the cdf file:
+```
+IDL> results = MRDFITS('fits_out', 0, header)
+IDL> print, header
+```
+To extract the results of the interpolation:
+```console
+IDL> results = MRDFITS('fits_out', 1, header)
+MRDFITS: Binary table.  8 columns by  8 rows.
+
+IDL> help, results,/str
+** Structure <131f5238>, 8 tags, length=32, data length=32, refs=1:
+   X               FLOAT          -10.0000
+   Y               FLOAT          -10.0000
+   Z               FLOAT          -10.0000
+   RHO             FLOAT          0.955738
+   P               FLOAT         0.0203208
+   BX              FLOAT          -26.5025
+   BY              FLOAT          -12.7045
+   BZ              FLOAT          -3.90678
+
+IDL> print, results
+{     -10.0000     -10.0000     -10.0000     0.955738    0.0203208     -26.5025     -12.7045     -3.90678}{     -10.0000     -10.0000      10.0000     0.650893    0.0111245      29.3928
+      8.14576     -4.92121}{     -10.0000      10.0000     -10.0000     0.365616   0.00686792     -28.4215      9.57153     -6.82492}{     -10.0000      10.0000      10.0000     0.361352
+   0.00967156      29.2788     -10.6648     0.849321}{     -50.0000     -10.0000     -10.0000     0.444090   0.00394465     -10.9637     -2.78490     -2.12730}{     -50.0000     -10.0000
+      10.0000     0.722521   0.00713427      11.1925    -0.474207     0.179418}{     -50.0000      10.0000     -10.0000     0.133836   0.00134037     -11.4489    -0.634802     -2.08698}{
+     -50.0000      10.0000      10.0000     0.242857   0.00283294      11.7740     -2.20208    0.0556372}
+```
 
 
+
+
+  
 ## More Options ##
 Run the python code with -h or --help
 ```console
