@@ -1,16 +1,3 @@
-# Developer Note #
-
-All python examples in src/example/python should include the following lines at the top:
-
-```python
-import sys
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
-import _CCMC as ccmc
-```
-
-This allows cmake to insert the user's path to the CCMC module (_CCMC.so).
-The resulting script will be placed in the /bin/examples/python directory.
-
 # Running the new command-line interface #
 All Python examples will eventually have a full-fledged command line interface to make it easier for users to leverage the powerful post-processing tools offered by Kameleon. The grid.py example is a good start. Once cmake is run and the _CCMC module is built, navigate to python examples
 
@@ -142,16 +129,16 @@ By default, the results are stored as column ascii data using the same format an
 One may change the output file format using the -ff option:
 
 ### Exporting to json ###
-```
+```console
 python grid.py /path/to/ccmc/output/file.cdf -p -30 0 0 -vars rho -o /tmp/results.json -ff json
 ```
-### Exporting to fits (IDL) ###
+### Exporting to IDL ([fits](http://idlastro.gsfc.nasa.gov/fitsio.html) format) ###
 
-```
+```console
 python grid.py /path/to/ccmc/output/file.cdf -x -10 -50 -y -10 10 -z -10 10 -res 2 2 2 -o /tmp/fits_out -ff fits -vars rho p bx by bz
 ```
 The results may be read into IDL. To print the global and variable metadata from the cdf file:
-```
+```console
 IDL> results = MRDFITS('fits_out', 0, header)
 IDL> print, header
 ```
@@ -279,3 +266,15 @@ ouput options:
                         'fits' for binary IDL fits file (requires astropy), or
                         'json'
 ```
+# Developer Note #
+
+All python examples in src/example/python should include the following lines at the top:
+
+```python
+import sys
+sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+import _CCMC as ccmc
+```
+
+This allows cmake to insert the user's path to the CCMC module (_CCMC.so).
+The resulting script will be placed in the /bin/examples/python directory.
