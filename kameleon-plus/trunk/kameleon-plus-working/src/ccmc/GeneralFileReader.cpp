@@ -92,7 +92,9 @@ namespace ccmc
 
 		if (ccmc::pyglobals::PYTHON_IS_INITIALIZED != true)
 			{
-				std::cout <<"python initializing.." << std::endl;
+#ifdef DEBUG
+				std::cout <<"\tGeneralFileReader::open python initializing.." << std::endl;
+#endif
 				Py_Initialize();
 				ccmc::pyglobals::PYTHON_IS_INITIALIZED = true;
 			}
@@ -123,6 +125,9 @@ namespace ccmc
 			run_string+= "\')\n";
 			bp::exec(run_string.c_str(),this->python_namespace);
 			bp::exec("python_reader = factory.createPyReader()\n",this->python_namespace);
+#ifdef DEBUG
+			bp::exec("python_reader.debug = True\n",this->python_namespace);
+#endif
 
 
 			// retrieve file_reader object from python and cast to FileReader pointer
@@ -262,6 +267,9 @@ namespace ccmc
 
 	bool GeneralFileReader::doesVariableExist(const std::string& variable)
 	{
+#ifdef DEBUG
+		std::cout <<"\tGeneralFileReader::doesVariableExist calling filereader" << std::endl;
+#endif
 		return fileReader->doesVariableExist(variable);
 	}
 

@@ -38,21 +38,21 @@ int main (int argc, char * argv[])
 	ccmc::PythonModel pymodel;
 	pymodel.open(filename);
 	
-	ccmc::Interpolator * interpolator = pymodel.createNewInterpolator();
-
 	if (pymodel.doesVariableExist(variable))
 	{
-		
+		// no variable loading necessary
+		ccmc::Interpolator * interpolator = pymodel.createNewInterpolator();
 		float value = interpolator->interpolate(variable, p_component1, p_component2, p_component3, dc0, dc1, dc2);
 		string units = pymodel.getNativeUnit(variable);
 		cout << "interpolated value: " << value << " " << units << endl;
 		cout << "resolution: " << dc0 << " "<< dc1 <<" " << dc2 << endl;
+		delete interpolator;
 	} else{
 		cout << variable << " does not exist!"<<endl;
 	}
 	
 
-	delete interpolator;
+	
 
 
 }

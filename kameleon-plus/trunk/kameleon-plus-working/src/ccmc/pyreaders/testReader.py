@@ -14,6 +14,7 @@ import inspect
 
 class FileReaderFactory(object):
 	def __init__(self, config_file = None):
+		self.debug = False
 		if config_file == None:
 			# print '\tFileReaderFactory called without config file, building default test reader' 
 			Config = ConfigParser.ConfigParser()
@@ -95,6 +96,10 @@ class pyFileReader(pyKameleon.FileReader):
 		self.variableAttributeNames = {} #maps from attribute IDs to name
 		self.variableAttributeIDs = {} #maps from attribute names to IDs
 		self.globalAttributes['model_name']  = Attribute('model_name', 'python_model')
+		self.debug = False
+
+		self.dummy_variable = pyKameleon.vectorFloat()
+		self.dummy_variable.append(0)
 
 	def openFile(self, filename, readonly = True):
 		""" Dummy method to be overriden in subclass.
@@ -119,9 +124,9 @@ class pyFileReader(pyKameleon.FileReader):
 	def initializeVariableIDs(self):
 		"""viriableIds maps from variable string names to numbers. This assumes variables has already been populated.
 			If variable names exists, nothing happens"""
-		# print '\tinitializing variableIds map!'
+		if self.debug: print '\t\tpyFileReader.initializeVariableIDs initializing variableIds map!'
 		if len(self.variableNames) == 0:
-			# print 'initializing variable names from variables dict'
+			if self.debug: print 'initializing variable names from variables dict'
 			i = 0
 			for key in self.variables.keys():
 				# self.variables[long(i)] = self.variables[key] #removed redundant id key. Let's avoid copies and only query on names
@@ -129,7 +134,8 @@ class pyFileReader(pyKameleon.FileReader):
 				self.variableNames[long(i)] = str(key)
 				self.variableAttributes[key] = {} #initializes attribute dictionaries
 				i += 1
-
+		else:
+			if self.debug: print '\t\tpyFileReader.initializeVariableIDs variableNames already loaded'
 
 	def initializeVariableAttributeIDs(self):
 		"""assign variable attribute ids. Note, only run this after all variablesNames are loaded!"""
@@ -140,12 +146,19 @@ class pyFileReader(pyKameleon.FileReader):
 			i+=1
 		pass
 
-	def addVariableName(self, variable_name, variable_id, default = []):
+	def addVariableName(self, variable_name, variable_id, default_array = None):
+		if (type(default_array) == pyKameleon.vectorFloat) \
+			or (type(default_array) == pyKameleon.vectorFloat) \
+			or (type(default_array) == pyKameleon.vectorString):
+			pass
+		else:
+			default_array = self.dummy_variable
+
 		# see if variable_name and variable_id exist in variables keys
 		if self.variables.has_key(variable_name):
 			pass
 		else: # initialize variables with new key
-			self.variables[variable_name] = default
+			self.variables[variable_name] = default_array
 
 		if self.variableAttributes.has_key(variable_name): #in name only
 			pass
@@ -171,18 +184,10 @@ class pyFileReader(pyKameleon.FileReader):
 			self.variableNames[long(variable_id)] = variable_name
 			self.variableIDs[variable_name] = long(variable_id)
 
-		
-	def getNumberOfVariables(self):
-		return len(self.variableNames.keys())
-
-	def getVariableID(self, variable_name):
-		"""takes a variable string and returns a long integer"""
-		if self.doesVariableExist(variable_name):
-			return self.variableIDs[variable_name]
-		else:
-			raise NameError('variable +\'' + variable_name + '\' does not exist!')
 
 	def doesVariableExist(self,variable):
+		if self.debug: print '\t\tpyFileReader.doesVariableExist looking for', variable
+
 		if type(variable) == str:
 			return self.variables.has_key(variable)
 		else:
@@ -190,7 +195,18 @@ class pyFileReader(pyKameleon.FileReader):
 				return self.variables.has_key(self.variableNames[variable])
 			else:
 				return False
+		
+	def getNumberOfVariables(self):
+		return len(self.variableNames.keys())
 
+
+	def getVariableID(self, variable_name):
+		"""takes a variable string and returns a long integer"""
+		if self.doesVariableExist(variable_name):
+			return self.variableIDs[variable_name]
+		else:
+			if self.debug: print '\t\tpyFileReader.getVariableID', 'variable +\'' + variable_name + '\' does not exist!'
+			raise NameError('variable +\'' + variable_name + '\' does not exist!')
 
 	def getVariableName(self,variable_id):
 		"""takes a variable id and returns a variable string name. 
@@ -202,6 +218,11 @@ class pyFileReader(pyKameleon.FileReader):
 				return self.variableNames[variable_id]
 		else:
 			raise NameError('variableID +\'' + str(variable_id) + '\' does not exist!')
+
+	def getVariable(self, variable, startIndex = None, count = None):
+		var_name = self.getVariableName(variable)
+		if self.debug: print "\tpyFileReader.getVariable returning variable", var_name
+		return self.variables[var_name]
 
 	def getNumberOfRecords(self, variable):
 		"""returns length of the flattened variable array"""
@@ -215,11 +236,6 @@ class pyFileReader(pyKameleon.FileReader):
 	def getVariableIntAtIndex(self, variable, index):
 		var_name = self.getVariableName(variable)
 		return self.variables[var_name][index]
-
-
-	def getVariable(self, variable, startIndex = None, count = None):
-		var_name = self.getVariableName(variable)
-		return self.variables[var_name]
 
 
 	def getVariableAtIndex(self, variable, index):

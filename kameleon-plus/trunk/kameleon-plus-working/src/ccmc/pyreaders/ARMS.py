@@ -42,6 +42,8 @@ class readARMS(testReader.pyFileReader):
 
 	def read_ARMS_header(self, header_filename):
 		"""Read gloabl attributes from file """
+
+		if self.debug: print '\t\treadARMS.read_ARMS_header', header_filename
 		self.header_file = open(header_filename, 'r')
 
 		# get time step
@@ -136,7 +138,7 @@ class readARMS(testReader.pyFileReader):
 
 	def read_ARMS_data(self, filename):
 		"""Reads in the arms data files """
-		# print 'read_arms_data', filename
+		if self.debug: print '\t\treadARMS.read_arms_data', filename
 		self.data_file = file(filename)
 		s = self.data_file.read()
 
@@ -207,10 +209,11 @@ class readARMS(testReader.pyFileReader):
 
 		def create_variable_datatype(self):
 			"""creates a custom datatype to view variable data"""
-			# note: this assumes order of variables in header matches data file, s.t. variableNames was initialized in the proper order.
+			# this assumes order of variables in header matches data file, s.t. variableNames was initialized in the proper order.
 			variable_names = self.variableNames.values()
 			dtype_list = [('header', endian+'i4')]
-			for var_name in variable_names: dtype_list.append((var_name, endian + 'f4'))
+			for var_name in variable_names: 
+				dtype_list.append((var_name, endian + 'f4'))
 			dtype_list.append(('footer', endian+'i4'))
 			return np.dtype(dtype_list)
 		
@@ -614,7 +617,7 @@ class readARMS(testReader.pyFileReader):
 		return pyKameleon.FileReader.OK
 
 	def openFile(self, config_file, readonly = True):
-		print 'loading config file'
+		if self.debug: print '\t\treadARMS.openFile loading config file..'
 		if config_file != None:
 			try:
 				self._config = testReader.getConfig(config_file)
@@ -622,10 +625,12 @@ class readARMS(testReader.pyFileReader):
 			except:
 				raise
 
-		print 'setting current filename'
+		if self.debug: print '\t\treadARMS.openFile setting current filename'
 		self.current_filename = self.data_file_name
 		self.read_ARMS_header(self.header_file_name)
 		self.read_ARMS_data(self.data_file_name)
+
+		if self.debug: print '\t\treadARMS.openFile initializing variable IDs and attributes'
 		self.initializeVariableIDs()
 		self.initializeVariableAttributeIDs()
 		variables = self.variableNames.values()
@@ -857,6 +862,10 @@ class Test_ARMS_Attributes(unittest.TestCase):
 	def test_variables_created(self):
 		self.assertTrue(self.armsreader.doesVariableExist('Mass_Density'))
 		with self.assertRaises(NameError): self.armsreader.getVariable('missing_variable')
+		print 'getting variable', 'Mass_Density'
+		var_mass_float = self.armsreader.getVariable('Mass_Density')
+		for mass_float in var_mass_float: print mass_float
+		
 		for key, variable_name in self.armsreader.variableNames.items():
 			print 'key:', key, 'variable name:', variable_name
 			var_min = self.armsreader.getVariableAttribute(variable_name,'actual_min').getAttributeValue()
@@ -879,7 +888,13 @@ class Test_ARMS_Attributes(unittest.TestCase):
 		for key, attr in self.armsreader.globalAttributes.items():
 			print '\t ', attr.getAttributeName(),':', attr.getAttributeValue(), attr.getAttributeType()
 
-
+		# print '\tleaf_data:'
+		# i = 0
+		# for key, val in self.armsreader.leaf_data.items():
+		# 	i += 1
+		# 	print key
+		# 	if i == 10: 
+		# 		break
 		
 
 def main():

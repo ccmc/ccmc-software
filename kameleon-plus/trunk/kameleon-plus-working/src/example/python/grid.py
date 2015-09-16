@@ -1,6 +1,7 @@
 # Warning: expect weird results if your python interpreter library doesn't match the python library used to build _CCMC.so
 import sys, argparse
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+# sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+sys.path.append('/Users/apembrok/git/ccmc/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/lib/ccmc/python/CCMC/')
 import _CCMC as ccmc
 import numpy as np
 import collections

@@ -51,6 +51,9 @@ namespace ccmc
 	void PythonModel::initializeConversionFactorsToSI()
 	{
 //		std::cout << "PythonModel::initializeConversionFactorsToSI()" << std::endl;
+#ifdef DEBUG
+		std::cout << "PythonModel::initializeConversionFactorsToSI need to fix" << std::endl;
+#endif
 		conversionFactorsToSI["bx1"] = 1e-9f;
 		conversionFactorsToSI["by1"] = 1e-9f;
 		conversionFactorsToSI["bz1"] = 1e-9f;

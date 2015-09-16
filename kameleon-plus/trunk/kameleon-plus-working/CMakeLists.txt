@@ -33,6 +33,10 @@ option(USE_STATIC_LIBS "Use static libraries" OFF)
 # add path to external libraries
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KAMELEON_EXT_DIR})
 
+# voice debug settings
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	add_definitions(-DDEBUG)
+endif()
 
 #=============Boost =============
 message("Getting BOOST....")

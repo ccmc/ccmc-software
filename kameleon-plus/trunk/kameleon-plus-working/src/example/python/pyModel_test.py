@@ -16,7 +16,7 @@ def main(argv):
 	    pyModel = ccmc.PythonModel() #config file
 
 	    pyModel.open(filename) 
-
+	    # no variable loading necessary
 	    interpolator = pyModel.createNewInterpolator()
 	    result, dc0, dc1, dc2 = interpolator.interpolate_dc(variable,c0, c1, c2)
 	    unit = pyModel.getNativeUnit(variable)
