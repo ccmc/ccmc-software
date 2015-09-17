@@ -38,7 +38,31 @@ class readARMS(testReader.pyFileReader):
 		self.visited = {}
 		self.missing_value = -256.*-256.*-256.*-256.*-256.
 		self.leaf_iterations = 0
+		self.globalAttributes['model_name']  = Attribute('model_name', 'ARMs')
 
+	def openFile(self, config_file, readonly = True):
+		if self.debug: print '\t\treadARMS.openFile loading config file..'
+		if config_file != None:
+			try:
+				self._config = testReader.getConfig(config_file)
+				self.set_file_names()
+			except:
+				raise
+
+		if self.debug: print '\t\treadARMS.openFile setting current filename'
+		self.current_filename = self.data_file_name
+		self.read_ARMS_header(self.header_file_name)
+		self.read_ARMS_data(self.data_file_name) #move to getVariable
+
+		if self.debug: print '\t\treadARMS.openFile initializing variable IDs and attributes'
+		self.initializeVariableIDs()
+		self.initializeVariableAttributeIDs()
+		variables = self.variableNames.values()
+		readARMS.variables_tuple = collections.namedtuple('Variables', variables) #so interpolate_variables can access it
+		self.initializeGlobalAttributeIDs() #why did I comment this out?
+		# for key, val in self.globalAttributes.items():
+		# 	print key, val
+		return pyKameleon.FileReader.OK
 
 	def read_ARMS_header(self, header_filename):
 		"""Read gloabl attributes from file """
@@ -61,6 +85,7 @@ class readARMS(testReader.pyFileReader):
 
 		if self.grid_type == 'Spherical_Exponential':
 			components = ['R', 'T', 'P']
+			self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
 		else:
 			print self.grid_type, 'not supported!'
 			raise Exception("grid type not supported!")
@@ -616,29 +641,6 @@ class readARMS(testReader.pyFileReader):
 
 		return pyKameleon.FileReader.OK
 
-	def openFile(self, config_file, readonly = True):
-		if self.debug: print '\t\treadARMS.openFile loading config file..'
-		if config_file != None:
-			try:
-				self._config = testReader.getConfig(config_file)
-				self.set_file_names()
-			except:
-				raise
-
-		if self.debug: print '\t\treadARMS.openFile setting current filename'
-		self.current_filename = self.data_file_name
-		self.read_ARMS_header(self.header_file_name)
-		self.read_ARMS_data(self.data_file_name)
-
-		if self.debug: print '\t\treadARMS.openFile initializing variable IDs and attributes'
-		self.initializeVariableIDs()
-		self.initializeVariableAttributeIDs()
-		variables = self.variableNames.values()
-		readARMS.variables_tuple = collections.namedtuple('Variables', variables) #so interpolate_variables can access it
-		# self.initializeGlobalAttributeIDs()
-		# for key, val in self.globalAttributes.items():
-		# 	print key, val
-		return pyKameleon.FileReader.OK
 		
 	def get_non_leaf(self):
 		# find a root that is not a leaf

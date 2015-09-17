@@ -267,9 +267,6 @@ namespace ccmc
 
 	bool GeneralFileReader::doesVariableExist(const std::string& variable)
 	{
-#ifdef DEBUG
-		std::cout <<"\tGeneralFileReader::doesVariableExist calling filereader" << std::endl;
-#endif
 		return fileReader->doesVariableExist(variable);
 	}
 

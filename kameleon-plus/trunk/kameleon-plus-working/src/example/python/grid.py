@@ -1,7 +1,6 @@
 # Warning: expect weird results if your python interpreter library doesn't match the python library used to build _CCMC.so
 import sys, argparse
-# sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
-sys.path.append('/Users/apembrok/git/ccmc/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/lib/ccmc/python/CCMC/')
+sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
 import _CCMC as ccmc
 import numpy as np
 import collections
@@ -67,6 +66,7 @@ def main(argv):
 	if args.global_info:
 		print "Global Attributes:"
 		for i in range(kameleon.getNumberOfGlobalAttributes()):
+			print 'retrieving attribute name'
 			attr_name = kameleon.getGlobalAttributeName(i)
 			attr = kameleon.getGlobalAttribute(attr_name)
 			print '\t',attr_name, ':', getAttributeValue(attr)
@@ -77,8 +77,8 @@ def main(argv):
 		if args.verbose: print 'number of variables in file:', nvar		
 		for i in range(nvar):
 			var_name = kameleon.getVariableName(i)
-			native_unit = kameleon.getNativeUnit(var_name)
-			print var_name, '[', native_unit ,']'
+			vis_unit = kameleon.getVisUnit(var_name)
+			print var_name, '[', vis_unit ,']'
 			if args.verbose:
 				for j in range(kameleon.getNumberOfVariableAttributes()):
 					attr_name = kameleon.getVariableAttributeName(nglobal+j)
@@ -90,8 +90,8 @@ def main(argv):
 		if args.verbose: print 'retrieving information for', args.variable_info, '...'
 		if kameleon.doesVariableExist(args.variable_info):
 			nglobal = kameleon.getNumberOfGlobalAttributes() #variable attribute ids come after global ones
-			native_unit = kameleon.getNativeUnit(var_name)
-			print var_name, '[', native_unit ,']'	
+			vis_unit = kameleon.getVisUnit(var_name)
+			print var_name, '[', vis_unit ,']'	
 			for j in range(kameleon.getNumberOfVariableAttributes()):
 				attr_name = kameleon.getVariableAttributeName(nglobal+j)
 				attr = kameleon.getVariableAttribute(var_name, attr_name)
@@ -99,28 +99,36 @@ def main(argv):
 	
 	interpolator = kameleon.createNewInterpolator()
 
+	def get_position_components(default_names = ['x','y','z']):
+		if kameleon.doesAttributeExist('grid_system_1'):
+			attr = kameleon.getGlobalAttribute('grid_system_1')
+			component_names = getAttributeValue(attr)
+			return component_names.split('[')[1].split(']')[0].strip().split(', ')
+		else:
+			return default_names
+
 	def get_variable_format(positions_out_flag):
 		ljust = len(('{0:'+args.format+'}').format(0))
 		var_format = ''
 		var_names = ''
 		if positions_out_flag:
-			for i, pos_name in enumerate(['x','y','z']):
+			for i, pos_name in enumerate(get_position_components()):
 				var_names += pos_name.rjust(ljust)+args.delimiter
 				var_format += '{' + str(i) + ':'+ args.format +'}' + args.delimiter
-		for i,varname in enumerate(args.variables):
+		for i,var_name in enumerate(args.variables):
 			var_format += '{' + str(i+3*positions_out_flag) + ':'+ args.format +'}' + args.delimiter*((i+1)!=len(args.variables))
-			unit = kameleon.getNativeUnit(varname)
-			var_names += ('{0}[{1}]'.format(varname, unit)).rjust(ljust)+args.delimiter*((i+1)!=len(args.variables))
+			vis_unit = kameleon.getVisUnit(var_name)
+			var_names += ('{0}[{1}]'.format(var_name, vis_unit)).rjust(ljust)+args.delimiter*((i+1)!=len(args.variables))
 		return var_format, ljust, var_names
 
 	if args.variables:		
 		if args.verbose: 
 			print 'loading', len(args.variables), "desired variables:", args.variables
-		for varname in args.variables:
-			if kameleon.doesVariableExist(varname):
-				kameleon.loadVariable(varname)			
+		for var_name in args.variables:
+			if kameleon.doesVariableExist(var_name):
+				kameleon.loadVariable(var_name)			
 			else:
-				print varname, 'does not exist!'
+				print var_name, 'does not exist!'
 				exit()
 
 		if args.positions_out_flag:

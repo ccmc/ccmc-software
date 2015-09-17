@@ -579,16 +579,17 @@ namespace ccmc
 	 */
 	Attribute HDF5FileReader::getGlobalAttribute(long i)
 	{
-
+#ifdef DEBUG
 		std::cerr << "entered " << BOOST_CURRENT_FUNCTION << " i = " << (int)i << std::endl;
+#endif
 		H5::Group group = this->current_file->openGroup("/");
-		std::cout<< "group assigned\n";
+		// std::cout<< "group assigned\n";
 		H5::Attribute h5attribute = group.openAttribute((unsigned int)i);
-		std::cout<< "attribute opened\n";
+		// std::cout<< "attribute opened\n";
 		H5::DataType dataType = h5attribute.getDataType();
-		std::cout<< "dataType retrieved\n";
+		// std::cout<< "dataType retrieved\n";
 		Attribute attribute;
-		std::cout << "checking dataType"<<std::endl;
+		// std::cout << "checking dataType"<<std::endl;
 		if (dataType.getClass() == H5T_STRING)
 		{
 			std::string attributeValue = "NULL";

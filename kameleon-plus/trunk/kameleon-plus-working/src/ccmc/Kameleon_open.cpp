@@ -34,6 +34,9 @@ namespace ccmc
 #ifdef DEBUG
 			std::cout<<"\tKameleon::open File reader was succesful. Does model_name attribute exist?"<<std::endl;
 #endif
+			this->pythonModel = (generalFileReader.getGlobalAttribute("python_model")).getAttributeInt();
+
+
 			if (generalFileReader.doesAttributeExist("model_name"))
 			{
 #ifdef DEBUG
@@ -44,7 +47,15 @@ namespace ccmc
 				std::cout << "\tKameleon::open Model name: '" << modelName << "' closing" << std::endl;
 #endif
 				generalFileReader.close();
-				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
+
+				if (pythonModel != 0) { 
+				//can override models below
+#ifdef DEBUG
+					std::cout <<"\tKameleon::open creating PythonModel object for " << modelName << std::endl;
+#endif
+					model = new PythonModel();
+					
+				} else if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 				{
 #ifdef DEBUG
 					std::cout << "\tKameleon::open creating OpenGGCM object" << std::endl;
@@ -86,13 +97,7 @@ namespace ccmc
 					std::cout <<"\tKameleon::open creating LFM object" << std::endl;
 #endif
 					model = new LFM();
-				} else if (modelName == "python_model") //embedded model, ooo
-				{
-#ifdef DEBUG
-					std::cout <<"\tKameleon::open creating PythonModel object" << std::endl;
-#endif
-					model = new PythonModel();
-		
+
 				} else
 				{	//unknown model
 				

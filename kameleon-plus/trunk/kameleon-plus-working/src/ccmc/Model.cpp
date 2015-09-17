@@ -55,23 +55,26 @@ namespace ccmc
 #ifdef DEBUG
 		std::cout << BOOST_CURRENT_FUNCTION << " cleaning up memory"<<std::endl;
 #endif
-		if (variableData.size() > 0)
-		{
-			boost::unordered_map<std::string, std::vector<float>*>::iterator iter;
-
-			for ( iter=variableData.begin() ; iter != variableData.end(); iter++ )
+		// python models must manage their own memory
+		if (getGlobalAttribute("python_model").getAttributeInt() == 0){
+			if (variableData.size() > 0)
 			{
-				delete iter->second;
+				boost::unordered_map<std::string, std::vector<float>*>::iterator iter;
+
+				for ( iter=variableData.begin() ; iter != variableData.end(); iter++ )
+				{
+					delete iter->second;
+				}
 			}
-		}
 
-		if (variableDataInt.size() > 0)
-		{
-			boost::unordered_map<std::string, std::vector<int>*>::iterator iter;
-
-			for (iter=variableDataInt.begin(); iter != variableDataInt.end(); iter++)
+			if (variableDataInt.size() > 0)
 			{
-				delete iter->second;
+				boost::unordered_map<std::string, std::vector<int>*>::iterator iter;
+
+				for (iter=variableDataInt.begin(); iter != variableDataInt.end(); iter++)
+				{
+					delete iter->second;
+				}
 			}
 		}
 
@@ -147,7 +150,7 @@ namespace ccmc
 		if (data->size() > 0)
 		{
 #ifdef DEBUG
-			std::cout << BOOST_CURRENT_FUNCTION << " adding " << variable << " to maps" << std::endl;
+			std::cout << "\t" << BOOST_CURRENT_FUNCTION << " adding " << variable << " to maps" << std::endl;
 #endif
 			variableData[variable] = data;
 			variableDataByID[id] = data;
@@ -174,18 +177,22 @@ namespace ccmc
 	long Model::unloadVariable(const std::string& variable)
 	{
 		//bool success = false;
-
-		//first, check to determine whether variable is already loaded
-		if (variableData.find(variable) != variableData.end())
-		{
-			std::vector<float> * data = variableData[variable];
-			long id = getVariableID(variable);
-			delete data;
-			variableData.erase(variable);
-			variableDataByID.erase(id);
+	// python models must manage their own memory
+		if (getGlobalAttribute("python_model").getAttributeInt() == 0){
+			//first, check to determine whether variable is already loaded
+			if (variableData.find(variable) != variableData.end())
+			{
+				std::vector<float> * data = variableData[variable];
+				long id = getVariableID(variable);
+				delete data;
+				variableData.erase(variable);
+				variableDataByID.erase(id);
+				return FileReader::OK;
+			}
+			return FileReader::VARIABLE_NOT_IN_MEMORY;
+		} else{
 			return FileReader::OK;
 		}
-		return FileReader::VARIABLE_NOT_IN_MEMORY;
 	}
 
 	/**

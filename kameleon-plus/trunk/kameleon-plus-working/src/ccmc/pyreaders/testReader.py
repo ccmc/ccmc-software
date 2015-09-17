@@ -7,6 +7,7 @@ sys.path.append('.')
 # sys.path.append('../')
 import pyKameleon
 from Attribute import Attribute
+from collections import OrderedDict
 # import random #only used for testing
 import ConfigParser
 import inspect
@@ -91,11 +92,12 @@ class pyFileReader(pyKameleon.FileReader):
 		self.variables = {} #created in subclass
 		self.variableIDs = {} #maps from variable string names to long ids
 		self.variableNames = {} #maps from long ids to string names
-		self.globalAttributes = {} #maps from attribute names or ids to global attribute objects
+		self.globalAttributes = OrderedDict() #maps from attribute names or ids to global attribute objects
 		self.variableAttributes = {} #maps from variable str names to dictionaries of variable attributes
 		self.variableAttributeNames = {} #maps from attribute IDs to name
 		self.variableAttributeIDs = {} #maps from attribute names to IDs
-		self.globalAttributes['model_name']  = Attribute('model_name', 'python_model')
+		self.globalAttributes['model_name']  = Attribute('model_name', 'python_base_model')
+		self.globalAttributes['python_model'] = Attribute('python_model',1)
 		self.debug = False
 
 		self.dummy_variable = pyKameleon.vectorFloat()
@@ -197,6 +199,7 @@ class pyFileReader(pyKameleon.FileReader):
 				return False
 		
 	def getNumberOfVariables(self):
+		if self.debug: print '\t\tgetting number of variables from variableNames'
 		return len(self.variableNames.keys())
 
 
@@ -247,6 +250,7 @@ class pyFileReader(pyKameleon.FileReader):
 		if self.globalAttributes.has_key(attribute):
 			return self.globalAttributes[attribute]
 		else:
+			# return Attribute
 			raise NameError('Attribute \'' + attribute + '\' does not exist')
 
 	def getGlobalAttributeName(self, attribute):
@@ -270,6 +274,7 @@ class pyFileReader(pyKameleon.FileReader):
 
 
 	def getNumberOfGlobalAttributes(self):
+		if self.debug: print 'getting number of global attributes'
 		return self.numGAttributes
 
 	def getVariableAttribute(self, variable, attribute):
@@ -323,18 +328,16 @@ class Test_pyFileReader_Global_Attributes(unittest.TestCase):
 	def setUp(self):
 		print 'Global Attribute test:'
 		self.testReader = pyFileReader()
-		self.testAttribute = Attribute('model_name', 'testModel')
-		self.testReader.globalAttributes['model_name'] = self.testAttribute
 		self.testReader.initializeGlobalAttributeIDs()
 	
 	def test_numberOfGlobalAttributes(self):
 		print '\tcheck getNumberOfGlobalAttributes()' 
-		self.assertEqual(self.testReader.getNumberOfGlobalAttributes(), 1)
+		self.assertEqual(self.testReader.getNumberOfGlobalAttributes(), 2)
 
 	def test_getGlobalAttribute_by_name(self):
 		print '\tchecking global attribute retrieval by name'
 		check_attr = self.testReader.getGlobalAttribute('model_name')
-		self.assertEqual(check_attr, self.testAttribute)
+		self.assertEqual(check_attr, self.testReader.globalAttributes['model_name'])
 
 	def test_getGlobalAttributeName(self):
 		print '\tchecking retrieval of global attribute name'
@@ -343,11 +346,11 @@ class Test_pyFileReader_Global_Attributes(unittest.TestCase):
 	def test_getGlobalAttributeValue(self):
 		print '\tchecking retrieval of global attribute value'
 		glob_attr = self.testReader.getGlobalAttribute('model_name')
-		self.assertEqual(glob_attr.getAttributeValue(), 'testModel')
+		self.assertEqual(glob_attr.getAttributeValue(), 'python_base_model')
 
 	def test_getGlobalAttribute_by_id(self):
 		print '\tchecking global attribute retrieval by id'
-		self.assertEqual(self.testReader.getGlobalAttribute(0), self.testAttribute)
+		self.assertEqual(self.testReader.getGlobalAttribute(1).getAttributeValue(), 1)
 
 
 class Test_pyFileReader_Variable_Attributes(unittest.TestCase):
