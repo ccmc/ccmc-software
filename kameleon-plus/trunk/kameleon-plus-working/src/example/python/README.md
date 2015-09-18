@@ -16,7 +16,7 @@ To list all variables in the file, type:
 ```console
 python grid.py /path/to/ccmc/output/file.cdf -lvar -v
 ```
-The -v verbose flag will also print variable metadata.
+The -v verbose flag will also print variable metadata. You can use -vv for "very verbose" to get even more info.
 
 To get information on a specific variable, type:
 ```console
@@ -47,7 +47,7 @@ where you could use ```rho p bx by bz``` in place of ```var1 var2 var3```
 You will get an error if you try to choose a variable that does not exist.
 
 ## Setting interpolation positions ##
-The positions will depend on the coordinate system of the underlying model. For magnetospheric runs, this usually means SM coordinates. **Unfortunately, knowing which coordinate system a model is in is not well documented!**
+The positions will depend on the coordinate system of the underlying model. For magnetospheric runs, this usually means SM coordinates. **Unfortunately, finding out which coordinate system is not yet documented!**
 
 There are three ways to set your interpolation positions:
 * Specifying a single position at command line

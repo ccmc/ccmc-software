@@ -1,7 +1,7 @@
-#Kameleon-plus 6.1.0#
+# Kameleon-plus 6.1.0 #
 
 
-##Requirements## 
+## Requirements ## 
 
 * cmake 2.8
 * hdf5 (LFM support - optional)
@@ -9,14 +9,15 @@
 * boost 1.54.0
 * swig
 
-##Download##
-	git clone https://github.com/ccmc/ccmc-software.git
-
-##Update# (for latest stable build)#
+## Download##
+```console
+git clone https://github.com/ccmc/ccmc-software.git
+```
+## Update to latest stable build ##
 	cd /path/to/ccmc-software
-	git pull
+	git pull 
 
-##Build##
+## Build ##
 Start a fresh build directory to populate with makefiles
 
 	mkdir ~/Kameleon-plus-build
@@ -52,3 +53,6 @@ Install the CCMC python module (finicky):
 	python grid.py /path/to/ccmc-converted/file.cdf -ginfo
 
 See grid.py [documentation](https://github.com/ccmc/ccmc-software/blob/python_interpolators/kameleon-plus/trunk/kameleon-plus-working/src/example/python/README.md) for options
+
+## Switch to an experimental branch ##
+	git checkout <experimental branch name>
