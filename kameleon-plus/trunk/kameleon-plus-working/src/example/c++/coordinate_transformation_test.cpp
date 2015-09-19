@@ -97,7 +97,7 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 	SM[0] = tokens[20];
 	SM[1] = tokens[21];
 	SM[2] = tokens[22];
-/*
+
 	std::vector<std::string> time_tokens;
 	std::vector<std::string> date_tokens;
 	Tokenize(time, time_tokens, " :");
@@ -127,7 +127,7 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 	Kameleon::_cxform("GSE","SM", time_et, &GSE_d, &SM_d);
 	std::cout << "Input: " << GSE_d.c0 << "," << GSE_d.c1 << "," << GSE_d.c2 << std::endl;
 	std::cout << "Output: " << SM_d.c0 << "," << SM_d.c1 << "," << SM_d.c2 << std::endl;
-*/
+
 	return 0;
 }
 
