@@ -13,6 +13,7 @@ def main(argv):
 	parser.add_argument("-v", "--verbose", action="count", default=0, help = 'verbosity of output')
 	parser.add_argument("input_file", metavar = 'full/path/to/input_file.cdf', type=str, help="kameleon-compatible file")
 	parser.add_argument("-ginfo","--global-info", action='store_true', help = 'print global attributes')
+	parser.add_argument("-db", "--debug", default = False, help = 'debugging flag')
 
 	# requested variables
 	var_options = parser.add_argument_group(title = 'variable options', description = 'List and interrogate variables. Not all variables will have interpolator support.')
@@ -103,7 +104,8 @@ def main(argv):
 		if kameleon.doesAttributeExist('grid_system_1'):
 			attr = kameleon.getGlobalAttribute('grid_system_1')
 			component_names = getAttributeValue(attr)
-			return component_names.split('[')[1].split(']')[0].strip().split(', ')
+			if args.debug: print 'component names attribute:', component_names
+			return component_names.split('[')[1].split(']')[0].split(',')
 		else:
 			return default_names
 
@@ -119,6 +121,9 @@ def main(argv):
 			var_format += '{' + str(i+3*positions_out_flag) + ':'+ args.format +'}' + args.delimiter*((i+1)!=len(args.variables))
 			vis_unit = kameleon.getVisUnit(var_name)
 			var_names += ('{0}[{1}]'.format(var_name, vis_unit)).rjust(ljust)+args.delimiter*((i+1)!=len(args.variables))
+		if args.debug: 
+			print 'variable names for output:', var_names
+			print 'variable formats:', var_format
 		return var_format, ljust, var_names
 
 	if args.variables:		
@@ -147,6 +152,7 @@ def main(argv):
 			result = []
 			if args.positions_out_flag:
 				result = result + args.point
+				if args.debug: print 'result', result
 			for varname in args.variables:
 				result_, dc0, dc1, dc2 = interpolator.interpolate_dc(varname,c0, c1, c2)
 				result.append(result_)
