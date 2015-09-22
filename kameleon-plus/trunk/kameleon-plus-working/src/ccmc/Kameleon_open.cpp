@@ -49,7 +49,7 @@ namespace ccmc
 				generalFileReader.close();
 
 				if (pythonModel != 0) { 
-				//can override models below
+				//can override existing models with python readers
 #ifdef DEBUG
 					std::cout <<"\tKameleon::open creating PythonModel object for " << modelName << std::endl;
 #endif

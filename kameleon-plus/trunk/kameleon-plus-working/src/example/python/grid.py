@@ -1,4 +1,5 @@
 # Warning: expect weird results if your python interpreter library doesn't match the python library used to build _CCMC.so
+#  Use otool -L /path/to/_CCMC.so to confirm
 import sys, argparse
 sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
 import _CCMC as ccmc
@@ -74,7 +75,8 @@ def main(argv):
 
 	if args.list_vars:
 		nvar = kameleon.getNumberOfVariables()
-		nglobal = kameleon.getNumberOfGlobalAttributes() #variable attribute ids come after global ones
+		nglobal = kameleon.getNumberOfGlobalAttributes() 
+		#kameleon variable attribute ids come after global ones
 		if args.verbose: print 'number of variables in file:', nvar		
 		for i in range(nvar):
 			var_name = kameleon.getVariableName(i)
@@ -90,7 +92,8 @@ def main(argv):
 		var_name = args.variable_info
 		if args.verbose: print 'retrieving information for', args.variable_info, '...'
 		if kameleon.doesVariableExist(args.variable_info):
-			nglobal = kameleon.getNumberOfGlobalAttributes() #variable attribute ids come after global ones
+			nglobal = kameleon.getNumberOfGlobalAttributes() 
+			#kameleon variable attribute ids come after global ones
 			vis_unit = kameleon.getVisUnit(var_name)
 			print var_name, '[', vis_unit ,']'	
 			for j in range(kameleon.getNumberOfVariableAttributes()):

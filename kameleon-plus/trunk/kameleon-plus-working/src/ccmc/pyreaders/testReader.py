@@ -149,6 +149,7 @@ class pyFileReader(pyKameleon.FileReader):
 		pass
 
 	def addVariableName(self, variable_name, variable_id, default_array = None):
+		# set default array
 		if (type(default_array) == pyKameleon.vectorFloat) \
 			or (type(default_array) == pyKameleon.vectorFloat) \
 			or (type(default_array) == pyKameleon.vectorString):

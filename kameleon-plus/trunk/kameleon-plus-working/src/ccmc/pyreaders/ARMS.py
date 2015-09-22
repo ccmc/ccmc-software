@@ -38,7 +38,9 @@ class readARMS(testReader.pyFileReader):
 		self.visited = {}
 		self.missing_value = -256.*-256.*-256.*-256.*-256.
 		self.leaf_iterations = 0
+		self._data_loaded = False
 		self.globalAttributes['model_name']  = Attribute('model_name', 'ARMs')
+		
 
 	def openFile(self, config_file, readonly = True):
 		if self.debug: print '\t\treadARMS.openFile loading config file..'
@@ -46,126 +48,145 @@ class readARMS(testReader.pyFileReader):
 			try:
 				self._config = testReader.getConfig(config_file)
 				self.set_file_names()
+				model_name = str(testReader.get_config_value(self._config,'Reader', 'ModelName'))
+				if self.debug: print '\t\t\tresetting model_name attribute to', model_name
+				self.globalAttributes['model_name'] = Attribute('model_name', model_name)
 			except:
 				raise
 
 		if self.debug: print '\t\treadARMS.openFile setting current filename'
 		self.current_filename = self.data_file_name
-		self.read_ARMS_header(self.header_file_name)
-		self.read_ARMS_data(self.data_file_name) #move to getVariable
+		self.read_ARMS_header(self.header_file_name) #defines variableNames
 
 		if self.debug: print '\t\treadARMS.openFile initializing variable IDs and attributes'
 		self.initializeVariableIDs()
 		self.initializeVariableAttributeIDs()
+
 		variables = self.variableNames.values()
 		readARMS.variables_tuple = collections.namedtuple('Variables', variables) #so interpolate_variables can access it
 		self.initializeGlobalAttributeIDs() #why did I comment this out?
-		# for key, val in self.globalAttributes.items():
-		# 	print key, val
+		
 		return pyKameleon.FileReader.OK
+
+	'''Overloading default pyFileReader.getVariable'''
+	def getVariable(self, variable, startIndex = None, count = None):
+		# This function called by kameleon.loadVariable(variable) regardless of which variable is requested.
+		var_name = self.getVariableName(variable)
+
+		if self._data_loaded == False:
+			self.read_ARMS_data(self.data_file_name) #reads all data at once
+
+		if self.debug: 
+			print "\tpyFileReader.getVariable returning variable", var_name
+
+		# returns a dummy variable FloatVector of size 1 (pyFileReader.dummy_variable)
+		return self.variables[var_name]
 
 	def read_ARMS_header(self, header_filename):
 		"""Read gloabl attributes from file """
 
 		if self.debug: print '\t\treadARMS.read_ARMS_header', header_filename
-		self.header_file = open(header_filename, 'r')
-
-		# get time step
-		line = self.header_file.readline().split()
-		time = line[0]
-
-		#can get date from config
-		date = str(testReader.get_config_value(self._config,'MetaData', 'Date'))
-		self.globalAttributes['timestep_time'] = Attribute('timestep_time', date+'T'+time+'.000Z')
-
-		# get grid type
-		line = self.header_file.readline().split()
-		self.grid_type = line[0]
-		self.globalAttributes['grid_type'] = Attribute('grid_type', self.grid_type)
-
-		if self.grid_type == 'Spherical_Exponential':
-			components = ['R', 'T', 'P']
-			self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
-		else:
-			print self.grid_type, 'not supported!'
-			raise Exception("grid type not supported!")
-			components = ['x', 'y', 'z'] # just guessing here...
-
-		# get Block sizes
-		for i in range(3):
-			dim_size, dim_name = self.header_file.readline().split()
-			self.globalAttributes[dim_name] = Attribute(dim_name, int(dim_size))
-
-
-		#initialize variables
-		var_num = 0
+		with open(header_filename, 'r') as self.header_file: #will close safely and automatically
 		
-		line = ' '
-		while len(line) > 0:
+			# get time step
 			line = self.header_file.readline().split()
-			if len(line) == 0:
-				break
+			time = line[0]
+
+			#can get date from config
+			date = str(testReader.get_config_value(self._config,'MetaData', 'Date'))
+			self.globalAttributes['timestep_time'] = Attribute('timestep_time', date+'T'+time+'.000Z')
+
+			# get grid type
+			line = self.header_file.readline().split()
+			self.grid_type = line[0]
+			self.globalAttributes['grid_type'] = Attribute('grid_type', self.grid_type)
+
+			if self.grid_type == 'Spherical_Exponential':
+				components = ['R', 'T', 'P']
+				self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
+			elif self.grid_type == 'Cartesian':
+				components = ['X', 'Y', 'Z']
+				self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
 			else:
-				number_components, var_base_name = line
+				print self.grid_type, 'not supported!'
+				raise Exception("grid type not supported!")
+				components = ['x', 'y', 'z'] # just guessing here...
+
+			# get Block sizes
+			for i in range(3):
+				dim_size, dim_name = self.header_file.readline().split()
+				self.globalAttributes[dim_name] = Attribute(dim_name, int(dim_size))
+
+
+			#initialize variables
+			var_num = 0
 			
-			if int(number_components) == 1:
-				self.addVariableName(var_base_name, var_num)
+			line = ' '
+			while len(line) > 0:
+				line = self.header_file.readline().split()
+				if len(line) == 0:
+					break
+				else:
+					number_components, var_base_name = line
+				
+				if int(number_components) == 1:
+					self.addVariableName(var_base_name, var_num)
 
-				# get variable units
-				val, attr = self.header_file.readline().split() 
-				self.variableAttributes[var_base_name]['units'] = Attribute('units', val)
+					# get variable units
+					val, attr = self.header_file.readline().split() 
+					self.variableAttributes[var_base_name]['units'] = Attribute('units', val)
 
-				# get variable scale factor
-				val, attr = self.header_file.readline().split()
-				self.variableAttributes[var_base_name]['scale_factor'] = Attribute('scale_factor', float(val))
+					# get variable scale factor
+					val, attr = self.header_file.readline().split()
+					self.variableAttributes[var_base_name]['scale_factor'] = Attribute('scale_factor', float(val))
 
-				# get min and max values (what are the valid_min valid_max values???)
-				val, attr = self.header_file.readline().split()
-				self.variableAttributes[var_base_name]['actual_min'] = Attribute('actual_min', float(val))
+					# get min and max values (what are the valid_min valid_max values???)
+					val, attr = self.header_file.readline().split()
+					self.variableAttributes[var_base_name]['actual_min'] = Attribute('actual_min', float(val))
 
-				val, attr = self.header_file.readline().split()
-				self.variableAttributes[var_base_name]['actual_max'] = Attribute('actual_max', float(val))
+					val, attr = self.header_file.readline().split()
+					self.variableAttributes[var_base_name]['actual_max'] = Attribute('actual_max', float(val))
 
-				var_num += 1
-			else:
-				# get variable units
-				units, attr = self.header_file.readline().split() 
+					var_num += 1
+				else:
+					# get variable units
+					units, attr = self.header_file.readline().split() 
 
-				# get variable scale factor
-				scale_factor, attr = self.header_file.readline().split()
+					# get variable scale factor
+					scale_factor, attr = self.header_file.readline().split()
 
 
-				for i in range(int(number_components)+1):
-					if i == int(number_components):
-						val, attr = self.header_file.readline().split()
-						self.globalAttributes[var_base_name+'_mag_min'] = Attribute(var_base_name+'_mag_min', float(val))
+					for i in range(int(number_components)+1):
+						if i == int(number_components):
+							val, attr = self.header_file.readline().split()
+							self.globalAttributes[var_base_name+'_mag_min'] = Attribute(var_base_name+'_mag_min', float(val))
 
-						val, attr = self.header_file.readline().split()
-						self.globalAttributes[var_base_name+'_mag_max'] = Attribute(var_base_name+'_mag_max', float(val))
+							val, attr = self.header_file.readline().split()
+							self.globalAttributes[var_base_name+'_mag_max'] = Attribute(var_base_name+'_mag_max', float(val))
 
-						
-					else:
-						var_name = var_base_name + '_' + components[i]
+							
+						else:
+							var_name = var_base_name + '_' + components[i]
 
-						self.addVariableName(var_name, var_num)
-						self.variableAttributes[var_name]['units'] = Attribute('units', units)
-						self.variableAttributes[var_name]['scale_factor'] = Attribute('scale_factor', float(scale_factor))
+							self.addVariableName(var_name, var_num)
+							self.variableAttributes[var_name]['units'] = Attribute('units', units)
+							self.variableAttributes[var_name]['scale_factor'] = Attribute('scale_factor', float(scale_factor))
 
-						# get min and max values (what are the valid_min valid_max values???)
-						val, attr = self.header_file.readline().split()
-						self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
+							# get min and max values (what are the valid_min valid_max values???)
+							val, attr = self.header_file.readline().split()
+							self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
 
-						val, attr = self.header_file.readline().split()
-						self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
+							val, attr = self.header_file.readline().split()
+							self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
 
-						var_num += 1
+							var_num += 1
 
 
 	def read_ARMS_data(self, filename):
 		"""Reads in the arms data files """
 		if self.debug: print '\t\treadARMS.read_arms_data', filename
-		self.data_file = file(filename)
-		s = self.data_file.read()
+		with open(filename, 'r') as self.data_file: # automatically closes safely on error
+			s = self.data_file.read()
 
 		endian = '<'
 		offset = [0]
@@ -243,7 +264,6 @@ class readARMS(testReader.pyFileReader):
 			return np.dtype(dtype_list)
 		
 		variable_datatype = create_variable_datatype(self)
-		
 
 		for block_number in range(num_total_blocks): #num_total_blocks
 			block_data = np.frombuffer(s, dtype = block_dtype, count=1, offset = offset[0])
@@ -270,11 +290,9 @@ class readARMS(testReader.pyFileReader):
 			if parent_key == (-1, -1):
 				self.roots.append( (block_key,bndbox) )
 
-
-		self.data_file.close()
-
 		self.sort_roots()
 		self.set_root_ranges()
+		self._data_loaded = True
 
 	def sort_roots(self):
 		# print 'number of roots:', len(self.roots)
@@ -631,14 +649,6 @@ class readARMS(testReader.pyFileReader):
 		self.data_file_name = testReader.get_config_value(self._config, 'Files', 'DataFile')
 
 	def closeFile(self):
-		# print 'closing', self.header_file_name
-		if not self.header_file.closed:
-			self.header_file.close()
-
-		# print 'closing', self.data_file_name
-		if not self.data_file.closed:
-			self.data_file.close()
-
 		return pyKameleon.FileReader.OK
 
 		
@@ -656,11 +666,11 @@ class readARMS(testReader.pyFileReader):
 	"""Interpolates set of variables onto input positions"""
 	@staticmethod
 	@np.vectorize
-	def interpolate_variables(r, th, phi, func = lambda var,r,th,phi: r**(-3)*(1+3*np.sin(th))**.5):
+	def interpolate_variables(c0, c1, c2, func = lambda var,r,th,phi: r**(-3)*(1+3*np.sin(th))**.5):
 		"""returns a named tuple of interpolated variables"""
 		results = []
 		for variable in readARMS.variables_tuple._fields:	
-			results.append(func(variable,r,th,phi))
+			results.append(func(variable,c0,c1,c2))
 		return readARMS.variables_tuple(*results)
 
 	def interpolate_bbx(self,var,point):
@@ -687,7 +697,7 @@ class readARMS(testReader.pyFileReader):
 										]
 
 		if cartesian:
-			ppk,ppj,ppi = readARMS.ARMS_to_cartesian(ppi,ppj,ppk)
+			ppk,ppj,ppi = readARMS.spherical_exponential_to_cartesian(ppi,ppj,ppk)
 
 
 		sliced = readARMS.get_slice(self.leaf_data[leaf_key][variable],slice_obj)
@@ -701,7 +711,7 @@ class readARMS(testReader.pyFileReader):
 
 	def plot_visited_leaf_midpoints(self, ax, components = 'xz',marker='o',c='w',s=5, **scatterargs):
 		for key,(mid_r,mid_th,mid_ph) in self.visited.items():
-			mid_x,mid_y,mid_z = readARMS.ARMS_to_cartesian(mid_r,mid_th,mid_ph)
+			mid_x,mid_y,mid_z = readARMS.spherical_exponential_to_cartesian(mid_r,mid_th,mid_ph)
 			ax.scatter(mid_x,mid_z,marker=marker,c=c,s=s,**scatterargs)
 
 	@staticmethod
@@ -758,7 +768,7 @@ class readARMS(testReader.pyFileReader):
 			raise Exception("Could not find leaf key for this point")
 
 	@np.vectorize
-	def cartesian_to_ARMS(x,y,z):
+	def cartesian_to_spherical_exponential(x,y,z):
 			r = math.sqrt((x**2 + y**2 + z**2))
 			theta = math.asin(z/r) #in colatitude
 			phi = math.atan2(y,x)
@@ -766,7 +776,7 @@ class readARMS(testReader.pyFileReader):
 
 
 	@np.vectorize
-	def ARMS_to_cartesian(r_, th_, ph_):
+	def spherical_exponential_to_cartesian(r_, th_, ph_):
 		xx = (10**r_)*math.cos(th_)*math.cos(ph_)
 		yy = (10**r_)*math.cos(th_)*math.sin(ph_)
 		zz = (10**r_)*math.sin(th_)
@@ -783,22 +793,44 @@ class readARMS(testReader.pyFileReader):
 		return A_x, A_y, A_z
 
 	"""Maps variables onto tuple containing points. Points can be a tuple of positions in the form (x,y,z) where
-		each coordinated is a list or a numpy array of arbitrary dimension"""
+		each coordinated is a list or a numpy array of arbitrary dimension.
+
+		Mapping depends on coordinate system of the model. Check the model attributes."""
+	
+
 	def map(self, points, variables = None, input_coordinates = 'ARMS'):
-		if input_coordinates != 'ARMS':
-			rr,th,pp = readARMS.cartesian_to_ARMS(*points)
-		else:
-			rr,th,pp = points
-
 		if variables != None:
-			readARMS.variables_tuple = collections.namedtuple('Variables', variables)
+			var_tuple = collections.namedtuple('Variables', variables)
+			if self.debug: 
+				print 'changing variables_tuple from', readARMS.variables_tuple._fields, 'to', var_tuple._fields
+			readARMS.variables_tuple = var_tuple
+		
+		c0, c1, c2 = points
+		if input_coordinates == 'ARMS':
+			pass
+		else:
+			if (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'SPHEXP'):
+				pass
+			elif (self.grid_type == 'Cartesian') & (self.grid_type == 'Cartesian'):
+				pass
+			elif (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'CART'):
+				if self.debug: print 'converting input from cartesian to spherical exponential'
+				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
+			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'SPHEXP'):
+				if self.debug: print 'converting input from spherical exponential to cartesian'
+				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
+			else:
+				raise Exception("Conversion from", input_coordinates, "to", self.grid_type, "not supported!")
 
-		return readARMS.variables_tuple(*readARMS.interpolate_variables(rr, th, pp, self.interpolate))
-
-
+		result = readARMS.interpolate_variables(c0, c1, c2, self.interpolate)
+		try:
+			return readARMS.variables_tuple(*result)
+		except TypeError:
+			print result
+			raise
 
 	def plotVariable(self, xx,yy,zz, variables = None):
-		rr,th,pp = readARMS.cartesian_to_ARMS(xx,yy,zz)
+		rr,th,pp = readARMS.cartesian_to_spherical_exponential(xx,yy,zz)
 		
 		if variables != None:
 			readARMS.variables_tuple = collections.namedtuple('Variables', variables)
@@ -811,7 +843,7 @@ class readARMS(testReader.pyFileReader):
 
 		def plot_visited(self,ax):
 			for key,(p_r,p_th,p_ph) in self.visited.items():
-				x, y, z = readARMS.ARMS_to_cartesian(p_r,p_th,p_ph)
+				x, y, z = readARMS.spherical_exponential_to_cartesian(p_r,p_th,p_ph)
 				ax.scatter(x,z, marker = 'o',c='w',s=5)
 
 		# readARMS.variables_tuple = readARMS.bbx_tuple
