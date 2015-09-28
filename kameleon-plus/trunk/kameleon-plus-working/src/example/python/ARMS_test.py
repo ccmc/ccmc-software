@@ -7,6 +7,7 @@ from pyreaders.ARMS import readARMS
 import _CCMC as ccmc
 
 def main(argv):
+	# raise Exception("TODO: YOU NEED TO FIX THE SET_ROOT_RANGES FUNCTION SO THAT IT RETURNS THE MIN AND MAX ARRAYS FOR ALL ROOT BOUNDING BOXES")
 
 	parser = argparse.ArgumentParser(description="Direct test of ARMs reader and interpolator")
 	parser.add_argument("-v", "--verbose", action="count", default=0, help = 'verbosity of output')
@@ -47,9 +48,16 @@ def main(argv):
 		help = 'sets ordering of output arrays. options: \'C\' (default - C-style row major) or \'F\' (FORTRAN-style column major)')
 	grid_options.add_argument("-t", "--transform", type = float, nargs = 3, help = 'transformation matrix to apply to grid before interpolating (not implemented yet)')
 
-	output_options = parser.add_argument_group(title = 'output options', description = 'saving and visualization')
-	output_options.add_argument("-vis", "--visualize", type = bool, metavar = 'visualization_flag', default = False, help = 'visualize with matplotlib')
-
+	# vis options
+	vis_options = parser.add_argument_group(title = 'Vis Options', description = 'options for visualization')
+	vis_options.add_argument("-vis", "--visualize", action = 'store_true', help = 'visualize with matplotlib')
+	vis_options.add_argument("-rows", "--vis_rows", type = int, metavar = 'plot rows', help = 'number of rows to plot')
+	vis_options.add_argument("-cols", "--vis_columns", type = int, metavar = 'plot columns', help = 'number of columns to plot')
+	vis_options.add_argument("-slice0", "--slice_0", type = int, metavar = 'c0 index', help = 'slice along c0 for visualization')
+	vis_options.add_argument("-slice1", "--slice_1", type = int, metavar = 'c1 index', help = 'slice along c1 for visualization')
+	vis_options.add_argument("-slice2", "--slice_2", type = int, metavar = 'c2 index', help = 'slice along c2 for visualization')
+	vis_options.add_argument("-levels", "--contour_levels", type = int, default = 10, metavar = 'number contours', help = 'number of contours to use in vis')
+	
 	args = parser.parse_args()
 
 	# readARMS can be initialized with or without a config file
@@ -97,9 +105,18 @@ def main(argv):
 			armsreader._print_tree_info()
 
 		if args.point:
-			print 'point input not implemented'
-		else:
-			if args.verbose: print 'no point specified'
+			c0, c1, c2 = args.point
+			if args.verbose: 
+				print 'interpolating at {0}:'.format(args.point)
+
+			result = []
+			if args.positions_out_flag:
+				result = result + args.point
+				if args.debug: print 'result', result
+			for varname in args.variables:
+				result_ = armsreader.interpolate(varname,c0, c1, c2)
+				result.append(result_)
+			print result
 
 		# xx,zz = np.mgrid[1.003:1.06:50j,-.0125:0.0125:50j]
 		# yy = np.zeros(xx.shape)	
@@ -142,13 +159,11 @@ def main(argv):
 			t0 = time.clock()
 			if (args.input_coordinates == 'ARMS') | (args.input_coordinates == 'CART') | (args.input_coordinates == 'SPHEXP'):
 				if args.verbose: print 'input coordinates:', args.input_coordinates
-				variables = armsreader.map((c0.ravel(),c1.ravel(),c2.ravel()), variables = args.variables, input_coordinates = args.input_coordinates)
+				variables = armsreader.map((c0,c1,c2), variables = args.variables, input_coordinates = args.input_coordinates)
 			else:
 				raise IOError('input coordinate system' + args.input_coordinates + 'not supported. Exiting')
 				exit()
 
-			# rr,th,pp = readARMS.cartesian_to_spherical_exponential(xx,yy,zz)
-			# variables = armsreader.map((rr,th,pp), input_coordinates = 'ARMS')
 
 			# B_x, B_y, B_z = readARMS.spherical_to_cartesian_field(rr, th, pp, 
 			# 				variables.Magnetic_Field_R, 
@@ -161,15 +176,121 @@ def main(argv):
 				print 'map time:', elapsed, 'seconds'
 				print 'seconds per interpolation:', seconds_per_interpolation
 
+
 			if args.visualize:
-				visualize(c0,c1,c2,variables)
-			else:
-				print variables
+				def get_rows_columns(n):
+					if args.vis_rows != None:
+						rows = args.vis_rows
+					else:
+						rows = int(np.floor(np.sqrt(n)))
+					if args.vis_columns != None:
+						columns = args.vis_columns
+					else:
+						columns = int(np.ceil(float(n)/rows))
+					if args.verbose: print 'plotting rows, columns:', rows, columns
+					return rows, columns
+
+				def get_input_coordinates():
+					'''get component names of input positions'''
+					if args.input_coordinates == 'ARMS':
+						attr = armsreader.getGlobalAttribute('grid_system_1')
+						component_names = getAttributeValue(attr)
+						return component_names.split('[')[1].split(']')[0].split(',')
+					elif args.input_coordinates == 'CART':
+						return ['X','Y','Z']
+					elif args.input_coordinates == 'SPHEXP':
+						return ['logR','T','P']
+					else:
+						print 'input coordinates not supported. Exiting'
+						exit()
+
+				input_coordinates = get_input_coordinates()
+
+				if module_exists("matplotlib"):
+					import matplotlib.pyplot as plt
+					from collections import namedtuple
+					import matplotlib.ticker as ticker
+					import numpy.ma as ma
+
+					missing_value = armsreader.getMissingValue()
+					if args.verbose: print 'missing value is ', missing_value
+
+					rows, columns = get_rows_columns(len(variables))
+					PlotTuple = namedtuple('PlotTuple', ['x','y','var'])
+					fig, axs = plt.subplots(rows,columns)
+					axs = axs.ravel()
+
+					slice_ = [None, None, None]
+					#see if grid resolution has a dimension of size 1
+					try:
+						slice_dex = args.resolution.index(1)
+					except ValueError:
+						if args.verbose: print 'checking slices'
+						if args.slice_0 != None:
+							slice_dex = 0
+							slice_[slice_dex] = args.slice_0
+						elif args.slice_1 != None:
+							slice_dex = 1
+							slice_[slice_dex] = args.slice_1
+						elif args.slice_2 != None:
+							slice_dex = 2
+							slice_[slice_dex] = args.slice_2
+						else:
+							print 'Must specify slice to visualize: -slice0 <slice#>'
+							exit()
+
+					x_label,y_label = [var for i, var in enumerate(input_coordinates) if i != slice_dex]
+					plot_coordinates = [s[slice_].squeeze() for i, s in enumerate([c0,c1,c2]) if i != slice_dex]
+					
+		
+					for i, var_name in enumerate(args.variables):
+						# if var_name =='Mass_Density':
+						# 	variable = np.log10(variables[i])
+						# 	log_str = 'log10 '
+						# else:
+						# 	log_str = ''
+						# 	variable = variables[i]
+						variable = variables[i].squeeze()
+						variable = ma.masked_values(variable,armsreader.getMissingValue())
+						levels = np.linspace(variable.min(),variable.max(),args.contour_levels)
+						plot_tuple = PlotTuple(*plot_coordinates,var=variables[i][slice_].squeeze())
+						try:
+							cs = axs[i].contourf(*plot_tuple, levels = levels, extend = 'both')
+						except TypeError:
+							print plot_tuple
+							print slice_, slice_dex
+							raise
+
+						axs[i].set_title(var_name)
+						axs[i].set_xlabel(x_label)
+						axs[i].set_ylabel(y_label)
+						cbar = fig.colorbar(cs, ax=axs[i], shrink=0.9, format=ticker.FuncFormatter(fmt))
+					
+						units = armsreader.getVariableAttribute(var_name, 'units').getAttributeString()
+						cbar.ax.set_ylabel(var_name + ' [' + units +  ']')
+					
+					plt.show()
+
+				else:
+					print 'cannot visualize without matplotlib. please run\n\tpip install matplotlib'
+				
+
+				# visualize(armsreader, c0,c1,c2,variables)
+			
 		else:
 			if args.verbose: print 'no grid resolution set'
 	else:
 		if args.verbose: print 'no variables listed'
-	
+
+
+
+def fmt(x, pos):
+    a, b = '{:.2e}'.format(x).split('e')
+    b = int(b)
+    return r'$'+str(a)+r' \times 10^{'+str(b)+r'}$'
+
+    # return r'${} \times 10^{{{}}}$'.format(a, b)	
+
 
 def module_exists(module_name):
     try:
@@ -178,7 +299,7 @@ def module_exists(module_name):
         return False
     else:
         return True
-def visualize(c0,c1,c2, variables):
+def visualize(armsreader, c0,c1,c2, variables):
 	if module_exists("matplotlib"):
 		import matplotlib.pyplot as plt
 
@@ -220,6 +341,8 @@ def visualize(c0,c1,c2, variables):
 		plt.show()
 	else:
 		print 'please install matplotlib to visualize'
+
+
 
 def getAttributeValue(attribute):
 	if attribute.getAttributeType() == ccmc.Attribute.STRING:

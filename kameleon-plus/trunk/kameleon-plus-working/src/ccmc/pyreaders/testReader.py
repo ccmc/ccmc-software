@@ -99,9 +99,13 @@ class pyFileReader(pyKameleon.FileReader):
 		self.globalAttributes['model_name']  = Attribute('model_name', 'python_base_model')
 		self.globalAttributes['python_model'] = Attribute('python_model',1)
 		self.debug = False
-
+		self.missing_value = -256.*-256.*-256.*-256.*-256. #same as ccmc::defaults::missingValue
 		self.dummy_variable = pyKameleon.vectorFloat()
 		self.dummy_variable.append(0)
+
+	def getMissingValue(self):
+		"""This function is ignored by Model class when Model.getMissingValue is called"""
+		return self.missing_value
 
 	def openFile(self, filename, readonly = True):
 		""" Dummy method to be overriden in subclass.

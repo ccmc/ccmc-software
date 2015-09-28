@@ -36,7 +36,6 @@ class readARMS(testReader.pyFileReader):
 		self.roots = [] # sorted by R,T,P bounding box minima
 		self.last_key = None
 		self.visited = {}
-		self.missing_value = -256.*-256.*-256.*-256.*-256.
 		self.leaf_iterations = 0
 		self._data_loaded = False
 		self.globalAttributes['model_name']  = Attribute('model_name', 'ARMs')
@@ -90,6 +89,7 @@ class readARMS(testReader.pyFileReader):
 		
 			# get time step
 			line = self.header_file.readline().split()
+			if self.debug: print '\t\t', line
 			time = line[0]
 
 			#can get date from config
@@ -98,6 +98,7 @@ class readARMS(testReader.pyFileReader):
 
 			# get grid type
 			line = self.header_file.readline().split()
+			if self.debug: print '\t\t', line
 			self.grid_type = line[0]
 			self.globalAttributes['grid_type'] = Attribute('grid_type', self.grid_type)
 
@@ -115,6 +116,7 @@ class readARMS(testReader.pyFileReader):
 			# get Block sizes
 			for i in range(3):
 				dim_size, dim_name = self.header_file.readline().split()
+				if self.debug: print '\t\t', dim_size, dim_name
 				self.globalAttributes[dim_name] = Attribute(dim_name, int(dim_size))
 
 
@@ -124,6 +126,7 @@ class readARMS(testReader.pyFileReader):
 			line = ' '
 			while len(line) > 0:
 				line = self.header_file.readline().split()
+				if self.debug: print '\t\t', line
 				if len(line) == 0:
 					break
 				else:
@@ -134,34 +137,42 @@ class readARMS(testReader.pyFileReader):
 
 					# get variable units
 					val, attr = self.header_file.readline().split() 
+					if self.debug: print '\t\t', val, attr
 					self.variableAttributes[var_base_name]['units'] = Attribute('units', val)
 
 					# get variable scale factor
 					val, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
 					self.variableAttributes[var_base_name]['scale_factor'] = Attribute('scale_factor', float(val))
 
 					# get min and max values (what are the valid_min valid_max values???)
 					val, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
 					self.variableAttributes[var_base_name]['actual_min'] = Attribute('actual_min', float(val))
 
 					val, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
 					self.variableAttributes[var_base_name]['actual_max'] = Attribute('actual_max', float(val))
 
 					var_num += 1
 				else:
 					# get variable units
 					units, attr = self.header_file.readline().split() 
+					if self.debug: print '\t\t', val, attr
 
 					# get variable scale factor
 					scale_factor, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
 
 
 					for i in range(int(number_components)+1):
 						if i == int(number_components):
 							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
 							self.globalAttributes[var_base_name+'_mag_min'] = Attribute(var_base_name+'_mag_min', float(val))
 
 							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
 							self.globalAttributes[var_base_name+'_mag_max'] = Attribute(var_base_name+'_mag_max', float(val))
 
 							
@@ -174,9 +185,11 @@ class readARMS(testReader.pyFileReader):
 
 							# get min and max values (what are the valid_min valid_max values???)
 							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
 							self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
 
 							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
 							self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
 
 							var_num += 1
@@ -295,7 +308,8 @@ class readARMS(testReader.pyFileReader):
 		self._data_loaded = True
 
 	def sort_roots(self):
-		# print 'number of roots:', len(self.roots)
+		if self.debug: 
+			print 'number of roots:', len(self.roots)
 		self.roots.sort(key= lambda x: itemgetter(0,2,4)(x[1]))
 
 	def _print_tree_info(self):
@@ -306,31 +320,54 @@ class readARMS(testReader.pyFileReader):
 	def set_root_ranges(self):
 		def get_root_range(self, min_getter, max_getter, stride = 1):
 			get_root_bbx = itemgetter(1)
-			root_range = [min_getter(get_root_bbx(self.roots[0]))] #initialize range
+			root_0_bbx = get_root_bbx(self.roots[0])
+			min_val, max_val = min_getter(root_0_bbx), max_getter(root_0_bbx)
+			root_range = [min_val] #initialize range
+			counter = 1	
 			for root_id in range(stride,len(self.roots),stride):
+				counter += 1
 				root_bbx = get_root_bbx(self.roots[root_id])
-				root_range.append(min_getter(root_bbx))
-				if root_range[-1] < root_range[-2]:
+				root_min = min_getter(root_bbx)
+				root_max = max_getter(root_bbx)
+				if root_min < min_val: min_val = root_min
+				if root_max > max_val: max_val = root_max
+				root_range.append(root_min)
+				if root_range[-1] <= root_range[-2]:
+					if self.debug: 
+						if root_range[-1] < root_range[-2]:
+							print '\t\t\t', root_range[-1], ' < ', root_range[-2]
+						else:
+							print '\t\t\t', root_range[-1], ' == ', root_range[-2]
 					root_range.pop()
-					root_range.append(max_getter(get_root_bbx(self.roots[root_id-1]))) #add max
+					root_id = root_id - 1
+					# root_range.append(max_getter(get_root_bbx(self.roots[root_id-1]))) #add max
 					break
+			root_range.append(max_getter(get_root_bbx(self.roots[root_id]))) #add max
+			if self.debug: print '\t\t\troot min, max, counter:', min_val, max_val, counter
 			return root_range
 
 		get_r_min, get_r_max = itemgetter(0), itemgetter(1)
 		get_theta_min, get_theta_max = itemgetter(2), itemgetter(3)
 		get_phi_min, get_phi_max = itemgetter(4), itemgetter(5)
 
+		if self.debug: print '\t\tgetting phi range.'
 		phi = get_root_range(self,get_phi_min, get_phi_max)
 		nk = len(phi)-1
 		
+		if self.debug: print '\t\tgetting theta range.'
 		theta = get_root_range(self,get_theta_min,get_theta_max,nk)
 		nj = len(theta)-1
 
+		if self.debug: print '\t\tgetting r range.'
 		r = get_root_range(self,get_r_min,get_r_max,nj*nk)
 		ni = len(r)-1
 
 		self.root_coord = (r,theta,phi)
 		self.root_resolution = (ni,nj,nk)
+		if self.debug: 
+			print '\t\troot resolution', self.root_resolution
+			print '\t\troot ranges:'
+			for coord in self.root_coord: print '\t\t\t', coord
 
 	def plot_root_coord(self, ax = None, index = 2):
 		from mpl_toolkits.mplot3d import axes3d
@@ -381,9 +418,12 @@ class readARMS(testReader.pyFileReader):
 					raise ArithmeticError("Point not actually in root!")
 			else: #out of simulation domain
 				return -1
+		elif start_key == -1: # the last time the method was called, the point was out of bounds
+			return self.find_leaf(point)
 		else:
 			# see if point is in this block's range
-			block = self.tree_data[start_key]
+			block = self.tree_data[start_key]			
+				
 			if self.in_block(block,point):
 				# print self.leaf_iterations, 'point was in start_key block', point, get_bbx(block)
 				pass
@@ -434,8 +474,12 @@ class readARMS(testReader.pyFileReader):
 			child_index = r_index+ 2*theta_index + 4*phi_index
 			child_key = (children[2*child_index], children[2*child_index+1])
 
-			# numpy interpolate will adjust the point slightly so that it lies in the child box	 		
-			child_bbx = get_bbx(self.tree_data[child_key])
+			# numpy interpolate will adjust the point slightly so that it lies in the child box
+			try:		
+				child_bbx = get_bbx(self.tree_data[child_key])
+			except KeyError:
+				print 'Key Error at position:', point, 'returning -1'
+				return -1
 			child_r = self.x_shift(r(point), *r_range(child_bbx))
 			child_theta = self.x_shift(theta(point),*theta_range(child_bbx))
 			child_phi = self.x_shift(phi(point),*phi_range(child_bbx))
@@ -495,9 +539,15 @@ class readARMS(testReader.pyFileReader):
 		r,theta,phi = itemgetter(0), itemgetter(1), itemgetter(2)
 		r_root, theta_root, phi_root = self.root_coord
 		ni,nj,nk = self.root_resolution
-		i = np.searchsorted(r_root,r(point))-1
-		j = np.searchsorted(theta_root,theta(point))-1
-		k = np.searchsorted(phi_root,phi(point))-1
+		try:
+			i = np.searchsorted(r_root,r(point))-1
+			j = np.searchsorted(theta_root,theta(point))-1
+			k = np.searchsorted(phi_root,phi(point))-1
+		except IndexError:
+			if self.debug: 
+				print 'point:', point
+				print 'r_root, theta_root, phi_root:', r_root, theta_root, phi_root
+			raise
 		if (i == -1) | (i == len(r_root)-1) | (j == -1) | (j == len(theta_root)-1) | (k == -1) | (k == len(phi_root)-1):
 			return -1
 		else:
@@ -518,7 +568,7 @@ class readARMS(testReader.pyFileReader):
 		"""interpolates data at point r,theta,phi
 
 		Note: r may be stored in log space. If so, it is up to the caller to make the conversion
-
+														THIS DIAGRAM IS WRONG. PLEASE IGNORE
 			Vxyz = 	V000 (1 - x) (1 - y) (1 - z) +	//    	   Left:    		ARMS needs:		
 					V100 x (1 - y) (1 - z) +		//   V011 6----7 V111     V001 4----5 V101
 					V010 (1 - x) y (1 - z) +		//    	 /|   /|              /|   /|
@@ -544,9 +594,9 @@ class readARMS(testReader.pyFileReader):
 
 		leaf_key = self.find_leaf(point, self.last_key)
 		self.last_key = leaf_key
-		bbx = self.tree_data[leaf_key].bbx
 
 		if leaf_key != -1:
+			bbx = self.tree_data[leaf_key].bbx
 			if self.visited.has_key(leaf_key):
 				pass
 			else:
@@ -554,6 +604,7 @@ class readARMS(testReader.pyFileReader):
 			
 			try:	
 				var_data = self.leaf_data[leaf_key][variable].T
+				nk,nj,ni = self.leaf_resolution #due to transpose
 			except ValueError:
 				print 'available variables:', 
 				for var in self.variableNames.values(): print var,
@@ -795,9 +846,7 @@ class readARMS(testReader.pyFileReader):
 	"""Maps variables onto tuple containing points. Points can be a tuple of positions in the form (x,y,z) where
 		each coordinated is a list or a numpy array of arbitrary dimension.
 
-		Mapping depends on coordinate system of the model. Check the model attributes."""
-	
-
+		Mapping depends on coordinate system of the model. Check the model attributes."""	
 	def map(self, points, variables = None, input_coordinates = 'ARMS'):
 		if variables != None:
 			var_tuple = collections.namedtuple('Variables', variables)
