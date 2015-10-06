@@ -32,8 +32,10 @@ def main(argv):
 	point_options = parser.add_argument_group(title = 'point options', description = 'interpolation options for a single point')
 	point_options.add_argument("-p","--point", type=float, nargs=3, metavar=("c0", "c1", "c2"), help = 'point at which to interpolate variables')
 
+
 	# grid options
 	grid_options = parser.add_argument_group(title = 'grid options', description = 'interpolation options for a grid of points in model')
+	grid_options.add_argument("-copy_leaf", "--copy_leaf_ranges", action = 'store_true', help = 'use the ranges of the last leaf (see --leaf_key option)')
 	grid_options.add_argument("-c0", "--c0-range", type = float, nargs = 2, metavar = ('c0min','c0max'), help = "range of c0")
 	grid_options.add_argument("-c1", "--c1-range", type = float, nargs = 2, metavar = ('c1min','c1max'), help = "range of c1")
 	grid_options.add_argument("-c2", "--c2-range", type = float, nargs = 2, metavar = ('c2min','c2max'), help = "range of c2")
@@ -57,8 +59,28 @@ def main(argv):
 	vis_options.add_argument("-slice1", "--slice_1", type = int, metavar = 'c1 index', help = 'slice along c1 for visualization')
 	vis_options.add_argument("-slice2", "--slice_2", type = int, metavar = 'c2 index', help = 'slice along c2 for visualization')
 	vis_options.add_argument("-levels", "--contour_levels", type = int, default = 10, metavar = 'number contours', help = 'number of contours to use in vis')
-	
+	vis_options.add_argument("-cvals", "--contour_values", type = float, nargs='+', metavar = ('var1_min','var1_max'), help = 'ranges for contour values')
+	vis_options.add_argument("-leaf", "--leaf_key", type = int, nargs = '?', default = None, const = [-1, -1], metavar = ('key0', 'key1'), help = 'key tuple for leaf to plot. default: plot last leaf')
+	vis_options.add_argument("-lslice0", "--leaf_slice0", type = int, default = None, metavar = 'index0', 
+		help = 'plots slice along 0th dimension of leaf defined by -leaf parameter. ex.: "-lslice0 0" for (0,:,:)')
+	vis_options.add_argument("-lslice1", "--leaf_slice1", type = int, default = None, metavar = 'index0', 
+		help = 'plots slice along 0th dimension of leaf defined by -leaf parameter. ex.: "-lslice1 -1" for (:,<last>,:)')
+	vis_options.add_argument("-lslice2", "--leaf_slice2", type = int, default = None, metavar = 'index0', 
+		help = 'plots slice along 0th dimension of leaf defined by -leaf parameter. ex.: "-lslice2 1" for (:,:,1)')
+	vis_options.add_argument("-plv", "--plot_leaf_values", action = 'store_true', help = "make a line plot to see leaf ordering")
+	vis_options.add_argument("-pgv", "--plot_grid_values", action = 'store_true', help = "make a line plot of grid values v index")
+
 	args = parser.parse_args()
+
+	if args.visualize:
+		if module_exists("matplotlib"):
+			import matplotlib.pyplot as plt
+			import matplotlib.ticker as ticker
+			import numpy.ma as ma
+			from collections import namedtuple
+		else:
+			print 'Need matplotlib to visualize, please install: pip install matplotlib'
+			exit()
 
 	# readARMS can be initialized with or without a config file
 	armsreader = readARMS(args.input_file)
@@ -107,8 +129,8 @@ def main(argv):
 		if args.point:
 			c0, c1, c2 = args.point
 			if args.verbose: 
-				print 'interpolating at {0}:'.format(args.point)
-
+				print 'interpolating at {0}:'.format(args.point), args.input_coordinates
+			c0, c1, c2 = armsreader.convert_positions_to_ARMS(args.point, args.input_coordinates)
 			result = []
 			if args.positions_out_flag:
 				result = result + args.point
@@ -118,37 +140,248 @@ def main(argv):
 				result.append(result_)
 			print result
 
-		# xx,zz = np.mgrid[1.003:1.06:50j,-.0125:0.0125:50j]
-		# yy = np.zeros(xx.shape)	
+
+		def get_rows_columns(n):
+			if args.vis_rows != None:
+				rows = args.vis_rows
+			else:
+				rows = int(np.floor(np.sqrt(n)))
+			if args.vis_columns != None:
+				columns = args.vis_columns
+			else:
+				columns = int(np.ceil(float(n)/rows))
+			if args.verbose: print 'plotting rows, columns:', rows, columns
+			return rows, columns
+
+		def get_input_coordinates():
+			'''get component names of input positions'''
+			if args.input_coordinates == 'ARMS':
+				attr = armsreader.getGlobalAttribute('grid_system_1')
+				component_names = getAttributeValue(attr)
+				return component_names.split('[')[1].split(']')[0].split(',')
+			elif args.input_coordinates == 'CART':
+				return ['X','Y','Z']
+			elif args.input_coordinates == 'SPHEXP':
+				return ['logR','T','P']
+			else:
+				print 'input coordinates not supported. Exiting'
+				exit()
+
+		def index_where_equal(L, value, equal = True, else_value = -1):
+			if equal: 
+				return next((i for i, v in enumerate(L) if v == value), else_value)
+			else: 
+				return next((i for i, v in enumerate(L) if v != value), else_value)
+
+		def plot_slice(	grid, resolution, variables, slices = (None,None, None), contour_values = None, contour_levels = 10, point = None, title = None):
+			"""Plot slice of data. Could be interpolated or raw data.
+
+				Args: 
+					grid (tuple or list of 3D arrays): c0, c1, c2 arrays
+					resolution (int tuple): resolution of the input grid.
+					variables (named tuple of arrays): variable arrays matching grid
+					slices (optional int tuple): slice indices. Defaults to (None, None, None).
+						The first non-None slice will be used
+					contour_values (optional): 2 x Nvar ranges for variable colormap
+					contour_levels: number of contours in each plot
+					point (optional): a point to plot
+			"""			
+			PlotTuple = namedtuple('PlotTuple', ['x','y','var'])
+
+			input_coordinates = get_input_coordinates()
+			missing_value = armsreader.getMissingValue()
+			if args.verbose: print 'missing value is ', missing_value
+
+			rows, columns = get_rows_columns(len(variables))
+			
+			fig, axs = plt.subplots(rows,columns)
+			axs = axs.ravel()
+
+			slice_ = [slice(None), slice(None), slice(None)]
+
+			#see if grid resolution has a dimension of size 1
+			slice_dim = index_where_equal(resolution, value = 1)
+			if slice_dim != -1: # a 2D grid
+				slice_num = 0 
+			else: # a 3D grid. see whether a slice was specified
+				slice_dim = index_where_equal(slices, value = None, equal = False)
+				if slice_dim != -1:
+					slice_num = slices[slice_dim]
+				else:
+					if args.verbose: print 'no slice specified.'
+					slice_dim, slice_num = 2, 0
+
+			if args.verbose: print 'slicing dim', slice_dim,'at', slice_num
+			slice_[slice_dim] = slice_num
+
+			x_label,y_label = [var for i, var in enumerate(input_coordinates) if i != slice_dim]
+			plot_coordinates = [s[slice_].squeeze() for i, s in enumerate(grid) if i != slice_dim]
+			if point != None:
+				plot_point = [p_ for i, p_ in enumerate(point) if i != slice_dim]
+
+			for var_index, var_name in enumerate(variables._fields):
+				# if var_name =='Mass_Density':
+				# 	variable = np.log10(variables[var_index])
+				# 	log_str = 'log10 '
+				# else:
+				# 	log_str = ''
+				# 	variable = variables[var_index]
+				variable = variables[var_index][slice_].squeeze()
+				if args.verbose: print var_name, variables[var_index].shape, 'sliced:', variable.shape
+				variable = ma.masked_values(variable,armsreader.getMissingValue())
+				plot_tuple = PlotTuple(*plot_coordinates,var=variable)
+
+				if contour_values == None:
+					if args.verbose: print '\tmin,max:', variable.min(), variable.max()
+					levels = np.linspace(variable.min(),variable.max(),contour_levels)
+				elif len(contour_values)/2 == len(args.variables): #use levels from input:	
+					levels = np.linspace(contour_values[var_index*2], contour_values[var_index*2+1], contour_levels)
+				else:
+					levels = np.linspace(variable.min(),variable.max(),contour_levels)
+				try:
+					if args.verbose > 1:
+						print 'plot_tuple:'
+						for i, field in enumerate(plot_tuple._fields): 
+							print '\t',field, plot_tuple[i].shape, 'range:', plot_tuple[i].min(), plot_tuple[i].max()
+					cs = axs[var_index].contourf(*plot_tuple, levels = levels, extend = 'both')
+				except TypeError:
+					for i, field in enumerate(plot_tuple._fields): print field, plot_tuple[i].shape
+					print 'slice_, slice_dim', slice_, slice_dim
+					print 'grid:'
+					for i, g in enumerate(grid): 
+						print '\t', i, g.shape, 'sliced:', g[slice_].shape
+					print 'plot_coordinates:'
+					for c in plot_coordinates: print '\t', c.shape
+					raise
+
+				axs[var_index].set_title(var_name)
+				axs[var_index].set_xlabel(x_label)
+				axs[var_index].set_ylabel(y_label)
+				cbar = fig.colorbar(cs, ax=axs[var_index], shrink=0.9, format=ticker.FuncFormatter(fmt))
+			
+				units = armsreader.getVariableAttribute(var_name, 'units').getAttributeString()
+				cbar.ax.set_ylabel(var_name + ' [' + units +  ']')
+				if point != None:
+					if args.verbose: print '\tplotting point', plot_point
+					axs[var_index].plot(plot_point[0],plot_point[1],'o')
+
+			if title!= None:
+				fig.text(0.5, .95, title, ha = 'center', fontsize = 18)
+
+		def get_leaf_key(leaf_key):
+			if leaf_key == [-1, -1]:
+				if args.verbose: print 'getting last leaf found'
+				leaf_key = armsreader.last_key
+			else: #use input key
+				leaf_key = args.leaf_key
+			return leaf_key
+
+		def get_leaf_axes(leaf_key):
+			bbx = armsreader.tree_data[leaf_key].bbx
+			ni,nj,nk = armsreader.leaf_resolution
+			c0 = np.linspace(bbx.r_min, bbx.r_max, ni)
+			c1 = np.linspace(bbx.theta_min, bbx.theta_max, nj)
+			c2 = np.linspace(bbx.phi_min, bbx.phi_max, nk)
+			return c0, c1, c2
+
+		def plot_variable_values(variables, rows_columns, title = '', names = None):
+				fig, axs = plt.subplots(*rows_columns)
+				axs = axs.ravel()
+				fig.text(.5, .95, title, ha = 'center', fontsize = 18)
+				if names != None:
+					for var_index, var_name in enumerate(names):
+						axs[var_index].plot(variables[var_index].ravel(order = args.ordering))
+						axs[var_index].set_title(var_name)
+				else:
+					for var_index, variable in enumerate(variables):
+						axs[var_index].plot(variable.ravel(order = args.ordering))
+
+		def plot_leaf_slice(leaf_key, point = None):	
+			leaf_key = get_leaf_key(leaf_key)		
+			if args.verbose: print 'leaf key: ', leaf_key, 'parent key:', armsreader.tree_data[leaf_key].parent_key
+			c0_, c1_, c2_ = get_leaf_axes(leaf_key)
+			leaf_grid = np.meshgrid(c0_,c1_,c2_, indexing = 'ij') # or 'ij'? in ARMS coordinates
+
+			if args.verbose == 1: 
+				print 'leaf grid from ARMS:'
+				for lc_index, lc in enumerate(leaf_grid):
+					print '\t', lc_index, lc.shape, 'range', lc.min(), lc.max()
+				print 'converting leaf_grid to', args.input_coordinates
+
+			leaf_grid = armsreader.convert_positions_from_ARMS(leaf_grid, args.input_coordinates)
+
+			if args.verbose == 1:
+				print 'leaf grid in ' + args.input_coordinates + ':'
+				for lc_index, lc in enumerate(leaf_grid):
+					print '\t', lc_index, lc.shape, 'range', lc.min(), lc.max()
+
+			leaf_slices = args.leaf_slice0, args.leaf_slice1, args.leaf_slice2
+			leaf_tuple = namedtuple("leaf_data", args.variables)
+			leaf_variables = [armsreader.leaf_data[leaf_key][var_name].T for var_name in args.variables]
+			lt = leaf_tuple(*leaf_variables)
+
+			if args.plot_leaf_values:
+				plot_variable_values(lt, get_rows_columns(len(lt)), 'values for leaf ' + str(leaf_key), lt._fields)
+				plot_variable_values(leaf_grid, (3,1), 'leaf positions', ['c0', 'c1', 'c2'])
+				
+			if args.debug:
+				print 'variables tuple:'
+				for i, f in enumerate(lt._fields):
+					print '\t',f, lt[i].shape
+
+			plot_slice(	leaf_grid, armsreader.leaf_resolution, leaf_tuple(*leaf_variables), 
+						leaf_slices, point = point, 
+						title = 'leaf variables at ' + str(leaf_slices) + ' in ' + args.input_coordinates)
+
+		#plot variables on a leaf
+		if args.leaf_key == None:
+			if args.verbose: print 'no leaf specified'
+		else:
+			plot_leaf_slice(args.leaf_key, args.point)
+
+		# grid interpolation	
 		if args.resolution:
 			if args.verbose: 
 				print 'requested output resolution:', args.resolution
-			if args.c0_range:
-				c0_ = np.linspace(args.c0_range[0], args.c0_range[1], args.resolution[0])
-				if args.verbose: 
-					print 'c0-range:', args.c0_range
-					if args.verbose > 1:
-						print '\tvalues:', c0_
-			else:
-				c0_ = np.zeros(1) + args.c0_intercept
 
-			if args.c1_range:
-				c1_ = np.linspace(args.c1_range[0], args.c1_range[1], args.resolution[1])
-				if args.verbose: 
-					print 'c1-range:', args.c1_range
-					if args.verbose > 1:
-						print '\tvalues:', c1_
-			else:
-				c1_ = np.zeros(1) + args.c1_intercept
+			if args.copy_leaf_ranges:
+				if args.leaf_key:
+					leaf_key = get_leaf_key(args.leaf_key)
+					bbx = armsreader.tree_data[leaf_key].bbx
+					c0_ = np.linspace(bbx.r_min, bbx.r_max, args.resolution[0])
+					c1_ = np.linspace(bbx.theta_min, bbx.theta_max, args.resolution[1])
+					c2_ = np.linspace(bbx.phi_min, bbx.phi_max, args.resolution[2])
+				else:
+					if args.verbose: print '-leaf option not specified. Cannot use leaf ranges.'
+					exit()
 
-			if args.c2_range:
-				c2_ = np.linspace(args.c2_range[0], args.c2_range[1], args.resolution[2])
-				if args.verbose: 
-					print 'c2-range:', args.c2_range
-					if args.verbose > 1:
-						print '\tvalues:', c2_
 			else:
-				c2_ = np.zeros(1) + args.c2_intercept
+				if args.c0_range:
+					c0_ = np.linspace(args.c0_range[0], args.c0_range[1], args.resolution[0])
+					if args.verbose: 
+						print 'c0-range:', args.c0_range
+						if args.verbose > 1:
+							print '\tvalues:', c0_
+				else:
+					c0_ = np.zeros(1) + args.c0_intercept
+
+				if args.c1_range:
+					c1_ = np.linspace(args.c1_range[0], args.c1_range[1], args.resolution[1])
+					if args.verbose: 
+						print 'c1-range:', args.c1_range
+						if args.verbose > 1:
+							print '\tvalues:', c1_
+				else:
+					c1_ = np.zeros(1) + args.c1_intercept
+
+				if args.c2_range:
+					c2_ = np.linspace(args.c2_range[0], args.c2_range[1], args.resolution[2])
+					if args.verbose: 
+						print 'c2-range:', args.c2_range
+						if args.verbose > 1:
+							print '\tvalues:', c2_
+				else:
+					c2_ = np.zeros(1) + args.c2_intercept
 
 			# c0, c1, c2 = np.meshgrid(c0_,c1_,c2_, indexing = args.indexing)
 			c0, c1, c2 = np.meshgrid(c0_,c1_,c2_, indexing = 'ij')
@@ -160,6 +393,9 @@ def main(argv):
 			if (args.input_coordinates == 'ARMS') | (args.input_coordinates == 'CART') | (args.input_coordinates == 'SPHEXP'):
 				if args.verbose: print 'input coordinates:', args.input_coordinates
 				variables = armsreader.map((c0,c1,c2), variables = args.variables, input_coordinates = args.input_coordinates)
+				if args.plot_grid_values:
+					plot_variable_values([c0,c1,c2], (3,1), 'grid positions', ['c0', 'c1', 'c2'])
+					plot_variable_values(variables, get_rows_columns(len(variables)), 'grid values', args.variables)
 			else:
 				raise IOError('input coordinate system' + args.input_coordinates + 'not supported. Exiting')
 				exit()
@@ -175,110 +411,22 @@ def main(argv):
 			if args.verbose: 
 				print 'map time:', elapsed, 'seconds'
 				print 'seconds per interpolation:', seconds_per_interpolation
-
-
 			if args.visualize:
-				def get_rows_columns(n):
-					if args.vis_rows != None:
-						rows = args.vis_rows
-					else:
-						rows = int(np.floor(np.sqrt(n)))
-					if args.vis_columns != None:
-						columns = args.vis_columns
-					else:
-						columns = int(np.ceil(float(n)/rows))
-					if args.verbose: print 'plotting rows, columns:', rows, columns
-					return rows, columns
-
-				def get_input_coordinates():
-					'''get component names of input positions'''
-					if args.input_coordinates == 'ARMS':
-						attr = armsreader.getGlobalAttribute('grid_system_1')
-						component_names = getAttributeValue(attr)
-						return component_names.split('[')[1].split(']')[0].split(',')
-					elif args.input_coordinates == 'CART':
-						return ['X','Y','Z']
-					elif args.input_coordinates == 'SPHEXP':
-						return ['logR','T','P']
-					else:
-						print 'input coordinates not supported. Exiting'
-						exit()
-
-				input_coordinates = get_input_coordinates()
-
-				if module_exists("matplotlib"):
-					import matplotlib.pyplot as plt
-					from collections import namedtuple
-					import matplotlib.ticker as ticker
-					import numpy.ma as ma
-
-					missing_value = armsreader.getMissingValue()
-					if args.verbose: print 'missing value is ', missing_value
-
-					rows, columns = get_rows_columns(len(variables))
-					PlotTuple = namedtuple('PlotTuple', ['x','y','var'])
-					fig, axs = plt.subplots(rows,columns)
-					axs = axs.ravel()
-
-					slice_ = [None, None, None]
-					#see if grid resolution has a dimension of size 1
-					try:
-						slice_dex = args.resolution.index(1)
-					except ValueError:
-						if args.verbose: print 'checking slices'
-						if args.slice_0 != None:
-							slice_dex = 0
-							slice_[slice_dex] = args.slice_0
-						elif args.slice_1 != None:
-							slice_dex = 1
-							slice_[slice_dex] = args.slice_1
-						elif args.slice_2 != None:
-							slice_dex = 2
-							slice_[slice_dex] = args.slice_2
-						else:
-							print 'Must specify slice to visualize: -slice0 <slice#>'
-							exit()
-
-					x_label,y_label = [var for i, var in enumerate(input_coordinates) if i != slice_dex]
-					plot_coordinates = [s[slice_].squeeze() for i, s in enumerate([c0,c1,c2]) if i != slice_dex]
-					
-		
-					for i, var_name in enumerate(args.variables):
-						# if var_name =='Mass_Density':
-						# 	variable = np.log10(variables[i])
-						# 	log_str = 'log10 '
-						# else:
-						# 	log_str = ''
-						# 	variable = variables[i]
-						variable = variables[i].squeeze()
-						variable = ma.masked_values(variable,armsreader.getMissingValue())
-						levels = np.linspace(variable.min(),variable.max(),args.contour_levels)
-						plot_tuple = PlotTuple(*plot_coordinates,var=variables[i][slice_].squeeze())
-						try:
-							cs = axs[i].contourf(*plot_tuple, levels = levels, extend = 'both')
-						except TypeError:
-							print plot_tuple
-							print slice_, slice_dex
-							raise
-
-						axs[i].set_title(var_name)
-						axs[i].set_xlabel(x_label)
-						axs[i].set_ylabel(y_label)
-						cbar = fig.colorbar(cs, ax=axs[i], shrink=0.9, format=ticker.FuncFormatter(fmt))
-					
-						units = armsreader.getVariableAttribute(var_name, 'units').getAttributeString()
-						cbar.ax.set_ylabel(var_name + ' [' + units +  ']')
-					
-					plt.show()
-
-				else:
-					print 'cannot visualize without matplotlib. please run\n\tpip install matplotlib'
-				
-
-				# visualize(armsreader, c0,c1,c2,variables)
-			
+				#plot variables on user-defined grid slice
+				arg_slices = args.slice_0, args.slice_1, args.slice_2
+				plot_slice([c0,c1,c2], args.resolution, variables, arg_slices, 
+							args.contour_values, args.contour_levels, args.point, 
+							title = 'Variables on Grid')
 		else:
-			if args.verbose: print 'no grid resolution set'
+			if args.verbose: 
+				print 'no grid resolution set for --resolution option'
+			
+		
+
+		#render
+		if args.visualize:
+			plt.show()
+		
 	else:
 		if args.verbose: print 'no variables listed'
 

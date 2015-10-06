@@ -289,15 +289,15 @@ class readARMS(testReader.pyFileReader):
 			child_key = tuple(block_data['child_loc'].flatten())
 			bndbox = list(block_data['bndbox'][0].flatten())
 
-			if self.grid_type == 'Spherical_Exponential':
-				bndbox[2:4] = bndbox[3],bndbox[2]
+			if self.grid_type == 'Spherical_Exponential': #flip theta bounds so 0 is at equator
+				bndbox[2:4] = bndbox[3],bndbox[2] 
 			
 			
 			self.tree_data[block_key] = self._tree_data_tuple(block_type, parent_key, child_key, self._bbx_tuple(*bndbox))
 
 			# 1 = leaf, 2 = parent, 3 = grand-parent, etc
-			if block_type == 1: #::-1 flips second index
-				self.leaf_data[block_key] = np.frombuffer(s, dtype=variable_datatype, count = ni*nj*nk, offset = offset[0]).reshape((ni,nj,nk))[:,::-1,:]
+			if block_type == 1: #[:,::-1,:] flips second index
+				self.leaf_data[block_key] = np.frombuffer(s, dtype=variable_datatype, count = ni*nj*nk, offset = offset[0]).reshape(ni,nj,nk, order = 'C')[:,::-1,:]
 				offset[0] += variable_datatype.itemsize*ni*nj*nk
 			
 			if parent_key == (-1, -1):
@@ -567,7 +567,7 @@ class readARMS(testReader.pyFileReader):
 			
 		"""interpolates data at point r,theta,phi
 
-		Note: r may be stored in log space. If so, it is up to the caller to make the conversion
+			Note: r may be stored in log space. If so, it is up to the caller to make the conversion
 														THIS DIAGRAM IS WRONG. PLEASE IGNORE
 			Vxyz = 	V000 (1 - x) (1 - y) (1 - z) +	//    	   Left:    		ARMS needs:		
 					V100 x (1 - y) (1 - z) +		//   V011 6----7 V111     V001 4----5 V101
@@ -586,8 +586,6 @@ class readARMS(testReader.pyFileReader):
 
 			# the child's index will be in [0,7]
 			child_index = r_index+ 2*theta_index + 4*phi_index
-
-
 		"""
 		r, theta, phi = itemgetter(0), itemgetter(1), itemgetter(2)
 		ni,nj,nk = self.leaf_resolution
@@ -646,6 +644,7 @@ class readARMS(testReader.pyFileReader):
 			return self.tri_linear(var_data,i0,i1,j0,j1,k0,k1,p)
 
 		else:
+			if self.debug: print 'could not find leaf for point', point
 			return self.missing_value
 
 	"""Interpolate variable at position along with local resolution """
@@ -677,20 +676,11 @@ class readARMS(testReader.pyFileReader):
 
 			var_out = c0*(1-phi(p)) + c1*phi(p)
 
-			## this code is not stable!!
-			# var_out = 	var_data[i0,j0,k0]*(1-r(p))	*(1-theta(p))	*(1-phi(p)) +\
-			# 			var_data[i1,j0,k0]*r(p)		*(1-theta(p))	*(1-phi(p)) +\
-			# 			var_data[i0,j1,k0]*(1-r(p))	*theta(p)		*(1-phi(p)) +\
-			# 			var_data[i0,j0,k1]*(1-r(p))	*(1-theta(p))	*phi(p) +\
-			# 			var_data[i1,j0,k1]*r(p)		*(1-theta(p)	*phi(p)) +\
-			# 			var_data[i0,j1,k1]*(1-r(p))	*theta(p)		*phi(p) +\
-			# 			var_data[i1,j1,k0]*r(p)		*theta(p)		*(1-phi(p)) +\
-			# 			var_data[i1,j1,k1]*r(p)		*theta(p)		*phi(p)
 		except IndexError:
-			print 'problem at index', "(i0,j0,k0)", i0,j0,k0, "(i1,j1,k1),", i1,j1,k1
-			print 'query point', p
-			print 'leaf resolution', self.leaf_resolution
-			print 'var_data shape:', var_data.shape
+			print '\tproblem at index', "(i0,j0,k0)", i0,j0,k0, "(i1,j1,k1),", i1,j1,k1
+			print '\tquery point', p
+			print '\tleaf resolution', self.leaf_resolution
+			print '\tvar_data shape:', var_data.shape
 			raise
 		return var_out
 
@@ -742,10 +732,11 @@ class readARMS(testReader.pyFileReader):
 			**contourf_kwargs):
 		bbx = self.tree_data[leaf_key].bbx
 		ni,nj,nk = self.leaf_resolution
-		ppk,ppj,ppi = np.mgrid[bbx.phi_min:bbx.phi_max:np.complex(nk),
-										bbx.theta_min:bbx.theta_max:np.complex(nj),
-										bbx.r_min:bbx.r_max:np.complex(ni)
-										]
+		#last index varies fastest when defining mgrid
+		ppk,ppj,ppi = np.mgrid[	bbx.phi_min:bbx.phi_max:np.complex(nk),
+								bbx.theta_min:bbx.theta_max:np.complex(nj),
+								bbx.r_min:bbx.r_max:np.complex(ni)
+								]
 
 		if cartesian:
 			ppk,ppj,ppi = readARMS.spherical_exponential_to_cartesian(ppi,ppj,ppk)
@@ -843,6 +834,48 @@ class readARMS(testReader.pyFileReader):
 		A_z = A_r*cos(th)-A_th*sin(th)
 		return A_x, A_y, A_z
 
+
+	def convert_positions_from_ARMS(self, points, output_coordinates = 'ARMS'):
+		"""converts positions from ARMS to output coordinates"""
+		c0, c1, c2 = points
+		if output_coordinates == 'ARMS':
+			pass
+		else:
+			if (self.grid_type == 'Spherical_Exponential') & (output_coordinates == 'SPHEXP'):
+				pass
+			elif (self.grid_type == 'Cartesian') & (output_coordinates == 'Cartesian'):
+				pass
+			elif (self.grid_type == 'Spherical_Exponential') & (output_coordinates == 'CART'):
+				if self.debug: print 'converting input from spherical exponential (ARMS native) to cartesian'
+				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
+			elif (self.grid_type == 'Cartesian') & (output_coordinates == 'SPHEXP'):
+				if self.debug: print 'converting input from cartesian (ARMS native) to spherical exponential'
+				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
+			else:
+				raise Exception("Conversion from", self.grid_type, "to", output_coordinates, "not supported!")
+		return c0, c1, c2
+
+
+	def convert_positions_to_ARMS(self, points, input_coordinates = 'ARMS'):
+		"""converts input positions to model input_coordinates"""
+		c0, c1, c2 = points
+		if input_coordinates == 'ARMS':
+			pass
+		else:
+			if (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'SPHEXP'):
+				pass
+			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'Cartesian'):
+				pass
+			elif (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'CART'):
+				if self.debug: print 'converting input from cartesian to spherical exponential (ARMS native)'
+				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
+			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'SPHEXP'):
+				if self.debug: print 'converting input from spherical exponential to cartesian (ARMS native)'
+				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
+			else:
+				raise Exception("Conversion from", input_coordinates, "to", self.grid_type, "not supported!")
+		return c0, c1, c2
+
 	"""Maps variables onto tuple containing points. Points can be a tuple of positions in the form (x,y,z) where
 		each coordinated is a list or a numpy array of arbitrary dimension.
 
@@ -853,24 +886,8 @@ class readARMS(testReader.pyFileReader):
 			if self.debug: 
 				print 'changing variables_tuple from', readARMS.variables_tuple._fields, 'to', var_tuple._fields
 			readARMS.variables_tuple = var_tuple
-		
-		c0, c1, c2 = points
-		if input_coordinates == 'ARMS':
-			pass
-		else:
-			if (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'SPHEXP'):
-				pass
-			elif (self.grid_type == 'Cartesian') & (self.grid_type == 'Cartesian'):
-				pass
-			elif (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'CART'):
-				if self.debug: print 'converting input from cartesian to spherical exponential'
-				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
-			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'SPHEXP'):
-				if self.debug: print 'converting input from spherical exponential to cartesian'
-				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
-			else:
-				raise Exception("Conversion from", input_coordinates, "to", self.grid_type, "not supported!")
 
+		c0, c1, c2 = self.convert_positions_to_ARMS(points, input_coordinates)
 		result = readARMS.interpolate_variables(c0, c1, c2, self.interpolate)
 		try:
 			return readARMS.variables_tuple(*result)
