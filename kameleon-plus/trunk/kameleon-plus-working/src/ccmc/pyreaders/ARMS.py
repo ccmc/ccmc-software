@@ -38,6 +38,7 @@ class readARMS(testReader.pyFileReader):
 		self.visited = {}
 		self.leaf_iterations = 0
 		self._data_loaded = False
+		self._tolerance = .0001
 		self.globalAttributes['model_name']  = Attribute('model_name', 'ARMs')
 		
 
@@ -296,8 +297,13 @@ class readARMS(testReader.pyFileReader):
 			self.tree_data[block_key] = self._tree_data_tuple(block_type, parent_key, child_key, self._bbx_tuple(*bndbox))
 
 			# 1 = leaf, 2 = parent, 3 = grand-parent, etc
-			if block_type == 1: #[:,::-1,:] flips second index
-				self.leaf_data[block_key] = np.frombuffer(s, dtype=variable_datatype, count = ni*nj*nk, offset = offset[0]).reshape(ni,nj,nk, order = 'C')[:,::-1,:]
+			if block_type == 1: 
+				variables = np.frombuffer(s, dtype=variable_datatype, count = ni*nj*nk, offset = offset[0])
+				variables_reshaped = variables.reshape(ni,nj,nk, order = 'F') # 'F' avoids transpose later
+				if self.grid_type == 'Spherical_Exponential': #flip theta
+					self.leaf_data[block_key] = variables_reshaped[:,::-1,:]
+				else:
+					self.leaf_data[block_key] = variables_reshaped
 				offset[0] += variable_datatype.itemsize*ni*nj*nk
 			
 			if parent_key == (-1, -1):
@@ -319,10 +325,11 @@ class readARMS(testReader.pyFileReader):
 
 	def set_root_ranges(self):
 		def get_root_range(self, min_getter, max_getter, stride = 1):
+			"""This assumes roots are sorted"""
 			get_root_bbx = itemgetter(1)
 			root_0_bbx = get_root_bbx(self.roots[0])
 			min_val, max_val = min_getter(root_0_bbx), max_getter(root_0_bbx)
-			root_range = [min_val] #initialize range
+			root_range = [min_val] 
 			counter = 1	
 			for root_id in range(stride,len(self.roots),stride):
 				counter += 1
@@ -340,9 +347,12 @@ class readARMS(testReader.pyFileReader):
 							print '\t\t\t', root_range[-1], ' == ', root_range[-2]
 					root_range.pop()
 					root_id = root_id - 1
-					# root_range.append(max_getter(get_root_bbx(self.roots[root_id-1]))) #add max
+					# root_range.append(max_getter(get_root_bbx(self.roots[root_id-1]))) 
 					break
-			root_range.append(max_getter(get_root_bbx(self.roots[root_id]))) #add max
+			root_range.append(max_getter(get_root_bbx(self.roots[root_id])))
+			tolerance_scaled = self._tolerance*(max_val - min_val) 
+			root_range[ 0] -= tolerance_scaled
+			root_range[-1] += tolerance_scaled
 			if self.debug: print '\t\t\troot min, max, counter:', min_val, max_val, counter
 			return root_range
 
@@ -390,6 +400,12 @@ class readARMS(testReader.pyFileReader):
 		plt.show()
 		return ax
 
+	def set_tolerance(self, tolerance = None):
+		if tolerance != None:
+			self._tolerance = tolerance
+		else: # keep default
+			pass 
+
 	def find_leaf(self,point,start_key=None):
 		"""gets the cell for the query point"""
 		self.leaf_iterations += 1
@@ -417,6 +433,7 @@ class readARMS(testReader.pyFileReader):
 				else:
 					raise ArithmeticError("Point not actually in root!")
 			else: #out of simulation domain
+				if self.debug: print 'point out of domain'
 				return -1
 		elif start_key == -1: # the last time the method was called, the point was out of bounds
 			return self.find_leaf(point)
@@ -438,7 +455,10 @@ class readARMS(testReader.pyFileReader):
 						if self.in_block(block,point):
 							pass
 						else:
-							raise Exception('point not in found root!')
+							if self.debug:
+								print point
+								print block.bbx
+							raise ArithmeticError('point not in found root!')
 					else: #out of simulation bounds
 						# print '\t\tout of bounds!'
 						return -1
@@ -463,8 +483,11 @@ class readARMS(testReader.pyFileReader):
 			#normalization
 			point_norm = self.point_norm(point, get_bbx(block))
 			# print self.leaf_iterations,'\tpoint_norm:', point_norm 
-			if np.less(point_norm,0).any() | np.greater(point_norm,1).any():
-				raise ArithmeticError("normalized point is not in [0,1]!")
+			if np.less(point_norm,-1*self._tolerance).any() | np.greater(point_norm,1+self._tolerance).any():
+				raise ArithmeticError("\tpoint: " + str(point) +
+									"\n\tnormalized:" + str(point_norm) + 
+									" is not in [0,1]! tolerance: " + self._tolerance + 
+									"\n\t" + str(get_bbx(block)))
 
 			r_index = int(r(point_norm) > .5)#.5
 			theta_index = int(theta(point_norm) <= .5)
@@ -528,9 +551,14 @@ class readARMS(testReader.pyFileReader):
 															itemgetter(2), itemgetter(3),
 															itemgetter(4),itemgetter(5))
 		bndbox = get_bndbox(block)
-		inside = (r_min(bndbox) < r(point) <= r_max(bndbox)) and\
-				(theta_min(bndbox) < theta(point) <= theta_max(bndbox)) and\
-				(phi_min(bndbox) < phi(point) <= phi_max(bndbox))
+		
+		tols = [self._tolerance*(r_max(bndbox) - r_min(bndbox)),
+				self._tolerance*(theta_max(bndbox) - theta_min(bndbox)),
+				self._tolerance*(phi_max(bndbox) - phi_min(bndbox))]
+
+		inside = 	((r_min(bndbox)-r(tols)) < r(point) <= (r_max(bndbox) + r(tols))) and\
+					((theta_min(bndbox)-theta(tols)) < theta(point) <= (theta_max(bndbox) + theta(tols))) and\
+					((phi_min(bndbox)-phi(tols)) < phi(point) <= (phi_max(bndbox) + phi(tols)))
 		return inside
 
 	def find_root(self,point):
@@ -601,8 +629,8 @@ class readARMS(testReader.pyFileReader):
 				self.visited[leaf_key] = self.bbx_mid(bbx)
 			
 			try:	
-				var_data = self.leaf_data[leaf_key][variable].T
-				nk,nj,ni = self.leaf_resolution #due to transpose
+				var_data = self.leaf_data[leaf_key][variable]
+				# nk,nj,ni = self.leaf_resolution #due to transpose
 			except ValueError:
 				print 'available variables:', 
 				for var in self.variableNames.values(): print var,

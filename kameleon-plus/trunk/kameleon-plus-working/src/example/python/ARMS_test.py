@@ -19,6 +19,8 @@ def main(argv):
 	arms_options = parser.add_argument_group(title = "ARMS-specific options", description = 'Options specific to ARMS code')
 	arms_options.add_argument("-in_coord", "--input-coordinates", type = str, default = 'ARMS', metavar = '<coordinate type>',
 		help = 'sets coordinates of input grid. Options: ARMS (default) or CART (cartesian) or SPHEXP (spherical exponential)')
+	arms_options.add_argument("-tol", "--tolerance", type = float, default = None, metavar = '<normalized tolerance>',
+		help = 'sets interpolation tolerance for ARMS scaled to block sizes. Default is .0001')
 
 	# requested variables
 	var_options = parser.add_argument_group(title = 'variable options', description = 'List and interrogate variables. Not all variables will have interpolator support.')
@@ -49,6 +51,7 @@ def main(argv):
 	grid_options.add_argument("-order", "--ordering", type = str, default = 'C', metavar = 'ordering',
 		help = 'sets ordering of output arrays. options: \'C\' (default - C-style row major) or \'F\' (FORTRAN-style column major)')
 	grid_options.add_argument("-t", "--transform", type = float, nargs = 3, help = 'transformation matrix to apply to grid before interpolating (not implemented yet)')
+
 
 	# vis options
 	vis_options = parser.add_argument_group(title = 'Vis Options', description = 'options for visualization')
@@ -114,6 +117,10 @@ def main(argv):
 					print '\t',attr_name, ':', getAttributeValue(attr)
 
 	if args.variables:
+		if args.tolerance:
+			if args.verbose: print 'setting interpolation tolerance to', args.tolerance
+			armsreader.set_tolerance(args.tolerance)
+			
 		if args.verbose: 
 			print 'loading', len(args.variables), "desired variables:", args.variables
 		for var_name in args.variables:
@@ -317,7 +324,7 @@ def main(argv):
 
 			leaf_slices = args.leaf_slice0, args.leaf_slice1, args.leaf_slice2
 			leaf_tuple = namedtuple("leaf_data", args.variables)
-			leaf_variables = [armsreader.leaf_data[leaf_key][var_name].T for var_name in args.variables]
+			leaf_variables = [armsreader.leaf_data[leaf_key][var_name] for var_name in args.variables]
 			lt = leaf_tuple(*leaf_variables)
 
 			if args.plot_leaf_values:
