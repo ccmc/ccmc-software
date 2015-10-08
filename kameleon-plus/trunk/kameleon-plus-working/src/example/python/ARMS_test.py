@@ -61,7 +61,9 @@ def main(argv):
 	vis_options.add_argument("-slice0", "--slice_0", type = int, metavar = 'c0 index', help = 'slice along c0 for visualization')
 	vis_options.add_argument("-slice1", "--slice_1", type = int, metavar = 'c1 index', help = 'slice along c1 for visualization')
 	vis_options.add_argument("-slice2", "--slice_2", type = int, metavar = 'c2 index', help = 'slice along c2 for visualization')
-	vis_options.add_argument("-levels", "--contour_levels", type = int, default = 10, metavar = 'number contours', help = 'number of contours to use in vis')
+	vis_options.add_argument("-pcoords", "--plot_coordinates", type = int, nargs = 2, default = (0,1), metavar = '<x-axis> <y-axis>', 
+			help = 'components to use for x-axis. Default: 0 1 for X, Y when --input-coordinates = CART and R, T for --input-coordinates = SPHEXP')
+	vis_options.add_argument("-levels", "--contour_levels", type = int, default = 20, metavar = 'number contours', help = 'number of contours to use in vis')
 	vis_options.add_argument("-cvals", "--contour_values", type = float, nargs='+', metavar = ('var1_min','var1_max'), help = 'ranges for contour values')
 	vis_options.add_argument("-leaf", "--leaf_key", type = int, nargs = '?', default = None, const = [-1, -1], metavar = ('key0', 'key1'), help = 'key tuple for leaf to plot. default: plot last leaf')
 	vis_options.add_argument("-lslice0", "--leaf_slice0", type = int, default = None, metavar = 'index0', 
@@ -137,7 +139,7 @@ def main(argv):
 			c0, c1, c2 = args.point
 			if args.verbose: 
 				print 'interpolating at {0}:'.format(args.point), args.input_coordinates
-			c0, c1, c2 = armsreader.convert_positions_to_ARMS(args.point, args.input_coordinates)
+			c0, c1, c2 = armsreader.convert_positions_to_ARMS(args.point, input_coordinates = args.input_coordinates)
 			result = []
 			if args.positions_out_flag:
 				result = result + args.point
@@ -202,6 +204,7 @@ def main(argv):
 			rows, columns = get_rows_columns(len(variables))
 			
 			fig, axs = plt.subplots(rows,columns)
+			fig.subplots_adjust(hspace=0.34, wspace = .34, left = .1)
 			axs = axs.ravel()
 
 			slice_ = [slice(None), slice(None), slice(None)]
@@ -221,8 +224,8 @@ def main(argv):
 			if args.verbose: print 'slicing dim', slice_dim,'at', slice_num
 			slice_[slice_dim] = slice_num
 
-			x_label,y_label = [var for i, var in enumerate(input_coordinates) if i != slice_dim]
-			plot_coordinates = [s[slice_].squeeze() for i, s in enumerate(grid) if i != slice_dim]
+			x_label,y_label = [c for i, c in enumerate(input_coordinates) if i in args.plot_coordinates] 
+			plot_coordinates = [s[slice_].squeeze() for i, s in enumerate(grid) if i in args.plot_coordinates]
 			if point != None:
 				plot_point = [p_ for i, p_ in enumerate(point) if i != slice_dim]
 
@@ -358,6 +361,8 @@ def main(argv):
 					c0_ = np.linspace(bbx.r_min, bbx.r_max, args.resolution[0])
 					c1_ = np.linspace(bbx.theta_min, bbx.theta_max, args.resolution[1])
 					c2_ = np.linspace(bbx.phi_min, bbx.phi_max, args.resolution[2])
+					c0, c1, c2 = np.meshgrid(c0_,c1_,c2_, indexing = 'ij')
+					c0, c1, c2 = armsreader.convert_positions_from_ARMS((c0,c1,c2), args.input_coordinates)
 				else:
 					if args.verbose: print '-leaf option not specified. Cannot use leaf ranges.'
 					exit()
@@ -390,8 +395,7 @@ def main(argv):
 				else:
 					c2_ = np.zeros(1) + args.c2_intercept
 
-			# c0, c1, c2 = np.meshgrid(c0_,c1_,c2_, indexing = args.indexing)
-			c0, c1, c2 = np.meshgrid(c0_,c1_,c2_, indexing = 'ij')
+				c0, c1, c2 = np.meshgrid(c0_,c1_,c2_, indexing = 'ij')
 
 			"""Note: ARMS uses spherical coordinates: log10 for r, theta in [-pi, pi], phi in [-pi to pi].
 					You can pass your positions to the map function in ARMS or CART or SPHEXP"""
@@ -416,8 +420,8 @@ def main(argv):
 			elapsed = time.clock()-t0
 			seconds_per_interpolation = elapsed/c0.size
 			if args.verbose: 
-				print 'map time:', elapsed, 'seconds'
-				print 'seconds per interpolation:', seconds_per_interpolation
+				print '\tmap time:', elapsed, 'seconds'
+				print '\tseconds per interpolation:', seconds_per_interpolation
 			if args.visualize:
 				#plot variables on user-defined grid slice
 				arg_slices = args.slice_0, args.slice_1, args.slice_2

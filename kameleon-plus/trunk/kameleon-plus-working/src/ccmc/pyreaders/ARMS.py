@@ -287,14 +287,14 @@ class readARMS(testReader.pyFileReader):
 
 			block_type = block_data['block_type']
 			parent_key = tuple(block_data['parent_loc'].flatten())
-			child_key = tuple(block_data['child_loc'].flatten())
+			child_keys = tuple(block_data['child_loc'].flatten())
 			bndbox = list(block_data['bndbox'][0].flatten())
 
 			if self.grid_type == 'Spherical_Exponential': #flip theta bounds so 0 is at equator
 				bndbox[2:4] = bndbox[3],bndbox[2] 
 			
 			
-			self.tree_data[block_key] = self._tree_data_tuple(block_type, parent_key, child_key, self._bbx_tuple(*bndbox))
+			self.tree_data[block_key] = self._tree_data_tuple(block_type, parent_key, child_keys, self._bbx_tuple(*bndbox))
 
 			# 1 = leaf, 2 = parent, 3 = grand-parent, etc
 			if block_type == 1: 
@@ -409,7 +409,7 @@ class readARMS(testReader.pyFileReader):
 	def find_leaf(self,point,start_key=None):
 		"""gets the cell for the query point"""
 		self.leaf_iterations += 1
-		# print '\tfind_leaf called with key', start_key, 'looking for', point
+		# if self.debug: print '\tfind_leaf called with key', start_key, 'looking for', point
 
 		get_type = itemgetter(0)
 		get_parent = itemgetter(1)
@@ -429,7 +429,7 @@ class readARMS(testReader.pyFileReader):
 				block = self.tree_data[start_key]
 				if self.in_block(block,point):
 					pass
-					# print self.leaf_iterations, 'found point among roots', point, get_bbx(block)
+					# if self.debug: print '\titer', self.leaf_iterations, 'found point among roots', point, get_bbx(block)
 				else:
 					raise ArithmeticError("Point not actually in root!")
 			else: #out of simulation domain
@@ -472,7 +472,7 @@ class readARMS(testReader.pyFileReader):
 			return start_key
 		else:
 			if self.in_block(block,point):
-				# print self.leaf_iterations, '\tpoint among children', point, get_bbx(block)
+				# if self.debug: print '\titer', self.leaf_iterations, 'point among children', point, get_bbx(block)
 				pass
 			else:
 				raise AssertionError("point is not in block, something wrong")
@@ -489,25 +489,40 @@ class readARMS(testReader.pyFileReader):
 									" is not in [0,1]! tolerance: " + self._tolerance + 
 									"\n\t" + str(get_bbx(block)))
 
+			# r-, theta-, and phi_index will be in [0,1] 
 			r_index = int(r(point_norm) > .5)#.5
-			theta_index = int(theta(point_norm) <= .5)
+			if self.grid_type == 'Spherical_Exponential':
+				theta_index = int(theta(point_norm) <= .5)
+			else:
+				theta_index = int(theta(point_norm) > .5)
 			phi_index = int(phi(point_norm) > .5)
 
 			# the child's index will be in [0,7]
 			child_index = r_index+ 2*theta_index + 4*phi_index
 			child_key = (children[2*child_index], children[2*child_index+1])
-
+	
 			# numpy interpolate will adjust the point slightly so that it lies in the child box
 			try:		
 				child_bbx = get_bbx(self.tree_data[child_key])
 			except KeyError:
-				print 'Key Error at position:', point, 'returning -1'
-				return -1
+				if child_key == (-1, -1): #weirdness of 2.5D runs. Likely phi_index = 1
+					child_index = r_index+ 2*theta_index
+					child_key = (children[2*child_index], children[2*child_index+1])
+					child_bbx = get_bbx(self.tree_data[child_key])
+				else:
+					if self.debug:
+						print '\t\tKey Error at position:', point
+						print '\t\tr_index, theta_index, phi_index:', r_index, theta_index, phi_index
+						print '\t\tchild_index', child_index
+						print '\t\tchildren:', children
+						print '\t\tchild_key:', child_key
+					return -1
 			child_r = self.x_shift(r(point), *r_range(child_bbx))
 			child_theta = self.x_shift(theta(point),*theta_range(child_bbx))
 			child_phi = self.x_shift(phi(point),*phi_range(child_bbx))
 			child_point = child_r,child_theta,child_phi
 
+			# if self.debug: print '\tchild point', child_point
 			return self.find_leaf(child_point, child_key)
 	
 	def x_shift(self, x, xmin, xmax):
