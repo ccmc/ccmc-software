@@ -29,6 +29,7 @@ class readARMS(testReader.pyFileReader):
 
 		if config_file != None:
 			self._config = testReader.getConfig(config_file)
+			self.set_config_globals()
 			self.set_file_names()
 
 		self.tree_data = {}
@@ -47,6 +48,7 @@ class readARMS(testReader.pyFileReader):
 		if config_file != None:
 			try:
 				self._config = testReader.getConfig(config_file)
+				self.set_config_globals()
 				self.set_file_names()
 				model_name = str(testReader.get_config_value(self._config,'Reader', 'ModelName'))
 				if self.debug: print '\t\t\tresetting model_name attribute to', model_name
@@ -244,9 +246,17 @@ class readARMS(testReader.pyFileReader):
 		self.globalAttributes['num_leaf_blocks'] = Attribute('num_leaf_blocks', int(num_leaf_blocks))
 		self.globalAttributes['new_grid_flag'] = Attribute('new_grid_flag', int(new_grid_flag))
 
-		ni = self.getGlobalAttribute('RBlockSize').getAttributeValue()
-		nj = self.getGlobalAttribute('TBlockSize').getAttributeValue()
-		nk = self.getGlobalAttribute('PBlockSize').getAttributeValue()
+		if self.grid_type == 'Spherical_Exponential':
+			ni = self.getGlobalAttribute('RBlockSize').getAttributeValue()
+			nj = self.getGlobalAttribute('TBlockSize').getAttributeValue()
+			nk = self.getGlobalAttribute('PBlockSize').getAttributeValue()
+		elif self.grid_type == 'Cartesian':
+			ni = self.getGlobalAttribute('XBlockSize').getAttributeValue()
+			nj = self.getGlobalAttribute('YBlockSize').getAttributeValue()
+			nk = self.getGlobalAttribute('ZBlockSize').getAttributeValue()
+		else:
+			raise ImportError('grid type not supported')
+
 		self.leaf_resolution = (ni,nj,nk)
 
 
@@ -683,8 +693,9 @@ class readARMS(testReader.pyFileReader):
 			#shift to cell, coordinates in [0,1)
 			p = pi-i0, pj-j0, pk-k0
 
+			scale_factor = self.getVariableAttribute(variable, 'scale_factor').getAttributeValue()
 
-			return self.tri_linear(var_data,i0,i1,j0,j1,k0,k1,p)
+			return scale_factor*self.tri_linear(var_data,i0,i1,j0,j1,k0,k1,p)
 
 		else:
 			if self.debug: print 'could not find leaf for point', point
@@ -727,6 +738,10 @@ class readARMS(testReader.pyFileReader):
 			raise
 		return var_out
 
+	def set_config_globals(self):
+		metadata = testReader.ConfigSectionMap(self._config,'MetaData')
+		for key, value in metadata.items():
+			self.globalAttributes[key]  = Attribute(key, value)
 
 	def set_file_names(self):
 		self.header_file_name = testReader.get_config_value(self._config, 'Files', 'HeaderFile')
@@ -907,7 +922,7 @@ class readARMS(testReader.pyFileReader):
 		else:
 			if (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'SPHEXP'):
 				pass
-			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'Cartesian'):
+			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'CART'):
 				pass
 			elif (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'CART'):
 				if self.debug: print 'converting input from cartesian to spherical exponential (ARMS native)'

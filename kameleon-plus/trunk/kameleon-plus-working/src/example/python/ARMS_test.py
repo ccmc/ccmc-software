@@ -224,8 +224,8 @@ def main(argv):
 			if args.verbose: print 'slicing dim', slice_dim,'at', slice_num
 			slice_[slice_dim] = slice_num
 
-			x_label,y_label = [c for i, c in enumerate(input_coordinates) if i in args.plot_coordinates] 
-			plot_coordinates = [s[slice_].squeeze() for i, s in enumerate(grid) if i in args.plot_coordinates]
+			x_label,y_label = [input_coordinates[i] for i in args.plot_coordinates] 
+			plot_coordinates = [grid[i][slice_].squeeze() for i in args.plot_coordinates]
 			if point != None:
 				plot_point = [p_ for i, p_ in enumerate(point) if i != slice_dim]
 
@@ -254,6 +254,9 @@ def main(argv):
 						for i, field in enumerate(plot_tuple._fields): 
 							print '\t',field, plot_tuple[i].shape, 'range:', plot_tuple[i].min(), plot_tuple[i].max()
 					cs = axs[var_index].contourf(*plot_tuple, levels = levels, extend = 'both')
+					if args.contour_values != None:
+						if args.verbose: print 'plotting contours'
+						axs[var_index].contour(*plot_tuple, levels = [levels[0], levels[-1]])
 				except TypeError:
 					for i, field in enumerate(plot_tuple._fields): print field, plot_tuple[i].shape
 					print 'slice_, slice_dim', slice_, slice_dim
@@ -458,49 +461,6 @@ def module_exists(module_name):
         return False
     else:
         return True
-def visualize(armsreader, c0,c1,c2, variables):
-	if module_exists("matplotlib"):
-		import matplotlib.pyplot as plt
-
-		contours = 40
-		br_contours = np.linspace(-4.1,35.0,contours)
-		bth_contours = np.linspace(-17,17,contours)
-		rho_contours = np.linspace(.105, .210, contours)
-
-		fig = plt.figure()
-
-		ax0 = fig.add_subplot(221)
-		ax0.contourf(c0,c2,variables.Magnetic_Field_R,levels = br_contours)
-		armsreader.plot_visited_leaf_midpoints(ax0)
-		plt.title("Magnetic_Field_R")
-
-		ax1 = fig.add_subplot(222,sharex = ax0, sharey = ax0)
-		ax1.contourf(c0,c2,variables.Mass_Density, levels = rho_contours)
-		armsreader.plot_visited_leaf_midpoints(ax1)
-		plt.title("Magnetic_Field_T")
-
-
-		# plot leaf slice along phi directly (No interpolation)
-		ax2 = fig.add_subplot(223,sharex = ax0, sharey = ax0)
-		for leaf_key, (p_r,p_th,p_ph) in armsreader.visited.items():
-			armsreader.plot_leaf_slice(ax2, leaf_key, 'Magnetic_Field_R', levels = br_contours, slice_obj=slice(-1,None), cartesian = True)
-		armsreader.plot_visited_leaf_midpoints(ax2)
-			
-		ax3 = fig.add_subplot(224,sharex = ax0, sharey = ax0)
-		for leaf_key, (p_r,p_th,p_ph) in armsreader.visited.items():
-			armsreader.plot_leaf_slice(ax3, leaf_key, 'Mass_Density', levels = rho_contours, slice_obj=slice(-1,None), cartesian = True)
-		armsreader.plot_visited_leaf_midpoints(ax3)
-
-		fig2 = plt.figure()
-		ax = fig2.add_subplot(111)
-		cm = ax.contourf(c0,c2,variables.Mass_Density,levels = rho_contours)
-		plt.colorbar(cm)
-		# ax.streamplot(c0[:,0],c2[0,:],B_x.T,B_z.T, color='k', density = 1)
-
-		plt.show()
-	else:
-		print 'please install matplotlib to visualize'
-
 
 
 def getAttributeValue(attribute):
