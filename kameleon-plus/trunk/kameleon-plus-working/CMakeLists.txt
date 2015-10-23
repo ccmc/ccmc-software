@@ -38,7 +38,12 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 	add_definitions(-DDEBUG)
 endif()
 
-#=============Boost =============
+#============ python ============
+FIND_PACKAGE(PythonInterp 2.7)
+FIND_PACKAGE(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}" REQUIRED)
+message(STATUS ${msg_prefix} "Python Interpreter:" ${PYTHON_EXECUTABLE})
+
+#============ Boost =============
 message("Getting BOOST....")
 # Boost shared or static?
 if(USE_STATIC_LIBS)
@@ -139,7 +144,7 @@ message("")
 message("============ Top level CMakeLists.txt ============")
 set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/examples")
 set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example")
-FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
+# FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c++)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/fortran)

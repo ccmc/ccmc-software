@@ -17,8 +17,12 @@ def main(argv):
 	parser.add_argument("-db", "--debug", action = 'store_true', help = 'debugging flag')
 
 	arms_options = parser.add_argument_group(title = "ARMS-specific options", description = 'Options specific to ARMS code')
-	arms_options.add_argument("-in_coord", "--input-coordinates", type = str, default = 'ARMS', metavar = '<coordinate type>',
-		help = 'sets coordinates of input grid. Options: ARMS (default) or CART (cartesian) or SPHEXP (spherical exponential)')
+	arms_options.add_argument("-in_coord", "--input-coordinates", type = str, default = 'Preferred', metavar = '<coordinate type>', 
+				help = """sets coordinates of input grid. Options: 
+				Preferred (default) - query positions coordinates are determined by ARMS.ini PreferredCoordinates attribute,
+				ARMS - query positions are in the coordinate system of ARMS),
+				CART - cartesian,
+				SPHEXP - spherical exponential""")
 	arms_options.add_argument("-tol", "--tolerance", type = float, default = None, metavar = '<normalized tolerance>',
 		help = 'sets interpolation tolerance for ARMS scaled to block sizes. Default is .0001')
 
@@ -65,7 +69,7 @@ def main(argv):
 			help = 'components to use for x-axis. Default: 0 1 for X, Y when --input-coordinates = CART and R, T for --input-coordinates = SPHEXP')
 	vis_options.add_argument("-levels", "--contour_levels", type = int, default = 20, metavar = 'number contours', help = 'number of contours to use in vis')
 	vis_options.add_argument("-cvals", "--contour_values", type = float, nargs='+', metavar = ('var1_min','var1_max'), help = 'ranges for contour values')
-	vis_options.add_argument("-leaf", "--leaf_key", type = int, nargs = '?', default = None, const = [-1, -1], metavar = ('key0', 'key1'), help = 'key tuple for leaf to plot. default: plot last leaf')
+	vis_options.add_argument("-leaf", "--leaf_key", type = int, nargs = '?', default = None, const = [-1, -1], metavar = ('key0'), help = 'key tuple for leaf to plot. default: plot last leaf')
 	vis_options.add_argument("-lslice0", "--leaf_slice0", type = int, default = None, metavar = 'index0', 
 		help = 'plots slice along 0th dimension of leaf defined by -leaf parameter. ex.: "-lslice0 0" for (0,:,:)')
 	vis_options.add_argument("-lslice1", "--leaf_slice1", type = int, default = None, metavar = 'index0', 
@@ -77,12 +81,13 @@ def main(argv):
 
 	args = parser.parse_args()
 
+
+	import numpy.ma as ma
+	from collections import namedtuple
 	if args.visualize:
 		if module_exists("matplotlib"):
 			import matplotlib.pyplot as plt
 			import matplotlib.ticker as ticker
-			import numpy.ma as ma
-			from collections import namedtuple
 		else:
 			print 'Need matplotlib to visualize, please install: pip install matplotlib'
 			exit()
@@ -98,10 +103,19 @@ def main(argv):
 	# must open with config file
 	armsreader.open(args.input_file)
 
+	if args.input_coordinates == 'Preferred': # this is the default
+		if args.verbose: 
+			print "using ARMS.ini PreferredCoordinates: ",
+			print armsreader.preferred_coordinates
+		# Preferred could indicate ARMS, CART, or SPHEXP depending on what's defined in ARMS.ini
+		args.input_coordinates = armsreader.preferred_coordinates
+	else: #ignore the default in ARMS.ini and use input_coordinates instead
+		armsreader.preferred_coordinates = args.input_coordinates
+
 	if args.global_info:
 		print "Global Attributes:"
 		for i in range(armsreader.getNumberOfGlobalAttributes()):
-			print 'retrieving attribute name'
+			# print 'retrieving attribute name'
 			attr_name = armsreader.getGlobalAttributeName(i)
 			attr = armsreader.getGlobalAttribute(attr_name)
 			print '\t',attr_name, ':', getAttributeValue(attr)
@@ -117,6 +131,15 @@ def main(argv):
 					attr_name = armsreader.getVariableAttributeName(j)
 					attr = armsreader.getVariableAttribute(var_name, attr_name)
 					print '\t',attr_name, ':', getAttributeValue(attr)
+	if args.variable_info:
+		var_name = args.variable_info
+		if args.verbose: print 'retrieving information for', args.variable_info, '...'
+		if armsreader.doesVariableExist(args.variable_info):
+			print var_name
+			for j in range(armsreader.getNumberOfVariableAttributes()):
+				attr_name = armsreader.getVariableAttributeName(j)
+				attr = armsreader.getVariableAttribute(var_name, attr_name)
+				print '\t',attr_name, ':', getAttributeValue(attr)
 
 	if args.variables:
 		if args.tolerance:
@@ -139,13 +162,12 @@ def main(argv):
 			c0, c1, c2 = args.point
 			if args.verbose: 
 				print 'interpolating at {0}:'.format(args.point), args.input_coordinates
-			c0, c1, c2 = armsreader.convert_positions_to_ARMS(args.point, input_coordinates = args.input_coordinates)
 			result = []
 			if args.positions_out_flag:
 				result = result + args.point
 				if args.debug: print 'result', result
 			for varname in args.variables:
-				result_ = armsreader.interpolate(varname,c0, c1, c2)
+				result_ = armsreader.interpolate(varname,c0, c1, c2) #done in preferred coordinate system
 				result.append(result_)
 			print result
 
@@ -182,7 +204,7 @@ def main(argv):
 			else: 
 				return next((i for i, v in enumerate(L) if v != value), else_value)
 
-		def plot_slice(	grid, resolution, variables, slices = (None,None, None), contour_values = None, contour_levels = 10, point = None, title = None):
+		def plot_slice(	grid, resolution, variables, slices = (None,None, None), contour_values = None, contour_levels = 20, point = None, title = None):
 			"""Plot slice of data. Could be interpolated or raw data.
 
 				Args: 
@@ -227,7 +249,7 @@ def main(argv):
 			x_label,y_label = [input_coordinates[i] for i in args.plot_coordinates] 
 			plot_coordinates = [grid[i][slice_].squeeze() for i in args.plot_coordinates]
 			if point != None:
-				plot_point = [p_ for i, p_ in enumerate(point) if i != slice_dim]
+				plot_point = [point[i] for i in args.plot_coordinates] 
 
 			for var_index, var_name in enumerate(variables._fields):
 				# if var_name =='Mass_Density':
@@ -317,6 +339,11 @@ def main(argv):
 
 			if args.verbose == 1: 
 				print 'leaf grid from ARMS:'
+				try:
+					print 'type:',type(armsreader.leaf_data[leaf_key])
+				except:
+					pass
+
 				for lc_index, lc in enumerate(leaf_grid):
 					print '\t', lc_index, lc.shape, 'range', lc.min(), lc.max()
 				print 'converting leaf_grid to', args.input_coordinates
@@ -343,8 +370,8 @@ def main(argv):
 					print '\t',f, lt[i].shape
 
 			plot_slice(	leaf_grid, armsreader.leaf_resolution, leaf_tuple(*leaf_variables), 
-						leaf_slices, point = point, 
-						title = 'leaf variables at ' + str(leaf_slices) + ' in ' + args.input_coordinates)
+						leaf_slices, point = point, contour_levels = 20,
+						title = 'leaf variables at ' + str(leaf_slices))
 
 		#plot variables on a leaf
 		if args.leaf_key == None:

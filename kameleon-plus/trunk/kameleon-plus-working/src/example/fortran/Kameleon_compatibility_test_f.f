@@ -77,6 +77,7 @@ c     speed test
      &d0, d1, d2, interpolated_value)
       enddo
       print *, 'interpolated value: ', interpolated_value
+      print *, 'local resolution: ', d0, d1, d2
       call f_interpolator_delete(iid);
       call f_kameleon_close(kid)
       call f_kameleon_delete(kid,status)

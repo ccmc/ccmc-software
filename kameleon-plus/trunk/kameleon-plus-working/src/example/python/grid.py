@@ -66,8 +66,8 @@ def main(argv):
 	output_options = parser.add_argument_group(title = 'ouput options', description = 'where to store results of interpolation')
 	output_options.add_argument("-o", "--output_file", type = str, metavar = 'path/to/output_file', help = 'output file name and location')
 	output_options.add_argument("-f", "--format", default = '12.3f', type = str, metavar = '<flags><width><.precision><length>specifier', help = 'c-sytle format of output variables (e.g. 12.3f)')
-	output_options.add_argument("-d", "--delimiter", default = ' ', type = str, metavar = "\' \'", help = 'delimiter for ascii output (default is \' \')')
-	output_options.add_argument('-ff', '--file_format', default = 'txt', type = str, nargs = '+', metavar = ('fits', 'json', 'md'),
+	output_options.add_argument("-d", "--delimiter", default = ' ', type = str, metavar = ("\' \'"), help = 'delimiter for ascii output (default is \' \')')
+	output_options.add_argument('-ff', '--file_format', default = 'txt', type = str, nargs = '+', metavar = ('fits', 'md'),
 		help = 'File format for output. default: \'txt\' for ASCII. Use \'fits\' for binary IDL fits file (requires astropy), or \'json\'')
 
 	args = parser.parse_args()
@@ -81,7 +81,7 @@ def main(argv):
 	if args.global_info:
 		print "Global Attributes:"
 		for i in range(kameleon.getNumberOfGlobalAttributes()):
-			print 'retrieving attribute name'
+			if args.verbose: print 'retrieving attribute name'
 			attr_name = kameleon.getGlobalAttributeName(i)
 			attr = kameleon.getGlobalAttribute(attr_name)
 			print '\t',attr_name, ':', getAttributeValue(attr)

@@ -12,8 +12,9 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
-#include <boost/python.hpp>
- 
+#ifdef HAVE_PYTHON
+#include <boost/python.hpp> 
+#endif
 using namespace std;
 
 namespace ccmc

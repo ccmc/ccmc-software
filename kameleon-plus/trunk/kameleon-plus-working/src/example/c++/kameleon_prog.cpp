@@ -11,6 +11,9 @@
 #include <boost/random/linear_congruential.hpp>
 #include <boost/random/uniform_real.hpp>
 #include <boost/random/variate_generator.hpp>
+#ifdef HAVE_PYTHON
+#include <boost/python.hpp> 
+#endif
 
 int main (int argc, char * argv[])
 {

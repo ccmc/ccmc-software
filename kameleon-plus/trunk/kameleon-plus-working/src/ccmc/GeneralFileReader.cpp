@@ -10,9 +10,13 @@
 #include "Constants.h"
 #include "FileReader.h"
 #include "CDFFileReader.h"
+#ifdef HAVE_HDF5
 #include "HDF5FileReader.h"
+#endif
 #include "GeneralFileReader.h"
-#include <boost/python.hpp> //Todo:put ifdef here
+#ifdef HAVE_PYTHON
+#include <boost/python.hpp> 
+#endif
 #include <string>
 #include <vector>
 #include <deque>
@@ -20,9 +24,9 @@
 #include <fstream>
 #include <queue>
 #include <sstream>
-
-namespace bp = boost::python; //Todo:put ifdef here
-
+#ifdef HAVE_PYTHON
+namespace bp = boost::python; 
+#endif
 namespace ccmc
 {
 	namespace pyglobals{
@@ -72,7 +76,7 @@ namespace ccmc
 		// std::cout << "Checking if the file is an HDF5 file" << std::endl;
 		delete fileReader;
 
-		this->fileReader = new HDF5FileReader::HDF5FileReader();
+		this->fileReader = new HDF5FileReader();
 
 		status = fileReader->open(filename);
 		// std::cerr << "opened HDF5 file. status: " << status << std::endl;
@@ -91,11 +95,27 @@ namespace ccmc
 		// std::cout <<"ccmc directory:"<< CCMC_DIR << std::endl;
 
 		if (ccmc::pyglobals::PYTHON_IS_INITIALIZED != true)
-			{
+			{	//string conversion from header-definened PYTHON_EXE to char* is hard..
+				std::stringstream ss;
+				ss << PYTHON_EXE;
+				std::string python_exe_str;
+				ss >> python_exe_str;
+				char *pyexe = new char[python_exe_str.length()+1];
+				std::strcpy(pyexe,python_exe_str.c_str());
 #ifdef DEBUG
 				std::cout <<"\tGeneralFileReader::open python initializing.." << std::endl;
+				std::cout <<"running python interpreter " << python_exe_str << std::endl;
+#endif	
+				//need to initialize with path to python executable
+				// Py_SetProgramName();
+				// char python_exe[80]("/Users/apembrok/anaconda/bin/python");
+				Py_SetProgramName(pyexe);
+				Py_Initialize(); 
+				PyRun_SimpleString("import sys");
+#ifdef DEBUG
+				PyRun_SimpleString("print sys.version");
 #endif
-				Py_Initialize();
+				// std::cout <<"\tpython home: " << Py_GetPythonHome() << std::endl;
 				ccmc::pyglobals::PYTHON_IS_INITIALIZED = true;
 			}
 		
@@ -111,7 +131,7 @@ namespace ccmc
 
 			//set paths to find pyreaders and pyKameleon module
 			bp::exec(
-				"import os,sys\n"
+				"import sys,os\n"
 				"sys.path.append(ccmc_path)\n"
 				"sys.path.append(ccmc_path +\'../../lib/ccmc/\')\n"
 				"sys.path.append(ccmc_path +\'pyreaders/\')\n"

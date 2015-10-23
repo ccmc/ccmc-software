@@ -29,8 +29,8 @@ if(BUILD_HDF5)
 endif(BUILD_HDF5)
 
 # Boost
-include_directories(${Boost_INCLUDE_DIRS})                                                                                          
-message(STATUS ${msg_prefix} "Include boost directories: " ${Boost_INCLUDE_DIRS})
+include_directories(${BOOST_INCLUDEDIR})                                                                                          
+message(STATUS ${msg_prefix} "Include boost directories: " ${BOOST_INCLUDEDIR})
 
 # CDF
 include_directories(${CDF_INCLUDES})

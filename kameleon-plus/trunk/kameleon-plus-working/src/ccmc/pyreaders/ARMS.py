@@ -31,6 +31,7 @@ class readARMS(testReader.pyFileReader):
 			self._config = testReader.getConfig(config_file)
 			self.set_config_globals()
 			self.set_file_names()
+			self.set_preferred_coordinates()
 
 		self.tree_data = {}
 		self.leaf_data = {}
@@ -50,6 +51,7 @@ class readARMS(testReader.pyFileReader):
 				self._config = testReader.getConfig(config_file)
 				self.set_config_globals()
 				self.set_file_names()
+				self.set_preferred_coordinates()
 				model_name = str(testReader.get_config_value(self._config,'Reader', 'ModelName'))
 				if self.debug: print '\t\t\tresetting model_name attribute to', model_name
 				self.globalAttributes['model_name'] = Attribute('model_name', model_name)
@@ -69,6 +71,10 @@ class readARMS(testReader.pyFileReader):
 		self.initializeGlobalAttributeIDs() #why did I comment this out?
 		
 		return pyKameleon.FileReader.OK
+
+	def initializeCartesianIDs(self):
+		
+		pass
 
 	'''Overloading default pyFileReader.getVariable'''
 	def getVariable(self, variable, startIndex = None, count = None):
@@ -108,13 +114,15 @@ class readARMS(testReader.pyFileReader):
 			if self.grid_type == 'Spherical_Exponential':
 				components = ['R', 'T', 'P']
 				self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
+				components_cartesian = ['X', 'Y', 'Z']
+
 			elif self.grid_type == 'Cartesian':
 				components = ['X', 'Y', 'Z']
 				self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
 			else:
 				print self.grid_type, 'not supported!'
 				raise Exception("grid type not supported!")
-				components = ['x', 'y', 'z'] # just guessing here...
+				components = ['x', 'y', 'z'] 
 
 			# get Block sizes
 			for i in range(3):
@@ -168,6 +176,7 @@ class readARMS(testReader.pyFileReader):
 					if self.debug: print '\t\t', val, attr
 
 
+
 					for i in range(int(number_components)+1):
 						if i == int(number_components):
 							val, attr = self.header_file.readline().split()
@@ -197,6 +206,8 @@ class readARMS(testReader.pyFileReader):
 
 							var_num += 1
 
+												
+
 
 	def read_ARMS_data(self, filename):
 		"""Reads in the arms data files """
@@ -206,14 +217,16 @@ class readARMS(testReader.pyFileReader):
 
 		endian = '<'
 		offset = [0]
-		header_dtype = np.dtype(endian+'u4')
-
+		header_dtype = np.dtype('u4')
+		header_dtype.newbyteorder(endian)
 		model_name_length = np.frombuffer(s, dtype=header_dtype, offset = offset[0], count=1)[0]
+
 		if model_name_length > 100: #header length too long, switch endian
 			endian = '>'
-			header_dtype = np.dtype(endian+'u4')
-			model_name_length = np.frombuffer(s, dtype=endian+'u4', offset = offset[0], count=1)[0]
-
+			if self.debug: print '\t\t\tswitching endian to ', endian
+			header_dtype = np.dtype(endian + 'u4')
+			model_name_length = np.frombuffer(s, dtype=header_dtype, offset = offset[0], count=1)[0]
+			if self.debug: print '\t\t\tlength of model_name:', model_name_length
 
 		def read_record(s, dtype, count=1, offset=None):
 			"""offset is a mutable list"""
@@ -228,19 +241,30 @@ class readARMS(testReader.pyFileReader):
 			return result
 
 		#set model name
-		python_model_name = read_record(s,'S'+str(model_name_length), offset=offset)[0]
+		try:
+			python_model_name = read_record(s,'S'+str(model_name_length), offset=offset)[0]
+		except ValueError:
+			print 'S' + str(model_name_length)
+			raise 
+		if self.debug: print '\t\tpython_model_name:', python_model_name
 		self.globalAttributes['python_model_name'] = Attribute('python_model_name', str(python_model_name))
 
-
+		dt = np.dtype(endian+'f')
 		#set model time
-		model_time = read_record(s, endian+'f1', offset = offset)[0]
+		try:
+			model_time = read_record(s, dt, offset = offset)[0]
+		except ValueError:
+			print dt
+			raise
+
+		if self.debug: print '\t\tsim_time', model_time, 'offset', offset
 		self.globalAttributes['sim_time'] = Attribute('sim_time', float(model_time))
 
 		# get number of total blocks, leaf blocks, and new_grid_flag
 		
 		num_total_blocks, num_leaf_blocks, new_grid_flag = read_record(s, endian+'i4', 3, offset = offset)
 		
-		# print 'total blocks, leaf blocks, new grid:', num_total_blocks, num_leaf_blocks, new_grid_flag
+		if self.debug: print '\t\ttotal blocks, leaf blocks, new grid:', num_total_blocks, num_leaf_blocks, new_grid_flag
 
 		self.globalAttributes['num_total_blocks'] = Attribute('num_total_blocks', int(num_total_blocks))
 		self.globalAttributes['num_leaf_blocks'] = Attribute('num_leaf_blocks', int(num_leaf_blocks))
@@ -308,7 +332,7 @@ class readARMS(testReader.pyFileReader):
 
 			# 1 = leaf, 2 = parent, 3 = grand-parent, etc
 			if block_type == 1: 
-				variables = np.frombuffer(s, dtype=variable_datatype, count = ni*nj*nk, offset = offset[0])
+				variables = np.frombuffer(buffer(s), dtype=variable_datatype, count = ni*nj*nk, offset = offset[0])
 				variables_reshaped = variables.reshape(ni,nj,nk, order = 'F') # 'F' avoids transpose later
 				if self.grid_type == 'Spherical_Exponential': #flip theta
 					self.leaf_data[block_key] = variables_reshaped[:,::-1,:]
@@ -325,7 +349,7 @@ class readARMS(testReader.pyFileReader):
 
 	def sort_roots(self):
 		if self.debug: 
-			print 'number of roots:', len(self.roots)
+			print '\t\tnumber of roots:', len(self.roots)
 		self.roots.sort(key= lambda x: itemgetter(0,2,4)(x[1]))
 
 	def _print_tree_info(self):
@@ -614,26 +638,23 @@ class readARMS(testReader.pyFileReader):
 		phi_mid = (bbx.phi_min + bbx.phi_max)/2
 		return r_mid,th_mid,phi_mid
 
+
 	def interpolate(self,variable, *point):
 		if type(variable) != str:
 			variable = self.variableNames[variable]
-			
+
+		if self.preferred_coordinates == 'ARMS':
+			pass
+		else:
+			point = self.convert_positions_to_ARMS(point, self.preferred_coordinates)
+
 		"""interpolates data at point r,theta,phi
 
 			Note: r may be stored in log space. If so, it is up to the caller to make the conversion
-														THIS DIAGRAM IS WRONG. PLEASE IGNORE
-			Vxyz = 	V000 (1 - x) (1 - y) (1 - z) +	//    	   Left:    		ARMS needs:		
-					V100 x (1 - y) (1 - z) +		//   V011 6----7 V111     V001 4----5 V101
-					V010 (1 - x) y (1 - z) +		//    	 /|   /|              /|   /|
-					V001 (1 - x) (1 - y) z +		// V001 4----5 V101     V011 6----7 V111 
-					V101 x (1 - y) z +				//      | |  | |             | |  | |
-					V011 (1 - x) y z +				//   V010 2--|-3 V110     V000 0--|-1 V100
-					V110 x y (1 - z) +				//    	|/   |/              |/   |/
-					V111 x y z 						// V000 0----1 V100     V010 2----3 V110
 
 			r_index = int(r(point_norm) > .5) 
 					= int(r(point_norm)*(N-1)) for N = 3
-			theta_index = int(theta(point_norm) <= .5) 
+			theta_index = int(theta(point_norm) <= .5) if coordinates = SPHEXP
 						= int(1-theta(point_norm)*(N-1)) for N = 3 
 			phi_index = int(phi(point_norm) > .5)
 
@@ -738,6 +759,7 @@ class readARMS(testReader.pyFileReader):
 			raise
 		return var_out
 
+	#move to base testreader
 	def set_config_globals(self):
 		metadata = testReader.ConfigSectionMap(self._config,'MetaData')
 		for key, value in metadata.items():
@@ -746,6 +768,16 @@ class readARMS(testReader.pyFileReader):
 	def set_file_names(self):
 		self.header_file_name = testReader.get_config_value(self._config, 'Files', 'HeaderFile')
 		self.data_file_name = testReader.get_config_value(self._config, 'Files', 'DataFile')
+
+	def set_preferred_coordinates(self):
+		try:
+			preferred_coords = testReader.get_config_value(self._config, 'Reader', 'PreferredCoordinates')
+			if preferred_coords in ['ARMS', 'CART', 'SPHEXP']:
+				self.preferred_coordinates = preferred_coords
+			else:
+				self.preferred_coordinates = 'ARMS'
+		except KeyError:
+			self.preferred_coordinates = 'ARMS'
 
 	def closeFile(self):
 		return pyKameleon.FileReader.OK
@@ -893,6 +925,7 @@ class readARMS(testReader.pyFileReader):
 		return A_x, A_y, A_z
 
 
+
 	def convert_positions_from_ARMS(self, points, output_coordinates = 'ARMS'):
 		"""converts positions from ARMS to output coordinates"""
 		c0, c1, c2 = points
@@ -901,13 +934,13 @@ class readARMS(testReader.pyFileReader):
 		else:
 			if (self.grid_type == 'Spherical_Exponential') & (output_coordinates == 'SPHEXP'):
 				pass
-			elif (self.grid_type == 'Cartesian') & (output_coordinates == 'Cartesian'):
+			elif (self.grid_type == 'Cartesian') & (output_coordinates == 'CART'):
 				pass
 			elif (self.grid_type == 'Spherical_Exponential') & (output_coordinates == 'CART'):
-				if self.debug: print 'converting input from spherical exponential (ARMS native) to cartesian'
+				# if self.debug: print 'converting input from spherical exponential (ARMS native) to cartesian'
 				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
 			elif (self.grid_type == 'Cartesian') & (output_coordinates == 'SPHEXP'):
-				if self.debug: print 'converting input from cartesian (ARMS native) to spherical exponential'
+				# if self.debug: print 'converting input from cartesian (ARMS native) to spherical exponential'
 				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
 			else:
 				raise Exception("Conversion from", self.grid_type, "to", output_coordinates, "not supported!")
@@ -925,10 +958,10 @@ class readARMS(testReader.pyFileReader):
 			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'CART'):
 				pass
 			elif (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'CART'):
-				if self.debug: print 'converting input from cartesian to spherical exponential (ARMS native)'
+				# if self.debug: print 'converting input from cartesian to spherical exponential (ARMS native)'
 				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
 			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'SPHEXP'):
-				if self.debug: print 'converting input from spherical exponential to cartesian (ARMS native)'
+				# if self.debug: print 'converting input from spherical exponential to cartesian (ARMS native)'
 				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
 			else:
 				raise Exception("Conversion from", input_coordinates, "to", self.grid_type, "not supported!")
@@ -945,7 +978,8 @@ class readARMS(testReader.pyFileReader):
 				print 'changing variables_tuple from', readARMS.variables_tuple._fields, 'to', var_tuple._fields
 			readARMS.variables_tuple = var_tuple
 
-		c0, c1, c2 = self.convert_positions_to_ARMS(points, input_coordinates)
+		# c0, c1, c2 = self.convert_positions_to_ARMS(points, input_coordinates) handled by interpolation
+		c0, c1, c2 = points
 		result = readARMS.interpolate_variables(c0, c1, c2, self.interpolate)
 		try:
 			return readARMS.variables_tuple(*result)
