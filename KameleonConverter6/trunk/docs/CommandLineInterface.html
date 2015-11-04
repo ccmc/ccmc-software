@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>CommandLineInterface.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>CommandLineInterface.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: CommandLineInterface.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ *  
+ * Modification History:
+ *  
+ * January 2012 Donti, Nitesh
+ * 				Added support for the HDF5 input model
+ * 				Added a check to see if the input directory was a file rather than a directory
+ *  
+ * Summer 2011 	Donti, Nitesh
+ *  			Initial Development Started
+ *  			All tasks complete 
+ *  			Ready to use 
+ *  
+ *  *Any changes will only be necessitated pending any new models or formats.
+ * 
+ * 
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+<span class="hljs-keyword">import</span> jargs.gnu.CmdLineParser;
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.FileNotFoundException;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.Date;
+<span class="hljs-keyword">import</span> java.util.Properties;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">import</span> java.text.DateFormat;
+<span class="hljs-keyword">import</span> java.text.SimpleDateFormat;
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+<span class="hljs-keyword">import</span> org.apache.log4j.PropertyConfigurator;
+
+
+<span class="hljs-comment">/**
+ * 
+ * <span class="hljs-doctag">@author</span> Nitesh Donti
+ * 		   Intern, National Aeronautics and Space Administration
+ * 		   Goddard Space Flight Center
+ * 		   Community Coordinated Modeling Center (CCMC)
+ * <span class="hljs-doctag">@version</span> 6.0
+ * 
+ * Date: Summer 2011 (June 1st, 2011 - August 5th, 2011)
+ * 
+ *
+ */</span>
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CommandLineInterface</span> </span>{
+
+	<span class="hljs-comment">/**
+	 * A logger for the class. 
+	 * Options for printing out statements include .info(), .debug(), and .error().
+	 */</span>
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(CommandLineInterface.class);
+
+	<span class="hljs-comment">/**
+	 * Toggled ON if user wants verbose output and extra details when running the program. 
+	 * User can turn this to TRUE by entering "-v" as an argument in the CLI.
+	 */</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> verboseFlag;
+
+	<span class="hljs-comment">/**
+	 * Toggled ON if user does not want Actual Min/Max calculations.
+	 * Turning this ON will save a little time.  
+	 * User can turn this to TRUE by entering "-n" as an argument in the CLI.
+	 */</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> nominmaxFlag;	
+
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> num2run;
+
+	<span class="hljs-comment">/**
+	 * The current Version number of the Kameleon Conversion Software. 
+	 */</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String KameleonVersion = <span class="hljs-string">"6.01"</span>;
+
+
+	<span class="hljs-comment">/**Prints the options for a proficient command line user.  **/</span>
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printUsage</span><span class="hljs-params">()</span> </span>{
+		System.err.println(
+				<span class="hljs-string">"\n[-h|--help]      [-n|,--nominmax]	  [-i|--indir=string]      [-m|--model=string]\n"</span> +
+						<span class="hljs-string">"[-v|--verbose]                            [-o|--outdir=string]     [-a|--aux_file=string]\n"</span> +
+				<span class="hljs-string">"[--version]      [-c|--compress=string]	  [-d|--database=string]   [-f|--format=string]"</span>);
+	}
+
+	<span class="hljs-comment">/**Prints the options and also extended descriptions for the
+	 * novice or unfamiliar command line user in the case that he 
+	 * or she requests help. 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printExtendedUsage</span><span class="hljs-params">()</span></span>{
+
+		System.out.println(
+				<span class="hljs-string">"**Always Required\n"</span>+
+						<span class="hljs-string">"*Usually Required\n"</span>+
+						<span class="hljs-string">"[-h|--help]                 print this help information\n"</span> +
+						<span class="hljs-string">"[-v|--verbose]              turn verbose output on\n"</span> +
+						<span class="hljs-string">"[--version]                 print software version number\n"</span> +
+						<span class="hljs-string">"[-n|--nominmax]             turn OFF actual min/max calculations for each variable\n"</span> +
+						<span class="hljs-string">"[-c|--compress=string]      use specified compression algorithm\n"</span> +
+						<span class="hljs-string">"[-i|--indir=string]**       directory containing input files to be converted\n"</span> +
+						<span class="hljs-string">"[-o|--outdir=string]*       output directory where converted files will be placed (input directory is the default)\n"</span> +
+						<span class="hljs-string">"[-d|--database=string]*     ccmc DatabaseInfo file location - for CCMC use only\n"</span> +
+						<span class="hljs-string">"[-m|--model=string]**       model name\n"</span> +
+						<span class="hljs-string">"[-a|--aux_file=string]*     auxiliary input file - sometimes required (e.g. a grid file seperate from general data files)\n"</span> +
+				<span class="hljs-string">"[-f|--format=string]**      data format to convert to"</span>);	
+	}
+
+	<span class="hljs-comment">/**
+	 * 1)Checks to see that all required data are present.
+	 * 2)Checks the validity of all of the arguments passed in by the 
+	 * command line user (or the default values).
+	 * 3)Creates new model and writer objects according to the 
+	 * modelValue and formatValue passed in by the user. 
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 * <span class="hljs-doctag">@throws</span> FileNotFoundException 
+	 * 
+	 **/</span>
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Writer <span class="hljs-title">createModel</span><span class="hljs-params">(String compressValue, 
+			String inValue, String outValue, String databaseValue, String modelValue, 
+			String auxValue, String formatValue)</span> <span class="hljs-keyword">throws</span> NoAttributeException, FileNotFoundException</span>{
+
+		Writer writer = <span class="hljs-keyword">null</span>;
+		Object[] Xfiles={};
+
+		<span class="hljs-comment">/**
+		 * Many runs will require numerous files to be converted, possibly
+		 * due to a large number of timesteps. This Model object represents one 
+		 * instance/timestep. It will be created and then converted to the output format. Then, 
+		 * it will take on the form of the next timestep.
+		 */</span>
+		Model instance;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>———————checking validity of MODEL VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-comment">/**
+		 * 
+		 * Model_key assigns an int value to each type of model:
+		 * 
+		 ****************************************************************************
+		 *                                                                          *
+		 *  Builds a key value reference table for models to use switch statements  *
+		 *                                                                          *
+		 *    batsrus        = 1                                                    *
+		 *    ucla_ggcm      = 2   ----&gt;                                            *
+		 *    open_ggcm      = 2   ----&gt; both strings will point to same case       *
+		 *    ctip           = 3                                                    *
+		 *    enlil          = 4                                                    *
+		 *    kpvt           = 5                                                    *
+		 *    msfc           = 6                                                    *
+		 *    mas            = 7                  									*
+		 *    swmf_ionosphere= 8                                                    *
+		 *    LFM            = 9                   									*
+		 *    EnlilCME       = 10                                                   *
+		 *                                                                          *
+		 ****************************************************************************
+		 *
+		 *
+		 **/</span>
+		<span class="hljs-keyword">int</span> model_key = <span class="hljs-number">0</span>;
+
+		<span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"enlil"</span>)!=-<span class="hljs-number">1</span>){
+			<span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"cme"</span>)!=-<span class="hljs-number">1</span>){
+				model_key=<span class="hljs-number">10</span>;
+				modelValue=<span class="hljs-string">"EnlilCME"</span>;
+				}
+			<span class="hljs-keyword">else</span>{
+				model_key=<span class="hljs-number">4</span>;
+				modelValue=<span class="hljs-string">"Enlil"</span>;
+			}
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"ctip"</span>)!=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">3</span>;
+			modelValue=<span class="hljs-string">"CTIP"</span>;
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"mas"</span>)!=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">7</span>;
+			modelValue=<span class="hljs-string">"MAS"</span>;
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"kpvt"</span>)!=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">5</span>;
+			modelValue=<span class="hljs-string">"KPVT"</span>;
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"ggcm"</span>) !=-<span class="hljs-number">1</span> || modelValue.toLowerCase().indexOf(<span class="hljs-string">"ucla"</span>) !=-<span class="hljs-number">1</span>|| 
+				modelValue.toLowerCase().indexOf(<span class="hljs-string">"open"</span>) !=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">2</span>;
+			modelValue=<span class="hljs-string">"Open GGCM"</span>;
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"msfc"</span>) !=-<span class="hljs-number">1</span> || modelValue.toLowerCase().indexOf(<span class="hljs-string">"tvm"</span>) !=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">6</span>;
+			modelValue=<span class="hljs-string">"MSFC TVM"</span>;
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"bats"</span>)!=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">1</span>;
+			modelValue=<span class="hljs-string">"BATS-R-US"</span>;
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"swmf"</span>)!=-<span class="hljs-number">1</span> || modelValue.toLowerCase().indexOf(<span class="hljs-string">"ion"</span>)!=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">8</span>;
+			modelValue=<span class="hljs-string">"SWMF"</span>;
+		}
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(modelValue.toLowerCase().indexOf(<span class="hljs-string">"lfm"</span>)!=-<span class="hljs-number">1</span>){
+			model_key=<span class="hljs-number">9</span>;
+			modelValue=<span class="hljs-string">"LFM"</span>;
+		} 
+		<span class="hljs-keyword">else</span> {
+			logger.error(<span class="hljs-string">"***ERROR***Model Type not found.\nPlease check the name/spelling."</span>);
+			System.exit(<span class="hljs-number">0</span>);
+		}
+
+		logger.info(<span class="hljs-string">"...selected "</span>+ modelValue+<span class="hljs-string">" as Input Model Type"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>———————END checking validity of MODEL VALUE——————-</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>———————checking validity of OUTPUT DIRECTORY VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		outValue+=<span class="hljs-string">"/conversionResultsFiles"</span>;
+		<span class="hljs-keyword">if</span>(verboseFlag)
+			System.out.println(<span class="hljs-string">"checking --outdir argument for validity..."</span>);
+
+		File outputdirectoryfile = <span class="hljs-keyword">new</span> File(outValue);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>this if-statement checks if the directory was made. if not, it checks if it ever existed in the first place. if not, the program ends. 
+this is to check if the output directory given is valid. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(!outputdirectoryfile.mkdir() &amp;&amp; !outputdirectoryfile.exists()){
+			logger.error(<span class="hljs-string">"**ERROR**Could not locate Output Directory. Please check it and try again."</span>);
+			System.exit(<span class="hljs-number">2</span>);
+		}
+		<span class="hljs-keyword">else</span>{
+			logger.info(<span class="hljs-string">"...setting "</span>+ outValue +<span class="hljs-string">" as location to store converted files"</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>———————END checking validity of OUTPUT DIRECTORY VALUE——————-</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>———————checking validity of DATABASE FILE VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(databaseValue!=<span class="hljs-keyword">null</span>){
+			<span class="hljs-keyword">if</span>(verboseFlag)
+				logger.debug(<span class="hljs-string">"checking --database argument for validity..."</span>);
+			File databasefile = <span class="hljs-keyword">new</span> File(databaseValue);
+			logger.info(databaseValue);
+			<span class="hljs-keyword">if</span>(!databasefile.exists()){
+				logger.error(<span class="hljs-string">"**ERROR**Could not locate Database Info file."</span>);
+				databaseValue=<span class="hljs-keyword">null</span>;
+			}
+		}
+		<span class="hljs-keyword">else</span>{
+			logger.error(<span class="hljs-string">"*********\n**ERROR** &gt;&gt; No Database Info File selected. Some information will be missing. \n*********"</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>———————END checking validity of DATABASE FILE VALUE——————-</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>———————checking validity of AUXILIARY FILE VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		String[] auxFiles = <span class="hljs-keyword">null</span>;
+
+		<span class="hljs-keyword">if</span>(auxValue==<span class="hljs-keyword">null</span>){
+			<span class="hljs-keyword">if</span>(verboseFlag)
+				logger.debug(<span class="hljs-string">"no --aux file argument specified...\n...checking dependencies and requirements"</span>);
+
+			<span class="hljs-keyword">switch</span>(model_key){
+
+
+				<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>: 
+				<span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:
+					logger.error(<span class="hljs-string">"***ERROR***Auxiliary file required for a "</span> + modelValue);
+					System.exit(<span class="hljs-number">2</span>);
+					<span class="hljs-keyword">break</span>;
+
+				<span class="hljs-keyword">default</span>: 
+					logger.info(<span class="hljs-string">"...no auxiliary file selected"</span>);
+					<span class="hljs-keyword">break</span>;
+
+			}
+		}<span class="hljs-keyword">else</span>{
+
+			File auxDir = <span class="hljs-keyword">new</span> File(auxValue);
+			Scanner auxReader;
+			ArrayList&lt;String&gt; auxFilesList = <span class="hljs-keyword">null</span>;
+
+			<span class="hljs-keyword">switch</span>(model_key){
+
+				<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:
+					logger.info(<span class="hljs-string">"No auxiliary file required for "</span>+ modelValue +<span class="hljs-string">"... Disregarding entered value ("</span>+auxValue+<span class="hljs-string">")."</span>);
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+
+					<span class="hljs-keyword">if</span>(auxDir.isDirectory()){
+						File[] files = auxDir.listFiles();
+						auxFilesList = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+						<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>; k&lt;files.length; k++){
+							<span class="hljs-keyword">if</span>(files[k].getName().startsWith(<span class="hljs-string">"grid"</span>) &amp;&amp; files[k].getName().endsWith(<span class="hljs-string">".txt"</span>)){
+								auxFilesList.add(files[k].getAbsolutePath());
+								auxReader= <span class="hljs-keyword">new</span> Scanner(<span class="hljs-keyword">new</span> File(files[k].getAbsolutePath()));
+								<span class="hljs-keyword">if</span> (auxReader.nextLine().indexOf(<span class="hljs-string">"#"</span>) == -<span class="hljs-number">1</span>){
+									logger.error(<span class="hljs-string">"***ERROR***Auxiliary file"</span>+ files[k].getAbsolutePath() + <span class="hljs-string">" for "</span> + modelValue + <span class="hljs-string">" is invalid."</span>);
+								}
+							}
+						}
+					}
+
+					<span class="hljs-keyword">if</span>(auxFilesList == <span class="hljs-keyword">null</span> || auxFilesList.size()!=<span class="hljs-number">3</span>){
+						logger.error(<span class="hljs-string">"**ERROR**Could not locate the 3 necessary grid files (auxiliary files)"</span>);
+						logger.error(<span class="hljs-string">"Please place these files in the auxiliary directory and try again."</span>);
+						logger.error(<span class="hljs-string">"EXITING..."</span>);
+						System.exit(<span class="hljs-number">2</span>);
+					}
+					<span class="hljs-keyword">else</span>{
+						auxFiles = auxFilesList.toArray(<span class="hljs-keyword">new</span> String[<span class="hljs-number">3</span>]);
+						logger.info(<span class="hljs-string">"Located the following as auxiliary grid files:"</span>);
+						<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>; k&lt;auxFilesList.size(); k++)
+							logger.info(<span class="hljs-string">"-- "</span> + auxFilesList.get(k));
+					}
+
+					<span class="hljs-keyword">break</span>;
+
+				<span class="hljs-keyword">default</span>: 
+					logger.info(<span class="hljs-string">"...setting Auxiliary File to "</span>+auxValue);
+					<span class="hljs-keyword">break</span>;	
+
+			}
+
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>———————END checking validity of AUXILIARY FILE VALUE——-</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>———————checking validity of INPUT DIRECTORY VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(verboseFlag)
+			System.out.println(<span class="hljs-string">"checking --indir argument for validity..."</span>);
+
+		ArrayList&lt;String&gt; pathholder = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+		File bigfolder = <span class="hljs-keyword">new</span> File (inValue);
+
+		<span class="hljs-keyword">if</span>(!bigfolder.exists()){
+			System.err.println(<span class="hljs-string">"\n***ERROR*** Input Directory:"</span> + inValue + <span class="hljs-string">" does not exist.\nPlease check the location/spelling and try again."</span>);
+			System.exit(<span class="hljs-number">0</span>);
+		}
+
+		<span class="hljs-keyword">if</span>(bigfolder.isFile())
+		{
+			logger.error(<span class="hljs-string">"**ERROR**You have listed a file. Please set the input as a directory through which we may search.\nEXITING..."</span>);
+			System.exit(<span class="hljs-number">2</span>);
+		}
+
+		File[] files = bigfolder.listFiles();
+
+		logger.info(<span class="hljs-string">"Gathering files from input directory: "</span>+ inValue);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>this is now going to read in the appropriate files from the Input Directory</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">switch</span>(model_key){
+			<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+			<span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+			<span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+			<span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:
+			<span class="hljs-keyword">case</span> <span class="hljs-number">7</span>: 
+				logger.error(<span class="hljs-string">"***"</span>+modelValue.toUpperCase() + <span class="hljs-string">" not supported as an input model at this time. "</span> +
+						<span class="hljs-string">"Please try again some other day. \n"</span>);
+				System.exit(<span class="hljs-number">0</span>);
+				<span class="hljs-keyword">break</span>;
+
+			<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+				<span class="hljs-keyword">if</span>(verboseFlag)
+					logger.debug(<span class="hljs-string">"...Searching for \"3df\" files..."</span>);
+
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;files.length; i++){
+					<span class="hljs-keyword">if</span> (files[i].getName().toLowerCase().indexOf(<span class="hljs-string">"3df"</span>)!=-<span class="hljs-number">1</span>){
+						<span class="hljs-keyword">if</span>(files[i].isFile()){
+							pathholder.add(files[i].getPath());
+							logger.info(<span class="hljs-string">"...storing "</span>+ files[i].getPath());
+						}
+						<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(files[i].isDirectory()){
+							File folder = <span class="hljs-keyword">new</span> File(files[i].getPath());
+							File[] innerfiles = folder.listFiles();
+
+							<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">1</span>; k&lt;innerfiles.length; k++){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>this is looking for open ggcm files that have “3df.”, but not topological files or header files
+that contain “topo” or “.h”, respectively. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>								<span class="hljs-keyword">if</span> (innerfiles[k].getName().toLowerCase().indexOf(<span class="hljs-string">"3df."</span>)!=-<span class="hljs-number">1</span> &amp;&amp; innerfiles[k].getName().toLowerCase().indexOf(<span class="hljs-string">"topo"</span>)==-<span class="hljs-number">1</span> &amp;&amp; innerfiles[k].getName().toLowerCase().indexOf(<span class="hljs-string">".h"</span>)==-<span class="hljs-number">1</span> ){
+									pathholder.add(innerfiles[k].getPath());
+									<span class="hljs-keyword">if</span>(pathholder.size()&lt;<span class="hljs-number">10</span>)
+										logger.info(<span class="hljs-string">"...storing "</span>+ innerfiles[k].getPath());
+									<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pathholder.size()==<span class="hljs-number">10</span>){
+										logger.info(<span class="hljs-string">"...storing more files..."</span>);
+									}
+								} <span class="hljs-keyword">else</span>{
+									<span class="hljs-keyword">if</span>(pathholder.size()&lt;<span class="hljs-number">10</span> &amp;&amp; CommandLineInterface.verboseFlag)
+										logger.debug(<span class="hljs-string">"*not adding "</span> + innerfiles[k].getPath());
+								}
+							}
+						}
+					}
+				}
+				<span class="hljs-keyword">break</span>;
+
+			<span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+			<span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:
+				<span class="hljs-keyword">if</span>(verboseFlag)
+					logger.debug(<span class="hljs-string">"...Searching for \"tim.\" files..."</span>);
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;files.length; i++){
+					<span class="hljs-keyword">if</span> (files[i].getName().startsWith(<span class="hljs-string">"tim."</span>) &amp;&amp; files[i].getName().endsWith(<span class="hljs-string">".nc"</span>)){
+						pathholder.add(files[i].getPath());
+						<span class="hljs-keyword">if</span>(pathholder.size()&lt;<span class="hljs-number">10</span>)
+							logger.info(<span class="hljs-string">"...storing "</span>+ files[i].getPath());
+						<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pathholder.size()==<span class="hljs-number">10</span>){
+							logger.info(<span class="hljs-string">"...storing more files..."</span>);
+						}
+					}
+				}
+				<span class="hljs-keyword">break</span>;
+
+			<span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:	
+				<span class="hljs-keyword">if</span>(verboseFlag)
+					logger.debug(<span class="hljs-string">"...Searching for \".tec\" files..."</span>);
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;files.length; i++){
+					<span class="hljs-keyword">if</span> (files[i].getName().endsWith(<span class="hljs-string">".tec"</span>)){
+						pathholder.add(files[i].getPath());
+						<span class="hljs-keyword">if</span>(pathholder.size()&lt;<span class="hljs-number">10</span>)
+							logger.info(<span class="hljs-string">"...storing "</span>+ files[i].getPath());
+						<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pathholder.size()==<span class="hljs-number">10</span>){
+							logger.info(<span class="hljs-string">"...storing more files..."</span>);
+						}
+					}
+				}
+				<span class="hljs-keyword">break</span>;
+
+			<span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:	
+				<span class="hljs-keyword">if</span>(verboseFlag)
+					logger.debug(<span class="hljs-string">"...Searching for \".hdf\" files..."</span>);
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;files.length; i++){
+					<span class="hljs-keyword">if</span> (files[i].getName().endsWith(<span class="hljs-string">".hdf"</span>)){
+						pathholder.add(files[i].getPath());
+						<span class="hljs-keyword">if</span>(pathholder.size()&lt;<span class="hljs-number">10</span>)
+							logger.info(<span class="hljs-string">"...storing "</span>+ files[i].getPath());
+						<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(pathholder.size()==<span class="hljs-number">10</span>){
+							logger.info(<span class="hljs-string">"...storing more files..."</span>);
+						}
+					}
+				}
+				<span class="hljs-keyword">break</span>;
+			<span class="hljs-keyword">default</span>: System.err.println(<span class="hljs-string">"***UNKNOWN ERROR***(input directory validation)"</span>);
+		}
+
+		Xfiles = pathholder.toArray();
+		<span class="hljs-keyword">if</span> (Xfiles.length==<span class="hljs-number">0</span>){
+			logger.error(<span class="hljs-string">"***ERROR***Invalid Input Directory. No usable files."</span>);
+			System.exit(<span class="hljs-number">0</span>);
+		}<span class="hljs-keyword">else</span>{
+			logger.info(<span class="hljs-string">"Stored "</span> + Xfiles.length + <span class="hljs-string">" files."</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>———————END checking validity of INPUT DIRECTORY VALUE————–</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>———————checking validity of FORMAT VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(verboseFlag)
+			logger.info(<span class="hljs-string">"checking --format argument for validity..."</span>);
+		<span class="hljs-keyword">if</span> (formatValue.toLowerCase().indexOf(<span class="hljs-string">"net"</span>)!=-<span class="hljs-number">1</span>)
+			writer = <span class="hljs-keyword">new</span> NetCDF4Writer();
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(formatValue.toLowerCase().indexOf(<span class="hljs-string">"cdf"</span>)!=-<span class="hljs-number">1</span>)
+			writer = <span class="hljs-keyword">new</span> CDFWriter();
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(formatValue.toLowerCase().indexOf(<span class="hljs-string">"hdf"</span>)!=-<span class="hljs-number">1</span>)
+			writer = <span class="hljs-keyword">new</span> HDF5Writer();
+		<span class="hljs-keyword">else</span>{
+			logger.error(<span class="hljs-string">"***ERROR***Output Format Type -"</span> +formatValue+ <span class="hljs-string">"-not found.\nPlease check the name/spelling."</span>);
+			System.exit(<span class="hljs-number">0</span>);
+		}
+		logger.info(<span class="hljs-string">"...selected "</span> + writer);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>———————END checking validity of FORMAT VALUE——————-</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>———————checking validity of COMPRESSION ALGORITHM VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(compressValue==<span class="hljs-keyword">null</span>){
+			logger.info(<span class="hljs-string">"...no compresion algorithm selected."</span>);
+		}
+		<span class="hljs-keyword">else</span>{
+			logger.info(<span class="hljs-string">"...selected "</span>+compressValue+<span class="hljs-string">" as compression algorithm. Unfortunately, there is no support for compression algorithms at this time."</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>———————END checking validity of COMPRESSION ALGORITHM VALUE——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+
+		<span class="hljs-keyword">int</span> start; 
+		<span class="hljs-keyword">int</span> end;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>The for-loop below will execute all of the conversions unless 
+the -t argument from the command line specified a lower number 
+of runs to execute</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">int</span> runs = Math.min(CommandLineInterface.num2run, Xfiles.length);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Assigning the command line arguments to the new model object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;runs; i++){
+
+			logger.info(<span class="hljs-string">"\n*Beginning Conversion Number "</span> + (i+<span class="hljs-number">1</span>) +<span class="hljs-string">" of "</span>+ runs+<span class="hljs-string">".*"</span>);
+			<span class="hljs-keyword">switch</span>(model_key){
+
+				<span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+					instance = <span class="hljs-keyword">new</span> BATSRUS(); <span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+					instance = <span class="hljs-keyword">new</span> OPEN_GGCM();
+					start = Xfiles[i].toString().lastIndexOf(<span class="hljs-string">"3df"</span>);
+					instance.setTimestep(Xfiles[i].toString().substring(start+<span class="hljs-number">4</span>));
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+					instance = <span class="hljs-keyword">new</span> CTIP(); <span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+				<span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:
+					instance = <span class="hljs-keyword">new</span> ENLIL(model_key==<span class="hljs-number">10</span>);
+					start = Xfiles[i].toString().indexOf(<span class="hljs-string">"."</span>);
+					end = Xfiles[i].toString().lastIndexOf(<span class="hljs-string">"."</span>);
+					instance.setTimestep(Xfiles[i].toString().substring(start+<span class="hljs-number">1</span>,end));
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+					instance = <span class="hljs-keyword">new</span> KPVT(); <span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:
+					instance = <span class="hljs-keyword">new</span> MSFC_TVM(); <span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:
+					instance = <span class="hljs-keyword">new</span> MAS(); <span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">8</span>: 
+					instance = <span class="hljs-keyword">new</span> SWMF(); 
+					start = Xfiles[i].toString().lastIndexOf(<span class="hljs-string">"/"</span>);
+					end = Xfiles[i].toString().lastIndexOf(<span class="hljs-string">"."</span>);
+					instance.setTimestep(Xfiles[i].toString().substring(start+<span class="hljs-number">1</span>,end)); <span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:
+					instance = <span class="hljs-keyword">new</span> LFM(); 
+    				start = Xfiles[i].toString().lastIndexOf(<span class="hljs-string">"/"</span>);
+					end = Xfiles[i].toString().lastIndexOf(<span class="hljs-string">"."</span>);
+					instance.setTimestep(Xfiles[i].toString().substring(start+<span class="hljs-number">1</span>,end)); <span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> <span class="hljs-number">11</span>:
+					instance = <span class="hljs-keyword">new</span> AMIE();<span class="hljs-keyword">break</span>;
+					
+				<span class="hljs-keyword">default</span>: {
+					instance = <span class="hljs-keyword">null</span>;
+					System.err.println(<span class="hljs-string">"***ERROR***Input Model Type -"</span> + modelValue  +<span class="hljs-string">"-not found.\nPlease check the name/spelling."</span>);
+					System.exit(<span class="hljs-number">0</span>);
+				}
+
+			}
+
+			instance.setAuxiliaryFiles(auxFiles); <span class="hljs-comment">//sometimes needed</span>
+			instance.setFilePathname((String) Xfiles[i]); <span class="hljs-comment">//necessary</span>
+			instance.setOutputDirectory(outValue); <span class="hljs-comment">//necessary</span>
+			instance.setDatabaseInfoFile(databaseValue);<span class="hljs-comment">//would be nice to have. if null, will take care of it in Model.java. </span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>End - Assigning Command Line arguments</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+			<span class="hljs-keyword">try</span> {
+				instance.read();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>adds a global attribute with the current time as of right now</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				DateFormat dateFormat = <span class="hljs-keyword">new</span> SimpleDateFormat(<span class="hljs-string">"yyyy/MM/dd HH:mm:ss"</span>);
+				Date date = <span class="hljs-keyword">new</span> Date();
+				instance.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"Conversion Time"</span>, dateFormat.format(date), <span class="hljs-string">"Current Time after file is read in"</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"string"</span>));
+
+			} <span class="hljs-keyword">catch</span> (NoVariableException e) {
+				e.printStackTrace();
+			} <span class="hljs-keyword">catch</span> (IOException e) {
+				logger.error(<span class="hljs-string">"***ERROR***Could not open "</span> + instance.FilePathname);
+				e.printStackTrace();
+			}
+
+			writer.convert(instance);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>conversion finished successfully</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			logger.info(<span class="hljs-string">"\n"</span>+instance+<span class="hljs-string">" "</span>+ (i+<span class="hljs-number">1</span>) + <span class="hljs-string">" of "</span>+ Xfiles.length+ <span class="hljs-string">" was successfully converted.\n----------"</span>);
+
+
+		}
+		<span class="hljs-keyword">return</span> writer;
+
+	}
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@param</span> args Should include -i, -o, -m, -f, etc. See CommandLineInterface.printUsage() for details. 
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 * <span class="hljs-doctag">@throws</span> FileNotFoundException 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> NoAttributeException, FileNotFoundException </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>AMIE.parseFile();
+System.exit(0);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		
+		
+		<span class="hljs-comment">/**
+		 * The time at which Conversion begins. 
+		 */</span>
+		<span class="hljs-keyword">double</span> epochtime1 = System.currentTimeMillis()/<span class="hljs-number">1000</span>;
+
+
+		Properties properties = <span class="hljs-keyword">new</span> Properties();
+		properties.put(<span class="hljs-string">"log4j.rootLogger"</span>, <span class="hljs-string">"DEBUG, A1"</span>);
+		properties.put(<span class="hljs-string">"log4j.appender.A1"</span>,<span class="hljs-string">"org.apache.log4j.ConsoleAppender"</span>);
+		properties.put(<span class="hljs-string">"log4j.appender.A1.layout"</span>,<span class="hljs-string">"org.apache.log4j.PatternLayout"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <h1 id="print-the-date-in-iso-8601-format">Print the date in ISO 8601 format</h1>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+
+		System.out.println(<span class="hljs-string">"--------------------------KAMELEON CONVERTER----------------------------"</span>);
+		System.out.println(<span class="hljs-string">"  Kameleon is a software suite that is being developed at the CCMC to\n"</span>+
+				<span class="hljs-string">"  address the difficulty in analyzing and disseminating the varying\n"</span>+<span class="hljs-string">"  output formats of space weather model data."</span>);
+		System.out.println(<span class="hljs-string">"------------------------------------------------------------------------"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>if no arguments were ever passed in, shows directions and then exits</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(args.length==<span class="hljs-number">0</span>){
+			printUsage();
+			System.exit(<span class="hljs-number">2</span>);}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>creates the Command Line Parser and adds all of the options for the user</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		CmdLineParser parser = <span class="hljs-keyword">new</span> CmdLineParser();
+		CmdLineParser.Option help = parser.addBooleanOption(<span class="hljs-string">'h'</span>,<span class="hljs-string">"help"</span>);
+		CmdLineParser.Option verbose = parser.addBooleanOption(<span class="hljs-string">'v'</span>, <span class="hljs-string">"verbose"</span>);
+		CmdLineParser.Option version = parser.addBooleanOption(<span class="hljs-string">"version"</span>);
+		CmdLineParser.Option nominmax = parser.addBooleanOption(<span class="hljs-string">'n'</span>,<span class="hljs-string">"nominmax"</span>);
+		CmdLineParser.Option compress = parser.addStringOption(<span class="hljs-string">'c'</span>, <span class="hljs-string">"compress"</span>);
+		CmdLineParser.Option in = parser.addStringOption(<span class="hljs-string">'i'</span>, <span class="hljs-string">"indir"</span>);
+		CmdLineParser.Option out = parser.addStringOption(<span class="hljs-string">'o'</span>, <span class="hljs-string">"outdir"</span>);
+		CmdLineParser.Option database = parser.addStringOption(<span class="hljs-string">'d'</span>, <span class="hljs-string">"database"</span>);
+		CmdLineParser.Option modeltype = parser.addStringOption(<span class="hljs-string">'m'</span>, <span class="hljs-string">"model"</span>);
+		CmdLineParser.Option aux = parser.addStringOption(<span class="hljs-string">'a'</span>,<span class="hljs-string">"aux_file"</span>);
+		CmdLineParser.Option format = parser.addStringOption(<span class="hljs-string">'f'</span>,<span class="hljs-string">"format"</span>);
+		CmdLineParser.Option quicktesting = parser.addIntegerOption(<span class="hljs-string">'t'</span>,<span class="hljs-string">"testing"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>parses command line arguments</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">try</span> {
+			parser.parse(args);
+		}
+		<span class="hljs-keyword">catch</span> ( CmdLineParser.OptionException e ) {
+			System.err.println(e.getMessage());
+			printUsage();
+			System.exit(<span class="hljs-number">2</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>parses and assigns values 
+Default values will be returned (instead of null) when the command line argument is missing.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		Boolean helpFlag = (Boolean)parser.getOptionValue(help, Boolean.FALSE);
+		verboseFlag = (Boolean)parser.getOptionValue(verbose, Boolean.FALSE);
+		Boolean versionFlag = (Boolean)parser.getOptionValue(version, Boolean.FALSE);
+		nominmaxFlag = (Boolean)parser.getOptionValue(nominmax, Boolean.FALSE);
+		num2run = (Integer)parser.getOptionValue(quicktesting,Integer.MAX_VALUE);
+		String compressValue = (String)parser.getOptionValue(compress);
+		String databaseValue = (String)parser.getOptionValue(database);
+		String modelValue = (String)parser.getOptionValue(modeltype);
+		String auxValue = (String)parser.getOptionValue(aux);
+		String inValue = (String)parser.getOptionValue(in);
+		String outValue = (String)parser.getOptionValue(out);
+		String formatValue = (String)parser.getOptionValue(format);
+
+		<span class="hljs-keyword">if</span>(verboseFlag){
+			properties.put(<span class="hljs-string">"log4j.appender.A1.layout.ConversionPattern"</span>,<span class="hljs-string">"%m |||| %d [%t] %-5p %c%n"</span>);
+		}<span class="hljs-keyword">else</span>{
+			properties.put(<span class="hljs-string">"log4j.appender.A1.layout.ConversionPattern"</span>,<span class="hljs-string">"%m%n"</span>);
+		}
+		PropertyConfigurator.configure(properties);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>The remaining command-line arguments – those that do not start
+with a minus sign – can be captured with this:</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		String[] otherArgs = parser.getRemainingArgs();
+		
+		<span class="hljs-keyword">if</span>(verboseFlag)
+			logger.info(<span class="hljs-string">"\n----------------VALIDITY CHECKS----------------"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>———————checking  that all required arguments are present——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(modelValue==<span class="hljs-keyword">null</span>){
+			logger.error(<span class="hljs-string">"**ERROR**Please specify the type of input model you would like to convert.\nBATS-R-US, CTIP, Enlil, EnlilCME, SWMF, HDF5, KPVT, MAS, MSFC TVM and OPEN GGCM (UCLA GGCM)\n(Use \"-m\")"</span>);
+			printExtendedUsage();
+			System.exit(<span class="hljs-number">2</span>);
+		}
+		<span class="hljs-keyword">if</span>(formatValue==<span class="hljs-keyword">null</span>){
+			logger.error(<span class="hljs-string">"**ERROR**Please specify the format to which you would like to convert your input file. \nCDF, HDF5, NetCDF4 \n(Use \"-f\")"</span>);
+			printExtendedUsage();
+			System.exit(<span class="hljs-number">2</span>);
+		}
+		<span class="hljs-keyword">if</span>(inValue==<span class="hljs-keyword">null</span>){
+			logger.error(<span class="hljs-string">"**ERROR**Please specify the input directory to process.(Use \"-i\")"</span>);
+			printExtendedUsage();
+			System.exit(<span class="hljs-number">2</span>);
+		}
+		<span class="hljs-keyword">if</span>(outValue==<span class="hljs-keyword">null</span>){
+			logger.error(<span class="hljs-string">"**No Output Directory selected. Setting Output Directory to Input Directory..."</span>+inValue);
+			outValue=inValue;
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>———————END checking  that all required arguments are present——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		
+
+		<span class="hljs-keyword">if</span>(verboseFlag){
+			logger.info(<span class="hljs-string">"\nVerbose Output: ON"</span>);
+			<span class="hljs-keyword">if</span>(nominmaxFlag) 
+				logger.info(<span class="hljs-string">"Min/Max Calculations: OFF"</span>);
+			logger.info(<span class="hljs-string">"Input Model: "</span> + modelValue);
+			logger.info(<span class="hljs-string">"Output Format: "</span> + formatValue);
+			logger.info(<span class="hljs-string">"Setting Input Directory to "</span> + inValue);
+			logger.info(<span class="hljs-string">"Setting Output Directory to "</span> + outValue);
+			logger.info(<span class="hljs-string">"Setting DatabaseInfo File to "</span> + databaseValue);
+			<span class="hljs-keyword">if</span>(auxValue!=<span class="hljs-keyword">null</span>)
+				logger.info(<span class="hljs-string">"Setting Auxiliary File/Directory to "</span> + auxValue);
+			<span class="hljs-keyword">if</span>(compressValue!=<span class="hljs-keyword">null</span>)
+				logger.info(<span class="hljs-string">"Setting Compression Algorithm to "</span> + compressValue);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>if help is requested with the –help argument</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span> (helpFlag){
+			logger.info(<span class="hljs-string">"-------------------------------------------------------------"</span>);
+			logger.info(<span class="hljs-string">"Thanks for requesting some further help! \nThis program converts input models to a standardized format. Here are the directions for using our CLI."</span>);
+			logger.info(<span class="hljs-string">"First, enter in a minus sign (-) followed immediately by the letter that corresponds with the field for which you want to specify data."</span>);
+			logger.info(<span class="hljs-string">"Look at the categories shown below that correspond with these 1-character letters:"</span>);
+			printExtendedUsage();
+			logger.info(<span class="hljs-string">"For example, you can type in following: \"-m mas\" if you want to specify the type of model as \"mas\"."</span>);
+			logger.info(<span class="hljs-string">"Or, for the -d and -v and --help options, simply type in \"-d\" or \"-v\" or \"--help\" to request debugging, verbosity, or help, respectively."</span>);        	
+			logger.info(<span class="hljs-string">"-------------------------------------------------------------"</span>);
+			logger.info(<span class="hljs-string">"Currently, we accept the following input model types:\n    -BATS-R-US: Block-Adaptive-Tree-Solarwind-Roe-Upwind-Scheme\n    "</span> +
+					<span class="hljs-string">"-CTIP: Coupled Thermosphere Ionosphere Plasmasphere\n    -Enlil\n   -HDF5 (Hierarchical Data Format)\n -SWMF: Space Weather Modeling Framework\n    -KPVT: Key Parameter"</span> +
+					<span class="hljs-string">" Visualization Tool\n    -MAS\n    -MSFC TVM: Marshall Space Flight Center Tower Vector Magnetograph\n    -Open (or UCLA) GGCM: Open"</span> +
+					<span class="hljs-string">" Geospace General Circulation Model"</span>);
+			logger.info(<span class="hljs-string">"We can convert these input files into the following output files:\n    -CDF\n    -HDF5\n    -NetCDF4"</span>);
+			logger.info(<span class="hljs-string">"If your model type requires an auxiliary file, please specify its location."</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>if version is requested with the –version argument</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(versionFlag){
+			logger.info(<span class="hljs-string">"This is KAMELEON CONVERTER SOFTWARE VERSION "</span> + KameleonVersion);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Prints arguments that did not fit any of the 12 options</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span>(otherArgs.length!=<span class="hljs-number">0</span>){
+			logger.error(<span class="hljs-string">"Unused arguments: "</span>);
+			<span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; otherArgs.length; ++i ) {
+				logger.error(otherArgs[i]);
+			}
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>checks the validity of each argument
+and creates new model and writer objects accordingly</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		Writer w= createModel(compressValue, 
+				inValue, outValue, databaseValue, modelValue, auxValue, formatValue);
+		
+		outValue+=<span class="hljs-string">"/conversionResultsFiles"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>keeping track of how long everything took and closing remarks</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		logger.info(<span class="hljs-string">"\n\n-------------\nConversion Complete."</span>);
+		logger.info(<span class="hljs-string">"-Total Time: "</span> + (System.currentTimeMillis()/<span class="hljs-number">1000</span>-epochtime1) + <span class="hljs-string">" seconds"</span>);
+		logger.info(<span class="hljs-string">"\nThank you for using the Kameleon Conversion Software."</span>);
+		logger.info(<span class="hljs-string">"Please check "</span> + outValue + <span class="hljs-string">" for your new "</span> + formatValue + <span class="hljs-string">" files:\n"</span>);
+		<span class="hljs-keyword">for</span>(String newfilename: w.namesOfWrittenFiles){
+			<span class="hljs-keyword">if</span>(newfilename!=<span class="hljs-keyword">null</span>)
+				logger.info(<span class="hljs-string">"-- "</span>+newfilename);}
+		logger.info(<span class="hljs-string">"\n***For tracking purposes of our government sponsors, we ask that you notify the CCMC \nwhenever you use CCMC results in scientific publications or presentations: ccmc@ccmc.gsfc.nasa.gov"</span>);
+		System.exit(<span class="hljs-number">0</span>);
+
+	}
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

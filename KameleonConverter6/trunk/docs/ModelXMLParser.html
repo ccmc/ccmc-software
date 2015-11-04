@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ModelXMLParser.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>ModelXMLParser.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: ModelXMLParser.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: This parses XML files that are entitled with the name of an input
+ * 			Model type (e.g. enlil.xml, batsrus.xml, [model].xml). 
+ * 			1) It gets all of the information for hardcoded Global Attributes (e.g. README). 
+ * 			2) It gets the original names and Kameleon names of expected variables
+ * 			   and maps them together. 
+ *  
+ * Modification History:
+ *  
+ * Summer 2011 	Donti, Nitesh
+ * 				Initial Development Started
+ * 				All tasks complete
+ * 				Ready to use
+ * 
+ * Tasks:
+ * 
+ */</span>
+
+
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+<span class="hljs-keyword">import</span> javax.xml.parsers.DocumentBuilderFactory;
+<span class="hljs-keyword">import</span> javax.xml.parsers.DocumentBuilder;
+
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+<span class="hljs-keyword">import</span> org.w3c.dom.Document;
+<span class="hljs-keyword">import</span> org.w3c.dom.NodeList;
+<span class="hljs-keyword">import</span> org.w3c.dom.Node;
+<span class="hljs-keyword">import</span> org.w3c.dom.Element;
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModelXMLParser</span> </span>{
+
+	<span class="hljs-comment">/**
+	 * A logger for the ModelXMLParser class. 
+	 * To print, use logger.info(), logger.debug(), or logger.error().
+	 */</span>
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(ModelXMLParser.class);
+
+	<span class="hljs-comment">/**
+	 * Holds the array of (Model-Specific, Global) KAttributes, produced from the information
+	 * provided by the model's XML file
+	 */</span>
+	<span class="hljs-keyword">private</span> KAttribute[] attrs=<span class="hljs-keyword">null</span>;
+
+	<span class="hljs-comment">/**
+	 * Key = Original Name of the Variable 
+	 * Value = Kameleon Name of the Variable
+	 */</span>
+	<span class="hljs-keyword">private</span> HashMap&lt;String, String&gt;namesMap= <span class="hljs-keyword">new</span> HashMap&lt;String, String&gt;();
+
+	<span class="hljs-comment">/**
+	 * Constructor for ModelXMLParser
+	 * <span class="hljs-doctag">@param</span> f XML file for the model (e.g. enlil.xml)
+	 */</span>
+	ModelXMLParser(String f){
+		read(f);
+	}
+
+	<span class="hljs-comment">/**
+	 * 
+	 * <span class="hljs-doctag">@return</span> An array of (Model-Specific, Global) KAttributes, produced from the information
+	 * provided by the model's XML file
+	 */</span>
+	<span class="hljs-keyword">public</span> KAttribute[] getModelSpecGlbAttrs(){
+		<span class="hljs-keyword">return</span> attrs;
+	}
+	
+	<span class="hljs-comment">/**
+	 * Reads an XML file for a model (e.g. enlil.xml, swmf.xml) and gets from it the information 
+	 * about hardcoded Global Attributes and also gets the original &amp; Kameleon names of expected
+	 * variables in order to map them together. 
+	 * <span class="hljs-doctag">@param</span> f XML file for a model (e.g. enlil.xml, swmf.xml)
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span> <span class="hljs-params">(String f)</span> </span>{
+
+		<span class="hljs-keyword">try</span> {
+			File file = <span class="hljs-keyword">new</span> File(f);
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			Document doc = db.parse(file);
+			doc.getDocumentElement().normalize();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag)logger.debug(“———————————\n”  + “Model Type: “ + doc.getDocumentElement().getAttribute(“name”) + “\n———————————“);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+			NodeList nodeAttrLst = doc.getElementsByTagName(<span class="hljs-string">"attribute"</span>);
+
+			attrs = <span class="hljs-keyword">new</span> KAttribute[nodeAttrLst.getLength()];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag) System.out.println(“\nGlobal Attributes (Model-Specific) and   DataTypes: \n”);</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>this for-loop parses children with 4 types of children</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> s = <span class="hljs-number">0</span>; s &lt; nodeAttrLst.getLength(); s++) {
+
+				Node fstNode = nodeAttrLst.item(s);
+
+				<span class="hljs-keyword">if</span> (fstNode.getNodeType() == Node.ELEMENT_NODE) {
+
+					Element fstElmnt = (Element) fstNode;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>int num =s+1;</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+					NodeList aList = fstElmnt.getElementsByTagName(<span class="hljs-string">"name"</span>);
+					Element aElement = (Element) aList.item(<span class="hljs-number">0</span>);
+					NodeList aName = aElement.getChildNodes();
+					String name= ((Node) aName.item(<span class="hljs-number">0</span>)).getNodeValue();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag) logger.debug(“Attribute Name”  +num+”:”+ ((Node) aName.item(0)).getNodeValue());</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+					aList = fstElmnt.getElementsByTagName(<span class="hljs-string">"dataType"</span>);
+					aElement = (Element) aList.item(<span class="hljs-number">0</span>);
+					NodeList bName = aElement.getChildNodes();
+					String datatype = ((Node) bName.item(<span class="hljs-number">0</span>)).getNodeValue();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag) logger.debug(“Data Type” +num+”:”+ ((Node) bName.item(0)).getNodeValue());</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+					aList = fstElmnt.getElementsByTagName(<span class="hljs-string">"description"</span>);
+					aElement = (Element) aList.item(<span class="hljs-number">0</span>);
+					String description=<span class="hljs-keyword">null</span>;
+					<span class="hljs-keyword">if</span>(aElement!=<span class="hljs-keyword">null</span>){
+						description=((Node) aElement.getChildNodes().item(<span class="hljs-number">0</span>)).getNodeValue();
+					}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag) logger.debug(“Description” +num+”:”+ ((Node) cName.item(0)).getNodeValue());</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+					aList = fstElmnt.getElementsByTagName(<span class="hljs-string">"value"</span>);
+					aElement = (Element) aList.item(<span class="hljs-number">0</span>);
+					Object value=<span class="hljs-keyword">null</span>;
+					<span class="hljs-keyword">if</span>(aElement!=<span class="hljs-keyword">null</span>){
+						value= ((Node) aElement.getChildNodes().item(<span class="hljs-number">0</span>)).getNodeValue();
+						}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag) logger.debug(“Value” +num+”:”+ ((Node) dName.item(0)).getNodeValue());</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+
+					attrs[s]= <span class="hljs-keyword">new</span> KAttribute(name, value, description, <span class="hljs-string">"model"</span>, datatype);
+
+				}
+
+			}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag) logger.debug(“Attributes: “ + attrs.length);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+			NodeList nodeNamesList = doc.getElementsByTagName(<span class="hljs-string">"variable"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>this for-loop parses children with 2 types of children</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> s=<span class="hljs-number">0</span>; s&lt;nodeNamesList.getLength(); s++){
+				Node node1 = nodeNamesList.item(s);
+
+				<span class="hljs-keyword">if</span>(node1.getNodeType() == Node.ELEMENT_NODE){
+
+					Element ment1 = (Element) node1;
+
+					NodeList aList = ment1.getElementsByTagName(<span class="hljs-string">"OriginalName"</span>);
+					Element aElement = (Element) aList.item(<span class="hljs-number">0</span>);
+					NodeList aName = aElement.getChildNodes();
+
+					NodeList bList = ment1.getElementsByTagName(<span class="hljs-string">"KameleonName"</span>);
+					Element bElement = (Element) bList.item(<span class="hljs-number">0</span>);
+					NodeList bName = bElement.getChildNodes();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>if both names exist…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">if</span>(aName.getLength()!=<span class="hljs-number">0</span> &amp;&amp; bName.getLength()!=<span class="hljs-number">0</span>){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>mapping the original name to the kameleon name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>						namesMap.put(((Node) aName.item(<span class="hljs-number">0</span>)).getNodeValue(), ((Node) bName.item(<span class="hljs-number">0</span>)).getNodeValue());
+
+						<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag)
+							logger.debug(<span class="hljs-string">"Mapping Original Name \""</span>+ ((Node) aName.item(<span class="hljs-number">0</span>)).getNodeValue() +<span class="hljs-string">"\" to Kameleon Name \""</span> + ((Node) bName.item(<span class="hljs-number">0</span>)).getNodeValue() + <span class="hljs-string">"\""</span>) ;
+					}
+				}
+			}
+		} <span class="hljs-keyword">catch</span> (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	<span class="hljs-comment">/**
+	 * 
+	 * <span class="hljs-doctag">@return</span> A hashmap that maps the Original Name of a Variable to its Kameleon Name
+	 */</span>
+	<span class="hljs-keyword">public</span> HashMap&lt;String, String&gt; getNamesMap() {
+		<span class="hljs-keyword">return</span> namesMap;
+	}
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

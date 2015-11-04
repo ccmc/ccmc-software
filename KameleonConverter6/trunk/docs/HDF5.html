@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>HDF5.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>HDF5.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: HDF5.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: Custom read routine for the 
+ * 			HDF5 input model file. 
+ *  
+ * Modification History:
+ *  
+ * Dec 2011 	Donti, Nitesh
+ * 				Initial Development Started
+ * 				All tasks complete
+ * 				Ready to use
+ *  			  
+ * Tasks: 	Figure out what needs to go in the XML document for HDF5. Then, make an "HDF5.xml" file for this class to use and access.
+ *		 	Test with various files. 
+ *       	Find the correct number of dimensions. 
+ *		 	Find the correct values for each of the dimensions. 
+ *			GET EVERYTHING WORKING FOR THE HDF5 FILES THAT COME FROM OPEN GGCM. Right now they work for regular datasets within folders. Make it work for datasets that are within folder that are in folders. 
+ *
+ *			Thanks, and good luck! It was great working on this!
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.List;
+
+<span class="hljs-keyword">import</span> ncsa.hdf.object.*;
+<span class="hljs-keyword">import</span> ncsa.hdf.object.h5.*;
+
+
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HDF5</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(HDF5.class);
+	<span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> variablesfolderexists = <span class="hljs-keyword">false</span>; 
+
+	HDF5()
+	{
+		<span class="hljs-keyword">super</span>(<span class="hljs-string">"swmf.xml"</span>);
+	}
+
+
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException, NoVariableException, IOException</span>{
+		<span class="hljs-keyword">super</span>.read();
+		<span class="hljs-keyword">try</span>
+		{
+			readfile();
+		} <span class="hljs-keyword">catch</span> (Exception e)
+		{
+			e.printStackTrace();
+		} 
+		System.out.println(<span class="hljs-string">"\n\n\nThe information for your new java "</span>+ <span class="hljs-keyword">this</span> +<span class="hljs-string">" has just been read from the original file!"</span>);
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">readfile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception</span>{
+		String cname = FilePathname;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>retrieve an instance of H5File</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		FileFormat fileFormat = FileFormat.getFileFormat(FileFormat.FILE_TYPE_HDF5);
+		H5File h = (H5File) fileFormat.createFile(cname,FileFormat.FILE_CREATE_OPEN);
+
+		<span class="hljs-keyword">if</span> (!h.canRead()) 
+		{
+			logger.error(<span class="hljs-string">"**ERROR**File ("</span>+FilePathname+<span class="hljs-string">") cannot be read. EXITING..."</span>);
+			System.exit(<span class="hljs-number">2</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>datatypes are in HDF5Constants</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">try</span>{
+			h.open();
+		}
+		<span class="hljs-keyword">catch</span>(Exception e){
+			e.printStackTrace();
+			logger.error(<span class="hljs-string">"**ERROR**Unable to open file. EXITING..."</span>); 
+			System.exit(<span class="hljs-number">2</span>);
+		}
+		Group root = (Group)((javax.swing.tree.DefaultMutableTreeNode)h.getRootNode()).getUserObject();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>—-getting global attributes—–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		List&lt;?&gt; globvars = root.getMetadata();
+		Attribute globspec;
+
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> u=<span class="hljs-number">0</span>; u&lt;globvars.size(); u++){
+			globspec = (Attribute)globvars.get(u);
+
+			<span class="hljs-keyword">switch</span>(globspec.getType().getDatatypeClass()){
+
+				<span class="hljs-keyword">case</span> Datatype.CLASS_STRING:
+					<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(globspec.getName(),((String[])(globspec).getValue())[<span class="hljs-number">0</span>],<span class="hljs-string">""</span>,<span class="hljs-string">"model"</span>,<span class="hljs-string">"string"</span>));
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> Datatype.CLASS_FLOAT:
+					<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(globspec.getName(),((<span class="hljs-keyword">float</span>[])(globspec).getValue())[<span class="hljs-number">0</span>],<span class="hljs-string">""</span>,<span class="hljs-string">"model"</span>,<span class="hljs-string">"float"</span>));
+					<span class="hljs-keyword">break</span>;
+				<span class="hljs-keyword">case</span> Datatype.CLASS_INTEGER:
+					<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(globspec.getName(),((<span class="hljs-keyword">int</span>[])(globspec).getValue())[<span class="hljs-number">0</span>],<span class="hljs-string">""</span>,<span class="hljs-string">"model"</span>,<span class="hljs-string">"int"</span>));
+					<span class="hljs-keyword">break</span>;
+
+			}
+
+		}
+
+
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> y=<span class="hljs-number">0</span>; y&lt;root.getNumberOfMembersInFile(); y++){
+
+			H5Group group = <span class="hljs-keyword">new</span> H5Group(h,root.getMemberList().get(y).getName(), <span class="hljs-string">"/"</span>, root);
+
+			HObject var;
+
+			<span class="hljs-keyword">int</span> variable = <span class="hljs-number">1</span>;
+			String varName; 
+			Attribute attribute; 
+			H5ScalarDS dataset;
+
+			<span class="hljs-keyword">if</span>(<span class="hljs-number">0</span>&lt;group.getNumberOfMembersInFile())
+			{
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j&lt;group.getNumberOfMembersInFile(); j++){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>in here is where we want to check if the member in the Variables folder is itself a directory, or if it’s a dataset. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+					var= group.getMemberList().get(j);
+					varName = var.getName();
+					System.out.println(var.getName());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>if we know what to map the original name to, we will
+if not, we will give a generic kameleon name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">if</span>(orig2kamel.get(varName)!=<span class="hljs-keyword">null</span>)
+						<span class="hljs-keyword">this</span>.addVariableObject(<span class="hljs-keyword">new</span> Variable(varName,orig2kamel.get(varName)));
+					<span class="hljs-keyword">else</span>{
+						<span class="hljs-keyword">this</span>.addVariableObject(<span class="hljs-keyword">new</span> Variable(varName,<span class="hljs-string">"kameleon_identity_unknown_"</span>+variable++));
+					}
+
+					dataset = <span class="hljs-keyword">new</span> H5ScalarDS(h,var.getName(), <span class="hljs-string">"/"</span>+root.getMemberList().get(y).getName()+<span class="hljs-string">"/"</span>);
+					dataset.open();
+
+					<span class="hljs-keyword">try</span>{
+
+						System.out.println(dataset.getDatatype().getDatatypeDescription());
+
+
+					}<span class="hljs-keyword">catch</span>(NullPointerException e){
+						H5Group subfolder = <span class="hljs-keyword">new</span> H5Group(group.getFileFormat(), group.getMemberList().get(<span class="hljs-number">0</span>).getName(), group.getPath(), group);
+						
+						System.out.println(<span class="hljs-string">"Not a dataset.\n This is the dataset: "</span>+subfolder.getName());
+						System.exit(<span class="hljs-number">3</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>//CONTINUE WORK RIGHT HERE. WE WANT TO BE ABLE TO ACCESS THE DATASETS THAT ARE A COUPLE OF FOLDERS BELOW THE ROOT GROUP. IT’S DEFINITELY POSSIBLE.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>setting the number of dimensions</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">this</span>.getVariableObject(j).numDim = <span class="hljs-number">1</span>;<span class="hljs-comment">// dataset.getRank();</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>THIS IS WRONG AND DOES NOT WORK PROPERLY</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>setting the data type</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">this</span>.getVariableObject(j).dt= dataset.getDatatype().getDatatypeDescription();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>setting the actual dims</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">int</span>[] intversion = {<span class="hljs-number">1</span>};
+					<span class="hljs-keyword">this</span>.getVariableObject(j).dimSizes = intversion;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>THIS IS WRONG AND DOES NOT WORK PROPERLY</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+					<span class="hljs-keyword">switch</span>(dataset.getDatatype().getDatatypeClass()) {
+						<span class="hljs-keyword">case</span> Datatype.CLASS_STRING:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>setting the data values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							String[] strvalues = (String[]) dataset.read();
+							<span class="hljs-keyword">this</span>.getVariableObject(j).dataValues=strvalues;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>setting the number of elements</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							<span class="hljs-keyword">this</span>.getVariableObject(j).numElem = strvalues.length;
+
+							<span class="hljs-keyword">break</span>;
+						<span class="hljs-keyword">case</span> Datatype.CLASS_FLOAT:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>setting the data values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							<span class="hljs-keyword">float</span>[] floatvalues = (<span class="hljs-keyword">float</span>[]) dataset.read();
+							<span class="hljs-keyword">this</span>.getVariableObject(j).dataValues=floatvalues;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>setting the number of elements</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							<span class="hljs-keyword">this</span>.getVariableObject(j).numElem = floatvalues.length;
+
+							<span class="hljs-keyword">break</span>;
+						<span class="hljs-keyword">case</span> Datatype.CLASS_INTEGER:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>setting the data values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							<span class="hljs-keyword">int</span>[] intvalues = (<span class="hljs-keyword">int</span>[]) dataset.read();
+							<span class="hljs-keyword">this</span>.getVariableObject(j).dataValues=intvalues;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>setting the number of elements</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							<span class="hljs-keyword">this</span>.getVariableObject(j).numElem = intvalues.length;
+
+							<span class="hljs-keyword">break</span>;
+						<span class="hljs-keyword">case</span> Datatype.CLASS_CHAR:</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>setting the data values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							<span class="hljs-keyword">char</span>[] charvalues = (<span class="hljs-keyword">char</span>[]) dataset.read();
+							<span class="hljs-keyword">this</span>.getVariableObject(j).dataValues = charvalues;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>setting the number of elements</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>							<span class="hljs-keyword">this</span>.getVariableObject(j).numElem = charvalues.length;
+							<span class="hljs-keyword">break</span>;
+					}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>—-this prints out all of the attributes for one variable—</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i =<span class="hljs-number">0</span>; i&lt;dataset.getMetadata().size(); i++) {
+
+
+						attribute = (Attribute)dataset.getMetadata().get(i);
+						<span class="hljs-keyword">switch</span>(attribute.getType().getDatatypeClass()) {
+							<span class="hljs-keyword">case</span> Datatype.CLASS_COMPOUND:
+								System.out.print(<span class="hljs-string">"It's a compound data array. That means that the datatypes of the contents are not all the same. This shouldn't really happen."</span>);
+								<span class="hljs-keyword">break</span>; 
+							<span class="hljs-keyword">case</span> Datatype.CLASS_STRING:
+								<span class="hljs-keyword">this</span>.getVariableObject(getNumVariables()-<span class="hljs-number">1</span>).addAttribute(<span class="hljs-keyword">new</span> KAttribute(attribute.getName(), ((String[])(attribute).getValue())[<span class="hljs-number">0</span>], <span class="hljs-string">""</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"String"</span>));
+								<span class="hljs-keyword">break</span>;
+
+							<span class="hljs-keyword">case</span> Datatype.CLASS_FLOAT:
+								<span class="hljs-keyword">this</span>.getVariableObject(getNumVariables()-<span class="hljs-number">1</span>).addAttribute(<span class="hljs-keyword">new</span> KAttribute(attribute.getName(), ((<span class="hljs-keyword">float</span>[])(attribute).getValue())[<span class="hljs-number">0</span>], <span class="hljs-string">""</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"float"</span>));
+								<span class="hljs-keyword">break</span>;
+
+							<span class="hljs-keyword">case</span> Datatype.CLASS_INTEGER:
+								<span class="hljs-keyword">this</span>.getVariableObject(getNumVariables()-<span class="hljs-number">1</span>).addAttribute(<span class="hljs-keyword">new</span> KAttribute(attribute.getName(), ((<span class="hljs-keyword">int</span>[])(attribute).getValue())[<span class="hljs-number">0</span>], <span class="hljs-string">""</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"int"</span>));
+								<span class="hljs-keyword">break</span>;
+
+						}
+					}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>——end printing out attributes for variable—–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				}
+			}
+		}
+	}
+
+
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-string">"HDF5 Object"</span>;
+	}
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

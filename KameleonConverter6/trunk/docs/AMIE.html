@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>AMIE.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>AMIE.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/**
+ * 
+ */</span>
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.FileNotFoundException;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> ccmc
+ *
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AMIE</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+
+	List&lt;AMIEDataObject&gt; amieDataObjs;
+	
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@param</span> xmlmodelfile
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AMIE</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">super</span>(<span class="hljs-string">"amie.xml"</span>);
+		 amieDataObjs = <span class="hljs-keyword">new</span> ArrayList&lt;AMIEDataObject&gt;();
+			
+
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> FileNotFoundException, NoAttributeException, NoVariableException, IOException</span>{
+		<span class="hljs-keyword">super</span>.read();
+		parseFile();
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">parseFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> FileNotFoundException</span>{
+
+		String FilePathname = <span class="hljs-string">"/Users/ccmc/Desktop/amie.2006.347-350.dat"</span>;
+
+		Scanner eyes = <span class="hljs-keyword">new</span> Scanner (<span class="hljs-keyword">new</span> File(FilePathname));
+		eyes.nextLine(); <span class="hljs-comment">//the first line with titles</span>
+
+		String currenttime=<span class="hljs-keyword">null</span>;
+		String time=<span class="hljs-string">""</span>;
+		String date=<span class="hljs-string">""</span>;
+		StringBuilder nums = <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);
+
+		<span class="hljs-keyword">int</span> MINUTES_TO_PROCESS =<span class="hljs-number">1</span>;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> minutenumber=<span class="hljs-number">0</span>;minutenumber&lt;MINUTES_TO_PROCESS; minutenumber++){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>–this gets all of the lines for one single minute–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			do{
+				<span class="hljs-keyword">if</span>(minutenumber&gt;<span class="hljs-number">1</span>){
+					System.out.println(nums.toString());
+				}
+				nums= <span class="hljs-keyword">new</span> StringBuilder(<span class="hljs-string">""</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>–parsing a line</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				String nextline = eyes.nextLine();
+				String[] nextlinetokens = nextline.split(<span class="hljs-string">" "</span>,<span class="hljs-number">0</span>);
+				String[] datetime = <span class="hljs-keyword">new</span> String[<span class="hljs-number">6</span>];
+				<span class="hljs-keyword">float</span>[] nextlinenums = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[<span class="hljs-number">5</span>];
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>,j=<span class="hljs-number">0</span>; i&lt;nextlinetokens.length; i++){
+					<span class="hljs-keyword">if</span> (nextlinetokens[i].length()&gt;<span class="hljs-number">0</span>){
+						<span class="hljs-keyword">if</span> (j&lt;<span class="hljs-number">6</span>){
+							datetime[j++]=nextlinetokens[i];
+						}
+						<span class="hljs-keyword">else</span>{
+							nextlinenums[j-<span class="hljs-number">6</span>]=Float.valueOf(nextlinetokens[i]);
+							j++;
+							nums.append(nextlinenums[j-<span class="hljs-number">7</span>] + <span class="hljs-string">" "</span>);
+						}
+
+					}
+
+				}
+				date = datetime[<span class="hljs-number">0</span>] + <span class="hljs-string">"-"</span> + datetime[<span class="hljs-number">1</span>] + <span class="hljs-string">"-"</span>+ datetime[<span class="hljs-number">2</span>];
+				time = datetime[<span class="hljs-number">3</span>] + <span class="hljs-string">":"</span> + datetime[<span class="hljs-number">4</span>] + <span class="hljs-string">":"</span> + datetime[<span class="hljs-number">5</span>];
+				<span class="hljs-keyword">if</span> (currenttime==<span class="hljs-keyword">null</span>)
+					currenttime = time;
+				nums.append(date +<span class="hljs-string">","</span>+time);
+				<span class="hljs-keyword">if</span> (!currenttime.equals(time)){
+					currenttime=time;
+					<span class="hljs-keyword">break</span>;
+				}
+				<span class="hljs-keyword">this</span>.amieDataObjs.add(<span class="hljs-keyword">new</span> AMIEDataObject(nextlinenums));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>System.out.println(nums.toString());
+–finished parsing the line    </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			}<span class="hljs-keyword">while</span>(time.equals(currenttime) &amp;&amp; eyes.hasNextLine());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>–ends all of the data for the current minute</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>get the longitude values so we can store unique values. 
+this will make it easier to search in the interpolator.
+float[] latitudes = new float[48];</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			
+			
+			
+			
+		}
+		
+
+	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-string">"AMIE Object"</span>;
+	}
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

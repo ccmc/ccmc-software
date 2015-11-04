@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Variable.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Variable.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+<span class="hljs-keyword">import</span> gov.nasa.gsfc.ccmc.KameleonConverter.KAttribute.KAttributeType;
+
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Variable</span></span>{
+
+	<span class="hljs-comment">/**
+	 * Logger for the Variable.java class. 
+	 * Use Logger.info(), Logger.debug(), and Logger.error() to print
+	 * statements out within the class. 
+	 */</span>
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(Variable.class);
+
+	<span class="hljs-comment">/**
+	 * The name of the Variable, as named by the 
+	 * original input model file
+	 */</span>
+	<span class="hljs-keyword">public</span> String originalName;
+
+	<span class="hljs-comment">/**
+	 * The name of the Variable, as accepted/called
+	 * by the Kameleon Software  as a method of
+	 * name standardization
+	 */</span>
+	<span class="hljs-keyword">public</span> String KameleonName;
+
+	<span class="hljs-comment">/**
+	 * The array of data for this Variable
+	 */</span>
+	<span class="hljs-keyword">public</span> Object dataValues;
+
+	<span class="hljs-comment">/**
+	 * The data type of the elements in the variable's array of values.
+	 * Choices: "int" "double" "float" "string"
+	 */</span>
+	<span class="hljs-keyword">public</span> String dt;
+
+	<span class="hljs-comment">/**
+	 * The number of dimensions
+	 */</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> numDim;
+
+	<span class="hljs-comment">/**
+	 * The number of elements in the variable's array of values.
+	 */</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> numElem;
+
+	<span class="hljs-comment">/**
+	 *A long array, with dimSizes.length == numDim. List the number of elements in each dimension. Example: {10, 20} 
+	 */</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] dimSizes;
+
+	<span class="hljs-comment">/**
+	 * "CCMC Attribute List"
+	 * An array for Variable Attributes that are standard across all models. 
+	 * Since these are all CCMC Attributes, we know which ones to expect and look for,
+	 * and therefore know the size of the array (so no need for an ArrayList).
+	 */</span>
+	KAttribute[] cal = <span class="hljs-keyword">null</span>;
+
+	<span class="hljs-comment">/**
+	 * "Model-Specific Attribute Array List"
+	 * An Array List for Variable Attributes that vary across different model.
+	 * many to expect so an ArrayList is more ideal so that we can add on attributes 
+	 * as we go along. 
+	 */</span>
+	ArrayList&lt;KAttribute&gt; msaal = <span class="hljs-keyword">new</span> ArrayList&lt;KAttribute&gt;();
+
+	<span class="hljs-comment">/**
+	 * Key = Name of the Attribute
+	 * Value = Attribute Object
+	 */</span>
+	HashMap&lt;String, KAttribute&gt; nameToAttribute = <span class="hljs-keyword">new</span> HashMap &lt;String, KAttribute&gt;();
+
+	<span class="hljs-comment">/**
+	 * Constructor for Variable Object. 
+	 * 
+	 * Also, parses the XML file "VariableCCMCAttributeNames.xml" in order to 
+	 * assign the Variable Object its 9 CCMC Standard Variable Attributes and values. 
+	 * 
+	 * Puts those Variable Attributes in the array and in the hashmap.
+	 * 
+	 * Also, adds a Model Specific Variable Attribute that states what the original name of the variable is. 
+	 * 
+	 * <span class="hljs-doctag">@param</span> orig    The variable's original name. 
+	 * <span class="hljs-doctag">@param</span> kamel	  The new Kameleon standard name for the variable. 
+	 */</span>
+	Variable(String orig, String kamel) {
+
+		originalName = orig; 
+		KameleonName = kamel;
+		addAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"Original Name"</span>, originalName, <span class="hljs-string">"The original name of the variable, as stated in the Input File"</span> , <span class="hljs-string">"model"</span>, <span class="hljs-string">"String"</span>));
+
+
+		AttributeXMLParser attrxmlparser = <span class="hljs-keyword">new</span> AttributeXMLParser(<span class="hljs-string">"VariableCCMCAttributeNames.xml"</span>);
+		cal=attrxmlparser.getAttributes();
+
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;cal.length; i++){
+			nameToAttribute.put(cal[i].name, cal[i]);
+			}
+	}
+
+	<span class="hljs-comment">/** 
+	 * <span class="hljs-doctag">@return</span> the Attribute that has the name of the String that is passed in 
+	 * **/</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> KAttribute <span class="hljs-title">getAttributeObject</span> <span class="hljs-params">(String attributeName)</span> <span class="hljs-keyword">throws</span> NoAttributeException</span>{
+
+		<span class="hljs-keyword">if</span>(nameToAttribute.get(attributeName)==<span class="hljs-keyword">null</span>)
+			<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoAttributeException(attributeName);
+		KAttribute b = nameToAttribute.get(attributeName);
+
+		<span class="hljs-keyword">return</span> b;
+	}
+
+	<span class="hljs-comment">/**
+	 * Adds a ModelSpecific Variable Attribute to this Variable Object. 
+	 * Do not use for a CCMC Variable Attribute. 
+	 * 
+	 * <span class="hljs-doctag">@param</span> k ModelSpecificAttribute (only) to be added to the Variable Object's collection of attributes. 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addAttribute</span><span class="hljs-params">(KAttribute k)</span></span>{
+		<span class="hljs-keyword">if</span>(k.getKType()==KAttributeType.MODELSPEC){
+			nameToAttribute.put(k.name, k);
+			msaal.add(k);
+		}
+	}
+
+	<span class="hljs-comment">/** 
+	 * <span class="hljs-doctag">@return</span> a String array of names of this variable object's CCMC Variable Attributes
+	 */</span>
+	<span class="hljs-keyword">public</span> String[] getCCMCAttributeNames(){
+		String[] x = <span class="hljs-keyword">new</span> String[cal.length];
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;cal.length; i++)
+			x[i]=cal[i].name;
+
+		<span class="hljs-keyword">return</span> x;}
+
+	<span class="hljs-comment">/** 
+	 * <span class="hljs-doctag">@return</span> a String array of names of this variable object's current list of ModelSpecific Variable Attributes
+	 */</span>
+	<span class="hljs-keyword">public</span> String[] getModelSpecAttributeNames(){
+		String[] x = <span class="hljs-keyword">new</span> String[msaal.size()];
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;msaal.size(); i++)
+			x[i]=msaal.get(i).name;
+
+		<span class="hljs-keyword">return</span> x;}
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@return</span> a String array of name of this variable object's current list of CCMC Variable Attributes and ModelSpecific Variable Attributes
+	 */</span>
+	<span class="hljs-keyword">public</span> String [] getAllAttributeNames(){
+		String[] x = <span class="hljs-keyword">new</span> String[cal.length + msaal.size()];
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;cal.length; i++)
+			x[i]=cal[i].name;
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=cal.length; i&lt;cal.length+msaal.size(); i++)
+			x[i]=msaal.get(i-cal.length).name;
+		<span class="hljs-keyword">return</span> x;
+	}
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@return</span> this Variable Object's original name (from the input file) and Kameleon name (standard to CDF files)
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> 
+		<span class="hljs-string">"\n[Original Name : "</span> + originalName + 
+		<span class="hljs-string">"\n Kameleon Name : "</span> + KameleonName;
+
+	}
+
+	<span class="hljs-comment">/**
+	 * Prints out a String representation of the Variable's Attribute names and their corresponding values
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printAllAttrs</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException</span>{
+
+		StringBuffer line = <span class="hljs-keyword">new</span> StringBuffer().append(<span class="hljs-string">"[\n"</span>);
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i&lt;getAllAttributeNames().length; i++){
+			line.append(getAttributeObject(getAllAttributeNames()[i]).name + <span class="hljs-string">" = "</span> + getAttributeObject(getAllAttributeNames()[i]).value+<span class="hljs-string">"\n"</span>);
+		}
+		line.append(<span class="hljs-string">"]"</span>);
+		logger.debug(line.toString());
+	}
+
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

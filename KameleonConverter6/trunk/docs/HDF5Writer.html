@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>HDF5Writer.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>HDF5Writer.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: HDF5Writer.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: Custom write routine for the
+ * 			HDF5 standardized output format. 
+ *  
+ * Modification History:
+ *  
+ * Summer 2011 	Donti, Nitesh
+ * 				Initial development started
+ * 				All tasks complete
+ * 				Ready to use for conversion to HDF5
+ * 
+ * Tasks: 	
+ * 
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+<span class="hljs-keyword">import</span> edu.ucar.ral.nujan.hdf.HdfException;
+<span class="hljs-keyword">import</span> edu.ucar.ral.nujan.hdf.HdfFileWriter;
+<span class="hljs-keyword">import</span> edu.ucar.ral.nujan.hdf.HdfGroup;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HDF5Writer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Writer</span> </span>{
+
+	<span class="hljs-comment">/**
+	 * Logger for the HDF5Writer.java class. 
+	 * Use Logger.info(), Logger.debug(), and Logger.error() to print
+	 * statements out within the class. 
+	 */</span>
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(HDF5Writer.class);
+
+
+
+	<span class="hljs-comment">/**
+	 * Converts a Model Object (subclass Object) to HDF5 and creates the new file
+	 * <span class="hljs-doctag">@param</span> model The completed Model Object (subclass Object) to convert to HDF5
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">convert</span><span class="hljs-params">(Model model)</span> <span class="hljs-keyword">throws</span> NoAttributeException </span>{
+
+		<span class="hljs-keyword">try</span> {
+			<span class="hljs-keyword">super</span>.convert(model);
+
+			HdfFileWriter w = <span class="hljs-keyword">new</span> HdfFileWriter(newfilename,HdfFileWriter.OPT_ALLOW_OVERWRITE);
+			<span class="hljs-keyword">int</span> dtype = <span class="hljs-number">0</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>——————————adding Variables—————————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			logger.info(<span class="hljs-string">"Writing Variables..."</span>);
+			HdfGroup grp = w.getRootGroup().addGroup(<span class="hljs-string">"Variables"</span>);
+			HdfGroup[] vars = <span class="hljs-keyword">new</span> HdfGroup[model.getNumVariables()];
+			Variable var; 
+
+
+			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;model.getNumVariables(); i++){
+
+				var=model.getVariableObject(i);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>checking to make sure all required information about the variable exists</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">if</span>(var.dataValues == <span class="hljs-keyword">null</span> || var.dt == <span class="hljs-keyword">null</span> || var.numDim == <span class="hljs-number">0</span> || var.numElem == <span class="hljs-number">0</span> || var.dimSizes == <span class="hljs-keyword">null</span>){
+					logger.error(<span class="hljs-string">"**ERROR**Missing required information about Variable "</span>+ var.originalName);
+					<span class="hljs-keyword">if</span>(var.dataValues == <span class="hljs-keyword">null</span>)
+						logger.error(<span class="hljs-string">"Data Values are Missing."</span>);
+					<span class="hljs-keyword">if</span>(var.dt == <span class="hljs-keyword">null</span>)
+						logger.error(<span class="hljs-string">"Data Type is Missing."</span>);
+					<span class="hljs-keyword">if</span>(var.numDim == <span class="hljs-number">0</span>)
+						logger.error(<span class="hljs-string">"Number of Dimensions = 0."</span>);
+					<span class="hljs-keyword">if</span>(var.numElem == <span class="hljs-number">0</span>)
+						logger.error(<span class="hljs-string">"Number of Elements = 0."</span>);
+					<span class="hljs-keyword">if</span>(var.dimSizes == <span class="hljs-keyword">null</span>)
+						logger.error(<span class="hljs-string">"Dimension Sizes are Missing."</span>);
+					logger.error(<span class="hljs-string">"Cannot convert. \nEXITING..."</span>);
+					System.exit(<span class="hljs-number">0</span>);
+				}
+
+				<span class="hljs-keyword">if</span>(var.dt.toLowerCase().indexOf(<span class="hljs-string">"float"</span>)!=-<span class="hljs-number">1</span>)
+					dtype=HdfGroup.DTYPE_FLOAT32;
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(var.dt.toLowerCase().indexOf(<span class="hljs-string">"int"</span>)!=-<span class="hljs-number">1</span>)
+					dtype=HdfGroup.DTYPE_FIXED32;
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(var.dt.toLowerCase().indexOf(<span class="hljs-string">"double"</span>)!=-<span class="hljs-number">1</span>)
+					dtype=HdfGroup.DTYPE_FLOAT64;
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(var.dt.toLowerCase().indexOf(<span class="hljs-string">"string"</span>)!=-<span class="hljs-number">1</span>)
+					dtype=HdfGroup.DTYPE_STRING_VAR;
+				<span class="hljs-keyword">else</span>{
+					logger.error(<span class="hljs-string">"Data type of Variable is unknown. \nEXITING..."</span>);
+					System.exit(<span class="hljs-number">0</span>);
+				}
+
+				<span class="hljs-keyword">if</span>(var.numElem==<span class="hljs-number">0</span>){
+					logger.error(<span class="hljs-string">"The number of elements for variable "</span> + var.KameleonName + <span class="hljs-string">" is not set. \nEXITING..."</span>);
+					System.exit(<span class="hljs-number">0</span>);
+				}
+
+
+				<span class="hljs-keyword">int</span>[]dimSizesInts= {var.numElem};
+
+				vars[i] = grp.addVariable(var.KameleonName, dtype, <span class="hljs-number">0</span>, dimSizesInts, dimSizesInts, <span class="hljs-keyword">null</span>, <span class="hljs-number">0</span>);
+				dtype=<span class="hljs-number">0</span>;
+
+				KAttribute attr=<span class="hljs-keyword">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>——-adding ModelSpecific Attributes to the new Variable——
+——-adding CCMC Attributes to the new Variable (does NOT overwrite any repeats)——</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> y= <span class="hljs-number">0</span>; y&lt;var.getModelSpecAttributeNames().length + var.getCCMCAttributeNames().length; y++){
+					<span class="hljs-keyword">try</span> {
+						<span class="hljs-keyword">if</span>(y&lt;var.getModelSpecAttributeNames().length){
+							attr=var.getAttributeObject(var.getModelSpecAttributeNames()[y]);
+						}
+						<span class="hljs-keyword">else</span>{
+							attr=var.getAttributeObject(var.getCCMCAttributeNames()[y-var.getModelSpecAttributeNames().length]);
+						}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>if the attribute does not already exist</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>						<span class="hljs-keyword">if</span>(vars[i].findAttribute(attr.name)==<span class="hljs-keyword">null</span>){
+
+							<span class="hljs-keyword">if</span> (attr.getDataType()==<span class="hljs-keyword">null</span>){
+								logger.error(attr.name + <span class="hljs-string">" for "</span>+var.KameleonName+<span class="hljs-string">" has no listed data type. CHECK THIS."</span>);
+							} 
+							<span class="hljs-keyword">else</span>{ 
+								String type = attr.getDataType().toString().toLowerCase();
+
+								<span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"flo"</span>)!=-<span class="hljs-number">1</span>){
+									dtype=HdfGroup.DTYPE_FLOAT32;
+									vars[i].addAttribute(attr.name, dtype,<span class="hljs-number">0</span>, ((Float) attr.value), <span class="hljs-keyword">false</span>);
+								}
+								<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"str"</span>)!=-<span class="hljs-number">1</span>){
+									dtype=HdfGroup.DTYPE_STRING_FIX;
+									<span class="hljs-keyword">if</span> (attr.value!=<span class="hljs-keyword">null</span>){
+										vars[i].addAttribute(attr.name, dtype, ((String) attr.value).length(), (String) attr.value, <span class="hljs-keyword">false</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>System.out.println(attr.name + “: “+attr.value);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>										}
+								}
+								<span class="hljs-keyword">else</span>  <span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"double"</span>)!=-<span class="hljs-number">1</span>){
+									dtype=HdfGroup.DTYPE_FLOAT64;
+									vars[i].addAttribute(attr.name, dtype,<span class="hljs-number">0</span>, ((Double) attr.value), <span class="hljs-keyword">false</span>);
+								}
+								<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"int"</span>)!=-<span class="hljs-number">1</span>){
+									dtype=HdfGroup.DTYPE_FIXED32; 
+									vars[i].addAttribute(attr.name, dtype,<span class="hljs-number">0</span>, ((Integer)attr.value), <span class="hljs-keyword">false</span>);
+								}
+								<span class="hljs-keyword">else</span>
+									logger.error(<span class="hljs-string">"Data Type of Attribute Unknown: "</span>+type);
+							}
+						}<span class="hljs-keyword">else</span>{
+							<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag)
+								logger.debug(<span class="hljs-string">"'Twas a duplicate and not added:"</span>+attr.name+<span class="hljs-string">" "</span>+ var.KameleonName);
+						}
+
+					} <span class="hljs-keyword">catch</span> (HdfException e) {
+						logger.error(<span class="hljs-string">"Some Error."</span>);
+						e.printStackTrace();
+
+					} <span class="hljs-keyword">catch</span>(ClassCastException cc){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>this is a workaround for a class cast problem</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>						dtype=HdfGroup.DTYPE_STRING_FIX;
+						vars[i].addAttribute(attr.name, dtype, ((String) attr.value).length() , (String) attr.value, <span class="hljs-keyword">false</span>);
+					}
+				}
+			}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>—————–end adding Variables and Variable Attributes—————</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>————————adding Global Attributes———————</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			logger.info(<span class="hljs-string">"Writing Global Attributes..."</span>);
+
+			HdfGroup global = w.getRootGroup();
+			KAttribute ga;
+
+			<span class="hljs-keyword">if</span>(model.getGlobAttrsSize()==<span class="hljs-number">0</span>){
+				logger.error(<span class="hljs-string">"There are no global attributes. \nEXITING..."</span>);
+				System.exit(<span class="hljs-number">0</span>);
+			}
+
+
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;model.getGlobAttrsSize();i++){
+				ga=model.getGlobalAttribute(i);
+				
+				
+				<span class="hljs-keyword">if</span>(ga.value!=<span class="hljs-keyword">null</span>){
+
+					String type = ga.getDataType().toString().toLowerCase();
+
+					<span class="hljs-keyword">try</span>{
+					
+					<span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"flo"</span>)!=-<span class="hljs-number">1</span>){
+						dtype=HdfGroup.DTYPE_FLOAT32;
+						global.addAttribute(ga.name, dtype, <span class="hljs-number">0</span>, ((Float) ga.value).floatValue(), <span class="hljs-keyword">false</span>);
+					}
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"str"</span>)!=-<span class="hljs-number">1</span>){
+						dtype=HdfGroup.DTYPE_STRING_VAR;
+						global.addAttribute(ga.name, dtype, <span class="hljs-number">0</span>, ((String) ga.value).toString(), <span class="hljs-keyword">false</span>);
+					}
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"int"</span>)!=-<span class="hljs-number">1</span>){
+						dtype=HdfGroup.DTYPE_FIXED32;
+						global.addAttribute(ga.name, dtype, <span class="hljs-number">0</span>, ((Integer)ga.value).intValue(), <span class="hljs-keyword">false</span>);
+					}
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"long"</span>)!=-<span class="hljs-number">1</span>){
+						dtype=HdfGroup.DTYPE_FIXED64;
+						global.addAttribute(ga.name, dtype, <span class="hljs-number">0</span>, ((Long)ga.value).longValue(), <span class="hljs-keyword">false</span>);
+					}
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(type.indexOf(<span class="hljs-string">"double"</span>)!=-<span class="hljs-number">1</span>){
+						dtype=HdfGroup.DTYPE_FLOAT64;
+						global.addAttribute(ga.name, dtype, <span class="hljs-number">0</span>, ((Double) ga.value).doubleValue(), <span class="hljs-keyword">false</span>);
+					}<span class="hljs-keyword">else</span>{
+						logger.error(<span class="hljs-string">"Problem with writing Global Attribute"</span>);
+						System.exit(<span class="hljs-number">0</span>);}
+					
+					}<span class="hljs-keyword">catch</span>(HdfException d){
+						<span class="hljs-keyword">if</span>(d.toString().indexOf(<span class="hljs-string">"Duplicate"</span>)==-<span class="hljs-number">1</span>){
+							d.printStackTrace();
+						}
+					}
+				}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (CommandLineInterface.verboseFlag)
+					logger.debug(ga.name + <span class="hljs-string">" has a value of "</span> + ga.value +<span class="hljs-string">" and was not added an a global attribute."</span>);
+
+			}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>——————-end adding Global Attributes———————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			w.endDefine();
+
+
+			<span class="hljs-keyword">int</span>[] indices= {<span class="hljs-number">0</span>};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>————writing Data to Variables———–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			logger.info(<span class="hljs-string">"Writing data to Variables..."</span>);
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;model.getNumVariables(); j++){
+				var=model.getVariableObject(j);
+
+				<span class="hljs-keyword">if</span>(var.dt.toLowerCase().indexOf(<span class="hljs-string">"float"</span>)!=-<span class="hljs-number">1</span>)
+					vars[j].writeData(indices,(<span class="hljs-keyword">float</span>[])var.dataValues, <span class="hljs-keyword">false</span>);
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (var.dt.toLowerCase().indexOf(<span class="hljs-string">"double"</span>)!=-<span class="hljs-number">1</span>)
+					vars[j].writeData(indices,(<span class="hljs-keyword">double</span>[])var.dataValues, <span class="hljs-keyword">false</span>);
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (var.dt.toLowerCase().indexOf(<span class="hljs-string">"int"</span>)!=-<span class="hljs-number">1</span>)
+					vars[j].writeData(indices,(<span class="hljs-keyword">int</span>[])var.dataValues, <span class="hljs-keyword">false</span>);
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (var.dt.toLowerCase().indexOf(<span class="hljs-string">"string"</span>)!=-<span class="hljs-number">1</span>)
+					vars[j].writeData(indices,(java.lang.String[])var.dataValues, <span class="hljs-keyword">false</span>);
+				<span class="hljs-keyword">else</span>{
+					logger.error(<span class="hljs-string">"Unsupported data type of variable data values: "</span> + var.dt);
+					System.exit(<span class="hljs-number">0</span>);
+				}	
+			}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>———–end writing Data——————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			w.close();
+
+		} <span class="hljs-keyword">catch</span> (HdfException e) {
+			e.printStackTrace();
+		}
+	}
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@return</span> The type of file this class will create, in String form ("HDF5 File")
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-string">"HDF5 File"</span>;
+	}
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@return</span> the string extension of the new file that will be created. [".h5"]
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">extension</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-string">".h5"</span>;
+	}
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

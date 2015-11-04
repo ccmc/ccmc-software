@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>SWMF.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>SWMF.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: SWMF.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: Custom read routine for the 
+ * 			SWMF input model file. 
+ *  
+ * Modification History:
+ *
+ * January 2012 Donti, Nitesh
+ * 				Fixed a couple of bugs that did not retain original variable attribute information from the input file
+ *
+ * Summer 2011 	Donti, Nitesh
+ * 				Initial Development Started
+ * 				All tasks complete
+ * 				Ready to use
+ *  			  
+ * Tasks:	Need to put info into the README among
+ * 			other Global Attributes. 	 
+ * 
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.FileNotFoundException;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.Collections;
+<span class="hljs-keyword">import</span> java.util.List;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">import</span> java.util.StringTokenizer;
+
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SWMF</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span> </span>{
+
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(SWMF.class);
+
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">SWMF</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">super</span>(<span class="hljs-string">"swmf.xml"</span>);
+	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException, NoVariableException, IOException</span>{
+		<span class="hljs-keyword">super</span>.read();
+		parseFile();
+		logger.info(<span class="hljs-string">"\n\n\nThe information for your new java "</span>+ <span class="hljs-keyword">this</span> +<span class="hljs-string">" has just been read from the original file!"</span>);
+
+	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">parseFile</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> FileNotFoundException, NoAttributeException</span>{
+
+		logger.info(<span class="hljs-string">"now looking within "</span>+FilePathname);
+
+		Scanner eyes = <span class="hljs-keyword">new</span> Scanner (<span class="hljs-keyword">new</span> File(FilePathname));
+
+		String firstLine= eyes.nextLine();
+		String title = (firstLine.split(<span class="hljs-string">","</span>))[<span class="hljs-number">0</span>].trim();
+		String simulatedtime = (firstLine.split(<span class="hljs-string">","</span>))[<span class="hljs-number">1</span>].trim();
+		String tiltdegrees= (firstLine.split(<span class="hljs-string">","</span>))[<span class="hljs-number">2</span>].trim();
+		<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"Title"</span>, title.substring(title.indexOf(<span class="hljs-string">"\""</span>)+<span class="hljs-number">1</span>), <span class="hljs-string">"Title"</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"String"</span>));
+		<span class="hljs-keyword">this</span>.getGlobalAttribute(<span class="hljs-string">"start_time"</span>).value=simulatedtime;
+		String dateTokens[] = simulatedtime.split(<span class="hljs-string">"-"</span>);
+		String date = dateTokens[<span class="hljs-number">0</span>] + <span class="hljs-string">"-"</span> + dateTokens[<span class="hljs-number">1</span>] + <span class="hljs-string">"-"</span> + dateTokens[<span class="hljs-number">2</span>];
+		String time = dateTokens[<span class="hljs-number">3</span>] + <span class="hljs-string">":"</span> + dateTokens[<span class="hljs-number">4</span>] + <span class="hljs-string">":"</span> + dateTokens[<span class="hljs-number">5</span>] + <span class="hljs-string">"."</span> + dateTokens[<span class="hljs-number">6</span>];
+		<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"timestep_time"</span>, date+<span class="hljs-string">"T"</span>+time+<span class="hljs-string">"Z"</span>, <span class="hljs-string">"Current time"</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"String"</span>));
+		<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"B Tilt Degrees"</span>, tiltdegrees.substring(tiltdegrees.indexOf(<span class="hljs-string">"="</span>)+<span class="hljs-number">1</span>), <span class="hljs-string">"Magnetic Field (B) Tilt Degrees"</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"String"</span>));
+
+		String varsLine = eyes.next();
+		String tempholder = eyes.next();
+		<span class="hljs-keyword">while</span>(tempholder.indexOf(<span class="hljs-string">"ZONE"</span>)==-<span class="hljs-number">1</span>){
+			varsLine+=tempholder; 
+			tempholder= eyes.next();
+			logger.info(<span class="hljs-string">"tempholder: "</span> + tempholder);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>getting dimension info from the file using Scanner</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">int</span>[] dims = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">2</span>];
+		<span class="hljs-keyword">while</span> (!eyes.hasNextInt())
+			eyes.next();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>number refers to northern hemisphere only - add south and subtract equator which is duplicated
+dims[0]=2*eyes.nextInt()-1;</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		dims[<span class="hljs-number">0</span>] = eyes.nextInt();
+		<span class="hljs-keyword">while</span> (!eyes.hasNextInt())
+			eyes.next();
+		dims[<span class="hljs-number">1</span>]=eyes.nextInt();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>end - getting dimension info</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+		String varName;
+		String units;
+		<span class="hljs-keyword">int</span> variable = <span class="hljs-number">1</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>This gets the Variable Names and the units by parsing the file. 
+Adding Variable Objects</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">while</span>(varsLine.indexOf(<span class="hljs-string">"\""</span>)!=-<span class="hljs-number">1</span>){
+			varsLine = varsLine.substring(varsLine.indexOf(<span class="hljs-string">"\""</span>)+<span class="hljs-number">1</span>);
+			varName = varsLine.substring(<span class="hljs-number">0</span>,varsLine.indexOf(<span class="hljs-string">"["</span>));
+			varsLine = varsLine.substring(varsLine.indexOf(<span class="hljs-string">"["</span>)+<span class="hljs-number">1</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>if we know what to map the original name to, we will
+if not, we will give a generic kameleon name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">if</span>(orig2kamel.get(varName)!=<span class="hljs-keyword">null</span>)
+				<span class="hljs-keyword">this</span>.addVariableObject(<span class="hljs-keyword">new</span> Variable(varName,orig2kamel.get(varName)));
+			<span class="hljs-keyword">else</span>{
+				<span class="hljs-keyword">this</span>.addVariableObject(<span class="hljs-keyword">new</span> Variable(varName,<span class="hljs-string">"kameleon_identity_unknown"</span>+variable++));
+			}
+
+			units = varsLine.substring(<span class="hljs-number">0</span>, varsLine.indexOf(<span class="hljs-string">"]"</span>));
+			<span class="hljs-keyword">this</span>.getVariableObject(getNumVariables()-<span class="hljs-number">1</span>).addAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"units"</span>, units, <span class="hljs-string">"The units that the variable is in"</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"string"</span>));
+
+			<span class="hljs-keyword">int</span> sizeOfVariables = (dims[<span class="hljs-number">0</span>]*<span class="hljs-number">2</span>-<span class="hljs-number">1</span>)*dims[<span class="hljs-number">1</span>];
+			<span class="hljs-keyword">this</span>.getVariableObject(getNumVariables()-<span class="hljs-number">1</span>).dataValues= <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[sizeOfVariables];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>this.getVariableObject(getNumVariables()-1).getAttributeObject(“grid_system”);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			varsLine = varsLine.substring(varsLine.indexOf(<span class="hljs-string">"\""</span>)+<span class="hljs-number">1</span>);
+
+		}
+
+
+		tempholder = eyes.nextLine(); <span class="hljs-comment">//should be F=POINT</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>logger.info(“next line: “ + tempholder);</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>This adds the data to the each variable.
+tempholder = eyes.next();</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		List&lt;SWMFIonoData&gt; ionoData = <span class="hljs-keyword">new</span> ArrayList&lt;SWMFIonoData&gt;();
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; dims[<span class="hljs-number">0</span>]*dims[<span class="hljs-number">1</span>]; i++)
+		{
+			String nextLine = eyes.nextLine();
+			StringTokenizer st = <span class="hljs-keyword">new</span> StringTokenizer(nextLine);
+			<span class="hljs-keyword">if</span> (st.countTokens() != <span class="hljs-keyword">this</span>.getNumVariables())
+				nextLine += eyes.nextLine();
+			st = <span class="hljs-keyword">new</span> StringTokenizer(nextLine);
+			st.countTokens();
+
+			ionoData.add(<span class="hljs-keyword">new</span> SWMFIonoData(nextLine));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>((float[])(this.getVariableObject(variableNum).dataValues))[i]=nextFloat;</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>read southern hemisphere</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		tempholder = eyes.nextLine(); <span class="hljs-comment">//should be ZONE line</span>
+		tempholder = eyes.nextLine();<span class="hljs-comment">//should be I= ... F=POINT line</span>
+		logger.info(<span class="hljs-string">"next line: "</span> + tempholder);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <pre><code>tempholder = eyes.next();
+<span class="hljs-keyword">while</span>(tempholder.indexOf(<span class="hljs-string">"F="</span>)==-<span class="hljs-number">1</span>)
+    tempholder = eyes.next();
+</code></pre>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; (dims[<span class="hljs-number">0</span>])*dims[<span class="hljs-number">1</span>]; i++)
+		{
+			String nextLine = eyes.nextLine();
+			StringTokenizer st = <span class="hljs-keyword">new</span> StringTokenizer(nextLine);
+			<span class="hljs-keyword">if</span> (st.countTokens() != <span class="hljs-keyword">this</span>.getNumVariables())
+				nextLine += eyes.nextLine();
+			st = <span class="hljs-keyword">new</span> StringTokenizer(nextLine);
+			st.countTokens();
+			ionoData.add(<span class="hljs-keyword">new</span> SWMFIonoData(nextLine));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <pre><code>((<span class="hljs-keyword">float</span>[])(<span class="hljs-keyword">this</span>.getVariableObject(variableNum).dataValues))[i+(dims[<span class="hljs-number">0</span>]*dims[<span class="hljs-number">1</span>]-<span class="hljs-number">1</span>]=nextFloat;
+        } <span class="hljs-keyword">catch</span> (Exception e)
+        {
+            logger.info(<span class="hljs-string">"i: "</span> + i + <span class="hljs-string">" +dims: "</span> + (i+dims[<span class="hljs-number">0</span>]*dims[<span class="hljs-number">1</span>]-<span class="hljs-number">1</span>) + <span class="hljs-string">"dims*dims: "</span> + dims[<span class="hljs-number">0</span>]*dims[<span class="hljs-number">1</span>]);
+            System.exit(<span class="hljs-number">0</span>);
+        }
+</code></pre><p>}    </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		}
+
+		IonoComparatorLatitudeFirstLongitudeSecond LatLonSorter = <span class="hljs-keyword">new</span> IonoComparatorLatitudeFirstLongitudeSecond();
+		Collections.sort(ionoData, LatLonSorter);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>get the longitude values so we can store unique values. this will make it easier to search in the interpolator.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">float</span> longitudeArray[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[dims[<span class="hljs-number">1</span>]];
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; dims[<span class="hljs-number">1</span>]; i++)
+		{
+			longitudeArray[i] = ionoData.get(i).getVariable(SWMFIonoData.PSI);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>remove duplicates</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		List&lt;SWMFIonoData&gt; duplicatesRemoved = <span class="hljs-keyword">new</span> ArrayList&lt;SWMFIonoData&gt;();
+		duplicatesRemoved.add(ionoData.remove(<span class="hljs-number">0</span>));
+		<span class="hljs-keyword">while</span> (ionoData.size() &gt; <span class="hljs-number">0</span>)
+		{
+			SWMFIonoData current = ionoData.remove(<span class="hljs-number">0</span>);
+			<span class="hljs-keyword">if</span> (LatLonSorter.compare(current, duplicatesRemoved.get(duplicatesRemoved.size()-<span class="hljs-number">1</span>)) != <span class="hljs-number">0</span>)
+				duplicatesRemoved.add(current);
+			<span class="hljs-keyword">else</span>
+				System.out.println(<span class="hljs-string">"duplicate removed"</span>);
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Sort the records longitude first, then latitude, but sweep from the south pole to the north pole</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		IonoComparatorLongitudeFirstLatitudeSecond lonLatSorter = <span class="hljs-keyword">new</span> IonoComparatorLongitudeFirstLatitudeSecond();
+		Collections.sort(duplicatesRemoved, lonLatSorter);
+		<span class="hljs-keyword">float</span> latitudeArray[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[dims[<span class="hljs-number">0</span>]*<span class="hljs-number">2</span>-<span class="hljs-number">1</span>];
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; dims[<span class="hljs-number">0</span>]*<span class="hljs-number">2</span>-<span class="hljs-number">1</span>; i++)
+		{
+			latitudeArray[i] = <span class="hljs-number">90.0f</span> - duplicatesRemoved.get(i).getVariable(SWMFIonoData.THETA);
+		}
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; duplicatesRemoved.size(); i++)
+		{
+
+			SWMFIonoData currentDataLine = duplicatesRemoved.get(i);
+			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-keyword">this</span>.getNumVariables(); j++)
+			{
+				((<span class="hljs-keyword">float</span>[])(<span class="hljs-keyword">this</span>.getVariableObject(j).dataValues))[i] = currentDataLine.getVariable(j);
+			}
+		}
+
+		<span class="hljs-keyword">this</span>.getVariableObject(SWMFIonoData.PSI).dataValues = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[dims[<span class="hljs-number">1</span>]];
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; longitudeArray.length; i++)
+		{
+			((<span class="hljs-keyword">float</span>[])(<span class="hljs-keyword">this</span>.getVariableObject(SWMFIonoData.PSI).dataValues))[i] = longitudeArray[i];
+		}
+		<span class="hljs-keyword">this</span>.getVariableObject(SWMFIonoData.THETA).dataValues = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[dims[<span class="hljs-number">0</span>]*<span class="hljs-number">2</span>-<span class="hljs-number">1</span>];
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; latitudeArray.length; i++)
+		{
+			((<span class="hljs-keyword">float</span>[])(<span class="hljs-keyword">this</span>.getVariableObject(SWMFIonoData.THETA).dataValues))[i] = latitudeArray[i];
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <pre><code><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=((dims[<span class="hljs-number">0</span>]-<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>)*dims[<span class="hljs-number">1</span>]; eyes.hasNextFloat(); i++){
+    ((<span class="hljs-keyword">float</span>[])(<span class="hljs-keyword">this</span>.getVariableObject(i%<span class="hljs-keyword">this</span>.getNumVariables()).dataValues))[(<span class="hljs-keyword">int</span>)i/<span class="hljs-keyword">this</span>.getNumVariables()]=eyes.nextFloat();
+}
+</code></pre>
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>—————setting various fields for each variable—————</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-keyword">this</span>.getNumVariables(); i++){
+
+			Variable tempV= <span class="hljs-keyword">this</span>.getVariableObject(i);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>—-this is where we assign variable attributes (ccmc standard)—-
+Adds the Attribute Values to the CCMC Standard Variables. These attributes and attribute values come from Variables.xml.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			getAttrValues(tempV);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>setting the data type</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			tempV.dt= <span class="hljs-string">"float"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>setting number of elements</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			tempV.numElem = ((<span class="hljs-keyword">float</span>[])(tempV.dataValues)).length;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>setting number of dimensions</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			tempV.numDim = <span class="hljs-number">2</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>setting the dimension Sizes field for the Enlil Variable Object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			tempV.dimSizes= <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] {dims[<span class="hljs-number">0</span>]*<span class="hljs-number">2</span>-<span class="hljs-number">1</span>, dims[<span class="hljs-number">1</span>]};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>setting min and mix values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		}
+
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.getNumVariables(); i++)
+		{
+			<span class="hljs-keyword">if</span>(!CommandLineInterface.nominmaxFlag){
+				Variable var = <span class="hljs-keyword">this</span>.getVariableObject(i);
+				<span class="hljs-keyword">super</span>.minmaxCalculator(var, ((<span class="hljs-keyword">float</span>[])var.dataValues));	
+			}	
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>————————–end setting various fields——————–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-string">"SWMF Object"</span>;
+	}
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

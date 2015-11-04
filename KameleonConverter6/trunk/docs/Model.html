@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Model.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Model.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: Model.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: The object that stores all of the 
+ * 			Variables (Objects) and Global Attributes 
+ * 			(KAttribute Objects) for each Model. 
+ *  
+ * Modification History:
+ *  
+ * Summer 2011 	Donti, Nitesh
+ * 				Initial Development Started
+ * 				All tasks complete
+ * 				Ready to use
+ * 
+ * 
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+<span class="hljs-keyword">import</span> java.io.FileNotFoundException;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.HashMap;
+
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Model</span> </span>{
+
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(Model.class);
+
+	<span class="hljs-comment">/** Key = KameleonName,Value = Variable Object */</span>
+	<span class="hljs-keyword">private</span> HashMap &lt;String, Variable&gt; nameToVariable = <span class="hljs-keyword">new</span> HashMap&lt;String, Variable&gt;();
+
+	<span class="hljs-comment">/** Key = AttributeName,Value = Attribute Object */</span>
+	<span class="hljs-keyword">private</span> HashMap &lt;String, KAttribute&gt; nameToAttribute = <span class="hljs-keyword">new</span> HashMap&lt;String, KAttribute&gt;();
+
+	<span class="hljs-comment">/** The timestep number (if there are multiple). The converter will convert one full timestep at a time.*/</span>
+	<span class="hljs-keyword">private</span> String instanceNumber; 
+
+	<span class="hljs-comment">/** The collection of Variables for the Model.**/</span>
+	<span class="hljs-keyword">private</span> ArrayList&lt;Variable&gt; variableObjects = <span class="hljs-keyword">new</span> ArrayList&lt;Variable&gt;();
+
+	<span class="hljs-comment">/** The collection of Global Attributes for the Model.*/</span>
+	<span class="hljs-keyword">private</span> ArrayList&lt;KAttribute&gt; globalattributes = <span class="hljs-keyword">new</span> ArrayList&lt;KAttribute&gt;();
+
+	<span class="hljs-comment">/**
+	 * Maps the Original Name of the variable from the input file to the Kameleon Name that the CCMC uses. 
+	 */</span>
+	<span class="hljs-keyword">protected</span> HashMap&lt;String, String&gt; orig2kamel;
+
+	<span class="hljs-keyword">protected</span> VariableXMLParser varxmlparser;
+
+
+	<span class="hljs-comment">/**
+	 * Constructor for any model type. 
+	 * Calls the ModelXMLParser. 
+	 * <span class="hljs-doctag">@param</span> xmlmodelfile The name of the xml file for the model, which should look like [modelname].xml (e.g. enlil.xml). 
+	 */</span>
+	Model(String xmlmodelfile){
+		ModelXMLParser modelparser = <span class="hljs-keyword">new</span> ModelXMLParser(xmlmodelfile);
+		varxmlparser = <span class="hljs-keyword">new</span> VariableXMLParser(<span class="hljs-string">"Variables.xml"</span>);
+
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt; modelparser.getModelSpecGlbAttrs().length; i++){
+			<span class="hljs-keyword">this</span>.addGlobalAttribute(modelparser.getModelSpecGlbAttrs()[i]);
+		}
+		orig2kamel=modelparser.getNamesMap();
+	}
+
+	<span class="hljs-comment">/**
+	 * Adds to a CCMC standard variable the attribute values that have already been registered 
+	 * in the XML document entitled "Variables.xml".
+	 * Needs to make sure to not overwrite anything that has already been written. 
+	 * <span class="hljs-doctag">@param</span> var A variable that is in the XML document "Variables.xml".
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">getAttrValues</span><span class="hljs-params">(Variable var)</span> <span class="hljs-keyword">throws</span> NoAttributeException</span>{
+
+
+		<span class="hljs-keyword">try</span>
+		{
+			var.cal=varxmlparser.Kname2var.get(var.KameleonName).cal;
+		}
+		<span class="hljs-keyword">catch</span> (NullPointerException n){
+			logger.info(<span class="hljs-string">"**Problem with finding the CCMC attributes for this variable: "</span>+var.KameleonName);
+		}
+
+
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> p=<span class="hljs-number">0</span>; p&lt;var.cal.length-<span class="hljs-number">2</span>; p++) {
+
+			<span class="hljs-keyword">try</span>{
+				<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag)
+					logger.info(<span class="hljs-string">"variable attribute: "</span> + var.cal[p].name + <span class="hljs-string">" attribute value: "</span> + var.cal[p].value);
+				<span class="hljs-keyword">if</span>(var.getAttributeObject(var.cal[p].name).value==<span class="hljs-keyword">null</span>){
+					var.nameToAttribute.put(var.cal[p].name, var.cal[p]);
+				}
+			}
+			<span class="hljs-keyword">catch</span>(NullPointerException e){
+				e.printStackTrace();
+			}
+
+		}
+	}
+
+	<span class="hljs-comment">/**Adds a variable object to the model and to the model's hashmap.
+	 * 
+	 * <span class="hljs-doctag">@param</span> v Variable Object to be added to this Model
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addVariableObject</span><span class="hljs-params">(Variable v)</span></span>{
+		variableObjects.add(v);
+		nameToVariable.put(v.KameleonName, v);
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> Variable <span class="hljs-title">getVariableObject</span><span class="hljs-params">(<span class="hljs-keyword">int</span> u)</span></span>{
+		<span class="hljs-keyword">return</span> variableObjects.get(u);
+	}
+
+	<span class="hljs-comment">/**
+	 * 
+	 * <span class="hljs-doctag">@param</span> s The Kameleon Name of the Variable. 
+	 * <span class="hljs-doctag">@return</span>
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> Variable <span class="hljs-title">getVariableObject</span><span class="hljs-params">(String KamelS)</span> <span class="hljs-keyword">throws</span> NoVariableException</span>{
+		<span class="hljs-keyword">if</span>(nameToVariable.get(KamelS)==<span class="hljs-keyword">null</span>)
+			<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoVariableException();
+
+		<span class="hljs-keyword">return</span> nameToVariable.get(KamelS);
+	}
+
+
+	<span class="hljs-comment">/**Adds a global attribute to the model's ArrayList and to the model's HashMap.
+	 * 
+	 * <span class="hljs-doctag">@param</span> k   Global Attribute to be added to this Model
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addGlobalAttribute</span><span class="hljs-params">(KAttribute k)</span></span>{
+		globalattributes.add(k);
+		nameToAttribute.put(k.name, k);
+	}
+
+	<span class="hljs-comment">/**
+	 * Gets the Global Attribute from the ArrayList. 
+	 * <span class="hljs-doctag">@param</span> s  The index of the ArrayList from which to grab the Global Attribute. 
+	 * <span class="hljs-doctag">@return</span> The requested Global Attribute.
+	 */</span>
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> KAttribute <span class="hljs-title">getGlobalAttribute</span><span class="hljs-params">(<span class="hljs-keyword">int</span> g)</span> <span class="hljs-keyword">throws</span> NoAttributeException</span>{
+		<span class="hljs-keyword">if</span>(g&gt;=globalattributes.size() || g&lt;<span class="hljs-number">0</span>)
+			<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoAttributeException(<span class="hljs-string">"No Global Attribute available at index requested."</span>);
+
+		<span class="hljs-keyword">return</span> globalattributes.get(g);
+	}
+
+	<span class="hljs-comment">/**
+	 * Gets the Global Attribute from the HashMap. 
+	 * <span class="hljs-doctag">@param</span> s  The key to look for in the HashMap. 
+	 * <span class="hljs-doctag">@return</span> The requested Global Attribute.
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> KAttribute <span class="hljs-title">getGlobalAttribute</span><span class="hljs-params">(String s)</span> <span class="hljs-keyword">throws</span> NoAttributeException</span>{
+		<span class="hljs-keyword">if</span>(nameToAttribute.get(s)==<span class="hljs-keyword">null</span>)
+			<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NoAttributeException(<span class="hljs-string">"No Global Attribute exists by that name."</span>);
+		<span class="hljs-keyword">return</span> nameToAttribute.get(s);
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNumVariables</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> variableObjects.size();
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getGlobAttrsSize</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> globalattributes.size();
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">doesVarExist</span><span class="hljs-params">(String KamelName)</span></span>{
+		<span class="hljs-keyword">return</span> !(nameToVariable.get(KamelName)==<span class="hljs-keyword">null</span>);
+	}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>/////////////////////////////////////////////////////////////////</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+
+	String FilePathname;
+	String OutputDirectory;
+	String DatabaseInfoFile;
+	String[] AuxiliaryFiles;
+
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setFilePathname</span><span class="hljs-params">(String path)</span></span>{
+		FilePathname = path;
+	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setOutputDirectory</span><span class="hljs-params">(String od)</span></span>{
+		OutputDirectory=od;
+	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setDatabaseInfoFile</span><span class="hljs-params">(String file)</span></span>{
+		DatabaseInfoFile = file;
+	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setAuxiliaryFiles</span><span class="hljs-params">(String[] af)</span></span>{
+		AuxiliaryFiles = af;
+	}
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setTimestep</span><span class="hljs-params">(String t)</span></span>{
+		instanceNumber=t;
+	}
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTimestep</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> instanceNumber;
+	}
+
+	<span class="hljs-comment">/**
+	 * Parses an XML file with the standard CCMC Global Attributes for all Models.
+	 * Puts these Global Attributes in the Model and into its HashMap.
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 * <span class="hljs-doctag">@throws</span> FileNotFoundException 
+	 * <span class="hljs-doctag">@throws</span> IOException 
+	 * <span class="hljs-doctag">@throws</span> NoVariableException 
+	 * <span class="hljs-doctag">@throws</span> Exception 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException, FileNotFoundException, NoVariableException, IOException</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Parses an XML file with the standard CCMC Global Attributes for each Model</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		String f = <span class="hljs-string">"GlobalCCMCAttributeNames.xml"</span>;
+		AttributeXMLParser a = <span class="hljs-keyword">new</span> AttributeXMLParser(f);
+		KAttribute[] cal = a.getAttributes();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Puts these global attributes in the Model and its HashMap</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;cal.length; i++){
+			<span class="hljs-keyword">this</span>.addGlobalAttribute(cal[i]);	
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>This global CCMC attribute is standard for all models. It simply states the terms of usage of this software. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"terms_of_usage"</span>, <span class="hljs-string">"***For tracking purposes of our government sponsors, we ask that you notify the "</span> +
+				<span class="hljs-string">"CCMC \nwhenever you use CCMC results in scientific publications or presentations: ccmc@ccmc.gsfc.nasa.gov"</span>, <span class="hljs-string">"CCMC Disclaimer Text: "</span> +
+				<span class="hljs-string">"For tracking purposes for our government sponsors, we ask that you notify the CCMC whenever you use CCMC results in a scientific "</span> +
+				<span class="hljs-string">"publication or presentation."</span>, <span class="hljs-string">"ccmc"</span>, <span class="hljs-string">"string"</span>));
+
+		<span class="hljs-keyword">if</span>(DatabaseInfoFile!=<span class="hljs-keyword">null</span>)
+			<span class="hljs-keyword">new</span> DatabaseInfoParser(DatabaseInfoFile, <span class="hljs-keyword">this</span>);
+		<span class="hljs-keyword">else</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>gets the name of the directory in which all of the input files are</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			String directoryPath= FilePathname.substring(<span class="hljs-number">0</span>,FilePathname.lastIndexOf(<span class="hljs-string">"/"</span>));
+			getGlobalAttribute(<span class="hljs-string">"run_registration_number"</span>).value=directoryPath.substring(directoryPath.lastIndexOf(<span class="hljs-string">"/"</span>)+<span class="hljs-number">1</span>);
+		}
+
+	}
+
+
+	<span class="hljs-comment">/**
+	 * Calculates the Actual Minimum Value and the Actual Maximum Value
+	 * of the data array of the Variable Object that is passed in. 
+	 * <span class="hljs-doctag">@param</span> var A Variable Object
+	 * <span class="hljs-doctag">@param</span> f The float[] that holds the data of the Variable Object that is passed in. This float[] should be the Variable's dataValues Object, but cast to a float[].
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">minmaxCalculator</span><span class="hljs-params">(Variable var, <span class="hljs-keyword">float</span>[] f)</span></span>{
+		<span class="hljs-keyword">float</span> min_value = Float.MAX_VALUE;
+		<span class="hljs-keyword">float</span> max_value = -Float.MAX_VALUE;
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>; t &lt; f.length; t++){
+			<span class="hljs-keyword">if</span> (f[t] &lt; min_value)
+			{
+				min_value =f[t];
+			} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (f[t] &gt; max_value)
+			{
+				max_value = f[t];
+			}
+		}
+
+		<span class="hljs-keyword">try</span>
+		{
+			var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value=min_value;
+			var.getAttributeObject(<span class="hljs-string">"actual_max"</span>).value=max_value;
+			<span class="hljs-keyword">int</span> min_location=-<span class="hljs-number">1</span>;
+			<span class="hljs-keyword">int</span> max_location=-<span class="hljs-number">1</span>;
+			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u = <span class="hljs-number">0</span>; u&lt;var.cal.length; u++){
+				KAttribute k = var.cal[u];
+				<span class="hljs-keyword">if</span> (k.name.equals(<span class="hljs-string">"actual_min"</span>)){
+					min_location = u;
+				}
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (k.name.equals(<span class="hljs-string">"actual_max"</span>)){
+					max_location = u;
+				}
+			}
+			var.cal[min_location]=var.getAttributeObject(<span class="hljs-string">"actual_min"</span>);
+			var.cal[max_location]=var.getAttributeObject(<span class="hljs-string">"actual_max"</span>);
+		} <span class="hljs-keyword">catch</span> (Exception e)
+		{
+			e.printStackTrace();
+		}
+
+	}
+
+	<span class="hljs-comment">/**
+	 * Calculates the Actual Minimum Value and the Actual Maximum Value
+	 * of the data array of the Variable Object that is passed in. 
+	 * <span class="hljs-doctag">@param</span> var A Variable Object
+	 * <span class="hljs-doctag">@param</span> f The int[] that holds the data of the Variable Object that is passed in. This int[] should be the Variable's dataValues Object, but cast to a float[].
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">minmaxCalculator</span><span class="hljs-params">(Variable var, <span class="hljs-keyword">int</span>[] f)</span></span>{
+		<span class="hljs-keyword">int</span> min_value = Integer.MAX_VALUE;
+		<span class="hljs-keyword">int</span> max_value = Integer.MIN_VALUE;
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> t = <span class="hljs-number">0</span>; t &lt; f.length; t++){
+			<span class="hljs-keyword">if</span> (f[t] &lt;= min_value)
+			{
+				min_value =f[t];
+			}
+			<span class="hljs-keyword">if</span> (f[t] &gt;= max_value)
+			{
+				max_value = f[t];
+			}
+		}
+
+		<span class="hljs-keyword">try</span>
+		{
+			var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value=min_value;
+			logger.debug(var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value);
+			var.getAttributeObject(<span class="hljs-string">"actual_max"</span>).value=max_value;
+			logger.debug(var.getAttributeObject(<span class="hljs-string">"actual_max"</span>).value);
+		} <span class="hljs-keyword">catch</span> (NoAttributeException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
