@@ -70,15 +70,20 @@ public class ENLIL extends Model{
 		//opening the enlil time file to get all of the information
 		logger.info("Now OPENING " + FilePathname);
 		//if opening this file does not work, the Command Line Interface will handle the exception and alert the user
-		file=NetcdfFile.open(FilePathname);
-		setGlobalAttrs();
-		setVariableAttrs();
-		
-		this.getGlobalAttribute("original_output_file_name").value=
-			this.FilePathname.substring(this.FilePathname.lastIndexOf('/'));
-		logger.info("\n\nThe information for your new java "+ this 
-				+" has just been read from the original file!");
-		logger.debug(super.getVariableObject(6).cal[9]);
+		NetcdfFile file = null;
+		try {
+			file=NetcdfFile.open(FilePathname);
+			setGlobalAttrs();
+			setVariableAttrs();
+			
+			this.getGlobalAttribute("original_output_file_name").value=
+				this.FilePathname.substring(this.FilePathname.lastIndexOf('/'));
+			logger.info("\n\nThe information for your new java "+ this 
+					+" has just been read from the original file!");
+			logger.debug(super.getVariableObject(6).cal[9]);
+		} finally {
+			file.close();
+		}
 	}
 
 
