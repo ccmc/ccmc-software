@@ -97,6 +97,13 @@ else()
 	message(${msg_prefix} "Will NOT build Kameleon with HDF5.")
 endif(BUILD_HDF5)
 
+option(BUILD_JAVA "Build java wrappers" ON)
+if(BUILD_JAVA)
+	message(STATUS ${msg_prefix} "Will build java wrappers")
+else()
+	message(STATUS ${msg_prefix} "Will NOT build java wrappers")
+endif()
+
 
 #============= CDF ==============
 message("Getting CDF..")

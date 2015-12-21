@@ -7,6 +7,10 @@ import numpy as np
 import collections
 import json
 import base64
+from collections import namedtuple
+import numpy.ma as ma
+import matplotlib.pyplot as plt
+from matplotlib import ticker
 
 
 def main(argv):
@@ -115,157 +119,7 @@ def main(argv):
 				print '\t',attr_name, ':', getAttributeValue(attr)
 	
 	interpolator = kameleon.createNewInterpolator()
-
-	def get_position_components(default_names = ['x','y','z']):
-		if kameleon.doesAttributeExist('grid_system_1'):
-			attr = kameleon.getGlobalAttribute('grid_system_1')
-			component_names = getAttributeValue(attr)
-			if args.debug: print 'component names attribute:', component_names
-			return component_names.split('[')[1].split(']')[0].split(',')
-		else:
-			return default_names
-
-	def get_variable_format(positions_out_flag, justification = True):
-		if justification:
-			just = len(('{0:'+args.format+'}').format(0))
-		else:
-			just = 0
-		var_format = ''
-		var_names = ''
-		if positions_out_flag:
-			for i, pos_name in enumerate(get_position_components()):
-				var_names += pos_name.rjust(just)+args.delimiter
-				var_format += '{' + str(i) + ':'+ args.format +'}' + args.delimiter
-		for i,var_name in enumerate(args.variables):
-			var_format += '{' + str(i+3*positions_out_flag) + ':'+ args.format +'}' + args.delimiter*((i+1)!=len(args.variables))
-			vis_unit = kameleon.getVisUnit(var_name)
-			var_names += ('{0}[{1}]'.format(var_name, vis_unit)).rjust(just)+args.delimiter*((i+1)!=len(args.variables))
-		if args.debug: 
-			print 'variable names for output:', var_names
-			print 'variable formats:', var_format
-		return var_format, just, var_names
-
-	def get_rows_columns(n):
-			if args.vis_rows != None:
-				rows = args.vis_rows
-			else:
-				rows = int(np.floor(np.sqrt(n)))
-			if args.vis_columns != None:
-				columns = args.vis_columns
-			else:
-				columns = int(np.ceil(float(n)/rows))
-			if args.verbose: print 'plotting rows, columns:', rows, columns
-			return rows, columns
-
-	def index_where_equal(L, value, equal = True, else_value = -1):
-			if equal: 
-				return next((i for i, v in enumerate(L) if v == value), else_value)
-			else: 
-				return next((i for i, v in enumerate(L) if v != value), else_value)
-
-	if args.visualize:
-		if module_exists("matplotlib"):
-			import matplotlib.pyplot as plt
-			import matplotlib.ticker as ticker
-			import numpy.ma as ma
-			from collections import namedtuple
-		else:
-			print 'Need matplotlib to visualize, please install: pip install matplotlib'
-			exit()
-
-	def plot_slice(	grid, resolution, variables, slices = (None,None, None), contour_values = None, contour_levels = 10, point = None, title = None):
-		"""Plot slice of data. Could be interpolated or raw data.
-
-			Args: 
-				grid (tuple or list of 3D arrays): c0, c1, c2 arrays
-				resolution (int tuple): resolution of the input grid.
-				variables (named tuple of arrays): variable arrays matching grid
-				slices (optional int tuple): slice indices. Defaults to (None, None, None).
-					The first non-None slice will be used
-				contour_values (optional): 2 x Nvar ranges for variable colormap
-				contour_levels: number of contours in each plot
-				point (optional): a point to plot
-		"""			
-		PlotTuple = namedtuple('PlotTuple', ['x','y','var'])
-
-		model_coordinates = get_coordinates(kameleon)
-		missing_value = kameleon.getMissingValue()
-		if args.verbose: print 'missing value is ', missing_value
-
-		rows, columns = get_rows_columns(len(variables))
-		
-		fig, axs = plt.subplots(rows,columns)
-		fig.subplots_adjust(hspace=0.34, wspace = .34, left = .1)
-		axs = axs.ravel()
-
-		slice_ = [slice(None), slice(None), slice(None)]
-
-		#see if grid resolution has a dimension of size 1
-		slice_dim = index_where_equal(resolution, value = 1)
-		if slice_dim != -1: # a 2D grid
-			slice_num = 0 
-		else: # a 3D grid. see whether a slice was specified
-			slice_dim = index_where_equal(slices, value = None, equal = False)
-			if slice_dim != -1:
-				slice_num = slices[slice_dim]
-			else:
-				if args.verbose: print 'no slice specified.'
-				slice_dim, slice_num = 2, 0
-
-		if args.verbose: print 'slicing dim', slice_dim,'at', slice_num
-		slice_[slice_dim] = slice_num
-
-		x_label,y_label = [c for i, c in enumerate(model_coordinates) if i in args.plot_coordinates] 
-		plot_coordinates = [s[slice_].squeeze() for i, s in enumerate(grid) if i in args.plot_coordinates]
-		if point != None:
-			plot_point = [p_ for i, p_ in enumerate(point) if i != slice_dim]
-
-		for var_index, var_name in enumerate(variables._fields):
-			variable = variables[var_index]
-			if variable.shape != resolution: #prep for slicing
-				variable.resize(resolution)
-			variable_slice = variable[slice_].squeeze()
-
-			if args.verbose: print var_name, variables[var_index].shape, 'sliced:', variable_slice.shape
-			variable_slice = ma.masked_values(variable_slice,kameleon.getMissingValue())
-			plot_tuple = PlotTuple(*plot_coordinates,var=variable_slice)
-
-			if contour_values == None:
-				if args.verbose: print '\tmin,max:', variable_slice.min(), variable_slice.max()
-				levels = np.linspace(variable_slice.min(),variable_slice.max(),contour_levels)
-			elif len(contour_values)/2 == len(args.variables): #use levels from input:	
-				levels = np.linspace(contour_values[var_index*2], contour_values[var_index*2+1], contour_levels)
-			else:
-				levels = np.linspace(variable_slice.min(),variable_slice.max(),contour_levels)
-			try:
-				if args.verbose > 1:
-					print 'plot_tuple:'
-					for i, field in enumerate(plot_tuple._fields): 
-						print '\t',field, plot_tuple[i].shape, 'range:', plot_tuple[i].min(), plot_tuple[i].max()
-				cs = axs[var_index].contourf(*plot_tuple, levels = levels, extend = 'both')
-			except TypeError:
-				for i, field in enumerate(plot_tuple._fields): print field, plot_tuple[i].shape
-				print 'slice_, slice_dim', slice_, slice_dim
-				print 'grid:'
-				for i, g in enumerate(grid): 
-					print '\t', i, g.shape, 'sliced:', g[slice_].shape
-				print 'plot_coordinates:'
-				for c in plot_coordinates: print '\t', c.shape
-				raise
-
-			axs[var_index].set_title(var_name)
-			axs[var_index].set_xlabel(x_label)
-			axs[var_index].set_ylabel(y_label)
-			cbar = fig.colorbar(cs, ax=axs[var_index], shrink=0.9, format=ticker.FuncFormatter(fmt))
-		
-			units = kameleon.getVariableAttribute(var_name, 'units').getAttributeString()
-			cbar.ax.set_ylabel(var_name + ' [' + units +  ']')
-			if point != None:
-				if args.verbose: print '\tplotting point', plot_point
-				axs[var_index].plot(plot_point[0],plot_point[1],'o')
-
-		if title!= None:
-			fig.text(0.5, .95, title, ha = 'center', fontsize = 18)
+	
 
 	if args.variables:		
 		if args.verbose: 
@@ -284,7 +138,7 @@ def main(argv):
 			if args.verbose: print 'exclusing positions from output'
 			variables_tuple = collections.namedtuple('Variables', args.variables)
 
-		var_format, ljust, var_names = get_variable_format(args.positions_out_flag)
+		var_format, ljust, var_names = get_variable_format(kameleon, args, args.positions_out_flag)
 
 		if args.point:
 			c0, c1, c2 = args.point
@@ -384,7 +238,7 @@ def main(argv):
 				if 'md' in args.file_format:
 					if args.verbose: print 'writting ASCII markdown table to', args.output_file + '.md'
 					args.delimiter = ' | '
-					var_format, ljust, var_names = get_variable_format(args.positions_out_flag, False)
+					var_format, ljust, var_names = get_variable_format(kameleon, args, args.positions_out_flag, False)
 					with open(args.output_file + '.md', 'w') as f:
 						f.write(var_names)
 						f.write('\n')
@@ -448,11 +302,154 @@ def main(argv):
 			if args.resolution != None:
 				#plot variables on user-defined grid slice
 				arg_slices = args.slice_0, args.slice_1, args.slice_2
-				plot_slice([x,y,z], args.resolution, results, arg_slices, 
+				plot_slice(kameleon, args, [x,y,z], args.resolution, results, arg_slices, 
 							args.contour_values, args.contour_levels, args.point, 
 							title = args.input_file.split('/')[-1])
 				plt.show()
-			
+
+def plot_slice(kameleon, args, grid, resolution, variables, slices = (None,None, None), contour_values = None, contour_levels = 10, point = None, title = None):
+	"""Plot slice of data. Could be interpolated or raw data.
+
+		Args: 
+			grid (tuple or list of 3D arrays): c0, c1, c2 arrays
+			resolution (int tuple): resolution of the input grid.
+			variables (named tuple of arrays): variable arrays matching grid
+			slices (optional int tuple): slice indices. Defaults to (None, None, None).
+				The first non-None slice will be used
+			contour_values (optional): 2 x Nvar ranges for variable colormap
+			contour_levels: number of contours in each plot
+			point (optional): a point to plot
+	"""			
+	
+	PlotTuple = namedtuple('PlotTuple', ['x','y','var'])
+
+	model_coordinates = get_coordinates(kameleon)
+	missing_value = kameleon.getMissingValue()
+	if args.verbose: print 'missing value is ', missing_value
+
+	rows, columns = get_rows_columns(args, len(variables))
+	
+	fig, axs = plt.subplots(rows,columns)
+	fig.subplots_adjust(hspace=0.34, wspace = .34, left = .1)
+	axs = axs.ravel()
+
+	slice_ = [slice(None), slice(None), slice(None)]
+
+	#see if grid resolution has a dimension of size 1
+	slice_dim = index_where_equal(resolution, value = 1)
+	if slice_dim != -1: # a 2D grid
+		slice_num = 0 
+	else: # a 3D grid. see whether a slice was specified
+		slice_dim = index_where_equal(slices, value = None, equal = False)
+		if slice_dim != -1:
+			slice_num = slices[slice_dim]
+		else:
+			if args.verbose: print 'no slice specified.'
+			slice_dim, slice_num = 2, 0
+
+	if args.verbose: print 'slicing dim', slice_dim,'at', slice_num
+	slice_[slice_dim] = slice_num
+
+	x_label,y_label = [c for i, c in enumerate(model_coordinates) if i in args.plot_coordinates] 
+	plot_coordinates = [s[slice_].squeeze() for i, s in enumerate(grid) if i in args.plot_coordinates]
+	if point != None:
+		plot_point = [p_ for i, p_ in enumerate(point) if i != slice_dim]
+
+	for var_index, var_name in enumerate(variables._fields):
+		variable = variables[var_index]
+		if variable.shape != resolution: #prep for slicing
+			variable.resize(resolution)
+		variable_slice = variable[slice_].squeeze()
+
+		if args.verbose: print var_name, variables[var_index].shape, 'sliced:', variable_slice.shape
+		variable_slice = ma.masked_values(variable_slice,kameleon.getMissingValue())
+		plot_tuple = PlotTuple(*plot_coordinates,var=variable_slice)
+
+		if contour_values == None:
+			if args.verbose: print '\tmin,max:', variable_slice.min(), variable_slice.max()
+			levels = np.linspace(variable_slice.min(),variable_slice.max(),contour_levels)
+		elif len(contour_values)/2 == len(args.variables): #use levels from input:	
+			levels = np.linspace(contour_values[var_index*2], contour_values[var_index*2+1], contour_levels)
+		else:
+			levels = np.linspace(variable_slice.min(),variable_slice.max(),contour_levels)
+		try:
+			if args.verbose > 1:
+				print 'plot_tuple:'
+				for i, field in enumerate(plot_tuple._fields): 
+					print '\t',field, plot_tuple[i].shape, 'range:', plot_tuple[i].min(), plot_tuple[i].max()
+			cs = axs[var_index].contourf(*plot_tuple, levels = levels, extend = 'both')
+		except TypeError:
+			for i, field in enumerate(plot_tuple._fields): print field, plot_tuple[i].shape
+			print 'slice_, slice_dim', slice_, slice_dim
+			print 'grid:'
+			for i, g in enumerate(grid): 
+				print '\t', i, g.shape, 'sliced:', g[slice_].shape
+			print 'plot_coordinates:'
+			for c in plot_coordinates: print '\t', c.shape
+			raise
+
+		axs[var_index].set_title(var_name)
+		axs[var_index].set_xlabel(x_label)
+		axs[var_index].set_ylabel(y_label)
+		cbar = fig.colorbar(cs, ax=axs[var_index], shrink=0.9, format=ticker.FuncFormatter(fmt))
+	
+		units = kameleon.getVariableAttribute(var_name, 'units').getAttributeString()
+		cbar.ax.set_ylabel(var_name + ' [' + units +  ']')
+		if point != None:
+			if args.verbose: print '\tplotting point', plot_point
+			axs[var_index].plot(plot_point[0],plot_point[1],'o')
+
+	if title!= None:
+		fig.text(0.5, .95, title, ha = 'center', fontsize = 18)
+
+def get_position_components(kameleon, args, default_names = ['x','y','z']):
+	if kameleon.doesAttributeExist('grid_system_1'):
+		attr = kameleon.getGlobalAttribute('grid_system_1')
+		component_names = getAttributeValue(attr)
+		if args.debug: print 'component names attribute:', component_names
+		return component_names.split('[')[1].split(']')[0].split(',')
+	else:
+		return default_names
+
+def get_variable_format(kameleon, args, positions_out_flag, justification = True):
+	if justification:
+		just = len(('{0:'+args.format+'}').format(0))
+	else:
+		just = 0
+	var_format = ''
+	var_names = ''
+	if positions_out_flag:
+		for i, pos_name in enumerate(get_position_components()):
+			var_names += pos_name.rjust(just)+args.delimiter
+			var_format += '{' + str(i) + ':'+ args.format +'}' + args.delimiter
+	for i,var_name in enumerate(args.variables):
+		var_format += '{' + str(i+3*positions_out_flag) + ':'+ args.format +'}' + args.delimiter*((i+1)!=len(args.variables))
+		vis_unit = kameleon.getVisUnit(var_name)
+		var_names += ('{0}[{1}]'.format(var_name, vis_unit)).rjust(just)+args.delimiter*((i+1)!=len(args.variables))
+	if args.debug: 
+		print 'variable names for output:', var_names
+		print 'variable formats:', var_format
+	return var_format, just, var_names
+
+def get_rows_columns(args, n):
+		if args.vis_rows != None:
+			rows = args.vis_rows
+		else:
+			rows = int(np.floor(np.sqrt(n)))
+		if args.vis_columns != None:
+			columns = args.vis_columns
+		else:
+			columns = int(np.ceil(float(n)/rows))
+		if args.verbose: print 'plotting rows, columns:', rows, columns
+		return rows, columns
+
+def index_where_equal(L, value, equal = True, else_value = -1):
+		if equal: 
+			return next((i for i, v in enumerate(L) if v == value), else_value)
+		else: 
+			return next((i for i, v in enumerate(L) if v != value), else_value)
+
+
 @np.vectorize
 def interpolate_variables(interpolator, variables_tuple, c0,c1,c2, positions_out_flag):
 	"""returns a named tuple of interpolated variables"""

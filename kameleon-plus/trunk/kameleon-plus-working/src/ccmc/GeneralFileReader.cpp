@@ -164,6 +164,7 @@ namespace ccmc
 		    }
 		} catch (bp::error_already_set) {
 			PyErr_Print();
+			return status;
 		}
 
 #endif /* HAVE_PYTHON */
