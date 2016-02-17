@@ -16,7 +16,7 @@ import inspect
 class FileReaderFactory(object):
 	def __init__(self, config_file = None):
 		self.debug = False
-		if config_file == None:
+		if config_file is None:
 			# print '\tFileReaderFactory called without config file, building default test reader' 
 			Config = ConfigParser.ConfigParser()
 			Config.add_section('Reader')
@@ -526,8 +526,13 @@ def getConfig(config_file):
 	try:
 		Config.read(config_file)
 	except:
-		print 'could not read config file'
-		raise
+		print 'could not read as config file. checking directory for config.ini'
+		dir_ = os.path.dirname(os.path.realpath(config_file))
+		try: 
+			Config.read(dir_+'/config.ini')
+		except:
+			print 'could not find config file'
+			raise
 	Config.sections()
 	return Config
 
