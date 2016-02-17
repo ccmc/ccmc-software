@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ENLIL.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>ENLIL.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: ENLIL.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: Custom read routine for the 
+ * 			Enlil input model file. Supports those
+ * 			with and without extra CME data. 
+ *  
+ * Modification History:
+ *  
+ * Summer 2011 	Donti, Nitesh
+ * 				Initial Development Started
+ * 				All tasks complete
+ * 				Ready to use
+ * 
+ * Tasks:	Need to update the README because developers
+ * 	 		no longer use the EVP files. 	 
+ * 
+ * Winter 2012: Starting to build support for Enlil files with CMEs
+ *  			Bug fixes and adapting to other changes that occurred over the year  
+ * 
+ */</span>
+
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+<span class="hljs-keyword">import</span> ucar.ma2.Array;
+<span class="hljs-keyword">import</span> ucar.nc2.NetcdfFile;
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ENLIL</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span></span>{
+	<span class="hljs-keyword">boolean</span> has_CME;
+
+	<span class="hljs-comment">/**
+	 * Logger for the ENLIL.java class. 
+	 * Use Logger.info(), Logger.debug(), and Logger.error() to print
+	 * statements out within the class. 
+	 */</span>
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(ENLIL.class);
+
+	<span class="hljs-comment">/**The Netcdf/Enlil file from which to read.*/</span>
+	NetcdfFile file;          		
+
+	<span class="hljs-comment">/**
+	 * The List of Variables from the NetCDF File. Note that these Variables are
+	 * different from the CDF Variables and from the KameleonConverter Variables. 
+	 */</span>
+	java.util.List&lt;ucar.nc2.Variable&gt; ncVariables;
+
+	ENLIL(<span class="hljs-keyword">boolean</span> has_CME){
+		<span class="hljs-keyword">super</span>(has_CME? <span class="hljs-string">"enlilcme.xml"</span>:<span class="hljs-string">"enlil.xml"</span>);
+		<span class="hljs-keyword">this</span>.has_CME = has_CME;
+	}
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException
+	 * <span class="hljs-doctag">@throws</span> IOException 
+	 * <span class="hljs-doctag">@throws</span> NoVariableException 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException, NoVariableException, IOException</span>{
+		<span class="hljs-keyword">super</span>.read();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>opening the enlil time file to get all of the information</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		logger.info(<span class="hljs-string">"Now OPENING "</span> + FilePathname);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>if opening this file does not work, the Command Line Interface will handle the exception and alert the user</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		file=NetcdfFile.open(FilePathname);
+		setGlobalAttrs();
+		setVariableAttrs();
+		
+		<span class="hljs-keyword">this</span>.getGlobalAttribute(<span class="hljs-string">"original_output_file_name"</span>).value=
+			<span class="hljs-keyword">this</span>.FilePathname.substring(<span class="hljs-keyword">this</span>.FilePathname.lastIndexOf(<span class="hljs-string">'/'</span>));
+		logger.info(<span class="hljs-string">"\n\nThe information for your new java "</span>+ <span class="hljs-keyword">this</span> 
+				+<span class="hljs-string">" has just been read from the original file!"</span>);
+		logger.debug(<span class="hljs-keyword">super</span>.getVariableObject(<span class="hljs-number">6</span>).cal[<span class="hljs-number">9</span>]);
+	}
+
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setGlobalAttrs</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException</span>{
+		logger.info(<span class="hljs-string">"\nsetting Global Attributes..."</span>);
+
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt;file.getGlobalAttributes().size(); i++){
+			<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag)
+				logger.debug(file.getGlobalAttributes().get(i));
+
+			String prefix=<span class="hljs-string">""</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>this keyword is the name of the global attribute from the enlil 
+file that tells us what time the file is simulating</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			String keyword = <span class="hljs-string">"refdate_cal"</span>;
+
+			<span class="hljs-keyword">if</span>(file.getGlobalAttributes().get(<span class="hljs-number">0</span>).getName().toLowerCase().indexOf(<span class="hljs-string">"type"</span>)!=-<span class="hljs-number">1</span>){
+				prefix+=file.getGlobalAttributes().get(<span class="hljs-number">0</span>).getStringValue().toLowerCase()+<span class="hljs-string">"_"</span>;
+			}
+			<span class="hljs-keyword">if</span>(file.getGlobalAttributes().get(<span class="hljs-number">2</span>).getName().toLowerCase().indexOf(<span class="hljs-string">"label"</span>)!=-<span class="hljs-number">1</span> &amp;&amp; !file.getGlobalAttributes().get(<span class="hljs-number">2</span>).getStringValue().equals(<span class="hljs-string">""</span>)){
+				prefix+=file.getGlobalAttributes().get(<span class="hljs-number">2</span>).getStringValue().toLowerCase()+<span class="hljs-string">"_"</span>;
+			}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>adding the new global attributes with prefix “time_”</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">if</span>(file.getGlobalAttributes().get(i).getValue(<span class="hljs-number">0</span>)!=<span class="hljs-keyword">null</span> &amp;&amp; !file.getGlobalAttributes().get(i).getValue(<span class="hljs-number">0</span>).equals(<span class="hljs-string">""</span>)){
+				<span class="hljs-keyword">if</span>(file.getGlobalAttributes().get(i).getName().equals(keyword))
+					<span class="hljs-keyword">this</span>.getGlobalAttribute(<span class="hljs-string">"start_time"</span>).value=file.getGlobalAttributes().get(i).getValue(<span class="hljs-number">0</span>);
+				<span class="hljs-keyword">else</span>
+					<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute (prefix+file.getGlobalAttributes().get(i).getName(), file.getGlobalAttributes().get(i).getValue(<span class="hljs-number">0</span>), <span class="hljs-keyword">null</span>, <span class="hljs-string">"model"</span>, file.getGlobalAttributes().get(i).getDataType().name()));
+			}
+		}
+
+		<span class="hljs-keyword">int</span> grid_system_1_number_of_dimensions=<span class="hljs-number">0</span>;
+		<span class="hljs-keyword">int</span> dimension_num=<span class="hljs-number">0</span>;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> u=<span class="hljs-number">0</span>; u&lt;file.getDimensions().size(); u++){
+			<span class="hljs-keyword">if</span>(file.getDimensions().get(u).getLength()&gt;<span class="hljs-number">1</span>){
+				grid_system_1_number_of_dimensions++;
+				<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"grid_system_1_dimension_"</span> + (++dimension_num) + <span class="hljs-string">"_size"</span>,file.getDimensions().get(u).getLength(),<span class="hljs-string">"Size of dimension m for grid n (e.g. grid_system_1_dimension_2_size)"</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"int"</span>));
+			}
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>i’m not sure if this is needed. I have to test.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		grid_system_1_number_of_dimensions=<span class="hljs-number">3</span>;
+		<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"grid_system_1_number_of_dimensions"</span>,grid_system_1_number_of_dimensions,<span class="hljs-string">"The number m of how many dimensions are in grid n. So for every grid there will be a corresponding grid_system_n_number_of_dimensions attribute (e.g. The first grid will have an attribute grid_system_1_number_of_dimensions)"</span> ,<span class="hljs-string">"model"</span>, <span class="hljs-string">"int"</span>));
+		<span class="hljs-keyword">if</span>(grid_system_1_number_of_dimensions&gt;<span class="hljs-number">3</span>){
+			logger.error(<span class="hljs-string">"The Grid System has greater than 3 dimensions. There has been a change to the ENLIL structure. Please check the standards and the input files."</span>);
+			logger.error(<span class="hljs-string">"EXITING..."</span>);
+			System.exit(<span class="hljs-number">0</span>);
+		}
+
+	}
+
+	<span class="hljs-comment">/**
+	 * This CREATES the VARIABLES and sets the ModelSpecificVariableAttributes for the Enlil Variables. 
+	 * For the CCMC Variable Attributes, the Writer Object will set the values, because those are hardcoded in an xml file entitled Variables.xml. 
+	 * 
+	 * This Also Writes the Data to the Variable Objects.
+	 * 
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException
+	 * <span class="hljs-doctag">@throws</span> NoVariableException 
+	 * <span class="hljs-doctag">@throws</span> IOException 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setVariableAttrs</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException, NoVariableException, IOException</span>{
+		logger.info(<span class="hljs-string">"\nsetting Variable Attributes..."</span>);
+		ncVariables = file.getVariables();
+
+		<span class="hljs-comment">/**
+		 * A temporary model specific attribute that holds the place of a model specific attribute that was just added to the variable.
+		 */</span>
+		KAttribute tempMSA; 
+
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;ncVariables.size() ; i++){
+			<span class="hljs-comment">/**
+			 * A temporary variable that holds the place of a variable that was just added to the object. 
+			 */</span>
+			Variable tempV = <span class="hljs-keyword">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>if we know what to map the original name to, we will
+if not, we will add it as an unknown kameleon variable</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">if</span>(!ncVariables.get(i).getName().equals(<span class="hljs-string">"TIME"</span>) &amp;&amp; !ncVariables.get(i).getName().equals(<span class="hljs-string">"DT"</span>) &amp;&amp; !ncVariables.get(i).getName().equals(<span class="hljs-string">"NSTEP"</span>)){
+
+				logger.info(<span class="hljs-string">"Starting to read full Variable Data for Variable #"</span> + (i+<span class="hljs-number">1</span>) + <span class="hljs-string">" of "</span>+ ncVariables.size());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>mapping original name to kameleon name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">if</span>(orig2kamel.get(ncVariables.get(i).getName())!=<span class="hljs-keyword">null</span>){
+					tempV=<span class="hljs-keyword">new</span> Variable(ncVariables.get(i).getName(),orig2kamel.get(ncVariables.get(i).getName()));}
+				<span class="hljs-keyword">else</span>{
+					logger.info(<span class="hljs-string">"**No Kameleon name known for this input variable: "</span>+ncVariables.get(i).getName());
+					tempV= <span class="hljs-keyword">new</span> Variable(ncVariables.get(i).getName(),<span class="hljs-string">"kameleon_identity_unknown"</span>+i);
+				}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>setting the number of elements field of an Enlil Variable Object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				tempV.numElem=(<span class="hljs-keyword">int</span>)(ncVariables.get(i).getSize());</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>setting the number of dimensions field for an Enlil Variable Object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				tempV.numDim=ncVariables.get(i).getRank();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>setting the dimension Sizes field for the Enlil Variable Object</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				tempV.dimSizes= <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[ncVariables.get(i).getRank()];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>both versions have 2+ dimensions here, depending on the variable. The 1st is always either 1 (no CME) or 2 (CME).</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Adds the Attribute Values to the CCMC Standard Variables. These attributes and attribute values come from Variables.xml. 
+This must be added before the Actual Min/Max are converted and before the Model Specific Attributes are added. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				getAttrValues(tempV);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Adds Model Specific Attributes to Variables</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;ncVariables.get(i).getAttributes().size();j++){
+					tempMSA=<span class="hljs-keyword">new</span> KAttribute(ncVariables.get(i).getAttributes().get(j).getName(), 
+							ncVariables.get(i).getAttributes().get(j).getValue(<span class="hljs-number">0</span>), <span class="hljs-keyword">null</span>, <span class="hljs-string">"model"</span>,
+							ncVariables.get(i).getAttributes().get(j).getDataType().toString());
+					tempV.addAttribute(tempMSA);
+				}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>The reason we add the CCMC Variable Attributes first is so that the actual data from the NetCDF File can overwrite the standard data if need be. 
+lutz says to extract the data in two parts, one for each layer. then, if it’s CME, make a new variable with an appended name. so EnlilCMEs have twice the (significant) variables.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>——————————-setting the DATA for the Enlil Variable  AND CALCULATING Actual Min/Max—————–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				tempV.dt = ncVariables.get(i).getDataType().toString().toLowerCase();
+				<span class="hljs-keyword">if</span> (tempV.dt.equalsIgnoreCase(<span class="hljs-string">"double"</span>) || tempV.dt.equalsIgnoreCase(<span class="hljs-string">"boolean"</span>)){
+					<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag)
+						logger.debug(<span class="hljs-string">"TYPE: "</span>+tempV.dt.toUpperCase());
+				}
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tempV.dt.equalsIgnoreCase(<span class="hljs-string">"int"</span>)){
+
+					<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag)
+						logger.debug(<span class="hljs-string">"TYPE: INT"</span>);
+					<span class="hljs-keyword">try</span> {
+						Array a = ncVariables.get(i).read();
+						tempV.dataValues=(<span class="hljs-keyword">int</span>[]) a.copyTo1DJavaArray();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>						<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.has_CME){
+							<span class="hljs-keyword">int</span>[] vals = ((<span class="hljs-keyword">int</span> []) tempV.dataValues);
+							<span class="hljs-keyword">int</span> val_indexer =<span class="hljs-number">0</span>;
+							<span class="hljs-keyword">int</span>[] values_set1 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[vals.length/<span class="hljs-number">2</span>]; 
+							<span class="hljs-keyword">int</span>[] values_set2 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[vals.length/<span class="hljs-number">2</span>];
+
+							<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> f : vals){
+								<span class="hljs-keyword">if</span> (val_indexer&lt;vals.length/<span class="hljs-number">2</span>){
+									values_set1[val_indexer]=f;
+								}
+								<span class="hljs-keyword">else</span>{
+									values_set2[val_indexer%(vals.length/<span class="hljs-number">2</span>)]=f;								
+								}
+								val_indexer++;
+							}
+
+							tempV.dataValues = values_set1;      					<span class="hljs-comment">//what I'm doing here is only assigning the first layer to this variable (the one with the full output including the CME cone model)</span>
+							tempV.dimSizes[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+							tempV.numElem/=<span class="hljs-number">2</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>—-creating a background variable for the EnlilCME case…–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					
+							Variable background_var;
+							<span class="hljs-keyword">if</span>(orig2kamel.get(ncVariables.get(i).getName())!=<span class="hljs-keyword">null</span>){
+								logger.info(ncVariables.get(i).getName());
+								background_var=<span class="hljs-keyword">new</span> Variable(ncVariables.get(i).getName()+<span class="hljs-string">"'"</span>,orig2kamel.get(ncVariables.get(i).getName()+<span class="hljs-string">"'"</span>));
+								background_var.dataValues = values_set2;
+								background_var.numElem=tempV.numElem;
+								background_var.numDim = tempV.numDim;
+								background_var.dimSizes = tempV.dimSizes;
+								background_var.dt = tempV.dt;
+
+								getAttrValues(background_var);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>setting min and max values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>								<span class="hljs-keyword">if</span>(!CommandLineInterface.nominmaxFlag){
+									minmaxCalculator(background_var, (<span class="hljs-keyword">int</span>[]) background_var.dataValues);	
+								}
+
+								<span class="hljs-keyword">this</span>.addVariableObject(background_var);
+							}
+							<span class="hljs-keyword">else</span>{
+								logger.error(<span class="hljs-string">"**"</span>+ncVariables.get(i).getName()+<span class="hljs-string">" has no Kameleon name and was not added as a variable."</span>);
+							}
+						}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>						
+						<span class="hljs-keyword">if</span>(!CommandLineInterface.nominmaxFlag){
+							<span class="hljs-keyword">super</span>.minmaxCalculator(tempV, ((<span class="hljs-keyword">int</span>[])tempV.dataValues));
+						}
+
+					} <span class="hljs-keyword">catch</span> (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (tempV.dt.equalsIgnoreCase(<span class="hljs-string">"float"</span>)){
+					<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag)
+						logger.debug(<span class="hljs-string">"TYPE: FLOAT"</span>);
+					<span class="hljs-keyword">try</span> {
+
+						Array a = ncVariables.get(i).read();
+						<span class="hljs-keyword">if</span>(CommandLineInterface.verboseFlag){
+							logger.info(<span class="hljs-string">"info: "</span>+ a.shapeToString());
+						}
+						tempV.dataValues = (<span class="hljs-keyword">float</span>[]) a.copyTo1DJavaArray();
+
+						<span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.has_CME){
+							<span class="hljs-keyword">float</span>[] vals = ((<span class="hljs-keyword">float</span> []) tempV.dataValues);
+							<span class="hljs-keyword">int</span> val_indexer =<span class="hljs-number">0</span>;
+							<span class="hljs-keyword">float</span>[] values_set1 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[vals.length/<span class="hljs-number">2</span>]; 
+							<span class="hljs-keyword">float</span>[] values_set2 = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[vals.length/<span class="hljs-number">2</span>];
+
+							<span class="hljs-keyword">for</span> (<span class="hljs-keyword">float</span> f : vals){
+								<span class="hljs-keyword">if</span> (val_indexer&lt;vals.length/<span class="hljs-number">2</span>){
+									values_set1[val_indexer]=f;
+								}
+								<span class="hljs-keyword">else</span>{
+									values_set2[val_indexer%(vals.length/<span class="hljs-number">2</span>)]=f;								
+								}
+								val_indexer++;
+							}
+
+							tempV.dataValues = values_set1;      					<span class="hljs-comment">//what I'm doing here is only assigning the first layer to this variable (the one with the full output including the CME cone model)</span>
+							tempV.dimSizes[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+							tempV.numElem/=<span class="hljs-number">2</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>—-creating a background variable for the EnlilCME case…–</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					
+							Variable background_var;
+							<span class="hljs-keyword">if</span>(orig2kamel.get(ncVariables.get(i).getName())!=<span class="hljs-keyword">null</span>){
+								logger.info(ncVariables.get(i).getName());
+								background_var=<span class="hljs-keyword">new</span> Variable(ncVariables.get(i).getName()+<span class="hljs-string">"'"</span>,orig2kamel.get(ncVariables.get(i).getName()+<span class="hljs-string">"'"</span>));
+								background_var.dataValues = values_set2;
+								background_var.numElem=tempV.numElem;
+								background_var.numDim = tempV.numDim;
+								background_var.dimSizes = tempV.dimSizes;
+								background_var.dt = tempV.dt;
+
+								getAttrValues(background_var);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>setting min and max values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>								<span class="hljs-keyword">if</span>(!CommandLineInterface.nominmaxFlag){
+									minmaxCalculator(background_var, (<span class="hljs-keyword">float</span>[]) background_var.dataValues);	
+								}
+
+								<span class="hljs-keyword">this</span>.addVariableObject(background_var);
+							}
+							<span class="hljs-keyword">else</span>{
+								logger.error(<span class="hljs-string">"**"</span>+ncVariables.get(i).getName()+<span class="hljs-string">" has no Kameleon name and was not added as a variable."</span>);
+							}
+						}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>setting min and max values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>						<span class="hljs-keyword">if</span>(!CommandLineInterface.nominmaxFlag){
+							<span class="hljs-keyword">super</span>.minmaxCalculator(tempV, (<span class="hljs-keyword">float</span>[]) tempV.dataValues);				
+						}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+					} <span class="hljs-keyword">catch</span> (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				<span class="hljs-keyword">else</span> {
+					logger.error(<span class="hljs-string">"\n***ERROR***Data type of variable"</span>+tempV.originalName+<span class="hljs-string">" is unknown. Adding anyway with little information..."</span>);
+				}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>—————————————end setting data for enlil variable————————————-</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">this</span>.addVariableObject(tempV);
+			}
+			<span class="hljs-keyword">else</span>{
+				logger.info(<span class="hljs-string">"Skipping Variable #"</span>+(i+<span class="hljs-number">1</span>)+<span class="hljs-string">" because it is not required as a Variable Object."</span>);
+				<span class="hljs-keyword">if</span>(ncVariables.get(i).getSize()==<span class="hljs-number">1</span>){
+					String name=ncVariables.get(i).getName();
+
+					<span class="hljs-keyword">if</span>(name.equalsIgnoreCase(<span class="hljs-string">"NSTEP"</span>))
+						name=<span class="hljs-string">"time_numerical_time_step"</span>;
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(name.equalsIgnoreCase(<span class="hljs-string">"DT"</span>))
+						name=<span class="hljs-string">"time_physical_time_step"</span>;
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(name.equalsIgnoreCase(<span class="hljs-string">"TIME"</span>))
+						name=<span class="hljs-string">"time_physical_time"</span>;
+					logger.info(<span class="hljs-string">"...Adding its value as a Global Attribute instead."</span>);
+
+					<span class="hljs-keyword">if</span>(ncVariables.get(i).getDataType().toString().toLowerCase().indexOf(<span class="hljs-string">"float"</span>)!=-<span class="hljs-number">1</span>){
+						<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(name,ncVariables.get(i).readScalarFloat(), <span class="hljs-keyword">null</span>,<span class="hljs-string">"model"</span>, <span class="hljs-string">"float"</span>));
+					}
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ncVariables.get(i).getDataType().toString().toLowerCase().indexOf(<span class="hljs-string">"int"</span>)!=-<span class="hljs-number">1</span>){
+						<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(name,ncVariables.get(i).readScalarInt(), <span class="hljs-keyword">null</span>,<span class="hljs-string">"model"</span>,<span class="hljs-string">"int"</span>));
+					}
+					<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ncVariables.get(i).getDataType().toString().toLowerCase().indexOf(<span class="hljs-string">"string"</span>)!=-<span class="hljs-number">1</span>){
+						<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(name,ncVariables.get(i).readScalarString(), <span class="hljs-keyword">null</span>,<span class="hljs-string">"model"</span>, <span class="hljs-string">"string"</span>));
+					}
+
+				}<span class="hljs-keyword">else</span>{
+					logger.error(<span class="hljs-string">"//Purpose of Variable #"</span>+ (i+<span class="hljs-number">1</span>) + <span class="hljs-string">" unknown."</span>);
+				}
+			}
+			
+			<span class="hljs-comment">/*
+			if(tempV!=null){
+				logger.debug(tempV);
+
+				for(KAttribute e: tempV.cal){
+					logger.debug(e);
+				}
+			}
+			*/</span>
+			
+			
+		}
+
+		
+		<span class="hljs-keyword">if</span>(doesVarExist(<span class="hljs-string">"r1"</span>) &amp;&amp; doesVarExist(<span class="hljs-string">"theta1"</span>) &amp;&amp; doesVarExist(<span class="hljs-string">"phi1"</span>)){
+			<span class="hljs-keyword">this</span>.getGlobalAttribute(<span class="hljs-string">"grid_system_count"</span>).value=<span class="hljs-number">2</span>; 
+			<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"grid_system_2"</span>,<span class="hljs-string">"[r1,theta1,phi1]"</span> , <span class="hljs-string">"Outline how a particular grid system is defined by showing coordinates used (e.g. [X,Y,Z] where X,Y,Z are position variables defined in current file)"</span>,<span class="hljs-string">"model"</span>,<span class="hljs-string">"String"</span> ));
+			<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"grid_2_type"</span>,<span class="hljs-string">"HNM"</span> ,<span class="hljs-string">"Keywords identifying all grids used in current model output. Grid types will be registered in external coordinate transformation package. (e.g. grid_1_type=GSM)"</span>,<span class="hljs-string">"model"</span>, <span class="hljs-string">"String"</span>));
+
+			Variable v = <span class="hljs-keyword">this</span>.getVariableObject(<span class="hljs-string">"r1"</span>);
+
+			<span class="hljs-keyword">int</span> grid_system_2_number_of_dimensions=<span class="hljs-number">0</span>;
+			<span class="hljs-keyword">int</span> dimension_num=<span class="hljs-number">0</span>;
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> u=<span class="hljs-number">0</span>; u&lt;v.numDim; u++){
+				<span class="hljs-keyword">if</span>(v.dimSizes[u]&gt;<span class="hljs-number">1</span>){
+					grid_system_2_number_of_dimensions++;
+					<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"grid_system_2_dimension_"</span> + (++dimension_num) + <span class="hljs-string">"_size"</span>,(<span class="hljs-keyword">int</span>)(v.dimSizes[u]),<span class="hljs-string">"Size of dimension m for grid n (e.g. grid_system_1_dimension_2_size)"</span>,<span class="hljs-string">"model"</span>, <span class="hljs-string">"int"</span>));
+				}
+			}
+			<span class="hljs-keyword">this</span>.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(<span class="hljs-string">"grid_system_2_number_of_dimensions"</span>,grid_system_2_number_of_dimensions,<span class="hljs-string">"The number m of how many dimensions are in grid n. So for every grid there will be a corresponding grid_system_n_number_of_dimensions attribute (e.g. The first grid will have an attribute grid_system_1_number_of_dimensions)"</span> ,<span class="hljs-string">"model"</span>,<span class="hljs-string">"int"</span>));
+			<span class="hljs-keyword">if</span>(grid_system_2_number_of_dimensions&gt;<span class="hljs-number">3</span>){
+				logger.error(<span class="hljs-string">"The Grid System 2 has greater than 3 dimensions. There has been a change to the ENLIL structure. Please check the standards and the input files."</span>);
+				logger.error(<span class="hljs-string">"EXITING..."</span>);
+				System.exit(<span class="hljs-number">0</span>);
+			}
+
+		}
+
+
+		<span class="hljs-keyword">if</span>(doesVarExist(<span class="hljs-string">"bp"</span>)){
+			<span class="hljs-keyword">this</span>.addPolarityCorrectionVariable(<span class="hljs-string">"VARIABLE CREATED FROM BP/bp + B1/br"</span>, <span class="hljs-string">"b1r"</span>, <span class="hljs-string">"br"</span>);
+			<span class="hljs-keyword">this</span>.addPolarityCorrectionVariable(<span class="hljs-string">"VARIABLE CREATED FROM BP/bp + B2/btheta"</span>,<span class="hljs-string">"b1theta"</span>, <span class="hljs-string">"btheta"</span>);
+			<span class="hljs-keyword">this</span>.addPolarityCorrectionVariable(<span class="hljs-string">"VARIABLE CREATED FROM BP/bp + B3/bphi"</span>, <span class="hljs-string">"b1phi"</span>, <span class="hljs-string">"bphi"</span>);
+		}
+
+		logger.info(<span class="hljs-string">"\n Created "</span>+ <span class="hljs-keyword">this</span>.getNumVariables() + <span class="hljs-string">" variable(s)."</span>);
+	}
+
+
+	<span class="hljs-comment">/**
+	 * This creates a new variable that is a copy of an old variable except with possible changes in its data. 
+	 * If the value of the BP variable is negative at some index, then this new variable's value will be the original variable's data times negative one. 
+	 * 
+	 * E.g.   BP variable = "bp"       new variable = "b1r"     original variable = "br"
+	 * 
+	 * if BP Variable has a value of -4 at its index#8 in its data array, then new variable will have the opposite value at index#8 than does original variable. 
+	 * 
+	 * <span class="hljs-doctag">@param</span> origName For the new variable, the original name that you want it to have (briefly explaining how it was created)
+	 * <span class="hljs-doctag">@param</span> KamelName For the new variable, the Kameleon name that you want it to have. 
+	 * <span class="hljs-doctag">@param</span> origVarKamelName The Kameleon name of the Variable of which you are correcting the polarity. 
+	 * <span class="hljs-doctag">@throws</span> NoVariableException In the case that some variable does not exist (even though this is already checked).
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addPolarityCorrectionVariable</span><span class="hljs-params">(String origName, String KamelName, String origVarKamelName)</span> <span class="hljs-keyword">throws</span> NoVariableException</span>{
+
+		<span class="hljs-keyword">if</span>(doesVarExist(origVarKamelName)){
+			Variable tempNewVar = <span class="hljs-keyword">new</span> Variable(origName, KamelName);
+			Variable tempOrigVar= <span class="hljs-keyword">this</span>.getVariableObject(origVarKamelName);
+
+			<span class="hljs-keyword">try</span> {
+				tempNewVar.dataValues=((<span class="hljs-keyword">float</span>[])tempOrigVar.dataValues).clone();
+			} <span class="hljs-keyword">catch</span> (ClassCastException e) {
+				tempNewVar.dataValues=((<span class="hljs-keyword">int</span>[])tempOrigVar.dataValues).clone();
+			}
+
+			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;tempOrigVar.numElem; i++){
+				((<span class="hljs-keyword">float</span>[])tempNewVar.dataValues)[i]*=-<span class="hljs-number">1</span>;
+			}
+
+			tempNewVar.dimSizes=tempOrigVar.dimSizes.clone();
+			tempNewVar.dt=tempOrigVar.dt;
+			tempNewVar.numDim=tempOrigVar.numDim;
+			tempNewVar.numElem=tempOrigVar.numElem;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Adds the Attribute Values to the CCMC Standard Variables. These attributes and attribute values come from Variables.xml. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">try</span> {
+				tempNewVar.cal=varxmlparser.Kname2var.get(tempNewVar.KameleonName).cal;
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> p=<span class="hljs-number">0</span>; p&lt;tempNewVar.cal.length; p++)
+					tempNewVar.nameToAttribute.put(tempNewVar.cal[p].name, tempNewVar.cal[p]);
+			} <span class="hljs-keyword">catch</span> (Exception e) {
+				e.printStackTrace();
+			}
+
+
+			<span class="hljs-keyword">if</span>(!CommandLineInterface.nominmaxFlag){
+
+				<span class="hljs-keyword">if</span>(tempOrigVar.dt.equalsIgnoreCase(<span class="hljs-string">"float"</span>)){
+					<span class="hljs-keyword">super</span>.minmaxCalculator(tempNewVar, ((<span class="hljs-keyword">float</span>[])tempNewVar.dataValues));}
+				<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tempOrigVar.dt.equalsIgnoreCase(<span class="hljs-string">"int"</span>)){
+					<span class="hljs-keyword">super</span>.minmaxCalculator(tempNewVar, ((<span class="hljs-keyword">int</span>[])tempNewVar.dataValues));}
+
+			}
+
+			<span class="hljs-keyword">this</span>.addVariableObject(tempNewVar);
+			logger.info(<span class="hljs-string">"Adding new variable - "</span>+KamelName+<span class="hljs-string">" - in order to correct polarity of variable "</span>+ origVarKamelName+<span class="hljs-string">"."</span>);
+
+		}
+
+	}
+
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> has_CME? <span class="hljs-string">"EnlilCME Object"</span> : <span class="hljs-string">"Enlil Object"</span>;
+	}
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

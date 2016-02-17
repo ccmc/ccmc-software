@@ -7,6 +7,7 @@
 #include "Adapt3D.h"
 #include "SWMFIono.h"
 #include "LFM.h"
+#include "PythonModel.h"
 #include "CDFFileReader.h"
 #include <string>
 #include <boost/algorithm/string.hpp>
@@ -21,56 +22,85 @@ namespace ccmc
 	{
 		//need to store filename
 		//need to intialize relevant information
+#ifdef DEBUG
+		std::cout << "\tKameleon::open(" << filename << ")" << std::endl;
+#endif
 
-		std::cout << "Kameleon::open(" << filename << ")" << std::endl;
 		GeneralFileReader generalFileReader;
 		long status = generalFileReader.open(filename);
 
 		if (status == FileReader::OK)
 		{
-			std::cout<<"File reader was succesful. Does model_name attribute exist?"<<std::endl;
+#ifdef DEBUG
+			std::cout<<"\tKameleon::open File reader was succesful. Does model_name attribute exist?"<<std::endl;
+#endif
+			this->pythonModel = (generalFileReader.getGlobalAttribute("python_model")).getAttributeInt();
+
+
 			if (generalFileReader.doesAttributeExist("model_name"))
 			{
-				std::cout << "model_name attribute exists... loading model_name"<<std::endl;
+#ifdef DEBUG
+				std::cout << "\tKameleon::open model_name attribute exists... loading model_name"<<std::endl;
+#endif
 				this->modelName = (generalFileReader.getGlobalAttribute("model_name")).getAttributeString();
-				std::cout << "Kameleon::open() Model name: '" << modelName << "'" << std::endl;
-
+#ifdef DEBUG
+				std::cout << "\tKameleon::open Model name: '" << modelName << "' closing" << std::endl;
+#endif
 				generalFileReader.close();
-				if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
+
+				if (pythonModel != 0) { 
+				//can override existing models with python readers
+#ifdef DEBUG
+					std::cout <<"\tKameleon::open creating PythonModel object for " << modelName << std::endl;
+#endif
+					model = new PythonModel();
+					
+				} else if (modelName == "open_ggcm" || modelName == "ucla_ggcm")
 				{
-					//std::cout << "created OpenGGCM object" << std::endl;
-					model = new OpenGGCM();
+#ifdef DEBUG
+					std::cout << "\tKameleon::open creating OpenGGCM object" << std::endl;
+#endif
+					model = new OpenGGCM();				
 				} else if (modelName == "batsrus")
 				{
-					//std::cout << "created BATSRUS object" << std::endl;
-					model = new BATSRUS();
+#ifdef DEBUG
+					std::cout << "\tKameleon::open creating BATSRUS object" << std::endl;
+#endif
+					model = new BATSRUS();				
 				} else if (modelName == "enlil")
 				{
-					//std::cout << "created ENLIL object" << std::endl;
-					model = new ENLIL();
+#ifdef DEBUG
+					std::cout << "\tKameleon::open creating ENLIL object" << std::endl;
+#endif
+					model = new ENLIL();				
 				} else if (modelName == "mas")
 				{
-					//std::cout << "created MAS object" << std::endl;
-					model = new MAS();
+#ifdef DEBUG
+					std::cout << "\tKameleon::open creating MAS object" << std::endl;
+#endif
+					model = new MAS();				
 				} else if (modelName == "ADAPT3D")
 				{
-					//std::cout << "created Adapt3D object" << std::endl;
-					model = new Adapt3D();
+#ifdef DEBUG
+					std::cout << "\tKameleon::open creating Adapt3D object" << std::endl;
+#endif
+					model = new Adapt3D();				
 				} else if (modelName == "swmf")
 				{
-					model = new SWMFIono();
+#ifdef DEBUG
+					std::cout << "\tKameleon::open creating swmf ionosphere object" << std::endl;
+#endif
+					model = new SWMFIono();				
 				} else if (modelName == "LFM")
 				{
-					//sdt::cout <<"created LFM object" << std::endl;
+#ifdef DEBUG
+					std::cout <<"\tKameleon::open creating LFM object" << std::endl;
+#endif
 					model = new LFM();
-				} else if (modelName == "python_model") //embedded model, ooo
-				{
-					// model = new PythonModel();
-					//std::cout <<"created PythonModel object"
+
 				} else
 				{	//unknown model
 				
-
 					if (model != NULL)
 						delete model;
 					model = NULL;
@@ -104,7 +134,7 @@ namespace ccmc
 
 			}
 		}
-		std::cout<< "kameleon open returning with status:" << status << std::endl;
+		// std::cout<< "kameleon open returning with status:" << status << std::endl;
 		return status;
 
 	}

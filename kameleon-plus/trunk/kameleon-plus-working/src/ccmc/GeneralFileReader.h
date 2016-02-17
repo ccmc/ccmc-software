@@ -17,10 +17,6 @@
 #include <boost/python.hpp>
 
 
-
-
-
-
 namespace ccmc
 {
 

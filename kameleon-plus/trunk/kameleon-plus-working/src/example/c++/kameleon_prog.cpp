@@ -11,6 +11,9 @@
 #include <boost/random/linear_congruential.hpp>
 #include <boost/random/uniform_real.hpp>
 #include <boost/random/variate_generator.hpp>
+#ifdef HAVE_PYTHON
+#include <boost/python.hpp> 
+#endif
 
 int main (int argc, char * argv[])
 {
@@ -35,23 +38,26 @@ int main (int argc, char * argv[])
 
 	{
 		long status = kameleon.open(filename);
-		std::cout << "Opened file: " << filename << " with status: " << status << std::endl;
+		std::cout << "main: opened file: " << filename << " with status: " << status << std::endl;
 		if (status == ccmc::FileReader::OK)
 		{
 			std::cout <<"main: kameleon file was opened successfully" << std::endl;
 			bool successLoading = kameleon.loadVariable(variable);
-			ccmc::Interpolator * interpolator = kameleon.createNewInterpolator();
-
-			std::cout << "starting interpolations" << std::endl;
-
-			float value = 0.f;
+			if (successLoading)
 			{
-				value = interpolator->interpolate(variable, c0, c1, c2);
-				std::cout << "value: " << value << std::endl;
+				ccmc::Interpolator * interpolator = kameleon.createNewInterpolator();
+				std::cout << "starting interpolations" << std::endl;
+				float value = 0.f;
+				{
+					value = interpolator->interpolate(variable, c0, c1, c2);
+					std::cout << "value: " << value << std::endl;
+				}
+				std::cout << "deleting interpolator"<<std::endl;
+				delete interpolator;				
 			}
-
-			std::cout << "deleting interpolator"<<std::endl;
-			delete interpolator;
+			else{
+				std::cout << "Could not load variable" << variable << std::endl;
+			}
 			kameleon.close();
 		}
 	}

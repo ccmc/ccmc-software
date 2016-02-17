@@ -13,6 +13,9 @@ namespace ccmc
 	 */
 	void Kameleon::initializeListOfRequiredVariablesForComponentsAndVectors()
 	{
+#ifdef DEBUG
+		std::cout << "Kameleon::initializeListOfRequiredVariablesForComponentsAndVectors" <<std::endl;
+#endif
 		//base variables
 		//TODO: Fix these
 

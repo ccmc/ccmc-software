@@ -1,3 +1,7 @@
+2015 September 14 Asher Pembroke
+--------------------------------
+
+
 2015 June 29 Asher Pembroke
 --------------
 kameleon-plus-6.1.0
@@ -7,8 +11,10 @@ kameleon-plus-6.1.0
   custom ARMS_test.py (tests and visualizes ARMS reading/interpolating)
   pyModel_test.py (tests embedded reader)
 
-Todo:
-  - Make python readers/interpolators compatable with Kameleon objects
+- Embedded python interpolators/readers are now compaitable with kameleon class
+- New debug mode: 
+    cmake -DCMAKE_BUILD_TYPE:STRING=Debug will add DEBUG preprocessor def
+    #ifdef DEBUG also sets the python model variable self.debug = True
 
 Bugs:
   - cmake may pick up incompatiable python libraries if you installed with homebrew:

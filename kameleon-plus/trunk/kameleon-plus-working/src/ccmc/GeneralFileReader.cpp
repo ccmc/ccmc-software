@@ -10,9 +10,13 @@
 #include "Constants.h"
 #include "FileReader.h"
 #include "CDFFileReader.h"
+#ifdef HAVE_HDF5
 #include "HDF5FileReader.h"
+#endif
 #include "GeneralFileReader.h"
-#include <boost/python.hpp> //Todo:put ifdef here
+#ifdef HAVE_PYTHON
+#include <boost/python.hpp> 
+#endif
 #include <string>
 #include <vector>
 #include <deque>
@@ -20,9 +24,9 @@
 #include <fstream>
 #include <queue>
 #include <sstream>
-
-namespace bp = boost::python; //Todo:put ifdef here
-
+#ifdef HAVE_PYTHON
+namespace bp = boost::python; 
+#endif
 namespace ccmc
 {
 	namespace pyglobals{
@@ -72,7 +76,7 @@ namespace ccmc
 		// std::cout << "Checking if the file is an HDF5 file" << std::endl;
 		delete fileReader;
 
-		this->fileReader = new HDF5FileReader::HDF5FileReader();
+		this->fileReader = new HDF5FileReader();
 
 		status = fileReader->open(filename);
 		// std::cerr << "opened HDF5 file. status: " << status << std::endl;
@@ -91,57 +95,67 @@ namespace ccmc
 		// std::cout <<"ccmc directory:"<< CCMC_DIR << std::endl;
 
 		if (ccmc::pyglobals::PYTHON_IS_INITIALIZED != true)
-			{
-				std::cout <<"python initializing.." << std::endl;
-				Py_Initialize();
+			{	//string conversion from header-definened PYTHON_EXE to char* is hard..
+				std::stringstream ss;
+				ss << PYTHON_EXE;
+				std::string python_exe_str;
+				ss >> python_exe_str;
+				char *pyexe = new char[python_exe_str.length()+1];
+				std::strcpy(pyexe,python_exe_str.c_str());
+#ifdef DEBUG
+				std::cout <<"\tGeneralFileReader::open python initializing.." << std::endl;
+				std::cout <<"running python interpreter " << python_exe_str << std::endl;
+#endif	
+				//need to initialize with path to python executable
+				// Py_SetProgramName();
+				// char python_exe[80]("/Users/apembrok/anaconda/bin/python");
+				Py_SetProgramName(pyexe);
+				Py_Initialize(); 
+				PyRun_SimpleString("import sys");
+#ifdef DEBUG
+				PyRun_SimpleString("print sys.version");
+#endif
+				// std::cout <<"\tpython home: " << Py_GetPythonHome() << std::endl;
 				ccmc::pyglobals::PYTHON_IS_INITIALIZED = true;
 			}
 		
-		
 		bp::object main = bp::import("__main__");
 		this->python_namespace = main.attr("__dict__");
-		
-
 
 		try {
+			//set python variable ccmc_path = ${KAMELEON_SRC_DIR}/ccmc/
 			std::string path_string("ccmc_path = \'");
-			path_string += CCMC_DIR;
+			path_string += CCMC_DIR; //set by CMake via kameleon-plus-Config 
 			path_string += "\'\n";
-			bp::exec(path_string.c_str(),this->python_namespace);
+			bp::exec(path_string.c_str(),this->python_namespace); 
 
+			//set paths to find pyreaders and pyKameleon module
 			bp::exec(
-				"import os,sys\n"
+				"import sys,os\n"
 				"sys.path.append(ccmc_path)\n"
 				"sys.path.append(ccmc_path +\'../../lib/ccmc/\')\n"
 				"sys.path.append(ccmc_path +\'pyreaders/\')\n"
 				,this->python_namespace
 			);
+
+			//create factory object that generates a new FileReader subclass from filename
 			std::string run_string("from pyreaders import testReader\n");
 			run_string+= "factory = testReader.FileReaderFactory(\'"; 
 			run_string+= filename; 
 			run_string+= "\')\n";
-
 			bp::exec(run_string.c_str(),this->python_namespace);
 			bp::exec("python_reader = factory.createPyReader()\n",this->python_namespace);
-
-			// put pyreader build path in Kameleon-plus-Config.h
-			// PyRun_SimpleString("import os,sys\nsys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders')\n");
-			// PyRun_SimpleString("sys.path.append('/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/ccmc/pyreaders/build')\n");
-
-			// PyRun_SimpleString("import testReader\n");
-			// PyRun_SimpleString("print testReader.__dict__.keys()\n");
-			// std::string run_string("factory = testReader.FileReaderFactory(\'"); run_string+= filename; run_string+= "\')\n";
-			// PyRun_SimpleString(run_string.c_str());
-			// PyRun_SimpleString("python_reader = factory.createPyReader()\n");
+#ifdef DEBUG
+			bp::exec("python_reader.debug = True\n",this->python_namespace);
+#endif
 
 
+			// retrieve file_reader object from python and cast to FileReader pointer
 		    bp::object file_reader_obj = this->python_namespace["python_reader"];
-			
-		    // std::cout <<"Extracting and assigning ccmc::FileReader pointer" << std::endl;
 		    this->fileReader = bp::extract< ccmc::FileReader* >(file_reader_obj);
-		    // std::cout <<"GeneralFileReader opening file" << filename << std::endl;
+		   
+		   	// open the file
 		    status = fileReader->open(filename);
-		    // std::cout <<"File opened" << std::endl;
 
 		    if (status == FileReader::OK)
 		    {
@@ -150,6 +164,7 @@ namespace ccmc
 		    }
 		} catch (bp::error_already_set) {
 			PyErr_Print();
+			return status;
 		}
 
 #endif /* HAVE_PYTHON */

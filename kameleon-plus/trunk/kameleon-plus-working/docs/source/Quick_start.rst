@@ -4,7 +4,8 @@ Quick Start
 ===========
 Download
 --------
-Kameleon-plus is hosted on github: https://github.com/ccmc/ccmc-software
+
+Kameleon-plus is hosted on `github <https://github.com/ccmc/ccmc-software>`_
 
 You may download an archived version of the code here: :download:`Kameleon-plus-6.0_source <../download/Kameleon-plus-6.0_source.tar.bz2>`
 
@@ -232,6 +233,12 @@ Much of Kameleon's functionality is illustrated in several examples accross mult
 Trouble-shooting
 ----------------
 Depending on the platform, you may run into issues during the configuration or build process. In almost all cases, you will need to rebuild from a fresh build directory (or at least delete the CMakeCache.txt in your current one). 
+
+CMake Error: Permission denied to make directories in /usr/local
+................................................................
+When running cmake, an attempt will be made to create directories in /usr/local. If you do not have write access there, you can specify an alternate install location where you do have write permissions::
+
+    cmake -DCMAKE_INSTALL_PREFIX=/path/to/alternate
 
 
 CMake Error: Libraries not found

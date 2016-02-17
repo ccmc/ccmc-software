@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Parser1.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Parser1.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: Parser1.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: *No Longer Necessary. Used Previously to Obtain Information.*
+ * 			
+ * 	
+ * 			This parses a C file from the original 
+ * 			Kameleon Converter and helps convert it
+ * 			to a format that works well with the 
+ * 			GlobalCCMCAttributeNames.xml file. 
+ * 
+ *   		Copy everything from the C file and paste it into
+ * 			the console. After conversion, copy the resulting 
+ * 			text and paste into GlobalCCMCAttributeNames.xml. 
+ * 
+ * Modification History:
+ *  
+ * Summer 2011 	Donti, Nitesh
+ * 				Parser Complete
+ * 				Parser used to convert to XML
+ * 
+ * Tasks:       None. No further development necessary.  
+ * 
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Parser1</span> </span>{
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@param</span> args
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+
+		Scanner s = <span class="hljs-keyword">new</span> Scanner(System.in);
+
+		<span class="hljs-keyword">while</span> (s.hasNextLine()){
+
+			String h = s.nextLine();
+			String name=<span class="hljs-keyword">null</span>;
+			
+			<span class="hljs-keyword">while</span>(h.length()&lt;<span class="hljs-number">3</span> || h.indexOf(<span class="hljs-string">"\""</span>)==-<span class="hljs-number">1</span>)
+				h= s.nextLine();
+			
+			<span class="hljs-keyword">if</span>(h.length()&gt;<span class="hljs-number">3</span>){
+				<span class="hljs-keyword">int</span> f =h.indexOf(<span class="hljs-string">"\""</span>);
+				<span class="hljs-keyword">int</span> n= h.substring(f+<span class="hljs-number">1</span>).indexOf(<span class="hljs-string">"\""</span>);
+				
+				<span class="hljs-keyword">if</span>(f!=-<span class="hljs-number">1</span> &amp;&amp; n!=-<span class="hljs-number">1</span>){
+				name = h.substring(f+<span class="hljs-number">1</span>, f+<span class="hljs-number">1</span>+n);
+				System.out.println(<span class="hljs-string">"                              &lt;attribute&gt;"</span>);
+				System.out.print(<span class="hljs-string">"                                   &lt;name&gt;"</span> +name+<span class="hljs-string">"&lt;/name&gt;"</span>);
+				}
+			}
+			
+			String h2 =s.nextLine();
+			
+			<span class="hljs-keyword">if</span>(h2.length()&gt;<span class="hljs-number">3</span>){
+				<span class="hljs-keyword">int</span> f2 =h2.indexOf(<span class="hljs-string">"\""</span>);
+				<span class="hljs-keyword">int</span> n2= h2.substring(f2+<span class="hljs-number">1</span>).indexOf(<span class="hljs-string">"\""</span>);
+				
+				<span class="hljs-keyword">if</span>(f2!=-<span class="hljs-number">1</span> &amp;&amp; n2!=-<span class="hljs-number">1</span>){
+				String datatype = h2.substring(f2+<span class="hljs-number">1</span>, f2+<span class="hljs-number">1</span>+n2);
+				System.out.println(<span class="hljs-string">"\n                                   &lt;dataType&gt; "</span> +datatype + <span class="hljs-string">" &lt;/dataType&gt; "</span>);
+				
+				}
+			}
+			
+			System.out.println(<span class="hljs-string">"                              &lt;/attribute&gt;"</span>);
+			
+			
+			
+		}
+	}
+
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

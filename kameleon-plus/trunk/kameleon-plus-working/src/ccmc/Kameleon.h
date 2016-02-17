@@ -179,6 +179,7 @@ namespace ccmc
 			std::vector<long> createVectorOfLongFromList(int num, std::string * strings);
 			std::string padString(const std::string& s, int minLength);
 			std::string modelName;
+			int pythonModel;
 
 			std::vector<std::string> getListOfRequiredVariablesForComponents(std::string variable);
 			std::vector<std::string> getListOfRequiredVariablesForVectors(std::string variable);

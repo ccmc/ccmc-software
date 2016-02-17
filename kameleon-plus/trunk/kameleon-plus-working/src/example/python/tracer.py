@@ -3,11 +3,15 @@
 This program takes as input a kameleon-compatible cdf or hdf5 file, a variable, and a seed position.
 It then computes a fieldline and interpolates the variable onto it, plotting the resulting fieldline in 3d
 and a graph of the variable as a function of arc length.
+
+todo: 
 """
 import numpy as np
 import sys, getopt
 import time
-from CCMC import _CCMC as ccmc
+sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+import _CCMC as ccmc
+
 
 def main(argv):
     if (len(argv) == 5):

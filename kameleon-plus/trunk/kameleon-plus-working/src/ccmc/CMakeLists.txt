@@ -40,6 +40,9 @@ if(BUILD_STATIC_LIBS)
     add_library(ccmc_static STATIC ${ALL_SOURCE} ${ALL_HEADER})
 endif(BUILD_STATIC_LIBS)
 
+# Fix up the install names
+# INSTALL_NAME=`otool -D ${PYTHON_LIBRARIES} | tail -n1 | tr -d '\n'`
+# install_name_tool -change ${INSTALL_NAME} ${PYTHON_LIBRARIES} ${LIB_FILENAME}
 
 set_target_properties(ccmc PROPERTIES SOVERSION ${Kameleon_VERSION_MAJOR}.${Kameleon_VERSION_MINOR})
 #set the install_name of the lib relative to the executables 
@@ -100,8 +103,8 @@ endif(BUILD_HDF5)
 
 ############# python ############
 message(STATUS ${msg_prefix} "cmake framework path: " ${CMAKE_FRAMEWORK_PATH})
-FIND_PACKAGE(PythonInterp 2.7)
-FIND_PACKAGE(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}" REQUIRED)
+# FIND_PACKAGE(PythonInterp 2.7)
+# FIND_PACKAGE(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}" REQUIRED)
 if(PYTHONINTERP_FOUND)
     message(STATUS ${msg_prefix} "Python Interpreter:" ${PYTHON_EXECUTABLE})
     add_definitions(-DHAVE_PYTHON) # preprocessor to insert python interpreter calls
@@ -112,7 +115,7 @@ target_link_libraries(ccmc  ${PYTHON_LIBRARIES})
 
 ############## embedded python #######
 if(Boost_PYTHON_LIBRARY_RELEASE)
-    message("boost.python library found, creating embedded readers..")   
+    message(STATUS ${msg_prefix} "boost.python library found, creating embedded readers..")   
     add_subdirectory(pyreaders)
 
     # make sure pyKameleon gets built when ccmc library is built
@@ -171,15 +174,17 @@ if(SWIG_FOUND)
         add_subdirectory(${WRAPPERS_ROOT_DIR}/python)
     ENDIF(NOT PYTHONLIBS_FOUND OR NOT PYTHON_EXECUTABLE)
 
-    FIND_PACKAGE(Java)
-    FIND_PACKAGE(JNI)
-    IF(JAVA_FOUND AND JNI_FOUND)
-        MESSAGE(STATUS ${msg_prefix} "Java and JNI libraries found. Will build Java wrappers")
-        add_subdirectory(${WRAPPERS_ROOT_DIR}/java)
-    ELSE()
-        MESSAGE(STATUS ${msg_prefix} "Java and JNI libraries not found.. cannot build Java wrappers")
-        MESSAGE(STATUS "java flag: " Java_FOUND " JNI flag:" JNI_FOUND)
-    ENDIF(JAVA_FOUND AND JNI_FOUND)
+    if(BUILD_JAVA)
+        FIND_PACKAGE(Java)
+        FIND_PACKAGE(JNI)
+        IF(JAVA_FOUND AND JNI_FOUND)
+            MESSAGE(STATUS ${msg_prefix} "Java and JNI libraries found. Will build Java wrappers")
+            add_subdirectory(${WRAPPERS_ROOT_DIR}/java)
+        ELSE()
+            MESSAGE(STATUS ${msg_prefix} "Java and JNI libraries not found.. cannot build Java wrappers")
+            MESSAGE(STATUS "java flag: " Java_FOUND " JNI flag:" JNI_FOUND)
+        ENDIF(JAVA_FOUND AND JNI_FOUND)
+    endif(BUILD_JAVA)
 endif(SWIG_FOUND)
 
 add_subdirectory(${WRAPPERS_ROOT_DIR}/c)

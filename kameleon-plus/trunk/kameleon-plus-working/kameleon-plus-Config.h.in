@@ -5,3 +5,5 @@
 #define Kameleon_plus_VERSION_MINOR @Kameleon_VERSION_MINOR@
 
 #define CCMC_DIR "@CCMC_DIR@"
+
+#define PYTHON_EXE "@PYTHON_EXECUTABLE@"

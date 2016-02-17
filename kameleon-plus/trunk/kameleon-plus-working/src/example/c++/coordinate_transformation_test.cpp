@@ -97,7 +97,7 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 	SM[0] = tokens[20];
 	SM[1] = tokens[21];
 	SM[2] = tokens[22];
-/*
+
 	std::vector<std::string> time_tokens;
 	std::vector<std::string> date_tokens;
 	Tokenize(time, time_tokens, " :");
@@ -106,9 +106,9 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 	//long Kameleon::date2es(int yyyy, int mm, int dd, int hh, int mm2, int ss)
 	std::cout << "date_tokens[0]: " << date_tokens[0] << std::endl;
 	int years = boost::lexical_cast<int>(date_tokens[0]);
-	if (years < 50)
+	if (years < 50) // assume this is a date in range [2000,2049]
 		years = years + 2000;
-	else if (years < 1900)
+	else if (years < 100) //assume this is a date in range [1950, 1999]
 		 		years = years + 1900;
 	long time_et = Kameleon::_date2es(years,
 			boost::lexical_cast<int>(date_tokens[1]),
@@ -118,6 +118,7 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 			boost::lexical_cast<int>(time_tokens[2]));
 
 	std::cout << "GSE: " << GSE[0] << " " << GSE[1] << " " << GSE[2] << std::endl;
+	std::cout << "SM: " << SM[0] << " " << SM[1] << " " << SM[2] << std::endl;
 	Position GSE_d;
 	GSE_d.c0 = boost::lexical_cast<double>(GSE[0]);
 	GSE_d.c1 = boost::lexical_cast<double>(GSE[1]);
@@ -125,9 +126,9 @@ yy/mm/dd hh:mm:ss      X          Y          Z          X          Y          Z 
 
 	Position SM_d;
 	Kameleon::_cxform("GSE","SM", time_et, &GSE_d, &SM_d);
-	std::cout << "Input: " << GSE_d.c0 << "," << GSE_d.c1 << "," << GSE_d.c2 << std::endl;
-	std::cout << "Output: " << SM_d.c0 << "," << SM_d.c1 << "," << SM_d.c2 << std::endl;
-*/
+	std::cout << "Input GSE: " << GSE_d.c0 << "," << GSE_d.c1 << "," << GSE_d.c2 << std::endl;
+	std::cout << "Output SM: " << SM_d.c0 << "," << SM_d.c1 << "," << SM_d.c2 << std::endl;
+
 	return 0;
 }
 

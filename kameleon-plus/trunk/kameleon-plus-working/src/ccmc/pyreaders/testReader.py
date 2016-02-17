@@ -7,6 +7,7 @@ sys.path.append('.')
 # sys.path.append('../')
 import pyKameleon
 from Attribute import Attribute
+from collections import OrderedDict
 # import random #only used for testing
 import ConfigParser
 import inspect
@@ -14,7 +15,8 @@ import inspect
 
 class FileReaderFactory(object):
 	def __init__(self, config_file = None):
-		if config_file == None:
+		self.debug = False
+		if config_file is None:
 			# print '\tFileReaderFactory called without config file, building default test reader' 
 			Config = ConfigParser.ConfigParser()
 			Config.add_section('Reader')
@@ -24,7 +26,6 @@ class FileReaderFactory(object):
 		else:
 			# print '\tFileReaderFactory called with', config_file 
 			self._config = getConfig(config_file)
-
 
 
 	def createPyReader(self):
@@ -91,18 +92,27 @@ class pyFileReader(pyKameleon.FileReader):
 		self.variables = {} #created in subclass
 		self.variableIDs = {} #maps from variable string names to long ids
 		self.variableNames = {} #maps from long ids to string names
-		self.globalAttributes = {} #maps from attribute names or ids to global attribute objects
+		self.globalAttributes = OrderedDict() #maps from attribute names or ids to global attribute objects
 		self.variableAttributes = {} #maps from variable str names to dictionaries of variable attributes
 		self.variableAttributeNames = {} #maps from attribute IDs to name
 		self.variableAttributeIDs = {} #maps from attribute names to IDs
-		self.globalAttributes['model_name']  = Attribute('model_name', 'python_model')
+		self.globalAttributes['model_name']  = Attribute('model_name', 'python_base_model')
+		self.globalAttributes['python_model'] = Attribute('python_model',1)
+		self.debug = False
+		self.missing_value = -256.*-256.*-256.*-256.*-256. #same as ccmc::defaults::missingValue
+		self.dummy_variable = pyKameleon.vectorFloat()
+		self.dummy_variable.append(0)
+
+	def getMissingValue(self):
+		"""This function is ignored by Model class when Model.getMissingValue is called"""
+		return self.missing_value
 
 	def openFile(self, filename, readonly = True):
 		""" Dummy method to be overriden in subclass.
 			Method should open file and set current_filename. 
 			If open fails, please return self.OPEN_ERROR or self.FILE_DOES_NOT_EXIST"""
 
-		print 'opening file'
+		print 'dummy method opening file'
 		self.current_filename = filename #automatically invokes setCurrentFilename in c++
 
 		return pyKameleon.FileReader.OK
@@ -120,9 +130,9 @@ class pyFileReader(pyKameleon.FileReader):
 	def initializeVariableIDs(self):
 		"""viriableIds maps from variable string names to numbers. This assumes variables has already been populated.
 			If variable names exists, nothing happens"""
-		# print '\tinitializing variableIds map!'
+		if self.debug: print '\t\tpyFileReader.initializeVariableIDs initializing variableIds map!'
 		if len(self.variableNames) == 0:
-			# print 'initializing variable names from variables dict'
+			if self.debug: print 'initializing variable names from variables dict'
 			i = 0
 			for key in self.variables.keys():
 				# self.variables[long(i)] = self.variables[key] #removed redundant id key. Let's avoid copies and only query on names
@@ -130,7 +140,8 @@ class pyFileReader(pyKameleon.FileReader):
 				self.variableNames[long(i)] = str(key)
 				self.variableAttributes[key] = {} #initializes attribute dictionaries
 				i += 1
-
+		else:
+			if self.debug: print '\t\tpyFileReader.initializeVariableIDs variableNames already loaded'
 
 	def initializeVariableAttributeIDs(self):
 		"""assign variable attribute ids. Note, only run this after all variablesNames are loaded!"""
@@ -141,12 +152,20 @@ class pyFileReader(pyKameleon.FileReader):
 			i+=1
 		pass
 
-	def addVariableName(self, variable_name, variable_id, default = []):
+	def addVariableName(self, variable_name, variable_id, default_array = None):
+		# set default array
+		if (type(default_array) == pyKameleon.vectorFloat) \
+			or (type(default_array) == pyKameleon.vectorFloat) \
+			or (type(default_array) == pyKameleon.vectorString):
+			pass
+		else:
+			default_array = self.dummy_variable
+
 		# see if variable_name and variable_id exist in variables keys
 		if self.variables.has_key(variable_name):
 			pass
 		else: # initialize variables with new key
-			self.variables[variable_name] = default
+			self.variables[variable_name] = default_array
 
 		if self.variableAttributes.has_key(variable_name): #in name only
 			pass
@@ -172,18 +191,10 @@ class pyFileReader(pyKameleon.FileReader):
 			self.variableNames[long(variable_id)] = variable_name
 			self.variableIDs[variable_name] = long(variable_id)
 
-		
-	def getNumberOfVariables(self):
-		return len(self.variableNames.keys())
-
-	def getVariableID(self, variable_name):
-		"""takes a variable string and returns a long integer"""
-		if self.doesVariableExist(variable_name):
-			return self.variableIDs[variable_name]
-		else:
-			raise NameError('variable +\'' + variable_name + '\' does not exist!')
 
 	def doesVariableExist(self,variable):
+		if self.debug: print '\t\tpyFileReader.doesVariableExist looking for', variable
+
 		if type(variable) == str:
 			return self.variables.has_key(variable)
 		else:
@@ -191,7 +202,19 @@ class pyFileReader(pyKameleon.FileReader):
 				return self.variables.has_key(self.variableNames[variable])
 			else:
 				return False
+		
+	def getNumberOfVariables(self):
+		if self.debug: print '\t\tgetting number of variables from variableNames'
+		return len(self.variableNames.keys())
 
+
+	def getVariableID(self, variable_name):
+		"""takes a variable string and returns a long integer"""
+		if self.doesVariableExist(variable_name):
+			return self.variableIDs[variable_name]
+		else:
+			if self.debug: print '\t\tpyFileReader.getVariableID', 'variable +\'' + variable_name + '\' does not exist!'
+			raise NameError('variable +\'' + variable_name + '\' does not exist!')
 
 	def getVariableName(self,variable_id):
 		"""takes a variable id and returns a variable string name. 
@@ -203,6 +226,11 @@ class pyFileReader(pyKameleon.FileReader):
 				return self.variableNames[variable_id]
 		else:
 			raise NameError('variableID +\'' + str(variable_id) + '\' does not exist!')
+
+	def getVariable(self, variable, startIndex = None, count = None):
+		var_name = self.getVariableName(variable)
+		if self.debug: print "\tpyFileReader.getVariable returning variable", var_name
+		return self.variables[var_name]
 
 	def getNumberOfRecords(self, variable):
 		"""returns length of the flattened variable array"""
@@ -218,11 +246,6 @@ class pyFileReader(pyKameleon.FileReader):
 		return self.variables[var_name][index]
 
 
-	def getVariable(self, variable, startIndex = None, count = None):
-		var_name = self.getVariableName(variable)
-		return self.variables[var_name]
-
-
 	def getVariableAtIndex(self, variable, index):
 		var_name = self.getVariableName(variable)
 		return self.variables[var_name][index]
@@ -232,6 +255,7 @@ class pyFileReader(pyKameleon.FileReader):
 		if self.globalAttributes.has_key(attribute):
 			return self.globalAttributes[attribute]
 		else:
+			# return Attribute
 			raise NameError('Attribute \'' + attribute + '\' does not exist')
 
 	def getGlobalAttributeName(self, attribute):
@@ -255,6 +279,7 @@ class pyFileReader(pyKameleon.FileReader):
 
 
 	def getNumberOfGlobalAttributes(self):
+		if self.debug: print 'getting number of global attributes'
 		return self.numGAttributes
 
 	def getVariableAttribute(self, variable, attribute):
@@ -308,18 +333,16 @@ class Test_pyFileReader_Global_Attributes(unittest.TestCase):
 	def setUp(self):
 		print 'Global Attribute test:'
 		self.testReader = pyFileReader()
-		self.testAttribute = Attribute('model_name', 'testModel')
-		self.testReader.globalAttributes['model_name'] = self.testAttribute
 		self.testReader.initializeGlobalAttributeIDs()
 	
 	def test_numberOfGlobalAttributes(self):
 		print '\tcheck getNumberOfGlobalAttributes()' 
-		self.assertEqual(self.testReader.getNumberOfGlobalAttributes(), 1)
+		self.assertEqual(self.testReader.getNumberOfGlobalAttributes(), 2)
 
 	def test_getGlobalAttribute_by_name(self):
 		print '\tchecking global attribute retrieval by name'
 		check_attr = self.testReader.getGlobalAttribute('model_name')
-		self.assertEqual(check_attr, self.testAttribute)
+		self.assertEqual(check_attr, self.testReader.globalAttributes['model_name'])
 
 	def test_getGlobalAttributeName(self):
 		print '\tchecking retrieval of global attribute name'
@@ -328,11 +351,11 @@ class Test_pyFileReader_Global_Attributes(unittest.TestCase):
 	def test_getGlobalAttributeValue(self):
 		print '\tchecking retrieval of global attribute value'
 		glob_attr = self.testReader.getGlobalAttribute('model_name')
-		self.assertEqual(glob_attr.getAttributeValue(), 'testModel')
+		self.assertEqual(glob_attr.getAttributeValue(), 'python_base_model')
 
 	def test_getGlobalAttribute_by_id(self):
 		print '\tchecking global attribute retrieval by id'
-		self.assertEqual(self.testReader.getGlobalAttribute(0), self.testAttribute)
+		self.assertEqual(self.testReader.getGlobalAttribute(1).getAttributeValue(), 1)
 
 
 class Test_pyFileReader_Variable_Attributes(unittest.TestCase):
@@ -503,8 +526,13 @@ def getConfig(config_file):
 	try:
 		Config.read(config_file)
 	except:
-		print 'could not read config file'
-		raise
+		print 'could not read as config file. checking directory for config.ini'
+		dir_ = os.path.dirname(os.path.realpath(config_file))
+		try: 
+			Config.read(dir_+'/config.ini')
+		except:
+			print 'could not find config file'
+			raise
 	Config.sections()
 	return Config
 

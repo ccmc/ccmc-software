@@ -23,7 +23,9 @@ namespace ccmc
 	PythonInterpolator::PythonInterpolator(Model * modelReader)
 	{
 		this->modelReader = modelReader; //points to PythonModel
-
+		
+		// bp::exec("import pprint\npprint.pprint(locals())\n", this->modelReader->python_namespace);
+		
 		//These must be specified by python
 		// conversionFactors["x"] = 1.0f;
 		// conversionFactorsByID[modelReader->getVariableID("x")] = 1.0f;
@@ -37,12 +39,18 @@ namespace ccmc
 	 * @param c1
 	 * @param c2
 	 * @return
+	 * @ ToDo: call the python interpolator stored in the python namespace
 	 */
 	float PythonInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2)
 	{
+		this->modelReader->python_namespace["variable_id"] = variable_id;
+		this->modelReader->python_namespace["c0"] = c0;
+		this->modelReader->python_namespace["c1"] = c1;
+		this->modelReader->python_namespace["c2"] = c2;
+
 		std::stringstream run_string;
-		run_string << "result = python_reader.interpolate(\'" << variable_id <<"\',(" << c0 << "," << c1 << "," << c2 << "))\n";
-		// std::cout << "run_string:" << run_string.str() << std::endl;
+		run_string << "result = python_reader.interpolate(variable_id, c0,c1,c2)";
+		
 		try{
 			bp::exec(run_string.str().c_str(), this->modelReader->python_namespace);
 			return bp::extract<float>(this->modelReader->python_namespace["result"]);
@@ -63,11 +71,13 @@ namespace ccmc
 	float PythonInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2)
 	{
+		this->modelReader->python_namespace["variable"] = variable;
+		this->modelReader->python_namespace["c0"] = c0;
+		this->modelReader->python_namespace["c1"] = c1;
+		this->modelReader->python_namespace["c2"] = c2;
 		
-		// interpolate('variable', (c0, c1, c2))\n 
 		std::stringstream run_string;
-		run_string << "result = python_reader.interpolate(\'" << variable <<"\',(" << c0 << "," << c1 << "," << c2 << "))\n";
-		// std::cout << "run_string:" << run_string.str() << std::endl;
+		run_string << "result = python_reader.interpolate(variable, c0,c1,c2)";
 		try{
 			bp::exec(run_string.str().c_str(), this->modelReader->python_namespace);
 			return bp::extract<float>(this->modelReader->python_namespace["result"]);
@@ -92,10 +102,27 @@ namespace ccmc
 	float PythonInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
-		long variable_id = modelReader->getVariableID(variable);
-		return interpolate(variable_id, c0, c1, c2, dc0, dc1, dc2);
 
-	}
+		this->modelReader->python_namespace["variable"] = variable;
+		this->modelReader->python_namespace["c0"] = c0;
+		this->modelReader->python_namespace["c1"] = c1;
+		this->modelReader->python_namespace["c2"] = c2;
+		
+		std::stringstream run_string;
+		run_string << "result, dc0, dc1, dc2 = python_reader.interpolate_dc(variable, c0,c1,c2)";
+		try{
+			bp::exec(run_string.str().c_str(), this->modelReader->python_namespace);
+
+			dc0 = bp::extract<float>(this->modelReader->python_namespace["dc0"]);
+			dc1 = bp::extract<float>(this->modelReader->python_namespace["dc1"]);
+			dc2 = bp::extract<float>(this->modelReader->python_namespace["dc2"]);
+
+			return bp::extract<float>(this->modelReader->python_namespace["result"]);
+			} catch (bp::error_already_set) {
+			PyErr_Print();
+			return this->modelReader->getMissingValue();
+			}
+		}
 
 	/**
 	 * @param variable_id
@@ -111,13 +138,26 @@ namespace ccmc
 			float& dc0, float& dc1, float& dc2)
 	{
 
+		this->modelReader->python_namespace["variable_id"] = variable_id;
+		this->modelReader->python_namespace["c0"] = c0;
+		this->modelReader->python_namespace["c1"] = c1;
+		this->modelReader->python_namespace["c2"] = c2;
+		
+		std::stringstream run_string;
+		run_string << "result, dc0, dc1, dc2 = python_reader.interpolate_dc(variable_id, c0,c1,c2)";
+		try{
+			bp::exec(run_string.str().c_str(), this->modelReader->python_namespace);
 
+			dc0 = bp::extract<float>(this->modelReader->python_namespace["dc0"]);
+			dc1 = bp::extract<float>(this->modelReader->python_namespace["dc1"]);
+			dc2 = bp::extract<float>(this->modelReader->python_namespace["dc2"]);
 
-		// Vector<float> point(c0,c1,c2); 
+			return bp::extract<float>(this->modelReader->python_namespace["result"]);
+		} catch (bp::error_already_set) {
+			PyErr_Print();
+			return this->modelReader->getMissingValue();
 
-		return this->modelReader->getMissingValue();
-
-
+		}
 	}
 
 	/**

@@ -249,7 +249,7 @@ namespace ccmc
 		{
 		   interpolated_value = interpolate_adapt3d_solution(c0, c1, c2, ielem, variable);
 #ifdef DEBUG
-		   std::cout << "MIN_RANGE: " << MIN_RANGE << " this->missingValue: " << this->missingValue << " interpolated_value: " << interpolated_value << std::endl;
+		   std::cout << "MIN_RANGE: " << MIN_RANGE << " this->modelReader->getMissingValue(): " << this->modelReader->getMissingValue() << " interpolated_value: " << interpolated_value << std::endl;
 #endif
 		   this->smartSearchValues->last_element_found = ielem;
 		} else {

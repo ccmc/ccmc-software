@@ -68,6 +68,8 @@ target_link_libraries(time_interp ccmc)
 target_link_libraries(tracer_prog ccmc)
 target_link_libraries(pyModel_prog ccmc)
 
+
+
 set_target_properties(	kameleon_prog 
 						adapt3d_test 
 						CDFReader 
@@ -82,6 +84,8 @@ set_target_properties(	kameleon_prog
 						time_interp
 						tracer_prog
 		PROPERTIES INSTALL_RPATH "@loader_path/../../../lib/ccmc/")
+
+
 
 ###################### INSTALL #######################
 install(TARGETS kameleon_prog 

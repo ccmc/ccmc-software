@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>OPEN_GGCM.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>OPEN_GGCM.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: OPEN_GGCM.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: Custom read routine for the Open 
+ * 			GGCM input model. 
+ * 			This parses the header information 
+ * 			and ASCII text from the input file. 
+ *  
+ * Modification History:
+ *  
+ * Summer 2011	Donti, Nitesh
+ *  			Initial Development Started
+ *  			Most information retrieved from files 
+ *  			Problems occurring with reading ASCII (data values) properly			  
+ *  
+ * Tasks: 		Read in the data values properly and we should be good to go
+ * 
+ */</span>
+
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.FileNotFoundException;
+<span class="hljs-keyword">import</span> java.io.IOException;
+<span class="hljs-keyword">import</span> java.io.UnsupportedEncodingException;
+<span class="hljs-keyword">import</span> java.util.ArrayList;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OPEN_GGCM</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span>
+</span>{
+
+	<span class="hljs-comment">/**
+	 * Options for logger output include .info(), .error(), and .debug().
+	 */</span>
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(OPEN_GGCM.class);
+
+	<span class="hljs-comment">/**
+	 * Constructor for Open GGCM Model Objects. Calls the constructor for
+	 * Model.java and parses the xml file open_ggcm.xml.
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">OPEN_GGCM</span><span class="hljs-params">()</span>
+	</span>{
+		<span class="hljs-keyword">super</span>(<span class="hljs-string">"open_ggcm.xml"</span>);
+	}
+
+	<span class="hljs-comment">/**
+	 * <span class="hljs-doctag">@return</span> The name of object as its model type ("OPEN_GGCM Object").
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>
+	</span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-string">"OPEN_GGCM Object"</span>;
+	}
+
+	<span class="hljs-comment">/**
+	 * Holds the file, which is created via the individual file pathname taken
+	 * from the input directory. Each model object will have a unique pathname
+	 * from which its data come.
+	 */</span>
+	<span class="hljs-keyword">private</span> File file;
+
+	<span class="hljs-comment">/**
+	 * A scanner used to read in from the file from the input directory.
+	 */</span>
+	<span class="hljs-keyword">private</span> Scanner filereader;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>this arraylist holds the many lines of ASCII that belong to one
+individual variable
+when finished, this arraylist will be converted to a String[] and put
+into the setholder
+and then reset to a new blank array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	ArrayList&lt;String&gt; lineholder = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>number of elements within this arraylist = number of variables
+one String[] for each arraylist</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	ArrayList&lt;String[]&gt; setholder = <span class="hljs-keyword">new</span> ArrayList&lt;String[]&gt;();
+
+	<span class="hljs-comment">/**
+	 * Opens the associated file. Creates the variables. Stores the header
+	 * information for each variable within the Variable object. Stores the
+	 * ASCII data associated with each variable in the ArrayList asciiStorer.
+	 * 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">read</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> FileNotFoundException, NoAttributeException, NoVariableException, IOException
+	</span>{
+		<span class="hljs-keyword">super</span>.read();
+
+		logger.info(<span class="hljs-string">"Now OPENING "</span> + FilePathname);
+		file = <span class="hljs-keyword">new</span> File(FilePathname);
+		filereader = <span class="hljs-keyword">new</span> Scanner(file);
+
+		String line = <span class="hljs-string">""</span>;
+		StringBuffer charCollection = <span class="hljs-keyword">new</span> StringBuffer();
+
+		Variable tempV = <span class="hljs-keyword">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>the second part of this condition just allows us to do one variable
+in order to save time</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">while</span> (filereader.hasNextLine() &amp;&amp; lineholder.size() != <span class="hljs-number">98438000</span>)
+		{
+			line = filereader.nextLine();
+			<span class="hljs-keyword">if</span> (line.startsWith(<span class="hljs-string">"FIELD"</span>))<span class="hljs-comment">// signifies a new variable's arrival</span>
+			{
+				<span class="hljs-keyword">if</span> (getNumVariables() != <span class="hljs-number">0</span>)
+				{
+					String[] linesArray = <span class="hljs-keyword">new</span> String[lineholder.size()];
+
+					setholder.add((String[]) (lineholder.toArray(linesArray)));
+					lineholder = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+				}
+
+				<span class="hljs-comment">/*if (VarObjsSize() == 1)
+				{
+					method(charCollection, tempV);
+
+					System.exit(2);
+				}*/</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>getting the variable name</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				String varName = filereader.next();
+
+				<span class="hljs-keyword">if</span> (orig2kamel.get(varName) != <span class="hljs-keyword">null</span>)
+					tempV = <span class="hljs-keyword">new</span> Variable(varName, orig2kamel.get(varName));
+				<span class="hljs-keyword">else</span>
+					tempV = <span class="hljs-keyword">new</span> Variable(varName, <span class="hljs-string">"kameleon_identity_unknown"</span> + getNumVariables());
+
+				logger.debug(tempV.originalName + <span class="hljs-string">" = "</span> + tempV.KameleonName);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>setting number of dimensions</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">if</span> (line.charAt(<span class="hljs-number">6</span>) == <span class="hljs-string">'3'</span>)
+				{
+					tempV.numDim = <span class="hljs-number">3</span>;
+				}
+
+				<span class="hljs-comment">/*
+				 * This can just be added on to the previous if-statement to
+				 * test for variables that may have dimensions other than 3
+				 * 
+				 * else if (line.charAt(6)=='2') tempV.numDim=2; else if
+				 * (line.charAt(6)=='1') tempV.numDim=1; else if
+				 * (line.charAt(6)=='4') tempV.numDim=4; else{
+				 * logger.error("**ERROR**Invalid Number of Dimensions.\nEXITING..."
+				 * ); System.exit(0); }
+				 */</span>
+
+				<span class="hljs-comment">/*
+				 * this gets the start time value but it's already in the
+				 * databaseinfo file...but there is a discrepancy
+				 * 
+				 * //getting the start time if(this.VarObjsSize()==1){
+				 * line=n.next(); line=n.next(); line=n.next(); line=n.next();
+				 * this.getGlobalAttribute("start_time").value=line; }
+				 */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>skipping over some items and
+getting to the information that we need…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				filereader.nextLine();
+				filereader.nextLine();
+				filereader.next();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>setting the dimension sizes, assuming that there are only 3</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">int</span>[] dimensionality = { filereader.nextInt(), filereader.nextInt(), filereader.nextInt() };
+				tempV.dimSizes = dimensionality;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>setting number of elements</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				tempV.numElem = dimensionality[<span class="hljs-number">0</span>] * dimensionality[<span class="hljs-number">1</span>] * dimensionality[<span class="hljs-number">2</span>];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>setting the data type</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				tempV.dt = <span class="hljs-string">"float"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>this reads in from Line 5 how the data is encoded - always
+“WRN2”</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				filereader.next();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>getting to the information that we need…
+the number of elements in Line 5 is skipped because a) it is
+hard to read in b) we have already calculated it by
+multiplying the different dimension numbers</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				String minNum = filereader.next().trim();
+				<span class="hljs-keyword">int</span> start = <span class="hljs-keyword">new</span> Integer(tempV.numElem).toString().length();
+
+				String minString = (minNum.substring(start, minNum.indexOf(<span class="hljs-string">"E"</span>) + <span class="hljs-number">4</span>));
+				Scanner reader = <span class="hljs-keyword">new</span> Scanner(minString);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>the next two numbers (reader.nextFloat()) include the actual min and actual max values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				
+				<span class="hljs-keyword">try</span>
+				{
+					tempV.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value=reader.nextFloat();
+					tempV.getAttributeObject(<span class="hljs-string">"actual_max"</span>).value=reader.nextFloat();
+				} <span class="hljs-keyword">catch</span> (NoAttributeException e)
+				{
+					e.printStackTrace();
+				}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>the final values from filereader include deprecated and unnecessary information</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				filereader.nextLine();
+
+				<span class="hljs-keyword">this</span>.addVariableObject(tempV);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Adds the Attribute Values to the CCMC Standard Variables.
+These attributes and attribute values come from
+Variables.xml.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				getAttrValues(tempV);
+
+				tempV.printAllAttrs();
+
+			} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.getNumVariables() != <span class="hljs-number">0</span>)
+			{
+
+				lineholder.add(line);
+
+				<span class="hljs-keyword">if</span> (getNumVariables() == <span class="hljs-number">1</span>)
+				{
+
+					<span class="hljs-keyword">if</span> (line.indexOf(<span class="hljs-string">"\n"</span>) != -<span class="hljs-number">1</span>)
+						line = line.substring(<span class="hljs-number">0</span>, line.indexOf(<span class="hljs-string">"\n"</span>));
+					charCollection.append(line);
+				}
+
+			}
+
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>after all lines have been read from the file, the last set of lines
+has to be assigned to the last variable.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">if</span> (getNumVariables() != <span class="hljs-number">0</span>)
+		{
+			String[] linesArray = <span class="hljs-keyword">new</span> String[lineholder.size()];
+			setholder.add((String[]) (lineholder.toArray(linesArray)));
+		}
+
+		textParser();
+
+		gridParser();
+
+	}
+
+	<span class="hljs-comment">/**
+	 * This is just the method that I am going to use with a different variation in 
+	 * how we read in the file. It combines all of the characters into one 
+	 * really large String. 
+	 * 
+	 * <span class="hljs-doctag">@param</span> line
+	 * <span class="hljs-doctag">@param</span> var
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException
+	 */</span>
+	<span class="hljs-comment">/*
+	private void method(StringBuffer line, Variable var) throws NoAttributeException
+	{
+
+		float[] values = new float[var.numElem];
+
+		int numMSfails = 0;
+		int numLSfails = 0;
+
+		int start = 0;
+		int next = 64;
+
+</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>this parses through each Line of ASCII text</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> block64 = <span class="hljs-number">0</span>; block64 &lt; var.numElem; block64 += <span class="hljs-number">64</span>)
+		{
+			<span class="hljs-keyword">int</span>[] msbits = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">72</span>];
+			<span class="hljs-keyword">int</span> numdecoded;
+			<span class="hljs-keyword">int</span> blocksize = Math.min(<span class="hljs-number">64</span>, var.numElem - block64);
+			<span class="hljs-keyword">float</span> dzi;
+
+			String buffer = line.substring(start, next);
+			start += <span class="hljs-number">64</span>;
+			next += <span class="hljs-number">64</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>int bytes = buffer.length();</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+			numdecoded = decode(buffer, msbits);
+			<span class="hljs-keyword">if</span> (numdecoded != blocksize)
+			{<span class="hljs-comment">// if(CommandLineInterface.verboseFlag)</span>
+				logger.error(<span class="hljs-string">"FAIL msbits "</span> + numdecoded + <span class="hljs-string">" "</span> + blocksize);
+				numMSfails++;
+			}
+
+			buffer = line.substring(start, next);
+			start += <span class="hljs-number">64</span>;
+			next += <span class="hljs-number">64</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>bytes = buffer.length();</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">int</span>[] lsbits = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">72</span>];
+
+			numdecoded = decode(buffer, lsbits);
+			<span class="hljs-keyword">if</span> (numdecoded != blocksize)
+			{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				logger.error(<span class="hljs-string">"FAIL lsbits "</span> + numdecoded + <span class="hljs-string">" "</span> + blocksize);
+				numLSfails++;
+			}
+
+			dzi = ((Float) (var.getAttributeObject(<span class="hljs-string">"actual_max"</span>).value) - (Float) (var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value)) / <span class="hljs-number">4410</span>;
+
+			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; blocksize; j++)
+			{
+				msbits[j] -= <span class="hljs-number">33</span>;
+				lsbits[j] -= <span class="hljs-number">33</span>;
+
+				<span class="hljs-keyword">float</span> sign = <span class="hljs-number">1.0f</span>;
+
+				<span class="hljs-keyword">if</span> (msbits[j] &gt;= <span class="hljs-number">47</span>)
+				{
+					sign = -<span class="hljs-number">1.0f</span>;
+					msbits[j] -= <span class="hljs-number">47</span>;
+				}
+
+				<span class="hljs-keyword">int</span> intvalue = (<span class="hljs-keyword">int</span>) (lsbits[j] + <span class="hljs-number">94.0</span> * msbits[j]);
+
+				values[block64 + j] = sign * (<span class="hljs-keyword">float</span>) Math.exp((dzi * intvalue + (Float) (var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value)));
+
+			}
+		}
+		<span class="hljs-keyword">if</span> (numMSfails &gt; <span class="hljs-number">0</span> || numLSfails &gt; <span class="hljs-number">0</span>)
+		{
+			logger.error(<span class="hljs-string">"FAIL ls bits:"</span> + numLSfails + <span class="hljs-string">" occurrences for "</span> + var.KameleonName);
+			logger.error(<span class="hljs-string">"FAIL ms bits:"</span> + numMSfails + <span class="hljs-string">" occurrences for "</span> + var.KameleonName);
+		}
+
+		var.dataValues = values;
+	}
+	*/
+	
+	<span class="hljs-comment">/**
+	 * This parses the auxiliary files for Open GGCM, which are 3 text files
+	 * entitled "gridx.txt", "gridy.txt", and "gridz.txt". 
+	 * 
+	 * It then creates 12 variables that work with the grid. 
+	 * 
+	 * <span class="hljs-doctag">@throws</span> NoVariableException
+	 * <span class="hljs-doctag">@throws</span> FileNotFoundException
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">gridParser</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoVariableException, FileNotFoundException, NoAttributeException
+	</span>{
+
+		Variable x = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"x"</span>, <span class="hljs-string">"x"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(x);
+		Variable y = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"y"</span>, <span class="hljs-string">"y"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(y);
+		Variable z = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"z"</span>, <span class="hljs-string">"z"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(z);
+
+		Variable xbx = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridx_bx"</span>, <span class="hljs-string">"x_bx"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(xbx);
+		Variable ybx = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridy_bx"</span>, <span class="hljs-string">"y_bx"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(ybx);
+		Variable zbx = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridz_bx"</span>, <span class="hljs-string">"z_bx"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(zbx);
+
+		Variable xby = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridx_by"</span>, <span class="hljs-string">"x_by"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(xby);
+		Variable yby = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridy_by"</span>, <span class="hljs-string">"y_by"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(yby);
+		Variable zby = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridz_by"</span>, <span class="hljs-string">"z_by"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(zby);
+
+		Variable xbz = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridx_bz"</span>, <span class="hljs-string">"x_bz"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(xbz);
+		Variable ybz = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridy_bz"</span>, <span class="hljs-string">"y_bz"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(ybz);
+		Variable zbz = (<span class="hljs-keyword">new</span> Variable(<span class="hljs-string">"gridz_bz"</span>, <span class="hljs-string">"z_bz"</span>));
+		<span class="hljs-keyword">this</span>.addVariableObject(zbz);
+
+		Variable a;
+		Variable b;
+		Variable c;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>loops through the 12 most recently added variables</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u = <span class="hljs-keyword">this</span>.getNumVariables() - <span class="hljs-number">1</span>; u &gt; <span class="hljs-keyword">this</span>.getNumVariables() - <span class="hljs-number">13</span>; u--)
+		{
+			a = <span class="hljs-keyword">this</span>.getVariableObject(u);
+			a.dataValues = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[<span class="hljs-number">100</span>];
+			a.dt = <span class="hljs-string">"float"</span>;
+			a.numDim = <span class="hljs-number">1</span>;
+			a.numElem = <span class="hljs-number">100</span>;
+			a.dimSizes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] { <span class="hljs-number">1</span> };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>puts in the values for the standard CCMC attributes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			getAttrValues(a);
+
+			b = <span class="hljs-keyword">this</span>.getVariableObject(--u);
+			b.dataValues = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[<span class="hljs-number">100</span>];
+			b.dt = <span class="hljs-string">"float"</span>;
+			b.numDim = <span class="hljs-number">1</span>;
+			b.numElem = <span class="hljs-number">100</span>;
+			b.dimSizes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] { <span class="hljs-number">1</span> };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>puts in the values for the standard CCMC attributes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			getAttrValues(b);
+
+			c = <span class="hljs-keyword">this</span>.getVariableObject(--u);
+			c.dataValues = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[<span class="hljs-number">315</span>];
+			c.dt = <span class="hljs-string">"float"</span>;
+			c.numDim = <span class="hljs-number">1</span>;
+			c.numElem = <span class="hljs-number">315</span>;
+			c.dimSizes = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[] { <span class="hljs-number">1</span> };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>puts in the values for the standard CCMC attributes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			getAttrValues(c);
+
+		}
+
+		Scanner xreader = <span class="hljs-keyword">new</span> Scanner(<span class="hljs-keyword">new</span> File(AuxiliaryFiles[<span class="hljs-number">0</span>]));
+		xreader.nextLine();
+
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; xreader.hasNextLine() &amp;&amp; xreader.hasNextFloat(); i++)
+		{
+			((<span class="hljs-keyword">float</span>[]) (xbz.dataValues))[i] = ((<span class="hljs-keyword">float</span>[]) (xby.dataValues))[i] = ((<span class="hljs-keyword">float</span>[]) (x.dataValues))[i] = xreader.nextFloat();
+			xreader.nextFloat();
+			((<span class="hljs-keyword">float</span>[]) (xbx.dataValues))[i] = xreader.nextFloat();
+		}
+
+		Scanner yreader = <span class="hljs-keyword">new</span> Scanner(<span class="hljs-keyword">new</span> File(AuxiliaryFiles[<span class="hljs-number">1</span>]));
+		yreader.nextLine();
+
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; yreader.hasNextLine() &amp;&amp; yreader.hasNextFloat(); i++)
+		{
+			((<span class="hljs-keyword">float</span>[]) (ybz.dataValues))[i] = ((<span class="hljs-keyword">float</span>[]) (ybx.dataValues))[i] = ((<span class="hljs-keyword">float</span>[]) (y.dataValues))[i] = yreader.nextFloat();
+			yreader.nextFloat();
+			((<span class="hljs-keyword">float</span>[]) (yby.dataValues))[i] = yreader.nextFloat();
+		}
+
+		Scanner zreader = <span class="hljs-keyword">new</span> Scanner(<span class="hljs-keyword">new</span> File(AuxiliaryFiles[<span class="hljs-number">2</span>]));
+		zreader.nextLine();
+
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; zreader.hasNextLine() &amp;&amp; zreader.hasNextFloat(); i++)
+		{
+			((<span class="hljs-keyword">float</span>[]) (zby.dataValues))[i] = ((<span class="hljs-keyword">float</span>[]) (zbx.dataValues))[i] = ((<span class="hljs-keyword">float</span>[]) (z.dataValues))[i] = zreader.nextFloat();
+			zreader.nextFloat();
+			((<span class="hljs-keyword">float</span>[]) (zbz.dataValues))[i] = zreader.nextFloat();
+		}
+
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> u = <span class="hljs-keyword">this</span>.getNumVariables() - <span class="hljs-number">1</span>; u &gt; <span class="hljs-keyword">this</span>.getNumVariables() - <span class="hljs-number">13</span>; u--)
+		{
+			a = <span class="hljs-keyword">this</span>.getVariableObject(u);
+			<span class="hljs-keyword">this</span>.minmaxCalculator(a, (<span class="hljs-keyword">float</span>[]) a.dataValues);
+		}
+
+	}
+
+	<span class="hljs-comment">/**
+	 * Parses the ASCII text associated with each variable. Assigns the data
+	 * values to each variable.
+	 * 
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">textParser</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> NoAttributeException
+	</span>{
+
+		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; getNumVariables(); i++)
+		{
+
+			Variable var = getVariableObject(i);
+
+			<span class="hljs-keyword">float</span>[] values = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[var.numElem];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>if actual max = actual min, then all values are the same</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">if</span> (var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value.equals(var.getAttributeObject(<span class="hljs-string">"actual_max"</span>).value))
+			{
+				<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; var.numElem; j++)
+				{
+					values[j] = (Float) (var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value);
+				}
+			}
+
+			<span class="hljs-keyword">if</span> (CommandLineInterface.verboseFlag)
+			{
+				logger.debug(<span class="hljs-string">"-- for "</span> + var.KameleonName + <span class="hljs-string">", the setholder holds "</span> + setholder.get(i).length + <span class="hljs-string">" sets of lines."</span>);
+				logger.debug(<span class="hljs-string">"   its first set includes these lines to begin with:"</span>);
+				logger.debug(setholder.get(i)[<span class="hljs-number">0</span>]);
+				logger.debug(setholder.get(i)[<span class="hljs-number">1</span>]);
+				logger.debug(setholder.get(i)[<span class="hljs-number">2</span>]);
+				logger.debug(setholder.get(i)[<span class="hljs-number">98437</span>]);
+			}
+
+			<span class="hljs-keyword">int</span> linenumber = <span class="hljs-number">0</span>;
+			<span class="hljs-keyword">int</span> numMSfails = <span class="hljs-number">0</span>;
+			<span class="hljs-keyword">int</span> numLSfails = <span class="hljs-number">0</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>this parses through each Line of ASCII text</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> block64 = <span class="hljs-number">0</span>; block64 &lt; var.numElem; block64 += <span class="hljs-number">64</span>)
+			{
+				<span class="hljs-keyword">int</span>[] msbits = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">72</span>];
+				<span class="hljs-keyword">int</span> numdecoded;
+				<span class="hljs-keyword">int</span> blocksize = Math.min(<span class="hljs-number">64</span>, var.numElem - block64);
+				<span class="hljs-keyword">float</span> dzi;
+
+				String buffer = setholder.get(i)[linenumber++];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>int bytes = buffer.length();</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+				numdecoded = decode(buffer, msbits);
+				<span class="hljs-keyword">if</span> (numdecoded != blocksize)
+				{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					logger.error(<span class="hljs-string">"FAIL msbits "</span> + numdecoded + <span class="hljs-string">" "</span> + blocksize);
+					numMSfails++;
+				}
+
+				buffer = setholder.get(i)[linenumber++];</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>bytes = buffer.length();</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				<span class="hljs-keyword">int</span>[] lsbits = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">72</span>];
+
+				numdecoded = decode(buffer, lsbits);
+				<span class="hljs-keyword">if</span> (numdecoded != blocksize)
+				{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>if(CommandLineInterface.verboseFlag)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					logger.error(<span class="hljs-string">"FAIL lsbits "</span> + numdecoded + <span class="hljs-string">" "</span> + blocksize);
+					numLSfails++;
+				}
+
+				dzi = ((Float) (var.getAttributeObject(<span class="hljs-string">"actual_max"</span>).value) - (Float) (var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value)) / <span class="hljs-number">4410</span>;
+
+				<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; blocksize; j++)
+				{
+					msbits[j] -= <span class="hljs-number">33</span>;
+					lsbits[j] -= <span class="hljs-number">33</span>;
+
+					<span class="hljs-keyword">float</span> sign = <span class="hljs-number">1.0f</span>;
+
+					<span class="hljs-keyword">if</span> (msbits[j] &gt;= <span class="hljs-number">47</span>)
+					{
+						sign = -<span class="hljs-number">1.0f</span>;
+						msbits[j] -= <span class="hljs-number">47</span>;
+					}
+
+					<span class="hljs-keyword">int</span> intvalue = (<span class="hljs-keyword">int</span>) (lsbits[j] + <span class="hljs-number">94.0</span> * msbits[j]);
+
+					values[block64 + j] = sign * (<span class="hljs-keyword">float</span>) Math.exp((dzi * intvalue + (Float) (var.getAttributeObject(<span class="hljs-string">"actual_min"</span>).value)));
+
+				}
+			}
+			<span class="hljs-keyword">if</span> (numMSfails &gt; <span class="hljs-number">0</span> || numLSfails &gt; <span class="hljs-number">0</span>)
+			{
+				logger.error(<span class="hljs-string">"FAIL ls bits:"</span> + numLSfails + <span class="hljs-string">" occurrences for "</span> + var.KameleonName);
+				logger.error(<span class="hljs-string">"FAIL ms bits:"</span> + numMSfails + <span class="hljs-string">" occurrences for "</span> + var.KameleonName);
+			}
+
+			var.dataValues = values;
+		}
+
+	}
+
+	<span class="hljs-comment">/**
+	 * Goes from the ASCII step to the integers step. Takes the empty array of
+	 * ints and fills it in with the appropriate values. Returns the number of
+	 * values in the line.
+	 * 
+	 * <span class="hljs-doctag">@param</span> line
+	 *            One String line read in from a variable's ASCII text
+	 * <span class="hljs-doctag">@param</span> outarray
+	 *            A reference to an empty array of ints (either msbits[72] or
+	 *            lsbits[72])
+	 * <span class="hljs-doctag">@return</span> the number of values in the line
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">decode</span><span class="hljs-params">(String line, <span class="hljs-keyword">int</span>[] outarray)</span>
+	</span>{
+
+		<span class="hljs-keyword">char</span>[] chars = <span class="hljs-keyword">new</span> <span class="hljs-keyword">char</span>[<span class="hljs-number">128</span>];
+
+		<span class="hljs-keyword">try</span>
+		{
+			line.getBytes(<span class="hljs-string">"US-ASCII"</span>);
+		} <span class="hljs-keyword">catch</span> (UnsupportedEncodingException e)
+		{
+			logger.error(<span class="hljs-string">"US-ASCII unsupported"</span>);
+		}
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;line.length(); i++){
+			chars[i]=line.charAt(i);
+		}
+		
+		
+		<span class="hljs-keyword">int</span> runvalue;
+		<span class="hljs-keyword">int</span> runcount;
+		<span class="hljs-keyword">int</span> inputchecksum = chars[<span class="hljs-number">0</span>];
+		<span class="hljs-keyword">int</span> checksum = <span class="hljs-number">0</span>;
+		<span class="hljs-keyword">int</span> indexin = <span class="hljs-number">1</span>;
+		<span class="hljs-keyword">int</span> indexout = <span class="hljs-number">0</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>for error checking we will make all of the values in the int[] equal
+to 34</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">64</span>; i++)
+			outarray[i] = <span class="hljs-number">34</span>;
+
+		<span class="hljs-keyword">while</span> ((runvalue =  (chars[indexin])) != <span class="hljs-number">0</span>)
+		{
+			logger.error(<span class="hljs-string">"char: "</span> + chars[indexin] + <span class="hljs-string">" ("</span> + (<span class="hljs-keyword">int</span>)chars[indexin] + <span class="hljs-string">") index_in: "</span> + (indexin) + <span class="hljs-string">" run value: "</span> + runvalue + <span class="hljs-string">" checksum: "</span> + checksum);
+			<span class="hljs-keyword">if</span> (runvalue &lt; <span class="hljs-number">0</span>)
+			{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>logger.debug(“Should never get here!!!”);
+System.exit(1);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				runvalue += <span class="hljs-number">256</span>;
+			}
+			<span class="hljs-keyword">if</span> (runvalue &gt; <span class="hljs-number">127</span>)
+			{
+				runcount = runvalue - <span class="hljs-number">170</span>;
+				runvalue = (<span class="hljs-keyword">int</span>) chars[++indexin];
+				<span class="hljs-keyword">if</span> (runvalue &lt; <span class="hljs-number">0</span>)
+				{
+					runvalue += <span class="hljs-number">256</span>;
+				}
+				<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> count = <span class="hljs-number">0</span>; count &lt; runcount; count++)
+				{
+					<span class="hljs-keyword">if</span> (indexout &lt; <span class="hljs-number">67</span>)
+						outarray[indexout++] = runvalue;
+					<span class="hljs-keyword">else</span>
+					{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>logger.debug(“decode: catastrophic error – trying to write outside the output array”);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					}
+					checksum += runvalue;
+				}
+			} <span class="hljs-keyword">else</span>
+			{
+				<span class="hljs-keyword">if</span> (indexout &lt; <span class="hljs-number">67</span>)
+					outarray[indexout++] = runvalue;
+				<span class="hljs-keyword">else</span>
+				{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>logger.debug(“decode: catastrophic error – trying to write outside the output array”);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				}
+				checksum += runvalue;
+			}
+			indexin++;
+			<span class="hljs-keyword">if</span> (indexin &gt; <span class="hljs-number">67</span>)
+			{
+				logger.error(<span class="hljs-string">"Can't find error"</span>);
+				<span class="hljs-keyword">return</span> indexout;
+			}
+			
+		}
+
+		<span class="hljs-keyword">if</span> (indexout &gt; <span class="hljs-number">64</span>){
+			logger.error(<span class="hljs-string">"Range error"</span>);
+			<span class="hljs-keyword">return</span> <span class="hljs-number">64</span>;}
+		<span class="hljs-keyword">if</span> (inputchecksum != <span class="hljs-number">33</span> + (checksum % <span class="hljs-number">92</span>))
+		{
+			logger.error(<span class="hljs-string">"Checksum error"</span>);
+			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>logger.error(“checksum: “ + checksum + “ input_checksum: “ + inputchecksum + “ other: “ + (33 + (checksum % 92)));</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+		<span class="hljs-keyword">return</span> indexout;
+	}
+
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>look at RLED</p>
+
+            </div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

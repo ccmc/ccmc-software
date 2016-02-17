@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>DatabaseInfoParser.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>DatabaseInfoParser.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * Name: DatabaseInfoParser.java
+ * 		 DatabaseInfoLine.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: Parses the DatabaseInfo file, and calls 
+ * 			DatabaseInfoLine.java (a class within this
+ * 			java file) for further assistance. 
+ * 			Checks for some specific keywords and stores
+ * 			them as CCMC names/values. 
+ * 			Finds all other information in the DatabaseInfo
+ * 			file and stores them as global variables. 
+ *  
+ * Modification History:
+ *  
+ * Summer 2011 	Donti, Nitesh
+ * 				Initial Development Started
+ * 				All tasks complete
+ * 				Ready to use
+ *  			  
+ * 08.01.2011 	Berrios, David
+ * 				New class made (DatbaseInfoLine.java)
+ * 				Line Parser complete
+ * 				Ready to use
+ *  			 
+ * 
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+
+<span class="hljs-keyword">import</span> java.io.File;
+<span class="hljs-keyword">import</span> java.io.FileNotFoundException;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">import</span> org.apache.log4j.Logger;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatabaseInfoParser</span> </span>{
+
+	<span class="hljs-comment">/**
+	 * Logger for the DatabaseInfoParser.java class. 
+	 * Use Logger.info(), Logger.debug(), and Logger.error() to print
+	 * statements out within the class. 
+	 */</span>
+	<span class="hljs-keyword">static</span> Logger logger = Logger.getLogger(DatabaseInfoParser.class);
+
+	<span class="hljs-comment">/**
+	 * Holds the DatabaseInfo text file
+	 */</span>
+	File file;
+
+	<span class="hljs-comment">/**
+	 * Constructor for the DatabaseInfoParser class
+	 * Adds information (mostly global attributes) from the 
+	 * DatabaseInfo file to the Model that is passed in
+	 * <span class="hljs-doctag">@param</span> filename The path of the DatabaseInfo file
+	 * <span class="hljs-doctag">@param</span> m The model object to which to add global attributes and other information 
+	 * 			from the database info file
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException 
+	 * <span class="hljs-doctag">@throws</span> FileNotFoundException
+	 */</span>
+	DatabaseInfoParser(String filename, Model m) <span class="hljs-keyword">throws</span> NoAttributeException, FileNotFoundException{
+		file= <span class="hljs-keyword">new</span> File (filename);
+		parse(m);
+	}
+
+	<span class="hljs-comment">/**
+	 * Parses the DatabaseInfo file and adds info to the Model
+	 * <span class="hljs-doctag">@param</span> m
+	 * <span class="hljs-doctag">@throws</span> NoAttributeException
+	 * <span class="hljs-doctag">@throws</span> FileNotFoundException
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">parse</span><span class="hljs-params">(Model m)</span> <span class="hljs-keyword">throws</span> NoAttributeException, FileNotFoundException</span>{
+
+		logger.info(<span class="hljs-string">"\n-----\n...Now Parsing Database File"</span>);
+
+		Scanner s = <span class="hljs-keyword">new</span> Scanner(file);
+		KAttribute temp;
+
+		String[] keywords ={<span class="hljs-string">"run_number"</span>, <span class="hljs-string">"last_name"</span>, <span class="hljs-string">"request_date"</span>, <span class="hljs-string">"start_"</span>, <span class="hljs-string">"end_"</span> };
+		String[] keys ={<span class="hljs-string">"run_registration_number"</span>, <span class="hljs-string">"generated_by"</span>, <span class="hljs-string">"generation_date"</span>, <span class="hljs-string">"start_time"</span>, <span class="hljs-string">"end_time"</span>};
+
+		String line = <span class="hljs-keyword">null</span>;
+
+
+		<span class="hljs-keyword">while</span>(s.hasNextLine()){
+			line = s.nextLine();
+
+			DatabaseInfoLine dil = <span class="hljs-keyword">new</span> DatabaseInfoLine(line);
+			<span class="hljs-keyword">if</span> (dil.getName() != <span class="hljs-keyword">null</span>)
+			{
+				<span class="hljs-keyword">boolean</span> special = <span class="hljs-keyword">false</span>;
+				<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;keywords.length; i++){
+					<span class="hljs-keyword">if</span>(dil.getName().startsWith(keywords[i]) &amp;&amp; dil.getValue() !=<span class="hljs-keyword">null</span>){
+						special = <span class="hljs-keyword">true</span>;
+						temp=m.getGlobalAttribute(keys[i]);
+						temp.value = (dil.getValue());
+					}
+				}
+				<span class="hljs-keyword">if</span>(!special &amp;&amp; dil.getValue()!=<span class="hljs-keyword">null</span> ){</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>this checks to see if there is already a global attribute by that name. if not, then it will create the new global attribute. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					<span class="hljs-keyword">try</span>{
+						m.getGlobalAttribute(dil.getName());
+					}<span class="hljs-keyword">catch</span>(NoAttributeException e){
+						m.addGlobalAttribute(<span class="hljs-keyword">new</span> KAttribute(dil.getName(), dil.getValue(), <span class="hljs-string">""</span>, <span class="hljs-string">"model"</span>, <span class="hljs-string">"String"</span>));
+					}
+				}
+			}
+		}
+
+		m.getGlobalAttribute(<span class="hljs-string">"terms_of_usage"</span>).value = (m.getGlobalAttribute(<span class="hljs-string">"terms_of_usage"</span>).description);
+		m.getGlobalAttribute(<span class="hljs-string">"kameleon_version"</span>).value = (CommandLineInterface.KameleonVersion);
+		System.out.println(<span class="hljs-string">"-----"</span>);
+	}
+
+	<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DatabaseInfoLine</span> </span>{
+		
+		<span class="hljs-comment">/**
+		 * The name of the Global Attribute as taken 
+		 * from the left side of the file
+		 */</span>
+		<span class="hljs-keyword">private</span> String name;
+		
+		<span class="hljs-comment">/**
+		 * The value of the Global Attribute as taken
+		 * from the right side of the file
+		 */</span>
+		<span class="hljs-keyword">private</span> String value;
+
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">DatabaseInfoLine</span><span class="hljs-params">(String line)</span>
+		</span>{
+			String tokens[] = line.split(<span class="hljs-string">"#"</span>);
+			<span class="hljs-keyword">if</span> (tokens.length != <span class="hljs-number">2</span>)
+			{
+				name = <span class="hljs-keyword">null</span>;
+				value = <span class="hljs-keyword">null</span>;
+			} <span class="hljs-keyword">else</span>
+			{
+				value = tokens[<span class="hljs-number">0</span>].trim();
+				name = tokens[<span class="hljs-number">1</span>].trim();
+			}
+		}
+		
+		<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span>
+		</span>{
+			<span class="hljs-keyword">return</span> name;
+		}
+
+		<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getValue</span><span class="hljs-params">()</span>
+		</span>{
+			<span class="hljs-keyword">return</span> value;
+		}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>used for testing purposes</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span>
+		</span>{
+			String out = <span class="hljs-string">"name: "</span> + name + <span class="hljs-string">" value: "</span> + value;
+			<span class="hljs-keyword">return</span> out;
+		}	
+	}
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

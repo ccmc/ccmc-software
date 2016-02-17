@@ -29,127 +29,204 @@ class readARMS(testReader.pyFileReader):
 
 		if config_file != None:
 			self._config = testReader.getConfig(config_file)
+			self.set_config_globals()
 			self.set_file_names()
+			self.set_preferred_coordinates()
 
 		self.tree_data = {}
 		self.leaf_data = {}
 		self.roots = [] # sorted by R,T,P bounding box minima
 		self.last_key = None
 		self.visited = {}
-		self.missing_value = -256.*-256.*-256.*-256.*-256.
 		self.leaf_iterations = 0
+		self._data_loaded = False
+		self._tolerance = .0001
+		self.globalAttributes['model_name']  = Attribute('model_name', 'ARMs')
+		
 
+	def openFile(self, config_file, readonly = True):
+		if self.debug: print '\t\treadARMS.openFile loading config file..'
+		if config_file != None:
+			try:
+				self._config = testReader.getConfig(config_file)
+				self.set_config_globals()
+				self.set_file_names()
+				self.set_preferred_coordinates()
+				model_name = str(testReader.get_config_value(self._config,'Reader', 'ModelName'))
+				if self.debug: print '\t\t\tresetting model_name attribute to', model_name
+				self.globalAttributes['model_name'] = Attribute('model_name', model_name)
+			except:
+				raise
+
+		if self.debug: print '\t\treadARMS.openFile setting current filename'
+		self.current_filename = self.data_file_name
+		self.read_ARMS_header(self.header_file_name) #defines variableNames
+
+		if self.debug: print '\t\treadARMS.openFile initializing variable IDs and attributes'
+		self.initializeVariableIDs()
+		self.initializeVariableAttributeIDs()
+
+		variables = self.variableNames.values()
+		readARMS.variables_tuple = collections.namedtuple('Variables', variables) #so interpolate_variables can access it
+		self.initializeGlobalAttributeIDs() #why did I comment this out?
+		
+		return pyKameleon.FileReader.OK
+
+	def initializeCartesianIDs(self):
+		
+		pass
+
+	'''Overloading default pyFileReader.getVariable'''
+	def getVariable(self, variable, startIndex = None, count = None):
+		# This function called by kameleon.loadVariable(variable) regardless of which variable is requested.
+		var_name = self.getVariableName(variable)
+
+		if self._data_loaded == False:
+			self.read_ARMS_data(self.data_file_name) #reads all data at once
+
+		if self.debug: 
+			print "\tpyFileReader.getVariable returning variable", var_name
+
+		# returns a dummy variable FloatVector of size 1 (pyFileReader.dummy_variable)
+		return self.variables[var_name]
 
 	def read_ARMS_header(self, header_filename):
 		"""Read gloabl attributes from file """
-		self.header_file = open(header_filename, 'r')
 
-		# get time step
-		line = self.header_file.readline().split()
-		time = line[0]
-
-		#can get date from config
-		date = str(testReader.get_config_value(self._config,'MetaData', 'Date'))
-		self.globalAttributes['timestep_time'] = Attribute('timestep_time', date+'T'+time+'.000Z')
-
-		# get grid type
-		line = self.header_file.readline().split()
-		self.grid_type = line[0]
-		self.globalAttributes['grid_type'] = Attribute('grid_type', self.grid_type)
-
-		if self.grid_type == 'Spherical_Exponential':
-			components = ['R', 'T', 'P']
-		else:
-			print self.grid_type, 'not supported!'
-			raise Exception("grid type not supported!")
-			components = ['x', 'y', 'z'] # just guessing here...
-
-		# get Block sizes
-		for i in range(3):
-			dim_size, dim_name = self.header_file.readline().split()
-			self.globalAttributes[dim_name] = Attribute(dim_name, int(dim_size))
-
-
-		#initialize variables
-		var_num = 0
+		if self.debug: print '\t\treadARMS.read_ARMS_header', header_filename
+		with open(header_filename, 'r') as self.header_file: #will close safely and automatically
 		
-		line = ' '
-		while len(line) > 0:
+			# get time step
 			line = self.header_file.readline().split()
-			if len(line) == 0:
-				break
+			if self.debug: print '\t\t', line
+			time = line[0]
+
+			#can get date from config
+			date = str(testReader.get_config_value(self._config,'MetaData', 'Date'))
+			self.globalAttributes['timestep_time'] = Attribute('timestep_time', date+'T'+time+'.000Z')
+
+			# get grid type
+			line = self.header_file.readline().split()
+			if self.debug: print '\t\t', line
+			self.grid_type = line[0]
+			self.globalAttributes['grid_type'] = Attribute('grid_type', self.grid_type)
+
+			if self.grid_type == 'Spherical_Exponential':
+				components = ['R', 'T', 'P']
+				self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
+				components_cartesian = ['X', 'Y', 'Z']
+
+			elif self.grid_type == 'Cartesian':
+				components = ['X', 'Y', 'Z']
+				self.globalAttributes['grid_system_1'] = Attribute('grid_system_1', str(components))
 			else:
-				number_components, var_base_name = line
+				print self.grid_type, 'not supported!'
+				raise Exception("grid type not supported!")
+				components = ['x', 'y', 'z'] 
+
+			# get Block sizes
+			for i in range(3):
+				dim_size, dim_name = self.header_file.readline().split()
+				if self.debug: print '\t\t', dim_size, dim_name
+				self.globalAttributes[dim_name] = Attribute(dim_name, int(dim_size))
+
+
+			#initialize variables
+			var_num = 0
 			
-			if int(number_components) == 1:
-				self.addVariableName(var_base_name, var_num)
+			line = ' '
+			while len(line) > 0:
+				line = self.header_file.readline().split()
+				if self.debug: print '\t\t', line
+				if len(line) == 0:
+					break
+				else:
+					number_components, var_base_name = line
+				
+				if int(number_components) == 1:
+					self.addVariableName(var_base_name, var_num)
 
-				# get variable units
-				val, attr = self.header_file.readline().split() 
-				self.variableAttributes[var_base_name]['units'] = Attribute('units', val)
+					# get variable units
+					val, attr = self.header_file.readline().split() 
+					if self.debug: print '\t\t', val, attr
+					self.variableAttributes[var_base_name]['units'] = Attribute('units', val)
 
-				# get variable scale factor
-				val, attr = self.header_file.readline().split()
-				self.variableAttributes[var_base_name]['scale_factor'] = Attribute('scale_factor', float(val))
+					# get variable scale factor
+					val, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
+					self.variableAttributes[var_base_name]['scale_factor'] = Attribute('scale_factor', float(val))
 
-				# get min and max values (what are the valid_min valid_max values???)
-				val, attr = self.header_file.readline().split()
-				self.variableAttributes[var_base_name]['actual_min'] = Attribute('actual_min', float(val))
+					# get min and max values (what are the valid_min valid_max values???)
+					val, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
+					self.variableAttributes[var_base_name]['actual_min'] = Attribute('actual_min', float(val))
 
-				val, attr = self.header_file.readline().split()
-				self.variableAttributes[var_base_name]['actual_max'] = Attribute('actual_max', float(val))
+					val, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
+					self.variableAttributes[var_base_name]['actual_max'] = Attribute('actual_max', float(val))
 
-				var_num += 1
-			else:
-				# get variable units
-				units, attr = self.header_file.readline().split() 
+					var_num += 1
+				else:
+					# get variable units
+					units, attr = self.header_file.readline().split() 
+					if self.debug: print '\t\t', val, attr
 
-				# get variable scale factor
-				scale_factor, attr = self.header_file.readline().split()
+					# get variable scale factor
+					scale_factor, attr = self.header_file.readline().split()
+					if self.debug: print '\t\t', val, attr
 
 
-				for i in range(int(number_components)+1):
-					if i == int(number_components):
-						val, attr = self.header_file.readline().split()
-						self.globalAttributes[var_base_name+'_mag_min'] = Attribute(var_base_name+'_mag_min', float(val))
 
-						val, attr = self.header_file.readline().split()
-						self.globalAttributes[var_base_name+'_mag_max'] = Attribute(var_base_name+'_mag_max', float(val))
+					for i in range(int(number_components)+1):
+						if i == int(number_components):
+							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
+							self.globalAttributes[var_base_name+'_mag_min'] = Attribute(var_base_name+'_mag_min', float(val))
 
-						
-					else:
-						var_name = var_base_name + '_' + components[i]
+							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
+							self.globalAttributes[var_base_name+'_mag_max'] = Attribute(var_base_name+'_mag_max', float(val))
 
-						self.addVariableName(var_name, var_num)
-						self.variableAttributes[var_name]['units'] = Attribute('units', units)
-						self.variableAttributes[var_name]['scale_factor'] = Attribute('scale_factor', float(scale_factor))
+							
+						else:
+							var_name = var_base_name + '_' + components[i]
 
-						# get min and max values (what are the valid_min valid_max values???)
-						val, attr = self.header_file.readline().split()
-						self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
+							self.addVariableName(var_name, var_num)
+							self.variableAttributes[var_name]['units'] = Attribute('units', units)
+							self.variableAttributes[var_name]['scale_factor'] = Attribute('scale_factor', float(scale_factor))
 
-						val, attr = self.header_file.readline().split()
-						self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
+							# get min and max values (what are the valid_min valid_max values???)
+							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
+							self.variableAttributes[var_name]['actual_min'] = Attribute('actual_min', float(val))
 
-						var_num += 1
+							val, attr = self.header_file.readline().split()
+							if self.debug: print '\t\t', val, attr
+							self.variableAttributes[var_name]['actual_max'] = Attribute('actual_max', float(val))
+
+							var_num += 1
+
+												
 
 
 	def read_ARMS_data(self, filename):
 		"""Reads in the arms data files """
-		# print 'read_arms_data', filename
-		self.data_file = file(filename)
-		s = self.data_file.read()
+		if self.debug: print '\t\treadARMS.read_arms_data', filename
+		with open(filename, 'r') as self.data_file: # automatically closes safely on error
+			s = self.data_file.read()
 
 		endian = '<'
 		offset = [0]
-		header_dtype = np.dtype(endian+'u4')
-
+		header_dtype = np.dtype('u4')
+		header_dtype.newbyteorder(endian)
 		model_name_length = np.frombuffer(s, dtype=header_dtype, offset = offset[0], count=1)[0]
+
 		if model_name_length > 100: #header length too long, switch endian
 			endian = '>'
-			header_dtype = np.dtype(endian+'u4')
-			model_name_length = np.frombuffer(s, dtype=endian+'u4', offset = offset[0], count=1)[0]
-
+			if self.debug: print '\t\t\tswitching endian to ', endian
+			header_dtype = np.dtype(endian + 'u4')
+			model_name_length = np.frombuffer(s, dtype=header_dtype, offset = offset[0], count=1)[0]
+			if self.debug: print '\t\t\tlength of model_name:', model_name_length
 
 		def read_record(s, dtype, count=1, offset=None):
 			"""offset is a mutable list"""
@@ -164,27 +241,46 @@ class readARMS(testReader.pyFileReader):
 			return result
 
 		#set model name
-		python_model_name = read_record(s,'S'+str(model_name_length), offset=offset)[0]
+		try:
+			python_model_name = read_record(s,'S'+str(model_name_length), offset=offset)[0]
+		except ValueError:
+			print 'S' + str(model_name_length)
+			raise 
+		if self.debug: print '\t\tpython_model_name:', python_model_name
 		self.globalAttributes['python_model_name'] = Attribute('python_model_name', str(python_model_name))
 
-
+		dt = np.dtype(endian+'f')
 		#set model time
-		model_time = read_record(s, endian+'f1', offset = offset)[0]
+		try:
+			model_time = read_record(s, dt, offset = offset)[0]
+		except ValueError:
+			print dt
+			raise
+
+		if self.debug: print '\t\tsim_time', model_time, 'offset', offset
 		self.globalAttributes['sim_time'] = Attribute('sim_time', float(model_time))
 
 		# get number of total blocks, leaf blocks, and new_grid_flag
 		
 		num_total_blocks, num_leaf_blocks, new_grid_flag = read_record(s, endian+'i4', 3, offset = offset)
 		
-		# print 'total blocks, leaf blocks, new grid:', num_total_blocks, num_leaf_blocks, new_grid_flag
+		if self.debug: print '\t\ttotal blocks, leaf blocks, new grid:', num_total_blocks, num_leaf_blocks, new_grid_flag
 
 		self.globalAttributes['num_total_blocks'] = Attribute('num_total_blocks', int(num_total_blocks))
 		self.globalAttributes['num_leaf_blocks'] = Attribute('num_leaf_blocks', int(num_leaf_blocks))
 		self.globalAttributes['new_grid_flag'] = Attribute('new_grid_flag', int(new_grid_flag))
 
-		ni = self.getGlobalAttribute('RBlockSize').getAttributeValue()
-		nj = self.getGlobalAttribute('TBlockSize').getAttributeValue()
-		nk = self.getGlobalAttribute('PBlockSize').getAttributeValue()
+		if self.grid_type == 'Spherical_Exponential':
+			ni = self.getGlobalAttribute('RBlockSize').getAttributeValue()
+			nj = self.getGlobalAttribute('TBlockSize').getAttributeValue()
+			nk = self.getGlobalAttribute('PBlockSize').getAttributeValue()
+		elif self.grid_type == 'Cartesian':
+			ni = self.getGlobalAttribute('XBlockSize').getAttributeValue()
+			nj = self.getGlobalAttribute('YBlockSize').getAttributeValue()
+			nk = self.getGlobalAttribute('ZBlockSize').getAttributeValue()
+		else:
+			raise ImportError('grid type not supported')
+
 		self.leaf_resolution = (ni,nj,nk)
 
 
@@ -207,15 +303,15 @@ class readARMS(testReader.pyFileReader):
 
 		def create_variable_datatype(self):
 			"""creates a custom datatype to view variable data"""
-			# note: this assumes order of variables in header matches data file, s.t. variableNames was initialized in the proper order.
+			# this assumes order of variables in header matches data file, s.t. variableNames was initialized in the proper order.
 			variable_names = self.variableNames.values()
 			dtype_list = [('header', endian+'i4')]
-			for var_name in variable_names: dtype_list.append((var_name, endian + 'f4'))
+			for var_name in variable_names: 
+				dtype_list.append((var_name, endian + 'f4'))
 			dtype_list.append(('footer', endian+'i4'))
 			return np.dtype(dtype_list)
 		
 		variable_datatype = create_variable_datatype(self)
-		
 
 		for block_number in range(num_total_blocks): #num_total_blocks
 			block_data = np.frombuffer(s, dtype = block_dtype, count=1, offset = offset[0])
@@ -225,31 +321,35 @@ class readARMS(testReader.pyFileReader):
 
 			block_type = block_data['block_type']
 			parent_key = tuple(block_data['parent_loc'].flatten())
-			child_key = tuple(block_data['child_loc'].flatten())
+			child_keys = tuple(block_data['child_loc'].flatten())
 			bndbox = list(block_data['bndbox'][0].flatten())
 
-			if self.grid_type == 'Spherical_Exponential':
-				bndbox[2:4] = bndbox[3],bndbox[2]
+			if self.grid_type == 'Spherical_Exponential': #flip theta bounds so 0 is at equator
+				bndbox[2:4] = bndbox[3],bndbox[2] 
 			
 			
-			self.tree_data[block_key] = self._tree_data_tuple(block_type, parent_key, child_key, self._bbx_tuple(*bndbox))
+			self.tree_data[block_key] = self._tree_data_tuple(block_type, parent_key, child_keys, self._bbx_tuple(*bndbox))
 
 			# 1 = leaf, 2 = parent, 3 = grand-parent, etc
-			if block_type == 1: #::-1 flips second index
-				self.leaf_data[block_key] = np.frombuffer(s, dtype=variable_datatype, count = ni*nj*nk, offset = offset[0]).reshape((ni,nj,nk))[:,::-1,:]
+			if block_type == 1: 
+				variables = np.frombuffer(buffer(s), dtype=variable_datatype, count = ni*nj*nk, offset = offset[0])
+				variables_reshaped = variables.reshape(ni,nj,nk, order = 'F') # 'F' avoids transpose later
+				if self.grid_type == 'Spherical_Exponential': #flip theta
+					self.leaf_data[block_key] = variables_reshaped[:,::-1,:]
+				else:
+					self.leaf_data[block_key] = variables_reshaped
 				offset[0] += variable_datatype.itemsize*ni*nj*nk
 			
 			if parent_key == (-1, -1):
 				self.roots.append( (block_key,bndbox) )
 
-
-		self.data_file.close()
-
 		self.sort_roots()
 		self.set_root_ranges()
+		self._data_loaded = True
 
 	def sort_roots(self):
-		# print 'number of roots:', len(self.roots)
+		if self.debug: 
+			print '\t\tnumber of roots:', len(self.roots)
 		self.roots.sort(key= lambda x: itemgetter(0,2,4)(x[1]))
 
 	def _print_tree_info(self):
@@ -259,32 +359,59 @@ class readARMS(testReader.pyFileReader):
 
 	def set_root_ranges(self):
 		def get_root_range(self, min_getter, max_getter, stride = 1):
+			"""This assumes roots are sorted"""
 			get_root_bbx = itemgetter(1)
-			root_range = [min_getter(get_root_bbx(self.roots[0]))] #initialize range
+			root_0_bbx = get_root_bbx(self.roots[0])
+			min_val, max_val = min_getter(root_0_bbx), max_getter(root_0_bbx)
+			root_range = [min_val] 
+			counter = 1	
 			for root_id in range(stride,len(self.roots),stride):
+				counter += 1
 				root_bbx = get_root_bbx(self.roots[root_id])
-				root_range.append(min_getter(root_bbx))
-				if root_range[-1] < root_range[-2]:
+				root_min = min_getter(root_bbx)
+				root_max = max_getter(root_bbx)
+				if root_min < min_val: min_val = root_min
+				if root_max > max_val: max_val = root_max
+				root_range.append(root_min)
+				if root_range[-1] <= root_range[-2]:
+					if self.debug: 
+						if root_range[-1] < root_range[-2]:
+							print '\t\t\t', root_range[-1], ' < ', root_range[-2]
+						else:
+							print '\t\t\t', root_range[-1], ' == ', root_range[-2]
 					root_range.pop()
-					root_range.append(max_getter(get_root_bbx(self.roots[root_id-1]))) #add max
+					root_id = root_id - 1
+					# root_range.append(max_getter(get_root_bbx(self.roots[root_id-1]))) 
 					break
+			root_range.append(max_getter(get_root_bbx(self.roots[root_id])))
+			tolerance_scaled = self._tolerance*(max_val - min_val) 
+			root_range[ 0] -= tolerance_scaled
+			root_range[-1] += tolerance_scaled
+			if self.debug: print '\t\t\troot min, max, counter:', min_val, max_val, counter
 			return root_range
 
 		get_r_min, get_r_max = itemgetter(0), itemgetter(1)
 		get_theta_min, get_theta_max = itemgetter(2), itemgetter(3)
 		get_phi_min, get_phi_max = itemgetter(4), itemgetter(5)
 
+		if self.debug: print '\t\tgetting phi range.'
 		phi = get_root_range(self,get_phi_min, get_phi_max)
 		nk = len(phi)-1
 		
+		if self.debug: print '\t\tgetting theta range.'
 		theta = get_root_range(self,get_theta_min,get_theta_max,nk)
 		nj = len(theta)-1
 
+		if self.debug: print '\t\tgetting r range.'
 		r = get_root_range(self,get_r_min,get_r_max,nj*nk)
 		ni = len(r)-1
 
 		self.root_coord = (r,theta,phi)
 		self.root_resolution = (ni,nj,nk)
+		if self.debug: 
+			print '\t\troot resolution', self.root_resolution
+			print '\t\troot ranges:'
+			for coord in self.root_coord: print '\t\t\t', coord
 
 	def plot_root_coord(self, ax = None, index = 2):
 		from mpl_toolkits.mplot3d import axes3d
@@ -307,10 +434,16 @@ class readARMS(testReader.pyFileReader):
 		plt.show()
 		return ax
 
+	def set_tolerance(self, tolerance = None):
+		if tolerance != None:
+			self._tolerance = tolerance
+		else: # keep default
+			pass 
+
 	def find_leaf(self,point,start_key=None):
 		"""gets the cell for the query point"""
 		self.leaf_iterations += 1
-		# print '\tfind_leaf called with key', start_key, 'looking for', point
+		# if self.debug: print '\tfind_leaf called with key', start_key, 'looking for', point
 
 		get_type = itemgetter(0)
 		get_parent = itemgetter(1)
@@ -330,14 +463,18 @@ class readARMS(testReader.pyFileReader):
 				block = self.tree_data[start_key]
 				if self.in_block(block,point):
 					pass
-					# print self.leaf_iterations, 'found point among roots', point, get_bbx(block)
+					# if self.debug: print '\titer', self.leaf_iterations, 'found point among roots', point, get_bbx(block)
 				else:
 					raise ArithmeticError("Point not actually in root!")
 			else: #out of simulation domain
+				if self.debug: print 'point out of domain'
 				return -1
+		elif start_key == -1: # the last time the method was called, the point was out of bounds
+			return self.find_leaf(point)
 		else:
 			# see if point is in this block's range
-			block = self.tree_data[start_key]
+			block = self.tree_data[start_key]			
+				
 			if self.in_block(block,point):
 				# print self.leaf_iterations, 'point was in start_key block', point, get_bbx(block)
 				pass
@@ -352,7 +489,10 @@ class readARMS(testReader.pyFileReader):
 						if self.in_block(block,point):
 							pass
 						else:
-							raise Exception('point not in found root!')
+							if self.debug:
+								print point
+								print block.bbx
+							raise ArithmeticError('point not in found root!')
 					else: #out of simulation bounds
 						# print '\t\tout of bounds!'
 						return -1
@@ -366,7 +506,7 @@ class readARMS(testReader.pyFileReader):
 			return start_key
 		else:
 			if self.in_block(block,point):
-				# print self.leaf_iterations, '\tpoint among children', point, get_bbx(block)
+				# if self.debug: print '\titer', self.leaf_iterations, 'point among children', point, get_bbx(block)
 				pass
 			else:
 				raise AssertionError("point is not in block, something wrong")
@@ -377,24 +517,46 @@ class readARMS(testReader.pyFileReader):
 			#normalization
 			point_norm = self.point_norm(point, get_bbx(block))
 			# print self.leaf_iterations,'\tpoint_norm:', point_norm 
-			if np.less(point_norm,0).any() | np.greater(point_norm,1).any():
-				raise ArithmeticError("normalized point is not in [0,1]!")
+			if np.less(point_norm,-1*self._tolerance).any() | np.greater(point_norm,1+self._tolerance).any():
+				raise ArithmeticError("\tpoint: " + str(point) +
+									"\n\tnormalized:" + str(point_norm) + 
+									" is not in [0,1]! tolerance: " + self._tolerance + 
+									"\n\t" + str(get_bbx(block)))
 
+			# r-, theta-, and phi_index will be in [0,1] 
 			r_index = int(r(point_norm) > .5)#.5
-			theta_index = int(theta(point_norm) <= .5)
+			if self.grid_type == 'Spherical_Exponential':
+				theta_index = int(theta(point_norm) <= .5)
+			else:
+				theta_index = int(theta(point_norm) > .5)
 			phi_index = int(phi(point_norm) > .5)
 
 			# the child's index will be in [0,7]
 			child_index = r_index+ 2*theta_index + 4*phi_index
 			child_key = (children[2*child_index], children[2*child_index+1])
-
-			# numpy interpolate will adjust the point slightly so that it lies in the child box	 		
-			child_bbx = get_bbx(self.tree_data[child_key])
+	
+			# numpy interpolate will adjust the point slightly so that it lies in the child box
+			try:		
+				child_bbx = get_bbx(self.tree_data[child_key])
+			except KeyError:
+				if child_key == (-1, -1): #weirdness of 2.5D runs. Likely phi_index = 1
+					child_index = r_index+ 2*theta_index
+					child_key = (children[2*child_index], children[2*child_index+1])
+					child_bbx = get_bbx(self.tree_data[child_key])
+				else:
+					if self.debug:
+						print '\t\tKey Error at position:', point
+						print '\t\tr_index, theta_index, phi_index:', r_index, theta_index, phi_index
+						print '\t\tchild_index', child_index
+						print '\t\tchildren:', children
+						print '\t\tchild_key:', child_key
+					return -1
 			child_r = self.x_shift(r(point), *r_range(child_bbx))
 			child_theta = self.x_shift(theta(point),*theta_range(child_bbx))
 			child_phi = self.x_shift(phi(point),*phi_range(child_bbx))
 			child_point = child_r,child_theta,child_phi
 
+			# if self.debug: print '\tchild point', child_point
 			return self.find_leaf(child_point, child_key)
 	
 	def x_shift(self, x, xmin, xmax):
@@ -438,9 +600,14 @@ class readARMS(testReader.pyFileReader):
 															itemgetter(2), itemgetter(3),
 															itemgetter(4),itemgetter(5))
 		bndbox = get_bndbox(block)
-		inside = (r_min(bndbox) < r(point) <= r_max(bndbox)) and\
-				(theta_min(bndbox) < theta(point) <= theta_max(bndbox)) and\
-				(phi_min(bndbox) < phi(point) <= phi_max(bndbox))
+		
+		tols = [self._tolerance*(r_max(bndbox) - r_min(bndbox)),
+				self._tolerance*(theta_max(bndbox) - theta_min(bndbox)),
+				self._tolerance*(phi_max(bndbox) - phi_min(bndbox))]
+
+		inside = 	((r_min(bndbox)-r(tols)) < r(point) <= (r_max(bndbox) + r(tols))) and\
+					((theta_min(bndbox)-theta(tols)) < theta(point) <= (theta_max(bndbox) + theta(tols))) and\
+					((phi_min(bndbox)-phi(tols)) < phi(point) <= (phi_max(bndbox) + phi(tols)))
 		return inside
 
 	def find_root(self,point):
@@ -449,9 +616,15 @@ class readARMS(testReader.pyFileReader):
 		r,theta,phi = itemgetter(0), itemgetter(1), itemgetter(2)
 		r_root, theta_root, phi_root = self.root_coord
 		ni,nj,nk = self.root_resolution
-		i = np.searchsorted(r_root,r(point))-1
-		j = np.searchsorted(theta_root,theta(point))-1
-		k = np.searchsorted(phi_root,phi(point))-1
+		try:
+			i = np.searchsorted(r_root,r(point))-1
+			j = np.searchsorted(theta_root,theta(point))-1
+			k = np.searchsorted(phi_root,phi(point))-1
+		except IndexError:
+			if self.debug: 
+				print 'point:', point
+				print 'r_root, theta_root, phi_root:', r_root, theta_root, phi_root
+			raise
 		if (i == -1) | (i == len(r_root)-1) | (j == -1) | (j == len(theta_root)-1) | (k == -1) | (k == len(phi_root)-1):
 			return -1
 		else:
@@ -465,49 +638,45 @@ class readARMS(testReader.pyFileReader):
 		phi_mid = (bbx.phi_min + bbx.phi_max)/2
 		return r_mid,th_mid,phi_mid
 
-	def interpolate(self,variable, point):
+
+	def interpolate(self,variable, *point):
 		if type(variable) != str:
 			variable = self.variableNames[variable]
-			
+
+		if self.preferred_coordinates == 'ARMS':
+			pass
+		else:
+			point = self.convert_positions_to_ARMS(point, self.preferred_coordinates)
+
 		"""interpolates data at point r,theta,phi
 
-		Note: r may be stored in log space. If so, it is up to the caller to make the conversion
-
-			Vxyz = 	V000 (1 - x) (1 - y) (1 - z) +	//    	   Left:    		ARMS needs:		
-					V100 x (1 - y) (1 - z) +		//   V011 6----7 V111     V001 4----5 V101
-					V010 (1 - x) y (1 - z) +		//    	 /|   /|              /|   /|
-					V001 (1 - x) (1 - y) z +		// V001 4----5 V101     V011 6----7 V111 
-					V101 x (1 - y) z +				//      | |  | |             | |  | |
-					V011 (1 - x) y z +				//   V010 2--|-3 V110     V000 0--|-1 V100
-					V110 x y (1 - z) +				//    	|/   |/              |/   |/
-					V111 x y z 						// V000 0----1 V100     V010 2----3 V110
+			Note: r may be stored in log space. If so, it is up to the caller to make the conversion
 
 			r_index = int(r(point_norm) > .5) 
 					= int(r(point_norm)*(N-1)) for N = 3
-			theta_index = int(theta(point_norm) <= .5) 
+			theta_index = int(theta(point_norm) <= .5) if coordinates = SPHEXP
 						= int(1-theta(point_norm)*(N-1)) for N = 3 
 			phi_index = int(phi(point_norm) > .5)
 
 			# the child's index will be in [0,7]
 			child_index = r_index+ 2*theta_index + 4*phi_index
-
-
 		"""
 		r, theta, phi = itemgetter(0), itemgetter(1), itemgetter(2)
 		ni,nj,nk = self.leaf_resolution
 
 		leaf_key = self.find_leaf(point, self.last_key)
 		self.last_key = leaf_key
-		bbx = self.tree_data[leaf_key].bbx
 
 		if leaf_key != -1:
+			bbx = self.tree_data[leaf_key].bbx
 			if self.visited.has_key(leaf_key):
 				pass
 			else:
 				self.visited[leaf_key] = self.bbx_mid(bbx)
 			
 			try:	
-				var_data = self.leaf_data[leaf_key][variable].T
+				var_data = self.leaf_data[leaf_key][variable]
+				# nk,nj,ni = self.leaf_resolution #due to transpose
 			except ValueError:
 				print 'available variables:', 
 				for var in self.variableNames.values(): print var,
@@ -545,23 +714,28 @@ class readARMS(testReader.pyFileReader):
 			#shift to cell, coordinates in [0,1)
 			p = pi-i0, pj-j0, pk-k0
 
+			scale_factor = self.getVariableAttribute(variable, 'scale_factor').getAttributeValue()
 
-			return self.tri_linear(var_data,i0,i1,j0,j1,k0,k1,p)
+			return scale_factor*self.tri_linear(var_data,i0,i1,j0,j1,k0,k1,p)
 
 		else:
+			if self.debug: print 'could not find leaf for point', point
 			return self.missing_value
 
 	"""Interpolate variable at position along with local resolution """
-	def interpolate_dc(self,variable,point):
-		val = self.interpolate(variable,point)
-		if self.last_key != -1:		
-			bbx = self.tree_data[self.last_key]
+	def interpolate_dc(self,variable,*point):
+		get_bbx =itemgetter(3)
+		val = self.interpolate(variable,*point)
+		if self.last_key != -1:
+			bbx = get_bbx(self.tree_data[self.last_key])
 			ni,nj,nk = self.leaf_resolution
-			dr = (bbx.r_max - bbx.r_min)/ni
+			dlogr = (bbx.r_max - bbx.r_min)/ni
+			dr = (pow(10,dlogr)-1)*point[0]
 			dth = (bbx.theta_max - bbx.theta_min)/nj
 			dphi = (bbx.phi_max - bbx.phi_min)/nk
 			return val, dr, dth, dphi 
 		else:
+			print 'last_key == -1, returning missing'
 			return self.missing_value, self.missing_value, self.missing_value, self.missing_value
 
 	def tri_linear(self,var_data,i0,i1,j0,j1,k0,k1,p):
@@ -577,60 +751,37 @@ class readARMS(testReader.pyFileReader):
 
 			var_out = c0*(1-phi(p)) + c1*phi(p)
 
-			## this code is not stable!!
-			# var_out = 	var_data[i0,j0,k0]*(1-r(p))	*(1-theta(p))	*(1-phi(p)) +\
-			# 			var_data[i1,j0,k0]*r(p)		*(1-theta(p))	*(1-phi(p)) +\
-			# 			var_data[i0,j1,k0]*(1-r(p))	*theta(p)		*(1-phi(p)) +\
-			# 			var_data[i0,j0,k1]*(1-r(p))	*(1-theta(p))	*phi(p) +\
-			# 			var_data[i1,j0,k1]*r(p)		*(1-theta(p)	*phi(p)) +\
-			# 			var_data[i0,j1,k1]*(1-r(p))	*theta(p)		*phi(p) +\
-			# 			var_data[i1,j1,k0]*r(p)		*theta(p)		*(1-phi(p)) +\
-			# 			var_data[i1,j1,k1]*r(p)		*theta(p)		*phi(p)
 		except IndexError:
-			print 'problem at index', "(i0,j0,k0)", i0,j0,k0, "(i1,j1,k1),", i1,j1,k1
-			print 'query point', p
-			print 'leaf resolution', self.leaf_resolution
-			print 'var_data shape:', var_data.shape
+			print '\tproblem at index', "(i0,j0,k0)", i0,j0,k0, "(i1,j1,k1),", i1,j1,k1
+			print '\tquery point', p
+			print '\tleaf resolution', self.leaf_resolution
+			print '\tvar_data shape:', var_data.shape
 			raise
 		return var_out
 
+	#move to base testreader
+	def set_config_globals(self):
+		metadata = testReader.ConfigSectionMap(self._config,'MetaData')
+		for key, value in metadata.items():
+			self.globalAttributes[key]  = Attribute(key, value)
 
 	def set_file_names(self):
 		self.header_file_name = testReader.get_config_value(self._config, 'Files', 'HeaderFile')
 		self.data_file_name = testReader.get_config_value(self._config, 'Files', 'DataFile')
 
+	def set_preferred_coordinates(self):
+		try:
+			preferred_coords = testReader.get_config_value(self._config, 'Reader', 'PreferredCoordinates')
+			if preferred_coords in ['ARMS', 'CART', 'SPHEXP']:
+				self.preferred_coordinates = preferred_coords
+			else:
+				self.preferred_coordinates = 'ARMS'
+		except KeyError:
+			self.preferred_coordinates = 'ARMS'
+
 	def closeFile(self):
-		# print 'closing', self.header_file_name
-		if not self.header_file.closed:
-			self.header_file.close()
-
-		# print 'closing', self.data_file_name
-		if not self.data_file.closed:
-			self.data_file.close()
-
 		return pyKameleon.FileReader.OK
 
-	def openFile(self, config_file, readonly = True):
-		# print 'loading config file'
-		if config_file != None:
-			try:
-				self._config = testReader.getConfig(config_file)
-				self.set_file_names()
-			except:
-				raise
-
-		# print 'setting current filename'
-		self.current_filename = self.data_file_name
-		self.read_ARMS_header(self.header_file_name)
-		self.read_ARMS_data(self.data_file_name)
-		self.initializeVariableIDs()
-		self.initializeVariableAttributeIDs()
-		variables = self.variableNames.values()
-		readARMS.variables_tuple = collections.namedtuple('Variables', variables) #so interpolate_variables can access it
-		# self.initializeGlobalAttributeIDs()
-		# for key, val in self.globalAttributes.items():
-		# 	print key, val
-		return pyKameleon.FileReader.OK
 		
 	def get_non_leaf(self):
 		# find a root that is not a leaf
@@ -646,11 +797,11 @@ class readARMS(testReader.pyFileReader):
 	"""Interpolates set of variables onto input positions"""
 	@staticmethod
 	@np.vectorize
-	def interpolate_variables(r, th, phi, func = lambda var,(r,th,phi): r**(-3)*(1+3*np.sin(th))**.5):
+	def interpolate_variables(c0, c1, c2, func = lambda var,r,th,phi: r**(-3)*(1+3*np.sin(th))**.5):
 		"""returns a named tuple of interpolated variables"""
 		results = []
 		for variable in readARMS.variables_tuple._fields:	
-			results.append(func(variable,(r,th,phi)))
+			results.append(func(variable,c0,c1,c2))
 		return readARMS.variables_tuple(*results)
 
 	def interpolate_bbx(self,var,point):
@@ -671,13 +822,14 @@ class readARMS(testReader.pyFileReader):
 			**contourf_kwargs):
 		bbx = self.tree_data[leaf_key].bbx
 		ni,nj,nk = self.leaf_resolution
-		ppk,ppj,ppi = np.mgrid[bbx.phi_min:bbx.phi_max:np.complex(nk),
-										bbx.theta_min:bbx.theta_max:np.complex(nj),
-										bbx.r_min:bbx.r_max:np.complex(ni)
-										]
+		#last index varies fastest when defining mgrid
+		ppk,ppj,ppi = np.mgrid[	bbx.phi_min:bbx.phi_max:np.complex(nk),
+								bbx.theta_min:bbx.theta_max:np.complex(nj),
+								bbx.r_min:bbx.r_max:np.complex(ni)
+								]
 
 		if cartesian:
-			ppk,ppj,ppi = readARMS.ARMS_to_cartesian(ppi,ppj,ppk)
+			ppk,ppj,ppi = readARMS.spherical_exponential_to_cartesian(ppi,ppj,ppk)
 
 
 		sliced = readARMS.get_slice(self.leaf_data[leaf_key][variable],slice_obj)
@@ -691,7 +843,7 @@ class readARMS(testReader.pyFileReader):
 
 	def plot_visited_leaf_midpoints(self, ax, components = 'xz',marker='o',c='w',s=5, **scatterargs):
 		for key,(mid_r,mid_th,mid_ph) in self.visited.items():
-			mid_x,mid_y,mid_z = readARMS.ARMS_to_cartesian(mid_r,mid_th,mid_ph)
+			mid_x,mid_y,mid_z = readARMS.spherical_exponential_to_cartesian(mid_r,mid_th,mid_ph)
 			ax.scatter(mid_x,mid_z,marker=marker,c=c,s=s,**scatterargs)
 
 	@staticmethod
@@ -748,7 +900,7 @@ class readARMS(testReader.pyFileReader):
 			raise Exception("Could not find leaf key for this point")
 
 	@np.vectorize
-	def cartesian_to_ARMS(x,y,z):
+	def cartesian_to_spherical_exponential(x,y,z):
 			r = math.sqrt((x**2 + y**2 + z**2))
 			theta = math.asin(z/r) #in colatitude
 			phi = math.atan2(y,x)
@@ -756,7 +908,7 @@ class readARMS(testReader.pyFileReader):
 
 
 	@np.vectorize
-	def ARMS_to_cartesian(r_, th_, ph_):
+	def spherical_exponential_to_cartesian(r_, th_, ph_):
 		xx = (10**r_)*math.cos(th_)*math.cos(ph_)
 		yy = (10**r_)*math.cos(th_)*math.sin(ph_)
 		zz = (10**r_)*math.sin(th_)
@@ -772,23 +924,71 @@ class readARMS(testReader.pyFileReader):
 		A_z = A_r*cos(th)-A_th*sin(th)
 		return A_x, A_y, A_z
 
-	"""Maps variables onto tuple containing points. Points can be a tuple of positions in the form (x,y,z) where
-		each coordinated is a list or a numpy array of arbitrary dimension"""
-	def map(self, points, variables = None, input_coordinates = 'ARMS'):
-		if input_coordinates != 'ARMS':
-			rr,th,pp = readARMS.cartesian_to_ARMS(*points)
+
+
+	def convert_positions_from_ARMS(self, points, output_coordinates = 'ARMS'):
+		"""converts positions from ARMS to output coordinates"""
+		c0, c1, c2 = points
+		if output_coordinates == 'ARMS':
+			pass
 		else:
-			rr,th,pp = points
+			if (self.grid_type == 'Spherical_Exponential') & (output_coordinates == 'SPHEXP'):
+				pass
+			elif (self.grid_type == 'Cartesian') & (output_coordinates == 'CART'):
+				pass
+			elif (self.grid_type == 'Spherical_Exponential') & (output_coordinates == 'CART'):
+				# if self.debug: print 'converting input from spherical exponential (ARMS native) to cartesian'
+				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
+			elif (self.grid_type == 'Cartesian') & (output_coordinates == 'SPHEXP'):
+				# if self.debug: print 'converting input from cartesian (ARMS native) to spherical exponential'
+				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
+			else:
+				raise Exception("Conversion from", self.grid_type, "to", output_coordinates, "not supported!")
+		return c0, c1, c2
 
+
+	def convert_positions_to_ARMS(self, points, input_coordinates = 'ARMS'):
+		"""converts input positions to model input_coordinates"""
+		c0, c1, c2 = points
+		if input_coordinates == 'ARMS':
+			pass
+		else:
+			if (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'SPHEXP'):
+				pass
+			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'CART'):
+				pass
+			elif (self.grid_type == 'Spherical_Exponential') & (input_coordinates == 'CART'):
+				# if self.debug: print 'converting input from cartesian to spherical exponential (ARMS native)'
+				c0, c1, c2 = readARMS.cartesian_to_spherical_exponential(*points)
+			elif (self.grid_type == 'Cartesian') & (input_coordinates == 'SPHEXP'):
+				# if self.debug: print 'converting input from spherical exponential to cartesian (ARMS native)'
+				c0, c1, c2 = readARMS.spherical_exponential_to_cartesian(*points)
+			else:
+				raise Exception("Conversion from", input_coordinates, "to", self.grid_type, "not supported!")
+		return c0, c1, c2
+
+	"""Maps variables onto tuple containing points. Points can be a tuple of positions in the form (x,y,z) where
+		each coordinated is a list or a numpy array of arbitrary dimension.
+
+		Mapping depends on coordinate system of the model. Check the model attributes."""	
+	def map(self, points, variables = None, input_coordinates = 'ARMS'):
 		if variables != None:
-			readARMS.variables_tuple = collections.namedtuple('Variables', variables)
+			var_tuple = collections.namedtuple('Variables', variables)
+			if self.debug: 
+				print 'changing variables_tuple from', readARMS.variables_tuple._fields, 'to', var_tuple._fields
+			readARMS.variables_tuple = var_tuple
 
-		return readARMS.variables_tuple(*readARMS.interpolate_variables(rr, th, pp, self.interpolate))
-
-
+		# c0, c1, c2 = self.convert_positions_to_ARMS(points, input_coordinates) handled by interpolation
+		c0, c1, c2 = points
+		result = readARMS.interpolate_variables(c0, c1, c2, self.interpolate)
+		try:
+			return readARMS.variables_tuple(*result)
+		except TypeError:
+			print result
+			raise
 
 	def plotVariable(self, xx,yy,zz, variables = None):
-		rr,th,pp = readARMS.cartesian_to_ARMS(xx,yy,zz)
+		rr,th,pp = readARMS.cartesian_to_spherical_exponential(xx,yy,zz)
 		
 		if variables != None:
 			readARMS.variables_tuple = collections.namedtuple('Variables', variables)
@@ -801,7 +1001,7 @@ class readARMS(testReader.pyFileReader):
 
 		def plot_visited(self,ax):
 			for key,(p_r,p_th,p_ph) in self.visited.items():
-				x, y, z = readARMS.ARMS_to_cartesian(p_r,p_th,p_ph)
+				x, y, z = readARMS.spherical_exponential_to_cartesian(p_r,p_th,p_ph)
 				ax.scatter(x,z, marker = 'o',c='w',s=5)
 
 		# readARMS.variables_tuple = readARMS.bbx_tuple
@@ -854,6 +1054,10 @@ class Test_ARMS_Attributes(unittest.TestCase):
 	def test_variables_created(self):
 		self.assertTrue(self.armsreader.doesVariableExist('Mass_Density'))
 		with self.assertRaises(NameError): self.armsreader.getVariable('missing_variable')
+		print 'getting variable', 'Mass_Density'
+		var_mass_float = self.armsreader.getVariable('Mass_Density')
+		for mass_float in var_mass_float: print mass_float
+		
 		for key, variable_name in self.armsreader.variableNames.items():
 			print 'key:', key, 'variable name:', variable_name
 			var_min = self.armsreader.getVariableAttribute(variable_name,'actual_min').getAttributeValue()
@@ -876,7 +1080,13 @@ class Test_ARMS_Attributes(unittest.TestCase):
 		for key, attr in self.armsreader.globalAttributes.items():
 			print '\t ', attr.getAttributeName(),':', attr.getAttributeValue(), attr.getAttributeType()
 
-
+		# print '\tleaf_data:'
+		# i = 0
+		# for key, val in self.armsreader.leaf_data.items():
+		# 	i += 1
+		# 	print key
+		# 	if i == 10: 
+		# 		break
 		
 
 def main():

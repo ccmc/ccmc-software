@@ -10,11 +10,26 @@ Model: GeneralFileReader subclass. Manages variable maps. pure virtual createNew
 Interpolator: pure virtual base class that is subclassed by each model's interpolator
 Kameleon: checks if model_name matches one of the known Models, which all have interpolators implemented
 ToDo:
-	expose Interpolator pure virtual class to python
-	expose Model pure virtual createNewInterpolator
-	add Kameleon check to look for embedded attribute, then load the python model
-	
+	1) add Kameleon compatibility
 
+	2) embedded interpolators:
+		PythonModel calls GeneralFileReader and creates a new PythonInterpolator object
+			It does not have to use a python FileReader, so in theory a python interpolator would be able to interpolate data coming from the HDF5 or CDF filereaders
+
+		Question: Do we put new interpolators in the same namespace as the reader? 
+			If there is no main python namespace, check the global variable ccmc::pyglobals::PYTHON_IS_INITIALIZED and create a new one.
+			New interpolators can work with data if they are in the same main namespace. 
+			Use a list of interpolator objects. Each time createNewInterpolator is call, a new one is returned with a new index...
+
+		For now, I'm just storing the interpolation arguments in the main namespace dictionary, then calling the reader's interpolate function with eval.
+
+		PythonInterpolator.cpp: 
+			Constructor: Creates an interpolator via python factory method. Use a private variable to store the index = len(interpolators)
+
+	3) 	Figure out why getNativeUnit isn't working in pyModel_test.py
+
+	4) Parallelism... 
+		http://stackoverflow.com/questions/8009613/boost-python-not-supporting-parallelism
 
 ===========Installation Instructions for embedded python readers===============
 Make sure you build with boost's shared libraries!

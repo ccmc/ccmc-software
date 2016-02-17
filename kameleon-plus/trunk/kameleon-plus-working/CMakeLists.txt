@@ -33,8 +33,17 @@ option(USE_STATIC_LIBS "Use static libraries" OFF)
 # add path to external libraries
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KAMELEON_EXT_DIR})
 
+# voice debug settings
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+	add_definitions(-DDEBUG)
+endif()
 
-#=============Boost =============
+#============ python ============
+FIND_PACKAGE(PythonInterp 2.7)
+FIND_PACKAGE(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}" REQUIRED)
+message(STATUS ${msg_prefix} "Python Interpreter:" ${PYTHON_EXECUTABLE})
+
+#============ Boost =============
 message("Getting BOOST....")
 # Boost shared or static?
 if(USE_STATIC_LIBS)
@@ -88,6 +97,13 @@ else()
 	message(${msg_prefix} "Will NOT build Kameleon with HDF5.")
 endif(BUILD_HDF5)
 
+option(BUILD_JAVA "Build java wrappers" ON)
+if(BUILD_JAVA)
+	message(STATUS ${msg_prefix} "Will build java wrappers")
+else()
+	message(STATUS ${msg_prefix} "Will NOT build java wrappers")
+endif()
+
 
 #============= CDF ==============
 message("Getting CDF..")
@@ -135,7 +151,7 @@ message("")
 message("============ Top level CMakeLists.txt ============")
 set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/examples")
 set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example")
-FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
+# FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c++)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/c)
 add_subdirectory(${EXAMPLES_ROOT_DIR}/fortran)

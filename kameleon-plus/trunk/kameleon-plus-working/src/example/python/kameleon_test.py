@@ -1,5 +1,6 @@
 import sys
-from CCMC import _CCMC as ccmc
+sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+import _CCMC as ccmc
 
 def main(argv):
 	if (len(argv) == 5):

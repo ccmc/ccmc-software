@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>KAttribute.java</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="AMIE.html">
+                  AMIE.java
+                </a>
+              
+                
+                <a class="source" href="AMIEDataObject.html">
+                  AMIEDataObject.java
+                </a>
+              
+                
+                <a class="source" href="AttributeXMLParser.html">
+                  AttributeXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="BATSRUS.html">
+                  BATSRUS.java
+                </a>
+              
+                
+                <a class="source" href="CDFWriter.html">
+                  CDFWriter.java
+                </a>
+              
+                
+                <a class="source" href="CTIP.html">
+                  CTIP.java
+                </a>
+              
+                
+                <a class="source" href="CommandLineInterface.html">
+                  CommandLineInterface.java
+                </a>
+              
+                
+                <a class="source" href="DatabaseInfoParser.html">
+                  DatabaseInfoParser.java
+                </a>
+              
+                
+                <a class="source" href="ENLIL.html">
+                  ENLIL.java
+                </a>
+              
+                
+                <a class="source" href="FileTester.html">
+                  FileTester.java
+                </a>
+              
+                
+                <a class="source" href="HDF5.html">
+                  HDF5.java
+                </a>
+              
+                
+                <a class="source" href="HDF5Writer.html">
+                  HDF5Writer.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLatitudeFirstLongitudeSecond.html">
+                  IonoComparatorLatitudeFirstLongitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="IonoComparatorLongitudeFirstLatitudeSecond.html">
+                  IonoComparatorLongitudeFirstLatitudeSecond.java
+                </a>
+              
+                
+                <a class="source" href="KAttribute.html">
+                  KAttribute.java
+                </a>
+              
+                
+                <a class="source" href="KPVT.html">
+                  KPVT.java
+                </a>
+              
+                
+                <a class="source" href="LFM.html">
+                  LFM.java
+                </a>
+              
+                
+                <a class="source" href="MAS.html">
+                  MAS.java
+                </a>
+              
+                
+                <a class="source" href="MSFC_TVM.html">
+                  MSFC_TVM.java
+                </a>
+              
+                
+                <a class="source" href="Model.html">
+                  Model.java
+                </a>
+              
+                
+                <a class="source" href="ModelXMLParser.html">
+                  ModelXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="NetCDF4Writer.html">
+                  NetCDF4Writer.java
+                </a>
+              
+                
+                <a class="source" href="NoAttributeException.html">
+                  NoAttributeException.java
+                </a>
+              
+                
+                <a class="source" href="NoVariableException.html">
+                  NoVariableException.java
+                </a>
+              
+                
+                <a class="source" href="OPEN_GGCM.html">
+                  OPEN_GGCM.java
+                </a>
+              
+                
+                <a class="source" href="Parser1.html">
+                  Parser1.java
+                </a>
+              
+                
+                <a class="source" href="Parser2.html">
+                  Parser2.java
+                </a>
+              
+                
+                <a class="source" href="Parser3.html">
+                  Parser3.java
+                </a>
+              
+                
+                <a class="source" href="SWMF.html">
+                  SWMF.java
+                </a>
+              
+                
+                <a class="source" href="SWMFIonoData.html">
+                  SWMFIonoData.java
+                </a>
+              
+                
+                <a class="source" href="Variable.html">
+                  Variable.java
+                </a>
+              
+                
+                <a class="source" href="VariableXMLParser.html">
+                  VariableXMLParser.java
+                </a>
+              
+                
+                <a class="source" href="Writer.html">
+                  Writer.java
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>KAttribute.java</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+ * 
+ * Name: HDF5Writer.java
+ * 
+ * Version: 6.0
+ * 
+ * Author: Nitesh Donti
+ * 		   NASA-GSFC-CCMC (Code 587)
+ * 		   Intern
+ * 
+ * Purpose: A class for Attribute information.
+ * 			This includes both Global attributes 
+ * 			and Variable attributes.  
+ * 			Name, Value, Description, Data type, and Attribute type (CCMC vs Model Specific)
+ * 			are all included in each KAttribute Object. 
+ * 
+ * Modification History:
+ *  
+ * Summer 2011 	Donti, Nitesh
+ * 				Initial development started
+ * 				Removed Subclasses of KAttribute 
+ * 				Added enums for KAttribute type
+ * 				All tasks complete
+ * 
+ * Tasks: 	
+ * 
+ */</span>
+
+<span class="hljs-keyword">package</span> gov.nasa.gsfc.ccmc.KameleonConverter;
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">KAttribute</span> </span>{
+
+	<span class="hljs-comment">/**
+	 * Name of the Attribute
+	 */</span>
+	String name;
+	
+	<span class="hljs-comment">/**
+	 * What the attribute means or represents
+	 */</span>
+	String description; 
+	
+	<span class="hljs-comment">/**
+	 * Specifying the Data type of the Attribute
+	 */</span>
+	<span class="hljs-keyword">private</span> DataType dataType;
+	
+	<span class="hljs-comment">/**
+	 * Specifying whether the Attribute is a CCMC one, which all model types will have, or one that is specific to only this type of model or this exact model.
+	 */</span>
+	<span class="hljs-keyword">private</span> KAttributeType attType;
+	
+	<span class="hljs-comment">/**
+	 * The value of the attribute
+	 */</span>
+	Object value;
+
+	<span class="hljs-comment">/**Enumerator specifying the Data type of the Attribute*/</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> DataType {
+		INT, FLOAT, DOUBLE, STRING, BOOLEAN
+	}
+
+	<span class="hljs-comment">/**Enumerator specifying whether the Attribute is a CCMC one, which all model types will have, or one that is specific to only this type of model or this exact model.*/</span>
+	<span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> KAttributeType{
+		CCMC, MODELSPEC
+	}
+
+
+	<span class="hljs-comment">/**
+	 * Constructor with the name, value, and description
+	 * Put "null" for value and description if you only have the name and AttributeType
+	 * 
+	 * <span class="hljs-doctag">@param</span>  kAttrType  A String - either "model" or "ccmc" to define what kind of variable this is. 
+	 * <span class="hljs-doctag">@param</span> data_type   A String denoting what data type the value of the attribute is ("string","int", etc.)
+	 * <span class="hljs-doctag">@param</span> description A Description of the Attribute
+	 * <span class="hljs-doctag">@param</span> name The name of the Attribute. 
+	 * <span class="hljs-doctag">@param</span> value The value of the Attribute. 
+	 * 
+	 **/</span>
+	KAttribute(String name, Object value, String description, String kAttrType, String data_type){
+		<span class="hljs-keyword">this</span>.name = name;  
+		<span class="hljs-keyword">this</span>.value = value;
+		<span class="hljs-keyword">this</span>.description = description;
+		
+		
+		<span class="hljs-keyword">if</span>(kAttrType.toLowerCase().indexOf(<span class="hljs-string">"ccmc"</span>)!=-<span class="hljs-number">1</span>)
+			<span class="hljs-keyword">this</span>.attType = KAttributeType.CCMC;
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (kAttrType.toLowerCase().indexOf(<span class="hljs-string">"model"</span>)!=-<span class="hljs-number">1</span>)
+			<span class="hljs-keyword">this</span>.attType=KAttributeType.MODELSPEC;
+
+		<span class="hljs-keyword">if</span>(data_type!=<span class="hljs-keyword">null</span>){
+			<span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"boo"</span>)!=-<span class="hljs-number">1</span>)
+				dataType=DataType.BOOLEAN;
+			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"dou"</span>)!=-<span class="hljs-number">1</span>)
+				dataType=DataType.DOUBLE;
+			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"str"</span>)!=-<span class="hljs-number">1</span>)
+				dataType=DataType.STRING;
+			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"int"</span>)!=-<span class="hljs-number">1</span>)
+				dataType=DataType.INT;
+			<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"flo"</span>)!=-<span class="hljs-number">1</span>)
+				dataType=DataType.FLOAT;
+		}
+	}
+
+	<span class="hljs-comment">/**
+	 * Returns all five components of an Attribute in text form. 
+	 * - Name, Description, DataType, Value, Kameleon Attribute Type
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> <span class="hljs-string">"\n[Attribute Name : "</span> + name + 
+		<span class="hljs-string">"\n Description    : "</span> + description + 
+		<span class="hljs-string">"\n DataType       : "</span> + dataType + 
+		<span class="hljs-string">"\n Value          : "</span> + value + 
+		<span class="hljs-string">"\n Attribute Type : "</span> + attType + <span class="hljs-string">"]"</span>;
+	}
+
+	
+
+	<span class="hljs-comment">/**
+	 * Sets the data type for this Attribute Object. 
+	 * <span class="hljs-doctag">@param</span> data_type A string stating what type of data the value of this
+	 * Attribute is (e.g. String, boolean, float, etc.)
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setDataType</span><span class="hljs-params">(String data_type)</span></span>{
+		<span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"boo"</span>)!=-<span class="hljs-number">1</span>)
+			dataType=DataType.BOOLEAN;
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"dou"</span>)!=-<span class="hljs-number">1</span>)
+			dataType=DataType.DOUBLE;
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"str"</span>)!=-<span class="hljs-number">1</span>)
+			dataType=DataType.STRING;
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"int"</span>)!=-<span class="hljs-number">1</span>)
+			dataType=DataType.INT;
+		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(data_type.toLowerCase().indexOf(<span class="hljs-string">"flo"</span>)!=-<span class="hljs-number">1</span>)
+			dataType=DataType.FLOAT;
+	}
+
+	<span class="hljs-comment">/**
+	 * 
+	 * <span class="hljs-doctag">@return</span> An enum stating the data type (String, int, float, etc.) of the
+	 * value of this Attribute
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> DataType <span class="hljs-title">getDataType</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> dataType;
+	}
+	
+	<span class="hljs-comment">/**
+	 * 
+	 * <span class="hljs-doctag">@return</span> An enum stating whether the Attribute is one that is standard (CCMC) or 
+	 * if it is Specific to each unique model
+	 */</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> KAttributeType <span class="hljs-title">getKType</span><span class="hljs-params">()</span></span>{
+		<span class="hljs-keyword">return</span> attType;
+	}
+	
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
