@@ -211,7 +211,7 @@ namespace ccmc
 		boost::unordered_map<std::string, std::string>::iterator iter = variableAliases.find(variable_str);
 		if (iter != variableAliases.end())
 			variable_str = variableAliases[variable_str];
-		cout << "variable_str: " << variable_str << endl;
+		// cout << "variable_str: " << variable_str << endl;
 
 		//units were never fetched before
 		//first, attempt fetch from Kameleon's map for derived variables.
@@ -410,6 +410,24 @@ namespace ccmc
 	Interpolator * Kameleon::createNewInterpolator()
 	{
 		Interpolator * interpolator = new KameleonInterpolator(model);
+		return interpolator;
+	}
+
+	/**
+	* Return a new KameleonInterpolator that gives access to all methods rather than the polymorphic
+	* pointer returned by createNewInterpolator(). This makes explicit that we have new features for
+	* transforming between coordinate frames.
+	* @return A new KameleonInterpolator
+	*/
+	KameleonInterpolator * Kameleon::createCoordinateInterpolator()
+	{
+		KameleonInterpolator * interpolator = new KameleonInterpolator(model);
+		return interpolator;
+	}
+
+	KameleonInterpolator* Kameleon::createCoordinateInterpolator(const std::string& preferred_coordinates)
+	{
+		KameleonInterpolator * interpolator = new KameleonInterpolator(model, preferred_coordinates);
 		return interpolator;
 	}
 

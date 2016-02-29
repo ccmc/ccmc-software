@@ -5,13 +5,15 @@
  *      Author: dberrios
  */
 
+#include "MathHelper.h"
+#include "Kameleon.h"
 #include "ENLILInterpolator.h"
 #include "ENLIL.h"
 #include "Constants.h"
 #include "StringConstants.h"
 #include "Utils.h"
 #include <iostream>
-
+using namespace ccmc::constants;
 namespace ccmc
 {
 	/**
@@ -43,6 +45,50 @@ namespace ccmc
 
 
 	}
+
+	void ENLILInterpolator::convertCoordinates(const std::string& source, const std::string& dest, const long time_et,
+				const float& c0, const float& c1, const float& c2, 
+				float& dc0, float& dc1, float& dc2)
+	{
+		Position preferred_p = {c0, c1, c2};
+		Position target_p;
+		Position spherical, heeq;
+
+
+		if (source == "NATIVE"){ // use input position as output
+			target_p = preferred_p; 
+		} else if (dest == "UNKNOWN"){
+			// do nothing		
+
+		} else if (dest == "HNM"){ //Enlil
+		
+		// std::cout << "ENLIL interpolator converting input from " << source << " to cartesian HEEQ" << std::endl;
+		// std::cout << "ENLIL interpolator input:" << preferred_p.c0 << " " << preferred_p.c1 << " " << preferred_p.c2 << std::endl;
+		Kameleon::_cxform(source.c_str(), "HEEQ", time_et, &preferred_p, &heeq);		
+		// std::cout << "ENLIL interpolator HEEQ:" << " " << heeq.c0 << " " << heeq.c1 << " " << heeq.c2 << std::endl;
+		
+		// std::cout << "ENLIL interpolator converting to spherical (r[km],theta[rad], phi[rad])" << std::endl;
+		Math::convert_xyz_to_rthetaphi(heeq.c0,heeq.c1,heeq.c2, &spherical.c0, &spherical.c1, &spherical.c2);
+		// std::cout << "ENLIL interpolator spherical:" << spherical.c0 << " " << spherical.c1 << " " << spherical.c2 << std::endl;
+		
+		// std::cout << "ENLIL interpolator convert to HNM (r0 [au],lat[deg],lon[deg]) " << std::endl;
+		target_p.c0 = spherical.c0/AU_in_kilometers;
+		target_p.c1 = spherical.c1*RadiansToDegrees - 90;
+		target_p.c2 = spherical.c2*RadiansToDegrees;
+		// std::cout << "ENLIL interpolator HNM:" << target_p.c0 << " " << target_p.c1 << " " << target_p.c2 << std::endl;
+		// where's the 180 rotation?
+
+		} else { 
+			Kameleon::_cxform(source.c_str(), dest.c_str(), time_et, &preferred_p, &target_p);
+		}
+
+		dc0 = target_p.c0;
+		dc1 = target_p.c1;
+		dc2 = target_p.c2;	
+
+	}
+
+
 
 	/**
 	 * @param variable

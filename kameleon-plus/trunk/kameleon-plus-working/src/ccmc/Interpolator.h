@@ -9,6 +9,7 @@
 #define INTERPOLATOR_H_
 
 #include "Model.h"
+
 namespace ccmc
 {
 	class Model;
@@ -42,6 +43,16 @@ namespace ccmc
 			std::string getModelName();
 			virtual ~Interpolator();
 			void setModelReader(Model * reader);
+
+
+			/**
+			* Convert from source coordinates to destination coordinates
+			* results placed in dc0, dc2, dc2
+			*/
+			virtual void convertCoordinates(const std::string& source, const std::string& dest, const long time_et,
+				const float& c0, const float& c1, const float& c2, 
+				float& dc0, float& dc1, float& dc2);
+
 
 		protected:
 			Model * modelReader;

@@ -47,6 +47,7 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/format.hpp>
 #include "Interpolator.h"
+// #include "KameleonInterpolator.h"
 #include "Model.h"
 #include "GeneralFileReader.h"
 #include "TimeInterpolator.h"
@@ -91,7 +92,7 @@ namespace ccmc
 		float c2;
 	};
 
-
+	class KameleonInterpolator;
 
 
 
@@ -108,6 +109,8 @@ namespace ccmc
 			virtual ~Kameleon();
 			long close();
 			Interpolator* createNewInterpolator();
+			KameleonInterpolator* createCoordinateInterpolator(); //expose methods for this class
+			KameleonInterpolator* createCoordinateInterpolator(const std::string& preferred_coordinates); //expose methods for this class
 			bool doesAttributeExist(const std::string& attribute);
 			bool doesVariableExist(const std::string& variable);
 			float getConversionFactorToSI(const std::string& variable);

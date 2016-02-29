@@ -7,6 +7,7 @@
 
 #include "KameleonInterpolator.h"
 #include "Constants.h"
+#include <set>
 
 namespace ccmc
 {
@@ -20,8 +21,178 @@ namespace ccmc
 		this->modelName = modelReader->getModelName();
 		initializeCalculationMethods();
 		initializeConversionFactorsToVis();
+		initializeCoordinates();
 		interpolator = modelReader->createNewInterpolator();
+		std::string preferred_coordinates = "NATIVE";
+		this->setPreferredCoordinates(preferred_coordinates);
+		this->setModelCoordinates();
+		setEphemTime();
 
+	}
+
+	KameleonInterpolator::KameleonInterpolator(Model * model, const std::string& preferred_coordinates)
+	{
+
+		this->modelReader = model;
+		this->modelName = modelReader->getModelName();
+		initializeCalculationMethods();
+		initializeConversionFactorsToVis();
+		initializeCoordinates();
+		interpolator = modelReader->createNewInterpolator();
+		this->setPreferredCoordinates(preferred_coordinates);
+		this->setModelCoordinates();
+		setEphemTime();
+	}
+
+	void KameleonInterpolator::initializeCoordinates(){
+		std::string tmp[] = {	"NATIVE",
+								"J2000",
+								"GEI",
+								"GEO",
+								"MAG",
+								"GSE",
+								"GSM",
+								"SM",
+								"RTN",
+								"GSEQ",
+								"HEE",
+								"HAE",
+								"HEEQ"};
+		std::set<std::string> coords(tmp, tmp + sizeof(tmp) / sizeof(tmp[0]));
+		this->from_coords = coords;
+
+		std::string tmp2[] = {	"J2000",
+								"GEI",
+								"GEO",
+								"MAG",
+								"GSE",
+								"GSM",
+								"SM",
+								"RTN",
+								"GSEQ",
+								"HEE",
+								"HAE",
+								"HEEQ",
+								"HNM" //ENLIL
+							};
+		std::set<std::string> coords2(tmp2, tmp2 + sizeof(tmp2) / sizeof(tmp2[0]));
+		this->to_coords = coords2;
+
+	}
+	std::vector<std::string> KameleonInterpolator::get_preferred_coords_list(){
+		std::vector<std::string> coords_list(this->from_coords.begin(), this->from_coords.end());
+		return coords_list;
+	}
+
+	std::string KameleonInterpolator::get_model_coords(){
+		return this->model_coordinates;
+	}
+
+	void KameleonInterpolator::setPreferredCoordinates(const std::string& preferred_coordinates){
+
+		if (this->from_coords.count(preferred_coordinates) != 0){
+			this->preferred_coordinates = preferred_coordinates;
+		} else {
+			std::cout << "Conversion from " << preferred_coordinates 
+				<< " not implemented! Defaulting to Native" <<std::endl;
+			this->preferred_coordinates = "NATIVE"; //assume native 
+		}
+
+	}
+
+	void KameleonInterpolator::setModelCoordinates(){
+		
+		if (modelReader->doesAttributeExist("standard_grid_target")){
+			ccmc::Attribute standard_gt_attr = modelReader->getGlobalAttribute("standard_grid_target");
+			std::string standard_gt = standard_gt_attr.getAttributeString();
+			if (this->to_coords.count(standard_gt) !=0){
+				this->model_coordinates = standard_gt;
+			} else{
+				std::cout << "Warning: Conversion to " << standard_gt << " not implemented" << std::endl;
+				std::cout << "available coordinates:\n";
+				std::set<std::string>::iterator it;
+				for (it = this->to_coords.begin(); it != this->to_coords.end(); it++){
+					std::cout<< *it << std::endl;
+				}
+				this->model_coordinates = "UNKNOWN";
+			}
+		} else{
+			std::cout << "Warning: No standard position information available. " 
+						<< "Set standard_grid_target attribute" << std::endl;
+			this->model_coordinates = "UNKNOWN";
+		}
+		
+	}
+
+	std::string KameleonInterpolator::getPreferredCoordinates(){
+		return this->preferred_coordinates;
+	}
+
+	long KameleonInterpolator::getEphemTime()
+	{
+		return this->time_et;
+	}
+
+	void KameleonInterpolator::setEphemTime()
+	{
+		if (modelReader->doesAttributeExist("start_time")){
+			ccmc::Attribute tattr = modelReader->getGlobalAttribute("start_time");
+			std::string time_string = tattr.getAttributeString();
+			if (time_string.length() == 19){
+				time_string += ".000Z";
+			}
+			ccmc::Time time = TimeInterpolator::parseTime(time_string);
+			long start_ephem = Kameleon::_date2es(time.getYear(), time.getMonth(), time.getDay(), 
+				time.getHour(), time.getMinute(),time.getSeconds());
+			if (modelReader->doesAttributeExist("elapsed_time_in_seconds")){
+				ccmc::Attribute elapsed_attr = modelReader->getGlobalAttribute("elapsed_time_in_seconds");
+				long elapsed_ephem = long(elapsed_attr.getAttributeFloat());
+				this->time_et = start_ephem + elapsed_ephem;
+			} else {
+				this->time_et = start_ephem;
+			}
+		} else if (modelReader->doesAttributeExist("tim_crstart_cal")){ //for some versions of enlil
+			ccmc::Attribute tattr = modelReader->getGlobalAttribute("tim_crstart_cal");
+			std::string time_string = tattr.getAttributeString();
+			if (time_string.length() == 19){
+				time_string += ".000Z";
+			}
+			ccmc::Time time = TimeInterpolator::parseTime(time_string);
+			long start_ephem = Kameleon::_date2es(time.getYear(), time.getMonth(), time.getDay(), 
+				time.getHour(), time.getMinute(),time.getSeconds());
+			if (modelReader->doesAttributeExist("time_physical_time")){
+				ccmc::Attribute elapsed_attr = modelReader->getGlobalAttribute("time_physical_time");
+				long elapsed_ephem = long(elapsed_attr.getAttributeFloat());
+				this->time_et = start_ephem + elapsed_ephem;
+			} else {
+				this->time_et = start_ephem;
+			}
+
+		} else {
+			this->time_et = 0;
+		}
+	}
+
+
+	/**
+	 * @param time - seconds past 12h January 2000
+	 */
+	void KameleonInterpolator::setEphemTime(long time)
+	{
+		this->time_et = time;
+	}
+			
+	
+
+	// Use preferred, model coordinates and stored time
+	void KameleonInterpolator::convertCoordinates(Position* v_in,Position* v_out)
+	{
+		// std::cout << "KameleonInterpolator::convertCoordinates calling convertCoordinates for " 
+		// 			<< modelName << " interpolator" << std::endl; 
+		this->interpolator->convertCoordinates(this->preferred_coordinates, this->model_coordinates, 
+							this->time_et, 
+							v_in->c0,v_in->c1,v_in->c2,
+							v_out->c0, v_out->c1, v_out->c2);
 	}
 
 	/**
@@ -34,10 +205,9 @@ namespace ccmc
 	float KameleonInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2)
 	{
-//		float interp_value;
 		float dc0, dc1, dc2;
-
 		return interpolate(variable, c0, c1, c2, dc0, dc1, dc2);
+		
 	}
 
 	/**
@@ -53,30 +223,29 @@ namespace ccmc
 	float KameleonInterpolator::interpolate(const std::string& variable, const float& c0, const float& c1,
 			const float& c2, float& dc0, float& dc1, float& dc2)
 	{
+
+		Position preferred_p = {c0, c1, c2};
+		Position target_p;
+
+		convertCoordinates(&preferred_p, &target_p);
+
 		float interp_value;
 		float missingValue = this->modelReader->getMissingValue();
 
-//			std::cout << "variable: '" << variable << "'" << std::endl;
 		if (calculationMethod.find(variable) != calculationMethod.end())
 		{
-//					std::cout << "found something: " << std:: endl;
-			interp_value = (this->*(calculationMethod[variable]))(variable, c0, c1, c2, dc0, dc1, dc2);
+			interp_value = (this->*(calculationMethod[variable]))(variable, target_p.c0, target_p.c1, target_p.c2, dc0, dc1, dc2);
 			if (interp_value == missingValue)
 			{
 				return missingValue;
-				//cerr << "***Derived::interpolate: Interpolate returned the missing value for variable " << variable_string << endl;
 			}
 			interp_value = interp_value*this->getConversionFactorToVis(variable);
 		} else
 		{
-			// Variable: Wish me luck!
-			// Derived: Good luck variable!
-			interp_value = interpolateSimple(variable, c0, c1, c2, dc0, dc1, dc2);
+			interp_value = interpolateSimple(variable, target_p.c0, target_p.c1, target_p.c2, dc0, dc1, dc2);
 			if (interp_value == missingValue)
 			{
-//				std::cout << "returning missing value" << std::endl;
 				return missingValue;
-				//cerr << "***Derived::interpolate: Interpolate returned the missing value for variable " << variable_string << endl;
 			}
 			interp_value *= this->getConversionFactorToVis(variable);
 
@@ -97,9 +266,12 @@ namespace ccmc
 	 */
 	float KameleonInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2)
 	{
-		// Variable: Wish me luck!
-		// Derived: Good luck variable!
-		float interp_value = interpolateSimple(variable_id, c0, c1, c2);
+		Position preferred_p = {c0, c1, c2};
+		Position target_p;
+
+		convertCoordinates(&preferred_p, &target_p);
+
+		float interp_value = interpolateSimple(variable_id, target_p.c0, target_p.c1, target_p.c2);
 		float missingValue = this->modelReader->getMissingValue();
 
 		if (interp_value == missingValue)
@@ -128,9 +300,11 @@ namespace ccmc
 	float KameleonInterpolator::interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2,
 			float& dc0, float& dc1, float& dc2)
 	{
-		// Variable: Wish me luck!
-		// Derived: Good luck variable!
-		float interp_value = interpolateSimple(variable_id, c0, c1, c2, dc0, dc1, dc2);
+		Position preferred_p = {c0, c1, c2};
+		Position target_p;
+		convertCoordinates(&preferred_p, &target_p);
+
+		float interp_value = interpolateSimple(variable_id, target_p.c0, target_p.c1, target_p.c2, dc0, dc1, dc2);
 		float missingValue = this->modelReader->getMissingValue();
 
 		if (interp_value == missingValue)

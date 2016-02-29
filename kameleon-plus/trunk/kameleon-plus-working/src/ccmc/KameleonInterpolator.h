@@ -8,7 +8,7 @@
 #ifndef KAMELEONINTERPOLATOR_H_
 #define KAMELEONINTERPOLATOR_H_
 #include <boost/unordered_map.hpp>
-
+#include "Kameleon.h" //should be guarded by ifdef
 #include "Interpolator.h"
 
 namespace ccmc
@@ -32,6 +32,39 @@ namespace ccmc
 			 * @param c1
 			 * @param c2
 			 */
+
+			KameleonInterpolator(Model * modelReader, const std::string& preferred_coordinates);
+
+
+			/*
+			* Set preferred Coordinates
+			*/
+			void setPreferredCoordinates(const std::string& preferred_coordinates);
+			void initializeCoordinates();
+
+			void setModelCoordinates();
+
+			std::string getPreferredCoordinates();
+			/**
+			* Get ephemeris time
+			*/
+			long getEphemTime();
+
+			/**
+			* Set Ephemeris time in seconds past 12h on 1 January 2000
+			*/
+			void setEphemTime(long time);
+
+			/**
+			* Use the default times stored in the file
+			*/
+			void setEphemTime();
+
+			/**
+			* Assume conversion from preferred to model coordinates
+			*/
+			void convertCoordinates(Position* v_in, Position* v_out);
+
 			float interpolate(const std::string& variable, const float& c0, const float& c1, const float& c2);
 
 			/**
@@ -60,13 +93,19 @@ namespace ccmc
 			float interpolate(const long& variable_id, const float& c0, const float& c1, const float& c2, float& dc0, float& dc1,
 					float& dc2);
 
-
+			std::vector<std::string> get_preferred_coords_list();
+			std::string get_model_coords();
 			virtual ~KameleonInterpolator();
 		private:
 			typedef float (KameleonInterpolator::*CalculationMethod)(const std::string&,
 											const float& positionComponent1, const float& positionComponent2, const float& positionComponent3,
 											float& dComponent1, float& dComponent2, float& dComponent3);
 			std::string modelName;
+			std::string preferred_coordinates;
+			std::set<std::string> from_coords;
+			std::set<std::string> to_coords;
+			long time_et;
+			std::string model_coordinates;
 			Model * modelReader;
 			Interpolator * interpolator;
 			boost::unordered_map<std::string, std::vector<std::string> > listOfRequiredVariablesForComponents;

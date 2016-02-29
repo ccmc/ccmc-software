@@ -31,7 +31,9 @@ namespace ccmc
 			float interpolate(const long& variableID, const float& r, const float& lat, const float& lon,
 					float& dr, float& dlat, float& dlon);
 
-
+			void convertCoordinates(const std::string& source, const std::string& dest, const long time_et,
+				const float& c0, const float& c1, const float& c2, 
+				float& dc0, float& dc1, float& dc2);
 			virtual ~ENLILInterpolator();
 
 		private:

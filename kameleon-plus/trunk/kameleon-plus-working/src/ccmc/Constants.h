@@ -22,6 +22,7 @@ namespace ccmc
 		static float Avogadro = 6.0221415e23f;
 		static float Pi = 3.14159265f;
 		static float AU_in_meters = 1.49598e11f;
+		static float AU_in_kilometers = 1.49598e8f;
 		static float Meters_to_AU = 6.68458134e-12f;
 		static float RadiansToDegrees = 57.2957795f;
 		static float DegreesToRadians = 0.0174532925f;

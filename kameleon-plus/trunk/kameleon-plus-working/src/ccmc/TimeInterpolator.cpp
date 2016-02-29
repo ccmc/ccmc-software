@@ -433,17 +433,17 @@ namespace ccmc
 
 	Time TimeInterpolator::parseTime(const std::string& timeString)
 	{
-		std::cout << "timeString inside parseTime: " << timeString << std::endl;
-		std::cout << "before declaring string" << std::endl;
+		// std::cout << "timeString inside parseTime: " << timeString << std::endl;
+		// std::cout << "before declaring string" << std::endl;
 		char timeString_c_str[EPOCH3_STRING_LEN+1];
-		std::cout << "before string copy" << std::endl;
+		// std::cout << "before string copy" << std::endl;
 		strncpy(timeString_c_str, (char *)timeString.c_str(), EPOCH_STRING_LEN);
-		std::cout << "after string copy" << std::endl;
+		// std::cout << "after string copy" << std::endl;
 		timeString_c_str[4] = '-';
 		timeString_c_str[7] = '-';
-		std::cout << "before creating epoch time with parseEPOCH3" << std::endl;
+		// std::cout << "before creating epoch time with parseEPOCH3" << std::endl;
 		double epoch = parseEPOCH3(timeString_c_str);
-		std::cout << "epoch value in parseTime: " << epoch << std::endl;
+		// std::cout << "epoch value in parseTime: " << epoch << std::endl;
 		long year, month, day, hour, minute, second, msec;
 		year = month = day = hour = minute = second = msec = 1;
 		EPOCHbreakdown(epoch, &year, &month, &day, &hour, &minute, &second, &msec);
