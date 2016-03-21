@@ -56,13 +56,13 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY})
 # install(CODE "
 # 	execute_process(COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} install WORKING_DIRECTORY ${KAMELEON_LIB_DIR}/ccmc/python/)
 # 	" COMPONENT python)
-
+ 
 # add_subdirectory(${WRAPPERS_ROOT_DIR}/python/setup)
 
-# ############# install in Kameleon distribution #####################
-# # This code installs the python module in ${KAMELEON_LIB_DIR}/ccmc/python
-# install(TARGETS _CCMC PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ DESTINATION /usr/local/lib COMPONENT libraries)
-# install(FILES ${CMAKE_SWIG_OUTDIR}/CCMC.py PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ DESTINATION /usr/local/lib COMPONENT headers)
+############# install in Kameleon distribution #####################
+# This code installs the python module in ${KAMELEON_LIB_DIR}/ccmc/python
+install(TARGETS _CCMC DESTINATION lib/ccmc COMPONENT libraries)
+install(FILES ${CMAKE_SWIG_OUTDIR}/CCMC.py DESTINATION lib/ccmc COMPONENT headers)
 
 # ############ system install ################################
 # # This code determines the machine python library location by running python, then installs the CCMC python library there

@@ -32,6 +32,12 @@ Installation
 
 See :ref:`Quick_start` for cross-platform installation.
     
+Tutorials
+---------
+
+The new :ref:`Coordinate_Transformations` tutorial illustrates coordinate-aware interpolation. Users may choose from a set of standard Heilospheric or Magnetospheric coordinate systems. Kameleon will automatically transform interpolation positions to the coordinate system of the underlying model.
+
+The new :ref:`_grid_tutorial` illustrates usage of the command-line tool grid.py, which interpolates variables onto a user-specified grid.
 
 Contribute
 ----------

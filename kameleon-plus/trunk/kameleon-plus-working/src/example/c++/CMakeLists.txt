@@ -69,7 +69,6 @@ target_link_libraries(tracer_prog ccmc)
 target_link_libraries(pyModel_prog ccmc)
 
 
-
 set_target_properties(	kameleon_prog 
 						adapt3d_test 
 						CDFReader 
@@ -83,7 +82,8 @@ set_target_properties(	kameleon_prog
 						swmf_iono_test
 						time_interp
 						tracer_prog
-		PROPERTIES INSTALL_RPATH "@loader_path/../../../lib/ccmc/")
+		PROPERTIES INSTALL_RPATH "@loader_path/../../../../lib/ccmc/"
+		)
 
 
 
@@ -101,7 +101,7 @@ install(TARGETS kameleon_prog
 				swmf_iono_test
 				time_interp
 				tracer_prog
-		DESTINATION bin/ccmc/c++ COMPONENT Runtime )
+		DESTINATION bin/ccmc/examples/c++ COMPONENT Runtime )
 		# PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_WRITE GROUP_READ WORLD_EXECUTE WORLD_WRITE WORLD_READ)
 
 

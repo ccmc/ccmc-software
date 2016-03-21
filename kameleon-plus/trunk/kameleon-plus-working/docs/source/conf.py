@@ -35,6 +35,7 @@ extensions = [
     'sphinx.ext.mathjax',
     # 'sphinx.ext.todo', 
     'breathe',
+    'sphinxcontrib.fulltoc',
 ]
 
 breathe_projects = { "Kameleon-plus": '../../doc/xml/'}

@@ -223,8 +223,8 @@ namespace ccmc
 			H5::DataSet * dataset = new H5::DataSet(group.openDataSet(variable));
 			H5::DataSpace dataspace = dataset->getSpace();
 			int rank = dataspace.getSimpleExtentNdims(); //should be 1
-			hsize_t count[1] = {length};
-			hsize_t offset[1] = {indexOffset};
+			hsize_t count[1] = {static_cast<hsize_t>(length)};
+			hsize_t offset[1] = {static_cast<hsize_t>(indexOffset)};
 			//int ndims = dataspace.getSimpleExtentDims(count, NULL);
 			float * buffer = new float[count[0]];
 
@@ -280,8 +280,8 @@ namespace ccmc
 		H5::DataSet * dataset = new H5::DataSet(group.openDataSet(group.getObjnameByIdx(variable)));
 		H5::DataSpace dataspace = dataset->getSpace();
 		int rank = dataspace.getSimpleExtentNdims(); //should be 1
-		hsize_t length[1] = {count};
-		hsize_t offset[1] = {indexOffset};
+		hsize_t length[1] = {static_cast<hsize_t>(count)};
+		hsize_t offset[1] = {static_cast<hsize_t>(indexOffset)};
 		//int ndims = dataspace.getSimpleExtentDims(count, NULL);
 		float * buffer = new float[length[0]];
 
@@ -491,7 +491,7 @@ namespace ccmc
 		H5::DataSpace dataspace = dataset->getSpace();
 		int rank = dataspace.getSimpleExtentNdims(); //should be 1
 		hsize_t count[1] = {1};
-		hsize_t offset[1] = {index};
+		hsize_t offset[1] = {static_cast<hsize_t>(index)};
 		//int ndims = dataspace.getSimpleExtentDims(count, NULL);
 		float * buffer = new float[count[0]];
 

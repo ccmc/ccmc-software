@@ -9,7 +9,7 @@ Kameleon-plus |version|
 Click to jump to a section:
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth:4
 
    README
    Quick_start
@@ -18,6 +18,8 @@ Click to jump to a section:
    Examples
    Model_docs
    Interpolator_docs
+   CoordinateTransformations
+   grid_tutorial 
    wrappers
 
 

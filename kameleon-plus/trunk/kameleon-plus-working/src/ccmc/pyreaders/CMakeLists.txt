@@ -52,6 +52,9 @@ add_library(pyKameleon SHARED ../Attribute.h
 
 target_link_libraries(pyKameleon ${Boost_LIBRARIES}  ${PYTHON_LIBRARIES})
 
+install(TARGETS pyKameleon 
+        DESTINATION lib/ccmc COMPONENT libraries 
+        )
 
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
