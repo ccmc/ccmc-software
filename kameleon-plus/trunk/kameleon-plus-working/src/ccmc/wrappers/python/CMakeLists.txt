@@ -61,6 +61,9 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY})
 
 ############# install in Kameleon distribution #####################
 # This code installs the python module in ${KAMELEON_LIB_DIR}/ccmc/python
+set_target_properties(_CCMC
+		PROPERTIES INSTALL_RPATH "@loader_path/../;./"
+		)
 install(TARGETS _CCMC DESTINATION lib/ccmc COMPONENT libraries)
 install(FILES ${CMAKE_SWIG_OUTDIR}/CCMC.py DESTINATION lib/ccmc COMPONENT headers)
 
