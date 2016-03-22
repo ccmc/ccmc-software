@@ -72,9 +72,9 @@ if(INSTALL_CCMC_PYTHON_MODULE)
 	############ system install ################################
 	# This code determines the machine python library location by running python, then installs the CCMC python library there
 	message(STATUS ${PYTHON_EXECUTABLE})
-	execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"
+	execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; from distutils.sysconfig import get_python_lib; print get_python_lib().split(sys.prefix)[-1][1:]"
 					OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
-	message(STATUS "will install ccmc module to "${PYTHON_SITE_PACKAGES})
+	message(STATUS "will install ccmc module to " ${PYTHON_SITE_PACKAGES})
 	install(TARGETS _CCMC PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ DESTINATION ${PYTHON_SITE_PACKAGES}/ccmc)
 	install(FILES ${CMAKE_SWIG_OUTDIR}/CCMC.py PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ DESTINATION ${PYTHON_SITE_PACKAGES}/ccmc)
 	file(WRITE ${PYTHON_SITE_PACKAGES}/ccmc/__init__.py "")
