@@ -59,7 +59,7 @@ namespace ccmc
 				const float& c0, const float& c1, const float& c2, 
 				float& dc0, float& dc1, float& dc2)
 	{
-		std::cout << "Interpolator::convertCoordinates called" << std::endl;
+		// std::cout << "Interpolator::convertCoordinates called" << std::endl;
 		Position preferred_p = {c0, c1, c2};
 		Position target_p;
 
