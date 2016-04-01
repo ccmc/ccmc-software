@@ -13,6 +13,7 @@
 #include "Attribute.h"
 #include "FileReader.h"
 #include <boost/unordered_map.hpp>
+#include <boost/filesystem.hpp>
 #include "cdf.h"
 #include <boost/python.hpp>
 

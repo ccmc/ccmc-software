@@ -2,8 +2,24 @@
 
 Quick Start
 ===========
+
+Kameleon Installers
+-------------------
+These platform-dependent installers include pre-built binaries and executeables.
+
+
+
+================   ================================================================================   ==================
+kameleon version                    MacOSX x86_64                                                       Linux arch 64  
+----------------   --------------------------------------------------------------------------------   ------------------
+   6.1.0           :download:`Kameleon-plus-6.1.0 <../installers/kameleon-6.1.0-MacOSX-x86_64.sh>`      placeholder 
+----------------   --------------------------------------------------------------------------------   ------------------
+================   ================================================================================   ==================
+
+If you want to compile the code yourself, follow instructions below.
+
 Download
---------
+--------c
 
 Kameleon-plus is hosted on `github <https://github.com/ccmc/ccmc-software>`_
 

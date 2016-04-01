@@ -1,5 +1,5 @@
 import sys
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+@CCMC_MODULE_PATH_STR@
 import _CCMC as ccmc
 
 def main(argv):

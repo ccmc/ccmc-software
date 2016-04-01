@@ -32,6 +32,7 @@ Once compiled, replace the path variable with your
     import sys
     sys.path.append(path)
     import _CCMC as ccmc
+    
 Choose a kameleon-compatible file to work with
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -9,7 +9,7 @@ todo:
 import numpy as np
 import sys, getopt
 import time
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+@CCMC_MODULE_PATH_STR@
 import _CCMC as ccmc
 
 

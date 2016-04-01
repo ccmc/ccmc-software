@@ -54,7 +54,7 @@ source_suffix = '.rst'
 # The master toctree document.
 master_doc = 'index'
 
-logo = '../../ext/CCMC-logo-small.png'
+logo = '_templates/'
 
 # General information about the project.
 project = u'Kameleon-plus'
@@ -144,7 +144,7 @@ html_theme_options = {
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -219,7 +219,7 @@ latex_documents = [
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-# latex_logo = '../../ext/CCMC-logo-small.png'
+latex_logo = '../../ext/CCMC-logo-small.png'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.

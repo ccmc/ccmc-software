@@ -1,7 +1,7 @@
 # Warning: expect weird results if your python interpreter library doesn't match the python library used to build _CCMC.so
 #  Use otool -L /path/to/_CCMC.so to confirm
 import sys, argparse
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+@CCMC_MODULE_PATH_STR@
 import _CCMC as ccmc
 import numpy as np
 import collections

@@ -56,9 +56,26 @@ install(TARGETS pyKameleon
         DESTINATION lib/ccmc COMPONENT libraries 
         )
 
+# make pyreaders directory in lib/ccmc
+file(MAKE_DIRECTORY lib/ccmc/pyreaders) #keep a copy in src directory
+
+# gather pyreader scripts
+file(GLOB PYREADER_SCRIPTS "${CMAKE_CURRENT_SOURCE_DIR}/*.py" )
+
+# configure and move the pyreader scripts
+FOREACH(infileName ${PYREADER_SCRIPTS})
+    MESSAGE(STATUS ${msg_prefix} "Process file: ${infileName}")
+    configure_file(${infileName} lib/ccmc/pyreaders NEWLINE_STYLE UNIX)
+ENDFOREACH(infileName)
+
+# on install, copy scripts to lib directory
+install(FILES ${PYREADER_SCRIPTS} DESTINATION lib/ccmc/pyreaders COMPONENT libraries ) 
+
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR}../)
+
+# remove this line?
 INCLUDE_DIRECTORIES("/Users/apembrok/git/ccmc-software/kameleon-plus/trunk/kameleon-plus-working/build")
 
 # add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)

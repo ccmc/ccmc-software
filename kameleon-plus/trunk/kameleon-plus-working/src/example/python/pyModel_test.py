@@ -1,6 +1,6 @@
 # Warning: expect weird results if your python interpreter library doesn't match the python library used to build _CCMC.so
 import sys
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+@CCMC_MODULE_PATH_STR@
 import _CCMC as ccmc
 
 

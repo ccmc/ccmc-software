@@ -1,7 +1,7 @@
 import sys, time, argparse
-sys.path.append('@CCMC_DIR@')
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/')
-sys.path.append('@KAMELEON_LIB_DIR@/ccmc/python/CCMC/')
+@CCMC_SRC_PATH_STR@
+@CCMC_MODULE_PATH_STR@
+@CCMC_LIB_PATH_STR@
 import numpy as np
 from pyreaders.ARMS import readARMS
 import _CCMC as ccmc

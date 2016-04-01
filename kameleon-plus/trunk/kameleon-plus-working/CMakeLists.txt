@@ -49,10 +49,14 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif()
 
 #============ python ============
+option(INSTALL_CCMC_PYTHON_MODULE "Install ccmc python module" OFF)
 FIND_PACKAGE(PythonInterp 2.7)
 FIND_PACKAGE(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}" REQUIRED)
 message(STATUS ${msg_prefix} "Python Interpreter:" ${PYTHON_EXECUTABLE})
-
+if(INSTALL_CCMC_PYTHON_MODULE)
+	execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; from distutils.sysconfig import get_python_lib; print get_python_lib().split(sys.prefix)[-1][1:]"
+					OUTPUT_VARIABLE PYTHON_SITE_PACKAGES OUTPUT_STRIP_TRAILING_WHITESPACE)
+endif(INSTALL_CCMC_PYTHON_MODULE)
 #============ Boost =============
 message("Getting BOOST....")
 # Boost shared or static?
@@ -143,8 +147,9 @@ configure_file (
 
 
 #============ Set up packaging environment ==========
-file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc)
-file(MAKE_DIRECTORY ${CMAKE_INSTALL_PREFIX}/bin/ccmc/c++)
+install(DIRECTORY DESTINATION bin/ccmc)
+install(DIRECTORY DESTINATION bin/ccmc/examples/c++)
+
 # file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/package_with_dependencies)
 # set(PACKAGE_LOC ${CMAKE_INSTALL_PREFIX}/bin/ccmc/MacOS)
 # message(STATUS ${msg_prefix} "Package location will be: " ${PACKAGE_LOC})
@@ -159,7 +164,7 @@ add_subdirectory(${CCMC_ROOT_DIR})
 
 message("")
 message("============ Top level CMakeLists.txt ============")
-set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/examples")
+set(EXAMPLES_BIN_DIR "${PROJECT_SOURCE_DIR}/bin/ccmc/examples")
 file(MAKE_DIRECTORY ${EXAMPLES_BIN_DIR}/python)
 set(EXAMPLES_ROOT_DIR "${KAMELEON_BASE_DIR}/src/example")
 # FIND_PACKAGE( PythonLibs 2.7 REQUIRED)
