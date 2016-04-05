@@ -139,6 +139,8 @@ if(BUILD_SHARED_LIBS)
     install(TARGETS ccmc 
         DESTINATION lib/ccmc COMPONENT libraries 
         )
+    install(FILES ${ALL_HEADER}
+        DESTINATION include/ccmc COMPONENT libraries)
 endif(BUILD_SHARED_LIBS)
 
 if(BUILD_STATIC_LIBS)
