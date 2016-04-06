@@ -26,9 +26,9 @@ option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 option(BUILD_STATIC_LIBS "Build static libraries" ON)
 option(USE_STATIC_LIBS "Use static libraries" OFF)
 
-# OSX
-if(APPLE)
-    set(CMAKE_MACOSX_RPATH ON)
+
+# UNIX
+if(UNIX)
     set(CMAKE_SKIP_BUILD_RPATH FALSE)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
     set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
@@ -37,6 +37,11 @@ if(APPLE)
     if("${isSystemDir}" STREQUAL "-1")
         set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
     endif()
+endif()
+
+# OSX
+if(APPLE)
+    set(CMAKE_MACOSX_RPATH ON)
 endif()
 
 
