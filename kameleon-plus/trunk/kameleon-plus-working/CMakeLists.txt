@@ -29,6 +29,20 @@ option(USE_STATIC_LIBS "Use static libraries" OFF)
 
 # UNIX
 if(UNIX)
+	set (CMAKE_BUILD_WITH_INSTALL_RPATH  TRUE)
+    # set(CMAKE_SKIP_BUILD_RPATH FALSE)
+    # set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+    # set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+    # set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+    # list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/lib" isSystemDir)
+    # if("${isSystemDir}" STREQUAL "-1")
+    #     set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+    # endif()
+endif()
+
+# OSX
+if(APPLE)
+    set(CMAKE_MACOSX_RPATH ON)
     set(CMAKE_SKIP_BUILD_RPATH FALSE)
     set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
     set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
@@ -37,11 +51,6 @@ if(UNIX)
     if("${isSystemDir}" STREQUAL "-1")
         set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
     endif()
-endif()
-
-# OSX
-if(APPLE)
-    set(CMAKE_MACOSX_RPATH ON)
 endif()
 
 
