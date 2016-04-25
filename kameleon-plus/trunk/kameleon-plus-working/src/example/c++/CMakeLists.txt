@@ -68,7 +68,26 @@ target_link_libraries(time_interp ccmc)
 target_link_libraries(tracer_prog ccmc)
 target_link_libraries(pyModel_prog ccmc)
 
+if(UNIX)
+set_target_properties(  kameleon_prog 
+                                                adapt3d_test 
+                                                CDFReader 
+                                                coordinate_transformation_test
+                                                enlil_test
+                                                integrator_prog
+                                                lfm_test
+                                                magnetogram_test
+                                                mas_test
+                                                open_ggcm_test
+                                                swmf_iono_test
+                                                time_interp
+                                                tracer_prog
+                PROPERTIES INSTALL_RPATH "\$ORIGIN/../../../../lib/ccmc/"
+                )
 
+endif(UNIX)
+
+if(APPLE)
 set_target_properties(	kameleon_prog 
 						adapt3d_test 
 						CDFReader 
@@ -85,7 +104,7 @@ set_target_properties(	kameleon_prog
 		PROPERTIES INSTALL_RPATH "@loader_path/../../../../lib/ccmc/"
 		)
 
-
+endif(APPLE)
 
 ###################### INSTALL #######################
 install(TARGETS kameleon_prog 
