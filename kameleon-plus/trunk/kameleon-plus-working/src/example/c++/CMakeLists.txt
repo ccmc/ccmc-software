@@ -82,7 +82,7 @@ set_target_properties(  kameleon_prog
                                                 swmf_iono_test
                                                 time_interp
                                                 tracer_prog
-                PROPERTIES INSTALL_RPATH "\$ORIGIN/../../../../lib/ccmc/"
+                PROPERTIES INSTALL_RPATH "\$ORIGIN/../../../../lib/ccmc/;\$ORIGIN/../../../../lib/"
                 )
 
 endif(UNIX)
@@ -101,7 +101,7 @@ set_target_properties(	kameleon_prog
 						swmf_iono_test
 						time_interp
 						tracer_prog
-		PROPERTIES INSTALL_RPATH "@loader_path/../../../../lib/ccmc/"
+		PROPERTIES INSTALL_RPATH "@loader_path/../../../../lib/ccmc/;@loader_path/../../../../lib/"
 		)
 
 endif(APPLE)
