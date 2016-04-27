@@ -141,12 +141,12 @@ INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})
 if(BUILD_SHARED_LIBS)
     if(UNIX)
     set_target_properties(ccmc
-            PROPERTIES INSTALL_RPATH "\$ORIGIN/../"
+            PROPERTIES INSTALL_RPATH "\$ORIGIN/../;\$ORIGIN/"
             )
     endif(UNIX)
     if(APPLE)
     set_target_properties(ccmc
-            PROPERTIES INSTALL_RPATH "@loader_path/../"
+            PROPERTIES INSTALL_RPATH "@loader_path/../;@loader_path/"
             )
     endif(APPLE)
 
