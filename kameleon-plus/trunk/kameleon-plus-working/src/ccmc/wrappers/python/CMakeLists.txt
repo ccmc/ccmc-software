@@ -58,9 +58,17 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY})
 # 	" COMPONENT python)
  
 # add_subdirectory(${WRAPPERS_ROOT_DIR}/python/setup)
+if(UNIX)
+set_target_properties(_CCMC
+		PROPERTIES INSTALL_RPATH "\$ORIGIN/../../../ccmc/;../../../../"
+		)
+endif(UNIX)
+
+if(APPLE)
 set_target_properties(_CCMC
 		PROPERTIES INSTALL_RPATH "@loader_path/../../../ccmc/;../../../../"
 		)
+endif(APPLE)
 ############# install in Kameleon distribution #####################
 # This code installs the python module in ${KAMELEON_LIB_DIR}/ccmc/python
 # install(TARGETS _CCMC DESTINATION lib/ccmc COMPONENT libraries)
