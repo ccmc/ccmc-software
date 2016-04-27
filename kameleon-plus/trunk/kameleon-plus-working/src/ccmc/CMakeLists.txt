@@ -134,8 +134,22 @@ INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})
 
 
 ############ installer ############
+
+
+
 #install the library 
 if(BUILD_SHARED_LIBS)
+    if(UNIX)
+    set_target_properties(ccmc
+            PROPERTIES INSTALL_RPATH "\$ORIGIN/../"
+            )
+    endif(UNIX)
+    if(APPLE)
+    set_target_properties(ccmc
+            PROPERTIES INSTALL_RPATH "@loader_path/../"
+            )
+    endif(APPLE)
+
     install(TARGETS ccmc 
         DESTINATION lib/ccmc COMPONENT libraries 
         )

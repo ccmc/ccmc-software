@@ -52,6 +52,19 @@ add_library(pyKameleon SHARED ../Attribute.h
 
 target_link_libraries(pyKameleon ${Boost_LIBRARIES}  ${PYTHON_LIBRARIES})
 
+# set install_rpath
+if(UNIX)
+set_target_properties(pyKameleon
+        PROPERTIES INSTALL_RPATH "\$ORIGIN/../"
+        )
+endif(UNIX)
+if(APPLE)
+set_target_properties(pyKameleon
+        PROPERTIES INSTALL_RPATH "@loader_path/../"
+        )
+endif(APPLE)
+
+
 install(TARGETS pyKameleon 
         DESTINATION lib/ccmc COMPONENT libraries 
         )
