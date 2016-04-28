@@ -11,7 +11,7 @@ Click to jump to a section:
 .. toctree::
    :maxdepth:4
 
-   README
+   Overview
    Quick_start
    Models
    Models_at_a_glance
@@ -21,8 +21,7 @@ Click to jump to a section:
    CoordinateTransformations
    grid_tutorial 
    wrappers
-
-
+   Developers
 
 
 Indices and tables

@@ -1,0 +1,417 @@
+/***********************************************/
+/* ccmcweb.css                              */
+/* Use with template for all CCMC web   pages */
+/***********************************************/
+
+/***********************************************/
+/* HTML tag styles                             */
+/***********************************************/
+body{
+	font-family: Arial,sans-serif;
+	color: #000000;
+	line-height: 1.166;	
+	margin: 0px;
+	padding: 0px;
+	background: #dbdfe1;
+        min-width: 760px;
+        max-width: 1200px;
+}
+
+/******* hyperlink and anchor tag styles *******/
+
+a:link, a:visited{
+	color: #005FA9;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+/************** header tag styles **************/
+
+h1{
+ font: bold 110% Verdana,Helvetica,Arial,sans-serif;
+ color: #000066;
+ margin: 0px;
+ padding: 0px;
+}
+
+h2{
+ font: bold 105% Verdana,Helvetica,Arial,sans-serif;
+ color: #0033ff;
+ margin: 0px;
+ padding: 0px;
+}
+
+h3{
+ font: bold 90% Verdana,Helvetica,Arial,sans-serif;
+ color: #000040;
+}
+/*************** list tag styles ***************/
+
+ul{
+ list-style-type: disc;
+}
+
+ul ul{
+ list-style-type: disc;
+}
+
+ul ul ul{
+ list-style-type: none;
+}
+
+/********* form and related tag styles *********/
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+label{
+ font: bold 1em Arial,sans-serif;
+ color: #334d55;
+}
+				
+input{
+font-family: Arial,sans-serif;
+}
+/***********************************************/
+/* Navigation Styles                           */
+/***********************************************/
+
+#pageNav{
+	float: left;
+	width:178px;
+	padding: 0px;
+	background-color: #F5f7f7;
+	border-right: 1px solid #cccccc;
+	border-bottom: 1px solid #cccccc;
+	font: small Verdana,Arial,sans-serif;
+}
+
+/************* globalNav styles ****************/
+
+#globalNav{
+position: relative;
+width: 100%;
+min-width: 640px;
+height: 32px;
+color: #cccccc;
+padding: 0px;
+margin: 0px;
+background-image: url(../images/glbnav_background.gif);
+
+}
+
+#globalNav img{
+	margin-bottom: -4px;
+
+ 
+}
+
+#globalNav words {
+        font-size: 1em;
+        overflow: hidden;
+	height: 1em;
+ 
+}
+#gnl {
+	position: absolute;
+	top: 0px;
+	left:0px;
+}
+
+#gnr {
+	position: absolute;
+	top: 0px;
+	right:0px;
+}
+
+#globalLink{
+	position: absolute;
+	top: 6px;
+	height: 20px;
+	min-width: 640px;
+	padding: 0px;
+	margin: 0px;
+	left: 10px;
+	z-index: 100;
+        overflow: hidden;
+
+}
+
+
+a.glink, a.glink:visited{
+  	font-size: small;
+  	color: #000000;
+	font-weight: bold;
+	margin: 0px;
+	padding: 2px 5px 4px 5px;
+	border-right: 1px solid #8FB8BC;
+}
+
+a.glink:hover{
+  	background-image: url(../images/glblnav_selected.gif);
+	text-decoration: none;
+}
+
+.skipLinks {display: none;}
+
+
+
+/************ subglobalNav styles **************/
+
+.subglobalNav{
+	position: absolute;
+        top: 145px;
+	left: 20px;
+	min-width: 640px;
+	height: 20px;
+	padding: 0px 0px 0px 10px;
+	visibility: hidden;
+}
+
+.subglobalNav a:link, .subglobalNav a:visited {
+	font-size: 80%;
+        line-height:240%;
+ 	padding: 0px;       
+	color: #666666;
+}
+
+.subglobalNav a:hover{
+	color: #222222;
+}
+
+
+/************ Utility Navigation (Sitemap, etc) **************/
+
+#utilitynavigation{
+        position: absolute;
+	font: 80% Verdana,Helvetica,Arial,sans-serif;
+	top: 65px;
+	right: 0px;
+        color: #777777;
+#        margin: 30;
+        margin-left:230px;
+        height: 5em;
+        overflow: hidden;
+}
+
+#utilitynavigation a{
+	color: #777777;        
+}
+
+#utilitynavigation a:hover{	
+        color: #666666;
+	text-decoration: underline;
+}
+
+
+/***********************************************/
+/* Layout Divs                                 */
+/***********************************************/
+
+#pagecell{
+	position: absolute;
+	font: 100% Georgia,"Times New Roman", Times, serif;
+        font_color: #000000;
+	top: 180px;
+	left: 3%;
+	right: 3%;
+	width:94.0%;
+	background-color: #ffffff;
+}
+
+#masthead{
+	position: absolute;
+	top: 0px;
+	left: 3%;
+	right: 3%;
+	width:94.0%;
+	}
+
+#content{
+	padding: 0px 0px 0px 0px;
+	margin:15px 35px 25px 30px;
+	font-family: Georgia,"Times New Roman", Times, serif;
+	color: #111111;
+	
+}
+
+#content_left_box{
+	float: left;
+	width: 47%;
+	margin:0px 0px 15px 0px;
+}
+
+#content_left_nobox{
+	float: left;
+	width: 47%;
+	margin: 10px 0px 20px 0px;
+        border: solid 1px #dbdfe1;	
+        padding: 9px 5px 8px 5px;
+}
+
+#content_right{
+	float: none;      
+	margin-left: 52%;
+}
+
+.more {
+		display:block;
+		text-align:right;
+		padding:0 35px 10px 0;
+	}
+
+#rightalign{
+	float: right;
+        margin-right: 40px;      
+}
+/***********************************************/
+/* Image Styles (logos, banner)                */
+/***********************************************/
+
+#nasalogo{
+
+  position: absolute;
+  top:  12px;
+  right:  0px;
+  float: right;
+  margin-left: 200px;
+}
+
+#CCMClogo{
+	padding: 8px 0px 8px 0px;
+        margin: 1px;
+        float: none;
+
+}
+
+
+/*********    Home Page Banner    **************/
+
+#imageholder{
+	width:100%;
+	border-bottom:1px solid #ccd2d2;
+	padding: 0px;
+	clear: both;
+	background-image: url(../images/stars.jpg);        
+        background-position: left;
+        background-repeat: repeat-x;     
+	
+}
+
+#imageholder img{
+        padding: 0px;
+        display: block;
+        position: relative;
+        left: 20%; 
+}
+/***********************************************/
+/* Site Info (Contact persons, etc).           */
+/***********************************************/
+
+#siteInfo{
+	clear: both;
+	padding: 10px 10px 10px 10px;
+	margin-top: 0px;
+	background-color: #dbdfe1;	
+        font: 85% Verdana,Helvetica,Arial,sans-serif;	
+        color: #666666;
+}
+
+#siteInfo img{
+	padding: 4px 4px 4px 0px;
+	vertical-align: middle;
+}
+
+#siteInfo p{
+	text-align: center;
+}
+
+#siteInfo a{
+	color: #666666;
+}
+
+#siteInfo a:hover{	
+        color: #555555;
+	text-decoration: underline;
+
+}
+
+/***********************************************/
+/*         Box with border                     */
+/***********************************************/
+
+	#labfooter {
+		text-align:center;
+		clear:both;
+	}
+	.adwrap {
+		margin:30px auto 10px;
+		padding:10px 0;
+		width:468px;
+		border:1px solid #ccc;
+		border-width:1px 0;
+	}
+	.adwrap object {
+		width:468px;
+		height:60px;
+	}
+	
+	
+	.borderbox {
+		padding:0 0 0 11px;
+		margin:10px;
+		background:url("tsr-l.gif") top left no-repeat;
+	}
+	.borderbox h3 {
+		background:url("tsr-r.gif") top right no-repeat;
+		margin:0;
+		padding:8px 0 0.5em 0;
+	}
+	.borderbox p {
+		margin:0 0 0 -11px;
+		padding:0 11px 30px;
+		border:1px solid #d8d8d8;
+		border-width:0 1px;
+		background:#fff;
+	}	
+         .borderbox ul {
+		margin:0 0 0 -11px;
+		padding:0 11px 0.5em 30px;
+		border:1px solid #d8d8d8;
+		border-width:0 1px;
+		background:#fff;
+        }
+	.borderbox div {
+		margin:0 0 0 -11px;
+		padding-left:11px;
+		background:url("tsr-l.gif") bottom left no-repeat;
+	}
+	.borderbox a.more {
+		display:block;
+		text-align:right;
+		padding:0 10px 10px 0;
+		background:url("tsr-r.gif") bottom right no-repeat;
+	}
+
+
+#LogoCredits{
+	clear: both;
+	padding: 10px 10px 10px 10px;
+	text-align:right;
+        margin-top: 10px;
+	background-color: #dbdfe1;	
+        font: 90% Verdana,Helvetica,Arial,sans-serif;	
+        color: #888888;
+}
+
+#LogoCredits a{
+	color: #666666;
+	text-decoration: underline;
+}
+
+

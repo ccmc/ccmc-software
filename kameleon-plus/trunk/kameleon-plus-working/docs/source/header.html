@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+<title>Run submission options for local physics model</title>
+
+<link rel="stylesheet" href="http://ccmc.gsfc.nasa.gov/css/ccmcweb.css" type="text/css" />
+
+   <!-- Navigation Script Starts Here--> 
+   
+<script type="text/javascript">
+
+var time = 3000;
+var numofitems = 8;
+var menuYmin = 50;
+var menuYmax = 350;
+var finished = false;
+
+//menu constructor
+function menu(allitems,thisitem,startstate){ 
+  callname= "gl"+thisitem;
+  divname="subglobal"+thisitem;  
+  this.numberofmenuitems = numofitems;
+  this.caller = document.getElementById(callname);
+  this.thediv = document.getElementById(divname);
+  this.thediv.style.visibility = startstate;
+}
+
+//menu methods
+function ehandler(event,menuNumber){
+  if (!finished)
+    return;
+  theobj = eval( "menuitem"+menuNumber );
+  for (var i=1; i<= theobj.numberofmenuitems; i++){
+    var shutdiv =eval( "menuitem"+i+".thediv");
+    shutdiv.style.visibility="hidden";
+  }
+  theobj.thediv.style.visibility="visible";
+}
+
+function setfinished(){
+  finished = true;
+}
+
+function closesubnav(event){
+  if (!finished)
+    return;
+  var top = (window.pageYOffset)?window.pageYOffset:(document.documentElement)?document.documentElement.scrollTop:document.body.scrollTop;
+  if ((event.clientY <menuYmin-top)||(event.clientY > menuYmax-top)){
+    for (var i=1; i<= numofitems; i++){
+      var shutdiv =eval('menuitem'+i+'.thediv');
+      shutdiv.style.visibility='hidden';
+    }
+  }
+}
+
+</script>
+
+</head>  
+
+
+<body onmousemove="closesubnav(event);" > 
+
+<div class="skipLinks">skip to: <a href="#content">page content</a> | <a href="#pageNav">links on this page</a> | <a href="#globalNav">site navigation</a> | <a href="#siteInfo">footer (site information)</a> </div>
+
+ <!-- Start of Logos and Navigation --> 
+<div id="masthead">
+
+    <!-- CCMC Logo -->   
+    <div id="CCMClogo"><a href="http://ccmc.gsfc.nasa.gov/index.php"><img src="http://ccmc.gsfc.nasa.gov/images/CCMC-LOGO-2.gif" alt="CCMC logo" border="0" /></a></div>
+ 
+    <!-- Utility Navigation: Related Links, FAQ, Sitemap, etc.  -->   
+
+    <div id="utilitynavigation"> <a href="http://ccmc.gsfc.nasa.gov/related.php">Related Links</a>&nbsp;|&nbsp;<a href="http://ccmc.gsfc.nasa.gov/FAQ.php">Frequently Asked Questions</a>&nbsp;|&nbsp;<a href="http://ccmc.gsfc.nasa.gov/ComQues/index.php">Community Feedback</a>&nbsp;|&nbsp;<a href="http://ccmc.gsfc.nasa.gov/downloads/index.php">Downloads</a>&nbsp;|&nbsp;<a href="http://ccmc.gsfc.nasa.gov/sitemap.php">Sitemap</a></div>
+
+    <!-- NASA Logo  --> 
+
+    <div id="nasalogo"><a href="http://www.nasa.gov" target="top"><img src="http://ccmc.gsfc.nasa.gov/images/NASALogo-small.gif" border="0" alt="National Aeronautics and Space Administration" ></a></div>      
+   
+    <!-- Main Navigation: About Us, Models, Request a Run, etc.--> 
+
+    <div id="globalNav"> <img src="http://ccmc.gsfc.nasa.gov/images/glbnav_left.gif" alt="" name="gnl" width="4" height="32" id="gnl" /> <img alt="" src="http://ccmc.gsfc.nasa.gov/images/glbnav_right.gif" height="32" width="4" id="gnr" />
+    </div>
+
+       <!-- Sub Navigation: Everything Underneath --> 
+
+<div id="subglobal1" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Home</a> | <a href="http://ccmc.gsfc.nasa.gov/partners.php"> Stakeholders</a>| <a href="http://ccmc.gsfc.nasa.gov/steering.php">Steering Committee</a> | <a href="http://ccmc.gsfc.nasa.gov/staff/index.php">GSFC Staff</a> | <a href="http://ccmc.gsfc.nasa.gov/publications/userpubs/papers-and-presentations.php">Publications</a> | <a href="http://ccmc.gsfc.nasa.gov/workshops/index.php">Meetings and Workshops</a> | <a href="http://ccmc.gsfc.nasa.gov/CONOPS_final.pdf">Concept of Operations</a> </div>  
+
+<div id="subglobal2" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Home</a> | <a href="http://ccmc.gsfc.nasa.gov/models/models_at_glance.php">Models At A Glance</a> |  <a href="http://ccmc.gsfc.nasa.gov/modelweb/">ModelWeb Catalog and Archive</a> </div> 
+
+<div id="subglobal3" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Home</a> | <a href="http://ccmc.gsfc.nasa.gov/requests/RunRequestInstructions.php">Request Procedures</a> | <a href="http://ccmc.gsfc.nasa.gov/requests/fileGeneration.php">Generate Input Data Files &amp; Parameters</a> | <a href="http://ccmc.gsfc.nasa.gov/aboutRun.php">About the Run Process</a> | <a href="http://ccmc.gsfc.nasa.gov/PubPolicy.php">Publications Policy</a></div> 
+
+<div id="subglobal4" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Home</a> | <a href="http://ccmc.gsfc.nasa.gov/stereo_support.php">STEREO support</a> | <a href="http://ccmc.gsfc.nasa.gov/ungrouped/search_main.php">Search run database</a> | <a href="http://ccmc.gsfc.nasa.gov/PubPolicy.php">Publications policy</a> | <a href="http://ccmc.gsfc.nasa.gov/SECevents/index.php">Special events</a> | <a href="http://ccmc.gsfc.nasa.gov/SWX/vrml.php">3D VRML output</a> | <a href="http://ccmc.gsfc.nasa.gov/ComQues/request_CDF.php">Request run output</a></div> 
+
+<div id="subglobal5" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Home</a> | <a href="http://ccmc.gsfc.nasa.gov/requests/instant_run.php">Instant Model Run</a>  </div>
+
+<div id="subglobal6" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Home</a> | <a href="http://ccmc.gsfc.nasa.gov/cgi-bin/RTdisplay_SH_RA.cgi">Sun & Heliosphere</a> | <a href="http://ccmc.gsfc.nasa.gov/cgi-bin/SWMFpred.cgi">SWMF Magnetosphere</a> | <a href="http://ccmc.gsfc.nasa.gov/cgi-bin/WINDMIpred.cgi">WINDMI Dst and AL</a> | <a href="http://ccmc.gsfc.nasa.gov/models/Weimer_realtime.php">Ionospheric Electrodynamics</a> | <a href="http://ccmc.gsfc.nasa.gov/models/abby_realtime.php">Ionosph. HF Vertical Signal Loss</a> | <a href="http://ccmc.gsfc.nasa.gov/movie/index.php">Movies of Storms</a> </div> 
+
+<div id="subglobal7" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Home</a> | <a href="http://ccmc.gsfc.nasa.gov/support/GEM_metrics_08/">GEM Challenge</a> | <a href="http://ccmc.gsfc.nasa.gov/support/CETI2010">CEDAR ETI Challenge</a>  | <a href="http://ccmc.gsfc.nasa.gov/challenges/GEM-CEDAR">GEM-CEDAR Challenge</a> | <a href="http://ccmc.gsfc.nasa.gov/challenges/Shine">SHINE Challenge</a></div>
+
+<div id="subglobal8" class="subglobalNav"> <a href="http://ccmc.gsfc.nasa.gov/index.php">Magnetosphere Modules</a> | <a href="http://ccmc.gsfc.nasa.gov/support/GEM_metrics_08/">GEM Challenge</a> | <a href="http://ccmc.gsfc.nasa.gov/support/CETI2010">CEDAR ETI Challenge</a>  | <a href="http://ccmc.gsfc.nasa.gov/challenges/GEM-CEDAR">GEM-CEDAR Challenge</a> | <a href="http://ccmc.gsfc.nasa.gov/challenges/Shine">SHINE Challenge</a></div>
+
+
+
+</div> 
+<!-- END of All Navigation--> 
+<br>
+<br>
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+<br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+
+
+    </div>
+
+
+      <!-- Footer on Gray Background Starts Here -->
+
+      <div id="siteInfo">
+
+      <!-- Footer Logos Start Here -->
+
+    <table align="center">
+          <tr>
+          <td><a href="http://www.nasa.gov"><img src="http://ccmc.gsfc.nasa.gov/images/NASALogo-small.gif" alt="National Aeronautics and Space Administration" border="0"/></a></td>
+          <td><a href="http://www.afmc.af.mil"><img alt="Air Force Materiel Command" src="http://ccmc.gsfc.nasa.gov/images/afmc-logo-small.gif" border="0"/></a></td>
+          <td><a href="http://www.afosr.af.mil"><img alt="Air Force Office of Scientific Research" src="http://ccmc.gsfc.nasa.gov/images/afosr-logo-small.gif" border="0"/></a></td>
+          <td><a href="http://www.wpafb.af.mil/AFRL/"><img alt="Air Force Research Laboratory" src="http://ccmc.gsfc.nasa.gov/images/afrl-logo.gif"  border="0"/></a></td>
+          <td><a href="http://afweather.af.mil/"><img alt="Air Force Weather Agency" src="http://ccmc.gsfc.nasa.gov/images/afg-logo-small.gif"  border="0"/></a></td>
+          <td><a href="http://www.sec.noaa.gov"><img alt="NOAA Space Environment Center" src="http://ccmc.gsfc.nasa.gov/images/noaa-logo-small.gif"  border="0"/></a></td>
+          <td><a href="http://www.nsf.gov"><img alt="National Science Foundation" src="http://ccmc.gsfc.nasa.gov/images/nsf-logo-small.gif" border="0"/></a></td>
+          <td><a href="http://www.onr.navy.mil"><img alt="Office of Naval Research" src="http://ccmc.gsfc.nasa.gov/images/onr_logo.gif" height="39" width="46" border="0"/></a></td>
+         </tr>
+         </table>
+
+        
+      <!-- Site Contact Information Starts Here -->
+      
+<p>  <SCRIPT LANGUAGE="JavaScript">
+user="anna.chulaki";
+site="nasa.gov";
+document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+document.write('Curator: Anna Chulaki<\/a>');
+</SCRIPT> |
+<SCRIPT LANGUAGE="JavaScript">
+user="Maria.M.Kuznetsova";
+site="nasa.gov";
+document.write('<a href=\"mailto:' + user + '@' + site + '\">');
+document.write('NASA Official:  Dr. Masha Kuznetsova<\/a>');
+</SCRIPT> |
+ | <a href="http://www.nasa.gov/about/highlights/HP_Privacy.html">Privacy, Security Notices</a></p>
+
+ <div id="LogoCredits">
+CCMC logo designed by artist <a href="http://nanabagdavadze.com/">Nana Bagdavadze</a></p>
+</div>
+</div>
+
+</div>
+<!-- Pagecell Ends Here -->
+  
+<script type="text/javascript"> 
+<!--
+for(var i=1;i<=numofitems;i++){ window["menuitem"+i] = new menu(numofitems,i,"hidden"); }
+setfinished();
+// -->
+</script> 
+ 
+
+
+</body>

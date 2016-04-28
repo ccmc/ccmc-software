@@ -6,7 +6,7 @@ cmake_policy(SET CMP0026 OLD)
 
 #Set version number
 set(Kameleon_VERSION_MAJOR "6")
-set(Kameleon_VERSION_MINOR "0.0.1")
+set(Kameleon_VERSION_MINOR "1.0.0")
 set(KAMELEON_PLUS_VERSION ${Kameleon_VERSION_MAJOR}.${Kameleon_VERSION_MINOR})
 
 set(msg_prefix " ")

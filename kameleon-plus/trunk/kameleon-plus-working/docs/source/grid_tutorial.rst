@@ -5,18 +5,14 @@ Grid Tutorial
 
 This document details usage of the grid.py command line tool.
 
-Running the new command-line interface
-======================================
-
 All Python examples will eventually have a full-fledged command line
 interface to make it easier for users to leverage the powerful
 post-processing tools offered by Kameleon. The grid.py example is a good
-start. Once cmake is run and the \_CCMC module is built, navigate to
-python examples
+start. Navigate to python examples
 
 .. code:: console
 
-    cd ccmc-software/kameleon-plus/trunk/kameleon-plus-working/src/bin/examples/python
+    cd <path_to_kameleon>/bin/ccmc/examples/python
 
 Interrogating global metadata from a file
 -----------------------------------------
