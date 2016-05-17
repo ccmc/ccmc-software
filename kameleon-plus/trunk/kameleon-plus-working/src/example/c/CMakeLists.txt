@@ -65,11 +65,10 @@ set_target_properties(	kameleon_compat_test
 endif(APPLE)
 
 ###################### INSTALL #######################
-install(TARGETS generalfilereader_compat_f 
-                        kameleon_compat_f 
-                        time_series_test 
-                        timeinterp_compat_f
-                        tracer_compat_f
+install(TARGETS kameleon_compat_test 
+                tracer_c 
+                time_interp_c 
+                filereader_compat_test
 		DESTINATION bin/ccmc/examples/c COMPONENT Runtime )
 		# PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_WRITE GROUP_READ WORLD_EXECUTE WORLD_WRITE WORLD_READ)
 

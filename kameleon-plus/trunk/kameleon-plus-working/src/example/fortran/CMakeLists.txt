@@ -52,3 +52,35 @@ target_link_libraries(timeinterp_compat_f ccmc_wrapper_fortran)
 target_link_libraries(tracer_compat_f ccmc_wrapper_fortran)
 
 
+if(UNIX)
+set_target_properties(  generalfilereader_compat_f 
+                        kameleon_compat_f 
+                        time_series_test 
+                        timeinterp_compat_f
+                        tracer_compat_f
+                PROPERTIES INSTALL_RPATH "\$ORIGIN/../../../../lib/ccmc/;\$ORIGIN/../../../../lib/"
+                )
+
+endif(UNIX)
+
+if(APPLE)
+set_target_properties(	generalfilereader_compat_f 
+                        kameleon_compat_f 
+                        time_series_test 
+                        timeinterp_compat_f
+                        tracer_compat_f
+				PROPERTIES INSTALL_RPATH "@loader_path/../../../../lib/ccmc/;@loader_path/../../../../lib/"
+				)
+
+endif(APPLE)
+
+###################### INSTALL #######################
+install(TARGETS generalfilereader_compat_f 
+                        kameleon_compat_f 
+                        time_series_test 
+                        timeinterp_compat_f
+                        tracer_compat_f
+		DESTINATION bin/ccmc/examples/fortran COMPONENT Runtime )
+		# PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE GROUP_WRITE GROUP_READ WORLD_EXECUTE WORLD_WRITE WORLD_READ)
+
+
