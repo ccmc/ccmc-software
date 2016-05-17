@@ -23,6 +23,13 @@ include_directories(${KAMELEON_SRC_DIR})
 
 target_link_libraries(ccmc_wrapper_fortran ccmc_wrapper_c ccmc)
 
+install(TARGETS ccmc_wrapper_fortran 
+    DESTINATION lib/ccmc COMPONENT libraries 
+    )
+install(FILES ${ALL_HEADER}
+    DESTINATION include/ccmc COMPONENT libraries)
+
+
 # if(APPLE)
 #     set_property(TARGET ccmc_wrapper_fortran PROPERTY MACOSX_RPATH TRUE)
 # endif(APPLE)
