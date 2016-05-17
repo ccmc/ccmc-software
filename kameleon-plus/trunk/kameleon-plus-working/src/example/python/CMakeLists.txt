@@ -25,8 +25,9 @@ message(STATUS ${msg_prefix} "Python example files will be kept in: " ${EXAMPLES
 # configure for install
 if(INSTALL_CCMC_PYTHON_MODULE)
 	file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/python_examples/python)
+	set(CCMC_SRC_PATH_STR "") #empty since pyreaders will be installed to lib/ccmc
 	set(CCMC_MODULE_PATH_STR "sys.path.append('../../../../${PYTHON_SITE_PACKAGES}/ccmc/')")
-	set(CCMC_LIB_PATH_STR "sys.path.append('../../../../ccmc/')")
+	set(CCMC_LIB_PATH_STR "sys.path.append('../../../../lib/ccmc/')")
 	message(STATUS ${msg_prefix} "Using CCMC module install path in scripts: " ${CCMC_MODULE_PATH_STR})
 	FOREACH(infileName ${PYTHON_EXAMPLES})
 	    MESSAGE(STATUS ${msg_prefix} "Process file: ${infileName}")
