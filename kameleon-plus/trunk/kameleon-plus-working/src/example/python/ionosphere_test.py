@@ -245,7 +245,7 @@ def main(argv):
 		if args.output_file:
 			webname = args.output_file
 		else:
-			webname = ionosphere_variables_
+			webname = 'ionosphere_variables_'
 
 		plotly.offline.plot(fig, filename=webname + str(n0) + 'x' + str(n1) +'.html', auto_open=True)
 
