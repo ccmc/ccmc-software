@@ -64,7 +64,7 @@ def main(argv):
 	parser.add_argument("-db", "--debug", action='store_true', help = 'print debug info')
 	parser.add_argument("-vis", "--visualize", action = 'store_true', help = 'visualize with plotly')
 	parser.add_argument("-vvar", "--vis-variable", type=str, metavar = 'var1', help = "variable to visualize. Default: first variable in variables")
-	parser.add_argument("-o", "--output_file", default = 'ionosphere_variables_', type = str, metavar = 'path/to/output_file', help = 'output json file name and location')
+	parser.add_argument("-o", "--output_file", type = str, metavar = 'path/to/output_file', help = 'output json file name and location')
 	parser.add_argument("-vars", "--variables", 
 						type=str, nargs='+',
 						metavar = ('var1','var2',), 
@@ -195,7 +195,13 @@ def main(argv):
 
 	
 	if args.visualize:
-		import plotly
+		try:
+			import plotly
+		except ImportError:
+			print "cannot visualize without plotly. Please run \"pip install plotly\""
+			cdfreader.close()
+			exit()
+
 		import plotly.graph_objs as go
 		import plotly.tools as tools
 
@@ -236,8 +242,12 @@ def main(argv):
 		fig.append_trace(contours, 1, 1)
 		fig.append_trace(surface, 1, 2)
 
+		if args.output_file:
+			webname = args.output_file
+		else:
+			webname = ionosphere_variables_
 
-		plotly.offline.plot(fig, filename=args.output_file + str(n0) + 'x' + str(n1) +'.html', auto_open=True)
+		plotly.offline.plot(fig, filename=webname + str(n0) + 'x' + str(n1) +'.html', auto_open=True)
 
 
 	cdfreader.close()
