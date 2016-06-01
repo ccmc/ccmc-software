@@ -3,7 +3,7 @@
 import sys, argparse
 @CCMC_MODULE_PATH_STR@
 import _CCMC as ccmc
-
+import os
 import numpy as np
 import json, base64
 from collections import OrderedDict
@@ -56,7 +56,8 @@ def print_metadata(cdfreader, which='global'):
 def main(argv):
 	parser = argparse.ArgumentParser(description="Interpolates variables onto grid.")
 	parser.add_argument("-v", "--verbose", action="count", default=0, help = 'verbosity of output')
-	parser.add_argument("input_file", metavar = 'full/path/to/input_file.cdf', type=str, help="kameleon-compatible file")
+	parser.add_argument("-input_file", metavar = 'full/path/to/input_file.cdf', type=str, help="kameleon-compatible file")
+	parser.add_argument("-input_dir", metavar = 'full/path/to/input_cdf_files/', type=str, help="path to kameleon-compatible cdf files")
 	parser.add_argument("-ginfo","--global-info", action='store_true', help = 'print global attributes')
 	parser.add_argument("-vinfo","--variable-info", action='store_true', help = 'print attributes for all variables')
 	parser.add_argument("-lon_stride", "--longitude-stride", default=1, type=int, help = 'stride of longitude - e.g. 2 is every other point')
@@ -64,23 +65,39 @@ def main(argv):
 	parser.add_argument("-db", "--debug", action='store_true', help = 'print debug info')
 	parser.add_argument("-vis", "--visualize", action = 'store_true', help = 'visualize with plotly')
 	parser.add_argument("-vvar", "--vis-variable", type=str, metavar = 'var1', help = "variable to visualize. Default: first variable in variables")
-	parser.add_argument("-o", "--output_file", type = str, metavar = 'path/to/output_file', help = 'output json file name and location')
+	parser.add_argument("-o", "--output_file", type = str, metavar = 'path/to/output_file', help = 'output json file name and location. if not specified, will use input_file as prefix')
 	parser.add_argument("-vars", "--variables", 
 						type=str, nargs='+',
 						metavar = ('var1','var2',), 
 						# default = ('ep', 'eflux', 'eave', 'jr'),
 						help='list of variables to be interpolated, e.g. -vars ep eflux eave jr')
 	parser.add_argument("-wrap", "--wrap-longitude", action='store_true', help = 'repeat first longitude slice at end')
-
+	parser.add_argument("-auto_open", action='store_true', help = 'automatically open visualized output in browser')
+	parser.add_argument("-json", action='store_true', help = 'store requested variables in json file')
+	parser.add_argument("-output_dir", metavar = 'full/path/to/output_dir/', type=str, help='path for json and html files to be placed. if not specified, will use --output_file as prefix')
+	parser.add_argument("-store_positions", action='store_true', help = 'store theta,phi,x,y,z in json file')
 
 	args = parser.parse_args()
+
+
+	if args.input_file:
+		analyse_file(args.input_file, args)
+	elif args.input_dir:
+		for i in os.listdir(args.input_dir):
+			if i.endswith(".cdf"): 
+			    input_file = i
+			    analyse_file(args.input_dir + input_file, args)
+	else:
+		raise IOError('Need to specify -input_file or -input_dir. use -h for help')
+
+def analyse_file(input_file, args):
 
 	cdfreader = ccmc.CDFFileReader()
 
 	if args.verbose: 
-		print 'opening', args.input_file
+		print 'opening', input_file
 
-	cdfreader.open(args.input_file)
+	cdfreader.open(input_file)
 
 	if args.global_info: 
 		print_metadata(cdfreader, 'global')
@@ -162,28 +179,45 @@ def main(argv):
 		print k,var_subset[k].shape, var_subset[k].min(), var_subset[k].max()
 		var_subset[k] = var_subset[k].tolist() #for json without np encoding
 
-	if args.output_file:
-		if args.verbose: 
-			print 'getting metadata'
 
+	if args.output_file:
+		if args.output_dir: 
+			output_file=args.output_dir + args.output_file
+		else:
+			output_file=args.output_file
+	elif args.output_dir: #store in output_dir but use input_file as prefix
+		output_file=args.output_dir+input_file.split('.cdf')[0].split('/')[-1]
+	else: #store in same directory as input_file.cdf
+		output_file=input_file.split('.cdf')[0]
+
+	if args.verbose:
+		print 'will save to prefix', output_file 
+
+	if args.json:
 		global_meta_keys = 'output_time_interval', 'standard_grid_target', 'timestep_time', 'grid_1_type'
 
 		metadata = OrderedDict((k, getAttributeValue(cdfreader.getGlobalAttribute(k))) for k in global_meta_keys)
 		metadata['central_body'] = 'earth'
 		metadata['radius'] = 1.01726
-
+		metadata['output_time_interval'] = int(metadata['output_time_interval'])
 		metadata['wrapped'] = args.wrap_longitude
-		
-
 
 		meta_keys = 'units', 'actual_min', 'actual_max'
 		for var in var_subset.keys():
 			metadata[var] = OrderedDict((k, getAttributeValue(cdfreader.getVariableAttribute(var, k))) for k in meta_keys)
 
+		var_json = OrderedDict()
+		for k in var_subset:
+			if args.store_positions:
+				var_json[k] = var_subset[k]
+			else:
+				if k not in ('x','y','z', 'phi', 'theta'):
+					var_json[k] = var_subset[k]
+
 		meta_variables = OrderedDict([	('metadata',metadata),
-										('variables',var_subset)
+										('variables',var_json)
 										])
-		with open(args.output_file + str(n0) + 'x' + str(n1) + '.json', 'w') as f:
+		with open(output_file + str(n0) + 'x' + str(n1) + '.json', 'w') as f:
 			json.dump(meta_variables,
 				f, 
 				cls = json.JSONEncoder, #NumpyEncoder, 
@@ -242,12 +276,7 @@ def main(argv):
 		fig.append_trace(contours, 1, 1)
 		fig.append_trace(surface, 1, 2)
 
-		if args.output_file:
-			webname = args.output_file
-		else:
-			webname = 'ionosphere_variables_'
-
-		plotly.offline.plot(fig, filename=webname + str(n0) + 'x' + str(n1) +'.html', auto_open=True)
+		plotly.offline.plot(fig, filename=output_file + str(n0) + 'x' + str(n1) +'.html', auto_open=args.auto_open)
 
 
 	cdfreader.close()
