@@ -65,6 +65,132 @@
     	<KameleonName>V_th</KameleonName>
     </variable>
     <variable>
+        <OriginalName>rho_.1</OriginalName>
+        <KameleonName>rho1</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vx_.1</OriginalName>
+        <KameleonName>ux1</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy_.1</OriginalName>
+        <KameleonName>uy1</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz_.1</OriginalName>
+        <KameleonName>uz1</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>c_.1</OriginalName>
+        <KameleonName>V_th1</KameleonName>
+    </variable>
+
+    <variable>
+        <OriginalName>rho_.2</OriginalName>
+        <KameleonName>rho2</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vx_.2</OriginalName>
+        <KameleonName>ux2</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy_.2</OriginalName>
+        <KameleonName>uy2</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz_.2</OriginalName>
+        <KameleonName>uz2</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>c_.2</OriginalName>
+        <KameleonName>V_th2</KameleonName>
+    </variable>
+
+    <variable>
+        <OriginalName>rho_.3</OriginalName>
+        <KameleonName>rho3</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vx_.3</OriginalName>
+        <KameleonName>ux3</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy_.3</OriginalName>
+        <KameleonName>uy3</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz_.3</OriginalName>
+        <KameleonName>uz3</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>c_.3</OriginalName>
+        <KameleonName>V_th3</KameleonName>
+    </variable>
+
+    <variable>
+        <OriginalName>rho_.4</OriginalName>
+        <KameleonName>rho4</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vx_.4</OriginalName>
+        <KameleonName>ux4</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy_.4</OriginalName>
+        <KameleonName>uy4</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz_.4</OriginalName>
+        <KameleonName>uz4</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>c_.4</OriginalName>
+        <KameleonName>V_th4</KameleonName>
+    </variable>
+
+    <variable>
+        <OriginalName>rho_.5</OriginalName>
+        <KameleonName>rho5</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vx_.5</OriginalName>
+        <KameleonName>ux5</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy_.5</OriginalName>
+        <KameleonName>uy5</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz_.5</OriginalName>
+        <KameleonName>uz5</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>c_.5</OriginalName>
+        <KameleonName>V_th5</KameleonName>
+    </variable>
+
+    <variable>
+        <OriginalName>rho_.6</OriginalName>
+        <KameleonName>rho6</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vx_.6</OriginalName>
+        <KameleonName>ux6</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vy_.6</OriginalName>
+        <KameleonName>uy6</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>vz_.6</OriginalName>
+        <KameleonName>uz6</KameleonName>
+    </variable>
+    <variable>
+        <OriginalName>c_.6</OriginalName>
+        <KameleonName>V_th6</KameleonName>
+    </variable>
+
+    <variable>
         <OriginalName>bx_</OriginalName>
         <KameleonName>bx</KameleonName>
     </variable>
