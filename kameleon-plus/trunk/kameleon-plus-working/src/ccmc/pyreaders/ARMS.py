@@ -904,21 +904,22 @@ class readARMS(testReader.pyFileReader):
 			r = math.sqrt((x**2 + y**2 + z**2))
 			theta = math.asin(z/r) #in colatitude
 			phi = math.atan2(y,x)
-			return math.log10(r),theta,phi
+			return math.log(r),theta,phi
+
 
 
 	@np.vectorize
 	def spherical_exponential_to_cartesian(r_, th_, ph_):
-		xx = (10**r_)*math.cos(th_)*math.cos(ph_)
-		yy = (10**r_)*math.cos(th_)*math.sin(ph_)
-		zz = (10**r_)*math.sin(th_)
+		xx = (math.e**r_)*math.cos(th_)*math.cos(ph_)
+		yy = (math.e**r_)*math.cos(th_)*math.sin(ph_)
+		zz = (math.e**r_)*math.sin(th_)
 		return xx, yy, zz
 
 	@np.vectorize
 	def spherical_to_cartesian_field(r,th,ph,A_r,A_th,A_ph,transpose=False):
 		#set transpose = True to convert spherical to cartesian
 		sin, cos = math.sin, math.cos
-		r,th = 10**r, math.pi/2 - th #incoming positions in ARMS coordinates
+		r,th = math.e**r, math.pi/2 - th #incoming positions in ARMS coordinates
 		A_x = A_r*sin(th)*cos(ph)+A_th*cos(th)*cos(ph)-A_ph*sin(ph)
 		A_y = A_r*sin(th)*sin(ph)+A_th*cos(th)*sin(ph)+A_ph*cos(ph)
 		A_z = A_r*cos(th)-A_th*sin(th)
@@ -1015,7 +1016,7 @@ class readARMS(testReader.pyFileReader):
 
 		B_x, B_y, B_z = readARMS.spherical_to_cartesian_field(rr, th, pp, B_rho, B_theta, B_phi)
 
-		# mask_log = lambda data: np.log10(np.ma.masked_less_equal(np.abs(data),0))
+		# mask_log = lambda data: np.log(np.ma.masked_less_equal(np.abs(data),0))
 		bth_min, bth_max = -17, 17
 		br_min, br_max = -4.1, 35.0
 		cm1 = ax.contourf(xx, zz, B_rho, np.linspace(br_min,br_max,40), vmin=br_min, vmax = br_max)

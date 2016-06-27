@@ -78,6 +78,7 @@ def main(argv):
 		help = 'plots slice along 0th dimension of leaf defined by -leaf parameter. ex.: "-lslice2 1" for (:,:,1)')
 	vis_options.add_argument("-plv", "--plot_leaf_values", action = 'store_true', help = "make a line plot to see leaf ordering")
 	vis_options.add_argument("-pgv", "--plot_grid_values", action = 'store_true', help = "make a line plot of grid values v index")
+	vis_options.add_argument("-cmaps", "--color_maps", type = str, nargs = '+', default = None, metavar = 'cmap_name', help = 'matplotlib colormap ie bone rainbow ..')
 
 	args = parser.parse_args()
 
@@ -89,8 +90,7 @@ def main(argv):
 			import matplotlib.pyplot as plt
 			import matplotlib.ticker as ticker
 		else:
-			print 'Need matplotlib to visualize, please install: pip install matplotlib'
-			exit()
+			raise ImportError('Need matplotlib to visualize, please install: pip install matplotlib')
 
 	# readARMS can be initialized with or without a config file
 	armsreader = readARMS(args.input_file)
@@ -204,7 +204,7 @@ def main(argv):
 			else: 
 				return next((i for i, v in enumerate(L) if v != value), else_value)
 
-		def plot_slice(	grid, resolution, variables, slices = (None,None, None), contour_values = None, contour_levels = 20, point = None, title = None):
+		def plot_slice(	grid, resolution, variables, slices = (None,None, None), contour_values = None, contour_levels = 20, point = None, title = None, cmaps = None):
 			"""Plot slice of data. Could be interpolated or raw data.
 
 				Args: 
@@ -263,19 +263,30 @@ def main(argv):
 				variable = ma.masked_values(variable,armsreader.getMissingValue())
 				plot_tuple = PlotTuple(*plot_coordinates,var=variable)
 
-				if contour_values == None:
+				# set this variable's contours
+				if contour_values is None:
 					if args.verbose: print '\tmin,max:', variable.min(), variable.max()
 					levels = np.linspace(variable.min(),variable.max(),contour_levels)
 				elif len(contour_values)/2 == len(args.variables): #use levels from input:	
 					levels = np.linspace(contour_values[var_index*2], contour_values[var_index*2+1], contour_levels)
 				else:
 					levels = np.linspace(variable.min(),variable.max(),contour_levels)
+
+				# set this variable's colormap
+				if cmaps is None:
+					cmap = None
+				elif len(cmaps) == 1:
+					cmap = cmaps[0]
+				elif len(cmaps) == len(args.variables):
+					cmap = cmaps[var_index]
+				else:
+					cmap = None
 				try:
 					if args.verbose > 1:
 						print 'plot_tuple:'
 						for i, field in enumerate(plot_tuple._fields): 
 							print '\t',field, plot_tuple[i].shape, 'range:', plot_tuple[i].min(), plot_tuple[i].max()
-					cs = axs[var_index].contourf(*plot_tuple, levels = levels, extend = 'both')
+					cs = axs[var_index].contourf(*plot_tuple, levels = levels, extend = 'both', cmap=cmap)
 					if args.contour_values != None:
 						if args.verbose: print 'plotting contours'
 						axs[var_index].contour(*plot_tuple, levels = [levels[0], levels[-1]])
@@ -331,7 +342,7 @@ def main(argv):
 					for var_index, variable in enumerate(variables):
 						axs[var_index].plot(variable.ravel(order = args.ordering))
 
-		def plot_leaf_slice(leaf_key, point = None):	
+		def plot_leaf_slice(leaf_key, point = None, cmaps = None):	
 			leaf_key = get_leaf_key(leaf_key)		
 			if args.verbose: print 'leaf key: ', leaf_key, 'parent key:', armsreader.tree_data[leaf_key].parent_key
 			c0_, c1_, c2_ = get_leaf_axes(leaf_key)
@@ -371,13 +382,14 @@ def main(argv):
 
 			plot_slice(	leaf_grid, armsreader.leaf_resolution, leaf_tuple(*leaf_variables), 
 						leaf_slices, point = point, contour_levels = 20,
-						title = 'leaf variables at ' + str(leaf_slices))
+						title = 'leaf variables at ' + str(leaf_slices),
+						cmaps = cmaps)
 
 		#plot variables on a leaf
 		if args.leaf_key == None:
 			if args.verbose: print 'no leaf specified'
 		else:
-			plot_leaf_slice(args.leaf_key, args.point)
+			plot_leaf_slice(args.leaf_key, args.point, cmap = args.cmap)
 
 		# grid interpolation	
 		if args.resolution:
@@ -457,7 +469,8 @@ def main(argv):
 				arg_slices = args.slice_0, args.slice_1, args.slice_2
 				plot_slice([c0,c1,c2], args.resolution, variables, arg_slices, 
 							args.contour_values, args.contour_levels, args.point, 
-							title = 'Variables on Grid')
+							title = 'Variables on Grid',
+							cmaps = args.color_maps)
 		else:
 			if args.verbose: 
 				print 'no grid resolution set for --resolution option'
@@ -478,7 +491,7 @@ def fmt(x, pos):
     b = int(b)
     return r'$'+str(a)+r' \times 10^{'+str(b)+r'}$'
 
-    # return r'${} \times 10^{{{}}}$'.format(a, b)	
+    # return r' \times 10^{{{}}}$'.format(a, b)	
 
 
 def module_exists(module_name):
