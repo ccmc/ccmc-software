@@ -5,6 +5,10 @@ import sys, time, argparse
 import numpy as np
 from pyreaders.ARMS import readARMS
 import _CCMC as ccmc
+import json
+import base64
+from collections import namedtuple
+import numpy.ma as ma
 
 def main(argv):
 	# raise Exception("TODO: YOU NEED TO FIX THE SET_ROOT_RANGES FUNCTION SO THAT IT RETURNS THE MIN AND MAX ARRAYS FOR ALL ROOT BOUNDING BOXES")
@@ -31,8 +35,6 @@ def main(argv):
 	var_options.add_argument("-lvar", "--list-vars",action = 'store_true', help = 'list variables in the file (use -v to print all variable attributes)')
 	var_options.add_argument("-vinfo","--variable-info", metavar = 'var', type = str, help = 'print attributes for given variable')
 	var_options.add_argument("-vars", "--variables", type=str, nargs='+',metavar = ('var1','var2',), help='list of variables to be interpolated')
-	var_options.add_argument("-pout", "--positions_out_flag", type = bool, metavar = 'positions_output_flag', default = True,
-		help = 'pass interpolating positions to output')
 
 	# single point interpolation
 	point_options = parser.add_argument_group(title = 'point options', description = 'interpolation options for a single point')
@@ -80,11 +82,20 @@ def main(argv):
 	vis_options.add_argument("-pgv", "--plot_grid_values", action = 'store_true', help = "make a line plot of grid values v index")
 	vis_options.add_argument("-cmaps", "--color_maps", type = str, nargs = '+', default = None, metavar = 'cmap_name', help = 'matplotlib colormap ie bone rainbow ..')
 
+	#output options
+	output_options = parser.add_argument_group(title = 'ouput options', description = 'where to store results of interpolation')
+	output_options.add_argument("-o", "--output_file", type = str, metavar = 'path/to/output_file', help = 'output file name and location')
+	output_options.add_argument("-f", "--format", default = '12.3f', type = str, metavar = '<flags><width><.precision><length>specifier', help = 'c-sytle format of output variables (e.g. 12.3f)')
+	output_options.add_argument("-d", "--delimiter", default = ' ', type = str, metavar = ("\' \'"), help = 'delimiter for ascii output (default is \' \')')
+	output_options.add_argument('-ff', '--file_format', default = 'txt', type = str, nargs = '+', metavar = ('fits', 'md'),
+		help = 'File format for output. default: \'txt\' for ASCII. Use \'fits\' for binary IDL fits file (requires astropy), or \'json\'')
+	output_options.add_argument("-pout", "--positions_out_flag", type = bool, metavar = 'positions_output_flag', default = True,
+		help = 'pass interpolating positions to output')
+
+
 	args = parser.parse_args()
 
 
-	import numpy.ma as ma
-	from collections import namedtuple
 	if args.visualize:
 		if module_exists("matplotlib"):
 			import matplotlib.pyplot as plt
@@ -439,25 +450,115 @@ def main(argv):
 
 				c0, c1, c2 = np.meshgrid(c0_,c1_,c2_, indexing = 'ij')
 
-			"""Note: ARMS uses spherical coordinates: log10 for r, theta in [-pi, pi], phi in [-pi to pi].
+			"""ARMS uses spherical coordinates: natural log for r, theta in [-pi, pi], phi in [-pi to pi].
 					You can pass your positions to the map function in ARMS or CART or SPHEXP"""
 
 			t0 = time.clock()
 			if (args.input_coordinates == 'ARMS') | (args.input_coordinates == 'CART') | (args.input_coordinates == 'SPHEXP'):
 				if args.verbose: print 'input coordinates:', args.input_coordinates
-				variables = armsreader.map((c0,c1,c2), variables = args.variables, input_coordinates = args.input_coordinates)
+				results = armsreader.map((c0,c1,c2), variables = args.variables, input_coordinates = args.input_coordinates)
+
 				if args.plot_grid_values:
 					plot_variable_values([c0,c1,c2], (3,1), 'grid positions', ['c0', 'c1', 'c2'])
-					plot_variable_values(variables, get_rows_columns(len(variables)), 'grid values', args.variables)
+					plot_variable_values(results, get_rows_columns(len(results)), 'grid values', args.variables)
 			else:
 				raise IOError('input coordinate system' + args.input_coordinates + 'not supported. Exiting')
-				exit()
 
 
 			# B_x, B_y, B_z = readARMS.spherical_to_cartesian_field(rr, th, pp, 
 			# 				variables.Magnetic_Field_R, 
 			# 				variables.Magnetic_Field_T, 
 			# 				variables.Magnetic_Field_P)
+
+			if args.output_file:
+				var_format, ljust, var_names = get_variable_format(armsreader, args, args.positions_out_flag)
+
+			if args.positions_out_flag:
+				if args.verbose: print 'including positions in output'
+				variables_tuple = namedtuple('Variables', get_position_components(armsreader, args) + args.variables)
+			else:
+				if args.verbose: print 'exclusing positions from output'
+				variables_tuple = namedtuple('Variables', args.variables)
+
+				results_ = [r.ravel() for r in results]
+				results_ = variables_tuple(results_)
+
+				if args.positions_out_flag:
+					results_ = [c0.ravel(), c1.ravel(), c2.ravel()] + results_
+				if 'txt' in args.file_format:
+					if args.verbose: 
+						print 'writing ASCII to', args.output_file + '.txt'
+					with open(args.output_file + '.txt', 'w') as f:
+						f.write(var_names)
+						f.write('\n')
+						for variables in zip(*results):
+							try:
+								f.write(var_format.format(*variables))
+							except:
+								print var_format
+								print variables
+								raise
+							f.write('\n')
+					f.close()
+
+				if 'md' in args.file_format:
+					if args.verbose: print 'writting ASCII markdown table to', args.output_file + '.md'
+					args.delimiter = ' | '
+					var_format, ljust, var_names = get_variable_format(armsreader, args, args.positions_out_flag, False)
+					with open(args.output_file + '.md', 'w') as f:
+						f.write(var_names)
+						f.write('\n')
+						header_names = var_names.split(args.delimiter)
+						for i, var_name in enumerate(header_names):
+							f.write('---' + args.delimiter*((i+1)!=len(header_names)))
+						f.write('\n')
+						for variables in zip(*results):
+							f.write(var_format.format(*variables))
+							f.write('\n')
+					f.close()
+					pass
+
+				if 'json' in args.file_format:
+					import json
+					if args.verbose:
+						print 'writing json to', args.output_file + '.json'
+					
+					with open(args.output_file + '.json', 'w') as f:
+						json.dump(results._asdict(),f, cls = NumpyEncoder)
+					f.close()
+					if args.verbose > 1:
+						print json.dumps(results._asdict(), cls = NumpyEncoder, indent=4, separators=(',',': '))
+
+				if 'fits' in args.file_format:
+					from astropy.io import fits
+					if args.verbose: 
+						print 'writing to fits file (IDL)'
+					# generate header info
+					primary_header = fits.Header()
+					nglobal = armsreader.getNumberOfGlobalAttributes()
+					#global attributes
+					for i in range(nglobal):
+						attr_name = armsreader.getGlobalAttributeName(i)
+						attr = armsreader.getGlobalAttribute(attr_name)
+						primary_header[str(i)] = attr_name + ': ' + str(getAttributeValue(attr))
+					#variable attributes
+					for varname in args.variables:
+						for j in range(armsreader.getNumberOfVariableAttributes()):
+							attr_name = armsreader.getVariableAttributeName(nglobal+j)
+							attr = armsreader.getVariableAttribute(varname, attr_name)
+							primary_header[varname + str(j)] = attr_name + ': '	+ str(getAttributeValue(attr))		
+			
+					primary_hdu = fits.PrimaryHDU(header = primary_header)
+
+					# generate columns
+					columns = []
+					for var_name, var_array in results._asdict().items():
+						columns.append(fits.Column(name = var_name, format = 'E', array = var_array))
+					cols = fits.ColDefs(columns)
+					hdutable = fits.BinTableHDU.from_columns(cols)
+					
+					thdulist = fits.HDUList([primary_hdu,hdutable])
+					thdulist.writeto(args.output_file + '.fits')
 
 			elapsed = time.clock()-t0
 			seconds_per_interpolation = elapsed/c0.size
@@ -467,7 +568,7 @@ def main(argv):
 			if args.visualize:
 				#plot variables on user-defined grid slice
 				arg_slices = args.slice_0, args.slice_1, args.slice_2
-				plot_slice([c0,c1,c2], args.resolution, variables, arg_slices, 
+				plot_slice([c0,c1,c2], args.resolution, results, arg_slices, 
 							args.contour_values, args.contour_levels, args.point, 
 							title = 'Variables on Grid',
 							cmaps = args.color_maps)
@@ -502,6 +603,49 @@ def module_exists(module_name):
     else:
         return True
 
+def get_position_components(kameleon, args, default_names = ['x','y','z']):
+	if kameleon.doesAttributeExist('grid_system_1'):
+		attr = kameleon.getGlobalAttribute('grid_system_1')
+		component_names = getAttributeValue(attr)
+		component_names = component_names.split('[')[1].split(']')[0].split(',')
+		component_names = [component.replace("'", "").replace(" ", "") for component in component_names]
+		if args.debug: print 'component names:', component_names
+		return component_names
+	else:
+		return default_names
+
+def get_variable_format(kameleon, args, positions_out_flag, justification = True):
+	if justification:
+		just = len(('{0:'+args.format+'}').format(0))
+	else:
+		just = 0
+	var_format = ''
+	var_names = ''
+	if positions_out_flag:
+		for i, pos_name in enumerate(get_position_components(kameleon, args)):
+			var_names += pos_name.rjust(just)+args.delimiter
+			var_format += '{' + str(i) + ':'+ args.format +'}' + args.delimiter
+	for i,var_name in enumerate(args.variables):
+		var_format += '{' + str(i+3*positions_out_flag) + ':'+ args.format +'}' + args.delimiter*((i+1)!=len(args.variables))
+		vis_unit = kameleon.getVariableAttribute(var_name, 'units').getAttributeString()
+		var_names += ('{0}[{1}]'.format(var_name, vis_unit)).rjust(just)+args.delimiter*((i+1)!=len(args.variables))
+	if args.debug: 
+		print 'variable names for output:', var_names
+		print 'variable formats:', var_format
+	return var_format, just, var_names
+
+class NumpyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        """
+        if input object is a ndarray it will be converted into a dict holding dtype, shape and the data base64 encoded
+        """
+        if isinstance(obj, np.ndarray):
+            data_b64 = base64.b64encode(obj.data)
+            return dict(__ndarray__=data_b64,
+                        dtype=str(obj.dtype),
+                        shape=obj.shape)
+        # Let the base class default method raise the TypeError
+        return json.JSONEncoder(self, obj)
 
 def getAttributeValue(attribute):
 	if attribute.getAttributeType() == ccmc.Attribute.STRING:
