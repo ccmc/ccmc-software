@@ -473,25 +473,29 @@ def main(argv):
 			if args.output_file:
 				var_format, ljust, var_names = get_variable_format(armsreader, args, args.positions_out_flag)
 
-			if args.positions_out_flag:
-				if args.verbose: print 'including positions in output'
-				variables_tuple = namedtuple('Variables', get_position_components(armsreader, args) + args.variables)
-			else:
-				if args.verbose: print 'exclusing positions from output'
-				variables_tuple = namedtuple('Variables', args.variables)
-
 				results_ = [r.ravel() for r in results]
-				results_ = variables_tuple(results_)
-
 				if args.positions_out_flag:
+					if args.verbose: print 'including positions in output'
 					results_ = [c0.ravel(), c1.ravel(), c2.ravel()] + results_
+					variables_tuple = namedtuple('Variables', get_position_components(armsreader, args) + args.variables)
+				else:
+					if args.verbose: print 'exclusing positions from output'
+					variables_tuple = namedtuple('Variables', args.variables)
+ 
+				try:				
+					results_ = variables_tuple(*results_)
+				except:
+					print 'variables tuple:', variables_tuple._fields
+					raise
+
+
 				if 'txt' in args.file_format:
 					if args.verbose: 
 						print 'writing ASCII to', args.output_file + '.txt'
 					with open(args.output_file + '.txt', 'w') as f:
 						f.write(var_names)
 						f.write('\n')
-						for variables in zip(*results):
+						for variables in zip(*results_):
 							try:
 								f.write(var_format.format(*variables))
 							except:
