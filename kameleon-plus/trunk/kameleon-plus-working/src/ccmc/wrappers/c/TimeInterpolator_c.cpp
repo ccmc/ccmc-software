@@ -22,7 +22,7 @@ int TimeInterp_create()
 
 int TimeInterp_addTimestep(int tid, const char * filename)
 {
-        std::string filename_string(filename);
+        std::string filename_string = filename;
 	//TODO: error checking
 	int status;
 	map_i_T::iterator iter = ccmc::timeInterpolatorObjects.find(tid);
@@ -72,7 +72,7 @@ void TimeInterp_manageMem(int tid, double epoch, const char * variables[], int n
 float TimeInterp_interpolate(int tid, double epoch, const char * variable, float c0, float c1, float c2)
 {
         //TODO: error checking
-        std::string variable_string(variable);
+        std::string variable_string = variable;
         int status;
         map_i_T::iterator iter = ccmc::timeInterpolatorObjects.find(tid);
 
