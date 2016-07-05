@@ -36,10 +36,11 @@ int GeneralFileReader_create()
  */
 long GeneralFileReader_open(int id, const char * filename)
 {
+	std:: string filename_str = filename;
 	map_i_F::iterator iter = generalFileReaderObjects.find(id);
 	if (iter != generalFileReaderObjects.end())
 	{
-		return (*iter).second->open(filename);
+		return (*iter).second->open(filename_str);
 	} else
 	std::cout <<"Could not find file reader object!" << std::endl; 
 		return -1L;
@@ -70,10 +71,11 @@ void GeneralFileReader_getVariableByID(int id, long variableID, float * variable
  */
 void GeneralFileReader_getVariable(int id, const char * variable, float * variableData)
 {
+	std::string var_str = variable;
 	map_i_F::iterator iter = generalFileReaderObjects.find(id);
 	if (iter != generalFileReaderObjects.end())
 	{
-		std::vector<float>* vData = (*iter).second->getVariable(variable);
+		std::vector<float>* vData = (*iter).second->getVariable(var_str);
 		for (int i = 0; i < vData->size(); i++)
 		{
 			variableData[i] = (*vData)[i];
@@ -90,10 +92,11 @@ void GeneralFileReader_getVariable(int id, const char * variable, float * variab
  */
 void GeneralFileReader_getVariableSubRange(int id, const char * variable, long startIndex, long count, float * variableData)
 {
+	std::string var_str = variable;
 	map_i_F::iterator iter = generalFileReaderObjects.find(id);
 	if (iter != generalFileReaderObjects.end())
 	{
-		std::vector<float>* vData = (*iter).second->getVariable(variable, startIndex, count);
+		std::vector<float>* vData = (*iter).second->getVariable(var_str, startIndex, count);
 		for (int i = 0; i < vData->size(); i++)
 		{
 			variableData[i] = (*vData)[i];
@@ -121,10 +124,11 @@ void GeneralFileReader_getVariableByIDSubRange(int id, long variableID, long sta
 }
 float GeneralFileReader_getVariableAtIndex(int id, const char * variable, long index)
 {
+	std::string var_str = variable;
 	map_i_F::iterator iter = generalFileReaderObjects.find(id);
 	if (iter != generalFileReaderObjects.end())
 	{
-		return (*iter).second->getVariableAtIndex(variable, index);
+		return (*iter).second->getVariableAtIndex(var_str, index);
 	} else
 		return 0.f;
 }
@@ -136,10 +140,11 @@ float GeneralFileReader_getVariableAtIndexByID(long variable_id, long index)
 
 void GeneralFileReader_getVariableInt(int id, const char * variable, int * variableData)
 {
+	std:: string var_str;
 	map_i_F::iterator iter = generalFileReaderObjects.find(id);
 	if (iter != generalFileReaderObjects.end())
 	{
-		std::vector<int>* vData = (*iter).second->getVariableInt(variable);
+		std::vector<int>* vData = (*iter).second->getVariableInt(var_str);
 		for (int i = 0; i < vData->size(); i++)
 		{
 			variableData[i] = (*vData)[i];
@@ -198,10 +203,11 @@ extern _C_ long GeneralFileReader_delete(int id);
 
 long GeneralFileReader_getNumberOfRecords(int id, const char * variable)
 {
+	std:: string var_str;
 	map_i_F::iterator iter = generalFileReaderObjects.find(id);
 	if (iter != generalFileReaderObjects.end())
 	{
-		return (*iter).second->getNumberOfRecords(variable);
+		return (*iter).second->getNumberOfRecords(var_str);
 	}
 }
 
@@ -216,10 +222,11 @@ long GeneralFileReader_getNumberOfRecordsByID(int id, long variable_id)
 
 long GeneralFileReader_getVariableID(int id, const char * variable)
 {
+	std:: string var_str = variable;
 	map_i_F::iterator iter = generalFileReaderObjects.find(id);
 	if (iter != generalFileReaderObjects.end())
 	{
-		return (*iter).second->getVariableID(variable);
+		return (*iter).second->getVariableID(var_str);
 	} else
 		return -1L;
 }

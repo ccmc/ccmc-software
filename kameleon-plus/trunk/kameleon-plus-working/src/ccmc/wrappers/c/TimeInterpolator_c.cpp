@@ -22,6 +22,7 @@ int TimeInterp_create()
 
 int TimeInterp_addTimestep(int tid, const char * filename)
 {
+        std::string filename_string(filename);
 	//TODO: error checking
 	int status;
 	map_i_T::iterator iter = ccmc::timeInterpolatorObjects.find(tid);
@@ -32,7 +33,7 @@ int TimeInterp_addTimestep(int tid, const char * filename)
 
 		ccmc::TimeInterpolator * timeInterp = (*iter).second;
 //		std::cout << "before calling kameleon->open" << std::endl;
-		timeInterp->addTimestep(filename);
+		timeInterp->addTimestep(filename_string);
 		status = true;
 //		std::cout << "filename: " << filename << " status: " << status << " after" << std::endl;
 		//kameleonObjects.erase(iter);
@@ -71,6 +72,7 @@ void TimeInterp_manageMem(int tid, double epoch, const char * variables[], int n
 float TimeInterp_interpolate(int tid, double epoch, const char * variable, float c0, float c1, float c2)
 {
         //TODO: error checking
+        std::string variable_string(variable);
         int status;
         map_i_T::iterator iter = ccmc::timeInterpolatorObjects.find(tid);
 
@@ -81,7 +83,7 @@ float TimeInterp_interpolate(int tid, double epoch, const char * variable, float
 
                 ccmc::TimeInterpolator * timeInterp = (*iter).second;
                 Time time(epoch);
-                value = timeInterp->interpolate(time, variable, c0, c1, c2);
+                value = timeInterp->interpolate(time, variable_string, c0, c1, c2);
         } else
         {
                 //should never happen
@@ -110,7 +112,8 @@ double TimeInterp_TimeToEpoch(int year, int month, int day, int hour, int minute
 double TimeInterp_TimeStrToEpoch(const char * time_str)
 {
 	std::cout << "original time_str: " << time_str << std::endl;
-	Time time = ccmc::TimeInterpolator::parseTime(time_str);
+        std::string t_str = time_str;
+	Time time = ccmc::TimeInterpolator::parseTime(t_str);
 	std::cout << "new time_str: " << time.toString() << std::endl;
 	return time.getEpoch();
 }

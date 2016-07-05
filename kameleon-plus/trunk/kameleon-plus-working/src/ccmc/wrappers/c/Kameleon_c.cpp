@@ -81,6 +81,7 @@ int Interpolator_delete(int id)
 int Kameleon_open(int id, const char * filename)
 {
 	//TODO: error checking
+	std::string filename_str = filename;
 	int status;
 	map_i_K::iterator iter = kameleonObjects.find(id);
 
@@ -90,7 +91,7 @@ int Kameleon_open(int id, const char * filename)
 
 		ccmc::Kameleon * kameleon = (*iter).second;
 //		std::cout << "before calling kameleon->open" << std::endl;
-		status = kameleon->open(filename);
+		status = kameleon->open(filename_str);
 //		std::cout << "filename: " << filename << " status: " << status << " after" << std::endl;
 		//kameleonObjects.erase(iter);
 	} else
@@ -160,20 +161,22 @@ float Kameleon_interpolate_by_id(int id, int variable, const float * c0, const f
 int Kameleon_load_variable(int id, char * variable)
 {
 	//TODO: error checking
+	std::string variable_str = variable;
 //	std::cout << "variable: " << variable << std::endl;
 	ccmc::Kameleon * kameleon = kameleonObjects[id];
 
-	int status = kameleon->loadVariable(variable);
+	int status = kameleon->loadVariable(variable_str);
 	return status;
 }
 
 int Kameleon_unload_variable(int id, char * variable)
 {
 	//TODO: error checking
+	std::string variable_str = variable;
 //	std::cout << "variable: " << variable << std::endl;
 	ccmc::Kameleon * kameleon = kameleonObjects[id];
 
-	int status = kameleon->unloadVariable(variable);
+	int status = kameleon->unloadVariable(variable_str);
 	return status;
 }
 
@@ -181,17 +184,18 @@ int Kameleon_load_vector_variable(int id, const char * variable)
 {
 	//TODO: error checking
 	// std::cout << "Kameleon_load_vector_variable number of kameleon objects: " << kameleonObjects.size() << std::endl;
-
+	std::string variable_str = variable;
 	ccmc::Kameleon * kameleon = kameleonObjects[id];
-	int status = kameleon->loadVectorVariable(variable);
+	int status = kameleon->loadVectorVariable(variable_str);
 	return status;
 }
 
 void Kameleon_get_global_attribute_string(int id, const char * gAttribute, char * destbuffer)
 {
 	//TODO: error checking
+	std::string gAttribute_str = gAttribute;
 	ccmc::Kameleon * kameleon = kameleonObjects[id];
-	std::string attribute = (kameleon->getGlobalAttribute(gAttribute)).getAttributeString();
+	std::string attribute = (kameleon->getGlobalAttribute(gAttribute_str)).getAttributeString();
 	strncpy(destbuffer, attribute.c_str(), attribute.size());
 	destbuffer[attribute.size()] = '\0';
 }
@@ -206,15 +210,17 @@ float Kameleon_get_missing_value(int id)
 void Kameleon_get_native_unit(int id, const char * variable, char * destbuffer)
 {
 	//TODO: error checking
+	std::string variable_str = variable;
 	ccmc::Kameleon * kameleon = kameleonObjects[id];
-	std::string units = kameleon->getNativeUnit(variable);
+	std::string units = kameleon->getNativeUnit(variable_str);
 	strncpy(destbuffer, units.c_str(), units.size());
 }
 
 void Kameleon_get_vis_unit(int id, const char * variable, char * destbuffer)
 {
+	std::string variable_str = variable;
 	ccmc::Kameleon * kameleon = kameleonObjects[id];
-	std::string units = kameleon->getVisUnit(variable);
+	std::string units = kameleon->getVisUnit(variable_str);
 	strncpy(destbuffer, units.c_str(), units.size());
 }
 
@@ -240,8 +246,9 @@ void Kameleon_create_c_string(const char * t_string, char * destbuffer)
 
 int Kameleon_get_variable_id(int id, const char * variable)
 {
+	std::string variable_str = variable;
 	ccmc::Kameleon * kameleon = kameleonObjects[id];
-	int variable_id = kameleon->getVariableID(variable);
+	int variable_id = kameleon->getVariableID(variable_str);
 //	std::cout << "from c. kid: " << id << " variable_id: " << variable_id << std::endl;
 	return variable_id;
 }

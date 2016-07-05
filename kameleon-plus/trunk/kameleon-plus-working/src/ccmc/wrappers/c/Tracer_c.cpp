@@ -93,12 +93,13 @@ void Tracer_setInnerBoundary(int id, float innerBoundary){
 void Tracer_unidirectionalTrace(int id, const char * variable, const float * startComponent1, const float * startComponent2,
 		const float * startComponent3, const int * step_max, const float * dn, int * actual_steps, float * x_array, float * y_array, float * z_array)
 {
+	std::string variable_str = variable;
 	ccmc::Tracer * tracer = tracerObjects[id];
 	tracer->setMaxIterations(*step_max);
 	if (dn < 0)
 	{
 		tracer->setDn(-*dn);
-		Fieldline fieldline = tracer->unidirectionalTrace(variable, *startComponent1, *startComponent2, *startComponent3, ccmc::Tracer::REVERSE);
+		Fieldline fieldline = tracer->unidirectionalTrace(variable_str, *startComponent1, *startComponent2, *startComponent3, ccmc::Tracer::REVERSE);
 		*actual_steps = fieldline.size();
 		for (int i = 0; i < fieldline.size(); i++)
 		{
@@ -109,7 +110,7 @@ void Tracer_unidirectionalTrace(int id, const char * variable, const float * sta
 	}else
 	{
 		tracer->setDn(*dn);
-		Fieldline fieldline = tracer->unidirectionalTrace(variable, *startComponent1, *startComponent2, *startComponent3, ccmc::Tracer::FOWARD);
+		Fieldline fieldline = tracer->unidirectionalTrace(variable_str, *startComponent1, *startComponent2, *startComponent3, ccmc::Tracer::FOWARD);
 		*actual_steps = fieldline.size();
 		for (int i = 0; i < fieldline.size(); i++)
 		{
