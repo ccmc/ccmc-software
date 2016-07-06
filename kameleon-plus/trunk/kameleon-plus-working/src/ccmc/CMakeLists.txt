@@ -14,7 +14,7 @@ file(GLOB CCMC_SOURCE
     ${CCMC_ROOT_DIR}/*.cpp ${CCMC_ROOT_DIR}/*.c
 )
 file(GLOB CCMC_HEADER
-    ${CCMC_ROOT_DIR}/*.h
+    ${CCMC_ROOT_DIR}/*.h ${CCMC_ROOT_DIR}/*.hpp
 )
 
 if(NOT BUILD_HDF5)
