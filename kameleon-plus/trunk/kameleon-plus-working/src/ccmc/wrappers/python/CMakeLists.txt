@@ -60,13 +60,13 @@ configure_file(${SETUP_PY_IN} ${SETUP_PY})
 # add_subdirectory(${WRAPPERS_ROOT_DIR}/python/setup)
 if(UNIX)
 set_target_properties(_CCMC
-		PROPERTIES INSTALL_RPATH "\$ORIGIN/../../../ccmc/;\$ORIGIN/../../../../"
+		PROPERTIES INSTALL_RPATH "\$ORIGIN/../../../ccmc/;\$ORIGIN/../../../"
 		)
 endif(UNIX)
 
 if(APPLE)
 set_target_properties(_CCMC
-		PROPERTIES INSTALL_RPATH "@loader_path/../../../ccmc/;@loader_path/../../../../"
+		PROPERTIES INSTALL_RPATH "@loader_path/../../../ccmc/;@loader_path/../../../"
 		)
 endif(APPLE)
 ############# install in Kameleon distribution #####################

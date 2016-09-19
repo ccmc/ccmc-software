@@ -11,7 +11,7 @@ class customPyFileReader(testReader.pyFileReader):
 
 	def __init__(self):
 		# This line is required to call the base class constructor
-		super(testReader.pyFileReader, self).__init__()
+		testReader.pyFileReader.__init__(self)
 		
 		#all variables will be stored here
 		testReader.pyFileReader.variables = {}

@@ -41,10 +41,10 @@ option(USE_STATIC_LIBS "Use static libraries" OFF)
 # #    endif()
 # endif()
 
-# # OSX
-# if(APPLE)
-#     set(CMAKE_MACOSX_RPATH ON)
-# endif()
+# OSX
+if(APPLE)
+    set(CMAKE_MACOSX_RPATH ON)
+endif()
 
 
 # add path to external libraries
