@@ -446,7 +446,19 @@ namespace ccmc
 			conversionFactorsToVis["uy"] = 1.0f/(1.0e3);
 			conversionFactorsToVis["uz"] = 1.0f/(1.0e3);
 
-		} else {
+		} else if (modelName == "batsrus")
+		{
+			conversionFactorsToVis["p"] = 1.0;
+			conversionFactorsToVis["t"] = 1.e-12 / ccmc::constants::Boltzmann;
+			conversionFactorsToVis["s"] = 1.e-4;
+			conversionFactorsToVis["pram"] = 1.627e-6;
+			conversionFactorsToVis["nv"] = 1.e6;
+			conversionFactorsToVis["nvx"] = 1.e6;
+			conversionFactorsToVis["nvy"] = 1.e6;
+			conversionFactorsToVis["nvz"] = 1.e6;
+			conversionFactorsToVis["beta"] = 1.e12;
+
+		}else {
 			conversionFactorsToVis["p"] = 1.e-3;
 			conversionFactorsToVis["t"] = 1.e-12 / ccmc::constants::Boltzmann;
 			conversionFactorsToVis["s"] = 1.e-4;

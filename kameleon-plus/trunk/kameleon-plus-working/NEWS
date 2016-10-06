@@ -1,3 +1,7 @@
+Sept, 2016:
+	- Added generic ASDF reader
+	- Fixed batsrus vis units for kameleon interface
+
 September, 2015:
 	Added command-line interface for interrogating and interpolating data from kameleon-compatible files. See bin/examples/python/README.md for details
 
