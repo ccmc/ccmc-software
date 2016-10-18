@@ -28,6 +28,8 @@ class Attribute(pyKameleon.Attribute):
 			self.setAttrFloat(value)
 		elif type(value) == str:
 			self.setAttrStr(value)
+		elif type(value) == unicode:
+			self.setAttrStr(str(value))
 
 	def getAttributeValue(self):
 		if self.getAttributeType() == pyKameleon.Attribute.STRING:

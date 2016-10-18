@@ -5,6 +5,7 @@ import random
 import unittest
 import asdf
 import numpy as np
+from Attribute import Attribute
 
 
 class readASDF(testReader.pyFileReader):
@@ -22,18 +23,29 @@ class readASDF(testReader.pyFileReader):
 		self.current_filename = filename
 		# self.setCurrentFilename(filename) # alternatively
 		
-		if self.debug: print 'data file:', filename, 'readonly:', readonly
+		if self.debug: print '\tdata file:', filename, 'readonly:', readonly
 
-		asdf_file =  asdf.AsdfFile.open(filename)
-		variables = asdf_file.tree['variables']
-		self.variables = variables
+		self.asdf_file =  asdf.AsdfFile.open(filename)
+		self.asdf_file.tree['variables']
+		self.file_tree = self.asdf_file.tree
+		self.variables = self.file_tree['variables']
 		self.initializeVariableIDs() #after all variables loaded
 		self.initializeVariableAttributeIDs() #after all variable attributes loaded
-		self.globalAttributes['model_name'] = 'asdf model'
-		self.initializeGlobalAttributeIDs()  #after all global attributes set
+
 		#ToDO: check variable names attributes (units) and global attributes
 
 		return pyKameleon.FileReader.OK
+
+	def closeFile(self): 
+		if self.debug: print '\tclosing file', self.current_filename
+
+		return pyKameleon.FileReader.OK
+
+	def setGlobalAttributes(self):
+		for k,v in self.file_tree['global_attributes'].items():
+			self.globalAttributes[str(k)] = Attribute(str(k),v)
+
+		self.initializeGlobalAttributeIDs()  #after all global attributes set
 
 	def interpolate(self,variable, *point):
 		if type(variable) != str:
@@ -44,34 +56,68 @@ class readASDF(testReader.pyFileReader):
 		val = self.interpolate(variable,*point)
 		return val, self.missing_value, self.missing_value, self.missing_value
 
-def write_asdf_test(filename, variable_dict):
+
+class Test_read_asdf_is_subclass(unittest.TestCase):
+	def setUp(self):
+		print 'subclassing test:'
+		self.testReader = readASDF()
+	def tearDown(self):
+		print ' ... success!\n'
+
+	def test_pyFileReader_subclass(self):
+		print '\tchecking if pyFileReader is actually a subclass of ccmc::FileReader'
+		self.assertTrue(issubclass(self.testReader.__class__, pyKameleon.FileReader))
+		self.assertTrue(issubclass(self.testReader.__class__,testReader.pyFileReader))
+
+class Test_read_asdf_Global_Attributes(unittest.TestCase):
+	def setUp(self):
+		print 'Global Attribute test:'
+		self.testReader = readASDF()
+		# self.testReader.debug = True
+		self.testReader.openFile('/tmp/sample_data.asdf')
+		self.testReader.setGlobalAttributes()
+	def tearDown(self):
+		self.testReader.close()
+		print ' ... success!\n'
+	
+	def test_numberOfGlobalAttributes(self):
+		print '\tcheck getNumberOfGlobalAttributes()' 
+		self.assertEqual(self.testReader.getNumberOfGlobalAttributes(), 3)
+
+	def test_getGlobalAttribute_by_name(self):
+		print '\tchecking global attribute retrieval by name'
+		check_attr = self.testReader.getGlobalAttribute('model_name')
+		self.assertEqual(check_attr, self.testReader.globalAttributes['model_name'])
+
+	def test_getGlobalAttributeName(self):
+		print '\tchecking retrieval of global attribute name'
+		self.assertEqual(self.testReader.getGlobalAttributeName(0), 'model_name')
+
+	def test_getGlobalAttributeValue(self):
+		print '\tchecking retrieval of global attribute value'
+		glob_attr = self.testReader.getGlobalAttribute('model_name')
+		self.assertEqual(glob_attr.getAttributeValue(), 'asdf_model')
+
+	def test_getGlobalAttribute_by_id(self):
+		print '\tchecking global attribute retrieval by id'
+		self.assertEqual(self.testReader.getGlobalAttribute(1).getAttributeValue(), 1)
+
+def write_asdf_test(filename, variable_dict, global_attributes):
 	"""Writes an asdf file to be tested"""
 	print 'writing to', filename, variable_dict.keys()
-	tree = dict(variables=variable_dict)
+	tree = dict(variables=variable_dict, global_attributes = global_attributes)
 	ff = asdf.AsdfFile(tree)
 	ff.write_to(filename)
 
-class Test_pyReader(unittest.TestCase):
-	def test_open_check(self):
-		variables = dict( density = np.random.rand(8,8),
-	                              pressure = np.random.rand(8,8)
-	                            )
-		filename = '/tmp/sample_data.asdf'
-		write_asdf_test(filename, variables)
-		test = readASDF()
-		test.debug = True
-		print '\tchecking that readASDF.open() returns FileReader.OK'
-		self.assertEqual(test.open(filename), pyKameleon.FileReader.OK)
-		print '\topen worked..'
-		self.assertEqual(test.current_filename, filename)
-
-
-	def test_subclasses(self):
-		print 'checking subclasses'
-		self.assertTrue(issubclass(readASDF,testReader.pyFileReader))
-		self.assertTrue(issubclass(readASDF,pyKameleon.FileReader))
-
 def main():
+	from datetime import datetime
+	variables = dict( 	density = np.random.rand(8,8),
+						pressure = np.random.rand(8,8)
+                            )
+	global_attributes = dict(	model_name = 'asdf_model',
+								timestep_time = datetime.now().isoformat())
+	filename = '/tmp/sample_data.asdf'
+	write_asdf_test(filename, variables, global_attributes)
 	unittest.main()
 
 

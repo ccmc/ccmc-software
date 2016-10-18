@@ -1,4 +1,4 @@
-static char const Ident[] = 
+static char const Ident[] =
      "@(#) $Id: cxform-manual.c,v 1.1.1.1 2005/02/25 20:41:41 rboller Exp $ ";
 /*
 ** cxform-manual.c  --  manually coded functions for coordinate transforms
@@ -35,9 +35,8 @@ static char const Ident[] =
 **                     generation which adds definitive values for 1995 & 2000
 **	 2006/09/24  v0.7  Ryan Boller: Updated IGRF coefficients to 10th generation
 **
-**	 2012/07/05  v0.8  David Berrios: Updated IGRF coefficients to 11th generation
-**	 					http://www.ngdc.noaa.gov/IAGA/vmod/igrf11coeffs.txt
-**
+**       2015/01/22  Jillian Redfern: Updated IGRF  coefficients to   12th generation
+** 
 */
 
 #include <stdio.h>
@@ -71,7 +70,7 @@ static char const Ident[] =
 
 #define	SECONDS_PER_CENTURY	(86400 * 365.25 * 100)
 
-#define NUM_IGRF_YEARS_DEFINED 24
+#define NUM_IGRF_YEARS_DEFINED 25  /* Jillian altered needs to be # in the array plus 1 (no idea why)*/
 
 /* for debugging */
 #define	DUMP_MAT	{ int i,j; for (i=0;i<3;i++) { for (j=0;j<3;j++) printf("%15lf ", mat[i][j]); printf("\n"); }}
@@ -166,7 +165,7 @@ void mat_transpose(Mat m_in, Mat m_out)
 |* hapgood_matrix  *|  defines a rotation matrix for a given angle & axis
 \*******************|
  *
- * Rotation matrices are a special case.  They can be defined by two 
+ * Rotation matrices are a special case.  They can be defined by two
  * parameters: an axis about which to rotate (X, Y, Z) and an angle.
  * Given those two, we can fill in all nine elements of a 3x3 matrix.
  *
@@ -189,7 +188,7 @@ void hapgood_matrix(const double theta, int axis, Mat mat)
     t1  = t2;
     t2  = tmp;
   }
-    
+
 
   /*
   ** 4.set the remaining off-diagonal terms to zero.
@@ -208,7 +207,7 @@ void hapgood_matrix(const double theta, int axis, Mat mat)
   mat[t2][t2]     = cos_theta;
 
   /*
-  ** 3.locate the two off-diagonal terms in the same columns and rows as 
+  ** 3.locate the two off-diagonal terms in the same columns and rows as
   **   the cos(zeta) terms - put sin(zeta) in the term above the diagonal
   **   and -sin(zeta) in the term below,
   */
@@ -282,17 +281,17 @@ T0(const double et)
 /*
 ** lambda0
 **
-** The Sun's ecliptic longitude (lambdaO) can be calculated using the 
+** The Sun's ecliptic longitude (lambdaO) can be calculated using the
 ** series of formulae:
 **
-**     M = 357.528 + 35999.050T0 + 0.04107H degrees 
-**     Lambda = 280.460 + 36000.772T0 + 0.04107H degrees 
+**     M = 357.528 + 35999.050T0 + 0.04107H degrees
+**     Lambda = 280.460 + 36000.772T0 + 0.04107H degrees
 **     lambdaO = Lambda + (1.915 - 0.0048T0) sinM + 0.020 sin2M
 **
 ** where T0 is the time in Julian centuries from 12:00 UT on 1 January 2000
-** to the midnight Universal Time (UT) preceding the time of interest and 
-** H is the time in hours since that preceding UT midnight. Formulae 
-** derived from the Almanac for Computers. In the intermediate formulae, 
+** to the midnight Universal Time (UT) preceding the time of interest and
+** H is the time in hours since that preceding UT midnight. Formulae
+** derived from the Almanac for Computers. In the intermediate formulae,
 ** M is the Sun's mean anomaly and Lambda its mean longitude.
 */
 double
@@ -329,7 +328,7 @@ epsilon(const double et)
 ** The following functions calculate the first three coefficients of the IGRF,
 ** used in determining the location of the magnetic dipole.  The values
 ** are interpolated to the day of interest.
-** 
+**
 ** Inputs:
 **   fracYearIndex:  The double-precision "array index" of the appropriate
 **                   IGRF year [0, NUM_IGRF_YEARS_DEFINED], corresponding to
@@ -338,7 +337,7 @@ epsilon(const double et)
 **                   to get the appropriate array index.  I.e.,
 **                   fracYearIndex = (et+3155803200.0) / 157788000.0
 **   fracYear:  The remainder of the fracYearIndex [0, 1] for use during
-**              interpolation.  
+**              interpolation.
 **
 ** The IGRF/DGRF coefficients are taken from the IGRF2000 (8th gen) model:
 **   http://www.ngdc.noaa.gov/IAGA/wg8/igrf2000.html
@@ -346,38 +345,38 @@ epsilon(const double et)
 ** Note: the coefficients are now updated to the IGRF 9th generation model:
 **   http://www.ngdc.noaa.gov/IAGA/vmod/igrf.html
 **
-** Note: IGRF coefficients are now updated to 10th generation
+** Note: IGRF coefficients are now updated to 12th generation
 */
 
 double calcG01(double fracYearIndex, double fracYear)
 {
 	static int g01[NUM_IGRF_YEARS_DEFINED] =
-		{-31543, -31464, -31354, -31212, -31060, -30926, -30805, -30715, -30654,
-		 -30594, -30554, -30500, -30421, -30334, -30220, -30100, -29992, -29873,
-		 -29775, -29692, -29619.4, -29554.63, -29496.5, 11.4};
-	
-	return (g01[(int)floor(fracYearIndex)]*(1.0-fracYear) + 
+		{-31543, -31464, -31354, -31212, -31060, -30926, -30805, -30715,
+		 -30654, -30594, -30554, -30500, -30421, -30334, -30220, -30100,
+		 -29992, -29873, -29775, -29692, -29619.4, -29554.63, -29496.57, -29442.0};
+
+	return (g01[(int)floor(fracYearIndex)]*(1.0-fracYear) +
 		g01[(int)ceil(fracYearIndex)]*fracYear);
 }
 
 double calcG11(double fracYearIndex, double fracYear)
 {
-	static int g11[NUM_IGRF_YEARS_DEFINED] = 
-		{-2298,  -2298,  -2297,  -2306,  -2317,  -2318,  -2316,  -2306,  -2292,
-		 -2285,  -2250,  -2215,  -2169,  -2119,  -2068,  -2013,  -1956,  -1905,
-		 -1848,  -1784,  -1728.2,  -1669.05,  -1585.9,   16.7};
-	
-	return (g11[(int)floor(fracYearIndex)]*(1.0-fracYear) + 
+	static int g11[NUM_IGRF_YEARS_DEFINED] =
+		{-2298, -2298, -2297, -2306, -2317, -2318, -2316, -2306, -2292, -2285,
+		 -2250, -2215, -2169, -2119, -2068, -2013, -1956, -1905, -1848, -1784,
+		 -1728.2, -1669.05, -1586.42, -1501.0};
+
+	return (g11[(int)floor(fracYearIndex)]*(1.0-fracYear) +
 		g11[(int)ceil(fracYearIndex)]*fracYear);
 }
 
 double calcH11(double fracYearIndex, double fracYear)
 {
 	static int h11[NUM_IGRF_YEARS_DEFINED] = 
-		{5922,   5909,   5898,   5875,   5845,   5817,   5808,   5812,   5821,
-		 5810,   5815,   5820,   5791,   5776,   5737,   5675,   5604,   5500,
-		 5406,   5306,   5186.1,   5077.99,   4945.1,  -28.8};
-		 
+		{5922, 5909, 5898, 5875, 5845, 5817, 5808, 5812, 5821, 5810, 5815,
+		 5820, 5791, 5776, 5737, 5675, 5604, 5500, 5406, 5306, 5186.1, 5077.99,
+                 4944.26, 4797.1};
+
 	return (h11[(int)floor(fracYearIndex)]*(1.0-fracYear) + 
 		h11[(int)ceil(fracYearIndex)]*fracYear);
 }
@@ -424,12 +423,12 @@ double mag_lat(double et)
     /*  fprintf(stderr, "ERROR: Specified year is greater than IGRF implementation.  Exiting.");  */
     exit(EXIT_FAILURE);
   }
-  
+
   g01 = calcG01(fracYearIndex, fracYear);
   g11 = calcG11(fracYearIndex, fracYear);
   h11 = calcH11(fracYearIndex, fracYear);
   lambda = mag_lon(et);
-  
+
   /*  phi0 / latitude  */
   phi0 = M_PI_2 - atan((g11*cos(lambda) + h11*sin(lambda))/g01);
   /* phi0 = (90.0-10.872)*(M_PI/180.0);   // SSC year 1990 value  */
@@ -521,7 +520,7 @@ mat_T1(const double et, Mat mat)
   if (theta < 0.0)
     theta += 360.0;
   */
-
+  
   /*  printf("T0= %20.20lf, H= %15.10lf, theta= %15lf\n", T0(et), H(et), theta);  */
 
   hapgood_matrix(theta, Z, mat);
@@ -741,7 +740,7 @@ mat_S2(const double et, Mat mat)
   double angle_1 = lambda0(et)-Omega;
   angle_1=fmod(angle_1,360.0);
   if (angle_1 < 0.0) angle_1+=360.0;
-
+  
   theta0=fmod(theta0,360.0);
   if (theta0 < 0.0) theta0+=360.0;
   if (angle_1 < 180.0) {
@@ -900,7 +899,7 @@ gse_twixt_gseq(const double et, Vec v_in, Vec v_out, Direction direction)
 **
 **      R = [ Rsun, 0, 0 ]
 **
-** where
+** where 
 **
 **             r0 (1 - e^2)
 **    Rsun =   ------------
@@ -938,7 +937,7 @@ gse_twixt_hee(const double et, Vec v_in, Vec v_out, Direction direction)
   v = lambda0(et) - w; 
   Rsun = r0*(1-e*e)/(1.+e*cosd(v)); 
   /*  v_out[0] += (double)1.5e8;  */
-
+  
   v_out[0] += Rsun;
 
   return 0;
@@ -999,7 +998,7 @@ long cxRound(double doub)
 
 
 /* date2es
-** 		Converts a standard Gregorian date and UT (YYYY/MM/DD  HH:MM:SS) to
+** 		Converts a standard Gregorian date and UT (YYYY/MM/DD  HH:MM:SS) to 
 ** 		ephemeris seconds past J2000, as required by CXFORM
 **
 ** Modification History:

@@ -1,6 +1,7 @@
 Sept, 2016:
 	- Added generic ASDF reader
-	- Fixed batsrus vis units for kameleon interface
+	- Fixed batsrus "vis" units for high-level kameleon object interface
+	- Updated IGRF to v12 for coorinate transformations (see https://github.com/edsantiago/cxform)
 
 September, 2015:
 	Added command-line interface for interrogating and interpolating data from kameleon-compatible files. See bin/examples/python/README.md for details

@@ -132,7 +132,7 @@ class pyFileReader(pyKameleon.FileReader):
 			If variable names exists, nothing happens"""
 		if self.debug: print '\t\tpyFileReader.initializeVariableIDs initializing variableIds map!'
 		if len(self.variableNames) == 0:
-			if self.debug: print 'initializing variable names from variables dict'
+			if self.debug: print '\t\tinitializing variable names from variables dict'
 			i = 0
 			for key in self.variables.keys():
 				# self.variables[long(i)] = self.variables[key] #removed redundant id key. Let's avoid copies and only query on names
@@ -279,7 +279,7 @@ class pyFileReader(pyKameleon.FileReader):
 
 
 	def getNumberOfGlobalAttributes(self):
-		if self.debug: print 'getting number of global attributes'
+		if self.debug: print '\t\tgetting number of global attributes'
 		return self.numGAttributes
 
 	def getVariableAttribute(self, variable, attribute):

@@ -11,9 +11,9 @@ These platform-dependent installers include pre-built binaries and executeables.
 ================   ==================   ==============================
    Platform         Installer             `Sha256 Hash <https://en.wikipedia.org/wiki/File_verification>`_
 ----------------   ------------------   ------------------------------
-  MacOSX x86_64     Mac_installer_      **c210b2d7faa9efb119b47fe6894a37da9954834548528188ed02b64608632f21**
+  MacOSX x86_64     Mac_installer_      **f294e1a3b51e2aca2ef50abd11670285f7f31e38a2750c8ea62f6d86a0fc652f**
 ----------------   ------------------   ------------------------------
-  Linux x86_64      Linux_installer_    **69b87250d7a2ef353c2ee3002cacdabd013df0bae00e537bf881e096c995cf40**
+  Linux x86_64      Linux_installer_    **3686ae0460d366ef3791cdfdbee141cac975f51963aecf09e299c6fd07429d91**
 ================   ==================   ==============================
 
 Run the installer with bash::
@@ -22,7 +22,7 @@ Run the installer with bash::
 
 Then follow the prompts::
 
-    Welcome to kameleon 6.1.0
+    Welcome to kameleon 6.1.1
 
     kameleon will now be installed into this location:
     <your/home/directory>/kameleon
@@ -68,8 +68,7 @@ Finally, choose whether to prepend the kameleon install location to your system 
 
     Thank you for installing kameleon!
 
-Note that because the kameleon installer includes its own version of python, **this option is NOT recommended for users with a preferred python install.**
-
+Note that because the kameleon installer includes its own version of python, chosing to prepend kameleon's bin directory will cause kameleon's python to take precedence over your system python.
 
 
 .. _executables-table:
@@ -185,8 +184,8 @@ Download sample kameleon test data here.
 .. _MAS_output: http://ccmc.gsfc.nasa.gov/downloads/sample_data/CORHEL_MAS.tar.bz2
 .. _SWMF_output: http://ccmc.gsfc.nasa.gov/downloads/sample_data/SWMF.tar.bz2
 .. _OpenGGCM_output: http://ccmc.gsfc.nasa.gov/downloads/sample_data/open_ggcm.tar.bz2
-.. _Mac_installer: http://ccmc.gsfc.nasa.gov/downloads/kameleon_installers/kameleon-6.1.0-MacOSX-x86_64.sh
-.. _Linux_installer: http://ccmc.gsfc.nasa.gov/downloads/kameleon_installers/kameleon-6.1.0-Linux-x86_64.sh
+.. _Mac_installer: http://ccmc.gsfc.nasa.gov/downloads/kameleon_installers/kameleon-6.1.1-MacOSX-x86_64.sh
+.. _Linux_installer: http://ccmc.gsfc.nasa.gov/downloads/kameleon_installers/kameleon-6.1.1-Linux-x86_64.sh
 
 Download, untar and unzip any of the above test data, e.g.::
 
