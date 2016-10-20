@@ -26,20 +26,55 @@ class readASDF(testReader.pyFileReader):
 		if self.debug: print '\tdata file:', filename, 'readonly:', readonly
 
 		self.asdf_file =  asdf.AsdfFile.open(filename)
-		self.asdf_file.tree['variables']
 		self.file_tree = self.asdf_file.tree
-		self.variables = self.file_tree['variables']
-		self.initializeVariableIDs() #after all variables loaded
-		self.initializeVariableAttributeIDs() #after all variable attributes loaded
 
+		self.setVariables()
+		self.setVariableAttributes() #after all variables loaded
+		self.setGlobalAttributes()
 		#ToDO: check variable names attributes (units) and global attributes
 
-		return pyKameleon.FileReader.OK
+		return self.verify()
+
+	def verify(self):
+		# how to handle failure?
+		try:
+			self.check_global_attributes()
+			self.check_variable_attributes()
+		except NameError:
+			self.close()
+			print 'sorry, not a valid kameleon file!'
+			return pyKameleon.FileReader.NOT_A_VALID_KAMELEON_FILE
+		else:
+			return pyKameleon.FileReader.OK
+
+	def check_global_attributes(self):
+		if self.debug: print '\tchecking all required global attributes present and accounted for'
+		required_attributes = ['model_name', 'timestep_time']
+		for attr_name in required_attributes:
+			check_attr = self.getGlobalAttribute(attr_name)
+
+	def check_variable_attributes(self):
+		if self.debug: print '\tchecking all required variable attributes present and accounted for'
+		required_attributes = ['units', 'actual_min', 'actual_max']
+		for var_name in self.variableIDs.keys():
+			for attr_name in required_attributes:
+				check_attr = self.getVariableAttribute(var_name,attr_name)
 
 	def closeFile(self): 
 		if self.debug: print '\tclosing file', self.current_filename
 
 		return pyKameleon.FileReader.OK
+
+	def setVariables(self):
+		self.variables = self.file_tree['variables']
+		self.initializeVariableIDs() #after all variables loaded
+
+	def setVariableAttributes(self):
+		for variable, attr_dict in self.file_tree['variable_attributes'].items():
+			for attr_name, v in attr_dict.items():
+				self.variableAttributes[variable][str(attr_name)] = Attribute(str(attr_name),v)
+
+		self.initializeVariableAttributeIDs() #after all variable attributes loaded
 
 	def setGlobalAttributes(self):
 		for k,v in self.file_tree['global_attributes'].items():
@@ -75,7 +110,7 @@ class Test_read_asdf_Global_Attributes(unittest.TestCase):
 		self.testReader = readASDF()
 		# self.testReader.debug = True
 		self.testReader.openFile('/tmp/sample_data.asdf')
-		self.testReader.setGlobalAttributes()
+		
 	def tearDown(self):
 		self.testReader.close()
 		print ' ... success!\n'
@@ -102,22 +137,70 @@ class Test_read_asdf_Global_Attributes(unittest.TestCase):
 		print '\tchecking global attribute retrieval by id'
 		self.assertEqual(self.testReader.getGlobalAttribute(1).getAttributeValue(), 1)
 
-def write_asdf_test(filename, variable_dict, global_attributes):
+class Test_read_asdf_Variable_Attributes(unittest.TestCase):
+	def setUp(self):
+		print 'Variable Attribute test:'
+		self.testReader = readASDF()
+		self.testReader.openFile('/tmp/sample_data.asdf')
+
+	def tearDown(self):
+		self.testReader.close()
+		print ' ... success!\n'
+
+	def test_getVariableAttribute(self):
+		print '\tchecking that variable attributes can be retrieved'
+		self.assertEqual(self.testReader.getVariableAttribute('density','units').getAttributeValue(), 'amu/cc')
+		self.assertEqual(self.testReader.getVariableAttribute('pressure','units').getAttributeValue(), 'nPa')
+		with self.assertRaises(NameError): self.testReader.getVariableAttribute('missing_variable','units')
+		with self.assertRaises(NameError): self.testReader.getVariableAttribute('density','missing_attr')
+
+	def test_getNumberOfVariableAttributes(self):
+		print '\tchecking that number of variable attributes is right'
+		self.assertEqual(self.testReader.getNumberOfVariableAttributes(), 3)
+
+	def test_getVariableAttributeName(self):
+		print '\tchecking that variable attribute names can be retrived by ID'
+		attr_id = self.testReader.getVariableAttributeID('units')
+		self.assertEqual(self.testReader.getVariableAttributeName(attr_id), 'units')
+		with self.assertRaises(NameError): self.testReader.getVariableAttributeName(3)
+
+	def test_getVariableAttributeNames(self):
+		print '\tchecking that variable attribute names return string vector'
+		self.assertEqual(self.testReader.getVariableAttributeNames()[0], 'units')
+		self.assertEqual(type(self.testReader.getVariableAttributeNames()), pyKameleon.vectorString)
+
+
+def write_asdf_test(filename, **data):
 	"""Writes an asdf file to be tested"""
-	print 'writing to', filename, variable_dict.keys()
-	tree = dict(variables=variable_dict, global_attributes = global_attributes)
-	ff = asdf.AsdfFile(tree)
+	print 'writing to', filename
+	for d in data:
+		print '\t', d
+
+	ff = asdf.AsdfFile(data)
 	ff.write_to(filename)
 
-def main():
+def create_test_data():
 	from datetime import datetime
-	variables = dict( 	density = np.random.rand(8,8),
-						pressure = np.random.rand(8,8)
-                            )
+
+	filename = '/tmp/sample_data.asdf' #how to pass this to tests?
+
+	variables= dict( density = np.random.rand(8,8),
+					 pressure = np.random.rand(8,8)
+                    )
+
+	variable_attributes = dict(	density = dict(units = 'amu/cc', actual_min = 0, actual_max = 7.0),
+								pressure= dict(units = 'nPa', actual_min = 0, actual_max = 30.1),
+								)
+
 	global_attributes = dict(	model_name = 'asdf_model',
 								timestep_time = datetime.now().isoformat())
-	filename = '/tmp/sample_data.asdf'
-	write_asdf_test(filename, variables, global_attributes)
+	
+	write_asdf_test(filename, 	variables = variables, 
+								global_attributes = global_attributes, 
+								variable_attributes = variable_attributes)
+
+def main():
+	create_test_data()
 	unittest.main()
 
 
