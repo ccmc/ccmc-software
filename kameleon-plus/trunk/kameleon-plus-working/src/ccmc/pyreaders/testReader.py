@@ -18,11 +18,18 @@ class FileReaderFactory(object):
 		self.debug = False
 		if config_file is None:
 			# print '\tFileReaderFactory called without config file, building default test reader' 
-			Config = ConfigParser.ConfigParser()
-			Config.add_section('Reader')
-			Config.set('Reader','pyreadermodule','testReader')
-			Config.set('Reader','pyfilereaderclass','pyFileReader')
-			self._config = Config
+			config = ConfigParser.ConfigParser()
+			config.add_section('Reader')
+			config.set('Reader','pyreadermodule','testReader')
+			config.set('Reader','pyfilereaderclass','pyFileReader')
+			self._config = config
+		elif config_file.split('.')[-1] == 'asdf': 
+			config = ConfigParser.ConfigParser()
+			config.add_section('Reader')
+			config.set('Reader','pyReaderModule', 'read_asdf')
+			config.set('Reader','pyFileReaderClass', 'readASDF')
+			self._config = config
+
 		else:
 			# print '\tFileReaderFactory called with', config_file 
 			self._config = getConfig(config_file)
@@ -92,7 +99,9 @@ class pyFileReader(pyKameleon.FileReader):
 		self.variables = {} #created in subclass
 		self.variableIDs = {} #maps from variable string names to long ids
 		self.variableNames = {} #maps from long ids to string names
-		self.globalAttributes = OrderedDict() #maps from attribute names or ids to global attribute objects
+		self.globalAttributes = OrderedDict() #maps from attribute str names to global attribute objects
+		self.globalAttributeNames = {} #maps from ids to str names
+		self.globalAttributeIDs = {} #maps from str names to ids
 		self.variableAttributes = {} #maps from variable str names to dictionaries of variable attributes
 		self.variableAttributeNames = {} #maps from attribute IDs to name
 		self.variableAttributeIDs = {} #maps from attribute names to IDs
@@ -144,7 +153,9 @@ class pyFileReader(pyKameleon.FileReader):
 			if self.debug: print '\t\tpyFileReader.initializeVariableIDs variableNames already loaded'
 
 	def initializeVariableAttributeIDs(self):
-		"""assign variable attribute ids. Note, only run this after all variablesNames are loaded!"""
+		"""assign variable attribute ids. Note, only run this after all variablesNames are loaded!
+			All variables have to have the same attributes...
+		"""
 		i = 0
 		for key in self.variableAttributes[self.variableNames[0]]:
 			self.variableAttributeIDs[key] = long(i)
@@ -252,29 +263,35 @@ class pyFileReader(pyKameleon.FileReader):
 
 	def getGlobalAttribute(self, attribute):
 		"""Return a global attribute defined in the reader's config file"""
-		if self.globalAttributes.has_key(attribute):
-			return self.globalAttributes[attribute]
-		else:
-			# return Attribute
+		try:
+			if type(attribute) == str:
+				return self.globalAttributes[attribute]
+			else:
+				return self.globalAttributes[self.globalAttributeNames[attribute]]
+		except KeyError:
 			raise NameError('Attribute \'' + attribute + '\' does not exist')
 
-	def getGlobalAttributeName(self, attribute):
-		if self.doesAttributeExist(attribute):
-			return self.globalAttributes[attribute].getAttributeName()
+	def getGlobalAttributeName(self, attribute_id):
+		if self.doesAttributeExist(attribute_id):
+			return self.globalAttributes[self.globalAttributeNames[attribute_id]].getAttributeName()
 		else:
-			raise NameError('Attribute \'' + attribute + '\' does not exist')
+			raise NameError('Attribute \'' + str(attribute_id) + '\' does not exist')
 
 	def doesAttributeExist(self, attribute_name):
 		"""checks if global attribute exists"""
 		# print '\tchecking if ', attribute_name, 'exists:', self.globalAttributes.has_key(attribute_name)
-		return self.globalAttributes.has_key(attribute_name)
+		if type(attribute_name) == str:
+			return self.globalAttributes.has_key(attribute_name)
+		else:
+			return self.globalAttributeNames.has_key(attribute_name)
 
 	def initializeGlobalAttributeIDs(self):
 		"""assign attribute ids. Note, only run this after all attribute names are loaded!"""
 		self.numGAttributes = len(self.globalAttributes)
 		i = 0
-		for key, value in self.globalAttributes.items():
-			self.globalAttributes[long(i)] = value
+		for attr_name in self.globalAttributes:
+			self.globalAttributeIDs[attr_name] = long(i)
+			self.globalAttributeNames[long(i)] = attr_name
 			i += 1
 
 
@@ -288,7 +305,7 @@ class pyFileReader(pyKameleon.FileReader):
 			if self.variableAttributes[variable].has_key(attribute):
 				return self.variableAttributes[variable][attribute]
 			else:
-				raise NameError('Attribute \'' + attribute + '\' does not exist')
+				raise NameError('Attribute \'' + str(attribute) + '\' does not exist')
 		else:
 			raise NameError('Variable \'' + variable + '\' does not exist')
 
@@ -506,6 +523,9 @@ class Test_Factory_methods(unittest.TestCase):
  
 def main():
 	print "Performing tests for pyReader"
+	writeConfig('ARMS.ini', dict(Reader=dict(	pyReaderModule='ARMS',
+												pyFileReaderClass='readARMS',
+	 											ModelName='HelioSpaceV10')))
 	unittest.main()
 
 def fillRandom(type = 'float', count = 30):
@@ -535,6 +555,16 @@ def getConfig(config_file):
 			raise
 	Config.sections()
 	return Config
+
+def writeConfig(filename, dict_):
+	print 'writing', filename
+	config = ConfigParser.ConfigParser()
+	for section in dict_:
+		config.add_section(section)
+		for k, v in dict_[section].items():
+			config.set(section, k, v)
+	with open(filename, 'w') as configfile:
+	    config.write(configfile)
 
 def ConfigSectionMap(Config, section):
     dict1 = {}
