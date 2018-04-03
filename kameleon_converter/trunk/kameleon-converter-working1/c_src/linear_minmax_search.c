@@ -47,6 +47,8 @@ int linear_minmax_search(
 
    int i;
 
+   if (array_to_search == NULL){return;}
+
    *min_value = array_to_search[0];
    *max_value = array_to_search[0];
 
