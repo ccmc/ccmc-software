@@ -32,7 +32,8 @@
  *                            Made a duplicate function that searches array of *
  *                            type int we'll call it                           *
  *                            linear_min_max_search_int()                      *
- ******************************************************************************/
+ *    2018/03/29    Lutz Rastaetter - do nothing if handed a NULL data pointer *
+ *******************************************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
