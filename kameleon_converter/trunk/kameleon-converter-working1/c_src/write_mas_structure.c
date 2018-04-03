@@ -41,6 +41,8 @@
  *    06.07.2011     Maddox, Marlo                                             *
  *    		     Adding attributes for new grid combinations due to newly  *
  *    		     added phi+1 dimmension                                    *
+ *    2018/03/30     Lutz Rastaetter                                           *
+ *                   Model output file for p is optional                       *
  ******************************************************************************/
 
 #include <stdio.h>
@@ -730,41 +732,43 @@ int write_mas_structure(
          grid_system_4,
          baselined_ccmc_variable_structure_list);
 
-   stat = update_ccmc_variable_attribute_value(
+   if (p != NULL){
+     stat = update_ccmc_variable_attribute_value(
          "p",
          "variable_size",
          &number_of_cells1,
          baselined_ccmc_variable_structure_list);
-   stat = update_ccmc_variable_value(
+     stat = update_ccmc_variable_value(
          "p",
          number_of_cells1,
          p,
          baselined_ccmc_variable_structure_list);
-   stat = update_ccmc_variable_attribute_value(
+     stat = update_ccmc_variable_attribute_value(
          "p",
          "actual_min",
          &p_actual_min,
          baselined_ccmc_variable_structure_list);
-   stat = update_ccmc_variable_attribute_value(
+     stat = update_ccmc_variable_attribute_value(
          "p",
          "actual_max",
          &p_actual_max,
          baselined_ccmc_variable_structure_list);
-   stat = update_ccmc_variable_attribute_value(
+     stat = update_ccmc_variable_attribute_value(
          "p",
          "grid_system",
          grid_system_4,
          baselined_ccmc_variable_structure_list);
-   stat = update_ccmc_variable_attribute_value(
+     stat = update_ccmc_variable_attribute_value(
          "p",
          "data_grid_system",
          grid_system_4,
          baselined_ccmc_variable_structure_list);
-   stat = update_ccmc_variable_attribute_value(
+     stat = update_ccmc_variable_attribute_value(
          "p",
          "position_grid_system",
          grid_system_4,
          baselined_ccmc_variable_structure_list);
+   }
 
    stat = update_ccmc_variable_attribute_value(
          "rho",
