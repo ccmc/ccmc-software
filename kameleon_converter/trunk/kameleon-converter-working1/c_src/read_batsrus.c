@@ -96,9 +96,6 @@
  *                 							       *
  *    08.30.2011   	      Maddox, Marlo				       *
  *    		   	      Adding new "status" variable to batsrus          *
- *    04.24.2012              Lutz Rastaetter                                  *
- *                            Adding blocks to lowest refinement level to make *
- *                          P1*P2*P3 blocks if there are more than zero blocks *
  ******************************************************************************/
 
 #include <stdio.h>
@@ -272,7 +269,7 @@ int setup_parent(
     zc = block_z_center[iblock]; /* octree_blocklist[iblock].ZCenter;*/
 
     /* get size of root block */
-    /*   root = block_at_amr_level[0];
+    root = block_at_amr_level[0];
     if (DEBUG >= 3)
 	{
 	fprintf(stderr, "Entering Setup_Parent(): root block: %i\n", root);
@@ -280,6 +277,7 @@ int setup_parent(
     dx_root = block_x_max[root] - block_x_min[root];
     dy_root = block_y_max[root] - block_y_min[root];
     dz_root = block_z_max[root] - block_z_min[root];
+    /*  dz_root=octree_blocklist[root].ZMAX-octree_blocklist[root].ZMIN; */
     ix = floor((xc - XMIN) / dx_root);
     iy = floor((yc - YMIN) / dy_root);
     iz = floor((zc - ZMIN) / dz_root);
@@ -287,21 +285,6 @@ int setup_parent(
 	    0.001 + ix + special_parameter_P1
 		    * (iy + special_parameter_P2 * iz));
     root = block_at_amr_level[ixyz];
-*/
-    root=-1;
-    int iroot=0;
-    while (root < 0 && iroot < number_of_blocks_at_amr_level[0]){
-      int root_tmp;
-      root_tmp=block_at_amr_level[iroot];
-      if (   block_x_min[root_tmp] < xc &&  block_x_max[root_tmp] > xc
-	     && block_y_min[root_tmp] < yc &&  block_y_max[root_tmp] > yc
-	     && block_z_min[root_tmp] < zc &&  block_z_max[root_tmp] > zc){
-	root=root_tmp;
-	iroot=number_of_blocks_at_amr_level[0];
-      }
-      iroot++;
-    }
-
     jlev = 0;
     if (DEBUG >= 2)
 	{
@@ -375,11 +358,11 @@ int setup_parent(
 	    iy_c = yc > block_y_center[root]; /*yc>octree_blocklist[root].YCenter; */
 	    iz_c = zc > block_z_center[root]; /*zc>octree_blocklist[root].ZCenter; */
 
-	    /*	    if (get_child_id(root, ix_c + 2 * iy_c + 4 * iz_c) == -1)
-		    { */
+	    if (get_child_id(root, ix_c + 2 * iy_c + 4 * iz_c) == -1)
+		{
 		put_child_id(ichild, root, ix_c + 2 * iy_c + 4 * iz_c);
 		child_count[root]++;
-		/*		}*/
+		}
 	    block_amr_levels[ichild] = jlev;
 	    parent_id[ichild] = root;
 	    /*
@@ -1333,6 +1316,11 @@ int read_record_5( verbose_flag)
 	    record_size,
 	    input_filePtr);
 
+    /* case fold variable string  - I have seen a file with mixed case names - Lutz Rastaetter 2013/09/05 */
+    for(i = 0; i < record_size; i++){
+      variable_name_string[i]=tolower(variable_name_string[i]);
+    }
+
     if (DEBUG_FLAG)
 	printf(
 		"DEBUG\tnumber_of_elements ( bytes read from last fread ) = %d\n",
@@ -1781,6 +1769,18 @@ int read_record_7( verbose_flag)
     tmp_strarr.len = 0;
     tmp_strarr.sarr = NULL;
 
+    optional_status_variable_present = 0;
+    optional_ionop_variable_present = 0;
+    optional_ionorho_variable_present = 0;
+    optional_ionoux_variable_present = 0;
+    optional_ionouy_variable_present = 0;
+    optional_ionouz_variable_present = 0;
+    optional_swp_variable_present = 0;
+    optional_swrho_variable_present = 0;
+    optional_swux_variable_present = 0;
+    optional_swuy_variable_present = 0;
+    optional_swuz_variable_present = 0;
+
     /* get array of variable names to correctly distribute data */
     strsplit(variable_name_string, &tmp_strarr, " ");
 
@@ -1882,15 +1882,6 @@ int read_record_7( verbose_flag)
 	    == NULL)
 	{
 	printf("MALLOC for jz array FAILED\n");
-	exit(EXIT_FAILURE);
-	}
-
-    /* NEW STATUS VARIABLE setup */
-
-    if ((status_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
-	    == NULL)
-	{
-	printf("MALLOC for status array FAILED\n");
 	exit(EXIT_FAILURE);
 	}
 
@@ -2088,25 +2079,203 @@ int read_record_7( verbose_flag)
 		    tmp_double);
 	    }
 
+
+	if (strcmp(tmp_strarr.sarr[i], "swp") == 0)
+	    {
+	      optional_swp_variable_present = 1;
+	      if ((swp_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swp array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swp_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swux") == 0)
+	    {
+	      optional_swux_variable_present = 1;
+	      if ((swux_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swux array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swux_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swuy") == 0)
+	    {
+	      optional_swuy_variable_present = 1;
+	      if ((swuy_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swuy array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swuy_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swuz") == 0)
+	    {
+	      optional_swuz_variable_present = 1;
+	      if ((swuz_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swuz array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swuz_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "swrho") == 0)
+	    {
+	      optional_swrho_variable_present = 1;
+	      if ((swrho_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for swrho array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    swrho_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    }
+
+	if (strcmp(tmp_strarr.sarr[i], "ionop") == 0)
+	    {
+	      optional_ionop_variable_present = 1;
+	      if ((ionop_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionop array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionop_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionoux") == 0)
+	    {
+	      optional_ionoux_variable_present = 1;
+	      if ((ionoux_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionoux array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionoux_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionouy") == 0)
+	    {
+	      optional_ionouy_variable_present = 1;
+	      if ((ionouy_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionouy array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionouy_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionouz") == 0)
+	    {
+	      optional_ionouz_variable_present = 1;
+	      if ((ionouz_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionouz array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionouz_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+	if (strcmp(tmp_strarr.sarr[i], "ionorho") == 0)
+	    {
+	      optional_ionorho_variable_present = 1;
+	      if ((ionorho_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for ionorho array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
+	    read_failed_flag += read_batsrus_variable(
+		    input_filePtr,
+		    ionorho_arrayPtr,
+		    flip_endian,
+		    is_double,
+		    tmp_double);
+	    } 
+	
+
+
 	/******************** get all status variables ****************************/
 
 	if (strcmp(tmp_strarr.sarr[i], "status") == 0)
 	    {
+	      if ((status_arrayPtr = (float *) calloc(number_of_cells, sizeof(float)))
+		  == NULL)
+		{
+		  printf("MALLOC for status array FAILED\n");
+		  exit(EXIT_FAILURE);
+		}
 	    read_failed_flag += read_batsrus_variable(
 		    input_filePtr,
 		    status_arrayPtr,
 		    flip_endian,
 		    is_double,
 		    tmp_double);
-
 	    optional_status_variable_present = 1;
 	    }
-	else
-	    {
-	    optional_status_variable_present = 0;
-	    }
-
 	}
+
 
     if (is_double)
 	{
@@ -2119,7 +2288,19 @@ int read_record_7( verbose_flag)
 	{
 	if (verbose_flag)
 	    {
-	    printf("READ Record 7 SUCCESSFUL\n");
+	      fprintf(stderr,"Status: %i \nIonoP: %i IonoRHo: %i IonoU: %i %i %i\nSWRho: %i SWP: %i SWU: %i %i %i\n",optional_status_variable_present,
+		     optional_ionop_variable_present,
+		     optional_ionorho_variable_present,
+		     optional_ionoux_variable_present,
+		     optional_ionouy_variable_present,
+		     optional_ionouz_variable_present,
+		     optional_swp_variable_present,
+		     optional_swrho_variable_present,
+		     optional_swux_variable_present,
+		     optional_swuy_variable_present,
+		     optional_swuz_variable_present);
+	      fflush(NULL);
+	      printf("READ Record 7 SUCCESSFUL\n");
 	    }
 	return 1;
 	}
@@ -2165,8 +2346,6 @@ int build_grid_description( verbose_flag)
 	    * special_parameter_NZ;
 
     int block_space;
-
-    int ilev=0,ilev_start=0; 
 
     block_space = (8 * number_of_blocks) / 7; /* extra space needed to store
      virtual/parent blocks that are generated in program */
@@ -2569,11 +2748,6 @@ int build_grid_description( verbose_flag)
 	printf("MALLOC for  block_at_amr_level array FAILED\n");
 	exit(EXIT_FAILURE);
 	}
-    /* initialize with -1  - missing block */
-    for (i=0;i<number_of_blocks * max_amr_level;i++){
-      block_at_amr_level[i]=-1;
-    }
-
     if ((number_of_blocks_at_amr_level = (int *) calloc(
 	    max_amr_level,
 	    sizeof(int))) == NULL)
@@ -2597,13 +2771,10 @@ int build_grid_description( verbose_flag)
     for (block_count = 0; block_count < number_of_blocks; block_count++)
 	{
 
-	block_amr_levels[block_count] = floor(
+	block_amr_levels[block_count] = ceil(
 		(log(
 			(global_x_max - global_x_min) / (special_parameter_P1
-				* NX * cell_delta_x[block_count]))) / log(2.0) + 0.5);
-	/*		(log(
-			(global_x_max - global_x_min) / (special_parameter_P1
-			* NX * cell_delta_x[block_count]))) / log(2.0)); */
+				* NX * cell_delta_x[block_count]))) / log(2.0));
 
 	}
 
@@ -2685,205 +2856,133 @@ int build_grid_description( verbose_flag)
 	    }
 	}
 
-    for (current_amr_level=0;current_amr_level < max_amr_level; current_amr_level++){
-       fprintf(stderr,"Read BASTRUS: level: %i number of blocks: %i\n",current_amr_level,number_of_blocks_at_amr_level[current_amr_level]);
-    }
+    /* begin calculating virtual parent blocks starting from blocks with the
+     * finest resolution down to the root blocks */
 
-    if (number_of_blocks_at_amr_level[0] > 0 && number_of_blocks_at_amr_level[0] < (P1*P2*P3) ){
-	float dx,dy,dz; 
-	int N_parents_old,num_new_blocks,N_ix,N_iy,N_iz,ix,iy,iz; 
-	float XC,YC,ZC;
-	int ib,iblk,nblk0;
-	ilev=0;
-	dx=(global_x_max-global_x_min)/P1;
-	dy=(global_y_max-global_y_min)/P2;
-	dz=(global_z_max-global_z_min)/P3;
-	iblk=number_of_blocks;
-	nblk0=number_of_blocks_at_amr_level[0];
-	for (iz=0;iz<P3;iz++){
-	  ZC=global_z_min+(iz+0.5)*dz;
-	  for (iy=0;iy<P2;iy++){
-	    YC=global_y_min+(iy+0.5)*dy;
-	    for (ix=0;ix<P1;ix++){
-	      int block_exists=0;
-	      XC=global_x_min+(ix+0.5)*dx;
-	      /* test existing blocks; */
-	      for (ib=0;ib<nblk0;ib++){
-		int test_block;
-		test_block=block_at_amr_level[ib];
-		if  ( (XC > block_x_min[test_block] && XC < block_x_max[test_block] )
-		      && (YC > block_y_min[test_block]  && YC < block_y_max[test_block]  )
-		      && (ZC > block_z_min[test_block] && ZC < block_z_max[test_block]  ) )
-		  {
-		    block_exists=1;
-		  }
-		if (block_exists == 0){
-		  fprintf(stderr,"Settung up new block %i at AMR level 0: %i\n",iblk,number_of_blocks_at_amr_level[0]);
-		  /* increment local counter (level = 0) */
-		  block_at_amr_level[number_of_blocks_at_amr_level[0]]=iblk;
-		  /* set new block number into block_at_AMRlevel array */
-		  block_amr_levels[iblk]=ilev;
-		  block_x_min[iblk]=global_x_min+ix*dx;
-		  block_x_max[iblk]=global_x_min+(ix+1)*dx;
-		  block_x_center[iblk]=global_x_min+(ix+0.5)*dx;
-		  block_y_min[iblk]=global_y_min+iy*dy;
-		  block_y_max[iblk]=global_y_min+(iy+1)*dy;
-		  block_y_center[iblk]=global_y_min+(iy+0.5)*dy;
-		  block_z_min[iblk]=global_z_min+iz*dz;
-		  block_z_max[iblk]=global_z_min+(iz+1)*dz;
-		  block_z_center[iblk]=global_z_min+(iz+0.5)*dz;
-		  /* increment global counters		  */
-		  iblk++;
-		  number_of_parents++;
-		  number_of_blocks_at_amr_level[0]=number_of_blocks_at_amr_level[0]+1;
+    for (current_amr_level = 0, level_factor = 1.; current_amr_level
+	    <= max_amr_level - 1; current_amr_level++, level_factor
+	    = level_factor * 2.)
+	{
+	if (number_of_blocks_at_amr_level[current_amr_level] <= 0)
+	    {
+	    float dx, dy, dz; /* block size at level current_amr_level */
+	    int iblk, N_parents_old, num_new_blocks, N_ix, N_iy, N_iz, ix, iy,
+		    iz;
+	    dx = (global_x_max - global_x_min) / (level_factor * P1);
+	    dy = (global_y_max - global_y_min) / (level_factor * P2);
+	    dz = (global_z_max - global_z_min) / (level_factor * P3);
+	    /* setup virtual parent blocks */
+	    N_ix = level_factor * P1;
+	    N_iy = level_factor * P2;
+	    N_iz = level_factor * P3;
+	    for (iz = 0; iz < N_iz; iz++)
+		{
+		int iz_c;
+		iz_c = iz % 2;
+		for (iy = 0; iy < N_iy; iy++)
+		    {
+		    int iy_c;
+		    iy_c = iy % 2;
+		    for (ix = 0; ix < N_ix; ix++)
+			{
+			int ix_c, iv_c, parent_block, ixyz;
+			ix_c = ix % 2;
+			child_id_key = iv_c = ix_c + 2 * iy_c + 4 * iz_c;
+			ixyz = ix + N_ix * (iy + N_iy * iz);
+			iblk = number_of_blocks + number_of_parents + ixyz;
+			block_amr_levels[iblk] = current_amr_level;
+			block_x_min[iblk] = global_x_min + ix * dx;
+			block_x_max[iblk] = global_x_min + (ix + 1) * dx;
+			block_x_center[iblk] = global_x_min + (ix + 0.5) * dx;
+			block_y_min[iblk] = global_y_min + iy * dy;
+			block_y_max[iblk] = global_y_min + (iy + 1) * dy;
+			block_y_center[iblk] = global_y_min + (iy + 0.5) * dy;
+			block_z_min[iblk] = global_z_min + iz * dz;
+			block_z_max[iblk] = global_z_min + (iz + 1) * dz;
+			block_z_center[iblk] = global_z_min + (iz + 0.5) * dz;
+			if (current_amr_level > 0)
+			    {
+			    int iparent, ip;
+			    iparent = ((ix / 2) + (N_ix / 2) * ((iy / 2)
+				    + (N_iy / 2) * (iz / 2)));
+			    /* update child-parent connections */
+			    /*        ip=block_at_AMRlevel[(current_amr_level-1)*N_blks+iparent]; */
+			    ip = block_at_amr_level[number_of_blocks
+				    * (current_amr_level - 1) + iparent];
+			    if (block_amr_levels[ip] != (current_amr_level - 1))
+				{
+				fprintf(
+					stderr,
+					"Setup Octree: ix %i N_ix: %i iy: %i N_iy: %i iz: %i N_iz: %i parent %i in level %i.\n",
+					ix,
+					N_ix,
+					iy,
+					N_iy,
+					iz,
+					N_iz,
+					iparent,
+					current_amr_level - 1);
+				fprintf(
+					stderr,
+					"Setup Octree: parent block %i in wrong refinement level %f!=%i (current_amr_level).\n",
+					ip,
+					block_amr_levels[ip],
+					current_amr_level);
+				exit(1);
+				}
+			    if (parent_id[iblk] < 0)
+				{
+				parent_id[iblk] = ip;
+				}
+			    /* update children */
+			    if (get_child_id(ip, child_id_key) < 0)
+				{
+				put_child_id(iblk, ip, child_id_key);
+				child_count[ip]++;
+				}
+			    else
+				{
+				fprintf(
+					stderr,
+					"Block ip=%i:  Child block already assigned: iv_c=%i ix_c=%i iy_c=%i iz_c=%i\n",
+					ip,
+					iv_c,
+					ix_c,
+					iy_c,
+					iz_c);
+				}
+			    }
+			}
+		    }
 		}
-	      }
-	    }
-	  }
-	}
-	/* we need to set these for any interpolation to succeed; */
-	number_of_blocks_at_amr_level[0]=P1*P2*P3;
-	number_of_parent_blocks_at_amr_level[0]=P1*P2*P3;
-	fprintf(stderr,"Added %i blocks to coarsest refinement level\n",number_of_parents);
-	ilev_start=1; 
-    }
-    
-   /* begin calculating virtual parent blocks starting from blocks with the
-    * finest resolution down to the root blocks */
-
-    for (
-	 current_amr_level = ilev_start, level_factor=pow(2.,ilev_start); 
-	 current_amr_level <= max_amr_level - 1;
-	 current_amr_level++, level_factor = level_factor*2.)
-     {
-     /*    for (current_amr_level = 0, level_factor = 1.; current_amr_level
-     //	    <= max_amr_level - 1; current_amr_level++, level_factor
-     //	    = level_factor * 2.)
-     //	{ */
-     if (number_of_blocks_at_amr_level[current_amr_level] <= 0)
-       { 
-	 float dx, dy, dz; /* block size at level current_amr_level */
-	 int iblk, N_parents_old, num_new_blocks, N_ix, N_iy, N_iz, ix, iy,
-	   iz;
-	 dx = (global_x_max - global_x_min) / (level_factor * P1);
-	 dy = (global_y_max - global_y_min) / (level_factor * P2);
-	 dz = (global_z_max - global_z_min) / (level_factor * P3);
-	 /* setup virtual parent blocks */
-	 N_ix = level_factor * P1;
-	 N_iy = level_factor * P2;
-	 N_iz = level_factor * P3;
-	 for (iz = 0; iz < N_iz; iz++)
-	   {
-	     int iz_c;
-	     iz_c = iz % 2;
-	     for (iy = 0; iy < N_iy; iy++)
-	       {
-		 int iy_c;
-		 iy_c = iy % 2;
-		 for (ix = 0; ix < N_ix; ix++)
-		   {
-		     int ix_c, iv_c, parent_block, ixyz;
-		     ix_c = ix % 2;
-		     child_id_key = iv_c = ix_c + 2 * iy_c + 4 * iz_c;
-		     ixyz = ix + N_ix * (iy + N_iy * iz);
-		     iblk = number_of_blocks + number_of_parents + ixyz;
-		     block_amr_levels[iblk] = current_amr_level;
-		     block_x_min[iblk] = global_x_min + ix * dx;
-		     block_x_max[iblk] = global_x_min + (ix + 1) * dx;
-		     block_x_center[iblk] = global_x_min + (ix + 0.5) * dx;
-		     block_y_min[iblk] = global_y_min + iy * dy;
-		     block_y_max[iblk] = global_y_min + (iy + 1) * dy;
-		     block_y_center[iblk] = global_y_min + (iy + 0.5) * dy;
-		     block_z_min[iblk] = global_z_min + iz * dz;
-		     block_z_max[iblk] = global_z_min + (iz + 1) * dz;
-		     block_z_center[iblk] = global_z_min + (iz + 0.5) * dz;
-		     if (current_amr_level > 0)
-		       {
-			 int iparent, ip;
-			 iparent = ((ix / 2) + (N_ix / 2) * ((iy / 2)
-							     + (N_iy / 2) * (iz / 2)));
-			 /* update child-parent connections */
-			 /*        ip=block_at_AMRlevel[(current_amr_level-1)*N_blks+iparent]; */
-			 ip = block_at_amr_level[number_of_blocks
-						 * (current_amr_level - 1) + iparent];
-			 if (ip < 0){
-			   fprintf(stderr,"Read BATSRUS: parent block not set %i %i %i\n",number_of_blocks,current_amr_level,iparent);
-			   exit (1);
-			 }
-			 if (block_amr_levels[ip] != (current_amr_level - 1))
-			   {
-			     fprintf(
-				     stderr,
-				     "Setup Octree: ix %i N_ix: %i iy: %i N_iy: %i iz: %i N_iz: %i parent %i in level %i.\n",
-				     ix,
-				     N_ix,
-				     iy,
-				     N_iy,
-				     iz,
-				     N_iz,
-				     iparent,
-				     current_amr_level - 1);
-			     fprintf(
-				     stderr,
-				     "Setup Octree: parent block %i in wrong refinement level %f!=%i (current_amr_level).\n",
-				     ip,
-				     block_amr_levels[ip],
-				     current_amr_level);
-			     exit(1);
-			   }
-			 if (parent_id[iblk] < 0)
-			   {
-			     parent_id[iblk] = ip;
-			   }
-			 /* update children */
-			 if (get_child_id(ip, child_id_key) < 0)
-			   {
-			     put_child_id(iblk, ip, child_id_key);
-			     child_count[ip]++;
-			   }
-			 else
-			   {
-			     fprintf(
-				     stderr,
-				     "Block ip=%i:  Child block already assigned: iv_c=%i ix_c=%i iy_c=%i iz_c=%i\n",
-				     ip,
-				     iv_c,
-				     ix_c,
-				     iy_c,
-				     iz_c);
-			   }
-		       }
-		   }
-	       }
-	   }
-	 /* add blocks to total number of blocks  */
-	 num_new_blocks = N_ix * N_iy * N_iz;
-	 number_of_parent_blocks_at_amr_level[current_amr_level]
-	   = num_new_blocks;
-	 fprintf(
-		 stderr,
-		 "Setup_octree: adding %i blocks to block_at_amrlevel\n %i\n",
-		 num_new_blocks,
-		 current_amr_level);
-	 for (i = 0; i <= num_new_blocks - 1; i++)
-	   {
+	    /* add blocks to total number of blocks  */
+	    num_new_blocks = N_ix * N_iy * N_iz;
+	    number_of_parent_blocks_at_amr_level[current_amr_level]
+		    = num_new_blocks;
+	    fprintf(
+		    stderr,
+		    "Setup_octree: adding %i blocks to block_at_amrlevel\n %i\n",
+		    num_new_blocks,
+		    current_amr_level);
+	    for (i = 0; i <= num_new_blocks - 1; i++)
+		{
 #ifdef DEBUG
-	     if (current_amr_level == 7 && i < 10)
-	       fprintf(
-		       stderr,
-		       "current_amr_level: %i i: %i current_amr_level*N_blks+i: %i N_blks+number_of_parents+i: %i\n",
-		       current_amr_level,
-		       i,
-		       current_amr_level * number_of_blocks + i,
-		       number_of_blocks + number_of_parents + i);
+		if (current_amr_level == 7 && i < 10)
+		    fprintf(
+			    stderr,
+			    "current_amr_level: %i i: %i current_amr_level*N_blks+i: %i N_blks+number_of_parents+i: %i\n",
+			    current_amr_level,
+			    i,
+			    current_amr_level * number_of_blocks + i,
+			    number_of_blocks + number_of_parents + i);
 #endif
-	     block_at_amr_level[current_amr_level * number_of_blocks + i]
-	       = number_of_blocks + number_of_parents + i;
-	   }
-	 number_of_parents_old = number_of_parents;
-	 number_of_parents += num_new_blocks;
-	 number_of_blocks_at_amr_level[current_amr_level] = num_new_blocks;
-       }
+		block_at_amr_level[current_amr_level * number_of_blocks + i]
+			= number_of_blocks + number_of_parents + i;
+		}
+	    number_of_parents_old = number_of_parents;
+	    number_of_parents += num_new_blocks;
+	    number_of_blocks_at_amr_level[current_amr_level] = num_new_blocks;
+	    }
 	else
 	    {
 	    int iblk;
@@ -2974,7 +3073,7 @@ int build_grid_description( verbose_flag)
 		stderr,
 		" N_Parents: Total: %i Max: %i\n",
 		number_of_parents,
-		number_of_blocks / 7);
+		block_space-number_of_blocks);
 	}
 
     if (verbose_flag)
