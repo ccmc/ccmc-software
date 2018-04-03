@@ -144,6 +144,15 @@ int main_write_driver(
          char *,
          char *,
          int);
+   extern int write_gumics_structure(
+         char *,
+         char *,
+         int,
+         int,
+         char *,
+         char *,
+         char *,
+         int);
 
    extern int write_structures_2_cdf(
          char *,
@@ -333,6 +342,30 @@ int main_write_driver(
          }
 
          write_mas_structure(
+               input_file_name,
+               data_format,
+               file_name_length,
+               verbose_flag,
+               output_directory,
+               model_name,
+               original_working_directory,
+               write_database_info_flag);
+         break;
+
+      case 8: /************************* GUMICS **********************************/
+
+         /*** write all current GUMICS data from main memory into standardized
+          * variable & attribute structures  ***/
+
+         if (verbose_flag)
+         {
+            printf(
+                  "calling write_%s_structure routine for %s\n",
+                  model_name,
+                  model_name);
+         }
+
+         write_gumics_structure(
                input_file_name,
                data_format,
                file_name_length,
