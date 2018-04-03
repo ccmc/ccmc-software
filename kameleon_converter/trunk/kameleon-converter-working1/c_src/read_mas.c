@@ -51,6 +51,10 @@
  *     2011 June 6		Maddox, Marlo				       *
  *     				Updateing for new phi+1 grid		       *
  *     									       *
+ *      2018/03/29              Lutz Rastaetter  eliminate the                 *
+ *                              need to repeatedly perform string comparison   *
+ *                              when copying data into flat arrays             *
+ *                              file for P (pressure) is optional              *
  *                                                                             *
  ******************************************************************************/
 
@@ -1493,13 +1497,9 @@ int read_3d_mas_file(
          int ntheta = dim_sizes[1];
          int nr = dim_sizes[2];
 
-         float local_buffer[ nphi ][ ntheta ][ nr ];
-         float local_buffer_edges[ nr ][ ntheta ][ nphi ];
+	 float *mas_field_pointer;
 
-         /*
-          float local_buffer_reversed[nr][ntheta][dim1];
-          float local_buffer_reversed_edges[nr][ntheta][dim1];
-          */
+         float local_buffer[ nphi ][ ntheta ][ nr ];
 
          start_3_dim[0] = 0;
          start_3_dim[1] = 0;
@@ -1517,133 +1517,83 @@ int read_3d_mas_file(
 
          status = SDreaddata( sds_id, start_3_dim, NULL, edges_3_dim, (VOIDP)local_buffer );
 
-         /*
-          * printf("DEBUG\treading HDF data into array shape %d*%d*%d\t with
-          * edges %d, %d, %d\n", nphi, ntheta, nr, edges_3_dim[0],
-          * edges_3_dim[1], edges_3_dim[2] );
-          */
-         /*
-          status = SDreaddata( sds_id, start_3_dim, NULL, edges_3_dim,
-          (VOIDP)local_buffer_reversed );
-          */
-         /*
-          edges_3_dim[0] = nphi;
-          edges_3_dim[1] = ntheta;
-          edges_3_dim[2] = nr;
-          */
-         /*
-          printf("DEBUG\treading HDF data into array shape %d*%d*%d\t with
-          edges %d, %d, %d\n", nr, ntheta, nphi, edges_3_dim[0],
-          edges_3_dim[1], edges_3_dim[2] );
-
-          status = SDreaddata( sds_id, start_3_dim, NULL, edges_3_dim,
-          (VOIDP)local_buffer_edges );
-
-
-          printf("DEBUG\treading HDF data into array shape %d*%d*%d\t with
-          edges %d, %d, %d\n", nphi, ntheta, nr, edges_3_dim[0],
-          edges_3_dim[1], edges_3_dim[2] );
-          */
-         /*    status = SDreaddata( sds_id, start_3_dim, NULL, edges_3_dim,
-          * (VOIDP)local_buffer_reversed_edges );
-          */
-
-         /** dynamically allocate space for current_variable_buffer which
-          * points to a specific variable pointer defined in read_mas.h **/
-
          if( strcmp( current_variable_name, "t") == 0 )
          {
             printf("DEBUG\tallocating space for t\n");
             t = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=t;
          }
          else if( strcmp( current_variable_name, "p") == 0 )
          {
             printf("DEBUG\tallocating space for p\n");
             p = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=p;
          }
          else if( strcmp( current_variable_name, "rho") == 0 )
          {
             printf("DEBUG\tallocating space for rho\n");
             rho = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=rho;
          }
          else if( strcmp( current_variable_name, "vr") == 0 )
          {
             printf("DEBUG\tallocating space for vr\n");
             vr = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=vr;
          }
          else if( strcmp( current_variable_name, "vp") == 0 )
          {
             printf("DEBUG\tallocating space for vp\n");
             vp = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=vp;
          }
          else if( strcmp( current_variable_name, "vt") == 0 )
          {
             printf("DEBUG\tallocating space for vt\n");
             vt = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=vt;
          }
          else if( strcmp( current_variable_name, "jr") == 0 )
          {
             printf("DEBUG\tallocating space for jr\n");
             jr = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=jr;
          }
          else if( strcmp( current_variable_name, "jp") == 0 )
          {
             printf("DEBUG\tallocating space for jp\n");
             jp = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=jp;
          }
          else if( strcmp( current_variable_name, "jt") == 0 )
          {
             printf("DEBUG\tallocating space for jt\n");
             jt = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=jt;
          }
          else if( strcmp( current_variable_name, "br") == 0 )
          {
             printf("DEBUG\tallocating space for br\n");
             br = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=br;
          }
          else if( strcmp( current_variable_name, "bp") == 0 )
          {
             printf("DEBUG\tallocating space for bp\n");
             bp = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
-
-            for( ir= 0; ir < nr; ir++ )
-            {
-               for( itheta = 0; itheta < ntheta; itheta++ )
-               {
-                  for( iphi = 0; iphi < nphi; iphi++ )
-                  {/*
-                   printf("\n    local_buffer   [%d][%d][%d]        \t= %f\n", iphi,itheta,ir, local_buffer[iphi][itheta][ir] );
-                   printf("\n    local_buffer_e [%d][%d][%d]        \t= %f\n", iphi,itheta,ir, local_buffer_edges[iphi][itheta][ir] );
-                   printf("\n    local_buffer_rev        [%d][%d][%d]        \t= %f\n", iphi,itheta,ir, local_buffer_reversed[iphi][itheta][ir] );
-                   printf("\n    local_buffer_re_edges    [%d][%d][%d]        \t= %f\n", iphi,itheta,ir, local_buffer_reversed_edges[iphi][itheta][ir] );
-                   */
-                  }
-               }
-            }
+	    mas_field_pointer=bp;
 
             for( iphi = 0; iphi < nphi; iphi++ )
             {
 
                if( DEBUG_FLAG ) printf("\nlocal_buffer    [%d][0][0]\t= %f\n", iphi, local_buffer[iphi][0][0] );
 
-               /*printf("\nlocal_buffer    [0][0][%d]\t= %f\n", iphi, local_buffer[0][0][iphi] );
-
-                * printf("\nlocal_buffer_e  [%d][0][0]\t= %f\n", iphi, local_buffer_edges[iphi][0][0] );
-
-                printf("\nlocal_buffer_r  [%d][0][0]\t= %f\n", iphi, local_buffer_reversed[iphi][0][0] );
-                printf("\nlocal_buffer_re [%d][0][0]\t= %f\n", iphi, local_buffer_reversed_edges[iphi][0][0] );
-                */
             }
 
             for( itheta = 0; itheta < ntheta; itheta++ )
             {
 
                if( DEBUG_FLAG ) printf("\nlocal_buffer    [0][%d][0]\t= %f\n", itheta, local_buffer[0][itheta][0] );
-               /*printf("\nlocal_buffer_e  [0][%d][0]\t= %f\n", itheta, local_buffer_edges[0][itheta][0] );
-
-                printf("\nlocal_buffer_r  [0][%d][0]\t= %f\n", itheta, local_buffer_reversed[0][itheta][0] );
-                printf("\nlocal_buffer_re [0][%d][0]\t= %f\n", itheta, local_buffer_reversed_edges[0][itheta][0] );
-                */
             }
 
             for( ir = 0; ir < nr; ir++ )
@@ -1651,13 +1601,6 @@ int read_3d_mas_file(
 
                if( DEBUG_FLAG ) printf("\nlocal_buffer    [0][0][%d]\t= %f\n", ir, local_buffer[0][0][ir] );
 
-               /*printf("\nlocal_buffer    [%d][0][0]\t= %f\n", ir, local_buffer[ir][0][0] );
-                */
-               /*printf("\nlocal_buffer_e  [0][0][%d]\t= %f\n", ir, local_buffer_edges[0][0][ir] );
-
-                printf("\nlocal_buffer_r  [0][0][%d]\t= %f\n", ir, local_buffer_reversed[0][0][ir] );
-                printf("\nlocal_buffer_re [0][0][%d]\t= %f\n", ir, local_buffer_reversed_edges[0][0][ir] );
-                */
             }
 
             if( DEBUG_FLAG )  printf("were am i seg faulting...asks bp\n");
@@ -1667,6 +1610,7 @@ int read_3d_mas_file(
          {
             printf("DEBUG\tallocating space for bt\n");
             bt = (float *) malloc( nr * ntheta * nphi *sizeof( float ) );
+	    mas_field_pointer=bt;
          }
          else
          {
@@ -1674,58 +1618,21 @@ int read_3d_mas_file(
             return EXIT_FAILURE;
          }
 
-         /************ DEBUG PRINTOUT OF ARRAY
-
-          for( iphi= 0; iphi < nr; iphi++ )
-          {
-          for( itheta = 0; itheta < ntheta; itheta++ )
-          {
-          for( ir = 0; ir < nr; ir++ )
-          {
-          printf("\n    local_buffer         [%d][%d][%d]        \t= %f\n", iphi,itheta,ir, local_buffer[iphi][itheta][ir] );
-          printf("\n    local_buffer_reversed[%d][%d][%d]        \t= %f\n", iphi,itheta,ir, local_buffer_reversed[iphi][itheta][ir] );
-
-          }
-          }
-          }
-
-          **/
-
-         /*
-          for( iphi = 0; iphi < nr; iphi++ )
-          {
-
-          printf("\nlocal_buffer[%d][0][0]\t= %f\n", iphi, local_buffer[iphi][0][0] );
-
-          }
-
-          for( itheta = 0; itheta < ntheta; itheta++ )
-          {
-
-          printf("\nlocal_buffer[0][%d][0]\t= %f\n", itheta, local_buffer[0][itheta][0] );
-
-          }
-
-          for( ir = 0; ir < nr; ir++ )
-          {
-
-          printf("\nlocal_buffer[0][0][%d]\t= %f\n", ir, local_buffer[0][0][ir] );
-
-          }
-          */
-
+	 /* Lutz Rastaetter - 2018/03/29
+	    have a generic mas_field_pointer assigned with each allocated field (above) 
+	    flatten 3D array using the generic pointer instead of calling strcmp thousands of times 
+	 */
          for( ir= 0; ir < nr; ir++ )
          {
             for( itheta = 0; itheta < ntheta; itheta++ )
             {
                for( iphi = 0; iphi < nphi; iphi++ )
                {
-
+      	           mas_field_pointer[ iphi + ( itheta * nphi ) + ( ir * nphi * ntheta ) ] = local_buffer[iphi][itheta][ir]; 
+	 /*
                   if( strcmp( current_variable_name, "t") == 0 )
                   {
-                     /*t[ iphi + ( itheta * nr ) +  ( ir * nr * ntheta ) ] = local_buffer_reversed[ir][itheta][iphi];*//* old wrong way */
-                     /*t[ iphi + ( itheta * nr ) +  ( ir * nr * ntheta ) ] = local_buffer[iphi][itheta][ir];*//** test way 032307 **/
-                     t[ iphi + ( itheta * nphi ) + ( ir * nphi * ntheta ) ] = local_buffer[iphi][itheta][ir];
+  		     t[ iphi + ( itheta * nphi ) + ( ir * nphi * ntheta ) ] = local_buffer[iphi][itheta][ir]; 
                   }
                   else if( strcmp( current_variable_name, "p") == 0 )
                   {
@@ -1761,19 +1668,12 @@ int read_3d_mas_file(
                   }
                   else if( strcmp( current_variable_name, "br") == 0 )
                   {
-                     /*br[ ir + ( itheta * nr ) +  ( iphi * nr * ntheta )  ] = local_buffer[iphi][itheta][ir];*//* 84*80*64 */
-                     br[ iphi + ( itheta * nphi ) + ( ir * nphi * ntheta ) ] = local_buffer[iphi][itheta][ir];/* 64*80*84 */
+                     br[ iphi + ( itheta * nphi ) + ( ir * nphi * ntheta ) ] = local_buffer[iphi][itheta][ir];
 
                   }
                   else if( strcmp( current_variable_name, "bp") == 0 )
                   {
-                     /*printf("WTF bp \n");*/
-
                      bp[ iphi + ( itheta * nphi ) + ( ir * nphi * ntheta ) ] = local_buffer[iphi][itheta][ir];
-                     /*
-                      printf("\nlocal_buffer [%d][%d][%d]\t= %f\n", iphi,itheta,ir, local_buffer[iphi][itheta][ir] );
-                      printf("bp            [%d]\t= %f\n",  iphi + ( itheta * nr ) +  ( ir * nr * ntheta ), bp[ iphi + ( itheta * nr ) +  ( ir * nr * ntheta ) ] );
-                      */
                   }
                   else if( strcmp( current_variable_name, "bt") == 0 )
                   {
@@ -1784,11 +1684,12 @@ int read_3d_mas_file(
                      printf("%s\tERROR: %s is an unrecognized variable, unable to process\n", __FILE__, current_variable_name );
                      return EXIT_FAILURE;
                   }
+	 */
                }
 
             }
 
-         }
+          }
 
       } /*** end of if( rank == 3 ) block ***/
 

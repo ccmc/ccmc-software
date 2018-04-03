@@ -1,3 +1,4 @@
 #ignore object files
+*.a
 *.o
 kameleon
