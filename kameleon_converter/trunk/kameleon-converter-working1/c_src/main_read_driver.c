@@ -87,6 +87,7 @@ int input_filter(
    extern int read_batsrus_variable(FILE *, float *, int, int, double *);
    extern int read_ucla_ggcm(char *, char *, int, int);
    extern int read_batsrus(char *, int, int);
+   extern int read_gumics(char *, int, int);
    extern int read_ctip(char *, char *, int, int);
 #ifdef NETCDF
    extern int read_enlil(char *, char *, int, int);
@@ -121,7 +122,7 @@ int input_filter(
     *    kpvt           = 5                                                    *
     *    msfc           = 6                                                    *
     *    mas            = 7                                                    *
-    *                                                                          *
+    *    gumics         = 8                                                                      *
     ***************************************************************************/
 
    int model_key;
@@ -160,6 +161,10 @@ int input_filter(
    else if (strcmp(model_name, MAS) == 0)
    {
       model_key = 7;
+   }
+   else if (strcmp(model_name, GUMICS) == 0)
+   {
+      model_key = 8;
    }
 
    if (verbose_flag)
@@ -323,7 +328,6 @@ int input_filter(
          {
             printf("\ncalling read %s routine\n", model_name);
          }
-
 #ifdef KAMELEON_WITH_HDF
 
          fprintf( stderr, "%s *WARNING: %s stores each variable in a seperate "
@@ -353,6 +357,23 @@ int input_filter(
 #endif
 
          break;
+      case 8:
+         if (verbose_flag)
+         {
+            printf("\ncalling read %s routine\n", model_name);
+         }
+         printf("Success: %i failure: %i\n",EXIT_SUCCESS,EXIT_FAILURE);
+         if (read_gumics(input_file_name, verbose_flag, minmax_flag) )
+         {
+            read_successfull_flag = 1;
+         }
+         else
+         {
+            printf("!!! skipping ---> %s ... \n", input_file_name);
+         }
+
+         break;
+
       default:
          printf("no read routine available for %s\n", model_name);
    }
