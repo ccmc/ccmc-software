@@ -73,7 +73,6 @@ extern int errno;
 
 int read_gumics(char *input_file_name, int verbose_flag, int minmax_flag)
 {
-      /gumics
 
   extern int linear_minmax_search(float *, int, float *, float *);
   
