@@ -50,7 +50,7 @@
  *                                                                             *
  ******************************************************************************/
 
-#define NUMBER_REGISTERED_MODELS     8   /*** update total number of registered models ***/
+#define NUMBER_REGISTERED_MODELS     9   /*** update total number of registered models ***/
 
 /******************* define registered model names ******************************/
 
@@ -62,8 +62,9 @@
 #define KPVT         "kpvt"
 #define MSFC_TVM     "msfc_tvm"
 #define MAS          "mas"
+#define GUMICS       "gumics"
 
 /********************* load all regustered model names into registered_model array **********/
 
 static char *registered_models[] =
-{ BATSRUS, UCLA_GGCM, OPEN_GGCM, CTIP, ENLIL, KPVT, MSFC_TVM, MAS };
+  { BATSRUS, UCLA_GGCM, OPEN_GGCM, CTIP, ENLIL, KPVT, MSFC_TVM, MAS, GUMICS };
