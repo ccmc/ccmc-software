@@ -62,9 +62,11 @@ LOCAL_LIB_DIR   = ./lib
 ### CDF ----------------------- REQUIRED
 
 #LIB_CDF      = ${LOCAL_LIB_DIR}/libcdf.a
-LIB_CDF      = /public/Linux_64/cdf27-Linux_64/lib/libcdf.a
+#LIB_CDF      = /public/Linux_64/cdf27-Linux_64/lib/libcdf.a
+LIB_CDF      = /public/Linux_64/cdf32-Linux_64/lib/libcdf.a
 #CDF_INC      = ${LOCAL_INC_DIR}
-CDF_INC      = /public/Linux_64/cdf27-Linux_64/include
+#CDF_INC      = /public/Linux_64/cdf27-Linux_64/include
+CDF_INC      = /public/Linux_64/cdf32-Linux_64/include
 CDF_INC_FILE = ${CDF_INC}/cdf.h
 
 #LIB_CXFORM      = /public/Linux_64/lib/libcxform.a
@@ -110,14 +112,18 @@ FITS_INC_FILE_2  	= ${FITS_INC}/longnam.h
 #LIB_SZ     = ${LOCAL_LIB_DIR}/libsz.a
 #LIB_Z      = ${LOCAL_LIB_DIR}/libz.a
 
-LIB_MFHDF  = ${PUBLIC_LIB_DIR}/libmfhdf.a
-LIB_DF     = ${PUBLIC_LIB_DIR}/libdf.a
-LIB_JPEG   = ${PUBLIC_LIB_DIR}/libjpeg.a
-LIB_SZ     = ${PUBLIC_LIB_DIR}/libsz.a
-LIB_Z      = ${PUBLIC_LIB_DIR}/libz.a
+#PUBLIC_HDF_LIB_DIR=$PUBLIC_LIB_DIR
+PUBLIC_HDF_LIB_DIR=/public/Linux_64/hdf-4.2.13-linux-centos7-x86_64/lib
+PUBLIC_HDF_INC_DIR=/public/Linux_64/hdf-4.2.13-linux-centos7-x86_64/include
+
+LIB_MFHDF  = ${PUBLIC_HDF_LIB_DIR}/libmfhdf.a
+LIB_DF     = ${PUBLIC_HDF_LIB_DIR}/libdf.a
+LIB_JPEG   = ${PUBLIC_HDF_LIB_DIR}/libjpeg.a
+LIB_SZ     = ${PUBLIC_HDF_LIB_DIR}/libsz.a
+LIB_Z      = ${PUBLIC_HDF_LIB_DIR}/libz.a
 
 ### HDF has a bunch of header files, reference them all together
-HDF_INC = ${PUBLIC_INC_DIR}
+HDF_INC = ${PUBLIC_HDF_INC_DIR}
 #HDF_INC = ${LOCAL_INC_DIR}
 
 ### LIB_HDF_WITH_ALL_DEP incorporates all hdf library paths and dependencies
@@ -156,14 +162,15 @@ UCLA_READ_F77_SRC =  ${F77_SRC_DIR}/datf11.f ${F77_SRC_DIR}/datf21.f ${F77_SRC_D
 UCLA_READ_F77_OBJ = datf11.o datf21.o datf31.o end0.o f77_file_close.o f77_file_open.o f77_file_rewind.o getf11.o getf31.o rdn2.o wrn2.o wrndec.o wrnenc.o
 
 READ_C_SRC    =     ${C_SRC_DIR}/main_conversion_driver_V5.c ${C_SRC_DIR}/cdf_status_handler.c ${C_SRC_DIR}/main_read_driver.c ${C_SRC_DIR}/main_write_driver.c \
-				${C_SRC_DIR}/read_batsrus.c ${C_SRC_DIR}/read_database.c ${C_SRC_DIR}/linear_minmax_search.c ${C_SRC_DIR}/date_formatter.c ${C_SRC_DIR}/strsplit.c \
+				${C_SRC_DIR}/read_batsrus.c ${C_SRC_DIR}/read_database.c ${C_SRC_DIR}/linear_minmax_search.c ${C_SRC_DIR}/date_formatter.c ${C_SRC_DIR}/strsplit.c ${C_SRC_DIR}/read_gumics.c \
 				${C_SRC_DIR}/ccmc_structure_manager.c ${C_SRC_DIR}/write_batsrus_structure.c ${C_SRC_DIR}/write_structures_2_cdf.c ${C_SRC_DIR}/write_ucla_ggcm_structure.c \
 				${C_SRC_DIR}/endian_flip.c ${C_SRC_DIR}/read_ctip.c ${C_SRC_DIR}/write_enlil_structure.c ${C_SRC_DIR}/write_kpvt_structure.c ${C_SRC_DIR}/write_msfc_tvm_structure.c \
-				${C_SRC_DIR}/write_mas_structure.c
+				${C_SRC_DIR}/write_mas_structure.c 	\
+                                ${C_SRC_DIR}/write_gumics_structure.c 
 
-READ_C_OBJ    = main_conversion_driver_V5.o cdf_status_handler.o main_read_driver.o main_write_driver.o read_batsrus.o read_database.o linear_minmax_search.o date_formatter.o \
+READ_C_OBJ    = main_conversion_driver_V5.o cdf_status_handler.o main_read_driver.o main_write_driver.o read_batsrus.o read_database.o linear_minmax_search.o date_formatter.o  read_gumics.o \
 			strsplit.o cxform-manual.o cxform-auto.o ccmc_structure_manager.o write_batsrus_structure.o write_structures_2_cdf.o write_ucla_ggcm_structure.o endian_flip.o read_ctip.o write_enlil_structure.o \
-			write_kpvt_structure.o write_msfc_tvm_structure.o write_mas_structure.o
+			write_kpvt_structure.o write_msfc_tvm_structure.o write_mas_structure.o write_gumics_structure.o
 
 ### DON'T CHANGE BLOCK
 ### DON"T CHANGE THE FOLLOWING "DON'T CHANGE" LINE(S), ITS A WORKAROUND
@@ -530,6 +537,9 @@ main_write_driver.o : ${C_SRC_DIR}/main_write_driver.c
 read_batsrus.o : ${C_SRC_DIR}/read_batsrus.c
 	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_batsrus.c -I${LOCAL_INC_DIR} -I${CDF_INC}
 
+read_gumics.o : ${C_SRC_DIR}/read_batsrus.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/read_gumics.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
 write_batsrus_cdf.o : ${C_SRC_DIR}/write_batsrus_cdf.c
 	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_batsrus_cdf.c -I${LOCAL_INC_DIR} -I${CDF_INC}
 
@@ -592,6 +602,9 @@ read_mas.o : ${C_SRC_DIR}/read_mas.c
 
 write_mas_structure.o : ${C_SRC_DIR}/write_mas_structure.c
 	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_mas_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
+
+write_gumics_structure.o : ${C_SRC_DIR}/write_gumics_structure.c
+	${CC} ${CFLAGS} -c ${DEBUG_FLAG} ${C_SRC_DIR}/write_gumics_structure.c -I${LOCAL_INC_DIR} -I${CDF_INC}
 
 
 #### UCLA_GGCM/OPenGGCM Fortran Stuff
