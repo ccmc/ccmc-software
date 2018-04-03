@@ -32,7 +32,8 @@
  ******************************************************************************/
 
 /* some global attribute values */
-#define MAS_MODEL_DESCRIPTION "MHD Model of Solar Corona. Model domain: 1 - 30 solar radii. - J. Linker,Z. Mikic,R. Lionello, P. Riley - Science Applications International Corporation (SAIC)"
+/*#define MAS_MODEL_DESCRIPTION "MHD Model of Solar Corona. Model domain: 1 - 30 solar radii. - J. Linker,Z. Mikic,R. Lionello, P. Riley - Science Applications International Corporation (SAIC)" */
+#define MAS_MODEL_DESCRIPTION "MHD Model of Solar Corona. Model domain: 1 - 30 solar radii. - J. Linker, Z. Mikic, R. Lionello, P. Riley - Predictive Science Incorporated (PSI) www.predsci.com"
 
 #define MAS_COORDINATE_DISCRIPTION "Heliographic - r,p,t"
 
