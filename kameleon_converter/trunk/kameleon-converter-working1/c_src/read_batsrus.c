@@ -3003,7 +3003,7 @@ int build_grid_description( verbose_flag)
 			global_y_min,
 			global_z_min,
 			number_of_blocks,
-			number_of_blocks / 7,
+			block_space-number_of_blocks,
 			&number_of_parents);
 		if (parent_block < 0)
 		    {
@@ -3073,7 +3073,7 @@ int build_grid_description( verbose_flag)
 		stderr,
 		" N_Parents: Total: %i Max: %i\n",
 		number_of_parents,
-		number_of_blocks / 7);
+		block_space-number_of_blocks);
 	}
 
     if (verbose_flag)
