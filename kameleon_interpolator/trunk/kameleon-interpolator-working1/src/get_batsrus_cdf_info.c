@@ -84,14 +84,14 @@ void get_batsrus_cdf_info(
    if ( DEBUG_FLAG)
    {
       printf(
-            "allocate_deafults_done = %d\n",
-            allocate_deafults_done);
+            "allocate_defaults_done = %d\n",
+            allocate_defaults_done);
       printf(
-            "allocate_deafults_done variable address = %x\n",
-            &allocate_deafults_done);
+            "allocate_defaults_done variable address = %x\n",
+            &allocate_defaults_done);
    }
 
-   if (allocate_deafults_done <= 0)
+   if (allocate_defaults_done <= 0)
    {
       allocate_defaults();
    }
@@ -1729,7 +1729,7 @@ void allocate_defaults(
       exit( EXIT_FAILURE);
    }
 
-   allocate_deafults_done = 1;
+   allocate_defaults_done = 1;
 
    return;
 }

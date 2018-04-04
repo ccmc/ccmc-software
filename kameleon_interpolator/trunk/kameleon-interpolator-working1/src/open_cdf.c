@@ -118,7 +118,7 @@
  *                   already open.                                             *
  *                                                                             *
  *    04.15.2008     Maddox, Marlo                                             *
- *                   Added allocate_deafults_done & full_bats_grid_in_memory   *
+ *                   Added allocate_defaults_done & full_bats_grid_in_memory   *
  *                   Variables to address multi-open/close with batsrus        *
  *                   specifically.                                             *
  *                                                                             *
@@ -133,6 +133,7 @@
  *                                                                             *
  *    03.10.2010     Peter MacNeice                                            *
  *                   Adding adapt3d model                                      *
+ *                                                                             *
  ******************************************************************************/
 
 #include <stdio.h>
@@ -268,7 +269,7 @@ void open_cdf(
 
          /*** also if this is a new file, then allocate_defaults_done should be initialized to 0 ***/
 
-         allocate_deafults_done = 0;
+         allocate_defaults_done = 0;
 
          /*** as well as full_bats_grid_in_memory **/
 
@@ -341,9 +342,9 @@ void open_cdf(
     * with main memory flag = 1 to load the full batsrus grid                  *
     ***************************************************************************/
 
-   if ( (!strcmp(
+   if ( !strcmp(
          model_name,
-         batsrus) ) && full_bats_grid_in_memory <= 0 && main_memory_flag > 0)
+         batsrus) && full_bats_grid_in_memory <= 0 && main_memory_flag > 0)
    {
       get_batsrus_cdf_info(main_memory_flag);
 
@@ -382,8 +383,8 @@ void open_cdf(
             fprintf(stderr, "DEBUG\t calling load for %s\n", current_input_variable);
 
          if ( !strcmp(
-               model_name,
-               batsrus) )
+	       model_name,
+	       batsrus) )
          {
             load_status
                   = load_batsrus_cdf_variable_into_main_memory(current_input_variable);
@@ -549,9 +550,9 @@ char * get_cdf_info(
       printf("DEBUG\tCDF files contains %s model name\n", model_name );
    /********** use model name attribute to determine which get_*_cdf_info routine to call ****************/
 
-   if ( !strcmp(
-         batsrus,
-         model_name) )
+      if ( !strcmp(
+          batsrus,
+          model_name) )
    {
 
       /*** lets set full_grid_in_memory flag ***/

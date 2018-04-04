@@ -36,10 +36,10 @@
  *                      if multi open's with bats require the entire amr grid  *
  *                      to be loaded                                           *
  *                                                                             *
- *                      Also had to add an allocate_deafults_done flag to      *
+ *                      Also had to add an allocate_defaults_done flag to      *
  *                      determine if muli-open batsrus needs to call           *
- *                      allocate_deafults_done NOTE: when                      *
- *                      allocate_deafults_done was static, the variable wasn't *
+ *                      allocate_defaults_done NOTE: when                      *
+ *                      allocate_defaults_done was static, the variable wasn't *
  *                      being reset properly.                                  *
  ******************************************************************************/
 
@@ -57,7 +57,7 @@ int StatusHandler(
 CDFid current_file_id;
 
 int new_cdf_file;
-int allocate_deafults_done;
+int allocate_defaults_done;
 
 int full_bats_grid_in_memory;
 

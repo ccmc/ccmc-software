@@ -116,9 +116,9 @@ void close_cdf(void)
             "calling close_batsrus_cdf\n", model_name );}
       close_batsrus_cdf();
 
-      /*** reset allocate_deafults_done back to zero **/
+      /*** reset allocate_defaults_done back to zero **/
 
-         allocate_deafults_done = 0;
+         allocate_defaults_done = 0;
 
    }
    else if ( !strcmp(ucla_ggcm, model_name) )
