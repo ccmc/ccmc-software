@@ -3,6 +3,7 @@
 c     Three functions used to interpolate 
 c     data from a specified batsrus cdf file
  
+      integer f2c_open_cdf, f2c_close_cdf, f2c_interp_bats_cdf
       external f2c_open_cdf, f2c_close_cdf, f2c_interp_bats_cdf
  
 c     Variables to be used for interpolation and data extraction

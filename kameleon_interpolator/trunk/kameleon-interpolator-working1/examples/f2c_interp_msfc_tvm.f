@@ -3,6 +3,7 @@
 c     Three functions used to interpolate 
 c     data from a specified msfc_tvm cdf file
  
+      integer f2c_open_cdf, f2c_close_cdf, f2c_interp_msfc_tvm_cdf
       external f2c_open_cdf, f2c_close_cdf, f2c_interp_msfc_tvm_cdf
  
 c     Variables to be used for interpolation and data extraction

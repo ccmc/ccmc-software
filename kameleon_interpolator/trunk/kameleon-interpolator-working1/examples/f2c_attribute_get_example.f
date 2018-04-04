@@ -6,15 +6,20 @@ c     as f2c_[g|v]attribute_[char|float|int]_get
 c     where g - global attribute
 c           v - variable attribute
 c     int/float/get - attribute type
-
+       
+      integer f2c_open_cdf, f2c_close_cdf
       external f2c_open_cdf, f2c_close_cdf
       integer f2c_gattribute_char_get
       external f2c_gattribute_char_get
+      integer f2c_gattribute_int_get
       external f2c_gattribute_int_get
+      integer f2c_gattribute_float_get
       external f2c_gattribute_float_get
       integer f2c_vattribute_char_get
       external f2c_vattribute_char_get
+      integer f2c_vattribute_float_get
       external f2c_vattribute_float_get
+      integer f2c_vattribute_int_get
       external f2c_vattribute_int_get
 
 c     Variables to be used as arguments to attribute get

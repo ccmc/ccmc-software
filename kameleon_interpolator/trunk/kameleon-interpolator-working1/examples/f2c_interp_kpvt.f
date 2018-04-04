@@ -3,6 +3,7 @@
 c     Three functions used to interpolate 
 c     data from a specified kpvt cdf file
  
+      integer f2c_open_cdf, f2c_close_cdf, f2c_interp_kpvt_cdf
       external f2c_open_cdf, f2c_close_cdf, f2c_interp_kpvt_cdf
  
 c     Variables to be used for interpolation and data extraction

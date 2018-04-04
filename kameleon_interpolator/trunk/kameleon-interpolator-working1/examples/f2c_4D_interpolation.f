@@ -3,6 +3,7 @@
 c     Three functions used for temporal 
 c     interpolation given a particular data set
  
+      integer f2c_init_time, f2c_time_interpolate, f2c_close_cdf
       external f2c_init_time, f2c_time_interpolate, f2c_close_cdf
  
 c     Variables to be used for interpolation and data extraction
