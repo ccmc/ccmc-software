@@ -31,7 +31,7 @@ c     --- set your position values in GEO ---
  
       x=.077294615
       y=.00001
-      z=o
+      z=0
  
 c     --- set name of variable of interest ---
  
